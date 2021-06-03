@@ -11,15 +11,15 @@
   "bugs": {
     "url": "https://github.com/navikt/verktoykasse-prototype/issues"
   },
-  "homepage": "https://github.com/navikt/verktoykasse-prototype#readme",
+  "homepage": "https://navikt.github.io/verktoykasse-prototype",
   "scripts": {
-    "dev": "yarn workspace website dev"
+    "dev": "yarn workspace website dev",
+    "deploy": "yarn workspace website deploy",
+    "sanity": "yarn workspace sanity-setup start"
   },
   "workspaces": [
     "studio",
     "web"
   ],
-  "dependencies": {
-    "@sanity/client": "^2.10.5"
-  }
+  "dependencies": {}
 }
