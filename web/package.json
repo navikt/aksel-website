@@ -11,16 +11,21 @@
     "deploy": "yarn vercel"
   },
   "dependencies": {
-    "next": "^10.2.3",
+    "@navikt/ds-css": "^0.5.2",
+    "@navikt/ds-icons": "^0.3.2",
+    "@navikt/ds-react": "^0.5.2",
+    "@navikt/ds-tokens": "^0.3.1",
+    "@sanity/client": "^2.10.5",
+    "gh-pages": "^3.2.0",
     "groq": "^2.2.6",
+    "next": "^10.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "@sanity/client": "^2.10.5",
-    "@navikt/ds-react": "^0.5.2",
-    "@navikt/ds-css": "^0.5.2",
-    "@navikt/ds-tokens": "^0.3.1",
-    "@navikt/ds-icons": "^0.3.2",
-    "gh-pages": "^3.2.0",
     "vercel": "^23.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.0",
+    "@types/react": "^17.0.9",
+    "typescript": "^4.3.2"
   }
 }
