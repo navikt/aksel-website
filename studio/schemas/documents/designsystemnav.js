@@ -1,6 +1,6 @@
 export default {
-  title: "Pagetype",
-  name: "pagetype",
+  title: "Designsystem Nav",
+  name: "designsystemnav",
   type: "document",
   fields: [
     {

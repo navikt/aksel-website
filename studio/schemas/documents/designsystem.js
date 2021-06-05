@@ -7,6 +7,13 @@ export default {
       title: "Title",
       name: "title",
       type: "string",
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      title: "Ingress",
+      name: "ingress",
+      type: "string",
+      /* validation: (Rule) => Rule.required(), */
     },
     {
       title: "Slug/URL",
@@ -15,18 +22,13 @@ export default {
       options: {
         source: "title",
       },
+      validation: (Rule) => Rule.required(),
     },
     {
-      title: "Genre",
-      name: "genre",
-      type: "string",
-      options: {
-        list: [
-          { title: "Sci-Fi", value: "sci-fi" },
-          { title: "Western", value: "western" },
-        ], // <-- predefined values
-        layout: "radio", // <-- defaults to 'dropdown'
-      },
+      name: "body",
+      title: "Content",
+      type: "blockContent",
+      validation: (Rule) => Rule.required(),
     },
   ],
 };

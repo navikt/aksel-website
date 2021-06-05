@@ -1,8 +1,31 @@
 import client from "./client";
 
-export interface SanityDsPage {
+/* export type SanityDocumentType =
+  | "article"
+  | "articleGroup"
+  | "linkPanel"
+  | "articlePanel"
+  | "externalLink"
+  | "frontpage";
+ */
+
+export interface SanityFrontpagePanels {
   title: string;
+  content: string;
+  iconname: string;
+  url: string;
+}
+
+export interface PageProps {
+  title: string;
+  ingress?: string;
   slug: string;
+  body?: any;
+}
+
+export interface SanityDsPage extends PageProps {
+  ingress: string;
+  body: any;
 }
 
 export const dsPageSpec = `
@@ -10,6 +33,7 @@ export const dsPageSpec = `
     "id": _id,
     "title": title,
     "slug": slug.current,
+    "body": body
 }`;
 
 export const fetchAllDsSlugs = async (): Promise<[{ slug: string }]> => {
@@ -21,4 +45,16 @@ export const fetchDsPage = async (slug = []): Promise<SanityDsPage> => {
     ${dsPageSpec}`;
   const params = { slug: slug };
   return client.fetch(query, params);
+};
+
+export const fetchFrontpagePanels = async (): Promise<SanityFrontpagePanels[]> => {
+  const query = `*[_type == "frontpagepanels"]
+  {
+      "id": _id,
+      title,
+      content,
+      iconname,
+      url,
+  }`;
+  return client.fetch(query);
 };

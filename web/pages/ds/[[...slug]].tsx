@@ -1,7 +1,15 @@
-import client from "../client";
+import client from "../../client";
 import { useRouter } from "next/router";
 import groq from "groq";
-import { dsPageSpec, fetchAllDsSlugs, fetchDsPage, SanityDsPage } from "../sanity-types";
+import {
+  dsPageSpec,
+  fetchAllDsSlugs,
+  fetchDsPage,
+  SanityDsPage,
+} from "../../sanity-types";
+
+import { SanityBlockContent } from "../../components/SanityBlockContent";
+import { Title } from "@navikt/ds-react";
 
 interface PageProps {
   article: SanityDsPage;
@@ -9,6 +17,7 @@ interface PageProps {
 
 const ArticlePage = (props: PageProps) => {
   const router = useRouter();
+  /* console.log(props); */
 
   const { article } = props;
   if (router.isFallback) {
@@ -21,8 +30,10 @@ const ArticlePage = (props: PageProps) => {
 
   return (
     <div>
-      <h1>{article.title}</h1>
-      <span>{article.slug}</span>
+      <Title spacing level={1} size="2xl">
+        {article.title}
+      </Title>
+      <SanityBlockContent blocks={article.body} />
     </div>
   );
 };
@@ -35,11 +46,13 @@ export interface StaticPathProps {
 export const getStaticPaths = async (): Promise<StaticPathProps> => {
   const articleSlugs = await fetchAllDsSlugs();
   return {
-    paths: articleSlugs
-      ?.map((page) => {
-        return { params: { slug: page.slug.split("/") } };
-      })
-      .flat(),
+    paths: [
+      ...articleSlugs
+        ?.map((page) => {
+          return { params: { slug: page.slug.split("/") } };
+        })
+        .flat(),
+    ],
     fallback: false,
   };
 };
@@ -52,6 +65,8 @@ interface StaticProps {
 }
 
 export const getStaticProps = async ({ params: { slug } }): Promise<StaticProps> => {
+  /* console.log(slug.join("/").replace("ds/", "")); */
+
   const article = await fetchDsPage(slug.join("/"));
   return {
     props: { article },

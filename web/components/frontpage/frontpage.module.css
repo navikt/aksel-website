@@ -1,0 +1,23 @@
+.wrapper {
+  background-color: var(--navds-color-background);
+  height: 100vh;
+}
+
+.topContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: calc(100% - 2 * var(--navds-content-container-padding-medium-and-larger));
+}
+
+.panels {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
