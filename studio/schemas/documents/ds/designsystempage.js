@@ -1,6 +1,6 @@
 export default {
-  title: "Designsystem",
-  name: "designsystem",
+  title: "DesignsystemPage",
+  name: "designsystempage",
   type: "document",
   fields: [
     {

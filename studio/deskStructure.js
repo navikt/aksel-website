@@ -1,40 +1,41 @@
 // deskStructure.js
 import React from "react";
 import S from "@sanity/desk-tool/structure-builder";
-import { Picture, FileFolder } from "@navikt/ds-icons";
+import { Picture, FileFolder, Bookmark } from "@navikt/ds-icons";
 
 export default () =>
   S.list()
-    .title("Content")
+    .title("Web content")
     .items([
       S.listItem()
         .title("Frontpage")
         .icon(() => <Picture />)
         .child(S.editor().schemaType("frontpage").documentId("frontpage")),
-      // Add a visual divider (optional)
+      S.divider(),
       S.divider(),
       S.listItem()
-        .title("Designsystem-2")
+        .title("Designsystem")
         .child(
           S.list()
-            // Sets a title for our new list
-            .title("Ds documents")
-            // Add items to the array
-            // Each will pull one of our new singletons
+            .title("Designsystem content")
             .items([
               S.listItem()
-                .title("Ds frontpage")
+                .title("Frontpage")
+                .icon(() => <Picture />)
                 .child(
                   S.document()
                     .schemaType("designsystemfrontpage")
                     .documentId("designsystemfrontpage")
                 ),
               S.listItem()
-                .title("Ds Nav")
+                .title("Designsystem Navigation")
+                .icon(() => <Bookmark />)
                 .child(
                   S.document().schemaType("designsystemnav").documentId("designsystemnav")
                 ),
-              S.listItem().title("DS pages").child(S.documentTypeList("designsystem")),
+              S.listItem()
+                .title("DS pages")
+                .child(S.documentTypeList("designsystempage")),
             ])
         ),
 
@@ -44,7 +45,7 @@ export default () =>
         (listItem) =>
           ![
             "frontpage",
-            "designsystem",
+            "designsystempage",
             "designsystemfrontpage",
             "designsystemnav",
           ].includes(listItem.getId())
