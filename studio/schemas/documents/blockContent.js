@@ -107,5 +107,6 @@ export default {
       {type: "veilederPanel"},
       {type: "vimeo"},
       {type: "embeddedVideo"}, */
+    { type: "accordion" },
   ],
 };

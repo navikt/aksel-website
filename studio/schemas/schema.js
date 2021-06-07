@@ -10,6 +10,7 @@ import frontpage from "./documents/frontpage";
 import dsfrontpage from "./documents/ds/ds-frontpage";
 import designsystemnav from "./documents/ds/designsystemnav";
 import panels from "./objects/FrontpagePanels";
+import accordion from "./objects/components/Accordion";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -24,5 +25,6 @@ export default createSchema({
     dsfrontpage,
     designsystemnav,
     panels,
+    accordion,
   ]),
 });
