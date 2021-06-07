@@ -1,7 +1,8 @@
 export default {
   title: "Designsystem frontpage",
-  name: "designsystemfrontpage",
+  name: "designsystem-frontpage",
   type: "document",
+  __experimental_actions: ["create", "update", "delete", "publish"],
   fields: [
     {
       title: "Title",
@@ -23,9 +24,11 @@ export default {
       title: "Slug",
       name: "slug",
       type: "slug",
-      initialValue: `ds`,
-      /* hidden: false, */
-      readOnly: false,
+      hidden: true,
+      readOnly: true,
     },
   ],
+  initialValue: () => ({
+    slug: { current: "ds" },
+  }),
 };

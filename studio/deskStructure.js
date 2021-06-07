@@ -24,8 +24,8 @@ export default () =>
                 .icon(() => <Picture />)
                 .child(
                   S.document()
-                    .schemaType("designsystemfrontpage")
-                    .documentId("designsystemfrontpage")
+                    .schemaType("designsystem-frontpage")
+                    .documentId("designsystem-frontpage")
                 ),
               S.listItem()
                 .title("Designsystem Navigation")
@@ -46,7 +46,7 @@ export default () =>
           ![
             "frontpage",
             "designsystempage",
-            "designsystemfrontpage",
+            "designsystem-frontpage",
             "designsystemnav",
           ].includes(listItem.getId())
       ),

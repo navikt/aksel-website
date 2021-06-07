@@ -18,7 +18,7 @@ export default {
     {
       name: "pagereference",
       type: "reference",
-      to: [{ type: "designsystempage" }, { type: "designsystemfrontpage" }],
+      to: [{ type: "designsystempage" }, { type: "designsystem-frontpage" }],
     },
   ],
 };
