@@ -5,8 +5,13 @@ export default {
   __experimental_actions: [/*'create',*/ "update", /*'delete',*/ "publish"],
   fields: [
     {
-      title: "Headline",
+      title: "title",
       name: "title",
+      type: "string",
+    },
+    {
+      title: "Headline",
+      name: "headline",
       type: "string",
     },
     {
@@ -16,4 +21,9 @@ export default {
       of: [{ title: "panels", type: "frontpagepanels" }],
     },
   ],
+  preview: {
+    prepare: () => ({
+      title: "Forside",
+    }),
+  },
 };

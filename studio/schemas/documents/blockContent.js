@@ -1,3 +1,13 @@
+import React from "react";
+import "@navikt/ds-css?raw";
+import { Title } from "@navikt/ds-react";
+
+const TitleRenderer = (props) => (
+  <Title size="l" level={2} spacing>
+    {props.children}
+  </Title>
+);
+
 export default {
   title: "Block Content",
   name: "blockContent",
@@ -12,7 +22,13 @@ export default {
       // use your content.
       styles: [
         { title: "Normal", value: "normal" },
-        { title: "H2", value: "h2" },
+        {
+          title: "H2",
+          value: "h2",
+          blockEditor: {
+            render: TitleRenderer,
+          },
+        },
         { title: "H3", value: "h3" },
         { title: "H4", value: "h4" },
         { title: "BodyLong", value: "bodylong" },

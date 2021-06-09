@@ -21,8 +21,8 @@ export default {
       type: "slug",
       options: {
         source: "title",
+        slugify: (input) => `ds/${input}`,
       },
-      validation: (Rule) => Rule.required(),
     },
     {
       name: "body",

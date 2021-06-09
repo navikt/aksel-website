@@ -1,10 +1,10 @@
 import React from "react";
+import "@navikt/ds-css?raw";
+import { Tag } from "@navikt/ds-react";
 
 const Preview = ({ value }) => (
   <>
-    <div>
-      <strong>{value.title}</strong>
-    </div>
+    <Tag variant="info">{value.title}</Tag>
   </>
 );
 

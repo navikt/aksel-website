@@ -2,6 +2,7 @@
 import React from "react";
 import S from "@sanity/desk-tool/structure-builder";
 import { Picture, FileFolder, Bookmark } from "@navikt/ds-icons";
+import FrontpagePreview from "./schemas/components/FrontpagePreview";
 
 export default () =>
   S.list()
@@ -10,7 +11,12 @@ export default () =>
       S.listItem()
         .title("Frontpage")
         .icon(() => <Picture />)
-        .child(S.editor().schemaType("frontpage").documentId("frontpage")),
+        .child(
+          S.editor()
+            .schemaType("frontpage")
+            .documentId("frontpage")
+            .views([S.view.form(), S.view.component(FrontpagePreview).title("Preview")])
+        ),
       S.divider(),
       S.divider(),
       S.listItem()
@@ -51,3 +57,13 @@ export default () =>
           ].includes(listItem.getId())
       ),
     ]);
+
+/* export const getDefaultDocumentNode = ({ schemaType }) => {
+  switch (schemaType) {
+    case "frontpage":
+      return S.document().views([
+        S.view.form(),
+        S.view.component(FrontpagePreview).title("Preview"),
+      ]);
+  }
+}; */
