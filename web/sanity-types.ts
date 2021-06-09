@@ -1,4 +1,4 @@
-import client from "./client";
+import { defaultClient, previewClient } from "./client";
 
 /* export type SanityDocumentType =
   | "article"
@@ -9,11 +9,16 @@ import client from "./client";
   | "frontpage";
  */
 
+export interface SanityFrontpage {
+  title: string;
+  headline: string;
+  panels: SanityFrontpagePanels[];
+}
+
 export interface SanityFrontpagePanels {
   title: string;
   content: string;
-  iconname: string;
-  url: string;
+  pageref: any;
 }
 
 export interface PageProps {
@@ -37,14 +42,44 @@ export const dsPageSpec = `
 }`;
 
 export const fetchAllDsSlugs = async (): Promise<[{ slug: string }]> => {
-  return client.fetch(`*[_type == "designsystem"]{ 'slug': slug.current }`);
+  return defaultClient.fetch(`*[_type == "designsystempage"]{ 'slug': slug.current }`);
 };
 
 export const fetchDsPage = async (slug = []): Promise<SanityDsPage> => {
-  const query = `*[_type == "designsystem" && slug.current == $slug][0]
+  const query = `*[_type == "designsystempage" && slug.current == $slug][0]
     ${dsPageSpec}`;
   const params = { slug: slug };
-  return client.fetch(query, params);
+  return defaultClient.fetch(query, params);
+};
+
+export const fetchFrontpage = async (): Promise<SanityFrontpage> => {
+  const query = `*[_type == "frontpage"]
+  {
+      "id": _id,
+      title,
+      headline,
+      panels[]{
+        title,
+        content,
+        "slug": pagereference->slug.current
+      }
+  }`;
+  return defaultClient.fetch(query);
+};
+
+export const fetchDsFrontpage = async (): Promise<SanityFrontpage> => {
+  const query = `*[_type == "designsystem-frontpage"]
+  {
+      "id": _id,
+      title,
+      headline,
+      panels[]{
+        title,
+        content,
+        "slug": pagereference->slug.current
+      }
+  }`;
+  return defaultClient.fetch(query);
 };
 
 export const fetchFrontpagePanels = async (): Promise<SanityFrontpagePanels[]> => {
@@ -56,5 +91,5 @@ export const fetchFrontpagePanels = async (): Promise<SanityFrontpagePanels[]> =
       iconname,
       url,
   }`;
-  return client.fetch(query);
+  return defaultClient.fetch(query);
 };

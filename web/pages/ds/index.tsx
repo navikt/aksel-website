@@ -1,7 +1,7 @@
 /* Frontpage */
 
-import FrontPage from "../components/frontpage/FrontPage";
-import { fetchFrontpage, SanityFrontpage } from "../sanity-types";
+import FrontPage from "../../components/frontpage/FrontPage";
+import { fetchDsFrontpage, SanityFrontpage } from "../../sanity-types";
 
 const Page = (props) => <FrontPage {...props} />;
 
@@ -13,7 +13,7 @@ interface StaticProps {
 }
 
 export const getStaticProps = async (): Promise<StaticProps> => {
-  const frontpage = await fetchFrontpage();
+  const frontpage = await fetchDsFrontpage();
   return {
     props: { frontpage },
     revalidate: 60,

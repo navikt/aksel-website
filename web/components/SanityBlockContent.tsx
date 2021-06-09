@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import BlockContent from "@sanity/block-content-to-react";
 import { BodyLong, Ingress, Title } from "@navikt/ds-react";
-import config from "../client";
+import { defaultClient as config } from "../client";
 
 const serializers = {
   types: {

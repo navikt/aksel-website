@@ -7,20 +7,27 @@ import {
 } from "@navikt/ds-react";
 import { SignLanguageTwoHands } from "@navikt/ds-icons";
 import styles from "./frontpage.module.css";
+import { SanityFrontpage } from "../../sanity-types";
 
 const FrontPage = (props) => {
-  console.log(props.panels);
+  const frontpage = props.frontpage[0];
+  /* console.log(JSON.stringify(frontpage, null, 2)); */
+  /* console.log(frontpage.panels[0].pagereference); */
   return (
     <div className={styles.wrapper}>
       <ContentContainer className={styles.content}>
         <div className={styles.topContent}>
           <Title level={1} size="xl">
-            Hjemmeside verktøykasse
+            {frontpage.headline}
           </Title>
         </div>
         <div className={styles.panels}>
-          {props.panels.map((panel) => (
-            <LinkPanel href={panel.url} style={{ textDecoration: "none" }}>
+          {frontpage.panels.map((panel, i) => (
+            <LinkPanel
+              key={panel.slug + 1}
+              href={panel.slug}
+              style={{ textDecoration: "none" }}
+            >
               <div
                 style={{
                   padding: "1rem",

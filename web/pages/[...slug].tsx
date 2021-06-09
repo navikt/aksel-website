@@ -1,15 +1,11 @@
-import client from "../../client";
+/* import client from "../client"; */
 import { useRouter } from "next/router";
 import groq from "groq";
-import {
-  dsPageSpec,
-  fetchAllDsSlugs,
-  fetchDsPage,
-  SanityDsPage,
-} from "../../sanity-types";
+import { dsPageSpec, fetchAllDsSlugs, fetchDsPage, SanityDsPage } from "../sanity-types";
 
-import { SanityBlockContent } from "../../components/SanityBlockContent";
+import { SanityBlockContent } from "../components/SanityBlockContent";
 import { Title } from "@navikt/ds-react";
+import { CoronavirusFilled } from "@navikt/ds-icons";
 
 interface PageProps {
   article: SanityDsPage;
@@ -45,14 +41,21 @@ export interface StaticPathProps {
 
 export const getStaticPaths = async (): Promise<StaticPathProps> => {
   const articleSlugs = await fetchAllDsSlugs();
+  /* console.log(articleSlugs); */
+  /* console.log(
+    JSON.stringify(
+      articleSlugs?.map((page) => {
+        return { params: { slug: page.slug.split("/") } };
+      }) || [],
+      null,
+      2
+    )
+  ); */
   return {
-    paths: [
-      ...articleSlugs
-        ?.map((page) => {
-          return { params: { slug: page.slug.split("/") } };
-        })
-        .flat(),
-    ],
+    paths:
+      articleSlugs?.map((page) => {
+        return { params: { slug: page.slug.split("/") } };
+      }) || [],
     fallback: false,
   };
 };
@@ -64,10 +67,15 @@ interface StaticProps {
   revalidate: number;
 }
 
-export const getStaticProps = async ({ params: { slug } }): Promise<StaticProps> => {
+export const getStaticProps = async ({
+  params: { slug },
+  ...rest
+}): Promise<StaticProps> => {
+  console.log(rest);
   /* console.log(slug.join("/").replace("ds/", "")); */
 
   const article = await fetchDsPage(slug.join("/"));
+
   return {
     props: { article },
     revalidate: 60,
