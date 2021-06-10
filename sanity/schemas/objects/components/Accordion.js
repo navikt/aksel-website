@@ -1,12 +1,6 @@
 import React from "react";
-import "@navikt/ds-css?raw";
-import { Tag } from "@navikt/ds-react";
 
-const Preview = ({ value }) => (
-  <>
-    <Tag variant="info">{value.title}</Tag>
-  </>
-);
+const Preview = ({ node }) => <div>{node.title}</div>;
 
 export default {
   name: "accordion",
@@ -27,13 +21,16 @@ export default {
       name: "defaultOpen",
       title: "Open by default",
       type: "boolean",
-      initalValue: () => false,
     },
   ],
+  initalValue: () => ({
+    defaultOpen: false,
+  }),
   preview: {
     select: {
       title: "title",
       body: "body",
+      defaultOpen: "defaultOpen",
     },
     component: Preview,
   },

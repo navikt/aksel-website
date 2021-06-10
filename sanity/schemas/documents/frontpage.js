@@ -5,25 +5,25 @@ export default {
   __experimental_actions: [/*'create',*/ "update", /*'delete',*/ "publish"],
   fields: [
     {
-      title: "title",
+      title: "Dokumentnavn",
       name: "title",
       type: "string",
     },
     {
-      title: "Headline",
+      title: "Sidetittel",
       name: "headline",
       type: "string",
     },
     {
-      title: "Link panels",
+      title: "Lenkepaneler",
       name: "panels",
       type: "array",
-      of: [{ title: "panels", type: "frontpagepanels" }],
+      of: [{ title: "panels", type: "reflinkpanel" }],
     },
   ],
-  preview: {
+  /* preview: {
     prepare: () => ({
       title: "Forside",
     }),
-  },
+  }, */
 };

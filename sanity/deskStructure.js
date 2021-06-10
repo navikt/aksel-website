@@ -1,16 +1,15 @@
 // deskStructure.js
 import React from "react";
 import S from "@sanity/desk-tool/structure-builder";
-import { Picture, FileFolder, Bookmark } from "@navikt/ds-icons";
-import FrontpagePreview from "./schemas/components/FrontpagePreview";
-import { FrontpageWebPreview } from "./utils/FrontpageWebPreview";
+import { Picture, Bookmark } from "@navikt/ds-icons";
+import { FrontpageWebPreview } from "./preview/FrontpageWebPreview";
 
 export default () =>
   S.list()
-    .title("Web content")
+    .title("Verktøykasse")
     .items([
       S.listItem()
-        .title("Frontpage")
+        .title("Forside")
         .icon(() => <Picture />)
         .child(
           S.editor()
@@ -22,43 +21,25 @@ export default () =>
             ])
         ),
       S.divider(),
-      S.divider(),
       S.listItem()
-        .title("Designsystem")
+        .title("Designsystemet")
         .child(
           S.list()
-            .title("Designsystem content")
+            .title("Designsystemet")
             .items([
               S.listItem()
-                .title("Frontpage")
+                .title("Forside")
                 .icon(() => <Picture />)
                 .child(
-                  S.document()
-                    .schemaType("designsystem-frontpage")
-                    .documentId("designsystem-frontpage")
+                  S.document().schemaType("ds_frontpage").documentId("ds_frontpage")
                 ),
-              S.listItem()
-                .title("Designsystem Navigation")
-                .icon(() => <Bookmark />)
-                .child(
-                  S.document().schemaType("designsystemnav").documentId("designsystemnav")
-                ),
-              S.listItem()
-                .title("DS pages")
-                .child(S.documentTypeList("designsystempage")),
+              S.listItem().title("Sider").child(S.documentTypeList("ds_page")),
             ])
         ),
 
       S.divider(),
-      // List out the rest of the document types, but filter out the config type
       ...S.documentTypeListItems().filter(
-        (listItem) =>
-          ![
-            "frontpage",
-            "designsystempage",
-            "designsystem-frontpage",
-            "designsystemnav",
-          ].includes(listItem.getId())
+        (listItem) => !["frontpage", "ds_frontpage", "ds_page"].includes(listItem.getId())
       ),
     ]);
 

@@ -1,10 +1,10 @@
 export default {
-  title: "DesignsystemPage",
-  name: "designsystempage",
+  title: "Designsystem side",
+  name: "ds_page",
   type: "document",
   fields: [
     {
-      title: "Title",
+      title: "Dokumenttittel",
       name: "title",
       type: "string",
       validation: (Rule) => Rule.required(),
@@ -16,17 +16,16 @@ export default {
       /* validation: (Rule) => Rule.required(), */
     },
     {
-      title: "Slug/URL",
+      title: "Slug",
       name: "slug",
       type: "slug",
       options: {
         source: "title",
-        slugify: (input) => `ds/${input}`,
       },
     },
     {
       name: "body",
-      title: "Content",
+      title: "Innhold",
       type: "blockContent",
       validation: (Rule) => Rule.required(),
     },

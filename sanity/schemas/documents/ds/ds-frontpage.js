@@ -1,30 +1,29 @@
 export default {
-  title: "Designsystem frontpage",
-  name: "designsystem-frontpage",
+  title: "Designsystem forside",
+  name: "ds_frontpage",
   type: "document",
   __experimental_actions: ["create", "update", "delete", "publish"],
   fields: [
     {
-      title: "Title",
+      title: "Dokumentitttel",
       name: "title",
       type: "string",
     },
     {
-      title: "Headline",
+      title: "Sidetittel",
       name: "headline",
       type: "string",
     },
     {
-      title: "Link panels",
+      title: "Lenkepaneler",
       name: "panels",
       type: "array",
-      of: [{ title: "panels", type: "frontpagepanels" }],
+      of: [{ title: "panels", type: "reflinkpanel" }],
     },
     {
-      title: "Slug",
+      title: "Slug (readonly)",
       name: "slug",
       type: "slug",
-      hidden: true,
       readOnly: true,
     },
   ],

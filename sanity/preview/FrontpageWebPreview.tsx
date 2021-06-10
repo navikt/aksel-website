@@ -1,5 +1,5 @@
 import React from "react";
-import { WebPreviewWrapper } from "./PreviewWrapper";
+import { WebPreviewWrapper } from "./WebPreviewWrapper";
 
 export const FrontpageWebPreview = (ctx: any) => {
   const previewUrl = `/?preview=true`;

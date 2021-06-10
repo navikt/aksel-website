@@ -1,6 +1,6 @@
 export default {
-  title: "FrontpagePanels",
-  name: "frontpagepanels",
+  title: "RefLinkPanel",
+  name: "reflinkpanel",
   type: "object",
   fields: [
     {
@@ -18,7 +18,7 @@ export default {
     {
       name: "pagereference",
       type: "reference",
-      to: [{ type: "designsystempage" }, { type: "designsystem-frontpage" }],
+      to: [{ type: "ds_page" }, { type: "ds_frontpage" }],
     },
   ],
 };
