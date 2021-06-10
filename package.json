@@ -15,10 +15,10 @@
   "scripts": {
     "dev": "yarn workspace website dev",
     "deploy": "yarn workspace website deploy",
-    "sanity": "yarn workspace sanity-setup start"
+    "sanity": "yarn workspace sanity start"
   },
   "workspaces": [
-    "studio",
+    "sanity",
     "web"
   ],
   "dependencies": {}
