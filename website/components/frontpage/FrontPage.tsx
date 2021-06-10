@@ -1,56 +1,69 @@
-import {
-  ContentContainer,
-  Title,
-  LinkPanel,
-  LinkPanelTitle,
-  BodyLong,
-} from "@navikt/ds-react";
+import { ContentContainer, Title, LinkPanel, BodyLong } from "@navikt/ds-react";
 import { SignLanguageTwoHands } from "@navikt/ds-icons";
 import styles from "./frontpage.module.css";
-import { SanityFrontpage } from "../../sanity-types";
+import styled from "styled-components";
 
-const FrontPage = (props) => {
-  /* console.log(JSON.stringify(props, null, 2)); */
+const StyledWrapper = styled.div`
+  background-color: var(--navds-color-background);
+  height: 100vh;
+`;
 
-  const frontpage = props;
-  /* console.log(JSON.stringify(frontpage, null, 2)); */
-  /* console.log(frontpage.panels[0].pagereference); */
+const StyledTopContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledLinkPanel = styled.div`
+  padding: "1rem";
+  display: "grid";
+  gridautoflow: "column";
+  gap: "2rem";
+  alignitems: "center";
+`;
+
+const StyledContentContainer = styled(ContentContainer)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: calc(100% - 2 * var(--navds-content-container-padding-medium-and-larger));
+`;
+
+const StyledLinkpanelWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+`;
+
+const FrontPage = ({ ...frontpage }) => {
   return (
-    <div className={styles.wrapper}>
-      <ContentContainer className={styles.content}>
-        <div className={styles.topContent}>
+    <StyledWrapper>
+      <StyledContentContainer>
+        <StyledTopContent>
           <Title level={1} size="xl">
             {frontpage.headline}
           </Title>
-        </div>
-        <div className={styles.panels}>
+        </StyledTopContent>
+        <StyledLinkpanelWrapper>
           {frontpage.panels.map((panel, i) => (
             <LinkPanel
               key={panel.slug + 1}
               href={panel.slug}
               style={{ textDecoration: "none" }}
             >
-              <div
-                style={{
-                  padding: "1rem",
-                  display: "grid",
-                  gridAutoFlow: "column",
-                  gap: "2rem",
-                  alignItems: "center",
-                }}
-              >
+              <StyledLinkPanel>
                 <SignLanguageTwoHands style={{ fontSize: "5rem" }} />
                 <div>
                   {/* <LinkPanelTitle>{panel.title}</LinkPanelTitle> */}
                   <h2>{panel.title}</h2>
                   <BodyLong>{panel.content}</BodyLong>
                 </div>
-              </div>
+              </StyledLinkPanel>
             </LinkPanel>
           ))}
-        </div>
-      </ContentContainer>
-    </div>
+        </StyledLinkpanelWrapper>
+      </StyledContentContainer>
+    </StyledWrapper>
   );
 };
 

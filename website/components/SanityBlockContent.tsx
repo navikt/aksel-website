@@ -1,13 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import BlockContent from "@sanity/block-content-to-react";
 import { Accordion, BodyLong, Ingress, Title } from "@navikt/ds-react";
-import { defaultClient as config } from "../client";
 import "@navikt/ds-css";
 
 const serializers = {
   types: {
     accordion: function renderAccordion(node) {
-      console.log(node);
       return <Accordion heading="Testheading">Test</Accordion>;
     },
 
@@ -73,5 +71,5 @@ const serializers = {
 };
 
 export const SanityBlockContent = (props: { blocks: any }) => {
-  return <BlockContent blocks={props.blocks} serializers={serializers} {...config} />;
+  return <BlockContent blocks={props.blocks} serializers={serializers} />;
 };

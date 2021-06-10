@@ -1,19 +1,12 @@
 /* import client from "../client"; */
 import { useRouter } from "next/router";
 import groq from "groq";
-import { dsPageSpec, fetchAllDsSlugs, fetchDsPage, SanityDsPage } from "../sanity-types";
-
 import { SanityBlockContent } from "../components/SanityBlockContent";
 import { Title } from "@navikt/ds-react";
-import { CoronavirusFilled } from "@navikt/ds-icons";
+import { getClient } from "../lib/sanity.server";
 
-interface PageProps {
-  article: SanityDsPage;
-}
-
-const ArticlePage = (props: PageProps) => {
+const ArticlePage = (props) => {
   const router = useRouter();
-  /* console.log(props); */
 
   const { article } = props;
   if (router.isFallback) {
@@ -39,18 +32,10 @@ export interface StaticPathProps {
   fallback: boolean;
 }
 
-export const getStaticPaths = async (): Promise<StaticPathProps> => {
-  const articleSlugs = await fetchAllDsSlugs();
-  /* console.log(articleSlugs); */
-  /* console.log(
-    JSON.stringify(
-      articleSlugs?.map((page) => {
-        return { params: { slug: page.slug.split("/") } };
-      }) || [],
-      null,
-      2
-    )
-  ); */
+const query = `*[_type == "designsystempage"]{ 'slug': slug.current }`;
+
+export const getStaticPaths = async ({ preview = false }): Promise<StaticPathProps> => {
+  const articleSlugs = await getClient(preview).fetch(query);
   return {
     paths:
       articleSlugs?.map((page) => {
@@ -62,19 +47,24 @@ export const getStaticPaths = async (): Promise<StaticPathProps> => {
 
 interface StaticProps {
   props: {
-    article: SanityDsPage;
+    article;
   };
   revalidate: number;
 }
 
+const ds_query = `*[_type == "designsystempage" && slug.current == $slug][0]
+  {
+    "id": _id,
+    "title": title,
+    "slug": slug.current,
+    "body": body
+  }`;
+
 export const getStaticProps = async ({
   params: { slug },
-  ...rest
+  preview,
 }): Promise<StaticProps> => {
-  console.log(rest);
-  /* console.log(slug.join("/").replace("ds/", "")); */
-
-  const article = await fetchDsPage(slug.join("/"));
+  const article = await getClient(preview).fetch(ds_query, { slug: slug.join("/") });
 
   return {
     props: { article },
