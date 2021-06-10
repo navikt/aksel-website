@@ -1,28 +1,40 @@
 /* import client from "../client"; */
 import { useRouter } from "next/router";
-import groq from "groq";
+import Error from "next/error";
 import { SanityBlockContent } from "../components/SanityBlockContent";
 import { Title } from "@navikt/ds-react";
 import { getClient } from "../lib/sanity.server";
+import { usePreviewSubscription } from "../lib/santiy";
+import { isDevelopment } from "../src/util";
 
 const ArticlePage = (props) => {
   const router = useRouter();
+  const enablePreview = !!props.preview || !!router.query.preview;
 
-  const { article } = props;
-  if (router.isFallback) {
-    return <div>Laster...</div>;
+  const { data } = usePreviewSubscription(ds_query, {
+    params: { slug: props?.slug },
+    initialData: props.article,
+    enabled: enablePreview,
+  });
+
+  /* console.log(router.isFallback);
+  console.log("slug " + data?.slug);
+  console.log(JSON.stringify(data, null, 2)); */
+
+  if (!router.isFallback && !data?.slug) {
+    return <Error statusCode={404} />;
   }
 
-  if (!router.isFallback && !article) {
-    return <div>404 ERROR</div>;
+  if (router.isFallback) {
+    return <div>Laster...</div>;
   }
 
   return (
     <div>
       <Title spacing level={1} size="2xl">
-        {article.title}
+        {data.title}
       </Title>
-      <SanityBlockContent blocks={article.body} />
+      <SanityBlockContent blocks={data.body} />
     </div>
   );
 };
@@ -32,27 +44,29 @@ export interface StaticPathProps {
   fallback: boolean;
 }
 
-const query = `*[_type == "designsystempage"]{ 'slug': slug.current }`;
+const query = `*[_type == "ds_page"]{ 'slug': slug.current }`;
 
-export const getStaticPaths = async ({ preview = false }): Promise<StaticPathProps> => {
-  const articleSlugs = await getClient(preview).fetch(query);
+export const getStaticPaths = async (): Promise<StaticPathProps> => {
+  const articleSlugs = await getClient(false).fetch(query);
   return {
     paths:
       articleSlugs?.map((page) => {
         return { params: { slug: page.slug.split("/") } };
       }) || [],
-    fallback: false,
+    fallback: true,
   };
 };
 
 interface StaticProps {
   props: {
     article;
+    preview: boolean;
+    slug: string;
   };
   revalidate: number;
 }
 
-const ds_query = `*[_type == "designsystempage" && slug.current == $slug][0]
+const ds_query = `*[_type == "ds_page" && slug.current == $slug][0]
   {
     "id": _id,
     "title": title,
@@ -64,10 +78,13 @@ export const getStaticProps = async ({
   params: { slug },
   preview,
 }): Promise<StaticProps> => {
-  const article = await getClient(preview).fetch(ds_query, { slug: slug.join("/") });
+  const enablePreview = !!preview || isDevelopment();
+  const article = await getClient(enablePreview).fetch(ds_query, {
+    slug: slug.join("/"),
+  });
 
   return {
-    props: { article },
+    props: { article, preview: enablePreview, slug: slug.join("/") },
     revalidate: 60,
   };
 };

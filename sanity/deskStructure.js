@@ -3,6 +3,7 @@ import React from "react";
 import S from "@sanity/desk-tool/structure-builder";
 import { Picture, Bookmark } from "@navikt/ds-icons";
 import { FrontpageWebPreview } from "./preview/FrontpageWebPreview";
+import { PageWebPreview } from "./preview/PageWebPreview";
 
 export default () =>
   S.list()
@@ -31,7 +32,13 @@ export default () =>
                 .title("Forside")
                 .icon(() => <Picture />)
                 .child(
-                  S.document().schemaType("ds_frontpage").documentId("ds_frontpage")
+                  S.document()
+                    .schemaType("ds_frontpage")
+                    .documentId("ds_frontpage")
+                    .views([
+                      S.view.form(),
+                      S.view.component(PageWebPreview).title("Preview"),
+                    ])
                 ),
               S.listItem().title("Sider").child(S.documentTypeList("ds_page")),
             ])
@@ -43,12 +50,12 @@ export default () =>
       ),
     ]);
 
-/* export const getDefaultDocumentNode = ({ schemaType }) => {
+export const getDefaultDocumentNode = ({ schemaType }) => {
   switch (schemaType) {
-    case "frontpage":
+    case "ds_page":
       return S.document().views([
         S.view.form(),
-        S.view.component(FrontpagePreview).title("Preview"),
+        S.view.component(PageWebPreview).title("Preview"),
       ]);
   }
-}; */
+};

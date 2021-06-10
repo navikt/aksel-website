@@ -1,6 +1,6 @@
 import React from "react";
 
-const Preview = ({ node }) => <div>{node.title}</div>;
+const Preview = (node) => <div>{node.title}</div>;
 
 export default {
   name: "accordion",

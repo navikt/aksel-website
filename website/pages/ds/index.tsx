@@ -1,9 +1,27 @@
-/* Frontpage */
+/* Ds Frontpage */
 
-import FrontPage from "../../components/frontpage/FrontPage";
+import ErrorPage from "next/error";
+import { useRouter } from "next/router";
+import { usePreviewSubscription } from "../../lib/santiy";
 import { getClient } from "../../lib/sanity.server";
 
-const Page = ({ frontpage }) => <FrontPage {...frontpage} />;
+import FrontPage from "../../components/frontpage/FrontPage";
+
+const Page = ({ frontpage, preview }) => {
+  const router = useRouter();
+  const enabledPreview = preview || router.query.preview;
+
+  if (!!router.isFallback) {
+    return <ErrorPage statusCode={404} />;
+  }
+
+  const { data: pagedata } = usePreviewSubscription(query, {
+    initialData: frontpage,
+    enabled: enabledPreview,
+  });
+
+  return <FrontPage {...pagedata} />;
+};
 
 interface StaticProps {
   props: {
@@ -21,7 +39,7 @@ export const getStaticProps = async ({ preview = false }): Promise<StaticProps> 
   };
 };
 
-const query = `*[_type == "frontpage"][0]
+const query = `*[_type == "ds_frontpage"][0]
   {
       "id": _id,
       title,

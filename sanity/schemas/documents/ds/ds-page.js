@@ -10,6 +10,12 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      title: "Sidetittel",
+      name: "heading",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    },
+    {
       title: "Ingress",
       name: "ingress",
       type: "string",
