@@ -12,8 +12,7 @@
     "@sanity/components",
     "@sanity/default-layout",
     "@sanity/default-login",
-    "@sanity/desk-tool",
-    "@sanity/production-preview"
+    "@sanity/desk-tool"
   ],
   "env": {
     "development": {
@@ -28,10 +27,6 @@
     {
       "name": "part:@sanity/desk-tool/structure",
       "path": "./deskStructure.js"
-    },
-    {
-      "implements": "part:@sanity/production-preview/resolve-production-url",
-      "path": "./resolveProductionUrl.js"
     }
   ]
 }

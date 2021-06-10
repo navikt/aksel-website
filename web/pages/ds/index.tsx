@@ -3,7 +3,7 @@
 import FrontPage from "../../components/frontpage/FrontPage";
 import { fetchDsFrontpage, SanityFrontpage } from "../../sanity-types";
 
-const Page = (props) => <FrontPage {...props} />;
+const Page = ({ frontpage }) => <FrontPage {...frontpage} />;
 
 interface StaticProps {
   props: {

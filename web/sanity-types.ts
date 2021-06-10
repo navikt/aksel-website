@@ -68,7 +68,7 @@ export const fetchFrontpage = async (): Promise<SanityFrontpage> => {
 };
 
 export const fetchDsFrontpage = async (): Promise<SanityFrontpage> => {
-  const query = `*[_type == "designsystem-frontpage"]
+  const query = `*[_type == "designsystem-frontpage"][0]
   {
       "id": _id,
       title,

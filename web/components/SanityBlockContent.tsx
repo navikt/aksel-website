@@ -1,25 +1,15 @@
 import React, { useContext } from "react";
 import BlockContent from "@sanity/block-content-to-react";
-import { BodyLong, Ingress, Title } from "@navikt/ds-react";
+import { Accordion, BodyLong, Ingress, Title } from "@navikt/ds-react";
 import { defaultClient as config } from "../client";
+import "@navikt/ds-css";
 
 const serializers = {
   types: {
-    /* veilederPanel: function renderVeilederPanel({node}) {
-          return (
-              <StyledVeilederPanel>
-                  <Veilederpanel
-                      type="plakat"
-                      kompakt
-                      fargetema="suksess"
-                      svg={<img src={urlFor(node.icon).url()} alt="" />}
-                  >
-                      <Undertittel>{node.title}</Undertittel>
-                      <SanityBlockContent blocks={node.body} />
-                  </Veilederpanel>
-              </StyledVeilederPanel>
-          );
-      }, */
+    accordion: function renderAccordion(node) {
+      console.log(node);
+      return <Accordion heading="Testheading">Test</Accordion>;
+    },
 
     block: function renderBlock({ node, children }) {
       const style = node.style;

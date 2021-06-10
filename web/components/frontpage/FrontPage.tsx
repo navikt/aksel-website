@@ -10,7 +10,9 @@ import styles from "./frontpage.module.css";
 import { SanityFrontpage } from "../../sanity-types";
 
 const FrontPage = (props) => {
-  const frontpage = props.frontpage[0];
+  /* console.log(JSON.stringify(props, null, 2)); */
+
+  const frontpage = props;
   /* console.log(JSON.stringify(frontpage, null, 2)); */
   /* console.log(frontpage.panels[0].pagereference); */
   return (
