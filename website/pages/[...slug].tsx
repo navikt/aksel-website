@@ -6,6 +6,7 @@ import { Title } from "@navikt/ds-react";
 import { getClient } from "../lib/sanity.server";
 import { usePreviewSubscription } from "../lib/santiy";
 import { isDevelopment } from "../src/util";
+import PreviewBanner from "../components/previewBanner";
 
 const ArticlePage = (props) => {
   const router = useRouter();
@@ -17,10 +18,6 @@ const ArticlePage = (props) => {
     enabled: enablePreview,
   });
 
-  /* console.log(router.isFallback);
-  console.log("slug " + data?.slug);
-  console.log(JSON.stringify(data, null, 2)); */
-
   if (!router.isFallback && !data?.slug) {
     return <Error statusCode={404} />;
   }
@@ -30,12 +27,15 @@ const ArticlePage = (props) => {
   }
 
   return (
-    <div>
-      <Title spacing level={1} size="2xl">
-        {data.title}
-      </Title>
-      <SanityBlockContent blocks={data.body} />
-    </div>
+    <>
+      {enablePreview && <PreviewBanner />}
+      <div>
+        <Title spacing level={1} size="2xl">
+          {data.title}
+        </Title>
+        <SanityBlockContent blocks={data.body} />
+      </div>
+    </>
   );
 };
 

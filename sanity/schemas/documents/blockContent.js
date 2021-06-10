@@ -1,9 +1,10 @@
 import React from "react";
 import "@navikt/ds-css?raw";
-import { Title } from "@navikt/ds-react";
+import { Detail, Title, BodyLong, BodyShort, Label } from "@navikt/ds-react";
+import { Attachment } from "@navikt/ds-icons";
 
-const TitleRenderer = (props) => (
-  <Title size="l" level={2} spacing>
+const TitleRenderer = (props, size, level) => (
+  <Title size={size} level={level} spacing>
     {props.children}
   </Title>
 );
@@ -17,108 +18,126 @@ export default {
       title: "Block",
       type: "block",
       styles: [
-        { title: "Normal", value: "normal" },
         {
-          title: "H2",
-          value: "h2",
+          title: "Normal",
+          value: "normal",
           blockEditor: {
-            render: TitleRenderer,
+            render: (props) => <BodyLong spacing>{props.children}</BodyLong>,
           },
         },
-        { title: "H3", value: "h3" },
-        { title: "H4", value: "h4" },
-        { title: "BodyLong", value: "bodylong" },
-        { title: "BodyShort", value: "bodyshort" },
-        { title: "DetailBold", value: "detailbold" },
-        { title: "Detail", value: "detail" },
-        { title: "Label", value: "label" },
+        {
+          title: "Title h2",
+          value: "h2",
+          blockEditor: {
+            render: (props) => TitleRenderer(props, "xl", 2),
+          },
+        },
+        {
+          title: "Title h3",
+          value: "h3",
+          blockEditor: {
+            render: (props) => TitleRenderer(props, "l", 3),
+          },
+        },
+        {
+          title: "Title h4",
+          value: "heading4",
+          blockEditor: {
+            render: (props) => TitleRenderer(props, "m", 4),
+          },
+        },
+        {
+          title: "BodyLong",
+          value: "bodylong",
+          blockEditor: {
+            render: (props) => <BodyLong spacing>{props.children}</BodyLong>,
+          },
+        },
+        {
+          title: "BodyShort",
+          value: "bodyshort",
+          blockEditor: {
+            render: (props) => <BodyShort spacing>{props.children}</BodyShort>,
+          },
+        },
+        {
+          title: "DetailBold",
+          value: "detailbold",
+          blockEditor: {
+            render: (props) => <Detail spacing>{props.children}</Detail>,
+          },
+        },
+        {
+          title: "Detail",
+          value: "detail",
+          blockEditor: {
+            render: (props) => (
+              <Detail size="s" spacing>
+                {props.children}
+              </Detail>
+            ),
+          },
+        },
+        {
+          title: "Label",
+          value: "label",
+          blockEditor: {
+            render: (props) => <Label spacing>{props.children}</Label>,
+          },
+        },
       ],
       lists: [{ title: "Bullet", value: "bullet" }],
       // Marks let you mark up inline text in the block editor.
-      /* marks: {
-              // Decorators usually describe a single property – e.g. a typographic
-              // preference or highlighting by editors.
-              decorators: [
-                  {title: "Strong", value: "strong"},
-                  {title: "Emphasis", value: "em"},
-              ],
-              // Annotations can be any object structure – e.g. a link or a footnote.
-              annotations: [
+      marks: {
+        // Decorators usually describe a single property – e.g. a typographic
+        // preference or highlighting by editors.
+        decorators: [
+          { title: "Strong", value: "strong" },
+          { title: "Emphasis", value: "em" },
+        ],
+        // Annotations can be any object structure – e.g. a link or a footnote.
+        annotations: [
+          {
+            title: "Internal link",
+            name: "internalLink",
+            type: "object",
+            blockEditor: {
+              icon: () => "ref",
+            },
+            fields: [
+              {
+                title: "Reference",
+                name: "reference",
+                type: "reference",
+                to: [
                   {
-                      title: "Internal link",
-                      name: "internalLink",
-                      type: "object",
-                      blockEditor: {
-                          icon: FaPaperclip,
-                      },
-                      fields: [
-                          {
-                              title: "Reference",
-                              name: "reference",
-                              type: "reference",
-                              to: [
-                                  {
-                                      type: "article",
-                                  },
-                                  {
-                                      type: "otherPossibilities",
-                                  },
-                                  {type: "applicationPage"},
-                              ],
-                          },
-                      ],
+                    type: "ds_page",
                   },
-                  {
-                      title: "External link",
-                      name: "link",
-                      type: "object",
-                      fields: [
-                          {
-                              title: "URL",
-                              name: "href",
-                              type: "url",
-                          },
-                          {
-                              title: "Open in new tab",
-                              name: "blank",
-                              type: "boolean",
-                          },
-                      ],
-                  },
-                  {
-                      type: "object",
-                      name: "interpolate",
-                      title: "Interpolate",
-                      fields: [
-                          {
-                              name: "prop",
-                              type: "string",
-                              description:
-                                  "En templateverdi som blir byttet ut med en ekte verdi i appen, eks: kommuneNavn = 'Oslo'",
-                              options: {
-                                  list: Object.keys(properties).map((it) => ({
-                                      title: it,
-                                      value: it,
-                                  })),
-                              },
-                          },
-                      ],
-                  },
-              ],
-          }, */
-    },
-    // You can add additional types here. Note that you can't use
-    // primitive types such as 'string' and 'number' in the same array
-    // as a block type.
-    /* {
-          type: "image",
-          options: {hotspot: true},
+                ],
+              },
+            ],
+          },
+          {
+            title: "External link",
+            name: "link",
+            type: "object",
+            fields: [
+              {
+                title: "URL",
+                name: "href",
+                type: "url",
+              },
+              {
+                title: "Open in new tab",
+                name: "blank",
+                type: "boolean",
+              },
+            ],
+          },
+        ],
       },
-      {type: "customBlockComponent"},
-      {type: "expandedPanel"},
-      {type: "veilederPanel"},
-      {type: "vimeo"},
-      {type: "embeddedVideo"}, */
+    },
+    // Custom types ( add components here)
     { type: "accordion" },
   ],
 };

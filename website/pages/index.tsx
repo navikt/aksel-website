@@ -4,6 +4,7 @@ import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 import { usePreviewSubscription } from "../lib/santiy";
 import { getClient } from "../lib/sanity.server";
+import PreviewBanner from "../components/previewBanner";
 
 import FrontPage from "../components/frontpage/FrontPage";
 
@@ -20,7 +21,12 @@ const Page = ({ frontpage, preview }) => {
     enabled: enabledPreview,
   });
 
-  return <FrontPage {...pagedata} />;
+  return (
+    <>
+      {enabledPreview && <PreviewBanner />}
+      <FrontPage {...pagedata} />
+    </>
+  );
 };
 
 interface StaticProps {
