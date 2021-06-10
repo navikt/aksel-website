@@ -19,7 +19,7 @@
   },
   "workspaces": [
     "sanity",
-    "web"
+    "website"
   ],
   "dependencies": {}
 }
