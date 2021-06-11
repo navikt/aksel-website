@@ -1,16 +1,27 @@
 import React from "react";
 import BlockContent from "@sanity/block-content-to-react";
-import { Accordion, BodyLong, Ingress, Title } from "@navikt/ds-react";
+import dynamic from "next/dynamic";
+import { BodyLong, Ingress, Title } from "@navikt/ds-react";
 import "@navikt/ds-css";
+const Accordion = dynamic(() => import("@navikt/ds-react/esm/accordion/Accordion"), {
+  ssr: false,
+});
 
 const serializers = {
   types: {
-    accordion: function renderAccordion(node) {
-      return <Accordion heading="Testheading">Test</Accordion>;
+    accordion: ({ node }) => {
+      return (
+        <Accordion heading={node.title}>
+          <SanityBlockContent blocks={node.body} />
+        </Accordion>
+      );
     },
 
     block: function renderBlock({ node, children }) {
       const style = node.style;
+      /* if (children.length > 0 && children[0] === "") {
+        return <br />;
+      } */
       if (style === "normal") {
         return <BodyLong spacing>{children}</BodyLong>;
       }

@@ -25,7 +25,6 @@ const ArticlePage = (props) => {
   if (router.isFallback) {
     return <div>Laster...</div>;
   }
-
   return (
     <>
       {enablePreview && <PreviewBanner />}
