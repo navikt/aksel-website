@@ -4,6 +4,11 @@ export default {
   type: "object",
   fields: [
     {
+      title: "Storybook eksempel (url)",
+      name: "storybook_frame",
+      type: "url",
+    },
+    {
       name: "codeExample",
       title: "Kode eksempel",
       type: "code",

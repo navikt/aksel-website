@@ -1,8 +1,11 @@
 import Prism from "prismjs";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useMount } from "react-use";
 import "prismjs/components/prism-jsx.min";
+import "prismjs/components/prism-typescript.min";
 import styled from "styled-components";
+import CodeExample from "./CodeExample";
+import cl from "classnames";
 
 const PrismLanguages = [
   "insertBefore",
@@ -29,17 +32,19 @@ const Pre = styled.pre`
 
 const Bash = ({ node }) => {
   const ref = useRef<HTMLElement | null>(null);
-
   useMount(() => Prism.highlightElement(ref.current as Element));
 
   return (
-    <div>
-      <Pre>
-        <code ref={ref} className={"language-" + node.codeExample.language}>
-          {node.codeExample.code}
-        </code>
-      </Pre>
-    </div>
+    <>
+      {node.storybook_frame && <CodeExample frame={node.storybook_frame} />}
+      <div>
+        <Pre>
+          <code ref={ref} className={`language-${node.codeExample.language}`}>
+            {node.codeExample.code}
+          </code>
+        </Pre>
+      </div>
+    </>
   );
 };
 
