@@ -3,12 +3,17 @@ import BlockContent from "@sanity/block-content-to-react";
 import dynamic from "next/dynamic";
 import { BodyLong, Ingress, Title } from "@navikt/ds-react";
 import "@navikt/ds-css";
-const Accordion = dynamic(() => import("@navikt/ds-react/esm/accordion/Accordion"), {
-  ssr: false,
-});
+import Code from "./code/Code";
+const Accordion = dynamic(
+  () => import("@navikt/ds-react/esm/accordion/Accordion"),
+  {
+    ssr: false,
+  }
+);
 
 const serializers = {
   types: {
+    code_example: Code,
     accordion: ({ node }) => {
       return (
         <Accordion heading={node.title}>

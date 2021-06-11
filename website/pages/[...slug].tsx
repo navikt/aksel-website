@@ -7,6 +7,16 @@ import { getClient } from "../lib/sanity.server";
 import { usePreviewSubscription } from "../lib/santiy";
 import { isDevelopment } from "../src/util";
 import PreviewBanner from "../components/previewBanner";
+import styled from "styled-components";
+
+const Div = styled.div`
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding-top: 4rem;
+`;
 
 const ArticlePage = (props) => {
   const router = useRouter();
@@ -27,13 +37,13 @@ const ArticlePage = (props) => {
   }
   return (
     <>
-      {enablePreview && <PreviewBanner />}
-      <div>
+      {enablePreview && <PreviewBanner slug={props?.slug} />}
+      <Div>
         <Title spacing level={1} size="2xl">
           {data.title}
         </Title>
         <SanityBlockContent blocks={data.body} />
-      </div>
+      </Div>
     </>
   );
 };

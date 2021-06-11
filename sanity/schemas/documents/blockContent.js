@@ -135,5 +135,6 @@ export default {
     },
     // Custom types ( add components here)
     { type: "accordion" },
+    { type: "code_example" },
   ],
 };

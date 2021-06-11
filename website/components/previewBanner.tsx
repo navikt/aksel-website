@@ -12,13 +12,17 @@ const Style = styled.div`
   position: absolute;
   opacity: 0.5;
   text-align: center;
-  transform: translate(5rem, 1rem) rotate(45deg);
+  transform: translate(-5rem, 1rem) rotate(-45deg);
   font-weight: bold;
-  right: 0;
 `;
 
-function PreviewBanner() {
-  return <Style>Preview</Style>;
+function PreviewBanner({ slug }) {
+  return (
+    <Style>
+      <div>Preview</div>
+      {slug && <div>{slug}</div>}
+    </Style>
+  );
 }
 
 export default PreviewBanner;
