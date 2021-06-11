@@ -4,7 +4,7 @@ import { Detail, Title, BodyLong, BodyShort, Label } from "@navikt/ds-react";
 import { Attachment } from "@navikt/ds-icons";
 
 const TitleRenderer = (props, size, level) => (
-  <Title size={size} level={level} spacing>
+  <Title size={size} level={level}>
     {props.children}
   </Title>
 );
@@ -22,7 +22,7 @@ export default {
           title: "Normal",
           value: "normal",
           blockEditor: {
-            render: (props) => <BodyLong spacing>{props.children}</BodyLong>,
+            render: (props) => <BodyLong>{props.children}</BodyLong>,
           },
         },
         {
@@ -50,32 +50,28 @@ export default {
           title: "BodyLong",
           value: "bodylong",
           blockEditor: {
-            render: (props) => <BodyLong spacing>{props.children}</BodyLong>,
+            render: (props) => <BodyLong>{props.children}</BodyLong>,
           },
         },
         {
           title: "BodyShort",
           value: "bodyshort",
           blockEditor: {
-            render: (props) => <BodyShort spacing>{props.children}</BodyShort>,
+            render: (props) => <BodyShort>{props.children}</BodyShort>,
           },
         },
         {
           title: "DetailBold",
           value: "detailbold",
           blockEditor: {
-            render: (props) => <Detail spacing>{props.children}</Detail>,
+            render: (props) => <Detail>{props.children}</Detail>,
           },
         },
         {
           title: "Detail",
           value: "detail",
           blockEditor: {
-            render: (props) => (
-              <Detail size="s" spacing>
-                {props.children}
-              </Detail>
-            ),
+            render: (props) => <Detail size="s">{props.children}</Detail>,
           },
         },
         {

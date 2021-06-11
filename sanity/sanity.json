@@ -1,7 +1,8 @@
 {
   "root": true,
   "project": {
-    "name": "verktoykasse-prototype"
+    "name": "verktoykasse-prototype",
+    "basePath": "/studio"
   },
   "api": {
     "projectId": "hnbe3yhs",

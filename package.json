@@ -15,7 +15,8 @@
   "scripts": {
     "dev": "yarn workspace website dev",
     "deploy": "yarn workspace website deploy",
-    "sanity": "yarn workspace sanity start"
+    "sanity": "yarn workspace sanity start",
+    "build-sanity": "echo 'Building Sanity to public/studio…' && cd sanity && sanity build ../website/public/studio -y"
   },
   "workspaces": [
     "sanity",
