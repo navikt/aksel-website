@@ -6,7 +6,7 @@ import { usePreviewSubscription } from "../lib/santiy";
 import { getClient } from "../lib/sanity.server";
 import PreviewBanner from "../components/previewBanner";
 
-import FrontPage from "../components/frontpage/FrontPage";
+import FrontPage from "../components/pages/FrontPage";
 
 const Page = ({ frontpage, preview }) => {
   const router = useRouter();

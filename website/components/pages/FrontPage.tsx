@@ -1,6 +1,6 @@
 import { ContentContainer, Title, LinkPanel, BodyLong } from "@navikt/ds-react";
 import { SignLanguageTwoHands } from "@navikt/ds-icons";
-import styles from "./frontpage.module.css";
+import Link from "next/link";
 import styled from "styled-components";
 
 const StyledWrapper = styled.div`
@@ -12,14 +12,6 @@ const StyledTopContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const StyledLinkPanel = styled.div`
-  padding: "1rem";
-  display: "grid";
-  gridautoflow: "column";
-  gap: "2rem";
-  alignitems: "center";
 `;
 
 const StyledContentContainer = styled(ContentContainer)`
@@ -44,24 +36,16 @@ const FrontPage = ({ ...frontpage }) => {
             {frontpage.headline}
           </Title>
         </StyledTopContent>
-        <StyledLinkpanelWrapper>
+        <div>
           {frontpage.panels.map((panel, i) => (
-            <LinkPanel
-              key={panel.slug + 1}
-              href={panel.slug}
-              style={{ textDecoration: "none" }}
-            >
-              <StyledLinkPanel>
-                <SignLanguageTwoHands style={{ fontSize: "5rem" }} />
-                <div>
-                  {/* <LinkPanelTitle>{panel.title}</LinkPanelTitle> */}
-                  <h2>{panel.title}</h2>
-                  <BodyLong>{panel.content}</BodyLong>
-                </div>
-              </StyledLinkPanel>
-            </LinkPanel>
+            <Link key={panel.slug + 1} href={"/" + panel.slug} passHref>
+              <LinkPanel>
+                <h2>{panel.title}</h2>
+                <BodyLong>{panel.content}</BodyLong>
+              </LinkPanel>
+            </Link>
           ))}
-        </StyledLinkpanelWrapper>
+        </div>
       </StyledContentContainer>
     </StyledWrapper>
   );
