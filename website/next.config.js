@@ -1,11 +1,18 @@
 const packageJson = require("./package.json");
 const modules = [];
 Object.keys(packageJson.dependencies).forEach((key) => {
-  if (key.startsWith("@navikt/")) {
+  /**
+   * Nextjs does not as of june 2021 support esm import/export syntax
+   * TODO: Remove this when this issue is fixed
+   *  */
+  if (key.startsWith("@navikt/") || key === "examples") {
     modules.push(key);
   }
 });
 
+/**
+ * Allows us to run the sanity content studio on subpath "/studio"
+ */
 const STUDIO_REWRITE = {
   source: "/studio/:path*",
   destination:
@@ -22,6 +29,7 @@ module.exports = withTM({
   future: {
     webpack5: true,
   },
+  // Makes sure we can load images form cdn
   images: {
     domains: ["cdn.sanity.io"],
   },

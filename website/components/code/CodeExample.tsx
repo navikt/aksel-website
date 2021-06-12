@@ -1,27 +1,19 @@
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
+import RenderExample from "examples";
 
 const Div = styled.div`
-  position: relative;
-  overflow: hidden;
-  padding-top: 100%;
-  iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
+  padding: 3rem;
+  margin-top: 2rem;
+  border: 2px solid #282a36;
+  border-bottom: none;
 `;
 
-const CodeExample = ({ frame }) => {
-  const idRef = useRef("test");
-
+const CodeExample = ({ component }) => {
   return (
     <Div>
-      <iframe id={idRef.current} src={frame} frameBorder={0} scrolling="no" />
+      <RenderExample component={component} />
     </Div>
   );
 };

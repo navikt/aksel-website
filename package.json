@@ -20,7 +20,13 @@
   },
   "workspaces": [
     "sanity",
-    "website"
+    "website",
+    "code-examples"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "@navikt/ds-css": "^0.5.3",
+    "@navikt/ds-icons": "^0.3.2",
+    "@navikt/ds-react": "^0.5.3",
+    "@navikt/ds-tokens": "^0.3.2"
+  }
 }

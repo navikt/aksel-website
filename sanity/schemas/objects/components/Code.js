@@ -1,12 +1,17 @@
+import { getExamples } from "examples";
+
 export default {
   name: "code_example",
   title: "Kode eksempler",
   type: "object",
   fields: [
     {
-      title: "Storybook eksempel (url)",
-      name: "storybook_frame",
-      type: "url",
+      title: "Kode eksempel",
+      name: "code_preview",
+      type: "string",
+      options: {
+        list: [...getExamples()],
+      },
     },
     {
       name: "codeExample",

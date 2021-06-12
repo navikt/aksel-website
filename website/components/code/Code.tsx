@@ -36,7 +36,7 @@ const Bash = ({ node }) => {
 
   return (
     <>
-      {node.storybook_frame && <CodeExample frame={node.storybook_frame} />}
+      {node.code_preview && <CodeExample component={node.code_preview} />}
       <div>
         <Pre>
           <code ref={ref} className={`language-${node.codeExample.language}`}>

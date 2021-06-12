@@ -1036,17 +1036,17 @@
   resolved "https://registry.yarnpkg.com/@juggle/resize-observer/-/resize-observer-3.3.1.tgz#b50a781709c81e10701004214340f25475a171a0"
   integrity sha512-zMM9Ds+SawiUkakS7y94Ymqx+S0ORzpG3frZirN3l+UlXUmSUR7hF4wxCVqW+ei94JzV5kt0uXBcoOEAuiydrw==
 
-"@navikt/ds-css@*", "@navikt/ds-css@^0.5.2":
+"@navikt/ds-css@^0.5.2", "@navikt/ds-css@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.5.3.tgz#d7d74366e73c8b79350a83f28299a6e31659e8b1"
   integrity sha512-iFc2L84GnpF5swqOm7WrDvPMHgP3L97PUYueuv3vtJfyVbpZF5+L+FQh0hcAAsE9xarGaGox1HAQsO2Vk6q/LA==
 
-"@navikt/ds-icons@*", "@navikt/ds-icons@^0.3.2":
+"@navikt/ds-icons@^0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.3.2.tgz#54de6e0a7cd63fca4c81c53487aec8ceba1d253c"
   integrity sha512-EZkEIRC54Ota6tWd3Fb52YkxDwz8J8o13wbM69lWmI6ijuNT8hqzZaxvFPdig7IPijJjByGQLTeHR8cOnHzHew==
 
-"@navikt/ds-react@*", "@navikt/ds-react@^0.5.2":
+"@navikt/ds-react@^0.5.2", "@navikt/ds-react@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.5.3.tgz#b55e1a647942f598126cc611f4b4841d293eabc5"
   integrity sha512-jvo6AOx/u95RSyonK7qGSX7Ufr9pnNzJ9u8164N8OocDmGK4SkNby5ZBdLTpQHR3POGlK50vcqN1ezbkvaWw+Q==
@@ -1061,7 +1061,7 @@
     react-popper "^2.2.4"
     uuid "^8.3.2"
 
-"@navikt/ds-tokens@^0.3.1":
+"@navikt/ds-tokens@^0.3.1", "@navikt/ds-tokens@^0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@navikt/ds-tokens/-/ds-tokens-0.3.2.tgz#d7bf6ff015b687dd3e6387eee2a70e3088ce85cb"
   integrity sha512-2BtctsElEQMsaFMoDUEP0hz0wqXNayshSO+r7Nn88PwJf8WvDDv3lzn6+taG/i7uWI0HvHNkQXnxd7CSDsE1Tg==
@@ -6692,6 +6692,11 @@ lodash.sortby@^4.7.0:
   resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
   integrity sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=
 
+lodash.startcase@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/lodash.startcase/-/lodash.startcase-4.4.0.tgz#9436e34ed26093ed7ffae1936144350915d9add8"
+  integrity sha1-lDbjTtJgk+1/+uGTYUQ1CRXZrdg=
+
 lodash.template@^4.2.4:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.template/-/lodash.template-4.5.0.tgz#f976195cf3f347d0d5f52483569fe8031ccce8ab"
@@ -9080,7 +9085,7 @@ react-use@^17.2.4:
     ts-easing "^0.2.0"
     tslib "^2.1.0"
 
-react@^17.0, react@^17.0.2:
+react@^17.0, react@^17.0.1, react@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
   integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
