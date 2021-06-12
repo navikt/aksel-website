@@ -26,7 +26,10 @@ export default {
       name: "slug",
       type: "slug",
       options: {
-        source: "title",
+        source: (node) => {
+          console.log(node);
+          return "demo";
+        },
       },
     },
     {

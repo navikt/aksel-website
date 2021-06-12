@@ -40,13 +40,19 @@ export default () =>
                       S.view.component(PageWebPreview).title("Preview"),
                     ])
                 ),
+              S.listItem()
+                .title("Navigasjon")
+                .child(S.document().schemaType("navigation").documentId("navigation")),
               S.listItem().title("Sider").child(S.documentTypeList("ds_page")),
             ])
         ),
 
       S.divider(),
       ...S.documentTypeListItems().filter(
-        (listItem) => !["frontpage", "ds_frontpage", "ds_page"].includes(listItem.getId())
+        (listItem) =>
+          !["frontpage", "ds_frontpage", "ds_page", "navigation"].includes(
+            listItem.getId()
+          )
       ),
     ]);
 
