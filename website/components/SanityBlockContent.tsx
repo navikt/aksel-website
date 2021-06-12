@@ -1,89 +1,100 @@
 import React from "react";
 import BlockContent from "@sanity/block-content-to-react";
-import dynamic from "next/dynamic";
-import { BodyLong, Ingress, Title } from "@navikt/ds-react";
+/* import dynamic from "next/dynamic"; */
+import NextjsLink from "next/link";
+import {
+  BodyLong,
+  BodyShort,
+  Detail,
+  Ingress,
+  Label,
+  Link,
+  Title,
+} from "@navikt/ds-react";
 import "@navikt/ds-css";
 import Code from "./code/Code";
-const Accordion = dynamic(
-  () => import("@navikt/ds-react/esm/accordion/Accordion"),
-  {
-    ssr: false,
-  }
-);
 
 const serializers = {
   types: {
     code_example: Code,
-    accordion: ({ node }) => {
-      return (
-        <Accordion heading={node.title}>
-          <SanityBlockContent blocks={node.body} />
-        </Accordion>
-      );
-    },
 
-    block: function renderBlock({ node, children }) {
+    block: ({ node, children }) => {
       const style = node.style;
-      /* if (children.length > 0 && children[0] === "") {
-        return <br />;
-      } */
-      if (style === "normal") {
-        return <BodyLong spacing>{children}</BodyLong>;
-      }
-      if (style === "bodylong") {
-        return <BodyLong spacing>{children}</BodyLong>;
-      }
-      if (style === "h2") {
-        return (
-          <Title spacing level={2} size="xl">
-            {children}
-          </Title>
-        );
-      }
-      if (style === "h3") {
-        return (
-          <Title spacing level={3} size="l">
-            {children}
-          </Title>
-        );
-      }
-      if (style === "ingress") {
-        return <Ingress spacing>{children}</Ingress>;
-      }
 
-      return children;
+      switch (style) {
+        case "normal":
+          return <BodyLong spacing>{children}</BodyLong>;
+        case "bodylong":
+          return <BodyLong spacing>{children}</BodyLong>;
+        case "bodyshort":
+          return <BodyShort spacing>{children}</BodyShort>;
+        case "detailbold":
+          return <Detail spacing>{children}</Detail>;
+        case "detail":
+          return (
+            <Detail spacing size="s">
+              {children}
+            </Detail>
+          );
+        case "label":
+          return <Label spacing>{children}</Label>;
+        case "h2":
+          return (
+            <Title spacing level={2} size="xl">
+              {children}
+            </Title>
+          );
+        case "h3":
+          return (
+            <Title spacing level={3} size="l">
+              {children}
+            </Title>
+          );
+        case "h4":
+          return (
+            <Title spacing level={4} size="m">
+              {children}
+            </Title>
+          );
+        case "ingress":
+          return <Ingress spacing>{children}</Ingress>;
+        case "normal":
+          return <BodyLong spacing>{children}</BodyLong>;
+        default:
+          return children;
+      }
     },
   },
-  /* marks: {
-      link: function renderLink({mark, children}) {
-          const {blank, href} = mark;
+  marks: {
+    code: (props) => {
+      console.log(props);
+      return (
+        <pre>
+          <code>{props.children}</code>
+        </pre>
+      );
+    },
+    link: ({ mark, children }) => {
+      const { blank, href } = mark;
 
-          return blank ? (
-              <Lenke href={href} target="_blank" rel="noreferrer noopener">
-                  {children}
-              </Lenke>
-          ) : (
-              <Lenke href={href}>{children}</Lenke>
-          );
-      },
-      internalLink: function renderInternalLink({mark, children}) {
-          const {slug = {}} = mark;
-          const href = `/${slug.current}`;
-          return (
-              <Link href={href}>
-                  <a className="lenke">{children}</a>
-              </Link>
-          );
-      },
-      interpolate: function renderInterpolate({mark}) {
-          const context = useContext(SanityContext);
-          const {prop} = mark;
-
-          const value = context[prop];
-
-          return <>{value}</>;
-      },
-  }, */
+      return blank ? (
+        <Link href={href} target="_blank" rel="noreferrer noopener">
+          {children}
+        </Link>
+      ) : (
+        <Link href={href}>{children}</Link>
+      );
+    },
+    internalLink: ({ mark, children }) => {
+      const { slug = {} } = mark;
+      const href = `/${slug.current}`;
+      return (
+        <NextjsLink href={href} passHref>
+          <Link href="">{children}</Link>
+        </NextjsLink>
+      );
+    },
+  },
 };
 
 export const SanityBlockContent = (props: { blocks: any }) => {

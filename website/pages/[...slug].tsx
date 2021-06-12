@@ -80,7 +80,15 @@ const ds_query = `*[_type == "ds_page" && slug.current == $slug][0]
     "id": _id,
     "title": title,
     "slug": slug.current,
-    "body": body
+    body[]{
+      ...,
+      markDefs[]{
+        ...,
+        _type == 'internalLink' => {
+            "slug": @.reference->slug,
+        },
+    },
+    },
   }`;
 
 export const getStaticProps = async ({

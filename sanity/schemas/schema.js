@@ -6,7 +6,6 @@ import blockContent from "./documents/blockContent";
 import ds_page from "./documents/ds/ds-page";
 import ds_frontpage from "./documents/ds/ds-frontpage";
 import RefLinkPanel from "./objects/RefLinkPanel";
-import Accordion from "./objects/components/Accordion";
 import CodeExample from "./objects/components/Code";
 
 export default createSchema({
@@ -17,7 +16,6 @@ export default createSchema({
     ds_page,
     ds_frontpage,
     RefLinkPanel,
-    Accordion,
     CodeExample,
   ]),
 });

@@ -1,9 +1,9 @@
 // deskStructure.js
 import React from "react";
 import S from "@sanity/desk-tool/structure-builder";
+import { FrontpageWebPreview } from "./web-previews/FrontpageWebPreview";
+import { PageWebPreview } from "./web-previews/PageWebPreview";
 import { Picture, Bookmark } from "@navikt/ds-icons";
-import { FrontpageWebPreview } from "./preview/FrontpageWebPreview";
-import { PageWebPreview } from "./preview/PageWebPreview";
 
 export default () =>
   S.list()
