@@ -3,15 +3,6 @@ export default {
   name: "navigation.link",
   type: "object",
   title: "Link",
-  preview: {
-    select: {
-      title: "title",
-      targetTitle: "target.title",
-    },
-    prepare: ({ title, targetTitle }) => ({
-      title: title || targetTitle,
-    }),
-  },
   fields: [
     {
       type: "reference",

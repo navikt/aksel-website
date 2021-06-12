@@ -1,4 +1,5 @@
 // nav.js
+// https://www.sanity.io/schemas/nested-navigation-structure-757f39ee
 export default {
   name: "navigation",
   type: "document",
@@ -7,17 +8,17 @@ export default {
     {
       type: "string",
       name: "name",
-      title: "Name",
+      title: "Navn",
     },
     {
       type: "string",
       name: "title",
-      title: "Title",
+      title: "Tittel",
     },
     {
       type: "array",
       name: "sections",
-      title: "Sections",
+      title: "Undersider",
       of: [{ type: "navigation.section" }],
     },
   ],
