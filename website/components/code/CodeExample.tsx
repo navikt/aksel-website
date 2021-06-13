@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import RenderExample from "examples";
 
-import { v4 as uuid } from "uuid";
-import { useMount } from "react-use";
+/* import { v4 as uuid } from "uuid";
+import { useMount } from "react-use"; */
 
 const Div = styled.div`
   padding: 3rem;
@@ -21,16 +20,9 @@ const Handle = styled.span`
 `;
 
 const CodeExample = ({ component }) => {
-  const [width, setWidth] = useState(200);
-  const divId = useRef(component);
-
-  useMount(() =>
-    setWidth(document.getElementById(divId.current).offsetWidth - 6 * 16)
-  );
-
   return (
     <>
-      <Div id={component}>
+      <Div>
         <RenderExample component={component} />
       </Div>
     </>

@@ -5,7 +5,6 @@ import "prismjs/components/prism-jsx.min";
 import "prismjs/components/prism-typescript.min";
 import styled from "styled-components";
 import CodeExample from "./CodeExample";
-import cl from "classnames";
 
 const PrismLanguages = [
   "insertBefore",
@@ -25,27 +24,35 @@ const PrismLanguages = [
   "jsx",
 ];
 
+const Div = styled.div`
+  width: 100%;
+`;
+
 const Pre = styled.pre`
   overflow-x: auto;
   font-family: var(--navds-font-family);
 `;
 
-const Bash = ({ node }) => {
+const Code = ({ node }) => {
   const ref = useRef<HTMLElement | null>(null);
   useMount(() => Prism.highlightElement(ref.current as Element));
-
   return (
-    <>
+    <Div>
       {node.code_preview && <CodeExample component={node.code_preview} />}
       <div>
         <Pre>
-          <code ref={ref} className={`language-${node.codeExample.language}`}>
+          <code
+            ref={ref}
+            className={`language-${
+              node.codeExample.language ? node.codeExample.language : "jsx"
+            }`}
+          >
             {node.codeExample.code}
           </code>
         </Pre>
       </div>
-    </>
+    </Div>
   );
 };
 
-export default Bash;
+export default Code;

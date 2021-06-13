@@ -8,6 +8,7 @@ import { usePreviewSubscription } from "../lib/santiy";
 import { isDevelopment } from "../src/util";
 import PreviewBanner from "../components/previewBanner";
 import styled from "styled-components";
+import PageBuilder from "../components/Pagebuilder";
 
 const Div = styled.div`
   max-width: 900px;
@@ -42,7 +43,8 @@ const ArticlePage = (props) => {
         <Title spacing level={1} size="2xl">
           {data.title}
         </Title>
-        <SanityBlockContent blocks={data.body} />
+        {/* <SanityBlockContent blocks={data.body} /> */}
+        <PageBuilder sections={data.sections} />
       </Div>
     </>
   );
@@ -80,6 +82,7 @@ const ds_query = `*[_type == "ds_page" && slug.current == $slug][0]
     "id": _id,
     "title": title,
     "slug": slug.current,
+    "sections": pageBuilder,
     body[]{
       ...,
       markDefs[]{
