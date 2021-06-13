@@ -11,14 +11,10 @@ export default {
       title: "Navn",
     },
     {
-      type: "string",
-      name: "title",
-      title: "Tittel",
-    },
-    {
       type: "array",
       name: "sections",
       title: "Undersider",
+      description: "Navigasjonsstrukturen til sidemenyen",
       of: [{ type: "navigation.section" }],
     },
   ],

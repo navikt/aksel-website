@@ -6,6 +6,12 @@ export default {
   type: "object",
   fields: [
     {
+      name: "title",
+      title: "Tittel",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    },
+    {
       title: "Kode eksempel",
       name: "code_preview",
       type: "string",
@@ -20,4 +26,10 @@ export default {
       //TODO: Legge til support bare for spesifikke språk (`languageAlternatives` er broken atm)
     },
   ],
+  preview: {
+    select: {
+      title: "title",
+    },
+    prepare: ({ title }) => ({ title: "Kodeblokk: " + title }),
+  },
 };

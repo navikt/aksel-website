@@ -19,24 +19,22 @@ export default {
       title: "Ingress",
       name: "ingress",
       type: "string",
-      /* validation: (Rule) => Rule.required(), */
     },
     {
       title: "Slug",
       name: "slug",
       type: "slug",
-      options: {
-        source: (node) => {
-          console.log(node);
-          return "demo";
-        },
-      },
+    },
+    {
+      name: "pageBuilder",
+      type: "array",
+      title: "Sidebygger",
+      of: [{ type: "free_block" }, { type: "code_example" }],
     },
     {
       name: "body",
       title: "Innhold",
       type: "blockContent",
-      validation: (Rule) => Rule.required(),
     },
   ],
 };

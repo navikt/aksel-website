@@ -10,6 +10,7 @@ import CodeExample from "./objects/components/Code";
 import nav from "./documents/nav/nav";
 import navLink from "./documents/nav/navLink";
 import navSection from "./documents/nav/section";
+import free_block from "./objects/block";
 
 export default createSchema({
   name: "default",
@@ -23,5 +24,6 @@ export default createSchema({
     nav,
     navLink,
     navSection,
+    free_block,
   ]),
 });

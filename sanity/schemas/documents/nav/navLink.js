@@ -18,11 +18,11 @@ export default {
       title: "Title",
       description: "Override title from the target article.",
     },
-    {
+    /* {
       type: "array",
       name: "children",
       title: "Children",
       of: [{ type: "navigation.link" }],
-    },
+    }, */
   ],
 };
