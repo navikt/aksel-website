@@ -5,7 +5,7 @@ import Changelog from "./Changelog";
 import styled from "styled-components";
 
 const Div = styled.div`
-  margin-bottom: var(--navds-spacing-8);
+  margin-bottom: var(--navds-spacing-20);
 `;
 
 const blocks = {
@@ -29,8 +29,8 @@ const PageBuilder = ({ sections }) => {
         }
         const Comp = blocks[section._type];
         return (
-          <Div>
-            <Comp key={section._key} {...section} />
+          <Div key={section._key}>
+            <Comp {...section} />
           </Div>
         );
       })}

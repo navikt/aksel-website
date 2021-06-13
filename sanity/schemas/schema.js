@@ -6,7 +6,7 @@ import blockContent from "./documents/blockContent";
 import ds_page from "./documents/ds/ds-page";
 import ds_frontpage from "./documents/ds/ds-frontpage";
 import RefLinkPanel from "./objects/RefLinkPanel";
-import CodeExample from "./objects/components/Code";
+import CodeExample from "./objects/components/code";
 import nav from "./documents/nav/nav";
 import navLink from "./documents/nav/navLink";
 import navSection from "./documents/nav/section";
@@ -19,12 +19,12 @@ import change from "./objects/components/changelog/Change";
 export default createSchema({
   name: "default",
   types: schemaTypes.concat([
+    CodeExample,
     frontpage,
     blockContent,
     ds_page,
     ds_frontpage,
     RefLinkPanel,
-    CodeExample,
     nav,
     navLink,
     navSection,

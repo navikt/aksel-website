@@ -1,10 +1,12 @@
 import Prism from "prismjs";
-import { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { useMount } from "react-use";
 import "prismjs/components/prism-jsx.min";
 import "prismjs/components/prism-typescript.min";
 import styled from "styled-components";
 import CodeExample from "./CodeExample";
+import { Title } from "@navikt/ds-react";
+import { SanityBlockContent } from "../SanityBlockContent";
 
 const PrismLanguages = [
   "insertBefore",
@@ -36,8 +38,13 @@ const Pre = styled.pre`
 const Code = ({ node }) => {
   const ref = useRef<HTMLElement | null>(null);
   useMount(() => Prism.highlightElement(ref.current as Element));
+
   return (
     <Div>
+      <Title spacing level={2} size="xl">
+        {node.title}
+      </Title>
+      {node.body && <SanityBlockContent blocks={node.body} />}
       {node.code_preview && <CodeExample component={node.code_preview} />}
       <div>
         <Pre>

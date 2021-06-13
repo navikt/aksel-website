@@ -1,11 +1,12 @@
 import React from "react";
 import StartCase from "lodash.startcase";
-import { PrimaryButton } from "./button";
+import { PrimaryButton, SecondaryButton, ActionButton, DangerButton } from "./button";
 
 const examples = {
   primary_button: () => <PrimaryButton />,
-  secondary_button: () => <PrimaryButton />,
-  action_button: () => <PrimaryButton />,
+  secondary_button: () => <SecondaryButton />,
+  action_button: () => <ActionButton />,
+  danger_button: () => <DangerButton />,
 };
 
 const RenderExample = ({ component }) => {

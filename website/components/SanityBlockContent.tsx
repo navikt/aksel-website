@@ -13,6 +13,11 @@ import {
 } from "@navikt/ds-react";
 import "@navikt/ds-css";
 import Code from "./code/Code";
+import styled from "styled-components";
+
+const StyledCode = styled.code`
+  color: red;
+`;
 
 const serializers = {
   types: {
@@ -67,11 +72,7 @@ const serializers = {
   },
   marks: {
     code: (props) => {
-      return (
-        <pre>
-          <code>{props.children}</code>
-        </pre>
-      );
+      return <StyledCode>{props.children}</StyledCode>;
     },
     link: ({ mark, children }) => {
       const { blank, href } = mark;

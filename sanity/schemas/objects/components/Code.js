@@ -1,15 +1,20 @@
 import { getExamples } from "examples";
 
 export default {
+  title: "Kode eksempel",
   name: "code_example",
-  title: "Kode eksempler",
   type: "object",
   fields: [
     {
       name: "title",
       title: "Tittel",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      /* validation: (Rule) => Rule.required(), */
+    },
+    {
+      name: "body",
+      title: "Tekst",
+      type: "blockContent",
     },
     {
       title: "Kode eksempel",

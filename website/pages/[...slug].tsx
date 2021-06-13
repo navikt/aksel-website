@@ -13,6 +13,7 @@ import {
   InternalHeader,
   InternalHeaderTitle,
   ContentContainer,
+  Ingress,
 } from "@navikt/ds-react";
 
 const Div = styled(ContentContainer)`
@@ -36,8 +37,8 @@ const Sidebar = styled.div`
     -45deg,
     #f1f1f1,
     #f1f1f1 10px,
-    #c9c9c9 10px,
-    #c9c9c9 20px
+    #fefefe 10px,
+    #fefefe 20px
   );
   left: 300px;
 `;
@@ -59,9 +60,13 @@ const StyledHeader = styled.div`
     45deg,
     #f1f1f1,
     #f1f1f1 10px,
-    #c9c9c9 10px,
-    #c9c9c9 20px
+    #fefefe 10px,
+    #fefefe 20px
   );
+`;
+
+const LastUpdate = styled.div`
+  margin-bottom: 2rem;
 `;
 
 const ArticlePage = (props) => {
@@ -88,14 +93,17 @@ const ArticlePage = (props) => {
       {enablePreview && <PreviewBanner slug={props?.slug} />}
       <StyledHeader />
       <Layout>
-        <Sidebar />
+        {/* <Sidebar /> */}
         <Div>
           <Title spacing level={1} size="2xl">
-            {data.title}
+            {data.heading}
           </Title>
-          <span>{`Sist oppdatert: ${lastUpdate.toLocaleDateString(
-            "en-GB"
-          )} (${moment(data.last_update).fromNow()})`}</span>
+          <Ingress spacing>{data.ingress}</Ingress>
+          <LastUpdate>
+            {`Sist oppdatert: ${lastUpdate.toLocaleDateString(
+              "en-GB"
+            )} (${moment(data.last_update).fromNow()})`}
+          </LastUpdate>
           {/* <SanityBlockContent blocks={data.body} /> */}
           <PageBuilder sections={data.sections} />
         </Div>
@@ -135,7 +143,8 @@ const ds_query = `*[_type == "ds_page" && slug.current == $slug][0]
   {
     "id": _id,
     "last_update": _updatedAt,
-    "title": title,
+    "heading": heading,
+    "ingress": ingress,
     "slug": slug.current,
     "sections": pageBuilder
   }`;
