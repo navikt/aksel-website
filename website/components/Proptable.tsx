@@ -1,7 +1,6 @@
 import "nav-frontend-tabell-style/dist/main.css";
 
 const PropTable = ({ node }) => {
-  console.log(node);
   const props = node.props;
   return (
     <table className="tabell">

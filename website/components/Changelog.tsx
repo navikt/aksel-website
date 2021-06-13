@@ -3,7 +3,6 @@ import { Link, Title } from "@navikt/ds-react";
 import { SanityBlockContent } from "./SanityBlockContent";
 
 const Changelog = ({ node }) => {
-  console.log(node);
   const changes = node.changes;
   return (
     <div>

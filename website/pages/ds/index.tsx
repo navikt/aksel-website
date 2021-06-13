@@ -4,7 +4,7 @@ import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 import { usePreviewSubscription } from "../../lib/santiy";
 import { getClient } from "../../lib/sanity.server";
-import PreviewBanner from "../../components/previewBanner";
+import PreviewBanner from "../../components/PreviewBanner";
 import FrontPage from "../../components/pages/FrontPage";
 
 const Page = ({ frontpage, preview }) => {
@@ -22,7 +22,7 @@ const Page = ({ frontpage, preview }) => {
 
   return (
     <>
-      {enabledPreview && <PreviewBanner />}
+      {enabledPreview && <PreviewBanner slug="DS forside" />}
       <FrontPage {...pagedata} />
     </>
   );
@@ -36,7 +36,9 @@ interface StaticProps {
   revalidate: number;
 }
 
-export const getStaticProps = async ({ preview = false }): Promise<StaticProps> => {
+export const getStaticProps = async ({
+  preview = false,
+}): Promise<StaticProps> => {
   const frontpage = await getClient(preview).fetch(query);
   return {
     props: { frontpage, preview },

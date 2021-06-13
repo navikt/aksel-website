@@ -9,11 +9,12 @@ const Style = styled.div`
   color: white;
   padding: 0.5rem;
   width: 15rem;
-  position: absolute;
+  position: fixed;
   opacity: 0.5;
   text-align: center;
   transform: translate(-5rem, 1rem) rotate(-45deg);
   font-weight: bold;
+  z-index: 9999;
 `;
 
 function PreviewBanner({ slug }) {

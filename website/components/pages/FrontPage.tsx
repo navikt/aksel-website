@@ -18,7 +18,9 @@ const StyledContentContainer = styled(ContentContainer)`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: calc(100% - 2 * var(--navds-content-container-padding-medium-and-larger));
+  height: calc(
+    100% - 2 * var(--navds-content-container-padding-medium-and-larger)
+  );
 `;
 
 const StyledLinkpanelWrapper = styled.div`
@@ -36,16 +38,18 @@ const FrontPage = ({ ...frontpage }) => {
             {frontpage.headline}
           </Title>
         </StyledTopContent>
-        <div>
-          {frontpage.panels.map((panel, i) => (
-            <Link key={panel.slug + 1} href={"/" + panel.slug} passHref>
-              <LinkPanel>
-                <h2>{panel.title}</h2>
-                <BodyLong>{panel.content}</BodyLong>
-              </LinkPanel>
-            </Link>
-          ))}
-        </div>
+        {frontpage.panels && (
+          <div>
+            {frontpage.panels.map((panel, i) => (
+              <Link key={panel.slug + 1} href={"/" + panel.slug} passHref>
+                <LinkPanel>
+                  <h2>{panel.title}</h2>
+                  <BodyLong>{panel.content}</BodyLong>
+                </LinkPanel>
+              </Link>
+            ))}
+          </div>
+        )}
       </StyledContentContainer>
     </StyledWrapper>
   );

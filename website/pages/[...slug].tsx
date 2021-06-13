@@ -1,22 +1,67 @@
 /* import client from "../client"; */
 import { useRouter } from "next/router";
 import Error from "next/error";
-import { SanityBlockContent } from "../components/SanityBlockContent";
-import { Title } from "@navikt/ds-react";
 import { getClient } from "../lib/sanity.server";
 import { usePreviewSubscription } from "../lib/santiy";
 import { isDevelopment } from "../src/util";
-import PreviewBanner from "../components/previewBanner";
+import PreviewBanner from "../components/PreviewBanner";
 import styled from "styled-components";
 import PageBuilder from "../components/Pagebuilder";
 import moment from "moment";
+import {
+  Title,
+  InternalHeader,
+  InternalHeaderTitle,
+  ContentContainer,
+} from "@navikt/ds-react";
 
-const Div = styled.div`
+const Div = styled(ContentContainer)`
   max-width: 900px;
   display: flex;
   flex-direction: column;
   margin: auto;
   padding-top: 4rem;
+`;
+
+const Sidebar = styled.div`
+  margin-left: -300px;
+  width: 300px;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  overflow-y: auto;
+  background: repeating-linear-gradient(
+    -45deg,
+    #f1f1f1,
+    #f1f1f1 10px,
+    #c9c9c9 10px,
+    #c9c9c9 20px
+  );
+  left: 300px;
+`;
+
+const Layout = styled.div`
+  padding-left: 300px;
+  left: 0;
+`;
+
+const StyledHeader = styled.div`
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  color: white;
+  max-width: 100vw;
+  height: 70px;
+  background: repeating-linear-gradient(
+    45deg,
+    #f1f1f1,
+    #f1f1f1 10px,
+    #c9c9c9 10px,
+    #c9c9c9 20px
+  );
 `;
 
 const ArticlePage = (props) => {
@@ -41,16 +86,20 @@ const ArticlePage = (props) => {
   return (
     <>
       {enablePreview && <PreviewBanner slug={props?.slug} />}
-      <Div>
-        <Title spacing level={1} size="2xl">
-          {data.title}
-        </Title>
-        <span>{`Sist oppdatert: ${lastUpdate.toLocaleDateString(
-          "en-GB"
-        )} (${moment(data.last_update).fromNow()})`}</span>
-        {/* <SanityBlockContent blocks={data.body} /> */}
-        <PageBuilder sections={data.sections} />
-      </Div>
+      <StyledHeader />
+      <Layout>
+        <Sidebar />
+        <Div>
+          <Title spacing level={1} size="2xl">
+            {data.title}
+          </Title>
+          <span>{`Sist oppdatert: ${lastUpdate.toLocaleDateString(
+            "en-GB"
+          )} (${moment(data.last_update).fromNow()})`}</span>
+          {/* <SanityBlockContent blocks={data.body} /> */}
+          <PageBuilder sections={data.sections} />
+        </Div>
+      </Layout>
     </>
   );
 };

@@ -67,7 +67,6 @@ const serializers = {
   },
   marks: {
     code: (props) => {
-      console.log(props);
       return (
         <pre>
           <code>{props.children}</code>
@@ -89,7 +88,7 @@ const serializers = {
     internalLink: ({ mark, children }) => {
       const { slug = {} } = mark;
       const href = `/${slug.current}`;
-      console.log("Intern ref har ikke slug i block.");
+      !slug && console.log("Intern ref har ikke slug i block.");
       return (
         <NextjsLink href={href} passHref>
           <Link href="">{children}</Link>
