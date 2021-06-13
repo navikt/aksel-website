@@ -36,6 +36,7 @@ const ArticlePage = (props) => {
   if (router.isFallback) {
     return <div>Laster...</div>;
   }
+  /* console.log(data.body); */
   return (
     <>
       {enablePreview && <PreviewBanner slug={props?.slug} />}
