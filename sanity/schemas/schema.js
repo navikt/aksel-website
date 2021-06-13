@@ -13,6 +13,8 @@ import navSection from "./documents/nav/section";
 import free_block from "./objects/block";
 import prop_table from "./objects/components/proptable/Proptable";
 import prop from "./objects/components/proptable/Prop";
+import changelog from "./objects/components/changelog/Changelog";
+import change from "./objects/components/changelog/Change";
 
 export default createSchema({
   name: "default",
@@ -29,5 +31,7 @@ export default createSchema({
     free_block,
     prop_table,
     prop,
+    changelog,
+    change,
   ]),
 });

@@ -1,7 +1,10 @@
+import "nav-frontend-tabell-style/dist/main.css";
+
 const PropTable = ({ node }) => {
-  const props = node.sections;
+  console.log(node);
+  const props = node.props;
   return (
-    <table>
+    <table className="tabell">
       <thead>
         <tr>
           <th>Name</th>
@@ -18,8 +21,8 @@ const PropTable = ({ node }) => {
               <td>{prop.prop_name}</td>
               <td>{prop.prop_type}</td>
               <td>{prop.prop_required ? "✔️" : "❌"}</td>
-              {prop.prop_default && <td>{prop.prop_default}</td>}
-              {prop.prop_description && <td>{prop.prop_description}</td>}
+              {<td>{prop.prop_default ? prop.prop_default : ""}</td>}
+              {<td>{prop.prop_description ? prop.prop_description : ""}</td>}
             </tr>
           );
         })}

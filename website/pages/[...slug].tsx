@@ -15,7 +15,6 @@ const Div = styled.div`
   max-width: 900px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin: auto;
   padding-top: 4rem;
 `;
@@ -46,9 +45,9 @@ const ArticlePage = (props) => {
         <Title spacing level={1} size="2xl">
           {data.title}
         </Title>
-        <span>{`${lastUpdate.toLocaleDateString("en-GB")} (${moment(
-          data.last_update
-        ).fromNow()})`}</span>
+        <span>{`Sist oppdatert: ${lastUpdate.toLocaleDateString(
+          "en-GB"
+        )} (${moment(data.last_update).fromNow()})`}</span>
         {/* <SanityBlockContent blocks={data.body} /> */}
         <PageBuilder sections={data.sections} />
       </Div>

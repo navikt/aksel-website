@@ -6,7 +6,6 @@ import { useMount } from "react-use"; */
 
 const Div = styled.div`
   padding: 3rem;
-  margin-top: 2rem;
   border: 2px solid #282a36;
   border-bottom: none;
 `;

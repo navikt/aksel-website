@@ -942,7 +942,7 @@
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@juggle/resize-observer/-/resize-observer-3.3.1.tgz#b50a781709c81e10701004214340f25475a171a0"
 
-"@navikt/ds-css@^0.5.2", "@navikt/ds-css@^0.5.3":
+"@navikt/ds-css@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.5.3.tgz#d7d74366e73c8b79350a83f28299a6e31659e8b1"
 
@@ -950,7 +950,7 @@
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.3.2.tgz#54de6e0a7cd63fca4c81c53487aec8ceba1d253c"
 
-"@navikt/ds-react@^0.5.2", "@navikt/ds-react@^0.5.3":
+"@navikt/ds-react@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.5.3.tgz#b55e1a647942f598126cc611f4b4841d293eabc5"
   dependencies:
@@ -964,7 +964,7 @@
     react-popper "^2.2.4"
     uuid "^8.3.2"
 
-"@navikt/ds-tokens@^0.3.1", "@navikt/ds-tokens@^0.3.2":
+"@navikt/ds-tokens@^0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@navikt/ds-tokens/-/ds-tokens-0.3.2.tgz#d7bf6ff015b687dd3e6387eee2a70e3088ce85cb"
 
@@ -6256,6 +6256,11 @@ native-url@0.3.4:
   resolved "https://registry.yarnpkg.com/native-url/-/native-url-0.3.4.tgz#29c943172aed86c63cee62c8c04db7f5756661f8"
   dependencies:
     querystring "^0.2.0"
+
+nav-frontend-tabell-style@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/nav-frontend-tabell-style/-/nav-frontend-tabell-style-2.0.1.tgz#5a4de2a1559e94f68781791256d25ed662c650bc"
+  integrity sha512-u65OBoMXMm6rh5JV6NwvdMD4+Kn15/FGorSb3HMrh+6B/LHK/3nl7aiZnIyy1o+R13IsuDSoMTD20qU9bgPauA==
 
 negotiator@0.6.2:
   version "0.6.2"

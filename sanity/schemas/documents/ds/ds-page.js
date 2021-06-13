@@ -29,7 +29,12 @@ export default {
       name: "pageBuilder",
       type: "array",
       title: "Sidebygger",
-      of: [{ type: "free_block" }, { type: "code_example" }, { type: "prop_table" }],
+      of: [
+        { type: "free_block" },
+        { type: "code_example" },
+        { type: "prop_table" },
+        { type: "changelog" },
+      ],
     },
   ],
 };

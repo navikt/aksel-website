@@ -5,7 +5,7 @@ export default {
   fields: [
     {
       type: "array",
-      name: "sections",
+      name: "props",
       title: "Props",
       of: [{ type: "prop_table.prop" }],
     },
