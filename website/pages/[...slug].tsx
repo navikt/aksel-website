@@ -9,6 +9,7 @@ import { isDevelopment } from "../src/util";
 import PreviewBanner from "../components/previewBanner";
 import styled from "styled-components";
 import PageBuilder from "../components/Pagebuilder";
+import moment from "moment";
 
 const Div = styled.div`
   max-width: 900px;
@@ -36,7 +37,8 @@ const ArticlePage = (props) => {
   if (router.isFallback) {
     return <div>Laster...</div>;
   }
-  /* console.log(data.body); */
+  const lastUpdate = new Date(data.last_update);
+
   return (
     <>
       {enablePreview && <PreviewBanner slug={props?.slug} />}
@@ -44,6 +46,9 @@ const ArticlePage = (props) => {
         <Title spacing level={1} size="2xl">
           {data.title}
         </Title>
+        <span>{`${lastUpdate.toLocaleDateString("en-GB")} (${moment(
+          data.last_update
+        ).fromNow()})`}</span>
         {/* <SanityBlockContent blocks={data.body} /> */}
         <PageBuilder sections={data.sections} />
       </Div>
@@ -81,18 +86,10 @@ interface StaticProps {
 const ds_query = `*[_type == "ds_page" && slug.current == $slug][0]
   {
     "id": _id,
+    "last_update": _updatedAt,
     "title": title,
     "slug": slug.current,
-    "sections": pageBuilder,
-    body[]{
-      ...,
-      markDefs[]{
-        ...,
-        _type == 'internalLink' => {
-            "slug": @.reference->slug,
-        },
-    },
-    },
+    "sections": pageBuilder
   }`;
 
 export const getStaticProps = async ({

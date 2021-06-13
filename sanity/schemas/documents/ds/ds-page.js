@@ -29,12 +29,7 @@ export default {
       name: "pageBuilder",
       type: "array",
       title: "Sidebygger",
-      of: [{ type: "free_block" }, { type: "code_example" }],
-    },
-    {
-      name: "body",
-      title: "Innhold",
-      type: "blockContent",
+      of: [{ type: "free_block" }, { type: "code_example" }, { type: "prop_table" }],
     },
   ],
 };

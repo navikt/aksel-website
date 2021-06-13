@@ -11,6 +11,8 @@ import nav from "./documents/nav/nav";
 import navLink from "./documents/nav/navLink";
 import navSection from "./documents/nav/section";
 import free_block from "./objects/block";
+import prop_table from "./objects/components/proptable/Proptable";
+import prop from "./objects/components/proptable/Prop";
 
 export default createSchema({
   name: "default",
@@ -25,5 +27,7 @@ export default createSchema({
     navLink,
     navSection,
     free_block,
+    prop_table,
+    prop,
   ]),
 });
