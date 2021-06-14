@@ -15,6 +15,7 @@ import prop_table from "./objects/components/proptable/Proptable";
 import prop from "./objects/components/proptable/Prop";
 import changelog from "./objects/components/changelog/Changelog";
 import change from "./objects/components/changelog/Change";
+import page_builder from "./objects/pagebuilder";
 
 export default createSchema({
   name: "default",
@@ -33,5 +34,6 @@ export default createSchema({
     prop,
     changelog,
     change,
+    page_builder,
   ]),
 });

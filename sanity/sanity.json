@@ -8,6 +8,14 @@
     "projectId": "hnbe3yhs",
     "dataset": "production"
   },
+  "env": {
+    "development": {
+      "api": {
+        "dataset": "development"
+      },
+      "plugins": ["@sanity/vision"]
+    }
+  },
   "plugins": [
     "@sanity/base",
     "@sanity/components",
@@ -16,11 +24,6 @@
     "@sanity/desk-tool",
     "@sanity/code-input"
   ],
-  "env": {
-    "development": {
-      "plugins": ["@sanity/vision"]
-    }
-  },
   "parts": [
     {
       "name": "part:@sanity/base/schema",
