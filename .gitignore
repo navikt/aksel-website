@@ -69,3 +69,4 @@ lerna-debug.log
 .gitattributes
 .iml
 dist
+public/studio
