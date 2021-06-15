@@ -2,6 +2,7 @@ export default {
   title: "Designsystem side",
   name: "ds_page",
   type: "document",
+  //__experimental_actions: [, /* "create" */ "update", /*'delete',*/ "publish"],
   fields: [
     {
       title: "Dokumenttittel",
@@ -29,6 +30,12 @@ export default {
       name: "tab_1",
       type: "array",
       title: "Tab 1",
+      initialValue: [
+        {
+          _type: "code_example",
+          _type: "code_example",
+        },
+      ],
       of: [
         { type: "free_block" },
         { type: "code_example" },
@@ -40,6 +47,12 @@ export default {
       name: "tab_2",
       type: "array",
       title: "Tab 2",
+      initialValue: [
+        {
+          _type: "prop_table",
+          _type: "changelog",
+        },
+      ],
       of: [
         { type: "free_block" },
         { type: "code_example" },
