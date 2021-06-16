@@ -1,0 +1,71 @@
+name: Build and deploy to dev
+on:
+  workflow_dispatch:
+    inputs:
+      config-file-name:
+        description: 'Config-fil (uten .json) som skal deployes'
+        required: true
+        default: 'dev-gcp'
+      cluster:
+        description: 'Cluster å deploye til (labs-gcp eller dev-gcp)'
+        required: true
+        default: 'dev-gcp'
+
+# FIXME: Legg til docker layer caching, f.eks. https://github.com/marketplace/actions/build-docker-images-using-cache
+jobs:
+  build_and_deploy:
+    if: github.event.inputs.cluster != 'prod-gcp'
+    name: Build and deploy to dev
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/${{ github.event.repository.name }}
+    steps:
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v1.1.2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+      - name: Copy env-file for dev
+        run: cp nais/dev/${{ github.event.inputs.config-file-name }}.env .env.local
+      - name: Install dependencies
+        run: npm ci
+      - name: Build application
+        run: npm run build
+      - name: Login to GitHub package registry
+        run: |
+          echo ${GITHUB_TOKEN} | docker login -u ${GITHUB_REPOSITORY} --password-stdin docker.pkg.github.com
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Get complete tag
+        run: |
+          echo "COMPLETE_TAG=${{ github.event.inputs.config-file-name }}-$( date +%s )" >> $GITHUB_ENV
+      - name: Create docker image tags
+        run: |
+          echo "DOCKER_TAG=${{ env.DOCKER_IMAGE }}:${{ env.COMPLETE_TAG }}" >> $GITHUB_ENV
+      - name: Build docker image
+        run: docker build -t ${{ env.DOCKER_TAG }} .
+      - name: Push docker image
+        run: |
+          docker push ${{ env.DOCKER_TAG }}
+      - name: Create tag and release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.COMPLETE_TAG }}
+          release_name: ${{ env.COMPLETE_TAG }}
+          commitish: ${{ github.sha }}
+      - name: Deploy til dev
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          RESOURCE: nais.yaml
+          CLUSTER: ${{ github.event.inputs.cluster }}
+          VARS: nais/dev/${{ github.event.inputs.config-file-name }}.json
+          REF: ${{ github.sha }}
+          PRINT_PAYLOAD: true
+          IMAGE: ${{ env.DOCKER_TAG }}
