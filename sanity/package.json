@@ -13,6 +13,7 @@
   ],
   "dependencies": {
     "@sanity/base": "^2.11.1",
+    "@sanity/cli": "^2.11.0",
     "@sanity/code-input": "^2.9.0",
     "@sanity/components": "^2.2.6",
     "@sanity/core": "^2.11.0",

@@ -14,9 +14,10 @@
   "homepage": "https://navikt.github.io/verktoykasse-prototype",
   "scripts": {
     "dev": "yarn workspace website dev",
+    "build:next": "yarn build-sanity && yarn workspace website build",
     "deploy": "yarn workspace website deploy",
     "sanity": "yarn workspace sanity start",
-    "build-sanity": "echo 'Building Sanity to public/studio…' && cd sanity && sanity build ../website/public/studio -y"
+    "build-sanity": "yarn workspace sanity build ../website/public/studio -y"
   },
   "workspaces": [
     "sanity",
