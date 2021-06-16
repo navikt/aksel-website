@@ -14,7 +14,6 @@ on:
 # FIXME: Legg til docker layer caching, f.eks. https://github.com/marketplace/actions/build-docker-images-using-cache
 jobs:
   build_and_deploy:
-    if: github.event.inputs.cluster != 'prod-gcp'
     name: Build and deploy to dev
     runs-on: ubuntu-latest
     env:
@@ -24,17 +23,12 @@ jobs:
         with:
           node-version: '14'
       - uses: actions/checkout@v2
-      - uses: actions/cache@v1.1.2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-          restore-keys: ${{ runner.os }}-node-
       - name: Copy env-file for dev
         run: cp nais/dev/${{ github.event.inputs.config-file-name }}.env .env.local
       - name: Install dependencies
-        run: npm ci
+        run: yarn
       - name: Build application
-        run: npm run build
+        run: yarn build:next
       - name: Login to GitHub package registry
         run: |
           echo ${GITHUB_TOKEN} | docker login -u ${GITHUB_REPOSITORY} --password-stdin docker.pkg.github.com
