@@ -1,27 +1,15 @@
 // deskStructure.js
 import React from "react";
 import S from "@sanity/desk-tool/structure-builder";
-import { FrontpageWebPreview } from "./web-previews/FrontpageWebPreview";
+/* import { FrontpageWebPreview } from "./web-previews/FrontpageWebPreview"; */
 import { PageWebPreview } from "./web-previews/PageWebPreview";
-import { Picture, Bookmark } from "@navikt/ds-icons";
+import { ComponentPageWebPreview } from "./web-previews/ComponentWebPreview";
+import { Facilitet, Historic } from "@navikt/ds-icons";
 
 export default () =>
   S.list()
     .title("Verktøykasse")
     .items([
-      S.listItem()
-        .title("Forside")
-        .icon(() => <Picture />)
-        .child(
-          S.editor()
-            .schemaType("frontpage")
-            .documentId("frontpage")
-            .views([
-              S.view.form(),
-              S.view.component(FrontpageWebPreview).title("Preview"),
-            ])
-        ),
-      S.divider(),
       S.listItem()
         .title("Designsystemet")
         .child(
@@ -29,39 +17,43 @@ export default () =>
             .title("Designsystemet")
             .items([
               S.listItem()
-                .title("Forside")
-                .icon(() => <Picture />)
+                .title("Komponenter")
+                .icon(() => <Facilitet />)
                 .child(
-                  S.document()
-                    .schemaType("ds_frontpage")
-                    .documentId("ds_frontpage")
-                    .views([
-                      S.view.form(),
-                      S.view.component(PageWebPreview).title("Preview"),
-                    ])
+                  S.documentTypeList("ds_component_page").initialValueTemplates([
+                    S.initialValueTemplateItem("ds_component_page_template"),
+                  ])
                 ),
               S.listItem()
-                .title("Navigasjon")
-                .child(S.document().schemaType("navigation").documentId("navigation")),
-              S.listItem().title("Sider").child(S.documentTypeList("ds_page")),
+                .title("Versjoner")
+                .icon(() => <Historic />)
+                .child(S.documentTypeList("component_versions")),
             ])
         ),
 
       S.divider(),
       ...S.documentTypeListItems().filter(
         (listItem) =>
-          !["frontpage", "ds_frontpage", "ds_page", "navigation"].includes(
-            listItem.getId()
-          )
+          !["ds_component_page", "component_versions"].includes(listItem.getId())
       ),
     ]);
 
 export const getDefaultDocumentNode = ({ schemaType }) => {
   switch (schemaType) {
-    case "ds_page":
+    case "ds_component_page":
       return S.document().views([
         S.view.form(),
-        S.view.component(PageWebPreview).title("Preview"),
+        S.view.component(ComponentPageWebPreview).title("Preview"),
       ]);
   }
 };
+
+// single page (eks forside)
+/* S.listItem()
+  .title("Komponenter2")
+  .icon(() => <Facilitet />)
+  .child(
+    S.document()
+      .schemaType("ds_component_page")
+      .documentId("ds_component_page")
+  ) */

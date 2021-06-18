@@ -22,6 +22,23 @@ export default {
       type: "string",
     },
     {
+      title: "Npm link",
+      name: "npm_link",
+      type: "url",
+    },
+    {
+      title: "Github link",
+      name: "github_link",
+      type: "url",
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      title: "Figma link",
+      name: "figma_link",
+      type: "url",
+      validation: (Rule) => Rule.required(),
+    },
+    {
       title: "Versjon",
       name: "version",
       type: "reference",
@@ -29,15 +46,11 @@ export default {
       to: [{ type: "component_versions" }],
     },
     {
-      title: "Slug",
-      name: "slug",
-      type: "slug",
-    },
-    {
       name: "tab_1",
       type: "array",
       title: "Bruk",
-      of: [{ type: "free_block" }],
+      of: [{ type: "portable_block" }, { type: "code_example" }, { type: "do_dont" }],
+      validation: (Rule) => Rule.required().min(4),
     },
     {
       name: "tab_2",
@@ -50,7 +63,7 @@ export default {
       type: "array",
       title: "Kode",
       of: [
-        { type: "free_block" },
+        { type: "portable_block" },
         { type: "code_example" },
         { type: "prop_table" },
         { type: "changelog" },
@@ -61,7 +74,7 @@ export default {
       type: "array",
       title: "Tilgjengelighet",
       of: [
-        { type: "free_block" },
+        { type: "portable_block" },
         { type: "code_example" },
         { type: "prop_table" },
         { type: "changelog" },

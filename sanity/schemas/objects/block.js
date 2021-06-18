@@ -1,6 +1,6 @@
 export default {
   title: "Innholds blokk",
-  name: "free_block",
+  name: "portable_block",
   type: "object",
 
   fields: [

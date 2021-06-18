@@ -14,7 +14,7 @@ export default {
     {
       name: "body",
       title: "Tekst",
-      type: "blockContent",
+      type: "simple_block_content",
     },
     {
       title: "Kode eksempel",
