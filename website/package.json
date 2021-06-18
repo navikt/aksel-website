@@ -1,6 +1,7 @@
 {
   "name": "website",
   "version": "0.1.0",
+  "private": true,
   "description": "Nextjs page for sanity docs",
   "license": "MIT",
   "scripts": {
