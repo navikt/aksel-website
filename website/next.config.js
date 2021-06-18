@@ -26,9 +26,6 @@ const withTM = require("next-transpile-modules")(modules);
 module.exports = withTM({
   rewrites: () => [STUDIO_REWRITE],
   productionBrowserSourceMaps: true,
-  future: {
-    webpack5: true,
-  },
   // Makes sure we can load images form cdn
   images: {
     domains: ["cdn.sanity.io"],

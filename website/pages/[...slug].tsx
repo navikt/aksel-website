@@ -117,10 +117,11 @@ export interface StaticPathProps {
   fallback: boolean;
 }
 
-const query = `*[_type == "ds_page"]{ 'slug': slug.current }`;
+const query = `*[_type == "ds_component_page"] { type: _type, 'slug': slug.current }`;
 
 export const getStaticPaths = async (): Promise<StaticPathProps> => {
   const articleSlugs = await getClient(false).fetch(query);
+  console.log(articleSlugs);
   return {
     paths:
       articleSlugs?.map((page) => {
@@ -139,14 +140,13 @@ interface StaticProps {
   revalidate: number;
 }
 
-const ds_query = `*[_type == "ds_page" && slug.current == $slug][0]
+const ds_query = `*[_type == "ds_component_page"] && slug.current == $slug][0]
   {
     "id": _id,
     "last_update": _updatedAt,
     "heading": heading,
     "ingress": ingress,
-    "slug": slug.current,
-    "sections": pageBuilder
+    "slug": slug.current
   }`;
 
 export const getStaticProps = async ({

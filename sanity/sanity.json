@@ -37,6 +37,10 @@
     {
       "implements": "part:@sanity/dashboard/config",
       "path": "./dashboardConfig.js"
+    },
+    {
+      "name": "part:@sanity/base/initial-value-templates",
+      "path": "./initialValueTemplates.js"
     }
   ]
 }

@@ -16,6 +16,8 @@ import prop from "./objects/components/proptable/Prop";
 import changelog from "./objects/components/changelog/Changelog";
 import change from "./objects/components/changelog/Change";
 import page_builder from "./objects/pagebuilder";
+import designsystem_component_page from "./documents/ds/ds-component-page";
+import component_versions from "./documents/versions";
 
 export default createSchema({
   name: "default",
@@ -35,5 +37,7 @@ export default createSchema({
     changelog,
     change,
     page_builder,
+    designsystem_component_page,
+    component_versions,
   ]),
 });
