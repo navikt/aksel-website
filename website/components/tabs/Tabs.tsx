@@ -1,12 +1,5 @@
-import cl from "classnames";
 import styled from "styled-components";
-
-/*
-
-.tabs__buttonActive {
-  border-bottom: var(--tab-border);
-  color: var(--tab-color-active);
-} */
+import Link from "next/link";
 
 const Ul = styled.ul`
   padding: 0;
@@ -18,11 +11,10 @@ const Ul = styled.ul`
   }
 `;
 
-const Button = styled.button`
-  color: var(--tab-color);
-  border: none;
+const A = styled.a`
+  color: var(--navds-color-darkgray);
   background: none;
-  padding: 0.5rem 1.5rem 0.25rem 1.5rem;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   font-weight: var(--navds-font-weight-bold);
   border-bottom: 4px solid transparent;
 
@@ -32,32 +24,39 @@ const Button = styled.button`
   }
 
   ::focus {
-    outline: var(--outline-focus);
-    outline-offset: var(--outline-offset);
+    outline: 2px solid var(--navds-color-blue-80);
+    outline-offset: 2px;
   }
 `;
 
+const ActiveA = styled(A)`
+  border-bottom: 4px solid var(--navds-color-blue-50);
+  color: var(--navds-color-blue-50);
+`;
+
 interface TabsProps {
-  onChange: (tab: number) => void;
-  tabs: string[];
+  tabs: { name: string; url: string }[];
   tab: number;
 }
 
-const Tabs = ({ onChange, tabs, tab }: TabsProps) => {
+const Tabs = ({ tabs, tab }: TabsProps) => {
+  console.log(tab);
   return (
-    <Ul>
-      {tabs.map((t, x) => (
-        <li key={t + x} className={"tabs__li"}>
-          <Button
-            className={cl("tabs__button", { tabs__buttonActive: x === tab })}
-            onClick={() => onChange(x)}
-            aria-selected={x === tab}
-          >
-            {t}
-          </Button>
-        </li>
-      ))}
-    </Ul>
+    <nav aria-label="Komponent navigasjontabs">
+      <Ul>
+        {tabs.map((t, x) => (
+          <li key={t.name + x} className={"tabs__li"}>
+            <Link href={t.url}>
+              {x === tab ? (
+                <ActiveA aria-selected={true}>{t.name}</ActiveA>
+              ) : (
+                <A aria-selected={false}>{t.name}</A>
+              )}
+            </Link>
+          </li>
+        ))}
+      </Ul>
+    </nav>
   );
 };
 

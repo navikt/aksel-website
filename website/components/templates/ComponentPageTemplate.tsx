@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Ingress, Link, Title } from "@navikt/ds-react";
 import moment from "moment";
 import { useRouter } from "next/router";
 import Tabs from "../tabs/Tabs";
+import PageBuilder from "../Pagebuilder";
 
 const ComponentPageTemplate = ({ data }) => {
   /* console.log(data); */
@@ -10,9 +11,17 @@ const ComponentPageTemplate = ({ data }) => {
   const router = useRouter();
 
   const tabRegex = `[^/]+(?=/$|$)`;
-  const allTabs = ["Bruk", "Design", "Kode", "Tilgjengelighet"];
+  const allTabs = [
+    { name: "Bruk", url: `/designsystem/${router.query.slug[0]}` },
+    { name: "Design", url: `/designsystem/${router.query.slug[0]}/design` },
+    { name: "Kode", url: `/designsystem/${router.query.slug[0]}/kode` },
+    {
+      name: "Tilgjengelighet",
+      url: `/designsystem/${router.query.slug[0]}/tilgjengelighet`,
+    },
+  ];
 
-  const [activeTab] = useState(() => {
+  const [activeTab, setActiveTab] = useState(() => {
     const end = router.asPath.match(tabRegex)[0];
     switch (end) {
       case "design":
@@ -26,11 +35,22 @@ const ComponentPageTemplate = ({ data }) => {
     }
   });
 
-  const handleChange = (x: number) => {
-    console.log(router);
-    /*  const end = router.asPath.match(tabRegex)[0];
-    router.push(allTabs.map(x => x.toLowerCase()).includes(end) ? router.asPath.replace(end, allTabs[x]): `${router.asPath}`) */
-  };
+  // TODO: Optimize this..
+  useEffect(() => {
+    setActiveTab(() => {
+      const end = router.asPath.match(tabRegex)[0];
+      switch (end) {
+        case "design":
+          return 1;
+        case "kode":
+          return 2;
+        case "tilgjengelighet":
+          return 3;
+        default:
+          return 0;
+      }
+    });
+  });
 
   return (
     <div>
@@ -45,11 +65,8 @@ const ComponentPageTemplate = ({ data }) => {
       <div>{`Siste oppdatering: ${moment(
         moment(data._updatedAt)
       ).fromNow()}`}</div>
-      <Tabs
-        tabs={["Bruk", "Design", "Kode", "Tilgjengelighet"]}
-        tab={activeTab}
-        onChange={(x) => handleChange(x)}
-      />
+      <Tabs tabs={allTabs} tab={activeTab} />
+      <PageBuilder sections={data.tab_1} />
     </div>
   );
 };
