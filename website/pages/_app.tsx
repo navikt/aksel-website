@@ -10,7 +10,7 @@ const App = ({ Component, pageProps }) => {
     <title>NAV Designsystem</title>
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     {/* <meta property="og:site_name" content="NAV IT" />
-    <meta property="og:url" content="https://www.detsombetyrnoe.no/" /> */}
+    <meta property="og:url" content="https://www.design.nav.no/" /> */}
     <link rel="icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
