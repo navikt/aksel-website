@@ -35,11 +35,13 @@ export default {
       title: "Ingress",
       name: "ingress",
       type: "string",
+      validation: (Rule) => Rule.required(),
     },
     {
       title: "Status",
       name: "status",
       type: "array",
+      validation: (Rule) => Rule.required(),
       of: [{ type: "string" }],
       options: {
         list: [

@@ -39,22 +39,30 @@ const PagePicker = (props) => {
   );
 };
 
-export interface StaticPathProps {
-  paths: { params: { slug: string | string[] } }[];
-  fallback: boolean;
-}
-
 const query = `*[_type match "ds_*"]{ "type": _type, 'slug': slug.current }`;
 
-export const getStaticPaths = async (): Promise<StaticPathProps> => {
+export const getStaticPaths = async () => {
   const documents = await getClient(false).fetch(query);
-  console.log(documents);
+  const paths = [];
+  const tabs = ["design", "kode", "tilgjengelighet"];
+
+  documents?.map((page) => {
+    if ((page._type = "ds_component_page")) {
+      paths.push(
+        ...tabs.map((tab) => {
+          return {
+            params: {
+              slug: [...page.slug.split("/"), tab],
+            },
+          };
+        })
+      );
+    }
+    paths.push({ params: { slug: page.slug.split("/") } });
+  }) || [];
 
   return {
-    paths:
-      documents?.map((page) => {
-        return { params: { slug: page.slug.split("/") } };
-      }) || [],
+    paths,
     fallback: true,
   };
 };
@@ -68,7 +76,7 @@ interface StaticProps {
   revalidate: number;
 }
 
-const ds_query = `*[_type match "ds_*" && slug.current == "/designsystem/komponent/button"][0]
+const ds_query = `*[_type match "ds_*" && slug.current match "/designsystem/komponent/button*"][0]
 {
   "slug": slug.current,
   ...
