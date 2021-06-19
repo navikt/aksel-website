@@ -1,3 +1,7 @@
+import { validateSlug } from "../../validateSlug";
+
+const prefix = "/designsystem/komponent/";
+
 export default {
   title: "Komponentside",
   name: "ds_component_page",
@@ -17,9 +21,34 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      title: "url / slug",
+      name: "slug",
+      type: "slug",
+      validation: (Rule) => validateSlug(Rule, prefix),
+      options: {
+        source: "heading",
+        slugify: (input) =>
+          `${prefix}${input}`.toLowerCase().replace(/\s+/g, "-").slice(0, 50),
+      },
+    },
+    {
       title: "Ingress",
       name: "ingress",
       type: "string",
+    },
+    {
+      title: "Status",
+      name: "status",
+      type: "array",
+      of: [{ type: "string" }],
+      options: {
+        list: [
+          ,
+          { value: "published", title: "Publisert" },
+          { value: "beta", title: "Beta" },
+          { value: "wip", title: "WIP" },
+        ],
+      },
     },
     {
       title: "Npm link",
@@ -79,6 +108,11 @@ export default {
         { type: "prop_table" },
         { type: "changelog" },
       ],
+    },
+    {
+      name: "page_linker",
+      type: "page_linker",
+      title: "Side linker",
     },
   ],
 };

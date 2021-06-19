@@ -15,6 +15,7 @@ import change from "./objects/components/changelog/Change";
 import designsystem_component_page from "./documents/ds/ds-component-page";
 import component_versions from "./documents/versions";
 import do_dont from "./objects/components/do-dont/do-dont";
+import page_linker from "./objects/pagelinker";
 
 export default createSchema({
   name: "default",
@@ -30,5 +31,6 @@ export default createSchema({
     designsystem_component_page,
     component_versions,
     do_dont,
+    page_linker,
   ]),
 });

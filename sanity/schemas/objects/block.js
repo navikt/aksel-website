@@ -1,5 +1,5 @@
 export default {
-  title: "Innholds blokk",
+  title: "Tekstblokk",
   name: "portable_block",
   type: "object",
 
