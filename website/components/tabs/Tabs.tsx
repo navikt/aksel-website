@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import Link from "next/link";
 
+const Nav = styled.nav`
+  margin: var(--navds-spacing-12) 0;
+`;
+
 const Ul = styled.ul`
   padding: 0;
   margin: 0;
@@ -42,7 +46,7 @@ interface TabsProps {
 
 const Tabs = ({ tabs, tab }: TabsProps) => {
   return (
-    <nav aria-label="Komponent navigasjontabs">
+    <Nav aria-label="Komponent navigasjontabs">
       <Ul>
         {tabs.map((t, x) => (
           <li key={t.name + x} className={"tabs__li"}>
@@ -56,7 +60,7 @@ const Tabs = ({ tabs, tab }: TabsProps) => {
           </li>
         ))}
       </Ul>
-    </nav>
+    </Nav>
   );
 };
 

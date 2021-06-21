@@ -1,4 +1,4 @@
-import { validateSlug } from "../../validateSlug";
+import { validateSlug, isSlugUnique } from "../../validateSlug";
 
 const prefix = "designsystem/komponent/";
 
@@ -24,8 +24,9 @@ export default {
       title: "url / slug",
       name: "slug",
       type: "slug",
-      validation: (Rule) => validateSlug(Rule, prefix),
+      validation: (Rule) => validateSlug(Rule, prefix, 3),
       options: {
+        isUnique: isSlugUnique,
         source: "heading",
         slugify: (input) =>
           `${prefix}${input}`.toLowerCase().replace(/\s+/g, "-").slice(0, 50),
@@ -45,7 +46,6 @@ export default {
       of: [{ type: "string" }],
       options: {
         list: [
-          ,
           { value: "published", title: "Publisert" },
           { value: "beta", title: "Beta" },
           { value: "wip", title: "WIP" },
@@ -67,6 +67,14 @@ export default {
       title: "Figma link",
       name: "figma_link",
       type: "url",
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      title: "Kontaktperson",
+      name: "contact",
+      type: "reference",
+      description: "Kobler en person som kontaktperson til denne siden",
+      to: [{ type: "contact_person" }],
       validation: (Rule) => Rule.required(),
     },
     {

@@ -4,11 +4,15 @@ import moment from "moment";
 import { useRouter } from "next/router";
 import Tabs from "../tabs/Tabs";
 import PageBuilder from "../Pagebuilder";
+import styled from "styled-components";
+
+const Div = styled.div`
+  max-width: 700px;
+`;
 
 const ComponentPageTemplate = ({ data }) => {
-  /* console.log(data); */
-
   const router = useRouter();
+  console.log(router.query);
 
   const tabRegex = `[^/]+(?=/$|$)`;
   const allTabs = [
@@ -26,8 +30,6 @@ const ComponentPageTemplate = ({ data }) => {
       url: `/designsystem/komponent/${router.query.slug[1]}/tilgjengelighet`,
     },
   ];
-
-  console.log(router.query);
 
   const [activeTab, setActiveTab] = useState(() => {
     const end = router.asPath.match(tabRegex)[0];
@@ -60,8 +62,23 @@ const ComponentPageTemplate = ({ data }) => {
     });
   });
 
+  const getTabContent = () => {
+    switch (activeTab) {
+      case 0:
+        return <PageBuilder sections={data.tab_1} />;
+      case 1:
+        return <PageBuilder sections={data.tab_2} />;
+      case 2:
+        return <PageBuilder sections={data.tab_3} />;
+      case 3:
+        return <PageBuilder sections={data.tab_4} />;
+      default:
+        return null;
+    }
+  };
+
   return (
-    <div>
+    <Div>
       <Title size="2xl" level={1}>
         {data.heading}
       </Title>
@@ -74,8 +91,8 @@ const ComponentPageTemplate = ({ data }) => {
         moment(data._updatedAt)
       ).fromNow()}`}</div>
       <Tabs tabs={allTabs} tab={activeTab} />
-      <PageBuilder sections={data.tab_1} />
-    </div>
+      {getTabContent()}
+    </Div>
   );
 };
 

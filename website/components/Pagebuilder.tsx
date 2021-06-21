@@ -5,7 +5,7 @@ import Changelog from "./Changelog";
 import styled from "styled-components";
 
 const Div = styled.div`
-  margin-bottom: var(--navds-spacing-20);
+  margin-bottom: var(--navds-spacing-12);
 `;
 
 const blocks = {
