@@ -17,6 +17,7 @@ const A = styled.a`
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   font-weight: var(--navds-font-weight-bold);
   border-bottom: 4px solid transparent;
+  cursor: pointer;
 
   ::hover {
     border-bottom: 4px solid var(--navds-color-darkgray);
@@ -40,13 +41,12 @@ interface TabsProps {
 }
 
 const Tabs = ({ tabs, tab }: TabsProps) => {
-  console.log(tab);
   return (
     <nav aria-label="Komponent navigasjontabs">
       <Ul>
         {tabs.map((t, x) => (
           <li key={t.name + x} className={"tabs__li"}>
-            <Link href={t.url}>
+            <Link href={t.url} passHref>
               {x === tab ? (
                 <ActiveA aria-selected={true}>{t.name}</ActiveA>
               ) : (

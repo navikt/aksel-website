@@ -1,6 +1,6 @@
 import { validateSlug } from "../../validateSlug";
 
-const prefix = "/designsystem/komponent/";
+const prefix = "designsystem/komponent/";
 
 export default {
   title: "Komponentside",

@@ -12,14 +12,22 @@ const ComponentPageTemplate = ({ data }) => {
 
   const tabRegex = `[^/]+(?=/$|$)`;
   const allTabs = [
-    { name: "Bruk", url: `/designsystem/${router.query.slug[0]}` },
-    { name: "Design", url: `/designsystem/${router.query.slug[0]}/design` },
-    { name: "Kode", url: `/designsystem/${router.query.slug[0]}/kode` },
+    { name: "Bruk", url: `/designsystem/komponent/${router.query.slug[1]}` },
+    {
+      name: "Design",
+      url: `/designsystem/komponent/${router.query.slug[1]}/design`,
+    },
+    {
+      name: "Kode",
+      url: `/designsystem/komponent/${router.query.slug[1]}/kode`,
+    },
     {
       name: "Tilgjengelighet",
-      url: `/designsystem/${router.query.slug[0]}/tilgjengelighet`,
+      url: `/designsystem/komponent/${router.query.slug[1]}/tilgjengelighet`,
     },
   ];
+
+  console.log(router.query);
 
   const [activeTab, setActiveTab] = useState(() => {
     const end = router.asPath.match(tabRegex)[0];

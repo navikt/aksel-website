@@ -52,15 +52,23 @@ export const getStaticPaths = async () => {
         ...tabs.map((tab) => {
           return {
             params: {
-              slug: [...page.slug.split("/"), tab],
+              slug: [
+                ...page.slug.replace("/designsystem/", "").split("/"),
+                tab,
+              ],
             },
           };
         })
       );
     }
-    paths.push({ params: { slug: page.slug.split("/") } });
+    paths.push({
+      params: {
+        slug: page.slug.replace("/designsystem/", "").split("/"),
+      },
+    });
   }) || [];
 
+  /* console.log(JSON.stringify(paths, null, 1)); */
   return {
     paths,
     fallback: true,
@@ -76,7 +84,7 @@ interface StaticProps {
   revalidate: number;
 }
 
-const ds_query = `*[_type match "ds_*" && slug.current match "/designsystem/komponent/button*"][0]
+const ds_query = `*[_type match "ds_*" && slug.current match $slug][0]
 {
   "slug": slug.current,
   ...
@@ -88,11 +96,16 @@ export const getStaticProps = async ({
 }): Promise<StaticProps> => {
   const enablePreview = !!preview || isDevelopment();
   const page = await getClient(enablePreview).fetch(ds_query, {
-    slug: slug.join("/"),
+    slug: "designsystem/" + slug.join("/"),
   });
+  console.log("designsystem/" + slug.join("/"));
 
   return {
-    props: { page, preview: enablePreview, slug: slug.join("/") },
+    props: {
+      page,
+      preview: enablePreview,
+      slug: "designsystem/" + slug.join("/"),
+    },
     revalidate: 60,
   };
 };

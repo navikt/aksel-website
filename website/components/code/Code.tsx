@@ -37,7 +37,10 @@ const Pre = styled.pre`
 
 const Code = ({ node }) => {
   const ref = useRef<HTMLElement | null>(null);
-  useMount(() => Prism.highlightElement(ref.current as Element));
+  useMount(
+    () =>
+      node.codeExample?.code && Prism.highlightElement(ref.current as Element)
+  );
 
   return (
     <Div>
@@ -46,18 +49,20 @@ const Code = ({ node }) => {
       </Title>
       {node.body && <SanityBlockContent blocks={node.body} />}
       {node.code_preview && <CodeExample component={node.code_preview} />}
-      <div>
-        <Pre>
-          <code
-            ref={ref}
-            className={`language-${
-              node.codeExample.language ? node.codeExample.language : "jsx"
-            }`}
-          >
-            {node.codeExample.code}
-          </code>
-        </Pre>
-      </div>
+      {node.codeExample?.code && (
+        <div>
+          <Pre>
+            <code
+              ref={ref}
+              className={`language-${
+                node.codeExample?.language ? node.codeExample.language : "jsx"
+              }`}
+            >
+              {node.codeExample.code}
+            </code>
+          </Pre>
+        </div>
+      )}
     </Div>
   );
 };
