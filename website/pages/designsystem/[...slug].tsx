@@ -57,18 +57,6 @@ export const getStaticPaths = async () => {
         slug,
       },
     });
-
-    if ((page._type = "ds_component_page")) {
-      paths.push(
-        ...tabs.map((tab) => {
-          return {
-            params: {
-              slug: [...slug, tab],
-            },
-          };
-        })
-      );
-    }
   }) || [];
 
   /* console.log(JSON.stringify(paths, null, 1)); */
@@ -90,7 +78,11 @@ interface StaticProps {
 const ds_query = `*[slug.current match $slug][0]
 {
   "slug": slug.current,
-  ...
+	...,
+  "page_linker": page_linker{
+  	"next": next->{"slug":slug.current},
+  	"previous": previous->{"slug":slug.current}
+	}
 }`;
 
 export const getStaticProps = async ({
@@ -99,14 +91,12 @@ export const getStaticProps = async ({
 }): Promise<StaticProps> => {
   let joinedSlug = slug.join("/");
 
-  if (slug[0] === "komponent" && slug.length > 2) {
-    joinedSlug = slug.slice(0, -1).join("/");
-  }
-
   const enablePreview = !!preview || isDevelopment();
   const page = await getClient(enablePreview).fetch(ds_query, {
     slug: "designsystem/" + joinedSlug,
   });
+
+  console.log(page);
 
   return {
     props: {

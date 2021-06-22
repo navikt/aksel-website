@@ -32,6 +32,7 @@ const A = styled.a`
   font-weight: var(--navds-font-weight-bold);
   border-bottom: 4px solid transparent;
   cursor: pointer;
+  text-decoration: none;
 
   ::hover {
     border-bottom: 4px solid var(--navds-color-darkgray);
@@ -66,7 +67,7 @@ const ComponentPageTemplate = ({ data }) => {
       switch (end) {
         case "design":
           return 1;
-        case "kode":
+        case "utvikling":
           return 2;
         case "tilgjengelighet":
           return 3;
@@ -79,7 +80,10 @@ const ComponentPageTemplate = ({ data }) => {
   }, [query]);
 
   const getTab = (x, text) => {
-    const newQuery = `/?tab=${text.toLowerCase()}${preview}`;
+    let newQuery = `/?tab=${text.toLowerCase()}${preview}`;
+    newQuery =
+      text.toLowerCase() === "bruk" ? preview.replace("&", "?") : newQuery;
+
     const path = `/designsystem/komponent/${query.slug[1]}`;
     return (
       <li>
@@ -92,21 +96,6 @@ const ComponentPageTemplate = ({ data }) => {
         </Link>
       </li>
     );
-  };
-
-  const getSections = () => {
-    switch (activeTab) {
-      case 0:
-        return data.tab_1;
-      case 1:
-        return data.tab_2;
-      case 2:
-        return data.tab_3;
-      case 3:
-        return data.tab_4;
-      default:
-        return null;
-    }
   };
 
   return (
@@ -126,11 +115,11 @@ const ComponentPageTemplate = ({ data }) => {
         <Ul>
           {getTab(0, "Bruk")}
           {getTab(1, "Design")}
-          {getTab(2, "Kode")}
+          {getTab(2, "Utvikling")}
           {getTab(3, "Tilgjengelighet")}
         </Ul>
       </Nav>
-      {<PageBuilder sections={getSections()} />}
+      {<PageBuilder sections={data[`tab_${activeTab + 1}`]} />}
     </Div>
   );
 };

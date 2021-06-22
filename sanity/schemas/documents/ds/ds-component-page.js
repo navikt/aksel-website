@@ -100,7 +100,7 @@ export default {
     {
       name: "tab_3",
       type: "array",
-      title: "Kode",
+      title: "Utvikling",
       of: [
         { type: "portable_block" },
         { type: "code_example" },
