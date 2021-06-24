@@ -85,20 +85,20 @@ export default {
       to: [{ type: "component_versions" }],
     },
     {
-      name: "tab_1",
+      name: "usage",
       type: "array",
       title: "Bruk",
       of: [{ type: "portable_block" }, { type: "code_example" }, { type: "do_dont" }],
       validation: (Rule) => Rule.required().min(4),
     },
     {
-      name: "tab_2",
+      name: "design",
       type: "array",
       title: "Design",
       of: [],
     },
     {
-      name: "tab_3",
+      name: "development",
       type: "array",
       title: "Utvikling",
       of: [
@@ -109,7 +109,7 @@ export default {
       ],
     },
     {
-      name: "tab_4",
+      name: "accessibility",
       type: "array",
       title: "Tilgjengelighet",
       of: [{ type: "portable_block" }, { type: "code_example" }],

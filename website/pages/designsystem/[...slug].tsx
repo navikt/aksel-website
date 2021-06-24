@@ -6,6 +6,8 @@ import { isDevelopment } from "../../src/util";
 import PreviewBanner from "../../components/PreviewBanner";
 import styled from "styled-components";
 import TemplatePicker from "../../components/TemplatePicker";
+import slugger from "../../components/slugger";
+import { useEffect } from "react";
 
 const Layout = styled.div`
   padding-left: 300px;
@@ -20,6 +22,8 @@ const PagePicker = (props) => {
     initialData: props.page,
     enabled: enablePreview,
   });
+
+  slugger.reset();
 
   if (!router.isFallback && !data?.slug) {
     return <Error statusCode={404} />;
@@ -39,27 +43,36 @@ const PagePicker = (props) => {
   );
 };
 
-const query = `*[_type == "ds_component_page"]{ "type": _type, 'slug': slug.current }`;
+const query = `*[_type == "ds_component_page"]{ _type, 'slug': slug.current }`;
 
 export const getStaticPaths = async () => {
-  const documents = await getClient(false).fetch(query);
+  const documents: any[] | null = await getClient(false).fetch(query);
   const paths = [];
-  const tabs = ["design", "kode", "tilgjengelighet"];
+  const tabs = ["design", "utvikling", "tilgjengelighet"];
 
-  documents?.map((page) => {
+  documents?.forEach((page) => {
     if (!page.slug) {
       return null;
     }
     const slug = page.slug.split("/");
+
+    if (page._type === "ds_component_page") {
+      tabs.forEach((tab) => {
+        paths.push({
+          params: {
+            slug: [...slug, tab],
+          },
+        });
+      });
+    }
 
     paths.push({
       params: {
         slug,
       },
     });
-  }) || [];
+  });
 
-  /* console.log(JSON.stringify(paths, null, 1)); */
   return {
     paths,
     fallback: true,
@@ -89,14 +102,14 @@ export const getStaticProps = async ({
   params: { slug },
   preview,
 }): Promise<StaticProps> => {
-  let joinedSlug = slug.join("/");
+  let joinedSlug = (slug[0] === "komponent" ? slug.slice(0, 2) : slug).join(
+    "/"
+  );
 
   const enablePreview = !!preview || isDevelopment();
   const page = await getClient(enablePreview).fetch(ds_query, {
     slug: "designsystem/" + joinedSlug,
   });
-
-  console.log(page);
 
   return {
     props: {

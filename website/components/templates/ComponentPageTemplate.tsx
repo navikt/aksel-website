@@ -1,114 +1,31 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { Ingress, Title } from "@navikt/ds-react";
 import moment from "moment";
 import { useRouter } from "next/router";
-import Tabs from "../tabs/Tabs";
 import PageBuilder from "../Pagebuilder";
 import styled from "styled-components";
 import Link from "next/link";
-var GithubSlugger = require("github-slugger");
+import { Tab, Tabs } from "../Tabs";
 
 const Div = styled.div`
   max-width: 700px;
 `;
 
-const Nav = styled.nav`
-  margin: var(--navds-spacing-12) 0;
-`;
-
-const Ul = styled.ul`
-  padding: 0;
-  margin: 0;
-  display: flex;
-
-  li {
-    list-style: none;
-  }
-`;
-
-const A = styled.a`
-  color: var(--navds-color-darkgray);
-  background: none;
-  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
-  font-weight: var(--navds-font-weight-bold);
-  border-bottom: 4px solid transparent;
-  cursor: pointer;
-  text-decoration: none;
-
-  ::hover {
-    border-bottom: 4px solid var(--navds-color-darkgray);
-    color: var(--navds-color-darkgray);
-  }
-
-  ::focus {
-    outline: 2px solid var(--navds-color-blue-80);
-    outline-offset: 2px;
-  }
-`;
-
-const ActiveA = styled(A)`
-  border-bottom: 4px solid var(--navds-color-blue-50);
-  color: var(--navds-color-blue-50);
-`;
-
 const ComponentPageTemplate = ({ data }) => {
-  const { query, asPath, push } = useRouter();
-  const r = useRouter();
-  const slugger = useRef(new GithubSlugger());
-  /* console.log(r); */
+  const { query } = useRouter();
 
-  const preview = query?.preview && query.preview ? "&preview=true" : "";
+  const basePath = `/designsystem/${(query.slug as string[])
+    .slice(0, 2)
+    .join("/")}`;
 
-  const [activeTab, setActiveTab] = useState(0);
-
-  // TODO: Optimize this..
-  useEffect(() => {
-    setActiveTab(() => {
-      const end = query.tab;
-      switch (end) {
-        case "design":
-          return 1;
-        case "utvikling":
-          return 2;
-        case "tilgjengelighet":
-          return 3;
-        case "bruk":
-          return 0;
-        default:
-          return 0;
-      }
-    });
-  }, [query]);
-
-  useEffect(() => {
-    slugger.current.reset();
-    const headings = document.getElementsByTagName("h2");
-    for (let item of headings) {
-      item.id = slugger.current.slug(item.textContent);
-    }
-    if (location.hash) {
-      document.getElementById(location.hash.replace("#", ""))?.scrollIntoView();
-    }
-  }, [activeTab]);
-
-  const getTab = (x, text) => {
-    let newQuery = `/?tab=${text.toLowerCase()}${preview}`;
-    newQuery =
-      text.toLowerCase() === "bruk" ? preview.replace("&", "?") : newQuery;
-
-    const path = `/designsystem/komponent/${query.slug[1]}`;
-    return (
-      <li>
-        <Link href={path + newQuery} passHref>
-          {activeTab === x ? (
-            <ActiveA aria-selected={true}>{text}</ActiveA>
-          ) : (
-            <A aria-selected={false}>{text}</A>
-          )}
-        </Link>
-      </li>
-    );
+  const tabs = {
+    bruk: "usage",
+    utvikling: "development",
+    design: "design",
+    tilgjengelighet: "accessibility",
   };
+
+  const activeTab = query.slug[2] ?? "bruk";
 
   return (
     <Div>
@@ -123,15 +40,20 @@ const ComponentPageTemplate = ({ data }) => {
       <div>{`Siste oppdatering: ${moment(
         moment(data._updatedAt)
       ).fromNow()}`}</div>
-      <Nav aria-label="Komponent navigasjontabs">
-        <Ul>
-          {getTab(0, "Bruk")}
-          {getTab(1, "Design")}
-          {getTab(2, "Utvikling")}
-          {getTab(3, "Tilgjengelighet")}
-        </Ul>
-      </Nav>
-      {<PageBuilder sections={data[`tab_${activeTab + 1}`]} />}
+      <Tabs>
+        {Object.entries(tabs).map(
+          ([key, value]) =>
+            data[value] && (
+              <Tab
+                key={key}
+                path={`${basePath}${key === "bruk" ? "" : "/" + key}`}
+              >
+                {key}
+              </Tab>
+            )
+        )}
+      </Tabs>
+      {<PageBuilder sections={data[tabs[activeTab]]} />}
     </Div>
   );
 };

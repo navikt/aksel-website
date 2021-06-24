@@ -14,6 +14,7 @@ import {
 import "@navikt/ds-css";
 import Code from "./code/Code";
 import styled from "styled-components";
+import slugger from "./slugger";
 
 const StyledCode = styled.code`
   color: red;
@@ -44,10 +45,13 @@ const serializers = {
         case "label":
           return <Label spacing>{children}</Label>;
         case "h2": {
-          /* console.log(slugger.slug(children.toString())); */
-          /* console.log(slugger.slug(children[0].toString())); */
           return (
-            <Title id={""} spacing level={2} size="xl">
+            <Title
+              spacing
+              level={2}
+              size="xl"
+              id={slugger.slug(children.toString())}
+            >
               {children}
             </Title>
           );

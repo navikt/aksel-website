@@ -1,7 +1,6 @@
 import React from "react";
 import "@navikt/ds-css?raw";
 import { Detail, Title, BodyLong, BodyShort, Label } from "@navikt/ds-react";
-import { Attachment } from "@navikt/ds-icons";
 
 const TitleRenderer = (props, size, level) => (
   <Title size={size} level={level}>

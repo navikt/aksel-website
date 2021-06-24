@@ -7,6 +7,7 @@ import styled from "styled-components";
 import CodeExample from "./CodeExample";
 import { Title } from "@navikt/ds-react";
 import { SanityBlockContent } from "../SanityBlockContent";
+import slugger from "../slugger";
 
 const PrismLanguages = [
   "insertBefore",
@@ -44,7 +45,7 @@ const Code = ({ node }) => {
 
   return (
     <Div>
-      <Title spacing level={2} size="xl">
+      <Title spacing level={2} size="xl" id={slugger.slug(node.title)}>
         {node.title}
       </Title>
       {node.body && <SanityBlockContent blocks={node.body} />}
