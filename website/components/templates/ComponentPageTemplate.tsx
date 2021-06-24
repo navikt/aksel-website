@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Ingress, Title } from "@navikt/ds-react";
 import moment from "moment";
 import { useRouter } from "next/router";
@@ -6,6 +6,7 @@ import Tabs from "../tabs/Tabs";
 import PageBuilder from "../Pagebuilder";
 import styled from "styled-components";
 import Link from "next/link";
+var GithubSlugger = require("github-slugger");
 
 const Div = styled.div`
   max-width: 700px;
@@ -53,8 +54,8 @@ const ActiveA = styled(A)`
 const ComponentPageTemplate = ({ data }) => {
   const { query, asPath, push } = useRouter();
   const r = useRouter();
-
-  console.log(r);
+  const slugger = useRef(new GithubSlugger());
+  /* console.log(r); */
 
   const preview = query?.preview && query.preview ? "&preview=true" : "";
 
@@ -78,6 +79,17 @@ const ComponentPageTemplate = ({ data }) => {
       }
     });
   }, [query]);
+
+  useEffect(() => {
+    slugger.current.reset();
+    const headings = document.getElementsByTagName("h2");
+    for (let item of headings) {
+      item.id = slugger.current.slug(item.textContent);
+    }
+    if (location.hash) {
+      document.getElementById(location.hash.replace("#", ""))?.scrollIntoView();
+    }
+  }, [activeTab]);
 
   const getTab = (x, text) => {
     let newQuery = `/?tab=${text.toLowerCase()}${preview}`;

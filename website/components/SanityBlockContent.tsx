@@ -23,7 +23,7 @@ const serializers = {
   types: {
     code_example: Code,
 
-    block: ({ node, children }) => {
+    block: ({ node, children, ...rest }) => {
       const style = node.style;
 
       switch (style) {
@@ -43,12 +43,15 @@ const serializers = {
           );
         case "label":
           return <Label spacing>{children}</Label>;
-        case "h2":
+        case "h2": {
+          /* console.log(slugger.slug(children.toString())); */
+          /* console.log(slugger.slug(children[0].toString())); */
           return (
-            <Title spacing level={2} size="xl">
+            <Title id={""} spacing level={2} size="xl">
               {children}
             </Title>
           );
+        }
         case "h3":
           return (
             <Title spacing level={3} size="l">

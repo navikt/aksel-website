@@ -3,6 +3,8 @@ import Block from "./Block";
 import PropTable from "./Proptable";
 import Changelog from "./Changelog";
 import styled from "styled-components";
+import React from "react";
+import { SanityBlockContent } from "./SanityBlockContent";
 
 const Div = styled.div`
   margin-bottom: var(--navds-spacing-12);
@@ -24,6 +26,7 @@ const blocks = {
   free_block: (node) => <Block node={node} />,
   prop_table: (node) => <PropTable node={node} />,
   changelog: (node) => <Changelog node={node} />,
+  portable_block: (node) => <SanityBlockContent blocks={node.body} />,
 };
 
 const PageBuilder = ({ sections }) => {
@@ -36,7 +39,7 @@ const PageBuilder = ({ sections }) => {
       {sections.map((section) => {
         if (!Object.keys(blocks).includes(section._type)) {
           console.log(`${section._type} not a valid page builder section`);
-          return <PlaceHolder>{section._type}</PlaceHolder>;
+          return <PlaceHolder key={section._key}>{section._type}</PlaceHolder>;
         }
         const Comp = blocks[section._type];
         return (

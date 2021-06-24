@@ -112,12 +112,7 @@ export default {
       name: "tab_4",
       type: "array",
       title: "Tilgjengelighet",
-      of: [
-        { type: "portable_block" },
-        { type: "code_example" },
-        { type: "prop_table" },
-        { type: "changelog" },
-      ],
+      of: [{ type: "portable_block" }, { type: "code_example" }],
     },
     {
       name: "page_linker",
