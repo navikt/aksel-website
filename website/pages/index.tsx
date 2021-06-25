@@ -7,6 +7,8 @@ import { getClient } from "../lib/sanity.server";
 import PreviewBanner from "../components/PreviewBanner";
 
 import FrontPage from "../components/pages/FrontPage";
+import { Title } from "@navikt/ds-react";
+import Link from "next/link";
 
 const Page = ({ frontpage, preview }) => {
   const router = useRouter();
@@ -24,7 +26,23 @@ const Page = ({ frontpage, preview }) => {
   return (
     <>
       {enabledPreview && <PreviewBanner slug="Forside" />}
-      <FrontPage {...pagedata} />
+      <div>
+        <Title level={1} size="xl">
+          Forside
+        </Title>
+        {pagedata.map((page) => {
+          if (page._type === "ds_component_page") {
+            return (
+              <li key={page.slug}>
+                <Link passHref href={page.slug}>
+                  <a>{page.slug}</a>
+                </Link>
+              </li>
+            );
+          }
+          return null;
+        })}
+      </div>
     </>
   );
 };
@@ -47,16 +65,6 @@ export const getStaticProps = async ({
   };
 };
 
-const query = `*[_type == "frontpage"][0]
-  {
-      "id": _id,
-      title,
-      headline,
-      panels[]{
-        title,
-        content,
-        "slug": pagereference->slug.current
-      }
-  }`;
+const query = `*[]{ _type, 'slug': slug.current }`;
 
 export default Page;
