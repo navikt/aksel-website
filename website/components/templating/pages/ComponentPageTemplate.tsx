@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import PageBuilder from "../Pagebuilder";
 import styled from "styled-components";
 import Link from "next/link";
-import { Tab, Tabs } from "../Tabs";
+import { Tab, Tabs } from "../../Tabs";
 
 const Div = styled.div`
   max-width: 700px;

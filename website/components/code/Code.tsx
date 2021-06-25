@@ -6,7 +6,7 @@ import "prismjs/components/prism-typescript.min";
 import styled from "styled-components";
 import CodeExample from "./CodeExample";
 import { Title } from "@navikt/ds-react";
-import { SanityBlockContent } from "../SanityBlockContent";
+import { SanityBlockContent } from "../templating/SanityBlockContent";
 import slugger from "../slugger";
 
 const PrismLanguages = [

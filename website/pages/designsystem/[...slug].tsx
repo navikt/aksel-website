@@ -5,9 +5,8 @@ import { usePreviewSubscription } from "../../lib/santiy";
 import { isDevelopment } from "../../src/util";
 import PreviewBanner from "../../components/PreviewBanner";
 import styled from "styled-components";
-import TemplatePicker from "../../components/TemplatePicker";
+import TemplatePicker from "../../components/templating/TemplatePicker";
 import slugger from "../../components/slugger";
-import { useEffect } from "react";
 
 const Layout = styled.div`
   padding-left: 300px;

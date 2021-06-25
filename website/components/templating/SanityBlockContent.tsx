@@ -1,6 +1,5 @@
 import React from "react";
 import BlockContent from "@sanity/block-content-to-react";
-/* import dynamic from "next/dynamic"; */
 import NextjsLink from "next/link";
 import {
   BodyLong,
@@ -12,9 +11,9 @@ import {
   Title,
 } from "@navikt/ds-react";
 import "@navikt/ds-css";
-import Code from "./code/Code";
+import Code from "../code/Code";
 import styled from "styled-components";
-import slugger from "./slugger";
+import slugger from "../slugger";
 
 const StyledCode = styled.code`
   color: red;

@@ -1,6 +1,6 @@
 import { Link, Title } from "@navikt/ds-react";
 /* import styled from "styled-components"; */
-import { SanityBlockContent } from "./SanityBlockContent";
+import { SanityBlockContent } from "./templating/SanityBlockContent";
 
 const Changelog = ({ node }) => {
   const changes = node.changes;

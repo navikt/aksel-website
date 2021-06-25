@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ComponentPageTemplate from "./templates/ComponentPageTemplate";
+import ComponentPageTemplate from "./pages/ComponentPageTemplate";
 
 const templates = {
   ds_component_page: (props) => <ComponentPageTemplate {...props} />,
