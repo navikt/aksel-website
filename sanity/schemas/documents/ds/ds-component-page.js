@@ -88,7 +88,12 @@ export default {
       name: "usage",
       type: "array",
       title: "Bruk",
-      of: [{ type: "portable_block" }, { type: "code_example" }, { type: "do_dont" }],
+      of: [
+        { type: "portable_block" },
+        { type: "code_example" },
+        { type: "do_dont" },
+        { type: "uu_interaction" },
+      ],
       validation: (Rule) => Rule.required().min(4),
     },
     {

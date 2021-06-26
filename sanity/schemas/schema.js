@@ -17,6 +17,7 @@ import component_versions from "./documents/versions";
 import do_dont from "./objects/components/do-dont/do-dont";
 import page_linker from "./objects/pagelinker";
 import persons from "./documents/persons";
+import uu_interactions, { keyboardTable } from "./objects/components/uu-interaction";
 
 export default createSchema({
   name: "default",
@@ -34,5 +35,7 @@ export default createSchema({
     do_dont,
     page_linker,
     persons,
+    uu_interactions,
+    keyboardTable,
   ]),
 });
