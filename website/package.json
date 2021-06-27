@@ -19,6 +19,7 @@
     "nav-frontend-tabell-style": "^2.0.1",
     "@sanity/client": "^2.11.0",
     "@sanity/block-content-to-react": "^3.0.0",
+    "@sanity/image-url": "^0.140.22",
     "gh-pages": "^3.2.0",
     "groq": "^2.2.6",
     "next": "^10.2.3",

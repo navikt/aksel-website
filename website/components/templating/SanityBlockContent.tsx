@@ -16,6 +16,7 @@ import styled from "styled-components";
 import slugger from "../slugger";
 import Changelog from "../Changelog";
 import PropTable from "../Proptable";
+import DoDont from "../DoDont";
 
 const StyledCode = styled.code`
   color: red;
@@ -42,6 +43,7 @@ const serializers = {
     code_example: Code,
     changelog: Changelog,
     prop_table: PropTable,
+    do_dont: DoDont,
 
     block: ({ node, children, ...rest }) => {
       const style = node.style;

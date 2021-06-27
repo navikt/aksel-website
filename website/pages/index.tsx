@@ -35,7 +35,7 @@ const Page = ({ frontpage, preview }) => {
             return (
               <li key={page.slug}>
                 <Link passHref href={page.slug}>
-                  <a>{page.slug}</a>
+                  <a>{"/" + page.slug}</a>
                 </Link>
               </li>
             );

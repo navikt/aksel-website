@@ -154,5 +154,6 @@ export default {
     { type: "prop_table" },
     { type: "changelog" },
     { type: "uu_interaction" },
+    { type: "do_dont" },
   ],
 };
