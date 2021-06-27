@@ -1,0 +1,15 @@
+kbd {
+  font-family: Consolas, "Lucida Console", monospace;
+  display: inline-block;
+  border-radius: 3px;
+  padding: 0px 4px;
+  box-shadow: 1px 1px 1px #777;
+  margin: 2px;
+  vertical-align: text-bottom;
+  background: #eee;
+  font-weight: 500;
+  color: #555;
+  cursor: pointer;
+  font-variant: small-caps;
+  font-weight: 600;
+}

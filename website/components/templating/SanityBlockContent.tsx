@@ -14,14 +14,34 @@ import "@navikt/ds-css";
 import Code from "../code/Code";
 import styled from "styled-components";
 import slugger from "../slugger";
+import Changelog from "../Changelog";
+import PropTable from "../Proptable";
 
 const StyledCode = styled.code`
   color: red;
 `;
 
+const StyledKbd = styled.code`
+  font-family: Consolas, "Lucida Console", monospace;
+  display: inline-block;
+  border-radius: 3px;
+  padding: 0px 4px;
+  box-shadow: 1px 1px 1px #777;
+  margin: 2px;
+  vertical-align: text-bottom;
+  background: #eee;
+  font-weight: 500;
+  color: #555;
+  cursor: pointer;
+  font-variant: small-caps;
+  font-weight: 600;
+`;
+
 const serializers = {
   types: {
     code_example: Code,
+    changelog: Changelog,
+    prop_table: PropTable,
 
     block: ({ node, children, ...rest }) => {
       const style = node.style;
@@ -77,6 +97,9 @@ const serializers = {
     },
   },
   marks: {
+    kbd: (props) => {
+      return <StyledKbd>{props.children}</StyledKbd>;
+    },
     code: (props) => {
       return <StyledCode>{props.children}</StyledCode>;
     },

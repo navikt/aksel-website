@@ -7,14 +7,6 @@ export default [
     id: "ds_component_page_template",
     title: "Komponentside template",
     schemaType: "ds_component_page",
-    value: {
-      tab_1: [
-        { _type: "code_example", title: "Eksempeltittel" },
-        { _type: "code_example", title: "Eksempeltittel2" },
-        { _type: "do_dont", title: "DoDont" },
-        { _type: "portable_block", title: "Tekstblokk" },
-      ],
-      tab_3: [{ _type: "prop_table", props: [{ _type: "prop_table.prop" }] }],
-    },
+    value: {},
   }),
 ];

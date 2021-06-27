@@ -86,38 +86,23 @@ export default {
     },
     {
       name: "usage",
-      type: "array",
+      type: "blockContent",
       title: "Bruk",
-      of: [
-        { type: "portable_block" },
-        { type: "code_example" },
-        { type: "do_dont" },
-        { type: "uu_interaction" },
-      ],
-      validation: (Rule) => Rule.required().min(4),
     },
     {
       name: "design",
-      type: "array",
+      type: "blockContent",
       title: "Design",
-      of: [],
     },
     {
       name: "development",
-      type: "array",
+      type: "blockContent",
       title: "Utvikling",
-      of: [
-        { type: "portable_block" },
-        { type: "code_example" },
-        { type: "prop_table" },
-        { type: "changelog" },
-      ],
     },
     {
       name: "accessibility",
-      type: "array",
+      type: "blockContent",
       title: "Tilgjengelighet",
-      of: [{ type: "portable_block" }, { type: "code_example" }],
     },
     {
       name: "page_linker",

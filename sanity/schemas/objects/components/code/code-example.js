@@ -6,17 +6,6 @@ export default {
   type: "object",
   fields: [
     {
-      name: "title",
-      title: "Tittel",
-      type: "string",
-      /* validation: (Rule) => Rule.required(), */
-    },
-    {
-      name: "body",
-      title: "Tekst",
-      type: "simple_block_content",
-    },
-    {
       title: "Kode eksempel",
       name: "code_preview",
       type: "string",

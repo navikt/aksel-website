@@ -98,6 +98,14 @@ export default {
               ),
             },
           },
+          {
+            title: "Keyboard",
+            value: "kbd",
+            blockEditor: {
+              icon: () => <kbd>KBD</kbd>,
+              render: (props) => <kbd>{props.children}</kbd>,
+            },
+          },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
@@ -143,5 +151,8 @@ export default {
     },
     // Custom types ( add components here)
     { type: "code_example" },
+    { type: "prop_table" },
+    { type: "changelog" },
+    { type: "uu_interaction" },
   ],
 };

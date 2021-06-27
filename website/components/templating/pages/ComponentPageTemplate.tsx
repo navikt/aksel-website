@@ -6,6 +6,7 @@ import PageBuilder from "../Pagebuilder";
 import styled from "styled-components";
 import Link from "next/link";
 import { Tab, Tabs } from "../../Tabs";
+import { SanityBlockContent } from "../SanityBlockContent";
 
 const Div = styled.div`
   max-width: 700px;
@@ -13,6 +14,7 @@ const Div = styled.div`
 
 const ComponentPageTemplate = ({ data }) => {
   const { query } = useRouter();
+  console.log(data);
 
   const basePath = `/designsystem/${(query.slug as string[])
     .slice(0, 2)
@@ -53,7 +55,7 @@ const ComponentPageTemplate = ({ data }) => {
             )
         )}
       </Tabs>
-      {<PageBuilder sections={data[tabs[activeTab]]} />}
+      <SanityBlockContent blocks={data[tabs[activeTab]]} />
     </Div>
   );
 };

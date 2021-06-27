@@ -5,9 +5,7 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import navLink from "./documents/nav/navLink";
 import navSection from "./documents/nav/section"; */
 import blockContent from "./documents/blockContent";
-import simple_block_content from "./documents/simpleBlockContent";
 import codeExample from "./objects/components/code/code-example";
-import portable_block from "./objects/block";
 import prop_table from "./objects/components/proptable/Proptable";
 import prop from "./objects/components/proptable/Prop";
 import changelog from "./objects/components/changelog/Changelog";
@@ -24,8 +22,6 @@ export default createSchema({
   types: schemaTypes.concat([
     codeExample,
     blockContent,
-    simple_block_content,
-    portable_block,
     prop_table,
     prop,
     changelog,
