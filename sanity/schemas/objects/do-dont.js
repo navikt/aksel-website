@@ -21,6 +21,12 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      title: "alt tekst for bild",
+      name: "do_dont_1_alt",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: "do_dont_1_body",
       title: "Fritekst",
       type: "blockContent",
@@ -35,6 +41,13 @@ export default {
       title: "Bilde 2",
       name: "do_dont_2",
       type: "image",
+      fieldset: "optional_dodonts",
+    },
+    {
+      title: "alt tekst for bild",
+      name: "do_dont_2_alt",
+      type: "string",
+      validation: (Rule) => Rule.required(),
       fieldset: "optional_dodonts",
     },
     {
