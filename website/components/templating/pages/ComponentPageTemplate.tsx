@@ -2,7 +2,6 @@ import React from "react";
 import { Ingress, Title } from "@navikt/ds-react";
 import moment from "moment";
 import { useRouter } from "next/router";
-import PageBuilder from "../Pagebuilder";
 import styled from "styled-components";
 import Link from "next/link";
 import { Tab, Tabs } from "../../Tabs";
