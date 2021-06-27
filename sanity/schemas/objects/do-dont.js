@@ -21,7 +21,7 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      title: "alt tekst for bild",
+      title: "alt tekst for bilde",
       name: "do_dont_1_alt",
       type: "string",
       validation: (Rule) => Rule.required(),
@@ -44,10 +44,19 @@ export default {
       fieldset: "optional_dodonts",
     },
     {
-      title: "alt tekst for bild",
+      title: "alt tekst for bilde",
       name: "do_dont_2_alt",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.custom((s, ctx) => {
+          if ("do_dont_2" in ctx.parent) {
+            if (s !== undefined) {
+              return true;
+            }
+            return "Bilde må ha alt tag";
+          }
+          return true;
+        }),
       fieldset: "optional_dodonts",
     },
     {
