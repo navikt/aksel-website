@@ -41,15 +41,15 @@ export default {
     {
       title: "Status",
       name: "status",
-      type: "array",
+      type: "string",
       validation: (Rule) => Rule.required(),
-      of: [{ type: "string" }],
       options: {
         list: [
           { value: "published", title: "Publisert" },
           { value: "beta", title: "Beta" },
           { value: "wip", title: "WIP" },
         ],
+        layout: "radio",
       },
     },
     {

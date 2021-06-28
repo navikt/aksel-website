@@ -4,20 +4,14 @@ export default {
   type: "object",
   fields: [
     {
-      name: "title",
-      title: "Tittel",
-      type: "string",
-      /* validation: (Rule) => Rule.required(), */
-    },
-    {
       title: "Fokus håndtering",
       name: "uu_interaction_focus",
-      type: "image",
+      type: "blockContent",
     },
     {
       title: "Mus håndtering",
       name: "uu_interaction_mouse",
-      type: "image",
+      type: "blockContent",
     },
     {
       title: "Keyboard håndtering",
@@ -27,10 +21,7 @@ export default {
     },
   ],
   preview: {
-    select: {
-      title: "title",
-    },
-    prepare: ({ title }) => ({ title: "UU interaksjoner " + title }),
+    prepare: () => ({ title: "UU interaksjoner" }),
   },
 };
 
@@ -42,14 +33,17 @@ export const keyboardTable = {
     {
       name: "command",
       title: "Kommando",
-      type: "string",
+      type: "blockContent",
       validation: (Rule) => Rule.required(),
     },
     {
       name: "description",
       title: "Beskrivelse",
-      type: "string",
+      type: "blockContent",
       validation: (Rule) => Rule.required(),
     },
   ],
+  preview: {
+    prepare: () => ({ title: "Interaksjon" }),
+  },
 };

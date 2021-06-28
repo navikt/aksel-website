@@ -17,6 +17,7 @@ import slugger from "../slugger";
 import Changelog from "../Changelog";
 import PropTable from "../Proptable";
 import DoDont from "../DoDont";
+import uuInteraction from "../uuInteraction";
 
 const StyledCode = styled.code`
   color: red;
@@ -44,6 +45,7 @@ const serializers = {
     changelog: Changelog,
     prop_table: PropTable,
     do_dont: DoDont,
+    uu_interaction: uuInteraction,
 
     block: ({ node, children, ...rest }) => {
       const style = node.style;

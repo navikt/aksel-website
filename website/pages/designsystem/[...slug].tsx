@@ -8,10 +8,6 @@ import styled from "styled-components";
 import TemplatePicker from "../../components/templating/TemplatePicker";
 import slugger from "../../components/slugger";
 
-const Layout = styled.div`
-  padding-left: 300px;
-`;
-
 const PagePicker = (props) => {
   const router = useRouter();
   const enablePreview = !!props.preview || !!router.query.preview;
@@ -35,9 +31,9 @@ const PagePicker = (props) => {
   return (
     <>
       {enablePreview && <PreviewBanner slug={props?.slug} />}
-      <Layout>
+      <div>
         <TemplatePicker data={data} />
-      </Layout>
+      </div>
     </>
   );
 };

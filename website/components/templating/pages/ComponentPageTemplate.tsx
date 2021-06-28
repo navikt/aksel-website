@@ -9,11 +9,16 @@ import { SanityBlockContent } from "../SanityBlockContent";
 
 const Div = styled.div`
   max-width: 700px;
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column; */
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const ComponentPageTemplate = ({ data }) => {
   const { query } = useRouter();
-  console.log(data);
+  /*   console.log(data); */
 
   const basePath = `/designsystem/${(query.slug as string[])
     .slice(0, 2)

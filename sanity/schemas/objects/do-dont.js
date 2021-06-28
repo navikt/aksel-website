@@ -2,79 +2,66 @@ export default {
   title: "Do / Dont",
   name: "do_dont",
   type: "object",
-  fieldsets: [
+  fields: [
+    { title: "Tittel (vises bare internt i sanity)", name: "title", type: "string" },
     {
-      name: "optional_dodonts",
-      title: "Optional (Setter dem side om side)",
-      descrtiption: "testdesc",
-      options: {
-        collapsible: true,
-        collapsed: false,
-      },
+      type: "array",
+      name: "do_dont_block",
+      title: "Pictures",
+      of: [{ type: "do_dont.block" }],
+      validation: (Rule) => Rule.required(),
     },
   ],
+};
+
+export const doDont = {
+  title: "DoDont",
+  name: "do_dont.block",
+  type: "object",
   fields: [
     {
-      title: "Bilde 1",
-      name: "do_dont_1",
+      title: "Bilde",
+      name: "do_dont_img",
       type: "image",
+      description:
+        "Bilde size: x:700px hvis ett bilde, x:330 y:330 hvis det er flere bilder (side om side view)",
       validation: (Rule) => Rule.required(),
     },
     {
       title: "alt tekst for bilde",
-      name: "do_dont_1_alt",
+      name: "do_dont_alt",
       type: "string",
       validation: (Rule) => Rule.required(),
     },
     {
-      name: "do_dont_1_body",
+      name: "do_dont_body",
       title: "Fritekst",
       type: "blockContent",
-    },
-    {
-      title: "Do / Dont",
-      name: "do_dont_1_bool",
-      type: "boolean",
       validation: (Rule) => Rule.required(),
     },
     {
-      title: "Bilde 2",
-      name: "do_dont_2",
-      type: "image",
-      fieldset: "optional_dodonts",
-    },
-    {
-      title: "alt tekst for bilde",
-      name: "do_dont_2_alt",
+      name: "do_dont_variant",
+      title: "Variant",
       type: "string",
-      validation: (Rule) =>
-        Rule.custom((s, ctx) => {
-          if ("do_dont_2" in ctx.parent) {
-            if (s !== undefined) {
-              return true;
-            }
-            return "Bilde må ha alt tag";
-          }
-          return true;
-        }),
-      fieldset: "optional_dodonts",
-    },
-    {
-      name: "do_dont_2_body",
-      title: "Fritekst",
-      type: "blockContent",
-      fieldset: "optional_dodonts",
-    },
-    {
-      title: "Do / Dont",
-      name: "do_dont_2_bool",
-      type: "boolean",
-      fieldset: "optional_dodonts",
+      options: {
+        list: [
+          { title: "Do", value: "do" },
+          { title: "Dont", value: "dont" },
+          { title: "Warning", value: "warning" },
+        ],
+        layout: "radio",
+      },
+      validation: (Rule) => Rule.required(),
     },
   ],
   initialValue: {
     // this overrides the initial value defined on the field
-    do_dont_1_bool: false,
-    do_dont_2_bool: false,
+    do_dont_variant: "do",
   },
 };
+
+/*
+
+
+
+*/

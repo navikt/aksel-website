@@ -8,7 +8,7 @@ import prop_table, { prop } from "./objects/proptable";
 import changelog, { change } from "./objects/changelog";
 import designsystem_component_page from "./documents/ds/ds-component-page";
 import component_versions from "./documents/versions";
-import do_dont from "./objects/do-dont";
+import do_dont, { doDont } from "./objects/do-dont";
 import page_linker from "./objects/pagelinker";
 import persons from "./documents/persons";
 import uu_interactions, { keyboardTable } from "./objects/uu-interaction";
@@ -25,6 +25,7 @@ export default createSchema({
     designsystem_component_page,
     component_versions,
     do_dont,
+    doDont,
     page_linker,
     persons,
     uu_interactions,
