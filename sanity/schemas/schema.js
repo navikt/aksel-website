@@ -3,7 +3,7 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 
 /* Schemas */
 import block_content from "./block-content";
-import code_example from "./objects/code-example";
+import code_example, { example } from "./objects/code-example";
 import prop_table, { prop } from "./objects/proptable";
 import changelog, { change } from "./objects/changelog";
 import designsystem_component_page from "./documents/ds/ds-component-page";
@@ -17,6 +17,7 @@ export default createSchema({
   name: "default",
   types: schemaTypes.concat([
     code_example,
+    example,
     block_content,
     prop_table,
     prop,

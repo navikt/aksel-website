@@ -17,7 +17,7 @@ import slugger from "../slugger";
 import Changelog from "../Changelog";
 import PropTable from "../Proptable";
 import DoDont from "../DoDont";
-import uuInteraction from "../uuInteraction";
+import uuInteraction from "../UuInteraction";
 
 const StyledCode = styled.code`
   color: red;

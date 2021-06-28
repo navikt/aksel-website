@@ -6,8 +6,7 @@ import { useMount } from "react-use"; */
 
 const Div = styled.div`
   padding: 3rem;
-  border: 2px solid #282a36;
-  border-bottom: none;
+  border: 2px solid var(--navds-color-gray-20);
 `;
 
 const Handle = styled.span`
