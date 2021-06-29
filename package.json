@@ -17,7 +17,8 @@
     "build:next": "yarn workspace website build",
     "serve:next": "yarn workspace website start",
     "deploy": "yarn workspace website deploy",
-    "sanity": "yarn workspace sanity start"
+    "sanity": "yarn workspace sanity start",
+    "sanity:deploy": "yarn workspace sanity deploy"
   },
   "workspaces": [
     "sanity",
