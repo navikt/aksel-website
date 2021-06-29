@@ -8,6 +8,7 @@ export default {
       name: "props",
       title: "Props",
       of: [{ type: "prop_table.prop" }],
+      validation: (Rule) => Rule.required().min(1),
     },
   ],
   preview: {

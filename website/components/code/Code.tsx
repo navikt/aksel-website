@@ -77,18 +77,26 @@ const Code = ({ node }) => {
   const ref = useRef<HTMLElement | null>(null);
   const [activeTab, setActiveTab] = useState(0);
 
-  if (!node.code_preview && !node.codeExample?.code) {
+  if (
+    !!node.code_preview &&
+    !!node.codeExample?.code &&
+    !!node?.code_examples_tabs
+  ) {
     return null;
   }
 
   const language =
-    node.code_examples_tabs[activeTab].codeExample.language ?? "jsx";
+    (node.code_examples_tabs &&
+      node?.code_examples_tabs[activeTab].codeExample.language) ??
+    "jsx";
 
-  const highlighted = Prism.highlight(
-    node.code_examples_tabs[activeTab].codeExample.code,
-    Prism.languages[language],
-    language
-  );
+  const highlighted =
+    node.code_examples_tabs &&
+    Prism.highlight(
+      node.code_examples_tabs[activeTab].codeExample.code,
+      Prism.languages[language],
+      language
+    );
 
   const codePreview = () => {
     return (
@@ -108,25 +116,30 @@ const Code = ({ node }) => {
     );
   };
 
+  const showTabs =
+    !!node.code_examples_tabs && node.code_examples_tabs.length > 1;
+
   return (
     <Div>
       {node.code_preview && <CodeExample component={node.code_preview} />}
       {node.code_examples_tabs && (
         <>
-          <Ul>
-            {node.code_examples_tabs.map((code, x) => {
-              return (
-                <Li key={code._key}>
-                  <Button
-                    aria-selected={x === activeTab}
-                    onClick={() => setActiveTab(x)}
-                  >
-                    {code.codeExample.language ?? "CODE"}
-                  </Button>
-                </Li>
-              );
-            })}
-          </Ul>
+          {showTabs && (
+            <Ul>
+              {node.code_examples_tabs.map((code, x) => {
+                return (
+                  <Li key={code._key}>
+                    <Button
+                      aria-selected={x === activeTab}
+                      onClick={() => setActiveTab(x)}
+                    >
+                      {code.codeExample.language ?? "CODE"}
+                    </Button>
+                  </Li>
+                );
+              })}
+            </Ul>
+          )}
           {codePreview()}
         </>
       )}

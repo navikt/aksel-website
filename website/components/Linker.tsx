@@ -34,11 +34,10 @@ const LinkBox = styled.div`
 `;
 
 const Linker = ({ node }) => {
-  console.log(node);
+  /* console.log(node); */
   return (
     <Div>
       {node.linker_links.map((link) => {
-        console.log(link);
         const props = link.link_url_external
           ? {
               target: "_blank",

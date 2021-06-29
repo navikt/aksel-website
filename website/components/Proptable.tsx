@@ -1,10 +1,15 @@
 import { Title } from "@navikt/ds-react";
 import "nav-frontend-tabell-style/dist/main.css";
+import styled from "styled-components";
+
+const Div = styled.div`
+  margin-bottom: var(--navds-spacing-8);
+`;
 
 const PropTable = ({ node }) => {
   const props = node.props;
   return (
-    <div>
+    <Div>
       <Title spacing level={2} size="xl">
         Proptable
       </Title>
@@ -32,7 +37,7 @@ const PropTable = ({ node }) => {
           })}
         </tbody>
       </table>
-    </div>
+    </Div>
   );
 };
 

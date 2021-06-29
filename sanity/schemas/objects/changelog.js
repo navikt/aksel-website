@@ -8,6 +8,7 @@ export default {
       name: "changes",
       title: "Endringer",
       of: [{ type: "changelog.change" }],
+      validation: (Rule) => Rule.required().min(1),
     },
   ],
   preview: {
