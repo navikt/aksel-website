@@ -14,6 +14,11 @@ export default {
       type: "blockContent",
     },
     {
+      title: "Skjermleser",
+      name: "uu_interaction_screen_reader",
+      type: "blockContent",
+    },
+    {
       title: "Keyboard håndtering",
       name: "uu_interaction_keyboard",
       type: "array",

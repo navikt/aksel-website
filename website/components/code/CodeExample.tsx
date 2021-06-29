@@ -9,14 +9,6 @@ const Div = styled.div`
   border: 2px solid var(--navds-color-gray-20);
 `;
 
-const Handle = styled.span`
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  color: black;
-  background: black;
-`;
-
 const CodeExample = ({ component }) => {
   return (
     <>

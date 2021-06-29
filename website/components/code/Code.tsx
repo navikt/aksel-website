@@ -108,7 +108,6 @@ const Code = ({ node }) => {
     );
   };
 
-  console.log(node);
   return (
     <Div>
       {node.code_preview && <CodeExample component={node.code_preview} />}

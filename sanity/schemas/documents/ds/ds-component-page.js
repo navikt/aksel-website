@@ -104,10 +104,5 @@ export default {
       type: "blockContent",
       title: "Tilgjengelighet",
     },
-    {
-      name: "page_linker",
-      type: "page_linker",
-      title: "Side linker",
-    },
   ],
 };

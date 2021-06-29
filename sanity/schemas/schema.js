@@ -9,7 +9,7 @@ import changelog, { change } from "./objects/changelog";
 import designsystem_component_page from "./documents/ds/ds-component-page";
 import component_versions from "./documents/versions";
 import do_dont, { doDont } from "./objects/do-dont";
-import page_linker from "./objects/pagelinker";
+import linker, { links } from "./objects/linker";
 import persons from "./documents/persons";
 import uu_interactions, { keyboardTable } from "./objects/uu-interaction";
 
@@ -27,7 +27,8 @@ export default createSchema({
     component_versions,
     do_dont,
     doDont,
-    page_linker,
+    linker,
+    links,
     persons,
     uu_interactions,
     keyboardTable,
