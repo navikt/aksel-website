@@ -1,5 +1,5 @@
 export default {
-  title: "Side links",
+  title: "Linker til sider",
   name: "linker",
   type: "object",
   fields: [

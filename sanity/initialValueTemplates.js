@@ -13,28 +13,26 @@ export default [
         ...getHeading("Slik brukes komponeten"),
         ...getHeading("Anatomien"),
         ...getHeading("Komponent eksempel 1"),
-        { _type: "code_example" },
+        placeholder("Kode eksempel"),
         ...getHeading("Komponent eksempel 2"),
-        { _type: "code_example" },
-        { _type: "do_dont" },
+        placeholder("Kode eksempel"),
+        placeholder("Do / Dont"),
         ...getHeading("Universell utforming"),
-        { _type: "uu_interaction" },
-        { _type: "linker" },
+        placeholder("Komponent interaksjoner (UU)"),
         ...getHeading("Designavgjørelse"),
         ...getHeading("Bruk i det fri"),
       ],
       design: [
-        { _type: "linker" },
+        placeholder("Side links til designsider"),
         ...getHeading("Anatomien"),
         ...getHeading("Bruke komponenten i Figma"),
-        { _type: "do_dont" },
+        placeholder("Do / Dont for figma"),
       ],
       development: [
-        { _type: "linker" },
-        { _type: "code_example" },
-        { _type: "prop_table" },
-        { _type: "changelog" },
-        { _type: "linker" },
+        placeholder("Side links for utivklere"),
+        placeholder("Kode eksempler"),
+        placeholder("Prop table"),
+        placeholder("Changelog"),
       ],
       accessibility: [
         ...getHeading("Vurderin av universell utforming"),
@@ -44,6 +42,19 @@ export default [
     }),
   }),
 ];
+
+const placeholder = (text) => ({
+  _type: "block",
+  children: [
+    {
+      _type: "span",
+      marks: [],
+      text: `!!** Sett inn ${text} her **!!`,
+    },
+  ],
+  markDefs: [],
+  style: "normal",
+});
 
 const getHeading = (heading) => [
   {
