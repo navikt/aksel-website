@@ -12,6 +12,8 @@ import do_dont, { doDont } from "./objects/do-dont";
 import linker, { links } from "./objects/linker";
 import persons from "./documents/persons";
 import uu_interactions, { keyboardTable } from "./objects/uu-interaction";
+import picture from "./objects/image";
+import alert from "./objects/alert";
 
 export default createSchema({
   name: "default",
@@ -32,5 +34,7 @@ export default createSchema({
     persons,
     uu_interactions,
     keyboardTable,
+    picture,
+    alert,
   ]),
 });

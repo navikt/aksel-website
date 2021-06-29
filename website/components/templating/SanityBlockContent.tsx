@@ -2,6 +2,7 @@ import React from "react";
 import BlockContent from "@sanity/block-content-to-react";
 import NextjsLink from "next/link";
 import {
+  Alert,
   BodyLong,
   BodyShort,
   Detail,
@@ -19,6 +20,7 @@ import PropTable from "../Proptable";
 import DoDont from "../DoDont";
 import UuInteraction from "../UuInteraction";
 import Linker from "../Linker";
+import Image from "../Image";
 
 const StyledCode = styled.code`
   color: red;
@@ -40,6 +42,12 @@ const StyledKbd = styled.code`
   font-weight: 600;
 `;
 
+const StyledAlert = styled(Alert)`
+  .navds-typo--spacing {
+    margin: 0;
+  }
+`;
+
 const serializers = {
   types: {
     code_example: Code,
@@ -48,6 +56,12 @@ const serializers = {
     do_dont: DoDont,
     uu_interaction: UuInteraction,
     linker: Linker,
+    picture: Image,
+    alert: (node) => (
+      <StyledAlert variant={node.node.variant}>
+        <SanityBlockContent blocks={node.node.body} />
+      </StyledAlert>
+    ),
 
     block: ({ node, children, ...rest }) => {
       const style = node.style;

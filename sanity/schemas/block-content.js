@@ -1,7 +1,14 @@
 import React from "react";
 import "@navikt/ds-css?raw";
 import { Detail, Title, BodyLong, BodyShort, Label } from "@navikt/ds-react";
-import { SuccessStroke, BrailleFilled, Laptop, Link } from "@navikt/ds-icons";
+import {
+  Warning,
+  SuccessStroke,
+  BrailleFilled,
+  Laptop,
+  Link,
+  Picture,
+} from "@navikt/ds-icons";
 
 const TitleRenderer = (props, size, level) => (
   <Title size={size} level={level}>
@@ -159,6 +166,14 @@ export default {
     {
       type: "do_dont",
       icon: () => <SuccessStroke />,
+    },
+    {
+      type: "alert",
+      icon: () => <Warning />,
+    },
+    {
+      type: "picture",
+      icon: () => <Picture />,
     },
   ],
 };
