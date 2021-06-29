@@ -5,7 +5,7 @@ export const PageWebPreview = (ctx: any) => {
   const slug = ctx.document.displayed?.slug?.current;
 
   if (!slug) {
-    return <div>Side må ha en slug før den kan forhåndsvises..</div>;
+    return <div>Side må ha en url/slug før den kan forhåndsvises...</div>;
   }
   const webUrl = "https://verktoykasse-prototype.dev.nav.no";
   const previewUrl = `/${slug}/?preview=true`;
