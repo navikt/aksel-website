@@ -8,6 +8,7 @@ export default {
       name: "linker_links",
       title: "Linker",
       of: [{ type: "linker.link" }],
+      validation: (Rule) => Rule.required().min(1),
     },
   ],
   preview: {
