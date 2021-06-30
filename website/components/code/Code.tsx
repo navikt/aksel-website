@@ -1,6 +1,7 @@
 import Prism from "prismjs";
 import React, { useRef, useState } from "react";
 import "prismjs/components/prism-jsx.min";
+import "prismjs/components/prism-bash.min";
 import "prismjs/components/prism-typescript.min";
 import styled from "styled-components";
 import CodeExample from "./CodeExample";
@@ -28,12 +29,37 @@ const Div = styled.div`
   margin-bottom: var(--navds-spacing-8);
 `;
 
+const PreWrapper = styled.div`
+  /* position: relative;
+  align-items: center;
+  display: flex;
+  flex-direction: column; */
+`;
+
 const Pre = styled.pre`
   overflow-x: auto;
   font-family: var(--navds-font-family);
   background-color: var(--navds-color-darkgray);
   margin: 0;
   padding: 1rem;
+  /*  width: 100%; */
+  /* align-items: center;
+  display: flex; */
+  &[data-terminal="true"] {
+    ::before {
+      content: "$    ";
+      color: white;
+    }
+    code {
+      /* padding-left: 1rem; */
+    }
+  }
+`;
+
+const StyledCode = styled.code`
+  color: white;
+  font-size: 1rem;
+  /* font-family: var(--font-family-code); */
 `;
 
 const Ul = styled.ul`
@@ -74,7 +100,6 @@ const Button = styled.button`
 `;
 
 const Code = ({ node }) => {
-  const ref = useRef<HTMLElement | null>(null);
   const [activeTab, setActiveTab] = useState(0);
 
   if (
@@ -92,32 +117,29 @@ const Code = ({ node }) => {
 
   const highlighted =
     node.code_examples_tabs &&
-    Prism.highlight(
-      node.code_examples_tabs[activeTab].codeExample.code,
-      Prism.languages[language],
-      language
-    );
+    (language === "terminal"
+      ? Prism.highlight(
+          node.code_examples_tabs[activeTab].codeExample.code,
+          Prism.languages["bash"],
+          "bash"
+        )
+      : Prism.highlight(
+          node.code_examples_tabs[activeTab].codeExample.code,
+          Prism.languages[language],
+          language
+        ));
 
   const codePreview = () => {
     return (
-      <div>
-        <Pre>
-          <code
-            ref={ref}
-            className={`language-${
-              node.code_examples_tabs[activeTab].codeExample?.language
-                ? node.code_examples_tabs[activeTab].codeExample.language
-                : "jsx"
-            }`}
-            dangerouslySetInnerHTML={{ __html: highlighted }}
-          />
+      <PreWrapper>
+        <Pre data-terminal={language === "terminal"}>
+          <StyledCode dangerouslySetInnerHTML={{ __html: highlighted }} />
         </Pre>
-      </div>
+      </PreWrapper>
     );
   };
 
-  const showTabs =
-    !!node.code_examples_tabs && node.code_examples_tabs.length > 1;
+  const showTabs = !!node.code_examples_tabs && node.code_preview;
 
   return (
     <Div>

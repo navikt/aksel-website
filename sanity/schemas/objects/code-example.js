@@ -12,7 +12,7 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      title: "Kode eksempel",
+      title: "Kode eksempel (optional)",
       name: "code_preview",
       type: "string",
       options: {
@@ -63,6 +63,7 @@ export const example = {
           { value: "jsx", title: "JSX" },
           { value: "html", title: "HTML" },
           { value: "css", title: "CSS" },
+          { value: "terminal", title: "Terminal/Bash" },
         ],
       },
     },
