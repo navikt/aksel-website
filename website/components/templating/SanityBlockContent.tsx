@@ -27,19 +27,14 @@ const StyledCode = styled.code`
 `;
 
 const StyledKbd = styled.code`
-  font-family: Consolas, "Lucida Console", monospace;
   display: inline-block;
+  margin: 0 var(--navds-spacing-1);
+  color: var(--navds-color-darkgray);
+  border: 1px solid var(--navds-color-gray-40);
   border-radius: 3px;
-  padding: 0px 4px;
-  box-shadow: 1px 1px 1px #777;
-  margin: 2px;
-  vertical-align: text-bottom;
-  background: #eee;
-  font-weight: 500;
-  color: #555;
-  cursor: pointer;
-  font-variant: small-caps;
-  font-weight: 600;
+  padding: var(--navds-spacing-1);
+  font-family: var(--font-family-code);
+  font-size: 1rem;
 `;
 
 const StyledAlert = styled(Alert)`
