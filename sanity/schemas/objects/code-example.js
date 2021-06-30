@@ -18,7 +18,7 @@ export default {
     },
     {
       title: "Kode eksempel (optional)",
-      name: "code_preview",
+      name: "preview",
       type: "string",
       options: {
         list: [...getExamples()],
@@ -26,7 +26,7 @@ export default {
     },
     {
       type: "array",
-      name: "code_examples_tabs",
+      name: "tabs",
       title: "Kode preview",
       description: "Blir omgjort til tabs hvis flere enn en",
       of: [{ type: "code_example.example" }],

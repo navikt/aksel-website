@@ -8,24 +8,6 @@ import RenderExample from "examples";
 import copy from "copy-to-clipboard";
 import { ExternalLink, Copy } from "@navikt/ds-icons";
 
-/* const PrismLanguages = [
-  "insertBefore",
-  "DFS",
-  "markup",
-  "html",
-  "mathml",
-  "svg",
-  "xml",
-  "ssml",
-  "atom",
-  "rss",
-  "css",
-  "clike",
-  "javascript",
-  "js",
-  "jsx",
-]; */
-
 const Wrapper = styled.div`
   width: 100%;
   margin-top: var(--navds-spacing-8);
@@ -38,7 +20,6 @@ const Wrapper = styled.div`
 const Example = styled.div`
   background-color: #f9f9f9;
   display: flex;
-
   justify-content: center;
   padding: 2rem 0;
   border-radius: 8px;
@@ -103,7 +84,6 @@ const Li = styled.li`
 
 const Button = styled.button`
   border: none;
-  background-color: rgba(255, 255, 255, 0);
   color: rgba(255, 255, 255, 0.85);
   padding: 0.75rem 0.5rem;
   display: flex;
@@ -132,8 +112,6 @@ const CopyButton = styled(Button)`
 `;
 
 const A = styled.a`
-  border: none;
-  background-color: rgba(255, 255, 255, 0);
   color: rgba(255, 255, 255, 0.85);
   padding: 0.75rem 0.5rem;
   display: flex;
@@ -171,45 +149,38 @@ const Code = ({ node }) => {
 
   useEffect(() => {
     const tabList = [];
-    node.code_examples_tabs &&
-      node.code_examples_tabs.forEach((tab, x) =>
+    node.tabs &&
+      node.tabs.forEach((tab, x) =>
         tabList.push({ title: tab.title, index: x })
       );
 
     setTabs([...tabList]);
   }, []);
 
-  if (!node.code_preview && !node?.code_examples_tabs) {
+  if (!node.preview && !node?.tabs) {
     return null;
   }
 
-  const codePreview = (index, showtabs) => {
-    if (!node.code_examples_tabs[index].example.code) {
+  const renderCodePreview = (index, showtabs) => {
+    if (!node.tabs[index].example.code) {
       return null;
     }
-    const language = node.code_examples_tabs[index].example.language ?? "jsx";
 
-    const highlighted =
-      language === "terminal"
-        ? Prism.highlight(
-            node.code_examples_tabs[index].example.code,
-            Prism.languages["bash"],
-            "bash"
-          )
-        : Prism.highlight(
-            node.code_examples_tabs[index].example.code,
-            Prism.languages[language],
-            language
-          );
+    let language = node.tabs[index].example.language ?? "jsx";
+    language = language === "terminal" ? "bash" : language;
+
+    const highlighted = Prism.highlight(
+      node.tabs[index].example.code,
+      Prism.languages[language],
+      language
+    );
 
     return (
       <PreWrapper style={{ display: index === activeTab ? "block" : "none" }}>
         {!showtabs && (
           <CopyButton
             className="navds-body-short navds-body--s"
-            onClick={() =>
-              copyCode(node.code_examples_tabs[index].example.code)
-            }
+            onClick={() => copyCode(node.tabs[index].example.code)}
           >
             Copy
           </CopyButton>
@@ -247,9 +218,7 @@ const Code = ({ node }) => {
           )}
           <Button
             className="navds-body-short navds-body--s"
-            onClick={() =>
-              copyCode(node.code_examples_tabs[activeTab].example.code)
-            }
+            onClick={() => copyCode(node.tabs[activeTab].example.code)}
           >
             Copy
             <Copy />
@@ -259,22 +228,19 @@ const Code = ({ node }) => {
     );
   };
 
-  const showPreview = node.code_preview;
+  const showPreview = node.preview;
   const showTabs =
-    node.code_examples_tabs &&
-    node.code_examples_tabs.length > 0 &&
-    (showPreview || node.code_examples_tabs.length > 1);
+    node.tabs && node.tabs.length > 0 && (showPreview || node.tabs.length > 1);
 
   return (
     <Wrapper>
       {showPreview && (
         <Example>
-          <RenderExample component={node.code_preview} />
+          <RenderExample component={node.preview} />
         </Example>
       )}
       {showTabs && renderTabs()}
-      {node.code_examples_tabs &&
-        node.code_examples_tabs.map((_, i) => codePreview(i, showTabs))}
+      {node.tabs && node.tabs.map((_, i) => renderCodePreview(i, showTabs))}
     </Wrapper>
   );
 };
