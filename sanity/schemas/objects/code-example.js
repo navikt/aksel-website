@@ -42,18 +42,24 @@ export const example = {
   type: "object",
   fields: [
     {
-      name: "codeExample_github",
+      name: "github",
       title: "Link til kode (github)",
       type: "url",
     },
     {
-      name: "codeExample_copy",
+      name: "title",
+      title: "Tab tittel",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: "copy",
       title: "Copy knapp",
       type: "boolean",
       validation: (Rule) => Rule.required(),
     },
     {
-      name: "codeExample",
+      name: "example",
       title: "Kode eksempel",
       type: "code",
       validation: (Rule) => Rule.required(),
@@ -69,6 +75,6 @@ export const example = {
     },
   ],
   initialValue: {
-    codeExample_copy: true,
+    copy: true,
   },
 };
