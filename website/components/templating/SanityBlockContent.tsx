@@ -12,7 +12,7 @@ import {
   Title,
 } from "@navikt/ds-react";
 import "@navikt/ds-css";
-import Code from "../code/Code";
+import Code from "../Code";
 import styled from "styled-components";
 import slugger from "../slugger";
 import Changelog from "../Changelog";

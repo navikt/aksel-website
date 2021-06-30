@@ -12,6 +12,11 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: "github",
+      title: "Link til kode (github)",
+      type: "url",
+    },
+    {
       title: "Kode eksempel (optional)",
       name: "code_preview",
       type: "string",
@@ -41,11 +46,6 @@ export const example = {
   title: "Tabs",
   type: "object",
   fields: [
-    {
-      name: "github",
-      title: "Link til kode (github)",
-      type: "url",
-    },
     {
       name: "title",
       title: "Tab tittel",
