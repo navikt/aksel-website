@@ -5,7 +5,9 @@ import { useRouter } from "next/router";
 const Nav = styled.nav`
   margin: var(--navds-spacing-12) 0;
   box-shadow: 0 2px 0 0 rgb(201, 201, 201, 0.4);
+  padding-top: 0.7rem;
   padding-bottom: 0.7rem;
+  overflow-x: auto;
 `;
 
 const Ul = styled.ul`
