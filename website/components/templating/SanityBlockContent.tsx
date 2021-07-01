@@ -56,6 +56,7 @@ const StyledAlert = styled(Alert)`
   .navds-typo--spacing {
     margin: 0;
   }
+  margin-bottom: var(--navds-spacing-4);
 `;
 
 const serializers = {
