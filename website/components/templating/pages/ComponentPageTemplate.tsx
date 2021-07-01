@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { Ingress, Title, Link, Header } from "@navikt/ds-react";
 
 import { useRouter } from "next/router";
@@ -9,6 +9,7 @@ import LastUpdated from "../../LastUpdated";
 import StatusTag from "../../StatusTag";
 import FigmaIcon from "../../assets/FigmaIcon";
 import GithubIcon from "../../assets/GithubIcon";
+import TableOfContents from "../../TableOfContents";
 /* import * as NextLink from "next/link"; */
 
 const Div = styled.div`
@@ -52,7 +53,19 @@ const Inline = styled.span`
 
 const ComponentPageTemplate = ({ data }) => {
   const { query } = useRouter();
-  /*   console.log(data); */
+
+  const [toc, setToc] = useState([]);
+
+  // TODO: Extract to custom hook?
+  useLayoutEffect(() => {
+    const tags = document.getElementsByTagName("h2");
+    if (!tags) return;
+    const toc = [];
+    for (let item of tags) {
+      toc.push({ heading: item.textContent, id: item.id });
+    }
+    setToc([...toc]);
+  }, [query.slug]);
 
   const basePath = `/designsystem/${(query.slug as string[])
     .slice(0, 2)
@@ -68,45 +81,48 @@ const ComponentPageTemplate = ({ data }) => {
   const activeTab = query.slug[2] ?? "bruk";
 
   return (
-    <Div>
-      <HeaderWrapper>
-        <Title size="2xl" level={1} spacing>
-          {data.heading}
-        </Title>
-        <StyledDiv>
-          <Inline>
-            <StatusTag status={data.status} />
-            <LastUpdated date={data._updatedAt} />
-          </Inline>
-          <Links>
-            {data.npm_link && <Link href={data.npm_link}>NPM</Link>}
-            <Link href={data.github_link}>
-              Github <GithubIcon />
-            </Link>
-            <Link href={data.figma_link}>
-              Figma <FigmaIcon />
-            </Link>
-          </Links>
-        </StyledDiv>
-      </HeaderWrapper>
+    <>
+      <TableOfContents toc={toc} />
+      <Div>
+        <HeaderWrapper>
+          <Title size="2xl" level={1} spacing>
+            {data.heading}
+          </Title>
+          <StyledDiv>
+            <Inline>
+              <StatusTag status={data.status} />
+              <LastUpdated date={data._updatedAt} />
+            </Inline>
+            <Links>
+              {data.npm_link && <Link href={data.npm_link}>NPM</Link>}
+              <Link href={data.github_link}>
+                Github <GithubIcon />
+              </Link>
+              <Link href={data.figma_link}>
+                Figma <FigmaIcon />
+              </Link>
+            </Links>
+          </StyledDiv>
+        </HeaderWrapper>
 
-      <Ingress spacing>{data.ingress}</Ingress>
+        <Ingress spacing>{data.ingress}</Ingress>
 
-      <Tabs>
-        {Object.entries(tabs).map(
-          ([key, value]) =>
-            data[value] && (
-              <Tab
-                key={key}
-                path={`${basePath}${key === "bruk" ? "" : "/" + key}`}
-              >
-                {key}
-              </Tab>
-            )
-        )}
-      </Tabs>
-      <SanityBlockContent blocks={data[tabs[activeTab]]} />
-    </Div>
+        <Tabs>
+          {Object.entries(tabs).map(
+            ([key, value]) =>
+              data[value] && (
+                <Tab
+                  key={key}
+                  path={`${basePath}${key === "bruk" ? "" : "/" + key}`}
+                >
+                  {key}
+                </Tab>
+              )
+          )}
+        </Tabs>
+        <SanityBlockContent blocks={data[tabs[activeTab]]} />
+      </Div>
+    </>
   );
 };
 

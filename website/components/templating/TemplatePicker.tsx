@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ComponentPageTemplate from "./pages/ComponentPageTemplate";
 
 const templates = {
@@ -7,6 +7,16 @@ const templates = {
 
 const TemplatePicker = ({ data }) => {
   /* console.log(data); */
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   if (!Object.keys(templates).includes(data._type)) {
     console.warn(
       `${data._type} does not have  a valid template to use, please create one.`
