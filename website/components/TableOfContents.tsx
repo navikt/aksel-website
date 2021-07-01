@@ -4,8 +4,11 @@ import styled from "styled-components";
 
 const Div = styled.div`
   position: absolute;
-  top: var(--navds-spacing-22);
-  right: var(--navds-spacing-16);
+  top: var(--navds-spacing-24);
+  right: var(--navds-spacing-8);
+  right: var(--navds-spacing-4);
+
+  width: 250px;
 
   @media (max-width: 1256px) {
     display: none;
@@ -21,6 +24,13 @@ const Ul = styled.ul`
 const Li = styled.li`
   list-style: none;
   margin-top: var(--navds-spacing-4);
+  a {
+    word-wrap: break-word;
+    text-decoration: none;
+    :hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 function TableOfContents({ toc }) {
@@ -34,7 +44,9 @@ function TableOfContents({ toc }) {
           {toc.map((link) => (
             <Li>
               <Link key={link.id} href={`#${link.id}`} passHref>
-                <a className="navds-link">{link.heading}</a>
+                <a className="navds-link navds-body-short navds-body--s">
+                  {link.heading}
+                </a>
               </Link>
             </Li>
           ))}

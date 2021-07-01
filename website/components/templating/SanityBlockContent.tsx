@@ -21,6 +21,7 @@ import DoDont from "../DoDont";
 import UuInteraction from "../UuInteraction";
 import Linker from "../Linker";
 import Image from "../Image";
+import CopyAnchor from "../CopyAnchor";
 
 const StyledCode = styled.code`
   color: red;
@@ -95,19 +96,16 @@ const serializers = {
         case "label":
           return <Label spacing>{children}</Label>;
         case "h2": {
+          const slug = slugger.slug(children.toString());
           return (
             <>
               <Divider>
                 <Hr />
               </Divider>
-              <Title
-                spacing
-                level={2}
-                size="xl"
-                id={slugger.slug(children.toString())}
-              >
+              <Title spacing level={2} size="xl" id={slug}>
                 {children}
               </Title>
+              <CopyAnchor anchor={`#${slug}`} />
             </>
           );
         }
