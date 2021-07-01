@@ -34,7 +34,12 @@ const Page = ({ frontpage, preview }) => {
           if (page._type === "ds_component_page") {
             return (
               <li key={page.slug}>
-                <Link passHref href={page.slug}>
+                <Link
+                  passHref
+                  href={
+                    enabledPreview ? page.slug + "?preview=true" : page.slug
+                  }
+                >
                   <a>{"/" + page.slug}</a>
                 </Link>
               </li>
