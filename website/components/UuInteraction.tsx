@@ -37,13 +37,13 @@ const UuInteraction = ({ node }) => {
       {node.uu_interaction_keyboard && (
         <>
           <Title level="3" size="m" spacing>
-            Keyboard management
+            Keyboard styring
           </Title>
           <table className="tabell">
             <thead>
               <tr>
-                <th>Command</th>
-                <th>Description</th>
+                <th>Kommando</th>
+                <th>Funksjon</th>
               </tr>
             </thead>
             <tbody>

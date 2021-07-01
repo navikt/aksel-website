@@ -56,11 +56,11 @@ const Caption = styled.figcaption`
   border-color: ${(props) => {
     switch (props["data-variant"]) {
       case "do":
-        return "green";
+        return "var(--navds-color-green-50)";
       case "dont":
-        return "red";
+        return "var(--navds-color-red-50)";
       case "warning":
-        return "orange";
+        return "var(--navds-color-orange-50)";
       default:
     }
   }};
@@ -73,12 +73,12 @@ const Do = styled(Label)`
 
 const Dont = styled(Label)`
   margin-top: var(--navds-spacing-3);
-  color: red;
+  color: var(--navds-color-red-50);
 `;
 
 const Warning = styled(Label)`
   margin-top: var(--navds-spacing-3);
-  color: orange;
+  color: var(--navds-color-orange-40);
 `;
 
 const Element = ({ block, multiple = false }) => {

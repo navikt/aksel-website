@@ -6,18 +6,15 @@ const Changelog = ({ node }) => {
   const changes = node.changes;
   return (
     <div>
-      <Title spacing level={2} size="xl">
-        Changelog
-      </Title>
       {changes.map((change) => {
         return (
           <div key={change.title}>
-            <Title level={3} size="l">
-              {change.title}
+            <Title level={3} size="l" spacing>
+              {change.title}{" "}
+              {change.pull_request && (
+                <Link href={change.pull_request}>PR</Link>
+              )}
             </Title>
-            {change.pull_request && (
-              <Link href={change.pull_request}>PullRequest (git)</Link>
-            )}
             <SanityBlockContent blocks={change.body} />
           </div>
         );

@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 
 const Nav = styled.nav`
   margin: var(--navds-spacing-12) 0;
+  box-shadow: 0 2px 0 0 rgb(201, 201, 201, 0.4);
+  padding-bottom: 0.7rem;
 `;
 
 const Ul = styled.ul`
@@ -38,7 +40,7 @@ const A = styled.a`
 
   :focus {
     outline: 2px solid var(--navds-color-blue-80);
-    outline-offset: 2px;
+    outline-offset: -2px;
   }
 `;
 

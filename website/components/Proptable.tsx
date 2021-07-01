@@ -8,11 +8,9 @@ const Div = styled.div`
 
 const PropTable = ({ node }) => {
   const props = node.props;
+  if (props.length === 0) return null;
   return (
     <Div>
-      <Title spacing level={2} size="xl">
-        Proptable
-      </Title>
       <table className="tabell">
         <thead>
           <tr>

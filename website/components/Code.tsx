@@ -1,5 +1,5 @@
 import Prism from "prismjs";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "prismjs/components/prism-jsx.min";
 import "prismjs/components/prism-bash.min";
 import "prismjs/components/prism-typescript.min";
@@ -7,6 +7,7 @@ import styled from "styled-components";
 import RenderExample from "examples";
 import copy from "copy-to-clipboard";
 import { ExternalLink, Copy } from "@navikt/ds-icons";
+import { Popover } from "@navikt/ds-react";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -136,6 +137,11 @@ const CopyWrapper = styled.div`
   display: flex;
 `;
 
+const StyledPopover = styled(Popover)`
+  padding: var(--navds-spacing-1);
+  border-radius: 4px;
+`;
+
 const copyCode = (content) => {
   if (typeof content === "string") {
     copy(content, {
@@ -147,6 +153,9 @@ const copyCode = (content) => {
 const Code = ({ node }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [tabs, setTabs] = useState<{ title: string; index: number }[]>([]);
+  const buttonRef = useRef(null);
+  const [openPopover, setOpenPopover] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     const tabList = [];
@@ -157,6 +166,18 @@ const Code = ({ node }) => {
 
     setTabs([...tabList]);
   }, []);
+
+  useEffect(() => {
+    if (openPopover) {
+      timeoutRef.current = setTimeout(() => setOpenPopover(false), 1500);
+      return () => timeoutRef.current && clearTimeout(timeoutRef.current);
+    }
+  }, [openPopover]);
+
+  const handleCopy = (text: string) => {
+    copyCode(text);
+    setOpenPopover(true);
+  };
 
   if (!node.preview && !node?.tabs) {
     return null;
@@ -180,8 +201,9 @@ const Code = ({ node }) => {
       <PreWrapper style={{ display: index === activeTab ? "block" : "none" }}>
         {!showtabs && (
           <CopyButton
+            ref={(node) => (buttonRef.current = node)}
             className="navds-body-short navds-body--s"
-            onClick={() => copyCode(node.tabs[index].example.code)}
+            onClick={() => handleCopy(node.tabs[index].example.code)}
           >
             Copy
           </CopyButton>
@@ -218,8 +240,9 @@ const Code = ({ node }) => {
             </A>
           )}
           <Button
+            ref={(node) => (buttonRef.current = node)}
             className="navds-body-short navds-body--s"
-            onClick={() => copyCode(node.tabs[activeTab].example.code)}
+            onClick={() => handleCopy(node.tabs[activeTab].example.code)}
           >
             Copy
             <Copy />
@@ -242,6 +265,16 @@ const Code = ({ node }) => {
       )}
       {showTabs && renderTabs()}
       {node.tabs && node.tabs.map((_, i) => renderCodePreview(i, showTabs))}
+      <StyledPopover
+        role="alert"
+        anchorEl={buttonRef.current}
+        open={openPopover}
+        onClose={() => setOpenPopover(false)}
+        placement="right"
+        arrow={false}
+      >
+        Kopiert
+      </StyledPopover>
     </Wrapper>
   );
 };

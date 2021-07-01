@@ -37,6 +37,21 @@ const StyledKbd = styled.code`
   font-size: 1rem;
 `;
 
+const Divider = styled.div`
+  padding: 0 6rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  :first-child {
+    display: none;
+  }
+`;
+const Hr = styled.hr`
+  border: 1px solid rgb(201, 201, 201, 0.4);
+  margin: 0;
+`;
+
 const StyledAlert = styled(Alert)`
   .navds-typo--spacing {
     margin: 0;
@@ -80,14 +95,19 @@ const serializers = {
           return <Label spacing>{children}</Label>;
         case "h2": {
           return (
-            <Title
-              spacing
-              level={2}
-              size="xl"
-              id={slugger.slug(children.toString())}
-            >
-              {children}
-            </Title>
+            <>
+              <Divider>
+                <Hr />
+              </Divider>
+              <Title
+                spacing
+                level={2}
+                size="xl"
+                id={slugger.slug(children.toString())}
+              >
+                {children}
+              </Title>
+            </>
           );
         }
         case "h3":
