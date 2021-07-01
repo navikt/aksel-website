@@ -3,15 +3,17 @@ import * as React from "react";
 import styled from "styled-components";
 
 const Div = styled.div`
-  position: absolute;
+  /* position: absolute;
   top: var(--navds-spacing-24);
   right: var(--navds-spacing-8);
-  right: var(--navds-spacing-4);
-
+  right: var(--navds-spacing-4); */
+  z-index: 1;
   width: 250px;
+  padding-top: var(--navds-spacing-12);
 
-  @media (max-width: 1256px) {
+  @media (max-width: 1300px) {
     display: none;
+    width: 0;
   }
 `;
 

@@ -1,5 +1,11 @@
 import React, { useLayoutEffect, useState } from "react";
-import { Ingress, Title, Link, Header } from "@navikt/ds-react";
+import {
+  Ingress,
+  Title,
+  Link,
+  Header,
+  ContentContainer,
+} from "@navikt/ds-react";
 
 import { useRouter } from "next/router";
 import styled from "styled-components";
@@ -10,13 +16,23 @@ import StatusTag from "../../StatusTag";
 import FigmaIcon from "../../assets/FigmaIcon";
 import GithubIcon from "../../assets/GithubIcon";
 import TableOfContents from "../../TableOfContents";
+import Heading from "../layout/Heading";
+import Sidebar from "../layout/Sidebar";
 /* import * as NextLink from "next/link"; */
+
+const Wrapper = styled.div`
+  display: flex;
+  width: 100%;
+  position: relative;
+  background-color: #f9f9f9;
+`;
 
 const Div = styled.div`
   max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 2rem;
   position: relative;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Links = styled.div`
@@ -34,8 +50,8 @@ const Links = styled.div`
 
 const HeaderWrapper = styled.div`
   width: 100%;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: var(--navds-spacing-6);
+  padding-bottom: var(--navds-spacing-6);
 `;
 
 const StyledDiv = styled.div`
@@ -82,46 +98,51 @@ const ComponentPageTemplate = ({ data }) => {
 
   return (
     <>
-      <TableOfContents toc={toc} />
-      <Div>
-        <HeaderWrapper>
-          <Title size="2xl" level={1} spacing>
-            {data.heading}
-          </Title>
-          <StyledDiv>
-            <Inline>
-              <StatusTag status={data.status} />
-              <LastUpdated date={data._updatedAt} />
-            </Inline>
-            <Links>
-              {data.npm_link && <Link href={data.npm_link}>NPM</Link>}
-              <Link href={data.github_link}>
-                Github <GithubIcon />
-              </Link>
-              <Link href={data.figma_link}>
-                Figma <FigmaIcon />
-              </Link>
-            </Links>
-          </StyledDiv>
-        </HeaderWrapper>
+      <Heading />
+      <Wrapper>
+        <Sidebar />
 
-        <Ingress spacing>{data.ingress}</Ingress>
+        <Div>
+          <HeaderWrapper>
+            <Title size="2xl" level={1} spacing>
+              {data.heading}
+            </Title>
+            <StyledDiv>
+              <Inline>
+                <StatusTag status={data.status} />
+                <LastUpdated date={data._updatedAt} />
+              </Inline>
+              <Links>
+                {data.npm_link && <Link href={data.npm_link}>NPM</Link>}
+                <Link href={data.github_link}>
+                  Github <GithubIcon />
+                </Link>
+                <Link href={data.figma_link}>
+                  Figma <FigmaIcon />
+                </Link>
+              </Links>
+            </StyledDiv>
+          </HeaderWrapper>
 
-        <Tabs>
-          {Object.entries(tabs).map(
-            ([key, value]) =>
-              data[value] && (
-                <Tab
-                  key={key}
-                  path={`${basePath}${key === "bruk" ? "" : "/" + key}`}
-                >
-                  {key}
-                </Tab>
-              )
-          )}
-        </Tabs>
-        <SanityBlockContent blocks={data[tabs[activeTab]]} />
-      </Div>
+          <Ingress spacing>{data.ingress}</Ingress>
+
+          <Tabs>
+            {Object.entries(tabs).map(
+              ([key, value]) =>
+                data[value] && (
+                  <Tab
+                    key={key}
+                    path={`${basePath}${key === "bruk" ? "" : "/" + key}`}
+                  >
+                    {key}
+                  </Tab>
+                )
+            )}
+          </Tabs>
+          <SanityBlockContent blocks={data[tabs[activeTab]]} />
+        </Div>
+        <TableOfContents toc={toc} />
+      </Wrapper>
     </>
   );
 };
