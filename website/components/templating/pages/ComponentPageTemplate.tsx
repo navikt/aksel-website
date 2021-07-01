@@ -44,6 +44,12 @@ const StyledDiv = styled.div`
   justify-content: space-between;
 `;
 
+const Inline = styled.span`
+  display: inline-flex;
+  column-gap: var(--navds-spacing-3);
+  flex-wrap: wrap;
+`;
+
 const ComponentPageTemplate = ({ data }) => {
   const { query } = useRouter();
   /*   console.log(data); */
@@ -68,7 +74,10 @@ const ComponentPageTemplate = ({ data }) => {
           {data.heading}
         </Title>
         <StyledDiv>
-          <StatusTag status={data.status} />
+          <Inline>
+            <StatusTag status={data.status} />
+            <LastUpdated date={data._updatedAt} />
+          </Inline>
           <Links>
             {data.npm_link && <Link href={data.npm_link}>NPM</Link>}
             <Link href={data.github_link}>
@@ -79,7 +88,6 @@ const ComponentPageTemplate = ({ data }) => {
             </Link>
           </Links>
         </StyledDiv>
-        <LastUpdated date={data._updatedAt} />
       </HeaderWrapper>
 
       <Ingress spacing>{data.ingress}</Ingress>

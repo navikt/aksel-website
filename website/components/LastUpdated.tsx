@@ -3,9 +3,9 @@ import * as React from "react";
 import styled from "styled-components";
 
 const Div = styled.div`
-  position: absolute;
+  /* position: absolute;
   top: var(--navds-spacing-6);
-  right: 0;
+  right: 0; */
 `;
 
 const LastUpdated = ({ date }) => {

@@ -198,7 +198,10 @@ const Code = ({ node }) => {
     );
 
     return (
-      <PreWrapper style={{ display: index === activeTab ? "block" : "none" }}>
+      <PreWrapper
+        key={node.tabs[index]._key}
+        style={{ display: index === activeTab ? "block" : "none" }}
+      >
         {!showtabs && (
           <CopyButton
             ref={(node) => (buttonRef.current = node)}
