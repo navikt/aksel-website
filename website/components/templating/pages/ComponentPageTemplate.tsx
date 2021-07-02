@@ -22,17 +22,28 @@ import Sidebar from "../layout/Sidebar";
 
 const Wrapper = styled.div`
   display: flex;
-  width: 100%;
-  position: relative;
-  background-color: #f9f9f9;
+  margin-top: 56px;
+  @media (max-width: 1068px) {
+    display: block;
+  }
 `;
 
-const Div = styled.div`
-  max-width: 700px;
-  padding: 2rem;
-  position: relative;
-  display: flex;
+const MainContent = styled.div`
   flex-direction: column;
+  width: 100%;
+  position: relative;
+`;
+
+const SanityContent = styled.div`
+  position: relative;
+`;
+
+const MaxW = styled.div`
+  max-width: 700px;
+  margin: 0;
+  margin-right: auto;
+  margin-left: var(--navds-spacing-8);
+  padding: var(--navds-spacing-8);
 `;
 
 const Links = styled.div`
@@ -50,7 +61,6 @@ const Links = styled.div`
 
 const HeaderWrapper = styled.div`
   width: 100%;
-  padding-top: var(--navds-spacing-6);
   padding-bottom: var(--navds-spacing-6);
 `;
 
@@ -102,29 +112,31 @@ const ComponentPageTemplate = ({ data }) => {
       <Wrapper>
         <Sidebar />
 
-        <Div>
-          <HeaderWrapper>
-            <Title size="2xl" level={1} spacing>
-              {data.heading}
-            </Title>
-            <StyledDiv>
-              <Inline>
-                <StatusTag status={data.status} />
-                <LastUpdated date={data._updatedAt} />
-              </Inline>
-              <Links>
-                {data.npm_link && <Link href={data.npm_link}>NPM</Link>}
-                <Link href={data.github_link}>
-                  Github <GithubIcon />
-                </Link>
-                <Link href={data.figma_link}>
-                  Figma <FigmaIcon />
-                </Link>
-              </Links>
-            </StyledDiv>
-          </HeaderWrapper>
+        <MainContent>
+          <MaxW>
+            <HeaderWrapper>
+              <Title size="2xl" level={1} spacing>
+                {data.heading}
+              </Title>
+              <StyledDiv>
+                <Inline>
+                  <StatusTag status={data.status} />
+                  <LastUpdated date={data._updatedAt} />
+                </Inline>
+                <Links>
+                  {data.npm_link && <Link href={data.npm_link}>NPM</Link>}
+                  <Link href={data.github_link}>
+                    Github <GithubIcon />
+                  </Link>
+                  <Link href={data.figma_link}>
+                    Figma <FigmaIcon />
+                  </Link>
+                </Links>
+              </StyledDiv>
+            </HeaderWrapper>
 
-          <Ingress spacing>{data.ingress}</Ingress>
+            <Ingress spacing>{data.ingress}</Ingress>
+          </MaxW>
 
           <Tabs>
             {Object.entries(tabs).map(
@@ -139,9 +151,13 @@ const ComponentPageTemplate = ({ data }) => {
                 )
             )}
           </Tabs>
-          <SanityBlockContent blocks={data[tabs[activeTab]]} />
-        </Div>
-        <TableOfContents toc={toc} />
+          <SanityContent>
+            <TableOfContents toc={toc} />
+            <MaxW>
+              <SanityBlockContent blocks={data[tabs[activeTab]]} />
+            </MaxW>
+          </SanityContent>
+        </MainContent>
       </Wrapper>
     </>
   );

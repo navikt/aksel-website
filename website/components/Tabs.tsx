@@ -3,11 +3,25 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 const Nav = styled.nav`
-  margin: var(--navds-spacing-12) 0;
-  box-shadow: 0 2px 0 0 rgb(201, 201, 201, 0.4);
-  padding-top: 0.7rem;
+  margin: 0;
+  margin-bottom: var(--navds-spacing-12);
+  padding-top: var(--navds-spacing-4);
   padding-bottom: 0.7rem;
   overflow-x: auto;
+  position: relative;
+  padding-left: var(--navds-spacing-16);
+  ::after {
+    content: "";
+    background-color: var(--navds-color-gray-20);
+
+    height: 1px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    position: absolute;
+    display: flex;
+  }
 `;
 
 const Ul = styled.ul`

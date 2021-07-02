@@ -15,6 +15,7 @@ const Style = styled.div`
   transform: translate(-5rem, 1rem) rotate(-45deg);
   font-weight: bold;
   z-index: 9999;
+  top: 0;
 `;
 
 function PreviewBanner({ slug }) {
