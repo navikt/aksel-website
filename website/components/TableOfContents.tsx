@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Div = styled.div`
   position: absolute;
-  top: 0;
+  top: var(--navds-spacing-8);
   right: 0;
   z-index: 1;
   width: 250px;
