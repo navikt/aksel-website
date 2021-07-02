@@ -48,6 +48,7 @@ const MaxW = styled.div`
   margin-right: auto;
   margin-left: var(--navds-spacing-8);
   padding: var(--navds-spacing-8);
+  overflow-x: auto;
 
   @media (max-width: 564px) {
     margin: 0;

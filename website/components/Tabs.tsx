@@ -6,7 +6,7 @@ const Nav = styled.nav`
   margin: 0;
   padding-top: var(--navds-spacing-4);
   margin-bottom: var(--navds-spacing-8);
-  padding-bottom: 0.7rem;
+  padding-bottom: 0.7625rem;
   overflow-x: auto;
   position: relative;
   padding-left: var(--navds-spacing-16);
@@ -21,9 +21,9 @@ const Nav = styled.nav`
     background-color: var(--navds-color-gray-20);
     height: 1px;
     width: 100%;
-    bottom: 0;
+    bottom: 0px;
     left: 0;
-    z-index: 10;
+
     position: absolute;
   }
 `;
