@@ -1039,9 +1039,9 @@
     "@hapi/hoek" "9.x.x"
 
 "@hapi/boom@9.x.x":
-  version "9.1.2"
-  resolved "https://registry.yarnpkg.com/@hapi/boom/-/boom-9.1.2.tgz#48bd41d67437164a2d636e3b5bc954f8c8dc5e38"
-  integrity sha512-uJEJtiNHzKw80JpngDGBCGAmWjBtzxDCz17A9NO2zCi8LLBlb5Frpq4pXwyN+2JQMod4pKz5BALwyneCgDg89Q==
+  version "9.1.3"
+  resolved "https://registry.yarnpkg.com/@hapi/boom/-/boom-9.1.3.tgz#22cad56e39b7a4819161a99b1db19eaaa9b6cc6e"
+  integrity sha512-RlrGyZ603hE/eRTZtTltocRm50HHmrmL3kGOP0SQ9MasazlW1mt/fkv4C5P/6rnpFXjwld/POFX1C8tMZE3ldg==
   dependencies:
     "@hapi/hoek" "9.x.x"
 
@@ -1071,9 +1071,9 @@
   integrity sha512-7496RKN/LyaSCHurgeAF8C15HBMUyUQo1A0xURSTZ5TcwFj9WIgLLbgifwjLxL8TbYA2+yhm4fKOoCbgZ9h1zw==
 
 "@navikt/ds-css@^0.6.0":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.6.2.tgz#7e32a4b827366e901ea33dea92dc4923c1433ebc"
-  integrity sha512-yMYl2kDqNChmsgh8Vq4uBCE8NFmT+/qR7KZwc2JFKlSlIDEenoE2rO1S/yMwPHxMp/Pt1pELOpYignk8WRylKA==
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.6.4.tgz#4e2f74f2e818cfcd62af8bcf9f243d469a075143"
+  integrity sha512-SNpQXFdvmPyIdgV4HqH8E45awbivBDtXBMHDDLHC+E5p9dXke8LpDbhR3HR9UKC0YuClEMEv45X8/097u521QQ==
 
 "@navikt/ds-icons@^0.3.0", "@navikt/ds-icons@^0.3.2", "@navikt/ds-icons@^0.3.3":
   version "0.3.3"
@@ -1096,9 +1096,9 @@
     uuid "^8.3.2"
 
 "@navikt/ds-react@^0.6.0":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.6.2.tgz#5704890944d67f5bb4b7ad20d8c43dc0fb61797c"
-  integrity sha512-D0stSN0k+zF1WbQQy0eqBid4GsGRX6n2cxoMx3pENkUEmlSlFmA2/6mIu2BG006kKlgNOCsZXymEYSGCWt+LbA==
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.6.3.tgz#748f67c50ab593f205769e9162f05c28b35059e8"
+  integrity sha512-gNMwNomCpBBwOsbAAQHNAhcI92QDowlEM+M7RD/IzkW1Y4SGBkm3/z6M4aEOekmwKCl0gpQfRYiv3j8qKiUBQg==
   dependencies:
     "@navikt/ds-icons" "^0.3.3"
     "@popperjs/core" "^2.5.4"
@@ -1116,9 +1116,9 @@
   integrity sha512-2BtctsElEQMsaFMoDUEP0hz0wqXNayshSO+r7Nn88PwJf8WvDDv3lzn6+taG/i7uWI0HvHNkQXnxd7CSDsE1Tg==
 
 "@navikt/ds-tokens@^0.4.0":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-tokens/-/ds-tokens-0.4.2.tgz#128ca4598b35fead7351cc8c658e1bb51b744a26"
-  integrity sha512-vCl05SoanI4FyndAmKEQ+HnJFVen2lvNkiICeE+l8NsekY83Fc4BdQcvIbszc0j4Y5B9WS/qILUyvnDfUikCtw==
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-tokens/-/ds-tokens-0.4.3.tgz#555348e44952b6a0cb56fc72dcdef4f3303886a5"
+  integrity sha512-0dYFXDvZd4fJX0UU1rAyXw9zsc9Zwjm4f27ri4Gftum1DbrdnastuLoxFdiEYRqvWVTCYBtE7T7rQbAK3iM6tQ==
 
 "@next/env@10.2.3":
   version "10.2.3"
@@ -2121,14 +2121,14 @@
     csstype "^3.0.2"
 
 "@types/unist@*", "@types/unist@^2.0.0":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.3.tgz#9c088679876f374eb5983f150d4787aa6fb32d7e"
-  integrity sha512-FvUupuM3rlRsRtCN+fDudtmytGO6iHJuuRKS1Ss0pG5z8oX0diNEw94UEL7hgDbpN94rgaK5R7sWm6RrSkZuAQ==
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.4.tgz#453e27c6930d66380b4c121e7d5e361c5c2d921b"
+  integrity sha512-zfyYsDTK1HTGYXU3fTiM76+om93HcFtsZd2M0bO/CL4DiETV7mSa/pIVN/6+G3esOqEMdg2An5cHHbK5t+9w+A==
 
 "@types/uuid@^8.0.0":
-  version "8.3.0"
-  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-8.3.0.tgz#215c231dff736d5ba92410e6d602050cce7e273f"
-  integrity sha512-eQ9qFW/fhfGJF8WKHGEHZEyVWfZxrT+6CLIJGBcZPfxUh/+BnEj+UCGYMlr9qZuX/2AltsvwrGqp0LhEW8D0zQ==
+  version "8.3.1"
+  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-8.3.1.tgz#1a32969cf8f0364b3d8c8af9cc3555b7805df14f"
+  integrity sha512-Y2mHTRAbqfFkpjldbkHGY8JIzRN6XqYRliG8/24FcHm2D2PwW24fl5xMRTVGdrb7iMrwCaIEbLWerGIkXuFWVg==
 
 "@types/warning@^3.0.0":
   version "3.0.0"
@@ -4356,9 +4356,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.30, electron-to-chromium@^1.3.723:
-  version "1.3.763"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.763.tgz#93f6f02506d099941f557b9db9ba50b30215bf15"
-  integrity sha512-UyvEPae0wvzsyNJhVfGeFSOlUkHEze8xSIiExO5tZQ8QTr7obFiJWGk3U4e7afFOJMQJDszqU/3Pk5jtKiaSEg==
+  version "1.3.765"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.765.tgz#36fa0ef7a81048bb487bfe3d297100967e2b8db2"
+  integrity sha512-4NhcsfZYlr1x4FehYkK+R9CNNTOZ8vLcIu8Y1uWehxYp5r/jlCGAfBqChIubEfdtX+rBQpXx4yJuX/dzILH/nw==
 
 element-resize-detector@^1.1.14:
   version "1.2.3"
@@ -7223,9 +7223,9 @@ native-url@0.3.4:
     querystring "^0.2.0"
 
 nav-frontend-tabell-style@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/nav-frontend-tabell-style/-/nav-frontend-tabell-style-2.0.1.tgz#5a4de2a1559e94f68781791256d25ed662c650bc"
-  integrity sha512-u65OBoMXMm6rh5JV6NwvdMD4+Kn15/FGorSb3HMrh+6B/LHK/3nl7aiZnIyy1o+R13IsuDSoMTD20qU9bgPauA==
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/nav-frontend-tabell-style/-/nav-frontend-tabell-style-2.0.2.tgz#91ccdeaff97cd5097621b4259388721fb29500d3"
+  integrity sha512-POUEDhijmIrqrvLULR4qyePGNsLHkN+337QK/R1RiUfP61/0F54XbSkIdMmuSM+qtzySj8HQscDmU/C4lIknTw==
 
 negotiator@0.6.2:
   version "0.6.2"

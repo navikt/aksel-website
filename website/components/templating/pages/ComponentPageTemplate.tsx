@@ -23,6 +23,7 @@ import Sidebar from "../layout/Sidebar";
 const Wrapper = styled.div`
   display: flex;
   margin-top: 56px;
+  min-height: calc(100vh - 56px);
   @media (max-width: 1068px) {
     display: block;
   }
