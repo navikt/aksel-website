@@ -39,6 +39,7 @@ const MainContent = styled.div`
 
 const SanityContent = styled.div`
   position: relative;
+  max-width: 1256px;
 `;
 
 const MaxW = styled.div`
@@ -47,6 +48,12 @@ const MaxW = styled.div`
   margin-right: auto;
   margin-left: var(--navds-spacing-8);
   padding: var(--navds-spacing-8);
+
+  @media (max-width: 564px) {
+    margin: 0;
+    padding-left: var(--navds-spacing-4);
+    padding-right: var(--navds-spacing-4);
+  }
 `;
 
 const Links = styled.div`

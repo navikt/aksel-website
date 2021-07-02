@@ -11,6 +11,11 @@ const Nav = styled.nav`
   position: relative;
   padding-left: var(--navds-spacing-16);
 
+  @media (max-width: 564px) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
   ::after {
     content: "";
     background-color: var(--navds-color-gray-20);
@@ -28,6 +33,10 @@ const Ul = styled.ul`
   margin: 0;
   display: flex;
 
+  @media (max-width: 564px) {
+    justify-content: center;
+  }
+
   li {
     list-style: none;
   }
@@ -42,6 +51,10 @@ const A = styled.a`
   cursor: pointer;
   text-decoration: none;
   text-transform: capitalize;
+
+  @media (max-width: 564px) {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+  }
 
   &[aria-selected="true"] {
     color: var(--navds-color-blue-50);
