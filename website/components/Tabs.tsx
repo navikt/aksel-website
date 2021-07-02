@@ -5,21 +5,21 @@ import { useRouter } from "next/router";
 const Nav = styled.nav`
   margin: 0;
   padding-top: var(--navds-spacing-4);
+  margin-bottom: var(--navds-spacing-8);
   padding-bottom: 0.7rem;
   overflow-x: auto;
   position: relative;
   padding-left: var(--navds-spacing-16);
+
   ::after {
     content: "";
     background-color: var(--navds-color-gray-20);
-
     height: 1px;
     width: 100%;
     bottom: 0;
     left: 0;
     z-index: 10;
     position: absolute;
-    display: flex;
   }
 `;
 

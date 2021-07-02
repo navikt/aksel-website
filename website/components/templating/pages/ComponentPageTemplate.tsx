@@ -32,6 +32,9 @@ const MainContent = styled.div`
   flex-direction: column;
   width: 100%;
   position: relative;
+  background-color: #f7f7f7;
+  background-color: #f9f9f9;
+  background-color: #fafafa;
 `;
 
 const SanityContent = styled.div`
@@ -146,7 +149,8 @@ const ComponentPageTemplate = ({ data }) => {
                     key={key}
                     path={`${basePath}${key === "bruk" ? "" : "/" + key}`}
                   >
-                    {key}
+                    {/* TODO: Fungerer UU her? Tar mye mindre plass en Tilgjengelighet for mobilvisning */}
+                    {key === "tilgjengelighet" ? "UU" : key}
                   </Tab>
                 )
             )}

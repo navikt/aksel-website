@@ -8,8 +8,7 @@ const Div = styled.div`
   right: 0;
   z-index: 1;
   width: 250px;
-  align-items: center;
-  text-align: start;
+  align-items: start;
   display: flex;
   flex-direction: column;
 
