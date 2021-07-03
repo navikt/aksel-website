@@ -7,8 +7,10 @@
   "scripts": {
     "start": "sanity start",
     "build": "sanity build",
-    "deploy": "sanity deploy"
+    "deploy": "sanity deploy",
+    "update:nav": "node scripts/updateNavDocs.js"
   },
+  "main": "package.json",
   "keywords": [
     "sanity"
   ],

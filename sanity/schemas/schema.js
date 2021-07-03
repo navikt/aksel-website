@@ -14,6 +14,7 @@ import persons from "./documents/persons";
 import uu_interactions, { keyboardTable } from "./objects/uu-interaction";
 import picture from "./objects/image";
 import alert from "./objects/alert";
+import navigation from "./documents/navigation";
 
 export default createSchema({
   name: "default",
@@ -36,5 +37,6 @@ export default createSchema({
     keyboardTable,
     picture,
     alert,
+    navigation,
   ]),
 });
