@@ -17,7 +17,7 @@ const client = sanityClient({
 
 teams.forEach((team) => {
   const doc = {
-    _id: team.name,
+    _id: `navigation_${team.name}`,
     _type: "navigation",
     title: team.name + " navigation",
   };
