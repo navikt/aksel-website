@@ -43,7 +43,11 @@ export default () =>
               ...teams.map((team) =>
                 S.listItem()
                   .title(team.name)
-                  .child(S.document().schemaType("navigation").documentId(team.name))
+                  .child(
+                    S.document()
+                      .schemaType("navigation")
+                      .documentId("navigation_" + team.name)
+                  )
               ),
             ])
         ),
