@@ -18,6 +18,11 @@ const PagePicker = (props) => {
     enabled: enablePreview,
   });
 
+  const { data: sidebar } = usePreviewSubscription(sidebarQuery, {
+    initialData: props.sidebar,
+    enabled: enablePreview,
+  });
+
   slugger.reset();
 
   if (!router.isFallback && !data?.slug) {
@@ -28,11 +33,12 @@ const PagePicker = (props) => {
     return <div>Laster...</div>;
   }
 
+  // TODO: Move sidebar to context?
   return (
     <>
       {enablePreview && <PreviewBanner slug={props?.slug} />}
       <div>
-        <TemplatePicker data={data} />
+        <TemplatePicker data={data} sidebar={sidebar} />
       </div>
     </>
   );
@@ -79,6 +85,7 @@ interface StaticProps {
     page;
     preview: boolean;
     slug: string;
+    sidebar;
   };
   revalidate: number;
 }
@@ -94,21 +101,20 @@ const ds_query = `*[slug.current match $slug][0]
 }`;
 
 const sidebarQuery = `
-*[_id == 'mainNavigation'][0] {
- ...,
- sections[]{
+*[_id == 'navigation_designsystem'][0] {
+  "sidebar": sidemenu[]{
    ...,
-   target->{title, slug, _id},
-   links[]{
-     ...,
-     target->{title, slug, _id},
-     children[]{
-       ...,
-       target->{title, slug, _id}
-     }
-   }
+   link_ref->{_id, slug},
+    dropdown[]{
+      ...,
+       link_ref->{_id, slug},
+      dropdown[]{
+        ...,
+        link_ref->{_id, slug},
+      }
+    }
+  }
  }
-}
 `;
 
 export const getStaticProps = async ({
@@ -124,11 +130,14 @@ export const getStaticProps = async ({
     slug: "designsystem/" + joinedSlug,
   });
 
+  const sidebar = await getClient(true).fetch(sidebarQuery);
+  /* console.log(sidebar); */
   return {
     props: {
       page,
       preview: enablePreview,
       slug: joinedSlug,
+      sidebar: sidebar,
     },
     revalidate: 60,
   };

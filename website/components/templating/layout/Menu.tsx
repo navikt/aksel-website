@@ -22,9 +22,10 @@ const StyledAccordionMenu = styled(AccordionMenu)`
 const MenuLink = (node) => {
   const { asPath } = useRouter();
 
+  const url = `/${node.link_ref.slug.current}`;
   return (
-    <Link href={node.pathName} passHref>
-      <AccordionMenuItem active={parseUrl(asPath).pathname === node.pathName}>
+    <Link href={url} passHref>
+      <AccordionMenuItem active={parseUrl(asPath).pathname === url}>
         {node.title}
       </AccordionMenuItem>
     </Link>
@@ -33,26 +34,29 @@ const MenuLink = (node) => {
 
 const isActive = (children, path) => {
   const active = children.find((child) => {
-    return child.children
-      ? isActive(child.children, path)
-      : child.pathName === path;
+    return child.dropdown
+      ? isActive(child.dropdown, path)
+      : `/${child.link_ref.slug.current}` === path;
   });
   return !!active;
 };
 
 const mapToComponents = (node, path) => {
-  const active = node.children ? isActive(node.children, path) : false;
+  console.log(node);
 
-  return node.children ? (
+  const active =
+    node._type === "dropdown" ? isActive(node.dropdown, path) : false;
+
+  return node._type === "dropdown" ? (
     <AccordionMenuCollapsable
       defaultOpen={active}
-      key={node.title}
+      key={node._key}
       title={node.title}
     >
-      {node.children.map((item) => mapToComponents(item, path))}
+      {node.dropdown.map((item) => mapToComponents(item, path))}
     </AccordionMenuCollapsable>
   ) : (
-    <MenuLink key={node.title} {...node} />
+    <MenuLink key={node._key} {...node} />
   );
 };
 

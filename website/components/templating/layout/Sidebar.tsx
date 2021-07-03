@@ -90,12 +90,10 @@ const dummyMenu = [
   { title: "Qui culpa do", pathName: "#123" },
 ];
 
-function Sidebar() {
-  return (
-    <Wrapper>
-      <Menu menu={dummyMenu} />
-    </Wrapper>
-  );
+function Sidebar({ sidebar: { sidebar } }) {
+  /*   console.log(sidebar); */
+
+  return <Wrapper>{sidebar && <Menu menu={sidebar} />}</Wrapper>;
 }
 
 export default Sidebar;

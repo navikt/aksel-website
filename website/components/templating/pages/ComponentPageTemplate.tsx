@@ -89,7 +89,7 @@ const Inline = styled.span`
   flex-wrap: wrap;
 `;
 
-const ComponentPageTemplate = ({ data }) => {
+const ComponentPageTemplate = ({ data, sidebar }) => {
   const { query } = useRouter();
 
   const [toc, setToc] = useState([]);
@@ -122,7 +122,7 @@ const ComponentPageTemplate = ({ data }) => {
     <>
       <Heading />
       <Wrapper>
-        <Sidebar />
+        <Sidebar sidebar={sidebar} />
 
         <MainContent>
           <MaxW>

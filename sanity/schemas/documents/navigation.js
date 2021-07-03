@@ -110,7 +110,7 @@ export const link = {
     },
     {
       title: "Link",
-      name: "link",
+      name: "link_ref",
       type: "reference",
       to: [{ type: "ds_component_page" }],
       validation: (Rule) => Rule.required(),

@@ -5,8 +5,7 @@ const templates = {
   ds_component_page: (props) => <ComponentPageTemplate {...props} />,
 };
 
-const TemplatePicker = ({ data }) => {
-  /* console.log(data); */
+const TemplatePicker = ({ data, sidebar }) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -26,7 +25,7 @@ const TemplatePicker = ({ data }) => {
 
   const Template = templates[data._type];
 
-  return <Template data={data} />;
+  return <Template data={data} sidebar={sidebar} />;
 };
 
 export default TemplatePicker;
