@@ -48,8 +48,8 @@ function TableOfContents({ toc }) {
         <nav>
           <Ul>
             {toc.map((link) => (
-              <Li>
-                <Link key={link.id} href={`#${link.id}`} passHref>
+              <Li key={link.id}>
+                <Link href={`#${link.id}`} passHref>
                   <a className="navds-link navds-body-short navds-body--s">
                     {link.heading}
                   </a>

@@ -20,11 +20,13 @@ const StyledAccordionMenu = styled(AccordionMenu)`
 `;
 
 const MenuLink = (node) => {
-  const { asPath } = useRouter();
-
+  const { asPath, query } = useRouter();
+  console.log(query);
   const url = `/${node.link_ref.slug.current}`;
+  const urlWPreview = query.preview ? url + "?preview=true" : url;
+
   return (
-    <Link href={url} passHref>
+    <Link href={urlWPreview} passHref>
       <AccordionMenuItem active={parseUrl(asPath).pathname === url}>
         {node.title}
       </AccordionMenuItem>
@@ -42,8 +44,6 @@ const isActive = (children, path) => {
 };
 
 const mapToComponents = (node, path) => {
-  console.log(node);
-
   const active =
     node._type === "dropdown" ? isActive(node.dropdown, path) : false;
 
