@@ -1,9 +1,0 @@
-kbd {
-  margin: 0 var(--navds-spacing-1);
-  color: var(--navds-color-darkgray);
-  border: 1px solid var(--navds-color-gray-40);
-  border-radius: 3px;
-  padding: var(--navds-spacing-1);
-  font-size: 1em;
-  text-transform: uppercase;
-}

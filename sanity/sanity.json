@@ -44,10 +44,6 @@
     {
       "name": "part:@sanity/base/new-document-structure",
       "path": "./newDocumentStructure.js"
-    },
-    {
-      "implements": "part:@sanity/base/theme/variables/override-style",
-      "path": "cssOverrides.css"
     }
   ]
 }

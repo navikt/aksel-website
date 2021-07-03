@@ -5,7 +5,9 @@ import S from "@sanity/desk-tool/structure-builder";
 import { PageWebPreview } from "./web-previews/PageWebPreview";
 import { ComponentPageWebPreview } from "./web-previews/ComponentWebPreview";
 import { Facilitet, Historic } from "@navikt/ds-icons";
+import teams from "./teams.js";
 
+/* console.log(teams); */
 export default () =>
   S.list()
     .title("Verktøykasse")
@@ -24,17 +26,34 @@ export default () =>
                     S.initialValueTemplateItem("ds_component_page_template"),
                   ])
                 ),
+
               S.listItem()
                 .title("Versjoner")
                 .icon(() => <Historic />)
                 .child(S.documentTypeList("component_versions")),
             ])
         ),
+      S.divider(),
+      S.listItem()
+        .title("Sidenavigasjon")
+        .child(
+          S.list()
+            .title("Navigasjon")
+            .items([
+              ...teams.map((team) =>
+                S.listItem()
+                  .title(team.name)
+                  .child(S.document().schemaType("navigation").documentId(team.name))
+              ),
+            ])
+        ),
 
       S.divider(),
       ...S.documentTypeListItems().filter(
         (listItem) =>
-          !["ds_component_page", "component_versions"].includes(listItem.getId())
+          !["ds_component_page", "component_versions", "navigation"].includes(
+            listItem.getId()
+          )
       ),
     ]);
 

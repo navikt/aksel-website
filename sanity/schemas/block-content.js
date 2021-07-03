@@ -16,6 +16,21 @@ const TitleRenderer = (props, size, level) => (
   </Title>
 );
 
+const Kbd = (props) => (
+  <kbd
+    {...props}
+    style={{
+      margin: "0 var(--navds-spacing-1)",
+      color: "var(--navds-color-darkgray)",
+      border: "1px solid var(--navds-color-gray-40)",
+      borderRadius: "3px",
+      padding: "var(--navds-spacing-1)",
+      fontSize: "1em",
+      textTransform: "uppercase",
+    }}
+  />
+);
+
 export default {
   title: "Block Content",
   name: "blockContent",
@@ -110,8 +125,8 @@ export default {
             title: "Keyboard",
             value: "kbd",
             blockEditor: {
-              icon: () => <kbd>KBD</kbd>,
-              render: (props) => <kbd>{props.children}</kbd>,
+              icon: () => <Kbd>KBD</Kbd>,
+              render: (props) => <Kbd>{props.children}</Kbd>,
             },
           },
         ],
