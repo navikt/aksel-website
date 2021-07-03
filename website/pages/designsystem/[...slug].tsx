@@ -93,6 +93,24 @@ const ds_query = `*[slug.current match $slug][0]
 	}
 }`;
 
+const sidebarQuery = `
+*[_id == 'mainNavigation'][0] {
+ ...,
+ sections[]{
+   ...,
+   target->{title, slug, _id},
+   links[]{
+     ...,
+     target->{title, slug, _id},
+     children[]{
+       ...,
+       target->{title, slug, _id}
+     }
+   }
+ }
+}
+`;
+
 export const getStaticProps = async ({
   params: { slug },
   preview,
