@@ -3,9 +3,9 @@ const sanityToken = process.env.SANITY_TOKEN;
 const config = require("../sanity.json");
 const teams = require("../teams");
 
-/* if (!sanityToken) {
+if (!sanityToken) {
   throw new Error("Could not find token from SANITY_TOKEN");
-} */
+}
 
 const client = sanityClient({
   projectId: config.api.projectId,
