@@ -65,13 +65,7 @@ const Menu = ({ menu }) => {
   const { asPath } = useRouter();
   return (
     <StyledAccordionMenu className="navds-label navds-label--s">
-      {menu.map((item, i) =>
-        i % 3 === 0 && i !== 0 ? (
-          <Hr />
-        ) : (
-          mapToComponents(item, parseUrl(asPath).pathname)
-        )
-      )}
+      {menu.map((item, i) => mapToComponents(item, parseUrl(asPath).pathname))}
     </StyledAccordionMenu>
   );
 };
