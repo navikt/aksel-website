@@ -28,7 +28,7 @@ export default () =>
                 ),
 
               S.listItem()
-                .title("Versjoner")
+                .title("Pakke-versjoner")
                 .icon(() => <Historic />)
                 .child(S.documentTypeList("component_versions")),
             ])
