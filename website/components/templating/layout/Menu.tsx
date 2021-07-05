@@ -21,15 +21,17 @@ const StyledAccordionMenu = styled(AccordionMenu)`
 
 const MenuLink = (node) => {
   const { asPath, query } = useRouter();
-  console.log(query);
+
   const url = `/${node.link_ref.slug.current}`;
   const urlWPreview = query.preview ? url + "?preview=true" : url;
 
+  const active = parseUrl(asPath).pathname.startsWith(url);
+  console.log(url);
+  console.log(parseUrl(asPath).pathname);
+
   return (
     <Link href={urlWPreview} passHref>
-      <AccordionMenuItem active={parseUrl(asPath).pathname === url}>
-        {node.title}
-      </AccordionMenuItem>
+      <AccordionMenuItem active={active}>{node.title}</AccordionMenuItem>
     </Link>
   );
 };
