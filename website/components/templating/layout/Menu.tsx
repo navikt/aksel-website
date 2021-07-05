@@ -26,8 +26,6 @@ const MenuLink = (node) => {
   const urlWPreview = query.preview ? url + "?preview=true" : url;
 
   const active = parseUrl(asPath).pathname.startsWith(url);
-  console.log(url);
-  console.log(parseUrl(asPath).pathname);
 
   return (
     <Link href={urlWPreview} passHref>
@@ -38,9 +36,10 @@ const MenuLink = (node) => {
 
 const isActive = (children, path) => {
   const active = children.find((child) => {
+    const url = `/${child.link_ref.slug.current}`;
     return child.dropdown
       ? isActive(child.dropdown, path)
-      : `/${child.link_ref.slug.current}` === path;
+      : path.startsWith(url);
   });
   return !!active;
 };
