@@ -137,17 +137,21 @@ const ComponentPageTemplate = ({ data, sidebar }) => {
                 </Inline>
                 <Links>
                   {data.npm_link && <Link href={data.npm_link}>NPM</Link>}
-                  <Link href={data.github_link}>
-                    Github <GithubIcon />
-                  </Link>
-                  <Link href={data.figma_link}>
-                    Figma <FigmaIcon />
-                  </Link>
+                  {data.github_link && (
+                    <Link href={data.github_link}>
+                      Github <GithubIcon />
+                    </Link>
+                  )}
+                  {data.figma_link && (
+                    <Link href={data.figma_link}>
+                      Figma <FigmaIcon />
+                    </Link>
+                  )}
                 </Links>
               </StyledDiv>
             </HeaderWrapper>
 
-            <Ingress spacing>{data.ingress}</Ingress>
+            {data.ingress && <Ingress spacing>{data.ingress}</Ingress>}
           </MaxW>
 
           <Tabs>

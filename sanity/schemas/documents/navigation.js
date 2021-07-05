@@ -112,6 +112,7 @@ export const link = {
       title: "Link",
       name: "link_ref",
       type: "reference",
+      weak: true,
       to: [{ type: "ds_component_page" }],
       validation: (Rule) => Rule.required(),
       options: {

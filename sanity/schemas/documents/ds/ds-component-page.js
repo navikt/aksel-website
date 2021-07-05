@@ -36,7 +36,6 @@ export default {
       title: "Ingress",
       name: "ingress",
       type: "string",
-      validation: (Rule) => Rule.required(),
     },
     {
       title: "Status",
@@ -61,13 +60,11 @@ export default {
       title: "Github link",
       name: "github_link",
       type: "url",
-      validation: (Rule) => Rule.required(),
     },
     {
       title: "Figma link",
       name: "figma_link",
       type: "url",
-      validation: (Rule) => Rule.required(),
     },
     {
       title: "Kontaktperson",
@@ -75,7 +72,6 @@ export default {
       type: "reference",
       description: "Kobler en person som kontaktperson til denne siden",
       to: [{ type: "contact_person" }],
-      validation: (Rule) => Rule.required(),
     },
     {
       title: "Versjon",
