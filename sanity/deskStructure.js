@@ -66,7 +66,7 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
     case "ds_component_page":
       return S.document().views([
         S.view.form(),
-        S.view.component(ComponentPageWebPreview).title("Preview"),
+        S.view.component(ComponentPageWebPreview).title("Preview (krever naisdevice)"),
       ]);
   }
 };

@@ -1,5 +1,6 @@
 export default {
   title: "Linker til sider",
+  description: "Rendrer små cards som linker videre til sider, tre per rad",
   name: "linker",
   type: "object",
   fields: [
@@ -17,7 +18,7 @@ export default {
 };
 
 export const links = {
-  title: "Side linker",
+  title: "Link",
   name: "linker.link",
   type: "object",
   description: "Sett enten Side referanse eller URL",
@@ -30,7 +31,8 @@ export const links = {
     },
     {
       name: "text",
-      title: "Tekst",
+      title: "Tekst (optional)",
+      description: "Kort sammendrag av hva lenken linker til",
       type: "string",
     },
     {

@@ -7,6 +7,7 @@ export default {
       type: "array",
       name: "changes",
       title: "Endringer",
+      description: "Liste over endringer",
       of: [{ type: "changelog.change" }],
       validation: (Rule) => Rule.required().min(1),
     },
@@ -22,19 +23,20 @@ export const change = {
   type: "object",
   fields: [
     {
-      title: "Tittel",
+      title: "Tittel for endring",
       name: "title",
       type: "string",
       validation: (Rule) => Rule.required(),
     },
     {
-      title: "Pull request",
+      title: "Pull request (optional)",
       name: "pull_request",
       type: "url",
     },
     {
       name: "body",
-      title: "Fritekst",
+      title: "Tekst",
+      description: "Beskrivelse av hva endringen gjorde",
       type: "blockContent",
       validation: (Rule) => Rule.required(),
     },

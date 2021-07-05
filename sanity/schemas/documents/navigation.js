@@ -46,7 +46,7 @@ export default {
       name: "sidemenu",
       title: "Sidemeny",
       description:
-        "Linker eller dropdowns med linker. Maks dybde på 2 dropdowns er støttet.",
+        "Linker eller dropdowns med linker. Maks dybde på 2 dropdowns er støttet. Sider må være publisert før de kan linkes her.",
       type: "array",
       of: [
         { type: "navigation.dropdown", name: "dropdown", title: "Dropdown" },

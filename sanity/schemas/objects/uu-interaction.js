@@ -4,24 +4,25 @@ export default {
   type: "object",
   fields: [
     {
-      title: "Fokus håndtering",
+      title: "Fokus håndtering (optional)",
       name: "uu_interaction_focus",
       type: "blockContent",
     },
     {
-      title: "Mus håndtering",
+      title: "Mus håndtering (optional)",
       name: "uu_interaction_mouse",
       type: "blockContent",
     },
     {
-      title: "Skjermleser",
+      title: "Skjermleser (optional)",
       name: "uu_interaction_screen_reader",
       type: "blockContent",
     },
     {
-      title: "Keyboard håndtering",
+      title: "Keyboard håndtering (optional)",
       name: "uu_interaction_keyboard",
       type: "array",
+      description: "Liste med interaksjoner som rendres i en tabell",
       of: [{ type: "uu_interaction.keyboard" }],
     },
   ],

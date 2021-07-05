@@ -7,6 +7,7 @@ export default {
       type: "array",
       name: "props",
       title: "Props",
+      description: "Liste med props, tilsvarer en rad i tabellen",
       of: [{ type: "prop_table.prop" }],
       validation: (Rule) => Rule.required().min(1),
     },
@@ -34,12 +35,12 @@ export const prop = {
       validation: (Rule) => Rule.required(),
     },
     {
-      title: "Beskrivelse",
+      title: "Beskrivelse (optional)",
       name: "prop_description",
       type: "string",
     },
     {
-      title: "Default",
+      title: "Default (optional)",
       name: "prop_default",
       type: "string",
     },

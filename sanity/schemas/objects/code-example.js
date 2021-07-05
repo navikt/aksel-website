@@ -13,7 +13,7 @@ export default {
     },
     {
       name: "github",
-      title: "Link til kode (github)",
+      title: "Link til github-kode (optional)",
       type: "url",
     },
     {
