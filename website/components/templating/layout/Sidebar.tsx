@@ -14,85 +14,8 @@ const Wrapper = styled.div`
     display: none;
   }
 `;
-const dummyMenu = [
-  { title: "Ea dolor ullamco", pathName: "#123" },
-  {
-    title: "Adipisicing",
-    pathName: "#123",
-    children: [
-      {
-        title: "Adipisicing",
-        pathName: "#123",
-        children: [
-          { title: "Link3", pathName: "#123" },
-          { title: "Link4", pathName: "#123" },
-          { title: "Link5", pathName: "#123" },
-        ],
-      },
-      { title: "Link4", pathName: "#123" },
-      { title: "Link5", pathName: "#123" },
-    ],
-  },
-  { title: "Nulla anim commodo aliquip", pathName: "#123" },
-  {
-    title: "Ea est nulla commodo est",
-    pathName: "#123",
-    children: [
-      { title: "Link3", pathName: "#123" },
-      {
-        title: "Link4",
-        pathName: "#123",
-        children: [
-          { title: "Link3", pathName: "#123" },
-          { title: "Link4", pathName: "#123" },
-          { title: "Link5", pathName: "#123" },
-        ],
-      },
-      { title: "Link5", pathName: "#123" },
-    ],
-  },
-  { title: "Aliquip exercitation", pathName: "#123" },
-  {
-    title: "Exercitation",
-    pathName: "#123",
-    children: [
-      { title: "Link3", pathName: "#123" },
-      { title: "Link4", pathName: "#123" },
-      { title: "Link5", pathName: "#123" },
-    ],
-  },
-  { title: "Minim labore duis", pathName: "#123" },
-  { title: "Et culpa sunt nostrud qui ", pathName: "#123" },
-  {
-    title: "Culpa irure nostrud labore mollit",
-    pathName: "#123",
-    children: [
-      { title: "Link3", pathName: "#123" },
-      { title: "Link4", pathName: "#123" },
-      { title: "Link5", pathName: "#123" },
-    ],
-  },
-  { title: "Minim", pathName: "#123" },
-  { title: "Nostrud qui ", pathName: "#123" },
-  {
-    title: "Do nostrud elit proident veniam sit",
-    pathName: "#123",
-    children: [
-      { title: "Link3", pathName: "#123" },
-      { title: "Link4", pathName: "#123" },
-      { title: "Link5", pathName: "#123" },
-    ],
-  },
-  {
-    title: "Exercitation commodo eiusmod sit voluptate mollit",
-    pathName: "#123",
-  },
-  { title: "Qui culpa do", pathName: "#123" },
-];
 
 function Sidebar({ sidebar: { sidebar } }) {
-  /*   console.log(sidebar); */
-
   return <Wrapper>{sidebar && <Menu menu={sidebar} />}</Wrapper>;
 }
 

@@ -102,10 +102,13 @@ const serializers = {
               <Divider>
                 <Hr />
               </Divider>
-              <Title spacing level={2} size="xl" id={slug}>
+              <Title spacing level={2} size="xl" id={slug} tabIndex={-1}>
                 {children}
               </Title>
-              <CopyAnchor anchor={`#${slug}`} />
+              <CopyAnchor
+                aria-label={`Kopier link til seksjon med tittel ${children}`}
+                anchor={`#${slug}`}
+              />
             </>
           );
         }

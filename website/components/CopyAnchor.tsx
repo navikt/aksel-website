@@ -29,7 +29,7 @@ const StyledPopover = styled(Popover)`
   border-radius: 4px;
 `;
 
-function CopyAnchor({ anchor }) {
+function CopyAnchor({ anchor, ...props }) {
   const [openPopover, setOpenPopover] = useState(false);
   const popoverRef = useRef(null);
   const timeoutRef = useRef<NodeJS.Timeout>();
@@ -62,10 +62,12 @@ function CopyAnchor({ anchor }) {
         ref={popoverRef}
         onClick={(e) => handleClick(e)}
         href={anchor}
+        {...props}
       >
-        <Link /> Kopier lenke
+        <Link focusable="false" role="presentation" /> Kopier lenke
       </A>
       <StyledPopover
+        aria-atomic="true"
         role="alert"
         anchorEl={popoverRef.current}
         open={openPopover}

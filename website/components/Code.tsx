@@ -248,7 +248,7 @@ const Code = ({ node }) => {
             onClick={() => handleCopy(node.tabs[activeTab].example.code)}
           >
             Copy
-            <Copy />
+            <Copy focusable="false" role="presentation" />
           </Button>
         </CopyWrapper>
       </Tabs>
@@ -270,6 +270,7 @@ const Code = ({ node }) => {
       {node.tabs && node.tabs.map((_, i) => renderCodePreview(i, showTabs))}
       <StyledPopover
         role="alert"
+        aria-atomic="true"
         anchorEl={buttonRef.current}
         open={openPopover}
         onClose={() => setOpenPopover(false)}

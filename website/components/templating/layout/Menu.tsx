@@ -36,7 +36,6 @@ const MenuLink = (node) => {
 
 const isActive = (children, path) => {
   const active = children.find((child) => {
-    console.log(child);
     const url = !child.dropdown && `/${child.link_ref.slug.current}`;
     return child.dropdown
       ? isActive(child.dropdown, path)
@@ -65,7 +64,10 @@ const mapToComponents = (node, path) => {
 const Menu = ({ menu }) => {
   const { asPath } = useRouter();
   return (
-    <StyledAccordionMenu className="navds-label navds-label--s">
+    <StyledAccordionMenu
+      aria-label="sidemeny for navigasjon"
+      className="navds-label navds-label--s"
+    >
       {menu.map((item, i) => mapToComponents(item, parseUrl(asPath).pathname))}
     </StyledAccordionMenu>
   );

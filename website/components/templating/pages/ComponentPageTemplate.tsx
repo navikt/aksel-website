@@ -29,7 +29,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const MainContent = styled.div`
+const MainContent = styled.main`
   flex-direction: column;
   width: 100%;
   position: relative;

@@ -74,7 +74,7 @@ const A = styled.a`
 
 export const Tabs = ({ children }) => {
   return (
-    <Nav>
+    <Nav aria-label="Tabmeny for sideinnhold">
       <Ul role="tablist">{children}</Ul>
     </Nav>
   );

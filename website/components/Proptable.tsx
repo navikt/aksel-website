@@ -11,7 +11,10 @@ const PropTable = ({ node }) => {
   if (props.length === 0) return null;
   return (
     <Div>
-      <table className="tabell">
+      <table
+        className="tabell"
+        summary="Oversikt over react-props komponenten bruker"
+      >
         <thead>
           <tr>
             <th>Name</th>

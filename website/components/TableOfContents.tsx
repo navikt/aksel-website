@@ -45,7 +45,7 @@ function TableOfContents({ toc }) {
     <Div>
       <div>
         <p className="navds-label">Innhold på siden</p>
-        <nav>
+        <nav aria-label="Liste over innhold på siden">
           <Ul>
             {toc.map((link) => (
               <Li key={link.id}>
