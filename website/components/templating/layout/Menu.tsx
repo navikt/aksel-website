@@ -36,7 +36,8 @@ const MenuLink = (node) => {
 
 const isActive = (children, path) => {
   const active = children.find((child) => {
-    const url = `/${child.link_ref.slug.current}`;
+    console.log(child);
+    const url = !child.dropdown && `/${child.link_ref.slug.current}`;
     return child.dropdown
       ? isActive(child.dropdown, path)
       : path.startsWith(url);
