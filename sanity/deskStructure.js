@@ -4,7 +4,7 @@ import S from "@sanity/desk-tool/structure-builder";
 /* import { FrontpageWebPreview } from "./web-previews/FrontpageWebPreview"; */
 import { PageWebPreview } from "./web-previews/PageWebPreview";
 import { ComponentPageWebPreview } from "./web-previews/ComponentWebPreview";
-import { Facilitet, Historic } from "@navikt/ds-icons";
+import { Facilitet, FileContent, Historic } from "@navikt/ds-icons";
 import teams from "./teams.js";
 
 /* console.log(teams); */
@@ -25,6 +25,14 @@ export default () =>
                   S.documentTypeList("ds_component_page").initialValueTemplates([
                     S.initialValueTemplateItem("ds_component_page_template"),
                   ])
+                ),
+              S.listItem()
+                .title("Artikkelsider")
+                .icon(() => <FileContent />)
+                .child(
+                  S.documentTypeList("ds_article_page") /* .initialValueTemplates([
+                    S.initialValueTemplateItem("ds_component_page_template"),
+                  ]) */
                 ),
 
               S.listItem()

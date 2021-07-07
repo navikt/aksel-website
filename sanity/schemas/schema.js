@@ -7,6 +7,7 @@ import code_example, { example } from "./objects/code-example";
 import prop_table, { prop } from "./objects/proptable";
 import changelog, { change } from "./objects/changelog";
 import designsystem_component_page from "./documents/ds/ds-component-page";
+import designsystem_article_page from "./documents/ds/ds-article-page";
 import component_versions from "./documents/versions";
 import do_dont, { doDont } from "./objects/do-dont";
 import linker, { links } from "./objects/linker";
@@ -27,6 +28,7 @@ export default createSchema({
     changelog,
     change,
     designsystem_component_page,
+    designsystem_article_page,
     component_versions,
     do_dont,
     doDont,
