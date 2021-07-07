@@ -10,13 +10,26 @@ import parseUrl from "url-parse";
 import styled from "styled-components";
 
 const Hr = styled.hr`
-  margin: var(--navds-spacing-2) var(--navds-spacing-10);
-  border: 1px solid var(--navds-color-gray-20);
+  margin: 0 var(--navds-spacing-8);
+  margin-top: var(--navds-spacing-4);
+  border: 1px solid rgba(11, 11, 11, 0.1);
   border-radius: 1rem;
 `;
 
 const StyledAccordionMenu = styled(AccordionMenu)`
   --navds-color-text-link: var(--navds-color-darkgray);
+`;
+
+const SectionTitle = styled.div`
+  display: flex;
+  padding: var(--navds-spacing-3) var(--navds-spacing-4);
+  margin-top: var(--navds-spacing-4);
+  border-top: 1px solid rgba(11, 11, 11, 0.1);
+
+  &[data-first="true"] {
+    margin-top: 0;
+    border: none;
+  }
 `;
 
 const MenuLink = (node) => {
@@ -44,21 +57,39 @@ const isActive = (children, path) => {
   return !!active;
 };
 
-const mapToComponents = (node, path) => {
+const mapToComponents = (node, path, index) => {
   const active =
     node._type === "dropdown" ? isActive(node.dropdown, path) : false;
 
-  return node._type === "dropdown" ? (
-    <AccordionMenuCollapsable
-      defaultOpen={active}
-      key={node._key}
-      title={node.title}
-    >
-      {node.dropdown.map((item) => mapToComponents(item, path))}
-    </AccordionMenuCollapsable>
-  ) : (
-    <MenuLink key={node._key} {...node} />
-  );
+  switch (node._type) {
+    case "dropdown":
+      return (
+        <AccordionMenuCollapsable
+          defaultOpen={active}
+          key={node._key}
+          title={node.title}
+        >
+          {node.dropdown.map((item) => mapToComponents(item, path, index))}
+        </AccordionMenuCollapsable>
+      );
+    case "link":
+      return <MenuLink key={node._key} {...node} />;
+    case "title":
+      return (
+        <>
+          {/* {index !== 0 && <Hr />} */}
+          <SectionTitle
+            data-first={index === 0}
+            className="navds-title navds-title--s"
+            key={node._key}
+          >
+            {node.title}
+          </SectionTitle>
+        </>
+      );
+    default:
+      return null;
+  }
 };
 
 const Menu = ({ menu }) => {
@@ -68,7 +99,9 @@ const Menu = ({ menu }) => {
       aria-label="sidemeny for navigasjon"
       className="navds-label navds-label--s"
     >
-      {menu.map((item, i) => mapToComponents(item, parseUrl(asPath).pathname))}
+      {menu.map((item, i) =>
+        mapToComponents(item, parseUrl(asPath).pathname, i)
+      )}
     </StyledAccordionMenu>
   );
 };

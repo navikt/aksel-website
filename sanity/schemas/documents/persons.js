@@ -1,5 +1,5 @@
 export default {
-  title: "Personer",
+  title: "Kontaktpersoner",
   name: "contact_person",
   type: "document",
   fields: [

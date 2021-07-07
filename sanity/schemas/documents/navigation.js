@@ -1,4 +1,4 @@
-import { Expand, Link } from "@navikt/ds-icons";
+import { Expand, Link, Bookmark } from "@navikt/ds-icons";
 import React from "react";
 
 const maxDepth = 2;
@@ -51,6 +51,7 @@ export default {
       of: [
         { type: "navigation.dropdown", name: "dropdown", title: "Dropdown" },
         { type: "navigation.link", name: "link", title: "Link" },
+        { type: "navigation.title", name: "title", title: "Seksjonstittel" },
       ],
       validation: (Rule) => Rule.required().min(1),
     },
@@ -97,6 +98,31 @@ export const dropdown = {
   },
 };
 
+export const LinkTitle = {
+  name: "navigation.title",
+  title: "Seksjons tittel",
+  type: "object",
+  fields: [
+    {
+      name: "title",
+      title: "Tittel",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    },
+  ],
+  preview: {
+    select: {
+      title: "title",
+    },
+    prepare({ title }) {
+      return {
+        title: `${title}`,
+        media: <Bookmark />,
+      };
+    },
+  },
+};
+
 export const link = {
   name: "navigation.link",
   title: "Link",
@@ -113,7 +139,7 @@ export const link = {
       name: "link_ref",
       type: "reference",
       weak: true,
-      to: [{ type: "ds_component_page" }],
+      to: [{ type: "ds_component_page" }, { type: "ds_article_page" }],
       validation: (Rule) => Rule.required(),
       options: {
         // TODO: Add prefix to "teams.js" then filter documents based on document id & prefix

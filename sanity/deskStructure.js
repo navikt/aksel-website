@@ -4,10 +4,9 @@ import S from "@sanity/desk-tool/structure-builder";
 /* import { FrontpageWebPreview } from "./web-previews/FrontpageWebPreview"; */
 import { PageWebPreview } from "./web-previews/PageWebPreview";
 import { ComponentPageWebPreview } from "./web-previews/ComponentWebPreview";
-import { Facilitet, FileContent, Historic } from "@navikt/ds-icons";
+import { Facilitet, FileContent, Historic, Place, Search } from "@navikt/ds-icons";
 import teams from "./teams.js";
 
-/* console.log(teams); */
 export default () =>
   S.list()
     .title("Verktøykasse")
@@ -19,7 +18,7 @@ export default () =>
             .title("Designsystemet")
             .items([
               S.listItem()
-                .title("Komponenter")
+                .title("Komponent sider")
                 .icon(() => <Facilitet />)
                 .child(
                   S.documentTypeList("ds_component_page").initialValueTemplates([
@@ -27,45 +26,42 @@ export default () =>
                   ])
                 ),
               S.listItem()
-                .title("Artikkelsider")
+                .title("Artikkel sider")
                 .icon(() => <FileContent />)
                 .child(
-                  S.documentTypeList("ds_article_page") /* .initialValueTemplates([
-                    S.initialValueTemplateItem("ds_component_page_template"),
-                  ]) */
+                  S.documentList()
+                    .title("Artikkler")
+                    .filter('_type in ["ds_article_page", "ds_tabbed_article_page"]')
                 ),
-
               S.listItem()
-                .title("Pakke-versjoner")
+                .title("Navigasjon")
+                .icon(() => <Place />)
+                .child(
+                  S.document()
+                    .schemaType("navigation")
+                    .documentId("navigation_designsystem")
+                ),
+              S.listItem()
+                .title("Pakke-versjoner (test)")
                 .icon(() => <Historic />)
                 .child(S.documentTypeList("component_versions")),
             ])
         ),
       S.divider(),
       S.listItem()
-        .title("Sidenavigasjon")
-        .child(
-          S.list()
-            .title("Navigasjon")
-            .items([
-              ...teams.map((team) =>
-                S.listItem()
-                  .title(team.name)
-                  .child(
-                    S.document()
-                      .schemaType("navigation")
-                      .documentId("navigation_" + team.name)
-                  )
-              ),
-            ])
-        ),
-
-      S.divider(),
+        .title("Metadata")
+        .icon(() => <Search />)
+        .child(S.editor().schemaType("metadata").documentId("metadata")),
       ...S.documentTypeListItems().filter(
         (listItem) =>
-          !["ds_component_page", "component_versions", "navigation"].includes(
-            listItem.getId()
-          )
+          ![
+            "ds_component_page",
+            "component_versions",
+            "navigation",
+            "ds_tabbed_article_page",
+            "ds_article_page",
+            "metadata",
+          ].includes(listItem.getId())
       ),
     ]);
 
