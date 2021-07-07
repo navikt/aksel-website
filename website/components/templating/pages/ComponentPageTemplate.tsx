@@ -73,6 +73,7 @@ const Links = styled.div`
 
 const HeaderWrapper = styled.div`
   width: 100%;
+  padding-top: 2rem;
   padding-bottom: var(--navds-spacing-6);
 `;
 

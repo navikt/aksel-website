@@ -51,6 +51,11 @@ const Li = styled.li`
     a {
       font-weight: bold;
       color: var(--navds-color-blue-50);
+
+      :focus {
+        color: white;
+      }
+
       &:before {
         content: "";
         width: 3px;
@@ -76,6 +81,7 @@ function TableOfContents({ toc }) {
     };
   }, [toc]);
 
+  // TODO: refactor for å tilpasse scroll for alle headings, ikke bare de som når toppen av siden
   const handleScroll = useCallback(() => {
     const offset = toc.reduce((prev, link) => {
       const el = document.getElementById(link.id);
