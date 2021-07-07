@@ -48,9 +48,14 @@ const Divider = styled.div`
     display: none;
   }
 `;
+
 const Hr = styled.hr`
   border: 1px solid rgb(201, 201, 201, 0.4);
   margin: 0;
+`;
+
+const TitleWithScrollMargin = styled(Title)`
+  scroll-margin-top: 5rem;
 `;
 
 const StyledAlert = styled(Alert)`
@@ -102,9 +107,15 @@ const serializers = {
               <Divider>
                 <Hr />
               </Divider>
-              <Title spacing level={2} size="xl" id={slug} tabIndex={-1}>
+              <TitleWithScrollMargin
+                id={slug}
+                spacing
+                level={2}
+                size="xl"
+                tabIndex={-1}
+              >
                 {children}
-              </Title>
+              </TitleWithScrollMargin>
               <CopyAnchor
                 aria-label={`Kopier link til seksjon med tittel ${children}`}
                 anchor={`#${slug}`}
@@ -165,6 +176,26 @@ const serializers = {
   },
 };
 
-export const SanityBlockContent = (props: { blocks: any }) => {
-  return <BlockContent blocks={props.blocks} serializers={serializers} />;
+const MarginTopDiv = styled.div`
+  margin-top: 4rem;
+`;
+
+export const SanityBlockContent = ({
+  blocks,
+  withMargin = false,
+}: {
+  blocks: any;
+  withMargin?: boolean;
+}) => {
+  return (
+    <>
+      {withMargin ? (
+        <MarginTopDiv>
+          <BlockContent blocks={blocks} serializers={serializers} />
+        </MarginTopDiv>
+      ) : (
+        <BlockContent blocks={blocks} serializers={serializers} />
+      )}
+    </>
+  );
 };

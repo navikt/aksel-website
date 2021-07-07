@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 const Nav = styled.nav`
   margin: 0;
   padding-top: var(--navds-spacing-4);
-  margin-bottom: var(--navds-spacing-8);
+
   padding-bottom: 0.7625rem;
   overflow-x: auto;
   position: relative;

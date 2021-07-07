@@ -48,7 +48,7 @@ const MaxW = styled.div`
   margin: 0;
   margin-right: auto;
   margin-left: var(--navds-spacing-8);
-  padding: var(--navds-spacing-8);
+  padding: 0 var(--navds-spacing-8);
   overflow-x: auto;
 
   @media (max-width: 564px) {
@@ -171,7 +171,7 @@ const ComponentPageTemplate = ({ data, sidebar }) => {
           <SanityContent>
             <TableOfContents toc={toc} />
             <MaxW>
-              <SanityBlockContent blocks={data[tabs[activeTab]]} />
+              <SanityBlockContent withMargin blocks={data[tabs[activeTab]]} />
             </MaxW>
           </SanityContent>
         </MainContent>
