@@ -1,11 +1,5 @@
 import React, { useLayoutEffect, useState } from "react";
-import {
-  Ingress,
-  Title,
-  Link,
-  Header,
-  ContentContainer,
-} from "@navikt/ds-react";
+import { Ingress, Title, Link } from "@navikt/ds-react";
 
 import { useRouter } from "next/router";
 import styled from "styled-components";
@@ -18,12 +12,12 @@ import GithubIcon from "../../assets/GithubIcon";
 import TableOfContents from "../../TableOfContents";
 import Heading from "../layout/Heading";
 import Sidebar from "../layout/Sidebar";
-/* import * as NextLink from "next/link"; */
 
 const Wrapper = styled.div`
   display: flex;
   margin-top: 56px;
   min-height: calc(100vh - 56px);
+
   @media (max-width: 1068px) {
     display: block;
   }
@@ -90,6 +84,7 @@ const Inline = styled.span`
   flex-wrap: wrap;
 `;
 
+// TODO: Flytte sidebar ut i context for å unngå re-render (dropdowns lukker/åpner seg da)
 const ComponentPageTemplate = ({ data, sidebar }) => {
   const { query } = useRouter();
 

@@ -9,16 +9,12 @@ import {
 
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import { Tab, Tabs } from "../../Tabs";
 import { SanityBlockContent } from "../SanityBlockContent";
 import LastUpdated from "../../LastUpdated";
 import StatusTag from "../../StatusTag";
-import FigmaIcon from "../../assets/FigmaIcon";
-import GithubIcon from "../../assets/GithubIcon";
 import TableOfContents from "../../TableOfContents";
 import Heading from "../layout/Heading";
 import Sidebar from "../layout/Sidebar";
-/* import * as NextLink from "next/link"; */
 
 const Wrapper = styled.div`
   display: flex;
@@ -58,36 +54,10 @@ const MaxW = styled.div`
   }
 `;
 
-const Links = styled.div`
-  display: flex;
-  column-gap: 1rem;
-  margin-left: var(--navds-spacing-4);
-  a {
-    text-decoration: none;
-    color: var(--navds-color-darkgray);
-    :hover {
-      text-decoration: underline;
-    }
-  }
-`;
-
 const HeaderWrapper = styled.div`
   width: 100%;
   padding-top: 2rem;
   padding-bottom: var(--navds-spacing-6);
-`;
-
-const StyledDiv = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--navds-spacing-2);
-  justify-content: space-between;
-`;
-
-const Inline = styled.span`
-  display: inline-flex;
-  column-gap: var(--navds-spacing-3);
-  flex-wrap: wrap;
 `;
 
 const ActiclePageTemplate = ({ data, sidebar }) => {
@@ -123,6 +93,7 @@ const ActiclePageTemplate = ({ data, sidebar }) => {
                 {data.heading}
               </Title>
               <StatusTag status={data.status} />
+              <LastUpdated date={data._updatedAt} />
             </HeaderWrapper>
           </MaxW>
           <SanityContent>
