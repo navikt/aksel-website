@@ -44,7 +44,7 @@ const PagePicker = (props) => {
   );
 };
 
-const query = `*[_type in ["ds_component_page", "ds_article_page"]]{ _type, 'slug': slug.current }`;
+const query = `*[_type in ["ds_component_page", "ds_article_page", "ds_tabbed_article_page"]]{ _type, 'slug': slug.current }`;
 
 export const getStaticPaths = async () => {
   const documents: any[] | null = await getClient(false).fetch(query);

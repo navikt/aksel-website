@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import Error from "next/error";
 import ComponentPageTemplate from "./pages/ComponentPageTemplate";
 import ActiclePageTemplate from "./pages/ArticlePageTemplate";
+import TabbedActiclePageTemplate from "./pages/TabbedArticlePageTemplate copy";
 
 const templates = {
   ds_component_page: (props) => <ComponentPageTemplate {...props} />,
   ds_article_page: (props) => <ActiclePageTemplate {...props} />,
+  ds_tabbed_article_page: (props) => <TabbedActiclePageTemplate {...props} />,
 };
 
 const TemplatePicker = ({ data, sidebar }) => {
