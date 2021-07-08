@@ -81,11 +81,13 @@ export const Tabs = ({ children }) => {
 };
 
 export const Tab = ({
-  path = "",
   children,
+  path = "",
+  active,
 }: {
-  path?: string;
   children: string;
+  path?: string;
+  active?: boolean;
 }) => {
   const {
     query: { preview },
@@ -105,7 +107,9 @@ export const Tab = ({
         <A
           role="tab"
           aria-selected={
-            path === new URL(asPath, "http://example.com").pathname
+            active
+              ? active
+              : path === new URL(asPath, "http://example.com").pathname
           }
         >
           {children}

@@ -49,7 +49,7 @@ const query = `*[_type in ["ds_component_page", "ds_article_page", "ds_tabbed_ar
 export const getStaticPaths = async () => {
   const documents: any[] | null = await getClient(false).fetch(query);
   const paths = [];
-  const tabs = ["design", "utvikling", "tilgjengelighet"];
+  const componentPageTabs = ["design", "utvikling", "tilgjengelighet"];
 
   documents?.forEach((page) => {
     if (!page.slug) {
@@ -57,21 +57,40 @@ export const getStaticPaths = async () => {
     }
     const slug = page.slug.split("/");
 
-    if (page._type === "ds_component_page") {
-      tabs.forEach((tab) => {
-        paths.push({
-          params: {
-            slug: [...slug, tab],
-          },
-        });
+    const defaultPush = () =>
+      paths.push({
+        params: {
+          slug,
+        },
       });
+    switch (page._type) {
+      case "ds_component_page":
+        componentPageTabs.forEach((tab) => {
+          paths.push({
+            params: {
+              slug: [...slug, tab],
+            },
+          });
+        });
+        defaultPush();
+        break;
+      case "ds_tabbed_article_page":
+        if (!page.tabs) break;
+        const tabbedArticleTabs = page.tabs.map(
+          (tab) => tab.title?.toLowerCase().replace(/\s+/g, "-") || "undefined"
+        );
+        tabbedArticleTabs.forEach((tab) => {
+          paths.push({
+            params: {
+              slug: [...slug, tab],
+            },
+          });
+        });
+        break;
+      default:
+        defaultPush();
+        break;
     }
-
-    paths.push({
-      params: {
-        slug,
-      },
-    });
   });
 
   return {
@@ -117,9 +136,7 @@ export const getStaticProps = async ({
   params: { slug },
   preview,
 }): Promise<StaticProps> => {
-  let joinedSlug = (slug[0] === "komponent" ? slug.slice(0, 2) : slug).join(
-    "/"
-  );
+  let joinedSlug = slug.slice(0, 2).join("/");
 
   const enablePreview = !!preview || isDevelopment();
   const page = await getClient(enablePreview).fetch(ds_query, {

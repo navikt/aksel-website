@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Error from "next/error";
 import ComponentPageTemplate from "./pages/ComponentPageTemplate";
 import ActiclePageTemplate from "./pages/ArticlePageTemplate";
-import TabbedActiclePageTemplate from "./pages/TabbedArticlePageTemplate copy";
+import TabbedActiclePageTemplate from "./pages/TabbedArticlePageTemplate";
 
 const templates = {
   ds_component_page: (props) => <ComponentPageTemplate {...props} />,

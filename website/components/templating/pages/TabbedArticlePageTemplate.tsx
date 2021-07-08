@@ -6,6 +6,7 @@ import {
   Header,
   ContentContainer,
 } from "@navikt/ds-react";
+import Error from "next/error";
 
 import { useRouter } from "next/router";
 import styled from "styled-components";
@@ -93,7 +94,24 @@ const Inline = styled.span`
 const TabbedActiclePageTemplate = ({ data, sidebar }) => {
   const { query } = useRouter();
 
+  if (!data.tabs || !data.heading || !data.status) {
+    return null;
+  }
+
   const [toc, setToc] = useState([]);
+
+  const basePath = `/designsystem/${(query.slug as string[])
+    .slice(0, 2)
+    .join("/")}`;
+
+  const tabs: string[] = data.tabs.map(
+    (tab) => tab.title?.toLowerCase().replace(/\s+/g, "-") || "undefined"
+  );
+  const activeTab = query.slug[2] ? tabs.indexOf(query.slug[2]) : 0;
+
+  if (!tabs.includes(query.slug[2]) && query.slug[2]) {
+    return <Error statusCode={404} />;
+  }
 
   // TODO: Extract to custom hook?
   useLayoutEffect(() => {
@@ -105,10 +123,6 @@ const TabbedActiclePageTemplate = ({ data, sidebar }) => {
     }
     setToc([...toc]);
   }, [data.body]);
-
-  if (!data.heading || !data.status) {
-    return null;
-  }
 
   return (
     <>
@@ -125,10 +139,29 @@ const TabbedActiclePageTemplate = ({ data, sidebar }) => {
               <StatusTag status={data.status} />
             </HeaderWrapper>
           </MaxW>
+          {tabs.length > 1 && (
+            <Tabs>
+              {tabs.map(
+                (tab, i) =>
+                  data.tabs[i] && (
+                    <Tab
+                      active={activeTab === i}
+                      key={data.tabs[i]._key}
+                      path={`${basePath}/${tab}`}
+                    >
+                      {data.tabs[i].title}
+                    </Tab>
+                  )
+              )}
+            </Tabs>
+          )}
           <SanityContent>
             <TableOfContents toc={toc} />
             <MaxW>
-              {/* <SanityBlockContent withMargin blocks={data.body} /> */}
+              <SanityBlockContent
+                withMargin
+                blocks={data.tabs[activeTab].body}
+              />
             </MaxW>
           </SanityContent>
         </MainContent>
