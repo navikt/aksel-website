@@ -1,8 +1,6 @@
 name: Update sitenav based on teams
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 jobs:
