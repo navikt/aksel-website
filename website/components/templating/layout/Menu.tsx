@@ -76,16 +76,13 @@ const mapToComponents = (node, path, index) => {
       return <MenuLink key={node._key} {...node} />;
     case "title":
       return (
-        <>
-          {/* {index !== 0 && <Hr />} */}
-          <SectionTitle
-            data-first={index === 0}
-            className="navds-title navds-title--s"
-            key={node._key}
-          >
-            {node.title}
-          </SectionTitle>
-        </>
+        <SectionTitle
+          data-first={index === 0}
+          className="navds-title navds-title--s"
+          key={node._key}
+        >
+          {node.title}
+        </SectionTitle>
       );
     default:
       return null;

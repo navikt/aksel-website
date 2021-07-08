@@ -92,7 +92,10 @@ function TableOfContents({ toc }) {
       }
       return {
         ...prev,
-        [link.id]: el.getBoundingClientRect().top - 84 + window.scrollY,
+        [link.id]:
+          el.getBoundingClientRect().top -
+          window.innerHeight / 2 +
+          window.scrollY,
       };
     }, {});
 
@@ -118,7 +121,10 @@ function TableOfContents({ toc }) {
             {toc.map((link) => (
               <Li data-active={link.id === activeId} key={link.id}>
                 <Link href={`#${link.id}`} passHref>
-                  <a className="navds-link navds-body-short navds-body--s">
+                  <a
+                    onClick={() => setActiveId(link.id)}
+                    className="navds-link navds-body-short navds-body--s"
+                  >
                     {link.heading}
                   </a>
                 </Link>
