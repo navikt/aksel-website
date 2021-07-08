@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import Error from "next/error";
 import ComponentPageTemplate from "./pages/ComponentPageTemplate";
+import ActiclePageTemplate from "./pages/ArticlePageTemplate";
 
 const templates = {
   ds_component_page: (props) => <ComponentPageTemplate {...props} />,
+  ds_article_page: (props) => <ActiclePageTemplate {...props} />,
 };
 
 const TemplatePicker = ({ data, sidebar }) => {
@@ -20,7 +23,12 @@ const TemplatePicker = ({ data, sidebar }) => {
     console.warn(
       `${data._type} does not have  a valid template to use, please create one.`
     );
-    return null;
+    return (
+      <Error
+        statusCode={404}
+        title={`This page could not be found. Sanity-side mangler template, kontakt utvikler`}
+      />
+    );
   }
 
   const Template = templates[data._type];

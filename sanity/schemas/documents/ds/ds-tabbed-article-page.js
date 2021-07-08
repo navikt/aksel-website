@@ -44,6 +44,7 @@ export default {
           { value: "published", title: "Publisert" },
           { value: "beta", title: "Beta" },
           { value: "wip", title: "WIP" },
+          { value: "legacy", title: "Legacy / deprecated" },
         ],
         layout: "radio",
       },

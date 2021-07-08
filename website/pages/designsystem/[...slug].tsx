@@ -44,7 +44,7 @@ const PagePicker = (props) => {
   );
 };
 
-const query = `*[_type == "ds_component_page"]{ _type, 'slug': slug.current }`;
+const query = `*[_type in ["ds_component_page", "ds_article_page"]]{ _type, 'slug': slug.current }`;
 
 export const getStaticPaths = async () => {
   const documents: any[] | null = await getClient(false).fetch(query);
@@ -94,10 +94,6 @@ const ds_query = `*[slug.current match $slug][0]
 {
   "slug": slug.current,
 	...,
-  "page_linker": page_linker{
-  	"next": next->{"slug":slug.current},
-  	"previous": previous->{"slug":slug.current}
-	}
 }`;
 
 const sidebarQuery = `
@@ -131,7 +127,6 @@ export const getStaticProps = async ({
   });
 
   const sidebar = await getClient(true).fetch(sidebarQuery);
-  /* console.log(sidebar); */
   return {
     props: {
       page,

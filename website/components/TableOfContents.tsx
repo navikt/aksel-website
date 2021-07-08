@@ -72,45 +72,9 @@ const Li = styled.li`
 
 function TableOfContents({ toc }) {
   if (toc.length === 0) return null;
+
+  /* Get current active anchor somehow (howto when heading doesnt scroll to top of page) */
   const [activeId, setActiveId] = useState(null);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [toc]);
-
-  // TODO: refactor for å tilpasse scroll for alle headings, ikke bare de som når toppen av siden
-  const handleScroll = useCallback(() => {
-    const offset = toc.reduce((prev, link) => {
-      const el = document.getElementById(link.id);
-      if (!el) {
-        return {
-          ...prev,
-        };
-      }
-      return {
-        ...prev,
-        [link.id]:
-          el.getBoundingClientRect().top -
-          window.innerHeight / 2 +
-          window.scrollY,
-      };
-    }, {});
-
-    const scrollDistance = window.scrollY;
-    let prevId = "";
-
-    Object.entries(offset).forEach(([id, offset]) => {
-      if (offset < scrollDistance) {
-        prevId = id;
-      } else {
-        setActiveId(prevId);
-        return;
-      }
-    });
-  }, [toc]);
 
   return (
     <Div>
@@ -121,10 +85,7 @@ function TableOfContents({ toc }) {
             {toc.map((link) => (
               <Li data-active={link.id === activeId} key={link.id}>
                 <Link href={`#${link.id}`} passHref>
-                  <a
-                    onClick={() => setActiveId(link.id)}
-                    className="navds-link navds-body-short navds-body--s"
-                  >
+                  <a className="navds-link navds-body-short navds-body--s">
                     {link.heading}
                   </a>
                 </Link>
