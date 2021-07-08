@@ -8,7 +8,7 @@ export const PageWebPreview = (ctx: any) => {
     return <div>Side må ha en url/slug før den kan forhåndsvises...</div>;
   }
   const webUrl = "https://verktoykasse-prototype.dev.nav.no";
-  const previewUrl = `/${slug}/?preview=true`;
+  const previewUrl = `/${slug}?preview=true`;
   const url =
     process.env.NODE_ENV === "production"
       ? webUrl + previewUrl

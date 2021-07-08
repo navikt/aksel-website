@@ -72,6 +72,16 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
         S.view.form(),
         S.view.component(ComponentPageWebPreview).title("Preview (krever naisdevice)"),
       ]);
+    case "ds_article_page":
+      return S.document().views([
+        S.view.form(),
+        S.view.component(PageWebPreview).title("Preview (krever naisdevice)"),
+      ]);
+    case "ds_tabbed_article_page":
+      return S.document().views([
+        S.view.form(),
+        S.view.component(PageWebPreview).title("Preview (krever naisdevice)"),
+      ]);
   }
 };
 
