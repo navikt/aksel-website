@@ -1,5 +1,6 @@
 import { Expand, Link, Bookmark } from "@navikt/ds-icons";
 import React from "react";
+const teams = require("../../teams");
 
 const maxDepth = 2;
 
@@ -139,21 +140,25 @@ export const link = {
       name: "link_ref",
       type: "reference",
       weak: true,
-      to: [{ type: "ds_component_page" }, { type: "ds_article_page" }],
+      to: [
+        { type: "ds_component_page" },
+        { type: "ds_article_page" },
+        { type: "ds_tabbed_article_page" },
+      ],
       validation: (Rule) => Rule.required(),
+      /* Matches results based on document prefix */
       options: {
-        // TODO: Add prefix to "teams.js" then filter documents based on document id & prefix
-        /* filter: ({ ...rest }) => {
-          console.log(rest);
-          return null;
-          return {
-            filter: 'role == $role && birthYear >= $minYear',
-            params: {
-              role: 'director',
-              minYear: document.releaseYear
-            }
+        filter: ({ document }) => {
+          const match = teams.find((team) => document._id.endsWith(team.name));
+          if (!match) {
+            return {
+              filter: ``,
+            };
           }
-        }, */
+          return {
+            filter: `_type match ["${match.prefix}_*", "*_page"]`,
+          };
+        },
       },
     },
   ],

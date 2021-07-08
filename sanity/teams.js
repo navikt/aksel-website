@@ -1,3 +1,3 @@
-const teams = [{ name: "designsystem" }];
+const teams = [{ name: "designsystem", prefix: "ds" }];
 
 module.exports = teams;
