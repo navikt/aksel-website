@@ -20,6 +20,11 @@ const StyledAccordionMenu = styled(AccordionMenu)`
   --navds-color-text-link: var(--navds-color-darkgray);
 `;
 
+const StyledAccordionMenuItem = styled(AccordionMenuItem)`
+  /* TODO: Mute nested links?  */
+  /* --navds-color-text-link: var(--navds-color-gray-60); */
+`;
+
 const SectionTitle = styled.div`
   display: flex;
   padding: var(--navds-spacing-3) var(--navds-spacing-4);
@@ -32,7 +37,7 @@ const SectionTitle = styled.div`
   }
 `;
 
-const MenuLink = (node) => {
+function MenuLink(node, depth) {
   const { asPath, query } = useRouter();
 
   const url = `/${node.link_ref.slug.current}`;
@@ -42,10 +47,16 @@ const MenuLink = (node) => {
 
   return (
     <Link href={urlWPreview} passHref>
-      <AccordionMenuItem active={active}>{node.title}</AccordionMenuItem>
+      {depth === 0 ? (
+        <AccordionMenuItem active={active}>{node.title}</AccordionMenuItem>
+      ) : (
+        <StyledAccordionMenuItem active={active}>
+          {node.title}
+        </StyledAccordionMenuItem>
+      )}
     </Link>
   );
-};
+}
 
 const isActive = (children, path) => {
   const active = children.find((child) => {
@@ -57,7 +68,7 @@ const isActive = (children, path) => {
   return !!active;
 };
 
-const mapToComponents = (node, path, index) => {
+const mapToComponents = (node, path, index, depth) => {
   const active =
     node._type === "dropdown" ? isActive(node.dropdown, path) : false;
 
@@ -69,11 +80,13 @@ const mapToComponents = (node, path, index) => {
           key={node._key}
           title={node.title}
         >
-          {node.dropdown.map((item) => mapToComponents(item, path, index))}
+          {node.dropdown.map((item) =>
+            mapToComponents(item, path, index, depth + 1)
+          )}
         </AccordionMenuCollapsable>
       );
     case "link":
-      return <MenuLink key={node._key} {...node} />;
+      return <MenuLink key={node._key} depth={depth} {...node} />;
     case "title":
       return (
         <SectionTitle
@@ -97,7 +110,7 @@ const Menu = ({ menu }) => {
       className="navds-label navds-label--s"
     >
       {menu.map((item, i) =>
-        mapToComponents(item, parseUrl(asPath).pathname, i)
+        mapToComponents(item, parseUrl(asPath).pathname, i, 0)
       )}
     </StyledAccordionMenu>
   );
