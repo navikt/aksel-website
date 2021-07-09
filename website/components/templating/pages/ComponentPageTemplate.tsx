@@ -10,27 +10,6 @@ import StatusTag from "../../StatusTag";
 import FigmaIcon from "../../assets/FigmaIcon";
 import GithubIcon from "../../assets/GithubIcon";
 import TableOfContents from "../../TableOfContents";
-import Heading from "../layout/Heading";
-import Sidebar from "../layout/Sidebar";
-
-const Wrapper = styled.div`
-  display: flex;
-  margin-top: 56px;
-  min-height: calc(100vh - 56px);
-
-  @media (max-width: 1068px) {
-    display: block;
-  }
-`;
-
-const MainContent = styled.main`
-  flex-direction: column;
-  width: 100%;
-  position: relative;
-  background-color: #f7f7f7;
-  background-color: #f9f9f9;
-  background-color: #fafafa;
-`;
 
 const SanityContent = styled.div`
   position: relative;
@@ -86,7 +65,7 @@ const Inline = styled.span`
 `;
 
 // TODO: Flytte sidebar ut i context for å unngå re-render (dropdowns lukker/åpner seg da)
-const ComponentPageTemplate = ({ data, sidebar }) => {
+const ComponentPageTemplate = ({ data }) => {
   const { query } = useRouter();
 
   const [toc, setToc] = useState([]);
@@ -117,62 +96,55 @@ const ComponentPageTemplate = ({ data, sidebar }) => {
 
   return (
     <>
-      <Heading />
-      <Wrapper>
-        <Sidebar sidebar={sidebar} />
+      <MaxW>
+        <HeaderWrapper>
+          <Title size="2xl" level={1} spacing>
+            {data.heading}
+          </Title>
+          <StyledDiv>
+            <Inline>
+              <StatusTag status={data.status} />
+              <LastUpdated date={data._updatedAt} />
+            </Inline>
+            <Links>
+              {data.npm_link && <Link href={data.npm_link}>NPM</Link>}
+              {data.github_link && (
+                <Link href={data.github_link}>
+                  Github <GithubIcon />
+                </Link>
+              )}
+              {data.figma_link && (
+                <Link href={data.figma_link}>
+                  Figma <FigmaIcon />
+                </Link>
+              )}
+            </Links>
+          </StyledDiv>
+        </HeaderWrapper>
 
-        <MainContent>
-          <MaxW>
-            <HeaderWrapper>
-              <Title size="2xl" level={1} spacing>
-                {data.heading}
-              </Title>
-              <StyledDiv>
-                <Inline>
-                  <StatusTag status={data.status} />
-                  <LastUpdated date={data._updatedAt} />
-                </Inline>
-                <Links>
-                  {data.npm_link && <Link href={data.npm_link}>NPM</Link>}
-                  {data.github_link && (
-                    <Link href={data.github_link}>
-                      Github <GithubIcon />
-                    </Link>
-                  )}
-                  {data.figma_link && (
-                    <Link href={data.figma_link}>
-                      Figma <FigmaIcon />
-                    </Link>
-                  )}
-                </Links>
-              </StyledDiv>
-            </HeaderWrapper>
+        {data.ingress && <Ingress spacing>{data.ingress}</Ingress>}
+      </MaxW>
 
-            {data.ingress && <Ingress spacing>{data.ingress}</Ingress>}
-          </MaxW>
-
-          <Tabs>
-            {Object.entries(tabs).map(
-              ([key, value]) =>
-                data[value] && (
-                  <Tab
-                    key={key}
-                    path={`${basePath}${key === "bruk" ? "" : "/" + key}`}
-                  >
-                    {/* TODO: Fungerer UU her? Tar mye mindre plass en Tilgjengelighet for mobilvisning */}
-                    {key === "tilgjengelighet" ? "UU" : key}
-                  </Tab>
-                )
-            )}
-          </Tabs>
-          <SanityContent>
-            <TableOfContents toc={toc} />
-            <MaxW>
-              <SanityBlockContent withMargin blocks={data[tabs[activeTab]]} />
-            </MaxW>
-          </SanityContent>
-        </MainContent>
-      </Wrapper>
+      <Tabs>
+        {Object.entries(tabs).map(
+          ([key, value]) =>
+            data[value] && (
+              <Tab
+                key={key}
+                path={`${basePath}${key === "bruk" ? "" : "/" + key}`}
+              >
+                {/* TODO: Fungerer UU her? Tar mye mindre plass en Tilgjengelighet for mobilvisning */}
+                {key === "tilgjengelighet" ? "UU" : key}
+              </Tab>
+            )
+        )}
+      </Tabs>
+      <SanityContent>
+        <TableOfContents toc={toc} />
+        <MaxW>
+          <SanityBlockContent withMargin blocks={data[tabs[activeTab]]} />
+        </MaxW>
+      </SanityContent>
     </>
   );
 };

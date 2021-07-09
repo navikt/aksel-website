@@ -1,11 +1,5 @@
 import React, { useLayoutEffect, useState } from "react";
-import {
-  Ingress,
-  Title,
-  Link,
-  Header,
-  ContentContainer,
-} from "@navikt/ds-react";
+import { Title } from "@navikt/ds-react";
 
 import { useRouter } from "next/router";
 import styled from "styled-components";
@@ -13,26 +7,6 @@ import { SanityBlockContent } from "../SanityBlockContent";
 import LastUpdated from "../../LastUpdated";
 import StatusTag from "../../StatusTag";
 import TableOfContents from "../../TableOfContents";
-import Heading from "../layout/Heading";
-import Sidebar from "../layout/Sidebar";
-
-const Wrapper = styled.div`
-  display: flex;
-  margin-top: 56px;
-  min-height: calc(100vh - 56px);
-  @media (max-width: 1068px) {
-    display: block;
-  }
-`;
-
-const MainContent = styled.main`
-  flex-direction: column;
-  width: 100%;
-  position: relative;
-  background-color: #f7f7f7;
-  background-color: #f9f9f9;
-  background-color: #fafafa;
-`;
 
 const SanityContent = styled.div`
   position: relative;
@@ -60,9 +34,7 @@ const HeaderWrapper = styled.div`
   padding-bottom: var(--navds-spacing-6);
 `;
 
-const ActiclePageTemplate = ({ data, sidebar }) => {
-  const { query } = useRouter();
-
+const ActiclePageTemplate = ({ data }) => {
   const [toc, setToc] = useState([]);
 
   // TODO: Extract to custom hook?
@@ -82,28 +54,21 @@ const ActiclePageTemplate = ({ data, sidebar }) => {
 
   return (
     <>
-      <Heading />
-      <Wrapper>
-        <Sidebar sidebar={sidebar} />
-
-        <MainContent>
-          <MaxW>
-            <HeaderWrapper>
-              <Title size="2xl" level={1} spacing>
-                {data.heading}
-              </Title>
-              <StatusTag status={data.status} />
-              <LastUpdated date={data._updatedAt} />
-            </HeaderWrapper>
-          </MaxW>
-          <SanityContent>
-            <TableOfContents toc={toc} />
-            <MaxW>
-              <SanityBlockContent withMargin blocks={data.body} />
-            </MaxW>
-          </SanityContent>
-        </MainContent>
-      </Wrapper>
+      <MaxW>
+        <HeaderWrapper>
+          <Title size="2xl" level={1} spacing>
+            {data.heading}
+          </Title>
+          <StatusTag status={data.status} />
+          <LastUpdated date={data._updatedAt} />
+        </HeaderWrapper>
+      </MaxW>
+      <SanityContent>
+        <TableOfContents toc={toc} />
+        <MaxW>
+          <SanityBlockContent withMargin blocks={data.body} />
+        </MaxW>
+      </SanityContent>
     </>
   );
 };

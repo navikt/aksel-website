@@ -15,26 +15,6 @@ import { SanityBlockContent } from "../SanityBlockContent";
 import LastUpdated from "../../LastUpdated";
 import StatusTag from "../../StatusTag";
 import TableOfContents from "../../TableOfContents";
-import Heading from "../layout/Heading";
-import Sidebar from "../layout/Sidebar";
-
-const Wrapper = styled.div`
-  display: flex;
-  margin-top: 56px;
-  min-height: calc(100vh - 56px);
-  @media (max-width: 1068px) {
-    display: block;
-  }
-`;
-
-const MainContent = styled.main`
-  flex-direction: column;
-  width: 100%;
-  position: relative;
-  background-color: #f7f7f7;
-  background-color: #f9f9f9;
-  background-color: #fafafa;
-`;
 
 const SanityContent = styled.div`
   position: relative;
@@ -97,47 +77,37 @@ const TabbedActiclePageTemplate = ({ data, sidebar }) => {
 
   return (
     <>
-      <Heading />
-      <Wrapper>
-        <Sidebar sidebar={sidebar} />
-
-        <MainContent>
-          <MaxW>
-            <HeaderWrapper>
-              <Title size="2xl" level={1} spacing>
-                {data.heading}
-              </Title>
-              <StatusTag status={data.status} />
-              <LastUpdated date={data._updatedAt} />
-            </HeaderWrapper>
-          </MaxW>
-          {tabs.length > 1 && (
-            <Tabs>
-              {tabs.map(
-                (tab, i) =>
-                  data.tabs[i] && (
-                    <Tab
-                      active={activeTab === i}
-                      key={data.tabs[i]._key}
-                      path={`${basePath}/${tab}`}
-                    >
-                      {data.tabs[i].title}
-                    </Tab>
-                  )
-              )}
-            </Tabs>
+      <MaxW>
+        <HeaderWrapper>
+          <Title size="2xl" level={1} spacing>
+            {data.heading}
+          </Title>
+          <StatusTag status={data.status} />
+          <LastUpdated date={data._updatedAt} />
+        </HeaderWrapper>
+      </MaxW>
+      {tabs.length > 1 && (
+        <Tabs>
+          {tabs.map(
+            (tab, i) =>
+              data.tabs[i] && (
+                <Tab
+                  active={activeTab === i}
+                  key={data.tabs[i]._key}
+                  path={`${basePath}/${tab}`}
+                >
+                  {data.tabs[i].title}
+                </Tab>
+              )
           )}
-          <SanityContent>
-            <TableOfContents toc={toc} />
-            <MaxW>
-              <SanityBlockContent
-                withMargin
-                blocks={data.tabs[activeTab].body}
-              />
-            </MaxW>
-          </SanityContent>
-        </MainContent>
-      </Wrapper>
+        </Tabs>
+      )}
+      <SanityContent>
+        <TableOfContents toc={toc} />
+        <MaxW>
+          <SanityBlockContent withMargin blocks={data.tabs[activeTab].body} />
+        </MaxW>
+      </SanityContent>
     </>
   );
 };
