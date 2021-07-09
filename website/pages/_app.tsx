@@ -3,10 +3,11 @@ import "../styles/prismjs.css";
 import "../styles/theme.css";
 import "@navikt/ds-css";
 import useScrollToHashOnPageLoad from "../src/util";
-import React from "react";
+import React, { createContext } from "react";
 import Heading from "../components/templating/layout/Heading";
 import Sidebar from "../components/templating/layout/Sidebar";
 import styled from "styled-components";
+import Layout from "../components/templating/layout/Layout";
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,29 +28,17 @@ const MainContent = styled.main`
   background-color: #fafafa;
 `;
 
+export const PagePropsContext = createContext({});
+
 const App = ({ Component, pageProps }) => {
   useScrollToHashOnPageLoad();
 
-  // TODO: Move metadata to SEO component
   return (
-    <>
-      <Head>
-        <title>Verktøkassen</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        {/* <meta property="og:site_name" content="NAV IT" />
-  <meta property="og:url" content="https://www.design.nav.no/" /> */}
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <>
-        <Heading />
-        <Wrapper>
-          {pageProps.sidebar && <Sidebar sidebar={pageProps.sidebar} />}
-          <MainContent>
-            <Component {...pageProps} />
-          </MainContent>
-        </Wrapper>
-      </>
-    </>
+    <PagePropsContext.Provider value={pageProps}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </PagePropsContext.Provider>
   );
 };
 
