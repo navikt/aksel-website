@@ -81,7 +81,7 @@ function TableOfContents({ changedState }) {
     const tags = document.getElementsByTagName("h2");
     if (!tags) return;
     const toc = [];
-    for (let item of tags) {
+    for (const item of tags) {
       toc.push({ heading: item.textContent, id: item.id });
     }
     setToc([...toc]);

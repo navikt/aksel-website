@@ -11,7 +11,7 @@ const Page = ({ frontpage, preview }) => {
   const router = useRouter();
   const enabledPreview = preview || router.query.preview;
 
-  if (!!router.isFallback) {
+  if (router.isFallback) {
     return <ErrorPage statusCode={404} />;
   }
 

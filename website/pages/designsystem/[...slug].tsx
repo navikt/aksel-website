@@ -136,7 +136,7 @@ export const getStaticProps = async ({
   params: { slug },
   preview,
 }): Promise<StaticProps> => {
-  let joinedSlug = slug.slice(0, 2).join("/");
+  const joinedSlug = slug.slice(0, 2).join("/");
 
   const enablePreview = !!preview || isDevelopment();
   const page = await getClient(enablePreview).fetch(ds_query, {
