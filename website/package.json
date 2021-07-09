@@ -9,7 +9,8 @@
     "build": "next build",
     "export": "next export",
     "start": "next start",
-    "deploy": "yarn vercel"
+    "deploy": "yarn vercel",
+    "lint": "yarn eslint components/* src/* pages/* --ext .jsx --ext .tsx --ext .ts"
   },
   "dependencies": {
     "@navikt/ds-css": "^0.6.0",
@@ -46,8 +47,12 @@
     "@types/node": "^15.12.0",
     "@types/react": "^17.0.9",
     "@types/styled-components": "^5.1.10",
-    "typescript": "^4.3.2",
-    "prettier": "^2.3.1"
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "eslint": "^7.30.0",
+    "eslint-plugin-react": "^7.24.0",
+    "prettier": "^2.3.1",
+    "typescript": "^4.3.2"
   },
   "prettier": {}
 }
