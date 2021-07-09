@@ -35,19 +35,6 @@ const HeaderWrapper = styled.div`
 `;
 
 const ActiclePageTemplate = ({ data }) => {
-  const [toc, setToc] = useState([]);
-
-  // TODO: Extract to custom hook?
-  useLayoutEffect(() => {
-    const tags = document.getElementsByTagName("h2");
-    if (!tags) return;
-    const toc = [];
-    for (let item of tags) {
-      toc.push({ heading: item.textContent, id: item.id });
-    }
-    setToc([...toc]);
-  }, [data.body]);
-
   if (!data.body || !data.heading || !data.status) {
     return null;
   }
@@ -64,7 +51,7 @@ const ActiclePageTemplate = ({ data }) => {
         </HeaderWrapper>
       </MaxW>
       <SanityContent>
-        <TableOfContents toc={toc} />
+        <TableOfContents changedState={data.body} />
         <MaxW>
           <SanityBlockContent withMargin blocks={data.body} />
         </MaxW>

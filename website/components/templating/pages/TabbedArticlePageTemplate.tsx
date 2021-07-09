@@ -49,8 +49,6 @@ const TabbedActiclePageTemplate = ({ data, sidebar }) => {
     return null;
   }
 
-  const [toc, setToc] = useState([]);
-
   const basePath = `/designsystem/${(query.slug as string[])
     .slice(0, 2)
     .join("/")}`;
@@ -63,17 +61,6 @@ const TabbedActiclePageTemplate = ({ data, sidebar }) => {
   if (!tabs.includes(query.slug[2]) && query.slug[2]) {
     return <Error statusCode={404} />;
   }
-
-  // TODO: Extract to custom hook?
-  useLayoutEffect(() => {
-    const tags = document.getElementsByTagName("h2");
-    if (!tags) return;
-    const toc = [];
-    for (let item of tags) {
-      toc.push({ heading: item.textContent, id: item.id });
-    }
-    setToc([...toc]);
-  }, [data.body]);
 
   return (
     <>
@@ -103,7 +90,7 @@ const TabbedActiclePageTemplate = ({ data, sidebar }) => {
         </Tabs>
       )}
       <SanityContent>
-        <TableOfContents toc={toc} />
+        <TableOfContents changedState={data.body} />
         <MaxW>
           <SanityBlockContent withMargin blocks={data.tabs[activeTab].body} />
         </MaxW>

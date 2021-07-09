@@ -64,22 +64,8 @@ const Inline = styled.span`
   flex-wrap: wrap;
 `;
 
-// TODO: Flytte sidebar ut i context for å unngå re-render (dropdowns lukker/åpner seg da)
 const ComponentPageTemplate = ({ data }) => {
   const { query } = useRouter();
-
-  const [toc, setToc] = useState([]);
-
-  // TODO: Extract to custom hook?
-  useLayoutEffect(() => {
-    const tags = document.getElementsByTagName("h2");
-    if (!tags) return;
-    const toc = [];
-    for (let item of tags) {
-      toc.push({ heading: item.textContent, id: item.id });
-    }
-    setToc([...toc]);
-  }, [query.slug]);
 
   const basePath = `/designsystem/${(query.slug as string[])
     .slice(0, 2)
@@ -140,7 +126,7 @@ const ComponentPageTemplate = ({ data }) => {
         )}
       </Tabs>
       <SanityContent>
-        <TableOfContents toc={toc} />
+        <TableOfContents changedState={query.slug} />
         <MaxW>
           <SanityBlockContent withMargin blocks={data[tabs[activeTab]]} />
         </MaxW>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import * as React from "react";
 import { useCallback, useState } from "react";
 import { useEffect } from "react";
@@ -70,31 +71,45 @@ const Li = styled.li`
   }
 `;
 
-function TableOfContents({ toc }) {
-  if (toc.length === 0) return null;
+function TableOfContents({ changedState }) {
+  const [toc, setToc] = useState([]);
 
-  /* Get current active anchor somehow (howto when heading doesnt scroll to top of page) */
+  /* Get current active anchor somehow (howto when heading doesnt scroll to top of page??) */
   const [activeId, setActiveId] = useState(null);
 
+  React.useLayoutEffect(() => {
+    const tags = document.getElementsByTagName("h2");
+    if (!tags) return;
+    const toc = [];
+    for (let item of tags) {
+      toc.push({ heading: item.textContent, id: item.id });
+    }
+    setToc([...toc]);
+  }, [changedState]);
+
   return (
-    <Div>
-      <div>
-        <p className="navds-label">Innhold på siden</p>
-        <nav aria-label="Liste over innhold på siden">
-          <Ul>
-            {toc.map((link) => (
-              <Li data-active={link.id === activeId} key={link.id}>
-                <Link href={`#${link.id}`} passHref>
-                  <a className="navds-link navds-body-short navds-body--s">
-                    {link.heading}
-                  </a>
-                </Link>
-              </Li>
-            ))}
-          </Ul>
-        </nav>
-      </div>
-    </Div>
+    <>
+      {toc.length !== 0 ? (
+        <Div>
+          <div>
+            <p className="navds-label">Innhold på siden</p>
+            <nav aria-label="Liste over innhold på siden">
+              <Ul>
+                {toc.map((link) => (
+                  <Li data-active={link.id === activeId} key={link.id}>
+                    <Link href={`#${link.id}`} passHref>
+                      <a className="navds-link navds-body-short navds-body--s">
+                        {link.heading}
+                      </a>
+                    </Link>
+                  </Li>
+                ))}
+              </Ul>
+            </nav>
+          </div>
+        </Div>
+      ) : null}
+    </>
   );
 }
 

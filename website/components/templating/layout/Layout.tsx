@@ -1,8 +1,5 @@
-import Head from "next/head";
-import "../styles/prismjs.css";
-import "../styles/theme.css";
-import "@navikt/ds-css";
 import React, { useContext } from "react";
+import Head from "next/head";
 import styled from "styled-components";
 import Heading from "./Heading";
 import Sidebar from "./Sidebar";
