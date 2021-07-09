@@ -4,7 +4,6 @@ import "@navikt/ds-css";
 import useScrollToHashOnPageLoad from "../src/util";
 import React, { createContext } from "react";
 import Layout from "../components/templating/layout/Layout";
-
 export const PagePropsContext = createContext({});
 
 function App({

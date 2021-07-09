@@ -21,8 +21,8 @@ Object.keys(packageJson.dependencies).forEach((key) => {
 
 const withTM = require("next-transpile-modules")(modules);
 
-module.exports = withLess(
-  withTM({
+module.exports = withTM(
+  withLess({
     productionBrowserSourceMaps: true,
     // Makes sure we can load images form cdn
     images: {
