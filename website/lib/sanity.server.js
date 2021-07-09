@@ -14,4 +14,6 @@ export const previewClient = createClient({
 });
 
 // Helper function for easily switching between normal client and preview client
-export const getClient = (usePreview) => (usePreview ? previewClient : sanityClient);
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const getClient = (usePreview) =>
+  usePreview ? previewClient : sanityClient;
