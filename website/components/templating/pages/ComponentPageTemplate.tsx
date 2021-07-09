@@ -9,26 +9,11 @@ import StatusTag from "../../StatusTag";
 import TableOfContents from "../../TableOfContents";
 import { Tab, Tabs } from "../../Tabs";
 import { SanityBlockContent } from "../SanityBlockContent";
-
-const SanityContent = styled.div`
-  position: relative;
-  max-width: 1256px;
-`;
-
-const MaxW = styled.div`
-  max-width: 700px;
-  margin: 0;
-  margin-right: auto;
-  margin-left: var(--navds-spacing-8);
-  padding: 0 var(--navds-spacing-8);
-  overflow-x: auto;
-
-  @media (max-width: 564px) {
-    margin: 0;
-    padding-left: var(--navds-spacing-4);
-    padding-right: var(--navds-spacing-4);
-  }
-`;
+import {
+  HeadingContainer,
+  MaxWidthContainer,
+  SanityBlockContainer,
+} from "../TemplateStyles";
 
 const Links = styled.div`
   display: flex;
@@ -42,12 +27,6 @@ const Links = styled.div`
       text-decoration: underline;
     }
   }
-`;
-
-const HeaderWrapper = styled.div`
-  width: 100%;
-  padding-top: 2rem;
-  padding-bottom: var(--navds-spacing-6);
 `;
 
 const StyledDiv = styled.div`
@@ -81,8 +60,8 @@ const ComponentPageTemplate = ({ data }: { data: any }): JSX.Element => {
 
   return (
     <>
-      <MaxW>
-        <HeaderWrapper>
+      <MaxWidthContainer>
+        <HeadingContainer>
           <Title size="2xl" level={1} spacing>
             {data.heading}
           </Title>
@@ -105,10 +84,10 @@ const ComponentPageTemplate = ({ data }: { data: any }): JSX.Element => {
               )}
             </Links>
           </StyledDiv>
-        </HeaderWrapper>
+        </HeadingContainer>
 
         {data.ingress && <Ingress spacing>{data.ingress}</Ingress>}
-      </MaxW>
+      </MaxWidthContainer>
 
       <Tabs>
         {Object.entries(tabs).map(
@@ -124,12 +103,12 @@ const ComponentPageTemplate = ({ data }: { data: any }): JSX.Element => {
             )
         )}
       </Tabs>
-      <SanityContent>
+      <SanityBlockContainer>
         <TableOfContents changedState={query.slug} />
-        <MaxW>
+        <MaxWidthContainer>
           <SanityBlockContent withMargin blocks={data[tabs[activeTab]]} />
-        </MaxW>
-      </SanityContent>
+        </MaxWidthContainer>
+      </SanityBlockContainer>
     </>
   );
 };

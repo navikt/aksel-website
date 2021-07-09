@@ -1,36 +1,14 @@
 import { Title } from "@navikt/ds-react";
 import React from "react";
-import styled from "styled-components";
 import LastUpdated from "../../LastUpdated";
 import StatusTag from "../../StatusTag";
 import TableOfContents from "../../TableOfContents";
 import { SanityBlockContent } from "../SanityBlockContent";
-
-const SanityContent = styled.div`
-  position: relative;
-  max-width: 1256px;
-`;
-
-const MaxW = styled.div`
-  max-width: 700px;
-  margin: 0;
-  margin-right: auto;
-  margin-left: var(--navds-spacing-8);
-  padding: 0 var(--navds-spacing-8);
-  overflow-x: auto;
-
-  @media (max-width: 564px) {
-    margin: 0;
-    padding-left: var(--navds-spacing-4);
-    padding-right: var(--navds-spacing-4);
-  }
-`;
-
-const HeaderWrapper = styled.div`
-  width: 100%;
-  padding-top: 2rem;
-  padding-bottom: var(--navds-spacing-6);
-`;
+import {
+  HeadingContainer,
+  MaxWidthContainer,
+  SanityBlockContainer,
+} from "../TemplateStyles";
 
 const ActiclePageTemplate = ({ data }: { data: any }): JSX.Element => {
   if (!data.body || !data.heading || !data.status) {
@@ -39,21 +17,21 @@ const ActiclePageTemplate = ({ data }: { data: any }): JSX.Element => {
 
   return (
     <>
-      <MaxW>
-        <HeaderWrapper>
+      <MaxWidthContainer>
+        <HeadingContainer>
           <Title size="2xl" level={1} spacing>
             {data.heading}
           </Title>
           <StatusTag status={data.status} />
           <LastUpdated date={data._updatedAt} />
-        </HeaderWrapper>
-      </MaxW>
-      <SanityContent>
+        </HeadingContainer>
+      </MaxWidthContainer>
+      <SanityBlockContainer>
         <TableOfContents changedState={data.body} />
-        <MaxW>
+        <MaxWidthContainer>
           <SanityBlockContent withMargin blocks={data.body} />
-        </MaxW>
-      </SanityContent>
+        </MaxWidthContainer>
+      </SanityBlockContainer>
     </>
   );
 };

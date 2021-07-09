@@ -29,13 +29,11 @@ const StyledPopover = styled(Popover)`
   border-radius: 4px;
 `;
 
-function CopyAnchor({
-  anchor,
-  ...props
-}: {
+interface AnchorProps extends React.HTMLAttributes<HTMLAnchorElement> {
   anchor: string;
-  props: any;
-}): JSX.Element {
+}
+
+function CopyAnchor({ anchor, ...props }: AnchorProps): JSX.Element {
   const [openPopover, setOpenPopover] = useState(false);
   const popoverRef = useRef(null);
   const timeoutRef = useRef<NodeJS.Timeout>();
