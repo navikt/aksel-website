@@ -1094,22 +1094,17 @@
   resolved "https://registry.yarnpkg.com/@juggle/resize-observer/-/resize-observer-3.3.1.tgz#b50a781709c81e10701004214340f25475a171a0"
   integrity sha512-zMM9Ds+SawiUkakS7y94Ymqx+S0ORzpG3frZirN3l+UlXUmSUR7hF4wxCVqW+ei94JzV5kt0uXBcoOEAuiydrw==
 
-"@navikt/ds-css@^0.5.3":
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.5.4.tgz#faa1fb9713563e55703f54487fd5a6791b4d2633"
-  integrity sha512-7496RKN/LyaSCHurgeAF8C15HBMUyUQo1A0xURSTZ5TcwFj9WIgLLbgifwjLxL8TbYA2+yhm4fKOoCbgZ9h1zw==
+"@navikt/ds-css@^0.6":
+  version "0.6.5"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.6.5.tgz#943a47418707d38e61f1f7c293514db4a7f242fe"
+  integrity sha512-mQ7yG4qafZXbOf9tmkjiPzkcAglt4y6VP8u15yG6k4cmVHJkgYnBQ+CqLSREkLLBnVZMDXOYXRvSPW4pAzQLFA==
 
-"@navikt/ds-css@^0.6.0":
-  version "0.6.4"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.6.4.tgz#4e2f74f2e818cfcd62af8bcf9f243d469a075143"
-  integrity sha512-SNpQXFdvmPyIdgV4HqH8E45awbivBDtXBMHDDLHC+E5p9dXke8LpDbhR3HR9UKC0YuClEMEv45X8/097u521QQ==
-
-"@navikt/ds-icons@^0.3.0", "@navikt/ds-icons@^0.3.2", "@navikt/ds-icons@^0.3.3":
+"@navikt/ds-icons@^0.3", "@navikt/ds-icons@^0.3.3":
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.3.3.tgz#19432cc0b711f4643cba611c5b593ff2b7b67626"
   integrity sha512-851CJ6GJu4u1iLLhqhGW+jeEB4NpOsoN8Guhy6KZUPSGI1mbN1fGkUcu7p2BC7VF3Rcad/EdHGwTmPPAYZ4vDg==
 
-"@navikt/ds-react@^0.5.3":
+"@navikt/ds-react@^0.5":
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.5.4.tgz#f97d9e269b813eae5fba8e3b02489405da3228f6"
   integrity sha512-TL+v5LutwPWF4VNdoSKc5P1t+Xb/8+KQvWdpppZDhH7XHZjbgW8iMqrTeMRw0TWyCdc8wrnPHBPMXDeZ7mLTqg==
@@ -1124,27 +1119,7 @@
     react-popper "^2.2.4"
     uuid "^8.3.2"
 
-"@navikt/ds-react@^0.6.0":
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.6.3.tgz#748f67c50ab593f205769e9162f05c28b35059e8"
-  integrity sha512-gNMwNomCpBBwOsbAAQHNAhcI92QDowlEM+M7RD/IzkW1Y4SGBkm3/z6M4aEOekmwKCl0gpQfRYiv3j8qKiUBQg==
-  dependencies:
-    "@navikt/ds-icons" "^0.3.3"
-    "@popperjs/core" "^2.5.4"
-    classnames "^2.2.6"
-    copy-to-clipboard "^3.3.1"
-    react-collapse "^5.1.0"
-    react-merge-refs "^1.1.0"
-    react-modal "3.12.1"
-    react-popper "^2.2.4"
-    uuid "^8.3.2"
-
-"@navikt/ds-tokens@^0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-tokens/-/ds-tokens-0.3.2.tgz#d7bf6ff015b687dd3e6387eee2a70e3088ce85cb"
-  integrity sha512-2BtctsElEQMsaFMoDUEP0hz0wqXNayshSO+r7Nn88PwJf8WvDDv3lzn6+taG/i7uWI0HvHNkQXnxd7CSDsE1Tg==
-
-"@navikt/ds-tokens@^0.4.0":
+"@navikt/ds-tokens@^0.4":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@navikt/ds-tokens/-/ds-tokens-0.4.3.tgz#555348e44952b6a0cb56fc72dcdef4f3303886a5"
   integrity sha512-0dYFXDvZd4fJX0UU1rAyXw9zsc9Zwjm4f27ri4Gftum1DbrdnastuLoxFdiEYRqvWVTCYBtE7T7rQbAK3iM6tQ==
@@ -6112,6 +6087,11 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
+husky@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-7.0.1.tgz#579f4180b5da4520263e8713cc832942b48e1f1c"
+  integrity sha512-gceRaITVZ+cJH9sNHqx5tFwbzlLCVxtVZcusME8JYQ8Edy5mpGDOqD8QBCdMhpyo9a+JXddnujQ4rpY2Ff9SJA==
+
 hyperscript@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/hyperscript/-/hyperscript-2.0.2.tgz#3839cba45554bdfe27bb81c2142d1684f8135af5"
@@ -9126,7 +9106,7 @@ prepend-http@^2.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
-prettier@^2.3.1:
+prettier@^2.3.1, prettier@^2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.2.tgz#ef280a05ec253712e486233db5c6f23441e7342d"
   integrity sha512-lnJzDfJ66zkMy58OL5/NY5zp70S7Nz6KqcKkXYzn2tMVrNxvbqaBpg7H3qHaLxCJ5lNMsGuM8+ohS7cZrthdLQ==
