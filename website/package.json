@@ -9,7 +9,6 @@
     "build": "next build",
     "export": "next export",
     "start": "next start",
-    "deploy": "yarn vercel",
     "lint": "yarn eslint components/* src/* pages/* --ext .jsx --ext .tsx --ext .ts"
   },
   "dependencies": {
@@ -22,7 +21,6 @@
     "next": "^10.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "vercel": "^23.0.0",
     "next-transpile-modules": "^7.3.0",
     "next-sanity": "^0.2.0",
     "styled-components": "^5.3.0",
