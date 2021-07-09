@@ -1,18 +1,22 @@
 /* Frontpage */
 
-import ErrorPage from "next/error";
-import { useRouter } from "next/router";
-import { usePreviewSubscription } from "../lib/santiy";
-import { getClient } from "../lib/sanity.server";
-import PreviewBanner from "../components/PreviewBanner";
-
-import FrontPage from "../components/pages/FrontPage";
 import { Title } from "@navikt/ds-react";
+import ErrorPage from "next/error";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import PreviewBanner from "../components/PreviewBanner";
+import { getClient } from "../lib/sanity.server";
+import { usePreviewSubscription } from "../lib/santiy";
 
-const Page = ({ frontpage, preview }) => {
+const Page = ({
+  frontpage,
+  preview,
+}: {
+  frontpage: unknown;
+  preview: boolean;
+}): JSX.Element => {
   const router = useRouter();
-  const enabledPreview = preview || router.query.preview;
+  const enabledPreview = preview || !!router.query.preview;
 
   if (router.isFallback) {
     return <ErrorPage statusCode={404} />;
@@ -62,6 +66,8 @@ interface StaticProps {
 
 export const getStaticProps = async ({
   preview = false,
+}: {
+  preview?: boolean;
 }): Promise<StaticProps> => {
   const frontpage = await getClient(preview).fetch(query);
   return {

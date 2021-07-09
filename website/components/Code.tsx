@@ -1,13 +1,13 @@
-import Prism from "prismjs";
-import React, { useEffect, useRef, useState } from "react";
-import "prismjs/components/prism-jsx.min";
-import "prismjs/components/prism-bash.min";
-import "prismjs/components/prism-typescript.min";
-import styled from "styled-components";
-import RenderExample from "examples";
-import copy from "copy-to-clipboard";
-import { ExternalLink, Copy } from "@navikt/ds-icons";
+import { Copy, ExternalLink } from "@navikt/ds-icons";
 import { Popover } from "@navikt/ds-react";
+import copy from "copy-to-clipboard";
+import RenderExample from "examples";
+import Prism from "prismjs";
+import "prismjs/components/prism-bash.min";
+import "prismjs/components/prism-jsx.min";
+import "prismjs/components/prism-typescript.min";
+import React, { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -150,7 +150,7 @@ const copyCode = (content) => {
   }
 };
 
-const Code = ({ node }) => {
+const Code = ({ node }: { node: any }): JSX.Element => {
   const [activeTab, setActiveTab] = useState(0);
   const [tabs, setTabs] = useState<{ title: string; index: number }[]>([]);
   const buttonRef = useRef(null);

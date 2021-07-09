@@ -3,12 +3,6 @@ import styled from "styled-components";
 import { urlFor } from "../lib/santiy";
 import { SanityBlockContent } from "./templating/SanityBlockContent";
 
-const Img = styled.img`
-  max-width: 100%;
-  line-height: 0;
-  object-fit: cover;
-`;
-
 const Figure = styled.figure`
   display: inline-flex;
   flex-direction: column;
@@ -81,7 +75,13 @@ const Warning = styled(Label)`
   color: var(--navds-color-orange-40);
 `;
 
-const Element = ({ block, multiple = false }) => {
+const Element = ({
+  block,
+  multiple = false,
+}: {
+  block: any;
+  multiple?: boolean;
+}): JSX.Element => {
   return (
     <Figure>
       {multiple ? (
@@ -110,7 +110,7 @@ const Element = ({ block, multiple = false }) => {
         ) : block.do_dont_variant === "warning" ? (
           <Warning spacing>Warning</Warning>
         ) : (
-          <Dont spacing>Don't</Dont>
+          <Dont spacing>{`Don't`}</Dont>
         )}
         <SanityBlockContent blocks={block.do_dont_body} />
       </Caption>
@@ -118,7 +118,7 @@ const Element = ({ block, multiple = false }) => {
   );
 };
 
-const DoDont = ({ node }) => {
+const DoDont = ({ node }: { node: any }): JSX.Element => {
   const multiple = node.do_dont_block.length > 1;
   return (
     <>

@@ -1,4 +1,3 @@
-import { Title } from "@navikt/ds-react";
 import "nav-frontend-tabell-style/dist/main.css";
 import styled from "styled-components";
 
@@ -6,9 +5,9 @@ const Div = styled.div`
   margin-bottom: var(--navds-spacing-8);
 `;
 
-const PropTable = ({ node }) => {
-  const props = node.props;
-  if (props.length === 0) return null;
+const PropTable = ({ node }: { node: { props: any } }): JSX.Element => {
+  const propRows = node.props;
+  if (propRows.length === 0) return null;
   return (
     <Div>
       <table
@@ -25,7 +24,7 @@ const PropTable = ({ node }) => {
           </tr>
         </thead>
         <tbody>
-          {props.map((prop) => {
+          {propRows.map((prop) => {
             return (
               <tr key={prop._key}>
                 <td>{prop.prop_name}</td>

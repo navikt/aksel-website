@@ -1,15 +1,7 @@
-import { Divide } from "@navikt/ds-icons";
-import {
-  Label,
-  Link,
-  LinkPanel,
-  LinkPanelTitle,
-  Title,
-} from "@navikt/ds-react";
-import styled from "styled-components";
-import { SanityBlockContent } from "./templating/SanityBlockContent";
+import { LinkPanel, LinkPanelTitle } from "@navikt/ds-react";
 import "nav-frontend-tabell-style/dist/main.css";
 import React from "react";
+import styled from "styled-components";
 
 const Div = styled.div`
   margin-bottom: var(--navds-spacing-8);
@@ -33,7 +25,7 @@ const LinkBox = styled.div`
   align-items: center;
 `;
 
-const Linker = ({ node }) => {
+const Linker = ({ node }: { node: any }): JSX.Element => {
   /* console.log(node); */
   return (
     <Div>

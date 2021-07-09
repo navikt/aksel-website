@@ -1,9 +1,19 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+} from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
 /* Config to handle styledcomponents ssr */
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx) {
+  static async getInitialProps(ctx: DocumentContext): Promise<{
+    styles: JSX.Element;
+    html: string;
+    head?: JSX.Element[];
+  }> {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
 
@@ -29,7 +39,7 @@ export default class MyDocument extends Document {
     }
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <Html lang="no">
         <Head />

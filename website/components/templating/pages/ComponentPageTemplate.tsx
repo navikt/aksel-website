@@ -1,15 +1,14 @@
-import React, { useLayoutEffect, useState } from "react";
-import { Ingress, Title, Link } from "@navikt/ds-react";
-
+import { Ingress, Link, Title } from "@navikt/ds-react";
 import { useRouter } from "next/router";
+import React from "react";
 import styled from "styled-components";
-import { Tab, Tabs } from "../../Tabs";
-import { SanityBlockContent } from "../SanityBlockContent";
-import LastUpdated from "../../LastUpdated";
-import StatusTag from "../../StatusTag";
 import FigmaIcon from "../../assets/FigmaIcon";
 import GithubIcon from "../../assets/GithubIcon";
+import LastUpdated from "../../LastUpdated";
+import StatusTag from "../../StatusTag";
 import TableOfContents from "../../TableOfContents";
+import { Tab, Tabs } from "../../Tabs";
+import { SanityBlockContent } from "../SanityBlockContent";
 
 const SanityContent = styled.div`
   position: relative;
@@ -64,7 +63,7 @@ const Inline = styled.span`
   flex-wrap: wrap;
 `;
 
-const ComponentPageTemplate = ({ data }) => {
+const ComponentPageTemplate = ({ data }: { data: any }): JSX.Element => {
   const { query } = useRouter();
 
   const basePath = `/designsystem/${(query.slug as string[])

@@ -24,7 +24,7 @@ const MainContent = styled.main`
   background-color: #fafafa;
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   const { sidebar } = useContext<any>(PagePropsContext);
   // TODO: Move metadata to SEO component
   return (

@@ -2,7 +2,7 @@ import { Link, Title } from "@navikt/ds-react";
 /* import styled from "styled-components"; */
 import { SanityBlockContent } from "./templating/SanityBlockContent";
 
-const Changelog = ({ node }) => {
+const Changelog = ({ node }: { node: any }): JSX.Element => {
   const changes = node.changes;
   return (
     <div>

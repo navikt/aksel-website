@@ -1,5 +1,4 @@
 import { ContentContainer, Title, LinkPanel, BodyLong } from "@navikt/ds-react";
-import { SignLanguageTwoHands } from "@navikt/ds-icons";
 import Link from "next/link";
 import styled from "styled-components";
 
@@ -23,24 +22,18 @@ const StyledContentContainer = styled(ContentContainer)`
   );
 `;
 
-const StyledLinkpanelWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  row-gap: 1rem;
-`;
-
-const FrontPage = ({ ...frontpage }) => {
+const FrontPage = ({ data }: { data: any }): JSX.Element => {
   return (
     <StyledWrapper>
       <StyledContentContainer>
         <StyledTopContent>
           <Title level={1} size="xl">
-            {frontpage.headline}
+            {data.headline}
           </Title>
         </StyledTopContent>
-        {frontpage.panels && (
+        {data.panels && (
           <div>
-            {frontpage.panels.map((panel, i) => (
+            {data.panels.map((panel) => (
               <Link key={panel.slug + 1} href={"/" + panel.slug} passHref>
                 <LinkPanel>
                   <h2>{panel.title}</h2>

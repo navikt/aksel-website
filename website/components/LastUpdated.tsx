@@ -2,13 +2,9 @@ import moment from "moment";
 import * as React from "react";
 import styled from "styled-components";
 
-const Div = styled.div`
-  /* position: absolute;
-  top: var(--navds-spacing-6);
-  right: 0; */
-`;
+const Div = styled.div``;
 
-const LastUpdated = ({ date }) => {
+const LastUpdated = ({ date }: { date: string }): JSX.Element => {
   return <Div>{`Oppdatert ${moment(date).format("DD. MMM. YY")}`}</Div>;
 };
 

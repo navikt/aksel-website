@@ -9,13 +9,6 @@ import React from "react";
 import parseUrl from "url-parse";
 import styled from "styled-components";
 
-const Hr = styled.hr`
-  margin: 0 var(--navds-spacing-8);
-  margin-top: var(--navds-spacing-4);
-  border: 1px solid rgba(11, 11, 11, 0.1);
-  border-radius: 1rem;
-`;
-
 const StyledAccordionMenu = styled(AccordionMenu)`
   --navds-color-text-link: var(--navds-color-darkgray);
 `;
@@ -102,7 +95,7 @@ const mapToComponents = (node, path, index, depth) => {
   }
 };
 
-const Menu = ({ menu }) => {
+const Menu = ({ menu }: { menu: any }): JSX.Element => {
   const { asPath } = useRouter();
   return (
     <StyledAccordionMenu

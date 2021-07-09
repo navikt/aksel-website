@@ -1,8 +1,7 @@
-import { Divide } from "@navikt/ds-icons";
-import { Label, Link, Title } from "@navikt/ds-react";
+import { Title } from "@navikt/ds-react";
+import "nav-frontend-tabell-style/dist/main.css";
 import styled from "styled-components";
 import { SanityBlockContent } from "./templating/SanityBlockContent";
-import "nav-frontend-tabell-style/dist/main.css";
 
 const Div = styled.div`
   margin-bottom: var(--navds-spacing-8);
@@ -14,7 +13,7 @@ const Td = styled.td`
   }
 `;
 
-const UuInteraction = ({ node }) => {
+const UuInteraction = ({ node }: { node: any }): JSX.Element => {
   /*   console.log(node); */
   return (
     <Div>

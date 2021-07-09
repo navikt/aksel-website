@@ -1,9 +1,9 @@
 import { Link } from "@navikt/ds-icons";
-import * as React from "react";
-import styled from "styled-components";
-import copy from "copy-to-clipboard";
 import { Popover } from "@navikt/ds-react";
+import copy from "copy-to-clipboard";
+import * as React from "react";
 import { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
 
 const Div = styled.div`
   display: inline-flex;
@@ -29,7 +29,13 @@ const StyledPopover = styled(Popover)`
   border-radius: 4px;
 `;
 
-function CopyAnchor({ anchor, ...props }) {
+function CopyAnchor({
+  anchor,
+  ...props
+}: {
+  anchor: string;
+  props: any;
+}): JSX.Element {
   const [openPopover, setOpenPopover] = useState(false);
   const popoverRef = useRef(null);
   const timeoutRef = useRef<NodeJS.Timeout>();

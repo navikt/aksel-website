@@ -15,7 +15,7 @@ const StyledHeader = styled.header`
   top: 0;
 `;
 
-function Header() {
+function Header(): JSX.Element {
   return <StyledHeader></StyledHeader>;
 }
 

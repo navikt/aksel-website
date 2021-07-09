@@ -1,4 +1,5 @@
-const FigmaIcon = ({ ...props }) => (
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+const FigmaIcon = ({ ...props }): JSX.Element => (
   <svg
     {...props}
     xmlns="http://www.w3.org/2000/svg"

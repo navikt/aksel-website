@@ -1,15 +1,6 @@
-import { Divide } from "@navikt/ds-icons";
-import {
-  Label,
-  Link,
-  LinkPanel,
-  LinkPanelTitle,
-  Title,
-} from "@navikt/ds-react";
-import styled from "styled-components";
-import { SanityBlockContent } from "./templating/SanityBlockContent";
 import "nav-frontend-tabell-style/dist/main.css";
 import React from "react";
+import styled from "styled-components";
 import { urlFor } from "../lib/santiy";
 
 const Div = styled.div`
@@ -31,7 +22,7 @@ const Caption = styled.caption`
   margin-top: var(--navds-spacing-4);
 `;
 
-const Image = ({ node }) => {
+const Image = ({ node }: { node: any }): JSX.Element => {
   console.log(node);
   return (
     <Div>

@@ -1,4 +1,5 @@
-const GithubLogo = ({ ...props }) => (
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+const GithubLogo = (props): JSX.Element => (
   <svg
     width="1em"
     height="1em"

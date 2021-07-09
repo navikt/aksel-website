@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import React from "react";
 
 const Nav = styled.nav`
   margin: 0;
@@ -72,7 +73,11 @@ const A = styled.a`
   }
 `;
 
-export const Tabs = ({ children }) => {
+export const Tabs = ({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element => {
   return (
     <Nav aria-label="Tabmeny for sideinnhold">
       <Ul role="tablist">{children}</Ul>
@@ -85,10 +90,10 @@ export const Tab = ({
   path = "",
   active,
 }: {
-  children: string;
+  children: React.ReactNode;
   path?: string;
   active?: boolean;
-}) => {
+}): JSX.Element => {
   const {
     query: { preview },
     asPath,

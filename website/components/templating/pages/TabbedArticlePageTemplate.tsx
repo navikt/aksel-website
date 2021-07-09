@@ -1,20 +1,13 @@
-import React, { useLayoutEffect, useState } from "react";
-import {
-  Ingress,
-  Title,
-  Link,
-  Header,
-  ContentContainer,
-} from "@navikt/ds-react";
+import { Title } from "@navikt/ds-react";
 import Error from "next/error";
-
 import { useRouter } from "next/router";
+import React from "react";
 import styled from "styled-components";
-import { Tab, Tabs } from "../../Tabs";
-import { SanityBlockContent } from "../SanityBlockContent";
 import LastUpdated from "../../LastUpdated";
 import StatusTag from "../../StatusTag";
 import TableOfContents from "../../TableOfContents";
+import { Tab, Tabs } from "../../Tabs";
+import { SanityBlockContent } from "../SanityBlockContent";
 
 const SanityContent = styled.div`
   position: relative;
@@ -42,7 +35,12 @@ const HeaderWrapper = styled.div`
   padding-bottom: var(--navds-spacing-6);
 `;
 
-const TabbedActiclePageTemplate = ({ data, sidebar }) => {
+const TabbedActiclePageTemplate = ({
+  data,
+}: {
+  data: any;
+  sidebar: any;
+}): JSX.Element => {
   const { query } = useRouter();
 
   if (!data.tabs || !data.heading || !data.status) {

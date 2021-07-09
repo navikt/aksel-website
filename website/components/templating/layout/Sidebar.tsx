@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   }
 `;
 
-function Sidebar({ sidebar }) {
+function Sidebar({ sidebar }: { sidebar: any }): JSX.Element {
   return (
     <>
       {sidebar?.sidebar ? (

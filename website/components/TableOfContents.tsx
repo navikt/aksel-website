@@ -1,8 +1,6 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import * as React from "react";
-import { useCallback, useState } from "react";
-import { useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 const Div = styled.div`
@@ -71,11 +69,11 @@ const Li = styled.li`
   }
 `;
 
-function TableOfContents({ changedState }) {
+function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
   const [toc, setToc] = useState([]);
 
   /* Get current active anchor somehow (howto when heading doesnt scroll to top of page??) */
-  const [activeId, setActiveId] = useState(null);
+  const [activeId] = useState(null);
 
   React.useLayoutEffect(() => {
     const tags = document.getElementsByTagName("h2");

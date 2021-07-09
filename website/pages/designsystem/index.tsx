@@ -7,9 +7,15 @@ import { getClient } from "../../lib/sanity.server";
 import PreviewBanner from "../../components/PreviewBanner";
 import FrontPage from "../../components/pages/FrontPage";
 
-const Page = ({ frontpage, preview }) => {
+const Page = ({
+  frontpage,
+  preview,
+}: {
+  frontpage: any;
+  preview: boolean;
+}): JSX.Element => {
   const router = useRouter();
-  const enabledPreview = preview || router.query.preview;
+  const enabledPreview = preview || !!router.query.preview;
 
   if (router.isFallback) {
     return <ErrorPage statusCode={404} />;
@@ -38,6 +44,8 @@ interface StaticProps {
 
 export const getStaticProps = async ({
   preview = false,
+}: {
+  preview?: boolean;
 }): Promise<StaticProps> => {
   const frontpage = await getClient(preview).fetch(query);
   return {

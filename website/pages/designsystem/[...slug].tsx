@@ -4,11 +4,15 @@ import { getClient } from "../../lib/sanity.server";
 import { usePreviewSubscription } from "../../lib/santiy";
 import { isDevelopment } from "../../src/util";
 import PreviewBanner from "../../components/PreviewBanner";
-import styled from "styled-components";
 import TemplatePicker from "../../components/templating/TemplatePicker";
 import slugger from "../../components/slugger";
 
-const PagePicker = (props) => {
+const PagePicker = (props: {
+  preview: boolean;
+  slug?: string;
+  page: any;
+  sidebar: any;
+}): JSX.Element => {
   const router = useRouter();
   const enablePreview = !!props.preview || !!router.query.preview;
 
@@ -33,7 +37,6 @@ const PagePicker = (props) => {
     return <div>Laster...</div>;
   }
 
-  // TODO: Move sidebar to context?
   return (
     <>
       {enablePreview && <PreviewBanner slug={props?.slug} />}
@@ -46,7 +49,10 @@ const PagePicker = (props) => {
 
 const query = `*[_type in ["ds_component_page", "ds_article_page", "ds_tabbed_article_page"]]{ _type, 'slug': slug.current }`;
 
-export const getStaticPaths = async () => {
+export const getStaticPaths = async (): Promise<{
+  fallback: boolean;
+  paths: [{ params: { slug: string[] } }];
+}> => {
   const documents: any[] | null = await getClient(false).fetch(query);
   const paths = [];
   const componentPageTabs = ["design", "utvikling", "tilgjengelighet"];
@@ -74,7 +80,7 @@ export const getStaticPaths = async () => {
         });
         defaultPush();
         break;
-      case "ds_tabbed_article_page":
+      case "ds_tabbed_article_page": {
         if (!page.tabs) break;
         const tabbedArticleTabs = page.tabs.map(
           (tab) => tab.title?.toLowerCase().replace(/\s+/g, "-") || "undefined"
@@ -87,6 +93,7 @@ export const getStaticPaths = async () => {
           });
         });
         break;
+      }
       default:
         defaultPush();
         break;
@@ -135,6 +142,9 @@ const sidebarQuery = `
 export const getStaticProps = async ({
   params: { slug },
   preview,
+}: {
+  params: { slug: string[] };
+  preview: boolean;
 }): Promise<StaticProps> => {
   const joinedSlug = slug.slice(0, 2).join("/");
 

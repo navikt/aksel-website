@@ -1,6 +1,4 @@
-import React from "react";
-import BlockContent from "@sanity/block-content-to-react";
-import NextjsLink from "next/link";
+import "@navikt/ds-css";
 import {
   Alert,
   BodyLong,
@@ -11,17 +9,19 @@ import {
   Link,
   Title,
 } from "@navikt/ds-react";
-import "@navikt/ds-css";
-import Code from "../Code";
+import BlockContent from "@sanity/block-content-to-react";
+import NextjsLink from "next/link";
+import React from "react";
 import styled from "styled-components";
-import slugger from "../slugger";
 import Changelog from "../Changelog";
-import PropTable from "../Proptable";
-import DoDont from "../DoDont";
-import UuInteraction from "../UuInteraction";
-import Linker from "../Linker";
-import Image from "../Image";
+import Code from "../Code";
 import CopyAnchor from "../CopyAnchor";
+import DoDont from "../DoDont";
+import Image from "../Image";
+import Linker from "../Linker";
+import PropTable from "../Proptable";
+import slugger from "../slugger";
+import UuInteraction from "../UuInteraction";
 
 const StyledCode = styled.code`
   color: red;
@@ -80,7 +80,7 @@ const serializers = {
       </StyledAlert>
     ),
 
-    block: ({ node, children, ...rest }) => {
+    block: ({ node, children }) => {
       const style = node.style;
 
       switch (style) {
@@ -137,21 +137,19 @@ const serializers = {
           );
         case "ingress":
           return <Ingress spacing>{children}</Ingress>;
-        case "normal":
-          return <BodyLong spacing>{children}</BodyLong>;
         default:
           return children;
       }
     },
   },
   marks: {
-    kbd: (props) => {
+    kbd: (props: any) => {
       return <StyledKbd>{props.children}</StyledKbd>;
     },
-    code: (props) => {
+    code: (props: any) => {
       return <StyledCode>{props.children}</StyledCode>;
     },
-    link: ({ mark, children }) => {
+    link: ({ mark, children }: { mark: any; children: any }) => {
       const { blank, href } = mark;
 
       return blank ? (
@@ -163,7 +161,7 @@ const serializers = {
       );
     },
     // TODO: Run a query on _ref (id) if is not part of "mark"
-    internalLink: ({ mark, children }) => {
+    internalLink: ({ mark, children }: { mark: any; children: any }) => {
       const { slug = {} } = mark;
       const href = `/${slug.current}`;
       !slug && console.log("Intern ref har ikke slug i block.");
@@ -186,7 +184,7 @@ export const SanityBlockContent = ({
 }: {
   blocks: any;
   withMargin?: boolean;
-}) => {
+}): JSX.Element => {
   return (
     <>
       {withMargin ? (

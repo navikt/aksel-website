@@ -20,7 +20,7 @@ const Style = styled.div`
   left: 3rem;
 `;
 
-function PreviewBanner({ slug }) {
+function PreviewBanner({ slug }: { slug?: string }): JSX.Element {
   return (
     <Style>
       <div>Preview</div>
