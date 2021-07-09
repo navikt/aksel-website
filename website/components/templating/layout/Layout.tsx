@@ -26,7 +26,6 @@ const MainContent = styled.main`
 
 const Layout = ({ children }) => {
   const { sidebar } = useContext<any>(PagePropsContext);
-  /* console.log(sidebar); */
   // TODO: Move metadata to SEO component
   return (
     <>
