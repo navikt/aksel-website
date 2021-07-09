@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable no-undef */
 const packageJson = require("./package.json");
 const modules = [];
 Object.keys(packageJson.dependencies).forEach((key) => {
@@ -12,6 +14,7 @@ Object.keys(packageJson.dependencies).forEach((key) => {
 
 /**
  * Allows us to run the sanity content studio on subpath "/studio"
+ * NOTE: Ikke supported i GCP atm
  */
 /* const STUDIO_REWRITE = {
   source: "/studio/:path*",
