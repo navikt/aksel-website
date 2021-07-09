@@ -15,8 +15,16 @@ const Wrapper = styled.div`
   }
 `;
 
-function Sidebar({ sidebar: { sidebar } }) {
-  return <Wrapper>{sidebar && <Menu menu={sidebar} />}</Wrapper>;
+function Sidebar({ sidebar }) {
+  return (
+    <>
+      {sidebar?.sidebar ? (
+        <Wrapper>
+          <Menu menu={sidebar.sidebar} />
+        </Wrapper>
+      ) : null}
+    </>
+  );
 }
 
 export default Sidebar;
