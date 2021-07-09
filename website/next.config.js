@@ -2,35 +2,39 @@
 /* eslint-disable no-undef */
 const packageJson = require("./package.json");
 const modules = [];
+// Remember to remove deps in package.json when less is removed
+const withLess = require("next-with-less");
+
 Object.keys(packageJson.dependencies).forEach((key) => {
   /**
    * Nextjs does not as of june 2021 support esm import/export syntax
    * TODO: Remove this when this issue is fixed
    *  */
-  if (key.startsWith("@navikt/") || key === "examples") {
+  if (
+    key.startsWith("@navikt/") ||
+    key === "examples" ||
+    key.startsWith("nav-frontend-")
+  ) {
     modules.push(key);
   }
 });
 
-/**
- * Allows us to run the sanity content studio on subpath "/studio"
- * NOTE: Ikke supported i GCP atm
- */
-/* const STUDIO_REWRITE = {
-  source: "/studio/:path*",
-  destination:
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3333/studio/:path*"
-      : "/studio/index.html",
-}; */
-
 const withTM = require("next-transpile-modules")(modules);
 
-module.exports = withTM({
-  /* rewrites: () => [STUDIO_REWRITE], */
-  productionBrowserSourceMaps: true,
-  // Makes sure we can load images form cdn
-  images: {
-    domains: ["cdn.sanity.io"],
-  },
-});
+module.exports = withLess(
+  withTM({
+    productionBrowserSourceMaps: true,
+    // Makes sure we can load images form cdn
+    images: {
+      domains: ["cdn.sanity.io"],
+    },
+    webpack(config) {
+      config.module.rules.push({
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
+      });
+
+      return config;
+    },
+  })
+);
