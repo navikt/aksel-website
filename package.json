@@ -21,12 +21,14 @@
     "sanity": "yarn workspace sanity start",
     "sanity:deploy": "yarn workspace sanity deploy",
     "sanity:update:nav": "yarn workspace sanity update:nav",
-    "lint": "yarn workspace website lint"
+    "lint": "yarn workspace website lint",
+    "sb": "yarn workspace code-previews storybook"
   },
   "workspaces": [
     "sanity",
     "website",
-    "code-examples"
+    "code-examples",
+    "code-previews"
   ],
   "prettier": {},
   "dependencies": {
