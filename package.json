@@ -15,7 +15,7 @@
   "scripts": {
     "postinstall": "husky install",
     "dev": "yarn workspace website dev",
-    "build:next": "yarn workspace website build",
+    "build:next": "yarn sb:build && yarn workspace website build",
     "serve:next": "yarn workspace website start",
     "deploy": "yarn workspace website deploy",
     "sanity": "yarn workspace sanity start",
@@ -23,6 +23,7 @@
     "sanity:update:nav": "yarn workspace sanity update:nav",
     "lint": "yarn workspace website lint",
     "sb": "yarn workspace code-previews storybook",
+    "sb:build": "yarn workspace code-previews storybook-build",
     "sb:watch": "yarn workspace code-previews storybook:watch"
   },
   "workspaces": [
