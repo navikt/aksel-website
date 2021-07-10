@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./sb-outlines.css";
 /* import {  useArgs } from "@storybook/client-api"; */
 import { Button } from "./Button";
 
@@ -12,7 +12,13 @@ export default {
 };
 
 const Template = (args) => {
-  return <Button {...args} />;
+  return (
+    <div>
+      <Button {...args} />
+      <Button {...args} />
+      <Button {...args} />
+    </div>
+  );
 };
 
 export const Primary = Template.bind({});
