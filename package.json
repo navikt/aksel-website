@@ -22,7 +22,8 @@
     "sanity:deploy": "yarn workspace sanity deploy",
     "sanity:update:nav": "yarn workspace sanity update:nav",
     "lint": "yarn workspace website lint",
-    "sb": "yarn workspace code-previews storybook"
+    "sb": "yarn workspace code-previews storybook",
+    "sb:watch": "yarn workspace code-previews storybook:watch"
   },
   "workspaces": [
     "sanity",
