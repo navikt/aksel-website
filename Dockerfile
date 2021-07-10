@@ -5,6 +5,7 @@ ENV NODE_ENV production
 WORKDIR /app
 COPY website/package.json .
 COPY website/.next/ .next/
+COPY website/public .
 # COPY .env .
 # COPY .env.local .
 COPY code-examples code-examples/
