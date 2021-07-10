@@ -1,7 +1,6 @@
 import React from "react";
-import "./sb-outlines.css";
 /* import {  useArgs } from "@storybook/client-api"; */
-import { Button } from "./Button";
+import { Button } from "@navikt/ds-react";
 
 export default {
   title: "Example/Button",
@@ -20,6 +19,13 @@ const Template = (args) => {
     </div>
   );
 };
+
+export const PrimaryButton = () => <Button variant="primary">Button</Button>;
+export const SecondaryButton = () => (
+  <Button variant="secondary">Button</Button>
+);
+export const ActionButton = () => <Button variant="action">Button</Button>;
+export const DangerButton = () => <Button variant="danger">Button</Button>;
 
 export const Primary = Template.bind({});
 Primary.args = {

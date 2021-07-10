@@ -1,3 +1,7 @@
+import "../src/sb-outlines.css";
+import "@navikt/ds-css";
+import "./global.css";
+
 export const parameters = {
   options: {
     storySort: (a, b) => {
@@ -12,23 +16,5 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
-  },
-  decorators: (
-    Story,
-    {
-      id,
-      kind,
-      name,
-      story,
-      parameters,
-      hooks,
-      args,
-      argTypes,
-      globals,
-      viewMode,
-      loaded,
-    }
-  ) => {
-    console.log("test");
   },
 };

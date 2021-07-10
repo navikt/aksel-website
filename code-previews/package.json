@@ -12,7 +12,6 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "babel-plugin-require-context-hook": "^1.0.0",
-    "esm": "^3.2.25",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",

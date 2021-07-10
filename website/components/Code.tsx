@@ -8,6 +8,7 @@ import "prismjs/components/prism-jsx.min";
 import "prismjs/components/prism-typescript.min";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import CodePreview from "./CodePreview";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -22,7 +23,7 @@ const Example = styled.div`
   background-color: #f9f9f9;
   display: flex;
   justify-content: center;
-  padding: 2rem 0;
+  padding: 0;
   border-radius: 8px;
   position: relative;
   border: 1px solid var(--navds-color-darkgray);
@@ -263,7 +264,8 @@ const Code = ({ node }: { node: any }): JSX.Element => {
     <Wrapper>
       {showPreview && (
         <Example>
-          <RenderExample component={node.preview} />
+          {/* <RenderExample component={node.preview} /> */}
+          <CodePreview />
         </Example>
       )}
       {showTabs && renderTabs()}
