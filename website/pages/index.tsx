@@ -12,7 +12,7 @@ const Page = ({
   frontpage,
   preview,
 }: {
-  frontpage: unknown;
+  frontpage: any;
   preview: boolean;
 }): JSX.Element => {
   const router = useRouter();

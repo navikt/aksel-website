@@ -51,7 +51,7 @@ const query = `*[_type in ["ds_component_page", "ds_article_page", "ds_tabbed_ar
 
 export const getStaticPaths = async (): Promise<{
   fallback: boolean;
-  paths: [{ params: { slug: string[] } }];
+  paths: { params: { slug: string[] } }[];
 }> => {
   const documents: any[] | null = await getClient(false).fetch(query);
   const paths = [];
