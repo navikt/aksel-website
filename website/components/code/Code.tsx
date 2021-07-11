@@ -1,4 +1,3 @@
-import { Copy, ExternalLink, Ruler, Sight } from "@navikt/ds-icons";
 import { Popover } from "@navikt/ds-react";
 import copy from "copy-to-clipboard";
 import React, { createContext, useEffect, useRef, useState } from "react";
@@ -6,7 +5,6 @@ import styled from "styled-components";
 import CodeBlock from "./CodeBlock";
 import CodePreview from "./CodePreview";
 import CodeTabs from "./CodeTabs";
-/* import RenderExample from "examples"; */
 
 const Wrapper = styled.div`
   width: 100%;
@@ -146,7 +144,6 @@ const Code = ({ node }: { node: any }): JSX.Element => {
       <Wrapper>
         {showPreview && (
           <Example>
-            {/* <RenderExample component={node.preview} /> */}
             <CodePreview />
           </Example>
         )}

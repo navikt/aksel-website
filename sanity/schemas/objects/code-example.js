@@ -1,5 +1,3 @@
-import { getExamples } from "examples";
-
 export default {
   title: "Kode eksempel",
   name: "code_example",
@@ -19,10 +17,7 @@ export default {
     {
       title: "Kode eksempel (optional)",
       name: "preview",
-      type: "string",
-      options: {
-        list: [...getExamples()],
-      },
+      type: "url",
     },
     {
       type: "array",

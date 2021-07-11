@@ -16,7 +16,11 @@
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "watch-run": "^1.2.5",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "@navikt/ds-css": "^0.6.7",
+    "@navikt/ds-icons": "^0.3.3",
+    "@navikt/ds-react": "^0.6.5",
+    "@navikt/ds-tokens": "^0.4.3"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.3.4",

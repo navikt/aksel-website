@@ -22,19 +22,18 @@
     "sanity:deploy": "yarn workspace sanity deploy",
     "sanity:update:nav": "yarn workspace sanity update:nav",
     "lint": "yarn workspace website lint",
-    "sb": "yarn workspace code-previews storybook",
-    "sb:build": "yarn workspace code-previews build-storybook",
-    "sb:watch": "yarn workspace code-previews storybook:watch"
+    "sb": "yarn workspace storybook storybook",
+    "sb:build": "yarn workspace storybook build-storybook",
+    "sb:watch": "yarn workspace storybook storybook:watch"
   },
   "workspaces": [
     "sanity",
     "website",
-    "code-examples",
-    "code-previews"
+    "storybook"
   ],
   "prettier": {},
   "dependencies": {
-    "@navikt/ds-css": "^0.6.5",
+    "@navikt/ds-css": "^0.6.7",
     "@navikt/ds-icons": "^0.3.3",
     "@navikt/ds-react": "^0.6.5",
     "@navikt/ds-tokens": "^0.4.3"
