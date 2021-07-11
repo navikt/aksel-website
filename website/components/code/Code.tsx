@@ -38,7 +38,7 @@ const Example = styled.div`
 export const Button = styled.button`
   border: none;
   color: rgba(255, 255, 255, 0.85);
-  padding: 0.75rem 0.5rem;
+  padding: 0.75rem 0.75rem;
   display: flex;
   align-items: center;
   column-gap: 0.5rem;

@@ -1,41 +1,46 @@
-import { useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { CodeContext } from "./Code";
 
-const CodePreview = () => {
+const CodePreview = (): JSX.Element => {
+  const { previewToggles: tmpPreviewToggles } = useContext(CodeContext);
+  const [previewToggles] = tmpPreviewToggles;
+  const iframeRef = useRef(null);
+
   const [height, setHeight] = useState(200);
-  const [ruler, setRuler] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [iframeUrl, setIframeUrl] = useState("");
 
-  const handleHeight = () => {
-    const newHeight = (document.getElementById("iframe") as HTMLIFrameElement)
-      ?.contentWindow.document.body.scrollHeight;
+  useEffect(() => {
+    setLoaded(false);
+  }, [iframeUrl]);
 
+  useEffect(() => {
+    if (!loaded) return;
+    const newHeight =
+      iframeRef.current?.contentWindow.document.body.scrollHeight;
     setHeight(newHeight);
-  };
 
-  function addOutlines() {
-    setRuler(true);
-    (
-      document.getElementById("iframe") as HTMLIFrameElement
-    )?.contentWindow.document.body.classList.add("sb--outlines");
-  }
+    previewToggles.outline
+      ? iframeRef.current?.contentWindow.document.body.classList.add(
+          "sb--outlines"
+        )
+      : iframeRef.current?.contentWindow.document.body.classList.remove(
+          "sb--outlines"
+        );
+  }, [loaded, previewToggles.outline]);
 
-  function removeOutlines() {
-    setRuler(false);
-    (
-      document.getElementById("iframe") as HTMLIFrameElement
-    )?.contentWindow.document.body.classList.remove("sb--outlines");
-  }
-
-  const globals = ruler ? `globals=measureEnabled:true` : "";
-
-  const prod = `/storybook/iframe.html?id=example-button--primary-button&args=&${globals}&args=`;
-  /* const preview =
-    "http://localhost:6006/iframe.html?id=example-button--primary&globals=measureEnabled:true&args="; */
+  useEffect(() => {
+    const toggles = previewToggles.ruler ? `globals=measureEnabled:true` : "";
+    setIframeUrl(
+      `/storybook/iframe.html?id=example-button--primary-button&${toggles}&args=&viewMode=story`
+    );
+  }, [previewToggles.ruler]);
 
   return (
     <iframe
-      id="iframe"
-      onLoad={handleHeight}
-      src={prod}
+      ref={iframeRef}
+      onLoad={() => setLoaded(true)}
+      src={iframeUrl}
       height={height + "px"}
       width="100%"
       style={{ border: "none" }}

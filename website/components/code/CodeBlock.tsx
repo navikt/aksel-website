@@ -91,19 +91,18 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
           <StyledCode dangerouslySetInnerHTML={{ __html: highlighted }} />
         </Pre>
       </PreWrapper>
-      {popover && (
-        <StyledPopover
-          role="alert"
-          aria-atomic="true"
-          anchorEl={buttonRef.current}
-          open={popover}
-          onClose={() => setPopover(false)}
-          placement="right"
-          arrow={false}
-        >
-          Kopiert
-        </StyledPopover>
-      )}
+
+      <StyledPopover
+        role="alert"
+        aria-atomic="true"
+        anchorEl={buttonRef.current}
+        open={popover}
+        onClose={() => setPopover(false)}
+        placement="right"
+        arrow={false}
+      >
+        Kopiert
+      </StyledPopover>
     </>
   );
 };
