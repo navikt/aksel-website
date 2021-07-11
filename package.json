@@ -34,10 +34,10 @@
   ],
   "prettier": {},
   "dependencies": {
-    "@navikt/ds-css": "^0.6",
-    "@navikt/ds-icons": "^0.3",
-    "@navikt/ds-react": "^0.6",
-    "@navikt/ds-tokens": "^0.4"
+    "@navikt/ds-css": "^0.6.5",
+    "@navikt/ds-icons": "^0.3.3",
+    "@navikt/ds-react": "^0.6.5",
+    "@navikt/ds-tokens": "^0.4.3"
   },
   "devDependencies": {
     "prettier": "^2.3.2",

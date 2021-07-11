@@ -14,7 +14,7 @@ import NextjsLink from "next/link";
 import React from "react";
 import styled from "styled-components";
 import Changelog from "../Changelog";
-import Code from "../Code";
+import Code from "../code/Code";
 import CopyAnchor from "../CopyAnchor";
 import DoDont from "../DoDont";
 import Image from "../Image";

@@ -1829,27 +1829,17 @@
   resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.6.5.tgz#943a47418707d38e61f1f7c293514db4a7f242fe"
   integrity sha512-mQ7yG4qafZXbOf9tmkjiPzkcAglt4y6VP8u15yG6k4cmVHJkgYnBQ+CqLSREkLLBnVZMDXOYXRvSPW4pAzQLFA==
 
+"@navikt/ds-css@^0.6.5":
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.6.6.tgz#a71751e92bc14166f8063940e0c50e7703d40c70"
+  integrity sha512-IIvuI5sGYW8j+6Dio0hTc4ETLdJLO//Y7WKMUgJRdHWb9FfZzWNAiKI6jMRa3EJfutRifJVSHz2cMyP4+iAnJA==
+
 "@navikt/ds-icons@^0.3", "@navikt/ds-icons@^0.3.3":
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.3.3.tgz#19432cc0b711f4643cba611c5b593ff2b7b67626"
   integrity sha512-851CJ6GJu4u1iLLhqhGW+jeEB4NpOsoN8Guhy6KZUPSGI1mbN1fGkUcu7p2BC7VF3Rcad/EdHGwTmPPAYZ4vDg==
 
-"@navikt/ds-react@^0.5":
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.5.4.tgz#f97d9e269b813eae5fba8e3b02489405da3228f6"
-  integrity sha512-TL+v5LutwPWF4VNdoSKc5P1t+Xb/8+KQvWdpppZDhH7XHZjbgW8iMqrTeMRw0TWyCdc8wrnPHBPMXDeZ7mLTqg==
-  dependencies:
-    "@navikt/ds-icons" "^0.3.3"
-    "@popperjs/core" "^2.5.4"
-    classnames "^2.2.6"
-    copy-to-clipboard "^3.3.1"
-    react-collapse "^5.1.0"
-    react-merge-refs "^1.1.0"
-    react-modal "3.12.1"
-    react-popper "^2.2.4"
-    uuid "^8.3.2"
-
-"@navikt/ds-react@^0.6":
+"@navikt/ds-react@^0.6", "@navikt/ds-react@^0.6.5":
   version "0.6.5"
   resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.6.5.tgz#c66c35d130b1fea579e0dc00c9084923e03a3b51"
   integrity sha512-XLrOeqPWFEY3RRxYkVCSzhyTlfbWSRUsKb6xalBtA1AHkzrLfcaCdzx6xH4nBswS2RMGT8x1bGAHqq7noxLY6w==
@@ -1864,7 +1854,7 @@
     react-popper "^2.2.4"
     uuid "^8.3.2"
 
-"@navikt/ds-tokens@^0.4":
+"@navikt/ds-tokens@^0.4", "@navikt/ds-tokens@^0.4.3":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@navikt/ds-tokens/-/ds-tokens-0.4.3.tgz#555348e44952b6a0cb56fc72dcdef4f3303886a5"
   integrity sha512-0dYFXDvZd4fJX0UU1rAyXw9zsc9Zwjm4f27ri4Gftum1DbrdnastuLoxFdiEYRqvWVTCYBtE7T7rQbAK3iM6tQ==
@@ -8390,11 +8380,6 @@ eslint@^7.11.0, eslint@^7.30.0:
     table "^6.0.9"
     text-table "^0.2.0"
     v8-compile-cache "^2.0.3"
-
-esm@^3.2.25:
-  version "3.2.25"
-  resolved "https://registry.yarnpkg.com/esm/-/esm-3.2.25.tgz#342c18c29d56157688ba5ce31f8431fbb795cc10"
-  integrity sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==
 
 espree@^7.3.0, espree@^7.3.1:
   version "7.3.1"
