@@ -1,31 +1,29 @@
 /* Frontpage */
 
 import { Title } from "@navikt/ds-react";
-import ErrorPage from "next/error";
+import { useContext, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import PreviewBanner from "../components/PreviewBanner";
 import { getClient } from "../lib/sanity.server";
 import { usePreviewSubscription } from "../lib/santiy";
+import { PagePropsContext } from "./_app";
 
-const Page = ({
-  frontpage,
-  preview,
-}: {
-  frontpage: any;
-  preview: boolean;
-}): JSX.Element => {
+const Page = (props: { frontpage: any; preview: boolean }): JSX.Element => {
   const router = useRouter();
-  const enabledPreview = preview || !!router.query.preview;
+  const enabledPreview = props.preview || !!router.query.preview;
 
-  if (router.isFallback) {
-    return <ErrorPage statusCode={404} />;
-  }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setPageData] = useContext(PagePropsContext);
 
   const { data: pagedata } = usePreviewSubscription(query, {
-    initialData: frontpage,
+    initialData: props.frontpage,
     enabled: enabledPreview,
   });
+
+  useEffect(() => {
+    setPageData({ ...props, page: pagedata });
+  }, [pagedata]);
 
   return (
     <>

@@ -25,7 +25,11 @@ const MainContent = styled.main`
 `;
 
 const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
-  const { sidebar } = useContext<any>(PagePropsContext);
+  const [pageProps] = useContext<any>(PagePropsContext);
+  if (!pageProps) {
+    return null;
+  }
+
   // TODO: Move metadata to SEO component
   return (
     <>
@@ -39,7 +43,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
       <>
         <Heading />
         <Wrapper>
-          <Sidebar sidebar={sidebar} />
+          {pageProps.sidebar && <Sidebar sidebar={pageProps.sidebar} />}
           <MainContent>{children}</MainContent>
         </Wrapper>
       </>

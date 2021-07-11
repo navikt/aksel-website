@@ -6,6 +6,8 @@ import { isDevelopment } from "../../src/util";
 import PreviewBanner from "../../components/PreviewBanner";
 import TemplatePicker from "../../components/templating/TemplatePicker";
 import slugger from "../../components/slugger";
+import { useContext, useEffect } from "react";
+import { PagePropsContext } from "../_app";
 
 const PagePicker = (props: {
   preview: boolean;
@@ -15,6 +17,9 @@ const PagePicker = (props: {
 }): JSX.Element => {
   const router = useRouter();
   const enablePreview = !!props.preview || !!router.query.preview;
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setPageData] = useContext(PagePropsContext);
 
   const { data } = usePreviewSubscription(ds_query, {
     params: { slug: props?.slug },
@@ -27,22 +32,18 @@ const PagePicker = (props: {
     enabled: enablePreview,
   });
 
-  slugger.reset();
+  useEffect(() => {
+    setPageData({ ...props, sidebar });
+  }, [sidebar]);
 
-  if (!router.isFallback && !data?.slug) {
-    return <Error statusCode={404} />;
-  }
-
-  if (router.isFallback) {
-    return <div>Laster...</div>;
-  }
+  useEffect(() => {
+    setPageData({ ...props, page: data });
+  }, [data]);
 
   return (
     <>
       {enablePreview && <PreviewBanner slug={props?.slug} />}
-      <div>
-        <TemplatePicker data={data} sidebar={sidebar} />
-      </div>
+      <TemplatePicker data={data} sidebar={sidebar} />
     </>
   );
 };
