@@ -1,11 +1,9 @@
 import { useRouter } from "next/router";
-import Error from "next/error";
 import { getClient } from "../../lib/sanity.server";
 import { usePreviewSubscription } from "../../lib/santiy";
 import { isDevelopment } from "../../src/util";
 import PreviewBanner from "../../components/PreviewBanner";
 import TemplatePicker from "../../components/templating/TemplatePicker";
-import slugger from "../../components/slugger";
 import { useContext, useEffect } from "react";
 import { PagePropsContext } from "../_app";
 
