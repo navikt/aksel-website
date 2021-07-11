@@ -34,6 +34,9 @@ const Page = ({
         <Title level={1} size="xl">
           Forside
         </Title>
+        <Link passHref href={"/storybook/index.html"}>
+          <a>Storybook for kode-eksempler</a>
+        </Link>
         {pagedata.map((page) => {
           if (page._type === "ds_component_page") {
             return (
