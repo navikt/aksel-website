@@ -38,22 +38,18 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
   const {
     node,
     tabs: tmpTabs,
-    previewToggles: tmpPreviewToggles,
     popover: tmpPopover,
-    showPreview,
     showTabs,
   } = useContext(CodeContext);
-  const [tabs, setTabs] = tmpTabs;
-  const [previewToggles, setPreviewToggles] = tmpPreviewToggles;
+  const [tabs] = tmpTabs;
+
   const [popover, setPopover] = tmpPopover;
 
   const buttonRef = useRef(null);
 
-  const activeIndex =
-    tabs.findIndex((tab) => tab.active) !== -1 &&
-    tabs[tabs.findIndex((tab) => tab.active)].index;
+  const activeIndex = tabs.findIndex((tab) => tab.active);
 
-  if (!!activeIndex || !node.tabs[index].example.code) {
+  if (activeIndex === -1 || !node.tabs[index].example.code) {
     return null;
   }
 

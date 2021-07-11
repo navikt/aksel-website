@@ -82,9 +82,9 @@ const CodeTabs = (): JSX.Element => {
   const [popover, setPopover] = tmpPopover;
   const buttonRef = useRef(null);
 
-  const handleTab = (tab) => {
-    const newTabs = [...tabs];
-    newTabs[tab].active = true;
+  console.log(tabs);
+  const handleTab = (index: number) => {
+    const newTabs = tabs.map((tab, i) => ({ ...tab, active: i === index }));
     setTabs([...newTabs]);
   };
 
@@ -150,7 +150,7 @@ const CodeTabs = (): JSX.Element => {
             className="navds-body-short navds-body--s"
             onClick={() =>
               handleCopy(
-                node.tabs[tabs.find((tab) => tab.active).index].example.code
+                node.tabs[tabs.findIndex((tab) => tab.active)].example.code
               )
             }
           >

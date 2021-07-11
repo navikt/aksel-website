@@ -95,9 +95,7 @@ export const CodeContext = createContext<ContextProps>({
 });
 
 const Code = ({ node }: { node: any }): JSX.Element => {
-  const [tabs, setTabs] = useState<
-    { title: string; index: number; active: false }[]
-  >([]);
+  const [tabs, setTabs] = useState<{ title: string; active: false }[]>([]);
   const [openPopover, setOpenPopover] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();
   const [previewToggles, setPreviewToggles] = useState({
@@ -109,7 +107,7 @@ const Code = ({ node }: { node: any }): JSX.Element => {
     const tabList = [];
     node.tabs &&
       node.tabs.forEach((tab, x) =>
-        tabList.push({ title: tab.title, index: x, active: x === 0 })
+        tabList.push({ title: tab.title, active: x === 0 })
       );
 
     setTabs([...tabList]);
