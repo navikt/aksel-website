@@ -23,12 +23,15 @@ const withTM = require("next-transpile-modules")(modules);
 
 module.exports = withTM(
   withLess({
-    /* rewrites: () => [
-      {
-        source: "/storybook:path*",
-        destination: "/storybook/index.html/:path*",
-      },
-    ], */
+    // TODO: Fikse slik at /storybook -> /storybook/index.html (oppdatert rege i codeBlock også da)
+    /* rewrites: async () => {
+      return [
+        {
+          source: "/storybook/:page",
+          destination: "/storybook/index.html",
+        },
+      ];
+    }, */
 
     productionBrowserSourceMaps: true,
     // Makes sure we can load images form cdn

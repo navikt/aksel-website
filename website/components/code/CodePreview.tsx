@@ -1,14 +1,31 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { CodeContext } from "./Code";
 
 const CodePreview = (): JSX.Element => {
-  const { previewToggles: tmpPreviewToggles } = useContext(CodeContext);
+  const { node, previewToggles: tmpPreviewToggles } = useContext(CodeContext);
   const [previewToggles] = tmpPreviewToggles;
   const iframeRef = useRef(null);
 
   const [height, setHeight] = useState(200);
   const [loaded, setLoaded] = useState(false);
   const [iframeUrl, setIframeUrl] = useState("");
+  const [baseUrl, setBaseUrl] = useState("");
+
+  useLayoutEffect(() => {
+    const url = node.preview.split("&")[0].match(/(?<=storybook\/)(.*\n?)/);
+    if (url) {
+      const newUrl =
+        "/storybook/" + url[0].replace("index.html", "iframe.html");
+      setBaseUrl(newUrl);
+      setIframeUrl(newUrl);
+    }
+  }, [node.preview]);
 
   useEffect(() => {
     setLoaded(false);
@@ -29,12 +46,11 @@ const CodePreview = (): JSX.Element => {
         );
   }, [loaded, previewToggles.outline]);
 
+  // TODO: Forbedre state handling av iframes her? Laster sent etter side er rendret
   useEffect(() => {
     const toggles = previewToggles.ruler ? `globals=measureEnabled:true` : "";
-    setIframeUrl(
-      `/storybook/iframe.html?id=example-button--primary-button&${toggles}&args=&viewMode=story`
-    );
-  }, [previewToggles.ruler]);
+    setIframeUrl(`${baseUrl}&${toggles}`);
+  }, [previewToggles.ruler, baseUrl]);
 
   return (
     <iframe

@@ -82,7 +82,6 @@ const CodeTabs = (): JSX.Element => {
   const [popover, setPopover] = tmpPopover;
   const buttonRef = useRef(null);
 
-  console.log(tabs);
   const handleTab = (index: number) => {
     const newTabs = tabs.map((tab, i) => ({ ...tab, active: i === index }));
     setTabs([...newTabs]);
