@@ -58,7 +58,8 @@
   outline: 1px solid #1a2c51 !important;
 }
 
-.sb--outlines div {
+/* Remove outline from root/wrapper */
+.sb--outlines div:not([id="root"]):not([id="docs-root"]) {
   outline: 1px solid #036cdb !important;
 }
 
