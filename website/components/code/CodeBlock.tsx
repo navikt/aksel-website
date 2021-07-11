@@ -10,23 +10,22 @@ const PreWrapper = styled.div`
   position: relative;
   background-color: var(--navds-color-darkgray);
   border-radius: 8px;
-
-  :only-child {
-    pre {
-      border-radius: 8px;
-    }
-  }
 `;
 
 const Pre = styled.pre`
   overflow-x: auto;
   align-items: center;
   display: flex;
-  border-end-end-radius: 8px;
-  border-end-start-radius: 8px;
+  border-radius: 8px;
   background-color: var(--navds-color-darkgray);
   margin: 0;
   padding: 1rem 1rem 1rem 1rem;
+
+  &[data-tabs="true"] {
+    border-radius: 0;
+    border-end-start-radius: 8px;
+    border-end-end-radius: 8px;
+  }
 `;
 
 const StyledCode = styled.code`
@@ -83,7 +82,7 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
             Copy
           </CopyButton>
         )}
-        <Pre>
+        <Pre data-tabs={showTabs}>
           <StyledCode dangerouslySetInnerHTML={{ __html: highlighted }} />
         </Pre>
       </PreWrapper>

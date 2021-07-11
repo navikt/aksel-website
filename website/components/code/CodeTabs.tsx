@@ -76,6 +76,7 @@ const CodeTabs = (): JSX.Element => {
     tabs: tmpTabs,
     previewToggles: tmpPreviewToggles,
     popover: tmpPopover,
+    showPreview,
   } = useContext(CodeContext);
   const [tabs, setTabs] = tmpTabs;
   const [previewToggles, setPreviewToggles] = tmpPreviewToggles;
@@ -125,20 +126,26 @@ const CodeTabs = (): JSX.Element => {
         </Ul>
 
         <CopyWrapper>
-          <ToggleButton
-            aria-selected={previewToggles.ruler}
-            onClick={toggleRuler}
-          >
-            <span className="sr-only">Toggle ruler for kode-eksempel</span>
-            <Ruler focusable="false" role="presentation" />
-          </ToggleButton>
-          <ToggleButton
-            aria-selected={previewToggles.outline}
-            onClick={toggleOutline}
-          >
-            <span className="sr-only">Toggle outlines for kode-eksempel</span>
-            <Sight focusable="false" role="presentation" />
-          </ToggleButton>
+          {showPreview && (
+            <>
+              <ToggleButton
+                aria-selected={previewToggles.ruler}
+                onClick={toggleRuler}
+              >
+                <span className="sr-only">Toggle ruler for kode-eksempel</span>
+                <Ruler focusable="false" role="presentation" />
+              </ToggleButton>
+              <ToggleButton
+                aria-selected={previewToggles.outline}
+                onClick={toggleOutline}
+              >
+                <span className="sr-only">
+                  Toggle outlines for kode-eksempel
+                </span>
+                <Sight focusable="false" role="presentation" />
+              </ToggleButton>
+            </>
+          )}
           {node.github && (
             <A className="navds-body-short navds-body--s" href={node.github}>
               Github <ExternalLink aria-label="Boks med pil ut ikon" />
