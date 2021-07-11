@@ -40,6 +40,8 @@
 
 ## BUGS
 
+- Forside (index.tsx) rendrer ikke, får 404
+
 - Storybook-build med `--watch` mode fungerer ikke nå, så `watch-run` brukes istedenfor. Fikse slik at watch-mode fungerer da buildtimes antagelig vil være raskere for storybook da.
 
 - Redirect fra /storybook -> /stroybook/index.html fungerer ikke i next.config.js, noe som gjør at bruker må gå til selve index.html siden..
