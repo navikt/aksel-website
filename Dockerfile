@@ -8,7 +8,6 @@ COPY website/.next/ .next/
 COPY website/public/ public
 # COPY .env .
 # COPY .env.local .
-COPY code-examples code-examples/
 COPY website/next.config.js .
 COPY node_modules/ node_modules/
 
