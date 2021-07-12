@@ -124,7 +124,7 @@ const Code = ({ node }: { node: any }): JSX.Element => {
     return null;
   }
 
-  const showPreview = node.preview;
+  const showPreview = !!node.preview;
   const showTabs =
     node.tabs && node.tabs.length > 0 && (showPreview || node.tabs.length > 1);
 
