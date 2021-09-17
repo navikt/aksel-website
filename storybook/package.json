@@ -8,27 +8,27 @@
     "storybook:watch": "watch-run -i -p 'src/**,.storybook/**' yarn build-storybook"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.0",
+    "@testing-library/user-event": "^13.2.1",
     "babel-plugin-require-context-hook": "^1.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "watch-run": "^1.2.5",
-    "web-vitals": "^1.0.1",
-    "@navikt/ds-css": "^0.6.7",
-    "@navikt/ds-icons": "^0.3.3",
-    "@navikt/ds-react": "^0.6.5",
-    "@navikt/ds-tokens": "^0.4.3"
+    "web-vitals": "^2.1.0",
+    "@navikt/ds-css": "^0.8",
+    "@navikt/ds-icons": "^0.5",
+    "@navikt/ds-react": "0.8.0-beta.1",
+    "@navikt/ds-tokens": "^0.5"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.3.4",
-    "@storybook/addon-essentials": "^6.3.4",
-    "@storybook/addon-links": "^6.3.4",
-    "@storybook/node-logger": "^6.3.4",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/node-logger": "^6.3.8",
     "@storybook/preset-create-react-app": "^3.2.0",
-    "@storybook/react": "^6.3.4"
+    "@storybook/react": "^6.3.8"
   },
   "eslintConfig": {
     "extends": [

@@ -19,63 +19,63 @@ export const Primary = Template.bind({});
 Primary.args = {
   variant: "primary",
   label: "Button",
-  size: "m",
+  size: "medium",
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   variant: "secondary",
   label: "Button",
-  size: "m",
+  size: "medium",
 };
 
-export const Action = Template.bind({});
-Action.args = {
-  variant: "action",
+export const Tertiary = Template.bind({});
+Tertiary.args = {
+  variant: "tertiary",
   label: "Button",
-  size: "m",
+  size: "medium",
 };
 
 export const Danger = Template.bind({});
 Danger.args = {
   variant: "danger",
   label: "Button",
-  size: "m",
+  size: "medium",
 };
 
 export const PrimarySmall = Template.bind({});
 PrimarySmall.args = {
   variant: "primary",
   label: "Button",
-  size: "s",
+  size: "small",
 };
 
 export const SecondarySmall = Template.bind({});
 SecondarySmall.args = {
   variant: "secondary",
   label: "Button",
-  size: "s",
+  size: "small",
 };
 
-export const ActionSmall = Template.bind({});
-ActionSmall.args = {
-  variant: "action",
+export const TertiarySmall = Template.bind({});
+TertiarySmall.args = {
+  variant: "tertiary",
   label: "Button",
-  size: "s",
+  size: "small",
 };
 
 export const DangerSmall = Template.bind({});
 DangerSmall.args = {
   variant: "danger",
   label: "Button",
-  size: "s",
+  size: "small",
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   variant: "danger",
   disabled: true,
-  size: "m",
+  size: "medium",
   label: "Disabled button",
 };
 
@@ -83,6 +83,6 @@ export const DisabledSmall = Template.bind({});
 DisabledSmall.args = {
   variant: "danger",
   disabled: true,
-  size: "s",
+  size: "small",
   label: "Disabled button",
 };
