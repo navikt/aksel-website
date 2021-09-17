@@ -57,7 +57,7 @@ function CopyAnchor({ anchor, ...props }: AnchorProps): JSX.Element {
   return (
     <Div>
       <A
-        className="navds-body-short navds-body--s"
+        className="navds-body-short navds-body--small"
         ref={popoverRef}
         onClick={(e) => handleClick(e)}
         href={anchor}

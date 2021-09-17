@@ -69,7 +69,7 @@ const mapToComponents = (node, path, index, depth) => {
       return (
         <SectionTitle
           data-first={index === 0}
-          className="navds-title navds-title--s"
+          className="navds-title navds-heading--small"
           key={node._key}
         >
           {node.title}
@@ -85,7 +85,7 @@ const Menu = ({ menu }: { menu: any }): JSX.Element => {
   return (
     <StyledAccordionMenu
       aria-label="sidemeny for navigasjon"
-      className="navds-label navds-label--s"
+      className="navds-label navds-label--small"
     >
       {menu.map((item, i) =>
         mapToComponents(item, parseUrl(asPath).pathname, i, 0)

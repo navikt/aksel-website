@@ -77,7 +77,7 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
         {!showTabs && (
           <CopyButton
             ref={(node) => (buttonRef.current = node)}
-            className="navds-body-short navds-body--s"
+            className="navds-body-short navds-body--small"
             onClick={() => handleCopy(node.tabs[index].example.code)}
           >
             Copy

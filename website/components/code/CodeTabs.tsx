@@ -116,7 +116,7 @@ const CodeTabs = (): JSX.Element => {
             <Li key={tab.title} role="presentation">
               <Button
                 role="tab"
-                className="navds-body-short navds-body--s"
+                className="navds-body-short navds-body--small"
                 onClick={() => handleTab(i)}
                 aria-selected={tab.active}
               >
@@ -154,7 +154,7 @@ const CodeTabs = (): JSX.Element => {
           )}
           <Button
             ref={(node) => (buttonRef.current = node)}
-            className="navds-body-short navds-body--s"
+            className="navds-body-short navds-body--small"
             onClick={() =>
               handleCopy(
                 node.tabs[tabs.findIndex((tab) => tab.active)].example.code

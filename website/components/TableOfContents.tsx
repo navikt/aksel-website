@@ -96,7 +96,7 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
                 {toc.map((link) => (
                   <Li data-active={link.id === activeId} key={link.id}>
                     <Link href={`#${link.id}`} passHref>
-                      <a className="navds-link navds-body-short navds-body--s">
+                      <a className="navds-link navds-body-short navds-body--small">
                         {link.heading}
                       </a>
                     </Link>
