@@ -1,4 +1,3 @@
-import { Popover } from "@navikt/ds-react";
 import copy from "copy-to-clipboard";
 import React, { createContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";

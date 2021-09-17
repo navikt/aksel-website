@@ -21,7 +21,7 @@ const SectionTitle = styled.div`
   }
 `;
 
-function MenuLink(node, depth) {
+function MenuLink(node) {
   const { asPath, query } = useRouter();
 
   const url = `/${node.link_ref.slug.current}`;

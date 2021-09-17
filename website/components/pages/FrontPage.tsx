@@ -1,9 +1,4 @@
-import {
-  ContentContainer,
-  Heading,
-  LinkPanel,
-  BodyLong,
-} from "@navikt/ds-react";
+import { ContentContainer, Heading, LinkPanel } from "@navikt/ds-react";
 import Link from "next/link";
 import styled from "styled-components";
 
