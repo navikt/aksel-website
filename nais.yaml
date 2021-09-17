@@ -1,12 +1,12 @@
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: verktoykasse-prototype
+  name: verktoykasse
   namespace: designsystem
   labels:
     team: designsystem
 spec:
-  image: {{image}}
+  image: { { image } }
   port: 3000
   liveness:
     path: /api/isAlive
@@ -36,7 +36,3 @@ spec:
         - host: apicdn.sanity.io
         - host: hnbe3yhs.apicdn.sanity.io
         - host: cdn.sanity.io
-  ingresses:
-{{#each ingresses}}
-    - "{{this}}"
-{{/each}}
