@@ -1,7 +1,7 @@
 {
   "root": true,
   "project": {
-    "name": "verktoykasse-prototype"
+    "name": "verktoykassen"
   },
   "api": {
     "projectId": "hnbe3yhs",

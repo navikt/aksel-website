@@ -1,6 +1,12 @@
 import React from "react";
 import "@navikt/ds-css?raw";
-import { Detail, Title, BodyLong, BodyShort, Label } from "@navikt/ds-react";
+import {
+  Detail,
+  Heading,
+  BodyLong,
+  BodyShort,
+  Label,
+} from "@navikt/ds-react/cjs";
 import {
   Warning,
   SuccessStroke,
@@ -11,9 +17,9 @@ import {
 } from "@navikt/ds-icons";
 
 const TitleRenderer = (props, size, level) => (
-  <Title size={size} level={level}>
+  <Heading size={size} level={level}>
     {props.children}
-  </Title>
+  </Heading>
 );
 
 const Kbd = (props) => (
@@ -51,21 +57,21 @@ export default {
           title: "Title h2",
           value: "h2",
           blockEditor: {
-            render: (props) => TitleRenderer(props, "xl", 2),
+            render: (props) => TitleRenderer(props, "xlarge", "2"),
           },
         },
         {
           title: "Title h3",
           value: "h3",
           blockEditor: {
-            render: (props) => TitleRenderer(props, "l", 3),
+            render: (props) => TitleRenderer(props, "large", "3"),
           },
         },
         {
           title: "Title h4",
           value: "heading4",
           blockEditor: {
-            render: (props) => TitleRenderer(props, "m", 4),
+            render: (props) => TitleRenderer(props, "medium", "4"),
           },
         },
         {
@@ -93,7 +99,7 @@ export default {
           title: "Detail",
           value: "detail",
           blockEditor: {
-            render: (props) => <Detail size="s">{props.children}</Detail>,
+            render: (props) => <Detail size="small">{props.children}</Detail>,
           },
         },
         {
