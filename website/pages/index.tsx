@@ -1,6 +1,6 @@
 /* Frontpage */
 
-import { Title } from "@navikt/ds-react";
+import { Heading } from "@navikt/ds-react";
 import { useContext, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -29,9 +29,9 @@ const Page = (props: { frontpage: any; preview: boolean }): JSX.Element => {
     <>
       {enabledPreview && <PreviewBanner slug="Forside" />}
       <div>
-        <Title level={1} size="xl">
+        <Heading level="1" size="xlarge">
           Forside
-        </Title>
+        </Heading>
         <Link passHref href={"/storybook/index.html"}>
           <a>Storybook for kode-eksempler</a>
         </Link>

@@ -1,21 +1,12 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
-import {
-  AccordionMenu,
-  AccordionMenuCollapsable,
-  AccordionMenuItem,
-} from "@navikt/ds-react";
+import { AccordionMenu } from "@navikt/ds-react";
 import React from "react";
 import parseUrl from "url-parse";
 import styled from "styled-components";
 
 const StyledAccordionMenu = styled(AccordionMenu)`
   --navds-color-text-link: var(--navds-color-darkgray);
-`;
-
-const StyledAccordionMenuItem = styled(AccordionMenuItem)`
-  /* TODO: Mute nested links?  */
-  /* --navds-color-text-link: var(--navds-color-gray-60); */
 `;
 
 const SectionTitle = styled.div`
@@ -40,13 +31,7 @@ function MenuLink(node, depth) {
 
   return (
     <Link href={urlWPreview} passHref>
-      {depth === 0 ? (
-        <AccordionMenuItem active={active}>{node.title}</AccordionMenuItem>
-      ) : (
-        <StyledAccordionMenuItem active={active}>
-          {node.title}
-        </StyledAccordionMenuItem>
-      )}
+      <AccordionMenu.Item active={active}>{node.title}</AccordionMenu.Item>
     </Link>
   );
 }
@@ -68,7 +53,7 @@ const mapToComponents = (node, path, index, depth) => {
   switch (node._type) {
     case "dropdown":
       return (
-        <AccordionMenuCollapsable
+        <AccordionMenu.Collapsable
           defaultOpen={active}
           key={node._key}
           title={node.title}
@@ -76,7 +61,7 @@ const mapToComponents = (node, path, index, depth) => {
           {node.dropdown.map((item) =>
             mapToComponents(item, path, index, depth + 1)
           )}
-        </AccordionMenuCollapsable>
+        </AccordionMenu.Collapsable>
       );
     case "link":
       return <MenuLink key={node._key} depth={depth} {...node} />;

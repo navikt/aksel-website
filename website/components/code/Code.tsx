@@ -63,11 +63,6 @@ export const CopyButton = styled(Button)`
   top: 0.3125rem;
 `;
 
-export const StyledPopover = styled(Popover)`
-  padding: var(--navds-spacing-1);
-  border-radius: 4px;
-`;
-
 export const copyCode = (content: string): void => {
   if (typeof content === "string") {
     copy(content, {

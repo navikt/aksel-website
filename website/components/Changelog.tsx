@@ -1,4 +1,4 @@
-import { Link, Title } from "@navikt/ds-react";
+import { Link, Heading } from "@navikt/ds-react";
 /* import styled from "styled-components"; */
 import { SanityBlockContent } from "./templating/SanityBlockContent";
 
@@ -9,12 +9,12 @@ const Changelog = ({ node }: { node: any }): JSX.Element => {
       {changes.map((change) => {
         return (
           <div key={change.title}>
-            <Title level={3} size="l" spacing>
+            <Heading level="3" size="large" spacing>
               {change.title}{" "}
               {change.pull_request && (
                 <Link href={change.pull_request}>PR</Link>
               )}
-            </Title>
+            </Heading>
             <SanityBlockContent blocks={change.body} />
           </div>
         );

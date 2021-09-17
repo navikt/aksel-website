@@ -1,4 +1,4 @@
-import { Title } from "@navikt/ds-react";
+import { Heading } from "@navikt/ds-react";
 import React from "react";
 import LastUpdated from "../../LastUpdated";
 import StatusTag from "../../StatusTag";
@@ -19,9 +19,9 @@ const ActiclePageTemplate = ({ data }: { data: any }): JSX.Element => {
     <>
       <MaxWidthContainer>
         <HeadingContainer>
-          <Title size="2xl" level={1} spacing>
+          <Heading size="2xlarge" level="1" spacing>
             {data.heading}
-          </Title>
+          </Heading>
           <StatusTag status={data.status} />
           <LastUpdated date={data._updatedAt} />
         </HeadingContainer>

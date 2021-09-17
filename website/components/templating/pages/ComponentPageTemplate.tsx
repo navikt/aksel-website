@@ -1,4 +1,4 @@
-import { Ingress, Link, Title } from "@navikt/ds-react";
+import { Ingress, Link, Heading } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
@@ -62,9 +62,9 @@ const ComponentPageTemplate = ({ data }: { data: any }): JSX.Element => {
     <>
       <MaxWidthContainer>
         <HeadingContainer>
-          <Title size="2xl" level={1} spacing>
+          <Heading size="2xlarge" level="1" spacing>
             {data.heading}
-          </Title>
+          </Heading>
           <StyledDiv>
             <Inline>
               <StatusTag status={data.status} />

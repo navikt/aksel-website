@@ -1,4 +1,4 @@
-import { LinkPanel, LinkPanelTitle } from "@navikt/ds-react";
+import { LinkPanel } from "@navikt/ds-react";
 import "nav-frontend-tabell-style/dist/main.css";
 import React from "react";
 import styled from "styled-components";
@@ -40,9 +40,9 @@ const Linker = ({ node }: { node: any }): JSX.Element => {
           <StyledLinkPanel key={link._key} href={link.link_url} {...props}>
             <LinkBox>
               <div>
-                <LinkPanelTitle className="navds-title--s">
+                <LinkPanel.Title className="navds-heading--small">
                   {link.title}
-                </LinkPanelTitle>
+                </LinkPanel.Title>
                 {link.text && (
                   <div className="navds-body-short">{link.text}</div>
                 )}

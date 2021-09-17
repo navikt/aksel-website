@@ -24,11 +24,6 @@ const A = styled.a`
   }
 `;
 
-const StyledPopover = styled(Popover)`
-  padding: var(--navds-spacing-1);
-  border-radius: 4px;
-`;
-
 interface AnchorProps extends React.HTMLAttributes<HTMLAnchorElement> {
   anchor: string;
 }
@@ -70,7 +65,7 @@ function CopyAnchor({ anchor, ...props }: AnchorProps): JSX.Element {
       >
         <Link focusable="false" role="presentation" /> Kopier lenke
       </A>
-      <StyledPopover
+      <Popover
         aria-atomic="true"
         role="alert"
         anchorEl={popoverRef.current}
@@ -79,8 +74,8 @@ function CopyAnchor({ anchor, ...props }: AnchorProps): JSX.Element {
         placement="right"
         arrow={false}
       >
-        Lenken er kopiert
-      </StyledPopover>
+        <Popover.Content>Lenken er kopiert</Popover.Content>
+      </Popover>
     </Div>
   );
 }

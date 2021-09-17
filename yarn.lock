@@ -1911,27 +1911,17 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@navikt/ds-css@^0.6.7":
-  version "0.6.7"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.6.7.tgz#ac172102f5abb49e73d2a970a0273c158e480aef"
-  integrity sha512-eQPuE31LPUUVu841ekXnnUQtre6zQUEisWZHMBofkd9j7Obs9JvilINY/RKWZpD1qER2PvUfxCmQWsQfZNH70Q==
-
 "@navikt/ds-css@^0.8":
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.8.1.tgz#1a10741750fb34a39549142d49d529a185797fcf"
   integrity sha512-kbfmjrawPODflH/9wgc7xOc5AQt/hKcaC+/N12VdxIRM19xGgTL5RheH/pbH5TSgNxv7AjinguJFQ0ForbR+Fw==
-
-"@navikt/ds-icons@^0.3.3":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.3.3.tgz#19432cc0b711f4643cba611c5b593ff2b7b67626"
-  integrity sha512-851CJ6GJu4u1iLLhqhGW+jeEB4NpOsoN8Guhy6KZUPSGI1mbN1fGkUcu7p2BC7VF3Rcad/EdHGwTmPPAYZ4vDg==
 
 "@navikt/ds-icons@^0.5", "@navikt/ds-icons@^0.5.2":
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.5.2.tgz#3f1525def3c51a247a1f59c4d8fddd112521be9f"
   integrity sha512-e4bqKbUaWNQ8UewrmJPM1Z43ylMD+uYZJwo3+DOWQKUW1Y5U7ucvVSO0lNtYO1gADXgGiTF2LjCPZbw7BhmdSQ==
 
-"@navikt/ds-react@0.8.0-beta.1":
+"@navikt/ds-react@0.8.0-beta.1", "@navikt/ds-react@^0.8.0-beta.1":
   version "0.8.0-beta.1"
   resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.8.0-beta.1.tgz#280bd30863dc614b81e05172c2b369dc92e1a812"
   integrity sha512-G4ecfyTWCOoHgUq3i27SVg0Js3dXymSRgW3NY9DvHqbUxGvu3/fPK/E2lQB5wgVpxVTNpIT7vLODB7BmPpwauw==
@@ -1946,26 +1936,6 @@
     react-modal "3.12.1"
     react-popper "^2.2.4"
     uuid "^8.3.2"
-
-"@navikt/ds-react@^0.6.5":
-  version "0.6.5"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.6.5.tgz#c66c35d130b1fea579e0dc00c9084923e03a3b51"
-  integrity sha512-XLrOeqPWFEY3RRxYkVCSzhyTlfbWSRUsKb6xalBtA1AHkzrLfcaCdzx6xH4nBswS2RMGT8x1bGAHqq7noxLY6w==
-  dependencies:
-    "@navikt/ds-icons" "^0.3.3"
-    "@popperjs/core" "^2.5.4"
-    classnames "^2.2.6"
-    copy-to-clipboard "^3.3.1"
-    react-collapse "^5.1.0"
-    react-merge-refs "^1.1.0"
-    react-modal "3.12.1"
-    react-popper "^2.2.4"
-    uuid "^8.3.2"
-
-"@navikt/ds-tokens@^0.4.3":
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-tokens/-/ds-tokens-0.4.3.tgz#555348e44952b6a0cb56fc72dcdef4f3303886a5"
-  integrity sha512-0dYFXDvZd4fJX0UU1rAyXw9zsc9Zwjm4f27ri4Gftum1DbrdnastuLoxFdiEYRqvWVTCYBtE7T7rQbAK3iM6tQ==
 
 "@navikt/ds-tokens@^0.5":
   version "0.5.0"
@@ -3965,7 +3935,7 @@
     lz-string "^1.4.4"
     pretty-format "^27.0.2"
 
-"@testing-library/jest-dom@^5.11.4":
+"@testing-library/jest-dom@^5.14.1":
   version "5.14.1"
   resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.14.1.tgz#8501e16f1e55a55d675fe73eecee32cdaddb9766"
   integrity sha512-dfB7HVIgTNCxH22M1+KU6viG5of2ldoA5ly8Ar8xkezKHKXjRvznCdbMbqjYGgO2xjRbwnR+rR8MLUIqF3kKbQ==

@@ -1,4 +1,4 @@
-import { Title } from "@navikt/ds-react";
+import { Heading } from "@navikt/ds-react";
 import Error from "next/error";
 import { useRouter } from "next/router";
 import React from "react";
@@ -42,9 +42,9 @@ const TabbedActiclePageTemplate = ({
     <>
       <MaxWidthContainer>
         <HeadingContainer>
-          <Title size="2xl" level={1} spacing>
+          <Heading size="2xlarge" level="1" spacing>
             {data.heading}
-          </Title>
+          </Heading>
           <StatusTag status={data.status} />
           <LastUpdated date={data._updatedAt} />
         </HeadingContainer>

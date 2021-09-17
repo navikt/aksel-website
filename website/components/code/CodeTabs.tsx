@@ -1,7 +1,8 @@
 import { Copy, ExternalLink, Ruler, Sight } from "@navikt/ds-icons";
+import { Popover } from "@navikt/ds-react";
 import React, { useContext, useRef } from "react";
 import styled from "styled-components";
-import { Button, CodeContext, copyCode, StyledPopover } from "./Code";
+import { Button, CodeContext, copyCode } from "./Code";
 
 const Tabs = styled.div`
   border-bottom: 1px solid var(--navds-color-gray-60);
@@ -166,7 +167,7 @@ const CodeTabs = (): JSX.Element => {
         </CopyWrapper>
       </Tabs>
 
-      <StyledPopover
+      <Popover
         role="alert"
         aria-atomic="true"
         anchorEl={buttonRef.current}
@@ -175,8 +176,8 @@ const CodeTabs = (): JSX.Element => {
         placement="right"
         arrow={false}
       >
-        Kopiert
-      </StyledPopover>
+        <Popover.Content>Kopiert</Popover.Content>
+      </Popover>
     </>
   );
 };

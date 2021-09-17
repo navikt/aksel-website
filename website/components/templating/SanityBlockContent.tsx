@@ -7,7 +7,7 @@ import {
   Ingress,
   Label,
   Link,
-  Title,
+  Heading,
 } from "@navikt/ds-react";
 import BlockContent from "@sanity/block-content-to-react";
 import NextjsLink from "next/link";
@@ -54,7 +54,7 @@ const Hr = styled.hr`
   margin: 0;
 `;
 
-const TitleWithScrollMargin = styled(Title)`
+const TitleWithScrollMargin = styled(Heading)`
   scroll-margin-top: 5rem;
 `;
 
@@ -94,7 +94,7 @@ const serializers = {
           return <Detail spacing>{children}</Detail>;
         case "detail":
           return (
-            <Detail spacing size="s">
+            <Detail spacing size="small">
               {children}
             </Detail>
           );
@@ -111,7 +111,7 @@ const serializers = {
                 id={slug}
                 spacing
                 level={2}
-                size="xl"
+                size="xlarge"
                 tabIndex={-1}
               >
                 {children}
@@ -125,15 +125,15 @@ const serializers = {
         }
         case "h3":
           return (
-            <Title spacing level={3} size="l">
+            <Heading spacing level="3" size="medium">
               {children}
-            </Title>
+            </Heading>
           );
         case "h4":
           return (
-            <Title spacing level={4} size="m">
+            <Heading spacing level="4" size="medium">
               {children}
-            </Title>
+            </Heading>
           );
         case "ingress":
           return <Ingress spacing>{children}</Ingress>;

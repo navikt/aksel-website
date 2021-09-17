@@ -1,4 +1,4 @@
-import { Title } from "@navikt/ds-react";
+import { Heading } from "@navikt/ds-react";
 import "nav-frontend-tabell-style/dist/main.css";
 import styled from "styled-components";
 import { SanityBlockContent } from "./templating/SanityBlockContent";
@@ -19,25 +19,25 @@ const UuInteraction = ({ node }: { node: any }): JSX.Element => {
     <Div>
       {node.uu_interaction_focus && (
         <>
-          <Title level="3" size="m" spacing>
+          <Heading level="3" size="medium" spacing>
             Focus management
-          </Title>
+          </Heading>
           <SanityBlockContent blocks={node.uu_interaction_focus} />
         </>
       )}
       {node.uu_interaction_mouse && (
         <>
-          <Title level="3" size="m" spacing>
+          <Heading level="3" size="medium" spacing>
             Mouse management
-          </Title>
+          </Heading>
           <SanityBlockContent blocks={node.uu_interaction_mouse} />
         </>
       )}
       {node.uu_interaction_keyboard && (
         <>
-          <Title level="3" size="m" spacing>
+          <Heading level="3" size="medium" spacing>
             Keyboard styring
-          </Title>
+          </Heading>
           <table
             className="tabell"
             summary="Oversikt over relevante keyboard-kommandoer for denne komponenten"

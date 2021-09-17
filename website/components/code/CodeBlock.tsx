@@ -4,7 +4,8 @@ import "prismjs/components/prism-bash.min";
 import "prismjs/components/prism-jsx.min";
 import "prismjs/components/prism-typescript.min";
 import React, { useContext, useRef } from "react";
-import { CodeContext, CopyButton, copyCode, StyledPopover } from "./Code";
+import { CodeContext, CopyButton, copyCode } from "./Code";
+import { Popover } from "@navikt/ds-react";
 
 const PreWrapper = styled.div`
   position: relative;
@@ -87,7 +88,7 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
         </Pre>
       </PreWrapper>
 
-      <StyledPopover
+      <Popover
         role="alert"
         aria-atomic="true"
         anchorEl={buttonRef.current}
@@ -96,8 +97,8 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
         placement="right"
         arrow={false}
       >
-        Kopiert
-      </StyledPopover>
+        <Popover.Content>Kopiert</Popover.Content>
+      </Popover>
     </>
   );
 };
