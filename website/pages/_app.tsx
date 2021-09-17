@@ -2,12 +2,7 @@ import "../styles/prismjs.css";
 import "../styles/theme.css";
 import "@navikt/ds-css";
 import useScrollToHashOnPageLoad from "../src/util";
-import React, {
-  createContext,
-  useEffect,
-  useLayoutEffect,
-  useState,
-} from "react";
+import React, { createContext, useEffect, useState } from "react";
 import Layout from "../components/templating/layout/Layout";
 import slugger from "../components/slugger";
 import { useRouter } from "next/router";
