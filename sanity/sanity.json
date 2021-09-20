@@ -22,7 +22,8 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/code-input",
-    "@sanity/dashboard"
+    "@sanity/dashboard",
+    "outdated-documents-widget"
   ],
   "parts": [
     {

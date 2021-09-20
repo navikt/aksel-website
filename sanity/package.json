@@ -26,11 +26,11 @@
     "@sanity/desk-tool": "^2.19.4",
     "@sanity/production-preview": "^2.15.0",
     "@sanity/vision": "^2.19.0",
+    "moment": "2.29.1",
     "prop-types": "^15.7.2",
     "react": "^17.0",
     "react-dom": "^17.0",
-    "styled-components": "^5.3.1",
-    "moment": "2.29.1"
+    "styled-components": "^5.3.1"
   },
   "repository": {
     "type": "git",
