@@ -4,7 +4,13 @@ import S from "@sanity/desk-tool/structure-builder";
 /* import { FrontpageWebPreview } from "./web-previews/FrontpageWebPreview"; */
 import { PageWebPreview } from "./web-previews/PageWebPreview";
 import { ComponentPageWebPreview } from "./web-previews/ComponentWebPreview";
-import { Facilitet, FileContent, Historic, Place, Search } from "@navikt/ds-icons";
+import {
+  Facilitet,
+  FileContent,
+  Historic,
+  Place,
+  Search,
+} from "@navikt/ds-icons";
 import teams from "./teams.js";
 
 export default () =>
@@ -21,9 +27,9 @@ export default () =>
                 .title("Komponent sider")
                 .icon(() => <Facilitet />)
                 .child(
-                  S.documentTypeList("ds_component_page").initialValueTemplates([
-                    S.initialValueTemplateItem("ds_component_page_template"),
-                  ])
+                  S.documentTypeList("ds_component_page").initialValueTemplates(
+                    [S.initialValueTemplateItem("ds_component_page_template")]
+                  )
                 ),
               S.listItem()
                 .title("Artikkel sider")
@@ -31,7 +37,9 @@ export default () =>
                 .child(
                   S.documentList()
                     .title("Artikkler")
-                    .filter('_type in ["ds_article_page", "ds_tabbed_article_page"]')
+                    .filter(
+                      '_type in ["ds_article_page", "ds_tabbed_article_page"]'
+                    )
                 ),
               S.listItem()
                 .title("Navigasjon")
@@ -45,6 +53,32 @@ export default () =>
                 .title("Pakke-versjoner (test)")
                 .icon(() => <Historic />)
                 .child(S.documentTypeList("component_versions")),
+            ])
+        ),
+      S.listItem()
+        .title("God Praksis")
+        .child(
+          S.list()
+            .title("God Praksis")
+            .items([
+              S.listItem()
+                .title("Artikkel sider")
+                .icon(() => <FileContent />)
+                .child(
+                  S.documentList()
+                    .title("Artikkler")
+                    .filter(
+                      '_type in ["ds_article_page", "ds_tabbed_article_page"]'
+                    )
+                ),
+              S.listItem()
+                .title("Navigasjon")
+                .icon(() => <Place />)
+                .child(
+                  S.document()
+                    .schemaType("navigation")
+                    .documentId("navigation_god_praksis")
+                ),
             ])
         ),
       S.divider(),
@@ -70,7 +104,9 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
     case "ds_component_page":
       return S.document().views([
         S.view.form(),
-        S.view.component(ComponentPageWebPreview).title("Preview (krever naisdevice)"),
+        S.view
+          .component(ComponentPageWebPreview)
+          .title("Preview (krever naisdevice)"),
       ]);
     case "ds_article_page":
       return S.document().views([
