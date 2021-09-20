@@ -44,6 +44,10 @@
     {
       "name": "part:@sanity/base/new-document-structure",
       "path": "./newDocumentStructure.js"
+    },
+    {
+      "implements": "part:@sanity/base/document-badges/resolver",
+      "path": "resolveDocumentBadges.js"
     }
   ]
 }
