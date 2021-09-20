@@ -152,7 +152,7 @@ export default {
                 type: "reference",
                 to: [
                   {
-                    type: "ds_page",
+                    type: "ds_article_page",
                   },
                 ],
               },

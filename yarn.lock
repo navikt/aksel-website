@@ -1945,10 +1945,10 @@
   resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.5.2.tgz#3f1525def3c51a247a1f59c4d8fddd112521be9f"
   integrity sha512-e4bqKbUaWNQ8UewrmJPM1Z43ylMD+uYZJwo3+DOWQKUW1Y5U7ucvVSO0lNtYO1gADXgGiTF2LjCPZbw7BhmdSQ==
 
-"@navikt/ds-react@0.8.0-beta.1", "@navikt/ds-react@^0.8.0-beta.1":
-  version "0.8.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.8.0-beta.1.tgz#280bd30863dc614b81e05172c2b369dc92e1a812"
-  integrity sha512-G4ecfyTWCOoHgUq3i27SVg0Js3dXymSRgW3NY9DvHqbUxGvu3/fPK/E2lQB5wgVpxVTNpIT7vLODB7BmPpwauw==
+"@navikt/ds-react@0.8":
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.8.1.tgz#c0cd64babcc917383c1eabf601c6d1c5a86f9133"
+  integrity sha512-9yyKkMTOrXSrtlXzL/caEK/QPPTpc7nefxae/7HDEh2/g8MxidS/mUSOVI9214DyY9sCPqjN4l/TvmifgC3cIg==
   dependencies:
     "@material-ui/core" "^4.12.2"
     "@navikt/ds-icons" "^0.5.2"
