@@ -1,4 +1,5 @@
 import { validateSlug, isSlugUnique } from "../../validateSlug";
+import { documentDefaults } from "../template";
 
 const prefix = "designsystem/komponent/";
 
@@ -8,6 +9,7 @@ export default {
   type: "document",
   //__experimental_actions: [, /* "create" */ "update", /*'delete',*/ "publish"],
   fields: [
+    documentDefaults("article"),
     {
       title: "Dokument tittel (for søk internt i sanity)",
       name: "title",
@@ -69,14 +71,6 @@ export default {
       title: "Figma lenke (optional)",
       name: "figma_link",
       type: "url",
-    },
-    {
-      title: "Kontaktperson (optional)",
-      description: "Linker dokumentet til en person (bare internt i sanity)",
-      name: "contact",
-      type: "reference",
-      description: "Kobler en person som kontaktperson til denne siden",
-      to: [{ type: "contact_person" }],
     },
     {
       title: "Versjon (optional)",

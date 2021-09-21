@@ -5,6 +5,7 @@ import { Refresh } from "@navikt/ds-icons";
 import { useDocumentOperation } from "@sanity/react-hooks";
 import React from "react";
 import styles from "./styles.css";
+import { getExpireDates } from "../../config";
 
 export default function SetAndPublishAction(props) {
   const { patch, publish } = useDocumentOperation(props.id, props.type);
@@ -32,12 +33,26 @@ export default function SetAndPublishAction(props) {
       </span>
     ),
     onHandle: () => {
-      // This will update the button text
+      const dates = getExpireDates(
+        props.published?.metadata?.doctype ?? "article"
+      );
       setIsPublishing(true);
 
-      // Set publishedAt to current date and time
-      patch.execute([{ set: { _updatedAt: new Date().toISOString() } }]);
-
+      patch.execute([
+        {
+          set: {
+            metadata: {
+              doctype: "article",
+              ...props.published.metadata,
+              updates: {
+                last_update: new Date().toISOString().split("T")[0],
+                stagnant: dates[0].toISOString().split("T")[0],
+                expired: dates[1].toISOString().split("T")[0],
+              },
+            },
+          },
+        },
+      ]);
       // Perform the publish
       publish.execute();
 

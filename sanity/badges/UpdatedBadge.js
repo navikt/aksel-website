@@ -1,35 +1,34 @@
 import moment from "moment";
-import { outdatedContent } from "../config";
 
 export function updatedBadge(props) {
   if (props.published === null) return null;
-  if (outdatedContent.error <= outdatedContent.warning)
-    console.error(
-      "outdatedContent.error cant be smaller than outdatedContent.warning"
-    );
+  if (
+    props.published.metadata === undefined ||
+    props.published.metadata.updates === undefined
+  ) {
+    return null;
+  }
 
-  const lastUpdate = moment(props.published._updatedAt);
+  const updates = props.published.metadata.updates;
+  const lastUpdate = moment(updates.last_update);
 
-  const daysSince = Math.abs(lastUpdate.diff(moment(), "days"));
+  const toStagnant = lastUpdate.diff(updates.stagnant, "days");
+  const toExpired = lastUpdate.diff(updates.expired, "days");
 
   switch (true) {
-    case daysSince > outdatedContent.error:
+    case toExpired > 0:
       return {
         label: "Utdatert innhold",
         title: "Innholdet må ses over igjen!",
         color: "danger",
       };
-    case daysSince > outdatedContent.warning:
+    case toStagnant > 0:
       return {
         label: "Stagnert innhold",
         title: "Begynner å bli en stund siden innholdet ble oppdatert nå!",
         color: "warning",
       };
     default:
-      return {
-        label: "Fresh",
-        title: "Innholdet er nylig oppdatert!",
-        color: "success",
-      };
+      return null;
   }
 }

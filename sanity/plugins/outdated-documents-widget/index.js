@@ -24,6 +24,8 @@ class DatedDocuments extends React.Component {
       types: [...config.allDocuments],
     };
 
+    /*     if (props.published?.metadata === null) return null; */
+
     const { type } = this.props;
 
     this.unsubscribe();
@@ -32,18 +34,27 @@ class DatedDocuments extends React.Component {
         next: (documents) =>
           this.setState({
             documents: documents
+              .filter((doc) => {
+                return doc.metadata && doc.metadata.updates;
+              })
               .sort((a, b) => {
-                const lastUpdateA = moment(a._updatedAt);
-                const lastUpdateB = moment(b._updatedAt);
+                const lastUpdateA = moment(a.metadata?.updates.last_update);
+                const lastUpdateB = moment(b.metadata?.updates.last_update);
                 return lastUpdateA.diff(lastUpdateB, "days");
               })
               .filter((doc) => {
-                const lastUpdate = moment(doc._updatedAt);
-                const diff = Math.abs(lastUpdate.diff(moment(), "days"));
+                const lastUpdate = moment(doc.metadata.updates.last_update);
+                const toStagnant = lastUpdate.diff(
+                  doc.metadata.updates.stagnant,
+                  "days"
+                );
+                const toExpired = lastUpdate.diff(
+                  doc.metadata.updates.expired,
+                  "days"
+                );
                 return type === "error"
-                  ? diff >= config.outdatedContent.error
-                  : diff >= config.outdatedContent.warning &&
-                      diff < config.outdatedContent.error;
+                  ? toExpired > 0
+                  : toExpired <= 0 && toStagnant > 0;
               }),
             loading: false,
           }),
@@ -61,6 +72,7 @@ class DatedDocuments extends React.Component {
   render() {
     const { documents, loading, error } = this.state;
     const { type } = this.props;
+    console.log(documents);
 
     return (
       <div className={styles.container}>
@@ -78,8 +90,7 @@ class DatedDocuments extends React.Component {
           <List>
             {documents &&
               documents.map((doc) => {
-                /* console.log(doc); */
-                const lastUpdate = moment(doc._updatedAt);
+                const lastUpdate = moment(doc.metadata.updates.last_update);
                 const daysSince = Math.abs(lastUpdate.diff(moment(), "days"));
                 return (
                   <Item key={doc._id}>

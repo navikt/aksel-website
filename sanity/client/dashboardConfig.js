@@ -20,5 +20,8 @@ export default {
         type: "error",
       },
     },
+    {
+      name: "document-in-nav-widget",
+    },
   ],
 };

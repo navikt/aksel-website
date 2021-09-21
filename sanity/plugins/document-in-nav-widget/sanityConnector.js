@@ -2,7 +2,6 @@
 
 import { of as observableOf } from "rxjs";
 import { switchMap, delay, tap, mergeMap } from "rxjs/operators";
-import { uniqBy } from "lodash";
 import sanityClient from "part:@sanity/base/client";
 
 const withConfig = (config) => {
@@ -11,52 +10,13 @@ const withConfig = (config) => {
     : sanityClient;
 };
 
-const draftId = (nonDraftDoc) => `drafts.${nonDraftDoc._id}`;
-
 const prepareDocumentList = (incoming, apiVersion) => {
   if (!incoming) {
     return Promise.resolve([]);
   }
   const documents = Array.isArray(incoming) ? incoming : [incoming];
 
-  const ids = documents
-    .filter((doc) => !doc._id.startsWith("drafts."))
-    .map(draftId);
-
-  return withConfig({ apiVersion })
-    .fetch("*[_id in $ids]", { ids })
-    .then((drafts) => {
-      const outgoing = documents
-        .filter((doc) => ids.includes(draftId(doc)))
-        .map((doc) => {
-          const foundDraft = drafts.find((draft) => draft._id === draftId(doc));
-          return foundDraft || doc;
-        });
-      return uniqBy(outgoing, "_id");
-    })
-    .catch((error) => {
-      throw new Error(`Problems fetching docs ${ids}. Error: ${error.message}`);
-    });
-
-  /* Sanity stores up-to two documents for each "page", one published with _id and one in draft width draft._id,
-  this code returns the draft version if its found
-   */
-  /* const ids = documents
-    .filter((doc) => !doc._id.startsWith("drafts."))
-    .map(draftId);
-
-  return withConfig({ apiVersion })
-    .fetch("*[_id in $ids]", { ids })
-    .then((drafts) => {
-      const outgoing = documents.map((doc) => {
-        const foundDraft = drafts.find((draft) => draft._id === draftId(doc));
-        return foundDraft || doc;
-      });
-      return uniqBy(outgoing, "_id");
-    })
-    .catch((error) => {
-      throw new Error(`Problems fetching docs ${ids}. Error: ${error.message}`);
-    }); */
+  return documents.filter((doc) => !doc._id.startsWith("drafts."));
 };
 
 const getSubscription = (query, params, apiVersion) =>

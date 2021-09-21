@@ -23,7 +23,8 @@
     "@sanity/desk-tool",
     "@sanity/code-input",
     "@sanity/dashboard",
-    "outdated-documents-widget"
+    "outdated-documents-widget",
+    "document-in-nav-widget"
   ],
   "parts": [
     {
