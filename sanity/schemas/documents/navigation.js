@@ -52,7 +52,6 @@ export default {
       of: [
         { type: "navigation.dropdown", name: "dropdown", title: "Dropdown" },
         { type: "navigation.link", name: "link", title: "Link" },
-        { type: "navigation.title", name: "title", title: "Seksjonstittel" },
       ],
       validation: (Rule) => Rule.required().min(1),
     },
@@ -93,31 +92,6 @@ export const dropdown = {
       return {
         title: `${title}`,
         media: <Expand />,
-      };
-    },
-  },
-};
-
-export const LinkTitle = {
-  name: "navigation.title",
-  title: "Seksjons tittel",
-  type: "object",
-  fields: [
-    {
-      name: "title",
-      title: "Tittel",
-      type: "string",
-      validation: (Rule) => Rule.required(),
-    },
-  ],
-  preview: {
-    select: {
-      title: "title",
-    },
-    prepare({ title }) {
-      return {
-        title: `${title}`,
-        media: <Bookmark />,
       };
     },
   },

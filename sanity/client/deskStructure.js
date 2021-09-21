@@ -23,7 +23,7 @@ export default () =>
             .title("Designsystemet")
             .items([
               S.listItem()
-                .title("Komponent sider")
+                .title("Komponenter")
                 .icon(() => <Facilitet />)
                 .child(
                   S.documentTypeList("ds_component_page").initialValueTemplates(
@@ -31,7 +31,7 @@ export default () =>
                   )
                 ),
               S.listItem()
-                .title("Artikkel sider")
+                .title("Artikkeler")
                 .icon(() => <FileContent />)
                 .child(
                   S.documentList()
@@ -48,10 +48,6 @@ export default () =>
                     .schemaType("navigation")
                     .documentId("navigation_designsystem")
                 ),
-              S.listItem()
-                .title("Pakke-versjoner (test)")
-                .icon(() => <Historic />)
-                .child(S.documentTypeList("component_versions")),
             ])
         ),
       S.listItem()
@@ -61,14 +57,12 @@ export default () =>
             .title("God Praksis")
             .items([
               S.listItem()
-                .title("Artikkel sider")
+                .title("Artikkler")
                 .icon(() => <FileContent />)
                 .child(
                   S.documentList()
                     .title("Artikkler")
-                    .filter(
-                      '_type in ["ds_article_page", "ds_tabbed_article_page"]'
-                    )
+                    .filter('_type in ["gp_article_page"]')
                 ),
               S.listItem()
                 .title("Navigasjon")
@@ -81,21 +75,32 @@ export default () =>
             ])
         ),
       S.divider(),
-      S.listItem()
-        .title("Metadata")
-        .icon(() => <Search />)
-        .child(S.editor().schemaType("metadata").documentId("metadata")),
       ...S.documentTypeListItems().filter(
         (listItem) =>
           ![
             "ds_component_page",
-            "component_versions",
             "navigation",
             "ds_tabbed_article_page",
             "ds_article_page",
+            "gp_article_page",
             "metadata",
           ].includes(listItem.getId())
       ),
+      S.divider(),
+      S.listItem()
+        .title("Admin")
+        .child(
+          S.list()
+            .title("Admin")
+            .items([
+              S.listItem()
+                .title("Metadata")
+                .icon(() => <Search />)
+                .child(
+                  S.editor().schemaType("metadata").documentId("metadata")
+                ),
+            ])
+        ),
     ]);
 
 export const getDefaultDocumentNode = ({ schemaType }) => {

@@ -1,11 +1,11 @@
 import { documentMetadata } from "../templates/document-metadata-template";
 import { documentInformation } from "../templates/document-template";
 
-const prefix = "designsystem/side/";
+const prefix = "god-praksis/side/";
 
 export default {
   title: "Artikkelside",
-  name: "ds_article_page",
+  name: "gp_article_page",
   type: "document",
   fields: [
     documentMetadata("article"),
