@@ -12,12 +12,12 @@ const teams = [
 ];
 
 const allDocuments = teams.reduce(
-  (docs, team) => [...docs, team.documents],
+  (docs, team) => [...docs, ...team.documents],
   []
 );
 
 const outdatedContent = {
-  warning: 40,
+  warning: 10,
   error: 50,
 };
 

@@ -1,28 +1,17 @@
 /* https://github.com/sanity-io/dashboard-widget-document-list/blob/master/src/DocumentList.js */
 
-import React from "react";
-import PropTypes from "prop-types";
-import { IntentLink } from "part:@sanity/base/router";
-import SanityPreview from "part:@sanity/base/preview";
-import Spinner from "part:@sanity/components/loading/spinner";
-import schema from "part:@sanity/base/schema";
-import { getSubscription } from "./sanityConnector";
-import Button from "part:@sanity/components/buttons/default";
-import IntentButton from "part:@sanity/components/buttons/intent";
-import { List, Item } from "part:@sanity/components/lists/default";
-import { getPublishedId } from "part:@sanity/base/util/draft-utils";
-import moment from "moment";
 import { Tag } from "@navikt/ds-react";
-
-import styles from "./Widget.css";
-
-const schemaTypeNames = schema.getTypeNames();
+import moment from "moment";
+import { IntentLink } from "part:@sanity/base/router";
+import { getPublishedId } from "part:@sanity/base/util/draft-utils";
+import { Item, List } from "part:@sanity/components/lists/default";
+import Spinner from "part:@sanity/components/loading/spinner";
+import React from "react";
+import config from "../../config";
+import { getSubscription } from "./sanityConnector";
+import styles from "./widget.css";
 
 class DatedDocuments extends React.Component {
-  static propTypes = {
-    imageWidth: PropTypes.number,
-  };
-
   state = {
     documents: null,
     loading: true,
@@ -30,7 +19,12 @@ class DatedDocuments extends React.Component {
   };
 
   componentDidMount = () => {
-    const { assembledQuery, params } = this.assembleQuery();
+    const assembledQuery = `*[_type in $types] | order(_updatedAt asc)`;
+    const params = {
+      types: [...config.allDocuments],
+    };
+
+    const { type } = this.props;
 
     this.unsubscribe();
     this.subscription = getSubscription(assembledQuery, params, "v1").subscribe(
@@ -45,31 +39,17 @@ class DatedDocuments extends React.Component {
               })
               .filter((doc) => {
                 const lastUpdate = moment(doc._updatedAt);
-                return Math.abs(lastUpdate.diff(moment(), "days")) > 60;
+                const diff = Math.abs(lastUpdate.diff(moment(), "days"));
+                return type === "error"
+                  ? diff >= config.outdatedContent.error
+                  : diff >= config.outdatedContent.warning &&
+                      diff < config.outdatedContent.error;
               }),
             loading: false,
           }),
         error: (error) => this.setState({ error, loading: false }),
       }
     );
-  };
-
-  assembleQuery = () => {
-    /* const documentTypes = schemaTypeNames.filter((typeName) => {
-      const schemaType = schema.get(typeName);
-      return schemaType.type && schemaType.type.name === "document";
-    }); */
-
-    return {
-      assembledQuery: `*[_type in $types] | order(_updatedAt asc)`,
-      params: {
-        types: [
-          "ds_component_page",
-          "ds_article_page",
-          "ds_tabbed_article_page",
-        ],
-      },
-    };
   };
 
   unsubscribe() {
@@ -80,11 +60,14 @@ class DatedDocuments extends React.Component {
 
   render() {
     const { documents, loading, error } = this.state;
+    const { type } = this.props;
 
     return (
       <div className={styles.container}>
         <header className={styles.header}>
-          <h2 className={styles.title}>Utdaterte sider</h2>
+          <h2 className={styles.title}>
+            {type === "error" ? "Utdaterte sider" : "Stagnerte sider"}
+          </h2>
         </header>
         <div className={styles.content}>
           {error && <div>{error.message}</div>}
@@ -95,6 +78,7 @@ class DatedDocuments extends React.Component {
           <List>
             {documents &&
               documents.map((doc) => {
+                /* console.log(doc); */
                 const lastUpdate = moment(doc._updatedAt);
                 const daysSince = Math.abs(lastUpdate.diff(moment(), "days"));
                 return (
@@ -108,11 +92,8 @@ class DatedDocuments extends React.Component {
                       className={styles.link}
                     >
                       <span className={styles.spacing}>
-                        <Tag
-                          size="small"
-                          variant={daysSince > 75 ? "error" : "warning"}
-                        >
-                          {daysSince}
+                        <Tag size="small" variant={type}>
+                          {daysSince}d
                         </Tag>
                         {doc.title}
                       </span>

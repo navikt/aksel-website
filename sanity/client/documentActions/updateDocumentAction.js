@@ -36,7 +36,7 @@ export default function SetAndPublishAction(props) {
       setIsPublishing(true);
 
       // Set publishedAt to current date and time
-      patch.execute([{ set: { publishedAt: new Date().toISOString() } }]);
+      patch.execute([{ set: { _updatedAt: new Date().toISOString() } }]);
 
       // Perform the publish
       publish.execute();

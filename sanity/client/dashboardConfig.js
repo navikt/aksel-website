@@ -1,3 +1,5 @@
+import config from "../config";
+
 export default {
   widgets: [
     /* {
@@ -8,6 +10,15 @@ export default {
     }, */
     {
       name: "outdated-documents-widget",
+      options: {
+        type: "warning",
+      },
+    },
+    {
+      name: "outdated-documents-widget",
+      options: {
+        type: "error",
+      },
     },
   ],
 };

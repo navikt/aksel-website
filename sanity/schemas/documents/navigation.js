@@ -59,7 +59,6 @@ export default {
   ],
   validation: (Rule) =>
     Rule.required().custom(({ sidemenu, ...rest }) => {
-      /* console.log(rest); */
       return validateNestedDepth(sidemenu);
     }),
 };
