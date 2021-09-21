@@ -31,7 +31,7 @@ export default () =>
                   )
                 ),
               S.listItem()
-                .title("Artikkeler")
+                .title("Artikler")
                 .icon(() => <FileContent />)
                 .child(
                   S.documentList()
@@ -41,7 +41,7 @@ export default () =>
                     )
                 ),
               S.listItem()
-                .title("Navigasjon")
+                .title("Sidemeny")
                 .icon(() => <Place />)
                 .child(
                   S.document()
@@ -65,7 +65,7 @@ export default () =>
                     .filter('_type in ["gp_article_page"]')
                 ),
               S.listItem()
-                .title("Navigasjon")
+                .title("Sidemeny")
                 .icon(() => <Place />)
                 .child(
                   S.document()
