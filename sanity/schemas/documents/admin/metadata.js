@@ -2,6 +2,7 @@
 export default {
   type: "document",
   name: "metadata",
+  title: "Verktøykasse Metadata",
   fields: [
     {
       title: "Tittel som dukker opp på google",

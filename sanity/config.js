@@ -18,7 +18,7 @@ const teams = [
 ];
 
 /* Collection of all document-pages to account for */
-const allDocuments = teams.reduce(
+const allDocumentTypes = teams.reduce(
   (docs, team) => [...docs, ...team.documents],
   []
 );
@@ -48,7 +48,7 @@ function getExpireDates(docType) {
 
 module.exports = {
   teams,
-  allDocuments,
+  allDocumentTypes,
   allNavDocumentIds,
   getExpireDates,
 };

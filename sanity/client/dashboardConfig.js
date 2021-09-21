@@ -1,3 +1,5 @@
+import { allDocumentTypes } from "../config";
+
 export default {
   widgets: [
     {
@@ -10,7 +12,10 @@ export default {
       name: "document-list",
       options: {
         title: "Drafts",
-        query: '*[(_id in path("drafts.**"))]',
+        query: '*[_type in $types && (_id in path("drafts.**"))]',
+        queryParams: {
+          types: allDocumentTypes,
+        },
       },
     },
     {

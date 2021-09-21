@@ -23,7 +23,7 @@ class InNavDocuments extends React.Component {
     this.subscription = getSubscription(
       `*[_type in $types] | order(_updatedAt asc)`,
       {
-        types: [...config.allDocuments],
+        types: [...config.allDocumentTypes],
       },
       "v1"
     ).subscribe({

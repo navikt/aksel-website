@@ -21,7 +21,7 @@ class DatedDocuments extends React.Component {
   componentDidMount = () => {
     const assembledQuery = `*[_type in $types] | order(_updatedAt asc)`;
     const params = {
-      types: [...config.allDocuments],
+      types: [...config.allDocumentTypes],
     };
 
     /*     if (props.published?.metadata === null) return null; */
