@@ -12,18 +12,25 @@ const teams = [
   {
     name: "god_praksis",
     prefix: "gp",
-    documents: [],
+    documents: ["gp_article_page"],
     navigation: `navigation_god_praksis`,
   },
 ];
 
+/* Collection of all document-pages to account for */
 const allDocuments = teams.reduce(
   (docs, team) => [...docs, ...team.documents],
   []
 );
 
+/* Collection of all navigation-documents */
 const allNavDocumentIds = teams.map((x) => x.navigation);
 
+/**
+ * Defines when a document of a spesific type is set to stagnant or expired
+ * @param {"string"} docType
+ * @returns [stagnant Date, expired Date]
+ */
 function getExpireDates(docType) {
   const stagnantDate = new Date();
   const expiredDate = new Date();
