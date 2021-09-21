@@ -5,6 +5,8 @@ import { IntentLink } from "part:@sanity/base/router";
 import { getPublishedId } from "part:@sanity/base/util/draft-utils";
 import { Item, List } from "part:@sanity/components/lists/default";
 import Spinner from "part:@sanity/components/loading/spinner";
+import SanityPreview from "part:@sanity/base/preview";
+import schema from "part:@sanity/base/schema";
 import React from "react";
 import config from "../../config";
 import { getSubscription } from "./sanityConnector";
@@ -77,6 +79,7 @@ class InNavDocuments extends React.Component {
           <List>
             {filteredDocs &&
               filteredDocs.map((doc) => {
+                const type = schema.get(doc._type);
                 return (
                   <Item key={doc._id}>
                     <IntentLink
@@ -87,7 +90,12 @@ class InNavDocuments extends React.Component {
                       }}
                       className={styles.link}
                     >
-                      <span className={styles.spacing}>{doc.title}</span>
+                      <SanityPreview
+                        layout="default"
+                        type={type}
+                        value={doc}
+                        key={doc._id}
+                      />
                     </IntentLink>
                   </Item>
                 );
