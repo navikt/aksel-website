@@ -24,18 +24,13 @@ const allDocuments = teams.reduce(
 
 const allNavDocumentIds = teams.map((x) => x.navigation);
 
-const outdatedContent = {
-  warning: 10,
-  error: 50,
-};
-
 function getExpireDates(docType) {
   const stagnantDate = new Date();
   const expiredDate = new Date();
   switch (docType) {
     case "article":
-      stagnantDate.setDate(stagnantDate.getDate() + 0);
-      expiredDate.setDate(expiredDate.getDate() + 9);
+      stagnantDate.setDate(stagnantDate.getDate() + 120);
+      expiredDate.setDate(expiredDate.getDate() + 180);
       return [stagnantDate, expiredDate];
     default:
       stagnantDate.setDate(stagnantDate.getDate() + 120);
@@ -47,7 +42,6 @@ function getExpireDates(docType) {
 module.exports = {
   teams,
   allDocuments,
-  outdatedContent,
   allNavDocumentIds,
   getExpireDates,
 };

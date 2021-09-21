@@ -72,7 +72,6 @@ class DatedDocuments extends React.Component {
   render() {
     const { documents, loading, error } = this.state;
     const { type } = this.props;
-    console.log(documents);
 
     return (
       <div className={styles.container}>
@@ -85,7 +84,7 @@ class DatedDocuments extends React.Component {
           {error && <div>{error.message}</div>}
           {!error && loading && <Spinner center message="Loading..." />}
           {!error && !documents && !loading && (
-            <div>Could not locate any documents :/</div>
+            <div>Could not locate any documents </div>
           )}
           <List>
             {documents &&
