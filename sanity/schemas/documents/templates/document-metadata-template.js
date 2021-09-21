@@ -1,9 +1,9 @@
-import { getExpireDates } from "../../config";
+import { getExpireDates } from "../../../config";
 
-export function documentDefaults(docType) {
+export function documentMetadata(docType) {
   const dates = getExpireDates(docType);
   return {
-    title: "Side informasjon",
+    title: "Metadata",
     name: "metadata",
     type: "document",
     fields: [

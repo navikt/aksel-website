@@ -1,0 +1,50 @@
+import { documentMetadata } from "../templates/document-metadata-template";
+import { documentInformation } from "../templates/document-template";
+
+const prefix = "designsystem/side/";
+
+export default {
+  title: "Komponentside",
+  name: "ds_component_page",
+  type: "document",
+  //__experimental_actions: [, /* "create" */ "update", /*'delete',*/ "publish"],
+  fields: [
+    documentMetadata("article"),
+    ...documentInformation(prefix),
+    {
+      name: "usage",
+      type: "blockContent",
+      title: "Bruk-tab",
+    },
+    {
+      name: "design",
+      type: "blockContent",
+      title: "Design-tab",
+    },
+    {
+      name: "development",
+      type: "blockContent",
+      title: "Utvikling-tab",
+    },
+    {
+      name: "accessibility",
+      type: "blockContent",
+      title: "Tilgjengelighet-tab",
+    },
+    {
+      title: "Npm-pakke lenke (optional)",
+      name: "npm_link",
+      type: "url",
+    },
+    {
+      title: "Github-kode lenke (optional)",
+      name: "github_link",
+      type: "url",
+    },
+    {
+      title: "Figma lenke (optional)",
+      name: "figma_link",
+      type: "url",
+    },
+  ],
+};
