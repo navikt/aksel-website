@@ -1,5 +1,6 @@
 import { documentMetadata } from "../templates/document-metadata-template";
 import { documentInformation } from "../templates/document-template";
+import { defaultPreview } from "../templates/document-preview-template";
 
 const prefix = "designsystem/side/";
 
@@ -8,9 +9,11 @@ export default {
   name: "ds_component_page",
   type: "document",
   //__experimental_actions: [, /* "create" */ "update", /*'delete',*/ "publish"],
+  ...defaultPreview(),
   fields: [
     documentMetadata("article"),
     ...documentInformation(prefix),
+
     {
       name: "usage",
       type: "blockContent",

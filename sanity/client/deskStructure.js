@@ -35,7 +35,7 @@ export default () =>
                 .icon(() => <FileContent />)
                 .child(
                   S.documentList()
-                    .title("Artikkler")
+                    .title("Artikler")
                     .filter(
                       '_type in ["ds_article_page", "ds_tabbed_article_page"]'
                     )
@@ -57,11 +57,11 @@ export default () =>
             .title("God Praksis")
             .items([
               S.listItem()
-                .title("Artikkler")
+                .title("Artikler")
                 .icon(() => <FileContent />)
                 .child(
                   S.documentList()
-                    .title("Artikkler")
+                    .title("Artikler")
                     .filter('_type in ["gp_article_page"]')
                 ),
               S.listItem()
@@ -118,6 +118,11 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
         S.view.component(PageWebPreview).title("Preview (krever naisdevice)"),
       ]);
     case "ds_tabbed_article_page":
+      return S.document().views([
+        S.view.form(),
+        S.view.component(PageWebPreview).title("Preview (krever naisdevice)"),
+      ]);
+    case "gp_article_page":
       return S.document().views([
         S.view.form(),
         S.view.component(PageWebPreview).title("Preview (krever naisdevice)"),
