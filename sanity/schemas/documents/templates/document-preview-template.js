@@ -24,7 +24,8 @@ export function defaultPreview() {
                   ? "info"
                   : "warning"
               }
-              style={{ color: "black" }}
+              /* Hack to fit tag into preview panel */
+              style={{ color: "black", padding: "0 1px" }}
             >
               {status === "published"
                 ? "live"

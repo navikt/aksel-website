@@ -109,7 +109,8 @@ export default () =>
     ]);
 
 export const getDefaultDocumentNode = ({ schemaType }) => {
-  switch (schemaType) {
+  /* TODO: Uncomment when preview site is fixed */
+  /* switch (schemaType) {
     case "ds_component_page":
       return S.document().views([
         S.view.form(),
@@ -132,7 +133,7 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
         S.view.form(),
         S.view.component(PageWebPreview).title("Preview (krever naisdevice)"),
       ]);
-  }
+  } */
 };
 
 // single page (eks forside)
