@@ -19,6 +19,18 @@ export default {
       },
     },
     {
+      title: "Size",
+      name: "size",
+      type: "string",
+      options: {
+        list: [
+          { value: "medium", title: "Medium" },
+          { value: "small", title: "Small" },
+        ],
+        layout: "radio",
+      },
+    },
+    {
       title: "Innhold",
       name: "body",
       type: "blockContent",

@@ -6,6 +6,7 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import metadata from "./documents/admin/metadata";
 import editors from "./documents/editors";
 import navigation, { dropdown, link } from "./documents/navigation";
+import changelog from "./documents/designsystem/changelog";
 /*--  Designsystem */
 import designsystem_component_page from "./documents/designsystem/ds-component-page";
 import designsystem_article_page from "./documents/designsystem/ds-article-page";
@@ -18,7 +19,6 @@ import god_praksis_article_page from "./documents/god-praksis/gp-article-page";
 import block_content from "./block-content";
 import code_example, { example } from "./objects/code-example";
 import prop_table, { prop } from "./objects/proptable";
-import changelog, { change } from "./objects/changelog";
 import do_dont, { doDont } from "./objects/do-dont";
 import linker, { links } from "./objects/linker";
 import uu_interactions, { keyboardTable } from "./objects/uu-interaction";
@@ -38,7 +38,6 @@ export default createSchema({
     prop_table,
     prop,
     changelog,
-    change,
     do_dont,
     doDont,
     linker,

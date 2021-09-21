@@ -45,7 +45,7 @@ export function documentMetadata(docType) {
         name: "contact",
         type: "reference",
         validation: (Rule) => Rule.required(),
-        to: [{ type: "contact_person" }],
+        to: [{ type: "editor" }],
       },
       {
         title: "Dokument type",

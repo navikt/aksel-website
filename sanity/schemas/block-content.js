@@ -181,7 +181,6 @@ export default {
     // Custom types ( add components here)
     { type: "code_example", icon: () => <Laptop /> },
     { type: "prop_table" },
-    { type: "changelog" },
     { type: "linker", icon: () => <Link /> },
     { type: "uu_interaction", icon: () => <BrailleFilled /> },
     {

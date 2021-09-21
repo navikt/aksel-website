@@ -1,6 +1,6 @@
 export default {
   title: "Redaktører",
-  name: "contact_person",
+  name: "editor",
   type: "document",
   fields: [
     {

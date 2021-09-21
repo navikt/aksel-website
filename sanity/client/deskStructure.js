@@ -48,6 +48,10 @@ export default () =>
                     .schemaType("navigation")
                     .documentId("navigation_designsystem")
                 ),
+              S.listItem()
+                .title("Changelog")
+                .icon(() => <Historic />)
+                .child(S.documentTypeList("ds_changelog")),
             ])
         ),
       S.listItem()
@@ -82,6 +86,7 @@ export default () =>
             "navigation",
             "ds_tabbed_article_page",
             "ds_article_page",
+            "ds_changelog",
             "gp_article_page",
             "metadata",
           ].includes(listItem.getId())
