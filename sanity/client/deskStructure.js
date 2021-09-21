@@ -2,8 +2,8 @@
 import React from "react";
 import S from "@sanity/desk-tool/structure-builder";
 /* import { FrontpageWebPreview } from "./web-previews/FrontpageWebPreview"; */
-import { PageWebPreview } from "./web-previews/PageWebPreview";
-import { ComponentPageWebPreview } from "./web-previews/ComponentWebPreview";
+import { PageWebPreview } from "../web-previews/PageWebPreview";
+import { ComponentPageWebPreview } from "../web-previews/ComponentWebPreview";
 import {
   Facilitet,
   FileContent,
@@ -11,7 +11,6 @@ import {
   Place,
   Search,
 } from "@navikt/ds-icons";
-import teams from "./teams.js";
 
 export default () =>
   S.list()

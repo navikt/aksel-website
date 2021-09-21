@@ -1,23 +1,25 @@
 import moment from "moment";
+import { outdatedContent } from "../config";
 
 export function updatedBadge(props) {
-  const warningDays = 120;
-  const errorDays = 180;
-
   if (props.published === null) return null;
+  if (outdatedContent.error <= outdatedContent.warning)
+    console.error(
+      "outdatedContent.error cant be smaller than outdatedContent.warning"
+    );
 
   const lastUpdate = moment(props.published._updatedAt);
 
   const daysSince = Math.abs(lastUpdate.diff(moment(), "days"));
 
   switch (true) {
-    case daysSince > errorDays:
+    case daysSince > outdatedContent.error:
       return {
         label: "Utdatert innhold",
         title: "Innholdet må ses over igjen!",
         color: "danger",
       };
-    case daysSince > warningDays:
+    case daysSince > outdatedContent.warning:
       return {
         label: "Stagnert innhold",
         title: "Begynner å bli en stund siden innholdet ble oppdatert nå!",

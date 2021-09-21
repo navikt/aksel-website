@@ -1,6 +1,6 @@
 import { Expand, Link, Bookmark } from "@navikt/ds-icons";
 import React from "react";
-const teams = require("../../teams");
+const config = require("../../config");
 
 const maxDepth = 2;
 
@@ -149,7 +149,9 @@ export const link = {
       /* Matches results based on document prefix */
       options: {
         filter: ({ document }) => {
-          const match = teams.find((team) => document._id.endsWith(team.name));
+          const match = config.teams.find((team) =>
+            document._id.endsWith(team.name)
+          );
           if (!match) {
             return {
               filter: ``,

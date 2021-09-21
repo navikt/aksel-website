@@ -32,23 +32,27 @@
     },
     {
       "name": "part:@sanity/desk-tool/structure",
-      "path": "./deskStructure.js"
+      "path": "./client/deskStructure.js"
     },
     {
       "implements": "part:@sanity/dashboard/config",
-      "path": "./dashboardConfig.js"
+      "path": "./client/dashboardConfig.js"
     },
     {
       "name": "part:@sanity/base/initial-value-templates",
-      "path": "./initialValueTemplates.js"
+      "path": "./client/initialValueTemplates.js"
     },
     {
       "name": "part:@sanity/base/new-document-structure",
-      "path": "./newDocumentStructure.js"
+      "path": "./client/newDocumentStructure.js"
     },
     {
       "implements": "part:@sanity/base/document-badges/resolver",
-      "path": "resolveDocumentBadges.js"
+      "path": "./client/resolveDocumentBadges.js"
+    },
+    {
+      "implements": "part:@sanity/base/document-actions/resolver",
+      "path": "./client/resolveDocumentActions.js"
     }
   ]
 }
