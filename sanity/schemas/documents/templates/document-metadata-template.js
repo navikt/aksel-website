@@ -29,7 +29,7 @@ export function documentMetadata(docType) {
           },
           {
             name: "expired",
-            title: "Expired",
+            title: "Revisjonsdato",
             type: "date",
             initialValue: dates[1].toISOString().split("T")[0],
             readOnly: true,

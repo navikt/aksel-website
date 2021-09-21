@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { Refresh } from "@navikt/ds-icons";
 import { useDocumentOperation } from "@sanity/react-hooks";
 import React from "react";
-import styles from "./styles.css";
 import { getExpireDates } from "../../config";
 
 export default function SetAndPublishAction(props) {
@@ -21,23 +20,13 @@ export default function SetAndPublishAction(props) {
 
   return {
     disabled: publish.disabled !== "ALREADY_PUBLISHED",
-    label: isPublishing ? (
-      <span className={styles.inline}>
-        <Refresh />
-        Updating...
-      </span>
-    ) : (
-      <span className={styles.inline}>
-        <Refresh />
-        Update
-      </span>
-    ),
+    label: isPublishing ? "Updating..." : "Update",
+    icon: <Refresh />,
     onHandle: () => {
       const dates = getExpireDates(
         props.published?.metadata?.doctype ?? "article"
       );
       setIsPublishing(true);
-
       patch.execute([
         {
           set: {
