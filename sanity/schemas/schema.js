@@ -11,9 +11,12 @@ import changelog from "./documents/designsystem/changelog";
 import designsystem_component_page from "./documents/designsystem/ds-component-page";
 import designsystem_article_page from "./documents/designsystem/ds-article-page";
 import designsystem_tabbed_article_page from "./documents/designsystem/ds-tabbed-article-page";
+import designsystem_frontpage from "./documents/designsystem/ds-frontpage";
 /*--  God Praksis */
 import god_praksis_article_page from "./documents/god-praksis/gp-article-page";
+import god_praksis_frontpage from "./documents/god-praksis/gp-frontpage";
 /*--  Admin */
+import vk_frontpage from "./documents/admin/frontpage";
 
 /*  Components */
 import block_content from "./block-content";
@@ -31,7 +34,10 @@ export default createSchema({
     designsystem_component_page,
     designsystem_article_page,
     designsystem_tabbed_article_page,
+    designsystem_frontpage,
     god_praksis_article_page,
+    god_praksis_frontpage,
+    vk_frontpage,
     code_example,
     example,
     block_content,

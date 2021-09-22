@@ -2,14 +2,15 @@
 import React from "react";
 import S from "@sanity/desk-tool/structure-builder";
 /* import { FrontpageWebPreview } from "./web-previews/FrontpageWebPreview"; */
-import { PageWebPreview } from "../web-previews/PageWebPreview";
-import { ComponentPageWebPreview } from "../web-previews/ComponentWebPreview";
+/* import { PageWebPreview } from "../web-previews/PageWebPreview";
+import { ComponentPageWebPreview } from "../web-previews/ComponentWebPreview"; */
 import {
   Facilitet,
   FileContent,
   Historic,
   Place,
   Search,
+  Picture,
 } from "@navikt/ds-icons";
 
 export default () =>
@@ -41,6 +42,14 @@ export default () =>
                     )
                 ),
               S.listItem()
+                .title("Forside")
+                .icon(() => <Picture />)
+                .child(
+                  S.document()
+                    .schemaType("ds_frontpage")
+                    .documentId("frontpage_designsystem")
+                ),
+              S.listItem()
                 .title("Sidemeny")
                 .icon(() => <Place />)
                 .child(
@@ -69,6 +78,14 @@ export default () =>
                     .filter('_type in ["gp_article_page"]')
                 ),
               S.listItem()
+                .title("Forside")
+                .icon(() => <Picture />)
+                .child(
+                  S.document()
+                    .schemaType("gp_frontpage")
+                    .documentId("frontpage_god_praksis")
+                ),
+              S.listItem()
                 .title("Sidemeny")
                 .icon(() => <Place />)
                 .child(
@@ -86,8 +103,11 @@ export default () =>
             "navigation",
             "ds_tabbed_article_page",
             "ds_article_page",
+            "ds_frontpage",
             "ds_changelog",
             "gp_article_page",
+            "gp_frontpage",
+            "vk_frontpage",
             "metadata",
           ].includes(listItem.getId())
       ),
@@ -98,6 +118,14 @@ export default () =>
           S.list()
             .title("Admin")
             .items([
+              S.listItem()
+                .title("Forside")
+                .icon(() => <Picture />)
+                .child(
+                  S.document()
+                    .schemaType("vk_frontpage")
+                    .documentId("frontpage_verktoykasse")
+                ),
               S.listItem()
                 .title("Metadata")
                 .icon(() => <Search />)
