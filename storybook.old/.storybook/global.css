@@ -1,8 +1,0 @@
-[id="root"] {
-  display: flex;
-  padding: 3rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* min-height: 140px; */
-}
