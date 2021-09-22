@@ -1,5 +1,6 @@
 import React from "react";
 import { Alert } from "@navikt/ds-react";
+import ReactPreview from "./ReactPreview";
 
 export default {
   title: "ds-react/Alert",
@@ -7,7 +8,14 @@ export default {
 };
 
 const Template = ({ variant, label }) => {
-  return <Alert variant={variant}>{label}</Alert>;
+  return (
+    <>
+      <ReactPreview>
+        {`<Alert variant="${variant}">${label}</Alert>`}
+      </ReactPreview>
+      <Alert variant={variant}>{label}</Alert>
+    </>
+  );
 };
 
 export const Info = Template.bind({});
