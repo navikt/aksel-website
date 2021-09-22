@@ -4,11 +4,10 @@ import { PublishAction } from "./documentActions/publishAction";
 
 import SetAndPublishAction from "./documentActions/updateDocumentAction";
 
-console.log(defaultResolve);
 export default function resolveDocumentActions(props) {
-  return [
-    PublishAction,
-    SetAndPublishAction,
-    ...defaultResolve(props).slice(1),
-  ];
+  console.log(props);
+
+  return props.published?.metadata
+    ? [PublishAction, SetAndPublishAction, ...defaultResolve(props).slice(1)]
+    : [PublishAction, ...defaultResolve(props).slice(1)];
 }

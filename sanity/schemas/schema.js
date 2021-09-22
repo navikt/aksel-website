@@ -21,7 +21,10 @@ import vk_frontpage from "./documents/admin/frontpage";
 /*  Components */
 import block_content from "./block-content";
 import block_content_simple from "./block-content-simple";
-import code_example, { example } from "./objects/code-example";
+import code_example, { example } from "./documents/designsystem/code-example";
+import code_snippet from "./objects/code-snippet";
+import code_example_ref from "./objects/code-example-ref";
+
 import prop_table, { prop } from "./objects/proptable";
 import do_dont, { doDont } from "./objects/do-dont";
 import linker, { links } from "./objects/linker";
@@ -40,6 +43,8 @@ export default createSchema({
     god_praksis_frontpage,
     vk_frontpage,
     code_example,
+    code_snippet,
+    code_example_ref,
     example,
     block_content,
     block_content_simple,

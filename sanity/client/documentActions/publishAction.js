@@ -26,24 +26,26 @@ export function PublishAction(props) {
     }
     setIsPublishing(true);
 
-    const dates = getExpireDates(
-      props.published?.metadata?.doctype ?? "article"
-    );
+    if (props.published?.metadata) {
+      const dates = getExpireDates(
+        props.published?.metadata?.doctype ?? "article"
+      );
 
-    ops.patch.execute([
-      {
-        set: {
-          metadata: {
-            ...props.published.metadata,
-            updates: {
-              last_update: new Date().toISOString().split("T")[0],
-              stagnant: dates[0].toISOString().split("T")[0],
-              expired: dates[1].toISOString().split("T")[0],
+      ops.patch.execute([
+        {
+          set: {
+            metadata: {
+              ...props.published.metadata,
+              updates: {
+                last_update: new Date().toISOString().split("T")[0],
+                stagnant: dates[0].toISOString().split("T")[0],
+                expired: dates[1].toISOString().split("T")[0],
+              },
             },
           },
         },
-      },
-    ]);
+      ]);
+    }
 
     ops.publish.execute();
     props.onComplete();

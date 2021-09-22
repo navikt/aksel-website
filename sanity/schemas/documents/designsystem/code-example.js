@@ -1,39 +1,32 @@
 export default {
-  title: "Kode eksempel",
-  name: "code_example",
-  type: "object",
+  title: "Kode med eksempel",
+  name: "ds_code_example",
+  type: "document",
   fields: [
     {
-      title: "Tittel (vises bare internt i sanity)",
+      title: "Tittel",
       name: "title",
       type: "string",
-      validation: (Rule) => Rule.required(),
     },
     {
-      name: "github",
-      title: "Link til github-kode (optional)",
-      type: "url",
-    },
-    {
-      title: "Kode eksempel (optional)",
+      title: "Storybook Iframe (optional)",
       name: "preview",
       type: "url",
     },
     {
       type: "array",
       name: "tabs",
-      title: "Kode preview",
-      description: "Blir omgjort til tabs hvis flere enn en",
+      title: "Kode",
+      description: "Tabber blir bare rendret hvis det er > 1 tabs",
       of: [{ type: "code_example.example" }],
       validation: (Rule) => Rule.max(4),
     },
-  ],
-  preview: {
-    select: {
-      title: "title",
+    {
+      name: "github",
+      title: "Lenke til github-kode (optional)",
+      type: "url",
     },
-    prepare: ({ title }) => ({ title: title }),
-  },
+  ],
 };
 
 export const example = {
@@ -45,12 +38,6 @@ export const example = {
       name: "title",
       title: "Tab tittel",
       type: "string",
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      name: "copy",
-      title: "Copy knapp",
-      type: "boolean",
       validation: (Rule) => Rule.required(),
     },
     {
@@ -69,7 +56,4 @@ export const example = {
       },
     },
   ],
-  initialValue: {
-    copy: true,
-  },
 };

@@ -61,6 +61,10 @@ export default () =>
                 .title("Changelog")
                 .icon(() => <Historic />)
                 .child(S.documentTypeList("ds_changelog")),
+              S.listItem()
+                .title("Kode eksempler")
+                .icon(() => <span>{`< />`}</span>)
+                .child(S.documentTypeList("ds_code_example")),
             ])
         ),
       S.listItem()
@@ -105,6 +109,7 @@ export default () =>
             "ds_article_page",
             "ds_frontpage",
             "ds_changelog",
+            "ds_code_example",
             "gp_article_page",
             "gp_frontpage",
             "vk_frontpage",

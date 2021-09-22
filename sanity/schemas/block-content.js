@@ -172,7 +172,8 @@ export default {
       },
     },
     // Custom types ( add components here)
-    { type: "code_example", icon: () => <Laptop /> },
+    { type: "code_example_ref", icon: () => <Laptop /> },
+    { type: "code_snippet", icon: () => <span>{`< />`}</span> },
     { type: "prop_table" },
     { type: "linker", icon: () => <Link /> },
     { type: "uu_interaction", icon: () => <BrailleFilled /> },
