@@ -49,7 +49,7 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
 
   const activeIndex = tabs.findIndex((tab) => tab.active);
 
-  if (activeIndex === -1 || !node.tabs[index].example.code) {
+  if (activeIndex === -1 /* || !node.tabs[index].example.code */) {
     return null;
   }
 
@@ -58,11 +58,11 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
     setPopover(true);
   };
 
-  let language = node.tabs[index].example.language ?? "jsx";
+  let language = "jsx"; /* node?.tabs[index].example.language ?? "jsx" */
   language = language === "terminal" ? "bash" : language;
 
   const highlighted = Prism.highlight(
-    node.tabs[index].example.code,
+    tabs[index].content,
     Prism.languages[language],
     language
   );

@@ -89,7 +89,9 @@ export const CodeContext = createContext<ContextProps>({
 });
 
 const Code = ({ node }: { node: any }): JSX.Element => {
-  const [tabs, setTabs] = useState<{ title: string; active: false }[]>([]);
+  const [tabs, setTabs] = useState<
+    { title: string; active: false; content: string }[]
+  >([]);
   const [openPopover, setOpenPopover] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();
   const [previewToggles, setPreviewToggles] = useState({
@@ -99,10 +101,10 @@ const Code = ({ node }: { node: any }): JSX.Element => {
 
   useEffect(() => {
     const tabList = [];
-    node.tabs &&
+    /* node.tabs &&
       node.tabs.forEach((tab, x) =>
         tabList.push({ title: tab.title, active: x === 0 })
-      );
+      ); */
 
     setTabs([...tabList]);
   }, []);
@@ -140,10 +142,8 @@ const Code = ({ node }: { node: any }): JSX.Element => {
           </Example>
         )}
         {showTabs && <CodeTabs />}
-        {node.tabs &&
-          node.tabs.map((_, i) => (
-            <CodeBlock key={node.tabs[i]._key} index={i} />
-          ))}
+        {(node.tabs || tabs) &&
+          tabs.map((tab, i) => <CodeBlock key={tab.title} index={i} />)}
       </Wrapper>
     </CodeContext.Provider>
   );

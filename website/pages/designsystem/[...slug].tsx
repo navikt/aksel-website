@@ -117,8 +117,32 @@ interface StaticProps {
 
 const ds_query = `*[slug.current match $slug][0]
 {
+  ...,
   "slug": slug.current,
-	...,
+	usage[]{
+    ...,
+    _type == "code_example_ref" =>{
+    	"ref": @.ref->
+  	}
+  },
+  design[]{
+      ...,
+      _type == "code_example_ref" =>{
+        "ref": @.ref->
+      }
+  },
+  development[]{
+      ...,
+      _type == "code_example_ref" =>{
+        "ref": @.ref->
+      }
+  },
+  accessibility[]{
+      ...,
+      _type == "code_example_ref" =>{
+        "ref": @.ref->
+      }
+  },
 }`;
 
 const sidebarQuery = `

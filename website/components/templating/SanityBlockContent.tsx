@@ -15,6 +15,7 @@ import React from "react";
 import styled from "styled-components";
 import Changelog from "../Changelog";
 import Code from "../code/Code";
+import ParseCodeRef from "../code/ParseCodeRef";
 import CopyAnchor from "../CopyAnchor";
 import DoDont from "../DoDont";
 import Image from "../Image";
@@ -67,6 +68,7 @@ const StyledAlert = styled(Alert)`
 
 const serializers = {
   types: {
+    code_example_ref: ParseCodeRef,
     code_example: Code,
     changelog: Changelog,
     prop_table: PropTable,
