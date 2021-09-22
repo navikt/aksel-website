@@ -1,7 +1,6 @@
 import { documentMetadata } from "../templates/document-metadata-template";
 import { documentInformation } from "../templates/document-template";
 import { defaultPreview } from "../templates/document-preview-template";
-
 const prefix = "designsystem/side/";
 
 export default {

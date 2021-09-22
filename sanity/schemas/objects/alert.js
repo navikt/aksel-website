@@ -1,3 +1,15 @@
+import { Alert } from "@navikt/ds-react";
+import React from "react";
+
+function toPlainText(blocks = []) {
+  return blocks
+    .filter((block) => !(block._type !== "block" || !block.children))
+    .map((block) => {
+      return block.children.map((child) => child.text).join("");
+    })
+    .join("\n");
+}
+
 export default {
   name: "alert",
   title: "Alert",
@@ -17,11 +29,13 @@ export default {
         ],
         layout: "radio",
       },
+      initialValue: "info",
     },
     {
       title: "Size",
       name: "size",
       type: "string",
+      validation: (Rule) => Rule.required(),
       options: {
         list: [
           { value: "medium", title: "Medium" },
@@ -29,6 +43,7 @@ export default {
         ],
         layout: "radio",
       },
+      initialValue: "medium",
     },
     {
       title: "Innhold",
@@ -37,4 +52,22 @@ export default {
       validation: (Rule) => Rule.required(),
     },
   ],
+  preview: {
+    select: {
+      size: "size",
+      variant: "variant",
+      body: "body",
+    },
+    prepare(selection) {
+      return { ...selection };
+    },
+    component: (selection) => {
+      console.log(selection);
+      return (
+        <Alert size={selection.value.size} variant={selection.value.variant}>
+          {toPlainText(selection.value.body)}
+        </Alert>
+      );
+    },
+  },
 };
