@@ -83,7 +83,6 @@ export default {
       return { ...selection };
     },
     component: (selection) => {
-      console.log(selection);
       return (
         <Alert size={selection.value.size} variant={selection.value.variant}>
           {toPlainText(selection.value.body)}

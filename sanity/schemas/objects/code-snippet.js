@@ -23,6 +23,7 @@ export default {
           { value: "html", title: "HTML" },
           { value: "css", title: "CSS" },
           { value: "terminal", title: "Terminal/Bash" },
+          { value: "terminal", title: "Standard" },
         ],
       },
     },

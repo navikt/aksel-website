@@ -1,6 +1,6 @@
 import React from "react";
-/* import {  useArgs } from "@storybook/client-api"; */
 import { Button } from "@navikt/ds-react";
+import ReactPreview from "./ReactCode";
 
 export default {
   title: "ds-react/Button",
@@ -9,9 +9,18 @@ export default {
 
 const Template = ({ variant, disabled, label, size }) => {
   return (
-    <Button disabled={disabled} variant={variant} size={size}>
-      {label}
-    </Button>
+    <>
+      <ReactPreview>
+        {`<Button ${
+          disabled ? "disabled={true}" : ""
+        } variant="${variant}" size="${size}">
+          ${label}
+        </Button>`}
+      </ReactPreview>
+      <Button disabled={disabled} variant={variant} size={size}>
+        {label}
+      </Button>
+    </>
   );
 };
 

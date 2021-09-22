@@ -1,25 +1,31 @@
+import { Picture } from "@navikt/ds-icons";
+
 export default {
   name: "picture",
-  title: "Bilde",
-  type: "object",
+  type: "image",
+  icon: Picture,
+  options: {
+    hotspot: true,
+  },
   fields: [
     {
-      title: "Tittel (Vises bare internt i sanity)",
       name: "title",
+      title: "Alt-tekst",
       type: "string",
       validation: (Rule) => Rule.required(),
+      description: "Beskriv bildet for skjermlesere",
+      options: {
+        isHighlighted: true,
+      },
     },
     {
-      title: "Bilde",
-      name: "picture_image",
-      type: "image",
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      title: "Caption",
-      name: "picture_caption",
+      name: "caption",
+      title: "Bilde-tekst",
+      description: "Dette vil stå under bildet",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      options: {
+        isHighlighted: true,
+      },
     },
   ],
 };

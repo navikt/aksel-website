@@ -3,12 +3,6 @@ import { allDocumentTypes } from "../config";
 export default {
   widgets: [
     {
-      name: "project-info",
-    },
-    {
-      name: "project-users",
-    },
-    {
       name: "document-list",
       options: {
         title: "Drafts for God Praksis",
@@ -42,6 +36,12 @@ export default {
     },
     {
       name: "document-in-nav-widget",
+    },
+    {
+      name: "project-info",
+    },
+    {
+      name: "project-users",
     },
   ],
 };

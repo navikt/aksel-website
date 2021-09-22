@@ -42,7 +42,7 @@ export default {
       name: "body",
       title: "Tekst",
       description: "Beskrivelse av hva endringen gjorde",
-      type: "blockContent",
+      type: "blockContent_simple",
       validation: (Rule) => Rule.required(),
     },
   ],

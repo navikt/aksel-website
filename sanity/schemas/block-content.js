@@ -10,11 +10,12 @@ import {
 import {
   Warning,
   SuccessStroke,
-  BrailleFilled,
+  Braille,
   Laptop,
-  Link,
-  Picture,
+  List,
 } from "@navikt/ds-icons";
+
+import { KBD, Code } from "@sanity/ui";
 
 const TitleRenderer = (props, size, level) => (
   <Heading size={size} level={level}>
@@ -22,20 +23,124 @@ const TitleRenderer = (props, size, level) => (
   </Heading>
 );
 
-const Kbd = (props) => (
-  <kbd
-    {...props}
-    style={{
-      margin: "0 var(--navds-spacing-1)",
-      color: "var(--navds-color-darkgray)",
-      border: "1px solid var(--navds-color-gray-40)",
-      borderRadius: "3px",
-      padding: "2px",
-      fontSize: "1em",
-      textTransform: "uppercase",
-    }}
-  />
-);
+export const styles = [
+  {
+    title: "Normal",
+    value: "normal",
+    blockEditor: {
+      render: (props) => <BodyLong>{props.children}</BodyLong>,
+    },
+  },
+  {
+    title: "BodyLong",
+    value: "bodylong",
+    blockEditor: {
+      render: (props) => <BodyLong>{props.children}</BodyLong>,
+    },
+  },
+  {
+    title: "BodyShort",
+    value: "bodyshort",
+    blockEditor: {
+      render: (props) => <BodyShort>{props.children}</BodyShort>,
+    },
+  },
+  {
+    title: "Detail",
+    value: "detail",
+    blockEditor: {
+      render: (props) => <Detail size="small">{props.children}</Detail>,
+    },
+  },
+  {
+    title: "Label",
+    value: "label",
+    blockEditor: {
+      render: (props) => <Label spacing>{props.children}</Label>,
+    },
+  },
+];
+
+export const block = {
+  title: "Block",
+  type: "block",
+  styles: [...styles],
+  lists: [{ title: "Bullet", value: "bullet" }],
+  // Marks let you mark up inline text in the block editor.
+  marks: {
+    // Decorators usually describe a single property – e.g. a typographic
+    // preference or highlighting by editors.
+    decorators: [
+      { title: "Strong", value: "strong" },
+      { title: "Emphasis", value: "em" },
+      {
+        title: "Code",
+        value: "code",
+        blockEditor: {
+          render: (props) => (
+            <Code style={{ color: "#BA3A26" }}>{props.children}</Code>
+          ),
+        },
+      },
+      {
+        title: "Keyboard",
+        value: "kbd",
+        blockEditor: {
+          icon: () => <KBD style={{ verticalAlign: "top" }}>Ctrl</KBD>,
+          render: (props) => (
+            <KBD
+              padding={[1, 1, 2]}
+              size={[1, 1, 2]}
+              style={{ verticalAlign: "top" }}
+            >
+              {props.children}
+            </KBD>
+          ),
+        },
+      },
+    ],
+    // Annotations can be any object structure – e.g. a link or a footnote.
+    annotations: [
+      {
+        title: "Link til side i sanity",
+        name: "internalLink",
+        type: "object",
+        blockEditor: {
+          icon: () => "ref",
+        },
+        fields: [
+          {
+            title: "Reference",
+            name: "reference",
+            type: "reference",
+            to: [
+              {
+                type: "ds_article_page",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "External link",
+        name: "link",
+        type: "object",
+        fields: [
+          {
+            title: "URL",
+            name: "href",
+            type: "url",
+          },
+          {
+            title: "Open in new tab",
+            name: "blank",
+            type: "boolean",
+          },
+        ],
+      },
+    ],
+  },
+};
 
 export default {
   title: "Block Content",
@@ -43,16 +148,9 @@ export default {
   type: "array",
   of: [
     {
-      title: "Block",
-      type: "block",
+      ...block,
       styles: [
-        {
-          title: "Normal",
-          value: "normal",
-          blockEditor: {
-            render: (props) => <BodyLong>{props.children}</BodyLong>,
-          },
-        },
+        ...block.styles,
         {
           title: "Title h2",
           value: "h2",
@@ -74,120 +172,27 @@ export default {
             render: (props) => TitleRenderer(props, "medium", "4"),
           },
         },
-        {
-          title: "BodyLong",
-          value: "bodylong",
-          blockEditor: {
-            render: (props) => <BodyLong>{props.children}</BodyLong>,
-          },
-        },
-        {
-          title: "BodyShort",
-          value: "bodyshort",
-          blockEditor: {
-            render: (props) => <BodyShort>{props.children}</BodyShort>,
-          },
-        },
-        {
-          title: "Detail",
-          value: "detail",
-          blockEditor: {
-            render: (props) => <Detail size="small">{props.children}</Detail>,
-          },
-        },
-        {
-          title: "Label",
-          value: "label",
-          blockEditor: {
-            render: (props) => <Label spacing>{props.children}</Label>,
-          },
-        },
       ],
-      lists: [{ title: "Bullet", value: "bullet" }],
-      // Marks let you mark up inline text in the block editor.
-      marks: {
-        // Decorators usually describe a single property – e.g. a typographic
-        // preference or highlighting by editors.
-        decorators: [
-          { title: "Strong", value: "strong" },
-          { title: "Emphasis", value: "em" },
-          {
-            title: "Code",
-            value: "code",
-            blockEditor: {
-              render: (props) => (
-                <code style={{ color: "#BA3A26" }}>{props.children}</code>
-              ),
-            },
-          },
-          {
-            title: "Keyboard",
-            value: "kbd",
-            blockEditor: {
-              icon: () => <Kbd>KBD</Kbd>,
-              render: (props) => <Kbd>{props.children}</Kbd>,
-            },
-          },
-        ],
-        // Annotations can be any object structure – e.g. a link or a footnote.
-        annotations: [
-          {
-            title: "Internal link",
-            name: "internalLink",
-            type: "object",
-            blockEditor: {
-              icon: () => "ref",
-            },
-            fields: [
-              {
-                title: "Reference",
-                name: "reference",
-                type: "reference",
-                to: [
-                  {
-                    type: "ds_article_page",
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            title: "External link",
-            name: "link",
-            type: "object",
-            fields: [
-              {
-                title: "URL",
-                name: "href",
-                type: "url",
-              },
-              {
-                title: "Open in new tab",
-                name: "blank",
-                type: "boolean",
-              },
-            ],
-          },
-        ],
-      },
     },
-    // Custom types ( add components here)
-    { type: "code_example_ref", icon: () => <Laptop /> },
-    { type: "code_snippet", icon: () => <span>{`< />`}</span> },
-    { type: "prop_table" },
-    { type: "linker", icon: () => <Link /> },
-    { type: "uu_interaction", icon: () => <BrailleFilled /> },
+    // Custom types (add components here)
     {
-      type: "do_dont",
-      icon: () => <SuccessStroke />,
+      type: "picture",
     },
     {
       type: "alert",
       icon: () => <Warning />,
     },
     {
-      type: "picture",
-      icon: () => <Picture />,
+      type: "figma_embed",
+      /* icon: () => <Warning />, */
+    },
+    { type: "code_snippet", icon: () => <span>{`< />`}</span> },
+    { type: "code_example_ref", icon: () => <Laptop /> },
+    { type: "prop_table", icon: () => <List /> },
+    { type: "uu_interaction", icon: () => <Braille /> },
+    {
+      type: "do_dont",
+      icon: () => <SuccessStroke />,
     },
   ],
 };

@@ -27,10 +27,10 @@ import code_example_ref from "./objects/code-example-ref";
 
 import prop_table, { prop } from "./objects/proptable";
 import do_dont, { doDont } from "./objects/do-dont";
-import linker, { links } from "./objects/linker";
 import uu_interactions, { keyboardTable } from "./objects/uu-interaction";
 import picture from "./objects/image";
 import alert from "./objects/alert";
+import figma_embed from "./objects/figma_embed";
 
 export default createSchema({
   name: "default",
@@ -53,13 +53,12 @@ export default createSchema({
     changelog,
     do_dont,
     doDont,
-    linker,
-    links,
     editors,
     uu_interactions,
     keyboardTable,
     picture,
     alert,
+    figma_embed,
     navigation,
     link,
     dropdown,

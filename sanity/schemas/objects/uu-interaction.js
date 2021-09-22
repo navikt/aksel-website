@@ -1,29 +1,29 @@
 export default {
-  title: "Komponent interaskjoner (UU)",
+  title: "Komponent interaskjoner",
   name: "uu_interaction",
   type: "object",
   fields: [
     {
       title: "Fokus håndtering (optional)",
-      name: "uu_interaction_focus",
-      type: "blockContent",
+      name: "focus",
+      type: "blockContent_simple",
     },
     {
       title: "Mus håndtering (optional)",
-      name: "uu_interaction_mouse",
-      type: "blockContent",
-    },
-    {
-      title: "Skjermleser (optional)",
-      name: "uu_interaction_screen_reader",
-      type: "blockContent",
+      name: "mouse",
+      type: "blockContent_simple",
     },
     {
       title: "Keyboard håndtering (optional)",
-      name: "uu_interaction_keyboard",
+      name: "keyboard",
       type: "array",
       description: "Liste med interaksjoner som rendres i en tabell",
       of: [{ type: "uu_interaction.keyboard" }],
+    },
+    {
+      title: "Skjermleser (optional)",
+      name: "screen_reader",
+      type: "blockContent_simple",
     },
   ],
   preview: {
