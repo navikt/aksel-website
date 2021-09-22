@@ -46,9 +46,30 @@ export default {
       initialValue: "medium",
     },
     {
+      title: "Heading (optional)",
+      name: "heading",
+      type: "string",
+    },
+    {
+      title: "Heading nivå",
+      name: "heading_level",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+      options: {
+        list: [
+          { value: "h2", title: "H2" },
+          { value: "h3", title: "H3" },
+          { value: "h4", title: "H4" },
+        ],
+        layout: "radio",
+      },
+      hidden: ({ parent }) => !parent.heading,
+      initialValue: "h2",
+    },
+    {
       title: "Innhold",
       name: "body",
-      type: "blockContent",
+      type: "blockContent_simple",
       validation: (Rule) => Rule.required(),
     },
   ],

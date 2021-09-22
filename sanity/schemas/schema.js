@@ -20,6 +20,7 @@ import vk_frontpage from "./documents/admin/frontpage";
 
 /*  Components */
 import block_content from "./block-content";
+import block_content_simple from "./block-content-simple";
 import code_example, { example } from "./objects/code-example";
 import prop_table, { prop } from "./objects/proptable";
 import do_dont, { doDont } from "./objects/do-dont";
@@ -41,6 +42,7 @@ export default createSchema({
     code_example,
     example,
     block_content,
+    block_content_simple,
     prop_table,
     prop,
     changelog,

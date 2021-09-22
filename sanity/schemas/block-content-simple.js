@@ -22,24 +22,9 @@ const TitleRenderer = (props, size, level) => (
   </Heading>
 );
 
-const Kbd = (props) => (
-  <kbd
-    {...props}
-    style={{
-      margin: "0 var(--navds-spacing-1)",
-      color: "var(--navds-color-darkgray)",
-      border: "1px solid var(--navds-color-gray-40)",
-      borderRadius: "3px",
-      padding: "2px",
-      fontSize: "1em",
-      textTransform: "uppercase",
-    }}
-  />
-);
-
 export default {
   title: "Block Content",
-  name: "blockContent",
+  name: "blockContent_simple",
   type: "array",
   of: [
     {
@@ -51,27 +36,6 @@ export default {
           value: "normal",
           blockEditor: {
             render: (props) => <BodyLong>{props.children}</BodyLong>,
-          },
-        },
-        {
-          title: "Title h2",
-          value: "h2",
-          blockEditor: {
-            render: (props) => TitleRenderer(props, "xlarge", "2"),
-          },
-        },
-        {
-          title: "Title h3",
-          value: "h3",
-          blockEditor: {
-            render: (props) => TitleRenderer(props, "large", "3"),
-          },
-        },
-        {
-          title: "Title h4",
-          value: "heading4",
-          blockEditor: {
-            render: (props) => TitleRenderer(props, "medium", "4"),
           },
         },
         {
@@ -120,14 +84,6 @@ export default {
               ),
             },
           },
-          {
-            title: "Keyboard",
-            value: "kbd",
-            blockEditor: {
-              icon: () => <Kbd>KBD</Kbd>,
-              render: (props) => <Kbd>{props.children}</Kbd>,
-            },
-          },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
@@ -170,23 +126,6 @@ export default {
           },
         ],
       },
-    },
-    // Custom types ( add components here)
-    { type: "code_example", icon: () => <Laptop /> },
-    { type: "prop_table" },
-    { type: "linker", icon: () => <Link /> },
-    { type: "uu_interaction", icon: () => <BrailleFilled /> },
-    {
-      type: "do_dont",
-      icon: () => <SuccessStroke />,
-    },
-    {
-      type: "alert",
-      icon: () => <Warning />,
-    },
-    {
-      type: "picture",
-      icon: () => <Picture />,
     },
   ],
 };
