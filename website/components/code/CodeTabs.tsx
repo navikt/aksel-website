@@ -1,8 +1,7 @@
-import { Copy, ExternalLink, Ruler, Sight } from "@navikt/ds-icons";
-import { Popover } from "@navikt/ds-react";
-import React, { useContext, useRef, useState } from "react";
+import { ExternalLink, Ruler, Sight } from "@navikt/ds-icons";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { Button, CodeContext, copyCode } from "./Code";
+import { Button, CodeContext } from "./Code";
 
 const Tabs = styled.div`
   border-bottom: 1px solid var(--navds-color-gray-60);
@@ -75,38 +74,12 @@ const CodeTabs = (): JSX.Element => {
   const {
     node,
     tabs,
-    /* previewToggles: tmpPreviewToggles, */
-    openPopover,
-    setOpenPopover,
     showPreview,
     activeTab,
     setActiveTab,
+    previews,
+    setPreviews,
   } = useContext(CodeContext);
-  /* const [previewToggles, setPreviewToggles] = tmpPreviewToggles; */
-  const buttonRef = useRef(null);
-
-  const handleTab = (index: number) => {
-    setActiveTab(index);
-  };
-
-  const handleCopy = (text: string) => {
-    copyCode(text);
-    setOpenPopover(true);
-  };
-
-  const toggleRuler = () => {
-    /* setPreviewToggles({
-      ...previewToggles,
-      ruler: !previewToggles.ruler,
-    }); */
-  };
-
-  const toggleOutline = () => {
-    /* setPreviewToggles({
-      ...previewToggles,
-      outline: !previewToggles.outline,
-    }); */
-  };
 
   return (
     <>
@@ -117,7 +90,9 @@ const CodeTabs = (): JSX.Element => {
               <Button
                 role="tab"
                 className="navds-body-short navds-body--small"
-                onClick={() => handleTab(i)}
+                onClick={() =>
+                  i === activeTab ? setActiveTab(-1) : setActiveTab(i)
+                }
                 aria-selected={i === activeTab}
               >
                 {tab.name}
@@ -129,22 +104,32 @@ const CodeTabs = (): JSX.Element => {
         <CopyWrapper>
           {showPreview && (
             <>
-              {/* <ToggleButton
-                aria-selected={previewToggles.ruler}
-                onClick={toggleRuler}
+              <ToggleButton
+                aria-selected={previews.ruler}
+                onClick={() =>
+                  setPreviews({
+                    ...previews,
+                    ruler: !previews.ruler,
+                  })
+                }
               >
                 <span className="sr-only">Toggle ruler for kode-eksempel</span>
                 <Ruler focusable="false" role="presentation" />
               </ToggleButton>
               <ToggleButton
-                aria-selected={previewToggles.outline}
-                onClick={toggleOutline}
+                aria-selected={previews.outlines}
+                onClick={() =>
+                  setPreviews({
+                    ...previews,
+                    outlines: !previews.outlines,
+                  })
+                }
               >
                 <span className="sr-only">
                   Toggle outlines for kode-eksempel
                 </span>
                 <Sight focusable="false" role="presentation" />
-              </ToggleButton> */}
+              </ToggleButton>
             </>
           )}
           {node.github && (
@@ -152,28 +137,8 @@ const CodeTabs = (): JSX.Element => {
               Github <ExternalLink aria-label="Boks med pil ut ikon" />
             </A>
           )}
-          {/* <Button
-            ref={(node) => (buttonRef.current = node)}
-            className="navds-body-short navds-body--small"
-            onClick={() => handleCopy(tabs[activeTab].content.toString())}
-          >
-            Copy
-            <Copy focusable="false" role="presentation" />
-          </Button> */}
         </CopyWrapper>
       </Tabs>
-
-      <Popover
-        role="alert"
-        aria-atomic="true"
-        anchorEl={buttonRef.current}
-        open={openPopover}
-        onClose={() => setOpenPopover(false)}
-        placement="right"
-        arrow={false}
-      >
-        <Popover.Content>Kopiert</Popover.Content>
-      </Popover>
     </>
   );
 };

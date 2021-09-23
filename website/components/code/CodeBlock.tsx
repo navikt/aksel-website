@@ -3,7 +3,7 @@ import Prism from "prismjs";
 import "prismjs/components/prism-bash.min";
 import "prismjs/components/prism-jsx.min";
 import "prismjs/components/prism-typescript.min";
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { CodeContext, CopyButton, copyCode } from "./Code";
 import { Popover } from "@navikt/ds-react";
 
@@ -35,12 +35,20 @@ const StyledCode = styled.code`
 `;
 
 const CodeBlock = ({ index }: { index: number }): JSX.Element => {
-  const { node, tabs, openPopover, setOpenPopover, showTabs, activeTab } =
-    useContext(CodeContext);
+  const { tabs, showTabs, activeTab } = useContext(CodeContext);
 
   const buttonRef = useRef(null);
+  const [openPopover, setOpenPopover] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout>();
 
-  if (activeTab === -1 /* || !node.tabs[index].example.code */) {
+  useEffect(() => {
+    if (openPopover) {
+      timeoutRef.current = setTimeout(() => setOpenPopover(false), 1500);
+      return () => timeoutRef.current && clearTimeout(timeoutRef.current);
+    }
+  }, [openPopover]);
+
+  if (activeTab === -1) {
     return null;
   }
 
@@ -49,8 +57,9 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
     setOpenPopover(true);
   };
 
-  let language = "jsx"; /* node?.tabs[index].example.language ?? "jsx" */
-  language = language === "terminal" ? "bash" : language;
+  let language = tabs[index].language ?? "jsx";
+  language =
+    language === "terminal" || language === "default" ? "bash" : language;
 
   const highlighted = Prism.highlight(
     tabs[index].content,

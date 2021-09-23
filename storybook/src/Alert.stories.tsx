@@ -1,6 +1,6 @@
 import React from "react";
 import { Alert } from "@navikt/ds-react";
-import ReactPreview from "./ReactPreview";
+import { InferHtml, InferReact } from "./InferCode";
 
 export default {
   title: "ds-react/Alert",
@@ -10,10 +10,10 @@ export default {
 const Template = ({ variant, label }) => {
   return (
     <>
-      <ReactPreview>
-        {`<Alert variant="${variant}">${label}</Alert>`}
-      </ReactPreview>
-      <Alert variant={variant}>{label}</Alert>
+      <InferReact>{`<Alert variant="${variant}">${label}</Alert>`}</InferReact>
+      <InferHtml>
+        <Alert variant={variant}>{label}</Alert>
+      </InferHtml>
     </>
   );
 };

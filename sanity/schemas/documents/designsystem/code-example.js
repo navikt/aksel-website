@@ -20,12 +20,12 @@ export default {
       type: "boolean",
       validation: (Rule) => Rule.required(),
       initialValue: true,
+      hidden: ({ parent }) => !parent.preview,
     },
     {
       type: "array",
       name: "tabs",
       title: "Kode",
-      description: "Tabber blir bare vist hvis det er > 1 tabs",
       of: [{ type: "code_example.example" }],
       validation: (Rule) => Rule.max(4),
     },

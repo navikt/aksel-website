@@ -1,6 +1,6 @@
 import React from "react";
 
-const PreviewReact = ({ children }) => {
+export const InferReact = ({ children }) => {
   return (
     <div aria-hidden="true" data-react style={{ display: "none" }}>
       {children}
@@ -8,4 +8,6 @@ const PreviewReact = ({ children }) => {
   );
 };
 
-export default PreviewReact;
+export const InferHtml = ({ children }) => {
+  return <div data-html>{children}</div>;
+};

@@ -8,7 +8,7 @@ import {
 import { CodeContext } from "./Code";
 
 const CodePreview = (): JSX.Element => {
-  const { node, tabs, setTabs } = useContext(CodeContext);
+  const { node, setTabs, previews } = useContext(CodeContext);
 
   const iframeRef = useRef(null);
   const [height, setHeight] = useState(200);
@@ -36,44 +36,40 @@ const CodePreview = (): JSX.Element => {
       iframeRef.current?.contentWindow.document.body.scrollHeight;
     setHeight(newHeight);
 
-    /* previewToggles.outline
+    previews.outlines
       ? iframeRef.current?.contentWindow.document.body.classList.add(
           "sb--outlines"
         )
       : iframeRef.current?.contentWindow.document.body.classList.remove(
           "sb--outlines"
-        ); */
-  }, [loaded /* , previewToggles.outline */]);
+        );
+  }, [loaded, previews.outlines]);
 
   useEffect(() => {
     if (!loaded || !node.infercode) return;
 
-    const element =
-      iframeRef.current?.contentWindow.document.getElementById("root");
-    setTabs([
-      { name: "React", content: element.children[0].textContent },
-      {
-        name: "HTML",
-        content: element.children[1].outerHTML,
-      },
-    ]);
+    const newTabs = [];
+
+    const react =
+      iframeRef.current?.contentWindow.document.querySelector("[data-react]");
+    const html =
+      iframeRef.current?.contentWindow.document.querySelector("[data-html]");
+
+    react &&
+      newTabs.push({
+        name: "React",
+        content: react.textContent,
+        language: "jsx",
+      });
+    html &&
+      newTabs.push({ name: "HTML", content: html.innerHTML, language: "html" });
+    newTabs && setTabs([...newTabs]);
   }, [loaded]);
 
-  /* useEffect(() => {
-    tabs[1](
-      Object.keys(tabContent).map((key, x) => ({
-        title: key,
-        content: tabContent[key],
-        active: x === 0,
-      }))
-    );
-  }, [tabContent]); */
-
-  // TODO: Forbedre state handling av iframes her? Laster sent etter side er rendret
-  /* useEffect(() => {
-    const toggles = previewToggles.ruler ? `globals=measureEnabled:true` : "";
+  useEffect(() => {
+    const toggles = previews.ruler ? `globals=measureEnabled:true` : "";
     setIframeUrl(`${baseUrl}&${toggles}`);
-  }, [previewToggles.ruler, baseUrl]); */
+  }, [previews.ruler, baseUrl]);
 
   return (
     <iframe

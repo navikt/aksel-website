@@ -23,7 +23,6 @@ const Caption = styled.caption`
 `;
 
 const Image = ({ node }: { node: any }): JSX.Element => {
-  console.log(node);
   return (
     <Div>
       <Figure>

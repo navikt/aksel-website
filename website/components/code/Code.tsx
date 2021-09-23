@@ -70,51 +70,65 @@ export const copyCode = (content: string): void => {
   }
 };
 
-type TabType = { name: string; content: React.ReactNode };
+type TabType = { name: string; content: React.ReactNode; language?: string };
+type PreviewType = { ruler: boolean; outlines: boolean };
 
 type ContextProps = {
   node: any;
   tabs: TabType[];
   setTabs: React.Dispatch<React.SetStateAction<TabType[]>>;
-  openPopover: boolean;
-  setOpenPopover: React.Dispatch<React.SetStateAction<boolean>>;
   showTabs: boolean;
   showPreview: boolean;
   activeTab: number;
   setActiveTab: React.Dispatch<React.SetStateAction<number>>;
+  previews: PreviewType;
+  setPreviews: React.Dispatch<React.SetStateAction<PreviewType>>;
 };
 
 export const CodeContext = createContext<ContextProps>({
   node: {},
   tabs: [],
   setTabs: () => null,
-  openPopover: false,
-  setOpenPopover: () => null,
   showTabs: false,
   showPreview: false,
   activeTab: 0,
   setActiveTab: () => null,
+  previews: { ruler: false, outlines: false },
+  setPreviews: () => null,
 });
 
 const Code = ({ node }: { node: any }): JSX.Element => {
   const [tabs, setTabs] = useState<TabType[]>([]);
-  const [openPopover, setOpenPopover] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const [previews, setPreviews] = useState<PreviewType>({
+    ruler: false,
+    outlines: false,
+  });
 
-  useEffect(() => {
-    if (openPopover) {
-      timeoutRef.current = setTimeout(() => setOpenPopover(false), 1500);
-      return () => timeoutRef.current && clearTimeout(timeoutRef.current);
-    }
-  }, [openPopover]);
-
-  if ((!node.preview && !node?.tabs) || !node?.infercode === undefined) {
+  if (
+    (!node.preview && !node?.tabs) ||
+    (node.preview && !node?.infercode === undefined)
+  ) {
     return null;
   }
 
+  useEffect(() => {
+    if (node.infercode === true) return;
+    const tabList: TabType[] = [];
+    node.tabs &&
+      node.tabs.forEach((tab) =>
+        tabList.push({
+          name: tab.title,
+          content: tab.example.code,
+          language: tab.example.language,
+        })
+      );
+    setTabs([...tabList]);
+  }, []);
+
   const showPreview = !!node.preview;
-  const showTabs = tabs.length > 0;
+  const showTabs =
+    (!!node.preview && tabs.length > 0) || (!node.preview && tabs.length > 1);
 
   return (
     <CodeContext.Provider
@@ -122,12 +136,12 @@ const Code = ({ node }: { node: any }): JSX.Element => {
         node,
         tabs,
         setTabs,
-        openPopover,
-        setOpenPopover,
         showPreview,
         activeTab,
         setActiveTab,
         showTabs,
+        previews,
+        setPreviews,
       }}
     >
       <Wrapper>
@@ -144,67 +158,6 @@ const Code = ({ node }: { node: any }): JSX.Element => {
       </Wrapper>
     </CodeContext.Provider>
   );
-
-  /* const [tabs, setTabs] = useState<
-    { title: string; active: false; content: string }[]
-  >([]);
-  const [openPopover, setOpenPopover] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout>();
-  const [previewToggles, setPreviewToggles] = useState({
-    ruler: false,
-    outline: false,
-  });
-
-  useEffect(() => {
-    const tabList = []; */
-  /* node.tabs &&
-      node.tabs.forEach((tab, x) =>
-        tabList.push({ title: tab.title, active: x === 0 })
-      ); */
-
-  /* setTabs([...tabList]);
-  }, []);
-
-  useEffect(() => {
-    if (openPopover) {
-      timeoutRef.current = setTimeout(() => setOpenPopover(false), 1500);
-      return () => timeoutRef.current && clearTimeout(timeoutRef.current);
-    }
-  }, [openPopover]);
-
-  if (!node.preview && !node?.tabs) {
-    return null;
-  }
-
-  const showPreview = !!node.preview;
-  const showTabs =
-    node.tabs && node.tabs.length > 0 && (showPreview || node.tabs.length > 1);
-
-  return (
-    <CodeContext.Provider
-      value={{
-        node,
-        previewToggles: [previewToggles, setPreviewToggles],
-        tabs: [tabs, setTabs],
-        popover: [openPopover, setOpenPopover],
-        showPreview,
-        showTabs,
-      }}
-    >
-      <Wrapper>
-        {showPreview && (
-          <Example>
-            <CodePreview />
-          </Example>
-        )}
-        {showTabs && <CodeTabs />}
-        {(node.tabs || tabs) &&
-          tabs.map((tab, i) => <CodeBlock key={tab.title} index={i} />)}
-      </Wrapper>
-    </CodeContext.Provider>
-  ); */
-
-  return <div></div>;
 };
 
 export default Code;
