@@ -14,7 +14,7 @@ const CodePreview = (): JSX.Element => {
     useContext(CodeContext);
 
   const iframeRef = useRef(null);
-  const [height, setHeight] = useState(200);
+  const [height, setHeight] = useState(180);
   const [loaded, setLoaded] = useState(false);
   const [iframeUrl, setIframeUrl] = useState("");
   const [baseUrl, setBaseUrl] = useState("");

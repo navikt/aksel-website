@@ -25,3 +25,26 @@ export const HeadingContainer = styled.div`
   padding-top: 2rem;
   padding-bottom: var(--navds-spacing-6);
 `;
+
+export const Inline = styled.span`
+  display: inline-flex;
+  gap: var(--navds-spacing-3);
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+export const PreviewBox = styled.div`
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  background: repeating-linear-gradient(
+    -55deg,
+    #fff,
+    #fff 10px,
+    #ddd 10px,
+    #ddd 20px
+  );
+`;

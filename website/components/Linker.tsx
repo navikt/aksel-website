@@ -2,6 +2,7 @@ import { LinkPanel } from "@navikt/ds-react";
 import "nav-frontend-tabell-style/dist/main.css";
 import React from "react";
 import styled from "styled-components";
+import { PreviewBox } from "./templating/TemplateStyles";
 
 const Div = styled.div`
   margin-bottom: var(--navds-spacing-8);
@@ -27,6 +28,7 @@ const LinkBox = styled.div`
 
 const Linker = ({ node }: { node: any }): JSX.Element => {
   /* console.log(node); */
+  return <PreviewBox>🚧 Linker 🚧</PreviewBox>;
   return (
     <Div>
       {node.linker_links.map((link) => {

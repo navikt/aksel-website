@@ -1,8 +1,11 @@
 import { Link, Heading } from "@navikt/ds-react";
+import React from "react";
 /* import styled from "styled-components"; */
 import { SanityBlockContent } from "./templating/SanityBlockContent";
+import { PreviewBox } from "./templating/TemplateStyles";
 
 const Changelog = ({ node }: { node: any }): JSX.Element => {
+  return <PreviewBox>🚧 Changelog 🚧</PreviewBox>;
   const changes = node.changes;
   return (
     <div>

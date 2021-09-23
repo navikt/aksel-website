@@ -2,6 +2,8 @@ import "nav-frontend-tabell-style/dist/main.css";
 import React from "react";
 import styled from "styled-components";
 import { urlFor } from "../lib/santiy";
+import { PreviewBox } from "./templating/TemplateStyles";
+import NextImage from "next/image";
 
 const Div = styled.div`
   margin-bottom: var(--navds-spacing-8);
@@ -23,11 +25,12 @@ const Caption = styled.caption`
 `;
 
 const Image = ({ node }: { node: any }): JSX.Element => {
+  return <PreviewBox>🚧 Image 🚧</PreviewBox>;
   return (
     <Div>
       <Figure>
-        <img
-          alt={node.picture_caption}
+        <NextImage
+          alt={node.picture_caption as string}
           src={urlFor(node.picture_image).format("jpg").quality(80).url() || ""}
         />
         <Caption className="navds-body-long">{node.picture_caption}</Caption>

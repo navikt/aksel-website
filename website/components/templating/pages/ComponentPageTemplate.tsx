@@ -1,9 +1,10 @@
-import { Ingress, Link, Heading } from "@navikt/ds-react";
+import { Ingress, Link, Heading, Tag } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
 import FigmaIcon from "../../assets/FigmaIcon";
 import GithubIcon from "../../assets/GithubIcon";
+import NpmIcon from "../../assets/NpmIcon";
 import LastUpdated from "../../LastUpdated";
 import StatusTag from "../../StatusTag";
 import TableOfContents from "../../TableOfContents";
@@ -11,11 +12,15 @@ import { Tab, Tabs } from "../../Tabs";
 import { SanityBlockContent } from "../SanityBlockContent";
 import {
   HeadingContainer,
+  Inline,
   MaxWidthContainer,
   SanityBlockContainer,
 } from "../TemplateStyles";
 
 const Links = styled.div`
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
   display: flex;
   column-gap: 1rem;
   margin-left: var(--navds-spacing-4);
@@ -23,8 +28,13 @@ const Links = styled.div`
   a {
     text-decoration: none;
     color: var(--navds-color-darkgray);
+    padding: 0.25rem;
     :hover {
       text-decoration: underline;
+      background: transparent;
+    }
+    :focus {
+      background: transparent;
     }
   }
 `;
@@ -34,12 +44,6 @@ const StyledDiv = styled.div`
   align-items: center;
   margin-bottom: var(--navds-spacing-2);
   justify-content: space-between;
-`;
-
-const Inline = styled.span`
-  display: inline-flex;
-  column-gap: var(--navds-spacing-3);
-  flex-wrap: wrap;
 `;
 
 const ComponentPageTemplate = ({ data }: { data: any }): JSX.Element => {
@@ -68,18 +72,24 @@ const ComponentPageTemplate = ({ data }: { data: any }): JSX.Element => {
           <StyledDiv>
             <Inline>
               <StatusTag status={data.status} />
-              <LastUpdated date={data._updatedAt} />
+              <Tag variant="info">
+                <LastUpdated date={data.last_update} />
+              </Tag>
             </Inline>
             <Links>
-              {data.npm_link && <Link href={data.npm_link}>NPM</Link>}
+              {data.npm_link && (
+                <Link href={data.npm_link}>
+                  <NpmIcon />
+                </Link>
+              )}
               {data.github_link && (
                 <Link href={data.github_link}>
-                  Github <GithubIcon />
+                  <GithubIcon />
                 </Link>
               )}
               {data.figma_link && (
                 <Link href={data.figma_link}>
-                  Figma <FigmaIcon />
+                  <FigmaIcon />
                 </Link>
               )}
             </Links>

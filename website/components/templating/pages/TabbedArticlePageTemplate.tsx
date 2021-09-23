@@ -1,4 +1,4 @@
-import { Heading } from "@navikt/ds-react";
+import { Heading, Tag } from "@navikt/ds-react";
 import Error from "next/error";
 import { useRouter } from "next/router";
 import React from "react";
@@ -9,6 +9,7 @@ import { Tab, Tabs } from "../../Tabs";
 import { SanityBlockContent } from "../SanityBlockContent";
 import {
   HeadingContainer,
+  Inline,
   MaxWidthContainer,
   SanityBlockContainer,
 } from "../TemplateStyles";
@@ -45,8 +46,12 @@ const TabbedActiclePageTemplate = ({
           <Heading size="2xlarge" level="1" spacing>
             {data.heading}
           </Heading>
-          <StatusTag status={data.status} />
-          <LastUpdated date={data._updatedAt} />
+          <Inline>
+            <StatusTag status={data.status} />
+            <Tag variant="info">
+              <LastUpdated date={data.last_update} />
+            </Tag>
+          </Inline>
         </HeadingContainer>
       </MaxWidthContainer>
       {tabs.length > 1 && (

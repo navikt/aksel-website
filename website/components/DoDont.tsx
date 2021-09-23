@@ -1,7 +1,10 @@
 import { Label } from "@navikt/ds-react";
+import React from "react";
 import styled from "styled-components";
 import { urlFor } from "../lib/santiy";
 import { SanityBlockContent } from "./templating/SanityBlockContent";
+import Image from "next/image";
+import { PreviewBox } from "./templating/TemplateStyles";
 
 const Figure = styled.figure`
   display: inline-flex;
@@ -85,7 +88,7 @@ const Element = ({
   return (
     <Figure>
       {multiple ? (
-        <img
+        <Image
           alt={block.do_dont_alt}
           src={
             urlFor(block.do_dont_img)
@@ -98,7 +101,7 @@ const Element = ({
           }
         />
       ) : (
-        <img
+        <Image
           alt={block.do_dont_alt}
           src={urlFor(block.do_dont_img).format("jpg").quality(80).url() || ""}
         />
@@ -119,6 +122,7 @@ const Element = ({
 };
 
 const DoDont = ({ node }: { node: any }): JSX.Element => {
+  return <PreviewBox>🚧 Do / Dont 🚧</PreviewBox>;
   const multiple = node.do_dont_block.length > 1;
   return (
     <>

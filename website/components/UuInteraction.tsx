@@ -1,7 +1,9 @@
 import { Heading } from "@navikt/ds-react";
 import "nav-frontend-tabell-style/dist/main.css";
+import React from "react";
 import styled from "styled-components";
 import { SanityBlockContent } from "./templating/SanityBlockContent";
+import { PreviewBox } from "./templating/TemplateStyles";
 
 const Div = styled.div`
   margin-bottom: var(--navds-spacing-8);
@@ -14,7 +16,7 @@ const Td = styled.td`
 `;
 
 const UuInteraction = ({ node }: { node: any }): JSX.Element => {
-  /*   console.log(node); */
+  return <PreviewBox>🚧 Komponent interaksjoner 🚧</PreviewBox>;
   return (
     <Div>
       {node.uu_interaction_focus && (
