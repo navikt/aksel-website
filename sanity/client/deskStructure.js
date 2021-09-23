@@ -2,8 +2,8 @@
 import React from "react";
 import S from "@sanity/desk-tool/structure-builder";
 /* import { FrontpageWebPreview } from "./web-previews/FrontpageWebPreview"; */
-/* import { PageWebPreview } from "../web-previews/PageWebPreview";
-import { ComponentPageWebPreview } from "../web-previews/ComponentWebPreview"; */
+import { PageWebPreview } from "../web-previews/PageWebPreview";
+import { ComponentPageWebPreview } from "../web-previews/ComponentWebPreview";
 import {
   Facilitet,
   FileContent,
@@ -142,31 +142,28 @@ export default () =>
     ]);
 
 export const getDefaultDocumentNode = ({ schemaType }) => {
-  /* TODO: Uncomment when preview site is fixed */
-  /* switch (schemaType) {
+  switch (schemaType) {
     case "ds_component_page":
       return S.document().views([
         S.view.form(),
-        S.view
-          .component(ComponentPageWebPreview)
-          .title("Preview (krever naisdevice)"),
+        S.view.component(ComponentPageWebPreview).title("Preview"),
       ]);
     case "ds_article_page":
       return S.document().views([
         S.view.form(),
-        S.view.component(PageWebPreview).title("Preview (krever naisdevice)"),
+        S.view.component(PageWebPreview).title("Preview"),
       ]);
     case "ds_tabbed_article_page":
       return S.document().views([
         S.view.form(),
-        S.view.component(PageWebPreview).title("Preview (krever naisdevice)"),
+        S.view.component(PageWebPreview).title("Preview"),
       ]);
     case "gp_article_page":
       return S.document().views([
         S.view.form(),
-        S.view.component(PageWebPreview).title("Preview (krever naisdevice)"),
+        S.view.component(PageWebPreview).title("Preview"),
       ]);
-  } */
+  }
 };
 
 // single page (eks forside)

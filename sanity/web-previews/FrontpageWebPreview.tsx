@@ -3,7 +3,8 @@ import { WebPreviewWrapper } from "./WebPreviewWrapper";
 
 export const FrontpageWebPreview = (ctx: any) => {
   const previewUrl = `/?preview=true`;
-  const webUrl = "https://verktoykasse-prototype.dev.nav.no";
+  /* const webUrl = "https://verktoykasse-prototype.dev.nav.no"; */
+  const webUrl = "https://verktoykassen-ob1sg07rc-kenajoh.vercel.app";
   const url =
     process.env.NODE_ENV === "production"
       ? webUrl + previewUrl
