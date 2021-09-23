@@ -1,5 +1,5 @@
 import copy from "copy-to-clipboard";
-import React, { createContext, useEffect, useRef, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import CodeBlock from "./CodeBlock";
 import CodePreview from "./CodePreview";
@@ -42,7 +42,7 @@ export const Button = styled.button`
   background-color: transparent;
 
   :hover {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: var(--navds-color-gray-80);
   }
 
   :focus {
@@ -58,8 +58,9 @@ export const Button = styled.button`
 
 export const CopyButton = styled(Button)`
   position: absolute;
-  right: 0.3125rem;
-  top: 0.3125rem;
+  top: 3px;
+  right: 3px;
+  background-color: var(--navds-color-darkgray);
 `;
 
 export const copyCode = (content: string): void => {
@@ -83,6 +84,8 @@ type ContextProps = {
   setActiveTab: React.Dispatch<React.SetStateAction<number>>;
   previews: PreviewType;
   setPreviews: React.Dispatch<React.SetStateAction<PreviewType>>;
+  fullscreenLink: string;
+  setFullscreenLink: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const CodeContext = createContext<ContextProps>({
@@ -95,6 +98,8 @@ export const CodeContext = createContext<ContextProps>({
   setActiveTab: () => null,
   previews: { ruler: false, outlines: false },
   setPreviews: () => null,
+  fullscreenLink: "",
+  setFullscreenLink: () => null,
 });
 
 const Code = ({ node }: { node: any }): JSX.Element => {
@@ -104,6 +109,7 @@ const Code = ({ node }: { node: any }): JSX.Element => {
     ruler: false,
     outlines: false,
   });
+  const [fullscreenLink, setFullscreenLink] = useState("");
 
   if (
     (!node.preview && !node?.tabs) ||
@@ -142,6 +148,8 @@ const Code = ({ node }: { node: any }): JSX.Element => {
         showTabs,
         previews,
         setPreviews,
+        fullscreenLink,
+        setFullscreenLink,
       }}
     >
       <Wrapper>

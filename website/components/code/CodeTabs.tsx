@@ -1,4 +1,4 @@
-import { ExternalLink, Ruler, Sight } from "@navikt/ds-icons";
+import { NewTab, Ruler, Sight } from "@navikt/ds-icons";
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { Button, CodeContext } from "./Code";
@@ -6,8 +6,8 @@ import { Button, CodeContext } from "./Code";
 const Tabs = styled.div`
   border-bottom: 1px solid var(--navds-color-gray-60);
   background-color: var(--navds-color-darkgray);
-  padding: 1px 1px 0 1px;
-  width: calc(100% - 2px);
+  padding: 1px;
+  padding-bottom: 0;
   display: flex;
   justify-content: space-between;
 `;
@@ -24,7 +24,7 @@ const Li = styled.li`
 
 const A = styled.a`
   color: rgba(255, 255, 255, 0.85);
-  padding: 0.75rem 0.5rem;
+  padding: 0.75rem 0.75rem;
   display: flex;
   align-items: center;
   column-gap: 0.5rem;
@@ -79,6 +79,7 @@ const CodeTabs = (): JSX.Element => {
     setActiveTab,
     previews,
     setPreviews,
+    fullscreenLink,
   } = useContext(CodeContext);
 
   return (
@@ -104,6 +105,11 @@ const CodeTabs = (): JSX.Element => {
         <CopyWrapper>
           {showPreview && (
             <>
+              {fullscreenLink && (
+                <A target="_blank" href={fullscreenLink}>
+                  <NewTab />
+                </A>
+              )}
               <ToggleButton
                 aria-selected={previews.ruler}
                 onClick={() =>
@@ -134,7 +140,7 @@ const CodeTabs = (): JSX.Element => {
           )}
           {node.github && (
             <A className="navds-body-short navds-body--s" href={node.github}>
-              Github <ExternalLink aria-label="Boks med pil ut ikon" />
+              Github
             </A>
           )}
         </CopyWrapper>

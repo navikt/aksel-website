@@ -6,9 +6,12 @@ import {
   useState,
 } from "react";
 import { CodeContext } from "./Code";
+import prettier from "prettier/standalone";
+import babylon from "prettier/parser-babel";
 
 const CodePreview = (): JSX.Element => {
-  const { node, setTabs, previews } = useContext(CodeContext);
+  const { node, setTabs, previews, setFullscreenLink } =
+    useContext(CodeContext);
 
   const iframeRef = useRef(null);
   const [height, setHeight] = useState(200);
@@ -23,6 +26,7 @@ const CodePreview = (): JSX.Element => {
         "/storybook/" + url[0].replace("index.html", "iframe.html");
       setBaseUrl(newUrl);
       setIframeUrl(newUrl);
+      setFullscreenLink(newUrl);
     }
   }, [node.preview]);
 
@@ -45,6 +49,35 @@ const CodePreview = (): JSX.Element => {
         );
   }, [loaded, previews.outlines]);
 
+  /* Resizes height if content changes, example accordion */
+  useEffect(() => {
+    if (!loaded) return;
+    const resizeObserver = new ResizeObserver((entries) => {
+      const newHeight = entries[0].target.scrollHeight;
+      setHeight(newHeight);
+    });
+
+    resizeObserver.observe(iframeRef.current?.contentWindow.document.body);
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [loaded, previews.outlines]);
+
+  const formatCode = (code) => {
+    try {
+      const formated = prettier.format(code, {
+        parser: "babel",
+        plugins: [babylon],
+        printWidth: 60,
+        semi: false,
+      });
+      /* Prettier puts a semicolon at start of each html/jsx block... */
+      return formated.startsWith(";") ? formated.slice(1) : formated;
+    } catch {
+      return code;
+    }
+  };
+
   useEffect(() => {
     if (!loaded || !node.infercode) return;
 
@@ -58,11 +91,15 @@ const CodePreview = (): JSX.Element => {
     react &&
       newTabs.push({
         name: "React",
-        content: react.textContent,
+        content: formatCode(react.textContent),
         language: "jsx",
       });
     html &&
-      newTabs.push({ name: "HTML", content: html.innerHTML, language: "html" });
+      newTabs.push({
+        name: "HTML",
+        content: formatCode(html.innerHTML),
+        language: "html",
+      });
     newTabs && setTabs([...newTabs]);
   }, [loaded]);
 

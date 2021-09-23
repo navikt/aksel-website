@@ -95,7 +95,9 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
         placement="right"
         arrow={false}
       >
-        <Popover.Content>Kopiert</Popover.Content>
+        <Popover.Content style={{ padding: "0.75rem" }}>
+          Kopierte kodesnutt
+        </Popover.Content>
       </Popover>
     </>
   );
