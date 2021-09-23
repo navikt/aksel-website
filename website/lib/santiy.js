@@ -12,6 +12,7 @@ import { config } from "./config";
  * Set up a helper function for generating Image URLs with only the asset reference data in your documents.
  * Read more: https://www.sanity.io/docs/image-url
  **/
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const urlFor = (source) => createImageUrlBuilder(config).image(source);
 
 // Set up the live preview subscription hook

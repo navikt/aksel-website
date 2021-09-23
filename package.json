@@ -17,6 +17,7 @@
     "dev": "yarn workspace website dev",
     "build:next": "yarn sb:build && yarn workspace website build",
     "serve:next": "yarn workspace website start",
+    "deploy:vercel": "yarn workspace website deploy:vercel",
     "deploy": "yarn workspace website deploy",
     "sanity": "yarn workspace sanity start",
     "sanity:deploy": "yarn workspace sanity deploy",
