@@ -35,27 +35,18 @@ const StyledCode = styled.code`
 `;
 
 const CodeBlock = ({ index }: { index: number }): JSX.Element => {
-  const {
-    node,
-    tabs: tmpTabs,
-    popover: tmpPopover,
-    showTabs,
-  } = useContext(CodeContext);
-  const [tabs] = tmpTabs;
-
-  const [popover, setPopover] = tmpPopover;
+  const { node, tabs, openPopover, setOpenPopover, showTabs, activeTab } =
+    useContext(CodeContext);
 
   const buttonRef = useRef(null);
 
-  const activeIndex = tabs.findIndex((tab) => tab.active);
-
-  if (activeIndex === -1 /* || !node.tabs[index].example.code */) {
+  if (activeTab === -1 /* || !node.tabs[index].example.code */) {
     return null;
   }
 
   const handleCopy = (text: string) => {
     copyCode(text);
-    setPopover(true);
+    setOpenPopover(true);
   };
 
   let language = "jsx"; /* node?.tabs[index].example.language ?? "jsx" */
@@ -71,18 +62,16 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
     <>
       <PreWrapper
         style={{
-          display: activeIndex === index ? "block" : "none",
+          display: activeTab === index ? "block" : "none",
         }}
       >
-        {!showTabs && (
-          <CopyButton
-            ref={(node) => (buttonRef.current = node)}
-            className="navds-body-short navds-body--small"
-            onClick={() => handleCopy(node.tabs[index].example.code)}
-          >
-            Copy
-          </CopyButton>
-        )}
+        <CopyButton
+          ref={(node) => (buttonRef.current = node)}
+          className="navds-body-short navds-body--small"
+          onClick={() => handleCopy(tabs[index].content.toString())}
+        >
+          Copy
+        </CopyButton>
         <Pre data-tabs={showTabs}>
           <StyledCode dangerouslySetInnerHTML={{ __html: highlighted }} />
         </Pre>
@@ -92,8 +81,8 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
         role="alert"
         aria-atomic="true"
         anchorEl={buttonRef.current}
-        open={popover}
-        onClose={() => setPopover(false)}
+        open={openPopover}
+        onClose={() => setOpenPopover(false)}
         placement="right"
         arrow={false}
       >

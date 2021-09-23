@@ -14,6 +14,14 @@ export default {
       type: "url",
     },
     {
+      title: "Hent kode automatisk fra storybook",
+      description: "Prøver å hente React og HTML kode automatisk fra storybook",
+      name: "infercode",
+      type: "boolean",
+      validation: (Rule) => Rule.required(),
+      initialValue: true,
+    },
+    {
       type: "array",
       name: "tabs",
       title: "Kode",

@@ -1,6 +1,6 @@
 import { Copy, ExternalLink, Ruler, Sight } from "@navikt/ds-icons";
 import { Popover } from "@navikt/ds-react";
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import styled from "styled-components";
 import { Button, CodeContext, copyCode } from "./Code";
 
@@ -74,38 +74,38 @@ const ToggleButton = styled.button`
 const CodeTabs = (): JSX.Element => {
   const {
     node,
-    tabs: tmpTabs,
-    previewToggles: tmpPreviewToggles,
-    popover: tmpPopover,
+    tabs,
+    /* previewToggles: tmpPreviewToggles, */
+    openPopover,
+    setOpenPopover,
     showPreview,
+    activeTab,
+    setActiveTab,
   } = useContext(CodeContext);
-  const [tabs, setTabs] = tmpTabs;
-  const [previewToggles, setPreviewToggles] = tmpPreviewToggles;
-  const [popover, setPopover] = tmpPopover;
+  /* const [previewToggles, setPreviewToggles] = tmpPreviewToggles; */
   const buttonRef = useRef(null);
 
   const handleTab = (index: number) => {
-    const newTabs = tabs.map((tab, i) => ({ ...tab, active: i === index }));
-    setTabs([...newTabs]);
+    setActiveTab(index);
   };
 
   const handleCopy = (text: string) => {
     copyCode(text);
-    setPopover(true);
+    setOpenPopover(true);
   };
 
   const toggleRuler = () => {
-    setPreviewToggles({
+    /* setPreviewToggles({
       ...previewToggles,
       ruler: !previewToggles.ruler,
-    });
+    }); */
   };
 
   const toggleOutline = () => {
-    setPreviewToggles({
+    /* setPreviewToggles({
       ...previewToggles,
       outline: !previewToggles.outline,
-    });
+    }); */
   };
 
   return (
@@ -113,14 +113,14 @@ const CodeTabs = (): JSX.Element => {
       <Tabs>
         <Ul role="tablist">
           {tabs.map((tab, i) => (
-            <Li key={tab.title} role="presentation">
+            <Li key={tab.content.toString()} role="presentation">
               <Button
                 role="tab"
                 className="navds-body-short navds-body--small"
                 onClick={() => handleTab(i)}
-                aria-selected={tab.active}
+                aria-selected={i === activeTab}
               >
-                {tab.title}
+                {tab.name}
               </Button>
             </Li>
           ))}
@@ -129,7 +129,7 @@ const CodeTabs = (): JSX.Element => {
         <CopyWrapper>
           {showPreview && (
             <>
-              <ToggleButton
+              {/* <ToggleButton
                 aria-selected={previewToggles.ruler}
                 onClick={toggleRuler}
               >
@@ -144,7 +144,7 @@ const CodeTabs = (): JSX.Element => {
                   Toggle outlines for kode-eksempel
                 </span>
                 <Sight focusable="false" role="presentation" />
-              </ToggleButton>
+              </ToggleButton> */}
             </>
           )}
           {node.github && (
@@ -152,18 +152,14 @@ const CodeTabs = (): JSX.Element => {
               Github <ExternalLink aria-label="Boks med pil ut ikon" />
             </A>
           )}
-          <Button
+          {/* <Button
             ref={(node) => (buttonRef.current = node)}
             className="navds-body-short navds-body--small"
-            onClick={() =>
-              handleCopy(
-                node.tabs[tabs.findIndex((tab) => tab.active)].example.code
-              )
-            }
+            onClick={() => handleCopy(tabs[activeTab].content.toString())}
           >
             Copy
             <Copy focusable="false" role="presentation" />
-          </Button>
+          </Button> */}
         </CopyWrapper>
       </Tabs>
 
@@ -171,8 +167,8 @@ const CodeTabs = (): JSX.Element => {
         role="alert"
         aria-atomic="true"
         anchorEl={buttonRef.current}
-        open={popover}
-        onClose={() => setPopover(false)}
+        open={openPopover}
+        onClose={() => setOpenPopover(false)}
         placement="right"
         arrow={false}
       >

@@ -8,20 +8,13 @@ import {
 import { CodeContext } from "./Code";
 
 const CodePreview = (): JSX.Element => {
-  const {
-    node,
-    previewToggles: tmpPreviewToggles,
-    tabs,
-  } = useContext(CodeContext);
-  const [previewToggles] = tmpPreviewToggles;
-  const iframeRef = useRef(null);
+  const { node, tabs, setTabs } = useContext(CodeContext);
 
+  const iframeRef = useRef(null);
   const [height, setHeight] = useState(200);
   const [loaded, setLoaded] = useState(false);
   const [iframeUrl, setIframeUrl] = useState("");
   const [baseUrl, setBaseUrl] = useState("");
-
-  const [tabContent, setTabContent] = useState({ react: "", html: "" });
 
   useLayoutEffect(() => {
     const url = node.preview.split("&")[0].match(/(?<=storybook\/)(.*\n?)/);
@@ -43,26 +36,30 @@ const CodePreview = (): JSX.Element => {
       iframeRef.current?.contentWindow.document.body.scrollHeight;
     setHeight(newHeight);
 
-    previewToggles.outline
+    /* previewToggles.outline
       ? iframeRef.current?.contentWindow.document.body.classList.add(
           "sb--outlines"
         )
       : iframeRef.current?.contentWindow.document.body.classList.remove(
           "sb--outlines"
-        );
-  }, [loaded, previewToggles.outline]);
+        ); */
+  }, [loaded /* , previewToggles.outline */]);
 
   useEffect(() => {
-    if (!loaded) return;
+    if (!loaded || !node.infercode) return;
+
     const element =
       iframeRef.current?.contentWindow.document.getElementById("root");
-    setTabContent({
-      react: element.children[0].textContent,
-      html: element.children[1].outerHTML,
-    });
+    setTabs([
+      { name: "React", content: element.children[0].textContent },
+      {
+        name: "HTML",
+        content: element.children[1].outerHTML,
+      },
+    ]);
   }, [loaded]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     tabs[1](
       Object.keys(tabContent).map((key, x) => ({
         title: key,
@@ -70,13 +67,13 @@ const CodePreview = (): JSX.Element => {
         active: x === 0,
       }))
     );
-  }, [tabContent]);
+  }, [tabContent]); */
 
   // TODO: Forbedre state handling av iframes her? Laster sent etter side er rendret
-  useEffect(() => {
+  /* useEffect(() => {
     const toggles = previewToggles.ruler ? `globals=measureEnabled:true` : "";
     setIframeUrl(`${baseUrl}&${toggles}`);
-  }, [previewToggles.ruler, baseUrl]);
+  }, [previewToggles.ruler, baseUrl]); */
 
   return (
     <iframe
