@@ -16,7 +16,6 @@ import styled from "styled-components";
 import Changelog from "../Changelog";
 import Code from "../code/Code";
 import ParseCodeRef from "../code/ParseCodeRef";
-import CopyAnchor from "../CopyAnchor";
 import DoDont from "../DoDont";
 import Image from "../Image";
 import Linker from "../Linker";
@@ -118,10 +117,6 @@ const serializers = {
               >
                 {children}
               </TitleWithScrollMargin>
-              <CopyAnchor
-                aria-label={`Kopier link til seksjon med tittel ${children}`}
-                anchor={`#${slug}`}
-              />
             </>
           );
         }

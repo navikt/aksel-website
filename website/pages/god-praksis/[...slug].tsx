@@ -46,7 +46,7 @@ const PagePicker = (props: {
   );
 };
 
-const query = `*[_type in ["ds_component_page", "ds_article_page", "ds_tabbed_article_page"]]{ _type, 'slug': slug.current }`;
+const query = `*[_type in ["gp_article_page"]]{ _type, 'slug': slug.current }`;
 
 export const getStaticPaths = async (): Promise<{
   fallback: boolean;
@@ -54,7 +54,6 @@ export const getStaticPaths = async (): Promise<{
 }> => {
   const documents: any[] | null = await getClient(false).fetch(query);
   const paths = [];
-  const componentPageTabs = ["design", "utvikling", "tilgjengelighet"];
 
   documents?.forEach((page) => {
     if (!page.slug) {
@@ -62,41 +61,11 @@ export const getStaticPaths = async (): Promise<{
     }
     const slug = page.slug.split("/");
 
-    const defaultPush = () =>
-      paths.push({
-        params: {
-          slug,
-        },
-      });
-    switch (page._type) {
-      case "ds_component_page":
-        componentPageTabs.forEach((tab) => {
-          paths.push({
-            params: {
-              slug: [...slug, tab],
-            },
-          });
-        });
-        defaultPush();
-        break;
-      case "ds_tabbed_article_page": {
-        if (!page.tabs) break;
-        const tabbedArticleTabs = page.tabs.map(
-          (tab) => tab.title?.toLowerCase().replace(/\s+/g, "-") || "undefined"
-        );
-        tabbedArticleTabs.forEach((tab) => {
-          paths.push({
-            params: {
-              slug: [...slug, tab],
-            },
-          });
-        });
-        break;
-      }
-      default:
-        defaultPush();
-        break;
-    }
+    paths.push({
+      params: {
+        slug,
+      },
+    });
   });
 
   return {
@@ -119,48 +88,7 @@ const ds_query = `*[slug.current match $slug][0]
 {
   ...,
   "slug": slug.current,
-	usage[]{
-    ...,
-    _type == "code_example_ref" =>{
-    	"ref": @.ref->
-  	}
-  },
-  design[]{
-      ...,
-      _type == "code_example_ref" =>{
-        "ref": @.ref->
-      }
-  },
-  development[]{
-      ...,
-      _type == "code_example_ref" =>{
-        "ref": @.ref->
-      }
-  },
-  accessibility[]{
-      ...,
-      _type == "code_example_ref" =>{
-        "ref": @.ref->
-      }
-  },
 }`;
-
-/* const sidebarQuery = `
-*[_id == 'navigation_designsystem'][0] {
-  "sidebar": sidemenu[]{
-   ...,
-   link_ref->{_id, slug},
-    dropdown[]{
-      ...,
-       link_ref->{_id, slug},
-      dropdown[]{
-        ...,
-        link_ref->{_id, slug},
-      }
-    }
-  }
- }
-`; */
 
 export const getStaticProps = async ({
   params: { slug },
@@ -173,7 +101,7 @@ export const getStaticProps = async ({
 
   const enablePreview = !!preview || isDevelopment();
   const page = await getClient(enablePreview).fetch(ds_query, {
-    slug: "designsystem/" + joinedSlug,
+    slug: "god-praksis/" + joinedSlug,
   });
 
   /* const sidebar = await getClient(true).fetch(sidebarQuery); */

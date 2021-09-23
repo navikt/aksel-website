@@ -10,14 +10,15 @@ const templates = {
   ds_tabbed_article_page: (props: any) => (
     <TabbedActiclePageTemplate {...props} />
   ),
+  gp_article_page: (props: any) => <ActiclePageTemplate {...props} />,
 };
 
 const TemplatePicker = ({
   data,
-  sidebar,
-}: {
+}: /* sidebar, */
+{
   data: any;
-  sidebar: any;
+  /* sidebar: any; */
 }): JSX.Element => {
   const [mounted, setMounted] = useState(false);
 
@@ -43,7 +44,7 @@ const TemplatePicker = ({
 
   const Template = templates[data._type];
 
-  return <Template data={data} sidebar={sidebar} />;
+  return <Template data={data} /* sidebar={sidebar} */ />;
 };
 
 export default TemplatePicker;

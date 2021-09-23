@@ -2,13 +2,14 @@ import React, { useContext } from "react";
 import Head from "next/head";
 import styled from "styled-components";
 import Heading from "./Heading";
-import Sidebar from "./Sidebar";
+/* import Sidebar from "./Sidebar"; */
 import { PagePropsContext } from "../../../pages/_app";
 
 const Wrapper = styled.div`
   display: flex;
   margin-top: 56px;
   min-height: calc(100vh - 56px);
+  justify-content: center;
 
   @media (max-width: 1068px) {
     display: block;
@@ -43,7 +44,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
       <>
         <Heading />
         <Wrapper>
-          {pageProps.sidebar && <Sidebar sidebar={pageProps.sidebar} />}
+          {/* {pageProps.sidebar && <Sidebar sidebar={pageProps.sidebar} />} */}
           <MainContent>{children}</MainContent>
         </Wrapper>
       </>
