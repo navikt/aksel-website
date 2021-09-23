@@ -44,7 +44,7 @@ export const PreviewBox = styled.div`
     -55deg,
     #fff,
     #fff 10px,
-    #ddd 10px,
-    #ddd 20px
+    #eee 10px,
+    #eee 20px
   );
 `;
