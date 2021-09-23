@@ -7,7 +7,19 @@ import Layout from "../components/templating/layout/Layout";
 import slugger from "../components/slugger";
 import { useRouter } from "next/router";
 import Error from "next/error";
+import styled from "styled-components";
+import { Label, Loader } from "@navikt/ds-react";
 export const PagePropsContext = createContext<any[]>([]);
+
+const StyledLoader = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+`;
 
 function App({
   Component,
@@ -31,7 +43,12 @@ function App({
   }
 
   if (router.isFallback) {
-    return <div>Laster...</div>;
+    return (
+      <StyledLoader>
+        <Loader size="2xlarge" aria-label="Laster inn preview-side" />
+        <Label>Laster inn preview innhold...</Label>
+      </StyledLoader>
+    );
   }
 
   return (

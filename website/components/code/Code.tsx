@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 `;
 
 const Example = styled.div`
-  background-color: #f9f9f9;
+  background-color: white;
   display: flex;
   justify-content: center;
   padding: 0;
