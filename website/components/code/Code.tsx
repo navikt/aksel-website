@@ -15,7 +15,23 @@ const Wrapper = styled.div`
 `;
 
 const Example = styled.div`
-  background-color: white;
+  background-color: #fff;
+  background-image: linear-gradient(
+      45deg,
+      rgb(248, 248, 248) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgb(248, 248, 248) 75%
+    ),
+    linear-gradient(
+      45deg,
+      rgb(248, 248, 248) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgb(248, 248, 248) 75%
+    );
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
   display: flex;
   justify-content: center;
   padding: 0;
