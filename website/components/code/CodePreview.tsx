@@ -23,7 +23,10 @@ const CodePreview = (): JSX.Element => {
     const url = node.preview.split("&")[0].match(/(?<=storybook\/)(.*\n?)/);
     if (url) {
       const newUrl =
-        "/storybook/" + url[0].replace("index.html", "iframe.html");
+        "/storybook/" +
+        url[0]
+          .replace("index.html", "iframe.html")
+          .replace("path=/story/", "id=");
       setBaseUrl(newUrl);
       setIframeUrl(newUrl);
       setFullscreenLink(newUrl);
