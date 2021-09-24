@@ -66,9 +66,9 @@ const CodePreview = (): JSX.Element => {
     };
   }, [loaded, previews.outlines]);
 
-  const formatCode = (code) => {
+  const formatCode = (code, tag) => {
     try {
-      const formated = prettier.format(code, {
+      const formated = prettier.format(`<${tag ?? ""}>${code}</${tag ?? ""}>`, {
         parser: "babel",
         plugins: [babylon],
         printWidth: 60,
@@ -100,7 +100,7 @@ const CodePreview = (): JSX.Element => {
     html &&
       newTabs.push({
         name: "HTML",
-        content: formatCode(html.innerHTML),
+        content: formatCode(html.innerHTML, "div"),
         language: "html",
       });
     newTabs && setTabs([...newTabs]);
@@ -110,6 +110,23 @@ const CodePreview = (): JSX.Element => {
     const toggles = previews.ruler ? `globals=measureEnabled:true` : "";
     setIframeUrl(`${baseUrl}&${toggles}`);
   }, [previews.ruler, baseUrl]);
+
+  useEffect(() => {
+    if (!loaded) return;
+    const handleResize = () => {
+      if (!iframeRef.current) return;
+      const width = iframeRef.current.offsetWidth;
+      const doc: Document = iframeRef.current?.contentWindow.document;
+      if (doc) {
+        doc.body.style.width = `${width}px`;
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [loaded]);
 
   return (
     <iframe

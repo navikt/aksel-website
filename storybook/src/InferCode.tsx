@@ -12,7 +12,12 @@ export const InferHtml = ({ children }) => {
   return (
     <div
       data-html
-      style={{ display: "inline-flex", gap: "1rem", alignItems: "center" }}
+      style={{
+        display: "inline-flex",
+        gap: "1rem",
+        alignItems: "center",
+        flexWrap: "wrap",
+      }}
     >
       {children}
     </div>
