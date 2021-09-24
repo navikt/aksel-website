@@ -10,6 +10,13 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      title: "Dato",
+      description: "Endringer sortes basert på datoen gitt her",
+      name: "change_date",
+      type: "date",
+      validation: (Rule) => Rule.required(),
+    },
+    {
       title: "Pull request (optional)",
       name: "pull_request",
       type: "url",
