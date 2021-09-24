@@ -108,13 +108,7 @@ const serializers = {
               <Divider>
                 <Hr />
               </Divider>
-              <TitleWithScrollMargin
-                id={slug}
-                spacing
-                level={2}
-                size="xlarge"
-                tabIndex={-1}
-              >
+              <TitleWithScrollMargin id={slug} spacing level={2} size="xlarge">
                 {children}
               </TitleWithScrollMargin>
             </>

@@ -120,7 +120,7 @@ export const CodeContext = createContext<ContextProps>({
 
 const Code = ({ node }: { node: any }): JSX.Element => {
   const [tabs, setTabs] = useState<TabType[]>([]);
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(-1);
   const [previews, setPreviews] = useState<PreviewType>({
     ruler: false,
     outlines: false,

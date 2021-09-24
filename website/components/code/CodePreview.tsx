@@ -94,7 +94,7 @@ const CodePreview = (): JSX.Element => {
     react &&
       newTabs.push({
         name: "React",
-        content: formatCode(react.textContent),
+        content: formatCode(react.textContent, ""),
         language: "jsx",
       });
     html &&
