@@ -8,7 +8,7 @@ import CodeTabs from "./CodeTabs";
 const Wrapper = styled.div`
   width: 100%;
   margin-top: var(--navds-spacing-8);
-  margin-bottom: var(--navds-spacing-8);
+  margin-bottom: var(--navds-spacing-12);
   border-radius: 8px;
   display: flex;
   flex-direction: column;

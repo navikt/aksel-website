@@ -112,10 +112,10 @@ export const Disabled = () => (
       </Button>`}
     </InferReact>
     <InferHtml>
-      <Button variant="primary" disabled>
+      <Button variant="primary" disabled={true}>
         Disabled button
       </Button>
-      <Button variant="primary" disabled size="small">
+      <Button variant="primary" disabled={true} size="small">
         Disabled button
       </Button>
     </InferHtml>
@@ -134,10 +134,12 @@ export const WithIcon = () => (
     </InferReact>
     <InferHtml>
       <Button variant="primary">
-        Button <Close />
+        Button
+        <Close />
       </Button>
       <Button variant="primary" size="small">
-        Button <Close />
+        Button
+        <Close />
       </Button>
     </InferHtml>
   </>
