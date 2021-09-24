@@ -7,7 +7,8 @@ import {
 } from "react";
 import { CodeContext } from "./Code";
 import prettier from "prettier/standalone";
-import babylon from "prettier/parser-babel";
+import babel from "prettier/parser-babel";
+/* import html from "prettier/parser-html"; */
 
 const CodePreview = (): JSX.Element => {
   const { node, setTabs, previews, setFullscreenLink } =
@@ -67,12 +68,14 @@ const CodePreview = (): JSX.Element => {
   }, [loaded, previews.outlines]);
 
   const formatCode = (code, tag) => {
+    console.log(CodePreview);
     try {
       const formated = prettier.format(`<${tag ?? ""}>${code}</${tag ?? ""}>`, {
         parser: "babel",
-        plugins: [babylon],
+        plugins: [babel],
         printWidth: 60,
         semi: false,
+        jsxBracketSameLine: true,
       });
       /* Prettier puts a semicolon at start of each html/jsx block... */
       return formated.startsWith(";") ? formated.slice(1) : formated;
