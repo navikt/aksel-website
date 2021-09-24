@@ -30,7 +30,7 @@ export default {
     },
     {
       title: "Spesifike komponenter",
-      name: "spesific",
+      name: "spesific_component",
       type: "array",
       of: [
         { type: "reference", to: [{ type: "ds_component_page" }], weak: true },

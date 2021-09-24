@@ -10,6 +10,9 @@ const Wrapper = styled.div`
   margin-top: 56px;
   min-height: calc(100vh - 56px);
   justify-content: center;
+  background-color: #f7f7f7;
+  background-color: #f9f9f9;
+  background-color: #fafafa;
 
   @media (max-width: 1068px) {
     display: block;
@@ -20,9 +23,6 @@ const MainContent = styled.main`
   flex-direction: column;
   width: 100%;
   position: relative;
-  background-color: #f7f7f7;
-  background-color: #f9f9f9;
-  background-color: #fafafa;
 `;
 
 const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {

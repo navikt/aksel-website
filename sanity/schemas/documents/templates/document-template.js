@@ -20,7 +20,8 @@ export function documentInformation(prefix) {
       title: "url",
       name: "slug",
       type: "slug",
-      description: "URLen siden vil ligge under",
+      description:
+        "Vil bli oppdatert etterhvert når navigasjon og struktur er bestemt",
       validation: (Rule) => validateSlug(Rule, prefix, 3),
       options: {
         isUnique: isSlugUnique,
@@ -36,7 +37,7 @@ export function documentInformation(prefix) {
     },
     {
       title: "Status",
-      description: "Status-badge som vises på siden",
+      description: "Statusen på denne siden/komponenten",
       name: "status",
       type: "string",
       validation: (Rule) => Rule.required(),

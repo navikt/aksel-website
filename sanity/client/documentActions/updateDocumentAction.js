@@ -20,7 +20,9 @@ export default function SetAndPublishAction(props) {
 
   return {
     disabled: publish.disabled !== "ALREADY_PUBLISHED",
-    label: isPublishing ? "Updating..." : "Update",
+    label: isPublishing
+      ? "Oppdaterer..."
+      : "Verifiser at innhold er up-to-date",
     icon: <Refresh />,
     onHandle: () => {
       const dates = getExpireDates(

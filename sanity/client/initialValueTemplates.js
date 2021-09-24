@@ -32,10 +32,9 @@ export default [
         placeholder("Side links for utivklere"),
         placeholder("Kode eksempler"),
         placeholder("Prop table"),
-        placeholder("Changelog"),
       ],
       accessibility: [
-        ...getHeading("Vurderin av universell utforming"),
+        ...getHeading("Vurdering av universell utforming"),
         ...getHeading("Referanser"),
         ...getHeading("Teste universell utforming"),
       ],
