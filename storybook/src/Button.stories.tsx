@@ -1,99 +1,165 @@
 import React from "react";
-import { Button } from "@navikt/ds-react";
+import { Button, Loader } from "@navikt/ds-react";
 import { InferHtml, InferReact } from "./InferCode";
+import { Close } from "@navikt/ds-icons";
 
 export default {
   title: "ds-react/Button",
   component: Button,
 };
 
-const Template = ({ variant, disabled, label, size }) => {
-  return (
-    <>
-      <InferReact>
-        {`<Button ${
-          disabled ? "disabled={true}" : ""
-        } variant="${variant}" size="${size}">
-          ${label}
-        </Button>`}
-      </InferReact>
-      <InferHtml>
-        <Button disabled={disabled} variant={variant} size={size}>
-          {label}
-        </Button>
-      </InferHtml>
-    </>
-  );
-};
+export const Collection = () => (
+  <>
+    <InferReact>
+      {`<Button variant="primary">Primary button</Button>
+      <Button variant="secondary">Secondary button</Button>
+      <Button variant="tertiary">Tertiary button</Button>
+      <Button variant="danger">Danger button</Button>`}
+    </InferReact>
+    <InferHtml>
+      <Button variant="primary">Primary button</Button>
+      <Button variant="secondary">Secondary button</Button>
+      <Button variant="tertiary">Tertiary button</Button>
+      <Button variant="danger">Danger button</Button>
+    </InferHtml>
+  </>
+);
 
-export const Primary = Template.bind({});
-Primary.args = {
-  variant: "primary",
-  label: "Button",
-  size: "medium",
-};
+export const Primary = () => (
+  <>
+    <InferReact>
+      {`<Button variant="primary">
+        Primary button
+      </Button>
+      <Button variant="primary" size="small">
+      Primary button
+      </Button>`}
+    </InferReact>
+    <InferHtml>
+      <Button variant="primary">Primary button</Button>
+      <Button variant="primary" size="small">
+        Primary button
+      </Button>
+    </InferHtml>
+  </>
+);
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  variant: "secondary",
-  label: "Button",
-  size: "medium",
-};
+export const Secondary = () => (
+  <>
+    <InferReact>
+      {`<Button variant="secondary">
+        Secondary button
+      </Button>
+      <Button variant="secondary" size="small">
+        Secondary button
+      </Button>`}
+    </InferReact>
+    <InferHtml>
+      <Button variant="secondary">Secondary button</Button>
+      <Button variant="secondary" size="small">
+        Secondary button
+      </Button>
+    </InferHtml>
+  </>
+);
 
-export const Tertiary = Template.bind({});
-Tertiary.args = {
-  variant: "tertiary",
-  label: "Button",
-  size: "medium",
-};
+export const Tertiary = () => (
+  <>
+    <InferReact>
+      {`<Button variant="tertiary">
+        Tertiary button
+      </Button>
+      <Button variant="tertiary" size="small">
+        Tertiary button
+      </Button>`}
+    </InferReact>
+    <InferHtml>
+      <Button variant="tertiary">Tertiary button</Button>
+      <Button variant="tertiary" size="small">
+        Tertiary button
+      </Button>
+    </InferHtml>
+  </>
+);
 
-export const Danger = Template.bind({});
-Danger.args = {
-  variant: "danger",
-  label: "Button",
-  size: "medium",
-};
+export const Danger = () => (
+  <>
+    <InferReact>
+      {`<Button variant="danger">
+        Danger button
+      </Button>
+      <Button variant="danger" size="small">
+        Danger button
+      </Button>`}
+    </InferReact>
+    <InferHtml>
+      <Button variant="danger">Danger button</Button>
+      <Button variant="danger" size="small">
+        Danger button
+      </Button>
+    </InferHtml>
+  </>
+);
 
-export const PrimarySmall = Template.bind({});
-PrimarySmall.args = {
-  variant: "primary",
-  label: "Button",
-  size: "small",
-};
+export const Disabled = () => (
+  <>
+    <InferReact>
+      {`<Button variant="primary" disabled>
+        Disabled button
+      </Button>
+      <Button variant="primary" disabled size="small">
+        Disabled button
+      </Button>`}
+    </InferReact>
+    <InferHtml>
+      <Button variant="primary" disabled>
+        Disabled button
+      </Button>
+      <Button variant="primary" disabled size="small">
+        Disabled button
+      </Button>
+    </InferHtml>
+  </>
+);
 
-export const SecondarySmall = Template.bind({});
-SecondarySmall.args = {
-  variant: "secondary",
-  label: "Button",
-  size: "small",
-};
+export const WithIcon = () => (
+  <>
+    <InferReact>
+      {`<Button variant="primary">
+        Button <Close />
+      </Button>
+      <Button variant="primary" size="small">
+        Button <Close />
+      </Button>`}
+    </InferReact>
+    <InferHtml>
+      <Button variant="primary">
+        Button <Close />
+      </Button>
+      <Button variant="primary" size="small">
+        Button <Close />
+      </Button>
+    </InferHtml>
+  </>
+);
 
-export const TertiarySmall = Template.bind({});
-TertiarySmall.args = {
-  variant: "tertiary",
-  label: "Button",
-  size: "small",
-};
-
-export const DangerSmall = Template.bind({});
-DangerSmall.args = {
-  variant: "danger",
-  label: "Button",
-  size: "small",
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  variant: "danger",
-  disabled: true,
-  size: "medium",
-  label: "Disabled button",
-};
-
-export const DisabledSmall = Template.bind({});
-DisabledSmall.args = {
-  variant: "danger",
-  disabled: true,
-  size: "small",
-  label: "Disabled button",
-};
+export const WithLoader = () => (
+  <>
+    <InferReact>
+      {`<Button variant="primary">
+        Button <Loader />
+      </Button>
+      <Button variant="primary" size="small">
+        Button <Loader />
+      </Button>`}
+    </InferReact>
+    <InferHtml>
+      <Button variant="primary">
+        Button <Loader />
+      </Button>
+      <Button variant="primary" size="small">
+        Button <Loader />
+      </Button>
+    </InferHtml>
+  </>
+);

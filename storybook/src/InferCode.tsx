@@ -9,5 +9,12 @@ export const InferReact = ({ children }) => {
 };
 
 export const InferHtml = ({ children }) => {
-  return <div data-html>{children}</div>;
+  return (
+    <div
+      data-html
+      style={{ display: "inline-flex", gap: "1rem", alignItems: "center" }}
+    >
+      {children}
+    </div>
+  );
 };
