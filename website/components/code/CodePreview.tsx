@@ -68,14 +68,12 @@ const CodePreview = (): JSX.Element => {
   }, [loaded, previews.outlines]);
 
   const formatCode = (code, tag) => {
-    console.log(CodePreview);
     try {
       const formated = prettier.format(`<${tag ?? ""}>${code}</${tag ?? ""}>`, {
         parser: "babel",
         plugins: [babel],
         printWidth: 60,
         semi: false,
-        jsxBracketSameLine: true,
       });
       /* Prettier puts a semicolon at start of each html/jsx block... */
       return formated.startsWith(";") ? formated.slice(1) : formated;
@@ -140,6 +138,7 @@ const CodePreview = (): JSX.Element => {
       height={height + "px"}
       width="100%"
       style={{ border: "none" }}
+      loading="lazy"
     />
   );
 };

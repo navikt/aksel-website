@@ -7,6 +7,7 @@ const Tabs = styled.div`
   border-bottom: 1px solid var(--navds-color-gray-60);
   background-color: var(--navds-color-darkgray);
   padding: 1px;
+  min-height: 50px;
   padding-bottom: 0;
   display: flex;
   justify-content: space-between;
@@ -110,7 +111,7 @@ const CodeTabs = (): JSX.Element => {
                   <NewTab />
                 </A>
               )}
-              <ToggleButton
+              {/* <ToggleButton
                 aria-selected={previews.ruler}
                 onClick={() =>
                   setPreviews({
@@ -135,7 +136,7 @@ const CodeTabs = (): JSX.Element => {
                   Toggle outlines for kode-eksempel
                 </span>
                 <Sight focusable="false" role="presentation" />
-              </ToggleButton>
+              </ToggleButton> */}
             </>
           )}
           {node.github && (
