@@ -89,7 +89,10 @@ const CodePreview = (): JSX.Element => {
 
     const react =
       iframeRef.current?.contentWindow.document.querySelector("[data-react]");
-    const html =
+    const html = iframeRef.current?.contentWindow.document.querySelector(
+      "[data-html-wrapper]"
+    );
+    const inferHtml =
       iframeRef.current?.contentWindow.document.querySelector("[data-html]");
 
     react &&
@@ -102,6 +105,12 @@ const CodePreview = (): JSX.Element => {
       newTabs.push({
         name: "HTML",
         content: formatCode(html.innerHTML, "div"),
+        language: "html",
+      });
+    inferHtml &&
+      newTabs.push({
+        name: "HTML",
+        content: formatCode(inferHtml.textContent, "div"),
         language: "html",
       });
     newTabs && setTabs([...newTabs]);

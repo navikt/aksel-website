@@ -111,7 +111,7 @@ const CodeTabs = (): JSX.Element => {
                   <NewTab />
                 </A>
               )}
-              {/* <ToggleButton
+              <ToggleButton
                 aria-selected={previews.ruler}
                 onClick={() =>
                   setPreviews({
@@ -136,7 +136,7 @@ const CodeTabs = (): JSX.Element => {
                   Toggle outlines for kode-eksempel
                 </span>
                 <Sight focusable="false" role="presentation" />
-              </ToggleButton> */}
+              </ToggleButton>
             </>
           )}
           {node.github && (

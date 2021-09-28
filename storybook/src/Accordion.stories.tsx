@@ -1,6 +1,6 @@
 import React from "react";
 import { Accordion } from "@navikt/ds-react";
-import { InferHtml, InferReact } from "./InferCode";
+import { HtmlWrapper, InferReact } from "./InferCode";
 
 export default {
   title: "ds-react/Accordion",
@@ -20,7 +20,7 @@ export const AccordionExample = ({ variant, label }) => {
             </Accordion.Content>
           </Accordion.Item>
         </Accordion>`}</InferReact>
-      <InferHtml>
+      <HtmlWrapper>
         <Accordion>
           <Accordion.Item>
             <Accordion.Header>Accordion header text</Accordion.Header>
@@ -31,7 +31,7 @@ export const AccordionExample = ({ variant, label }) => {
             </Accordion.Content>
           </Accordion.Item>
         </Accordion>
-      </InferHtml>
+      </HtmlWrapper>
     </div>
   );
 };

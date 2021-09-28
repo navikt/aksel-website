@@ -1,6 +1,11 @@
 import React from "react";
 import { Button, Loader } from "@navikt/ds-react";
-import { InferHtml, InferReact } from "./InferCode";
+import {
+  HtmlWrapper,
+  InferHtml,
+  InferReact,
+  PreviewWrapper,
+} from "./InferCode";
 import { Close } from "@navikt/ds-icons";
 
 export default {
@@ -16,12 +21,12 @@ export const Collection = () => (
       <Button variant="tertiary">Tertiary button</Button>
       <Button variant="danger">Danger button</Button>`}
     </InferReact>
-    <InferHtml>
+    <HtmlWrapper>
       <Button variant="primary">Primary button</Button>
       <Button variant="secondary">Secondary button</Button>
       <Button variant="tertiary">Tertiary button</Button>
       <Button variant="danger">Danger button</Button>
-    </InferHtml>
+    </HtmlWrapper>
   </>
 );
 
@@ -35,12 +40,12 @@ export const Primary = () => (
       Primary button
       </Button>`}
     </InferReact>
-    <InferHtml>
+    <HtmlWrapper>
       <Button variant="primary">Primary button</Button>
       <Button variant="primary" size="small">
         Primary button
       </Button>
-    </InferHtml>
+    </HtmlWrapper>
   </>
 );
 
@@ -54,12 +59,12 @@ export const Secondary = () => (
         Secondary button
       </Button>`}
     </InferReact>
-    <InferHtml>
+    <HtmlWrapper>
       <Button variant="secondary">Secondary button</Button>
       <Button variant="secondary" size="small">
         Secondary button
       </Button>
-    </InferHtml>
+    </HtmlWrapper>
   </>
 );
 
@@ -73,12 +78,12 @@ export const Tertiary = () => (
         Tertiary button
       </Button>`}
     </InferReact>
-    <InferHtml>
+    <HtmlWrapper>
       <Button variant="tertiary">Tertiary button</Button>
       <Button variant="tertiary" size="small">
         Tertiary button
       </Button>
-    </InferHtml>
+    </HtmlWrapper>
   </>
 );
 
@@ -92,12 +97,12 @@ export const Danger = () => (
         Danger button
       </Button>`}
     </InferReact>
-    <InferHtml>
+    <HtmlWrapper>
       <Button variant="danger">Danger button</Button>
       <Button variant="danger" size="small">
         Danger button
       </Button>
-    </InferHtml>
+    </HtmlWrapper>
   </>
 );
 
@@ -112,13 +117,31 @@ export const Disabled = () => (
       </Button>`}
     </InferReact>
     <InferHtml>
+      {`<button
+          disabled="true"
+          class="navds-button navds-button--primary navds-button--medium"
+        >
+          <span class="navds-button__inner navds-body-short">
+            Disabled button
+          </span>
+        </button>
+        <button
+          disabled="true"
+          class="navds-button navds-button--primary navds-button--small"
+        >
+          <span class="navds-button__inner navds-body-short navds-body-short--small">
+            Disabled button
+          </span>
+        </button>`}
+    </InferHtml>
+    <PreviewWrapper>
       <Button variant="primary" disabled={true}>
         Disabled button
       </Button>
       <Button variant="primary" disabled={true} size="small">
         Disabled button
       </Button>
-    </InferHtml>
+    </PreviewWrapper>
   </>
 );
 
@@ -132,7 +155,7 @@ export const WithIcon = () => (
         Button <Close />
       </Button>`}
     </InferReact>
-    <InferHtml>
+    <HtmlWrapper>
       <Button variant="primary">
         Button
         <Close />
@@ -141,7 +164,7 @@ export const WithIcon = () => (
         Button
         <Close />
       </Button>
-    </InferHtml>
+    </HtmlWrapper>
   </>
 );
 
@@ -155,13 +178,13 @@ export const WithLoader = () => (
         Button <Loader />
       </Button>`}
     </InferReact>
-    <InferHtml>
+    <HtmlWrapper>
       <Button variant="primary">
         Button <Loader />
       </Button>
       <Button variant="primary" size="small">
         Button <Loader />
       </Button>
-    </InferHtml>
+    </HtmlWrapper>
   </>
 );
