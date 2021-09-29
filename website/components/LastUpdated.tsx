@@ -1,11 +1,19 @@
+import { Tag } from "@navikt/ds-react";
 import moment from "moment";
 import * as React from "react";
 import styled from "styled-components";
 
-const Div = styled.div``;
+const StyledTag = styled(Tag)`
+  background-color: var(--navds-color-gray-10);
+  border-color: var(--navds-color-gray-40);
+`;
 
 const LastUpdated = ({ date }: { date: string }): JSX.Element => {
-  return <Div>{`Oppdatert ${moment(date).format("DD. MMM. YY")}`}</Div>;
+  return (
+    <StyledTag size="small" variant="info">{`Oppdatert ${moment(date).format(
+      "DD. MMM. YY"
+    )}`}</StyledTag>
+  );
 };
 
 export default LastUpdated;

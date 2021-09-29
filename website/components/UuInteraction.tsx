@@ -3,7 +3,7 @@ import "nav-frontend-tabell-style/dist/main.css";
 import React from "react";
 import styled from "styled-components";
 import { SanityBlockContent } from "./templating/SanityBlockContent";
-import { PreviewBox } from "./templating/TemplateStyles";
+/* import { PreviewBox } from "./templating/TemplateStyles"; */
 
 const Div = styled.div`
   margin-bottom: var(--navds-spacing-8);
@@ -15,27 +15,36 @@ const Td = styled.td`
   }
 `;
 
-const UuInteraction = ({ node }: { node: any }): JSX.Element => {
-  return <PreviewBox>🚧 Komponent interaksjoner 🚧</PreviewBox>;
+type UuType = {
+  node: {
+    focus?: any;
+    mouse?: any;
+    keyboard?: { command: any; description: any; _key: string }[];
+    screen_reader?: any;
+  };
+};
+
+const UuInteraction = ({ node }: UuType): JSX.Element => {
+  // return <PreviewBox>🚧 Komponent interaksjoner 🚧</PreviewBox>;
   return (
     <Div>
-      {node.uu_interaction_focus && (
+      {node.focus && (
         <>
           <Heading level="3" size="medium" spacing>
             Focus management
           </Heading>
-          <SanityBlockContent blocks={node.uu_interaction_focus} />
+          <SanityBlockContent blocks={node.focus} />
         </>
       )}
-      {node.uu_interaction_mouse && (
+      {node.mouse && (
         <>
           <Heading level="3" size="medium" spacing>
             Mouse management
           </Heading>
-          <SanityBlockContent blocks={node.uu_interaction_mouse} />
+          <SanityBlockContent blocks={node.mouse} />
         </>
       )}
-      {node.uu_interaction_keyboard && (
+      {node.keyboard && (
         <>
           <Heading level="3" size="medium" spacing>
             Keyboard styring
@@ -51,7 +60,7 @@ const UuInteraction = ({ node }: { node: any }): JSX.Element => {
               </tr>
             </thead>
             <tbody>
-              {node.uu_interaction_keyboard.map((cm) => {
+              {node.keyboard.map((cm) => {
                 return (
                   <tr key={cm._key}>
                     <Td>{<SanityBlockContent blocks={cm.command} />}</Td>
@@ -61,6 +70,14 @@ const UuInteraction = ({ node }: { node: any }): JSX.Element => {
               })}
             </tbody>
           </table>
+        </>
+      )}
+      {node.screen_reader && (
+        <>
+          <Heading level="3" size="medium" spacing>
+            Skjermleser
+          </Heading>
+          <SanityBlockContent blocks={node.screen_reader} />
         </>
       )}
     </Div>

@@ -1,4 +1,4 @@
-import { Ingress, Link, Heading, Tag } from "@navikt/ds-react";
+import { Ingress, Link, Heading } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
@@ -19,8 +19,8 @@ import {
 
 const Links = styled.div`
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
+  top: 2rem;
+  right: 2rem;
   display: flex;
   column-gap: 1rem;
   margin-left: var(--navds-spacing-4);
@@ -72,9 +72,7 @@ const ComponentPageTemplate = ({ data }: { data: any }): JSX.Element => {
           <StyledDiv>
             <Inline>
               <StatusTag status={data.status} />
-              <Tag variant="info">
-                <LastUpdated date={data.last_update} />
-              </Tag>
+              <LastUpdated date={data.last_update} />
             </Inline>
             <Links>
               {data.npm_link && (
@@ -108,7 +106,8 @@ const ComponentPageTemplate = ({ data }: { data: any }): JSX.Element => {
                 path={`${basePath}${key === "bruk" ? "" : "/" + key}`}
               >
                 {/* TODO: Fungerer UU her? Tar mye mindre plass en Tilgjengelighet for mobilvisning */}
-                {key === "tilgjengelighet" ? "UU" : key}
+                {/* {key === "Tilgjengelighet" ? "UU" : key} */}
+                {key}
               </Tab>
             )
         )}

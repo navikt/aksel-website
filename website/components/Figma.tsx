@@ -1,8 +1,6 @@
-import { useNextSanityImage } from "next-sanity-image";
-import NextImage from "next/image";
 import React from "react";
 import styled from "styled-components";
-import { sanityClient } from "../lib/sanity.server";
+/* import { sanityClient } from "../lib/sanity.server";
 
 const Figure = styled.figure`
   display: flex;
@@ -19,13 +17,21 @@ type ImageType = {
     title: string;
     caption?: string;
   };
-};
+}; */
 
-const Image = ({ node }: ImageType): JSX.Element => {
-  const imageProps = useNextSanityImage(sanityClient, node);
-
+const Figma = ({ node }: any): JSX.Element => {
+  /* const imageProps = useNextSanityImage(sanityClient, node); */
+  console.log(node);
+  const src = node.embed?.match(/src="(.+?)"/)?.[1];
   return (
-    <Figure>
+    <iframe
+      style={{ border: "none", width: "100%" }}
+      src={src || ""}
+      height="500px"
+    />
+  );
+  {
+    /* <Figure>
       <div>
         <NextImage
           {...imageProps}
@@ -37,8 +43,8 @@ const Image = ({ node }: ImageType): JSX.Element => {
       {node.caption && (
         <Caption className="navds-body-long">{node.caption}</Caption>
       )}
-    </Figure>
-  );
+    </Figure> */
+  }
 };
 
-export default Image;
+export default Figma;

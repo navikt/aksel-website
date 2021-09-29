@@ -17,6 +17,7 @@ import Changelog from "../Changelog";
 import Code from "../code/Code";
 import ParseCodeRef from "../code/ParseCodeRef";
 import DoDont from "../DoDont";
+import Figma from "../Figma";
 import Image from "../Image";
 import Linker from "../Linker";
 import PropTable from "../Proptable";
@@ -33,7 +34,7 @@ const StyledKbd = styled.code`
   color: var(--navds-color-darkgray);
   border: 1px solid var(--navds-color-gray-40);
   border-radius: 3px;
-  padding: var(--navds-spacing-1);
+  padding: 0.1rem 0.25rem;
   font-family: var(--font-family-code);
   font-size: 1rem;
 `;
@@ -75,6 +76,7 @@ const serializers = {
     uu_interaction: UuInteraction,
     linker: Linker,
     picture: Image,
+    figma_embed: Figma,
     alert: (node) => (
       <StyledAlert variant={node.node.variant}>
         <SanityBlockContent blocks={node.node.body} />
@@ -108,7 +110,7 @@ const serializers = {
               <Divider>
                 <Hr />
               </Divider>
-              <TitleWithScrollMargin id={slug} spacing level={2} size="xlarge">
+              <TitleWithScrollMargin id={slug} spacing level={2} size="large">
                 {children}
               </TitleWithScrollMargin>
             </>

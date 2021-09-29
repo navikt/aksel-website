@@ -9,7 +9,7 @@ export const MaxWidthContainer = styled.div`
   max-width: 700px;
   margin: 0;
   margin-right: auto;
-  margin-left: var(--navds-spacing-8);
+  margin-left: var(--navds-spacing-4);
   padding: 0 var(--navds-spacing-8);
   overflow-x: auto;
 
@@ -28,7 +28,7 @@ export const HeadingContainer = styled.div`
 
 export const Inline = styled.span`
   display: inline-flex;
-  gap: var(--navds-spacing-3);
+  gap: var(--navds-spacing-2);
   align-items: center;
   flex-wrap: wrap;
 `;

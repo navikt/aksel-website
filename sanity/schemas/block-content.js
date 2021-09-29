@@ -15,7 +15,7 @@ import {
   List,
 } from "@navikt/ds-icons";
 
-import { KBD, Code } from "@sanity/ui";
+import { KBD } from "@sanity/ui";
 
 const TitleRenderer = (props, size, level) => (
   <Heading size={size} level={level}>
@@ -78,7 +78,7 @@ export const block = {
         value: "code",
         blockEditor: {
           render: (props) => (
-            <Code style={{ color: "#BA3A26" }}>{props.children}</Code>
+            <code style={{ color: "#BA3A26" }}>{props.children}</code>
           ),
         },
       },

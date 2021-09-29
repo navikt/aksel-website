@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   padding-top: var(--navds-spacing-4);
   position: relative;
   flex-shrink: 0;
-  background-color: #fafafa;
+  background-color: white;
   border-right: 1px solid var(--navds-color-gray-20);
 
   @media (max-width: 1068px) {
@@ -18,11 +18,9 @@ const Wrapper = styled.div`
 function Sidebar({ sidebar }: { sidebar: any }): JSX.Element {
   return (
     <>
-      {sidebar?.sidebar ? (
-        <Wrapper>
-          <Menu menu={sidebar.sidebar} />
-        </Wrapper>
-      ) : null}
+      <Wrapper>
+        {sidebar?.sidebar ? <Menu menu={sidebar.sidebar} /> : null}
+      </Wrapper>
     </>
   );
 }

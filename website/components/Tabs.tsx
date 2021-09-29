@@ -4,13 +4,12 @@ import { useRouter } from "next/router";
 import React from "react";
 
 const Nav = styled.nav`
-  margin: 0;
-  padding-top: var(--navds-spacing-4);
-
-  padding-bottom: 0.7625rem;
+  /* padding-bottom: 0.7rem; */
   overflow-x: auto;
-  position: relative;
-  padding-left: var(--navds-spacing-16);
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background-color: #f9f9f9;
 
   @media (max-width: 564px) {
     padding-right: 0;
@@ -24,6 +23,7 @@ const Nav = styled.nav`
     width: 100%;
     bottom: 0px;
     left: 0;
+    z-index: -1;
 
     position: absolute;
   }
@@ -33,43 +33,47 @@ const Ul = styled.ul`
   padding: 0;
   margin: 0;
   display: flex;
+  max-width: 700px;
+  align-items: center;
+  overflow-x: auto;
 
-  @media (max-width: 564px) {
-    justify-content: center;
-  }
-
-  li {
+  > * {
     list-style: none;
+    flex: 1 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
 const A = styled.a`
-  color: var(--navds-color-darkgray);
-  border-bottom: 4px solid transparent;
+  border-bottom: 3px solid transparent;
   background: none;
-  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   font-weight: var(--navds-font-weight-bold);
   cursor: pointer;
   text-decoration: none;
   text-transform: capitalize;
-
-  @media (max-width: 564px) {
-    padding: 0.5rem 1rem 0.5rem 1rem;
-  }
+  color: var(--navds-color-blue-50);
+  flex: 1 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  min-height: 48px;
 
   &[aria-selected="true"] {
-    color: var(--navds-color-blue-50);
-    border-bottom: 4px solid var(--navds-color-blue-50);
-  }
-
-  :hover {
-    border-bottom: 4px solid var(--navds-color-darkgray);
+    border-color: var(--navds-color-blue-50);
     color: var(--navds-color-darkgray);
   }
 
+  :hover {
+    color: var(--navds-color-darkgray);
+    border-color: var(--navds-color-darkgray);
+  }
+
   :focus {
-    outline: 2px solid var(--navds-color-blue-80);
-    outline-offset: -2px;
+    outline: 3px solid var(--navds-color-blue-80);
+    outline-offset: -3px;
   }
 `;
 

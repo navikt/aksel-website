@@ -1,3 +1,4 @@
+import { Heading } from "@navikt/ds-react";
 import Link from "next/link";
 import * as React from "react";
 import { useState } from "react";
@@ -13,7 +14,7 @@ const Div = styled.div`
   align-items: start;
   display: flex;
   flex-direction: column;
-  border-left: 1px solid var(--navds-color-gray-20);
+  // border-left: 1px solid var(--navds-color-gray-20);
   padding-left: 2rem;
   order: 1;
   float: right;
@@ -90,7 +91,9 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
       {toc.length !== 0 ? (
         <Div>
           <div>
-            <p className="navds-label">Innhold på siden</p>
+            <Heading size="small" as="p">
+              Innhold på siden
+            </Heading>
             <nav aria-label="Liste over innhold på siden">
               <Ul>
                 {toc.map((link) => (
