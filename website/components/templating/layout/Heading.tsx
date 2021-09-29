@@ -70,7 +70,7 @@ function Header(): JSX.Element {
       </Link>
       <Link href="#">
         <NAVLogoWhite />
-        <Heading level="2" size="small">
+        <Heading as="span" size="small">
           Designsystemet
         </Heading>
       </Link>
