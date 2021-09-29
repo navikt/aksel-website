@@ -1,7 +1,7 @@
 /**
  * https://github.com/navikt/detsombetyrnoe/blob/main/src/components/PreviewBanner.tsx#L17
  */
-import { Home } from "@navikt/ds-icons";
+import { Home, Search } from "@navikt/ds-icons";
 import { Heading } from "@navikt/ds-react";
 import * as React from "react";
 import styled from "styled-components";
@@ -28,6 +28,8 @@ const Link = styled.a`
   color: white;
   gap: 0.5rem;
   text-decoration: none;
+  min-width: 70px;
+  justify-content: center;
 
   > * {
     transition: box-shadow 75ms;
@@ -43,6 +45,10 @@ const Link = styled.a`
   :focus {
     outline: 2px solid white;
     outline-offset: -4px;
+  }
+
+  svg {
+    flex-shrink: 0;
   }
 
   &[data-active] {
@@ -89,7 +95,7 @@ function Header(): JSX.Element {
           <span>Kategori</span>
         </Link>
         <Link href="#">
-          <span>Kategori</span>
+          <Search style={{ fontSize: "1.5rem", marginLeft: 3 }} />
         </Link>
       </LinkRow>
     </StyledHeader>
