@@ -1,17 +1,18 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import { LayoutContext } from "./layout/Layout";
 
 export const SanityBlockContainer = styled.div`
   position: relative;
   max-width: 1256px;
 `;
 
-export const MaxWidthContainer = styled.div`
+export const MaxWidthContainerDiv = styled.div<{ isMobile: boolean }>`
   max-width: 700px;
-  margin: 0;
-  margin-right: auto;
-  margin-left: var(--navds-spacing-4);
   padding: 0 var(--navds-spacing-8);
   overflow-x: auto;
+  margin: ${(props) =>
+    props.isMobile ? "0 auto" : "0 auto 0 var(--navds-spacing-4)"};
 
   @media (max-width: 564px) {
     margin: 0;
@@ -19,6 +20,19 @@ export const MaxWidthContainer = styled.div`
     padding-right: var(--navds-spacing-4);
   }
 `;
+
+export const MaxWidthContainer = ({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element => {
+  const context = useContext(LayoutContext);
+  return (
+    <MaxWidthContainerDiv isMobile={context.isMobile}>
+      {children}
+    </MaxWidthContainerDiv>
+  );
+};
 
 export const HeadingContainer = styled.div`
   width: 100%;

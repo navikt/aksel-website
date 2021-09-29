@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useContext } from "react";
+import { LayoutContext } from "./templating/layout/Layout";
 
 const Nav = styled.nav`
   /* padding-bottom: 0.7rem; */
@@ -29,13 +30,13 @@ const Nav = styled.nav`
   }
 `;
 
-const Ul = styled.ul`
+const Ul = styled.ul<{ isMobile: boolean }>`
   padding: 0;
   margin: 0;
   display: flex;
-  max-width: 700px;
   align-items: center;
   overflow-x: auto;
+  max-width: ${(props) => (props.isMobile ? "" : "700px")};
 
   > * {
     list-style: none;
@@ -82,9 +83,12 @@ export const Tabs = ({
 }: {
   children: React.ReactNode;
 }): JSX.Element => {
+  const context = useContext(LayoutContext);
   return (
     <Nav aria-label="Tabmeny for sideinnhold">
-      <Ul role="tablist">{children}</Ul>
+      <Ul isMobile={context.isMobile} role="tablist">
+        {children}
+      </Ul>
     </Nav>
   );
 };

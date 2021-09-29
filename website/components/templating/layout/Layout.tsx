@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { createContext, useContext } from "react";
 import Head from "next/head";
 import styled from "styled-components";
 import Heading from "./Heading";
 import { PagePropsContext } from "../../../pages/_app";
 import Sidebar from "./Sidebar";
+import { useMedia } from "react-use";
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,9 +14,9 @@ const Wrapper = styled.div`
   background-color: #f9f9f9;
   background-color: #fafafa;
 
-  @media (max-width: 1068px) {
+  /* @media (max-width: 1068px) {
     display: block;
-  }
+  } */
 `;
 
 const MainContent = styled.main`
@@ -24,13 +25,21 @@ const MainContent = styled.main`
   position: relative;
 `;
 
+export type LayoutContextProps = {
+  isMobile: boolean;
+};
+
+export const LayoutContext = createContext<LayoutContextProps | null>(null);
+
+// TODO: Move metadata to SEO component
 const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   const [pageProps] = useContext<any>(PagePropsContext);
   if (!pageProps) {
     return null;
   }
 
-  // TODO: Move metadata to SEO component
+  const isMobile = useMedia("(max-width: 970px)");
+
   return (
     <>
       <Head>
@@ -41,11 +50,13 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <>
-        <Heading />
-        <Wrapper>
-          <Sidebar sidebar={pageProps.sidebar} />
-          <MainContent>{children}</MainContent>
-        </Wrapper>
+        <LayoutContext.Provider value={{ isMobile }}>
+          <Heading />
+          <Wrapper>
+            <Sidebar sidebar={pageProps.sidebar} />
+            <MainContent>{children}</MainContent>
+          </Wrapper>
+        </LayoutContext.Provider>
       </>
     </>
   );

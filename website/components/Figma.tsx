@@ -21,7 +21,7 @@ type ImageType = {
 
 const Figma = ({ node }: any): JSX.Element => {
   /* const imageProps = useNextSanityImage(sanityClient, node); */
-  console.log(node);
+
   const src = node.embed?.match(/src="(.+?)"/)?.[1];
   return (
     <iframe
