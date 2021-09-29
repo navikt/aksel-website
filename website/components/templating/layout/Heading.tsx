@@ -129,8 +129,8 @@ function Header(): JSX.Element {
           </>
         )}
       </RowDiv>
-      {!context.isMobile && <Grow />}
       <LinkRow context={context}>
+        {!context.isMobile && <Grow />}
         <Link href="#" isMobile={context.isMobile}>
           <span>Ressurser</span>
         </Link>
