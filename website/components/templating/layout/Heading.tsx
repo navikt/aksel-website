@@ -71,7 +71,6 @@ const LinkRow = styled.div<{ context: LayoutContextProps }>`
   display: ${(props) => (props.context.isMobile ? "grid" : "flex")};
   height: 100%;
   width: 100%;
-  gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
 
   @media screen and (max-width: 550px) {
