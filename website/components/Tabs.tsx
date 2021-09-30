@@ -4,18 +4,23 @@ import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import { LayoutContext } from "./templating/layout/Layout";
 
-const Nav = styled.nav`
+const Nav = styled.nav<{ isMobile: boolean }>`
   /* padding-bottom: 0.7rem; */
   overflow-x: auto;
   position: sticky;
   top: 0;
   z-index: 99;
   background-color: #f9f9f9;
-
-  @media (max-width: 564px) {
-    padding-right: 0;
-    padding-left: 0;
-  }
+  ${(props) => {
+    return !props.isMobile
+      ? `margin-left: 3rem;
+         margin-right: auto;
+         max-width: 636px;`
+      : `margin: 0;
+         max-width: none;
+         padding-right: 0;
+         padding-left: 0;`;
+  }};
 
   ::after {
     content: "";
@@ -85,7 +90,7 @@ export const Tabs = ({
 }): JSX.Element => {
   const context = useContext(LayoutContext);
   return (
-    <Nav aria-label="Tabmeny for sideinnhold">
+    <Nav isMobile={context.isMobile} aria-label="Tabmeny for sideinnhold">
       <Ul isMobile={context.isMobile} role="tablist">
         {children}
       </Ul>
