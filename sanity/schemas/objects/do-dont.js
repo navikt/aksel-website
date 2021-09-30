@@ -11,7 +11,7 @@ export default {
     },
     {
       type: "array",
-      name: "do_dont_blocks",
+      name: "blocks",
       title: "Do / donts",
       description: "Liste med do/donts",
       of: [{ type: "do_dont.block" }],
@@ -52,7 +52,7 @@ export const doDont = {
       },
     },
     {
-      name: "do_dont_body",
+      name: "body",
       title: "Fritekst",
       description: "Beskrivelse av hva som er do/dont/warning",
       type: "blockContent_simple",
