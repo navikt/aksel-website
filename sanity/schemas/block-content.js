@@ -17,7 +17,7 @@ import {
 
 import { KBD } from "@sanity/ui";
 
-const TitleRenderer = (props, size, level) => (
+export const TitleRenderer = (props, size, level) => (
   <Heading size={size} level={level}>
     {props.children}
   </Heading>

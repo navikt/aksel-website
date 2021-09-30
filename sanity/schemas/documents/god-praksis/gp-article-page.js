@@ -14,7 +14,7 @@ export default {
     ...documentInformation(prefix),
     {
       name: "body",
-      type: "blockContent",
+      type: "gp_blockContent",
       title: "Innhold",
       validation: (Rule) => Rule.required(),
     },

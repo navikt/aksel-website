@@ -15,6 +15,7 @@ import designsystem_frontpage from "./documents/designsystem/ds-frontpage";
 /*--  God Praksis */
 import god_praksis_article_page from "./documents/god-praksis/gp-article-page";
 import god_praksis_frontpage from "./documents/god-praksis/gp-frontpage";
+import gp_block_content from "./documents/god-praksis/gp-block-content";
 /*--  Admin */
 import vk_frontpage from "./documents/admin/frontpage";
 
@@ -48,6 +49,7 @@ export default createSchema({
     example,
     block_content,
     block_content_simple,
+    gp_block_content,
     prop_table,
     prop,
     changelog,

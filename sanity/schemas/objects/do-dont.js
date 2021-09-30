@@ -26,10 +26,21 @@ export const doDont = {
   type: "object",
   fields: [
     {
+      title: "Fullwidth",
+      description: "Tar opp ~ 40% eller 100% av tilgjengelig bredde",
+      name: "fullwidth",
+      type: "boolean",
+      validation: (Rule) => Rule.required(),
+      initialValue: false,
+    },
+    {
       title: "Bilde",
-      name: "img",
+      name: "picture",
       type: "image",
       validation: (Rule) => Rule.required(),
+      options: {
+        hotspot: true,
+      },
     },
     {
       title: "alt tekst for bilde",
@@ -39,14 +50,6 @@ export const doDont = {
       options: {
         isHighlighted: true,
       },
-    },
-    {
-      title: "Fullwidth",
-      description: "Tar opp ~ 40% eller 100% av tilgjengelig bredde",
-      name: "fullwidth",
-      type: "boolean",
-      validation: (Rule) => Rule.required(),
-      initialValue: false,
     },
     {
       name: "do_dont_body",

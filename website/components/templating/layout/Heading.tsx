@@ -89,6 +89,16 @@ const RowDiv = styled.div`
   height: 100%;
 `;
 
+const CenterLink = styled(Link)`
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  height: 70px;
+`;
+
 const SearchHambGroup = ({ isMobile }: { isMobile: boolean }) => {
   return (
     <>
@@ -113,14 +123,18 @@ function Header(): JSX.Element {
         <Link href="#" isMobile={context.isMobile}>
           <Home /> <span>Hjem</span>
         </Link>
-        <Link href="#" isMobile={context.isMobile}>
-          <NAVLogoWhite />
-          {!context.isMobile && (
+        {!context.isMobile ? (
+          <Link href="#" isMobile={context.isMobile}>
+            <NAVLogoWhite />
             <Heading as="span" size="small">
               Designsystemet
             </Heading>
-          )}
-        </Link>
+          </Link>
+        ) : (
+          <CenterLink href="#" isMobile={context.isMobile}>
+            <NAVLogoWhite />
+          </CenterLink>
+        )}
 
         {context.isMobile && (
           <>
@@ -139,6 +153,12 @@ function Header(): JSX.Element {
         </Link>
         <Link href="#" isMobile={context.isMobile}>
           <span>Mønster</span>
+        </Link>
+        <Link href="#" isMobile={context.isMobile}>
+          <span>Kategori</span>
+        </Link>
+        <Link href="#" isMobile={context.isMobile}>
+          <span>Kategori</span>
         </Link>
         <Link href="#" isMobile={context.isMobile}>
           <span>Kategori</span>
