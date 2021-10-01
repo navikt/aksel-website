@@ -1,17 +1,16 @@
 {
-  "name": "verktoykasse-prototype",
+  "name": "verktoykassen",
   "version": "0.1.0",
   "private": true,
   "description": "Prototype-løsning for en verktøykasse med sanity",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/navikt/verktoykasse-prototype.git"
+    "url": "git+https://github.com/navikt/verktoykassen.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/navikt/verktoykasse-prototype/issues"
+    "url": "https://github.com/navikt/verktoykassen/issues"
   },
-  "homepage": "https://navikt.github.io/verktoykasse-prototype",
   "scripts": {
     "postinstall": "husky install",
     "dev": "yarn workspace website dev",
@@ -34,9 +33,9 @@
   ],
   "prettier": {},
   "dependencies": {
-    "@navikt/ds-css": "^0.8",
+    "@navikt/ds-css": "^0.9",
     "@navikt/ds-icons": "^0.5",
-    "@navikt/ds-react": "0.8",
+    "@navikt/ds-react": "0.10",
     "@navikt/ds-tokens": "^0.5"
   },
   "devDependencies": {

@@ -13,9 +13,9 @@
     "lint": "yarn eslint components/* src/* pages/* --ext .jsx --ext .tsx --ext .ts"
   },
   "dependencies": {
-    "@navikt/ds-css": "^0.8",
+    "@navikt/ds-css": "^0.9",
     "@navikt/ds-icons": "^0.5",
-    "@navikt/ds-react": "0.8",
+    "@navikt/ds-react": "0.10",
     "@navikt/ds-tokens": "^0.5",
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^2.19.0",
