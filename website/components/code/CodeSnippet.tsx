@@ -53,7 +53,6 @@ type CodeSnippetType = {
 };
 
 const CodeSnippet = ({ node: { code } }: CodeSnippetType): JSX.Element => {
-  console.log(code.language);
   const buttonRef = useRef(null);
   const [openPopover, setOpenPopover] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();
@@ -77,8 +76,6 @@ const CodeSnippet = ({ node: { code } }: CodeSnippetType): JSX.Element => {
   let language = code.language;
   language =
     language === "terminal" || language === "default" ? "bash" : language;
-
-  console.log(language);
 
   const highlighted = Prism.highlight(
     code.code,

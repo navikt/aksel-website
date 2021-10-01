@@ -117,31 +117,27 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
 
   useEffect(() => {
     const inViewPort = (el: HTMLElement) => {
-      if (!el) {
-        console.count("not found");
-        return false;
-      }
+      if (!el) return false;
       const rect = el.getBoundingClientRect();
       const test = document.body.scrollHeight - window.scrollY;
-      ["designavgjørelse", "bruk-i-det-fri"].includes(el.id) &&
-        console.log(el.id, rect.top, window.innerHeight, test);
 
       return (
-        (rect.top >= 0 &&
-          rect.bottom <=
-            (window.innerHeight || document.documentElement.clientHeight) /
-              2) ||
-        (rect.top <= window.innerHeight && rect.top <= test)
+        rect.top > 0 &&
+        (rect.bottom <=
+          (window.innerHeight || document.documentElement.clientHeight) / 2 ||
+          (rect.top <= window.innerHeight && rect.top <= test))
       );
     };
 
     const handleScroll = () => {
+      let active = null;
       for (const x of toc) {
         const el = document.getElementById(x.id);
         if (inViewPort(el)) {
-          setActiveId(x.id);
+          active = x.id;
         }
       }
+      active && setActiveId(active);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -149,6 +145,10 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [toc]);
+
+  useEffect(() => {
+    activeId && window.history.replaceState(null, null, `#${activeId}`);
+  }, [activeId]);
 
   return (
     <>
