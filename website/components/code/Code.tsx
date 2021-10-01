@@ -75,7 +75,7 @@ export const Button = styled.button`
 export const CopyButton = styled(Button)`
   position: absolute;
   top: 3px;
-  right: 3px;
+  right: 8px;
   background-color: var(--navds-color-darkgray);
 `;
 

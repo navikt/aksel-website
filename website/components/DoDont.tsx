@@ -98,8 +98,7 @@ type DodontType = {
 };
 
 const DoDont = ({ node: { blocks } }: DodontType): JSX.Element => {
-  console.log(blocks);
-
+  if (!blocks || blocks.length === 0) return null;
   return (
     <Section>
       {blocks.map((x) => (

@@ -21,6 +21,7 @@ const StyledHeader = styled.header<{ context: LayoutContextProps }>`
   display: flex;
   align-items: center;
   top: 0;
+  overflow-x: auto;
 `;
 
 const Link = styled.a<{ isMobile: boolean }>`

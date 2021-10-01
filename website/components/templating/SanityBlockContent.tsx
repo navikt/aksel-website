@@ -15,6 +15,7 @@ import React from "react";
 import styled from "styled-components";
 import Changelog from "../Changelog";
 import Code from "../code/Code";
+import CodeSnippet from "../code/CodeSnippet";
 import ParseCodeRef from "../code/ParseCodeRef";
 import DoDont from "../DoDont";
 import Figma from "../Figma";
@@ -68,6 +69,7 @@ const StyledAlert = styled(Alert)`
 
 const serializers = {
   types: {
+    code_snippet: CodeSnippet,
     code_example_ref: ParseCodeRef,
     code_example: Code,
     changelog: Changelog,

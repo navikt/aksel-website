@@ -1,3 +1,7 @@
 :root {
   --font-family-code: "Source Code Pro", monospace;
 }
+
+code {
+  font-family: var(--font-family-code);
+}
