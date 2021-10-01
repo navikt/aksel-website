@@ -10,11 +10,10 @@ import { NAVLogoWhite } from "../../assets/NavLogoWhite";
 import { LayoutContext, LayoutContextProps } from "./Layout";
 
 const StyledHeader = styled.header<{ context: LayoutContextProps }>`
-  height: ${(props) => (props.context.isMobile ? "fit-content" : "70px")};
+  height: ${(props) => (props.context.isMobile ? "fit-content" : "48px")};
   flex-direction: ${(props) => (props.context.isMobile ? "column" : "row")};
   width: 100vw;
   z-index: 99;
-  /* background-color: rgba(41, 41, 41, 0.98); */
   background-color: var(--navds-color-darkgray);
   grid-area: header / header / header;
   position: relative;
@@ -22,19 +21,21 @@ const StyledHeader = styled.header<{ context: LayoutContextProps }>`
   align-items: center;
   top: 0;
   overflow-x: auto;
+  padding: 0 1rem;
+  padding: ${(props) => (props.context.isMobile ? "0" : "0 1rem")};
 `;
 
 const Link = styled.a<{ isMobile: boolean }>`
   height: 100%;
   display: flex;
   align-items: center;
-  padding: ${(props) => (props.isMobile ? "0 0.75rem" : "0 1.25rem")};
+  padding: ${(props) => (props.isMobile ? "0 0.75rem" : "0 0.75rem")};
   color: white;
   column-gap: 0.5rem;
   text-decoration: none;
-  min-width: 70px;
+  min-width: 48px;
   height: 100%;
-  min-height: 70px;
+  min-height: 48px;
   justify-content: center;
 
   > * {
@@ -122,7 +123,7 @@ function Header(): JSX.Element {
     <StyledHeader context={context} className="navds-body-short">
       <RowDiv>
         <Link href="#" isMobile={context.isMobile}>
-          <Home /> <span>Hjem</span>
+          <Home />
         </Link>
         {!context.isMobile ? (
           <Link href="#" isMobile={context.isMobile}>

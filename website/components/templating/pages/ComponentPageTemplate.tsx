@@ -29,10 +29,13 @@ const Links = styled.div`
     text-decoration: none;
     color: var(--navds-color-darkgray);
     padding: 0.25rem;
+    transition: box-shadow 100ms;
+
     :hover {
       text-decoration: underline;
       background: transparent;
     }
+
     :focus {
       background: transparent;
     }

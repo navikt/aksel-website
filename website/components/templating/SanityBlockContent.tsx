@@ -99,8 +99,7 @@ const Anchor = styled.button`
   }
 
   :active {
-    background-color: var(--navds-color-blue-50);
-    color: white;
+    background-color: var(--navds-color-gray-20);
   }
 `;
 
