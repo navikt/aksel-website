@@ -1,7 +1,6 @@
-import { useNextSanityImage } from "next-sanity-image";
 import NextImage from "next/image";
 import React from "react";
-import { sanityClient } from "../../lib/sanity.server";
+import { useSanityImage } from "../../lib/santiy";
 import * as S from "./image.styles";
 
 type ImageType = {
@@ -12,7 +11,7 @@ type ImageType = {
 };
 
 const Image = ({ node }: ImageType): JSX.Element => {
-  const imageProps = useNextSanityImage(sanityClient, node);
+  const imageProps = useSanityImage(node);
 
   return (
     <S.Figure>

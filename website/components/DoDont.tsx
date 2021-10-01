@@ -2,9 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { SanityBlockContent } from "./templating/SanityBlockContent";
 import NextImage from "next/image";
-import { useNextSanityImage } from "next-sanity-image";
-import { sanityClient } from "../lib/sanity.server";
 import { Label } from "@navikt/ds-react";
+import { useSanityImage } from "../lib/santiy";
 
 const Figure = styled.figure`
   display: flex;
@@ -56,7 +55,7 @@ const Caption = styled.figcaption`
 `;
 
 const Element = ({ block }: { block: DoDontBlockType }): JSX.Element => {
-  const imageProps = useNextSanityImage(sanityClient, block.picture);
+  const imageProps = useSanityImage(block.picture);
 
   return (
     <Figure data-fullwidth={block.fullwidth}>

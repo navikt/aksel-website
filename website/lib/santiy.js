@@ -1,19 +1,16 @@
 // lib/sanity.js
 /* https://github.com/sanity-io/next-sanity#live-real-time-preview */
 import {
-  createImageUrlBuilder,
   createPortableTextComponent,
   createPreviewSubscriptionHook,
   createCurrentUserHook,
 } from "next-sanity";
 import { config } from "./config";
+import { sanityClient } from "./sanity.server";
+import { useNextSanityImage } from "next-sanity-image";
 
-/**
- * Set up a helper function for generating Image URLs with only the asset reference data in your documents.
- * Read more: https://www.sanity.io/docs/image-url
- **/
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const urlFor = (source) => createImageUrlBuilder(config).image(source);
+export const useSanityImage = (node) => useNextSanityImage(sanityClient, node);
 
 // Set up the live preview subscription hook
 export const usePreviewSubscription = createPreviewSubscriptionHook(config);
