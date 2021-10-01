@@ -14,10 +14,19 @@ const Div = styled.div`
   align-items: start;
   display: flex;
   flex-direction: column;
-  border-left: 1px solid var(--navds-color-gray-20);
   padding-left: 2rem;
   order: 1;
   float: right;
+
+  &:before {
+    content: "";
+    background-color: var(--navds-color-gray-40);
+    width: 1px;
+    height: calc(100% - 1px);
+    margin-top: 0.5rem;
+    position: absolute;
+    left: -1px;
+  }
 
   @media (max-width: 1332px) {
     display: none;
@@ -78,8 +87,8 @@ const Li = styled.li`
       &:before {
         content: "";
         width: 3px;
-        height: 3.25rem;
-        margin-top: -0.25rem;
+        height: 2.5rem;
+        margin-top: 0;
         margin-left: -2px;
         background-color: var(--navds-color-gray-90);
         position: absolute;
