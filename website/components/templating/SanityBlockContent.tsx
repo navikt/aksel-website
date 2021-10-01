@@ -17,14 +17,13 @@ import BlockContent from "@sanity/block-content-to-react";
 import NextjsLink from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import Changelog from "../Changelog";
+import Changelog from "../changelog";
 import Code from "../code/Code";
 import CodeSnippet from "../code/CodeSnippet";
 import ParseCodeRef from "../code/ParseCodeRef";
-import DoDont from "../DoDont";
-import Figma from "../Figma";
+import DoDont from "../dodont";
+import Figma from "../figma";
 import Image from "../image";
-import Linker from "../Linker";
 import PropTable from "../Proptable";
 import slugger from "../slugger";
 import UuInteraction from "../UuInteraction";
@@ -119,7 +118,6 @@ const serializers = {
     prop_table: PropTable,
     do_dont: DoDont,
     uu_interaction: UuInteraction,
-    linker: Linker,
     picture: Image,
     figma_embed: Figma,
     alert: (node) => (

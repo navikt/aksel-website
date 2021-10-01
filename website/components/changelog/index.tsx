@@ -1,14 +1,14 @@
-import { Link, Heading } from "@navikt/ds-react";
 import React from "react";
-/* import styled from "styled-components"; */
-import { SanityBlockContent } from "./templating/SanityBlockContent";
-import { PreviewBox } from "./templating/TemplateStyles";
+import { Link, Heading } from "@navikt/ds-react";
+import { SanityBlockContent } from "../templating/SanityBlockContent";
+import { PreviewBox } from "../templating/TemplateStyles";
+import * as S from "./changelog.styles";
 
 const Changelog = ({ node }: { node: any }): JSX.Element => {
   return <PreviewBox>🚧 Changelog 🚧</PreviewBox>;
   const changes = node.changes;
   return (
-    <div>
+    <S.Changelog2>
       {changes.map((change) => {
         return (
           <div key={change.title}>
@@ -22,7 +22,7 @@ const Changelog = ({ node }: { node: any }): JSX.Element => {
           </div>
         );
       })}
-    </div>
+    </S.Changelog2>
   );
 };
 

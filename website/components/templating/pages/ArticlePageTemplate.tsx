@@ -1,6 +1,6 @@
-import { Heading, Tag } from "@navikt/ds-react";
+import { Heading } from "@navikt/ds-react";
 import React from "react";
-import LastUpdated from "../../LastUpdated";
+import LastUpdateTag from "../../last-update-tag";
 import StatusTag from "../../StatusTag";
 import TableOfContents from "../../TableOfContents";
 import { SanityBlockContent } from "../SanityBlockContent";
@@ -25,9 +25,7 @@ const ActiclePageTemplate = ({ data }: { data: any }): JSX.Element => {
           </Heading>
           <Inline>
             <StatusTag status={data.status} />
-            <Tag variant="info">
-              <LastUpdated date={data.last_update} />
-            </Tag>
+            <LastUpdateTag date={data.last_update} />
           </Inline>
         </HeadingContainer>
       </MaxWidthContainer>

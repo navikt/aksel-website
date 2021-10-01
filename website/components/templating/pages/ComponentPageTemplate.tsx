@@ -5,7 +5,7 @@ import styled from "styled-components";
 import FigmaIcon from "../../assets/FigmaIcon";
 import GithubIcon from "../../assets/GithubIcon";
 import NpmIcon from "../../assets/NpmIcon";
-import LastUpdated from "../../LastUpdated";
+import LastUpdateTag from "../../last-update-tag";
 import StatusTag from "../../StatusTag";
 import TableOfContents from "../../TableOfContents";
 import { Tab, Tabs } from "../../Tabs";
@@ -75,7 +75,7 @@ const ComponentPageTemplate = ({ data }: { data: any }): JSX.Element => {
           <StyledDiv>
             <Inline>
               <StatusTag status={data.status} />
-              <LastUpdated date={data.last_update} />
+              <LastUpdateTag date={data.last_update} />
             </Inline>
             <Links>
               {data.npm_link && (
