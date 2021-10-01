@@ -106,18 +106,23 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
     setToc([...toc]);
   }, [changedState]);
 
-  // Sets active toc to heading if its in top 50% of screen
-  // TODO: set active to last section when scrolling uppwards
   useEffect(() => {
     const inViewPort = (el: HTMLElement) => {
       if (!el) {
+        console.count("not found");
         return false;
       }
       const rect = el.getBoundingClientRect();
+      const test = document.body.scrollHeight - window.scrollY;
+      ["designavgjørelse", "bruk-i-det-fri"].includes(el.id) &&
+        console.log(el.id, rect.top, window.innerHeight, test);
+
       return (
-        rect.top >= 0 &&
-        rect.bottom <=
-          (window.innerHeight || document.documentElement.clientHeight) / 2
+        (rect.top >= 0 &&
+          rect.bottom <=
+            (window.innerHeight || document.documentElement.clientHeight) /
+              2) ||
+        (rect.top <= window.innerHeight && rect.top <= test)
       );
     };
 
@@ -126,7 +131,6 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
         const el = document.getElementById(x.id);
         if (inViewPort(el)) {
           setActiveId(x.id);
-          break;
         }
       }
     };
