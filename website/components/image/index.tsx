@@ -1,18 +1,8 @@
 import { useNextSanityImage } from "next-sanity-image";
 import NextImage from "next/image";
 import React from "react";
-import styled from "styled-components";
-import { sanityClient } from "../lib/sanity.server";
-
-const Figure = styled.figure`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: var(--navds-spacing-8);
-`;
-
-const Caption = styled.figcaption`
-  margin-top: var(--navds-spacing-4);
-`;
+import { sanityClient } from "../../lib/sanity.server";
+import * as S from "./image.styles";
 
 type ImageType = {
   node: {
@@ -25,7 +15,7 @@ const Image = ({ node }: ImageType): JSX.Element => {
   const imageProps = useNextSanityImage(sanityClient, node);
 
   return (
-    <Figure>
+    <S.Figure>
       <div>
         <NextImage
           {...imageProps}
@@ -35,9 +25,9 @@ const Image = ({ node }: ImageType): JSX.Element => {
         />
       </div>
       {node.caption && (
-        <Caption className="navds-body-long">{node.caption}</Caption>
+        <S.Caption className="navds-body-long">{node.caption}</S.Caption>
       )}
-    </Figure>
+    </S.Figure>
   );
 };
 

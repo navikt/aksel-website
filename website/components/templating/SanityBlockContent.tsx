@@ -23,7 +23,7 @@ import CodeSnippet from "../code/CodeSnippet";
 import ParseCodeRef from "../code/ParseCodeRef";
 import DoDont from "../DoDont";
 import Figma from "../Figma";
-import Image from "../Image";
+import Image from "../image";
 import Linker from "../Linker";
 import PropTable from "../Proptable";
 import slugger from "../slugger";
