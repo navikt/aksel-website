@@ -72,10 +72,10 @@ const Element = ({ block }: { block: DoDontBlockType }): JSX.Element => {
       <Caption data-variant={block.variant}>
         <Label spacing>
           {block.variant === "do"
-            ? "Gjør dette!"
+            ? "Gjør dette"
             : block.variant === "warning"
-            ? "Pass på dette!"
-            : "Ikke gjør dette!"}
+            ? "Pass på dette"
+            : "Ikke gjør dette"}
         </Label>
         <SanityBlockContent blocks={block.body} />
       </Caption>
