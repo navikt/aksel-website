@@ -2,12 +2,12 @@ import { Heading } from "@navikt/ds-react";
 import Link from "next/link";
 import * as React from "react";
 import { useEffect, useState } from "react";
+import debounce from "lodash.debounce";
 import * as S from "./toc.styles";
 
 function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
   const [toc, setToc] = useState<{ heading: string; id: string }[]>([]);
 
-  /* Get current active anchor somehow (howto when heading doesnt scroll to top of page??) */
   const [activeId, setActiveId] = useState(null);
 
   React.useLayoutEffect(() => {
@@ -28,14 +28,16 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
       const test = document.body.scrollHeight - window.scrollY;
 
       return (
-        rect.top > 0 &&
-        (rect.bottom <=
-          (window.innerHeight || document.documentElement.clientHeight) / 2 ||
-          (rect.top <= window.innerHeight && rect.top <= test))
+        (rect.top > 0 &&
+          rect.bottom <=
+            (window.innerHeight || document.documentElement.clientHeight) /
+              2) ||
+        (rect.top <= window.innerHeight && rect.top <= test)
       );
     };
 
     const handleScroll = () => {
+      console.count("called");
       let active = null;
       for (const x of toc) {
         const el = document.getElementById(x.id);
@@ -45,10 +47,11 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
       }
       active && setActiveId(active);
     };
+    const func = debounce(handleScroll, 20);
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", func);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", func);
     };
   }, [toc]);
 

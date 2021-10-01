@@ -2,19 +2,18 @@ import { Ingress, Link, Heading } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
-import FigmaIcon from "../../assets/FigmaIcon";
-import GithubIcon from "../../assets/GithubIcon";
-import NpmIcon from "../../assets/NpmIcon";
-import { LastUpdateTag, StatusTag } from "../../tags";
-import TableOfContents from "../../table-of-contents";
-import { Tab, Tabs } from "../../tabs";
-import { SanityBlockContent } from "../../SanityBlockContent";
 import {
-  HeadingContainer,
-  Inline,
-  MaxWidthContainer,
-  SanityBlockContainer,
-} from "../TemplateStyles";
+  FigmaIcon,
+  GithubIcon,
+  NpmIcon,
+  LastUpdateTag,
+  StatusTag,
+  TableOfContents,
+  Tab,
+  Tabs,
+} from "../..";
+import { SanityBlockContent } from "../../SanityBlockContent";
+import * as S from "./page.styles";
 
 const Links = styled.div`
   position: absolute;
@@ -66,16 +65,16 @@ const ComponentPageTemplate = ({ data }: { data: any }): JSX.Element => {
 
   return (
     <>
-      <MaxWidthContainer>
-        <HeadingContainer>
+      <S.MaxWidthContainer>
+        <S.HeadingContainer>
           <Heading size="2xlarge" level="1" spacing>
             {data.heading}
           </Heading>
           <StyledDiv>
-            <Inline>
+            <S.Inline>
               <StatusTag status={data.status} />
               <LastUpdateTag date={data.last_update} />
-            </Inline>
+            </S.Inline>
             <Links>
               {data.npm_link && (
                 <Link href={data.npm_link}>
@@ -97,10 +96,10 @@ const ComponentPageTemplate = ({ data }: { data: any }): JSX.Element => {
               )}
             </Links>
           </StyledDiv>
-        </HeadingContainer>
+        </S.HeadingContainer>
 
         {data.ingress && <Ingress spacing>{data.ingress}</Ingress>}
-      </MaxWidthContainer>
+      </S.MaxWidthContainer>
 
       <Tabs>
         {Object.entries(tabs).map(
@@ -117,12 +116,12 @@ const ComponentPageTemplate = ({ data }: { data: any }): JSX.Element => {
             )
         )}
       </Tabs>
-      <SanityBlockContainer>
+      <S.SanityBlockContainer>
         <TableOfContents changedState={query.slug} />
-        <MaxWidthContainer>
+        <S.MaxWidthContainer>
           <SanityBlockContent withMargin blocks={data[tabs[activeTab]]} />
-        </MaxWidthContainer>
-      </SanityBlockContainer>
+        </S.MaxWidthContainer>
+      </S.SanityBlockContainer>
     </>
   );
 };

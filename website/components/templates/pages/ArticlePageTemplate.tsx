@@ -1,14 +1,8 @@
 import { Heading } from "@navikt/ds-react";
 import React from "react";
-import { LastUpdateTag, StatusTag } from "../../tags";
-import TableOfContents from "../../table-of-contents";
+import { LastUpdateTag, StatusTag, TableOfContents } from "../..";
 import { SanityBlockContent } from "../../SanityBlockContent";
-import {
-  HeadingContainer,
-  Inline,
-  MaxWidthContainer,
-  SanityBlockContainer,
-} from "../TemplateStyles";
+import * as S from "./page.styles";
 
 const ActiclePageTemplate = ({ data }: { data: any }): JSX.Element => {
   if (!data.body || !data.heading || !data.status) {
@@ -17,23 +11,23 @@ const ActiclePageTemplate = ({ data }: { data: any }): JSX.Element => {
 
   return (
     <>
-      <MaxWidthContainer>
-        <HeadingContainer>
+      <S.MaxWidthContainer>
+        <S.HeadingContainer>
           <Heading size="2xlarge" level="1" spacing>
             {data.heading}
           </Heading>
-          <Inline>
+          <S.Inline>
             <StatusTag status={data.status} />
             <LastUpdateTag date={data.last_update} />
-          </Inline>
-        </HeadingContainer>
-      </MaxWidthContainer>
-      <SanityBlockContainer>
+          </S.Inline>
+        </S.HeadingContainer>
+      </S.MaxWidthContainer>
+      <S.SanityBlockContainer>
         <TableOfContents changedState={data.body} />
-        <MaxWidthContainer>
+        <S.MaxWidthContainer>
           <SanityBlockContent withMargin blocks={data.body} />
-        </MaxWidthContainer>
-      </SanityBlockContainer>
+        </S.MaxWidthContainer>
+      </S.SanityBlockContainer>
     </>
   );
 };

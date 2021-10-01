@@ -1,31 +1,32 @@
 import "@navikt/ds-css";
+import { Link as LinkIcon } from "@navikt/ds-icons";
 import {
   Alert,
   BodyLong,
   BodyShort,
   Detail,
+  Heading,
   Ingress,
   Label,
   Link,
-  Heading,
   Popover,
 } from "@navikt/ds-react";
-
-import { Link as LinkIcon } from "@navikt/ds-icons";
-
 import BlockContent from "@sanity/block-content-to-react";
+import copy from "copy-to-clipboard";
 import NextjsLink from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import Changelog from "./changelog";
-import { Snippet, CodeExample } from "./code";
-import DoDont from "./dodont";
-import Figma from "./figma";
-import Image from "./image";
-import PropTable from "./prop-table";
-import slugger from "./slugger";
-import UuInteraction from "./uu-interactions";
-import copy from "copy-to-clipboard";
+import {
+  Changelog,
+  CodeExample,
+  DoDont,
+  Figma,
+  Image,
+  PropTable,
+  slugger,
+  Snippet,
+  UuInteraction,
+} from ".";
 
 const StyledCode = styled.code`
   color: var(--navds-color-red-50);
@@ -117,6 +118,7 @@ const serializers = {
     uu_interaction: UuInteraction,
     picture: Image,
     figma_embed: Figma,
+
     alert: (node) => (
       <StyledAlert variant={node.node.variant}>
         <SanityBlockContent blocks={node.node.body} />
@@ -160,7 +162,7 @@ const serializers = {
             }
           }, [openPopover]);
 
-          const slug = slugger.slug(children.toString());
+          const slug = slugger.slug(encodeURI(children.toString()));
           const copyAnchor = (id: string): void => {
             setOpenPopover(true);
             const anchor = window.location.href.split("#")[0];

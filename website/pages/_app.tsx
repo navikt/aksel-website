@@ -4,7 +4,7 @@ import "../styles/theme.css";
 import useScrollToHashOnPageLoad from "../src/util";
 import React, { createContext, useEffect, useState } from "react";
 import Layout from "../components/templates/layout/Layout";
-import slugger from "../components/slugger";
+import { slugger } from "../components";
 import { useRouter } from "next/router";
 import Error from "next/error";
 import styled from "styled-components";

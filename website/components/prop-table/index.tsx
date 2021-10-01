@@ -1,6 +1,6 @@
 import "nav-frontend-tabell-style/dist/main.css";
 import React from "react";
-import { PreviewBox } from "../templates/TemplateStyles";
+import { PreviewBox } from "../templates/pages/page.styles";
 import * as S from "./prop-table.styles";
 
 const PropTable = ({ node }: { node: { props: any } }): JSX.Element => {

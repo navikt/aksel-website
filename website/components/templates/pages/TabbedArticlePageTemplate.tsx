@@ -2,16 +2,9 @@ import { Heading } from "@navikt/ds-react";
 import Error from "next/error";
 import { useRouter } from "next/router";
 import React from "react";
-import { LastUpdateTag, StatusTag } from "../../tags";
-import TableOfContents from "../../table-of-contents";
-import { Tab, Tabs } from "../../tabs";
+import { LastUpdateTag, StatusTag, TableOfContents, Tab, Tabs } from "../..";
 import { SanityBlockContent } from "../../SanityBlockContent";
-import {
-  HeadingContainer,
-  Inline,
-  MaxWidthContainer,
-  SanityBlockContainer,
-} from "../TemplateStyles";
+import * as S from "./page.styles";
 
 const TabbedActiclePageTemplate = ({
   data,
@@ -40,17 +33,17 @@ const TabbedActiclePageTemplate = ({
 
   return (
     <>
-      <MaxWidthContainer>
-        <HeadingContainer>
+      <S.MaxWidthContainer>
+        <S.HeadingContainer>
           <Heading size="2xlarge" level="1" spacing>
             {data.heading}
           </Heading>
-          <Inline>
+          <S.Inline>
             <StatusTag status={data.status} />
             <LastUpdateTag date={data.last_update} />
-          </Inline>
-        </HeadingContainer>
-      </MaxWidthContainer>
+          </S.Inline>
+        </S.HeadingContainer>
+      </S.MaxWidthContainer>
       {tabs.length > 1 && (
         <Tabs>
           {tabs.map(
@@ -67,12 +60,12 @@ const TabbedActiclePageTemplate = ({
           )}
         </Tabs>
       )}
-      <SanityBlockContainer>
+      <S.SanityBlockContainer>
         <TableOfContents changedState={data.body} />
-        <MaxWidthContainer>
+        <S.MaxWidthContainer>
           <SanityBlockContent withMargin blocks={data.tabs[activeTab].body} />
-        </MaxWidthContainer>
-      </SanityBlockContainer>
+        </S.MaxWidthContainer>
+      </S.SanityBlockContainer>
     </>
   );
 };

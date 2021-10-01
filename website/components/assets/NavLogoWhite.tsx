@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const NAVLogoWhite = (props): JSX.Element => (
+const NAVLogoWhite = (props): JSX.Element => (
   <svg
     width="3rem"
     height="3rem"
@@ -24,3 +24,5 @@ export const NAVLogoWhite = (props): JSX.Element => (
     />
   </svg>
 );
+
+export default NAVLogoWhite;
