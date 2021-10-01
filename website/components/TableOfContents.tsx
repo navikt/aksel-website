@@ -8,7 +8,7 @@ const Div = styled.div`
   position: sticky;
   right: 0;
   top: 5rem;
-  margin-top: 4rem;
+  margin-top: 1rem;
   z-index: 1;
   width: 250px;
   align-items: start;
@@ -16,6 +16,25 @@ const Div = styled.div`
   flex-direction: column;
   border-left: 1px solid var(--navds-color-gray-20);
   padding-left: 2rem;
+  order: 1;
+  float: right;
+
+  @media (max-width: 1332px) {
+    display: none;
+    width: 0;
+  }
+`;
+
+const Wrapper = styled.div`
+  position: sticky;
+  right: 0;
+  top: 5rem;
+  margin-top: 4rem;
+  z-index: 1;
+  width: 250px;
+  align-items: start;
+  display: flex;
+  flex-direction: column;
   order: 1;
   float: right;
 
@@ -59,7 +78,7 @@ const Li = styled.li`
       &:before {
         content: "";
         width: 3px;
-        height: 1.75rem;
+        height: 3.25rem;
         margin-top: -0.25rem;
         margin-left: -2px;
         background-color: var(--navds-color-gray-90);
@@ -91,6 +110,9 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
   // TODO: set active to last section when scrolling uppwards
   useEffect(() => {
     const inViewPort = (el: HTMLElement) => {
+      if (!el) {
+        return false;
+      }
       const rect = el.getBoundingClientRect();
       return (
         rect.top >= 0 &&
@@ -118,11 +140,11 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
   return (
     <>
       {toc.length !== 0 ? (
-        <Div>
-          <div>
-            <Heading size="small" as="p">
-              Innhold på siden
-            </Heading>
+        <Wrapper>
+          <Heading size="small" as="p">
+            Innhold på siden
+          </Heading>
+          <Div>
             <nav aria-label="Liste over innhold på siden">
               <Ul>
                 {toc.map((link) => (
@@ -136,8 +158,8 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
                 ))}
               </Ul>
             </nav>
-          </div>
-        </Div>
+          </Div>
+        </Wrapper>
       ) : null}
     </>
   );

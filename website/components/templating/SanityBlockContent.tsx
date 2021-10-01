@@ -8,10 +8,14 @@ import {
   Label,
   Link,
   Heading,
+  Popover,
 } from "@navikt/ds-react";
+
+import { Link as LinkIcon } from "@navikt/ds-icons";
+
 import BlockContent from "@sanity/block-content-to-react";
 import NextjsLink from "next/link";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Changelog from "../Changelog";
 import Code from "../code/Code";
@@ -24,6 +28,7 @@ import Linker from "../Linker";
 import PropTable from "../Proptable";
 import slugger from "../slugger";
 import UuInteraction from "../UuInteraction";
+import copy from "copy-to-clipboard";
 
 const StyledCode = styled.code`
   color: red;
@@ -58,6 +63,45 @@ const Hr = styled.hr`
 
 const TitleWithScrollMargin = styled(Heading)`
   scroll-margin-top: 5rem;
+  display: inline-flex;
+  align-items: center;
+`;
+
+const Anchor = styled.button`
+  background-color: transparent;
+  border: none;
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 1.25rem;
+  height: 48px;
+  width: 48px;
+  padding: 0.5rem;
+  outline: none;
+  border-radius: 50%;
+  opacity: 0.5;
+  transition: opacity 100ms;
+
+  > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  :focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--navds-color-blue-80);
+  }
+
+  :hover,
+  :focus {
+    background-color: var(--navds-color-gray-10);
+    opacity: 1;
+  }
+
+  :active {
+    background-color: var(--navds-color-blue-50);
+    color: white;
+  }
 `;
 
 const StyledAlert = styled(Alert)`
@@ -106,15 +150,65 @@ const serializers = {
         case "label":
           return <Label spacing>{children}</Label>;
         case "h2": {
+          const anchorRef = useRef(null);
+          const [openPopover, setOpenPopover] = useState(false);
+
+          const timeoutRef = useRef<NodeJS.Timeout>();
+
+          useEffect(() => {
+            if (openPopover) {
+              timeoutRef.current = setTimeout(
+                () => setOpenPopover(false),
+                2000
+              );
+              return () =>
+                timeoutRef.current && clearTimeout(timeoutRef.current);
+            }
+          }, [openPopover]);
+
           const slug = slugger.slug(children.toString());
+          const copyAnchor = (id: string): void => {
+            setOpenPopover(true);
+            const anchor = window.location.href.split("#")[0];
+            copy(`${anchor}#${id}`, {
+              format: "text/plain",
+            });
+          };
+
           return (
             <>
-              <Divider>
-                <Hr />
-              </Divider>
+              {children && (
+                <Divider>
+                  <Hr />
+                </Divider>
+              )}
               <TitleWithScrollMargin id={slug} spacing level={2} size="large">
                 {children}
+                <Anchor
+                  aria-label={`Kopier lenke til ${children.toString()}`}
+                  onClick={() => copyAnchor(slug)}
+                  ref={anchorRef}
+                >
+                  <span>
+                    <LinkIcon aria-label="ankerlenke ikon" />
+                  </span>
+                </Anchor>
               </TitleWithScrollMargin>
+
+              <Popover
+                role="alert"
+                aria-atomic="true"
+                anchorEl={anchorRef.current}
+                open={openPopover}
+                onClose={() => setOpenPopover(false)}
+                placement="right"
+                arrow={false}
+                offset={8}
+              >
+                <Popover.Content style={{ padding: "0.25rem" }}>
+                  Kopierte lenke
+                </Popover.Content>
+              </Popover>
             </>
           );
         }
