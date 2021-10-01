@@ -1,7 +1,7 @@
 import { NewTab, Ruler, Sight } from "@navikt/ds-icons";
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { Button, CodeContext } from "./Code";
+import { Button, CodeContext } from "./Example";
 
 const Tabs = styled.div`
   border-bottom: 1px solid var(--navds-color-gray-60);

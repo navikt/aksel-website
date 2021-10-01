@@ -5,11 +5,10 @@ import styled from "styled-components";
 import FigmaIcon from "../../assets/FigmaIcon";
 import GithubIcon from "../../assets/GithubIcon";
 import NpmIcon from "../../assets/NpmIcon";
-import LastUpdateTag from "../../last-update-tag";
-import StatusTag from "../../StatusTag";
-import TableOfContents from "../../TableOfContents";
-import { Tab, Tabs } from "../../Tabs";
-import { SanityBlockContent } from "../SanityBlockContent";
+import { LastUpdateTag, StatusTag } from "../../tags";
+import TableOfContents from "../../table-of-contents";
+import { Tab, Tabs } from "../../tabs";
+import { SanityBlockContent } from "../../SanityBlockContent";
 import {
   HeadingContainer,
   Inline,

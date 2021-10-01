@@ -1,19 +1,8 @@
 import { Heading } from "@navikt/ds-react";
 import "nav-frontend-tabell-style/dist/main.css";
 import React from "react";
-import styled from "styled-components";
-import { SanityBlockContent } from "./templating/SanityBlockContent";
-/* import { PreviewBox } from "./templating/TemplateStyles"; */
-
-const Div = styled.div`
-  margin-bottom: var(--navds-spacing-8);
-`;
-
-const Td = styled.td`
-  .navds-typo--spacing {
-    margin-bottom: 0;
-  }
-`;
+import { SanityBlockContent } from "../SanityBlockContent";
+import * as S from "./uu.styles";
 
 type UuType = {
   node: {
@@ -27,7 +16,7 @@ type UuType = {
 const UuInteraction = ({ node }: UuType): JSX.Element => {
   // return <PreviewBox>🚧 Komponent interaksjoner 🚧</PreviewBox>;
   return (
-    <Div>
+    <S.Div>
       {node.focus && (
         <>
           <Heading level="3" size="medium" spacing>
@@ -63,8 +52,10 @@ const UuInteraction = ({ node }: UuType): JSX.Element => {
               {node.keyboard.map((cm) => {
                 return (
                   <tr key={cm._key}>
-                    <Td>{<SanityBlockContent blocks={cm.command} />}</Td>
-                    <Td>{<SanityBlockContent blocks={cm.description} />}</Td>
+                    <S.Td>{<SanityBlockContent blocks={cm.command} />}</S.Td>
+                    <S.Td>
+                      {<SanityBlockContent blocks={cm.description} />}
+                    </S.Td>
                   </tr>
                 );
               })}
@@ -80,7 +71,7 @@ const UuInteraction = ({ node }: UuType): JSX.Element => {
           <SanityBlockContent blocks={node.screen_reader} />
         </>
       )}
-    </Div>
+    </S.Div>
   );
 };
 

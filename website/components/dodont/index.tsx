@@ -1,5 +1,5 @@
 import React from "react";
-import { SanityBlockContent } from "../templating/SanityBlockContent";
+import { SanityBlockContent } from "../SanityBlockContent";
 import NextImage from "next/image";
 import { Label } from "@navikt/ds-react";
 import { useSanityImage } from "../../lib/santiy";

@@ -1,18 +1,14 @@
 import "nav-frontend-tabell-style/dist/main.css";
 import React from "react";
-import styled from "styled-components";
-import { PreviewBox } from "./templating/TemplateStyles";
-
-const Div = styled.div`
-  margin-bottom: var(--navds-spacing-8);
-`;
+import { PreviewBox } from "../templates/TemplateStyles";
+import * as S from "./prop-table.styles";
 
 const PropTable = ({ node }: { node: { props: any } }): JSX.Element => {
   return <PreviewBox>🚧 Proptable 🚧</PreviewBox>;
   const propRows = node.props;
   if (propRows.length === 0) return null;
   return (
-    <Div>
+    <S.PropTable>
       <table
         className="tabell"
         summary="Oversikt over react-props komponenten bruker"
@@ -40,7 +36,7 @@ const PropTable = ({ node }: { node: { props: any } }): JSX.Element => {
           })}
         </tbody>
       </table>
-    </Div>
+    </S.PropTable>
   );
 };
 

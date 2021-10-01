@@ -1,9 +1,9 @@
 import copy from "copy-to-clipboard";
 import React, { createContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import CodeBlock from "./CodeBlock";
-import CodePreview from "./CodePreview";
-import CodeTabs from "./CodeTabs";
+import CodeBlock from "./Block";
+import CodePreview from "./Preview";
+import CodeTabs from "./Tabs";
 
 const Wrapper = styled.div`
   width: 100%;

@@ -4,7 +4,7 @@ import "prismjs/components/prism-bash.min";
 import "prismjs/components/prism-jsx.min";
 import "prismjs/components/prism-typescript.min";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { CodeContext, CopyButton, copyCode } from "./Code";
+import { CodeContext, CopyButton, copyCode } from "./Example";
 import { Popover } from "@navikt/ds-react";
 
 const PreWrapper = styled.div`

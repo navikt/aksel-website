@@ -17,16 +17,14 @@ import BlockContent from "@sanity/block-content-to-react";
 import NextjsLink from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import Changelog from "../changelog";
-import Code from "../code/Code";
-import CodeSnippet from "../code/CodeSnippet";
-import ParseCodeRef from "../code/ParseCodeRef";
-import DoDont from "../dodont";
-import Figma from "../figma";
-import Image from "../image";
-import PropTable from "../Proptable";
-import slugger from "../slugger";
-import UuInteraction from "../UuInteraction";
+import Changelog from "./changelog";
+import { Snippet, CodeExample } from "./code";
+import DoDont from "./dodont";
+import Figma from "./figma";
+import Image from "./image";
+import PropTable from "./prop-table";
+import slugger from "./slugger";
+import UuInteraction from "./uu-interactions";
 import copy from "copy-to-clipboard";
 
 const StyledCode = styled.code`
@@ -111,9 +109,8 @@ const StyledAlert = styled(Alert)`
 
 const serializers = {
   types: {
-    code_snippet: CodeSnippet,
-    code_example_ref: ParseCodeRef,
-    code_example: Code,
+    code_snippet: Snippet,
+    code_example_ref: CodeExample,
     changelog: Changelog,
     prop_table: PropTable,
     do_dont: DoDont,

@@ -3,7 +3,7 @@ import "../styles/prismjs.css";
 import "../styles/theme.css";
 import useScrollToHashOnPageLoad from "../src/util";
 import React, { createContext, useEffect, useState } from "react";
-import Layout from "../components/templating/layout/Layout";
+import Layout from "../components/templates/layout/Layout";
 import slugger from "../components/slugger";
 import { useRouter } from "next/router";
 import Error from "next/error";

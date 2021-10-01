@@ -5,7 +5,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { CodeContext } from "./Code";
+import { CodeContext } from "./Example";
 import prettier from "prettier/standalone";
 import babel from "prettier/parser-babel";
 /* import html from "prettier/parser-html"; */

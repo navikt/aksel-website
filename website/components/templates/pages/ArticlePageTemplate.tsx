@@ -1,9 +1,8 @@
 import { Heading } from "@navikt/ds-react";
 import React from "react";
-import LastUpdateTag from "../../last-update-tag";
-import StatusTag from "../../StatusTag";
-import TableOfContents from "../../TableOfContents";
-import { SanityBlockContent } from "../SanityBlockContent";
+import { LastUpdateTag, StatusTag } from "../../tags";
+import TableOfContents from "../../table-of-contents";
+import { SanityBlockContent } from "../../SanityBlockContent";
 import {
   HeadingContainer,
   Inline,

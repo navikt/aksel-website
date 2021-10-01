@@ -5,7 +5,7 @@ import "prismjs/components/prism-jsx.min";
 import "prismjs/components/prism-typescript.min";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { CopyButton, copyCode } from "./Code";
+import { CopyButton, copyCode } from "./Example";
 
 const PreWrapper = styled.div`
   position: relative;

@@ -2,11 +2,10 @@ import { Heading } from "@navikt/ds-react";
 import Error from "next/error";
 import { useRouter } from "next/router";
 import React from "react";
-import LastUpdateTag from "../../last-update-tag";
-import StatusTag from "../../StatusTag";
-import TableOfContents from "../../TableOfContents";
-import { Tab, Tabs } from "../../Tabs";
-import { SanityBlockContent } from "../SanityBlockContent";
+import { LastUpdateTag, StatusTag } from "../../tags";
+import TableOfContents from "../../table-of-contents";
+import { Tab, Tabs } from "../../tabs";
+import { SanityBlockContent } from "../../SanityBlockContent";
 import {
   HeadingContainer,
   Inline,

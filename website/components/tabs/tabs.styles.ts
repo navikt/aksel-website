@@ -1,11 +1,6 @@
 import styled from "styled-components";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { useContext } from "react";
-import { LayoutContext } from "./templating/layout/Layout";
 
-const Nav = styled.nav<{ isMobile: boolean }>`
-  /* padding-bottom: 0.7rem; */
+export const Nav = styled.nav<{ isMobile: boolean }>`
   overflow-x: auto;
   position: sticky;
   top: 0;
@@ -35,7 +30,7 @@ const Nav = styled.nav<{ isMobile: boolean }>`
   }
 `;
 
-const Ul = styled.ul<{ isMobile: boolean }>`
+export const Ul = styled.ul<{ isMobile: boolean }>`
   padding: 0;
   margin: 0;
   display: flex;
@@ -52,7 +47,7 @@ const Ul = styled.ul<{ isMobile: boolean }>`
   }
 `;
 
-const A = styled.a`
+export const A = styled.a`
   border-bottom: 3px solid transparent;
   background: none;
   font-weight: var(--navds-font-weight-bold);
@@ -82,57 +77,3 @@ const A = styled.a`
     outline-offset: -3px;
   }
 `;
-
-export const Tabs = ({
-  children,
-}: {
-  children: React.ReactNode;
-}): JSX.Element => {
-  const context = useContext(LayoutContext);
-  return (
-    <Nav isMobile={context.isMobile} aria-label="Tabmeny for sideinnhold">
-      <Ul isMobile={context.isMobile} role="tablist">
-        {children}
-      </Ul>
-    </Nav>
-  );
-};
-
-export const Tab = ({
-  children,
-  path = "",
-  active,
-}: {
-  children: React.ReactNode;
-  path?: string;
-  active?: boolean;
-}): JSX.Element => {
-  const {
-    query: { preview },
-    asPath,
-  } = useRouter();
-
-  return (
-    <li role="presentation">
-      <Link
-        href={{
-          pathname: path,
-          query: preview ? { preview: true } : {},
-        }}
-        passHref
-        shallow
-      >
-        <A
-          role="tab"
-          aria-selected={
-            active
-              ? active
-              : path === new URL(asPath, "http://example.com").pathname
-          }
-        >
-          {children}
-        </A>
-      </Link>
-    </li>
-  );
-};
