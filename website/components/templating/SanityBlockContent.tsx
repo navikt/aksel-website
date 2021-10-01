@@ -31,7 +31,7 @@ import UuInteraction from "../UuInteraction";
 import copy from "copy-to-clipboard";
 
 const StyledCode = styled.code`
-  color: red;
+  color: var(--navds-color-red-50);
 `;
 
 const StyledKbd = styled.code`
@@ -189,7 +189,7 @@ const serializers = {
                   ref={anchorRef}
                 >
                   <span>
-                    <LinkIcon aria-label="ankerlenke ikon" />
+                    <LinkIcon aria-label="ankerlenke ikon" focusable={false} />
                   </span>
                 </Anchor>
               </TitleWithScrollMargin>

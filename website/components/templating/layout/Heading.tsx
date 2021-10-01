@@ -105,11 +105,20 @@ const SearchHambGroup = ({ isMobile }: { isMobile: boolean }) => {
   return (
     <>
       <Link href="#" isMobile={isMobile}>
-        <Search style={{ fontSize: "1.5rem", marginLeft: 3 }} />
+        <Search
+          style={{ fontSize: "1.5rem", marginLeft: 3 }}
+          focusable={false}
+          aria-label="Søk ikon"
+        />
+        <span className="sr-only">Søk etter sider</span>
       </Link>
       {isMobile && (
         <Link href="#" isMobile={isMobile}>
-          <Hamburger style={{ fontSize: "1.5rem", marginLeft: 3 }} />
+          <Hamburger
+            focusable={false}
+            aria-label="Meny ikon"
+            style={{ fontSize: "1.5rem", marginLeft: 3 }}
+          />
         </Link>
       )}
     </>
@@ -123,11 +132,12 @@ function Header(): JSX.Element {
     <StyledHeader context={context} className="navds-body-short">
       <RowDiv>
         <Link href="#" isMobile={context.isMobile}>
-          <Home />
+          <span className="sr-only">Link til forside</span>
+          <Home focusable={false} aria-label="Hjem ikon" />
         </Link>
         {!context.isMobile ? (
           <Link href="#" isMobile={context.isMobile}>
-            <NAVLogoWhite />
+            <NAVLogoWhite focusable={false} aria-label="NAV logo" />
             <Heading as="span" size="small">
               Designsystemet
             </Heading>

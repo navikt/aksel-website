@@ -107,8 +107,13 @@ const CodeTabs = (): JSX.Element => {
           {showPreview && (
             <>
               {fullscreenLink && (
-                <A target="_blank" href={fullscreenLink}>
-                  <NewTab />
+                <A
+                  target="_blank"
+                  href={fullscreenLink}
+                  aria-label="Åpner eksempel i ny tab"
+                >
+                  <span className="sr-only">åpne eksempel i ny tab</span>
+                  <NewTab role="presentation" />
                 </A>
               )}
               <ToggleButton

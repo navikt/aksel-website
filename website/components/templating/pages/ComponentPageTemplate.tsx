@@ -81,16 +81,19 @@ const ComponentPageTemplate = ({ data }: { data: any }): JSX.Element => {
               {data.npm_link && (
                 <Link href={data.npm_link}>
                   <NpmIcon />
+                  <span className="sr-only">Lenke til NPM side for pakke</span>
                 </Link>
               )}
               {data.github_link && (
                 <Link href={data.github_link}>
                   <GithubIcon />
+                  <span className="sr-only">Lenke til github koden</span>
                 </Link>
               )}
               {data.figma_link && (
                 <Link href={data.figma_link}>
                   <FigmaIcon />
+                  <span className="sr-only">Link til Figma dokument</span>
                 </Link>
               )}
             </Links>

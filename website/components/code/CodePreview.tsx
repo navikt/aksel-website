@@ -140,7 +140,7 @@ const CodePreview = (): JSX.Element => {
 
   return (
     <iframe
-      aria-label="Iframe for storybook-komponent eksempel"
+      title="Iframe for storybook-komponent eksempel"
       ref={iframeRef}
       onLoad={() => setLoaded(true)}
       src={iframeUrl}
