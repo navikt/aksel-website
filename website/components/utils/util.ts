@@ -27,7 +27,7 @@ export function isDevelopment(): boolean {
 
 // https://stackoverflow.com/questions/38588346/anchor-a-tags-not-working-in-chrome-when-using/38588927#38588927
 // https://github.com/vercel/next.js/discussions/13134
-function useScrollToHashOnPageLoad(): void {
+export function useScrollToHashOnPageLoad(): void {
   useEffect(() => {
     if (window.location.hash) {
       setTimeout(() => {
@@ -38,5 +38,3 @@ function useScrollToHashOnPageLoad(): void {
     }
   }, []);
 }
-
-export default useScrollToHashOnPageLoad;

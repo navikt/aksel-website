@@ -5,8 +5,7 @@ import { useContext, useEffect } from "react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import PreviewBanner from "../components/PreviewBanner";
-import { getClient } from "../lib/sanity.server";
-import { usePreviewSubscription } from "../lib/santiy";
+import { usePreviewSubscription, allDocuments, getClient } from "../lib";
 import { PagePropsContext } from "./_app";
 import styled from "styled-components";
 
@@ -27,7 +26,7 @@ const Page = (props: { frontpage: any; preview: boolean }): JSX.Element => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setPageData] = useContext(PagePropsContext);
 
-  const { data: pagedata } = usePreviewSubscription(query, {
+  const { data: pagedata } = usePreviewSubscription(allDocuments, {
     initialData: props.frontpage,
     enabled: enabledPreview,
   });
@@ -86,14 +85,12 @@ export const getStaticProps = async ({
 }: {
   preview?: boolean;
 }): Promise<StaticProps> => {
-  const frontpage = await getClient(preview).fetch(query);
+  const frontpage = await getClient(preview).fetch(allDocuments);
 
   return {
     props: { frontpage, preview, slug: "/" },
     revalidate: 60,
   };
 };
-
-const query = `*[]{...,'slug': slug.current }`;
 
 export default Page;
