@@ -38,7 +38,7 @@ const Page = (props: { frontpage: any; preview: boolean }): JSX.Element => {
 
   return (
     <>
-      {enabledPreview && <PreviewBanner slug="Forside" />}
+      {enabledPreview && <PreviewBanner />}
       <StyledDiv>
         <Heading level="1" size="xlarge">
           Forside
