@@ -10,7 +10,7 @@
     "export": "next export",
     "start": "next start",
     "deploy:vercel": "npx vercel",
-    "lint": "yarn eslint components/* src/* pages/* --ext .jsx --ext .tsx --ext .ts"
+    "lint": "yarn eslint components/* pages/* --ext .jsx --ext .tsx --ext .ts"
   },
   "dependencies": {
     "@navikt/ds-css": "^0.9",
