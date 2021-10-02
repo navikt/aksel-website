@@ -20,13 +20,14 @@ const Links = styled.div`
   top: 2rem;
   right: 2rem;
   display: flex;
-  column-gap: 1rem;
+  column-gap: 0.25rem;
+  font-size: 1.25rem;
   margin-left: var(--navds-spacing-4);
 
   a {
     text-decoration: none;
     color: var(--navds-color-darkgray);
-    padding: 0.25rem;
+    padding: 0.75rem;
     transition: box-shadow 100ms;
 
     :hover {
