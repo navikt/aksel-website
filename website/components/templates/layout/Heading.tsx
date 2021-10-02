@@ -6,7 +6,7 @@ import { Heading } from "@navikt/ds-react";
 import * as React from "react";
 import { useContext } from "react";
 import styled from "styled-components";
-import { NAVLogoWhite } from "../../assets/NavLogoWhite";
+import { NavLogoWhite } from "../..";
 import { LayoutContext, LayoutContextProps } from "./Layout";
 
 const StyledHeader = styled.header<{ context: LayoutContextProps }>`
@@ -137,14 +137,14 @@ function Header(): JSX.Element {
         </Link>
         {!context.isMobile ? (
           <Link href="#" isMobile={context.isMobile}>
-            <NAVLogoWhite focusable={false} aria-label="NAV logo" />
+            <NavLogoWhite focusable={false} aria-label="NAV logo" />
             <Heading as="span" size="small">
               Designsystemet
             </Heading>
           </Link>
         ) : (
           <CenterLink href="#" isMobile={context.isMobile}>
-            <NAVLogoWhite />
+            <NavLogoWhite />
           </CenterLink>
         )}
 

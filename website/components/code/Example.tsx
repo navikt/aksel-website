@@ -141,6 +141,7 @@ const Code = ({ node }: { node: any }): JSX.Element => {
     (!node.preview && !node?.tabs) ||
     (node.preview && !node?.infercode === undefined)
   ) {
+    console.log(node);
     return null;
   }
 

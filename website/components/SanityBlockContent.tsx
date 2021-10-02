@@ -110,14 +110,14 @@ const StyledAlert = styled(Alert)`
 
 const serializers = {
   types: {
-    code_snippet: Snippet,
-    code_example_ref: CodeExample,
-    changelog: Changelog,
-    prop_table: PropTable,
-    do_dont: DoDont,
-    uu_interaction: UuInteraction,
-    picture: Image,
-    figma_embed: Figma,
+    code_snippet: ({ node }) => <Snippet node={node} />,
+    code_example_ref: ({ node }) => <CodeExample node={node.ref} />,
+    changelog: ({ node }) => <Changelog node={node} />,
+    prop_table: ({ node }) => <PropTable node={node} />,
+    do_dont: ({ node }) => <DoDont node={node} />,
+    uu_interaction: ({ node }) => <UuInteraction node={node} />,
+    picture: ({ node }) => <Image node={node} />,
+    figma_embed: ({ node }) => <Figma node={node} />,
 
     alert: (node) => (
       <StyledAlert variant={node.node.variant}>

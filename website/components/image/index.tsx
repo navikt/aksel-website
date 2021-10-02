@@ -1,6 +1,6 @@
 import NextImage from "next/image";
 import React from "react";
-import { useSanityImage } from "../../lib/santiy";
+import { useSanityImage } from "../../lib";
 import * as S from "./image.styles";
 
 type ImageType = {

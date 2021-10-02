@@ -37,7 +37,6 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
     };
 
     const handleScroll = () => {
-      console.count("called");
       let active = null;
       for (const x of toc) {
         const el = document.getElementById(x.id);
