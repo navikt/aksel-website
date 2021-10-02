@@ -3,6 +3,7 @@ import { Link, Heading } from "@navikt/ds-react";
 import { SanityBlockContent } from "../SanityBlockContent";
 import { PreviewBox } from "../templates/pages/page.styles";
 import * as S from "./changelog.styles";
+import { withErrorBoundary } from "../error-boundary";
 
 const Changelog = ({ node }: { node: any }): JSX.Element => {
   return <PreviewBox>🚧 Changelog 🚧</PreviewBox>;
@@ -26,4 +27,4 @@ const Changelog = ({ node }: { node: any }): JSX.Element => {
   );
 };
 
-export default Changelog;
+export default withErrorBoundary(Changelog, "Changelog");

@@ -1,4 +1,5 @@
 import React from "react";
+import { withErrorBoundary } from "../error-boundary";
 
 type FigmaType = {
   node: {
@@ -21,4 +22,4 @@ const Figma = ({ node }: FigmaType): JSX.Element => {
   );
 };
 
-export default Figma;
+export default withErrorBoundary(Figma, "Figma Embed");

@@ -1,6 +1,7 @@
 import copy from "copy-to-clipboard";
 import React, { createContext, useEffect, useState } from "react";
 import styled from "styled-components";
+import { withErrorBoundary } from "../error-boundary";
 import CodeBlock from "./Block";
 import CodePreview from "./Preview";
 import CodeTabs from "./Tabs";
@@ -195,4 +196,4 @@ const Code = ({ node }: { node: any }): JSX.Element => {
   );
 };
 
-export default Code;
+export default withErrorBoundary(Code, "Kode eksempel");

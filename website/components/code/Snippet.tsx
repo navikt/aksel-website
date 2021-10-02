@@ -5,6 +5,7 @@ import "prismjs/components/prism-jsx.min";
 import "prismjs/components/prism-typescript.min";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { withErrorBoundary } from "../error-boundary";
 import { CopyButton, copyCode } from "./Example";
 
 const PreWrapper = styled.div`
@@ -119,4 +120,4 @@ const CodeSnippet = ({ node: { code } }: CodeSnippetType): JSX.Element => {
   );
 };
 
-export default CodeSnippet;
+export default withErrorBoundary(CodeSnippet, "Kode snippet");

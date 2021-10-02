@@ -1,0 +1,61 @@
+import React from "react";
+import { ErrorInfo } from "react";
+/* import { isTest } from "../utils/environment"; */
+/* import { loggError } from "../utils/logger"; */
+import styled from "styled-components";
+
+interface Props {
+  boundaryName?: string;
+}
+
+interface State {
+  hasError: boolean;
+  error?: Error;
+  errorInfo?: ErrorInfo;
+}
+
+const Style = styled.div`
+  padding: 2rem;
+  text-align: center;
+  background-color: var(--navds-color-blue-50);
+  color: white;
+`;
+
+class ErrorBoundary extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    /* if (isTest()) {
+      throw error;
+    } */
+    this.setState({ hasError: true, error, errorInfo });
+    /* loggError(error); */
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <Style>Beklager, det skjedde en teknisk feil 🤷‍♀️</Style>;
+    }
+    return this.props.children;
+  }
+}
+
+export function withErrorBoundary<Props>(
+  Component: React.ComponentType<Props>,
+  boundaryName: string
+) {
+  return (props: Props) => {
+    return (
+      <ErrorBoundary boundaryName={boundaryName}>
+        <Component {...props} />
+      </ErrorBoundary>
+    );
+  };
+}

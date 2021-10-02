@@ -2,6 +2,7 @@ export * from "./assets";
 export { default as Changelog } from "./changelog";
 export * from "./code";
 export { default as DoDont } from "./dodont";
+export * from "./error-boundary";
 export { default as Figma } from "./figma";
 export { default as Image } from "./image";
 export { default as PropTable } from "./prop-table";
