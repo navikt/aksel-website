@@ -1,7 +1,8 @@
 import React, { createContext, useContext } from "react";
 import Head from "next/head";
 import styled from "styled-components";
-import Heading from "./Heading";
+import Heading from "./Header";
+import Footer from "./Footer";
 import { PagePropsContext } from "../../../pages/_app";
 import Sidebar from "./Sidebar";
 import { useMedia } from "react-use";
@@ -13,13 +14,9 @@ const Wrapper = styled.div`
   background-color: #f7f7f7;
   background-color: #f9f9f9;
   background-color: #fafafa;
-
-  /* @media (max-width: 1068px) {
-    display: block;
-  } */
 `;
 
-const MainContent = styled.main`
+const ContentWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   position: relative;
@@ -54,7 +51,10 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
           <Heading />
           <Wrapper>
             <Sidebar sidebar={pageProps.sidebar} />
-            <MainContent>{children}</MainContent>
+            <ContentWrapper>
+              <main>{children}</main>
+              <Footer />
+            </ContentWrapper>
           </Wrapper>
         </LayoutContext.Provider>
       </>
