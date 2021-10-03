@@ -26,7 +26,7 @@ import code_example, { example } from "./documents/designsystem/code-example";
 import code_snippet from "./objects/code-snippet";
 import code_example_ref from "./objects/code-example-ref";
 
-import prop_table, { prop } from "./objects/proptable";
+import { PropTable, TableRow } from "./objects/proptable";
 import do_dont, { doDont } from "./objects/do-dont";
 import uu_interactions, { keyboardTable } from "./objects/uu-interaction";
 import picture from "./objects/image";
@@ -50,8 +50,6 @@ export default createSchema({
     block_content,
     block_content_simple,
     gp_block_content,
-    prop_table,
-    prop,
     changelog,
     do_dont,
     doDont,
@@ -65,5 +63,7 @@ export default createSchema({
     link,
     dropdown,
     metadata,
+    PropTable,
+    TableRow,
   ]),
 });
