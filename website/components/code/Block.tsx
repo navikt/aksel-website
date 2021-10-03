@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Prism from "prismjs";
 import "prismjs/components/prism-bash.min";
 import "prismjs/components/prism-jsx.min";
@@ -6,33 +5,7 @@ import "prismjs/components/prism-typescript.min";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { CodeContext, CopyButton, copyCode } from "./Example";
 import { Popover } from "@navikt/ds-react";
-
-const PreWrapper = styled.div`
-  position: relative;
-  background-color: var(--navds-color-darkgray);
-  border-radius: 8px;
-`;
-
-const Pre = styled.pre`
-  overflow-x: auto;
-  align-items: center;
-  display: flex;
-  border-radius: 8px;
-  background-color: var(--navds-color-darkgray);
-  margin: 0;
-  padding: 1rem 1rem 1rem 1rem;
-
-  &[data-tabs="true"] {
-    border-radius: 0;
-    border-end-start-radius: 8px;
-    border-end-end-radius: 8px;
-  }
-`;
-
-const StyledCode = styled.code`
-  color: white;
-  font-size: 1rem;
-`;
+import * as S from "./code.styles";
 
 const CodeBlock = ({ index }: { index: number }): JSX.Element => {
   const { tabs, showTabs, activeTab } = useContext(CodeContext);
@@ -69,11 +42,7 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
 
   return (
     <>
-      <PreWrapper
-        style={{
-          display: activeTab === index ? "block" : "none",
-        }}
-      >
+      <S.PreWrapper active={activeTab === index}>
         <CopyButton
           ref={(node) => (buttonRef.current = node)}
           className="navds-body-short navds-body--small"
@@ -81,10 +50,10 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
         >
           Copy
         </CopyButton>
-        <Pre data-tabs={showTabs}>
-          <StyledCode dangerouslySetInnerHTML={{ __html: highlighted }} />
-        </Pre>
-      </PreWrapper>
+        <S.Pre data-tabs={showTabs}>
+          <S.Code dangerouslySetInnerHTML={{ __html: highlighted }} />
+        </S.Pre>
+      </S.PreWrapper>
 
       <Popover
         role="alert"

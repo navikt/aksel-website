@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useContext } from "react";
 import styled from "styled-components";
-import { NavLogoWhite } from "../..";
 import { LayoutContext, LayoutContextProps } from "./Layout";
+/* import { NavLogoWhite } from "../.."; */
 
 const StyledFooter = styled.footer<{ context: LayoutContextProps }>`
   height: 200px;
@@ -17,13 +17,12 @@ const StyledFooter = styled.footer<{ context: LayoutContextProps }>`
   border-top: 1px solid var(--navds-color-gray-20);
 `;
 
-const LogoWrapper = styled.div`
+/* const LogoWrapper = styled.div`
   font-size: 1.5rem;
   display: inline-flex;
-  /* justify-content: center; */
   align-items: center;
   gap: 1rem;
-`;
+`; */
 
 function Footer(): JSX.Element {
   const context = useContext(LayoutContext);

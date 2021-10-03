@@ -8,7 +8,6 @@ import {
 import { CodeContext } from "./Example";
 import prettier from "prettier/standalone";
 import babel from "prettier/parser-babel";
-/* import html from "prettier/parser-html"; */
 
 const CodePreview = (): JSX.Element => {
   const { node, setTabs, previews, setFullscreenLink } =

@@ -34,6 +34,7 @@ const TemplatePicker = ({
     console.warn(
       `${data._type} does not have  a valid template to use, please create one.`
     );
+
     return (
       <Error
         statusCode={404}
