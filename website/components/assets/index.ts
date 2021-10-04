@@ -1,4 +1,4 @@
-export { default as FigmaIcon } from "./FigmaIcon";
-export { default as GithubIcon } from "./GithubIcon";
-export { default as NpmIcon } from "./NpmIcon";
+export { FigmaIcon, FigmaIconGrayScale } from "./FigmaIcon";
+export { GithubIcon, GithubIconGrayScale } from "./GithubIcon";
+export { NpmIcon, NpmIconGrayScale } from "./NpmIcon";
 export { default as NavLogoWhite } from "./NavLogoWhite";

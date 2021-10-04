@@ -1,6 +1,6 @@
 import { Close } from "@navikt/ds-icons";
-import { SearchField, SearchFieldInput } from "@navikt/ds-react";
-import { SearchFieldClearButton } from "@navikt/ds-react/esm/form/search-field";
+/* import { SearchField, SearchFieldInput } from "@navikt/ds-react";
+import { SearchFieldClearButton } from "@navikt/ds-react/esm/form/search-field"; */
 import * as React from "react";
 import { useContext, useState } from "react";
 import styled from "styled-components";
@@ -25,7 +25,7 @@ function Sidebar({ sidebar }: { sidebar: any }): JSX.Element {
   return (
     <>
       <Wrapper context={context}>
-        <SearchField label="Filter">
+        {/* <SearchField label="Filter">
           <SearchFieldInput
             value={filterValue}
             onChange={(e) => setFilterValue(e.target.value)}
@@ -36,7 +36,7 @@ function Sidebar({ sidebar }: { sidebar: any }): JSX.Element {
               <span className="navds-sr-only">Tøm filter input</span>
             </SearchFieldClearButton>
           )}
-        </SearchField>
+        </SearchField> */}
         {sidebar?.sidebar ? <Menu menu={sidebar.sidebar} /> : null}
       </Wrapper>
     </>

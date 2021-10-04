@@ -3,15 +3,15 @@ import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
 import {
-  FigmaIcon,
-  GithubIcon,
-  NpmIcon,
+  FigmaIconGrayScale,
+  GithubIconGrayScale,
   LastUpdateTag,
   StatusTag,
   TableOfContents,
   Tab,
   Tabs,
   Changelog,
+  NpmIconGrayScale,
 } from "../..";
 import { ChangelogT } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
@@ -87,19 +87,19 @@ const ComponentPageTemplate = ({
             <Links>
               {data.npm_link && (
                 <Link href={data.npm_link}>
-                  <NpmIcon />
+                  <NpmIconGrayScale />
                   <span className="sr-only">Lenke til NPM side for pakke</span>
                 </Link>
               )}
               {data.github_link && (
                 <Link href={data.github_link}>
-                  <GithubIcon />
+                  <GithubIconGrayScale />
                   <span className="sr-only">Lenke til github koden</span>
                 </Link>
               )}
               {data.figma_link && (
                 <Link href={data.figma_link}>
-                  <FigmaIcon />
+                  <FigmaIconGrayScale />
                   <span className="sr-only">Link til Figma dokument</span>
                 </Link>
               )}

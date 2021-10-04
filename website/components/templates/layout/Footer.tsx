@@ -26,7 +26,7 @@ const StyledFooter = styled.footer<{ context: LayoutContextProps }>`
 
 function Footer(): JSX.Element {
   const context = useContext(LayoutContext);
-
+  return null;
   return (
     <StyledFooter context={context} className="navds-body-short">
       {/* <div></div>
