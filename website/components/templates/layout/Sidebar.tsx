@@ -1,4 +1,3 @@
-import { Close } from "@navikt/ds-icons";
 /* import { SearchField, SearchFieldInput } from "@navikt/ds-react";
 import { SearchFieldClearButton } from "@navikt/ds-react/esm/form/search-field"; */
 import * as React from "react";
@@ -20,7 +19,7 @@ const Wrapper = styled.div<{ context: LayoutContextProps }>`
 
 function Sidebar({ sidebar }: { sidebar: any }): JSX.Element {
   const context = useContext(LayoutContext);
-  const [filterValue, setFilterValue] = useState("");
+  /* const [filterValue, setFilterValue] = useState(""); */
 
   return (
     <>

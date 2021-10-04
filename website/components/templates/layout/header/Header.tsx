@@ -30,7 +30,7 @@ const SearchHambGroup = ({ isMobile }: { isMobile: boolean }) => {
   );
 };
 
-const HeadingDropDown = ({ isMobile }) => {
+const HeadingDropDown = ({ isMobile }: { isMobile: boolean }) => {
   const [open, setOpen] = useState(false);
   const popoverId = useId();
 
