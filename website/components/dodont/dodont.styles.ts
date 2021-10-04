@@ -1,10 +1,32 @@
 import styled from "styled-components";
 
+export const Icon = styled.div<{ variant: string }>`
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  > svg {
+    font-size: 1.25rem;
+    color: ${(props) => {
+      switch (props.variant) {
+        case "do":
+          return `var(--navds-color-green-50)`;
+        case "warning":
+          return `var(--navds-color-orange-50)`;
+        default:
+          return `var(--navds-color-red-50)`;
+      }
+    }};
+    ${(props) =>
+      props.variant === "warning" &&
+      `background: radial-gradient( circle, var(--navds-color-gray-90) 50%, 0, transparent );`}
+  }
+`;
+
 export const Figure = styled.figure`
   display: flex;
   flex-direction: column;
   margin: 0;
-  flex-basis: 300px;
+  min-width: 280px;
   flex-shrink: 0;
 
   &[data-fullwidth="true"] {
@@ -45,7 +67,7 @@ export const Caption = styled.figcaption`
     }
   }};
 
-  *:first-child {
+  > *:first-child {
     margin-top: 1rem;
   }
 `;

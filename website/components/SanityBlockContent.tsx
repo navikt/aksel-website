@@ -25,7 +25,7 @@ import {
   UuInteraction,
 } from ".";
 
-const StyledCode = styled.code`
+export const StyledCode = styled.code`
   color: var(--navds-color-red-50);
 `;
 

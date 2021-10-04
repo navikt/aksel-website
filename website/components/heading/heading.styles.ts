@@ -33,8 +33,8 @@ export const Anchor = styled.button`
   display: inline-block;
   margin-left: 0.5rem;
   font-size: 1.25rem;
-  height: 48px;
-  width: 48px;
+  height: 44px;
+  width: 44px;
   padding: 0.5rem;
   outline: none;
   border-radius: 50%;

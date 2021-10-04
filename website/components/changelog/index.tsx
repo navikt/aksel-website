@@ -45,11 +45,11 @@ const Changelog = ({
     <div>
       <Heading level="3" size="small" spacing>
         {log.title}{" "}
-      </Heading>
-      <BodyShort size="small" spacing as="div">
         {log.pull_request && (
           <Link href={log.pull_request}>{getPrText(log.pull_request)}</Link>
-        )}{" "}
+        )}
+      </Heading>
+      <BodyShort size="small" spacing as="div">
         {`${moment(log.change_date).format("DD. MMM. YY")}`}
       </BodyShort>
       <SanityBlockContent blocks={log.body} />

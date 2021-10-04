@@ -1,3 +1,4 @@
+import "nav-frontend-tabell-style/dist/main.css";
 import "@navikt/ds-css";
 import "../styles/prismjs.css";
 import "../styles/theme.css";

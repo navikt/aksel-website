@@ -1,5 +1,4 @@
 import { Heading } from "@navikt/ds-react";
-import "nav-frontend-tabell-style/dist/main.css";
 import React from "react";
 import { SanityBlockContent } from "../SanityBlockContent";
 import * as S from "./uu.styles";

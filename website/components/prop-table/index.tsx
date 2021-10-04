@@ -1,41 +1,70 @@
-import "nav-frontend-tabell-style/dist/main.css";
+import { Heading } from "@navikt/ds-react";
 import React from "react";
-import { PreviewBox } from "../templates/pages/page.styles";
+import { LevelTwoHeading } from "..";
+import { StyledCode } from "../SanityBlockContent";
 import * as S from "./prop-table.styles";
 
-const PropTable = ({ node }: { node: { props: any } }): JSX.Element => {
-  return <PreviewBox>🚧 Proptable 🚧</PreviewBox>;
-  const propRows = node.props;
-  if (propRows.length === 0) return null;
-  return (
-    <S.PropTable>
+type PropType = {
+  name: string;
+  type: string;
+  required: boolean;
+  description?: string;
+  default?: string;
+};
+
+type PropTableType = {
+  props: PropType[];
+};
+
+const PropTable = ({ node }: { node: PropTableType }): JSX.Element => {
+  if (!node.props || node.props.length === 0) {
+    return null;
+  }
+
+  const table = (prop: PropType) => {
+    return (
       <table
         className="tabell"
         summary="Oversikt over react-props komponenten bruker"
       >
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Req</th>
-            <th>Default</th>
-            <th>Description</th>
+            <th>
+              <Heading as="span" size="xsmall">
+                {`${prop.name}${prop.required ? "*" : ""}`}
+              </Heading>
+            </th>
+            <td />
           </tr>
         </thead>
         <tbody>
-          {propRows.map((prop) => {
-            return (
-              <tr key={prop._key}>
-                <td>{prop.prop_name}</td>
-                <td>{prop.prop_type}</td>
-                <td>{prop.prop_required ? "✔️" : "❌"}</td>
-                {<td>{prop.prop_default ? prop.prop_default : ""}</td>}
-                {<td>{prop.prop_description ? prop.prop_description : ""}</td>}
-              </tr>
-            );
-          })}
+          <tr>
+            <th>Type</th>
+            <td>
+              <pre style={{ margin: 0 }}>
+                <StyledCode>{prop.type.split("| ").join("|\n")}</StyledCode>
+              </pre>
+            </td>
+          </tr>
+          {prop.description && (
+            <tr>
+              <th>Description</th>
+              <td>{prop.description}</td>
+            </tr>
+          )}
+          {prop.default && (
+            <tr>
+              <th>Default</th>
+              <td>{prop.default}</td>
+            </tr>
+          )}
         </tbody>
       </table>
+    );
+  };
+  return (
+    <S.PropTable>
+      <S.TableWrapper>{node.props.map((prop) => table(prop))}</S.TableWrapper>
     </S.PropTable>
   );
 };

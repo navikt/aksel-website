@@ -4,6 +4,12 @@ import NextImage from "next/image";
 import { Label } from "@navikt/ds-react";
 import { useSanityImage } from "../../lib/santiy";
 import * as S from "./dodont.styles";
+import {
+  ErrorFilled,
+  Success,
+  SuccessFilled,
+  WarningFilled,
+} from "@navikt/ds-icons";
 
 const Element = ({ block }: { block: DoDontBlockType }): JSX.Element => {
   const imageProps = useSanityImage(block.picture);
@@ -20,12 +26,23 @@ const Element = ({ block }: { block: DoDontBlockType }): JSX.Element => {
       </S.FigureBorder>
 
       <S.Caption data-variant={block.variant}>
-        <Label spacing>
-          {block.variant === "do"
-            ? "Gjør dette"
-            : block.variant === "warning"
-            ? "Pass på dette"
-            : "Ikke gjør dette"}
+        <Label spacing as="div">
+          {block.variant === "do" ? (
+            <S.Icon variant={block.variant}>
+              <SuccessFilled />
+              Gjør dette
+            </S.Icon>
+          ) : block.variant === "warning" ? (
+            <S.Icon variant={block.variant}>
+              <WarningFilled />
+              Pass på dette
+            </S.Icon>
+          ) : (
+            <S.Icon variant={block.variant}>
+              <ErrorFilled />
+              Ikke gjør dette
+            </S.Icon>
+          )}
         </Label>
         <SanityBlockContent blocks={block.body} />
       </S.Caption>

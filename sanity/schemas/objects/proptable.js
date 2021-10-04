@@ -52,11 +52,11 @@ export const prop = {
     },
   ],
   initialValue: () => ({
-    prop_required: false,
+    required: false,
   }),
   preview: {
     select: {
-      name: "prop_name",
+      name: "name",
     },
     prepare: ({ name }) => ({ title: name }),
   },
