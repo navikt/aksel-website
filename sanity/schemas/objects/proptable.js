@@ -1,56 +1,63 @@
-export const PropTable = {
-  title: "Prop table",
+export default {
   name: "prop_table",
+  title: "Proptable",
   type: "object",
   fields: [
     {
-      name: "title",
-      type: "string",
-      title: "Title",
-    },
-    {
-      name: "rows",
-      title: "Props",
       type: "array",
-      of: [
-        {
-          type: "prop_table.row",
-        },
-      ],
+      name: "props",
+      title: "Props",
+      description: "Liste med props, tilsvarer en rad i tabellen",
+      of: [{ type: "prop_table.prop" }],
       validation: (Rule) => Rule.required().min(1),
     },
   ],
   preview: {
-    select: {
-      title: "title",
-    },
+    prepare: () => ({ title: "Proptable" }),
   },
 };
 
-export const TableRow = {
-  title: "Table Row",
-  name: "prop_table.row",
+export const prop = {
+  name: "prop_table.prop",
+  title: "Prop",
   type: "object",
   fields: [
     {
-      title: "Navn",
-      name: "name",
+      title: "Name",
+      name: "prop_name",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      title: "Type",
+      name: "prop_type",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      title: "Beskrivelse (optional)",
+      name: "prop_description",
       type: "string",
     },
     {
-      title: "Verdi",
-      name: "value",
+      title: "Default (optional)",
+      name: "prop_default",
       type: "string",
     },
     {
       title: "Required",
-      name: "required",
+      name: "prop_required",
       type: "boolean",
-    },
-    {
-      title: "Default",
-      name: "default",
-      type: "string",
+      validation: (Rule) => Rule.required(),
     },
   ],
+  initialValue: () => ({
+    prop_required: false,
+  }),
+  preview: {
+    select: {
+      name: "prop_name",
+    },
+    prepare: ({ name }) => ({ title: name }),
+  },
 };

@@ -12,7 +12,6 @@ import {
   Search,
   Picture,
 } from "@navikt/ds-icons";
-/* import { createSuperPane } from "sanity-super-pane"; */
 
 export default () =>
   S.list()
@@ -28,9 +27,9 @@ export default () =>
                 .title("Komponenter")
                 .icon(() => <Facilitet />)
                 .child(
-                  S.documentTypeList().initialValueTemplates([
-                    S.initialValueTemplateItem("ds_component_page_template"),
-                  ])
+                  S.documentTypeList("ds_component_page").initialValueTemplates(
+                    [S.initialValueTemplateItem("ds_component_page_template")]
+                  )
                 ),
               S.listItem()
                 .title("Artikler")
