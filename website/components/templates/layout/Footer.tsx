@@ -8,7 +8,7 @@ const StyledFooter = styled.footer<{ context: LayoutContextProps }>`
   height: 200px;
   width: 100%;
   /* background-color: var(--navds-color-gray-10); */
-  margin-top: var(--navds-spacing-16);
+
   padding: ${(props) => (props.context.isMobile ? "1rem" : "1rem 2rem")};
   display: flex;
   justify-content: space-between;

@@ -11,7 +11,9 @@ import {
   TableOfContents,
   Tab,
   Tabs,
+  Changelog,
 } from "../..";
+import { ChangelogT } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import * as S from "./page.styles";
 
@@ -48,7 +50,13 @@ const StyledDiv = styled.div`
   justify-content: space-between;
 `;
 
-const ComponentPageTemplate = ({ data }: { data: any }): JSX.Element => {
+const ComponentPageTemplate = ({
+  data,
+  changelogs,
+}: {
+  data: any;
+  changelogs: ChangelogT[];
+}): JSX.Element => {
   const { query } = useRouter();
 
   const basePath = `/designsystem/${(query.slug as string[])
@@ -121,6 +129,9 @@ const ComponentPageTemplate = ({ data }: { data: any }): JSX.Element => {
         <TableOfContents changedState={query.slug} />
         <S.MaxWidthContainer>
           <SanityBlockContent withMargin blocks={data[tabs[activeTab]]} />
+          {activeTab === "utvikling" && (
+            <Changelog changelogs={changelogs} id={data._id} />
+          )}
         </S.MaxWidthContainer>
       </S.SanityBlockContainer>
     </>

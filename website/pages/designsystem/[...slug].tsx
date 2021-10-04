@@ -1,5 +1,10 @@
 import { useRouter } from "next/router";
-import { usePreviewSubscription, getClient, changelogQuery } from "../../lib";
+import {
+  usePreviewSubscription,
+  getClient,
+  changelogQuery,
+  ChangelogT,
+} from "../../lib";
 import { isDevelopment } from "../../components";
 import PreviewBanner from "../../components/PreviewBanner";
 import TemplatePicker from "../../components/templates/TemplatePicker";
@@ -11,6 +16,7 @@ const PagePicker = (props: {
   slug?: string;
   page: any;
   sidebar: any;
+  changelogs?: ChangelogT[];
 }): JSX.Element => {
   const router = useRouter();
   const enablePreview = !!props.preview || !!router.query.preview;
@@ -24,10 +30,10 @@ const PagePicker = (props: {
     enabled: enablePreview,
   });
 
-  /* const { data: sidebar } = usePreviewSubscription(sidebarQuery, {
-    initialData: props.sidebar,
+  const { data: changelogs } = usePreviewSubscription(changelogQuery, {
+    initialData: props.changelogs,
     enabled: enablePreview,
-  }); */
+  });
 
   /* useEffect(() => {
     setPageData({ ...props, sidebar });
@@ -40,7 +46,10 @@ const PagePicker = (props: {
   return (
     <>
       {enablePreview && <PreviewBanner />}
-      <TemplatePicker data={data} /* sidebar={sidebar} */ />
+      <TemplatePicker
+        data={data}
+        /* sidebar={sidebar} */ changelogs={changelogs}
+      />
     </>
   );
 };
@@ -109,6 +118,7 @@ interface StaticProps {
     page;
     preview: boolean;
     slug: string;
+    changelogs: ChangelogT[] | null;
     /* sidebar; */
   };
   revalidate: number;
@@ -175,7 +185,10 @@ export const getStaticProps = async ({
     slug: "designsystem/" + joinedSlug,
   });
 
-  const changelogs = await getClient(enablePreview).fetch(changelogQuery);
+  const changelogs =
+    page._type === "ds_component_page"
+      ? await getClient(enablePreview).fetch(changelogQuery)
+      : null;
 
   /* const sidebar = await getClient(true).fetch(sidebarQuery); */
   return {
@@ -184,6 +197,7 @@ export const getStaticProps = async ({
       preview: enablePreview,
       slug: joinedSlug,
       /* sidebar: sidebar, */
+      changelogs,
     },
     revalidate: 60,
   };

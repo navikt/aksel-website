@@ -22,6 +22,10 @@ const ContentWrapper = styled.div`
   position: relative;
 `;
 
+const Main = styled.main`
+  min-height: calc(100vh - 48px);
+`;
+
 export type LayoutContextProps = {
   isMobile: boolean;
 };
@@ -40,7 +44,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
     <>
       <Head>
-        <title>Verktøkassen</title>
+        <title>Verktøykassen</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         {/* <meta property="og:site_name" content="NAV IT" />
   <meta property="og:url" content="https://www.design.nav.no/" /> */}
@@ -52,7 +56,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
           <Wrapper>
             <Sidebar sidebar={pageProps.sidebar} />
             <ContentWrapper>
-              <main>{children}</main>
+              <Main>{children}</Main>
               <Footer />
             </ContentWrapper>
           </Wrapper>

@@ -3,6 +3,7 @@ import Error from "next/error";
 import ComponentPageTemplate from "./pages/ComponentPageTemplate";
 import ActiclePageTemplate from "./pages/ArticlePageTemplate";
 import TabbedActiclePageTemplate from "./pages/TabbedArticlePageTemplate";
+import { ChangelogT } from "../../lib";
 
 const templates = {
   ds_component_page: (props: any) => <ComponentPageTemplate {...props} />,
@@ -15,9 +16,11 @@ const templates = {
 
 const TemplatePicker = ({
   data,
+  changelogs,
 }: /* sidebar, */
 {
   data: any;
+  changelogs?: ChangelogT[];
   /* sidebar: any; */
 }): JSX.Element => {
   const [mounted, setMounted] = useState(false);
@@ -45,7 +48,9 @@ const TemplatePicker = ({
 
   const Template = templates[data._type];
 
-  return <Template data={data} /* sidebar={sidebar} */ />;
+  return (
+    <Template data={data} /* sidebar={sidebar} */ changelogs={changelogs} />
+  );
 };
 
 export default TemplatePicker;

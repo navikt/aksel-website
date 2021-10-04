@@ -6,6 +6,7 @@ export * from "./error-boundary";
 export { default as Figma } from "./figma";
 export { default as Image } from "./image";
 export { default as PropTable } from "./prop-table";
+export { default as LevelTwoHeading } from "./heading";
 export { default as TableOfContents } from "./table-of-contents";
 export * from "./tabs";
 export * from "./tags";
