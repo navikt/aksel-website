@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { usePreviewSubscription, getClient } from "../../lib";
+import { usePreviewSubscription, getClient, changelogQuery } from "../../lib";
 import { isDevelopment } from "../../components";
 import PreviewBanner from "../../components/PreviewBanner";
 import TemplatePicker from "../../components/templates/TemplatePicker";
@@ -174,6 +174,8 @@ export const getStaticProps = async ({
   const page = await getClient(enablePreview).fetch(ds_query, {
     slug: "designsystem/" + joinedSlug,
   });
+
+  const changelogs = await getClient(enablePreview).fetch(changelogQuery);
 
   /* const sidebar = await getClient(true).fetch(sidebarQuery); */
   return {

@@ -24,29 +24,29 @@ export const prop = {
   fields: [
     {
       title: "Name",
-      name: "prop_name",
+      name: "name",
       type: "string",
       validation: (Rule) => Rule.required(),
     },
     {
       title: "Type",
-      name: "prop_type",
+      name: "type",
       type: "string",
       validation: (Rule) => Rule.required(),
     },
     {
       title: "Beskrivelse (optional)",
-      name: "prop_description",
+      name: "description",
       type: "string",
     },
     {
       title: "Default (optional)",
-      name: "prop_default",
+      name: "default",
       type: "string",
     },
     {
       title: "Required",
-      name: "prop_required",
+      name: "required",
       type: "boolean",
       validation: (Rule) => Rule.required(),
     },
