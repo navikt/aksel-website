@@ -17,7 +17,9 @@ export const GithubIcon = (
   </svg>
 );
 
-export const GithubIconGrayScale = (props): JSX.Element => (
+export const GithubIconGrayScale = (
+  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+): JSX.Element => (
   <svg
     width="1em"
     height="1em"

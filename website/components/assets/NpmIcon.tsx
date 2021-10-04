@@ -27,7 +27,9 @@ export const NpmIcon = (
   </svg>
 );
 
-export const NpmIconGrayScale = (props): JSX.Element => (
+export const NpmIconGrayScale = (
+  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+): JSX.Element => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     version="1.1"
