@@ -50,8 +50,8 @@ class ErrorBoundary extends React.Component<Props, State> {
 export function withErrorBoundary<Props>(
   Component: React.ComponentType<Props>,
   boundaryName: string
-): React.ReactNode {
-  return (props: Props) => {
+) {
+  return (props: Props): any => {
     return (
       <ErrorBoundary boundaryName={boundaryName}>
         <Component {...props} />

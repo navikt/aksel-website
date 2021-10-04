@@ -54,7 +54,9 @@ const serializers = {
     do_dont: ({ node }) => <DoDont node={node} />,
     uu_interaction: ({ node }) => <UuInteraction node={node} />,
     picture: ({ node }) => <Image node={node} />,
-    figma_embed: ({ node }) => <Figma node={node} />,
+    figma_embed: ({ node }) => {
+      return <Figma node={node} />;
+    },
 
     alert: (node) => (
       <StyledAlert variant={node.node.variant}>
