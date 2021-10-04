@@ -1,7 +1,7 @@
 /* import { SearchField, SearchFieldInput } from "@navikt/ds-react";
 import { SearchFieldClearButton } from "@navikt/ds-react/esm/form/search-field"; */
 import * as React from "react";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { LayoutContext, LayoutContextProps } from "./Layout";
 import Menu from "./Menu";

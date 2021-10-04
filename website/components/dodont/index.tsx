@@ -4,12 +4,7 @@ import NextImage from "next/image";
 import { Label } from "@navikt/ds-react";
 import { useSanityImage } from "../../lib/santiy";
 import * as S from "./dodont.styles";
-import {
-  ErrorFilled,
-  Success,
-  SuccessFilled,
-  WarningFilled,
-} from "@navikt/ds-icons";
+import { ErrorFilled, SuccessFilled, WarningFilled } from "@navikt/ds-icons";
 
 const Element = ({ block }: { block: DoDontBlockType }): JSX.Element => {
   const imageProps = useSanityImage(block.picture);

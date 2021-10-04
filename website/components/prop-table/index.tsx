@@ -1,6 +1,5 @@
 import { Heading } from "@navikt/ds-react";
 import React from "react";
-import { LevelTwoHeading } from "..";
 import { StyledCode } from "../SanityBlockContent";
 import * as S from "./prop-table.styles";
 

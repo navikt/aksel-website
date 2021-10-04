@@ -15,7 +15,7 @@ export const Divider = styled.div<{ divider?: boolean }>`
   margin-bottom: 3rem;
 
   ${(props) =>
-    !!props.divider
+    props.divider
       ? ``
       : `:first-child {
   display: none;

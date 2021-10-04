@@ -1,5 +1,9 @@
+import { SVGProps } from "react";
+
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const GithubIcon = (props): JSX.Element => (
+export const GithubIcon = (
+  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+): JSX.Element => (
   <svg
     width="1em"
     height="1em"

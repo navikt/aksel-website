@@ -1,5 +1,9 @@
+import { SVGProps } from "react";
+
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const NpmIcon = (props): JSX.Element => (
+export const NpmIcon = (
+  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+): JSX.Element => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     version="1.1"

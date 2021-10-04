@@ -14,7 +14,6 @@ import NextjsLink from "next/link";
 import React from "react";
 import styled from "styled-components";
 import {
-  Changelog,
   CodeExample,
   DoDont,
   Figma,

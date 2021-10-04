@@ -27,7 +27,7 @@ class ErrorBoundary extends React.Component<Props, State> {
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error: Error) {
+  static getDerivedStateFromError() {
     return { hasError: true };
   }
 
@@ -39,7 +39,7 @@ class ErrorBoundary extends React.Component<Props, State> {
     /* loggError(error); */
   }
 
-  render() {
+  render(): React.ReactNode {
     if (this.state.hasError) {
       return <Style>Beklager, det skjedde en teknisk feil 🤷‍♀️</Style>;
     }

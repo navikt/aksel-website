@@ -1,11 +1,17 @@
 import { Popover } from "@navikt/ds-react";
 import copy from "copy-to-clipboard";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { slugger } from "..";
 import * as S from "./heading.styles";
 import { Link as LinkIcon } from "@navikt/ds-icons";
 
-const LevelTwoHeading = ({ children, divider = false }) => {
+const LevelTwoHeading = ({
+  children,
+  divider = false,
+}: {
+  children: React.ReactNode;
+  divider?: boolean;
+}): JSX.Element => {
   const anchorRef = useRef(null);
   const [openPopover, setOpenPopover] = useState(false);
 
