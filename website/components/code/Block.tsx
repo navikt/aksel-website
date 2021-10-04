@@ -3,7 +3,7 @@ import "prismjs/components/prism-bash.min";
 import "prismjs/components/prism-jsx.min";
 import "prismjs/components/prism-typescript.min";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { CodeContext, CopyButton, copyCode } from "./Example";
+import { CodeContext, copyCode } from "./Example";
 import { Popover } from "@navikt/ds-react";
 import * as S from "./code.styles";
 
@@ -43,13 +43,13 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
   return (
     <>
       <S.PreWrapper active={activeTab === index}>
-        <CopyButton
+        <S.CopyButton
           ref={(node) => (buttonRef.current = node)}
           className="navds-body-short navds-body--small"
           onClick={() => handleCopy(tabs[index].content.toString())}
         >
           Copy
-        </CopyButton>
+        </S.CopyButton>
         <S.Pre data-tabs={showTabs}>
           <S.Code dangerouslySetInnerHTML={{ __html: highlighted }} />
         </S.Pre>
