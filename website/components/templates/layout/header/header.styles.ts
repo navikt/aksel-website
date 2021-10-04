@@ -122,6 +122,7 @@ export const LinkCss = css`
   :focus {
     box-shadow: inset 0 0 0 2px var(--navds-color-blue-50);
     z-index: 2;
+    outline: none;
   }
 `;
 
@@ -148,4 +149,5 @@ export const DropDownIconLink = styled.a`
 
 export const Popover = styled(DsPopover)`
   border-radius: 0 0 4px 4px;
+  border: none;
 `;
