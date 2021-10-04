@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from "react";
 import Head from "next/head";
 import styled from "styled-components";
-import Heading from "./Header";
+import Header from "./header/Header";
 import Footer from "./Footer";
 import { PagePropsContext } from "../../../pages/_app";
 import Sidebar from "./Sidebar";
@@ -52,7 +52,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
       </Head>
       <>
         <LayoutContext.Provider value={{ isMobile }}>
-          <Heading />
+          <Header />
           <Wrapper>
             <Sidebar sidebar={pageProps.sidebar} />
             <ContentWrapper>
