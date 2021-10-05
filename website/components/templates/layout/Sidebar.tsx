@@ -25,7 +25,6 @@ function Sidebar({ sidebar }: { sidebar: any }): JSX.Element {
   return (
     <>
       <Wrapper context={context}>
-        aldkasdkl
         {/* <SearchField label="Filter">
           <SearchFieldInput
             value={filterValue}

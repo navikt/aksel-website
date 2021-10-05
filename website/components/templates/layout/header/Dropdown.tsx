@@ -8,6 +8,7 @@ import NextLink from "next/link";
 
 import * as S from "./header.styles";
 import { LayoutContext } from "../Layout";
+import { titles } from "./Header";
 
 const HeadingDropDown = ({ isMobile }: { isMobile: boolean }): JSX.Element => {
   const [open, setOpen] = useState(false);
@@ -16,11 +17,6 @@ const HeadingDropDown = ({ isMobile }: { isMobile: boolean }): JSX.Element => {
 
   const buttonRef = useRef(null);
   const lastElement = useRef(null);
-
-  const titles = {
-    ds: "Designsystemet",
-    gp: "God Praksis",
-  };
 
   const handleClose = () => {
     document.activeElement !== buttonRef.current &&

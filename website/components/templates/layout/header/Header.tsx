@@ -25,6 +25,11 @@ const SearchHambGroup = ({ isMobile }: { isMobile: boolean }) => {
 
 export const HeaderContext = createContext(null);
 
+export const titles = {
+  ds: "Designsystemet",
+  gp: "God Praksis",
+};
+
 function Header(): JSX.Element {
   const context = useContext(LayoutContext);
 
@@ -42,27 +47,29 @@ function Header(): JSX.Element {
             </>
           )}
         </S.Row>
+
         <S.LinkRow context={context}>
           {!context.isMobile && <S.Grow />}
-          {!openSearchBar && (
-            <>
-              <S.Link href="#" isMobile={context.isMobile}>
-                Ressurser
-              </S.Link>
-              <S.Link data-active href="#" isMobile={context.isMobile}>
-                Komponenter
-              </S.Link>
-              <S.Link href="#" isMobile={context.isMobile}>
-                Mønster
-              </S.Link>
-              <S.Link href="#" isMobile={context.isMobile}>
-                Kategori
-              </S.Link>
-              <S.Link href="#" isMobile={context.isMobile}>
-                Kategori
-              </S.Link>
-            </>
-          )}
+          {!openSearchBar ||
+            (context.version === "gp" && (
+              <>
+                <S.Link href="#" isMobile={context.isMobile}>
+                  Ressurser
+                </S.Link>
+                <S.Link data-active href="#" isMobile={context.isMobile}>
+                  Komponenter
+                </S.Link>
+                <S.Link href="#" isMobile={context.isMobile}>
+                  Mønster
+                </S.Link>
+                <S.Link href="#" isMobile={context.isMobile}>
+                  Kategori
+                </S.Link>
+                <S.Link href="#" isMobile={context.isMobile}>
+                  Kategori
+                </S.Link>
+              </>
+            ))}
           {!context.isMobile && <SearchHambGroup isMobile={context.isMobile} />}
         </S.LinkRow>
       </S.Header>

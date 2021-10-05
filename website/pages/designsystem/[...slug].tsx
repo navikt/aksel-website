@@ -20,6 +20,7 @@ const PagePicker = (props: {
   sidebar: any;
   changelogs?: ChangelogT[];
 }): JSX.Element => {
+  console.log("called slug");
   const router = useRouter();
   const enablePreview = !!props.preview || !!router.query.preview;
 
