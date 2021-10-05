@@ -7,15 +7,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { withErrorBoundary } from "../error-boundary";
 import { copyCode } from "./Example";
 import * as S from "./code.styles";
-
-type CodeSnippetType = {
-  node: {
-    code: {
-      code: string;
-      language: string;
-    };
-  };
-};
+import { CodeSnippetType } from "../../lib";
 
 const CodeSnippet = ({ node: { code } }: CodeSnippetType): JSX.Element => {
   const buttonRef = useRef(null);

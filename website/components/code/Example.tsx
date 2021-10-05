@@ -5,6 +5,7 @@ import CodeBlock from "./Block";
 import CodePreview from "./Preview";
 import CodeTabs from "./Tabs";
 import * as S from "./code.styles";
+import { CodeExampleT } from "../../lib";
 
 export const copyCode = (content: string): void => {
   if (typeof content === "string") {
@@ -18,7 +19,7 @@ type TabType = { name: string; content: React.ReactNode; language?: string };
 type PreviewType = { ruler: boolean; outlines: boolean };
 
 type ContextProps = {
-  node: any;
+  node: Partial<CodeExampleT>;
   tabs: TabType[];
   setTabs: React.Dispatch<React.SetStateAction<TabType[]>>;
   showTabs: boolean;
@@ -45,7 +46,7 @@ export const CodeContext = createContext<ContextProps>({
   setFullscreenLink: () => null,
 });
 
-const Code = ({ node }: { node: any }): JSX.Element => {
+const Code = ({ node }: { node: CodeExampleT }): JSX.Element => {
   const [tabs, setTabs] = useState<TabType[]>(
     node?.infercode
       ? [

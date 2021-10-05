@@ -7,6 +7,7 @@ export default {
       title: "Tittel",
       name: "title",
       type: "string",
+      validation: (Rule) => Rule.required(),
     },
     {
       title: "Storybook Iframe (optional)",
