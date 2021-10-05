@@ -46,22 +46,19 @@ function Header(): JSX.Element {
       <S.LinkRow context={context}>
         {!context.isMobile && <S.Grow />}
         <S.Link href="#" isMobile={context.isMobile}>
-          <span>Ressurser</span>
+          Ressurser
         </S.Link>
         <S.Link data-active href="#" isMobile={context.isMobile}>
-          <span>Komponenter</span>
+          Komponenter
         </S.Link>
         <S.Link href="#" isMobile={context.isMobile}>
-          <span>Mønster</span>
+          Mønster
         </S.Link>
         <S.Link href="#" isMobile={context.isMobile}>
-          <span>Kategori</span>
+          Kategori
         </S.Link>
         <S.Link href="#" isMobile={context.isMobile}>
-          <span>Kategori</span>
-        </S.Link>
-        <S.Link href="#" isMobile={context.isMobile}>
-          <span>Kategori</span>
+          Kategori
         </S.Link>
         {!context.isMobile && <SearchHambGroup isMobile={context.isMobile} />}
       </S.LinkRow>

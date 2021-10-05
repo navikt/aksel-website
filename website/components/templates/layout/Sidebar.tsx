@@ -12,8 +12,7 @@ const Wrapper = styled.div<{ context: LayoutContextProps }>`
   position: relative;
   flex-shrink: 0;
   background-color: white;
-  border-right: 1px solid var(--navds-color-gray-20);
-
+  border-right: 1px solid var(--navds-color-gray-10);
   display: ${(props) => (props.context.isMobile ? "none" : "block")};
 `;
 

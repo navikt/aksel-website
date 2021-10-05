@@ -34,11 +34,15 @@ const Links = styled.div`
 
     :hover {
       text-decoration: underline;
-      background: transparent;
+      background: var(--navds-color-blue-10);
     }
 
     :focus {
       background: transparent;
+    }
+
+    :focus:hover {
+      background: var(--navds-color-blue-10);
     }
   }
 `;

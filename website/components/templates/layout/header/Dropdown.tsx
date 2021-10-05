@@ -34,64 +34,66 @@ const HeadingDropDown = ({ isMobile }: { isMobile: boolean }) => {
   return (
     <>
       <FocusLock disabled={!open}>
-        <S.DropDownButton
-          isMobile={isMobile}
-          aria-expanded={open}
-          aria-controls={popoverId}
-          aria-haspopup="menu"
-          onClick={() => setOpen((x) => !x)}
-          ref={buttonRef}
-        >
-          <NavLogoWhite focusable={false} aria-label="NAV logo" />
-          <Heading as="span" size="small">
-            Designsystemet
-          </Heading>
-          <Expand />
-        </S.DropDownButton>
-        <S.Popover
-          id={popoverId}
-          open={open}
-          anchorEl={buttonRef.current}
-          onClose={() => handleClose()}
-          placement="bottom-start"
-          arrow={false}
-          offset={5}
-          tabIndex={-1}
-        >
-          <S.Ul role="menu">
-            <li>
-              <S.DropDownIconLink href="#" role="menuitem">
-                <Left />
-                <BodyShort>Tilbake til Verktøykassa</BodyShort>
-              </S.DropDownIconLink>
-            </li>
+        <div>
+          <S.DropDownButton
+            isMobile={isMobile}
+            aria-expanded={open}
+            aria-controls={popoverId}
+            aria-haspopup="menu"
+            onClick={() => setOpen((x) => !x)}
+            ref={buttonRef}
+          >
+            <NavLogoWhite focusable={false} aria-label="NAV logo" />
+            <Heading as="span" size="small">
+              Designsystemet
+            </Heading>
+            <Expand />
+          </S.DropDownButton>
+          <S.Popover
+            id={popoverId}
+            open={open}
+            anchorEl={buttonRef.current}
+            onClose={() => handleClose()}
+            placement="bottom-start"
+            arrow={false}
+            offset={0}
+            tabIndex={-1}
+          >
+            <S.Ul role="menu">
+              <li>
+                <S.DropDownIconLink href="#" role="menuitem">
+                  <Left />
+                  <BodyShort>Tilbake til Verktøykassa</BodyShort>
+                </S.DropDownIconLink>
+              </li>
 
-            <li>
-              <S.DropDownLink href="#" role="menuitem">
-                <BodyShort>Designsystemet</BodyShort>
-                <BodyShort spacing size="small">
-                  Informasjon omhandlende designsystemet
-                </BodyShort>
-              </S.DropDownLink>
-            </li>
-            <li>
-              <S.DropDownLink href="#" role="menuitem">
-                <BodyShort>God Praksis</BodyShort>
-                <BodyShort spacing size="small">
-                  Informasjon omhandlende God Praksis
-                </BodyShort>
-              </S.DropDownLink>
-            </li>
-            <li>
-              <S.DropDownLink ref={lastElement} href="#" role="menuitem">
-                <BodyShort>Brand Guide</BodyShort>
-                <BodyShort spacing size="small">
-                  Informasjon omhandlende Brand Guide
-                </BodyShort>
-              </S.DropDownLink>
-            </li>
-          </S.Ul>
-        </S.Popover>
+              <li>
+                <S.DropDownLink href="#" role="menuitem">
+                  <BodyShort>Designsystemet</BodyShort>
+                  <BodyShort spacing size="small">
+                    Informasjon omhandlende designsystemet
+                  </BodyShort>
+                </S.DropDownLink>
+              </li>
+              <li>
+                <S.DropDownLink href="#" role="menuitem">
+                  <BodyShort>God Praksis</BodyShort>
+                  <BodyShort spacing size="small">
+                    Informasjon omhandlende God Praksis
+                  </BodyShort>
+                </S.DropDownLink>
+              </li>
+              <li>
+                <S.DropDownLink ref={lastElement} href="#" role="menuitem">
+                  <BodyShort>Brand Guide</BodyShort>
+                  <BodyShort spacing size="small">
+                    Informasjon omhandlende Brand Guide
+                  </BodyShort>
+                </S.DropDownLink>
+              </li>
+            </S.Ul>
+          </S.Popover>
+        </div>
       </FocusLock>
     </>
   );

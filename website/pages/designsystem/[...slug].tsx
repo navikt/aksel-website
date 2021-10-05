@@ -4,6 +4,8 @@ import {
   getClient,
   changelogQuery,
   ChangelogT,
+  dsDocuments,
+  dsDocumentBySlug,
 } from "../../lib";
 import { isDevelopment } from "../../components";
 import PreviewBanner from "../../components/PreviewBanner";
@@ -24,7 +26,7 @@ const PagePicker = (props: {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setPageData] = useContext(PagePropsContext);
 
-  const { data } = usePreviewSubscription(ds_query, {
+  const { data } = usePreviewSubscription(dsDocumentBySlug, {
     params: { slug: props?.slug },
     initialData: props.page,
     enabled: enablePreview,
@@ -54,13 +56,11 @@ const PagePicker = (props: {
   );
 };
 
-const query = `*[_type in ["ds_component_page", "ds_article_page", "ds_tabbed_article_page"]]{ _type, 'slug': slug.current }`;
-
 export const getStaticPaths = async (): Promise<{
   fallback: boolean;
   paths: { params: { slug: string[] } }[];
 }> => {
-  const documents: any[] | null = await getClient(false).fetch(query);
+  const documents: any[] | null = await getClient(false).fetch(dsDocuments);
   const paths = [];
   const componentPageTabs = ["design", "utvikling", "tilgjengelighet"];
 
@@ -124,53 +124,6 @@ interface StaticProps {
   revalidate: number;
 }
 
-const ds_query = `*[slug.current match $slug][0]
-{
-  ...,
-  "slug": slug.current,
-	usage[]{
-    ...,
-    _type == "code_example_ref" =>{
-    	"ref": @.ref->
-  	}
-  },
-  design[]{
-      ...,
-      _type == "code_example_ref" =>{
-        "ref": @.ref->
-      }
-  },
-  development[]{
-      ...,
-      _type == "code_example_ref" =>{
-        "ref": @.ref->
-      }
-  },
-  accessibility[]{
-      ...,
-      _type == "code_example_ref" =>{
-        "ref": @.ref->
-      }
-  },
-}`;
-
-/* const sidebarQuery = `
-*[_id == 'navigation_designsystem'][0] {
-  "sidebar": sidemenu[]{
-   ...,
-   link_ref->{_id, slug},
-    dropdown[]{
-      ...,
-       link_ref->{_id, slug},
-      dropdown[]{
-        ...,
-        link_ref->{_id, slug},
-      }
-    }
-  }
- }
-`; */
-
 export const getStaticProps = async ({
   params: { slug },
   preview,
@@ -181,7 +134,7 @@ export const getStaticProps = async ({
   const joinedSlug = slug.slice(0, 2).join("/");
 
   const enablePreview = !!preview || isDevelopment();
-  const page = await getClient(enablePreview).fetch(ds_query, {
+  const page = await getClient(enablePreview).fetch(dsDocumentBySlug, {
     slug: "designsystem/" + joinedSlug,
   });
 
@@ -190,7 +143,7 @@ export const getStaticProps = async ({
       ? await getClient(enablePreview).fetch(changelogQuery)
       : null;
 
-  /* const sidebar = await getClient(true).fetch(sidebarQuery); */
+  /* const sidebar = await getClient(true).fetch(sidebarQuery("navigation_designsystem")); */
   return {
     props: {
       page,

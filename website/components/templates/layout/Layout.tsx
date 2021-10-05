@@ -12,8 +12,6 @@ const Wrapper = styled.div`
   min-height: calc(100vh - 56px);
   justify-content: center;
   background-color: #f7f7f7;
-  background-color: #f9f9f9;
-  background-color: #fafafa;
 `;
 
 const ContentWrapper = styled.div`

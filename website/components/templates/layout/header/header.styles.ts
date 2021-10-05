@@ -25,9 +25,9 @@ export const HeaderItem = css<{ isMobile: boolean }>`
   padding: ${(props) => (props.isMobile ? "0 0.75rem" : "0 0.75rem")};
   color: white;
   column-gap: 0.5rem;
-  min-width: 48px;
   height: 100%;
-  min-height: 48px;
+  min-height: 64px;
+  min-width: 64px;
   justify-content: center;
 
   > * {
@@ -36,14 +36,12 @@ export const HeaderItem = css<{ isMobile: boolean }>`
 
   :hover {
     background-color: var(--navds-color-gray-80);
-    > *:not(svg) {
-      box-shadow: 0 3px 0 0 white;
-    }
+    box-shadow: inset 0 -3px 0 0 white;
   }
 
   :focus {
     outline: 2px solid white;
-    outline-offset: -4px;
+    outline-offset: -2px;
   }
 
   svg {
@@ -62,9 +60,7 @@ export const Link = styled.a<{ isMobile: boolean }>`
   text-decoration: none;
 
   &[data-active] {
-    > * {
-      box-shadow: 0 3px 0 0 white;
-    }
+    box-shadow: inset 0 -3px 0 0 white;
   }
 `;
 
@@ -97,9 +93,10 @@ export const Row = styled.div`
 export const Ul = styled.ul`
   display: flex;
   flex-direction: column;
-  padding: 0;
+  padding: 0.5rem;
   margin: 0;
   width: 300px;
+  gap: 0.5rem;
 
   li {
     list-style: none;

@@ -5,12 +5,12 @@ export const Nav = styled.nav<{ isMobile: boolean }>`
   position: sticky;
   top: 0;
   z-index: 99;
-  background-color: #f9f9f9;
+  background-color: #f7f7f7;
   ${(props) => {
     return !props.isMobile
       ? `margin-left: 3rem;
          margin-right: auto;
-         max-width: 636px;`
+         max-width: 600px;`
       : `margin: 0;
          max-width: none;
          padding-right: 0;
@@ -36,7 +36,8 @@ export const Ul = styled.ul<{ isMobile: boolean }>`
   display: flex;
   align-items: center;
   overflow-x: auto;
-  max-width: ${(props) => (props.isMobile ? "" : "700px")};
+  max-width: ${(props) => (props.isMobile ? "" : "600px")};
+  margin-top: 0.5rem;
 
   > * {
     list-style: none;
