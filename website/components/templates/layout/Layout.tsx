@@ -26,6 +26,7 @@ const Main = styled.main`
 
 export type LayoutContextProps = {
   isMobile: boolean;
+  version: "ds" | "gp";
 };
 
 export const LayoutContext = createContext<LayoutContextProps | null>(null);
@@ -33,11 +34,13 @@ export const LayoutContext = createContext<LayoutContextProps | null>(null);
 // TODO: Move metadata to SEO component
 const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   const [pageProps] = useContext<any>(PagePropsContext);
+
+  const isMobile = useMedia("(max-width: 970px)");
+  const pageType = pageProps?.page?._type?.split("_")[0];
+
   if (!pageProps) {
     return null;
   }
-
-  const isMobile = useMedia("(max-width: 970px)");
 
   return (
     <>
@@ -49,7 +52,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <>
-        <LayoutContext.Provider value={{ isMobile }}>
+        <LayoutContext.Provider value={{ isMobile, version: pageType }}>
           <Header />
           <Wrapper>
             <Sidebar sidebar={pageProps.sidebar} />

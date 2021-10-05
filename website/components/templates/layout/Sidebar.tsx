@@ -14,6 +14,8 @@ const Wrapper = styled.div<{ context: LayoutContextProps }>`
   background-color: white;
   border-right: 1px solid var(--navds-color-gray-10);
   display: ${(props) => (props.context.isMobile ? "none" : "block")};
+  position: sticky;
+  top: 0;
 `;
 
 function Sidebar({ sidebar }: { sidebar: any }): JSX.Element {
@@ -23,6 +25,7 @@ function Sidebar({ sidebar }: { sidebar: any }): JSX.Element {
   return (
     <>
       <Wrapper context={context}>
+        aldkasdkl
         {/* <SearchField label="Filter">
           <SearchFieldInput
             value={filterValue}

@@ -2,17 +2,25 @@ import { Expand, Left } from "@navikt/ds-icons";
 import { BodyShort, Heading, useId } from "@navikt/ds-react";
 import FocusLock from "react-focus-lock";
 import * as React from "react";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { NavLogoWhite } from "../../..";
+import NextLink from "next/link";
 
 import * as S from "./header.styles";
+import { LayoutContext } from "../Layout";
 
 const HeadingDropDown = ({ isMobile }: { isMobile: boolean }): JSX.Element => {
   const [open, setOpen] = useState(false);
   const popoverId = useId();
+  const context = useContext(LayoutContext);
 
   const buttonRef = useRef(null);
   const lastElement = useRef(null);
+
+  const titles = {
+    ds: "Designsystemet",
+    gp: "God Praksis",
+  };
 
   const handleClose = () => {
     document.activeElement !== buttonRef.current &&
@@ -45,7 +53,7 @@ const HeadingDropDown = ({ isMobile }: { isMobile: boolean }): JSX.Element => {
           >
             <NavLogoWhite focusable={false} aria-label="NAV logo" />
             <Heading as="span" size="small">
-              Designsystemet
+              {titles[context.version] ?? ""}
             </Heading>
             <Expand />
           </S.DropDownButton>
@@ -61,35 +69,43 @@ const HeadingDropDown = ({ isMobile }: { isMobile: boolean }): JSX.Element => {
           >
             <S.Ul role="menu">
               <li>
-                <S.DropDownIconLink href="#" role="menuitem">
-                  <Left />
-                  <BodyShort>Tilbake til Verktøykassa</BodyShort>
-                </S.DropDownIconLink>
+                <NextLink href="/" passHref>
+                  <S.DropDownIconLink role="menuitem">
+                    <Left />
+                    <BodyShort>Tilbake til Verktøykassa</BodyShort>
+                  </S.DropDownIconLink>
+                </NextLink>
               </li>
 
               <li>
-                <S.DropDownLink href="#" role="menuitem">
-                  <BodyShort>Designsystemet</BodyShort>
-                  <BodyShort spacing size="small">
-                    Informasjon omhandlende designsystemet
-                  </BodyShort>
-                </S.DropDownLink>
+                <NextLink href="/designsystem" passHref>
+                  <S.DropDownLink role="menuitem">
+                    <BodyShort>Designsystemet</BodyShort>
+                    <BodyShort spacing size="small">
+                      Informasjon omhandlende designsystemet
+                    </BodyShort>
+                  </S.DropDownLink>
+                </NextLink>
               </li>
               <li>
-                <S.DropDownLink href="#" role="menuitem">
-                  <BodyShort>God Praksis</BodyShort>
-                  <BodyShort spacing size="small">
-                    Informasjon omhandlende God Praksis
-                  </BodyShort>
-                </S.DropDownLink>
+                <NextLink href="/god-praksis" passHref>
+                  <S.DropDownLink href="/god-praksis" role="menuitem">
+                    <BodyShort>God Praksis</BodyShort>
+                    <BodyShort spacing size="small">
+                      Informasjon omhandlende God Praksis
+                    </BodyShort>
+                  </S.DropDownLink>
+                </NextLink>
               </li>
               <li>
-                <S.DropDownLink ref={lastElement} href="#" role="menuitem">
-                  <BodyShort>Brand Guide</BodyShort>
-                  <BodyShort spacing size="small">
-                    Informasjon omhandlende Brand Guide
-                  </BodyShort>
-                </S.DropDownLink>
+                <NextLink href="#" passHref>
+                  <S.DropDownLink ref={lastElement} role="menuitem">
+                    <BodyShort>Brand Guide</BodyShort>
+                    <BodyShort spacing size="small">
+                      Informasjon omhandlende Brand Guide
+                    </BodyShort>
+                  </S.DropDownLink>
+                </NextLink>
               </li>
             </S.Ul>
           </S.Popover>

@@ -53,7 +53,7 @@ export const DropDownButton = styled.button`
   ${HeaderItem}
   background: none;
   border: none;
-  border-right: 1px solid var(--navds-color-gray-60);
+  /* border-right: 1px solid var(--navds-color-gray-60); */
 `;
 
 export const Link = styled.a<{ isMobile: boolean }>`
