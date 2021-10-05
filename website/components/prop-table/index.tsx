@@ -1,19 +1,8 @@
 import { Heading } from "@navikt/ds-react";
 import React from "react";
+import { PropTableType, PropType } from "../../lib";
 import { StyledCode } from "../SanityBlockContent";
 import * as S from "./prop-table.styles";
-
-type PropType = {
-  name: string;
-  type: string;
-  required: boolean;
-  description?: string;
-  default?: string;
-};
-
-type PropTableType = {
-  props: PropType[];
-};
 
 const PropTable = ({ node }: { node: PropTableType }): JSX.Element => {
   if (!node.props || node.props.length === 0) {

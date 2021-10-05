@@ -32,3 +32,52 @@ export type CodeSnippetType = {
     };
   };
 };
+
+export type DoDontBlockType = {
+  fullwidth: boolean;
+  picture: any;
+  alt: string;
+  body?: any;
+  variant: string;
+  _key: string;
+};
+
+export type DodontType = {
+  node: {
+    blocks: DoDontBlockType[];
+  };
+};
+
+export type FigmaType = {
+  node: {
+    embed: string;
+  };
+};
+
+export type ImageType = {
+  node: {
+    title: string;
+    caption?: string;
+  };
+};
+
+export type PropType = {
+  name: string;
+  type: string;
+  required: boolean;
+  description?: string;
+  default?: string;
+};
+
+export type PropTableType = {
+  props: PropType[];
+};
+
+export type UuInteractionType = {
+  node: {
+    focus?: any;
+    mouse?: any;
+    keyboard?: { command: any; description: any; _key: string }[];
+    screen_reader?: any;
+  };
+};

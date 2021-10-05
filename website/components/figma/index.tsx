@@ -1,11 +1,6 @@
 import React from "react";
+import { FigmaType } from "../../lib";
 import { withErrorBoundary } from "../error-boundary";
-
-type FigmaType = {
-  node: {
-    embed: string;
-  };
-};
 
 const Figma = ({ node }: FigmaType): JSX.Element => {
   const src = node.embed?.match(/src="(.+?)"/)?.[1];

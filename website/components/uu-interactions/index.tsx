@@ -1,18 +1,10 @@
 import { Heading } from "@navikt/ds-react";
 import React from "react";
+import { UuInteractionType } from "../../lib";
 import { SanityBlockContent } from "../SanityBlockContent";
 import * as S from "./uu.styles";
 
-type UuType = {
-  node: {
-    focus?: any;
-    mouse?: any;
-    keyboard?: { command: any; description: any; _key: string }[];
-    screen_reader?: any;
-  };
-};
-
-const UuInteraction = ({ node }: UuType): JSX.Element => {
+const UuInteraction = ({ node }: UuInteractionType): JSX.Element => {
   // return <PreviewBox>🚧 Komponent interaksjoner 🚧</PreviewBox>;
   return (
     <S.Div>
@@ -43,7 +35,7 @@ const UuInteraction = ({ node }: UuType): JSX.Element => {
           >
             <thead>
               <tr>
-                <th>Kommando</th>
+                <th>Key</th>
                 <th>Funksjon</th>
               </tr>
             </thead>
