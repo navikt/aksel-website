@@ -1,4 +1,4 @@
-import { Hamburger, Search } from "@navikt/ds-icons";
+import { Hamburger } from "@navikt/ds-icons";
 import * as React from "react";
 import { createContext, useContext, useState } from "react";
 import { LayoutContext } from "../Layout";

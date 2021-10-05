@@ -7,7 +7,7 @@ import { NavLogoWhite } from "../../..";
 
 import * as S from "./header.styles";
 
-const HeadingDropDown = ({ isMobile }: { isMobile: boolean }) => {
+const HeadingDropDown = ({ isMobile }: { isMobile: boolean }): JSX.Element => {
   const [open, setOpen] = useState(false);
   const popoverId = useId();
 
