@@ -1,6 +1,7 @@
 import { Popover as DsPopover } from "@navikt/ds-react";
 import styled, { css } from "styled-components";
 import { LayoutContextProps } from "../Layout";
+import { SearchField as DsSearchField } from "@navikt/ds-react";
 
 export const Header = styled.header<{ context: LayoutContextProps }>`
   height: ${(props) =>
@@ -53,6 +54,7 @@ export const DropDownButton = styled.button`
   ${HeaderItem}
   background: none;
   border: none;
+  border-right: 1px solid var(--navds-color-gray-60);
 `;
 
 export const Link = styled.a<{ isMobile: boolean }>`
@@ -147,4 +149,26 @@ export const DropDownIconLink = styled.a`
 export const Popover = styled(DsPopover)`
   border-radius: 0 0 4px 4px;
   border: none;
+`;
+
+/* HeaderSearchBar */
+export const SearchButton = styled.button<{ isMobile: boolean }>`
+  ${HeaderItem}
+  text-decoration: none;
+  background: none;
+  border: none;
+`;
+
+export const SearchField = styled(DsSearchField)<{ isMobile: boolean }>`
+  display: flex;
+  align-items: center;
+  width: 350px;
+
+  > .navds-search-field__input-wrapper {
+    width: 100%;
+  }
+
+  > * input {
+    border: none;
+  }
 `;

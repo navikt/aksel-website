@@ -1923,7 +1923,7 @@
   resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.5.4.tgz#5b00f98f84da5cdb01f7b0dac9e4004d7d4bed0a"
   integrity sha512-4lk4CTKZtNkqGJ2wAtJPheaCcwD6hILh6zWICO7071Lu/O+O+qSmxJSGFJmPh4pTAUuPONp6p8jOUqQwTi4yhw==
 
-"@navikt/ds-react@0.10":
+"@navikt/ds-react@0.10", "@navikt/ds-react@^0.10":
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.10.1.tgz#96c3747d7cd20e1c6ea7cc3dcca41681cca8e30c"
   integrity sha512-SueMSJ9xO9T5duA0IS8MiMBQm5GsAyNZXDfu/zyJ8pKn1QXZFH0MYBtZP+VmoFFG+K+jN2mkZzb2/WnpBF5cTw==

@@ -1,21 +1,15 @@
 import { Hamburger, Search } from "@navikt/ds-icons";
 import * as React from "react";
-import { useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import { LayoutContext } from "../Layout";
 import HeadingDropDown from "./Dropdown";
 import * as S from "./header.styles";
+import HeaderSearchBar from "./Searchbar";
 
 const SearchHambGroup = ({ isMobile }: { isMobile: boolean }) => {
   return (
     <>
-      <S.Link href="#" isMobile={isMobile}>
-        <Search
-          style={{ fontSize: "1.5rem", marginLeft: 3 }}
-          focusable={false}
-          aria-label="Søk ikon"
-        />
-        <span className="sr-only">Søk etter sider</span>
-      </S.Link>
+      <HeaderSearchBar />
       {isMobile && (
         <S.Link href="#" isMobile={isMobile}>
           <Hamburger
@@ -29,40 +23,50 @@ const SearchHambGroup = ({ isMobile }: { isMobile: boolean }) => {
   );
 };
 
+export const HeaderContext = createContext(null);
+
 function Header(): JSX.Element {
   const context = useContext(LayoutContext);
 
+  const [openSearchBar, setOpenSearchBar] = useState(false);
+
   return (
-    <S.Header context={context} className="navds-body-short">
-      <S.Row>
-        <HeadingDropDown isMobile={context.isMobile} />
-        {context.isMobile && (
-          <>
-            <S.Grow />
-            <SearchHambGroup isMobile={context.isMobile} />
-          </>
-        )}
-      </S.Row>
-      <S.LinkRow context={context}>
-        {!context.isMobile && <S.Grow />}
-        <S.Link href="#" isMobile={context.isMobile}>
-          Ressurser
-        </S.Link>
-        <S.Link data-active href="#" isMobile={context.isMobile}>
-          Komponenter
-        </S.Link>
-        <S.Link href="#" isMobile={context.isMobile}>
-          Mønster
-        </S.Link>
-        <S.Link href="#" isMobile={context.isMobile}>
-          Kategori
-        </S.Link>
-        <S.Link href="#" isMobile={context.isMobile}>
-          Kategori
-        </S.Link>
-        {!context.isMobile && <SearchHambGroup isMobile={context.isMobile} />}
-      </S.LinkRow>
-    </S.Header>
+    <HeaderContext.Provider value={{ openSearchBar, setOpenSearchBar }}>
+      <S.Header context={context} className="navds-body-short">
+        <S.Row>
+          <HeadingDropDown isMobile={context.isMobile} />
+          {context.isMobile && (
+            <>
+              <S.Grow />
+              <SearchHambGroup isMobile={context.isMobile} />
+            </>
+          )}
+        </S.Row>
+        <S.LinkRow context={context}>
+          {!context.isMobile && <S.Grow />}
+          {!openSearchBar && (
+            <>
+              <S.Link href="#" isMobile={context.isMobile}>
+                Ressurser
+              </S.Link>
+              <S.Link data-active href="#" isMobile={context.isMobile}>
+                Komponenter
+              </S.Link>
+              <S.Link href="#" isMobile={context.isMobile}>
+                Mønster
+              </S.Link>
+              <S.Link href="#" isMobile={context.isMobile}>
+                Kategori
+              </S.Link>
+              <S.Link href="#" isMobile={context.isMobile}>
+                Kategori
+              </S.Link>
+            </>
+          )}
+          {!context.isMobile && <SearchHambGroup isMobile={context.isMobile} />}
+        </S.LinkRow>
+      </S.Header>
+    </HeaderContext.Provider>
   );
 }
 
