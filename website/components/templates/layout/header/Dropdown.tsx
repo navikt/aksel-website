@@ -54,9 +54,9 @@ const HeadingDropDown = ({ isMobile }: { isMobile: boolean }) => {
             open={open}
             anchorEl={buttonRef.current}
             onClose={() => handleClose()}
-            placement="bottom-start"
+            placement="bottom"
             arrow={false}
-            offset={0}
+            offset={-8}
             tabIndex={-1}
           >
             <S.Ul role="menu">

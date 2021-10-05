@@ -37,7 +37,6 @@ export const HeaderItem = css<{ isMobile: boolean }>`
 
   :hover {
     background-color: var(--navds-color-gray-80);
-    box-shadow: inset 0 -3px 0 0 white;
   }
 
   :focus {
@@ -97,7 +96,7 @@ export const Ul = styled.ul`
   flex-direction: column;
   padding: 0.5rem;
   margin: 0;
-  width: 300px;
+  width: 275px;
   gap: 0.5rem;
 
   li {
@@ -147,7 +146,6 @@ export const DropDownIconLink = styled.a`
 `;
 
 export const Popover = styled(DsPopover)`
-  border-radius: 0 0 4px 4px;
   border: none;
 `;
 
