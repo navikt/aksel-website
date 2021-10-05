@@ -41,8 +41,8 @@ const Changelog = ({
     return isNaN(number) ? "PR" : `#${number}`;
   };
 
-  const logInstance = (log) => (
-    <div>
+  const logInstance = (log: ChangelogT, prefix?: string) => (
+    <div key={log._id + prefix}>
       <Heading level="3" size="small" spacing>
         {log.title}{" "}
         {log.pull_request && (
@@ -64,15 +64,16 @@ const Changelog = ({
           Vis changelog
         </S.ChangelogButton>
       </div>
-      {relevantLogs.map((log, x) => (
-        <>{x > 3 ? null : logInstance(log)}</>
-      ))}
+      {relevantLogs.map((log, x) => {
+        const c = x > 3 ? null : logInstance(log);
+        return c;
+      })}
       <Modal open={open} onClose={() => setOpen(false)}>
         <Modal.Content style={{ minWidth: 340 }}>
           <Heading level="2" size="medium" spacing>
             Changelog
           </Heading>
-          {relevantLogs.map((log) => logInstance(log))}
+          {relevantLogs.map((log) => logInstance(log, "modal"))}
         </Modal.Content>
       </Modal>
     </S.Changelog>

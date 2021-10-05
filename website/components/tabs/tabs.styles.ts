@@ -51,7 +51,6 @@ export const Ul = styled.ul<{ isMobile: boolean }>`
 export const A = styled.a`
   border-bottom: 3px solid transparent;
   background: none;
-  font-weight: var(--navds-font-weight-bold);
   cursor: pointer;
   text-decoration: none;
   text-transform: capitalize;
@@ -62,15 +61,18 @@ export const A = styled.a`
   justify-content: center;
   padding: 0.5rem 1rem;
   min-height: 48px;
+  font-weight: 400;
 
   &[aria-selected="true"] {
     border-color: var(--navds-color-blue-50);
     color: var(--navds-color-darkgray);
+    font-weight: 600;
   }
 
   :hover {
     color: var(--navds-color-darkgray);
     border-color: var(--navds-color-darkgray);
+    font-weight: 600;
   }
 
   :focus {

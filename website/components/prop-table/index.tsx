@@ -12,6 +12,7 @@ const PropTable = ({ node }: { node: PropTableType }): JSX.Element => {
   const table = (prop: PropType) => {
     return (
       <table
+        key={prop.name}
         className="tabell"
         summary="Oversikt over react-props komponenten bruker"
       >
