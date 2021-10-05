@@ -1,8 +1,8 @@
-import { AlertT } from "../../lib";
-import { Alert as DsAlert, BodyLong, Heading } from "@navikt/ds-react";
+import { Alert as DsAlert, Heading } from "@navikt/ds-react";
 import React from "react";
-import { BlockContext, SanityBlockContent } from "../SanityBlockContent";
 import styled from "styled-components";
+import { AlertT } from "../../lib";
+import { SanityBlockContent } from "../SanityBlockContent";
 
 const StyledAlert = styled(DsAlert)`
   > * .navds-typo--spacing :last-child {
