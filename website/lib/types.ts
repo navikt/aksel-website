@@ -81,3 +81,11 @@ export type UuInteractionType = {
     screen_reader?: any;
   };
 };
+
+export type AlertT = {
+  variant: "success" | "info" | "warning" | "error";
+  size: "medium" | "small";
+  heading?: string;
+  heading_level: "h2" | "h3" | "h4";
+  body: any;
+};

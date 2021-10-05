@@ -1,4 +1,5 @@
 export * from "./assets";
+export { default as Alert } from "./alert";
 export { default as Changelog } from "./changelog";
 export * from "./code";
 export { default as DoDont } from "./dodont";

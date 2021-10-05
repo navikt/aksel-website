@@ -1,6 +1,5 @@
 import "@navikt/ds-css";
 import {
-  Alert,
   BodyLong,
   BodyShort,
   Detail,
@@ -11,9 +10,10 @@ import {
 } from "@navikt/ds-react";
 import BlockContent from "@sanity/block-content-to-react";
 import NextjsLink from "next/link";
-import React from "react";
+import React, { createContext, useContext } from "react";
 import styled from "styled-components";
 import {
+  Alert,
   CodeExample,
   DoDont,
   Figma,
@@ -39,13 +39,6 @@ const StyledKbd = styled.code`
   font-size: 1rem;
 `;
 
-const StyledAlert = styled(Alert)`
-  .navds-typo--spacing {
-    margin: 0;
-  }
-  margin-bottom: var(--navds-spacing-4);
-`;
-
 const serializers = {
   types: {
     code_snippet: ({ node }) => <Snippet node={node} />,
@@ -54,28 +47,38 @@ const serializers = {
     do_dont: ({ node }) => <DoDont node={node} />,
     uu_interaction: ({ node }) => <UuInteraction node={node} />,
     picture: ({ node }) => <Image node={node} />,
-    figma_embed: ({ node }) => {
-      return <Figma node={node} />;
-    },
-
-    alert: (node) => (
-      <StyledAlert variant={node.node.variant}>
-        <SanityBlockContent blocks={node.node.body} />
-      </StyledAlert>
-    ),
+    figma_embed: ({ node }) => <Figma node={node} />,
+    alert: ({ node }) => <Alert node={node} />,
 
     block: ({ node, children }) => {
+      const context: BlockContextT = useContext(BlockContext);
       const style = node.style;
 
       switch (style) {
         case "normal":
-          return <BodyLong spacing>{children}</BodyLong>;
+          return (
+            <BodyLong size={context.size} spacing>
+              {children}
+            </BodyLong>
+          );
         case "bodylong":
-          return <BodyLong spacing>{children}</BodyLong>;
+          return (
+            <BodyLong size={context.size} spacing>
+              {children}
+            </BodyLong>
+          );
         case "bodyshort":
-          return <BodyShort spacing>{children}</BodyShort>;
+          return (
+            <BodyShort size={context.size} spacing>
+              {children}
+            </BodyShort>
+          );
         case "detailbold":
-          return <Detail spacing>{children}</Detail>;
+          return (
+            <Detail size={context.size} spacing>
+              {children}
+            </Detail>
+          );
         case "detail":
           return (
             <Detail spacing size="small">
@@ -83,7 +86,11 @@ const serializers = {
             </Detail>
           );
         case "label":
-          return <Label spacing>{children}</Label>;
+          return (
+            <Label size={context.size} spacing>
+              {children}
+            </Label>
+          );
         case "h2": {
           return <LevelTwoHeading divider={false}>{children}</LevelTwoHeading>;
         }
@@ -142,22 +149,40 @@ const MarginTopDiv = styled.div`
   margin-top: 4rem;
 `;
 
+export type BlockContextT = {
+  size: "medium" | "small";
+};
+
+export const BlockContext = createContext<BlockContextT>({ size: "medium" });
+
 export const SanityBlockContent = ({
   blocks,
   withMargin = false,
+  size = "medium",
 }: {
   blocks: any;
   withMargin?: boolean;
+  size?: "medium" | "small";
 }): JSX.Element => {
   return (
     <>
-      {withMargin ? (
-        <MarginTopDiv>
-          <BlockContent blocks={blocks} serializers={serializers} />
-        </MarginTopDiv>
-      ) : (
-        <BlockContent blocks={blocks} serializers={serializers} />
-      )}
+      <BlockContext.Provider value={{ size }}>
+        {withMargin ? (
+          <MarginTopDiv>
+            <BlockContent
+              blocks={blocks}
+              serializers={serializers}
+              size="small"
+            />
+          </MarginTopDiv>
+        ) : (
+          <BlockContent
+            blocks={blocks}
+            serializers={serializers}
+            options={{ size: "small" }}
+          />
+        )}
+      </BlockContext.Provider>
     </>
   );
 };
