@@ -2,7 +2,7 @@ import "nav-frontend-tabell-style/dist/main.css";
 import "@navikt/ds-css";
 import "../styles/prismjs.css";
 import "../styles/theme.css";
-import { useScrollToHashOnPageLoad } from "../components";
+import { AmplitudeProvider, useScrollToHashOnPageLoad } from "../components";
 import React, { createContext, useEffect, useState } from "react";
 import Layout from "../components/templates/layout/Layout";
 import { slugger } from "../components";
@@ -54,11 +54,13 @@ function App({
   }
 
   return (
-    <PagePropsContext.Provider value={[pageData, setPageData]}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </PagePropsContext.Provider>
+    <AmplitudeProvider>
+      <PagePropsContext.Provider value={[pageData, setPageData]}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </PagePropsContext.Provider>
+    </AmplitudeProvider>
   );
 }
 
