@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect } from "react";
+import React, { createContext, useContext, useEffect } from "react";
 
 const amplitude =
   typeof window !== "undefined" ? require("amplitude-js") : () => null;
@@ -26,7 +26,11 @@ function logAmplitudeEvent(eventName: string, data?: any): Promise<any> {
 
 const AmplitudeContext = createContext(null);
 
-export function AmplitudeProvider({ children }) {
+export function AmplitudeProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element {
   useEffect(() => {
     initAmplitude();
   }, []);
@@ -38,7 +42,7 @@ export function AmplitudeProvider({ children }) {
   );
 }
 
-export function useAmplitude() {
+export function useAmplitude(): any {
   const context = useContext(AmplitudeContext);
   // TODO: Implement this for preview?
   /* if (isTest()) {
