@@ -52,7 +52,7 @@ const Feedback = ({ docId }: { docId?: string }): JSX.Element => {
   };
 
   const setFocus = useCallback((node) => {
-    node.focus();
+    node && node.focus();
   }, []);
 
   return (
