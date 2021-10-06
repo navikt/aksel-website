@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   align-items: center;
   border-top: 1px solid var(--navds-color-gray-20);
   gap: 1rem;
+  max-width: 600px;
 
   @media screen and (max-width: 550px) {
     padding: 1rem;
