@@ -7,8 +7,12 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--navds-color-blue-10);
+  border-top: 1px solid var(--navds-color-gray-20);
   gap: 1rem;
+
+  @media screen and (max-width: 550px) {
+    padding: 1rem;
+  }
 `;
 
 export const Form = styled.form`
@@ -17,7 +21,6 @@ export const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--navds-color-blue-10);
   gap: 1rem;
 `;
 
@@ -29,6 +32,8 @@ export const FormItems = styled.fieldset`
   gap: 1rem;
   border: none;
   width: 100%;
+  margin: 0;
+  padding: 0;
 `;
 
 export const Textarea = styled(DsTextarea)`

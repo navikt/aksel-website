@@ -1,7 +1,7 @@
 import * as S from "./feedback.styles";
 import { BodyShort, Button } from "@navikt/ds-react";
 import { Success } from "@navikt/ds-icons";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 const Feedback = ({ docId }: { docId?: string }): JSX.Element => {
   if (!docId) return null;
@@ -51,6 +51,10 @@ const Feedback = ({ docId }: { docId?: string }): JSX.Element => {
     setFeedbackValue(e.target.value);
   };
 
+  const setFocus = useCallback((node) => {
+    node.focus();
+  }, []);
+
   return (
     <S.Wrapper>
       {step === 0 && (
@@ -68,15 +72,17 @@ const Feedback = ({ docId }: { docId?: string }): JSX.Element => {
         <S.Form>
           <S.FormItems>
             <S.Textarea
+              ref={setFocus}
               error={errorMsg}
               label="Tilbakemelding"
               value={feedbackValue}
               onChange={(e) => handleChange(e)}
+              maxLength={200}
             />
             <S.Buttons>
-              <Button onClick={(e) => handleSubmit(e)}>Send</Button>
+              <Button onClick={(e) => handleSubmit(e)}>Send svar</Button>
               <Button variant="secondary" onClick={() => setStep(2)}>
-                Cancel
+                Avbryt
               </Button>
             </S.Buttons>
           </S.FormItems>
