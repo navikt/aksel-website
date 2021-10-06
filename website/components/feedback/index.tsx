@@ -51,8 +51,9 @@ const Feedback = ({ docId }: { docId?: string }): JSX.Element => {
     setFeedbackValue(e.target.value);
   };
 
-  const setFocus = useCallback((node) => {
+  const setFocus = useCallback((node: HTMLElement) => {
     node && node.focus();
+    node && node.scrollIntoView();
   }, []);
 
   return (
