@@ -13,3 +13,4 @@ export * from "./tabs";
 export * from "./tags";
 export * from "./utils";
 export { default as UuInteraction } from "./uu-interactions";
+export { default as Feedback } from "./feedback";

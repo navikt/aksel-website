@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import { PagePropsContext } from "../../../pages/_app";
 import Sidebar from "./Sidebar";
 import { useMedia } from "react-use";
+import { Feedback } from "../..";
 
 const Wrapper = styled.div`
   display: flex;
@@ -58,6 +59,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
             <Sidebar sidebar={pageProps.sidebar} />
             <ContentWrapper>
               <Main>{children}</Main>
+              <Feedback docId={pageProps?.page?._id} />
               <Footer />
             </ContentWrapper>
           </Wrapper>

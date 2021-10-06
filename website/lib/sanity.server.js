@@ -13,6 +13,14 @@ export const previewClient = createClient({
     "skXMkLVwRPUcKEyYa92OfXtwSmDiaFoSPTG23GMisJ3ExGWTOITHBnDjtYfWTUsxhrGswGAdSUGyLDaMr7PrnPfMIeenZOgIjCIPI4x8NRpfNi8KwyzI2fYPLiPxD7vOEFdmvtnGNs64eQUjElnqZkULNMJGQVjjZLHm8QkfKqkX5REdifzk",
 });
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const feedbackClient = (token) =>
+  createClient({
+    ...config,
+    useCdn: false,
+    token,
+  });
+
 // Helper function for easily switching between normal client and preview client
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const getClient = (usePreview) =>
