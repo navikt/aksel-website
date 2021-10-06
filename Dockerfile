@@ -6,7 +6,7 @@ WORKDIR /app
 COPY website/package.json .
 COPY website/.next/ .next/
 COPY website/public/ public
-# COPY .env .
+COPY website/.env .
 # COPY .env.local .
 COPY website/next.config.js .
 COPY node_modules/ node_modules/

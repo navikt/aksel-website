@@ -3,13 +3,13 @@ on:
   workflow_dispatch:
     inputs:
       config-file-name:
-        description: 'Config-fil (uten .json) som skal deployes'
+        description: "Config-fil (uten .json) som skal deployes"
         required: true
-        default: 'dev-gcp'
+        default: "dev-gcp"
       cluster:
-        description: 'Cluster å deploye til (labs-gcp eller dev-gcp)'
+        description: "Cluster å deploye til (labs-gcp eller dev-gcp)"
         required: true
-        default: 'dev-gcp'
+        default: "dev-gcp"
 
 # FIXME: Legg til docker layer caching, f.eks. https://github.com/marketplace/actions/build-docker-images-using-cache
 jobs:
@@ -21,10 +21,12 @@ jobs:
     steps:
       - uses: actions/setup-node@v1
         with:
-          node-version: '14'
+          node-version: "14"
       - uses: actions/checkout@v2
       - name: Copy env-file for dev
         run: cp nais/dev/${{ github.event.inputs.config-file-name }}.env .env.local
+      - name: add sanity write token to .env
+        run: echo "SANITY_WRITE_KEY=${{ secrets.SANITY_FEEDBACK_WRITE_KEY }}" >> website/.env
       - name: Install dependencies
         run: yarn
       - name: Build application
