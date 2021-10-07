@@ -4,7 +4,7 @@ import { LayoutContext } from "../layout/Layout";
 
 export const SanityBlockContainer = styled.div`
   position: relative;
-  max-width: 1256px;
+  max-width: 1440px;
 `;
 
 export const MaxWidthContainerDiv = styled.div<{ isMobile: boolean }>`

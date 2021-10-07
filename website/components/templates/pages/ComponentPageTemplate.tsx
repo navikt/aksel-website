@@ -1,6 +1,7 @@
 import { Ingress, Link, Heading } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React from "react";
+import { useMedia } from "react-use";
 import styled from "styled-components";
 import {
   FigmaIconGrayScale,
@@ -63,6 +64,8 @@ const ComponentPageTemplate = ({
 }): JSX.Element => {
   const { query } = useRouter();
 
+  const changeTab = useMedia("(max-width: 564px)");
+
   const basePath = `/designsystem/${(query.slug as string[])
     .slice(0, 2)
     .join("/")}`;
@@ -122,9 +125,7 @@ const ComponentPageTemplate = ({
                 key={key}
                 path={`${basePath}${key === "bruk" ? "" : "/" + key}`}
               >
-                {/* TODO: Fungerer UU her? Tar mye mindre plass en Tilgjengelighet for mobilvisning */}
-                {/* {key === "Tilgjengelighet" ? "UU" : key} */}
-                {key}
+                {changeTab ? (key === "tilgjengelighet" ? "UU" : key) : key}
               </Tab>
             )
         )}

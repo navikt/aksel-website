@@ -16,21 +16,23 @@ export const Nav = styled.nav<{ isMobile: boolean; sticky: boolean }>`
            max-width: 600px;`
       : `margin: 0;
          max-width: none;
-         padding-right: 0;
-         padding-left: 0;`;
+         padding-right: 0.5rem;
+         padding-left: 0.5rem;`;
   }};
 
-  ::after {
-    content: "";
-    background-color: var(--navds-color-gray-20);
-    height: 1px;
-    width: 100%;
-    bottom: 0px;
-    left: 0;
-    z-index: -1;
+  ${(props) =>
+    !props.isMobile &&
+    `::after {
+        content: "";
+        background-color: var(--navds-color-gray-20);
+        height: 1px;
+        width: 100%;
+        bottom: 0px;
+        left: 0;
+        z-index: -1;
 
-    position: absolute;
-  }
+        position: absolute;
+      }`}
 `;
 
 export const Ul = styled.ul<{ isMobile: boolean; sticky: boolean }>`
@@ -41,7 +43,8 @@ export const Ul = styled.ul<{ isMobile: boolean; sticky: boolean }>`
   overflow-x: auto;
   max-width: ${(props) => (props.isMobile ? "" : "600px")};
   margin-top: 0.5rem;
-  margin-left: ${(props) => (props.sticky ? "3rem" : "")};
+  margin-left: ${(props) => (props.sticky && !props.isMobile ? "3rem" : "")};
+  gap: 0.25rem;
 
   > * {
     list-style: none;
@@ -49,6 +52,20 @@ export const Ul = styled.ul<{ isMobile: boolean; sticky: boolean }>`
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+
+    ${(props) =>
+      props.isMobile &&
+      `::after {
+      content: "";
+      background-color: var(--navds-color-gray-20);
+      height: 1px;
+      width: fit-content;
+      bottom: 0px;
+      z-index: -1;
+      width: 100%;
+      position: absolute;
+    }`}
   }
 `;
 

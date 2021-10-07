@@ -9,7 +9,7 @@ import { LayoutContext } from "../Layout";
 import { titles } from "./Header";
 import * as S from "./header.styles";
 
-const HeadingDropDown = ({ isMobile }: { isMobile: boolean }): JSX.Element => {
+const HeadingDropDown = (): JSX.Element => {
   const context = useContext(LayoutContext);
 
   return (
@@ -17,7 +17,7 @@ const HeadingDropDown = ({ isMobile }: { isMobile: boolean }): JSX.Element => {
       <DsHeader.Dropdown>
         <DsHeader.Dropdown.Button>
           <NavLogoWhite focusable={false} aria-label="NAV logo" />
-          {titles[context.version] ?? ""}{" "}
+          {titles[context.version].title ?? ""}{" "}
           <Expand focusable={false} role="presentation" />
         </DsHeader.Dropdown.Button>
         <S.Menu>
