@@ -35,11 +35,11 @@ const LevelTwoHeading = ({
 
   return (
     <>
-      {children && (
+      {/* {children && (
         <S.Divider divider={divider}>
           <S.Hr />
         </S.Divider>
-      )}
+      )} */}
       <S.TitleWithScrollMargin id={slug} spacing level={2} size="large">
         {children}
         <S.Anchor
