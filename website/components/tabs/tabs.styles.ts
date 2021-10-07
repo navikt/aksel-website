@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Nav = styled.nav<{ isMobile: boolean }>`
+export const Nav = styled.nav<{ isMobile: boolean; sticky: boolean }>`
   overflow-x: auto;
   position: sticky;
   top: 0;
@@ -8,9 +8,12 @@ export const Nav = styled.nav<{ isMobile: boolean }>`
   background-color: #f7f7f7;
   ${(props) => {
     return !props.isMobile
-      ? `margin-left: 3rem;
-         margin-right: auto;
-         max-width: 600px;`
+      ? props.sticky
+        ? `margin-left: 0;
+           margin-right: 0;`
+        : `margin-left: 3rem;
+           margin-right: auto;
+           max-width: 600px;`
       : `margin: 0;
          max-width: none;
          padding-right: 0;
@@ -30,7 +33,7 @@ export const Nav = styled.nav<{ isMobile: boolean }>`
   }
 `;
 
-export const Ul = styled.ul<{ isMobile: boolean }>`
+export const Ul = styled.ul<{ isMobile: boolean; sticky: boolean }>`
   padding: 0;
   margin: 0;
   display: flex;
@@ -38,6 +41,7 @@ export const Ul = styled.ul<{ isMobile: boolean }>`
   overflow-x: auto;
   max-width: ${(props) => (props.isMobile ? "" : "600px")};
   margin-top: 0.5rem;
+  margin-left: ${(props) => (props.sticky ? "3rem" : "")};
 
   > * {
     list-style: none;

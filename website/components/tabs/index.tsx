@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { LayoutContext } from "../templates/layout/Layout";
 import * as S from "./tabs.styles";
 
@@ -10,9 +10,35 @@ export const Tabs = ({
   children: React.ReactNode;
 }): JSX.Element => {
   const context = useContext(LayoutContext);
+  const tabRef = useRef<HTMLElement | null>(null);
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!tabRef.current) return null;
+      const top = tabRef.current.getBoundingClientRect().top;
+
+      if (top === 0) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  console.log(isSticky);
   return (
-    <S.Nav isMobile={context.isMobile} aria-label="Tabmeny for sideinnhold">
-      <S.Ul isMobile={context.isMobile} role="tablist">
+    <S.Nav
+      ref={tabRef}
+      isMobile={context.isMobile}
+      aria-label="Tabmeny for sideinnhold"
+      sticky={isSticky}
+    >
+      <S.Ul isMobile={context.isMobile} role="tablist" sticky={isSticky}>
         {children}
       </S.Ul>
     </S.Nav>
