@@ -7,8 +7,8 @@ import { LayoutContext, LayoutContextProps } from "./Layout";
 import Menu from "./Menu";
 
 const Wrapper = styled.div<{ context: LayoutContextProps }>`
-  width: 256px;
-  padding: var(--navds-spacing-4) var(--navds-spacing-4);
+  width: 288px;
+  padding: var(--navds-spacing-8);
   position: relative;
   flex-shrink: 0;
   background-color: white;

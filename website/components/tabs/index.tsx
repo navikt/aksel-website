@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { LayoutContext } from "../templates/layout/Layout";
+import throttle from "lodash.throttle";
 import * as S from "./tabs.styles";
 
 export const Tabs = ({
@@ -24,13 +25,14 @@ export const Tabs = ({
         setIsSticky(false);
       }
     };
-    window.addEventListener("scroll", handleScroll);
+    const func = throttle(handleScroll, 150);
+
+    window.addEventListener("scroll", func);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", func);
     };
   }, []);
 
-  console.log(isSticky);
   return (
     <S.Nav
       ref={tabRef}

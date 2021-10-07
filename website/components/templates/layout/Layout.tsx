@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   display: flex;
   min-height: calc(100vh - 56px);
   justify-content: center;
-  background-color: #f7f7f7;
+  background-color: #ffffff;
 `;
 
 const ContentWrapper = styled.div`

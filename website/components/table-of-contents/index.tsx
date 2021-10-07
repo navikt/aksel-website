@@ -2,7 +2,7 @@ import { Heading } from "@navikt/ds-react";
 import Link from "next/link";
 import * as React from "react";
 import { useEffect, useState } from "react";
-import debounce from "lodash.debounce";
+import throttle from "lodash.throttle";
 import * as S from "./toc.styles";
 
 function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
@@ -46,7 +46,7 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
       }
       active && setActiveId(active);
     };
-    const func = debounce(handleScroll, 20);
+    const func = throttle(handleScroll, 150);
 
     window.addEventListener("scroll", func);
     return () => {

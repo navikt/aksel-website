@@ -135,7 +135,6 @@ const serializers = {
     internalLink: ({ mark, children }: { mark: any; children: any }) => {
       const { slug = {} } = mark;
       const href = `/${slug.current}`;
-      !slug && console.log("Intern ref har ikke slug i block.");
       return (
         <NextjsLink href={href} passHref>
           <Link href="">{children}</Link>
@@ -146,7 +145,7 @@ const serializers = {
 };
 
 const MarginTopDiv = styled.div`
-  margin-top: 4rem;
+  margin-top: 3rem;
 `;
 
 export type BlockContextT = {

@@ -69,7 +69,6 @@ const Code = ({ node }: { node: CodeExampleT }): JSX.Element => {
     (!node.preview && !node?.tabs) ||
     (node.preview && !node?.infercode === undefined)
   ) {
-    console.log(node);
     return null;
   }
 
