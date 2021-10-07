@@ -36,7 +36,7 @@ export const LayoutContext = createContext<LayoutContextProps | null>(null);
 const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   const [pageProps] = useContext<any>(PagePropsContext);
 
-  const isMobile = useMedia("(max-width: 970px)");
+  const isMobile = useMedia("(max-width: 1064px)");
   const pageType = pageProps?.page?._type?.split("_")[0];
 
   if (!pageProps) {

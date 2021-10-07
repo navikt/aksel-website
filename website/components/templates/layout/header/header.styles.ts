@@ -15,6 +15,13 @@ export const Link = styled(DsHeader.Title)`
   min-width: 64px;
   justify-content: center;
   align-items: center;
+
+  > * {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    gap: 1rem;
+  }
 `;
 
 export const HeaderItem = css<{ isMobile: boolean }>`

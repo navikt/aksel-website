@@ -70,13 +70,11 @@ export const A = styled.a`
   &[aria-selected="true"] {
     border-color: var(--navds-color-blue-50);
     color: var(--navds-color-darkgray);
-    font-weight: 600;
   }
 
   :hover {
     color: var(--navds-color-darkgray);
     border-color: var(--navds-color-darkgray);
-    font-weight: 600;
   }
 
   :focus {
