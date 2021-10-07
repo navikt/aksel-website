@@ -97,6 +97,7 @@ export const DropDownIconLink = styled.a`
 
 export const Menu = styled(DsHeader.Dropdown.Menu)`
   padding: 0.5rem;
+  border: none;
 `;
 
 /* HeaderSearchBar */
