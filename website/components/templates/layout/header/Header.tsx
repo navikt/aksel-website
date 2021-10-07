@@ -1,4 +1,5 @@
-import { Hamburger } from "@navikt/ds-icons";
+import { Hamburger, Bell } from "@navikt/ds-icons";
+import { Header as DsHeader } from "@navikt/ds-react-internal";
 import * as React from "react";
 import { createContext, useContext, useState } from "react";
 import { LayoutContext } from "../Layout";
@@ -10,14 +11,23 @@ const SearchHambGroup = ({ isMobile }: { isMobile: boolean }) => {
   return (
     <>
       <HeaderSearchBar />
+      <S.Link href="#" isMobile={isMobile}>
+        <Bell
+          focusable={false}
+          aria-label="Notifikasjons ikon"
+          style={{ fontSize: "1.5rem", marginLeft: 3 }}
+        />
+      </S.Link>
       {isMobile && (
-        <S.Link href="#" isMobile={isMobile}>
-          <Hamburger
-            focusable={false}
-            aria-label="Meny ikon"
-            style={{ fontSize: "1.5rem", marginLeft: 3 }}
-          />
-        </S.Link>
+        <>
+          <S.Link href="#" isMobile={isMobile}>
+            <Hamburger
+              focusable={false}
+              aria-label="Meny ikon"
+              style={{ fontSize: "1.5rem", marginLeft: 3 }}
+            />
+          </S.Link>
+        </>
       )}
     </>
   );
@@ -37,42 +47,20 @@ function Header(): JSX.Element {
 
   return (
     <HeaderContext.Provider value={{ openSearchBar, setOpenSearchBar }}>
-      <S.Header context={context} className="navds-body-short">
-        <S.Row>
-          <HeadingDropDown isMobile={context.isMobile} />
-          {context.isMobile && (
-            <>
-              <S.Grow />
-              <SearchHambGroup isMobile={context.isMobile} />
-            </>
-          )}
-        </S.Row>
-
-        <S.LinkRow context={context}>
-          {!context.isMobile && <S.Grow />}
-          {!openSearchBar ||
-            (context.version === "gp" && (
-              <>
-                <S.Link href="#" isMobile={context.isMobile}>
-                  Ressurser
-                </S.Link>
-                <S.Link data-active href="#" isMobile={context.isMobile}>
-                  Komponenter
-                </S.Link>
-                <S.Link href="#" isMobile={context.isMobile}>
-                  Mønster
-                </S.Link>
-                <S.Link href="#" isMobile={context.isMobile}>
-                  Kategori
-                </S.Link>
-                <S.Link href="#" isMobile={context.isMobile}>
-                  Kategori
-                </S.Link>
-              </>
-            ))}
-          {!context.isMobile && <SearchHambGroup isMobile={context.isMobile} />}
-        </S.LinkRow>
-      </S.Header>
+      <DsHeader>
+        <HeadingDropDown isMobile={context.isMobile} />
+        <S.Links>
+          <S.Link href="#">Kom i gang</S.Link>
+          <S.Link href="#">Guider</S.Link>
+          <S.Link href="#">Produktbrief</S.Link>
+          <S.Link href="#">Styling</S.Link>
+          <S.Link href="#">Komponenter</S.Link>
+          <S.Link href="#">Mønster</S.Link>
+          <S.Link href="#">Ressurser</S.Link>
+          <S.Link href="#">Hjelp</S.Link>
+        </S.Links>
+        <SearchHambGroup isMobile={context.isMobile} />
+      </DsHeader>
     </HeaderContext.Provider>
   );
 }

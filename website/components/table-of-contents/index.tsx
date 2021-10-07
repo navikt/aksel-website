@@ -46,7 +46,7 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
       }
       active && setActiveId(active);
     };
-    const func = throttle(handleScroll, 150);
+    const func = throttle(handleScroll, 50);
 
     window.addEventListener("scroll", func);
     return () => {

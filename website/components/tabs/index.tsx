@@ -25,7 +25,7 @@ export const Tabs = ({
         setIsSticky(false);
       }
     };
-    const func = throttle(handleScroll, 150);
+    const func = throttle(handleScroll, 50);
 
     window.addEventListener("scroll", func);
     return () => {

@@ -1,112 +1,60 @@
 import { Expand, Left } from "@navikt/ds-icons";
-import { BodyShort, Heading, useId } from "@navikt/ds-react";
-import FocusLock from "react-focus-lock";
-import * as React from "react";
-import { useContext, useEffect, useRef, useState } from "react";
-import { NavLogoWhite } from "../../..";
+import { BodyShort } from "@navikt/ds-react";
+import { Header as DsHeader } from "@navikt/ds-react-internal";
 import NextLink from "next/link";
-
-import * as S from "./header.styles";
+import * as React from "react";
+import { useContext } from "react";
+import { NavLogoWhite } from "../../..";
 import { LayoutContext } from "../Layout";
 import { titles } from "./Header";
+import * as S from "./header.styles";
 
 const HeadingDropDown = ({ isMobile }: { isMobile: boolean }): JSX.Element => {
-  const [open, setOpen] = useState(false);
-  const popoverId = useId();
   const context = useContext(LayoutContext);
-
-  const buttonRef = useRef(null);
-  const lastElement = useRef(null);
-
-  const handleClose = () => {
-    document.activeElement !== buttonRef.current &&
-      document.activeElement !== lastElement.current &&
-      setOpen(false);
-  };
-
-  useEffect(() => {
-    const handleKeyPress = (e) => {
-      e.key === "Escape" && open && setOpen(false);
-    };
-
-    window.addEventListener("keydown", handleKeyPress);
-    return () => {
-      window.removeEventListener("keydown", handleKeyPress);
-    };
-  }, []);
 
   return (
     <>
-      <FocusLock disabled={!open}>
-        <div>
-          <S.DropDownButton
-            isMobile={isMobile}
-            aria-expanded={open}
-            aria-controls={popoverId}
-            aria-haspopup="menu"
-            onClick={() => setOpen((x) => !x)}
-            ref={buttonRef}
-          >
-            <NavLogoWhite focusable={false} aria-label="NAV logo" />
-            <Heading as="span" size="small">
-              {titles[context.version] ?? ""}
-            </Heading>
-            <Expand />
-          </S.DropDownButton>
-          <S.Popover
-            id={popoverId}
-            open={open}
-            anchorEl={buttonRef.current}
-            onClose={() => handleClose()}
-            placement="bottom"
-            arrow={false}
-            offset={-8}
-            tabIndex={-1}
-          >
-            <S.Ul role="menu">
-              <li>
-                <NextLink href="/" passHref>
-                  <S.DropDownIconLink role="menuitem">
-                    <Left />
-                    <BodyShort>Tilbake til Verktøykassa</BodyShort>
-                  </S.DropDownIconLink>
-                </NextLink>
-              </li>
-
-              <li>
-                <NextLink href="/designsystem" passHref>
-                  <S.DropDownLink role="menuitem">
-                    <BodyShort>Designsystemet</BodyShort>
-                    <BodyShort spacing size="small">
-                      Informasjon omhandlende designsystemet
-                    </BodyShort>
-                  </S.DropDownLink>
-                </NextLink>
-              </li>
-              <li>
-                <NextLink href="/god-praksis" passHref>
-                  <S.DropDownLink href="/god-praksis" role="menuitem">
-                    <BodyShort>God Praksis</BodyShort>
-                    <BodyShort spacing size="small">
-                      Informasjon omhandlende God Praksis
-                    </BodyShort>
-                  </S.DropDownLink>
-                </NextLink>
-              </li>
-              <li>
-                <NextLink href="#" passHref>
-                  <S.DropDownLink ref={lastElement} role="menuitem">
-                    <BodyShort>Brand Guide</BodyShort>
-                    <BodyShort spacing size="small">
-                      Informasjon omhandlende Brand Guide
-                    </BodyShort>
-                  </S.DropDownLink>
-                </NextLink>
-              </li>
-            </S.Ul>
-          </S.Popover>
-        </div>
-      </FocusLock>
+      <DsHeader.Dropdown>
+        <DsHeader.Dropdown.Button>
+          <NavLogoWhite focusable={false} aria-label="NAV logo" />
+          {titles[context.version] ?? ""}{" "}
+          <Expand focusable={false} role="presentation" />
+        </DsHeader.Dropdown.Button>
+        <S.Menu>
+          <DsHeader.Dropdown.Menu.List>
+            <NextLink href="/" passHref>
+              <S.DropDownIconLink role="menuitem">
+                <Left />
+                <BodyShort>Tilbake til Verktøykassa</BodyShort>
+              </S.DropDownIconLink>
+            </NextLink>
+            <NextLink href="/designsystem" passHref>
+              <S.DropDownLink role="menuitem">
+                <BodyShort>Designsystemet</BodyShort>
+                <BodyShort spacing size="small">
+                  Informasjon omhandlende designsystemet
+                </BodyShort>
+              </S.DropDownLink>
+            </NextLink>
+            <NextLink href="/god-praksis" passHref>
+              <S.DropDownLink href="/god-praksis" role="menuitem">
+                <BodyShort>God Praksis</BodyShort>
+                <BodyShort spacing size="small">
+                  Informasjon omhandlende God Praksis
+                </BodyShort>
+              </S.DropDownLink>
+            </NextLink>
+            <NextLink href="#" passHref>
+              <S.DropDownLink role="menuitem">
+                <BodyShort>Brand Guide</BodyShort>
+                <BodyShort spacing size="small">
+                  Informasjon omhandlende Brand Guide
+                </BodyShort>
+              </S.DropDownLink>
+            </NextLink>
+          </DsHeader.Dropdown.Menu.List>
+        </S.Menu>
+      </DsHeader.Dropdown>
     </>
   );
 };

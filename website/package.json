@@ -17,6 +17,8 @@
     "@navikt/ds-icons": "^0.5",
     "@navikt/ds-react": "^0.10",
     "@navikt/ds-tokens": "^0.5",
+    "@navikt/ds-css-internal": "0.3",
+    "@navikt/ds-react-internal": "0.3",
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^2.19.0",
     "@sanity/image-url": "^1.0.1",

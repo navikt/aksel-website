@@ -1,22 +1,20 @@
-import { Popover as DsPopover } from "@navikt/ds-react";
+import { Header as DsHeader } from "@navikt/ds-react-internal";
 import styled, { css } from "styled-components";
-import { LayoutContextProps } from "../Layout";
 import { SearchField as DsSearchField } from "@navikt/ds-react";
 
-export const Header = styled.header<{ context: LayoutContextProps }>`
-  height: ${(props) =>
-    props.context.isMobile ? "fit-content" : "var(--header-height)"};
-  flex-direction: ${(props) => (props.context.isMobile ? "column" : "row")};
-  width: 100vw;
-  z-index: 99;
-  background-color: var(--navds-color-darkgray);
-  grid-area: header / header / header;
+export const Links = styled.div`
   display: flex;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+export const Link = styled(DsHeader.Title)`
+  padding: 0 var(--navds-spacing-2);
+  white-space: nowrap;
+  border-right: none;
+  min-width: 64px;
+  justify-content: center;
   align-items: center;
-  top: 0;
-  overflow-x: auto;
-  padding: 0 1rem;
-  padding: ${(props) => (props.context.isMobile ? "0" : "0 1rem")};
 `;
 
 export const HeaderItem = css<{ isMobile: boolean }>`
@@ -46,61 +44,6 @@ export const HeaderItem = css<{ isMobile: boolean }>`
 
   svg {
     flex-shrink: 0;
-  }
-`;
-
-export const DropDownButton = styled.button`
-  ${HeaderItem}
-  background: none;
-  border: none;
-  /* border-right: 1px solid var(--navds-color-gray-60); */
-`;
-
-export const Link = styled.a<{ isMobile: boolean }>`
-  ${HeaderItem}
-  text-decoration: none;
-
-  &[data-active] {
-    box-shadow: inset 0 -3px 0 0 white;
-  }
-`;
-
-export const Grow = styled.div`
-  flex: 1 1;
-`;
-
-export const LinkRow = styled.div<{ context: LayoutContextProps }>`
-  display: ${(props) => (props.context.isMobile ? "grid" : "flex")};
-  height: 100%;
-  width: 100%;
-  grid-template-columns: repeat(4, 1fr);
-
-  @media screen and (max-width: 550px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  > * {
-    flex: ${(props) => (props.context.isMobile ? "1 1" : "")};
-  }
-`;
-
-export const Row = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-`;
-
-export const Ul = styled.ul`
-  display: flex;
-  flex-direction: column;
-  padding: 0.5rem;
-  margin: 0;
-  width: 275px;
-  gap: 0.5rem;
-
-  li {
-    list-style: none;
   }
 `;
 
@@ -145,8 +88,8 @@ export const DropDownIconLink = styled.a`
   gap: 1rem;
 `;
 
-export const Popover = styled(DsPopover)`
-  border: none;
+export const Menu = styled(DsHeader.Dropdown.Menu)`
+  padding: 0.5rem;
 `;
 
 /* HeaderSearchBar */
