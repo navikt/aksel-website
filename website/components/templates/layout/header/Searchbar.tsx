@@ -23,17 +23,18 @@ const HeaderSearchBar = (): JSX.Element => {
 
   return (
     <>
-      <>
-        {openSearchBar && (
-          <S.SearchField label="Sidesøk" hideLabel isMobile={context.isMobile}>
-            <SearchFieldInput
-              ref={inputRef}
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
-            />
-          </S.SearchField>
-        )}
-      </>
+      <S.SearchField
+        label="Sidesøk"
+        hideLabel
+        isMobile={context.isMobile}
+        open={openSearchBar}
+      >
+        <SearchFieldInput
+          ref={inputRef}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+      </S.SearchField>
       <S.SearchButton isMobile={context.isMobile} onClick={handleClick}>
         {!openSearchBar && (
           <Search
@@ -44,7 +45,7 @@ const HeaderSearchBar = (): JSX.Element => {
         )}
         {openSearchBar && (
           <Close
-            style={{ fontSize: "1.5rem", marginLeft: 3 }}
+            style={{ fontSize: "1.5rem" }}
             focusable={false}
             aria-label="Lukk søk ikon"
           />

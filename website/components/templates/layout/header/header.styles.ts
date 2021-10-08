@@ -108,8 +108,11 @@ export const SearchButton = styled.button<{ isMobile: boolean }>`
   border: none;
 `;
 
-export const SearchField = styled(DsSearchField)<{ isMobile: boolean }>`
-  display: flex;
+export const SearchField = styled(DsSearchField)<{
+  isMobile: boolean;
+  open: boolean;
+}>`
+  display: ${(props) => (props.open ? "flex" : "none")};
   align-items: center;
   width: 350px;
 
