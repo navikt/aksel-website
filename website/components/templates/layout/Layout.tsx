@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Header from "./header/Header";
 import Footer from "./Footer";
 import { PagePropsContext } from "../../../pages/_app";
-import Sidebar from "./Sidebar";
+import Sidebar from "./sidebar/Sidebar";
 import { useMedia } from "react-use";
 import { Feedback } from "../..";
 

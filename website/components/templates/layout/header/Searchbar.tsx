@@ -1,5 +1,5 @@
 import { Close, Search } from "@navikt/ds-icons";
-import { SearchField, SearchFieldInput } from "@navikt/ds-react";
+import { SearchFieldInput } from "@navikt/ds-react";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { LayoutContext } from "../Layout";
 import { HeaderContext } from "./Header";
