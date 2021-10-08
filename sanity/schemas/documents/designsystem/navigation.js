@@ -43,6 +43,8 @@ export const ds_header_heading = {
     },
     {
       title: "Side selve headingen linker til",
+      description:
+        "Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via headern",
       name: "link_ref",
       type: "reference",
       to: [

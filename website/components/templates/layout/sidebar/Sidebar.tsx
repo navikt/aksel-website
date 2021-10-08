@@ -3,11 +3,12 @@ import {
   SearchField,
   SearchFieldClearButton,
   SearchFieldInput,
+  useClientLayoutEffect,
 } from "@navikt/ds-react";
 import * as React from "react";
 import { createContext, useContext, useState } from "react";
 import styled from "styled-components";
-import { DsNavigationT } from "../../../../lib";
+import { DsNavigationHeadingT, DsNavigationT } from "../../../../lib";
 import { PagePropsContext } from "../../../../pages/_app";
 import { LayoutContext, LayoutContextProps } from "../Layout";
 import Tags from "./FilterTags";
@@ -34,6 +35,7 @@ export const SideBarContext = createContext(null);
 
 function Sidebar(): JSX.Element {
   const context = useContext(LayoutContext);
+  const [heading, setHeading] = useState<DsNavigationHeadingT | undefined>();
   const [filterValue, setFilterValue] = useState("");
   const [filterTags, setFilterTags] = useState([
     { title: "Core", active: false },
@@ -41,14 +43,16 @@ function Sidebar(): JSX.Element {
     { title: "Intern", active: false },
   ]);
   const [pageProps] = useContext<any>(PagePropsContext);
-  const nav = pageProps.navigation as DsNavigationT;
-  if (!pageProps?.page?.slug) return null;
 
-  const heading = nav.headings.find((heading) =>
-    heading.menu.find(
-      (item) => item.link.slug.current === pageProps?.page?.slug
-    )
-  );
+  useClientLayoutEffect(() => {
+    setHeading(
+      pageProps.navigation.headings.find((heading) =>
+        heading.menu.find(
+          (item) => item.link.slug.current === pageProps?.page?.slug
+        )
+      )
+    );
+  }, [pageProps.navigation]);
 
   if (!heading) return null;
 
