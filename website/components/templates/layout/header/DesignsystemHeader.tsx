@@ -24,7 +24,7 @@ const DesignsystemHeader = (): JSX.Element => {
 
   useClientLayoutEffect(() => {
     setActiveHeading(
-      pageProps.navigation.headings.find((heading) =>
+      pageProps?.navigation?.headings.find((heading) =>
         heading.menu.find(
           (item) => item?.link?.slug?.current === pageProps?.page?.slug
         )
@@ -36,13 +36,13 @@ const DesignsystemHeader = (): JSX.Element => {
     <>
       <HeadingDropDown />
       <S.Links>
-        {pageProps.navigation.headings.map((heading) => (
+        {pageProps?.navigation.headings.map((heading) => (
           <NextLink
             key={heading._key}
             href={`/${heading.link_ref?.slug?.current}`}
             passHref
           >
-            <S.Link $active={activeHeading.title === heading.title}>
+            <S.Link $active={activeHeading?.title === heading.title}>
               {heading.title}
             </S.Link>
           </NextLink>

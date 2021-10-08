@@ -8,7 +8,7 @@ import {
 import * as React from "react";
 import { createContext, useContext, useState } from "react";
 import styled from "styled-components";
-import { DsNavigationHeadingT, DsNavigationT } from "../../../../lib";
+import { DsNavigationHeadingT } from "../../../../lib";
 import { PagePropsContext } from "../../../../pages/_app";
 import { LayoutContext, LayoutContextProps } from "../Layout";
 import Tags from "./FilterTags";
@@ -46,7 +46,7 @@ function Sidebar(): JSX.Element {
 
   useClientLayoutEffect(() => {
     setHeading(
-      pageProps.navigation.headings.find((heading) =>
+      pageProps?.navigation?.headings.find((heading) =>
         heading.menu.find(
           (item) => item.link.slug.current === pageProps?.page?.slug
         )
