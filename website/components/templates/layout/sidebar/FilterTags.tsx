@@ -4,13 +4,16 @@ import styled from "styled-components";
 import { SideBarContext } from "./Sidebar";
 
 const Wrapper = styled.div`
-  display: inline-flex;
+  display: flex;
   gap: var(--navds-spacing-3);
   margin-top: var(--navds-spacing-6);
+  height: 32px;
 `;
+
 const Tag = styled.button<{ active: boolean }>`
   background-color: #f7f7f7;
   border-color: #6a6a6a;
+  height: 32px;
 
   :hover {
     background-color: var(--navds-color-blue-10);
@@ -28,7 +31,7 @@ const Tag = styled.button<{ active: boolean }>`
     background-color: var(--navds-color-blue-10);
     border-color: var(--navds-color-blue-50);
     border-width: 2px;
-    padding: calc(0.125rem - 1px) calc(0.25rem - 1px);
+    padding: calc(0.125rem - 2px) calc(0.25rem - 2px);
   `}
 `;
 

@@ -10,6 +10,7 @@ import { LayoutContext } from "../Layout";
 import HeadingDropDown from "./Dropdown";
 import * as S from "./header.styles";
 import HeaderSearchBar from "./Searchbar";
+import NextLink from "next/link";
 
 const DesignsystemHeader = (): JSX.Element => {
   const context = useContext(LayoutContext);
@@ -29,13 +30,15 @@ const DesignsystemHeader = (): JSX.Element => {
       <HeadingDropDown />
       <S.Links>
         {nav.headings.map((heading) => (
-          <S.Link
-            $active={activeHeading.title === heading.title}
+          <NextLink
             key={heading._key}
             href={`/${heading.link_ref.slug.current}`}
+            passHref
           >
-            {heading.title}
-          </S.Link>
+            <S.Link $active={activeHeading.title === heading.title}>
+              {heading.title}
+            </S.Link>
+          </NextLink>
         ))}
         {/* <S.Link href="#">Kom i gang</S.Link>
         <S.Link href="#">Guider</S.Link>

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { DsNavigationHeadingT } from "../../../../lib";
 import { PagePropsContext } from "../../../../pages/_app";
 import { SideBarContext } from "./Sidebar";
+import NextLink from "next/link";
 
 const Nav = styled.nav`
   margin-top: var(--navds-spacing-6);
@@ -21,10 +22,11 @@ const Link = styled.a<{ active?: boolean }>`
   display: flex;
   padding: 0.75rem 1rem 0.75rem 2rem;
   text-decoration: none;
+
   ${(props) =>
     props.active &&
     `
-    box-shadow: inset 4px 0 0 0 var(--navds-color-blue-50);
+    box-shadow: inset 6px 0 0 0 var(--navds-color-blue-50);
     background-color: var(--navds-color-gray-10);
     color: var(--navds-color-gray-90);
     font-weight: 600;
@@ -44,12 +46,11 @@ const Menu = (): JSX.Element => {
       <BodyShort as="ul">
         {context.menu.map((item) => (
           <li key={item.title}>
-            <Link
-              active={pageProps.page.slug === item.link.slug.current}
-              href={`/${item.link.slug.current}`}
-            >
-              {item.title}
-            </Link>
+            <NextLink href={`/${item.link.slug.current}`} passHref>
+              <Link active={pageProps.page.slug === item.link.slug.current}>
+                {item.title}
+              </Link>
+            </NextLink>
           </li>
         ))}
         {/*
