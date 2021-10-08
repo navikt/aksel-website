@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const Nav = styled.nav`
   margin-top: var(--navds-spacing-6);
+  overflow: scroll;
 
   ul,
   ul > li {
@@ -48,6 +49,42 @@ const Menu = (): JSX.Element => {
         </li>
         <li>
           <Link href="#">Internal Header</Link>
+        </li>
+        <li>
+          <Link href="#">Placeholder 1</Link>
+        </li>
+        <li>
+          <Link href="#">Placeholder 2</Link>
+        </li>
+        <li>
+          <Link href="#">Placeholder 3</Link>
+        </li>
+        <li>
+          <Link href="#">Placeholder 4</Link>
+        </li>
+        <li>
+          <Link href="#">Placeholder 5</Link>
+        </li>
+        <li>
+          <Link href="#">Placeholder 6</Link>
+        </li>
+        <li>
+          <Link href="#">Placeholder 7</Link>
+        </li>
+        <li>
+          <Link href="#">Placeholder 8</Link>
+        </li>
+        <li>
+          <Link href="#">Placeholder 9</Link>
+        </li>
+        <li>
+          <Link href="#">Placeholder 10</Link>
+        </li>
+        <li>
+          <Link href="#">Placeholder 11</Link>
+        </li>
+        <li>
+          <Link href="#">Placeholder 12</Link>
         </li>
       </BodyShort>
     </Nav>

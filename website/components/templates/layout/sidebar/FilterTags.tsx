@@ -1,4 +1,3 @@
-import { SuccessStroke } from "@navikt/ds-icons";
 import { Detail } from "@navikt/ds-react";
 import React, { useContext } from "react";
 import styled from "styled-components";
