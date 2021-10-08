@@ -20,10 +20,10 @@ const CodePreview = (): JSX.Element => {
   const [baseUrl, setBaseUrl] = useState("");
 
   useLayoutEffect(() => {
-    const url = node.preview.split("&")[0].match(/(?<=storybook\/)(.*\n?)/);
+    const url = node.preview.split("&")[0].match(/storybook\/(.*\n?)/);
     if (url) {
       const newUrl =
-        "/storybook/" +
+        "/" +
         url[0]
           .replace("index.html", "iframe.html")
           .replace("path=/story/", "id=");
