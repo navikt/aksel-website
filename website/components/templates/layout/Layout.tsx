@@ -55,7 +55,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
         <LayoutContext.Provider value={{ isMobile, version: pageType }}>
           <Header />
           <Wrapper>
-            <Sidebar sidebar={pageProps.sidebar} />
+            <Sidebar />
             <ContentWrapper>
               <Main>{children}</Main>
               <Feedback docId={pageProps?.page?._id} />
