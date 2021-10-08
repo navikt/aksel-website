@@ -4,7 +4,7 @@ import * as React from "react";
 import { useContext, useState } from "react";
 import { useMedia } from "react-use";
 import { NavLogoWhite } from "../../..";
-import { DsNavigationHeadingT, DsNavigationT } from "../../../../lib";
+import { DsNavigationHeadingT } from "../../../../lib";
 import { PagePropsContext } from "../../../../pages/_app";
 import { LayoutContext } from "../Layout";
 import HeadingDropDown from "./Dropdown";
