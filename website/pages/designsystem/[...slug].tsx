@@ -139,16 +139,17 @@ export const getStaticProps = async ({
   const joinedSlug = slug.slice(0, 2).join("/");
 
   const enablePreview = !!preview || isDevelopment();
-  const page = await getClient(enablePreview).fetch(dsDocumentBySlug, {
+  const client = getClient(enablePreview);
+  const page = await client.fetch(dsDocumentBySlug, {
     slug: "designsystem/" + joinedSlug,
   });
 
   const changelogs =
     page._type === "ds_component_page"
-      ? await getClient(enablePreview).fetch(changelogQuery)
+      ? await client.fetch(changelogQuery)
       : null;
 
-  const navigation = await getClient(true).fetch(dsNavigationQuery);
+  const navigation = await client.fetch(dsNavigationQuery);
 
   return {
     props: {
