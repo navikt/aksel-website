@@ -21,7 +21,7 @@ const DesignsystemHeader = (): JSX.Element => {
 
   const activeHeading = nav.headings.find((heading) =>
     heading.menu.find(
-      (item) => item.link.slug.current === pageProps?.page?.slug
+      (item) => item?.link?.slug?.current === pageProps?.page?.slug
     )
   );
 
@@ -32,7 +32,7 @@ const DesignsystemHeader = (): JSX.Element => {
         {nav.headings.map((heading) => (
           <NextLink
             key={heading._key}
-            href={`/${heading.link_ref.slug.current}`}
+            href={`/${heading.link_ref?.slug?.current}`}
             passHref
           >
             <S.Link $active={activeHeading.title === heading.title}>

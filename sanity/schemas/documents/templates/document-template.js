@@ -36,6 +36,22 @@ export function documentInformation(prefix) {
       type: "string",
     },
     {
+      title: "Tags",
+      description: "Hvilken tags denne siden er koblet til",
+      name: "tags",
+      type: "array",
+      of: [{ type: "string" }],
+      validation: (Rule) => Rule.required(),
+      options: {
+        list: [
+          { value: "core", title: "Core" },
+          { value: "nav", title: "Nav.no" },
+          { value: "internal", title: "Intern" },
+        ],
+      },
+      initialValue: ["core"],
+    },
+    {
       title: "Status",
       description: "Statusen på denne siden/komponenten",
       name: "status",
