@@ -50,12 +50,12 @@ export default () =>
                     .documentId("frontpage_designsystem")
                 ),
               S.listItem()
-                .title("Sidemeny")
+                .title("Navigasjon")
                 .icon(() => <Place />)
                 .child(
                   S.document()
-                    .schemaType("navigation")
-                    .documentId("navigation_designsystem")
+                    .schemaType("ds_navigation")
+                    .documentId("ds_navigationid")
                 ),
               S.listItem()
                 .title("Changelog")
@@ -110,6 +110,7 @@ export default () =>
             "ds_frontpage",
             "ds_changelog",
             "ds_code_example",
+            "ds_navigation",
             "gp_article_page",
             "gp_frontpage",
             "vk_frontpage",

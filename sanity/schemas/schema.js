@@ -13,6 +13,9 @@ import designsystem_component_page from "./documents/designsystem/ds-component-p
 import designsystem_article_page from "./documents/designsystem/ds-article-page";
 import designsystem_tabbed_article_page from "./documents/designsystem/ds-tabbed-article-page";
 import designsystem_frontpage from "./documents/designsystem/ds-frontpage";
+import designsystem_navigation, {
+  ds_header_heading,
+} from "./documents/designsystem/navigation";
 /*--  God Praksis */
 import god_praksis_article_page from "./documents/god-praksis/gp-article-page";
 import god_praksis_frontpage from "./documents/god-praksis/gp-frontpage";
@@ -41,6 +44,8 @@ export default createSchema({
     designsystem_article_page,
     designsystem_tabbed_article_page,
     designsystem_frontpage,
+    designsystem_navigation,
+    ds_header_heading,
     god_praksis_article_page,
     god_praksis_frontpage,
     vk_frontpage,
