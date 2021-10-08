@@ -23,6 +23,7 @@ const Wrapper = styled.aside<{ context: LayoutContextProps }>`
   top: 0;
   align-self: flex-start;
 `;
+
 const FormWrapper = styled.div`
   margin: 0 1rem 0 2rem;
 `;
