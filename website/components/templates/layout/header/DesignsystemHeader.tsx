@@ -18,12 +18,22 @@ const DesignsystemHeader = (): JSX.Element => {
   const [pageProps] = useContext<any>(PagePropsContext);
   const nav = pageProps.navigation as DsNavigationT;
 
+  const activeHeading = nav.headings.find((heading) =>
+    heading.menu.find(
+      (item) => item.link.slug.current === pageProps?.page?.slug
+    )
+  );
+
   const nonMobile = (
     <>
       <HeadingDropDown />
       <S.Links>
         {nav.headings.map((heading) => (
-          <S.Link key={heading._key} href={`/${heading.link_ref.slug.current}`}>
+          <S.Link
+            $active={activeHeading.title === heading.title}
+            key={heading._key}
+            href={`/${heading.link_ref.slug.current}`}
+          >
             {heading.title}
           </S.Link>
         ))}

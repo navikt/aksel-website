@@ -8,13 +8,19 @@ export const Links = styled.div`
   margin-right: auto;
 `;
 
-export const Link = styled(DsHeader.Title)`
+export const Link = styled(DsHeader.Title)<{ $active: boolean }>`
   padding: 0 var(--navds-spacing-2);
   white-space: nowrap;
   border-right: none;
   min-width: 64px;
   justify-content: center;
   align-items: center;
+
+  ${({ $active }) =>
+    $active &&
+    `
+    box-shadow: inset 0 -2px 0 0 var(--navds-color-gray-90), inset 0 -5px 0 0 white;
+  `}
 
   > * {
     align-items: center;

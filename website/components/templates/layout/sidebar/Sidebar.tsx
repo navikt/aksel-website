@@ -42,12 +42,19 @@ function Sidebar(): JSX.Element {
   ]);
   const [pageProps] = useContext<any>(PagePropsContext);
   const nav = pageProps.navigation as DsNavigationT;
+  if (!pageProps?.page?.slug) return null;
 
-  /* const items = nav.headings.map */
+  const heading = nav.headings.find((heading) =>
+    heading.menu.find(
+      (item) => item.link.slug.current === pageProps?.page?.slug
+    )
+  );
+
+  if (!heading) return null;
 
   return (
     <>
-      <SideBarContext.Provider value={[filterTags, setFilterTags]}>
+      <SideBarContext.Provider value={[filterTags, setFilterTags, heading]}>
         <Wrapper context={context}>
           <FormWrapper>
             <SearchField label="Filtrer">

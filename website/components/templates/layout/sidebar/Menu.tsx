@@ -1,6 +1,9 @@
 import { BodyShort } from "@navikt/ds-react";
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { DsNavigationHeadingT } from "../../../../lib";
+import { PagePropsContext } from "../../../../pages/_app";
+import { SideBarContext } from "./Sidebar";
 
 const Nav = styled.nav`
   margin-top: var(--navds-spacing-6);
@@ -33,23 +36,23 @@ const Link = styled.a<{ active?: boolean }>`
 `;
 
 const Menu = (): JSX.Element => {
+  const context: DsNavigationHeadingT = useContext(SideBarContext)[2];
+  const [pageProps] = useContext<any>(PagePropsContext);
+
   return (
     <Nav>
       <BodyShort as="ul">
-        <li>
-          <Link href="#">Accordion</Link>
-        </li>
-        <li>
-          <Link active href="#">
-            Button
-          </Link>
-        </li>
-        <li>
-          <Link href="#">Popover</Link>
-        </li>
-        <li>
-          <Link href="#">Internal Header</Link>
-        </li>
+        {context.menu.map((item) => (
+          <li key={item.title}>
+            <Link
+              active={pageProps.page.slug === item.link.slug.current}
+              href={`/${item.link.slug.current}`}
+            >
+              {item.title}
+            </Link>
+          </li>
+        ))}
+        {/*
         <li>
           <Link href="#">Placeholder 1</Link>
         </li>
@@ -85,7 +88,7 @@ const Menu = (): JSX.Element => {
         </li>
         <li>
           <Link href="#">Placeholder 12</Link>
-        </li>
+        </li> */}
       </BodyShort>
     </Nav>
   );

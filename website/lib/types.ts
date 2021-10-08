@@ -1,13 +1,15 @@
-export type DsNavigationT = {
-  headings?: {
-    _key: string;
+export type DsNavigationHeadingT = {
+  _key: string;
+  title: string;
+  link_ref: { _id: string; slug: { current: string } };
+  menu?: {
     title: string;
-    link_ref: { _id: string; slug: { current: string } };
-    menu?: {
-      title: string;
-      link: { _id: string; slug: { current: string } };
-    }[];
+    link: { _id: string; slug: { current: string } };
   }[];
+};
+
+export type DsNavigationT = {
+  headings?: DsNavigationHeadingT[];
 };
 
 export type ChangelogT = {
