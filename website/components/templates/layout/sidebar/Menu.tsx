@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { DsNavigationHeadingT } from "../../../../lib";
 import { PagePropsContext } from "../../../../pages/_app";
-import { SideBarContext } from "./Sidebar";
 import NextLink from "next/link";
 
 const Nav = styled.nav`
@@ -37,14 +36,13 @@ const Link = styled.a<{ active?: boolean }>`
   }
 `;
 
-const Menu = (): JSX.Element => {
-  const context: DsNavigationHeadingT = useContext(SideBarContext)[2];
+const Menu = ({ heading }: { heading?: DsNavigationHeadingT }): JSX.Element => {
   const [pageProps] = useContext<any>(PagePropsContext);
 
   return (
     <Nav>
       <BodyShort as="ul">
-        {context.menu.map((item) => (
+        {heading?.menu.map((item) => (
           <li key={item.title}>
             <NextLink href={`/${item.link.slug.current}`} passHref>
               <Link active={pageProps.page.slug === item.link.slug.current}>

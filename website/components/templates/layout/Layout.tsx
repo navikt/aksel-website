@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 import Head from "next/head";
 import styled from "styled-components";
 import Header from "./header/Header";
@@ -7,6 +7,8 @@ import { PagePropsContext } from "../../../pages/_app";
 import Sidebar from "./sidebar/Sidebar";
 import { useMedia } from "react-use";
 import { Feedback } from "../..";
+import { DsNavigationHeadingT } from "../../../lib";
+import { useClientLayoutEffect } from "@navikt/ds-react";
 
 const Wrapper = styled.div`
   display: flex;
@@ -28,6 +30,7 @@ const Main = styled.main`
 export type LayoutContextProps = {
   isMobile: boolean;
   version: "ds" | "gp";
+  activeHeading?: DsNavigationHeadingT;
 };
 
 export const LayoutContext = createContext<LayoutContextProps | null>(null);
@@ -35,9 +38,22 @@ export const LayoutContext = createContext<LayoutContextProps | null>(null);
 // TODO: Move metadata to SEO component
 const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   const [pageProps] = useContext<any>(PagePropsContext);
+  const [activeHeading, setActiveHeading] = useState<
+    DsNavigationHeadingT | undefined
+  >();
 
   const isMobile = useMedia("(max-width: 1064px)");
   const pageType = pageProps?.page?._type?.split("_")[0];
+
+  useClientLayoutEffect(() => {
+    setActiveHeading(
+      pageProps?.navigation?.headings.find((heading) =>
+        heading.menu.find(
+          (item) => item.link.slug.current === pageProps?.page?.slug
+        )
+      )
+    );
+  }, [pageProps.navigation]);
 
   if (!pageProps) {
     return null;
@@ -52,7 +68,9 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <>
-        <LayoutContext.Provider value={{ isMobile, version: pageType }}>
+        <LayoutContext.Provider
+          value={{ isMobile, version: pageType, activeHeading }}
+        >
           <Header />
           <Wrapper>
             <Sidebar />

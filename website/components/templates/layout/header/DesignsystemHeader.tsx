@@ -1,7 +1,8 @@
 import { Bell, Hamburger } from "@navikt/ds-icons";
 import { Header as DsHeader } from "@navikt/ds-react-internal";
+import NextLink from "next/link";
 import * as React from "react";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useMedia } from "react-use";
 import { NavLogoWhite } from "../../..";
 import { DsNavigationHeadingT } from "../../../../lib";
@@ -10,39 +11,24 @@ import { LayoutContext } from "../Layout";
 import HeadingDropDown from "./Dropdown";
 import * as S from "./header.styles";
 import HeaderSearchBar from "./Searchbar";
-import NextLink from "next/link";
-import { useClientLayoutEffect } from "@navikt/ds-react";
 
 const DesignsystemHeader = (): JSX.Element => {
   const context = useContext(LayoutContext);
   const showLogo = useMedia("(min-width: 563px)");
-  const [activeHeading, setActiveHeading] = useState<
-    DsNavigationHeadingT | undefined
-  >();
 
   const [pageProps] = useContext<any>(PagePropsContext);
-
-  useClientLayoutEffect(() => {
-    setActiveHeading(
-      pageProps?.navigation?.headings.find((heading) =>
-        heading.menu.find(
-          (item) => item?.link?.slug?.current === pageProps?.page?.slug
-        )
-      )
-    );
-  }, [pageProps.navigation]);
 
   const nonMobile = (
     <>
       <HeadingDropDown />
       <S.Links>
-        {pageProps?.navigation.headings.map((heading) => (
+        {pageProps?.navigation.headings.map((heading: DsNavigationHeadingT) => (
           <NextLink
             key={heading._key}
             href={`/${heading.link_ref?.slug?.current}`}
             passHref
           >
-            <S.Link $active={activeHeading?.title === heading.title}>
+            <S.Link $active={context?.activeHeading?.title === heading.title}>
               {heading.title}
             </S.Link>
           </NextLink>

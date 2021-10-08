@@ -3,13 +3,10 @@ import {
   SearchField,
   SearchFieldClearButton,
   SearchFieldInput,
-  useClientLayoutEffect,
 } from "@navikt/ds-react";
 import * as React from "react";
 import { createContext, useContext, useState } from "react";
 import styled from "styled-components";
-import { DsNavigationHeadingT } from "../../../../lib";
-import { PagePropsContext } from "../../../../pages/_app";
 import { LayoutContext, LayoutContextProps } from "../Layout";
 import Tags from "./FilterTags";
 import Menu from "./Menu";
@@ -35,30 +32,16 @@ export const SideBarContext = createContext(null);
 
 function Sidebar(): JSX.Element {
   const context = useContext(LayoutContext);
-  const [heading, setHeading] = useState<DsNavigationHeadingT | undefined>();
   const [filterValue, setFilterValue] = useState("");
   const [filterTags, setFilterTags] = useState([
     { title: "Core", active: false },
     { title: "Nav.no", active: false },
     { title: "Intern", active: false },
   ]);
-  const [pageProps] = useContext<any>(PagePropsContext);
-
-  useClientLayoutEffect(() => {
-    setHeading(
-      pageProps?.navigation?.headings.find((heading) =>
-        heading.menu.find(
-          (item) => item.link.slug.current === pageProps?.page?.slug
-        )
-      )
-    );
-  }, [pageProps.navigation]);
-
-  if (!heading) return null;
 
   return (
     <>
-      <SideBarContext.Provider value={[filterTags, setFilterTags, heading]}>
+      <SideBarContext.Provider value={[filterTags, setFilterTags]}>
         <Wrapper context={context}>
           <FormWrapper>
             <SearchField label="Filtrer">
@@ -75,7 +58,7 @@ function Sidebar(): JSX.Element {
             </SearchField>
             <Tags />
           </FormWrapper>
-          <Menu />
+          <Menu heading={context.activeHeading} />
           {/* {sidebar?.sidebar ? <Menu menu={sidebar.sidebar} /> : null} */}
         </Wrapper>
       </SideBarContext.Provider>
