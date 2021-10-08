@@ -7,6 +7,8 @@ import {
 import * as React from "react";
 import { createContext, useContext, useState } from "react";
 import styled from "styled-components";
+import { DsNavigationT } from "../../../../lib";
+import { PagePropsContext } from "../../../../pages/_app";
 import { LayoutContext, LayoutContextProps } from "../Layout";
 import Tags from "./FilterTags";
 import Menu from "./Menu";
@@ -30,7 +32,7 @@ const FormWrapper = styled.div`
 
 export const SideBarContext = createContext(null);
 
-function Sidebar({ sidebar }: { sidebar: any }): JSX.Element {
+function Sidebar(): JSX.Element {
   const context = useContext(LayoutContext);
   const [filterValue, setFilterValue] = useState("");
   const [filterTags, setFilterTags] = useState([
@@ -38,6 +40,10 @@ function Sidebar({ sidebar }: { sidebar: any }): JSX.Element {
     { title: "Nav.no", active: false },
     { title: "Intern", active: false },
   ]);
+  const [pageProps] = useContext<any>(PagePropsContext);
+  const nav = pageProps.navigation as DsNavigationT;
+
+  /* const items = nav.headings.map */
 
   return (
     <>

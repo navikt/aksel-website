@@ -18,8 +18,6 @@ function Header(): JSX.Element {
 
   const [openSearchBar, setOpenSearchBar] = useState(false);
 
-  console.log(titles[context.version]?.header ?? null);
-
   const Comp = titles[context.version]?.header;
   if (!Comp) {
     return null;

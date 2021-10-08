@@ -17,11 +17,9 @@ const templates = {
 const TemplatePicker = ({
   data,
   changelogs,
-}: /* sidebar, */
-{
+}: {
   data: any;
   changelogs?: ChangelogT[];
-  /* sidebar: any; */
 }): JSX.Element => {
   const [mounted, setMounted] = useState(false);
 
@@ -48,9 +46,7 @@ const TemplatePicker = ({
 
   const Template = templates[data._type];
 
-  return (
-    <Template data={data} /* sidebar={sidebar} */ changelogs={changelogs} />
-  );
+  return <Template data={data} changelogs={changelogs} />;
 };
 
 export default TemplatePicker;

@@ -42,7 +42,6 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   if (!pageProps) {
     return null;
   }
-
   return (
     <>
       <Head>

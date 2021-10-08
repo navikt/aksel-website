@@ -24,11 +24,11 @@ export const Link = styled(DsHeader.Title)`
   }
 `;
 
-export const HeaderItem = css<{ isMobile: boolean }>`
+export const HeaderItem = css<{ $isMobile: boolean }>`
   height: 100%;
   display: flex;
   align-items: center;
-  padding: ${(props) => (props.isMobile ? "0 0.75rem" : "0 0.75rem")};
+  padding: ${(props) => (props.$isMobile ? "0 0.75rem" : "0 0.75rem")};
   color: white;
   column-gap: 0.5rem;
   height: 100%;
@@ -101,7 +101,7 @@ export const Menu = styled(DsHeader.Dropdown.Menu)`
 `;
 
 /* HeaderSearchBar */
-export const SearchButton = styled.button<{ isMobile: boolean }>`
+export const SearchButton = styled.button<{ $isMobile: boolean }>`
   ${HeaderItem}
   text-decoration: none;
   background: none;
@@ -109,7 +109,7 @@ export const SearchButton = styled.button<{ isMobile: boolean }>`
 `;
 
 export const SearchField = styled(DsSearchField)<{
-  isMobile: boolean;
+  $isMobile: boolean;
   open: boolean;
 }>`
   display: ${(props) => (props.open ? "flex" : "none")};

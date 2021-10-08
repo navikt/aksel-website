@@ -6,18 +6,21 @@ import {
   ChangelogT,
   dsDocuments,
   dsDocumentBySlug,
+  dsNavigationQuery,
+  DsNavigationT,
 } from "../../lib";
 import { isDevelopment } from "../../components";
 import PreviewBanner from "../../components/PreviewBanner";
 import TemplatePicker from "../../components/templates/TemplatePicker";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { PagePropsContext } from "../_app";
+import { useClientLayoutEffect } from "@navikt/ds-react";
 
 const PagePicker = (props: {
   preview: boolean;
   slug?: string;
   page: any;
-  sidebar: any;
+  navigation: DsNavigationT;
   changelogs?: ChangelogT[];
 }): JSX.Element => {
   const router = useRouter();
@@ -37,21 +40,23 @@ const PagePicker = (props: {
     enabled: enablePreview,
   });
 
-  /* useEffect(() => {
-    setPageData({ ...props, sidebar });
-  }, [sidebar]); */
+  const { data: nav } = usePreviewSubscription(dsNavigationQuery, {
+    initialData: props.navigation,
+    enabled: enablePreview,
+  });
 
-  useEffect(() => {
+  useClientLayoutEffect(() => {
+    setPageData({ ...props, navigation: nav });
+  }, [nav]);
+
+  useClientLayoutEffect(() => {
     setPageData({ ...props, page: data });
   }, [data]);
 
   return (
     <>
       {enablePreview && <PreviewBanner />}
-      <TemplatePicker
-        data={data}
-        /* sidebar={sidebar} */ changelogs={changelogs}
-      />
+      <TemplatePicker data={data} changelogs={changelogs} />
     </>
   );
 };
@@ -119,7 +124,7 @@ interface StaticProps {
     preview: boolean;
     slug: string;
     changelogs: ChangelogT[] | null;
-    /* sidebar; */
+    navigation: DsNavigationT;
   };
   revalidate: number;
 }
@@ -143,13 +148,14 @@ export const getStaticProps = async ({
       ? await getClient(enablePreview).fetch(changelogQuery)
       : null;
 
-  /* const sidebar = await getClient(true).fetch(sidebarQuery("navigation_designsystem")); */
+  const navigation = await getClient(true).fetch(dsNavigationQuery);
+
   return {
     props: {
       page,
       preview: enablePreview,
       slug: joinedSlug,
-      /* sidebar: sidebar, */
+      navigation,
       changelogs,
     },
     revalidate: 60,

@@ -42,6 +42,19 @@ export const dsDocumentBySlug = `*[slug.current match $slug][0]
   },
 }`;
 
+export const dsNavigationQuery = `
+*[_type == 'ds_navigation'][0] {
+  "headings": headings[]{
+    ...,
+    link_ref->{_id, slug},
+    menu[]{
+      ...,
+      link->{_id, slug},
+    }
+  }
+}
+`;
+
 export const sidebarQuery = (doc) => `
 *[_id == '${doc}'][0] {
   "sidebar": sidemenu[]{

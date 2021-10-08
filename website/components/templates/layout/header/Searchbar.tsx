@@ -26,7 +26,7 @@ const HeaderSearchBar = (): JSX.Element => {
       <S.SearchField
         label="Sidesøk"
         hideLabel
-        isMobile={context.isMobile}
+        $isMobile={context.isMobile}
         open={openSearchBar}
       >
         <SearchFieldInput
@@ -35,7 +35,7 @@ const HeaderSearchBar = (): JSX.Element => {
           onChange={(e) => setValue(e.target.value)}
         />
       </S.SearchField>
-      <S.SearchButton isMobile={context.isMobile} onClick={handleClick}>
+      <S.SearchButton $isMobile={context.isMobile} onClick={handleClick}>
         {!openSearchBar && (
           <Search
             style={{ fontSize: "1.5rem", marginLeft: 3 }}
