@@ -49,25 +49,8 @@ export const dsNavigationQuery = `
     link_ref->{_id, slug},
     menu[]{
       ...,
-      link->{_id, slug},
+      link->{_id, slug, tags},
     }
   }
 }
-`;
-
-export const sidebarQuery = (doc) => `
-*[_id == '${doc}'][0] {
-  "sidebar": sidemenu[]{
-   ...,
-   link_ref->{_id, slug},
-    dropdown[]{
-      ...,
-       link_ref->{_id, slug},
-      dropdown[]{
-        ...,
-        link_ref->{_id, slug},
-      }
-    }
-  }
- }
 `;

@@ -1,9 +1,9 @@
 import { BodyShort } from "@navikt/ds-react";
+import NextLink from "next/link";
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { DsNavigationHeadingT } from "../../../../lib";
+import { DsNavigationHeadingMenuT } from "../../../../lib";
 import { PagePropsContext } from "../../../../pages/_app";
-import NextLink from "next/link";
 
 const Nav = styled.nav`
   margin-top: var(--navds-spacing-6);
@@ -36,13 +36,13 @@ const Link = styled.a<{ active?: boolean }>`
   }
 `;
 
-const Menu = ({ heading }: { heading?: DsNavigationHeadingT }): JSX.Element => {
+const Menu = ({ menu }: { menu?: DsNavigationHeadingMenuT[] }): JSX.Element => {
   const [pageProps] = useContext<any>(PagePropsContext);
 
   return (
     <Nav>
       <BodyShort as="ul">
-        {heading?.menu.map((item) => (
+        {menu.map((item) => (
           <li key={item.title}>
             <NextLink href={`/${item.link.slug.current}`} passHref>
               <Link active={pageProps.page.slug === item.link.slug.current}>

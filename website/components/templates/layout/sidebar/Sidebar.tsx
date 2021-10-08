@@ -3,10 +3,12 @@ import {
   SearchField,
   SearchFieldClearButton,
   SearchFieldInput,
+  useClientLayoutEffect,
 } from "@navikt/ds-react";
 import * as React from "react";
 import { createContext, useContext, useState } from "react";
 import styled from "styled-components";
+import { DsNavigationHeadingMenuT } from "../../../../lib";
 import { LayoutContext, LayoutContextProps } from "../Layout";
 import Tags from "./FilterTags";
 import Menu from "./Menu";
@@ -34,10 +36,34 @@ function Sidebar(): JSX.Element {
   const context = useContext(LayoutContext);
   const [filterValue, setFilterValue] = useState("");
   const [filterTags, setFilterTags] = useState([
-    { title: "Core", active: false },
-    { title: "Nav.no", active: false },
-    { title: "Intern", active: false },
+    { title: "Core", active: false, sanity: "core" },
+    { title: "Nav.no", active: false, sanity: "nav" },
+    { title: "Intern", active: false, sanity: "internal" },
   ]);
+
+  const [sidebarMenu, setSidebarMenu] = useState<DsNavigationHeadingMenuT[]>(
+    []
+  );
+
+  useClientLayoutEffect(() => {
+    if (!context?.activeHeading || !context.activeHeading?.menu) {
+      return;
+    }
+
+    const filtered = context.activeHeading.menu
+      .filter(
+        (item) =>
+          item.title.toLowerCase().indexOf(filterValue.toLowerCase()) !== -1
+      )
+      .filter((item) => {
+        const active = filterTags.filter((x) => x.active).map((x) => x.sanity);
+        return active.length > 0
+          ? active.some((r) => item.link.tags.includes(r))
+          : true;
+      });
+
+    setSidebarMenu([...filtered]);
+  }, [context.activeHeading, filterValue, filterTags]);
 
   return (
     <>
@@ -58,8 +84,7 @@ function Sidebar(): JSX.Element {
             </SearchField>
             <Tags />
           </FormWrapper>
-          <Menu heading={context.activeHeading} />
-          {/* {sidebar?.sidebar ? <Menu menu={sidebar.sidebar} /> : null} */}
+          <Menu menu={sidebarMenu} />
         </Wrapper>
       </SideBarContext.Provider>
     </>

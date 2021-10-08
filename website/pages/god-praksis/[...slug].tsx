@@ -29,15 +29,6 @@ const PagePicker = (props: {
     enabled: enablePreview,
   });
 
-  /* const { data: sidebar } = usePreviewSubscription(sidebarQuery, {
-    initialData: props.sidebar,
-    enabled: enablePreview,
-  }); */
-
-  /* useEffect(() => {
-    setPageData({ ...props, sidebar });
-  }, [sidebar]); */
-
   useEffect(() => {
     setPageData({ ...props, page: data });
   }, [data]);
@@ -100,7 +91,6 @@ export const getStaticProps = async ({
     slug: "god-praksis/" + joinedSlug,
   });
 
-  /* const sidebar = await getClient(true).fetch(sidebarQuery); */
   return {
     props: {
       page,
