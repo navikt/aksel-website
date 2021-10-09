@@ -8,7 +8,10 @@ import {
 import * as React from "react";
 import { createContext, useContext, useState } from "react";
 import styled from "styled-components";
-import { DsNavigationHeadingMenuT } from "../../../../lib";
+import {
+  DsNavigationHeadingMenuT,
+  DsNavigationHeadingT,
+} from "../../../../lib";
 import { LayoutContext, LayoutContextProps } from "../Layout";
 import Tags from "./FilterTags";
 import Menu from "./Menu";
@@ -37,8 +40,10 @@ export const SideBarContext = createContext(null);
 
 function Sidebar({
   fromHeader = false,
+  heading,
 }: {
   fromHeader?: boolean;
+  heading: DsNavigationHeadingT;
 }): JSX.Element {
   const context = useContext(LayoutContext);
   const [filterValue, setFilterValue] = useState("");
@@ -53,11 +58,11 @@ function Sidebar({
   );
 
   useClientLayoutEffect(() => {
-    if (!context?.activeHeading || !context.activeHeading?.menu) {
+    if (!heading || !heading?.menu) {
       return;
     }
 
-    const filtered = context.activeHeading.menu
+    const filtered = heading.menu
       .filter(
         (item) =>
           item.title.toLowerCase().indexOf(filterValue.toLowerCase()) !== -1
@@ -70,9 +75,9 @@ function Sidebar({
       });
 
     setSidebarMenu([...filtered]);
-  }, [context.activeHeading, filterValue, filterTags]);
+  }, [heading, filterValue, filterTags]);
 
-  if (!context.activeHeading) return null;
+  if (!heading) return null;
 
   const sidebarContent = (
     <>
