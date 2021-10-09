@@ -1,13 +1,7 @@
-import {
-  Bell,
-  Close,
-  Hamburger,
-  Home,
-  HomeFilled,
-  Left,
-} from "@navikt/ds-icons";
+import { Bell, Close, Hamburger, HomeFilled, Left } from "@navikt/ds-icons";
 import { BodyShort } from "@navikt/ds-react";
 import { Header as DsHeader } from "@navikt/ds-react-internal";
+import { motion } from "framer-motion";
 import NextLink from "next/link";
 import * as React from "react";
 import { useContext, useEffect, useState } from "react";
@@ -151,14 +145,6 @@ const DesignsystemHeader = (): JSX.Element => {
             </S.Link>
           </NextLink>
         ))}
-        {/* <S.Link href="#">Kom i gang</S.Link>
-        <S.Link href="#">Guider</S.Link>
-        <S.Link href="#">Produktbrief</S.Link>
-        <S.Link href="#">Styling</S.Link>
-        <S.Link href="#">Komponenter</S.Link>
-        <S.Link href="#">Mønster</S.Link>
-        <S.Link href="#">Ressurser</S.Link>
-        <S.Link href="#">Hjelp</S.Link> */}
       </S.Links>
       <HeaderSearchBar />
       <S.Link href="#">
@@ -224,19 +210,35 @@ const DesignsystemHeader = (): JSX.Element => {
             </BackButton>
           )}
           {isHeadingMenu ? (
-            pageProps?.navigation.headings.map(
-              (heading: DsNavigationHeadingT) => (
-                <Button
-                  key={heading._key}
-                  $active={context?.activeHeading?.title === heading.title}
-                  onClick={() => handleSelectMenu(heading)}
-                >
-                  {heading.title}
-                </Button>
-              )
-            )
+            <motion.div
+              key="MainMenuKey"
+              initial={{ x: -200, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ type: "tween" }}
+              exit={{ x: 200, opacity: 0 }}
+            >
+              {pageProps?.navigation.headings.map(
+                (heading: DsNavigationHeadingT) => (
+                  <Button
+                    key={heading._key}
+                    $active={context?.activeHeading?.title === heading.title}
+                    onClick={() => handleSelectMenu(heading)}
+                  >
+                    {heading.title}
+                  </Button>
+                )
+              )}
+            </motion.div>
           ) : (
-            <Sidebar fromHeader heading={heading} />
+            <motion.div
+              key="NestedMenuKey"
+              initial={{ x: 200, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ type: "tween" }}
+              exit={{ x: -200, opacity: 0 }}
+            >
+              <Sidebar fromHeader heading={heading} />
+            </motion.div>
           )}
         </S.MobileMenu>
       </S.MenuOverlay>
