@@ -3,7 +3,7 @@ import { Header as DsHeader } from "@navikt/ds-react-internal";
 import NextLink from "next/link";
 import * as React from "react";
 import { useContext, useState } from "react";
-import { useMedia } from "react-use";
+import { useKey, useMedia } from "react-use";
 import { NavLogoWhite } from "../../..";
 import { DsNavigationHeadingT } from "../../../../lib";
 import { PagePropsContext } from "../../../../pages/_app";
@@ -20,6 +20,21 @@ const DesignsystemHeader = (): JSX.Element => {
   const [openHamb, setOpenHamb] = useState(false);
 
   const [pageProps] = useContext<any>(PagePropsContext);
+
+  useKey("Escape", () => setOpenHamb(false));
+
+  const handleToggle = () => {
+    setOpenHamb(!openHamb);
+  };
+
+  const handleClose = (e) => {
+    if (
+      e.target.matches(".navds-modal__overlay") ||
+      !e.target.closest(".navds-popover")
+    ) {
+      setOpenHamb(false);
+    }
+  };
 
   const nonMobile = (
     <>
@@ -66,7 +81,7 @@ const DesignsystemHeader = (): JSX.Element => {
 
       <S.DropdownButton
         className="navdsi-header__dropdown-button"
-        onClick={() => setOpenHamb(!openHamb)}
+        onClick={() => handleToggle()}
         ref={setHambRef}
       >
         {openHamb ? (
@@ -83,11 +98,15 @@ const DesignsystemHeader = (): JSX.Element => {
           />
         )}
       </S.DropdownButton>
-      <S.MenuOverlay $open={openHamb} className="navds-modal__overlay">
+      <S.MenuOverlay
+        onClick={(e) => handleClose(e)}
+        $open={openHamb}
+        className="navds-modal__overlay"
+      >
         <S.MobileMenu
           open={openHamb}
           anchorEl={hambRef}
-          onClose={() => setOpenHamb(false)}
+          onClose={() => null}
           placement="bottom"
           arrow={false}
           offset={0}

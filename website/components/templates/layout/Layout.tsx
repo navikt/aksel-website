@@ -58,7 +58,6 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   if (!pageProps) {
     return null;
   }
-  console.log(activeHeading);
 
   return (
     <>
