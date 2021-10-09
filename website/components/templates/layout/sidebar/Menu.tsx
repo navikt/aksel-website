@@ -51,11 +51,14 @@ const Menu = ({ menu }: { menu?: DsNavigationHeadingMenuT[] }): JSX.Element => {
             </NextLink>
           </li>
         ))}
-        {/* {Array(15).map((x) => (
-          <li key={x}>
-            <Link href="#">Placeholder {x}</Link>
-          </li>
-        ))} */}
+        {Array(15)
+          .fill(0)
+          .map((_, y) => y)
+          .map((x) => (
+            <li key={x}>
+              <Link href="#">Placeholder {x}</Link>
+            </li>
+          ))}
       </BodyShort>
     </Nav>
   );

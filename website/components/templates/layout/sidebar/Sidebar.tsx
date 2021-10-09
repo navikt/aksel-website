@@ -29,7 +29,7 @@ const Wrapper = styled.aside<{ context: LayoutContextProps }>`
 `;
 
 const FormWrapper = styled.div`
-  margin: 0 1rem 0 2rem;
+  margin: 0 2rem;
 `;
 
 export const SideBarContext = createContext(null);
