@@ -1,6 +1,6 @@
 import { Header as DsHeader } from "@navikt/ds-react-internal";
 import styled, { css } from "styled-components";
-import { SearchField as DsSearchField } from "@navikt/ds-react";
+import { Popover, SearchField as DsSearchField } from "@navikt/ds-react";
 
 export const Links = styled.div`
   display: flex;
@@ -101,9 +101,36 @@ export const DropDownIconLink = styled.a`
   gap: 1rem;
 `;
 
+export const DropdownButton = styled.button`
+  min-width: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+`;
+
 export const Menu = styled(DsHeader.Dropdown.Menu)`
   padding: 0.5rem;
   border: none;
+`;
+
+export const MobileMenu = styled(Popover)`
+  padding: 2rem 1rem;
+  border: none;
+  overflow-y: scroll;
+  height: calc(100vh - 64px);
+  width: 600px;
+  max-width: 100%;
+  box-shadow: none;
+  border-radius: 0;
+`;
+
+export const MenuOverlay = styled.div<{ $open: boolean }>`
+  top: 64px;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  ${(props) => !props.$open && `display: none;`};
 `;
 
 /* HeaderSearchBar */

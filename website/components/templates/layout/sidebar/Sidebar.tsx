@@ -12,6 +12,7 @@ import { DsNavigationHeadingMenuT } from "../../../../lib";
 import { LayoutContext, LayoutContextProps } from "../Layout";
 import Tags from "./FilterTags";
 import Menu from "./Menu";
+import MobileSidebar from "./Mobile";
 
 const Wrapper = styled.aside<{ context: LayoutContextProps }>`
   width: 288px;
@@ -34,7 +35,11 @@ const FormWrapper = styled.div`
 
 export const SideBarContext = createContext(null);
 
-function Sidebar(): JSX.Element {
+function Sidebar({
+  fromHeader = false,
+}: {
+  fromHeader?: boolean;
+}): JSX.Element {
   const context = useContext(LayoutContext);
   const [filterValue, setFilterValue] = useState("");
   const [filterTags, setFilterTags] = useState([
@@ -67,27 +72,37 @@ function Sidebar(): JSX.Element {
     setSidebarMenu([...filtered]);
   }, [context.activeHeading, filterValue, filterTags]);
 
+  if (!context.activeHeading) return null;
+
+  const sidebarContent = (
+    <>
+      <FormWrapper>
+        <SearchField label="Filtrer">
+          <SearchFieldInput
+            value={filterValue}
+            onChange={(e) => setFilterValue(e.target.value)}
+          />
+          {!!filterValue && (
+            <SearchFieldClearButton onClick={() => setFilterValue("")}>
+              <Close />
+              <span className="navds-sr-only">Tøm filter input</span>
+            </SearchFieldClearButton>
+          )}
+        </SearchField>
+        <Tags />
+      </FormWrapper>
+      <Menu menu={sidebarMenu} />
+    </>
+  );
+
   return (
     <>
       <SideBarContext.Provider value={[filterTags, setFilterTags]}>
-        <Wrapper context={context}>
-          <FormWrapper>
-            <SearchField label="Filtrer">
-              <SearchFieldInput
-                value={filterValue}
-                onChange={(e) => setFilterValue(e.target.value)}
-              />
-              {!!filterValue && (
-                <SearchFieldClearButton onClick={() => setFilterValue("")}>
-                  <Close />
-                  <span className="navds-sr-only">Tøm filter input</span>
-                </SearchFieldClearButton>
-              )}
-            </SearchField>
-            <Tags />
-          </FormWrapper>
-          <Menu menu={sidebarMenu} />
-        </Wrapper>
+        {fromHeader ? (
+          <MobileSidebar>{sidebarContent}</MobileSidebar>
+        ) : (
+          <Wrapper context={context}>{sidebarContent}</Wrapper>
+        )}
       </SideBarContext.Provider>
     </>
   );

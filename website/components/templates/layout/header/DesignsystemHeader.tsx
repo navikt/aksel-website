@@ -1,13 +1,14 @@
-import { Bell, Hamburger } from "@navikt/ds-icons";
+import { Bell, Close, Hamburger } from "@navikt/ds-icons";
 import { Header as DsHeader } from "@navikt/ds-react-internal";
 import NextLink from "next/link";
 import * as React from "react";
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 import { useMedia } from "react-use";
 import { NavLogoWhite } from "../../..";
 import { DsNavigationHeadingT } from "../../../../lib";
 import { PagePropsContext } from "../../../../pages/_app";
 import { LayoutContext } from "../Layout";
+import Sidebar from "../sidebar/Sidebar";
 import HeadingDropDown from "./Dropdown";
 import * as S from "./header.styles";
 import HeaderSearchBar from "./Searchbar";
@@ -15,6 +16,8 @@ import HeaderSearchBar from "./Searchbar";
 const DesignsystemHeader = (): JSX.Element => {
   const context = useContext(LayoutContext);
   const showLogo = useMedia("(min-width: 563px)");
+  const [hambRef, setHambRef] = useState(null);
+  const [openHamb, setOpenHamb] = useState(false);
 
   const [pageProps] = useContext<any>(PagePropsContext);
 
@@ -60,13 +63,38 @@ const DesignsystemHeader = (): JSX.Element => {
         {showLogo && <NavLogoWhite focusable={false} aria-label="NAV logo" />}
         Designsystemet
       </S.Link>
-      <S.Link href="#">
-        <Hamburger
-          focusable={false}
-          aria-label="Meny ikon"
-          style={{ fontSize: "1.5rem" }}
-        />
-      </S.Link>
+
+      <S.DropdownButton
+        className="navdsi-header__dropdown-button"
+        onClick={() => setOpenHamb(!openHamb)}
+        ref={setHambRef}
+      >
+        {openHamb ? (
+          <Close
+            focusable={false}
+            aria-label="Steng meny ikon"
+            style={{ fontSize: "1.5rem" }}
+          />
+        ) : (
+          <Hamburger
+            focusable={false}
+            aria-label="Meny ikon"
+            style={{ fontSize: "1.5rem" }}
+          />
+        )}
+      </S.DropdownButton>
+      <S.MenuOverlay $open={openHamb} className="navds-modal__overlay">
+        <S.MobileMenu
+          open={openHamb}
+          anchorEl={hambRef}
+          onClose={() => setOpenHamb(false)}
+          placement="bottom"
+          arrow={false}
+          offset={0}
+        >
+          <Sidebar fromHeader />
+        </S.MobileMenu>
+      </S.MenuOverlay>
     </>
   );
 
