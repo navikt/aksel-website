@@ -2,7 +2,7 @@ import { Bell, Close, Hamburger } from "@navikt/ds-icons";
 import { Header as DsHeader } from "@navikt/ds-react-internal";
 import NextLink from "next/link";
 import * as React from "react";
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { useMedia } from "react-use";
 import { NavLogoWhite } from "../../..";
 import { DsNavigationHeadingT } from "../../../../lib";

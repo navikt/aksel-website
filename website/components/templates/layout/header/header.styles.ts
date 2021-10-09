@@ -115,7 +115,7 @@ export const Menu = styled(DsHeader.Dropdown.Menu)`
 `;
 
 export const MobileMenu = styled(Popover)`
-  padding: 2rem 1rem;
+  padding: 1rem;
   border: none;
   overflow-y: scroll;
   height: calc(100vh - 64px);
