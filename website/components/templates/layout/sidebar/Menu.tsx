@@ -51,43 +51,11 @@ const Menu = ({ menu }: { menu?: DsNavigationHeadingMenuT[] }): JSX.Element => {
             </NextLink>
           </li>
         ))}
-        {/*
-        <li>
-          <Link href="#">Placeholder 1</Link>
-        </li>
-        <li>
-          <Link href="#">Placeholder 2</Link>
-        </li>
-        <li>
-          <Link href="#">Placeholder 3</Link>
-        </li>
-        <li>
-          <Link href="#">Placeholder 4</Link>
-        </li>
-        <li>
-          <Link href="#">Placeholder 5</Link>
-        </li>
-        <li>
-          <Link href="#">Placeholder 6</Link>
-        </li>
-        <li>
-          <Link href="#">Placeholder 7</Link>
-        </li>
-        <li>
-          <Link href="#">Placeholder 8</Link>
-        </li>
-        <li>
-          <Link href="#">Placeholder 9</Link>
-        </li>
-        <li>
-          <Link href="#">Placeholder 10</Link>
-        </li>
-        <li>
-          <Link href="#">Placeholder 11</Link>
-        </li>
-        <li>
-          <Link href="#">Placeholder 12</Link>
-        </li> */}
+        {/* {Array(15).map((x) => (
+          <li key={x}>
+            <Link href="#">Placeholder {x}</Link>
+          </li>
+        ))} */}
       </BodyShort>
     </Nav>
   );

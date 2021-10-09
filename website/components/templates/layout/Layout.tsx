@@ -67,7 +67,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   <meta property="og:url" content="https://www.design.nav.no/" /> */}
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <>
+      <div style={{ position: "relative" }}>
         <LayoutContext.Provider
           value={{ isMobile, version: pageType, activeHeading }}
         >
@@ -81,7 +81,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
             </ContentWrapper>
           </Wrapper>
         </LayoutContext.Provider>
-      </>
+      </div>
     </>
   );
 };

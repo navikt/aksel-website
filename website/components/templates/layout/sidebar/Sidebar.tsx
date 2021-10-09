@@ -24,6 +24,8 @@ const Wrapper = styled.aside<{ context: LayoutContextProps }>`
   position: sticky;
   top: 0;
   align-self: flex-start;
+  overflow-y: auto;
+  height: 100vh;
 `;
 
 const FormWrapper = styled.div`
