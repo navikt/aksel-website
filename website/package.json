@@ -48,7 +48,8 @@
     "lodash.throttle": "4.1.1",
     "react-focus-lock": "^2.5.2",
     "amplitude-js": "^8.8.0",
-    "framer-motion": "4.1.17"
+    "framer-motion": "4.1.17",
+    "lodash.kebabcase": "^4.1.1"
   },
   "devDependencies": {
     "@types/node": "^16.9.2",
