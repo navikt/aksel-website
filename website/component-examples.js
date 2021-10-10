@@ -1,12 +1,13 @@
-import ButtonDanger from "./pages/examples/button/Danger";
-import ButtonAllVariants from "./pages/examples/button/all-variants";
-import ButtonDisabled from "./pages/examples/button/Disabled";
-import ButtonPrimary from "./pages/examples/button/Primary";
-import ButtonSecondary from "./pages/examples/button/Secondary";
-import ButtonTertiary from "./pages/examples/button/Tertiary";
-import ButtonWithIcon from "./pages/examples/button/WithIcon";
-import ButtonWithLoader from "./pages/examples/button/WithLoader";
 import kebabCase from "lodash.kebabcase";
+
+import ButtonDisabled from "./examples/button/disabled";
+import ButtonDanger from "./examples/button/danger";
+import ButtonAllVariants from "./examples/button/all-variants";
+import ButtonPrimary from "./examples/button/primary";
+import ButtonSecondary from "./examples/button/secondary";
+import ButtonTertiary from "./examples/button/tertiary";
+import ButtonWithIcon from "./examples/button/with-icon";
+import ButtonWithLoader from "./examples/button/with-loader";
 
 const T = {
   ButtonAllVariants,
