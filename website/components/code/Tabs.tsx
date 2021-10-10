@@ -1,19 +1,11 @@
-import { NewTab, Ruler, Sight } from "@navikt/ds-icons";
+import { NewTab } from "@navikt/ds-icons";
 import React, { useContext } from "react";
 import { CodeContext } from "./Example";
 import * as S from "./code.styles";
 
 const CodeTabs = (): JSX.Element => {
-  const {
-    node,
-    tabs,
-    showPreview,
-    activeTab,
-    setActiveTab,
-    previews,
-    setPreviews,
-    fullscreenLink,
-  } = useContext(CodeContext);
+  const { node, tabs, showPreview, activeTab, setActiveTab, fullscreenLink } =
+    useContext(CodeContext);
 
   return (
     <>
@@ -48,32 +40,6 @@ const CodeTabs = (): JSX.Element => {
                   <NewTab role="presentation" />
                 </S.LinkButton>
               )}
-              <S.ToggleButton
-                aria-selected={previews.ruler}
-                onClick={() =>
-                  setPreviews({
-                    ...previews,
-                    ruler: !previews.ruler,
-                  })
-                }
-              >
-                <span className="sr-only">Toggle ruler for kode-eksempel</span>
-                <Ruler focusable="false" role="presentation" />
-              </S.ToggleButton>
-              <S.ToggleButton
-                aria-selected={previews.outlines}
-                onClick={() =>
-                  setPreviews({
-                    ...previews,
-                    outlines: !previews.outlines,
-                  })
-                }
-              >
-                <span className="sr-only">
-                  Toggle outlines for kode-eksempel
-                </span>
-                <Sight focusable="false" role="presentation" />
-              </S.ToggleButton>
             </>
           )}
           {node.github && (

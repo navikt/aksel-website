@@ -162,27 +162,3 @@ export const LinkButton = styled.a`
 export const CopyWrapper = styled.div`
   display: flex;
 `;
-
-export const ToggleButton = styled.button`
-  border: none;
-  color: rgba(255, 255, 255, 0.85);
-  padding: 0.75rem 0.75rem;
-  display: flex;
-  align-items: center;
-  column-gap: 0.5rem;
-  background-color: transparent;
-
-  :hover {
-    background-color: rgba(255, 255, 255, 0.15);
-  }
-
-  :focus {
-    outline: 2px solid white;
-    outline-offset: -2px;
-  }
-
-  &[aria-selected="true"] {
-    box-shadow: inset 0 -4px 0 0 white;
-    color: white;
-  }
-`;
