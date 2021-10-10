@@ -14,22 +14,18 @@
   "scripts": {
     "postinstall": "husky install",
     "dev": "yarn workspace website dev",
-    "build:next": "yarn sb:build && yarn workspace website build",
+    "build:next": "yarn workspace website build",
     "serve:next": "yarn workspace website start",
     "deploy:vercel": "yarn workspace website deploy:vercel",
     "deploy": "yarn workspace website deploy",
     "sanity": "yarn workspace sanity start",
     "sanity:deploy": "yarn workspace sanity deploy",
     "sanity:update:nav": "yarn workspace sanity update:nav",
-    "lint": "yarn workspace website lint",
-    "sb": "yarn workspace storybook storybook",
-    "sb:build": "yarn workspace storybook build-storybook",
-    "sb:watch": "yarn workspace storybook storybook:watch"
+    "lint": "yarn workspace website lint"
   },
   "workspaces": [
     "sanity",
-    "website",
-    "storybook"
+    "website"
   ],
   "prettier": {},
   "dependencies": {
