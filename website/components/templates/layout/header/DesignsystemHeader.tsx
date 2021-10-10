@@ -12,7 +12,7 @@ import { DsNavigationHeadingT } from "../../../../lib";
 import { PagePropsContext } from "../../../../pages/_app";
 import { LayoutContext } from "../Layout";
 import Menu from "../menu/DesignsystemMenu";
-import HeadingDropDown from "./Dropdown";
+import HeadingDropDown from "./DesignsystemDropdown";
 import * as S from "./header.styles";
 import HeaderSearchBar from "./Searchbar";
 
