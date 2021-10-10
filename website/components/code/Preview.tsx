@@ -10,51 +10,29 @@ import prettier from "prettier/standalone";
 import babel from "prettier/parser-babel";
 
 const CodePreview = (): JSX.Element => {
-  const { node, setTabs, previews, setFullscreenLink } =
-    useContext(CodeContext);
+  const { node, setTabs } = useContext(CodeContext);
 
   const iframeRef = useRef(null);
   const [height, setHeight] = useState(120);
   const [loaded, setLoaded] = useState(false);
-  const [iframeUrl, setIframeUrl] = useState("");
-  const [baseUrl, setBaseUrl] = useState("");
+  const [url, setUrl] = useState<string | undefined>();
 
   useLayoutEffect(() => {
-    const url = node.preview.split("&")[0].match(/storybook\/(.*\n?)/);
-    if (url) {
-      const newUrl =
-        "/" +
-        url[0]
-          .replace("index.html", "iframe.html")
-          .replace("path=/story/", "id=");
-      setBaseUrl(newUrl);
-      setIframeUrl(newUrl);
-      setFullscreenLink(newUrl);
-    }
+    const url = node.preview.split("/")?.[1];
+    url && setUrl(url);
   }, [node.preview]);
 
   useEffect(() => {
     setLoaded(false);
-  }, [iframeUrl]);
+  }, [url]);
 
+  /* Resizes height if content changes, example accordion */
   useEffect(() => {
     if (!loaded) return;
     const newHeight =
       iframeRef.current?.contentWindow.document.body.scrollHeight;
     setHeight(newHeight);
 
-    previews.outlines
-      ? iframeRef.current?.contentWindow.document.body.classList.add(
-          "sb--outlines"
-        )
-      : iframeRef.current?.contentWindow.document.body.classList.remove(
-          "sb--outlines"
-        );
-  }, [loaded, previews.outlines]);
-
-  /* Resizes height if content changes, example accordion */
-  useEffect(() => {
-    if (!loaded) return;
     const resizeObserver = new ResizeObserver((entries) => {
       const newHeight = entries[0].target.scrollHeight;
       setHeight(newHeight);
@@ -64,7 +42,7 @@ const CodePreview = (): JSX.Element => {
     return () => {
       resizeObserver.disconnect();
     };
-  }, [loaded, previews.outlines]);
+  }, [loaded]);
 
   const formatCode = (code, tag) => {
     try {
@@ -116,11 +94,6 @@ const CodePreview = (): JSX.Element => {
   }, [loaded]);
 
   useEffect(() => {
-    const toggles = previews.ruler ? `globals=measureEnabled:true` : "";
-    setIframeUrl(`${baseUrl}&${toggles}`);
-  }, [previews.ruler, baseUrl]);
-
-  useEffect(() => {
     if (!loaded) return;
     const handleResize = () => {
       if (!iframeRef.current) return;
@@ -139,10 +112,10 @@ const CodePreview = (): JSX.Element => {
 
   return (
     <iframe
-      title="Iframe for storybook-komponent eksempel"
+      title="Iframe for komponent eksempel"
       ref={iframeRef}
       onLoad={() => setLoaded(true)}
-      src={iframeUrl}
+      src={url}
       height={height + "px"}
       width="100%"
       style={{ border: "none" }}
