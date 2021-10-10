@@ -15,7 +15,6 @@ import {
 import { LayoutContext, LayoutContextProps } from "../Layout";
 import Tags from "./FilterTags";
 import Menu from "./Menu";
-import MobileSidebar from "./Mobile";
 
 const Wrapper = styled.aside<{ context: LayoutContextProps }>`
   width: 288px;
@@ -104,7 +103,7 @@ function Sidebar({
     <>
       <SideBarContext.Provider value={[filterTags, setFilterTags]}>
         {fromHeader ? (
-          <MobileSidebar>{sidebarContent}</MobileSidebar>
+          <div>{sidebarContent}</div>
         ) : (
           <Wrapper context={context}>{sidebarContent}</Wrapper>
         )}

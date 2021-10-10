@@ -4,8 +4,8 @@ import { Header as DsHeader } from "@navikt/ds-react-internal";
 import { motion } from "framer-motion";
 import NextLink from "next/link";
 import * as React from "react";
-import { useContext, useEffect, useState } from "react";
-import { useKey, useMedia } from "react-use";
+import { useCallback, useContext, useEffect, useState } from "react";
+import { useEvent, useKey, useMedia } from "react-use";
 import styled from "styled-components";
 import { NavLogoWhite } from "../../..";
 import { DsNavigationHeadingT } from "../../../../lib";
@@ -96,6 +96,7 @@ const DesignsystemHeader = (): JSX.Element => {
   const context = useContext(LayoutContext);
   const showLogo = useMedia("(min-width: 563px)");
   const [hambRef, setHambRef] = useState(null);
+  const [menuRef, setMenuRef] = useState(null);
   const [openHamb, setOpenHamb] = useState(false);
   const [heading, setHeading] = useState(context.activeHeading);
   const [isHeadingMenu, setIsHeadingMenu] = useState(true);
@@ -111,6 +112,22 @@ const DesignsystemHeader = (): JSX.Element => {
   const handleToggle = () => {
     setOpenHamb(!openHamb);
   };
+
+  useEvent(
+    "focusin",
+    useCallback(
+      (e: FocusEvent) => {
+        if (
+          ![hambRef, menuRef].some((element) =>
+            element?.contains(e.target as Node)
+          )
+        ) {
+          setOpenHamb(false);
+        }
+      },
+      [hambRef, menuRef]
+    )
+  );
 
   const handleClose = (e) => {
     if (
@@ -169,6 +186,7 @@ const DesignsystemHeader = (): JSX.Element => {
         className="navdsi-header__dropdown-button"
         onClick={() => handleToggle()}
         ref={setHambRef}
+        aria-expanded={openHamb}
       >
         {openHamb ? (
           <Close
@@ -191,6 +209,7 @@ const DesignsystemHeader = (): JSX.Element => {
       >
         <S.MobileMenu
           open={openHamb}
+          ref={setMenuRef}
           anchorEl={hambRef}
           onClose={() => null}
           placement="bottom"
