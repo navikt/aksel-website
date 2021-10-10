@@ -3,7 +3,7 @@ import ButtonAllVariants from "./pages/examples/button/AllVariants";
 import ButtonDisabled from "./pages/examples/button/Disabled";
 import ButtonPrimary from "./pages/examples/button/Primary";
 import ButtonSecondary from "./pages/examples/button/Secondary";
-import ButtonTertriary from "./pages/examples/button/Tertriary";
+import ButtonTertiary from "./pages/examples/button/Tertiary";
 import ButtonWithIcon from "./pages/examples/button/WithIcon";
 import ButtonWithLoader from "./pages/examples/button/WithLoader";
 
@@ -13,7 +13,7 @@ export {
   ButtonDisabled,
   ButtonPrimary,
   ButtonSecondary,
-  ButtonTertriary,
+  ButtonTertiary,
   ButtonWithIcon,
   ButtonWithLoader,
 };
