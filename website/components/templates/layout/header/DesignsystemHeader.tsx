@@ -11,7 +11,7 @@ import { NavLogoWhite } from "../../..";
 import { DsNavigationHeadingT } from "../../../../lib";
 import { PagePropsContext } from "../../../../pages/_app";
 import { LayoutContext } from "../Layout";
-import Sidebar from "../sidebar/Sidebar";
+import Menu from "../menu/DesignsystemMenu";
 import HeadingDropDown from "./Dropdown";
 import * as S from "./header.styles";
 import HeaderSearchBar from "./Searchbar";
@@ -256,7 +256,7 @@ const DesignsystemHeader = (): JSX.Element => {
               transition={{ type: "tween" }}
               exit={{ x: -200, opacity: 0 }}
             >
-              <Sidebar fromHeader heading={heading} />
+              <Menu heading={heading} />
             </motion.div>
           )}
         </S.MobileMenu>

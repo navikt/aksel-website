@@ -74,7 +74,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
         >
           <Header />
           <Wrapper>
-            <Sidebar heading={activeHeading} />
+            <Sidebar />
             <ContentWrapper>
               <Main>{children}</Main>
               <Feedback docId={pageProps?.page?._id} />

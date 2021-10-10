@@ -1,7 +1,7 @@
 import { Detail } from "@navikt/ds-react";
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { SideBarContext } from "./Sidebar";
+import { MenuContext } from "./DesignsystemMenu";
 
 const Wrapper = styled.div`
   display: flex;
@@ -47,7 +47,7 @@ const Text = styled(Detail)`
 `;
 
 const Tags = (): JSX.Element => {
-  const [filterTags, setFilterTags] = useContext(SideBarContext);
+  const [filterTags, setFilterTags] = useContext(MenuContext);
 
   const handleClick = (index: number) => {
     const arr = [...filterTags];
