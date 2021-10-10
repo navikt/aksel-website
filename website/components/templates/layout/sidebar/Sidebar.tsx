@@ -1,34 +1,15 @@
-import * as React from "react";
 import { useContext } from "react";
-import styled from "styled-components";
-import { LayoutContext, LayoutContextProps } from "../Layout";
-import Menu from "../menu/DesignsystemMenu";
+import { LayoutContext, LayoutParts } from "../Layout";
 
-const Wrapper = styled.aside<{ context: LayoutContextProps }>`
-  width: 288px;
-  padding: var(--navds-spacing-8) 0;
-  position: relative;
-  flex-shrink: 0;
-  background-color: white;
-  border-right: 1px solid var(--navds-color-gray-10);
-  display: ${(props) => (props.context.isMobile ? "none" : "block")};
-  position: sticky;
-  top: 0;
-  align-self: flex-start;
-  overflow-y: auto;
-  height: 100vh;
-`;
-
-function Sidebar(): JSX.Element {
+const Sidebar = (): JSX.Element => {
   const context = useContext(LayoutContext);
 
-  if (!context.activeHeading) return null;
+  const Comp = LayoutParts[context.version]?.sidebar;
+  if (!Comp) {
+    return null;
+  }
 
-  return (
-    <Wrapper context={context}>
-      <Menu heading={context.activeHeading} />
-    </Wrapper>
-  );
-}
+  return <Comp />;
+};
 
 export default Sidebar;

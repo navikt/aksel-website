@@ -4,11 +4,13 @@ import styled from "styled-components";
 import Header from "./header/Header";
 import Footer from "./Footer";
 import { PagePropsContext } from "../../../pages/_app";
-import Sidebar from "./sidebar/Sidebar";
+import DesignsystemSidebar from "./sidebar/DesignsystemSidebar";
 import { useMedia } from "react-use";
 import { Feedback } from "../..";
 import { DsNavigationHeadingT } from "../../../lib";
 import { useClientLayoutEffect } from "@navikt/ds-react";
+import DesignsystemHeader from "./header/DesignsystemHeader";
+import Sidebar from "./sidebar/Sidebar";
 
 const Wrapper = styled.div`
   display: flex;
@@ -31,6 +33,15 @@ export type LayoutContextProps = {
   isMobile: boolean;
   version: "ds" | "gp";
   activeHeading?: DsNavigationHeadingT;
+};
+
+export const LayoutParts = {
+  ds: {
+    title: "Designsystemet",
+    header: DesignsystemHeader,
+    sidebar: DesignsystemSidebar,
+  },
+  gp: { title: "God Praksis", header: null, sidebar: null },
 };
 
 export const LayoutContext = createContext<LayoutContextProps | null>(null);

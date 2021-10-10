@@ -1,24 +1,15 @@
 import * as React from "react";
 import { createContext, useContext, useState } from "react";
-import { LayoutContext } from "../Layout";
-import DesignsystemHeader from "./DesignsystemHeader";
+import { LayoutContext, LayoutParts } from "../Layout";
 
 export const HeaderContext = createContext(null);
-
-export const titles = {
-  ds: {
-    title: "Designsystemet",
-    header: DesignsystemHeader,
-  },
-  gp: { title: "God Praksis", header: null },
-};
 
 function Header(): JSX.Element {
   const context = useContext(LayoutContext);
 
   const [openSearchBar, setOpenSearchBar] = useState(false);
 
-  const Comp = titles[context.version]?.header;
+  const Comp = LayoutParts[context.version]?.header;
   if (!Comp) {
     return null;
   }

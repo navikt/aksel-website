@@ -10,7 +10,7 @@ import styled from "styled-components";
 import { NavLogoWhite } from "../../..";
 import { DsNavigationHeadingT } from "../../../../lib";
 import { PagePropsContext } from "../../../../pages/_app";
-import { LayoutContext } from "../Layout";
+import { LayoutContext, LayoutParts } from "../Layout";
 import Menu from "../menu/DesignsystemMenu";
 import HeadingDropDown from "./DesignsystemDropdown";
 import * as S from "./header.styles";
@@ -149,7 +149,7 @@ const DesignsystemHeader = (): JSX.Element => {
 
   const nonMobile = (
     <>
-      <HeadingDropDown />
+      <HeadingDropDown title={LayoutParts[context.version].title ?? ""} />
       <S.Links>
         {pageProps?.navigation.headings.map((heading: DsNavigationHeadingT) => (
           <NextLink

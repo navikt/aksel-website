@@ -3,21 +3,16 @@ import { BodyShort } from "@navikt/ds-react";
 import { Header as DsHeader } from "@navikt/ds-react-internal";
 import NextLink from "next/link";
 import * as React from "react";
-import { useContext } from "react";
 import { NavLogoWhite } from "../../..";
-import { LayoutContext } from "../Layout";
-import { titles } from "./Header";
 import * as S from "./header.styles";
 
-const HeadingDropDown = (): JSX.Element => {
-  const context = useContext(LayoutContext);
-
+const HeadingDropDown = ({ title }: { title: string }): JSX.Element => {
   return (
     <>
       <DsHeader.Dropdown>
         <DsHeader.Dropdown.Button>
           <NavLogoWhite focusable={false} aria-label="NAV logo" />
-          {titles[context.version].title ?? ""}{" "}
+          {title}
           <Expand focusable={false} role="presentation" />
         </DsHeader.Dropdown.Button>
         <S.Menu>
