@@ -1,76 +1,58 @@
-import {
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { useContext, useEffect, useState } from "react";
 import { CodeContext } from "./Example";
 import prettier from "prettier/standalone";
 import babel from "prettier/parser-babel";
+import { CodePreviews } from "./code-previews";
+import { useId } from "@navikt/ds-react";
+import styled from "styled-components";
+
+const formatCode = (code, tag) => {
+  try {
+    const formated = prettier.format(`<${tag ?? ""}>${code}</${tag ?? ""}>`, {
+      parser: "babel",
+      plugins: [babel],
+      printWidth: 60,
+      semi: false,
+    });
+
+    return formated.startsWith(";") ? formated.slice(1) : formated;
+  } catch {
+    return code;
+  }
+};
+
+const Wrapper = styled.div`
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 const CodePreview = (): JSX.Element => {
-  const { node, setTabs } = useContext(CodeContext);
+  const { node, setTabs, setFullscreenLink } = useContext(CodeContext);
 
-  const iframeRef = useRef(null);
-  const [height, setHeight] = useState(120);
-  const [loaded, setLoaded] = useState(false);
-  const [url, setUrl] = useState<string | undefined>();
+  const [url, setUrl] = useState<any>();
+  const id = useId();
+  const [wrapperRef, setWrapperRef] = useState(null);
 
-  useLayoutEffect(() => {
-    const url = node.preview.split("/")?.[1];
-    url && setUrl(url);
+  useEffect(() => {
+    const url = node.preview.split("/examples/")?.[1];
+    if (url) {
+      setFullscreenLink(`/examples/${url}`);
+      setUrl(url.replaceAll("/", "-"));
+    }
   }, [node.preview]);
 
   useEffect(() => {
-    setLoaded(false);
-  }, [url]);
-
-  /* Resizes height if content changes, example accordion */
-  useEffect(() => {
-    if (!loaded) return;
-    const newHeight =
-      iframeRef.current?.contentWindow.document.body.scrollHeight;
-    setHeight(newHeight);
-
-    const resizeObserver = new ResizeObserver((entries) => {
-      const newHeight = entries[0].target.scrollHeight;
-      setHeight(newHeight);
-    });
-
-    resizeObserver.observe(iframeRef.current?.contentWindow.document.body);
-    return () => {
-      resizeObserver.disconnect();
-    };
-  }, [loaded]);
-
-  const formatCode = (code, tag) => {
-    try {
-      const formated = prettier.format(`<${tag ?? ""}>${code}</${tag ?? ""}>`, {
-        parser: "babel",
-        plugins: [babel],
-        printWidth: 60,
-        semi: false,
-      });
-      /* Prettier puts a semicolon at start of each html/jsx block... */
-      return formated.startsWith(";") ? formated.slice(1) : formated;
-    } catch {
-      return code;
-    }
-  };
-
-  useEffect(() => {
-    if (!loaded || !node.infercode) return;
+    if (!node.infercode) return;
 
     const newTabs = [];
+    if (!wrapperRef) return;
 
-    const react =
-      iframeRef.current?.contentWindow.document.querySelector("[data-react]");
-    const html = iframeRef.current?.contentWindow.document.querySelector(
-      "[data-html-wrapper]"
-    );
-    const inferHtml =
-      iframeRef.current?.contentWindow.document.querySelector("[data-html]");
+    const react = wrapperRef.querySelector("[data-react]");
+    const html = wrapperRef.querySelector("[data-html-wrapper]");
+    const inferHtml = wrapperRef.querySelector("[data-html]");
 
     react &&
       newTabs.push({
@@ -91,37 +73,13 @@ const CodePreview = (): JSX.Element => {
         language: "html",
       });
     newTabs && setTabs([...newTabs]);
-  }, [loaded]);
+  }, [id, wrapperRef]);
 
-  useEffect(() => {
-    if (!loaded) return;
-    const handleResize = () => {
-      if (!iframeRef.current) return;
-      const width = iframeRef.current.offsetWidth;
-      const doc: Document = iframeRef.current?.contentWindow.document;
-      if (doc) {
-        doc.body.style.width = `${width}px`;
-      }
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [loaded]);
+  if (!url) return null;
 
-  return (
-    <iframe
-      title="Iframe for komponent eksempel"
-      ref={iframeRef}
-      onLoad={() => setLoaded(true)}
-      src={url}
-      height={height + "px"}
-      width="100%"
-      style={{ border: "none" }}
-      loading="lazy"
-    />
-  );
+  const Comp = CodePreviews(url);
+
+  return <Wrapper ref={setWrapperRef}>{Comp}</Wrapper>;
 };
 
 export default CodePreview;

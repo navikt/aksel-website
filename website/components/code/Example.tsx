@@ -16,7 +16,6 @@ export const copyCode = (content: string): void => {
 };
 
 type TabType = { name: string; content: React.ReactNode; language?: string };
-type PreviewType = { ruler: boolean; outlines: boolean };
 
 type ContextProps = {
   node: Partial<CodeExampleT>;
@@ -26,8 +25,6 @@ type ContextProps = {
   showPreview: boolean;
   activeTab: number;
   setActiveTab: React.Dispatch<React.SetStateAction<number>>;
-  previews: PreviewType;
-  setPreviews: React.Dispatch<React.SetStateAction<PreviewType>>;
   fullscreenLink: string;
   setFullscreenLink: React.Dispatch<React.SetStateAction<string>>;
 };
@@ -40,8 +37,6 @@ export const CodeContext = createContext<ContextProps>({
   showPreview: false,
   activeTab: 0,
   setActiveTab: () => null,
-  previews: { ruler: false, outlines: false },
-  setPreviews: () => null,
   fullscreenLink: "",
   setFullscreenLink: () => null,
 });
@@ -59,10 +54,6 @@ const Code = ({ node }: { node: CodeExampleT }): JSX.Element => {
       : []
   );
   const [activeTab, setActiveTab] = useState(-1);
-  const [previews, setPreviews] = useState<PreviewType>({
-    ruler: false,
-    outlines: false,
-  });
   const [fullscreenLink, setFullscreenLink] = useState("");
 
   if (
@@ -100,8 +91,6 @@ const Code = ({ node }: { node: CodeExampleT }): JSX.Element => {
         activeTab,
         setActiveTab,
         showTabs,
-        previews,
-        setPreviews,
         fullscreenLink,
         setFullscreenLink,
       }}
