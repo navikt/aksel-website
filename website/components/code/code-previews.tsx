@@ -8,6 +8,7 @@ import ButtonSecondary from "../../pages/examples/button/secondary";
 import ButtontTertiary from "../../pages/examples/button/tertiary";
 import ButtonWithIcon from "../../pages/examples/button/with-icon";
 import ButtonWithLoader from "../../pages/examples/button/with-loader";
+import * as T from "../../component-examples";
 
 // TODO: implement such that one can infer the code with dynamic imports
 // TODO: is dynamic imports needed?
@@ -25,7 +26,13 @@ const Examples = {
   "button-with-loader": ButtonWithLoader,
 };
 
+const E = Object.keys(T).reduce((prev, y) => {
+  return { ...prev, [y]: T[y] };
+}, {});
+
 export const CodePreviews = (url) => {
+  console.log(E);
+
   if (!url || !(url in Examples)) {
     return null;
   }
