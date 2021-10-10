@@ -1,6 +1,6 @@
 import { Button } from "@navikt/ds-react";
 import React from "react";
-import { HtmlWrapper, InferReact } from "../../../components";
+import { HtmlWrapper, InferReact } from "../../components";
 
 const Danger = () => (
   <>

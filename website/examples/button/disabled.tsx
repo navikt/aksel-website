@@ -1,6 +1,6 @@
 import { Button } from "@navikt/ds-react";
 import React from "react";
-import { InferHtml, InferReact, PreviewWrapper } from "../../../components";
+import { InferHtml, InferReact, PreviewWrapper } from "../../components";
 
 const Disabled = () => (
   <>

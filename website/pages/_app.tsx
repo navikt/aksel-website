@@ -24,14 +24,6 @@ const StyledLoader = styled.div`
   align-items: center;
 `;
 
-const ExampleWrapper = styled.div`
-  display: flex;
-  padding: 1rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
 function App({
   Component,
   pageProps,
@@ -50,12 +42,10 @@ function App({
   }, []);
 
   /* Is example */
-  if (Component && appRoute?.asPath.startsWith("/examples/")) {
+  if (Component && appRoute?.asPath.startsWith("/examples")) {
     return (
       <AmplitudeProvider>
-        <ExampleWrapper>
-          <Component />
-        </ExampleWrapper>
+        <Component {...pageProps} />
       </AmplitudeProvider>
     );
   }

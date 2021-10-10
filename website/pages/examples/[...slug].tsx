@@ -1,43 +1,45 @@
-import fs from "fs";
-import glob from "glob";
-/* import matter from "gray-matter";
-import hydrate from "next-mdx-remote/hydrate";
-import tableOfContents from "../src/table-of-contents";
-import mainMenu from "../src/main-menu";
-import components from "../components/MDXComponents";
-import renderToString from "next-mdx-remote/render-to-string"; */
+import styled from "styled-components";
+import { ExampleKeys, Examples } from "../../component-examples";
 
-/* const Page = ({ mdxSource }) => hydrate(mdxSource, { components });
+const CodePreview = (key) => {
+  if (!key || !(key in Examples)) {
+    return null;
+  }
 
-export default Page; */
+  const Comp = Examples[key];
+  return <Comp />;
+};
 
-/* export async function getStaticProps({ params: { path } }) {
-  const { content } = matter(
-    fs.readFileSync(`data/${path?.join("/") || "index"}.mdx`, "utf8")
-  );
+const ExampleWrapper = styled.div`
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
+const Page = ({ compkey }: { compkey: string }) => {
+  console.log("called");
+  return <ExampleWrapper>{CodePreview(compkey)}</ExampleWrapper>;
+};
+
+export default Page;
+
+export async function getStaticProps({ params: { slug } }) {
+  console.log("called props");
   return {
     props: {
-      mdxSource: await renderToString(content, {
-        components,
-        mdxOptions: {
-          remarkPlugins: [require("remark-slug")],
-        },
-      }),
-      menu: mainMenu(),
-      tableOfContents: tableOfContents(content),
+      compkey: slug,
     },
   };
-} */
+}
 
 export async function getStaticPaths() {
   return {
     paths: [
-      { params: { path: [] } },
-      ...glob
-        .sync("examples/**.tsx")
-        .map((path) => path.slice(5, -4).split("/"))
-        .map((path) => ({ params: { path } })),
+      ...ExampleKeys.map((path) => ({
+        params: { slug: [path] },
+      })),
     ],
     fallback: false,
   };

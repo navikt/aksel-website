@@ -25,3 +25,5 @@ const T = {
 export const Examples = Object.keys(T).reduce((prev, y) => {
   return { ...prev, [kebabCase(y)]: T[y] };
 }, {});
+
+export const ExampleKeys = Object.keys(Examples);
