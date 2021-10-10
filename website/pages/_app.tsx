@@ -24,12 +24,22 @@ const StyledLoader = styled.div`
   align-items: center;
 `;
 
+const ExampleWrapper = styled.div`
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 function App({
   Component,
   pageProps,
+  router: appRoute,
 }: {
   Component: any;
   pageProps: any;
+  router: any;
 }): JSX.Element {
   useScrollToHashOnPageLoad();
   const router = useRouter();
@@ -38,6 +48,17 @@ function App({
   useEffect(() => {
     setPageData(pageProps);
   }, []);
+
+  /* Is example */
+  if (Component && appRoute?.asPath.startsWith("/examples/")) {
+    return (
+      <AmplitudeProvider>
+        <ExampleWrapper>
+          <Component />
+        </ExampleWrapper>
+      </AmplitudeProvider>
+    );
+  }
 
   slugger.reset();
 
