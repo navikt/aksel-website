@@ -31,7 +31,8 @@
     "react": "^17.0",
     "react-dom": "^17.0",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.13",
-    "styled-components": "^5.3.1"
+    "styled-components": "^5.3.1",
+    "website": "*"
   },
   "repository": {
     "type": "git",

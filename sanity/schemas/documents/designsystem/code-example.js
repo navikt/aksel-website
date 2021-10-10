@@ -1,3 +1,5 @@
+/* import { ExampleKeys } from "website/component-examples"; */
+
 export default {
   title: "Kode med eksempel",
   name: "ds_code_example",
@@ -9,6 +11,15 @@ export default {
       type: "string",
       validation: (Rule) => Rule.required(),
     },
+    /* {
+      title: "Test",
+      name: "test123",
+      type: "string",
+      options: {
+        list: [...ExampleKeys.map((x) => ({ title: x, value: x }))], // <-- predefined values
+        layout: "radio", // <-- defaults to 'dropdown'
+      },
+    }, */
     {
       title: "Storybook Iframe (optional)",
       name: "preview",
