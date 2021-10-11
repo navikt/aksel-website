@@ -133,13 +133,14 @@ const serializers = {
         <Link href={href}>{children}</Link>
       );
     },
-    // TODO: Run a query on _ref (id) if is not part of "mark"
     internalLink: ({ mark, children }: { mark: any; children: any }) => {
       const { slug = {} } = mark;
-      const href = `/${slug.current}`;
+      if (!slug || !slug.current) return children;
+
+      const href = `/${slug?.current}`;
       return (
         <NextjsLink href={href} passHref>
-          <Link href="">{children}</Link>
+          <Link>{children}</Link>
         </NextjsLink>
       );
     },

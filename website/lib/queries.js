@@ -17,50 +17,53 @@ export const gpDocumentBySlug = `*[slug.current == $slug][0]
 
 export const dsDocuments = `*[_type in ["ds_component_page", "ds_article_page", "ds_tabbed_article_page"]]{ _type, 'slug': slug.current }`;
 
+const deRefs = `
+_type == "code_example_ref" =>{
+  "ref": @.ref->
+},
+_type == "link_panel" =>{
+  ...,
+  internal_link-> {_id, slug}
+},
+markDefs[]{
+  ...,
+  _type == 'internalLink' => {
+      "slug": @.reference->slug,
+  },
+},
+`;
+
 export const dsDocumentBySlug = `*[slug.current == $slug][0]
 {
   ...,
   "slug": slug.current,
+	body[]{
+    ...,
+    ${deRefs}
+  },
 	usage[]{
     ...,
-    _type == "code_example_ref" =>{
-    	"ref": @.ref->
-  	},
-    _type == "link_panel" =>{
-      ...,
-      internal_link-> {_id, slug}
-    }
+    ${deRefs}
   },
   design[]{
       ...,
-      _type == "code_example_ref" =>{
-        "ref": @.ref->
-      },
-      _type == "link_panel"=>{
-        ...,
-        internal_link-> {_id, slug}
-      }
+      ${deRefs}
   },
   development[]{
       ...,
-      _type == "code_example_ref" =>{
-        "ref": @.ref->
-      },
-      _type == "link_panel"=>{
-        ...,
-        internal_link-> {_id, slug}
-      }
+      ${deRefs}
   },
   accessibility[]{
-      ...,
-      _type == "code_example_ref" =>{
-        "ref": @.ref->
-      },
-      _type == "link_panel"=>{
-        ...,
-        internal_link-> {_id, slug}
-      }
+    ...,
+    ${deRefs}
   },
+  tabs[]{
+    ...,
+    body[]{
+      ...,
+      ${deRefs}
+    }
+  }
 }`;
 
 export const dsNavigationQuery = `

@@ -7,8 +7,8 @@ const LinkPanel = ({ node }: { node: LinkPanelT }): JSX.Element => {
   if (
     !node ||
     !node.heading ||
-    (!node.external && !node.external_link) ||
-    (node.external && !node.internal_link?.slug)
+    (node.external && !node.external_link) ||
+    (!node.external && !node.internal_link?.slug)
   )
     return null;
 

@@ -39,14 +39,14 @@ const HeadingDropDown = ({ title }: { title: string }): JSX.Element => {
                 </BodyShort>
               </S.DropDownLink>
             </NextLink>
-            <NextLink href="#" passHref>
+            {/* <NextLink href="#" passHref>
               <S.DropDownLink role="menuitem">
                 <BodyShort>Brand Guide</BodyShort>
                 <BodyShort spacing size="small">
                   Informasjon omhandlende Brand Guide
                 </BodyShort>
               </S.DropDownLink>
-            </NextLink>
+            </NextLink> */}
           </DsHeader.Dropdown.Menu.List>
         </S.Menu>
       </DsHeader.Dropdown>
