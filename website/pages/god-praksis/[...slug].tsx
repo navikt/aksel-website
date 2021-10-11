@@ -24,7 +24,7 @@ const PagePicker = (props: {
   const [_, setPageData] = useContext(PagePropsContext);
 
   const { data } = usePreviewSubscription(gpDocumentBySlug, {
-    params: { slug: props?.slug },
+    params: { slug: "god-praksis/" + props?.slug },
     initialData: props.page,
     enabled: enablePreview,
   });

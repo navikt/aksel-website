@@ -27,7 +27,7 @@ const TemplatePicker = ({
     setMounted(true);
   }, []);
 
-  if (!mounted) {
+  if (!mounted || !data) {
     return null;
   }
 

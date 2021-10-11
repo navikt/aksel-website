@@ -30,7 +30,7 @@ const PagePicker = (props: {
   const [_, setPageData] = useContext(PagePropsContext);
 
   const { data } = usePreviewSubscription(dsDocumentBySlug, {
-    params: { slug: props?.slug },
+    params: { slug: "designsystem/" + props.slug },
     initialData: props.page,
     enabled: enablePreview,
   });

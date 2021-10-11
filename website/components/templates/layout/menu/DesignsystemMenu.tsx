@@ -79,12 +79,12 @@ const Menu = ({ heading }: { heading?: DsNavigationHeadingT }): JSX.Element => {
     const filtered = heading.menu
       .filter(
         (item) =>
-          item.title.toLowerCase().indexOf(filterValue.toLowerCase()) !== -1
+          item?.title.toLowerCase().indexOf(filterValue.toLowerCase()) !== -1
       )
       .filter((item) => {
         const active = filterTags.filter((x) => x.active).map((x) => x.sanity);
         return active.length > 0
-          ? active.some((r) => item.link.tags.includes(r))
+          ? active.some((r) => item?.link.tags.includes(r))
           : true;
       });
 
