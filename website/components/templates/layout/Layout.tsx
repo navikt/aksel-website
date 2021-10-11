@@ -88,7 +88,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
             <Sidebar />
             <ContentWrapper>
               <Main>{children}</Main>
-              <Feedback docId={pageProps?.page?._id} />
+              {!pageProps?.preview && <Feedback docId={pageProps?.page?._id} />}
               <Footer />
             </ContentWrapper>
           </Wrapper>
