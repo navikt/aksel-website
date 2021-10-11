@@ -24,6 +24,10 @@ const LevelTwoHeading = ({
     }
   }, [openPopover]);
 
+  if (children.toString() === "") {
+    return null;
+  }
+
   const slug = slugger.slug(encodeURI(children.toString()));
   const copyAnchor = (id: string): void => {
     setOpenPopover(true);
