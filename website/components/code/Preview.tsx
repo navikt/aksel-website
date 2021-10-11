@@ -38,6 +38,7 @@ const CodePreview = (): JSX.Element => {
 
   useEffect(() => {
     const url = node.preview.split("/examples/")?.[1];
+    console.log(node.preview);
     if (url) {
       setFullscreenLink(`/examples/${url}`);
       setUrl(url.replaceAll("/", "-"));
