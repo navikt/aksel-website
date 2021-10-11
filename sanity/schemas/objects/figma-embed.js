@@ -22,13 +22,15 @@ export default {
     component: (selection) => {
       const src = selection.value.embed?.match(/src="(.+?)"/);
 
-      return src && src[1] ? (
-        <iframe
-          style={{ border: "1px solid rgba(0, 0, 0, 0.1" }}
-          src={src[1]}
-          height="300"
-          width="100%"
-        />
+      return src?.[1] ? (
+        <div style={{ padding: "3rem" }}>
+          <iframe
+            style={{ border: "1px solid rgba(0, 0, 0, 0.1" }}
+            src={src[1]}
+            height="300"
+            width="100%"
+          />
+        </div>
       ) : (
         <span>Lenken funger ikke</span>
       );

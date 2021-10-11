@@ -35,7 +35,7 @@ import do_dont, { doDont } from "./objects/do-dont";
 import uu_interactions, { keyboardTable } from "./objects/uu-interaction";
 import picture from "./objects/image";
 import alert from "./objects/alert";
-import figma_embed from "./objects/figma_embed";
+import figma_embed from "./objects/figma-embed";
 
 export default createSchema({
   name: "default",
