@@ -70,20 +70,21 @@ const CodePreview = (): JSX.Element => {
         language: "jsx",
       });
 
-    !rest?.html &&
+    if (rest?.html === undefined) {
       wrapperRef &&
-      newTabs.push({
-        name: "HTML",
-        content: formatCode(wrapperRef.innerHTML, "div"),
-        language: "html",
-      });
-
-    rest?.html &&
-      newTabs.push({
-        name: "HTML",
-        content: formatCode(rest.html, "div"),
-        language: "html",
-      });
+        newTabs.push({
+          name: "HTML",
+          content: formatCode(wrapperRef.innerHTML, "div"),
+          language: "html",
+        });
+    } else if (rest?.html !== null) {
+      rest?.html &&
+        newTabs.push({
+          name: "HTML",
+          content: formatCode(rest.html, "div"),
+          language: "html",
+        });
+    }
     newTabs && setTabs([...newTabs]);
   }, [id, wrapperRef, url]);
 
