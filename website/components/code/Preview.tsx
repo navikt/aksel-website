@@ -5,6 +5,7 @@ import babel from "prettier/parser-babel";
 import { CodePreviews } from "./code-previews";
 import { useId } from "@navikt/ds-react";
 import styled from "styled-components";
+import reactElementToJSXString from "react-element-to-jsx-string";
 
 const formatCode = (code, tag) => {
   try {
@@ -80,6 +81,8 @@ const CodePreview = (): JSX.Element => {
 
   const Comp = CodePreviews(url);
 
+  const T = <>{Comp}</>;
+  console.log(reactElementToJSXString(T));
   return <Wrapper ref={setWrapperRef}>{Comp}</Wrapper>;
 };
 

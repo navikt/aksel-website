@@ -6,5 +6,6 @@ export const CodePreviews = (url) => {
   }
 
   const Comp = Examples[url];
+
   return <Comp />;
 };

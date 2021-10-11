@@ -32,18 +32,22 @@ const Link = styled.a<{ active?: boolean }>`
   display: flex;
   padding: 0.75rem 1rem 0.75rem 2rem;
   text-decoration: none;
+  color: var(--navds-color-gray-60);
+  /* border-radius: 8px;
+  margin: 0.5rem; */
 
   ${(props) =>
     props.active &&
     `
-    box-shadow: inset 6px 0 0 0 var(--navds-color-blue-50);
-    background-color: var(--navds-color-gray-10);
+    box-shadow: inset 6px 0 0 0 var(--navds-color-gray-90);
+    background-color: #f8f8f8;
     color: var(--navds-color-gray-90);
     font-weight: 600;
   `}
 
   :hover {
-    background-color: var(--navds-color-blue-10);
+    background-color: #f8f8f8;
+    color: var(--navds-color-gray-90);
   }
 
   :focus {
@@ -67,6 +71,7 @@ const Menu = ({ heading }: { heading?: DsNavigationHeadingT }): JSX.Element => {
     { title: "Nav.no", active: false, sanity: "nav" },
     { title: "Intern", active: false, sanity: "internal" },
   ]);
+
   const [sidebarMenu, setSidebarMenu] = useState<DsNavigationHeadingMenuT[]>(
     []
   );
@@ -120,14 +125,14 @@ const Menu = ({ heading }: { heading?: DsNavigationHeadingT }): JSX.Element => {
                 </NextLink>
               </li>
             ))}
-            {/* {Array(15)
+            {Array(15)
               .fill(0)
               .map((_, y) => y)
               .map((x) => (
                 <li key={x}>
                   <Link href="#">Placeholder {x}</Link>
                 </li>
-              ))} */}
+              ))}
           </BodyShort>
         </Nav>
       </MenuContext.Provider>

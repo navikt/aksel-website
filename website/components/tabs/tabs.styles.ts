@@ -75,7 +75,7 @@ export const A = styled.a`
   cursor: pointer;
   text-decoration: none;
   text-transform: capitalize;
-  color: var(--navds-color-blue-50);
+  color: var(--navds-color-gray-80);
   flex: 1 1;
   display: flex;
   align-items: center;
@@ -85,8 +85,9 @@ export const A = styled.a`
   font-weight: 400;
 
   &[aria-selected="true"] {
-    border-color: var(--navds-color-blue-50);
+    border-color: var(--navds-color-gray-90);
     color: var(--navds-color-darkgray);
+    font-weight: 600;
   }
 
   :hover {

@@ -49,7 +49,8 @@
     "react-focus-lock": "^2.5.2",
     "amplitude-js": "^8.8.0",
     "framer-motion": "4.1.17",
-    "lodash.kebabcase": "^4.1.1"
+    "lodash.kebabcase": "^4.1.1",
+    "react-element-to-jsx-string": "^14.3.2"
   },
   "devDependencies": {
     "@types/node": "^16.9.2",
