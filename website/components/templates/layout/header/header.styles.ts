@@ -4,7 +4,8 @@ import { Popover, SearchField as DsSearchField } from "@navikt/ds-react";
 
 export const Links = styled.div`
   display: flex;
-  margin-left: auto;
+  /* margin-left: auto; */
+  margin-left: 1rem;
   margin-right: auto;
 `;
 
@@ -148,6 +149,8 @@ export const SearchField = styled(DsSearchField)<{
   display: ${(props) => (props.open ? "flex" : "none")};
   align-items: center;
   width: 350px;
+  flex: 1 1;
+  margin-left: 1rem;
 
   > .navds-search-field__input-wrapper {
     width: 100%;
