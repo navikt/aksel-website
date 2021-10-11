@@ -112,7 +112,6 @@ export const getStaticPaths = async (): Promise<{
     }
   });
 
-  console.log(JSON.stringify(paths, null, 2));
   return {
     paths,
     fallback: true,

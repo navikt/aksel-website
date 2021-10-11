@@ -4,7 +4,7 @@ import { ImageType, useSanityImage } from "../../lib";
 import * as S from "./image.styles";
 
 const Image = ({ node }: ImageType): JSX.Element => {
-  if (!node || !node.src) {
+  if (!node || !node.asset) {
     return null;
   }
 

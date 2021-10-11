@@ -74,7 +74,7 @@ export type ImageType = {
   node: {
     title: string;
     caption?: string;
-    src: string;
+    asset: any;
   };
 };
 
