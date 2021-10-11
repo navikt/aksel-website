@@ -1,21 +1,10 @@
-export const allDocuments = `*[]{...,'slug': slug.current }`;
-
-export const changelogQuery = `*[_type == "ds_changelog"]`;
-
-export const gpDocuments = `*[_type in ["gp_article_page"]]{ _type, 'slug': slug.current }`;
-
-export const gpDocumentBySlug = `*[slug.current == $slug][0]
-{
+const markDef = `
+markDefs[]{
   ...,
-  "slug": slug.current,
-
-  _type == "link_panel"=>{
-    ...,
-    internal_link-> {_id, slug}
-   }
-}`;
-
-export const dsDocuments = `*[_type in ["ds_component_page", "ds_article_page", "ds_tabbed_article_page"]]{ _type, 'slug': slug.current }`;
+  _type == 'internalLink' => {
+      "slug": @.reference->slug,
+  },
+},`;
 
 const deRefs = `
 _type == "code_example_ref" =>{
@@ -25,13 +14,61 @@ _type == "link_panel" =>{
   ...,
   internal_link-> {_id, slug}
 },
-markDefs[]{
+_type == "alert" =>{
   ...,
-  _type == 'internalLink' => {
-      "slug": @.reference->slug,
-  },
+  body[]{
+    ...,
+    ${markDef}
+  }
 },
+_type == "do_dont" =>{
+  ...,
+  blocks[]{
+    ...,
+    body[]{
+      ...,
+      ${markDef}
+    },
+  }
+},
+_type == "uu_interaction" =>{
+  ...,
+  focus[]{
+    ...,
+    ${markDef}
+  },
+  mouse[]{
+    ...,
+    ${markDef}
+  },
+  screen_reader[]{
+    ...,
+    ${markDef}
+  }
+},
+${markDef}
 `;
+
+export const allDocuments = `*[]{...,'slug': slug.current }`;
+
+export const changelogQuery = `*[_type == "ds_changelog"]{
+  ...,
+  body[]{
+    ...,
+    ${deRefs}
+  }
+}`;
+
+export const gpDocuments = `*[_type in ["gp_article_page"]]{ _type, 'slug': slug.current }`;
+
+export const gpDocumentBySlug = `*[slug.current == $slug][0]
+{
+  ...,
+  "slug": slug.current,
+  ${deRefs}
+}`;
+
+export const dsDocuments = `*[_type in ["ds_component_page", "ds_article_page", "ds_tabbed_article_page"]]{ _type, 'slug': slug.current }`;
 
 export const dsDocumentBySlug = `*[slug.current == $slug][0]
 {
