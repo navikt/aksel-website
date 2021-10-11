@@ -13,6 +13,7 @@ import {
   Braille,
   Laptop,
   List,
+  ExternalLink,
 } from "@navikt/ds-icons";
 
 import { KBD } from "@sanity/ui";
@@ -183,16 +184,20 @@ export default {
       icon: () => <Warning />,
     },
     {
-      type: "figma_embed",
-      /* icon: () => <Warning />, */
+      type: "link_panel",
+      icon: () => <ExternalLink />,
     },
     { type: "code_snippet", icon: () => <span>{`< />`}</span> },
-    { type: "code_example_ref", icon: () => <Laptop /> },
-    { type: "prop_table", icon: () => <List /> },
-    { type: "uu_interaction", icon: () => <Braille /> },
     {
       type: "do_dont",
       icon: () => <SuccessStroke />,
     },
+    {
+      type: "figma_embed",
+      /* icon: () => <Warning />, */
+    },
+    { type: "code_example_ref", icon: () => <Laptop /> },
+    { type: "uu_interaction", icon: () => <Braille /> },
+    { type: "prop_table", icon: () => <List /> },
   ],
 };

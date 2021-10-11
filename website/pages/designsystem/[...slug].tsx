@@ -149,7 +149,7 @@ export const getStaticProps = async ({
   });
 
   const changelogs =
-    page._type === "ds_component_page"
+    page?._type === "ds_component_page"
       ? await client.fetch(changelogQuery)
       : null;
 

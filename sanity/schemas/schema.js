@@ -36,6 +36,7 @@ import uu_interactions, { keyboardTable } from "./objects/uu-interaction";
 import picture from "./objects/image";
 import alert from "./objects/alert";
 import figma_embed from "./objects/figma-embed";
+import link_panel from "./objects/link-panel";
 
 export default createSchema({
   name: "default",
@@ -68,6 +69,7 @@ export default createSchema({
     picture,
     alert,
     figma_embed,
+    link_panel,
     navigation,
     link,
     dropdown,
