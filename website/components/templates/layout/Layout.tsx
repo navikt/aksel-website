@@ -64,13 +64,6 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
         )
       )
     );
-    /* console.log(
-      pageProps?.navigation?.headings.find((heading) =>
-        heading.menu.find(
-          (item) => item.link.slug.current === pageProps?.page?.slug
-        )
-      )
-    ); */
   }, [pageProps?.navigation]);
 
   if (!pageProps) {

@@ -152,7 +152,6 @@ const DesignsystemHeader = (): JSX.Element => {
       <HeadingDropDown title={LayoutParts[context.version].title ?? ""} />
       <S.Links>
         {pageProps?.navigation.headings.map((heading: DsNavigationHeadingT) => (
-          /* console.log(context?.activeHeading?.title, heading.title), */
           <NextLink
             key={heading._key}
             href={`/${heading.link_ref?.slug?.current}`}
