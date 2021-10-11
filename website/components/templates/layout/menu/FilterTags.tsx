@@ -16,6 +16,7 @@ const Tag = styled.button<{ active: boolean }>`
   border-color: #6a6a6a;
   height: 32px;
   flex: 1 1;
+  max-width: 80px;
   color: var(--navds-color-gray-80);
 
   :hover {
@@ -37,6 +38,10 @@ const Tag = styled.button<{ active: boolean }>`
     border-width: 2px;
     padding: calc(0.125rem - 1px) calc(0.25rem - 1px);
     color: var(--navds-color-gray-90);
+
+    :hover {
+      background-color: var(--navds-color-blue-10);
+    }
   `}
 `;
 
