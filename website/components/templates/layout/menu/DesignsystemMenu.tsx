@@ -67,8 +67,8 @@ const Menu = ({ heading }: { heading?: DsNavigationHeadingT }): JSX.Element => {
 
   const [filterValue, setFilterValue] = useState("");
   const [filterTags, setFilterTags] = useState([
-    { title: "Core", active: false, sanity: "core" },
-    { title: "Nav.no", active: false, sanity: "nav" },
+    { title: "Global", active: false, sanity: "core" },
+    { title: "Ekstern", active: false, sanity: "nav" },
     { title: "Intern", active: false, sanity: "internal" },
   ]);
 

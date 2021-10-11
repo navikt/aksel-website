@@ -1,4 +1,4 @@
-import { Detail } from "@navikt/ds-react";
+import { BodyShort, Detail } from "@navikt/ds-react";
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { MenuContext } from "./DesignsystemMenu";
@@ -14,6 +14,7 @@ const Tag = styled.button<{ active: boolean }>`
   background-color: #f7f7f7;
   border-color: #6a6a6a;
   height: 32px;
+  flex: 1 1;
 
   :hover {
     background-color: var(--navds-color-blue-10);
@@ -65,7 +66,7 @@ const Tags = (): JSX.Element => {
           onClick={() => handleClick(x)}
         >
           <Text size="small">
-            {tag.active && (
+            {/* {tag.active && (
               <svg
                 role="presentation"
                 focusable={false}
@@ -84,7 +85,7 @@ const Tags = (): JSX.Element => {
                   strokeWidth="0.5"
                 />
               </svg>
-            )}
+            )} */}
             {tag.title}
           </Text>
         </Tag>
