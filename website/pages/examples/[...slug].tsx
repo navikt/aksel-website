@@ -18,8 +18,19 @@ const ExampleWrapper = styled.div`
   align-items: center;
 `;
 
+const InnerWrapper = styled.div`
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  display: inline-flex;
+`;
+
 const Page = ({ compkey }: { compkey: string }) => {
-  return <ExampleWrapper>{CodePreview(compkey)}</ExampleWrapper>;
+  return (
+    <ExampleWrapper>
+      <InnerWrapper>{CodePreview(compkey)}</InnerWrapper>
+    </ExampleWrapper>
+  );
 };
 
 export default Page;
