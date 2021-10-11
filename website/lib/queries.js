@@ -8,6 +8,11 @@ export const gpDocumentBySlug = `*[slug.current == $slug][0]
 {
   ...,
   "slug": slug.current,
+
+  _type == "link_panel"=>{
+    ...,
+    internal_link-> {_id, slug}
+   }
 }`;
 
 export const dsDocuments = `*[_type in ["ds_component_page", "ds_article_page", "ds_tabbed_article_page"]]{ _type, 'slug': slug.current }`;
@@ -20,24 +25,40 @@ export const dsDocumentBySlug = `*[slug.current == $slug][0]
     ...,
     _type == "code_example_ref" =>{
     	"ref": @.ref->
-  	}
+  	},
+    _type == "link_panel" =>{
+      ...,
+      internal_link-> {_id, slug}
+    }
   },
   design[]{
       ...,
       _type == "code_example_ref" =>{
         "ref": @.ref->
+      },
+      _type == "link_panel"=>{
+        ...,
+        internal_link-> {_id, slug}
       }
   },
   development[]{
       ...,
       _type == "code_example_ref" =>{
         "ref": @.ref->
+      },
+      _type == "link_panel"=>{
+        ...,
+        internal_link-> {_id, slug}
       }
   },
   accessibility[]{
       ...,
       _type == "code_example_ref" =>{
         "ref": @.ref->
+      },
+      _type == "link_panel"=>{
+        ...,
+        internal_link-> {_id, slug}
       }
   },
 }`;

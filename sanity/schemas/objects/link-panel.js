@@ -64,7 +64,7 @@ export default {
     {
       title: "Innhold (optional)",
       name: "body",
-      type: "blockContent_simple",
+      type: "text",
     },
   ],
   preview: {
@@ -83,7 +83,7 @@ export default {
 
           {selection.value.body && (
             <LinkPanel.Description>
-              {toPlainText(selection.value.body)}
+              {selection.value.body}
             </LinkPanel.Description>
           )}
         </LinkPanel>

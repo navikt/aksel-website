@@ -14,6 +14,7 @@ import React, { createContext, useContext } from "react";
 import styled from "styled-components";
 import {
   Alert,
+  LinkPanel,
   CodeExample,
   DoDont,
   Figma,
@@ -49,6 +50,7 @@ const serializers = {
     picture: ({ node }) => <Image node={node} />,
     figma_embed: ({ node }) => <Figma node={node} />,
     alert: ({ node }) => <Alert node={node} />,
+    link_panel: ({ node }) => <LinkPanel node={node} />,
 
     block: ({ node, children }) => {
       const context: BlockContextT = useContext(BlockContext);

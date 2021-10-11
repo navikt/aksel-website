@@ -106,3 +106,12 @@ export type AlertT = {
   heading_level: "h2" | "h3" | "h4";
   body: any;
 };
+
+export type LinkPanelT = {
+  heading: string;
+  heading_level: "h2" | "h3" | "h4";
+  body?: string;
+  external: boolean;
+  external_link?: string;
+  internal_link?: { slug?: { current: string } };
+};
