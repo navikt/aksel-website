@@ -17,7 +17,9 @@ const Image = ({ node }: ImageType): JSX.Element => {
         />
       </div>
       {node.caption && (
-        <S.Caption className="navds-body-long">{node.caption}</S.Caption>
+        <S.Caption className="navds-body-long navds-body-long--small">
+          {node.caption}
+        </S.Caption>
       )}
     </S.Figure>
   );

@@ -125,14 +125,14 @@ const Menu = ({ heading }: { heading?: DsNavigationHeadingT }): JSX.Element => {
                 </NextLink>
               </li>
             ))}
-            {Array(15)
+            {/* {Array(15)
               .fill(0)
               .map((_, y) => y)
               .map((x) => (
                 <li key={x}>
                   <Link href="#">Placeholder {x}</Link>
                 </li>
-              ))}
+              ))} */}
           </BodyShort>
         </Nav>
       </MenuContext.Provider>

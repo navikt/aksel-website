@@ -1,4 +1,4 @@
-import { BodyShort, Detail } from "@navikt/ds-react";
+import { Detail } from "@navikt/ds-react";
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { MenuContext } from "./DesignsystemMenu";
@@ -12,12 +12,15 @@ const Wrapper = styled.div`
 
 const Tag = styled.button<{ active: boolean }>`
   background-color: #f7f7f7;
+  background-color: white;
   border-color: #6a6a6a;
   height: 32px;
   flex: 1 1;
+  color: var(--navds-color-gray-80);
 
   :hover {
-    background-color: var(--navds-color-blue-10);
+    color: var(--navds-color-gray-90);
+    background-color: #f7f7f7;
     border-color: var(--navds-color-blue-50);
   }
 
@@ -32,7 +35,8 @@ const Tag = styled.button<{ active: boolean }>`
     background-color: var(--navds-color-blue-10);
     border-color: var(--navds-color-blue-50);
     border-width: 2px;
-    padding: calc(0.125rem - 2px) calc(0.25rem - 2px);
+    padding: calc(0.125rem - 1px) calc(0.25rem - 1px);
+    color: var(--navds-color-gray-90);
   `}
 `;
 

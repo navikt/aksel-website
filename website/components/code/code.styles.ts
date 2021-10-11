@@ -5,42 +5,21 @@ export const Wrapper = styled.div`
   width: 100%;
   margin-top: var(--navds-spacing-8);
   margin-bottom: var(--navds-spacing-12);
-  border-radius: 8px;
   display: flex;
   flex-direction: column;
 `;
 
 export const Example = styled.div`
-  background-color: #fff;
-  background-image: linear-gradient(
-      45deg,
-      rgb(248, 248, 248) 25%,
-      transparent 25%,
-      transparent 75%,
-      rgb(248, 248, 248) 75%
-    ),
-    linear-gradient(
-      45deg,
-      rgb(248, 248, 248) 25%,
-      transparent 25%,
-      transparent 75%,
-      rgb(248, 248, 248) 75%
-    );
-  background-size: 32px 32px;
-  background-position: 0 0, 16px 16px;
+  background-color: #f7f7f7;
   display: flex;
   justify-content: center;
   padding: 0;
-  border-radius: 8px;
   position: relative;
-  border: 1px solid var(--navds-color-darkgray);
-  border-end-end-radius: 0;
-  border-end-start-radius: 0;
+  border: 1px solid var(--navds-color-gray-20);
   border-bottom: none;
 
   :only-child {
-    border-radius: 8px;
-    border-bottom: 1px solid var(--navds-color-darkgray);
+    border-bottom: 1px solid var(--navds-color-gray-20);
   }
 `;
 
@@ -79,7 +58,6 @@ export const CopyButton = styled(Button)`
 export const PreWrapper = styled.div<{ active: boolean }>`
   position: relative;
   background-color: var(--navds-color-darkgray);
-  border-radius: 8px;
   display: ${(props) => (props.active ? "block" : "none")};
 `;
 
@@ -87,16 +65,9 @@ export const Pre = styled.pre`
   overflow-x: auto;
   align-items: center;
   display: flex;
-  border-radius: 8px;
   background-color: var(--navds-color-darkgray);
   margin: 0;
   padding: 1rem 1rem 1rem 1rem;
-
-  &[data-tabs="true"] {
-    border-radius: 0;
-    border-end-start-radius: 8px;
-    border-end-end-radius: 8px;
-  }
 `;
 
 export const Code = styled.code`
