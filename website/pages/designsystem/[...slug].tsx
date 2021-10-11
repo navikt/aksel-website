@@ -112,6 +112,7 @@ export const getStaticPaths = async (): Promise<{
     }
   });
 
+  console.log(JSON.stringify(paths, null, 2));
   return {
     paths,
     fallback: true,
@@ -136,7 +137,11 @@ export const getStaticProps = async ({
   params: { slug: string[] };
   preview: boolean;
 }): Promise<StaticProps> => {
-  const joinedSlug = slug.slice(0, 2).join("/");
+  /* Hack: Build slug: ["designsystem", "side", "button"], dev slug: ["side", "button"] */
+  const joinedSlug = slug
+    .filter((x) => x !== "designsystem")
+    .slice(0, 2)
+    .join("/");
 
   const enablePreview = !!preview || isDevelopment();
   const client = getClient(enablePreview);

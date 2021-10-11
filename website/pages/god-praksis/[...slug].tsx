@@ -84,7 +84,10 @@ export const getStaticProps = async ({
   params: { slug: string[] };
   preview: boolean;
 }): Promise<StaticProps> => {
-  const joinedSlug = slug.slice(0, 2).join("/");
+  const joinedSlug = slug
+    .filter((x) => x !== "god-praksis")
+    .slice(0, 2)
+    .join("/");
 
   const enablePreview = !!preview || isDevelopment();
   const page = await getClient(enablePreview).fetch(gpDocumentBySlug, {
