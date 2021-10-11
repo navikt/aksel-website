@@ -34,6 +34,7 @@ const InnerWrapper = styled.div`
   align-items: "center";
   flex-wrap: wrap;
   display: inline-flex;
+  align-items: center;
 `;
 
 const CodePreview = (): JSX.Element => {
