@@ -4,6 +4,10 @@ import { ImageType, useSanityImage } from "../../lib";
 import * as S from "./image.styles";
 
 const Image = ({ node }: ImageType): JSX.Element => {
+  if (!node || !node.src) {
+    return null;
+  }
+
   const imageProps = useSanityImage(node);
 
   return (
