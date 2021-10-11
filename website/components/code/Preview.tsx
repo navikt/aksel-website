@@ -5,7 +5,6 @@ import babel from "prettier/parser-babel";
 import { CodePreviews } from "./code-previews";
 import { useId } from "@navikt/ds-react";
 import styled from "styled-components";
-import reactElementToJSXString from "react-element-to-jsx-string";
 
 const formatCode = (code, tag) => {
   try {
@@ -24,10 +23,17 @@ const formatCode = (code, tag) => {
 
 const Wrapper = styled.div`
   display: flex;
-  padding: 1rem;
+  padding: 2rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const InnerWrapper = styled.div`
+  gap: 1rem;
+  align-items: "center";
+  flex-wrap: wrap;
+  display: inline-flex;
 `;
 
 const CodePreview = (): JSX.Element => {
@@ -39,7 +45,6 @@ const CodePreview = (): JSX.Element => {
 
   useEffect(() => {
     const url = node.preview.split("/examples/")?.[1];
-    console.log(node.preview);
     if (url) {
       setFullscreenLink(`/examples/${url}`);
       setUrl(url.replaceAll("/", "-"));
@@ -47,43 +52,51 @@ const CodePreview = (): JSX.Element => {
   }, [node.preview]);
 
   useEffect(() => {
-    if (!node.infercode) return;
+    if (!node.infercode || !wrapperRef || !CodePreviews(url)) return;
 
     const newTabs = [];
-    if (!wrapperRef) return;
 
-    const react = wrapperRef.querySelector("[data-react]");
-    const html = wrapperRef.querySelector("[data-html-wrapper]");
-    const inferHtml = wrapperRef.querySelector("[data-html]");
+    /* const html = wrapperRef.querySelector("[data-html-wrapper]");
+    const inferHtml = wrapperRef.querySelector("[data-html]"); */
 
-    react &&
+    // {react?: string, html?: string}
+    const { ...rest }: any = CodePreviews(url);
+
+    rest?.react &&
       newTabs.push({
         name: "React",
-        content: formatCode(react.textContent, ""),
+        content: formatCode(rest.react, ""),
         language: "jsx",
       });
-    html &&
+
+    !rest?.html &&
+      wrapperRef &&
       newTabs.push({
         name: "HTML",
-        content: formatCode(html.innerHTML, "div"),
+        content: formatCode(wrapperRef.innerHTML, "div"),
         language: "html",
       });
-    inferHtml &&
+
+    rest?.html &&
       newTabs.push({
         name: "HTML",
-        content: formatCode(inferHtml.textContent, "div"),
+        content: formatCode(rest.html, "div"),
         language: "html",
       });
     newTabs && setTabs([...newTabs]);
-  }, [id, wrapperRef]);
+  }, [id, wrapperRef, url]);
 
   if (!url) return null;
 
   const Comp = CodePreviews(url);
 
-  const T = <>{Comp}</>;
-  console.log(reactElementToJSXString(T));
-  return <Wrapper ref={setWrapperRef}>{Comp}</Wrapper>;
+  return (
+    <Wrapper>
+      <InnerWrapper ref={setWrapperRef}>
+        <Comp />
+      </InnerWrapper>
+    </Wrapper>
+  );
 };
 
 export default CodePreview;

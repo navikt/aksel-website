@@ -5,7 +5,9 @@ export const CodePreviews = (url) => {
     return null;
   }
 
-  const Comp = Examples[url];
+  const Comp: {
+    (): JSX.Element;
+  } = Examples[url];
 
-  return <Comp />;
+  return Comp;
 };
