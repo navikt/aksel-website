@@ -1,4 +1,4 @@
-import { Examples } from "../../component-examples";
+import { Examples } from "../../examples";
 
 export const CodePreviews = (url) => {
   if (!url || !(url in Examples)) {

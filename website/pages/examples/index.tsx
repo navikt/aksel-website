@@ -1,6 +1,6 @@
 import { Heading, Link } from "@navikt/ds-react";
 import styled from "styled-components";
-import { ExampleKeys } from "../../component-examples";
+import { ExampleKeys } from "../../examples";
 import NextLink from "next/link";
 
 const Wrapper = styled.div`
