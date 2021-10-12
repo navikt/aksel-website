@@ -21,6 +21,7 @@
     "sanity": "yarn workspace sanity start",
     "sanity:deploy": "yarn workspace sanity deploy",
     "sanity:update:nav": "yarn workspace sanity update:nav",
+    "sanity:backup": "yarn workspace sanity backup",
     "lint": "yarn workspace website lint"
   },
   "workspaces": [
