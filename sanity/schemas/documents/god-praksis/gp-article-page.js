@@ -2,6 +2,7 @@ import { documentMetadata } from "../templates/document-metadata-template";
 import { documentInformation } from "../templates/document-template";
 import { defaultPreview } from "../templates/document-preview-template";
 import { situations } from "./situations";
+import CustomCategories from "../../../components/gp-categories";
 
 const prefix = "god-praksis/side/";
 
@@ -11,42 +12,33 @@ export default {
   type: "document",
   ...defaultPreview(),
   fields: [
+    /* {
+      title: "Categories",
+      name: "test_Categories",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "situation",
+          fields: [
+            {
+              name: "sitation_name",
+              type: "string",
+              title: "Situasjonsnavn",
+            },
+            {
+              type: "array",
+              name: "phases",
+              title: "Phases",
+              of: [{ type: "string" }],
+            },
+          ],
+        },
+      ],
+      inputComponent: CustomCategories,
+    }, */
     documentMetadata("article"),
     ...documentInformation(prefix),
-    {
-      title: "Situasjoner og faser",
-      name: "categories",
-      type: "object",
-      fields: [
-        {
-          title: "Situasjon",
-          name: "situation",
-          type: "array",
-          of: [{ type: "string" }],
-          options: {
-            list: [
-              ...situations.map((x) => ({ title: x.name, value: x.name })),
-            ],
-          },
-        },
-        ...situations.map((x) => ({
-          title: `Faser for ${x.name}`,
-          name: `${x.name}_phase`,
-          type: "array",
-          of: [{ type: "string" }],
-          options: {
-            list: [
-              ...x.phases.map((y) => ({
-                title: `Fase ${y.phase}: ${y.name}`,
-                value: y.name,
-              })),
-            ],
-          },
-          hidden: ({ parent }) =>
-            !parent?.situation || parent?.situation.indexOf(x.name) === -1,
-        })),
-      ],
-    },
     {
       name: "body",
       type: "gp_blockContent",
