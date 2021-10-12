@@ -31,6 +31,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: backup-tarball
-          path: backup.tar.gz
+          path: ./backup.tar.gz
           # Fails the workflow if no files are found; defaults to 'warn'
           if-no-files-found: error
