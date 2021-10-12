@@ -8,7 +8,6 @@
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
-    "update:nav": "node scripts/updateNavDocs.js",
     "backup": "node scripts/backup.js"
   },
   "main": "package.json",

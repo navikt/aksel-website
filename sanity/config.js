@@ -13,7 +13,6 @@ const teams = [
     name: "god_praksis",
     prefix: "gp",
     documents: ["gp_article_page"],
-    navigation: `navigation_god_praksis`,
   },
 ];
 
@@ -24,7 +23,7 @@ const allDocumentTypes = teams.reduce(
 );
 
 /* Collection of all navigation-documents */
-const allNavDocumentIds = teams.map((x) => x.navigation);
+const allNavDocumentIds = teams.map((x) => x?.navigation).filter((x) => x);
 
 /**
  * Defines when a document of a spesific type is set to stagnant or expired

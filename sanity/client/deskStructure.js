@@ -41,14 +41,14 @@ export default () =>
                       '_type in ["ds_article_page", "ds_tabbed_article_page"]'
                     )
                 ),
-              S.listItem()
+              /* S.listItem()
                 .title("Forside")
                 .icon(() => <Picture />)
                 .child(
                   S.document()
                     .schemaType("ds_frontpage")
                     .documentId("frontpage_designsystem")
-                ),
+                ), */
               S.listItem()
                 .title("Navigasjon")
                 .icon(() => <Place />)
@@ -81,22 +81,14 @@ export default () =>
                     .title("Artikler")
                     .filter('_type in ["gp_article_page"]')
                 ),
-              S.listItem()
+              /* S.listItem()
                 .title("Forside")
                 .icon(() => <Picture />)
                 .child(
                   S.document()
                     .schemaType("gp_frontpage")
                     .documentId("frontpage_god_praksis")
-                ),
-              S.listItem()
-                .title("Sidemeny")
-                .icon(() => <Place />)
-                .child(
-                  S.document()
-                    .schemaType("navigation")
-                    .documentId("navigation_god_praksis")
-                ),
+                ), */
             ])
         ),
       S.divider(),

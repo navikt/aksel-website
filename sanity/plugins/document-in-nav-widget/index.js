@@ -19,7 +19,7 @@ class InNavDocuments extends React.Component {
     loading: true,
     error: null,
   };
-  /* "_ref": "9cff6ec6-f307-4637-b9bc-c7aa62c74c18" */
+
   componentDidMount = () => {
     this.unsubscribe();
     this.subscription = getSubscription(
@@ -39,7 +39,7 @@ class InNavDocuments extends React.Component {
     this.navSubscription = getSubscription(
       `*[_id in $ids] | order(_updatedAt desc)`,
       {
-        ids: [...config.allNavDocumentIds],
+        ids: ["navigation_designsystem"],
       },
       "v1"
     ).subscribe({
@@ -107,7 +107,13 @@ class InNavDocuments extends React.Component {
   }
 }
 
+class DisabledComp extends React.Component {
+  render() {
+    return null;
+  }
+}
+
 export default {
   name: "document-in-nav-widget",
-  component: InNavDocuments,
+  component: DisabledComp,
 };
