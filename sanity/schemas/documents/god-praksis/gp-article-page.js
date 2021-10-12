@@ -12,7 +12,7 @@ export default {
   type: "document",
   ...defaultPreview(),
   fields: [
-    /* {
+    {
       title: "Categories",
       name: "test_Categories",
       type: "array",
@@ -22,21 +22,20 @@ export default {
           name: "situation",
           fields: [
             {
-              name: "sitation_name",
-              type: "string",
               title: "Situasjonsnavn",
+              name: "name",
+              type: "string",
             },
             {
-              type: "array",
-              name: "phases",
-              title: "Phases",
-              of: [{ type: "string" }],
+              title: "Phase",
+              name: "phase",
+              type: "string",
             },
           ],
         },
       ],
       inputComponent: CustomCategories,
-    }, */
+    },
     documentMetadata("article"),
     ...documentInformation(prefix),
     {

@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { withDocument } from "part:@sanity/form-builder";
 import { TextInput, Stack, Label } from "@sanity/ui";
-import { CheckboxGroup, Checkbox } from "@navikt/ds-react";
+import { CheckboxGroup, Checkbox, RadioGroup, Radio } from "@navikt/ds-react";
 import styled from "styled-components";
 import { situations } from "../schemas/documents/god-praksis/situations";
 import PatchEvent, { set, unset } from "part:@sanity/form-builder/patch-event";
 
-const PaddedCheckboxGroup = styled(CheckboxGroup)`
-  margin-left: 2rem;
+const PaddedRadioGroup = styled(RadioGroup)`
+  margin-left: 1rem;
 `;
 
 /*
@@ -31,52 +31,69 @@ type categoryT = {
   ],
 */
 
-const createPatchFrom = (value) =>
-  PatchEvent.from(value === "" ? unset() : set(value));
+const createPatchFrom = (value) => PatchEvent.from(set(value));
 
 export const MyCustomString = React.forwardRef((props, ref) => {
-  const [sit, setSit] = useState([]);
+  const [state, setState] = useState([]);
+  const gotState = useRef(false);
 
   const handleSitChange = (e) => {
-    const value = e.target.value;
-    sit.includes(value)
-      ? setSit(sit.filter((v) => v !== value))
-      : setSit([...sit, value]);
+    const value = e;
+    let arr = [...state];
+    arr = arr.filter((x) => value.includes(arr.name));
+    arr = e.map((y) => {
+      const tmp = arr.find((x) => x.name === y);
+      return tmp ? tmp : { name: y, phase: null };
+    });
+
+    setState(arr);
+    props.onChange(createPatchFrom(state));
   };
 
-  const handlePhaseChange = (e) => {
-    return;
+  const handlePhaseChange = (e, sit) => {
+    const index = state.findIndex((x) => x.name === sit);
+    if (index === -1) return;
+    const arr = [...state];
+    arr[index].phase = e;
+    setState([...arr]);
+    props.onChange(createPatchFrom(state));
   };
 
-  console.log(props);
+  useEffect(() => {
+    if (props.value && !gotState.current) {
+      gotState.current = true;
+      props.value && setState([...props.value]);
+    }
+  }, [props.value]);
 
   return (
     <Stack space={2} ref={ref}>
-      <CheckboxGroup legend="Kategorier" size="medium">
+      <CheckboxGroup
+        legend="Kategorier"
+        size="medium"
+        value={[...state.map((x) => x.name)]}
+        onChange={handleSitChange}
+      >
         {situations.map((s) => {
           return (
             <div key={s.name}>
-              <Checkbox value={s.name} onChange={handleSitChange}>
-                {s.title}
-              </Checkbox>
-              {sit.includes(s.name) && (
-                <PaddedCheckboxGroup
+              <Checkbox value={s.name}>{s.title}</Checkbox>
+              {state.find((x) => x.name === s.name) && (
+                <PaddedRadioGroup
                   legend={`Faser for ${s.title}`}
                   size="small"
                   hideLegend
+                  onChange={(e) => handlePhaseChange(e, s.name)}
+                  value={state.find((x) => x.name === s.name)?.phase}
                 >
                   {s.phases.map((p) => {
                     return (
-                      <Checkbox
-                        key={p.name}
-                        onChange={handlePhaseChange}
-                        value={p.name}
-                      >
+                      <Radio key={p.name} value={p.name}>
                         {`Fase ${p.phase}: ${p.title}`}
-                      </Checkbox>
+                      </Radio>
                     );
                   })}
-                </PaddedCheckboxGroup>
+                </PaddedRadioGroup>
               )}
             </div>
           );
