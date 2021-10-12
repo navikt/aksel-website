@@ -88,7 +88,7 @@ export const LinkCss = css`
 /* Dropdown */
 
 export const DropDownWrapper = styled.div`
-  margin-right: auto;
+  /* margin-right: auto; */
   display: inline-flex;
 `;
 
@@ -119,6 +119,7 @@ export const DropdownButton = styled.button`
   align-items: center;
   justify-content: center;
   border: none;
+  margin-left: auto;
 `;
 
 export const Menu = styled(DsHeader.Dropdown.Menu)`
