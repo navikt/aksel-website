@@ -7,6 +7,9 @@ on:
 jobs:
   backup-dataset:
     runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: ./sanity
     name: Backup dataset
     steps:
       - uses: actions/checkout@v2
