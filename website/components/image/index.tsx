@@ -12,14 +12,14 @@ const Image = ({ node }: ImageType): JSX.Element => {
 
   return (
     <S.Figure>
-      <div>
+      <S.Image>
         <NextImage
           {...imageProps}
           layout="responsive"
           sizes="(max-width: 636px) 100vw, 1000px"
           alt={node.title}
         />
-      </div>
+      </S.Image>
       {node.caption && (
         <S.Caption className="navds-body-long navds-body-long--small">
           {node.caption}

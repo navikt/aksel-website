@@ -1,6 +1,7 @@
 import { Picture } from "@navikt/ds-icons";
 
 export default {
+  title: "Bilde",
   name: "picture",
   type: "image",
   icon: Picture,

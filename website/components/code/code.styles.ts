@@ -3,7 +3,6 @@ import styled from "styled-components";
 /* Example */
 export const Wrapper = styled.div`
   width: 100%;
-  margin-top: var(--navds-spacing-8);
   margin-bottom: var(--navds-spacing-12);
   display: flex;
   flex-direction: column;
