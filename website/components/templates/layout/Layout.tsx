@@ -10,6 +10,7 @@ import { Feedback } from "../..";
 import { DsNavigationHeadingT } from "../../../lib";
 import { useClientLayoutEffect } from "@navikt/ds-react";
 import DesignsystemHeader from "./header/DesignsystemHeader";
+import GodPraksisHeader from "./header/GodPraksisHeader";
 import Sidebar from "./sidebar/Sidebar";
 
 const Wrapper = styled.div`
@@ -41,7 +42,7 @@ export const LayoutParts = {
     header: DesignsystemHeader,
     sidebar: DesignsystemSidebar,
   },
-  gp: { title: "God Praksis", header: null, sidebar: null },
+  gp: { title: "God Praksis", header: GodPraksisHeader, sidebar: null },
 };
 
 export const LayoutContext = createContext<LayoutContextProps | null>(null);

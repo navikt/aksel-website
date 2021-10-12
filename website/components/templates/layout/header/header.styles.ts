@@ -2,6 +2,10 @@ import { Header as DsHeader } from "@navikt/ds-react-internal";
 import styled, { css } from "styled-components";
 import { Popover, SearchField as DsSearchField } from "@navikt/ds-react";
 
+export const Header = styled(DsHeader)`
+  height: 64px;
+`;
+
 export const Links = styled.div`
   display: flex;
   /* margin-left: auto; */
@@ -81,6 +85,13 @@ export const LinkCss = css`
   }
 `;
 
+/* Dropdown */
+
+export const DropDownWrapper = styled.div`
+  margin-right: auto;
+  display: inline-flex;
+`;
+
 export const DropDownLink = styled.a`
   ${LinkCss}
   flex-direction: column;
@@ -113,6 +124,7 @@ export const DropdownButton = styled.button`
 export const Menu = styled(DsHeader.Dropdown.Menu)`
   padding: 0.5rem;
   border: none;
+  width: 300px;
 `;
 
 export const MobileMenu = styled(Popover)`

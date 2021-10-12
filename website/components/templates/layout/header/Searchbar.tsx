@@ -21,6 +21,7 @@ const HeaderSearchBar = (): JSX.Element => {
 
   const [value, setValue] = useState("");
 
+  return null;
   return (
     <>
       <S.SearchField

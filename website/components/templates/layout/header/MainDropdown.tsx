@@ -3,15 +3,18 @@ import { BodyShort } from "@navikt/ds-react";
 import { Header as DsHeader } from "@navikt/ds-react-internal";
 import NextLink from "next/link";
 import * as React from "react";
+import { useMedia } from "react-use";
 import { NavLogoWhite } from "../../..";
 import * as S from "./header.styles";
 
 const HeadingDropDown = ({ title }: { title: string }): JSX.Element => {
+  const showLogo = useMedia("(min-width: 563px)");
+
   return (
-    <>
+    <S.DropDownWrapper>
       <DsHeader.Dropdown>
         <DsHeader.Dropdown.Button>
-          <NavLogoWhite focusable={false} aria-label="NAV logo" />
+          {showLogo && <NavLogoWhite focusable={false} aria-label="NAV logo" />}
           {title}
           <Expand focusable={false} role="presentation" />
         </DsHeader.Dropdown.Button>
@@ -39,18 +42,10 @@ const HeadingDropDown = ({ title }: { title: string }): JSX.Element => {
                 </BodyShort>
               </S.DropDownLink>
             </NextLink>
-            {/* <NextLink href="#" passHref>
-              <S.DropDownLink role="menuitem">
-                <BodyShort>Brand Guide</BodyShort>
-                <BodyShort spacing size="small">
-                  Informasjon omhandlende Brand Guide
-                </BodyShort>
-              </S.DropDownLink>
-            </NextLink> */}
           </DsHeader.Dropdown.Menu.List>
         </S.Menu>
       </DsHeader.Dropdown>
-    </>
+    </S.DropDownWrapper>
   );
 };
 export default HeadingDropDown;

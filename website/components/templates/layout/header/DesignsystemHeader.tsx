@@ -1,19 +1,17 @@
-import { Bell, Close, Hamburger, HomeFilled, Left } from "@navikt/ds-icons";
+import { Close, Hamburger, Left } from "@navikt/ds-icons";
 import { BodyShort } from "@navikt/ds-react";
-import { Header as DsHeader } from "@navikt/ds-react-internal";
 import { motion } from "framer-motion";
 import NextLink from "next/link";
 import * as React from "react";
 import { useCallback, useContext, useEffect, useState } from "react";
-import { useEvent, useKey, useMedia } from "react-use";
+import { useEvent, useKey } from "react-use";
 import styled from "styled-components";
-import { NavLogoWhite } from "../../..";
 import { DsNavigationHeadingT } from "../../../../lib";
 import { PagePropsContext } from "../../../../pages/_app";
 import { LayoutContext, LayoutParts } from "../Layout";
 import Menu from "../menu/DesignsystemMenu";
-import HeadingDropDown from "./DesignsystemDropdown";
 import * as S from "./header.styles";
+import HeadingDropDown from "./MainDropdown";
 import HeaderSearchBar from "./Searchbar";
 
 // TODO Refactor these 3 styled comps
@@ -23,10 +21,6 @@ const Button = styled.button<{ $active?: boolean }>`
   border: none;
   background: none;
   width: 100%;
-
-  :first-of-type {
-    margin-top: 1rem;
-  }
 
   ${(props) =>
     props.$active &&
@@ -59,28 +53,7 @@ const BackButton = styled.button`
   width: 100%;
   border: none;
   background: none;
-  margin: 1rem 0;
-
-  :hover {
-    text-decoration: underline;
-  }
-
-  :focus {
-    outline: none;
-    box-shadow: inset 0 0 0 3px var(--navds-color-blue-80);
-  }
-`;
-
-const IconLink = styled.a`
-  color: var(--navds-color-gray-90);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  text-decoration: none;
-  gap: 1rem;
-  margin: 0 1rem 0 0rem;
-  border-bottom: 1px solid var(--navds-color-gray-20);
+  margin-bottom: 1rem;
 
   :hover {
     text-decoration: underline;
@@ -94,7 +67,6 @@ const IconLink = styled.a`
 
 const DesignsystemHeader = (): JSX.Element => {
   const context = useContext(LayoutContext);
-  const showLogo = useMedia("(min-width: 563px)");
   const [hambRef, setHambRef] = useState(null);
   const [menuRef, setMenuRef] = useState(null);
   const [openHamb, setOpenHamb] = useState(false);
@@ -164,24 +136,24 @@ const DesignsystemHeader = (): JSX.Element => {
         ))}
       </S.Links>
       <HeaderSearchBar />
-      <S.Link href="#">
+      {/* <S.Link href="#">
         <Bell
           focusable={false}
           aria-label="Notifikasjons ikon"
           style={{ fontSize: "1.5rem" }}
         />
-      </S.Link>
+      </S.Link> */}
     </>
   );
 
   const mobile = (
     <>
-      <HeaderSearchBar />
-      <S.Link style={{ marginLeft: "auto", marginRight: "auto" }} href="#">
+      {/* <S.Link style={{ marginLeft: "auto", marginRight: "auto" }} href="#">
         {showLogo && <NavLogoWhite focusable={false} aria-label="NAV logo" />}
         Designsystemet
-      </S.Link>
-
+      </S.Link> */}
+      <HeadingDropDown title={LayoutParts[context.version].title ?? ""} />
+      <HeaderSearchBar />
       <S.DropdownButton
         className="navdsi-header__dropdown-button"
         onClick={() => handleToggle()}
@@ -216,12 +188,6 @@ const DesignsystemHeader = (): JSX.Element => {
           arrow={false}
           offset={0}
         >
-          <NextLink href="/" passHref>
-            <IconLink>
-              <HomeFilled />
-              <BodyShort>Tilbake til Verktøykassa</BodyShort>
-            </IconLink>
-          </NextLink>
           {!isHeadingMenu && (
             <BackButton onClick={() => handleBack()}>
               <Left />
@@ -264,6 +230,6 @@ const DesignsystemHeader = (): JSX.Element => {
     </>
   );
 
-  return <DsHeader>{context.isMobile ? mobile : nonMobile}</DsHeader>;
+  return <S.Header>{context.isMobile ? mobile : nonMobile}</S.Header>;
 };
 export default DesignsystemHeader;
