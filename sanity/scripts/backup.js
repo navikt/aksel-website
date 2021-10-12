@@ -15,29 +15,33 @@ const client = sanityClient({
   useCdn: false,
 });
 
-exportDataset({
-  // Instance of @sanity/client configured to correct project ID and dataset
-  client: client,
+const main = async () => {
+  await exportDataset({
+    // Instance of @sanity/client configured to correct project ID and dataset
+    client: client,
 
-  // Name of dataset to export
-  dataset: "production",
+    // Name of dataset to export
+    dataset: "production",
 
-  // Path to write tar.gz-archive file to, or `-` for stdout
-  outputPath: "backup.tar.gz",
+    // Path to write tar.gz-archive file to, or `-` for stdout
+    outputPath: "backup.tar.gz",
 
-  // Whether or not to export assets. Note that this operation is currently slightly lossy;
-  // metadata stored on the asset document itself (original filename, for instance) might be lost
-  // Default: `true`
-  assets: true,
+    // Whether or not to export assets. Note that this operation is currently slightly lossy;
+    // metadata stored on the asset document itself (original filename, for instance) might be lost
+    // Default: `true`
+    assets: true,
 
-  // Exports documents only, without downloading or rewriting asset references
-  // Default: `false`
-  raw: false,
+    // Exports documents only, without downloading or rewriting asset references
+    // Default: `false`
+    raw: false,
 
-  // Whether or not to export drafts
-  // Default: `true`
-  drafts: true,
+    // Whether or not to export drafts
+    // Default: `true`
+    drafts: true,
 
-  // Run 12 concurrent asset downloads
-  assetConcurrency: 12,
-});
+    // Run 12 concurrent asset downloads
+    assetConcurrency: 12,
+  });
+};
+
+main();
