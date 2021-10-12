@@ -23,6 +23,8 @@ jobs:
       - name: Install deps
         if: steps.node-cache.outputs.cache-hit != 'true'
         run: yarn install
+      - name: log dir
+        run: pwd
       - name: Export dataset
         run: SANITY_TOKEN=${{secrets.SANITY_DATASET_EDITOR_TOKEN}} yarn sanity:backup
       - name: Upload backup.tar.gz
