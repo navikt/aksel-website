@@ -7,9 +7,6 @@ on:
 jobs:
   backup-dataset:
     runs-on: ubuntu-18.04
-    defaults:
-      run:
-        working-directory: ./sanity
     name: Backup dataset
     steps:
       - uses: actions/checkout@v2
@@ -19,6 +16,8 @@ jobs:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DATASET_EDITOR_TOKEN }}
         with:
           args: dataset export production backups/backup.tar.gz
+          working-directory: ./sanity
+          workdir: ./sanity
       - name: Upload backup.tar.gz
         uses: actions/upload-artifact@v2
         with:
