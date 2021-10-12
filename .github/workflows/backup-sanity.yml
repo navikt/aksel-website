@@ -16,8 +16,7 @@ jobs:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DATASET_EDITOR_TOKEN }}
         with:
           args: dataset export production backups/backup.tar.gz
-          working-directory: ./sanity
-          workdir: ./sanity
+          entryPoint: ./sanity
       - name: Upload backup.tar.gz
         uses: actions/upload-artifact@v2
         with:
