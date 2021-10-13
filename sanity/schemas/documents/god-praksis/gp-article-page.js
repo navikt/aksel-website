@@ -12,7 +12,7 @@ export default {
   type: "document",
   ...defaultPreview(),
   fields: [
-    {
+    /* {
       title: "Categories",
       name: "test_Categories",
       type: "array",
@@ -35,7 +35,7 @@ export default {
         },
       ],
       inputComponent: CustomCategories,
-    },
+    }, */
     documentMetadata("article"),
     ...documentInformation(prefix),
     {
