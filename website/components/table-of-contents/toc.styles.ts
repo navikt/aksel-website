@@ -53,16 +53,18 @@ export const Ul = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+  max-width: 250px;
 `;
 
 export const Li = styled.li`
   list-style: none;
   margin-top: var(--navds-spacing-4);
   text-align: start;
+
   a {
     text-decoration: none;
     overflow: hidden;
-    white-space: nowrap;
+
     text-overflow: ellipsis;
     color: var(--navds-color-darkgray);
 
