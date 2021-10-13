@@ -15,7 +15,7 @@ import {
 
 export default () =>
   S.list()
-    .title("Verktøykasse")
+    .title("Verktøykassen")
     .items([
       S.listItem()
         .title("Designsystemet")
