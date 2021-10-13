@@ -5,6 +5,7 @@ export const TitleWithScrollMargin = styled(Heading)`
   scroll-margin-top: 5rem;
   display: inline-flex;
   align-items: center;
+  justify-content: flex-start;
 `;
 
 export const Divider = styled.div<{ divider?: boolean }>`
@@ -34,12 +35,13 @@ export const Anchor = styled.button`
   margin-left: 0.5rem;
   font-size: 1.25rem;
   height: 44px;
-  width: 44px;
+  min-width: 44px;
   padding: 0.5rem;
   outline: none;
   border-radius: 50%;
   opacity: 0.5;
   transition: opacity 100ms;
+  align-self: flex-start;
 
   > * {
     display: flex;
