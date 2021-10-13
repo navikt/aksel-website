@@ -81,6 +81,14 @@ export default () =>
                     .title("Artikler")
                     .filter('_type in ["gp_article_page"]')
                 ),
+              S.listItem()
+                .title("Situasjoner")
+                .icon(() => <Picture />)
+                .child(
+                  S.document()
+                    .schemaType("gp_situations")
+                    .documentId("gp_situation_doc")
+                ),
               /* S.listItem()
                 .title("Forside")
                 .icon(() => <Picture />)
@@ -105,6 +113,7 @@ export default () =>
             "ds_navigation",
             "gp_article_page",
             "gp_frontpage",
+            "gp_situations",
             "vk_frontpage",
             "metadata",
           ].includes(listItem.getId())

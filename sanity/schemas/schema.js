@@ -20,6 +20,7 @@ import designsystem_navigation, {
 import god_praksis_article_page from "./documents/god-praksis/gp-article-page";
 import god_praksis_frontpage from "./documents/god-praksis/gp-frontpage";
 import gp_block_content from "./documents/god-praksis/gp-block-content";
+import gp_situations from "./documents/god-praksis/gp-situations";
 /*--  Admin */
 import vk_frontpage from "./documents/admin/frontpage";
 
@@ -49,6 +50,7 @@ export default createSchema({
     ds_header_heading,
     god_praksis_article_page,
     god_praksis_frontpage,
+    gp_situations,
     vk_frontpage,
     code_example,
     code_snippet,
