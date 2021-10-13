@@ -58,6 +58,7 @@ export const PreWrapper = styled.div<{ active: boolean }>`
   position: relative;
   background-color: var(--navds-color-darkgray);
   display: ${(props) => (props.active ? "block" : "none")};
+  margin-bottom: var(--navds-spacing-8);
 `;
 
 export const Pre = styled.pre`

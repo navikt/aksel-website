@@ -26,11 +26,11 @@ const CodeSnippet = ({ node: { code } }: CodeSnippetType): JSX.Element => {
     setOpenPopover(true);
   };
 
-  if (!code || !code.code || !code.language) {
+  if (!code || !code.code) {
     return null;
   }
 
-  let language = code.language;
+  let language = code.language ?? "javascript";
   language =
     language === "terminal" || language === "default" ? "bash" : language;
 
