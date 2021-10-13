@@ -37,7 +37,7 @@ export default {
       inputComponent: CustomCategories,
     }, */
     documentMetadata("article"),
-    ...documentInformation(prefix),
+    ...documentInformation(prefix).filter((x) => x.name !== "tags"),
     {
       name: "body",
       type: "gp_blockContent",

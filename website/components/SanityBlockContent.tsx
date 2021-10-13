@@ -1,25 +1,17 @@
 import "@navikt/ds-css";
-import {
-  BodyLong,
-  BodyShort,
-  Detail,
-  Heading,
-  Ingress,
-  Label,
-  Link,
-} from "@navikt/ds-react";
+import { BodyLong, Detail, Heading, Ingress, Link } from "@navikt/ds-react";
 import BlockContent from "@sanity/block-content-to-react";
 import NextjsLink from "next/link";
 import React, { createContext, useContext } from "react";
 import styled from "styled-components";
 import {
   Alert,
-  LinkPanel,
   CodeExample,
   DoDont,
   Figma,
   Image,
   LevelTwoHeading,
+  LinkPanel,
   PropTable,
   Snippet,
   UuInteraction,
@@ -63,35 +55,11 @@ const serializers = {
               {children}
             </BodyLong>
           );
-        case "bodylong":
-          return (
-            <BodyLong size={context.size} spacing>
-              {children}
-            </BodyLong>
-          );
-        case "bodyshort":
-          return (
-            <BodyShort size={context.size} spacing>
-              {children}
-            </BodyShort>
-          );
-        case "detailbold":
-          return (
-            <Detail size={context.size} spacing>
-              {children}
-            </Detail>
-          );
         case "detail":
           return (
             <Detail spacing size="small">
               {children}
             </Detail>
-          );
-        case "label":
-          return (
-            <Label size={context.size} spacing>
-              {children}
-            </Label>
           );
         case "h2": {
           return <LevelTwoHeading divider={false}>{children}</LevelTwoHeading>;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Warning, SuccessStroke } from "@navikt/ds-icons";
+import { Warning, SuccessStroke, ExternalLink } from "@navikt/ds-icons";
 import { styles, TitleRenderer } from "../../block-content";
 
 export default {
@@ -13,24 +13,24 @@ export default {
       styles: [
         ...styles,
         {
-          title: "Title h2",
+          title: "Tittel <h2/>",
           value: "h2",
           blockEditor: {
-            render: (props) => TitleRenderer(props, "xlarge", "2"),
+            render: (props) => TitleRenderer(props, "medium", "2"),
           },
         },
         {
-          title: "Title h3",
+          title: "Tittel <h3/>",
           value: "h3",
           blockEditor: {
-            render: (props) => TitleRenderer(props, "large", "3"),
+            render: (props) => TitleRenderer(props, "small", "3"),
           },
         },
         {
-          title: "Title h4",
+          title: "Tittel <h4/>",
           value: "heading4",
           blockEditor: {
-            render: (props) => TitleRenderer(props, "medium", "4"),
+            render: (props) => TitleRenderer(props, "xsmall", "4"),
           },
         },
       ],
@@ -59,7 +59,7 @@ export default {
             name: "internalLink",
             type: "object",
             blockEditor: {
-              icon: () => "ref",
+              icon: () => <ExternalLink />,
             },
             fields: [
               {

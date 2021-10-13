@@ -3,17 +3,18 @@ import { validateSlug, isSlugUnique } from "../../validateSlug";
 export function documentInformation(prefix) {
   return [
     {
-      title: "Dokument tittel",
-      description: "Blir brukt for søk internt i Sanity.",
+      title: "Dokument tittel (Bare for søk internt i Sanity)",
+      description:
+        "Bruke en beskrivende tittel slik at det er lett å finne siden.",
       name: "title",
       type: "string",
       validation: (Rule) => Rule.required(),
     },
     {
-      title: "Heading",
+      title: "Sidetittel",
       name: "heading",
       type: "string",
-      description: "Sidetittel (H1)",
+      description: "Blir satt som `<H1 />` på toppen av siden",
       validation: (Rule) => Rule.required(),
     },
     {
@@ -21,7 +22,7 @@ export function documentInformation(prefix) {
       name: "slug",
       type: "slug",
       description:
-        "Vil bli oppdatert etterhvert når navigasjon og struktur er bestemt",
+        "Vil bli oppdatert etterhvert når navigasjon og struktur er bestemt..",
       validation: (Rule) => validateSlug(Rule, prefix, 3),
       options: {
         isUnique: isSlugUnique,
@@ -37,7 +38,7 @@ export function documentInformation(prefix) {
     },
     {
       title: "Tags",
-      description: "Hvilken tags denne siden er koblet til",
+      description: "Setter en tag på toppen av siden med status",
       name: "tags",
       type: "array",
       of: [{ type: "string" }],
@@ -59,7 +60,10 @@ export function documentInformation(prefix) {
       validation: (Rule) => Rule.required(),
       options: {
         list: [
-          { value: "published", title: "Publisert" },
+          {
+            value: "published",
+            title: "Publisert (Bruk denne som standard)",
+          },
           { value: "beta", title: "Beta" },
           { value: "wip", title: "WIP" },
           { value: "legacy", title: "Legacy / deprecated" },

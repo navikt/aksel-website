@@ -1,12 +1,6 @@
 import React from "react";
 import "@navikt/ds-css?raw";
-import {
-  Detail,
-  Heading,
-  BodyLong,
-  BodyShort,
-  Label,
-} from "@navikt/ds-react/cjs";
+import { Detail, Heading, BodyLong } from "@navikt/ds-react/cjs";
 import {
   Warning,
   SuccessStroke,
@@ -15,7 +9,6 @@ import {
   List,
   ExternalLink,
 } from "@navikt/ds-icons";
-
 import { KBD } from "@sanity/ui";
 
 export const TitleRenderer = (props, size, level) => (
@@ -26,40 +19,27 @@ export const TitleRenderer = (props, size, level) => (
 
 export const styles = [
   {
-    title: "Normal",
+    title: "Normal (18px)",
     value: "normal",
     blockEditor: {
       render: (props) => <BodyLong>{props.children}</BodyLong>,
     },
   },
   {
-    title: "BodyLong",
-    value: "bodylong",
-    blockEditor: {
-      render: (props) => <BodyLong>{props.children}</BodyLong>,
-    },
-  },
-  {
-    title: "BodyShort",
-    value: "bodyshort",
-    blockEditor: {
-      render: (props) => <BodyShort>{props.children}</BodyShort>,
-    },
-  },
-  {
-    title: "Detail",
+    title: "Detail (14px)",
     value: "detail",
     blockEditor: {
       render: (props) => <Detail size="small">{props.children}</Detail>,
     },
   },
-  {
+  /* Vil være det samme som semibold mark */
+  /* {
     title: "Label",
     value: "label",
     blockEditor: {
       render: (props) => <Label spacing>{props.children}</Label>,
     },
-  },
+  }, */
 ];
 
 export const block = {
@@ -107,7 +87,7 @@ export const block = {
         name: "internalLink",
         type: "object",
         blockEditor: {
-          icon: () => "ref",
+          icon: () => <ExternalLink />,
         },
         fields: [
           {
@@ -153,24 +133,24 @@ export default {
       styles: [
         ...block.styles,
         {
-          title: "Title h2",
+          title: "Tittel <h2/>",
           value: "h2",
           blockEditor: {
-            render: (props) => TitleRenderer(props, "xlarge", "2"),
+            render: (props) => TitleRenderer(props, "medium", "2"),
           },
         },
         {
-          title: "Title h3",
+          title: "Tittel <h3/>",
           value: "h3",
           blockEditor: {
-            render: (props) => TitleRenderer(props, "large", "3"),
+            render: (props) => TitleRenderer(props, "small", "3"),
           },
         },
         {
-          title: "Title h4",
+          title: "Tittel <h4/>",
           value: "heading4",
           blockEditor: {
-            render: (props) => TitleRenderer(props, "medium", "4"),
+            render: (props) => TitleRenderer(props, "xsmall", "4"),
           },
         },
       ],

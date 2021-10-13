@@ -3,14 +3,14 @@ import { getExpireDates } from "../../../config";
 export function documentMetadata(docType) {
   const dates = getExpireDates(docType);
   return {
-    title: "Metadata",
+    title: "Ekstra informasjon (brukes bare internt i Sanity)",
     name: "metadata",
     type: "document",
     fields: [
       {
         title: "Oppdatering av innhold",
         name: "updates",
-        type: "document",
+        type: "object",
         fields: [
           {
             name: "last_update",
@@ -18,6 +18,7 @@ export function documentMetadata(docType) {
             type: "date",
             initialValue: new Date().toISOString().split("T")[0],
             readOnly: true,
+            hidden: true,
           },
           {
             name: "stagnant",
@@ -33,15 +34,18 @@ export function documentMetadata(docType) {
             type: "date",
             initialValue: dates[1].toISOString().split("T")[0],
             readOnly: true,
+            hidden: true,
           },
         ],
+        hidden: true,
         options: {
           columns: 2, // Defines a grid for the fields and how many columns it should have
         },
       },
       {
         title: "Kontaktperson",
-        description: "Linker dokumentet til en person (bare internt i sanity)",
+        description:
+          "Linker dokumentet til en person, slik at man kan lettere ta kontakt hvis noe oppstår",
         name: "contact",
         type: "reference",
         validation: (Rule) => Rule.required(),
@@ -58,7 +62,7 @@ export function documentMetadata(docType) {
     ],
     options: {
       collapsible: true, // Makes the whole fieldset collapsible
-      collapsed: false, // Defines if the fieldset should be collapsed by default or not
+      collapsed: true, // Defines if the fieldset should be collapsed by default or not
       columns: 1, // Defines a grid for the fields and how many columns it should have
     },
   };
