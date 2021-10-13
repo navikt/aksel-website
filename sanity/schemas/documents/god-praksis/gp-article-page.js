@@ -3,7 +3,7 @@ import { documentInformation } from "../templates/document-template";
 import { defaultPreview } from "../templates/document-preview-template";
 import { situations } from "./situations";
 import CustomCategories from "../../../components/gp-categories";
-
+import CustomDisplay from "../../../components/metadata-display";
 const prefix = "god-praksis/side/";
 
 export default {
@@ -12,6 +12,12 @@ export default {
   type: "document",
   ...defaultPreview(),
   fields: [
+    /* {
+      title: "Display",
+      name: "datadisplay",
+      type: "string",
+      inputComponent: CustomDisplay,
+    }, */
     /* {
       title: "Categories",
       name: "test_Categories",
