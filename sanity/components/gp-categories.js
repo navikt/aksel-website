@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { withDocument } from "part:@sanity/form-builder";
+import { FormField } from "@sanity/base/components";
 import {
   Stack,
   Checkbox,
@@ -138,67 +139,72 @@ export const CustomCategories = React.forwardRef((props, ref) => {
   if (!clientData) return null;
 
   return (
-    <Stack space={[4, 4]} ref={ref}>
+    <Stack space={[4, 4]} tabIndex={0}>
       <Text size={2}>Lagrer ikke innholdet enda..</Text>
       <Stack space={[6]}>
         <Stack space={3}>
           <Text size={2}>Situasjoner og Faser</Text>
-          <Stack space={[2, 2]}>
-            {clientData.situations.map((s) => {
-              return (
-                <div key={s.title}>
-                  <Flex align="center">
-                    <Checkbox
-                      id={s.title}
-                      checked={
-                        !!state.find((x) => x.name === s.title.toLowerCase())
-                      }
-                      style={{ display: "block" }}
-                      onChange={() => handleSitChange(s.title.toLowerCase())}
-                    />
-                    <Box flex={1} paddingLeft={3}>
-                      <Text>
-                        <Label htmlFor="checkbox">{s.title}</Label>
-                      </Text>
-                    </Box>
-                  </Flex>
+          <FormField ref={ref}>
+            <Stack space={[2, 2]}>
+              {clientData.situations.map((s) => {
+                return (
+                  <div key={s.title}>
+                    <Flex align="center">
+                      <Checkbox
+                        id={s.title}
+                        checked={
+                          !!state.find((x) => x.name === s.title.toLowerCase())
+                        }
+                        style={{ display: "block" }}
+                        onChange={() => handleSitChange(s.title.toLowerCase())}
+                      />
+                      <Box flex={1} paddingLeft={3}>
+                        <Text>
+                          <Label htmlFor="checkbox">{s.title}</Label>
+                        </Text>
+                      </Box>
+                    </Flex>
 
-                  {state.find((x) => x.name === s.title.toLowerCase()) && (
-                    <PaddedDiv>
-                      <Stack space={[2]}>
-                        {s.phases.map((phase, x) => {
-                          return (
-                            <Flex align="center">
-                              <Radio
-                                key={phase}
-                                value={phase.toLowerCase()}
-                                name={phase}
-                                id={phase.toLowerCase()}
-                                checked={
-                                  state.find((x) => x.name === s.name)
-                                    ?.phase === phase.toLowerCase()
-                                }
-                                onChange={() =>
-                                  handlePhaseChange(phase.toLowerCase(), s.name)
-                                }
-                              />
-                              <Box flex={1} paddingLeft={3}>
-                                <Text>
-                                  <Label htmlFor={phase.toLowerCase()}>{`Fase ${
-                                    x + 1
-                                  }: ${phase}`}</Label>
-                                </Text>
-                              </Box>
-                            </Flex>
-                          );
-                        })}
-                      </Stack>
-                    </PaddedDiv>
-                  )}
-                </div>
-              );
-            })}
-          </Stack>
+                    {state.find((x) => x.name === s.title.toLowerCase()) && (
+                      <PaddedDiv>
+                        <Stack space={[2]}>
+                          {s.phases.map((phase, x) => {
+                            return (
+                              <Flex align="center">
+                                <Radio
+                                  key={phase}
+                                  value={phase.toLowerCase()}
+                                  name={phase}
+                                  id={phase.toLowerCase()}
+                                  checked={
+                                    state.find((x) => x.name === s.name)
+                                      ?.phase === phase.toLowerCase()
+                                  }
+                                  onChange={() =>
+                                    handlePhaseChange(
+                                      phase.toLowerCase(),
+                                      s.name
+                                    )
+                                  }
+                                />
+                                <Box flex={1} paddingLeft={3}>
+                                  <Text>
+                                    <Label
+                                      htmlFor={phase.toLowerCase()}
+                                    >{`Fase ${x + 1}: ${phase}`}</Label>
+                                  </Text>
+                                </Box>
+                              </Flex>
+                            );
+                          })}
+                        </Stack>
+                      </PaddedDiv>
+                    )}
+                  </div>
+                );
+              })}
+            </Stack>
+          </FormField>
         </Stack>
         <Stack space={3}>
           <Text size={2}>Fagfelt</Text>

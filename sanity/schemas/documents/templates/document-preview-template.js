@@ -13,7 +13,7 @@ export function defaultPreview() {
         const { title, status, metadata } = selection;
         return {
           title: title,
-          subtitle: metadata.updates.last_update,
+          subtitle: metadata.last_update,
           media: (
             <Tag
               size="small"

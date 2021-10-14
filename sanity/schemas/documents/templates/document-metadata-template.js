@@ -1,4 +1,5 @@
 import { getExpireDates } from "../../../config";
+import LastUpdate from "../../../components/last-update";
 
 export function documentMetadata(docType) {
   const dates = getExpireDates(docType);
@@ -9,38 +10,10 @@ export function documentMetadata(docType) {
     fields: [
       {
         title: "Oppdatering av innhold",
-        name: "updates",
-        type: "object",
-        fields: [
-          {
-            name: "last_update",
-            title: "Sist oppdatert",
-            type: "date",
-            initialValue: new Date().toISOString().split("T")[0],
-            readOnly: true,
-            hidden: true,
-          },
-          {
-            name: "stagnant",
-            title: "Stagnert",
-            type: "date",
-            initialValue: dates[0].toISOString().split("T")[0],
-            readOnly: true,
-            hidden: true,
-          },
-          {
-            name: "expired",
-            title: "Revisjonsdato",
-            type: "date",
-            initialValue: dates[1].toISOString().split("T")[0],
-            readOnly: true,
-            hidden: true,
-          },
-        ],
-        hidden: true,
-        options: {
-          columns: 2, // Defines a grid for the fields and how many columns it should have
-        },
+        name: "last_update",
+        type: "string",
+        initialValue: new Date().toISOString().split("T")[0],
+        inputComponent: LastUpdate,
       },
       {
         title: "Kontaktperson",
@@ -60,10 +33,5 @@ export function documentMetadata(docType) {
         hidden: true,
       },
     ],
-    options: {
-      collapsible: true, // Makes the whole fieldset collapsible
-      collapsed: true, // Defines if the fieldset should be collapsed by default or not
-      columns: 1, // Defines a grid for the fields and how many columns it should have
-    },
   };
 }
