@@ -2,8 +2,8 @@
 
 import client from "@sanity/client";
 import { Button, Spinner } from "@sanity/ui";
-import { cosh } from "core-js/core/number";
-import React, { useEffect, useState } from "react";
+
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import config from "../../config";
 import SanityConfig from "../../sanity.json";
 import moment from "moment";
@@ -24,6 +24,8 @@ const OutDatedComponents = ({ type }) => {
   const query = `*[_type in [${config.allDocumentTypes.map((x) => `"${x}"`)}]]`;
   const [docs, setDocs] = useState([]);
   const [loading, setloading] = useState(true);
+  const [timer, setTimer] = useState(new Date());
+  const [fromTime, setFromTime] = useState(moment(new Date()).fromNow());
 
   const success = (v) => {
     setDocs(
@@ -43,25 +45,37 @@ const OutDatedComponents = ({ type }) => {
         })
     );
     setloading(false);
+    setTimer(new Date());
   };
 
-  useEffect(() => {
+  const load = useCallback(() => {
+    setloading(true);
     sanityClient.fetch(query).then(success, (e) => console.error(e));
+  }, []);
+
+  useEffect(() => {
+    load();
   }, []);
 
   /* Refreshes every 5 minutes */
   useEffect(() => {
     const interval = setInterval(() => {
-      setloading(true);
-      sanityClient.fetch(query).then(success, (e) => console.error(e));
+      load();
     }, 300000);
 
-    return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFromTime(moment(timer).fromNow());
+    }, 10000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const refresh = () => {
-    setloading(true);
-    sanityClient.fetch(query).then(success, (e) => console.error(e));
+    load();
   };
 
   return (
@@ -107,8 +121,8 @@ const OutDatedComponents = ({ type }) => {
       <Button
         fontSize={[2]}
         tone="primary"
-        padding={[2, 2, 2]}
-        text="Oppdater"
+        padding={[2, 3, 2]}
+        text={`Updated ${fromTime}`}
         onClick={() => refresh()}
       />
     </div>
