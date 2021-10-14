@@ -2,6 +2,7 @@ import { LinkPanel as DsLinkPanel } from "@navikt/ds-react";
 import React from "react";
 import Link from "next/link";
 import { LinkPanel as LinkPanelT } from "../../lib/autogen-types";
+import { slugger } from "..";
 
 const LinkPanel = ({ node }: { node: LinkPanelT }): JSX.Element => {
   if (
@@ -18,11 +19,15 @@ const LinkPanel = ({ node }: { node: LinkPanelT }): JSX.Element => {
     : `/${
         (node.internal_link as { slug?: { current: string } }).slug?.current
       }`;
+  const slug =
+    node.heading &&
+    node.heading_level === "h2" &&
+    slugger.slug(node.heading.toString());
 
   return (
     <Link href={link} passHref>
       <DsLinkPanel>
-        <DsLinkPanel.Title as={node.heading_level}>
+        <DsLinkPanel.Title as={node.heading_level} id={slug}>
           {node.heading}
         </DsLinkPanel.Title>
         {node.body && (
