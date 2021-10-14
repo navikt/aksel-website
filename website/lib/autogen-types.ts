@@ -52,33 +52,11 @@ export interface DsComponentPage extends SanityDocument {
   metadata?: {
     _type: "metadata";
     /**
-     * Oppdatering av innhold — `object`
+     * Oppdatering av innhold — `string`
      *
      *
      */
-    updates?: {
-      _type: "updates";
-      /**
-       * Sist oppdatert — `date`
-       *
-       *
-       */
-      last_update?: string;
-
-      /**
-       * Stagnert — `date`
-       *
-       *
-       */
-      stagnant?: string;
-
-      /**
-       * Revisjonsdato — `date`
-       *
-       *
-       */
-      expired?: string;
-    };
+    last_update?: string;
 
     /**
      * Kontaktperson — `reference`
@@ -203,33 +181,11 @@ export interface DsArticlePage extends SanityDocument {
   metadata?: {
     _type: "metadata";
     /**
-     * Oppdatering av innhold — `object`
+     * Oppdatering av innhold — `string`
      *
      *
      */
-    updates?: {
-      _type: "updates";
-      /**
-       * Sist oppdatert — `date`
-       *
-       *
-       */
-      last_update?: string;
-
-      /**
-       * Stagnert — `date`
-       *
-       *
-       */
-      stagnant?: string;
-
-      /**
-       * Revisjonsdato — `date`
-       *
-       *
-       */
-      expired?: string;
-    };
+    last_update?: string;
 
     /**
      * Kontaktperson — `reference`
@@ -312,33 +268,11 @@ export interface DsTabbedArticlePage extends SanityDocument {
   metadata?: {
     _type: "metadata";
     /**
-     * Oppdatering av innhold — `object`
+     * Oppdatering av innhold — `string`
      *
      *
      */
-    updates?: {
-      _type: "updates";
-      /**
-       * Sist oppdatert — `date`
-       *
-       *
-       */
-      last_update?: string;
-
-      /**
-       * Stagnert — `date`
-       *
-       *
-       */
-      stagnant?: string;
-
-      /**
-       * Revisjonsdato — `date`
-       *
-       *
-       */
-      expired?: string;
-    };
+    last_update?: string;
 
     /**
      * Kontaktperson — `reference`
@@ -470,30 +404,6 @@ export interface GpArticlePage extends SanityDocument {
   _type: "gp_article_page";
 
   /**
-   * Categories — `array`
-   *
-   *
-   */
-  test_Categories?: Array<
-    SanityKeyed<{
-      _type: "situation";
-      /**
-       * Situasjonsnavn — `string`
-       *
-       *
-       */
-      name?: string;
-
-      /**
-       * Phase — `string`
-       *
-       *
-       */
-      phase?: string;
-    }>
-  >;
-
-  /**
    * Ekstra informasjon (brukes bare internt i Sanity) — `object`
    *
    *
@@ -501,33 +411,11 @@ export interface GpArticlePage extends SanityDocument {
   metadata?: {
     _type: "metadata";
     /**
-     * Oppdatering av innhold — `object`
+     * Oppdatering av innhold — `string`
      *
      *
      */
-    updates?: {
-      _type: "updates";
-      /**
-       * Sist oppdatert — `date`
-       *
-       *
-       */
-      last_update?: string;
-
-      /**
-       * Stagnert — `date`
-       *
-       *
-       */
-      stagnant?: string;
-
-      /**
-       * Revisjonsdato — `date`
-       *
-       *
-       */
-      expired?: string;
-    };
+    last_update?: string;
 
     /**
      * Kontaktperson — `reference`

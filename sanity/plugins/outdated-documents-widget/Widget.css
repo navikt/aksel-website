@@ -16,6 +16,8 @@
   composes: content from "part:@sanity/dashboard/widget-styles";
   border-top: 1px solid var(--hairline-color);
   padding: var(--small-padding) 0;
+  display: flex;
+  justify-content: center;
 }
 
 .link {
@@ -39,6 +41,7 @@
 }
 
 .spacing {
-  display: flex;
+  display: inline-flex;
   gap: 1rem;
+  align-items: center;
 }

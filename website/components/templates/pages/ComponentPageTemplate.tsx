@@ -89,7 +89,7 @@ const ComponentPageTemplate = ({
           <StyledDiv>
             <S.Inline>
               <StatusTag status={data.status} />
-              <LastUpdateTag date={data?.metadata?.updates?.last_update} />
+              <LastUpdateTag date={data?.metadata?.last_update} />
             </S.Inline>
             <Links>
               {data.npm_link && (

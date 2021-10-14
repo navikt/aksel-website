@@ -40,7 +40,7 @@ const TabbedActiclePageTemplate = ({
           </Heading>
           <S.Inline>
             <StatusTag status={data.status} />
-            <LastUpdateTag date={data.metadata.updates.last_update} />
+            <LastUpdateTag date={data.metadata.last_update} />
           </S.Inline>
         </S.HeadingContainer>
       </S.MaxWidthContainer>

@@ -12,20 +12,19 @@ const CustomDisplay = React.forwardRef((props, ref) => {
   };
 
   const lastUpdate = moment(props.value);
-  const outDated = moment(props.value).add(180, "days");
-  const toStagnant = outDated.diff(lastUpdate, "days");
+  const daysSince = moment().diff(lastUpdate, "days");
 
   return (
     <Stack tabIndex={0} space={4} ref={ref}>
-      {toStagnant <= toStagnant / 2 && (
+      {daysSince > 90 && (
         <Card
           padding={[3, 3, 4]}
           radius={2}
           shadow={1}
-          tone={toStagnant < 0 ? "critical" : "caution"}
+          tone={daysSince > 180 ? "critical" : "caution"}
         >
           <Text align="center" size={[2, 2, 3]}>
-            {toStagnant < 0
+            {daysSince > 180
               ? "Innholdet er utdatert!"
               : "Innholdet er stagnert!"}
           </Text>

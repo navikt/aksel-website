@@ -36,7 +36,7 @@ const Feedback = ({ docId }: { docId?: string }): JSX.Element => {
           _ref: docId,
           _weak: true,
         },
-        feebacktype: feedbackType,
+        feedbacktype: feedbackType,
         comment: feedbackValue,
       }),
     });

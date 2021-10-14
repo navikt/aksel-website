@@ -21,7 +21,6 @@ export function documentMetadata(docType) {
           "Linker dokumentet til en person, slik at man kan lettere ta kontakt hvis noe oppstår",
         name: "contact",
         type: "reference",
-        validation: (Rule) => Rule.required(),
         to: [{ type: "editor" }],
       },
       {
