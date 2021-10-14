@@ -14,7 +14,7 @@ export default {
       name: "blocks",
       title: "Do / donts",
       description: "Liste med do/donts",
-      of: [{ type: "do_dont.block" }],
+      of: [{ type: "do_dont_block" }],
       validation: (Rule) => Rule.required(),
     },
   ],
@@ -22,7 +22,7 @@ export default {
 
 export const doDont = {
   title: "DoDont",
-  name: "do_dont.block",
+  name: "do_dont_block",
   type: "object",
   fields: [
     {

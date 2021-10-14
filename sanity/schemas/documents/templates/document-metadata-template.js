@@ -5,7 +5,7 @@ export function documentMetadata(docType) {
   return {
     title: "Ekstra informasjon (brukes bare internt i Sanity)",
     name: "metadata",
-    type: "document",
+    type: "object",
     fields: [
       {
         title: "Oppdatering av innhold",

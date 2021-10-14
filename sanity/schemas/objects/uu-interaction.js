@@ -18,7 +18,7 @@ export default {
       name: "keyboard",
       type: "array",
       description: "Liste med interaksjoner som rendres i en tabell",
-      of: [{ type: "uu_interaction.keyboard" }],
+      of: [{ type: "uu_interaction_keyboard" }],
     },
     {
       title: "Skjermleser (optional)",
@@ -33,7 +33,7 @@ export default {
 
 export const keyboardTable = {
   title: "Keyboard tabell",
-  name: "uu_interaction.keyboard",
+  name: "uu_interaction_keyboard",
   type: "object",
   fields: [
     {

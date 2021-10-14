@@ -85,7 +85,7 @@ const sanityClient = client({
   useCdn: false,
 });
 
-export const MyCustomString = React.forwardRef((props, ref) => {
+export const CustomCategories = React.forwardRef((props, ref) => {
   const [state, setState] = useState([]);
   const [clientData, setClientData] = useState(null);
   const [fieldTags, setFieldTags] = useState([]);
@@ -126,8 +126,6 @@ export const MyCustomString = React.forwardRef((props, ref) => {
         setClientData({ situations: x.situations, fields: x.fields });
     });
   }, []);
-
-  console.log(clientData);
 
   const handleSelect = (value) => {
     fieldTags.indexOf(value) === -1 && setFieldTags([...fieldTags, value]);
@@ -237,4 +235,4 @@ export const MyCustomString = React.forwardRef((props, ref) => {
 });
 
 // Create the default export to import into our schema
-export default withDocument(MyCustomString);
+export default withDocument(CustomCategories);

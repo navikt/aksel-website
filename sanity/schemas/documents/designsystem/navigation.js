@@ -20,7 +20,7 @@ export default {
       type: "array",
       of: [
         {
-          type: "ds_navigation.heading",
+          type: "ds_navigation_heading",
           name: "heading",
           title: "Header link",
         },
@@ -31,7 +31,7 @@ export default {
 };
 
 export const ds_header_heading = {
-  name: "ds_navigation.heading",
+  name: "ds_navigation_heading",
   title: "Header link",
   type: "object",
   fields: [

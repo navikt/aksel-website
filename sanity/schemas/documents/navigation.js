@@ -50,8 +50,8 @@ export default {
         "Linker eller dropdowns med linker. Maks dybde på 2 dropdowns er støttet. Sider må være publisert før de kan linkes her.",
       type: "array",
       of: [
-        { type: "navigation.dropdown", name: "dropdown", title: "Dropdown" },
-        { type: "navigation.link", name: "link", title: "Link" },
+        { type: "navigation_dropdown", name: "dropdown", title: "Dropdown" },
+        { type: "navigation_link", name: "link", title: "Link" },
       ],
       validation: (Rule) => Rule.required().min(1),
     },
@@ -63,7 +63,7 @@ export default {
 };
 
 export const dropdown = {
-  name: "navigation.dropdown",
+  name: "navigation_dropdown",
   title: "Dropdown",
   type: "object",
   fields: [
@@ -98,7 +98,7 @@ export const dropdown = {
 };
 
 export const link = {
-  name: "navigation.link",
+  name: "navigation_link",
   title: "Link",
   type: "object",
   fields: [

@@ -38,7 +38,7 @@ export default {
       type: "array",
       name: "tabs",
       title: "Kode",
-      of: [{ type: "code_example.example" }],
+      of: [{ type: "code_example_example" }],
       validation: (Rule) => Rule.max(4),
     },
     {
@@ -50,7 +50,7 @@ export default {
 };
 
 export const example = {
-  name: "code_example.example",
+  name: "code_example_example",
   title: "Tabs",
   type: "object",
   fields: [

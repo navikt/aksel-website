@@ -8,7 +8,7 @@ export default {
       name: "props",
       title: "Props",
       description: "Liste med props, tilsvarer en rad i tabellen",
-      of: [{ type: "prop_table.prop" }],
+      of: [{ type: "prop_table_prop" }],
       validation: (Rule) => Rule.required().min(1),
     },
   ],
@@ -18,7 +18,7 @@ export default {
 };
 
 export const prop = {
-  name: "prop_table.prop",
+  name: "prop_table_prop",
   title: "Prop",
   type: "object",
   fields: [
