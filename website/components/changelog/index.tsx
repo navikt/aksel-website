@@ -3,15 +3,15 @@ import { Link, Heading, BodyShort, Modal } from "@navikt/ds-react";
 import { SanityBlockContent } from "../SanityBlockContent";
 import * as S from "./changelog.styles";
 import { withErrorBoundary } from "../error-boundary";
-import { ChangelogT } from "../../lib";
 import { LevelTwoHeading } from "..";
 import moment from "moment";
+import { DsChangelog } from "../../lib/autogen-types";
 
 const Changelog = ({
   changelogs,
   id,
 }: {
-  changelogs: ChangelogT[];
+  changelogs: DsChangelog[];
   id: string;
 }): JSX.Element => {
   const [open, setOpen] = useState(false);
@@ -41,7 +41,7 @@ const Changelog = ({
     return isNaN(number) ? "PR" : `#${number}`;
   };
 
-  const logInstance = (log: ChangelogT, prefix?: string) => (
+  const logInstance = (log: DsChangelog, prefix?: string) => (
     <div key={log._id + prefix}>
       <Heading level="3" size="small" spacing>
         {log.title}{" "}

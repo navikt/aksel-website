@@ -3,14 +3,14 @@ import Error from "next/error";
 import { useRouter } from "next/router";
 import React from "react";
 import { LastUpdateTag, StatusTag, TableOfContents, Tab, Tabs } from "../..";
+import { DsTabbedArticlePage } from "../../../lib/autogen-types";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import * as S from "./page.styles";
 
 const TabbedActiclePageTemplate = ({
   data,
 }: {
-  data: any;
-  sidebar: any;
+  data: DsTabbedArticlePage;
 }): JSX.Element => {
   const { query } = useRouter();
 
@@ -40,7 +40,7 @@ const TabbedActiclePageTemplate = ({
           </Heading>
           <S.Inline>
             <StatusTag status={data.status} />
-            <LastUpdateTag date={data.last_update} />
+            <LastUpdateTag date={data.metadata.updates.last_update} />
           </S.Inline>
         </S.HeadingContainer>
       </S.MaxWidthContainer>
@@ -61,7 +61,7 @@ const TabbedActiclePageTemplate = ({
         </Tabs>
       )}
       <S.SanityBlockContainer>
-        <TableOfContents changedState={data.body} />
+        <TableOfContents changedState={data.tabs[activeTab].body} />
         <S.MaxWidthContainer>
           <SanityBlockContent withMargin blocks={data.tabs[activeTab].body} />
         </S.MaxWidthContainer>

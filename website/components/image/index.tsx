@@ -1,9 +1,10 @@
 import NextImage from "next/image";
 import React from "react";
-import { ImageType, useSanityImage } from "../../lib";
+import { useSanityImage } from "../../lib";
+import { Picture as PictureT } from "../../lib/autogen-types";
 import * as S from "./image.styles";
 
-const Image = ({ node }: ImageType): JSX.Element => {
+const Image = ({ node }: { node: PictureT }): JSX.Element => {
   if (!node || !node.asset) {
     return null;
   }

@@ -61,7 +61,8 @@
     "eslint-plugin-react": "^7.25.2",
     "eslint-config-next": "^11.1.2",
     "typescript": "^4.4.3",
-    "vercel": "^23.1.2"
+    "vercel": "^23.1.2",
+    "sanity-codegen": "^0.9.5"
   },
   "prettier": {}
 }

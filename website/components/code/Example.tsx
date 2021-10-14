@@ -5,7 +5,7 @@ import CodeBlock from "./Block";
 import CodePreview from "./Preview";
 import CodeTabs from "./Tabs";
 import * as S from "./code.styles";
-import { CodeExampleT } from "../../lib";
+import { DsCodeExample as DsCodeExampleT } from "../../lib/autogen-types";
 
 export const copyCode = (content: string): void => {
   if (typeof content === "string") {
@@ -18,7 +18,7 @@ export const copyCode = (content: string): void => {
 type TabType = { name: string; content: React.ReactNode; language?: string };
 
 type ContextProps = {
-  node: Partial<CodeExampleT>;
+  node: Partial<DsCodeExampleT>;
   tabs: TabType[];
   setTabs: React.Dispatch<React.SetStateAction<TabType[]>>;
   showTabs: boolean;
@@ -41,7 +41,7 @@ export const CodeContext = createContext<ContextProps>({
   setFullscreenLink: () => null,
 });
 
-const Code = ({ node }: { node: CodeExampleT }): JSX.Element => {
+const Code = ({ node }: { node: DsCodeExampleT }): JSX.Element => {
   const [tabs, setTabs] = useState<TabType[]>(
     node?.infercode
       ? [

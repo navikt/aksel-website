@@ -1,10 +1,15 @@
 import { Heading } from "@navikt/ds-react";
 import React from "react";
 import { LastUpdateTag, StatusTag, TableOfContents } from "../..";
+import { DsArticlePage, GpArticlePage } from "../../../lib/autogen-types";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import * as S from "./page.styles";
 
-const ActiclePageTemplate = ({ data }: { data: any }): JSX.Element => {
+const ActiclePageTemplate = ({
+  data,
+}: {
+  data: GpArticlePage | DsArticlePage;
+}): JSX.Element => {
   if (!data.body || !data.heading || !data.status) {
     return null;
   }
@@ -18,7 +23,7 @@ const ActiclePageTemplate = ({ data }: { data: any }): JSX.Element => {
           </Heading>
           <S.Inline>
             <StatusTag status={data.status} />
-            <LastUpdateTag date={data.last_update} />
+            <LastUpdateTag date={data.metadata.updates.last_update} />
           </S.Inline>
         </S.HeadingContainer>
       </S.MaxWidthContainer>

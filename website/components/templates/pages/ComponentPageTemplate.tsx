@@ -1,20 +1,20 @@
-import { Ingress, Link, Heading } from "@navikt/ds-react";
+import { Heading, Ingress, Link } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React from "react";
 import { useMedia } from "react-use";
 import styled from "styled-components";
 import {
+  Changelog,
   FigmaIconGrayScale,
   GithubIconGrayScale,
   LastUpdateTag,
-  StatusTag,
-  TableOfContents,
-  Tab,
-  Tabs,
-  Changelog,
   NpmIconGrayScale,
+  StatusTag,
+  Tab,
+  TableOfContents,
+  Tabs,
 } from "../..";
-import { ChangelogT } from "../../../lib";
+import { DsChangelog, DsComponentPage } from "../../../lib/autogen-types";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import * as S from "./page.styles";
 
@@ -59,8 +59,8 @@ const ComponentPageTemplate = ({
   data,
   changelogs,
 }: {
-  data: any;
-  changelogs: ChangelogT[];
+  data: DsComponentPage;
+  changelogs: DsChangelog[];
 }): JSX.Element => {
   const { query } = useRouter();
 
@@ -89,7 +89,7 @@ const ComponentPageTemplate = ({
           <StyledDiv>
             <S.Inline>
               <StatusTag status={data.status} />
-              <LastUpdateTag date={data.last_update} />
+              <LastUpdateTag date={data?.metadata?.updates?.last_update} />
             </S.Inline>
             <Links>
               {data.npm_link && (
@@ -131,7 +131,7 @@ const ComponentPageTemplate = ({
         )}
       </Tabs>
       <S.SanityBlockContainer>
-        <TableOfContents changedState={query.slug} />
+        <TableOfContents changedState={data[tabs[activeTab]]} />
         <S.MaxWidthContainer>
           {data[tabs[activeTab]] && (
             <SanityBlockContent withMargin blocks={data[tabs[activeTab]]} />

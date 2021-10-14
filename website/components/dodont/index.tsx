@@ -5,9 +5,12 @@ import { Label } from "@navikt/ds-react";
 import { useSanityImage } from "../../lib/santiy";
 import * as S from "./dodont.styles";
 import { ErrorFilled, SuccessFilled, WarningFilled } from "@navikt/ds-icons";
-import { DoDontBlockType, DodontType } from "../../lib";
+import {
+  DoDont as DoDontT,
+  DoDontBlock as DoDontBlockT,
+} from "../../lib/autogen-types";
 
-const Element = ({ block }: { block: DoDontBlockType }): JSX.Element => {
+const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
   const imageProps = useSanityImage(block.picture);
 
   return (
@@ -46,7 +49,7 @@ const Element = ({ block }: { block: DoDontBlockType }): JSX.Element => {
   );
 };
 
-const DoDont = ({ node: { blocks } }: DodontType): JSX.Element => {
+const DoDont = ({ node: { blocks } }: { node: DoDontT }): JSX.Element => {
   if (!blocks || blocks.length === 0) return null;
   return (
     <S.Section>

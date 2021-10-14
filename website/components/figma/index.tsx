@@ -1,7 +1,7 @@
 import { Loader } from "@navikt/ds-react";
 import React, { useState } from "react";
 import styled from "styled-components";
-import { FigmaType } from "../../lib";
+import { FigmaEmbed as FigmaEmbedT } from "../../lib/autogen-types";
 import { withErrorBoundary } from "../error-boundary";
 
 const Skeleton = styled.div`
@@ -14,7 +14,7 @@ const Skeleton = styled.div`
   margin-bottom: var(--navds-spacing-12);
 `;
 
-const Figma = ({ node }: FigmaType): JSX.Element => {
+const Figma = ({ node }: { node: FigmaEmbedT }): JSX.Element => {
   const [loaded, setLoaded] = useState(false);
 
   const src = node.embed?.match(/src="(.+?)"/)?.[1];

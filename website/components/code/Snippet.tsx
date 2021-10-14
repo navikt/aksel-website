@@ -7,9 +7,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { withErrorBoundary } from "../error-boundary";
 import { copyCode } from "./Example";
 import * as S from "./code.styles";
-import { CodeSnippetType } from "../../lib";
+import { CodeSnippet as CodeSnippetT } from "../../lib/autogen-types";
 
-const CodeSnippet = ({ node: { code } }: CodeSnippetType): JSX.Element => {
+const CodeSnippet = ({
+  node: { code },
+}: {
+  node: CodeSnippetT;
+}): JSX.Element => {
   const buttonRef = useRef(null);
   const [openPopover, setOpenPopover] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();

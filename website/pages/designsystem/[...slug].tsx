@@ -1,27 +1,32 @@
+import { useClientLayoutEffect } from "@navikt/ds-react";
 import { useRouter } from "next/router";
-import {
-  usePreviewSubscription,
-  getClient,
-  changelogQuery,
-  ChangelogT,
-  dsDocuments,
-  dsDocumentBySlug,
-  dsNavigationQuery,
-  DsNavigationT,
-} from "../../lib";
+import { useContext } from "react";
 import { isDevelopment } from "../../components";
 import PreviewBanner from "../../components/PreviewBanner";
 import TemplatePicker from "../../components/templates/TemplatePicker";
-import { useContext } from "react";
+import {
+  changelogQuery,
+  dsDocumentBySlug,
+  dsDocuments,
+  dsNavigationQuery,
+  getClient,
+  usePreviewSubscription,
+} from "../../lib";
+import {
+  DsArticlePage,
+  DsChangelog,
+  DsComponentPage,
+  DsNavigation,
+  DsTabbedArticlePage,
+} from "../../lib/autogen-types";
 import { PagePropsContext } from "../_app";
-import { useClientLayoutEffect } from "@navikt/ds-react";
 
 const PagePicker = (props: {
   preview: boolean;
   slug?: string;
-  page: any;
-  navigation: DsNavigationT;
-  changelogs?: ChangelogT[];
+  page: DsComponentPage | DsTabbedArticlePage | DsArticlePage;
+  navigation: DsNavigation;
+  changelogs?: DsChangelog[];
 }): JSX.Element => {
   const router = useRouter();
   const enablePreview = !!props.preview || !!router.query.preview;
@@ -120,11 +125,11 @@ export const getStaticPaths = async (): Promise<{
 
 interface StaticProps {
   props: {
-    page;
+    page: DsComponentPage | DsTabbedArticlePage | DsArticlePage;
     preview: boolean;
     slug: string;
-    changelogs: ChangelogT[] | null;
-    navigation: DsNavigationT;
+    changelogs: DsChangelog[] | null;
+    navigation: DsNavigation;
   };
   revalidate: number;
 }

@@ -10,11 +10,12 @@ import PreviewBanner from "../../components/PreviewBanner";
 import TemplatePicker from "../../components/templates/TemplatePicker";
 import { useContext, useEffect } from "react";
 import { PagePropsContext } from "../_app";
+import { GpArticlePage } from "../../lib/autogen-types";
 
 const PagePicker = (props: {
   preview: boolean;
   slug?: string;
-  page: any;
+  page: GpArticlePage;
   sidebar: any;
 }): JSX.Element => {
   const router = useRouter();
@@ -69,10 +70,9 @@ export const getStaticPaths = async (): Promise<{
 
 interface StaticProps {
   props: {
-    page;
+    page: GpArticlePage;
     preview: boolean;
     slug: string;
-    /* sidebar; */
   };
   revalidate: number;
 }

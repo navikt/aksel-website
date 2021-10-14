@@ -3,23 +3,50 @@ import Error from "next/error";
 import ComponentPageTemplate from "./pages/ComponentPageTemplate";
 import ActiclePageTemplate from "./pages/ArticlePageTemplate";
 import TabbedActiclePageTemplate from "./pages/TabbedArticlePageTemplate";
-import { ChangelogT } from "../../lib";
+import {
+  DsArticlePage,
+  DsChangelog,
+  DsComponentPage,
+  DsTabbedArticlePage,
+  GpArticlePage,
+} from "../../lib/autogen-types";
 
-const templates = {
-  ds_component_page: (props: any) => <ComponentPageTemplate {...props} />,
-  ds_article_page: (props: any) => <ActiclePageTemplate {...props} />,
-  ds_tabbed_article_page: (props: any) => (
-    <TabbedActiclePageTemplate {...props} />
+type ds_component = {
+  ds_component_page: (props: {
+    data: DsComponentPage;
+    changelogs: DsChangelog[];
+  }) => JSX.Element;
+};
+
+type ds_tabbed = {
+  ds_tabbed_article_page: (props: { data: DsTabbedArticlePage }) => JSX.Element;
+};
+
+type ds_article = {
+  ds_article_page: (props: { data: DsArticlePage }) => JSX.Element;
+};
+
+type gp_article = {
+  gp_article_page: (props: { data: DsArticlePage }) => JSX.Element;
+};
+
+type templateT = ds_component | ds_tabbed | ds_article | gp_article;
+
+const templates: templateT = {
+  ds_component_page: (props: { data: any; changelogs: DsChangelog[] }) => (
+    <ComponentPageTemplate {...props} />
   ),
-  gp_article_page: (props: any) => <ActiclePageTemplate {...props} />,
+  ds_article_page: (props) => <ActiclePageTemplate {...props} />,
+  ds_tabbed_article_page: (props) => <TabbedActiclePageTemplate {...props} />,
+  gp_article_page: (props) => <ActiclePageTemplate {...props} />,
 };
 
 const TemplatePicker = ({
   data,
   changelogs,
 }: {
-  data: any;
-  changelogs?: ChangelogT[];
+  data: DsComponentPage | DsTabbedArticlePage | DsArticlePage | GpArticlePage;
+  changelogs?: DsChangelog[];
 }): JSX.Element => {
   const [mounted, setMounted] = useState(false);
 
@@ -46,7 +73,11 @@ const TemplatePicker = ({
 
   const Template = templates[data._type];
 
-  return <Template data={data} changelogs={changelogs} />;
+  return data._type === "ds_component_page" ? (
+    <Template data={data} changelogs={changelogs} />
+  ) : (
+    <Template data={data} />
+  );
 };
 
 export default TemplatePicker;
