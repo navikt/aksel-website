@@ -1,5 +1,5 @@
 import React from "react";
-/* import "@navikt/ds-css?raw"; */
+import "@navikt/ds-css?raw";
 import { Detail, Heading, BodyLong } from "@navikt/ds-react/cjs";
 import {
   Warning,

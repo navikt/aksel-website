@@ -18,7 +18,7 @@ export default {
       type: "string",
       inputComponent: CustomDisplay,
     }, */
-    {
+    /* {
       title: "Categories",
       name: "test_Categories",
       type: "array",
@@ -41,7 +41,7 @@ export default {
         },
       ],
       inputComponent: CustomCategories,
-    },
+    }, */
     documentMetadata("article"),
     ...documentInformation(prefix).filter((x) => x.name !== "tags"),
     {
