@@ -131,7 +131,7 @@ const ComponentPageTemplate = ({
         )}
       </Tabs>
       <S.SanityBlockContainer>
-        <TableOfContents changedState={data[tabs[activeTab]]} />
+        <TableOfContents changedState={query.slug} />
         <S.MaxWidthContainer>
           {data[tabs[activeTab]] && (
             <SanityBlockContent withMargin blocks={data[tabs[activeTab]]} />

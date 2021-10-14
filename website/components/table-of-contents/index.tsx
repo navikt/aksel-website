@@ -19,6 +19,7 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
       /* console.log(decodeURI(item.id)); */
       toc.push({ heading: item.textContent, id: decodeURI(item.id) });
     }
+    console.log(toc);
     setToc([...toc]);
   }, [changedState]);
 
@@ -70,7 +71,10 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
             <nav aria-label="Liste over innhold på siden">
               <S.Ul>
                 {toc.map((link) => (
-                  <S.Li data-active={link.id === activeId} key={link.id}>
+                  <S.Li
+                    data-active={link.id === activeId}
+                    key={link.id + link.heading}
+                  >
                     <Link href={`#${link.id}`} passHref>
                       <a className="navds-link navds-body-short navds-body--small">
                         {link.heading}

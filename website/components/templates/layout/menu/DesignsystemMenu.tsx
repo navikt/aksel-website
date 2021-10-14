@@ -118,10 +118,8 @@ const Menu = ({ heading }: { heading?: DsNavigationHeadingT }): JSX.Element => {
           <BodyShort as="ul">
             {sidebarMenu.map((item) => (
               <li key={item.title}>
-                <NextLink href={`/${item?.link?.slug.current}`} passHref>
-                  <Link
-                    active={pageProps?.page.slug === item?.link?.slug.current}
-                  >
+                <NextLink href={`/${item.link.slug.current}`} passHref>
+                  <Link active={pageProps.page.slug === item.link.slug.current}>
                     {item.title}
                   </Link>
                 </NextLink>

@@ -125,8 +125,11 @@ const DesignsystemHeader = (): JSX.Element => {
       <S.Links>
         {pageProps?.navigation.headings.map((heading: DsNavigationHeadingT) => (
           <NextLink
-            key={heading._key}
-            href={`/${heading.link_ref?.slug?.current}`}
+            key={heading.title + heading.link_ref}
+            href={`/${
+              (heading.link_ref as { slug?: { current: string } })?.slug
+                ?.current
+            }`}
             passHref
           >
             <S.Link $active={context?.activeHeading?.title === heading.title}>
@@ -137,7 +140,7 @@ const DesignsystemHeader = (): JSX.Element => {
       </S.Links>
       <HeaderSearchBar />
       {/* <S.Link href="#">
-        <Bell
+        <Bells
           focusable={false}
           aria-label="Notifikasjons ikon"
           style={{ fontSize: "1.5rem" }}
@@ -205,7 +208,7 @@ const DesignsystemHeader = (): JSX.Element => {
               {pageProps?.navigation.headings.map(
                 (heading: DsNavigationHeadingT) => (
                   <Button
-                    key={heading._key}
+                    key={heading.title}
                     $active={context?.activeHeading?.title === heading.title}
                     onClick={() => handleSelectMenu(heading)}
                   >
