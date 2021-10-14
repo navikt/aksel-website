@@ -1,21 +1,7 @@
-import React, { useState, useEffect, useRef, useImperativeHandle } from "react";
-import {
-  TextInput,
-  Stack,
-  Label,
-  Checkbox,
-  Radio,
-  Flex,
-  Text,
-  Box,
-  Inline,
-  Button,
-  Card,
-  Badge,
-} from "@sanity/ui";
-import PatchEvent, { set, unset } from "part:@sanity/form-builder/patch-event";
-import styled from "styled-components";
+import { Button, Card, Inline, Stack, Text } from "@sanity/ui";
 import moment from "moment";
+import PatchEvent, { set } from "part:@sanity/form-builder/patch-event";
+import React from "react";
 
 const CustomDisplay = React.forwardRef((props, ref) => {
   const click = () => {
