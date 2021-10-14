@@ -78,8 +78,8 @@ export const dropdown = {
       name: "dropdown",
       type: "array",
       of: [
-        { type: "navigation.link", name: "link", title: "Link" },
-        { type: "navigation.dropdown", name: "dropdown", title: "Dropdown" },
+        { type: "navigation_link", name: "link", title: "Link" },
+        { type: "navigation_dropdown", name: "dropdown", title: "Dropdown" },
       ],
       validation: (Rule) => Rule.required().min(1),
     },
