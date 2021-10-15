@@ -68,7 +68,7 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
           <S.Div>
             <nav aria-label="Liste over innhold på siden">
               <S.Ul>
-                {toc.map((link, x) => (
+                {toc.map((link) => (
                   <S.Li
                     data-active={link.id === activeId}
                     key={link.id + link.heading}
