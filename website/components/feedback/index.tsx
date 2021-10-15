@@ -87,7 +87,7 @@ const Feedback = ({ docId }: { docId?: string }): JSX.Element => {
               <S.Textarea
                 ref={setFocus}
                 error={errorMsg}
-                label="Tilbakemelding"
+                label="Er det noe annet du ønsker å finne her?"
                 value={feedbackValue}
                 onChange={(e) => handleChange(e)}
                 maxLength={200}

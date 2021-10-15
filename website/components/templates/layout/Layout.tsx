@@ -36,13 +36,34 @@ export type LayoutContextProps = {
   activeHeading?: DsNavigationHeadingT;
 };
 
+const PlaceholderPadding = styled.div<{ context: LayoutContextProps }>`
+  width: 288px;
+  padding: var(--navds-spacing-8) 0;
+  position: relative;
+  flex-shrink: 0;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  overflow-y: auto;
+  height: 100vh;
+
+  @media (max-width: 1064px) {
+    display: none;
+  }
+`;
+
 export const LayoutParts = {
   ds: {
     title: "Designsystemet",
     header: DesignsystemHeader,
     sidebar: DesignsystemSidebar,
   },
-  gp: { title: "God Praksis", header: GodPraksisHeader, sidebar: null },
+  gp: {
+    title: "God Praksis",
+    header: GodPraksisHeader,
+    sidebar: PlaceholderPadding,
+  },
 };
 
 export const LayoutContext = createContext<LayoutContextProps | null>(null);
@@ -89,7 +110,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
             <Sidebar />
             <ContentWrapper>
               <Main>{children}</Main>
-              {/*               {!pageProps?.preview && <Feedback docId={pageProps?.page?._id} />} */}
+              {/* {!pageProps?.preview && <Feedback docId={pageProps?.page?._id} />} */}
               <Feedback docId={pageProps?.page?._id} />
               <Footer />
             </ContentWrapper>

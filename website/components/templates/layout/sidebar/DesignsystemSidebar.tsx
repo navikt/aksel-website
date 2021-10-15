@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { LayoutContext, LayoutContextProps } from "../Layout";
 import Menu from "../menu/DesignsystemMenu";
 
-const Wrapper = styled.aside<{ context: LayoutContextProps }>`
+const Wrapper = styled.div<{ context: LayoutContextProps }>`
   width: 288px;
   padding: var(--navds-spacing-8) 0;
   position: relative;
