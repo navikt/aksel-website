@@ -50,6 +50,7 @@ export const CopyButton = styled(Button)`
   position: absolute;
   top: 3px;
   right: 8px;
+  border-radius: 4px;
   background-color: var(--navds-color-darkgray);
 `;
 
