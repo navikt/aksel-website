@@ -36,7 +36,7 @@ export type LayoutContextProps = {
   activeHeading?: DsNavigationHeadingT;
 };
 
-const PlaceholderPadding = styled.div<{ context: LayoutContextProps }>`
+const PlaceholderPadding = styled.div`
   width: 288px;
   padding: var(--navds-spacing-8) 0;
   position: relative;

@@ -16,10 +16,8 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
     if (!tags) return;
     const toc = [];
     for (const item of tags) {
-      /* console.log(decodeURI(item.id)); */
       toc.push({ heading: item.textContent, id: decodeURI(item.id) });
     }
-    console.log(toc);
     setToc([...toc]);
   }, [changedState]);
 
@@ -70,7 +68,7 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
           <S.Div>
             <nav aria-label="Liste over innhold på siden">
               <S.Ul>
-                {toc.map((link) => (
+                {toc.map((link, x) => (
                   <S.Li
                     data-active={link.id === activeId}
                     key={link.id + link.heading}
