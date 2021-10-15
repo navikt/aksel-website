@@ -21,6 +21,13 @@ _type == "alert" =>{
     ${markDef}
   }
 },
+_type == "picture_text" =>{
+  ...,
+  body[]{
+    ...,
+    ${markDef}
+  }
+},
 _type == "do_dont" =>{
   ...,
   blocks[]{

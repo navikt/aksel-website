@@ -671,7 +671,7 @@ export interface Feedback extends SanityDocument {
    *
    *
    */
-  feebacktype?: "positive" | "negative";
+  feedbacktype?: "positive" | "negative";
 
   /**
    * Kommentar — `text`
@@ -870,6 +870,7 @@ export type CodeExampleExample = {
 export type BlockContent = Array<
   | SanityKeyed<SanityBlock>
   | SanityKeyed<Picture>
+  | SanityKeyed<PictureText>
   | SanityKeyed<Alert>
   | SanityKeyed<LinkPanel>
   | SanityKeyed<CodeSnippet>
@@ -885,6 +886,7 @@ export type BlockContentSimple = Array<SanityKeyed<SanityBlock>>;
 export type GpBlockContent = Array<
   | SanityKeyed<SanityBlock>
   | SanityKeyed<Picture>
+  | SanityKeyed<PictureText>
   | SanityKeyed<Alert>
   | SanityKeyed<FigmaEmbed>
   | SanityKeyed<CodeSnippet>
@@ -1066,6 +1068,34 @@ export type Picture = {
    * Dette vil stå under bildet
    */
   caption?: string;
+};
+
+export type PictureText = {
+  _type: "picture_text";
+  asset: SanityReference<SanityImageAsset>;
+  crop?: SanityImageCrop;
+  hotspot?: SanityImageHotspot;
+
+  /**
+   * Alt-tekst — `string`
+   *
+   * Beskriv bildet for skjermlesere
+   */
+  title?: string;
+
+  /**
+   * Bilde plassering — `string`
+   *
+   *
+   */
+  placement?: "right" | "left";
+
+  /**
+   * Innhold — `blockContent_simple`
+   *
+   *
+   */
+  body?: BlockContentSimple;
 };
 
 export type Alert = {

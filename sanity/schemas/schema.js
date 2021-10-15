@@ -35,6 +35,7 @@ import prop_table, { prop } from "./objects/proptable";
 import do_dont, { doDont } from "./objects/do-dont";
 import uu_interactions, { keyboardTable } from "./objects/uu-interaction";
 import picture from "./objects/image";
+import picture_text from "./objects/image-with-text";
 import alert from "./objects/alert";
 import figma_embed from "./objects/figma-embed";
 import link_panel from "./objects/link-panel";
@@ -69,6 +70,7 @@ export default createSchema({
     uu_interactions,
     keyboardTable,
     picture,
+    picture_text,
     alert,
     figma_embed,
     link_panel,

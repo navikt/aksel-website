@@ -98,6 +98,9 @@ export default {
       type: "picture",
     },
     {
+      type: "picture_text",
+    },
+    {
       type: "alert",
       icon: () => <Warning />,
     },

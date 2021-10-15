@@ -17,3 +17,33 @@ export const Caption = styled.figcaption`
   align-self: center;
   font-style: italic;
 `;
+
+/* With text */
+
+export const Wrapper = styled.div`
+  /* display: flex;
+  flex-wrap: wrap; */
+`;
+
+export const TextWrapper = styled.div``;
+
+export const TextImage = styled.div<{ placement: "right" | "left" }>`
+  background-color: #f7f7f7;
+  border: 1px solid var(--navds-color-gray-20);
+  width: 300px;
+
+  ${({ placement }) =>
+    placement === "left"
+      ? `
+      margin-right: 1.5rem;
+      margin-bottom: 1.5rem;
+      float: left;`
+      : `
+      float: right;
+      margin-left: 1.5rem;
+      margin-bottom: 1.5rem;`}
+
+  @media (max-width: 564px) {
+    float: none;
+  }
+`;
