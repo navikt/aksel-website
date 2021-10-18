@@ -8,6 +8,10 @@ import * as Checkbox from "./checkbox";
 import * as Radio from "./radio";
 import * as ErrorSummary from "./error-summary";
 import * as ConfirmationPanel from "./confirmation-panel";
+import * as Select from "./select";
+import * as Textarea from "./textarea";
+import * as TextField from "./textfield";
+import * as Fieldset from "./fieldset";
 
 const T = {
   ...Button,
@@ -18,6 +22,10 @@ const T = {
   ...Radio,
   ...ErrorSummary,
   ...ConfirmationPanel,
+  ...Select,
+  ...Textarea,
+  ...TextField,
+  ...Fieldset,
 };
 
 // TODO: implement such that one can infer the code in preview with dynamic imports
