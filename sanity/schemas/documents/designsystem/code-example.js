@@ -12,12 +12,13 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      title: "Storybook Iframe (optional)",
+      title: "Lenke til eksempel",
+      description: "Alle eksempler kan finnes under /examples på nettsiden",
       name: "preview",
       type: "url",
     },
     {
-      title: "Hent kode automatisk fra storybook",
+      title: "Hent kode automatisk fra selve eksemplet?",
       description: "Prøver å hente React og HTML kode automatisk fra storybook",
       name: "infercode",
       type: "boolean",
