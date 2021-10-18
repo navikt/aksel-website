@@ -5,6 +5,7 @@ import babel from "prettier/parser-babel";
 import { CodePreviews } from "./code-previews";
 import { useId } from "@navikt/ds-react";
 import styled from "styled-components";
+import React from "react";
 
 const formatCode = (code, tag) => {
   try {
@@ -33,7 +34,7 @@ const InnerWrapper = styled.div`
   gap: 1rem;
   align-items: "center";
   flex-wrap: wrap;
-  display: inline-flex;
+  display: inline-grid;
   align-items: center;
 `;
 
