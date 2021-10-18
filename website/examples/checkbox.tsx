@@ -31,6 +31,12 @@ export const CheckboxGroupStandard = () => (
   </>
 );
 
+CheckboxGroupStandard.react = `<CheckboxGroup legend="Velg frukt du vil ha levert.">
+<Checkbox value="eple">Eple</Checkbox>
+<Checkbox value="pære">Pære</Checkbox>
+<Checkbox value="melon">Melon</Checkbox>
+</CheckboxGroup>`;
+
 export const CheckboxGroupSmall = () => (
   <>
     <CheckboxGroup size="small" legend="Velg frukt du vil ha levert.">

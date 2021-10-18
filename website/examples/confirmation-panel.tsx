@@ -70,7 +70,7 @@ export const ConfirmationPanelWithError = () => {
   );
 };
 
-ConfirmationPanelExample.react = `<ConfirmationPanel
+ConfirmationPanelWithError.react = `<ConfirmationPanel
 checked={checked}
 onChange={() => handleConfirm()}
 label="Ja, jeg samtykker."
