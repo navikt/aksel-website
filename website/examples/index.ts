@@ -4,12 +4,16 @@ import * as Button from "./button";
 import * as Alert from "./alert";
 import * as AccordionMenu from "./accordion-menu";
 import * as Accordion from "./accordion";
+import * as Checkbox from "./checkbox";
+import * as Radio from "./radio";
 
 const T = {
   ...Button,
   ...Alert,
   ...AccordionMenu,
   ...Accordion,
+  ...Checkbox,
+  ...Radio,
 };
 
 // TODO: implement such that one can infer the code in preview with dynamic imports

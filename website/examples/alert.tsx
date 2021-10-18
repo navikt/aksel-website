@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, Link } from "@navikt/ds-react";
+import { Alert, BodyLong, Heading, Link } from "@navikt/ds-react";
 
 export const AlertAllVariants = () => (
   <>
@@ -46,48 +46,48 @@ AlertWithSmall.react = `
 export const AlertWithHeading = () => (
   <>
     <Alert variant="info">
-      <Alert.Title>
+      <Heading spacing size="small" level="2">
         Midlertidige regler for arbeidsledige og permitterte
-      </Alert.Title>
-      <Alert.Content>
+      </Heading>
+      <BodyLong>
         Fra xx.xx.xxxx vil nye søknader bli behandlet etter de vanlige reglene
         som gjaldt før xxxx. Hvis du får innvilget dagpenger, gjelder
         forlengelsene også for deg frem til og med xx.xx.xxxx.
-      </Alert.Content>
+      </BodyLong>
     </Alert>
     <Alert variant="info" size="small">
-      <Alert.Title>
+      <Heading spacing size="small" level="2">
         Midlertidige regler for arbeidsledige og permitterte
-      </Alert.Title>
-      <Alert.Content>
+      </Heading>
+      <BodyLong>
         Fra xx.xx.xxxx vil nye søknader bli behandlet etter de vanlige reglene
         som gjaldt før xxxx. Hvis du får innvilget dagpenger, gjelder
         forlengelsene også for deg frem til og med xx.xx.xxxx.
-      </Alert.Content>
+      </BodyLong>
     </Alert>
   </>
 );
 
 AlertWithHeading.react = `
 <Alert variant="info">
-      <Alert.Title>
+      <Heading spacing size="small" level="2">
         Midlertidige regler for arbeidsledige og permitterte
-      </Alert.Title>
-      <Alert.Content>
+      </Heading>
+      <BodyLong>
         Fra xx.xx.xxxx vil nye søknader bli behandlet etter de vanlige reglene
         som gjaldt før xxxx. Hvis du får innvilget dagpenger, gjelder
         forlengelsene også for deg frem til og med xx.xx.xxxx.
-      </Alert.Content>
+      </BodyLong>
     </Alert>
     <Alert variant="info" size="small">
-      <Alert.Title>
+      <Heading spacing size="small" level="2">
         Midlertidige regler for arbeidsledige og permitterte
-      </Alert.Title>
-      <Alert.Content>
+      </Heading>
+      <BodyLong>
         Fra xx.xx.xxxx vil nye søknader bli behandlet etter de vanlige reglene
         som gjaldt før xxxx. Hvis du får innvilget dagpenger, gjelder
         forlengelsene også for deg frem til og med xx.xx.xxxx.
-      </Alert.Content>
+      </BodyLong>
     </Alert>`;
 
 export const AlertInline = () => (
