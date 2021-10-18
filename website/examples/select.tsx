@@ -69,14 +69,14 @@ export const SelectMedError = () => (
   </>
 );
 
-SelectExample.react = `<Select label="Velg hvilket land du bosted i." error="Du må velge et land.">
+SelectMedError.react = `<Select label="Velg hvilket land du bosted i." error="Du må velge et land.">
 <option value="">Velg land</option>
 <option value="norge">Norge</option>
 <option value="sverige">Sverige</option>
 <option value="danmark">Danmark</option>
 </Select>`;
 
-export const SelectmedHideLabel = () => (
+export const SelectMedHideLabel = () => (
   <>
     <Select label="Velg hvilket land du bosted i." hideLabel>
       <option value="">Velg land</option>
@@ -87,7 +87,7 @@ export const SelectmedHideLabel = () => (
   </>
 );
 
-SelectExample.react = `<Select label="Velg hvilket land du bosted i." hideLabel>
+SelectMedHideLabel.react = `<Select label="Velg hvilket land du bosted i." hideLabel>
 <option value="">Velg land</option>
 <option value="norge">Norge</option>
 <option value="sverige">Sverige</option>

@@ -110,6 +110,7 @@ export const CheckboxGroupMedErrorUtenErrorPropagation = () => (
     </CheckboxGroup>
   </>
 );
+
 CheckboxGroupMedErrorUtenErrorPropagation.react = `<CheckboxGroup
 legend="Velg frukt du vil ha levert."
 error="Alle leveringer må inkludere melon"

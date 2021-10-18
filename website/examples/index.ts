@@ -11,9 +11,8 @@ import * as ConfirmationPanel from "./confirmation-panel";
 import * as Select from "./select";
 import * as Textarea from "./textarea";
 import * as TextField from "./textfield";
-import * as Fieldset from "./fieldset";
 
-const T = {
+const allExamples = {
   ...Button,
   ...Alert,
   ...AccordionMenu,
@@ -25,13 +24,12 @@ const T = {
   ...Select,
   ...Textarea,
   ...TextField,
-  ...Fieldset,
 };
 
 // TODO: implement such that one can infer the code in preview with dynamic imports
 // TODO: is dynamic imports needed?
-export const Examples = Object.keys(T).reduce((prev, y) => {
-  return { ...prev, [kebabCase(y)]: T[y] };
+export const Examples = Object.keys(allExamples).reduce((prev, y) => {
+  return { ...prev, [kebabCase(y)]: allExamples[y] };
 }, {});
 
 export const ExampleKeys = Object.keys(Examples);
