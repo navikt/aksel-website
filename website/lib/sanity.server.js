@@ -21,6 +21,14 @@ export const feedbackClient = (token) =>
     token,
   });
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const codeExamplesClient = (token) =>
+  createClient({
+    ...config,
+    useCdn: false,
+    token,
+  });
+
 // Helper function for easily switching between normal client and preview client
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const getClient = (usePreview) =>
