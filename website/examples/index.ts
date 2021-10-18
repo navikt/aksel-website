@@ -6,6 +6,8 @@ import * as AccordionMenu from "./accordion-menu";
 import * as Accordion from "./accordion";
 import * as Checkbox from "./checkbox";
 import * as Radio from "./radio";
+import * as ErrorSummary from "./error-summary";
+import * as ConfirmationPanel from "./confirmation-panel";
 
 const T = {
   ...Button,
@@ -14,6 +16,8 @@ const T = {
   ...Accordion,
   ...Checkbox,
   ...Radio,
+  ...ErrorSummary,
+  ...ConfirmationPanel,
 };
 
 // TODO: implement such that one can infer the code in preview with dynamic imports

@@ -17,6 +17,22 @@ RadioGroupStandard.react = `<RadioGroup legend="Velg frukten du vil ha levert.">
 <Radio value="melon">Melon</Radio>
 </RadioGroup>`;
 
+export const RadioGroupSmall = () => (
+  <>
+    <RadioGroup size="small" legend="Velg frukten du vil ha levert.">
+      <Radio value="eple">Eple</Radio>
+      <Radio value="pære">Pære</Radio>
+      <Radio value="melon">Melon</Radio>
+    </RadioGroup>
+  </>
+);
+
+RadioGroupSmall.react = `<RadioGroup size="small" legend="Velg frukten du vil ha levert.">
+<Radio value="eple">Eple</Radio>
+<Radio value="pære">Pære</Radio>
+<Radio value="melon">Melon</Radio>
+</RadioGroup>`;
+
 export const RadioGroupMedDescription = () => (
   <>
     <RadioGroup
