@@ -34,9 +34,9 @@ const deleteRemovedExamples = async () => {
       codeExamplesClient(token)
         .delete(doc._id)
         .then(() => console.log(`Deleted ${doc._id}`))
-        .catch((e) =>
-          console.error(`Failed deleting ${doc._id}\n ${e.message}`)
-        );
+        .catch((e) => {
+          throw e;
+        });
     }
   });
 };

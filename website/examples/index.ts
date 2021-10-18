@@ -1,14 +1,5 @@
 import kebabCase from "lodash.kebabcase";
 
-/* import ButtonDisabled from "./examples/button/disabled";
-import ButtonDanger from "./examples/button/danger";
-import ButtonAllVariants from "./examples/button/all-variants";
-import ButtonPrimary from "./examples/button/primary";
-import ButtonSecondary from "./examples/button/secondary";
-import ButtonTertiary from "./examples/button/tertiary";
-import ButtonWithIcon from "./examples/button/with-icon";
-import ButtonWithLoader from "./examples/button/with-loader"; */
-
 import * as Button from "./button";
 import * as Alert from "./alert";
 
