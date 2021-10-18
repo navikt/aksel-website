@@ -29,6 +29,8 @@ jobs:
         run: echo "SANITY_WRITE_KEY=${{ secrets.SANITY_FEEDBACK_WRITE_KEY }}" >> website/.env
       - name: Install dependencies
         run: yarn
+      - name: Update kode examples
+        run: yarn sanity:codeexamples
       - name: Build application
         run: yarn build:next
       - name: Login to GitHub package registry
