@@ -10,9 +10,11 @@ import ButtonWithIcon from "./examples/button/with-icon";
 import ButtonWithLoader from "./examples/button/with-loader"; */
 
 import * as Button from "./button";
+import * as Alert from "./alert";
 
 const T = {
   ...Button,
+  ...Alert,
 };
 
 // TODO: implement such that one can infer the code in preview with dynamic imports
