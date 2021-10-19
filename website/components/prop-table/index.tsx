@@ -1,5 +1,6 @@
 import { Table } from "@navikt/ds-react";
 import React from "react";
+import { withErrorBoundary } from "..";
 import {
   PropTable as PropTableT,
   PropTableProp as PropTablePropT,
@@ -14,10 +15,7 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
 
   return (
     <S.PropTable>
-      <Table
-        className="tabell"
-        summary="Oversikt over react-props komponenten bruker"
-      >
+      <Table size="small">
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Navn</Table.HeaderCell>
@@ -28,13 +26,13 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
         </Table.Header>
         <Table.Body>
           {node.props.map((prop: PropTablePropT) => (
-            <Table.Row key={prop._key}>
+            <Table.Row key={prop.type}>
               <Table.HeaderCell>{`${prop.name}${
                 prop.required && "*"
               }`}</Table.HeaderCell>
               <Table.DataCell>
                 <pre style={{ margin: 0 }}>
-                  <StyledCode>{prop.type}</StyledCode>
+                  <StyledCode>{prop.type.replaceAll("| ", "|\n")}</StyledCode>
                 </pre>
               </Table.DataCell>
               <Table.DataCell>
@@ -51,4 +49,4 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
   );
 };
 
-export default PropTable;
+export default withErrorBoundary(PropTable, "Proptable komponent");
