@@ -1,14 +1,21 @@
 import React from "react";
 import { Tag } from "@navikt/ds-react";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+`;
 
 export const TagAllVariants = () => {
   return (
-    <>
+    <Wrapper>
       <Tag variant="info">Info</Tag>
       <Tag variant="success">Success</Tag>
       <Tag variant="warning">Warning</Tag>
       <Tag variant="error">Error</Tag>
-    </>
+    </Wrapper>
   );
 };
 
@@ -19,7 +26,7 @@ TagAllVariants.react = `<Tag variant="info">Info</Tag>
 
 export const TagSmall = () => {
   return (
-    <>
+    <Wrapper>
       <Tag size="small" variant="info">
         Info
       </Tag>
@@ -32,7 +39,7 @@ export const TagSmall = () => {
       <Tag size="small" variant="error">
         Error
       </Tag>
-    </>
+    </Wrapper>
   );
 };
 

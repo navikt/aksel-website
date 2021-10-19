@@ -28,6 +28,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 `;
 
 const InnerWrapper = styled.div`
@@ -37,6 +38,8 @@ const InnerWrapper = styled.div`
   display: inline-grid;
   align-items: center;
   position: relative;
+  width: 100%;
+  justify-content: center;
 `;
 
 const CodePreview = (): JSX.Element => {
