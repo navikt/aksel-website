@@ -24,6 +24,26 @@ export const PopoverExample = () => {
   );
 };
 
+PopoverExample.html = "";
+PopoverExample.react = `const buttonRef = useRef(null);
+const [open, setOpen] = useState(false);
+return (
+  <>
+    <Button ref={buttonRef} onClick={() => setOpen(true)}>
+      Åpne popover
+    </Button>
+    <Popover
+      open={open}
+      onClose={() => setOpen(false)}
+      anchorEl={buttonRef.current}
+    >
+      <Popover.Content>
+        Officia reprehenderit irure aliqua cupidatat quis
+      </Popover.Content>
+    </Popover>
+  </>
+);`;
+
 export const PopoverArrow = () => {
   const buttonRef = useRef(null);
   return (
@@ -42,6 +62,24 @@ export const PopoverArrow = () => {
     </>
   );
 };
+
+PopoverArrow.html = "";
+PopoverArrow.react = `const buttonRef = useRef(null);
+return (
+  <>
+    <Button ref={buttonRef}>Anker</Button>
+    <Popover
+      open={true}
+      onClose={() => null}
+      anchorEl={buttonRef.current}
+      arrow={false}
+    >
+      <Popover.Content>
+        Officia reprehenderit irure aliqua cupidatat quis
+      </Popover.Content>
+    </Popover>
+  </>
+);`;
 
 export const PopoverOffset = () => {
   const buttonRef = useRef(null);
@@ -62,6 +100,25 @@ export const PopoverOffset = () => {
     </>
   );
 };
+
+PopoverOffset.html = ``;
+PopoverOffset.react = `const buttonRef = useRef(null);
+return (
+  <>
+    <Button ref={buttonRef}>Anker</Button>
+    <Popover
+      open={true}
+      onClose={() => null}
+      anchorEl={buttonRef.current}
+      arrow={false}
+      offset={32}
+    >
+      <Popover.Content>
+        Officia reprehenderit irure aliqua cupidatat quis
+      </Popover.Content>
+    </Popover>
+  </>
+);`;
 
 const Wrapper = styled.div`
   margin: 3rem 1rem;
@@ -98,3 +155,6 @@ export const PopoverPlacement = () => {
     </Wrapper>
   );
 };
+
+PopoverPlacement.react = "";
+PopoverPlacement.html = "";
