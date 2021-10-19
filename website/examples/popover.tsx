@@ -17,9 +17,7 @@ export const PopoverExample = () => {
         anchorEl={buttonRef.current}
       >
         <Popover.Content>
-          Eu quis exercitation voluptate ex. Aute irure esse occaecat minim
-          cupidatat velit minim duis sint culpa anim laboris. Consectetur nulla
-          eu commodo ea culpa velit commodo incididunt sunt ipsum.
+          Officia reprehenderit irure aliqua cupidatat quis
         </Popover.Content>
       </Popover>
     </>
