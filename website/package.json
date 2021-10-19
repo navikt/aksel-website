@@ -11,7 +11,7 @@
     "start": "next start",
     "deploy:vercel": "npx vercel",
     "lint": "yarn eslint components/* pages/* --ext .jsx --ext .tsx --ext .ts",
-    "update:examples": "npx ts-node ./lib/update-code-examples"
+    "update:examples": "npx ts-node --project tsconfig.tsnode.json ./lib/update-code-examples"
   },
   "dependencies": {
     "@navikt/ds-css": "^0.9",
