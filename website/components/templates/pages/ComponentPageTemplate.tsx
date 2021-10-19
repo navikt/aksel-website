@@ -8,13 +8,19 @@ import {
   FigmaIconGrayScale,
   GithubIconGrayScale,
   LastUpdateTag,
+  LevelTwoHeading,
   NpmIconGrayScale,
+  Snippet,
   StatusTag,
   Tab,
   TableOfContents,
   Tabs,
 } from "../..";
-import { DsChangelog, DsComponentPage } from "../../../lib/autogen-types";
+import {
+  CodeSnippet,
+  DsChangelog,
+  DsComponentPage,
+} from "../../../lib/autogen-types";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import * as S from "./page.styles";
 
@@ -55,6 +61,10 @@ const StyledDiv = styled.div`
   justify-content: space-between;
 `;
 
+const MarginTop = styled.div`
+  margin-top: 3rem;
+`;
+
 const ComponentPageTemplate = ({
   data,
   changelogs,
@@ -78,6 +88,17 @@ const ComponentPageTemplate = ({
   };
 
   const activeTab = query.slug[2] ?? "bruk";
+
+  const installSnippet: CodeSnippet = {
+    _type: "code_snippet",
+    title: `Install-snippet for ${data.heading}`,
+    code: {
+      language: "bash",
+      code: `yarn install ${((data as any)?.packages)
+        .map((x) => x.title)
+        .join(" ")}`,
+    },
+  };
 
   return (
     <>
@@ -133,6 +154,12 @@ const ComponentPageTemplate = ({
       <S.SanityBlockContainer>
         <TableOfContents changedState={query.slug} />
         <S.MaxWidthContainer>
+          {activeTab === "utvikling" && (data as any)?.packages?.length > 0 && (
+            <MarginTop>
+              <LevelTwoHeading>Installasjon</LevelTwoHeading>
+              <Snippet node={installSnippet} />
+            </MarginTop>
+          )}
           {data[tabs[activeTab]] && (
             <SanityBlockContent withMargin blocks={data[tabs[activeTab]]} />
           )}
