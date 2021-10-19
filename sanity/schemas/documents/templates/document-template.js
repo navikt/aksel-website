@@ -34,7 +34,7 @@ export function documentInformation(prefix) {
     {
       title: "Ingress (optional)",
       name: "ingress",
-      type: "string",
+      type: "text",
     },
     {
       title: "Tags",
