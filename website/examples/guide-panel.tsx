@@ -66,3 +66,5 @@ export const GuidepanelColors = () => (
     </PurpleWrapper>
   </>
 );
+
+GuidepanelColors.html = "";
