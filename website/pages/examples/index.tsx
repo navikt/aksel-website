@@ -1,8 +1,8 @@
-import { Heading, Link } from "@navikt/ds-react";
+import { Heading, Link, TextField } from "@navikt/ds-react";
 import styled from "styled-components";
 import { ExampleKeys } from "../../examples";
 import NextLink from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -20,31 +20,41 @@ const Wrapper = styled.div`
   }
 `;
 
+const InnerWrapper = styled.div`
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+`;
+
 const Page = () => {
+  const [value, setValue] = useState("");
   return (
     <Wrapper>
-      <div>
+      <InnerWrapper>
         <Heading level="1" size="medium" spacing>
-          Alle kode-eksempler
+          Alle kode-eksempler ({`${ExampleKeys.length}`})
         </Heading>
+        <TextField
+          label="Filtrer"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
         <ul>
-          {ExampleKeys.sort().map((head) => {
-            return (
-              <>
-                {ExampleKeys.filter((path) => path.startsWith(head)).map(
-                  (path) => (
-                    <li key={path}>
-                      <NextLink href={`/examples/${path}`} passHref>
-                        <Link>{path}</Link>
-                      </NextLink>
-                    </li>
-                  )
-                )}
-              </>
-            );
-          })}
+          {ExampleKeys.sort()
+            .filter((path) => {
+              return value === "" ? true : path.indexOf(value) !== -1;
+            })
+            .map((path) => (
+              <li key={path}>
+                <NextLink href={`/examples/${path}`} passHref>
+                  <Link>{path}</Link>
+                </NextLink>
+              </li>
+            ))}
         </ul>
-      </div>
+      </InnerWrapper>
     </Wrapper>
   );
 };

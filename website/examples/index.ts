@@ -17,6 +17,8 @@ import * as Link from "./link";
 import * as LinkPanel from "./link-panel";
 import * as Loader from "./loader";
 import * as Modal from "./modal";
+import * as Panel from "./panel";
+import * as Popover from "./popover";
 
 const allExamples = {
   ...Button,
@@ -36,6 +38,8 @@ const allExamples = {
   ...LinkPanel,
   ...Loader,
   ...Modal,
+  ...Panel,
+  ...Popover,
 };
 
 // TODO: implement such that one can infer the code in preview with dynamic imports
