@@ -38,9 +38,7 @@ export const PopoverArrow = () => {
         arrow={false}
       >
         <Popover.Content>
-          Eu quis exercitation voluptate ex. Aute irure esse occaecat minim
-          cupidatat velit minim duis sint culpa anim laboris. Consectetur nulla
-          eu commodo ea culpa velit commodo incididunt sunt ipsum.
+          Officia reprehenderit irure aliqua cupidatat quis
         </Popover.Content>
       </Popover>
     </>
@@ -60,9 +58,7 @@ export const PopoverOffset = () => {
         offset={32}
       >
         <Popover.Content>
-          Eu quis exercitation voluptate ex. Aute irure esse occaecat minim
-          cupidatat velit minim duis sint culpa anim laboris. Consectetur nulla
-          eu commodo ea culpa velit commodo incididunt sunt ipsum.
+          Officia reprehenderit irure aliqua cupidatat quis
         </Popover.Content>
       </Popover>
     </>

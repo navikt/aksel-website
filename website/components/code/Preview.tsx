@@ -36,6 +36,7 @@ const InnerWrapper = styled.div`
   flex-wrap: wrap;
   display: inline-grid;
   align-items: center;
+  position: relative;
 `;
 
 const CodePreview = (): JSX.Element => {

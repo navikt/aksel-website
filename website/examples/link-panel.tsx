@@ -1,7 +1,7 @@
 import React from "react";
 import { LinkPanel } from "@navikt/ds-react";
 
-export const LinkExample = () => (
+export const LinkPanelExample = () => (
   <>
     <LinkPanel href="#">
       <LinkPanel.Title>
@@ -11,13 +11,13 @@ export const LinkExample = () => (
   </>
 );
 
-LinkExample.react = `<LinkPanel href="#">
+LinkPanelExample.react = `<LinkPanel href="#">
 <LinkPanel.Title>
   Jeg er selvstendig næringsdrivende eller frilanser
 </LinkPanel.Title>
 </LinkPanel>`;
 
-export const LinkMedDescription = () => (
+export const LinkPanelMedDescription = () => (
   <>
     <LinkPanel href="#">
       <LinkPanel.Title>Arbeidssøker eller permittert</LinkPanel.Title>
@@ -28,14 +28,14 @@ export const LinkMedDescription = () => (
   </>
 );
 
-LinkMedDescription.react = `<LinkPanel href="#">
+LinkPanelMedDescription.react = `<LinkPanel href="#">
 <LinkPanel.Title>Arbeidssøker eller permittert</LinkPanel.Title>
 <LinkPanel.Description>
   Om jobb, registrering, CV, dagpenger og feriepenger av dagpenger
 </LinkPanel.Description>
 </LinkPanel>`;
 
-export const LinkUtenBorder = () => (
+export const LinkPanelUtenBorder = () => (
   <>
     <LinkPanel href="#" border={false}>
       <LinkPanel.Title>Arbeidssøker eller permittert</LinkPanel.Title>
@@ -43,11 +43,11 @@ export const LinkUtenBorder = () => (
   </>
 );
 
-LinkUtenBorder.react = `<LinkPanel href="#" border={false}>
+LinkPanelUtenBorder.react = `<LinkPanel href="#" border={false}>
 <LinkPanel.Title>Arbeidssøker eller permittert</LinkPanel.Title>
 </LinkPanel>`;
 
-export const LinkMedIllustrasjon = () => (
+export const LinkPanelMedIllustrasjon = () => (
   <>
     <LinkPanel href="#">
       <div
@@ -70,7 +70,7 @@ export const LinkMedIllustrasjon = () => (
   </>
 );
 
-LinkMedIllustrasjon.react = `<LinkPanel href="#">
+LinkPanelMedIllustrasjon.react = `<LinkPanel href="#">
 <div
   style={{
     display: "grid",
