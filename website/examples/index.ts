@@ -16,6 +16,7 @@ import * as HelpText from "./help-text";
 import * as Link from "./link";
 import * as LinkPanel from "./link-panel";
 import * as Loader from "./loader";
+import * as Modal from "./modal";
 
 const allExamples = {
   ...Button,
@@ -34,6 +35,7 @@ const allExamples = {
   ...Link,
   ...LinkPanel,
   ...Loader,
+  ...Modal,
 };
 
 // TODO: implement such that one can infer the code in preview with dynamic imports
