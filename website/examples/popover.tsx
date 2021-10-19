@@ -85,7 +85,7 @@ export const PopoverPlacement = () => {
         ref={selectRef}
         label="Placement av popover"
       >
-        {placements.map((placement) => (
+        {placements?.map((placement) => (
           <option key={placement} value={placement}>
             {placement}
           </option>

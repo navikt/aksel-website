@@ -27,6 +27,8 @@ export const ModalExample = () => {
   );
 };
 
+ModalExample.html = "";
+
 ModalExample.react = `<Modal open={open} onClose={() => setOpen(false)}>
 <Modal.Content>
   <Heading spacing level="1" size="large">
@@ -70,6 +72,7 @@ export const ModalShouldNotcloseonoverlayclick = () => {
   );
 };
 
+ModalShouldNotcloseonoverlayclick.html = "";
 ModalShouldNotcloseonoverlayclick.react = `<Modal shouldCloseOnOverlayClick={false} open={open} onClose={() => setOpen(false)}>
 <Modal.Content>
   <Heading spacing level="1" size="large">
