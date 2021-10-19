@@ -14,6 +14,8 @@ import * as TextField from "./textfield";
 import * as GuidePanel from "./guide-panel";
 import * as HelpText from "./help-text";
 import * as Link from "./link";
+import * as LinkPanel from "./link-panel";
+import * as Loader from "./loader";
 
 const allExamples = {
   ...Button,
@@ -30,6 +32,8 @@ const allExamples = {
   ...GuidePanel,
   ...HelpText,
   ...Link,
+  ...LinkPanel,
+  ...Loader,
 };
 
 // TODO: implement such that one can infer the code in preview with dynamic imports
