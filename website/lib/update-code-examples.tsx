@@ -9,8 +9,8 @@ dotenv.config();
 const updateExamples = async () => {
   const token = process.env.SANITY_WRITE_KEY;
 
-  ExampleKeys.forEach((key) => {
-    codeExamplesClient(token)
+  for (const key of ExampleKeys) {
+    await codeExamplesClient(token)
       .createIfNotExists({
         _id: `${key}_autogen_example`,
         _type: "ds_code_example",
@@ -21,7 +21,7 @@ const updateExamples = async () => {
       })
       .then(() => console.log(`Updated kodeexample: ${key}`))
       .catch((e) => console.error(e.message));
-  });
+  }
 };
 
 const deleteRemovedExamples = async () => {
@@ -29,16 +29,16 @@ const deleteRemovedExamples = async () => {
   const query = `*[_type == "ds_code_example"]`;
   const docs = await codeExamplesClient(token).fetch(query);
 
-  docs.forEach((doc) => {
+  for (const doc of docs) {
     if (!ExampleKeys.includes(doc._id.replace("_autogen_example", ""))) {
-      codeExamplesClient(token)
+      await codeExamplesClient(token)
         .delete(doc._id)
         .then(() => console.log(`Deleted ${doc._id}`))
         .catch((e) => {
           throw e;
         });
     }
-  });
+  }
 };
 
 const main = async () => {
