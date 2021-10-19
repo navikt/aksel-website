@@ -11,6 +11,8 @@ import * as ConfirmationPanel from "./confirmation-panel";
 import * as Select from "./select";
 import * as Textarea from "./textarea";
 import * as TextField from "./textfield";
+import * as GuidePanel from "./guide-panel";
+import * as HelpText from "./help-text";
 
 const allExamples = {
   ...Button,
@@ -24,6 +26,8 @@ const allExamples = {
   ...Select,
   ...Textarea,
   ...TextField,
+  ...GuidePanel,
+  ...HelpText,
 };
 
 // TODO: implement such that one can infer the code in preview with dynamic imports
