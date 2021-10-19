@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Popover, Button, Select } from "@navikt/ds-react";
-import { placements } from "@popperjs/core";
+import { placements, Placement } from "@popperjs/core";
 import styled from "styled-components";
 
 export const PopoverExample = () => {
@@ -75,13 +75,13 @@ const Wrapper = styled.div`
 
 export const PopoverPlacement = () => {
   const selectRef = useRef(null);
-  const [selectedPlacement, setselectedPlacement] = useState("auto");
+  const [selectedPlacement, setselectedPlacement] = useState<Placement>("auto");
 
   return (
     <Wrapper>
       <Select
         value={selectedPlacement}
-        onChange={(e) => setselectedPlacement(e.target.value)}
+        onChange={(e) => setselectedPlacement(e.target.value as Placement)}
         ref={selectRef}
         label="Placement av popover"
       >
