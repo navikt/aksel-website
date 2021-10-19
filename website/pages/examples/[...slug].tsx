@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import { ExampleKeys, Examples } from "../../examples";
 
@@ -16,6 +17,7 @@ const ExampleWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 `;
 
 const InnerWrapper = styled.div`

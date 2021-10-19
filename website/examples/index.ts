@@ -19,6 +19,7 @@ import * as Loader from "./loader";
 import * as Modal from "./modal";
 import * as Panel from "./panel";
 import * as Popover from "./popover";
+import * as SpeechBubble from "./speech-bubble";
 
 const allExamples = {
   ...Button,
@@ -40,6 +41,7 @@ const allExamples = {
   ...Modal,
   ...Panel,
   ...Popover,
+  ...SpeechBubble,
 };
 
 // TODO: implement such that one can infer the code in preview with dynamic imports
