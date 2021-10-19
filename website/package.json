@@ -52,7 +52,8 @@
     "lodash.throttle": "4.1.1",
     "lodash.kebabcase": "^4.1.1",
     "lodash.lowercase": "^4.3.0",
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "@popperjs/core": "^2.10.2"
   },
   "devDependencies": {
     "@types/node": "^16.9.2",

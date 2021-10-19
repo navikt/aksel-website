@@ -76,24 +76,6 @@ const Wrapper = styled.div`
 export const PopoverPlacement = () => {
   const selectRef = useRef(null);
   const [selectedPlacement, setselectedPlacement] = useState("auto");
-  const placements = [
-    "auto",
-    "auto-start",
-    "auto-end",
-    "top",
-    "bottom",
-    "right",
-    "left",
-    "top",
-    "top-start",
-    "top-end",
-    "bottom-start",
-    "bottom-end",
-    "right-start",
-    "right-end",
-    "left-start",
-    "left-end",
-  ];
 
   return (
     <Wrapper>
