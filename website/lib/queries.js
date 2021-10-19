@@ -81,6 +81,9 @@ export const dsDocumentBySlug = `*[slug.current == $slug][0]
 {
   ...,
   "slug": slug.current,
+  "packages": spesific_component[]{
+    "title": @->title
+  },
 	body[]{
     ...,
     ${deRefs}
