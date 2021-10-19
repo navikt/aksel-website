@@ -13,6 +13,7 @@ import * as Textarea from "./textarea";
 import * as TextField from "./textfield";
 import * as GuidePanel from "./guide-panel";
 import * as HelpText from "./help-text";
+import * as Link from "./link";
 
 const allExamples = {
   ...Button,
@@ -28,6 +29,7 @@ const allExamples = {
   ...TextField,
   ...GuidePanel,
   ...HelpText,
+  ...Link,
 };
 
 // TODO: implement such that one can infer the code in preview with dynamic imports

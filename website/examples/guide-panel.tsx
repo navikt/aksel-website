@@ -47,6 +47,7 @@ const PurpleWrapper = styled.div`
     --navds-color-purple-20
   );
 `;
+
 export const GuidepanelColors = () => (
   <>
     <GreenWrapper>
