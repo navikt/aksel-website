@@ -13,6 +13,7 @@ import designsystem_component_page from "./documents/designsystem/ds-component-p
 import designsystem_article_page from "./documents/designsystem/ds-article-page";
 import designsystem_tabbed_article_page from "./documents/designsystem/ds-tabbed-article-page";
 import designsystem_frontpage from "./documents/designsystem/ds-frontpage";
+import designsystem_packages from "./documents/designsystem/packages";
 import designsystem_navigation, {
   ds_header_heading,
 } from "./documents/designsystem/navigation";
@@ -48,6 +49,7 @@ export default createSchema({
     designsystem_tabbed_article_page,
     designsystem_frontpage,
     designsystem_navigation,
+    designsystem_packages,
     ds_header_heading,
     god_praksis_article_page,
     god_praksis_frontpage,

@@ -11,6 +11,7 @@ import {
   Place,
   Search,
   Picture,
+  Ruler,
 } from "@navikt/ds-icons";
 
 export default () =>
@@ -62,6 +63,10 @@ export default () =>
                 .icon(() => <Historic />)
                 .child(S.documentTypeList("ds_changelog")),
               S.listItem()
+                .title("Kodepakker")
+                .icon(() => <Ruler />)
+                .child(S.documentTypeList("ds_package")),
+              S.listItem()
                 .title("Kode eksempler")
                 .icon(() => <span>{`< />`}</span>)
                 .child(S.documentTypeList("ds_code_example")),
@@ -111,6 +116,7 @@ export default () =>
             "ds_changelog",
             "ds_code_example",
             "ds_navigation",
+            "ds_package",
             "gp_article_page",
             "gp_frontpage",
             "gp_situations",

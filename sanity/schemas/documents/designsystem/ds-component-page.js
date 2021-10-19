@@ -13,7 +13,6 @@ export default {
   fields: [
     documentMetadata("article"),
     ...documentInformation(prefix),
-
     {
       name: "usage",
       type: "blockContent",
@@ -33,6 +32,14 @@ export default {
       name: "accessibility",
       type: "blockContent",
       title: "Tilgjengelighet-tab",
+    },
+    {
+      title: "Pakkenavn",
+      description: "Kobler komponenten til en eller flere pakker",
+      name: "spesific_component",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "ds_package" }] }],
+      validation: (Rule) => Rule.required().min(1),
     },
     {
       title: "Npm-pakke lenke (optional)",
