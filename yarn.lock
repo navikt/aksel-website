@@ -1103,7 +1103,7 @@
     "@navikt/ds-react" "^0.10.2"
     classnames "^2.3.1"
 
-"@navikt/ds-react@0.10", "@navikt/ds-react@^0.10", "@navikt/ds-react@^0.10.2":
+"@navikt/ds-react@^0.10", "@navikt/ds-react@^0.10.2":
   version "0.10.2"
   resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.10.2.tgz#0b190184ab32130fe11101fb333ce91acf3ee3b3"
   dependencies:

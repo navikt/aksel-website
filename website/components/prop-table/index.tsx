@@ -1,4 +1,4 @@
-import { Heading } from "@navikt/ds-react";
+import { Table } from "@navikt/ds-react";
 import React from "react";
 import {
   PropTable as PropTableT,
@@ -12,51 +12,41 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
     return null;
   }
 
-  const table = (prop: PropTablePropT) => {
-    return (
-      <table
-        key={prop.name}
+  return (
+    <S.PropTable>
+      <Table
         className="tabell"
         summary="Oversikt over react-props komponenten bruker"
       >
-        <thead>
-          <tr>
-            <th>
-              <Heading as="span" size="xsmall">
-                {`${prop.name}${prop.required ? "*" : ""}`}
-              </Heading>
-            </th>
-            <td />
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>Type</th>
-            <td>
-              <pre style={{ margin: 0 }}>
-                <StyledCode>{prop.type.split("| ").join("|\n")}</StyledCode>
-              </pre>
-            </td>
-          </tr>
-          {prop.description && (
-            <tr>
-              <th>Description</th>
-              <td>{prop.description}</td>
-            </tr>
-          )}
-          {prop.default && (
-            <tr>
-              <th>Default</th>
-              <td>{prop.default}</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    );
-  };
-  return (
-    <S.PropTable>
-      <S.TableWrapper>{node.props.map((prop) => table(prop))}</S.TableWrapper>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Navn</Table.HeaderCell>
+            <Table.HeaderCell>value</Table.HeaderCell>
+            <Table.HeaderCell>default</Table.HeaderCell>
+            <Table.HeaderCell>description</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {node.props.map((prop: PropTablePropT) => (
+            <Table.Row key={prop._key}>
+              <Table.HeaderCell>{`${prop.name}${
+                prop.required && "*"
+              }`}</Table.HeaderCell>
+              <Table.DataCell>
+                <pre style={{ margin: 0 }}>
+                  <StyledCode>{prop.type}</StyledCode>
+                </pre>
+              </Table.DataCell>
+              <Table.DataCell>
+                {prop.default ? prop.default : <span>-</span>}
+              </Table.DataCell>
+              <Table.DataCell>
+                {prop.description ? prop.description : <span>-</span>}
+              </Table.DataCell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
     </S.PropTable>
   );
 };

@@ -32,7 +32,7 @@
   "dependencies": {
     "@navikt/ds-css": "^0.9",
     "@navikt/ds-icons": "^0.5",
-    "@navikt/ds-react": "0.10",
+    "@navikt/ds-react": "^0.10",
     "@navikt/ds-tokens": "^0.5"
   },
   "devDependencies": {
