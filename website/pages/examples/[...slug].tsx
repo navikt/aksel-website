@@ -22,9 +22,9 @@ const ExampleWrapper = styled.div`
 
 const InnerWrapper = styled.div`
   gap: 1rem;
-  align-items: center;
   flex-wrap: wrap;
-  display: inline-flex;
+  display: inline-grid;
+  align-items: center;
 `;
 
 const Page = ({ compkey }: { compkey: string }) => {
