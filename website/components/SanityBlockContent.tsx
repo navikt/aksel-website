@@ -19,7 +19,7 @@ import {
 } from ".";
 
 export const StyledCode = styled.code`
-  color: var(--navds-color-red-50);
+  color: var(--navds-color-lightblue-80);
 `;
 
 const StyledKbd = styled.code`

@@ -1,4 +1,4 @@
-import { Table } from "@navikt/ds-react";
+import { Tag } from "@navikt/ds-react";
 import React from "react";
 import { withErrorBoundary } from "..";
 import {
@@ -15,36 +15,41 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
 
   return (
     <S.PropTable>
-      <Table size="small">
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Navn</Table.HeaderCell>
-            <Table.HeaderCell>value</Table.HeaderCell>
-            <Table.HeaderCell>default</Table.HeaderCell>
-            <Table.HeaderCell>description</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {node.props.map((prop: PropTablePropT) => (
-            <Table.Row key={prop.type}>
-              <Table.HeaderCell>{`${prop.name}${
-                prop.required && "*"
-              }`}</Table.HeaderCell>
-              <Table.DataCell>
+      {node.props.map((prop: PropTablePropT) => (
+        <S.Table key={prop.name}>
+          <S.Caption>
+            <Tag variant="info">{`${prop.name}${
+              prop.required ? "*" : ""
+            }`}</Tag>
+          </S.Caption>
+          <S.Tbody>
+            <tr>
+              <S.Th className="navds-heading navds-heading--xsmall">
+                Description
+              </S.Th>
+              <S.Td className="navds-body-short">
+                {prop.description ? prop.description : <span>-</span>}
+              </S.Td>
+            </tr>
+            <tr>
+              <S.Th className="navds-heading navds-heading--xsmall">Type</S.Th>
+              <S.Td className="navds-body-short">
                 <pre style={{ margin: 0 }}>
                   <StyledCode>{prop.type.replaceAll("| ", "|\n")}</StyledCode>
                 </pre>
-              </Table.DataCell>
-              <Table.DataCell>
+              </S.Td>
+            </tr>
+            <tr>
+              <S.Th className="navds-heading navds-heading--xsmall">
+                Default
+              </S.Th>
+              <S.Td className="navds-body-short">
                 {prop.default ? prop.default : <span>-</span>}
-              </Table.DataCell>
-              <Table.DataCell>
-                {prop.description ? prop.description : <span>-</span>}
-              </Table.DataCell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
+              </S.Td>
+            </tr>
+          </S.Tbody>
+        </S.Table>
+      ))}
     </S.PropTable>
   );
 };
