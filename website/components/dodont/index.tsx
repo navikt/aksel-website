@@ -1,7 +1,6 @@
 import React from "react";
-import { SanityBlockContent } from "../SanityBlockContent";
 import NextImage from "next/image";
-import { Label } from "@navikt/ds-react";
+import { BodyLong, Label } from "@navikt/ds-react";
 import { useSanityImage } from "../../lib/santiy";
 import * as S from "./dodont.styles";
 import { ErrorFilled, SuccessFilled, WarningFilled } from "@navikt/ds-icons";
@@ -43,7 +42,7 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
             </S.Icon>
           )}
         </Label>
-        <SanityBlockContent blocks={block.body} />
+        {block.description && <BodyLong>{block.description}</BodyLong>}
       </S.Caption>
     </S.Figure>
   );
