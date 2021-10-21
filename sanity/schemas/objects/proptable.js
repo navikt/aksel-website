@@ -4,6 +4,18 @@ export default {
   type: "object",
   fields: [
     {
+      title: "children-prop required",
+      name: "preset_children",
+      type: "boolean",
+      initialValue: true,
+    },
+    {
+      title: "className-prop",
+      name: "preset_classname",
+      type: "boolean",
+      initialValue: true,
+    },
+    {
       type: "array",
       name: "props",
       title: "Props",
