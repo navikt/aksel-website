@@ -52,10 +52,11 @@ export const doDont = {
       },
     },
     {
-      name: "body",
+      name: "description",
       title: "Fritekst",
-      description: "Beskrivelse av hva som er do/dont/warning",
-      type: "blockContent_simple",
+      description:
+        "Korte konsise beskrivelser. Bruk fullbredde bilde i dodont med egen tekst for legnre forklaringer",
+      type: "text",
     },
     {
       name: "variant",
