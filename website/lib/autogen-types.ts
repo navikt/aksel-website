@@ -1052,11 +1052,11 @@ export type DoDontBlock = {
   alt?: string;
 
   /**
-   * Fritekst — `blockContent_simple`
+   * Fritekst — `text`
    *
-   * Beskrivelse av hva som er do/dont/warning
+   * Korte konsise beskrivelser. Bruk fullbredde bilde i dodont med egen tekst for legnre forklaringer
    */
-  body?: BlockContentSimple;
+  description?: string;
 
   /**
    * Variant — `string`
