@@ -7,12 +7,18 @@ export default {
       title: "children-prop required av type React.ReactNode",
       name: "preset_children",
       type: "boolean",
+      options: {
+        layput: "checkbox",
+      },
       initialValue: true,
     },
     {
       title: "className-prop",
       name: "preset_classname",
       type: "boolean",
+      options: {
+        layput: "checkbox",
+      },
       initialValue: true,
     },
     {
@@ -26,6 +32,9 @@ export default {
       title: "Bruker OverridableComponent",
       name: "overridable",
       type: "boolean",
+      options: {
+        layput: "checkbox",
+      },
       initialValue: false,
     },
     {
