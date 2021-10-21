@@ -81,7 +81,7 @@ export const dsDocumentBySlug = `*[slug.current == $slug][0]
 {
   ...,
   "slug": slug.current,
-  "packages": spesific_component[]{
+  linked_packages[]{
     "title": @->title
   },
 	body[]{

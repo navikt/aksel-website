@@ -73,7 +73,7 @@ const ComponentPageTemplate = ({
   changelogs: DsChangelog[];
 }): JSX.Element => {
   const { query } = useRouter();
-
+  console.log(data);
   const changeTab = useMedia("(max-width: 564px)");
 
   const basePath = `/designsystem/${(query.slug as string[])
@@ -94,7 +94,7 @@ const ComponentPageTemplate = ({
     title: `Install-snippet for ${data.heading}`,
     code: {
       language: "bash",
-      code: `yarn install ${((data as any)?.packages)
+      code: `yarn install ${((data as any)?.linked_packages)
         .map((x) => x.title)
         .join(" ")}`,
     },
@@ -154,12 +154,13 @@ const ComponentPageTemplate = ({
       <S.SanityBlockContainer>
         <TableOfContents changedState={query.slug} />
         <S.MaxWidthContainer>
-          {activeTab === "utvikling" && (data as any)?.packages?.length > 0 && (
-            <MarginTop>
-              <LevelTwoHeading>Installasjon</LevelTwoHeading>
-              <Snippet node={installSnippet} />
-            </MarginTop>
-          )}
+          {activeTab === "utvikling" &&
+            (data as any)?.linked_packages?.length > 0 && (
+              <MarginTop>
+                <LevelTwoHeading>Installasjon</LevelTwoHeading>
+                <Snippet node={installSnippet} />
+              </MarginTop>
+            )}
           {data[tabs[activeTab]] && (
             <SanityBlockContent withMargin blocks={data[tabs[activeTab]]} />
           )}
