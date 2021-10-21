@@ -26,13 +26,13 @@ const ScInnerWrapper = styled.div<{ context: LayoutContextProps }>`
   flex-wrap: wrap;
   justify-content: ${(props) =>
     props.context.isMobile ? "center" : "flex-start"};
-  max-width: ${(props) => (props.context.isMobile ? "none" : "600px")};
+  max-width: 600px;
 `;
 
 const ScLink = styled.a`
   color: white;
   text-decoration: none;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   height: 7rem;
   flex: 1 1;
   max-width: 400px;

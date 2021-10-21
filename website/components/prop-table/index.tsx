@@ -5,9 +5,15 @@ import {
   PropTable as PropTableT,
   PropTableProp as PropTablePropT,
 } from "../../lib/autogen-types";
-import { StyledCode } from "../SanityBlockContent";
 import * as S from "./prop-table.styles";
 import NextLink from "next/link";
+import styled from "styled-components";
+import { StyledCode } from "../SanityBlockContent";
+
+export const TypeCode = styled.code`
+  color: var(--navds-color-lightblue-80);
+  font-size: 1rem;
+`;
 
 const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
   const Table = ({ prop }: { prop: PropTablePropT }) => (
@@ -29,7 +35,7 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
           <S.Th className="navds-heading navds-heading--xsmall">Type</S.Th>
           <S.Td className="navds-body-short">
             <pre style={{ margin: 0 }}>
-              <StyledCode>{prop.type.replaceAll("| ", "|\n")}</StyledCode>
+              <TypeCode>{prop.type.replaceAll("| ", "|\n")}</TypeCode>
             </pre>
           </S.Td>
         </tr>
@@ -37,7 +43,7 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
           <S.Th className="navds-heading navds-heading--xsmall">Default</S.Th>
           <S.Td className="navds-body-short">
             {prop.default ? (
-              <StyledCode>{prop.default}</StyledCode>
+              <TypeCode>{prop.default}</TypeCode>
             ) : (
               <span>-</span>
             )}

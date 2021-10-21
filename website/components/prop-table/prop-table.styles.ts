@@ -18,6 +18,11 @@ export const Table = styled.table`
   border-collapse: collapse;
   margin-top: 0.75rem;
 
+  ::first-child {
+    border-bottom: 1px solid var(--navds-color-gray-20);
+    padding-bottom: 1.5rem;
+  }
+
   code,
   * {
     white-space: break-spaces;
@@ -46,7 +51,7 @@ export const Required = styled(Detail)`
 
 export const Tbody = styled.tbody`
   border: none;
-  border-bottom: 1px solid var(--navds-color-gray-40);
+  border-bottom: 1px solid var(--navds-color-gray-20);
 `;
 
 export const Th = styled.th`

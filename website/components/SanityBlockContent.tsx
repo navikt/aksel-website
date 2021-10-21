@@ -19,7 +19,11 @@ import {
 } from ".";
 
 export const StyledCode = styled.code`
-  color: var(--navds-color-lightblue-80);
+  color: var(--navds-color-gray-80);
+  background-color: var(--navds-color-gray-10);
+  border-radius: 2px;
+  font-size: 1rem;
+  padding: 0 4px;
 `;
 
 const StyledKbd = styled.code`
