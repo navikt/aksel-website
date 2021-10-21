@@ -12,7 +12,6 @@ export const Nav = styled.nav<{ isMobile: boolean; sticky: boolean }>`
         ? `margin-left: 0;
            margin-right: 0;`
         : `margin-left: 3rem;
-           margin-right: auto;
            max-width: 600px;`
       : `margin: 0;
          max-width: none;

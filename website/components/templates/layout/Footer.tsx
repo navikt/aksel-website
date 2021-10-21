@@ -7,14 +7,14 @@ import { LayoutContext, LayoutContextProps } from "./Layout";
 const StyledFooter = styled.footer<{ context: LayoutContextProps }>`
   height: 200px;
   width: 100%;
-  /* background-color: var(--navds-color-gray-10); */
+  background-color: var(--navds-color-gray-90);
 
   padding: ${(props) => (props.context.isMobile ? "1rem" : "1rem 2rem")};
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   color: white;
-  border-top: 1px solid var(--navds-color-gray-20);
+  /* border-top: 1px solid var(--navds-color-gray-20); */
 `;
 
 /* const LogoWrapper = styled.div`
@@ -26,7 +26,6 @@ const StyledFooter = styled.footer<{ context: LayoutContextProps }>`
 
 function Footer(): JSX.Element {
   const context = useContext(LayoutContext);
-  return null;
 
   return (
     <StyledFooter context={context} className="navds-body-short">

@@ -73,7 +73,6 @@ const ComponentPageTemplate = ({
   changelogs: DsChangelog[];
 }): JSX.Element => {
   const { query } = useRouter();
-  console.log(data);
   const changeTab = useMedia("(max-width: 564px)");
 
   const basePath = `/designsystem/${(query.slug as string[])

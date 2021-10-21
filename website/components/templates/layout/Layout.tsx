@@ -12,6 +12,7 @@ import DesignsystemHeader from "./header/DesignsystemHeader";
 import GodPraksisHeader from "./header/GodPraksisHeader";
 import Sidebar from "./sidebar/Sidebar";
 import { DsNavigationHeadingT } from "../../../lib";
+import RelatedPagesLink from "../../related-pages-link";
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,7 +28,10 @@ const ContentWrapper = styled.div`
 `;
 
 const Main = styled.main`
-  min-height: calc(100vh - 48px);
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `;
 
 export type LayoutContextProps = {
@@ -51,6 +55,12 @@ const PlaceholderPadding = styled.div`
   @media (max-width: 1064px) {
     display: none;
   }
+`;
+
+const Grow = styled.div`
+  flex: 1 1;
+  height: 100%;
+  margin-bottom: auto;
 `;
 
 export const LayoutParts = {
@@ -109,9 +119,16 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
           <Wrapper>
             <Sidebar />
             <ContentWrapper>
-              <Main>{children}</Main>
+              <Main>
+                {children}
+                <Grow />
+                <Feedback docId={pageProps?.page?._id} />
+                {LayoutParts[pageType]?.title === "Designsystemet" && (
+                  <RelatedPagesLink />
+                )}
+              </Main>
               {/* {!pageProps?.preview && <Feedback docId={pageProps?.page?._id} />} */}
-              <Feedback docId={pageProps?.page?._id} />
+
               <Footer />
             </ContentWrapper>
           </Wrapper>
