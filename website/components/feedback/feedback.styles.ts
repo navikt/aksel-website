@@ -1,17 +1,36 @@
 import styled from "styled-components";
 import { Textarea as DsTextarea } from "@navikt/ds-react";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ isMobile?: boolean }>`
+  max-width: 664px;
   width: 100%;
   padding: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid var(--navds-color-gray-20);
   gap: 1rem;
 
-  @media screen and (max-width: 550px) {
+  margin: ${(props) =>
+    props.isMobile ? "4rem auto" : "4rem auto 4rem var(--navds-spacing-4)"};
+
+  @media (max-width: 564px) {
     padding: 1rem;
+  }
+`;
+
+export const InnerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  gap: 1.5rem;
+  > * {
+    flex: 1 1;
+    max-width: 11rem;
   }
 `;
 

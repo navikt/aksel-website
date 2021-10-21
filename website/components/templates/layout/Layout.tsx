@@ -6,13 +6,12 @@ import Footer from "./Footer";
 import { PagePropsContext } from "../../../pages/_app";
 import DesignsystemSidebar from "./sidebar/DesignsystemSidebar";
 import { useMedia } from "react-use";
-import { Feedback } from "../..";
+import { Feedback, RelatedPagesLink } from "../..";
 import { useClientLayoutEffect } from "@navikt/ds-react";
 import DesignsystemHeader from "./header/DesignsystemHeader";
 import GodPraksisHeader from "./header/GodPraksisHeader";
 import Sidebar from "./sidebar/Sidebar";
 import { DsNavigationHeadingT } from "../../../lib";
-import RelatedPagesLink from "../../related-pages-link";
 
 const Wrapper = styled.div`
   display: flex;

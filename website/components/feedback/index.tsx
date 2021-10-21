@@ -1,10 +1,14 @@
 import * as S from "./feedback.styles";
-import { BodyShort, Button } from "@navikt/ds-react";
-import React, { useCallback, useEffect, useState } from "react";
-import { MaxWidthContainer } from "../templates/pages/page.styles";
+import { Button, Heading } from "@navikt/ds-react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import { LayoutContext } from "../templates/layout/Layout";
+import { useRouter } from "next/router";
 
 const Feedback = ({ docId }: { docId?: string }): JSX.Element => {
   if (!docId) return null;
+
+  const context = useContext(LayoutContext);
+  const { asPath } = useRouter();
 
   const [step, setStep] = useState(0);
   const [feedbackValue, setFeedbackValue] = useState("");
@@ -56,6 +60,7 @@ const Feedback = ({ docId }: { docId?: string }): JSX.Element => {
     node && node.scrollIntoView();
   }, []);
 
+  // TODO: Changing tab before timeout runs sets step to 3 after its "reset"
   useEffect(() => {
     step === 2 &&
       window.setTimeout(() => {
@@ -63,57 +68,66 @@ const Feedback = ({ docId }: { docId?: string }): JSX.Element => {
       }, 3000);
   }, [step]);
 
+  useEffect(() => {
+    setStep(0);
+  }, [asPath]);
+
   if (step === 3) {
     return null;
   }
 
   return (
-    <MaxWidthContainer>
-      <S.Wrapper>
-        {step === 0 && (
-          <>
-            <BodyShort>Fant du det du lette etter?</BodyShort>
+    <S.Wrapper isMobile={context.isMobile}>
+      {step === 0 && (
+        <S.InnerWrapper>
+          <Heading level="3" size="medium" spacing>
+            Fant du det du lette etter?
+          </Heading>
+          <S.ButtonWrapper>
             <Button variant="secondary" onClick={() => handlePositiveClick()}>
               Ja
             </Button>
             <Button variant="secondary" onClick={() => handleNegativeClick()}>
               Nei
             </Button>
-          </>
-        )}
-        {step === 1 && (
-          <S.Form>
-            <S.FormItems>
-              <S.Textarea
-                ref={setFocus}
-                error={errorMsg}
-                label="Er det noe annet du ønsker å finne her?"
-                value={feedbackValue}
-                onChange={(e) => handleChange(e)}
-                maxLength={200}
-              />
-              <S.Buttons>
-                <Button onClick={(e) => handleSubmit(e)}>Send svar</Button>
-                <Button
-                  variant="secondary"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setStep(2);
-                  }}
-                >
-                  Avbryt
-                </Button>
-              </S.Buttons>
-            </S.FormItems>
-          </S.Form>
-        )}
-        {step === 2 && (
-          <>
-            <BodyShort>Takk for tilbakemeldingen!</BodyShort>
-          </>
-        )}
-      </S.Wrapper>
-    </MaxWidthContainer>
+          </S.ButtonWrapper>
+        </S.InnerWrapper>
+      )}
+      {step === 1 && (
+        <S.Form>
+          <S.FormItems>
+            <S.Textarea
+              ref={setFocus}
+              error={errorMsg}
+              label="Hva ønsket du å finne?"
+              value={feedbackValue}
+              onChange={(e) => handleChange(e)}
+              maxLength={200}
+              minRows={5}
+            />
+            <S.ButtonWrapper>
+              <Button onClick={(e) => handleSubmit(e)}>Send svar</Button>
+              <Button
+                variant="secondary"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setStep(2);
+                }}
+              >
+                Avbryt
+              </Button>
+            </S.ButtonWrapper>
+          </S.FormItems>
+        </S.Form>
+      )}
+      {step === 2 && (
+        <>
+          <Heading as="div" size="medium">
+            Takk for tilbakemeldingen!
+          </Heading>
+        </>
+      )}
+    </S.Wrapper>
   );
 };
 

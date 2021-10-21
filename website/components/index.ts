@@ -14,4 +14,5 @@ export { default as TableOfContents } from "./table-of-contents";
 export * from "./tabs";
 export * from "./tags";
 export * from "./utils";
+export { default as RelatedPagesLink } from "./related-pages-link";
 export { default as UuInteraction } from "./uu-interactions";
