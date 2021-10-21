@@ -3,8 +3,11 @@ import styled from "styled-components";
 export const Icon = styled.div<{ variant: string }>`
   display: flex;
   gap: 0.5rem;
-  align-items: center;
+  font-style: italic;
+
   > svg {
+    vertical-align: top;
+    flex-shrink: 0;
     font-size: 1.25rem;
     color: ${(props) => {
       switch (props.variant) {
@@ -27,7 +30,6 @@ export const Figure = styled.figure`
   flex-direction: column;
   margin: 0;
   min-width: 280px;
-  flex-shrink: 0;
 
   &[data-fullwidth="true"] {
     flex-basis: 100%;

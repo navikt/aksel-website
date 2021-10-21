@@ -1,6 +1,6 @@
 import React from "react";
 import NextImage from "next/image";
-import { BodyLong, Label } from "@navikt/ds-react";
+import { BodyShort } from "@navikt/ds-react";
 import { useSanityImage } from "../../lib/santiy";
 import * as S from "./dodont.styles";
 import { ErrorFilled, SuccessFilled, WarningFilled } from "@navikt/ds-icons";
@@ -24,25 +24,28 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
       </S.FigureBorder>
 
       <S.Caption data-variant={block.variant}>
-        <Label spacing as="div">
-          {block.variant === "do" ? (
-            <S.Icon variant={block.variant}>
-              <SuccessFilled />
-              Gjør dette
-            </S.Icon>
-          ) : block.variant === "warning" ? (
-            <S.Icon variant={block.variant}>
-              <WarningFilled />
-              Pass på dette
-            </S.Icon>
-          ) : (
-            <S.Icon variant={block.variant}>
-              <ErrorFilled />
-              Ikke gjør dette
-            </S.Icon>
-          )}
-        </Label>
-        {block.description && <BodyLong>{block.description}</BodyLong>}
+        {block.variant === "do" ? (
+          <S.Icon variant={block.variant}>
+            <SuccessFilled />
+            {block.description && (
+              <BodyShort size="small">{block.description}</BodyShort>
+            )}
+          </S.Icon>
+        ) : block.variant === "warning" ? (
+          <S.Icon variant={block.variant}>
+            <WarningFilled />
+            {block.description && (
+              <BodyShort size="small">{block.description}</BodyShort>
+            )}
+          </S.Icon>
+        ) : (
+          <S.Icon variant={block.variant}>
+            <ErrorFilled />
+            {block.description && (
+              <BodyShort size="small">{block.description}</BodyShort>
+            )}
+          </S.Icon>
+        )}
       </S.Caption>
     </S.Figure>
   );
