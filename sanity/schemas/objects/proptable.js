@@ -4,7 +4,7 @@ export default {
   type: "object",
   fields: [
     {
-      title: "children-prop required",
+      title: "children-prop required av type React.ReactNode",
       name: "preset_children",
       type: "boolean",
       initialValue: true,
@@ -21,7 +21,26 @@ export default {
       title: "Props",
       description: "Liste med props, tilsvarer en rad i tabellen",
       of: [{ type: "prop_table_prop" }],
-      validation: (Rule) => Rule.required().min(1),
+    },
+    {
+      title: "Bruker OverridableComponent",
+      name: "overridable",
+      type: "boolean",
+      initialValue: false,
+    },
+    {
+      title: "Hvor settes ref",
+      description: "Eks: root element",
+      name: "refplacement",
+      type: "string",
+      initialValue: "root element",
+    },
+    {
+      title: "Hvilken props ekstender komponent-props",
+      description: "Eks: HtmlDivElement, ButtonProps",
+      name: "extends",
+      type: "string",
+      initialValue: "HtmlDivElement",
     },
   ],
   preview: {
