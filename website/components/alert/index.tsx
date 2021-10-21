@@ -9,6 +9,11 @@ const StyledAlert = styled(DsAlert)`
   > * .navds-typo--spacing :last-child {
     margin: 0;
   }
+
+  /* Contrast fix */
+  code {
+    color: var(--navds-color-red-50);
+  }
 `;
 
 const Alert = ({ node }: { node: AlertT }): JSX.Element => {
