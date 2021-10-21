@@ -36,7 +36,7 @@ export default {
     {
       title: "Pakkenavn",
       description: "Kobler komponenten til en eller flere pakker",
-      name: "spesific_component",
+      name: "linked_packages",
       type: "array",
       of: [{ type: "reference", to: [{ type: "ds_package" }] }],
       validation: (Rule) => Rule.required().min(1),
