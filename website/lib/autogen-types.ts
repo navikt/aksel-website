@@ -926,6 +926,20 @@ export type GpBlockContent = Array<
 export type PropTable = {
   _type: "prop_table";
   /**
+   * children-prop required — `boolean`
+   *
+   *
+   */
+  preset_children?: boolean;
+
+  /**
+   * className-prop — `boolean`
+   *
+   *
+   */
+  preset_classname?: boolean;
+
+  /**
    * Props — `array`
    *
    * Liste med props, tilsvarer en rad i tabellen
