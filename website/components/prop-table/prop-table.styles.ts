@@ -9,7 +9,7 @@ export const PropTable = styled.div`
 
 export const Table = styled.table`
   border-collapse: collapse;
-  margin-top: 3rem;
+  margin-top: 0.75rem;
 
   code,
   * {
