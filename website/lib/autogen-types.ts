@@ -926,7 +926,7 @@ export type GpBlockContent = Array<
 export type PropTable = {
   _type: "prop_table";
   /**
-   * children-prop required — `boolean`
+   * children-prop required av type React.ReactNode — `boolean`
    *
    *
    */
@@ -945,6 +945,27 @@ export type PropTable = {
    * Liste med props, tilsvarer en rad i tabellen
    */
   props?: Array<SanityKeyed<PropTableProp>>;
+
+  /**
+   * Bruker OverridableComponent — `boolean`
+   *
+   *
+   */
+  overridable?: boolean;
+
+  /**
+   * Hvor settes ref — `string`
+   *
+   * Eks: root element
+   */
+  refplacement?: string;
+
+  /**
+   * Hvilken props ekstender komponent-props — `string`
+   *
+   * Eks: HtmlDivElement, ButtonProps
+   */
+  extends?: string;
 };
 
 export type PropTableProp = {

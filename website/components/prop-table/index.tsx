@@ -1,4 +1,4 @@
-import { Tag } from "@navikt/ds-react";
+import { BodyLong, Link, Tag } from "@navikt/ds-react";
 import React from "react";
 import { withErrorBoundary } from "..";
 import {
@@ -7,48 +7,94 @@ import {
 } from "../../lib/autogen-types";
 import { StyledCode } from "../SanityBlockContent";
 import * as S from "./prop-table.styles";
+import NextLink from "next/link";
 
 const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
-  if (!node.props || node.props.length === 0) {
-    return null;
-  }
+  const Table = ({ prop }: { prop: PropTablePropT }) => (
+    <S.Table>
+      <S.Caption>
+        {prop.required && <S.Required>Required</S.Required>}
+        <Tag variant="info">{prop.name}</Tag>
+      </S.Caption>
+      <S.Tbody>
+        <tr>
+          <S.Th className="navds-heading navds-heading--xsmall">
+            Description
+          </S.Th>
+          <S.Td className="navds-body-short">
+            {prop.description ? prop.description : <span>-</span>}
+          </S.Td>
+        </tr>
+        <tr>
+          <S.Th className="navds-heading navds-heading--xsmall">Type</S.Th>
+          <S.Td className="navds-body-short">
+            <pre style={{ margin: 0 }}>
+              <StyledCode>{prop.type.replaceAll("| ", "|\n")}</StyledCode>
+            </pre>
+          </S.Td>
+        </tr>
+        <tr>
+          <S.Th className="navds-heading navds-heading--xsmall">Default</S.Th>
+          <S.Td className="navds-body-short">
+            {prop.default ? (
+              <StyledCode>{prop.default}</StyledCode>
+            ) : (
+              <span>-</span>
+            )}
+          </S.Td>
+        </tr>
+      </S.Tbody>
+    </S.Table>
+  );
 
   return (
     <S.PropTable>
-      {node.props.map((prop: PropTablePropT) => (
-        <S.Table key={prop.name}>
-          <S.Caption>
-            <Tag variant="info">{`${prop.name}${
-              prop.required ? "*" : ""
-            }`}</Tag>
-          </S.Caption>
-          <S.Tbody>
-            <tr>
-              <S.Th className="navds-heading navds-heading--xsmall">
-                Description
-              </S.Th>
-              <S.Td className="navds-body-short">
-                {prop.description ? prop.description : <span>-</span>}
-              </S.Td>
-            </tr>
-            <tr>
-              <S.Th className="navds-heading navds-heading--xsmall">Type</S.Th>
-              <S.Td className="navds-body-short">
-                <pre style={{ margin: 0 }}>
-                  <StyledCode>{prop.type.replaceAll("| ", "|\n")}</StyledCode>
-                </pre>
-              </S.Td>
-            </tr>
-            <tr>
-              <S.Th className="navds-heading navds-heading--xsmall">
-                Default
-              </S.Th>
-              <S.Td className="navds-body-short">
-                {prop.default ? prop.default : <span>-</span>}
-              </S.Td>
-            </tr>
-          </S.Tbody>
-        </S.Table>
+      <BodyLong>
+        <ul>
+          {node.overridable && (
+            <li>
+              Komponenten er implementert med{" "}
+              <NextLink href="#" passHref>
+                <Link>OverridableComponent</Link>
+              </NextLink>
+            </li>
+          )}
+          {node.refplacement && (
+            <li>
+              <StyledCode>ref</StyledCode> er plassert på {node.refplacement}
+            </li>
+          )}
+          {node.extends && (
+            <li>
+              Props extends <StyledCode>{node.extends}</StyledCode>
+            </li>
+          )}
+        </ul>
+      </BodyLong>
+
+      {node.preset_children && (
+        <Table
+          prop={{
+            _type: "prop_table_prop",
+            name: "children",
+            type: "React.ReactNode",
+            required: true,
+          }}
+        />
+      )}
+      {node.preset_classname && (
+        <Table
+          prop={{
+            _type: "prop_table_prop",
+            name: "className",
+            type: "string",
+            required: false,
+          }}
+        />
+      )}
+
+      {node?.props?.map((prop: PropTablePropT) => (
+        <Table key={prop.name} prop={prop} />
       ))}
     </S.PropTable>
   );

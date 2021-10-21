@@ -1,3 +1,4 @@
+import { Detail } from "@navikt/ds-react";
 import styled from "styled-components";
 
 export const PropTable = styled.div`
@@ -5,6 +6,12 @@ export const PropTable = styled.div`
   max-width: 600px;
   position: relative;
   overflow-x: auto;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    padding-left: 1.25rem;
+  }
 `;
 
 export const Table = styled.table`
@@ -29,6 +36,12 @@ export const Caption = styled.caption`
   text-align: left;
   margin: 0;
   margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Required = styled(Detail)`
+  color: var(--navds-color-red-50);
 `;
 
 export const Tbody = styled.tbody`
