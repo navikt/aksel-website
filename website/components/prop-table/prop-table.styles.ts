@@ -12,16 +12,16 @@ export const PropTable = styled.div`
     padding: 0;
     padding-left: 1.25rem;
   }
+
+  > p:first-of-type {
+    border-bottom: 1px solid var(--navds-color-gray-20);
+    padding-bottom: 1.5rem;
+  }
 `;
 
 export const Table = styled.table`
   border-collapse: collapse;
   margin-top: 0.75rem;
-
-  ::first-child {
-    border-bottom: 1px solid var(--navds-color-gray-20);
-    padding-bottom: 1.5rem;
-  }
 
   code,
   * {

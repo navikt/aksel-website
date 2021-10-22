@@ -1,7 +1,6 @@
 import { useClientLayoutEffect } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import { useContext } from "react";
-import { isDevelopment } from "../../components";
 import PreviewBanner from "../../components/PreviewBanner";
 import TemplatePicker from "../../components/templates/TemplatePicker";
 import {
@@ -147,7 +146,7 @@ export const getStaticProps = async ({
     .slice(0, 2)
     .join("/");
 
-  const enablePreview = !!preview || isDevelopment();
+  const enablePreview = !!preview;
   const client = getClient(enablePreview);
   const page = await client.fetch(dsDocumentBySlug, {
     slug: "designsystem/" + joinedSlug,
