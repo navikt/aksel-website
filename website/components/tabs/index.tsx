@@ -11,36 +11,10 @@ export const Tabs = ({
   children: React.ReactNode;
 }): JSX.Element => {
   const context = useContext(LayoutContext);
-  const tabRef = useRef<HTMLElement | null>(null);
-  const [isSticky, setIsSticky] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!tabRef.current) return null;
-      const top = tabRef.current.getBoundingClientRect().top;
-
-      if (top === 0) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
-    };
-    const func = throttle(handleScroll, 50);
-
-    window.addEventListener("scroll", func);
-    return () => {
-      window.removeEventListener("scroll", func);
-    };
-  }, []);
 
   return (
-    <S.Nav
-      ref={tabRef}
-      isMobile={context.isMobile}
-      aria-label="Tabmeny for sideinnhold"
-      sticky={isSticky}
-    >
-      <S.Ul isMobile={context.isMobile} role="tablist" sticky={isSticky}>
+    <S.Nav isMobile={context.isMobile} aria-label="Tabmeny for sideinnhold">
+      <S.Ul isMobile={context.isMobile} role="tablist">
         {children}
       </S.Ul>
     </S.Nav>
