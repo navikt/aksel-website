@@ -14,10 +14,6 @@ export const MaxWidthContainerDiv = styled.div<{ isMobile: boolean }>`
   margin: ${(props) =>
     props.isMobile ? "0 auto" : "0 auto 0 var(--navds-spacing-4)"};
 
-  @media (max-width: 1064px) {
-    padding: 0 var(--navds-spacing-8) 1rem var(--navds-spacing-4);
-  }
-
   @media (max-width: 564px) {
     margin: 0;
     padding-left: var(--navds-spacing-4);

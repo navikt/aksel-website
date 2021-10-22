@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext } from "react";
 import { LayoutContext } from "../templates/layout/Layout";
-import throttle from "lodash.throttle";
 import * as S from "./tabs.styles";
 
 export const Tabs = ({
