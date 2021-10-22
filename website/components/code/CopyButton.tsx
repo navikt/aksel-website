@@ -19,7 +19,6 @@ const ScButton = styled.button`
   background-color: var(--navds-color-darkgray);
   height: 48px;
   width: 4rem;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,7 +36,28 @@ const ScButton = styled.button`
   }
 `;
 
-const CopyButton = ({ content }: { content: string }) => {
+const ScTabButton = styled.button`
+  ${S.ButtonCss}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+
+  :active {
+    background-color: var(--navds-color-blue-20);
+  }
+  > svg {
+    font-size: 1.5rem;
+  }
+`;
+
+const CopyButton = ({
+  content,
+  inTabs,
+}: {
+  content: string;
+  inTabs?: boolean;
+}) => {
   const [active, setActive] = useState(false);
 
   const timeoutRef = useRef<NodeJS.Timeout>();
@@ -54,11 +74,10 @@ const CopyButton = ({ content }: { content: string }) => {
     setActive(true);
   };
 
+  const Button = inTabs ? ScTabButton : ScButton;
+
   return (
-    <ScButton
-      className="navds-body-short navds-body--small"
-      onClick={handleCopy}
-    >
+    <Button className="navds-body-short" onClick={handleCopy}>
       {active ? (
         <SuccessStroke
           focusable="false"
@@ -68,7 +87,7 @@ const CopyButton = ({ content }: { content: string }) => {
       ) : (
         "Copy"
       )}
-    </ScButton>
+    </Button>
   );
 };
 

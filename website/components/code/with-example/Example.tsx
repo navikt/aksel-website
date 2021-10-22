@@ -108,12 +108,12 @@ const Code = ({ node }: { node: DsCodeExampleT }): JSX.Element => {
       }}
     >
       <ScDiv>
-        {showPreview && (
+        {showTabs && <CodeTabs />}
+        {showPreview && activeTab === -1 && (
           <ScExampleDiv>
             <CodePreview />
           </ScExampleDiv>
         )}
-        {showTabs && <CodeTabs />}
         {(node.tabs || tabs) &&
           tabs.map((tab, i) => (
             <CodeBlock key={tab.content.toString()} index={i} />

@@ -35,6 +35,7 @@ const ScDiv = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  border-bottom: 1px solid var(--navds-color-gray-20);
 `;
 
 const ScInnerDiv = styled.div`

@@ -8,7 +8,7 @@ import CopyButton from "../CopyButton";
 import { CodeContext } from "./Example";
 
 const CodeBlock = ({ index }: { index: number }): JSX.Element => {
-  const { tabs, showTabs, activeTab } = useContext(CodeContext);
+  const { tabs, showTabs, activeTab, showPreview } = useContext(CodeContext);
 
   if (activeTab === -1) {
     return null;
@@ -27,7 +27,9 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
   return (
     <>
       <S.PreWrapper active={activeTab === index}>
-        <CopyButton content={tabs[index].content.toString()} />
+        {!showPreview && (
+          <CopyButton content={tabs[index].content.toString()} />
+        )}
         <S.Pre data-tabs={showTabs}>
           <S.Code dangerouslySetInnerHTML={{ __html: highlighted }} />
         </S.Pre>

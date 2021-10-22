@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { CodeContext } from "./Example";
 import * as S from "../code.styles";
 import styled from "styled-components";
+import CopyButton from "../CopyButton";
 
 export const ScTabs = styled.div`
   background-color: #f7f7f7;
@@ -12,6 +13,7 @@ export const ScTabs = styled.div`
   display: flex;
   justify-content: space-between;
   border: 1px solid var(--navds-color-gray-20);
+  border-bottom: none;
 
   ul,
   li {
@@ -26,7 +28,7 @@ const ScFlex = styled.div`
   display: flex;
 `;
 
-export const ScLinkButton = styled.a`
+const ScLinkButton = styled.a`
   ${S.ButtonCss}
   text-decoration: none;
 
@@ -51,6 +53,16 @@ const CodeTabs = (): JSX.Element => {
     <>
       <ScTabs>
         <ul role="tablist">
+          <li role="presentation">
+            <ScButton
+              role="tab"
+              className="navds-body-short navds-body--small"
+              onClick={() => setActiveTab(-1)}
+              aria-selected={activeTab === -1}
+            >
+              {"Preview"}
+            </ScButton>
+          </li>
           {tabs.map((tab, i) => (
             <li key={tab.content.toString()} role="presentation">
               <ScButton
@@ -68,6 +80,9 @@ const CodeTabs = (): JSX.Element => {
         </ul>
 
         <ScFlex>
+          {activeTab !== -1 && (
+            <CopyButton content={tabs[activeTab].content.toString()} inTabs />
+          )}
           {showPreview && fullscreenLink && (
             <ScLinkButton target="_blank" href={fullscreenLink}>
               <span className="sr-only">Åpne eksempel i ny tab</span>
