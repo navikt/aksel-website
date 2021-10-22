@@ -82,7 +82,7 @@ const CodeTabs = (): JSX.Element => {
           {activeTab !== -1 && (
             <CopyButton content={tabs[activeTab].content.toString()} inTabs />
           )}
-          {showPreview && fullscreenLink && (
+          {showPreview && fullscreenLink && activeTab === -1 && (
             <ScLinkButton target="_blank" href={fullscreenLink}>
               <span className="sr-only">Åpne eksempel i ny tab</span>
               <NewTab focusable="false" role="presentation" />

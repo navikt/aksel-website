@@ -1,5 +1,5 @@
 import { Close, Search } from "@navikt/ds-icons";
-import { SearchFieldInput } from "@navikt/ds-react";
+import { SearchField } from "@navikt/ds-react";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { LayoutContext } from "../Layout";
 import { HeaderContext } from "./Header";
@@ -30,7 +30,7 @@ const HeaderSearchBar = (): JSX.Element => {
         $isMobile={context.isMobile}
         open={openSearchBar}
       >
-        <SearchFieldInput
+        <SearchField.Input
           ref={inputRef}
           value={value}
           onChange={(e) => setValue(e.target.value)}
