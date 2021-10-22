@@ -1,22 +1,24 @@
 import React from "react";
-import { ErrorSummary, ErrorSummaryItem } from "@navikt/ds-react";
+import { ErrorSummary } from "@navikt/ds-react";
 
 export const ErrorSummaryExample = () => (
   <>
     <ErrorSummary heading="Du må fikse disse feilene før du kan sende inn søknad.">
-      <ErrorSummaryItem href="#1">Felt må fylles ut med alder</ErrorSummaryItem>
-      <ErrorSummaryItem href="#2">
+      <ErrorSummary.Item href="#1">
+        Felt må fylles ut med alder
+      </ErrorSummary.Item>
+      <ErrorSummary.Item href="#2">
         Tekstfeltet må ha en godkjent e-mail
-      </ErrorSummaryItem>
+      </ErrorSummary.Item>
     </ErrorSummary>
   </>
 );
 
 ErrorSummaryExample.react = `<ErrorSummary heading="Du må fikse disse feilene før du kan sende inn søknad.">
-<ErrorSummaryItem href="#1">Felt må fylles ut med alder</ErrorSummaryItem>
-<ErrorSummaryItem href="#2">
+<ErrorSummary.Item href="#1">Felt må fylles ut med alder</ErrorSummary.Item>
+<ErrorSummary.Item href="#2">
   Tekstfeltet må ha en godkjent e-mail
-</ErrorSummaryItem>
+</ErrorSummary.Item>
 </ErrorSummary>`;
 
 export const ErrorSummarySmall = () => (
@@ -25,19 +27,21 @@ export const ErrorSummarySmall = () => (
       size="small"
       heading="Du må fikse disse feilene før du kan sende inn søknad."
     >
-      <ErrorSummaryItem href="#1">Felt må fylles ut med alder</ErrorSummaryItem>
-      <ErrorSummaryItem href="#2">
+      <ErrorSummary.Item href="#1">
+        Felt må fylles ut med alder
+      </ErrorSummary.Item>
+      <ErrorSummary.Item href="#2">
         Tekstfeltet må ha en godkjent e-mail
-      </ErrorSummaryItem>
+      </ErrorSummary.Item>
     </ErrorSummary>
   </>
 );
 
 ErrorSummarySmall.react = `<ErrorSummary size="small" heading="Du må fikse disse feilene før du kan sende inn søknad.">
-<ErrorSummaryItem href="#1">Felt må fylles ut med alder</ErrorSummaryItem>
-<ErrorSummaryItem href="#2">
+<ErrorSummary.Item href="#1">Felt må fylles ut med alder</ErrorSummary.Item>
+<ErrorSummary.Item href="#2">
   Tekstfeltet må ha en godkjent e-mail
-</ErrorSummaryItem>
+</ErrorSummary.Item>
 </ErrorSummary>`;
 
 export const ErrorSummaryWithCustomHeading = () => (
@@ -46,17 +50,19 @@ export const ErrorSummaryWithCustomHeading = () => (
       headingTag="h3"
       heading="Du må fikse disse feilene før du kan sende inn søknad."
     >
-      <ErrorSummaryItem href="#1">Felt må fylles ut med alder</ErrorSummaryItem>
-      <ErrorSummaryItem href="#2">
+      <ErrorSummary.Item href="#1">
+        Felt må fylles ut med alder
+      </ErrorSummary.Item>
+      <ErrorSummary.Item href="#2">
         Tekstfeltet må ha en godkjent e-mail
-      </ErrorSummaryItem>
+      </ErrorSummary.Item>
     </ErrorSummary>
   </>
 );
 
 ErrorSummaryWithCustomHeading.react = `<ErrorSummary headingTag="h3" heading="Du må fikse disse feilene før du kan sende inn søknad.">
-<ErrorSummaryItem href="#1">Felt må fylles ut med alder</ErrorSummaryItem>
-<ErrorSummaryItem href="#2">
+<ErrorSummary.Item href="#1">Felt må fylles ut med alder</ErrorSummary.Item>
+<ErrorSummary.Item href="#2">
   Tekstfeltet må ha en godkjent e-mail
-</ErrorSummaryItem>
+</ErrorSummary.Item>
 </ErrorSummary>`;
