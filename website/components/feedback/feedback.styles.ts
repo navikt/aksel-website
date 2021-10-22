@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Textarea as DsTextarea } from "@navikt/ds-react";
+import { Textarea as DsTextarea, Heading as DsHeading } from "@navikt/ds-react";
 
 export const Wrapper = styled.div<{ isMobile?: boolean }>`
   max-width: 664px;
@@ -64,4 +64,13 @@ export const Buttons = styled.div`
   display: inline-flex;
   gap: 1rem;
   justify-self: flex-start;
+`;
+
+export const Heading = styled(DsHeading)`
+  opacity: 1;
+  transition: opacity 400ms;
+
+  &[aria-hidden="true"] {
+    opacity: 0;
+  }
 `;

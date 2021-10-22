@@ -62,19 +62,17 @@ const Feedback = ({ docId }: { docId?: string }): JSX.Element => {
 
   // TODO: Changing tab before timeout runs sets step to 3 after its "reset"
   useEffect(() => {
-    step === 2 &&
+    const timeout =
+      step === 2 &&
       window.setTimeout(() => {
         setStep(3);
       }, 3000);
+    return () => timeout && window.clearTimeout(timeout);
   }, [step]);
 
   useEffect(() => {
     setStep(0);
   }, [asPath]);
-
-  if (step === 3) {
-    return null;
-  }
 
   return (
     <S.Wrapper isMobile={context.isMobile}>
@@ -120,11 +118,11 @@ const Feedback = ({ docId }: { docId?: string }): JSX.Element => {
           </S.FormItems>
         </S.Form>
       )}
-      {step === 2 && (
+      {(step === 2 || step === 3) && (
         <>
-          <Heading as="div" size="medium">
+          <S.Heading forwardedAs="div" size="medium" aria-hidden={step === 3}>
             Takk for tilbakemeldingen!
-          </Heading>
+          </S.Heading>
         </>
       )}
     </S.Wrapper>

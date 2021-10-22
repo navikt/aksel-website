@@ -9,7 +9,7 @@ import { PagePropsContext } from "../../pages/_app";
 const ScWrapper = styled.div<{ context: LayoutContextProps }>`
   width: 100%;
   background-color: var(--navds-color-gray-80);
-  padding: 0 1.5rem;
+  padding: 0 0;
 
   display: flex;
   justify-content: ${(props) =>
@@ -26,25 +26,31 @@ const ScInnerWrapper = styled.div<{ context: LayoutContextProps }>`
   flex-wrap: wrap;
   justify-content: ${(props) =>
     props.context.isMobile ? "center" : "flex-start"};
-  max-width: 600px;
-`;
+  max-width: 648px;
 
-const ScLink = styled.a`
-  color: white;
-  text-decoration: none;
-  padding: 1rem 1rem;
-  height: 7rem;
-  flex: 1 1;
-  max-width: 400px;
-  transition: background-color 200ms;
+  > * {
+    color: white;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    height: 7rem;
+    flex: 1 1;
+    max-width: 400px;
+    transition: background-color 200ms;
+    padding: ${(props) =>
+      props.context.isMobile ? "1rem 1.5rem" : "1rem 3rem"};
 
-  :hover {
-    background-color: var(--navds-color-gray-60);
-  }
+    @media (max-width: 564px) {
+      padding: 1rem;
+    }
 
-  :focus {
-    outline: none;
-    box-shadow: inset 0 0 0 3px var(--navds-color-blue-10);
+    :hover {
+      background-color: var(--navds-color-gray-60);
+    }
+
+    :focus {
+      outline: none;
+      box-shadow: inset 0 0 0 3px var(--navds-color-blue-10);
+    }
   }
 `;
 
@@ -87,22 +93,22 @@ const RelatedPagesLink = () => {
       <ScInnerWrapper context={context}>
         {links.prev && (
           <NextLink href={`/${links.prev.link.slug.current}`} passHref>
-            <ScLink>
+            <a>
               <BodyShort size="small">Forrige</BodyShort>
               <Heading as="div" size="medium">
                 {links.prev.title}
               </Heading>
-            </ScLink>
+            </a>
           </NextLink>
         )}
         {links.next && (
           <NextLink href={`/${links.next.link.slug.current}`} passHref>
-            <ScLink>
+            <a>
               <BodyShort size="small">Neste</BodyShort>
               <Heading as="div" size="medium">
                 {links.next.title}
               </Heading>
-            </ScLink>
+            </a>
           </NextLink>
         )}
       </ScInnerWrapper>
