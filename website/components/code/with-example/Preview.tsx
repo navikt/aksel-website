@@ -35,6 +35,11 @@ const ScDiv = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  background-image: linear-gradient(
+    330deg,
+    var(--colors-purple9) 0%,
+    var(--colors-indigo9) 100%
+  );
 `;
 
 const ScInnerDiv = styled.div`
@@ -46,7 +51,6 @@ const ScInnerDiv = styled.div`
   position: relative;
   width: 100%;
   justify-content: center;
-  isolation: isolate;
 `;
 
 const CodePreview = (): JSX.Element => {

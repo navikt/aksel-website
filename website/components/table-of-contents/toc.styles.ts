@@ -18,8 +18,8 @@ export const Div = styled.div`
     content: "";
     background-color: var(--navds-color-gray-40);
     width: 1px;
-    height: calc(100% - 1.6rem);
-    margin-top: 1.3rem;
+    height: calc(100% - 1px);
+    margin-top: 0.5rem;
     position: absolute;
     left: -1px;
   }
