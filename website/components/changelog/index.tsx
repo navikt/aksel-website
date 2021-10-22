@@ -59,7 +59,7 @@ const Changelog = ({
   return (
     <S.Changelog>
       <div>
-        <LevelTwoHeading divider>Changelog</LevelTwoHeading>
+        <LevelTwoHeading>Changelog</LevelTwoHeading>
         <S.ChangelogButton onClick={() => setOpen(true)} variant="tertiary">
           Vis changelog
         </S.ChangelogButton>

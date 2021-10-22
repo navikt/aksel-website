@@ -68,7 +68,7 @@ const serializers = {
             </Detail>
           );
         case "h2": {
-          return <LevelTwoHeading divider={false}>{children}</LevelTwoHeading>;
+          return <LevelTwoHeading>{children}</LevelTwoHeading>;
         }
         case "h3":
           return (
