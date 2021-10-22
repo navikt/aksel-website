@@ -69,12 +69,8 @@ const CodeTabs = (): JSX.Element => {
 
         <ScFlex>
           {showPreview && fullscreenLink && (
-            <ScLinkButton
-              target="_blank"
-              href={fullscreenLink}
-              aria-label="Åpner eksempel i ny tab"
-            >
-              <span className="sr-only">åpne eksempel i ny tab</span>
+            <ScLinkButton target="_blank" href={fullscreenLink}>
+              <span className="sr-only">Åpne eksempel i ny tab</span>
               <NewTab focusable="false" role="presentation" />
             </ScLinkButton>
           )}

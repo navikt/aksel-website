@@ -46,6 +46,7 @@ const ScInnerDiv = styled.div`
   position: relative;
   width: 100%;
   justify-content: center;
+  isolation: isolate;
 `;
 
 const CodePreview = (): JSX.Element => {

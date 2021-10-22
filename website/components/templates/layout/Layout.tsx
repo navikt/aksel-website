@@ -31,6 +31,10 @@ const ScMain = styled.main`
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  :focus {
+    outline: none;
+  }
 `;
 
 const ScPlaceholderPadding = styled.div`
@@ -129,7 +133,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div style={{ position: "relative" }}>
-        <ScSkipLink href="#hovedinnhold" tab-index={-1} id="skip-link">
+        <ScSkipLink href="#hovedinnhold" tab-index={-1}>
           Hopp til innhold
         </ScSkipLink>
         <LayoutContext.Provider
@@ -139,7 +143,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
           <ScWrapper>
             <Sidebar />
             <ScContentWrapper>
-              <ScMain id="hovedinnhold">
+              <ScMain tabIndex={-1} id="hovedinnhold">
                 {children}
                 <ScGrow />
                 <Feedback docId={pageProps?.page?._id} />

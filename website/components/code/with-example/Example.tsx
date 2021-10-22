@@ -39,7 +39,7 @@ const ScDiv = styled.div`
   flex-direction: column;
 `;
 
-const ScExampleDiv = styled.aside`
+const ScExampleDiv = styled.div`
   background-color: #f7f7f7;
   display: flex;
   justify-content: center;
