@@ -13,7 +13,6 @@ export const ScTabs = styled.div`
   display: flex;
   justify-content: space-between;
   border: 1px solid var(--navds-color-gray-20);
-  border-bottom: none;
 
   ul,
   li {

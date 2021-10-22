@@ -7,10 +7,8 @@ import { Link as LinkIcon } from "@navikt/ds-icons";
 
 const LevelTwoHeading = ({
   children,
-  divider = false,
 }: {
   children: React.ReactNode;
-  divider?: boolean;
 }): JSX.Element => {
   const anchorRef = useRef(null);
   const [openPopover, setOpenPopover] = useState(false);
@@ -40,11 +38,6 @@ const LevelTwoHeading = ({
 
   return (
     <>
-      {/* {children && (
-        <S.Divider divider={divider}>
-          <S.Hr />
-        </S.Divider>
-      )} */}
       <S.TitleWithScrollMargin id={slug} spacing level={2} size="large">
         {children}
         <S.Anchor
@@ -59,8 +52,6 @@ const LevelTwoHeading = ({
       </S.TitleWithScrollMargin>
 
       <Popover
-        role="alert"
-        aria-atomic="true"
         anchorEl={anchorRef.current}
         open={openPopover}
         onClose={() => setOpenPopover(false)}

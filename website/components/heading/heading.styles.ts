@@ -8,26 +8,6 @@ export const TitleWithScrollMargin = styled(Heading)`
   justify-content: flex-start;
 `;
 
-export const Divider = styled.div<{ divider?: boolean }>`
-  padding: 0 6rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-
-  ${(props) =>
-    props.divider
-      ? ``
-      : `:first-child {
-  display: none;
-}`}
-`;
-
-export const Hr = styled.hr`
-  border: 1px solid rgb(201, 201, 201, 0.4);
-  margin: 0;
-`;
-
 export const Anchor = styled.button`
   background-color: transparent;
   border: none;

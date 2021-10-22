@@ -46,6 +46,7 @@ const ScExampleDiv = styled.div`
   padding: 0;
   position: relative;
   border: 1px solid var(--navds-color-gray-20);
+  border-top: none;
   border-bottom: none;
 
   :only-child {
