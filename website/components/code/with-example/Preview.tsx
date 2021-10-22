@@ -7,7 +7,13 @@ import { useId } from "@navikt/ds-react";
 import styled from "styled-components";
 import React from "react";
 
-const formatCode = (code, tag) => {
+/**
+ *
+ * @param code Code to format
+ * @param tag Tag to wrap code in. Defaults to <></>
+ * @returns string
+ */
+const formatCode = (code: string, tag: string) => {
   try {
     const formated = prettier.format(`<${tag ?? ""}>${code}</${tag ?? ""}>`, {
       parser: "babel",
@@ -22,7 +28,7 @@ const formatCode = (code, tag) => {
   }
 };
 
-const Wrapper = styled.div`
+const ScDiv = styled.div`
   display: flex;
   padding: 2rem;
   flex-direction: column;
@@ -31,7 +37,7 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const InnerWrapper = styled.div`
+const ScInnerDiv = styled.div`
   gap: 1rem;
   align-items: "center";
   flex-wrap: wrap;
@@ -45,7 +51,7 @@ const InnerWrapper = styled.div`
 const CodePreview = (): JSX.Element => {
   const { node, setTabs, setFullscreenLink } = useContext(CodeContext);
 
-  const [url, setUrl] = useState<any>();
+  const [url, setUrl] = useState<string>();
   const id = useId();
   const [wrapperRef, setWrapperRef] = useState(null);
 
@@ -94,11 +100,15 @@ const CodePreview = (): JSX.Element => {
   const Comp = CodeExample(url);
 
   return (
-    <Wrapper>
-      <InnerWrapper ref={setWrapperRef}>
-        <Comp />
-      </InnerWrapper>
-    </Wrapper>
+    <>
+      {Comp && (
+        <ScDiv>
+          <ScInnerDiv ref={setWrapperRef}>
+            <Comp />
+          </ScInnerDiv>
+        </ScDiv>
+      )}
+    </>
   );
 };
 

@@ -1,27 +1,5 @@
 import styled, { css } from "styled-components";
 
-/* Example */
-export const Wrapper = styled.div`
-  width: 100%;
-  margin-bottom: var(--navds-spacing-12);
-  display: flex;
-  flex-direction: column;
-`;
-
-export const Example = styled.div`
-  background-color: #f7f7f7;
-  display: flex;
-  justify-content: center;
-  padding: 0;
-  position: relative;
-  border: 1px solid var(--navds-color-gray-20);
-  border-bottom: none;
-
-  :only-child {
-    border-bottom: 1px solid var(--navds-color-gray-20);
-  }
-`;
-
 export const ButtonCss = css`
   border: none;
   color: rgba(255, 255, 255, 0.85);
@@ -45,25 +23,6 @@ export const ButtonCss = css`
   &[aria-selected="true"] {
     box-shadow: inset 0 -2px 0 0 white;
     color: white;
-  }
-`;
-
-export const CopyButton = styled.button`
-  ${ButtonCss}
-  position: absolute;
-  top: 3px;
-  right: 8px;
-  border-radius: 4px;
-  background-color: var(--navds-color-darkgray);
-  height: 48px;
-  width: 4rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  > svg {
-    font-size: 1.5rem;
   }
 `;
 

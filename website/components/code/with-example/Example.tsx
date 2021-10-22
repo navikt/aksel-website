@@ -3,8 +3,8 @@ import { withErrorBoundary } from "../../error-boundary";
 import CodeBlock from "./Block";
 import CodePreview from "./Preview";
 import CodeTabs from "./Tabs";
-import * as S from "../code.styles";
 import { DsCodeExample as DsCodeExampleT } from "../../../lib/autogen-types";
+import styled from "styled-components";
 
 type TabType = { name: string; content: React.ReactNode; language?: string };
 
@@ -31,6 +31,27 @@ export const CodeContext = createContext<ContextProps>({
   fullscreenLink: "",
   setFullscreenLink: () => null,
 });
+
+const ScDiv = styled.div`
+  width: 100%;
+  margin-bottom: var(--navds-spacing-12);
+  display: flex;
+  flex-direction: column;
+`;
+
+const ScExampleDiv = styled.div`
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  border: 1px solid var(--navds-color-gray-20);
+  border-bottom: none;
+
+  :only-child {
+    border-bottom: 1px solid var(--navds-color-gray-20);
+  }
+`;
 
 const Code = ({ node }: { node: DsCodeExampleT }): JSX.Element => {
   const [tabs, setTabs] = useState<TabType[]>(
@@ -86,18 +107,18 @@ const Code = ({ node }: { node: DsCodeExampleT }): JSX.Element => {
         setFullscreenLink,
       }}
     >
-      <S.Wrapper>
+      <ScDiv>
         {showPreview && (
-          <S.Example>
+          <ScExampleDiv>
             <CodePreview />
-          </S.Example>
+          </ScExampleDiv>
         )}
         {showTabs && <CodeTabs />}
         {(node.tabs || tabs) &&
           tabs.map((tab, i) => (
             <CodeBlock key={tab.content.toString()} index={i} />
           ))}
-      </S.Wrapper>
+      </ScDiv>
     </CodeContext.Provider>
   );
 };

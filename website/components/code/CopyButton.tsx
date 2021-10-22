@@ -2,11 +2,31 @@ import { SuccessStroke } from "@navikt/ds-icons";
 import { useRef, useState, useEffect } from "react";
 import * as S from "./code.styles";
 import copy from "copy-to-clipboard";
+import styled from "styled-components";
 
 const copyCode = (content: string) =>
   copy(content, {
     format: "text/plain",
   });
+
+const ScButton = styled.button`
+  ${S.ButtonCss}
+  position: absolute;
+  top: 3px;
+  right: 8px;
+  border-radius: 4px;
+  background-color: var(--navds-color-darkgray);
+  height: 48px;
+  width: 4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > svg {
+    font-size: 1.5rem;
+  }
+`;
 
 const CopyButton = ({ content }: { content: string }) => {
   const [active, setActive] = useState(false);
@@ -26,12 +46,12 @@ const CopyButton = ({ content }: { content: string }) => {
   };
 
   return (
-    <S.CopyButton
+    <ScButton
       className="navds-body-short navds-body--small"
       onClick={handleCopy}
     >
       {active ? <SuccessStroke /> : "Copy"}
-    </S.CopyButton>
+    </ScButton>
   );
 };
 
