@@ -38,6 +38,7 @@ export const FigmaIconGrayScale = ({ ...props }): JSX.Element => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
     aria-label="Figma ikon"
+    focusable="false"
   >
     <g clipPath="url(#clip0)">
       <path

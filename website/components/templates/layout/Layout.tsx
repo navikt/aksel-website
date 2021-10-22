@@ -13,33 +13,27 @@ import GodPraksisHeader from "./header/GodPraksisHeader";
 import Sidebar from "./sidebar/Sidebar";
 import { DsNavigationHeadingT } from "../../../lib";
 
-const Wrapper = styled.div`
+const ScWrapper = styled.div`
   display: flex;
-  min-height: calc(100vh - 56px);
+  min-height: calc(100vh - var(--header-height));
   justify-content: center;
   background-color: #ffffff;
 `;
 
-const ContentWrapper = styled.div`
+const ScContentWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   position: relative;
 `;
 
-const Main = styled.main`
-  min-height: calc(100vh - 64px);
+const ScMain = styled.main`
+  min-height: calc(100vh - var(--header-height));
   display: flex;
   flex-direction: column;
   width: 100%;
 `;
 
-export type LayoutContextProps = {
-  isMobile: boolean;
-  version: "ds" | "gp";
-  activeHeading?: DsNavigationHeadingT;
-};
-
-const PlaceholderPadding = styled.div`
+const ScPlaceholderPadding = styled.div`
   width: 288px;
   padding: var(--navds-spacing-8) 0;
   position: relative;
@@ -56,10 +50,28 @@ const PlaceholderPadding = styled.div`
   }
 `;
 
-const Grow = styled.div`
+const ScGrow = styled.div`
   flex: 1 1;
   height: 100%;
   margin-bottom: auto;
+`;
+
+const ScSkipLink = styled.a`
+  background: var(--navds-color-deepblue-80);
+  color: white;
+
+  left: 0;
+  padding: 1rem;
+  position: absolute;
+  transform: translateY(-100%);
+  transition: transform 0.1s;
+  text-decoration: none;
+
+  :focus-within {
+    transform: translateY(0%);
+    outline: none;
+    box-shadow: inset 0 0 0 2px white;
+  }
 `;
 
 export const LayoutParts = {
@@ -71,8 +83,14 @@ export const LayoutParts = {
   gp: {
     title: "God Praksis",
     header: GodPraksisHeader,
-    sidebar: PlaceholderPadding,
+    sidebar: ScPlaceholderPadding,
   },
+};
+
+export type LayoutContextProps = {
+  isMobile: boolean;
+  version: "ds" | "gp";
+  activeHeading?: DsNavigationHeadingT;
 };
 
 export const LayoutContext = createContext<LayoutContextProps | null>(null);
@@ -111,26 +129,28 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div style={{ position: "relative" }}>
+        <ScSkipLink href="#hovedinnhold" tab-index={-1} id="skip-link">
+          Hopp til innhold
+        </ScSkipLink>
         <LayoutContext.Provider
           value={{ isMobile, version: pageType, activeHeading }}
         >
           <Header />
-          <Wrapper>
+          <ScWrapper>
             <Sidebar />
-            <ContentWrapper>
-              <Main>
+            <ScContentWrapper>
+              <ScMain id="hovedinnhold">
                 {children}
-                <Grow />
+                <ScGrow />
                 <Feedback docId={pageProps?.page?._id} />
                 {LayoutParts[pageType]?.title === "Designsystemet" && (
                   <RelatedPagesLink />
                 )}
-              </Main>
+              </ScMain>
               {/* {!pageProps?.preview && <Feedback docId={pageProps?.page?._id} />} */}
-
               <Footer />
-            </ContentWrapper>
-          </Wrapper>
+            </ScContentWrapper>
+          </ScWrapper>
         </LayoutContext.Provider>
       </div>
     </>

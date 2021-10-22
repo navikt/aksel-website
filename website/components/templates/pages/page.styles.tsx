@@ -9,6 +9,7 @@ export const SanityBlockContainer = styled.div`
 
 export const MaxWidthContainerDiv = styled.div<{ isMobile: boolean }>`
   max-width: 664px;
+  width: 100%;
   padding: 0 var(--navds-spacing-8) 1rem var(--navds-spacing-8);
   overflow-x: auto;
   margin: ${(props) =>

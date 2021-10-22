@@ -12,6 +12,7 @@ export const NpmIcon = (
     width="2.57em"
     height="1em"
     viewBox="0 0 18 7"
+    focusable="false"
     {...props}
   >
     <path
@@ -38,6 +39,7 @@ export const NpmIconGrayScale = (
     width="2.57em"
     height="1em"
     viewBox="0 0 18 7"
+    focusable="false"
     {...props}
   >
     <path

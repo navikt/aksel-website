@@ -75,7 +75,7 @@ const CodeTabs = (): JSX.Element => {
               aria-label="Åpner eksempel i ny tab"
             >
               <span className="sr-only">åpne eksempel i ny tab</span>
-              <NewTab role="presentation" />
+              <NewTab focusable="false" role="presentation" />
             </ScLinkButton>
           )}
           {node.github && (
