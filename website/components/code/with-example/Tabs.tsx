@@ -5,13 +5,13 @@ import * as S from "../code.styles";
 import styled from "styled-components";
 
 export const ScTabs = styled.div`
-  border-bottom: 1px solid var(--navds-color-gray-60);
-  background-color: var(--navds-color-darkgray);
+  background-color: #f7f7f7;
   padding: 1px;
   min-height: 50px;
-  padding-bottom: 0;
+
   display: flex;
   justify-content: space-between;
+  border: 1px solid var(--navds-color-gray-20);
 
   ul,
   li {

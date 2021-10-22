@@ -32,7 +32,7 @@ const ScMain = styled.main`
   flex-direction: column;
   width: 100%;
   position: relative;
-  max-width: 1280px;
+  /* max-width: 1280px; */
 
   :focus {
     outline: none;
@@ -51,7 +51,7 @@ const ScPlaceholderPadding = styled.div`
   overflow-y: auto;
   height: 100vh;
 
-  @media (max-width: 1064px) {
+  @media (max-width: 767px) {
     display: none;
   }
 `;
@@ -108,7 +108,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
     DsNavigationHeadingT | undefined
   >();
 
-  const isMobile = useMedia("(max-width: 1064px)");
+  const isMobile = useMedia("(max-width: 767px)");
   const pageType = pageProps?.page?._type?.split("_")[0];
 
   useClientLayoutEffect(() => {

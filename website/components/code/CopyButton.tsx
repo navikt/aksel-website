@@ -11,6 +11,7 @@ const copyCode = (content: string) =>
 
 const ScButton = styled.button`
   ${S.ButtonCss}
+  color: white;
   position: absolute;
   top: 3px;
   right: 8px;
@@ -22,6 +23,14 @@ const ScButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  :hover {
+    background-color: var(--navds-color-gray-80);
+  }
+
+  :focus {
+    outline: 2px solid white;
+  }
 
   > svg {
     font-size: 1.5rem;
@@ -50,7 +59,15 @@ const CopyButton = ({ content }: { content: string }) => {
       className="navds-body-short navds-body--small"
       onClick={handleCopy}
     >
-      {active ? <SuccessStroke /> : "Copy"}
+      {active ? (
+        <SuccessStroke
+          focusable="false"
+          aria-label="Kopiert kodesnutt"
+          role="img"
+        />
+      ) : (
+        "Copy"
+      )}
     </ScButton>
   );
 };

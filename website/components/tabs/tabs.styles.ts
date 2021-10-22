@@ -6,6 +6,7 @@ export const Nav = styled.nav<{ isMobile: boolean; sticky: boolean }>`
   top: 0;
   z-index: 1001;
   background-color: white;
+
   ${(props) => {
     return !props.isMobile
       ? props.sticky

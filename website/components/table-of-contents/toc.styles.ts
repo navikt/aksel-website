@@ -6,13 +6,13 @@ export const Div = styled.div`
   top: 5rem;
   margin-top: 1rem;
   z-index: 1;
-  width: 250px;
   align-items: start;
   display: flex;
   flex-direction: column;
-  padding-left: 2rem;
+  padding-left: 1rem;
   order: 1;
-  float: right;
+  padding-right: 2rem;
+  width: 400px;
 
   &:before {
     content: "";
@@ -36,12 +36,12 @@ export const Wrapper = styled.div`
   top: 5rem;
   margin-top: 4rem;
   z-index: 1;
-  width: 300px;
   align-items: start;
   display: flex;
   flex-direction: column;
   order: 1;
   float: right;
+  width: 400px;
 
   @media (max-width: 1332px) {
     display: none;
@@ -53,7 +53,7 @@ export const Ul = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-  max-width: 250px;
+  max-width: 400px;
 `;
 
 export const Li = styled.li`
@@ -87,7 +87,7 @@ export const Li = styled.li`
         width: 3px;
         height: 2.5rem;
         margin-top: 0;
-        margin-left: -2px;
+        margin-left: -1px;
         background-color: var(--navds-color-gray-90);
         position: absolute;
         left: 0;

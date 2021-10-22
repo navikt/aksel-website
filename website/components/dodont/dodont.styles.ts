@@ -29,7 +29,7 @@ export const Figure = styled.figure`
   display: flex;
   flex-direction: column;
   margin: 0;
-  min-width: 280px;
+  width: 280px;
 
   &[data-fullwidth="true"] {
     flex-basis: 100%;
@@ -46,6 +46,7 @@ export const Section = styled.section`
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 1rem;
+  row-gap: 2rem;
   margin-bottom: 2rem;
 `;
 
