@@ -18,8 +18,8 @@ export const Div = styled.div`
     content: "";
     background-color: var(--navds-color-gray-40);
     width: 1px;
-    height: calc(100% - 1px);
-    margin-top: 0.5rem;
+    height: calc(100% - 1.6rem);
+    margin-top: 1.3rem;
     position: absolute;
     left: -1px;
   }
@@ -60,9 +60,6 @@ export const Li = styled.li`
   list-style: none;
   margin-top: var(--navds-spacing-4);
   text-align: start;
-
-  border-left: 2px solid red;
-  padding-left: 2rem;
 
   a {
     text-decoration: none;
