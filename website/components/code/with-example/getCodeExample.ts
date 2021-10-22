@@ -1,6 +1,6 @@
-import { Examples } from "../../examples";
+import { Examples } from "../../../examples";
 
-export const CodePreviews = (url) => {
+const getCodeExample = (url: string) => {
   if (!url || !(url in Examples)) {
     return null;
   }
@@ -11,3 +11,5 @@ export const CodePreviews = (url) => {
 
   return Comp;
 };
+
+export default getCodeExample;

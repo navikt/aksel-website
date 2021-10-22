@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 /* Example */
 export const Wrapper = styled.div`
@@ -22,7 +22,7 @@ export const Example = styled.div`
   }
 `;
 
-export const Button = styled.button`
+export const ButtonCss = css`
   border: none;
   color: rgba(255, 255, 255, 0.85);
   padding: 0.75rem 0.75rem;
@@ -30,6 +30,8 @@ export const Button = styled.button`
   align-items: center;
   column-gap: 0.5rem;
   background-color: transparent;
+  min-width: 50px;
+  justify-content: center;
 
   :hover {
     background-color: var(--navds-color-gray-80);
@@ -46,12 +48,23 @@ export const Button = styled.button`
   }
 `;
 
-export const CopyButton = styled(Button)`
+export const CopyButton = styled.button`
+  ${ButtonCss}
   position: absolute;
   top: 3px;
   right: 8px;
   border-radius: 4px;
   background-color: var(--navds-color-darkgray);
+  height: 48px;
+  width: 4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > svg {
+    font-size: 1.5rem;
+  }
 `;
 
 /* Snippet/Block */
@@ -74,63 +87,4 @@ export const Pre = styled.pre`
 export const Code = styled.code`
   color: white;
   font-size: 1rem;
-`;
-
-export const SnippetCode = styled.code<{ language: string }>`
-  color: white;
-  font-size: 1rem;
-
-  ${(props) => {
-    return props.language === "bash"
-      ? `
-    ::before {
-      content: "$ ";
-    }`
-      : ``;
-  }}
-`;
-
-/* Tabs */
-export const Tabs = styled.div`
-  border-bottom: 1px solid var(--navds-color-gray-60);
-  background-color: var(--navds-color-darkgray);
-  padding: 1px;
-  min-height: 50px;
-  padding-bottom: 0;
-  display: flex;
-  justify-content: space-between;
-`;
-
-export const Ul = styled.ul`
-  padding: 0;
-  margin: 0;
-  display: flex;
-`;
-
-export const Li = styled.li`
-  list-style: none;
-`;
-
-export const LinkButton = styled.a`
-  color: rgba(255, 255, 255, 0.85);
-  padding: 0.75rem 0.75rem;
-  display: flex;
-  align-items: center;
-  column-gap: 0.5rem;
-  text-decoration: none;
-
-  :hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    text-decoration: underline;
-  }
-
-  :focus {
-    outline: 2px solid white;
-    outline-offset: -2px;
-    text-decoration: underline;
-  }
-`;
-
-export const CopyWrapper = styled.div`
-  display: flex;
 `;

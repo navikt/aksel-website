@@ -1,35 +1,33 @@
-import { Popover } from "@navikt/ds-react";
 import Prism from "prismjs";
 import "prismjs/components/prism-bash.min";
 import "prismjs/components/prism-jsx.min";
 import "prismjs/components/prism-typescript.min";
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { withErrorBoundary } from "../error-boundary";
-import { copyCode } from "./Example";
 import * as S from "./code.styles";
 import { CodeSnippet as CodeSnippetT } from "../../lib/autogen-types";
+import CopyButton from "./CopyButton";
+import styled from "styled-components";
+
+const ScCode = styled.code<{ language: string }>`
+  color: white;
+  font-size: 1rem;
+
+  ${(props) => {
+    return props.language === "bash"
+      ? `
+    ::before {
+      content: "$ ";
+    }`
+      : ``;
+  }}
+`;
 
 const CodeSnippet = ({
   node: { code },
 }: {
   node: CodeSnippetT;
 }): JSX.Element => {
-  const buttonRef = useRef(null);
-  const [openPopover, setOpenPopover] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout>();
-
-  useEffect(() => {
-    if (openPopover) {
-      timeoutRef.current = setTimeout(() => setOpenPopover(false), 1500);
-      return () => timeoutRef.current && clearTimeout(timeoutRef.current);
-    }
-  }, [openPopover]);
-
-  const handleCopy = (text: string) => {
-    copyCode(text);
-    setOpenPopover(true);
-  };
-
   if (!code || !code.code) {
     return null;
   }
@@ -47,35 +45,14 @@ const CodeSnippet = ({
   return (
     <>
       <S.PreWrapper active={true}>
-        <S.CopyButton
-          ref={(node) => (buttonRef.current = node)}
-          className="navds-body-short navds-body--small"
-          onClick={() => handleCopy(code.code)}
-        >
-          Copy
-        </S.CopyButton>
+        <CopyButton content={code.code} />
         <S.Pre>
-          <S.SnippetCode
+          <ScCode
             language={language}
             dangerouslySetInnerHTML={{ __html: highlighted }}
           />
         </S.Pre>
       </S.PreWrapper>
-
-      <Popover
-        role="alert"
-        aria-atomic="true"
-        anchorEl={buttonRef.current}
-        open={openPopover}
-        onClose={() => setOpenPopover(false)}
-        placement="right"
-        offset={12}
-        arrow={false}
-      >
-        <Popover.Content style={{ padding: "0.75rem" }}>
-          Kopierte kodesnutt
-        </Popover.Content>
-      </Popover>
     </>
   );
 };

@@ -1,19 +1,10 @@
-import copy from "copy-to-clipboard";
 import React, { createContext, useEffect, useState } from "react";
-import { withErrorBoundary } from "../error-boundary";
+import { withErrorBoundary } from "../../error-boundary";
 import CodeBlock from "./Block";
 import CodePreview from "./Preview";
 import CodeTabs from "./Tabs";
-import * as S from "./code.styles";
-import { DsCodeExample as DsCodeExampleT } from "../../lib/autogen-types";
-
-export const copyCode = (content: string): void => {
-  if (typeof content === "string") {
-    copy(content, {
-      format: "text/plain",
-    });
-  }
-};
+import * as S from "../code.styles";
+import { DsCodeExample as DsCodeExampleT } from "../../../lib/autogen-types";
 
 type TabType = { name: string; content: React.ReactNode; language?: string };
 

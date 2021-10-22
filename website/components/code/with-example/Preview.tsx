@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { CodeContext } from "./Example";
 import prettier from "prettier/standalone";
 import babel from "prettier/parser-babel";
-import { CodePreviews } from "./code-previews";
+import CodeExample from "./getCodeExample";
 import { useId } from "@navikt/ds-react";
 import styled from "styled-components";
 import React from "react";
@@ -58,15 +58,11 @@ const CodePreview = (): JSX.Element => {
   }, [node.preview]);
 
   useEffect(() => {
-    if (!node.infercode || !wrapperRef || !CodePreviews(url)) return;
+    if (!node.infercode || !wrapperRef || !CodeExample(url)) return;
 
     const newTabs = [];
-
-    /* const html = wrapperRef.querySelector("[data-html-wrapper]");
-    const inferHtml = wrapperRef.querySelector("[data-html]"); */
-
     // {react?: string, html?: string}
-    const { ...rest }: any = CodePreviews(url);
+    const { ...rest }: any = CodeExample(url);
 
     rest?.react &&
       newTabs.push({
@@ -95,7 +91,7 @@ const CodePreview = (): JSX.Element => {
 
   if (!url) return null;
 
-  const Comp = CodePreviews(url);
+  const Comp = CodeExample(url);
 
   return (
     <Wrapper>
