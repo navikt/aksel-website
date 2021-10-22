@@ -31,6 +31,8 @@ const ScMain = styled.main`
   display: flex;
   flex-direction: column;
   width: 100%;
+  position: relative;
+  max-width: 1280px;
 
   :focus {
     outline: none;

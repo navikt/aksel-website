@@ -61,6 +61,9 @@ export const Li = styled.li`
   margin-top: var(--navds-spacing-4);
   text-align: start;
 
+  border-left: 2px solid red;
+  padding-left: 2rem;
+
   a {
     text-decoration: none;
     overflow: hidden;

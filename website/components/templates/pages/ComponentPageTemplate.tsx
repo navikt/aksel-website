@@ -25,13 +25,13 @@ import { SanityBlockContent } from "../../SanityBlockContent";
 import * as S from "./page.styles";
 
 const Links = styled.div`
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
   display: flex;
   column-gap: 0.25rem;
   font-size: 1.25rem;
   margin-left: var(--navds-spacing-4);
+
+  right: 0;
+  top: 0;
 
   a {
     text-decoration: none;
