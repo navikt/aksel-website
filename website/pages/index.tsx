@@ -38,6 +38,17 @@ const Page = (props: { frontpage: any; preview: boolean }): JSX.Element => {
   const handleIndexer = () => {
     fetch("/api/searchHook", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ids: {
+          updated: [],
+          created: ["6ae41ac9-0f4b-420f-8417-5ebc0a24df23"],
+          // Add your document _id below:
+          deleted: [],
+        },
+      }),
     }).then(console.log);
   };
 

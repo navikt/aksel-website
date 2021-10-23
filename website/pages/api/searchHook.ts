@@ -38,18 +38,7 @@ function handler(req: NextApiRequest, res: NextApiResponse) {
     {
       ds_component_page: {
         index: algoliaIndex,
-        projection: `{
-          "title": heading,
-          ingress,
-          tags,
-          status,
-          last_update,
-          "path": slug.current,
-          "bruk": pt::text(usage),
-          "design": pt::text(design),
-          "utvikling": pt::text(development),
-          "tilgjengelighet": pt::text(accessibility),
-        }`,
+        projection: componentProjection,
       },
     },
 
@@ -61,17 +50,24 @@ function handler(req: NextApiRequest, res: NextApiResponse) {
         /* case "post":
           return Object.assign({}, document, {
             custom: "An additional custom field for posts, perhaps?",
-          });
-        case "article":
-          return {
+          }); */
+
+        case "ds_component_page":
+          return Object.assign({}, document, {
             title: document.heading,
-            body: document.body,
-            authorNames: document.authorNames,
-          }; */
+            ingress: document.ingress,
+            tags: document.tags,
+            updated: document.updated,
+            path: document.path,
+            bruk: document.bruk,
+            design: document.design,
+            utvikling: document.utvikling,
+            tilgjengelighet: document.tilgjengelighet,
+          });
         default:
           return document;
       }
-    }
+    },
     // Visibility function (optional).
     //
     // The third parameter is an optional visibility function. Returning `true`
@@ -80,20 +76,47 @@ function handler(req: NextApiRequest, res: NextApiResponse) {
     // decides if it should be indexed or not. This would also be the place to
     // implement any `publishedAt` datetime visibility rules or other custom
     // visibility scheme you may be using.
-    /* (document: SanityDocumentStub) => {
+    (document: SanityDocumentStub) => {
       if (Object.prototype.hasOwnProperty.call(document, "isHidden")) {
         return !document.isHidden;
       }
       return true;
-    } */
+    }
   );
 
   // Finally connect the Sanity webhook payload to Algolia indices via the
   // configured serializers and optional visibility function. `webhookSync` will
   // inspect the webhook payload, make queries back to Sanity with the `sanity`
   // client and make sure the algolia indices are synced to match.
+
   return sanityAlgolia
     .webhookSync(sanity, req.body)
     .then(() => res.status(200).send("ok"));
+
+  /*   sanity.fetch(manuaUpdateQuery).then((ids) =>
+    sanityAlgolia
+      .webhookSync(sanity, {
+        ids: { created: ids, updated: ids, deleted: [] },
+      })
+      .then(() => res.status(200).send("ok"))
+  ); */
 }
+
 export default handler;
+
+/* query for manually indexing dataset */
+// const manuaUpdateQuery = `*[_type == "ds_component_page" && !(_id in path('drafts.**'))][]._id`;
+
+const componentProjection = `{
+  "objectID": _id,
+  title,
+  ingress,
+  tags,
+  status,
+  "updated": metadata.last_update,
+  "path": slug.current,
+  "bruk": pt::text(usage),
+  "design": pt::text(design),
+  "utvikling": pt::text(development),
+  "tilgjengelighet": pt::text(accessibility),
+}`;
