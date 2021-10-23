@@ -53,17 +53,12 @@ function handler(req: NextApiRequest, res: NextApiResponse) {
           }); */
 
         case "ds_component_page":
-          return Object.assign({}, document, {
-            title: document.heading,
-            ingress: document.ingress,
-            tags: document.tags,
-            updated: document.updated,
-            path: document.path,
-            bruk: document.bruk,
-            design: document.design,
-            utvikling: document.utvikling,
-            tilgjengelighet: document.tilgjengelighet,
-          });
+          return {
+            ...document,
+            proptable: !!document.proptable?.find(
+              (x) => x._type === "prop_table"
+            ),
+          };
         default:
           return document;
       }
@@ -89,27 +84,27 @@ function handler(req: NextApiRequest, res: NextApiResponse) {
   // inspect the webhook payload, make queries back to Sanity with the `sanity`
   // client and make sure the algolia indices are synced to match.
 
-  return sanityAlgolia
+  /* return sanityAlgolia
     .webhookSync(sanity, req.body)
-    .then(() => res.status(200).send("ok"));
+    .then(() => res.status(200).send("ok")); */
 
-  /*   sanity.fetch(manuaUpdateQuery).then((ids) =>
+  sanity.fetch(manuaUpdateQuery).then((ids) =>
     sanityAlgolia
       .webhookSync(sanity, {
         ids: { created: ids, updated: ids, deleted: [] },
       })
       .then(() => res.status(200).send("ok"))
-  ); */
+  );
 }
 
 export default handler;
 
 /* query for manually indexing dataset */
-// const manuaUpdateQuery = `*[_type == "ds_component_page" && !(_id in path('drafts.**'))][]._id`;
+const manuaUpdateQuery = `*[_type == "ds_component_page" && !(_id in path('drafts.**'))][]._id`;
 
 const componentProjection = `{
   "objectID": _id,
-  title,
+  "title": heading,
   ingress,
   tags,
   status,
@@ -119,4 +114,5 @@ const componentProjection = `{
   "design": pt::text(design),
   "utvikling": pt::text(development),
   "tilgjengelighet": pt::text(accessibility),
+  "proptable": development,
 }`;
