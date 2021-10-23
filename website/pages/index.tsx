@@ -1,6 +1,6 @@
 /* Frontpage */
 
-import { Heading, Link } from "@navikt/ds-react";
+import { Button, Heading, Link } from "@navikt/ds-react";
 import { useContext, useEffect } from "react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
@@ -35,6 +35,12 @@ const Page = (props: { frontpage: any; preview: boolean }): JSX.Element => {
     setPageData({ ...props, page: pagedata });
   }, [pagedata]);
 
+  const handleIndexer = () => {
+    fetch("/api/searchHook", {
+      method: "POST",
+    }).then(console.log);
+  };
+
   return (
     <>
       {enabledPreview && <PreviewBanner />}
@@ -42,6 +48,9 @@ const Page = (props: { frontpage: any; preview: boolean }): JSX.Element => {
         <Heading level="1" size="xlarge">
           Forside
         </Heading>
+        <Button onClick={() => handleIndexer()}>
+          Test Algolia search indexer
+        </Button>
         <NextLink passHref href={"/storybook/index.html"}>
           <Link target="_blank">Storybook for kode-eksempler</Link>
         </NextLink>
