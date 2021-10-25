@@ -10,7 +10,6 @@ const searchClient = algoliasearch(
 const index = "vk_designsystemet";
 
 const Search = () => {
-  return null;
   return (
     <Modal open={true} onClose={() => null}>
       <InstantSearch indexName={index} searchClient={searchClient}>
