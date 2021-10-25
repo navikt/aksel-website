@@ -1,6 +1,6 @@
 /* Frontpage */
 
-import { Button, Heading, Link } from "@navikt/ds-react";
+import { Heading, Link } from "@navikt/ds-react";
 import { useContext, useEffect } from "react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
