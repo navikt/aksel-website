@@ -46,8 +46,9 @@ const CodeSnippet = ({
     <>
       <S.PreWrapper active={true}>
         <CopyButton content={code.code} />
-        <S.Pre>
+        <S.Pre className="language-">
           <ScCode
+            className="language-"
             language={language}
             dangerouslySetInnerHTML={{ __html: highlighted }}
           />
