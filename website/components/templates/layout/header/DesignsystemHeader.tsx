@@ -6,6 +6,7 @@ import * as React from "react";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { useEvent, useKey } from "react-use";
 import styled from "styled-components";
+import { Search } from "../../..";
 import { DsNavigationHeadingT } from "../../../../lib";
 import { PagePropsContext } from "../../../../pages/_app";
 import { LayoutContext, LayoutParts } from "../Layout";
@@ -138,7 +139,8 @@ const DesignsystemHeader = (): JSX.Element => {
           </NextLink>
         ))}
       </S.Links>
-      <HeaderSearchBar />
+      <Search />
+      {/* <HeaderSearchBar /> */}
       {/* <S.Link href="#">
         <Bells
           focusable={false}
