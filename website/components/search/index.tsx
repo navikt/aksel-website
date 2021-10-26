@@ -78,6 +78,9 @@ const Search = () => {
         .then((res) => setResult(getCategories(res.hits)));
   }, [query]);
 
+  /* Hide on main branch until implmented */
+  return null;
+
   return (
     <ScWrapper>
       <button onClick={() => setOpen(!open)}>
