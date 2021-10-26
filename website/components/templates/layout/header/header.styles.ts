@@ -1,6 +1,6 @@
+import { Popover, SearchField as DsSearchField } from "@navikt/ds-react";
 import { Header as DsHeader } from "@navikt/ds-react-internal";
 import styled, { css } from "styled-components";
-import { Popover, SearchField as DsSearchField } from "@navikt/ds-react";
 
 export const Header = styled(DsHeader)`
   height: 64px;
@@ -69,7 +69,7 @@ export const LinkCss = css`
   color: var(--navds-color-gray-90);
   border-radius: 2px;
   padding: 0.5rem 1rem;
-  height: 5rem;
+  min-height: 5rem;
   width: 100%;
   display: flex;
   text-decoration: none;
@@ -85,34 +85,6 @@ export const LinkCss = css`
   }
 `;
 
-/* Dropdown */
-
-export const DropDownWrapper = styled.div`
-  /* margin-right: auto; */
-  display: inline-flex;
-`;
-
-export const DropDownLink = styled.a`
-  ${LinkCss}
-  flex-direction: column;
-
-  :hover > :first-child {
-    color: var(--navds-color-blue-50);
-  }
-
-  > * {
-    text-align: start;
-  }
-`;
-
-export const DropDownIconLink = styled.a`
-  ${LinkCss}
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-`;
-
 export const DropdownButton = styled.button`
   min-width: 64px;
   display: flex;
@@ -120,12 +92,6 @@ export const DropdownButton = styled.button`
   justify-content: center;
   border: none;
   margin-left: auto;
-`;
-
-export const Menu = styled(DsHeader.Dropdown.Menu)`
-  padding: 0.5rem;
-  border: none;
-  width: 300px;
 `;
 
 export const MobileMenu = styled(Popover)`

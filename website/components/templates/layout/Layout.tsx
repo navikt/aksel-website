@@ -94,6 +94,7 @@ export const LayoutParts = {
 
 export type LayoutContextProps = {
   isMobile: boolean;
+  isTablet: boolean;
   version: "ds" | "gp";
   activeHeading?: DsNavigationHeadingT;
 };
@@ -107,7 +108,8 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
     DsNavigationHeadingT | undefined
   >();
 
-  const isMobile = useMedia("(max-width: 964px)");
+  const isTablet = useMedia("(max-width: 964px)");
+  const isMobile = useMedia("(max-width: 564px)");
   const pageType = pageProps?.page?._type?.split("_")[0];
 
   useClientLayoutEffect(() => {
@@ -138,7 +140,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
           Hopp til innhold
         </ScSkipLink>
         <LayoutContext.Provider
-          value={{ isMobile, version: pageType, activeHeading }}
+          value={{ isMobile, isTablet, version: pageType, activeHeading }}
         >
           <Header />
           <ScWrapper>

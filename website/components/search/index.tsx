@@ -1,16 +1,9 @@
-import { Search as SearchIcon } from "@navikt/ds-icons";
-import {
-  BodyShort,
-  Detail,
-  Heading,
-  Popover,
-  TextField,
-} from "@navikt/ds-react";
+import { Close, Search as SearchIcon } from "@navikt/ds-icons";
+import { BodyShort, Detail, Popover, TextField } from "@navikt/ds-react";
 import algoliasearch from "algoliasearch/lite";
 import React, { useEffect, useRef, useState } from "react";
 import NextLink from "next/link";
 import styled from "styled-components";
-import { SearchButton } from "../templates/layout/header/header.styles";
 
 const searchClient = algoliasearch(
   "J64I2SIG7K",
@@ -33,8 +26,7 @@ const getCategories = (hits: any[]) => {
     )
   );
 
-  sorted.forEach((hit, x) => {
-    if (x > 5) return;
+  sorted.forEach((hit) => {
     categories[hit.category] = Object.prototype.hasOwnProperty.call(
       categories,
       hit.category
@@ -52,6 +44,7 @@ const ScWrapper = styled.div`
   display: flex;
   padding: 0.5rem 0.5rem;
   z-index: 1003;
+  margin-left: auto;
 `;
 
 const Search = () => {
@@ -78,14 +71,12 @@ const Search = () => {
         .then((res) => setResult(getCategories(res.hits)));
   }, [query]);
 
-  /* Hide on main branch until implmented */
-  return null;
+  useEffect(() => {
+    !open && setResult({});
+  }, [open]);
 
   return (
     <ScWrapper>
-      <button onClick={() => setOpen(!open)}>
-        <SearchIcon />
-      </button>
       {open && (
         <>
           <TextField
@@ -100,11 +91,23 @@ const Search = () => {
             open={Object.keys(result).length > 0}
             arrow={false}
             placement={"bottom"}
+            offset={0}
           >
             <Hits hits={result} />
           </Popover>
         </>
       )}
+      <button onClick={() => setOpen(!open)}>
+        {!open && (
+          <SearchIcon
+            style={{ fontSize: "1.5rem", marginLeft: 3 }}
+            aria-label="Søk ikon"
+          />
+        )}
+        {open && (
+          <Close style={{ fontSize: "1.5rem" }} aria-label="Lukk søk ikon" />
+        )}
+      </button>
     </ScWrapper>
   );
 };
@@ -112,7 +115,9 @@ const Search = () => {
 const ScHits = styled.div`
   display: flex;
   flex-direction: column;
-  width: 375px;
+  width: 475px;
+  max-height: 400px;
+  overflow-y: scroll;
 `;
 
 const ScHeading = styled(Detail)`

@@ -1,8 +1,7 @@
 import * as React from "react";
 import { useContext } from "react";
 import { LayoutContext, LayoutParts } from "../Layout";
-import HeadingDropDown from "./MainDropdown";
-import HeaderSearchBar from "./Searchbar";
+import PortalNavigation from "./PortalNavigation";
 
 import * as S from "./header.styles";
 
@@ -11,8 +10,8 @@ const DesignsystemHeader = (): JSX.Element => {
 
   const nonMobile = (
     <>
-      <HeadingDropDown title={LayoutParts[context.version].title ?? ""} />
-      <HeaderSearchBar />
+      <PortalNavigation title={LayoutParts[context.version].title ?? ""} />
+      {/* <HeaderSearchBar /> */}
       {/* <S.Link href="#">
         <Bell
           focusable={false}
@@ -25,8 +24,7 @@ const DesignsystemHeader = (): JSX.Element => {
 
   const mobile = (
     <>
-      <HeadingDropDown title={LayoutParts[context.version].title ?? ""} />
-      <HeaderSearchBar />
+      <PortalNavigation title={LayoutParts[context.version].title ?? ""} />
     </>
   );
 

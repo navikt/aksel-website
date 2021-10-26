@@ -47,7 +47,13 @@ const ScLink = styled.a<{ active?: boolean }>`
 
 export const MenuContext = createContext(null);
 
-const Menu = ({ heading }: { heading?: DsNavigationHeadingT }): JSX.Element => {
+const Menu = ({
+  heading,
+  onClick,
+}: {
+  heading?: DsNavigationHeadingT;
+  onClick?: () => void;
+}): JSX.Element => {
   const [pageProps] = useContext<any>(PagePropsContext);
 
   const [sidebarMenu, setSidebarMenu] = useState<DsNavigationHeadingMenuT[]>(
@@ -67,7 +73,12 @@ const Menu = ({ heading }: { heading?: DsNavigationHeadingT }): JSX.Element => {
         {sidebarMenu.map((item) => (
           <li key={item.title}>
             <NextLink href={`/${item.link.slug.current}`} passHref>
-              <ScLink active={pageProps.page.slug === item.link.slug.current}>
+              <ScLink
+                onClick={() => {
+                  onClick && onClick();
+                }}
+                active={pageProps.page.slug === item.link.slug.current}
+              >
                 {item.title}
               </ScLink>
             </NextLink>
