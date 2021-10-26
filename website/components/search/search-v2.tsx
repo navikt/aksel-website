@@ -105,6 +105,7 @@ const ScTextField = styled(TextField)<{ $tablet: boolean }>`
     border-radius: 0;
     height: var(--header-height);
     font-size: 1.25rem;
+    padding: 0 1rem;
   }
   > input:focus {
     box-shadow: inset 0 0 0 1px white,
@@ -154,9 +155,9 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
         <ScInputWrapper
           as={motion.div}
           key="MainMenuKey"
-          initial={{ y: 0, width: "75%", opacity: 0 }}
+          initial={{ y: 0, width: "50%", opacity: 0 }}
           animate={{ y: 0, width: "100%", opacity: 1 }}
-          transition={{ type: "tween", duration: 0.2 }}
+          transition={{ type: "tween", duration: 0.25 }}
         >
           <ScInputButton tabIndex={-1}>
             <SearchIcon
@@ -165,6 +166,7 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
             />
           </ScInputButton>
           <ScTextField
+            placeholder="Søk..."
             $tablet={context.isTablet}
             ref={anchor}
             hideLabel
@@ -215,7 +217,14 @@ const Hits = ({ hits }: { hits: { [key: string]: any[] } }) => {
   if (Object.keys(hits).length === 0) return null;
 
   return (
-    <ScHits>
+    <ScHits
+      as={motion.div}
+      key="Searchhits"
+      initial={{ maxHeight: "0px", opacity: 0 }}
+      animate={{ maxHeight: "400px", opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ type: "tween", duration: 0.25 }}
+    >
       {Object.keys(hits).map((category) => (
         <div key={category}>
           <ScHeading forwardedAs="div" size="small">
