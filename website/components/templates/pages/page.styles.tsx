@@ -10,6 +10,8 @@ export const SanityBlockContainer = styled.div`
 export const MaxWidthContainerDiv = styled.div<{ isTablet: boolean }>`
   max-width: 664px;
   padding: 0 var(--navds-spacing-8) 1rem var(--navds-spacing-8);
+  ${(props) => props.isTablet && `width: 100%;`};
+
   margin: ${(props) =>
     props.isTablet ? "0 auto" : "0 auto 0 var(--navds-spacing-4)"};
 
