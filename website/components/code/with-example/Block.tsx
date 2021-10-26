@@ -30,8 +30,11 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
         {!showPreview && (
           <CopyButton content={tabs[index].content.toString()} />
         )}
-        <S.Pre data-tabs={showTabs}>
-          <S.Code dangerouslySetInnerHTML={{ __html: highlighted }} />
+        <S.Pre className="language-" data-tabs={showTabs}>
+          <S.Code
+            className="language-"
+            dangerouslySetInnerHTML={{ __html: highlighted }}
+          />
         </S.Pre>
       </S.PreWrapper>
     </>

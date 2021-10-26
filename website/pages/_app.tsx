@@ -50,6 +50,10 @@ function App({
     );
   }
 
+  if (Component && appRoute?.asPath.startsWith("/admin")) {
+    return <Component {...pageProps} />;
+  }
+
   slugger.reset();
 
   if (!router.isFallback && !pageProps?.slug) {
