@@ -8,8 +8,9 @@ import { useMedia } from "react-use";
 import styled, { css } from "styled-components";
 import { NavLogoWhite } from "../../..";
 
-export const ScDropDown = styled(Dropdown)`
+export const ScWrapper = styled.div`
   height: 100%;
+  display: flex;
 `;
 
 export const ScMenu = styled(Dropdown.Menu)`
@@ -65,14 +66,15 @@ const HeadingDropDown = ({ title }: { title: string }) => {
   const showLogo = useMedia("(min-width: 563px)");
 
   return (
-    <motion.div
+    <ScWrapper
+      as={motion.div}
       key="Portalmenu"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ type: "tween", duration: 0.2 }}
       exit={{ opacity: 0 }}
     >
-      <ScDropDown>
+      <Dropdown>
         <Header.Button as={Dropdown.Toggle}>
           {showLogo && <NavLogoWhite focusable={false} />}
           {title}
@@ -106,8 +108,8 @@ const HeadingDropDown = ({ title }: { title: string }) => {
             </NextLink>
           </Dropdown.Menu.List>
         </ScMenu>
-      </ScDropDown>
-    </motion.div>
+      </Dropdown>
+    </ScWrapper>
   );
 };
 export default HeadingDropDown;

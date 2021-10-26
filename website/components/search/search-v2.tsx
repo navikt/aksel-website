@@ -1,11 +1,12 @@
 import { Close, Search as SearchIcon } from "@navikt/ds-icons";
 import { BodyShort, Detail, Popover, TextField } from "@navikt/ds-react";
 import algoliasearch from "algoliasearch/lite";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import NextLink from "next/link";
 import styled from "styled-components";
 import { Header } from "@navikt/ds-react-internal";
 import { motion } from "framer-motion";
+import { LayoutContext } from "../templates/layout/Layout";
 
 const searchClient = algoliasearch(
   "J64I2SIG7K",
@@ -78,24 +79,25 @@ const ScInputButton = styled.button`
 const ScInputWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-left: 2rem;
+  /* float: right; */
+
+  margin-left: auto;
   width: 100%;
   justify-content: flex-end;
 
   > button:first-of-type {
-    /* border-radius: 4px 0 0 4px; */
     border-right: none;
+    pointer-events: none;
   }
 
   > button:last-of-type {
-    /*  border-radius: 0 4px 4px 0; */
     border-left: none;
   }
 `;
 
-const ScTextField = styled(TextField)`
+const ScTextField = styled(TextField)<{ $tablet: boolean }>`
   width: 100%;
-  max-width: 400px;
+  ${(props) => !props.$tablet && `max-width: 400px;`}
   flex-grow: 1;
 
   > input {
@@ -116,6 +118,7 @@ const ScPopover = styled(Popover)`
 `;
 
 const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
+  const context = useContext(LayoutContext);
   const searchIndex = useRef(null);
   const [open, setOpen] = useState(false);
   const anchor = useRef(null);
@@ -151,8 +154,8 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
         <ScInputWrapper
           as={motion.div}
           key="MainMenuKey"
-          initial={{ y: 0, scaleX: 0.7, opacity: 0 }}
-          animate={{ y: 0, scaleX: 1, opacity: 1 }}
+          initial={{ y: 0, width: "75%", opacity: 0 }}
+          animate={{ y: 0, width: "100%", opacity: 1 }}
           transition={{ type: "tween", duration: 0.2 }}
         >
           <ScInputButton tabIndex={-1}>
@@ -162,6 +165,7 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
             />
           </ScInputButton>
           <ScTextField
+            $tablet={context.isTablet}
             ref={anchor}
             hideLabel
             label="Søk"
