@@ -1,6 +1,7 @@
 import { Expand, Left } from "@navikt/ds-icons";
 import { BodyShort } from "@navikt/ds-react";
 import { Dropdown, Header } from "@navikt/ds-react-internal";
+import { motion } from "framer-motion";
 import NextLink from "next/link";
 import * as React from "react";
 import { useMedia } from "react-use";
@@ -64,41 +65,49 @@ const HeadingDropDown = ({ title }: { title: string }) => {
   const showLogo = useMedia("(min-width: 563px)");
 
   return (
-    <ScDropDown>
-      <Header.Button as={Dropdown.Toggle}>
-        {showLogo && <NavLogoWhite focusable={false} />}
-        {title}
-        <Expand focusable={false} role="presentation" />
-      </Header.Button>
-      <ScMenu>
-        <Dropdown.Menu.List>
-          <NextLink href="/" passHref>
-            <ScIconLink forwardedAs="a">
-              <Left />
-              <BodyShort>Tilbake til Verktøykassa</BodyShort>
-            </ScIconLink>
-          </NextLink>
+    <motion.div
+      key="Portalmenu"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ type: "tween", duration: 0.2 }}
+      exit={{ opacity: 0 }}
+    >
+      <ScDropDown>
+        <Header.Button as={Dropdown.Toggle}>
+          {showLogo && <NavLogoWhite focusable={false} />}
+          {title}
+          <Expand focusable={false} role="presentation" />
+        </Header.Button>
+        <ScMenu>
+          <Dropdown.Menu.List>
+            <NextLink href="/" passHref>
+              <ScIconLink forwardedAs="a">
+                <Left />
+                <BodyShort>Tilbake til Verktøykassa</BodyShort>
+              </ScIconLink>
+            </NextLink>
 
-          <NextLink href="/designsystem" passHref>
-            <ScLink forwardedAs="a">
-              <BodyShort>Designsystemet</BodyShort>
-              <BodyShort size="small">
-                Informasjon omhandlende designsystemet
-              </BodyShort>
-            </ScLink>
-          </NextLink>
+            <NextLink href="/designsystem" passHref>
+              <ScLink forwardedAs="a">
+                <BodyShort>Designsystemet</BodyShort>
+                <BodyShort size="small">
+                  Informasjon omhandlende designsystemet
+                </BodyShort>
+              </ScLink>
+            </NextLink>
 
-          <NextLink href="/god-praksis" passHref>
-            <ScLink forwardedAs="a">
-              <BodyShort>God Praksis</BodyShort>
-              <BodyShort spacing size="small">
-                Informasjon omhandlende God Praksis
-              </BodyShort>
-            </ScLink>
-          </NextLink>
-        </Dropdown.Menu.List>
-      </ScMenu>
-    </ScDropDown>
+            <NextLink href="/god-praksis" passHref>
+              <ScLink forwardedAs="a">
+                <BodyShort>God Praksis</BodyShort>
+                <BodyShort spacing size="small">
+                  Informasjon omhandlende God Praksis
+                </BodyShort>
+              </ScLink>
+            </NextLink>
+          </Dropdown.Menu.List>
+        </ScMenu>
+      </ScDropDown>
+    </motion.div>
   );
 };
 export default HeadingDropDown;

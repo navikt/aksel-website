@@ -4,6 +4,8 @@ import styled, { css } from "styled-components";
 
 export const Header = styled(DsHeader)`
   height: 64px;
+  position: relative;
+  box-shadow: 0 2px 3px 0 rgba(11, 11, 11, 0.2);
 `;
 
 export const Links = styled.div`
