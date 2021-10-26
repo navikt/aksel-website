@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Textarea as DsTextarea, Heading as DsHeading } from "@navikt/ds-react";
 
 export const Wrapper = styled.div<{ isTablet?: boolean }>`
-  max-width: 664px;
+  max-width: 600px;
   width: 100%;
   padding: 2rem;
   display: flex;

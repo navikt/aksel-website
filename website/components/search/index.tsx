@@ -41,11 +41,12 @@ const getCategories = (hits: any[]) => {
   return categories;
 };
 
-const ScWrapper = styled.div`
+const ScWrapper = styled.div<{ $open?: boolean }>`
   display: flex;
   z-index: 1003;
   margin-left: auto;
   align-items: center;
+  ${({ $open }) => $open && `width: 100%;`}
 `;
 
 const ScSearchButton = styled(Header.Button)`
@@ -55,7 +56,65 @@ const ScSearchButton = styled(Header.Button)`
   justify-content: center;
 `;
 
-const Search = () => {
+const ScInputButton = styled.button`
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 48px;
+  background-color: white;
+  /* border: 1px solid var(--navds-color-gray-60); */
+
+  :focus {
+    outline: none;
+    box-shadow: inset 0 0 0 1px white,
+      inset 0 0 0 3px var(--navds-color-blue-80);
+  }
+`;
+
+const ScInputWrapper = styled.div`
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  margin-left: 2rem;
+  margin-right: 0.75rem;
+  width: 100%;
+  justify-content: flex-end;
+
+  > button:first-of-type {
+    border-radius: 4px 0 0 4px;
+    border-right: none;
+  }
+
+  > button:last-of-type {
+    border-radius: 0 4px 4px 0;
+    border-left: none;
+  }
+`;
+
+const ScTextField = styled(TextField)`
+  width: 100%;
+  max-width: 400px;
+
+  flex-grow: 1;
+
+  > input {
+    border: none;
+    border-radius: 0;
+  }
+  > input:focus {
+    box-shadow: inset 0 0 0 1px white,
+      inset 0 0 0 3px var(--navds-color-blue-80);
+  }
+`;
+
+const ScPopover = styled(Popover)`
+  border: none;
+  box-shadow: 0 0 10px 0 rgba(24, 39, 75, 0.1), 0 0 6px 0 rgba(24, 39, 75, 0.12);
+`;
+
+const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
   const searchIndex = useRef(null);
   const [open, setOpen] = useState(false);
   const anchor = useRef(null);
@@ -81,41 +140,48 @@ const Search = () => {
 
   useEffect(() => {
     !open && setResult({});
+    open && anchor.current && anchor.current.focus();
+    isOpen && isOpen(open);
   }, [open]);
 
   return (
-    <ScWrapper>
-      {open && (
-        <>
-          <TextField
+    <ScWrapper $open={open}>
+      {open ? (
+        <ScInputWrapper>
+          <ScInputButton tabIndex={-1}>
+            <SearchIcon
+              style={{ fontSize: "1.5rem", marginLeft: 3 }}
+              aria-label="Søk ikon"
+            />
+          </ScInputButton>
+          <ScTextField
             ref={anchor}
             hideLabel
             label="Søk"
             onChange={(e) => setQuery(e.target.value)}
           />
-          <Popover
-            onClose={() => setOpen(false)}
+          <ScInputButton onClick={() => setOpen(false)}>
+            <Close style={{ fontSize: "1.5rem" }} aria-label="Lukk søk ikon" />
+          </ScInputButton>
+          <ScPopover
+            onClose={() => null}
             anchorEl={anchor.current}
             open={Object.keys(result).length > 0}
             arrow={false}
-            placement={"bottom"}
+            placement={"bottom-start"}
             offset={0}
           >
             <Hits hits={result} />
-          </Popover>
-        </>
-      )}
-      <ScSearchButton onClick={() => setOpen(!open)}>
-        {!open && (
+          </ScPopover>
+        </ScInputWrapper>
+      ) : (
+        <ScSearchButton onClick={() => setOpen(!open)}>
           <SearchIcon
             style={{ fontSize: "1.5rem", marginLeft: 3 }}
             aria-label="Søk ikon"
           />
-        )}
-        {open && (
-          <Close style={{ fontSize: "1.5rem" }} aria-label="Lukk søk ikon" />
-        )}
-      </ScSearchButton>
+        </ScSearchButton>
+      )}
     </ScWrapper>
   );
 };
@@ -123,7 +189,7 @@ const Search = () => {
 const ScHits = styled.div`
   display: flex;
   flex-direction: column;
-  width: 475px;
+  width: 400px;
   max-height: 400px;
   overflow-y: scroll;
 `;

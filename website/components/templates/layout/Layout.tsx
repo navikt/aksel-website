@@ -149,7 +149,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
               <ScMain tabIndex={-1} id="hovedinnhold">
                 {children}
                 <ScGrow />
-                {/* <Feedback docId={pageProps?.page?._id} /> */}
+                <Feedback docId={pageProps?.page?._id} />
                 {LayoutParts[pageType]?.title === "Designsystemet" && (
                   <RelatedPagesLink />
                 )}
