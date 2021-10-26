@@ -65,6 +65,7 @@ const ScInputButton = styled.button`
   width: var(--header-height);
   height: var(--header-height);
   background-color: white;
+  flex-shrink: 0;
   /* border: 1px solid var(--navds-color-gray-60); */
 
   :focus {
