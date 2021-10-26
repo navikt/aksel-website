@@ -150,10 +150,9 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
         <ScInputWrapper
           as={motion.div}
           key="MainMenuKey"
-          initial={{ y: 0, scaleX: 0, opacity: 0 }}
+          initial={{ y: 0, scaleX: 0.7, opacity: 0 }}
           animate={{ y: 0, scaleX: 1, opacity: 1 }}
           transition={{ type: "tween", duration: 0.2 }}
-          exit={{ y: 0, opacity: 0 }}
         >
           <ScInputButton tabIndex={-1}>
             <SearchIcon
