@@ -4,6 +4,7 @@ import algoliasearch from "algoliasearch/lite";
 import React, { useEffect, useRef, useState } from "react";
 import NextLink from "next/link";
 import styled from "styled-components";
+import { Header } from "@navikt/ds-react-internal";
 
 const searchClient = algoliasearch(
   "J64I2SIG7K",
@@ -42,9 +43,16 @@ const getCategories = (hits: any[]) => {
 
 const ScWrapper = styled.div`
   display: flex;
-  padding: 0.5rem 0.5rem;
   z-index: 1003;
   margin-left: auto;
+  align-items: center;
+`;
+
+const ScSearchButton = styled(Header.Button)`
+  border: none;
+  width: var(--header-height);
+  height: var(--header-height);
+  justify-content: center;
 `;
 
 const Search = () => {
@@ -97,7 +105,7 @@ const Search = () => {
           </Popover>
         </>
       )}
-      <button onClick={() => setOpen(!open)}>
+      <ScSearchButton onClick={() => setOpen(!open)}>
         {!open && (
           <SearchIcon
             style={{ fontSize: "1.5rem", marginLeft: 3 }}
@@ -107,7 +115,7 @@ const Search = () => {
         {open && (
           <Close style={{ fontSize: "1.5rem" }} aria-label="Lukk søk ikon" />
         )}
-      </button>
+      </ScSearchButton>
     </ScWrapper>
   );
 };

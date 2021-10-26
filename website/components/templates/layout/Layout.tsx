@@ -20,9 +20,9 @@ const ScWrapper = styled.div`
   background-color: #ffffff;
 `;
 
-const ScContentWrapper = styled.div`
+const ScContentWrapper = styled.div<{ isTablet: boolean }>`
   flex-direction: column;
-  width: 100%;
+  width: ${({ isTablet }) => (isTablet ? `100%` : `calc(100% - 180px)`)};
   position: relative;
 `;
 
@@ -108,8 +108,8 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
     DsNavigationHeadingT | undefined
   >();
 
-  const isTablet = useMedia("(max-width: 964px)");
-  const isMobile = useMedia("(max-width: 564px)");
+  const isTablet = useMedia("(max-width: 768px)");
+  const isMobile = useMedia("(max-width: 480px)");
   const pageType = pageProps?.page?._type?.split("_")[0];
 
   useClientLayoutEffect(() => {
@@ -129,7 +129,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
     <>
       <Head>
-        <title>Verktøykassen</title>
+        <title>{LayoutParts[pageType]?.title}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         {/* <meta property="og:site_name" content="NAV IT" />
   <meta property="og:url" content="https://www.design.nav.no/" /> */}
@@ -145,11 +145,11 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
           <Header />
           <ScWrapper>
             <Sidebar />
-            <ScContentWrapper>
+            <ScContentWrapper isTablet={isTablet}>
               <ScMain tabIndex={-1} id="hovedinnhold">
                 {children}
                 <ScGrow />
-                <Feedback docId={pageProps?.page?._id} />
+                {/* <Feedback docId={pageProps?.page?._id} /> */}
                 {LayoutParts[pageType]?.title === "Designsystemet" && (
                   <RelatedPagesLink />
                 )}

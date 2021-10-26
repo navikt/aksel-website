@@ -5,10 +5,10 @@ import { LayoutContext, LayoutContextProps } from "../Layout";
 import Menu from "../menu/DesignsystemMenu";
 
 const Wrapper = styled.div<{ context: LayoutContextProps }>`
-  width: 253px;
+  width: 256px;
   padding: var(--navds-spacing-8) 0;
   position: relative;
-  flex-shrink: 0;
+  flex-shrink: 1;
   background-color: white;
   border-right: 1px solid var(--navds-color-gray-10);
   display: ${(props) => (props.context.isTablet ? "none" : "block")};
