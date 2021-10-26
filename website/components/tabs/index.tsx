@@ -12,8 +12,8 @@ export const Tabs = ({
   const context = useContext(LayoutContext);
 
   return (
-    <S.Nav isMobile={context.isMobile} aria-label="Tabmeny for sideinnhold">
-      <S.Ul isMobile={context.isMobile} role="tablist">
+    <S.Nav isTablet={context.isTablet} aria-label="Tabmeny for sideinnhold">
+      <S.Ul isTablet={context.isTablet} role="tablist">
         {children}
       </S.Ul>
     </S.Nav>

@@ -75,7 +75,7 @@ const Feedback = ({ docId }: { docId?: string }): JSX.Element => {
   }, [asPath]);
 
   return (
-    <S.Wrapper isMobile={context.isMobile}>
+    <S.Wrapper isTablet={context.isTablet}>
       {step === 0 && (
         <S.InnerWrapper>
           <Heading level="3" size="medium" spacing>

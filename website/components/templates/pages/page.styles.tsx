@@ -7,12 +7,12 @@ export const SanityBlockContainer = styled.div`
   max-width: 1280px;
 `;
 
-export const MaxWidthContainerDiv = styled.div<{ isMobile: boolean }>`
+export const MaxWidthContainerDiv = styled.div<{ isTablet: boolean }>`
   max-width: 664px;
   width: 100%;
   padding: 0 var(--navds-spacing-8) 1rem var(--navds-spacing-8);
   margin: ${(props) =>
-    props.isMobile ? "0 auto" : "0 auto 0 var(--navds-spacing-4)"};
+    props.isTablet ? "0 auto" : "0 auto 0 var(--navds-spacing-4)"};
 
   @media (max-width: 564px) {
     margin: 0;
@@ -28,7 +28,7 @@ export const MaxWidthContainer = ({
 }): JSX.Element => {
   const context = useContext(LayoutContext);
   return (
-    <MaxWidthContainerDiv isMobile={context.isMobile}>
+    <MaxWidthContainerDiv isTablet={context.isTablet}>
       {children}
     </MaxWidthContainerDiv>
   );

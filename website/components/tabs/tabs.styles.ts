@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Nav = styled.nav<{ isMobile: boolean }>`
+export const Nav = styled.nav<{ isTablet: boolean }>`
   overflow-x: auto;
   position: sticky;
   top: 0;
@@ -8,7 +8,7 @@ export const Nav = styled.nav<{ isMobile: boolean }>`
   background-color: white;
 
   ${(props) => {
-    return !props.isMobile
+    return !props.isTablet
       ? `margin-left: 0;
       margin-right: 0;`
       : `margin: 0;
@@ -18,7 +18,7 @@ export const Nav = styled.nav<{ isMobile: boolean }>`
   }};
 
   ${(props) =>
-    !props.isMobile &&
+    !props.isTablet &&
     `::after {
         content: "";
         background-color: var(--navds-color-gray-20);
@@ -32,15 +32,15 @@ export const Nav = styled.nav<{ isMobile: boolean }>`
       }`}
 `;
 
-export const Ul = styled.ul<{ isMobile: boolean }>`
+export const Ul = styled.ul<{ isTablet: boolean }>`
   padding: 0;
   margin: 0;
   display: flex;
   align-items: center;
   overflow-x: auto;
-  max-width: ${(props) => (props.isMobile ? "" : "600px")};
+  max-width: ${(props) => (props.isTablet ? "" : "600px")};
   margin-top: 0.5rem;
-  margin-left: ${(props) => (!props.isMobile ? "3rem" : "")};
+  margin-left: ${(props) => (!props.isTablet ? "3rem" : "")};
   gap: 0.25rem;
 
   > * {
@@ -52,7 +52,7 @@ export const Ul = styled.ul<{ isMobile: boolean }>`
     position: relative;
 
     ${(props) =>
-      props.isMobile &&
+      props.isTablet &&
       `::after {
       content: "";
       background-color: var(--navds-color-gray-20);

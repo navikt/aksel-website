@@ -8,13 +8,14 @@ import { PagePropsContext } from "../../../../pages/_app";
 import { LayoutContext } from "../Layout";
 import Menu from "../menu/DesignsystemMenu";
 
-const ScMenu = styled(Dropdown.Menu)`
+const ScMenu = styled(Dropdown.Menu)<{ $isMobile: boolean }>`
   padding: 0.5rem 0;
   border: none;
   width: 300px;
   z-index: 1003;
   position: sticky;
   box-shadow: 0 0 10px 0 rgba(24, 39, 75, 0.1), 0 0 6px 0 rgba(24, 39, 75, 0.12);
+  ${(props) => props.$isMobile && `width: 100%;`}
 `;
 
 const ScListItem = styled(Dropdown.Menu.List.Item)<{ $active?: boolean }>`
@@ -53,7 +54,6 @@ const ScTopButton = styled(Heading)`
   display: flex;
   align-items: center;
   padding: 1rem;
-  text-decoration: none;
   gap: 1rem;
   border-bottom: 1px solid var(--navds-color-gray-20);
   width: 100%;
@@ -81,6 +81,7 @@ const ScMenuScroll = styled.div`
 const ScHamburgerButton = styled(Header.Button)<{ $open: boolean }>`
   min-width: var(--header-height);
   justify-content: center;
+  border: none;
 
   ${(props) =>
     props.$open &&
@@ -88,6 +89,9 @@ const ScHamburgerButton = styled(Header.Button)<{ $open: boolean }>`
      color: var(--navds-color-gray-90);
      :hover {
        background-color: var(--navds-color-gray-10);
+     }
+     :focus {
+       box-shadow:inset 0 0 0 1px white, inset 0 0 0 4px var(--navds-color-blue-80) ;
      }
      `}
   > * {
@@ -106,15 +110,6 @@ const MobileNavigation = () => {
     setHeading(context.activeHeading);
   }, [context?.activeHeading]);
 
-  const handleBack = () => {
-    setIsHeadingMenu(true);
-  };
-
-  const handleSelectMenu = (heading: DsNavigationHeadingT) => {
-    setHeading(heading);
-    setIsHeadingMenu(false);
-  };
-
   return (
     <Dropdown>
       <ScHamburgerButton
@@ -130,12 +125,12 @@ const MobileNavigation = () => {
           )}
         </span>
       </ScHamburgerButton>
-      <ScMenu onClose={() => setOpenHamb(false)}>
+      <ScMenu $isMobile={context.isMobile} onClose={() => setOpenHamb(false)}>
         {openHamb && (
           <Dropdown.Menu.List>
             <ScTopDiv hidden={isHeadingMenu}>
               <ScTopButton
-                onClick={() => handleBack()}
+                onClick={() => setIsHeadingMenu(true)}
                 forwardedAs="button"
                 size="xsmall"
               >
@@ -151,7 +146,10 @@ const MobileNavigation = () => {
                     <ScListItem
                       key={heading.title}
                       $active={context?.activeHeading?.title === heading.title}
-                      onClick={() => handleSelectMenu(heading)}
+                      onClick={() => {
+                        setHeading(heading);
+                        setIsHeadingMenu(false);
+                      }}
                     >
                       {heading.title}
                     </ScListItem>

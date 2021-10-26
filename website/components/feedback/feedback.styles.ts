@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Textarea as DsTextarea, Heading as DsHeading } from "@navikt/ds-react";
 
-export const Wrapper = styled.div<{ isMobile?: boolean }>`
+export const Wrapper = styled.div<{ isTablet?: boolean }>`
   max-width: 664px;
   width: 100%;
   padding: 2rem;
@@ -11,7 +11,7 @@ export const Wrapper = styled.div<{ isMobile?: boolean }>`
   gap: 1rem;
 
   margin: ${(props) =>
-    props.isMobile ? "4rem auto" : "4rem auto 4rem var(--navds-spacing-4)"};
+    props.isTablet ? "4rem auto" : "4rem auto 4rem var(--navds-spacing-4)"};
 
   @media (max-width: 564px) {
     padding: 1rem;

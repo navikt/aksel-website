@@ -9,7 +9,7 @@ const StyledFooter = styled.footer<{ context: LayoutContextProps }>`
   width: 100%;
   background-color: var(--navds-color-gray-90);
 
-  padding: ${(props) => (props.context.isMobile ? "1rem" : "1rem 2rem")};
+  padding: ${(props) => (props.context.isTablet ? "1rem" : "1rem 2rem")};
   display: flex;
   justify-content: space-between;
   flex-direction: column;

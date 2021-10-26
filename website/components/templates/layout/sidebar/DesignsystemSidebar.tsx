@@ -11,7 +11,7 @@ const Wrapper = styled.div<{ context: LayoutContextProps }>`
   flex-shrink: 0;
   background-color: white;
   border-right: 1px solid var(--navds-color-gray-10);
-  display: ${(props) => (props.context.isMobile ? "none" : "block")};
+  display: ${(props) => (props.context.isTablet ? "none" : "block")};
   position: sticky;
   top: 0;
   align-self: flex-start;

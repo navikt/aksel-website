@@ -13,7 +13,7 @@ const ScWrapper = styled.div<{ context: LayoutContextProps }>`
 
   display: flex;
   justify-content: ${(props) =>
-    props.context.isMobile ? "center" : "flex-start"};
+    props.context.isTablet ? "center" : "flex-start"};
 
   @media (max-width: 564px) {
     padding: 0;
@@ -25,7 +25,7 @@ const ScInnerWrapper = styled.div<{ context: LayoutContextProps }>`
   display: flex;
   flex-wrap: wrap;
   justify-content: ${(props) =>
-    props.context.isMobile ? "center" : "flex-start"};
+    props.context.isTablet ? "center" : "flex-start"};
   max-width: 648px;
 
   > * {
@@ -37,7 +37,7 @@ const ScInnerWrapper = styled.div<{ context: LayoutContextProps }>`
     max-width: 400px;
     transition: background-color 200ms;
     padding: ${(props) =>
-      props.context.isMobile ? "1rem 1.5rem" : "1rem 3rem"};
+      props.context.isTablet ? "1rem 1.5rem" : "1rem 3rem"};
 
     @media (max-width: 564px) {
       padding: 1rem;
