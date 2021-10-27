@@ -90,7 +90,7 @@ const ScCloseButton = styled.button`
   :focus {
     outline: none;
     box-shadow: inset 0 0 0 1px white,
-      inset 0 0 0 3px var(--navds-color-blue-80);
+      inset 0 0 0 4px var(--navds-color-blue-80);
   }
 `;
 
@@ -129,7 +129,7 @@ const ScTextField = styled(TextField)<{ $tablet: boolean }>`
 
   > input:focus {
     box-shadow: inset 0 0 0 1px white,
-      inset 0 0 0 3px var(--navds-color-blue-80);
+      inset 0 0 0 4px var(--navds-color-blue-80);
   }
 `;
 
