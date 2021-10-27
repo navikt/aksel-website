@@ -6,15 +6,21 @@ import {
   Popover,
   TextField,
 } from "@navikt/ds-react";
-import algoliasearch from "algoliasearch/lite";
-import React, { useContext, useEffect, useRef, useState } from "react";
-import NextLink from "next/link";
-import styled from "styled-components";
 import { Header } from "@navikt/ds-react-internal";
-import { motion, AnimatePresence } from "framer-motion";
-import { LayoutContext } from "../templates/layout/Layout";
-import { useClickAway, useKey } from "react-use";
+import algoliasearch from "algoliasearch/lite";
+import { motion } from "framer-motion";
+import NextLink from "next/link";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { useClickAway, useEvent, useKey, useUpdateEffect } from "react-use";
+import styled from "styled-components";
 import { AlgoliaIcon } from "..";
+import { LayoutContext } from "../templates/layout/Layout";
 
 const searchClient = algoliasearch(
   "J64I2SIG7K",
@@ -57,6 +63,7 @@ const ScWrapper = styled.div<{ $open?: boolean }>`
   margin-left: auto;
   align-items: center;
   ${({ $open }) => $open && `width: 100%;`}
+  padding-left: 1rem;
 `;
 
 const ScSearchButton = styled(Header.Button)`
@@ -151,7 +158,7 @@ const ScPopover = styled(Popover)`
   z-index: -1;
   border-radius: 0 0 4px 4px;
   box-shadow: 0 0 8px 0 rgba(0, 36, 58, 0.08), 0 0 6px 0 rgba(0, 36, 58, 0.12);
-  width: 100%;
+  width: calc(100% - 1rem);
   background-color: var(--navds-color-gray-10);
 `;
 
@@ -169,6 +176,12 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
   useKey("Escape", handleEsc, {}, [query]);
 
   useClickAway(searchRef, () => open && setOpen(false));
+
+  const onFocusChange = useCallback(() => {
+    !searchRef.current.contains(document.activeElement) && setOpen(false);
+  }, []);
+
+  useEvent("focusin", onFocusChange);
 
   useEffect(() => {
     searchIndex.current = searchClient.initIndex(index);
@@ -198,65 +211,61 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
       ? {
           initial: { y: 0, width: "0", opacity: 0 },
           animate: { y: 0, width: "100%", opacity: 1 },
-          exit: { y: 0, width: "100%", opacity: 0 },
         }
       : {
           animate: { y: 0, width: "500px", opacity: 1 },
           initial: { y: 0, width: "0", opacity: 0 },
-          exit: { y: 0, width: "500px", opacity: 0 },
         };
   };
 
   return (
     <ScWrapper ref={searchRef} $open={open}>
-      <AnimatePresence>
-        {open && (
-          <ScInputWrapper
-            as={motion.div}
-            key="MainMenuKey"
-            transition={{ type: "tween", duration: 0.25 }}
-            {...inputVariants(context.isTablet)}
-          >
-            <ScSearchIcon tabIndex={-1}>
-              <SearchIcon
-                style={{ fontSize: "1.5rem", marginLeft: 3 }}
-                aria-label="Søk ikon"
-              />
-            </ScSearchIcon>
-            <ScTextField
-              placeholder="Søk..."
-              $tablet={context.isTablet}
-              ref={anchor}
-              hideLabel
-              label="Søk"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            <ScPopover
-              onClose={() => null}
-              anchorEl={anchor.current}
-              open={Object.keys(result).length > 0 || query !== ""}
-              arrow={false}
-              placement={"bottom-start"}
-              offset={0}
-            >
-              <Hits hits={result} value={query} />
-            </ScPopover>
-          </ScInputWrapper>
-        )}
-        {open ? (
-          <ScInputButton onClick={() => setOpen(false)}>
-            <Close style={{ fontSize: "1.5rem" }} aria-label="Lukk søk ikon" />
-          </ScInputButton>
-        ) : (
-          <ScSearchButton onClick={() => setOpen(!open)}>
+      {open && (
+        <ScInputWrapper
+          as={motion.div}
+          key="MainMenuKey"
+          transition={{ type: "tween", duration: 0.25 }}
+          {...inputVariants(context.isTablet)}
+        >
+          <ScSearchIcon tabIndex={-1}>
             <SearchIcon
               style={{ fontSize: "1.5rem", marginLeft: 3 }}
               aria-label="Søk ikon"
             />
-          </ScSearchButton>
-        )}
-      </AnimatePresence>
+          </ScSearchIcon>
+          <ScTextField
+            placeholder="Søk..."
+            $tablet={context.isTablet}
+            ref={anchor}
+            hideLabel
+            label="Søk"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <ScInputButton onClick={() => setOpen(false)}>
+            <Close style={{ fontSize: "1.5rem" }} aria-label="Lukk søk ikon" />
+          </ScInputButton>
+          <ScPopover
+            onClose={() => null}
+            anchorEl={anchor.current}
+            open={Object.keys(result).length > 0 || query !== ""}
+            arrow={false}
+            placement={"bottom-start"}
+            offset={8}
+          >
+            <Hits ref={anchor} hits={result} value={query} />
+          </ScPopover>
+        </ScInputWrapper>
+      )}
+
+      {!open && (
+        <ScSearchButton onClick={() => setOpen(!open)}>
+          <SearchIcon
+            style={{ fontSize: "1.5rem", marginLeft: 3 }}
+            aria-label="Søk ikon"
+          />
+        </ScSearchButton>
+      )}
     </ScWrapper>
   );
 };
@@ -264,7 +273,6 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
 const ScHits = styled.div`
   display: flex;
   flex-direction: column;
-  /* width: 400px; */
   max-height: 600px;
   overflow-y: scroll;
   background-color: white;
@@ -284,39 +292,80 @@ const ScIcon = styled.div`
   height: 100%;
 `;
 
-const Hits = ({
-  hits,
-  value,
-}: {
+interface HitsProps {
   hits: { [key: string]: any[] };
   value: string;
-}) => {
-  return (
-    <ScHits>
-      {Object.keys(hits).length === 0 && (
-        <ScHit>
-          <BodyLong> Ingen treff for: {value}...</BodyLong>
-        </ScHit>
-      )}
-      {Object.keys(hits).map((category) => (
-        <div key={category}>
-          <ScHeading forwardedAs="div" size="small">
-            {category}
-          </ScHeading>
+}
 
-          {hits[category].map((hit) => (
-            <Hit key={hit.objectID} hit={hit} />
-          ))}
-        </div>
-      ))}
-      {Object.keys(hits).length > 0 && (
-        <ScIcon>
-          <AlgoliaIcon />
-        </ScIcon>
-      )}
-    </ScHits>
-  );
-};
+const Hits = React.forwardRef<HTMLInputElement, HitsProps>(
+  ({ hits, value }: HitsProps, ref) => {
+    const itemsRef = useRef<any>([ref]);
+    const [activeN, setActiveN] = useState(0);
+    const hitsRef = useRef<HTMLDivElement>(null);
+
+    const handleUp = (e) => {
+      e.preventDefault();
+      setActiveN((n) => (n - 1 < 0 ? itemsRef.current.length - 1 : n - 1));
+    };
+
+    const handleDown = (e) => {
+      e.preventDefault();
+      setActiveN((n) => (n + 1 === itemsRef.current.length ? 0 : n + 1));
+    };
+
+    const handleTab = (e) => {
+      setActiveN(0);
+      !e.shiftKey &&
+        hitsRef.current.contains(document.activeElement) &&
+        itemsRef.current[0]?.current?.focus();
+    };
+
+    useKey("ArrowUp", (e) => handleUp(e));
+    useKey("ArrowDown", (e) => handleDown(e));
+    useKey("Tab", (e) => handleTab(e));
+
+    useEffect(() => {
+      setActiveN(0);
+      itemsRef.current = [ref];
+    }, [value]);
+
+    useUpdateEffect(() => {
+      const el: any = itemsRef.current?.[activeN];
+      el && el?.current ? el.current?.focus() : el?.focus();
+    }, [activeN]);
+
+    return (
+      <ScHits ref={hitsRef}>
+        {Object.keys(hits).length === 0 && (
+          <ScHit>
+            <BodyLong> Ingen treff for: {value}...</BodyLong>
+          </ScHit>
+        )}
+        {Object.keys(hits).map((category) => (
+          <div key={category}>
+            <ScHeading forwardedAs="div" size="small">
+              {category}
+            </ScHeading>
+
+            {hits[category].map((hit, i) => (
+              <Hit
+                ref={(el) => (itemsRef.current[i + 1] = el)}
+                key={hit.objectID}
+                hit={hit}
+                onFocus={() => setActiveN(i + 1)}
+              />
+            ))}
+          </div>
+        ))}
+        {Object.keys(hits).length > 0 && (
+          <ScIcon>
+            <AlgoliaIcon />
+          </ScIcon>
+        )}
+      </ScHits>
+    );
+  }
+);
 
 const capitalize = (s) => (s && s[0].toUpperCase() + s.slice(1)) || "";
 
@@ -329,26 +378,38 @@ const ScHit = styled.a`
   :hover {
     background-color: var(--navds-color-gray-10);
   }
+
+  :focus {
+    outline: none;
+    box-shadow: inset 0 0 0 3px var(--navds-color-blue-80);
+  }
 `;
 
-const Hit = ({ hit }: { hit: any }) => {
-  const isComponent = [
-    "bruk",
-    "design",
-    "utvikling",
-    "tilgjengelighet",
-    "props",
-  ].includes(hit.page);
+interface HitProps {
+  hit: any;
+  onFocus: () => void;
+}
 
-  return (
-    <BodyShort>
-      <NextLink href={`/${hit.path}`} passHref>
-        <ScHit>
-          {`${hit.title}${isComponent ? ` - ${capitalize(hit.page)}` : ""}`}
-        </ScHit>
-      </NextLink>
-    </BodyShort>
-  );
-};
+const Hit = React.forwardRef<HTMLAnchorElement, HitProps>(
+  ({ hit, ...props }: HitProps, ref) => {
+    const isComponent = [
+      "bruk",
+      "design",
+      "utvikling",
+      "tilgjengelighet",
+      "props",
+    ].includes(hit.page);
+
+    return (
+      <BodyShort>
+        <NextLink href={`/${hit.path}`} passHref>
+          <ScHit {...props} tabIndex={-1} ref={ref}>
+            {`${hit.title}${isComponent ? ` - ${capitalize(hit.page)}` : ""}`}
+          </ScHit>
+        </NextLink>
+      </BodyShort>
+    );
+  }
+);
 
 export default Search;
