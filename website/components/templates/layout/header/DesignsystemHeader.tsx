@@ -8,7 +8,6 @@ import { LayoutContext, LayoutParts } from "../Layout";
 import * as S from "./header.styles";
 import MobileNavigation from "./MobileNavigation";
 import PortalNavigation from "./PortalNavigation";
-import SearchV2 from "../../../search/search-v2";
 import { motion } from "framer-motion";
 
 const DesignsystemHeader = (): JSX.Element => {
@@ -51,8 +50,7 @@ const DesignsystemHeader = (): JSX.Element => {
           )}
         </S.Links>
       )}
-      {/* <Search isOpen={(v: boolean) => setSearchisOpen(v)} /> */}
-      <SearchV2 isOpen={(v: boolean) => setSearchisOpen(v)} />
+      <Search isOpen={(v: boolean) => setSearchisOpen(v)} />
       {/* <S.Link href="#">
         <Bells
           focusable={false}
@@ -68,8 +66,7 @@ const DesignsystemHeader = (): JSX.Element => {
       {context.isTablet && !searchisOpen && (
         <PortalNavigation title={LayoutParts[context.version].title ?? ""} />
       )}
-      {/* <Search isOpen={(v: boolean) => setSearchisOpen(v)} /> */}
-      <SearchV2 isOpen={(v: boolean) => setSearchisOpen(v)} />
+      <Search isOpen={(v: boolean) => setSearchisOpen(v)} />
       <MobileNavigation />
     </>
   );
