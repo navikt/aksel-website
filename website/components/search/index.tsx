@@ -189,11 +189,11 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
   useEffect(() => {
     if (open) {
       anchor.current && anchor.current.focus();
-      isOpen && isOpen(open);
     } else {
       setResult({});
       setQuery("");
     }
+    isOpen && isOpen(open);
   }, [open]);
 
   const inputAnimationVariants = (isTablet: boolean) => {
