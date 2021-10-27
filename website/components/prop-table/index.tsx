@@ -55,27 +55,25 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
 
   return (
     <S.PropTable>
-      <BodyLong>
-        <ul>
-          {node.overridable && (
-            <li>
-              Komponenten er implementert med{" "}
-              <NextLink href="#" passHref>
-                <Link>OverridableComponent</Link>
-              </NextLink>
-            </li>
-          )}
-          {node.refplacement && (
-            <li>
-              <StyledCode>ref</StyledCode> er plassert på {node.refplacement}
-            </li>
-          )}
-          {node.extends && (
-            <li>
-              Props extends <StyledCode>{node.extends}</StyledCode>
-            </li>
-          )}
-        </ul>
+      <BodyLong as="ul">
+        {node.overridable && (
+          <li>
+            Komponenten er implementert med{" "}
+            <NextLink href="#" passHref>
+              <Link>OverridableComponent</Link>
+            </NextLink>
+          </li>
+        )}
+        {node.refplacement && (
+          <li>
+            <StyledCode>ref</StyledCode> er plassert på {node.refplacement}
+          </li>
+        )}
+        {node.extends && (
+          <li>
+            Props extends <StyledCode>{node.extends}</StyledCode>
+          </li>
+        )}
       </BodyLong>
 
       {node.preset_children && (
