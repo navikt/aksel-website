@@ -156,8 +156,8 @@ const ScTextField = styled(TextField)<{ $tablet: boolean }>`
 const ScPopover = styled(Popover)`
   border: none;
   z-index: -1;
-  border-radius: 0 0 4px 4px;
-  box-shadow: 0 0 8px 0 rgba(0, 36, 58, 0.08), 0 0 6px 0 rgba(0, 36, 58, 0.12);
+  box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
+    0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1 1px 0 rgba(38, 38, 38, 0.14);
   width: calc(100% - 1rem);
   background-color: var(--navds-color-gray-10);
 `;
@@ -251,7 +251,7 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
             open={Object.keys(result).length > 0 || query !== ""}
             arrow={false}
             placement={"bottom-start"}
-            offset={8}
+            offset={12}
           >
             <Hits ref={anchor} hits={result} value={query} />
           </ScPopover>
@@ -274,7 +274,8 @@ const ScHits = styled.div`
   display: flex;
   flex-direction: column;
   max-height: 600px;
-  overflow-y: scroll;
+  overflow-y: auto;
+  border-radius: 4px;
   background-color: white;
 `;
 
