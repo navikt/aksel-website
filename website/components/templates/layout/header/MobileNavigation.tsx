@@ -96,6 +96,8 @@ const ScHamburgerButton = styled(Header.Button)<{ $open: boolean }>`
      `}
   > * {
     display: flex;
+    /* Bug-fix where popover thinks svg inside button is not a child and thus closes it */
+    pointer-events: none;
   }
 `;
 
@@ -125,7 +127,13 @@ const MobileNavigation = () => {
           )}
         </span>
       </ScHamburgerButton>
-      <ScMenu $isMobile={context.isMobile} onClose={() => setOpenHamb(false)}>
+      <ScMenu
+        $isMobile={context.isMobile}
+        onClose={() => {
+          setOpenHamb(false);
+          console.count("ran");
+        }}
+      >
         {openHamb && (
           <Dropdown.Menu.List>
             <ScTopDiv hidden={isHeadingMenu}>
