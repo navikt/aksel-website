@@ -13,7 +13,7 @@ import styled from "styled-components";
 import { Header } from "@navikt/ds-react-internal";
 import { motion, AnimatePresence } from "framer-motion";
 import { LayoutContext } from "../templates/layout/Layout";
-import { useKey } from "react-use";
+import { useClickAway, useKey } from "react-use";
 import { AlgoliaIcon } from "..";
 
 const searchClient = algoliasearch(
@@ -155,12 +155,15 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
   const searchIndex = useRef(null);
   const [open, setOpen] = useState(false);
   const anchor = useRef(null);
+  const searchRef = useRef(null);
 
   const [query, setQuery] = useState("");
   const [result, setResult] = useState<{ [key: string]: any[] }>({});
 
   const handleEsc = () => (query === "" ? setOpen(false) : setQuery(""));
   useKey("Escape", handleEsc, {}, [query]);
+
+  useClickAway(searchRef, () => open && setOpen(false));
 
   useEffect(() => {
     searchIndex.current = searchClient.initIndex(index);
@@ -200,7 +203,7 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
   };
 
   return (
-    <ScWrapper $open={open}>
+    <ScWrapper ref={searchRef} $open={open}>
       <AnimatePresence>
         {open && (
           <ScInputWrapper
