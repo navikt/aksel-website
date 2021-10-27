@@ -14,6 +14,7 @@ import { Header } from "@navikt/ds-react-internal";
 import { motion, AnimatePresence } from "framer-motion";
 import { LayoutContext } from "../templates/layout/Layout";
 import { useKey } from "react-use";
+import { AlgoliaIcon } from "..";
 
 const searchClient = algoliasearch(
   "J64I2SIG7K",
@@ -263,8 +264,16 @@ const ScHits = styled.div`
 
 const ScHeading = styled(Detail)`
   background-color: #f7f7f7;
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem;
   text-transform: uppercase;
+`;
+
+const ScIcon = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem;
+  width: 100%;
+  height: 100%;
 `;
 
 const Hits = ({
@@ -292,6 +301,11 @@ const Hits = ({
           ))}
         </div>
       ))}
+      {Object.keys(hits).length > 0 && (
+        <ScIcon>
+          <AlgoliaIcon />
+        </ScIcon>
+      )}
     </ScHits>
   );
 };
