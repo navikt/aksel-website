@@ -29,15 +29,16 @@ const Links = styled.div`
   column-gap: 0.25rem;
   font-size: 1.25rem;
   margin-left: var(--navds-spacing-4);
-
   right: 0;
   top: 0;
 
   a {
+    min-width: 50px;
     text-decoration: none;
     color: var(--navds-color-darkgray);
     padding: 0.75rem;
     transition: box-shadow 100ms;
+    justify-content: center;
 
     :hover {
       text-decoration: underline;
