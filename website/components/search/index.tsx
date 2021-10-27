@@ -241,6 +241,8 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
             label="Søk"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            aria-expanded={Object.keys(result).length > 0 || query !== ""}
+            aria-haspopup="menu"
           />
           <ScInputButton onClick={() => setOpen(false)}>
             <Close style={{ fontSize: "1.5rem" }} aria-label="Lukk søk ikon" />
@@ -270,13 +272,14 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
   );
 };
 
-const ScHits = styled.div`
+const ScHits = styled.dl`
   display: flex;
   flex-direction: column;
   max-height: 600px;
   overflow-y: auto;
   border-radius: 4px;
   background-color: white;
+  margin: 0;
 `;
 
 const ScHeading = styled(Detail)`
@@ -351,7 +354,7 @@ const Hits = React.forwardRef<HTMLInputElement, HitsProps>(
         )}
         {Object.keys(hits).map((category) => (
           <div key={category}>
-            <ScHeading forwardedAs="div" size="small">
+            <ScHeading forwardedAs="dt" size="small">
               {category}
             </ScHeading>
 
@@ -409,7 +412,7 @@ const Hit = React.forwardRef<HTMLAnchorElement, HitProps>(
     ].includes(hit.page);
 
     return (
-      <BodyShort>
+      <BodyShort as="dd">
         <NextLink href={`/${hit.path}`} passHref>
           <ScHit {...props} tabIndex={-1} ref={ref}>
             {`${hit.title}${isComponent ? ` - ${capitalize(hit.page)}` : ""}`}
