@@ -68,14 +68,17 @@ const ScSearchButton = styled(Header.Button)`
 `;
 
 const ScInputButton = styled.button`
-  border: 2px solid var(--navds-color-gray-90);
-  border-left: none;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   width: var(--header-height);
   height: var(--header-height);
-  background-color: white;
+  margin-right: 1rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 0 4px 4px 0;
+  background-color: var(--navds-color-gray-10);
   flex-shrink: 0;
   /* border: 1px solid var(--navds-color-gray-60); */
 
@@ -97,6 +100,7 @@ const ScSearchIcon = styled.div`
   justify-content: center;
   width: 48px;
   height: var(--header-height);
+  height: 48px;
   background-color: transparent;
   flex-shrink: 0;
   left: 0;
@@ -124,12 +128,13 @@ const ScTextField = styled(TextField)<{ $tablet: boolean }>`
   flex-grow: 1;
 
   > input {
-    border: 2px solid var(--navds-color-gray-90);
-    border-right: none;
-    border-radius: 0;
+    border: none;
+    border-radius: 4px 0 0 4px;
     height: var(--header-height);
+    height: 48px;
     font-size: 1.25rem;
     padding: 0 1rem 0 3rem;
+    background-color: var(--navds-color-gray-10);
   }
   > input:focus {
     box-shadow: inset 0 0 0 1px white,
