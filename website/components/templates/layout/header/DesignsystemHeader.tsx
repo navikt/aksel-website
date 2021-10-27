@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import NextLink from "next/link";
 import * as React from "react";
 import { useContext, useState } from "react";
+import { useMedia } from "react-use";
 import { Search } from "../../..";
 import { DsNavigationHeadingT } from "../../../../lib";
 import { PagePropsContext } from "../../../../pages/_app";
@@ -12,6 +13,7 @@ import PortalNavigation from "./PortalNavigation";
 
 const DesignsystemHeader = (): JSX.Element => {
   const context = useContext(LayoutContext);
+  const useMobileHeader = useMedia("(max-width: 968px)");
 
   const [pageProps] = useContext<any>(PagePropsContext);
 
@@ -63,7 +65,7 @@ const DesignsystemHeader = (): JSX.Element => {
 
   const mobile = (
     <>
-      {context.isTablet && !searchisOpen && (
+      {!searchisOpen && (
         <PortalNavigation title={LayoutParts[context.version].title ?? ""} />
       )}
       <Search isOpen={(v: boolean) => setSearchisOpen(v)} />
@@ -71,6 +73,6 @@ const DesignsystemHeader = (): JSX.Element => {
     </>
   );
 
-  return <S.Header>{context.isTablet ? mobile : nonMobile}</S.Header>;
+  return <S.Header>{useMobileHeader ? mobile : nonMobile}</S.Header>;
 };
 export default DesignsystemHeader;
