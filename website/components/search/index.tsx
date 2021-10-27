@@ -278,6 +278,7 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
             aria-label="Åpne søk"
             role="img"
           />
+          <span className="navds-sr-only">Åpne søk</span>
         </ScSearchButton>
       )}
     </ScWrapper>
@@ -324,7 +325,7 @@ const Hits = React.forwardRef<HTMLInputElement, HitsProps>(
   ({ hits, value }: HitsProps, ref) => {
     const itemsRef = useRef<any>([ref]);
     const [activeN, setActiveN] = useState(0);
-    const hitsRef = useRef<HTMLDivElement>(null);
+    const hitsRef = useRef<HTMLDListElement>(null);
 
     const handleUp = (e) => {
       e.preventDefault();
