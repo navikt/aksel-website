@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import NextLink from "next/link";
 import * as React from "react";
 import { useContext, useState } from "react";
@@ -8,7 +9,6 @@ import { LayoutContext, LayoutParts } from "../Layout";
 import * as S from "./header.styles";
 import MobileNavigation from "./MobileNavigation";
 import PortalNavigation from "./PortalNavigation";
-import { motion } from "framer-motion";
 
 const DesignsystemHeader = (): JSX.Element => {
   const context = useContext(LayoutContext);
@@ -52,7 +52,7 @@ const DesignsystemHeader = (): JSX.Element => {
       )}
       <Search isOpen={(v: boolean) => setSearchisOpen(v)} />
       {/* <S.Link href="#">
-        <Bells
+        <Bell
           focusable={false}
           aria-label="Notifikasjons ikon"
           style={{ fontSize: "1.5rem" }}
