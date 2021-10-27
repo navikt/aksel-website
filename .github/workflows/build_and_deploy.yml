@@ -25,8 +25,13 @@ jobs:
       - uses: actions/checkout@v2
       - name: Copy env-file for dev
         run: cp nais/dev/${{ github.event.inputs.config-file-name }}.env .env.local
-      - name: add sanity write token to .env
-        run: echo "SANITY_WRITE_KEY=${{ secrets.SANITY_FEEDBACK_WRITE_KEY }}" >> website/.env
+      - name: add tokens to .env
+        run: |
+          echo "SANITY_WRITE_KEY=${{ secrets.SANITY_FEEDBACK_WRITE_KEY }}" >> website/.env
+          echo "ALGOLIA_ADMIN=${{ secrets.ALGOLIA_ADMIN }}" >> website/.env
+          echo "ALGOLIA_ID=${{ secrets.ALGOLIA_ID}}" >> website/.env
+          echo "HOOK_SECRET=${{ secrets.SANITY_INDEXING_HOOK }}" >> website/.env
+
       - name: Install dependencies
         run: yarn
       - name: Update kode examples
