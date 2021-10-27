@@ -231,21 +231,32 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
             <SearchIcon
               style={{ fontSize: "1.5rem", marginLeft: 3 }}
               aria-label="Søk ikon"
+              aria-hidden={true}
+              role="img"
             />
           </ScSearchIcon>
           <ScTextField
-            placeholder="Søk..."
+            placeholder="Søk"
             $tablet={context.isTablet}
             ref={anchor}
             hideLabel
             label="Søk"
+            description="Søk etter sider i designsystemet"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             aria-expanded={Object.keys(result).length > 0 || query !== ""}
             aria-haspopup="menu"
+            autoComplete="off"
+            aria-autocomplete="list"
+            type="text"
           />
           <ScInputButton onClick={() => setOpen(false)}>
-            <Close style={{ fontSize: "1.5rem" }} aria-label="Lukk søk ikon" />
+            <Close
+              style={{ fontSize: "1.5rem" }}
+              role="img"
+              aria-label="Lukk søk"
+            />
+            <span className="navds-sr-only">Lukk Søk</span>
           </ScInputButton>
           <ScPopover
             onClose={() => null}
@@ -264,7 +275,8 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
         <ScSearchButton onClick={() => setOpen(!open)}>
           <SearchIcon
             style={{ fontSize: "1.5rem", marginLeft: 3 }}
-            aria-label="Søk ikon"
+            aria-label="Åpne søk"
+            role="img"
           />
         </ScSearchButton>
       )}
