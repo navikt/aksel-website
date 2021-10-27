@@ -1,12 +1,19 @@
 import { Close, Search as SearchIcon } from "@navikt/ds-icons";
-import { BodyShort, Detail, Popover, TextField } from "@navikt/ds-react";
+import {
+  BodyLong,
+  BodyShort,
+  Detail,
+  Popover,
+  TextField,
+} from "@navikt/ds-react";
 import algoliasearch from "algoliasearch/lite";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import NextLink from "next/link";
 import styled from "styled-components";
 import { Header } from "@navikt/ds-react-internal";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { LayoutContext } from "../templates/layout/Layout";
+import { useKey } from "react-use";
 
 const searchClient = algoliasearch(
   "J64I2SIG7K",
@@ -76,19 +83,31 @@ const ScInputButton = styled.button`
   }
 `;
 
+const ScSearchIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: var(--header-height);
+  background-color: transparent;
+  flex-shrink: 0;
+  left: 0;
+  /* border: 1px solid var(--navds-color-gray-60); */
+  position: absolute;
+  :focus {
+    outline: none;
+    box-shadow: inset 0 0 0 1px white,
+      inset 0 0 0 3px var(--navds-color-blue-80);
+  }
+`;
+
 const ScInputWrapper = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
-  /* float: right; */
-
   margin-left: auto;
   width: 100%;
   justify-content: flex-end;
-
-  > button:first-of-type {
-    border-right: none;
-    pointer-events: none;
-  }
 
   > button:last-of-type {
     border-left: none;
@@ -97,7 +116,7 @@ const ScInputWrapper = styled.div`
 
 const ScTextField = styled(TextField)<{ $tablet: boolean }>`
   width: 100%;
-  ${(props) => !props.$tablet && `max-width: 400px;`}
+  /* ${(props) => !props.$tablet && `max-width: 400px;`} */
   flex-grow: 1;
 
   > input {
@@ -105,7 +124,7 @@ const ScTextField = styled(TextField)<{ $tablet: boolean }>`
     border-radius: 0;
     height: var(--header-height);
     font-size: 1.25rem;
-    padding: 0 1rem;
+    padding: 0 1rem 0 3rem;
   }
   > input:focus {
     box-shadow: inset 0 0 0 1px white,
@@ -115,7 +134,11 @@ const ScTextField = styled(TextField)<{ $tablet: boolean }>`
 
 const ScPopover = styled(Popover)`
   border: none;
-  box-shadow: 0 0 10px 0 rgba(24, 39, 75, 0.1), 0 0 6px 0 rgba(24, 39, 75, 0.12);
+  z-index: -1;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 0 8px 0 rgba(0, 36, 58, 0.08), 0 0 6px 0 rgba(0, 36, 58, 0.12);
+  width: 100%;
+  background-color: var(--navds-color-gray-10);
 `;
 
 const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
@@ -126,6 +149,9 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
 
   const [query, setQuery] = useState("");
   const [result, setResult] = useState<{ [key: string]: any[] }>({});
+
+  const handleEsc = () => (query === "" ? setOpen(false) : setQuery(""));
+  useKey("Escape", handleEsc, {}, [query]);
 
   useEffect(() => {
     searchIndex.current = searchClient.initIndex(index);
@@ -145,56 +171,76 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
 
   useEffect(() => {
     !open && setResult({});
+    !open && setQuery("");
     open && anchor.current && anchor.current.focus();
     isOpen && isOpen(open);
   }, [open]);
 
+  const inputVariants = (isTablet) => {
+    return isTablet
+      ? {
+          initial: { y: 0, width: "0", opacity: 0 },
+          animate: { y: 0, width: "100%", opacity: 1 },
+          exit: { y: 0, width: "0", opacity: 0 },
+        }
+      : {
+          animate: { y: 0, width: "500px", opacity: 1 },
+          initial: { y: 0, width: "0", opacity: 0 },
+          exit: { y: 0, width: "0", opacity: 0 },
+        };
+  };
+
   return (
     <ScWrapper $open={open}>
-      {open ? (
-        <ScInputWrapper
-          as={motion.div}
-          key="MainMenuKey"
-          initial={{ y: 0, width: "50%", opacity: 0 }}
-          animate={{ y: 0, width: "100%", opacity: 1 }}
-          transition={{ type: "tween", duration: 0.25 }}
-        >
-          <ScInputButton tabIndex={-1}>
+      <AnimatePresence>
+        {open ? (
+          <ScInputWrapper
+            as={motion.div}
+            key="MainMenuKey"
+            transition={{ type: "tween", duration: 0.25 }}
+            {...inputVariants(context.isTablet)}
+          >
+            <ScSearchIcon tabIndex={-1}>
+              <SearchIcon
+                style={{ fontSize: "1.5rem", marginLeft: 3 }}
+                aria-label="Søk ikon"
+              />
+            </ScSearchIcon>
+            <ScTextField
+              placeholder="Søk..."
+              $tablet={context.isTablet}
+              ref={anchor}
+              hideLabel
+              label="Søk"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <ScInputButton onClick={() => setOpen(false)}>
+              <Close
+                style={{ fontSize: "1.5rem" }}
+                aria-label="Lukk søk ikon"
+              />
+            </ScInputButton>
+            <ScPopover
+              onClose={() => null}
+              anchorEl={anchor.current}
+              open={Object.keys(result).length > 0 || query !== ""}
+              arrow={false}
+              placement={"bottom-start"}
+              offset={0}
+            >
+              <Hits hits={result} value={query} />
+            </ScPopover>
+          </ScInputWrapper>
+        ) : (
+          <ScSearchButton onClick={() => setOpen(!open)}>
             <SearchIcon
               style={{ fontSize: "1.5rem", marginLeft: 3 }}
               aria-label="Søk ikon"
             />
-          </ScInputButton>
-          <ScTextField
-            placeholder="Søk..."
-            $tablet={context.isTablet}
-            ref={anchor}
-            hideLabel
-            label="Søk"
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <ScInputButton onClick={() => setOpen(false)}>
-            <Close style={{ fontSize: "1.5rem" }} aria-label="Lukk søk ikon" />
-          </ScInputButton>
-          <ScPopover
-            onClose={() => null}
-            anchorEl={anchor.current}
-            open={Object.keys(result).length > 0}
-            arrow={false}
-            placement={"bottom-start"}
-            offset={0}
-          >
-            <Hits hits={result} />
-          </ScPopover>
-        </ScInputWrapper>
-      ) : (
-        <ScSearchButton onClick={() => setOpen(!open)}>
-          <SearchIcon
-            style={{ fontSize: "1.5rem", marginLeft: 3 }}
-            aria-label="Søk ikon"
-          />
-        </ScSearchButton>
-      )}
+          </ScSearchButton>
+        )}
+      </AnimatePresence>
     </ScWrapper>
   );
 };
@@ -202,9 +248,10 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
 const ScHits = styled.div`
   display: flex;
   flex-direction: column;
-  width: 400px;
-  max-height: 400px;
+  /* width: 400px; */
+  max-height: 600px;
   overflow-y: scroll;
+  background-color: white;
 `;
 
 const ScHeading = styled(Detail)`
@@ -213,18 +260,27 @@ const ScHeading = styled(Detail)`
   text-transform: uppercase;
 `;
 
-const Hits = ({ hits }: { hits: { [key: string]: any[] } }) => {
-  if (Object.keys(hits).length === 0) return null;
-
+const Hits = ({
+  hits,
+  value,
+}: {
+  hits: { [key: string]: any[] };
+  value: string;
+}) => {
   return (
     <ScHits
       as={motion.div}
       key="Searchhits"
-      initial={{ maxHeight: "0px", opacity: 0 }}
-      animate={{ maxHeight: "400px", opacity: 1 }}
+      initial={{ maxHeight: "0px", opacity: 0.7 }}
+      animate={{ maxHeight: "600px", opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ type: "tween", duration: 0.25 }}
     >
+      {Object.keys(hits).length === 0 && (
+        <ScHit>
+          <BodyLong> Ingen treff for: {value}...</BodyLong>
+        </ScHit>
+      )}
       {Object.keys(hits).map((category) => (
         <div key={category}>
           <ScHeading forwardedAs="div" size="small">
