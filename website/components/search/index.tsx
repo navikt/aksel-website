@@ -72,6 +72,11 @@ const ScButtonCss = css`
 
 const ScSearchButton = styled(Header.Button)`
   ${ScButtonCss}
+
+  :focus {
+    box-shadow: inset 0 0 0 1px var(--navds-color-gray-90),
+      inset 0 0 0 3px var(--navds-color-blue-20);
+  }
 `;
 
 const ScCloseButton = styled.button`
@@ -81,6 +86,7 @@ const ScCloseButton = styled.button`
   height: 48px;
   border-radius: 0 4px 4px 0;
   background-color: var(--navds-color-gray-10);
+  z-index: auto;
 
   :hover {
     box-shadow: inset 0 0 0 1px white,
@@ -89,8 +95,9 @@ const ScCloseButton = styled.button`
 
   :focus {
     outline: none;
-    box-shadow: inset 0 0 0 1px white,
-      inset 0 0 0 4px var(--navds-color-blue-80);
+    box-shadow: inset 0 0 0 2px var(--navds-color-gray-90),
+      0 0 0 3px var(--navds-color-blue-20);
+    z-index: 1;
   }
 `;
 
@@ -101,6 +108,7 @@ const ScSearchIcon = styled.div`
   background-color: transparent;
   left: 0;
   position: absolute;
+  z-index: 1;
 `;
 
 const ScOpenSearchWrapper = styled.div`
@@ -113,6 +121,7 @@ const ScOpenSearchWrapper = styled.div`
 
 const ScTextField = styled(TextField)<{ $tablet: boolean }>`
   width: 100%;
+  z-index: 0;
 
   > input {
     border: none;
@@ -128,8 +137,9 @@ const ScTextField = styled(TextField)<{ $tablet: boolean }>`
   }
 
   > input:focus {
-    box-shadow: inset 0 0 0 1px white,
-      inset 0 0 0 4px var(--navds-color-blue-80);
+    box-shadow: inset 0 0 0 2px var(--navds-color-gray-90),
+      0 0 0 3px var(--navds-color-blue-20);
+    z-index: 1;
   }
 `;
 

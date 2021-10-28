@@ -29,6 +29,11 @@ export const Link = styled(DsHeader.Title)<{ $active: boolean }>`
     box-shadow: inset 0 -2px 0 0 var(--navds-color-gray-90), inset 0 -5px 0 0 white;
   `}
 
+  :focus {
+    box-shadow: inset 0 0 0 1px var(--navds-color-gray-90),
+      inset 0 0 0 3px var(--navds-color-blue-20);
+  }
+
   > * {
     align-items: center;
     justify-content: center;

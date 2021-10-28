@@ -62,6 +62,13 @@ export const ScIconLink = styled(Dropdown.Menu.List.Item)`
   gap: 1rem;
 `;
 
+const ScToggle = styled(Header.Button)`
+  :focus {
+    box-shadow: inset 0 0 0 1px var(--navds-color-gray-90),
+      inset 0 0 0 3px var(--navds-color-blue-20);
+  }
+`;
+
 const HeadingDropDown = ({ title }: { title: string }) => {
   const showLogo = useMedia("(min-width: 563px)");
 
@@ -75,11 +82,11 @@ const HeadingDropDown = ({ title }: { title: string }) => {
       exit={{ opacity: 0 }}
     >
       <Dropdown>
-        <Header.Button as={Dropdown.Toggle}>
+        <ScToggle forwardedAs={Dropdown.Toggle}>
           {showLogo && <NavLogoWhite focusable={false} />}
           {title}
           <Expand focusable={false} role="presentation" />
-        </Header.Button>
+        </ScToggle>
         <ScMenu>
           <Dropdown.Menu.List>
             <NextLink href="/" passHref>
