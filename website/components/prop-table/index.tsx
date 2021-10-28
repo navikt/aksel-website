@@ -35,7 +35,7 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
           <S.Th className="navds-heading navds-heading--xsmall">Type</S.Th>
           <S.Td className="navds-body-short">
             <pre style={{ margin: 0 }}>
-              <TypeCode>{prop.type.replaceAll("| ", "|\n")}</TypeCode>
+              <TypeCode>{prop.type}</TypeCode>
             </pre>
           </S.Td>
         </tr>
