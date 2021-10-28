@@ -209,12 +209,12 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
   const inputAnimationVariants = (isTablet: boolean) => {
     return isTablet
       ? {
-          initial: { y: 0, width: "0", opacity: 0 },
+          initial: { y: 0, width: "30%", opacity: 0 },
           animate: { y: 0, width: "100%", opacity: 1 },
         }
       : {
           animate: { y: 0, width: "500px", opacity: 1 },
-          initial: { y: 0, width: "0", opacity: 0 },
+          initial: { y: 0, width: "100px", opacity: 0 },
         };
   };
 
@@ -223,7 +223,7 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
       {open && (
         <ScOpenSearchWrapper
           as={motion.div}
-          key="MainMenuKey"
+          key="SearchWrapper"
           transition={{ type: "tween", duration: 0.25 }}
           {...inputAnimationVariants(context.isTablet)}
         >
