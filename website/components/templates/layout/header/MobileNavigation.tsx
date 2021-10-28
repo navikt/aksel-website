@@ -2,7 +2,7 @@ import { Close, Hamburger, Left } from "@navikt/ds-icons";
 import { Heading } from "@navikt/ds-react";
 import { Dropdown, Header } from "@navikt/ds-react-internal";
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { DsNavigationHeadingT } from "../../../../lib";
 import { PagePropsContext } from "../../../../pages/_app";
