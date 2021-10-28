@@ -58,34 +58,33 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
     activeId && window.history.replaceState(null, null, `#${activeId}`);
   }, [activeId]);
 
+  if (toc.length === 0) {
+    return null;
+  }
   return (
-    <>
-      {toc.length !== 0 ? (
-        <S.Wrapper>
-          <Heading size="small" as="p">
-            Innhold på siden
-          </Heading>
-          <S.Div>
-            <nav aria-label="Liste over innhold på siden">
-              <S.Ul>
-                {toc.map((link) => (
-                  <S.Li
-                    data-active={link.id === activeId}
-                    key={link.id + link.heading}
-                  >
-                    <Link href={`#${link.id}`} passHref>
-                      <a className="navds-link navds-body-short navds-body--small">
-                        {link.heading}
-                      </a>
-                    </Link>
-                  </S.Li>
-                ))}
-              </S.Ul>
-            </nav>
-          </S.Div>
-        </S.Wrapper>
-      ) : null}
-    </>
+    <S.Wrapper>
+      <Heading size="small" as="p">
+        Innhold på siden
+      </Heading>
+      <S.Div>
+        <nav aria-label="Liste over innhold på siden">
+          <S.Ul>
+            {toc.map((link) => (
+              <S.Li
+                data-active={link.id === activeId}
+                key={link.id + link.heading}
+              >
+                <Link href={`#${link.id}`} passHref>
+                  <a className="navds-link navds-body-short navds-body--small">
+                    {link.heading}
+                  </a>
+                </Link>
+              </S.Li>
+            ))}
+          </S.Ul>
+        </nav>
+      </S.Div>
+    </S.Wrapper>
   );
 }
 

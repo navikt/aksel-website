@@ -1,5 +1,5 @@
 import { ExternalLink } from "@navikt/ds-icons";
-import { Heading, Ingress, Link } from "@navikt/ds-react";
+import { BodyShort, Heading, Ingress } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React from "react";
 import { useMedia } from "react-use";
@@ -25,7 +25,7 @@ import * as S from "./page.styles";
 const Links = styled.div`
   display: flex;
   column-gap: 0.25rem;
-  font-size: 1.25rem;
+
   margin-left: var(--navds-spacing-4);
   right: 0;
   top: 0;
@@ -33,7 +33,7 @@ const Links = styled.div`
   a {
     text-decoration: none;
     color: var(--navds-color-darkgray);
-    padding: 0.75rem;
+    padding: calc(0.75rem + 2px) 0.25rem;
     transition: box-shadow 100ms;
     justify-content: center;
     display: flex;
@@ -60,7 +60,7 @@ const StyledDiv = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: var(--navds-spacing-2);
-  justify-content: space-between;
+  justify-content: flex-start;
 `;
 
 const MarginTop = styled.div`
@@ -115,22 +115,22 @@ const ComponentPageTemplate = ({
             </S.Inline>
             <Links>
               {data.npm_link && (
-                <a href={data.npm_link}>
+                <BodyShort size="small" as="a" href={data.npm_link}>
                   NPM
                   <ExternalLink />
-                </a>
+                </BodyShort>
               )}
               {data.github_link && (
-                <a href={data.github_link}>
+                <BodyShort size="small" as="a" href={data.github_link}>
                   Github
                   <ExternalLink />
-                </a>
+                </BodyShort>
               )}
               {data.figma_link && (
-                <a href={data.figma_link}>
+                <BodyShort size="small" as="a" href={data.figma_link}>
                   Figma
                   <ExternalLink />
-                </a>
+                </BodyShort>
               )}
             </Links>
           </StyledDiv>

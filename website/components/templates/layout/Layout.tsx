@@ -20,7 +20,7 @@ const ScWrapper = styled.div`
   background-color: #ffffff;
 
   p {
-    max-width: 600px;
+    max-width: var(--text-max-width);
   }
 `;
 

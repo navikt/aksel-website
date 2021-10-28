@@ -5,14 +5,13 @@ import { LayoutContext } from "../layout/Layout";
 export const SanityBlockContainer = styled.div`
   position: relative;
   max-width: 1280px;
+  display: flex;
 `;
 
 export const MaxWidthContainerDiv = styled.div<{ isTablet: boolean }>`
-  max-width: 880px;
+  max-width: calc(var(--content-max-width) + 5rem);
   width: 100%;
   padding: 0 2rem 1rem 3rem;
-  ${(props) => props.isTablet && `width: 100%;`};
-
   margin: ${(props) => (props.isTablet ? "0 auto" : "0 auto 0 0")};
 
   @media (max-width: 564px) {
@@ -36,7 +35,7 @@ export const MaxWidthContainer = ({
 };
 
 export const HeadingContainer = styled.div`
-  max-width: 800px;
+  /* max-width: var(--content-max-width); */
   padding-top: 2rem;
   padding-bottom: var(--navds-spacing-6);
 `;

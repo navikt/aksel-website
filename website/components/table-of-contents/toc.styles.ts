@@ -1,5 +1,26 @@
 import styled from "styled-components";
 
+export const Wrapper = styled.div`
+  position: sticky;
+  right: 0;
+  top: 5rem;
+  margin-top: 4rem;
+  z-index: 1;
+  align-items: start;
+  display: flex;
+  flex-direction: column;
+  order: 1;
+  float: right;
+  width: 300px;
+  height: 100%;
+  padding-left: 1rem;
+
+  @media (max-width: 1224px) {
+    display: none;
+    width: 0;
+  }
+`;
+
 export const Div = styled.div`
   position: sticky;
   right: 0;
@@ -12,7 +33,8 @@ export const Div = styled.div`
   padding-left: 1rem;
   order: 1;
   padding-right: 2rem;
-  width: 400px;
+
+  width: 300px;
 
   &:before {
     content: "";
@@ -24,26 +46,7 @@ export const Div = styled.div`
     left: -1px;
   }
 
-  @media (max-width: 1332px) {
-    display: none;
-    width: 0;
-  }
-`;
-
-export const Wrapper = styled.div`
-  position: sticky;
-  right: 0;
-  top: 5rem;
-  margin-top: 4rem;
-  z-index: 1;
-  align-items: start;
-  display: flex;
-  flex-direction: column;
-  order: 1;
-  float: right;
-  width: 400px;
-
-  @media (max-width: 1332px) {
+  @media (max-width: 1224px) {
     display: none;
     width: 0;
   }
@@ -53,7 +56,6 @@ export const Ul = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-  max-width: 400px;
 `;
 
 export const Li = styled.li`

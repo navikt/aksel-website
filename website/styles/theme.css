@@ -1,6 +1,8 @@
 :root {
   --font-family-code: "Source Code Pro", monospace;
   --header-height: 4rem;
+  --text-max-width: 600px;
+  --content-max-width: 800px;
 }
 
 code {
