@@ -42,15 +42,22 @@ const Hits = React.forwardRef<HTMLInputElement, HitsProps>(
     const itemsRef = useRef<any>([ref]);
     const [activeN, setActiveN] = useState(0);
     const hitsRef = useRef<HTMLDListElement>(null);
+    const [counterList, setCounterList] = useState([]);
+
+    useEffect(() => {
+      setCounterList([
+        ...Object.values(hits).reduce((prev, next) => [...prev, ...next], []),
+      ]);
+    }, [hits]);
 
     const handleUp = (e) => {
       e.preventDefault();
-      setActiveN((n) => (n - 1 < 0 ? itemsRef.current.length - 1 : n - 1));
+      setActiveN((n) => (n - 1 < 0 ? counterList.length : n - 1));
     };
 
     const handleDown = (e) => {
       e.preventDefault();
-      setActiveN((n) => (n + 1 === itemsRef.current.length ? 0 : n + 1));
+      setActiveN((n) => (n === counterList.length ? 0 : n + 1));
     };
 
     const handleTab = (e) => {
@@ -60,9 +67,9 @@ const Hits = React.forwardRef<HTMLInputElement, HitsProps>(
         itemsRef.current[0]?.current?.focus();
     };
 
-    useKey("ArrowUp", (e) => handleUp(e));
-    useKey("ArrowDown", (e) => handleDown(e));
-    useKey("Tab", (e) => handleTab(e));
+    useKey("ArrowUp", (e) => handleUp(e), {}, [counterList]);
+    useKey("ArrowDown", (e) => handleDown(e), {}, [counterList]);
+    useKey("Tab", (e) => handleTab(e), {}, [counterList]);
 
     /* Reset */
     useEffect(() => {
@@ -90,12 +97,20 @@ const Hits = React.forwardRef<HTMLInputElement, HitsProps>(
                   {category}
                 </ScCategory>
 
-                {hits[category].map((hit, i) => (
+                {hits[category].map((hit) => (
                   <Hit
-                    ref={(el) => (itemsRef.current[i + 1] = { current: el })}
+                    ref={(el) =>
+                      (itemsRef.current[
+                        counterList.findIndex((x) => hit.path === x.path) + 1
+                      ] = { current: el })
+                    }
                     key={hit.objectID}
                     hit={hit}
-                    onFocus={() => setActiveN(i + 1)}
+                    onFocus={() =>
+                      setActiveN(
+                        counterList.findIndex((x) => hit.path === x.path) + 1
+                      )
+                    }
                   />
                 ))}
               </div>
