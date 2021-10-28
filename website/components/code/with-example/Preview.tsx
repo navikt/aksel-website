@@ -41,12 +41,12 @@ const ScDiv = styled.div`
 const ScInnerDiv = styled.div`
   gap: 1rem;
   align-items: "center";
+  display: inline-flex;
   flex-wrap: wrap;
-  display: inline-grid;
   align-items: center;
   position: relative;
   width: 100%;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 
 const CodePreview = (): JSX.Element => {
