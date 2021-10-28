@@ -4,6 +4,7 @@ import { Dropdown, Header } from "@navikt/ds-react-internal";
 import { motion } from "framer-motion";
 import NextLink from "next/link";
 import * as React from "react";
+import { useState } from "react";
 import { useMedia } from "react-use";
 import styled, { css } from "styled-components";
 import { NavLogoWhite } from "../../..";
@@ -18,7 +19,13 @@ export const ScMenu = styled(Dropdown.Menu)`
   border: none;
   width: 300px;
   z-index: 1003;
-  box-shadow: 0 0 10px 0 rgba(24, 39, 75, 0.1), 0 0 6px 0 rgba(24, 39, 75, 0.12);
+  box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
+    0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
+  background-color: transparent;
+
+  > * {
+    background-color: white;
+  }
 `;
 
 export const ScLinkCss = css`
@@ -31,7 +38,7 @@ export const ScLinkCss = css`
   text-decoration: none;
 
   :hover {
-    background-color: var(--navds-color-blue-20);
+    background-color: var(--navds-color-blue-10);
   }
 
   :focus {
@@ -45,12 +52,9 @@ export const ScLink = styled(Dropdown.Menu.List.Item)`
   ${ScLinkCss}
   flex-direction: column;
 
+  align-items: flex-start;
   :hover > :first-child {
     color: var(--navds-color-blue-50);
-  }
-
-  > * {
-    text-align: start;
   }
 `;
 
@@ -72,6 +76,8 @@ const ScToggle = styled(Header.Button)`
 const HeadingDropDown = ({ title }: { title: string }) => {
   const showLogo = useMedia("(min-width: 563px)");
 
+  const [open, setOpen] = useState(false);
+
   return (
     <ScWrapper
       as={motion.div}
@@ -82,38 +88,51 @@ const HeadingDropDown = ({ title }: { title: string }) => {
       exit={{ opacity: 0 }}
     >
       <Dropdown>
-        <ScToggle forwardedAs={Dropdown.Toggle}>
+        <ScToggle onClick={() => setOpen(!open)} forwardedAs={Dropdown.Toggle}>
           {showLogo && <NavLogoWhite focusable={false} />}
           {title}
           <Expand focusable={false} role="presentation" />
         </ScToggle>
-        <ScMenu>
-          <Dropdown.Menu.List>
-            <NextLink href="/" passHref>
-              <ScIconLink forwardedAs="a">
-                <Left />
-                <BodyShort>Tilbake til Verktøykassa</BodyShort>
-              </ScIconLink>
-            </NextLink>
+        <ScMenu onClose={() => setOpen(false)}>
+          <motion.div
+            animate={open ? "open" : "closed"}
+            variants={{
+              open: {
+                opacity: 1,
+              },
+              closed: {
+                opacity: 0,
+              },
+            }}
+            transition={{ type: "tween", duration: 0.2 }}
+          >
+            <Dropdown.Menu.List>
+              <NextLink href="/" passHref>
+                <ScIconLink forwardedAs="a">
+                  <Left />
+                  <BodyShort>Tilbake til Verktøykassa</BodyShort>
+                </ScIconLink>
+              </NextLink>
 
-            <NextLink href="/designsystem" passHref>
-              <ScLink forwardedAs="a">
-                <BodyShort>Designsystemet</BodyShort>
-                <BodyShort size="small">
-                  Informasjon omhandlende designsystemet
-                </BodyShort>
-              </ScLink>
-            </NextLink>
+              <NextLink href="/designsystem" passHref>
+                <ScLink forwardedAs="a">
+                  <BodyShort>Designsystemet</BodyShort>
+                  <BodyShort size="small">
+                    Informasjon omhandlende designsystemet
+                  </BodyShort>
+                </ScLink>
+              </NextLink>
 
-            <NextLink href="/god-praksis" passHref>
-              <ScLink forwardedAs="a">
-                <BodyShort>God Praksis</BodyShort>
-                <BodyShort spacing size="small">
-                  Informasjon omhandlende God Praksis
-                </BodyShort>
-              </ScLink>
-            </NextLink>
-          </Dropdown.Menu.List>
+              <NextLink href="/god-praksis" passHref>
+                <ScLink forwardedAs="a">
+                  <BodyShort>God Praksis</BodyShort>
+                  <BodyShort spacing size="small">
+                    Informasjon omhandlende God Praksis
+                  </BodyShort>
+                </ScLink>
+              </NextLink>
+            </Dropdown.Menu.List>
+          </motion.div>
         </ScMenu>
       </Dropdown>
     </ScWrapper>

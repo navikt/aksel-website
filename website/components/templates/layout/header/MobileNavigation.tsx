@@ -1,7 +1,7 @@
 import { Close, Hamburger, Left } from "@navikt/ds-icons";
 import { Heading } from "@navikt/ds-react";
 import { Dropdown, Header } from "@navikt/ds-react-internal";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { DsNavigationHeadingT } from "../../../../lib";
@@ -33,6 +33,7 @@ const ScListItem = styled(Dropdown.Menu.List.Item)<{ $active?: boolean }>`
   border: none;
   background: none;
   width: 100%;
+  color: var(--navds-color-gray-90);
 
   ${(props) =>
     props.$active &&
@@ -100,7 +101,7 @@ const ScHamburgerButton = styled(Header.Button)<{ $open: boolean }>`
        background-color: var(--navds-color-gray-10);
      }
      :focus {
-       box-shadow:inset 0 0 0 1px white, inset 0 0 0 4px var(--navds-color-blue-80) ;
+       box-shadow: inset 0 0 0 2px var(--navds-color-blue-20), inset 0 0 0 4px var(--navds-color-gray-90);
      }
      `}
   > * {
@@ -160,78 +161,74 @@ const MobileNavigation = () => {
           }}
           transition={{ type: "tween", duration: 0.2 }}
         >
-          <AnimatePresence>
-            {openHamb && (
-              <>
-                <motion.div
-                  hidden={!isHeadingMenu}
-                  style={{ padding: "2rem 0", margin: 0 }}
-                  key="HeadingMobileNavLinks"
-                  transition={{ type: "tween", duration: 0.2 }}
-                  animate={isHeadingMenu ? "open" : "closed"}
-                  variants={{
-                    open: {
-                      opacity: 1,
-                    },
-                    closed: {
-                      opacity: 0,
-                    },
-                  }}
-                >
-                  {pageProps?.navigation.headings.map(
-                    (heading: DsNavigationHeadingT) => (
-                      <ScListItem
-                        key={heading.title}
-                        $active={
-                          context?.activeHeading?.title === heading.title
-                        }
-                        onClick={() => {
-                          setHeading(heading);
-                          setIsHeadingMenu(false);
-                        }}
-                      >
-                        {heading.title}
-                      </ScListItem>
-                    )
-                  )}
-                </motion.div>
-                <motion.ul
-                  style={{ padding: "0", margin: 0 }}
-                  hidden={isHeadingMenu}
-                  key="SidebarMobileLinks"
-                  transition={{ type: "tween", duration: 0.2 }}
-                  animate={!isHeadingMenu ? "open" : "closed"}
-                  variants={{
-                    open: {
-                      opacity: 1,
-                    },
-                    closed: {
-                      opacity: 0,
-                    },
-                  }}
-                >
-                  <ScTopDiv hidden={isHeadingMenu}>
-                    <ScTopButton
-                      onClick={() => setIsHeadingMenu(true)}
-                      forwardedAs="button"
-                      size="xsmall"
+          {openHamb && (
+            <>
+              <motion.div
+                hidden={!isHeadingMenu}
+                style={{ padding: "2rem 0", margin: 0 }}
+                key="HeadingMobileNavLinks"
+                transition={{ type: "tween", duration: 0.2 }}
+                animate={isHeadingMenu ? "open" : "closed"}
+                variants={{
+                  open: {
+                    opacity: 1,
+                  },
+                  closed: {
+                    opacity: 0,
+                  },
+                }}
+              >
+                {pageProps?.navigation.headings.map(
+                  (heading: DsNavigationHeadingT) => (
+                    <ScListItem
+                      key={heading.title}
+                      $active={context?.activeHeading?.title === heading.title}
+                      onClick={() => {
+                        setHeading(heading);
+                        setIsHeadingMenu(false);
+                      }}
                     >
-                      <Left />
-                      {context?.activeHeading?.title}
-                    </ScTopButton>
-                  </ScTopDiv>
-                  <ScMenuScroll>
-                    <motion.div>
-                      <Menu
-                        heading={heading}
-                        onClick={() => setOpenHamb(false)}
-                      />
-                    </motion.div>
-                  </ScMenuScroll>
-                </motion.ul>
-              </>
-            )}
-          </AnimatePresence>
+                      {heading.title}
+                    </ScListItem>
+                  )
+                )}
+              </motion.div>
+              <motion.ul
+                style={{ padding: "0", margin: 0 }}
+                hidden={isHeadingMenu}
+                key="SidebarMobileLinks"
+                transition={{ type: "tween", duration: 0.2 }}
+                animate={!isHeadingMenu ? "open" : "closed"}
+                variants={{
+                  open: {
+                    opacity: 1,
+                  },
+                  closed: {
+                    opacity: 0,
+                  },
+                }}
+              >
+                <ScTopDiv hidden={isHeadingMenu}>
+                  <ScTopButton
+                    onClick={() => setIsHeadingMenu(true)}
+                    forwardedAs="button"
+                    size="xsmall"
+                  >
+                    <Left />
+                    {context?.activeHeading?.title}
+                  </ScTopButton>
+                </ScTopDiv>
+                <ScMenuScroll>
+                  <motion.div>
+                    <Menu
+                      heading={heading}
+                      onClick={() => setOpenHamb(false)}
+                    />
+                  </motion.div>
+                </ScMenuScroll>
+              </motion.ul>
+            </>
+          )}
         </motion.div>
       </ScMenu>
     </Dropdown>

@@ -147,8 +147,9 @@ const ScPopover = styled(Popover)`
   border: none;
   z-index: -1;
   box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
-    0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1 1px 0 rgba(38, 38, 38, 0.14);
+    0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
   width: calc(100% - 1rem);
+  background-color: transparent;
 `;
 
 interface SearchContextProps {
@@ -266,9 +267,27 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
             placement={"bottom-start"}
             offset={12}
           >
-            <SearchContext.Provider value={{ clicked: () => setOpen(false) }}>
-              <Hits ref={anchor} hits={result} value={query} />
-            </SearchContext.Provider>
+            <motion.div
+              key="SearchResults"
+              animate={
+                Object.keys(result).length > 0 || query !== ""
+                  ? "open"
+                  : "closed"
+              }
+              variants={{
+                open: {
+                  opacity: 1,
+                },
+                closed: {
+                  opacity: 0,
+                },
+              }}
+              transition={{ type: "tween", duration: 0.2 }}
+            >
+              <SearchContext.Provider value={{ clicked: () => setOpen(false) }}>
+                <Hits ref={anchor} hits={result} value={query} />
+              </SearchContext.Provider>
+            </motion.div>
           </ScPopover>
         </ScOpenSearchWrapper>
       )}
