@@ -2,16 +2,14 @@ import styled from "styled-components";
 import { Textarea as DsTextarea, Heading as DsHeading } from "@navikt/ds-react";
 
 export const Wrapper = styled.div<{ isTablet?: boolean }>`
-  max-width: 600px;
   width: 100%;
-  padding: 2rem;
+  padding: 2rem 1rem 2rem 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
 
-  margin: ${(props) =>
-    props.isTablet ? "4rem auto" : "4rem auto 4rem var(--navds-spacing-4)"};
+  margin: ${(props) => (props.isTablet ? "4rem auto" : "4rem auto 4rem 0")};
 
   @media (max-width: 564px) {
     padding: 1rem;
@@ -72,5 +70,6 @@ export const Heading = styled(DsHeading)`
 
   &[aria-hidden="true"] {
     opacity: 0;
+    pointer-events: none;
   }
 `;

@@ -92,31 +92,33 @@ const Feedback = ({ docId }: { docId?: string }): JSX.Element => {
         </S.InnerWrapper>
       )}
       {step === 1 && (
-        <S.Form>
-          <S.FormItems>
-            <S.Textarea
-              ref={setFocus}
-              error={errorMsg}
-              label="Hva ønsket du å finne?"
-              value={feedbackValue}
-              onChange={(e) => handleChange(e)}
-              maxLength={200}
-              minRows={5}
-            />
-            <S.ButtonWrapper>
-              <Button onClick={(e) => handleSubmit(e)}>Send svar</Button>
-              <Button
-                variant="secondary"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setStep(2);
-                }}
-              >
-                Avbryt
-              </Button>
-            </S.ButtonWrapper>
-          </S.FormItems>
-        </S.Form>
+        <S.InnerWrapper>
+          <S.Form>
+            <S.FormItems>
+              <S.Textarea
+                ref={setFocus}
+                error={errorMsg}
+                label="Hva ønsket du å finne?"
+                value={feedbackValue}
+                onChange={(e) => handleChange(e)}
+                maxLength={200}
+                minRows={5}
+              />
+              <S.ButtonWrapper>
+                <Button onClick={(e) => handleSubmit(e)}>Send svar</Button>
+                <Button
+                  variant="secondary"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setStep(2);
+                  }}
+                >
+                  Avbryt
+                </Button>
+              </S.ButtonWrapper>
+            </S.FormItems>
+          </S.Form>
+        </S.InnerWrapper>
       )}
       {(step === 2 || step === 3) && (
         <>
