@@ -7,7 +7,7 @@ import * as React from "react";
 import { useState } from "react";
 import { useMedia } from "react-use";
 import styled, { css } from "styled-components";
-import { NavLogoWhite } from "../../..";
+import { fadeInCss, NavLogoWhite } from "../../..";
 
 export const ScWrapper = styled.div`
   height: 100%;
@@ -15,13 +15,13 @@ export const ScWrapper = styled.div`
 `;
 
 export const ScMenu = styled(Dropdown.Menu)`
+  ${fadeInCss}
   padding: 0.5rem;
   border: none;
   width: 300px;
   z-index: 1003;
   box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
     0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
-  background-color: transparent;
 
   > * {
     background-color: white;
@@ -94,7 +94,7 @@ const HeadingDropDown = ({ title }: { title: string }) => {
           <Expand focusable={false} role="presentation" />
         </ScToggle>
         <ScMenu onClose={() => setOpen(false)}>
-          <motion.div
+          {/* <motion.div
             animate={open ? "open" : "closed"}
             variants={{
               open: {
@@ -105,34 +105,34 @@ const HeadingDropDown = ({ title }: { title: string }) => {
               },
             }}
             transition={{ type: "tween", duration: 0.2 }}
-          >
-            <Dropdown.Menu.List>
-              <NextLink href="/" passHref>
-                <ScIconLink forwardedAs="a">
-                  <Left />
-                  <BodyShort>Tilbake til Verktøykassa</BodyShort>
-                </ScIconLink>
-              </NextLink>
+          > */}
+          <Dropdown.Menu.List>
+            <NextLink href="/" passHref>
+              <ScIconLink forwardedAs="a">
+                <Left />
+                <BodyShort>Tilbake til Verktøykassa</BodyShort>
+              </ScIconLink>
+            </NextLink>
 
-              <NextLink href="/designsystem" passHref>
-                <ScLink forwardedAs="a">
-                  <BodyShort>Designsystemet</BodyShort>
-                  <BodyShort size="small">
-                    Informasjon omhandlende designsystemet
-                  </BodyShort>
-                </ScLink>
-              </NextLink>
+            <NextLink href="/designsystem" passHref>
+              <ScLink forwardedAs="a">
+                <BodyShort>Designsystemet</BodyShort>
+                <BodyShort size="small">
+                  Informasjon omhandlende designsystemet
+                </BodyShort>
+              </ScLink>
+            </NextLink>
 
-              <NextLink href="/god-praksis" passHref>
-                <ScLink forwardedAs="a">
-                  <BodyShort>God Praksis</BodyShort>
-                  <BodyShort spacing size="small">
-                    Informasjon omhandlende God Praksis
-                  </BodyShort>
-                </ScLink>
-              </NextLink>
-            </Dropdown.Menu.List>
-          </motion.div>
+            <NextLink href="/god-praksis" passHref>
+              <ScLink forwardedAs="a">
+                <BodyShort>God Praksis</BodyShort>
+                <BodyShort spacing size="small">
+                  Informasjon omhandlende God Praksis
+                </BodyShort>
+              </ScLink>
+            </NextLink>
+          </Dropdown.Menu.List>
+          {/* </motion.div> */}
         </ScMenu>
       </Dropdown>
     </ScWrapper>

@@ -2,7 +2,6 @@ import { Close, Search as SearchIcon } from "@navikt/ds-icons";
 import { Popover, TextField } from "@navikt/ds-react";
 import { Header } from "@navikt/ds-react-internal";
 import algoliasearch from "algoliasearch/lite";
-import { motion } from "framer-motion";
 import React, {
   createContext,
   useCallback,
@@ -13,6 +12,7 @@ import React, {
 } from "react";
 import { useClickAway, useEvent, useKey } from "react-use";
 import styled, { css } from "styled-components";
+import { expandKeyframes, fadeInCss } from "..";
 import { LayoutContext } from "../templates/layout/Layout";
 import Hits from "./Hits";
 
@@ -111,12 +111,23 @@ const ScSearchIcon = styled.div`
   z-index: 1;
 `;
 
-const ScOpenSearchWrapper = styled.div`
+const ScOpenSearchWrapper = styled.div<{ $isTablet: boolean }>`
   position: relative;
   display: flex;
   justify-content: center;
   margin-left: auto;
   justify-content: flex-end;
+
+  ${(props) =>
+    props.$isTablet
+      ? css`
+          animation: ${expandKeyframes(true)} 0.2s linear;
+          width: 100%;
+        `
+      : css`
+          animation: ${expandKeyframes(false)} 0.2s linear;
+          width: 500px;
+        `}
 `;
 
 const ScTextField = styled(TextField)<{ $tablet: boolean }>`
@@ -150,6 +161,7 @@ const ScPopover = styled(Popover)`
     0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
   width: calc(100% - 1rem);
   background-color: transparent;
+  ${fadeInCss}
 `;
 
 interface SearchContextProps {
@@ -207,27 +219,10 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
     isOpen && isOpen(open);
   }, [open]);
 
-  const inputAnimationVariants = (isTablet: boolean) => {
-    return isTablet
-      ? {
-          initial: { y: 0, width: "30%", opacity: 0 },
-          animate: { y: 0, width: "100%", opacity: 1 },
-        }
-      : {
-          animate: { y: 0, width: "500px", opacity: 1 },
-          initial: { y: 0, width: "100px", opacity: 0 },
-        };
-  };
-
   return (
     <ScSearch ref={searchRef} $open={open}>
       {open && (
-        <ScOpenSearchWrapper
-          as={motion.div}
-          key="SearchWrapper"
-          transition={{ type: "tween", duration: 0.25 }}
-          {...inputAnimationVariants(context.isTablet)}
-        >
+        <ScOpenSearchWrapper $isTablet={context.isTablet}>
           <ScSearchIcon>
             <SearchIcon
               style={{ fontSize: "1.5rem", marginLeft: 3 }}
@@ -267,27 +262,9 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
             placement={"bottom-start"}
             offset={12}
           >
-            <motion.div
-              key="SearchResults"
-              animate={
-                Object.keys(result).length > 0 || query !== ""
-                  ? "open"
-                  : "closed"
-              }
-              variants={{
-                open: {
-                  opacity: 1,
-                },
-                closed: {
-                  opacity: 0,
-                },
-              }}
-              transition={{ type: "tween", duration: 0.2 }}
-            >
-              <SearchContext.Provider value={{ clicked: () => setOpen(false) }}>
-                <Hits ref={anchor} hits={result} value={query} />
-              </SearchContext.Provider>
-            </motion.div>
+            <SearchContext.Provider value={{ clicked: () => setOpen(false) }}>
+              <Hits ref={anchor} hits={result} value={query} />
+            </SearchContext.Provider>
           </ScPopover>
         </ScOpenSearchWrapper>
       )}

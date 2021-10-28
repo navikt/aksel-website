@@ -1,9 +1,9 @@
 import { Close, Hamburger, Left } from "@navikt/ds-icons";
 import { Heading } from "@navikt/ds-react";
 import { Dropdown, Header } from "@navikt/ds-react-internal";
-import { motion } from "framer-motion";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
+import { ScFadeIn } from "../../..";
 import { DsNavigationHeadingT } from "../../../../lib";
 import { PagePropsContext } from "../../../../pages/_app";
 import { LayoutContext } from "../Layout";
@@ -143,40 +143,18 @@ const MobileNavigation = () => {
           setOpenHamb(false);
         }}
       >
-        <motion.div
+        <ScFadeIn
           style={{
             padding: "0.5rem 0",
             margin: 0,
             backgroundColor: "white",
           }}
-          key="MenuPopoverMobile"
-          animate={openHamb ? "open" : "closed"}
-          variants={{
-            open: {
-              opacity: 1,
-            },
-            closed: {
-              opacity: 0,
-            },
-          }}
-          transition={{ type: "tween", duration: 0.2 }}
         >
           {openHamb && (
             <>
-              <motion.div
+              <ScFadeIn
                 hidden={!isHeadingMenu}
                 style={{ padding: "2rem 0", margin: 0 }}
-                key="HeadingMobileNavLinks"
-                transition={{ type: "tween", duration: 0.2 }}
-                animate={isHeadingMenu ? "open" : "closed"}
-                variants={{
-                  open: {
-                    opacity: 1,
-                  },
-                  closed: {
-                    opacity: 0,
-                  },
-                }}
               >
                 {pageProps?.navigation.headings.map(
                   (heading: DsNavigationHeadingT) => (
@@ -192,21 +170,11 @@ const MobileNavigation = () => {
                     </ScListItem>
                   )
                 )}
-              </motion.div>
-              <motion.ul
+              </ScFadeIn>
+              <ScFadeIn
+                as="ul"
                 style={{ padding: "0", margin: 0 }}
                 hidden={isHeadingMenu}
-                key="SidebarMobileLinks"
-                transition={{ type: "tween", duration: 0.2 }}
-                animate={!isHeadingMenu ? "open" : "closed"}
-                variants={{
-                  open: {
-                    opacity: 1,
-                  },
-                  closed: {
-                    opacity: 0,
-                  },
-                }}
               >
                 <ScTopDiv hidden={isHeadingMenu}>
                   <ScTopButton
@@ -219,17 +187,17 @@ const MobileNavigation = () => {
                   </ScTopButton>
                 </ScTopDiv>
                 <ScMenuScroll>
-                  <motion.div>
+                  <ScFadeIn>
                     <Menu
                       heading={heading}
                       onClick={() => setOpenHamb(false)}
                     />
-                  </motion.div>
+                  </ScFadeIn>
                 </ScMenuScroll>
-              </motion.ul>
+              </ScFadeIn>
             </>
           )}
-        </motion.div>
+        </ScFadeIn>
       </ScMenu>
     </Dropdown>
   );
