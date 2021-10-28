@@ -18,6 +18,10 @@ const ScWrapper = styled.div`
   min-height: calc(100vh - var(--header-height));
   justify-content: center;
   background-color: #ffffff;
+
+  p {
+    max-width: 600px;
+  }
 `;
 
 const ScContentWrapper = styled.div<{ isTablet: boolean }>`

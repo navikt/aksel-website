@@ -1,3 +1,4 @@
+import { ExternalLink } from "@navikt/ds-icons";
 import { Heading, Ingress, Link } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React from "react";
@@ -5,11 +6,8 @@ import { useMedia } from "react-use";
 import styled from "styled-components";
 import {
   Changelog,
-  FigmaIconGrayScale,
-  GithubIconGrayScale,
   LastUpdateTag,
   LevelTwoHeading,
-  NpmIconGrayScale,
   Snippet,
   StatusTag,
   Tab,
@@ -33,12 +31,13 @@ const Links = styled.div`
   top: 0;
 
   a {
-    min-width: 50px;
     text-decoration: none;
     color: var(--navds-color-darkgray);
     padding: 0.75rem;
     transition: box-shadow 100ms;
     justify-content: center;
+    display: flex;
+    gap: 0.25rem;
 
     :hover {
       text-decoration: underline;
@@ -46,11 +45,13 @@ const Links = styled.div`
     }
 
     :focus {
-      background: transparent;
+      outline: none;
+      box-shadow: 0 0 0 3px var(--navds-color-blue-80);
     }
 
-    :focus:hover {
-      background: var(--navds-color-blue-10);
+    :active {
+      background-color: var(--navds-color-blue-80);
+      color: white;
     }
   }
 `;
@@ -114,22 +115,22 @@ const ComponentPageTemplate = ({
             </S.Inline>
             <Links>
               {data.npm_link && (
-                <Link href={data.npm_link}>
-                  <NpmIconGrayScale />
-                  <span className="sr-only">Lenke til NPM side for pakke</span>
-                </Link>
+                <a href={data.npm_link}>
+                  NPM
+                  <ExternalLink />
+                </a>
               )}
               {data.github_link && (
-                <Link href={data.github_link}>
-                  <GithubIconGrayScale />
-                  <span className="sr-only">Lenke til github koden</span>
-                </Link>
+                <a href={data.github_link}>
+                  Github
+                  <ExternalLink />
+                </a>
               )}
               {data.figma_link && (
-                <Link href={data.figma_link}>
-                  <FigmaIconGrayScale />
-                  <span className="sr-only">Link til Figma dokument</span>
-                </Link>
+                <a href={data.figma_link}>
+                  Figma
+                  <ExternalLink />
+                </a>
               )}
             </Links>
           </StyledDiv>

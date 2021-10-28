@@ -31,7 +31,7 @@ const formatCode = (code: string, tag: string) => {
 const ScDiv = styled.div`
   display: flex;
   padding: 2rem;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100%;

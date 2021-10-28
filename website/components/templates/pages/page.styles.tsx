@@ -8,7 +8,7 @@ export const SanityBlockContainer = styled.div`
 `;
 
 export const MaxWidthContainerDiv = styled.div<{ isTablet: boolean }>`
-  max-width: 680px;
+  max-width: 880px;
   width: 100%;
   padding: 0 2rem 1rem 3rem;
   ${(props) => props.isTablet && `width: 100%;`};
@@ -36,7 +36,7 @@ export const MaxWidthContainer = ({
 };
 
 export const HeadingContainer = styled.div`
-  max-width: 600px;
+  max-width: 800px;
   padding-top: 2rem;
   padding-bottom: var(--navds-spacing-6);
 `;
