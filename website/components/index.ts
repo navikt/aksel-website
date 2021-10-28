@@ -15,5 +15,6 @@ export * from "./tabs";
 export * from "./tags";
 export * from "./utils";
 export { default as Search } from "./search";
+export { default as IconSearch } from "./icon-search";
 export { default as RelatedPagesLink } from "./related-pages-link";
 export { default as UuInteraction } from "./uu-interactions";

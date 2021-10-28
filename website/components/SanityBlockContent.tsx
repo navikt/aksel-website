@@ -9,6 +9,7 @@ import {
   CodeExample,
   DoDont,
   Figma,
+  IconSearch,
   Image,
   ImageWithText,
   LevelTwoHeading,
@@ -39,6 +40,7 @@ const StyledKbd = styled.code`
 
 const serializers = {
   types: {
+    icon_search: () => <IconSearch />,
     code_snippet: ({ node }) => <Snippet node={node} />,
     code_example_ref: ({ node }) => <CodeExample node={node.ref} />,
     prop_table: ({ node }) => <PropTable node={node} />,
