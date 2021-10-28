@@ -5,6 +5,13 @@ const ScIconSearch = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  /* position: absolute;
+  right: 0;
+  left: 0;
+  max-height: 50vh;
+  overflow-y: auto; */
+  width: calc(100vw - 400px);
+  position: relative;
 `;
 
 const ScIcons = styled.div`
@@ -16,6 +23,7 @@ const ScIcons = styled.div`
 const ScIcon = styled.div`
   height: 8rem;
   width: 10rem;
+  flex-shrink: 1;
   box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
     0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
   border-radius: 4px;
