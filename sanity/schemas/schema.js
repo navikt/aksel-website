@@ -40,6 +40,7 @@ import picture_text from "./objects/image-with-text";
 import alert from "./objects/alert";
 import figma_embed from "./objects/figma-embed";
 import link_panel from "./objects/link-panel";
+import icon_search from "./objects/uniques/ikonsok";
 
 export default createSchema({
   name: "default",
@@ -80,5 +81,6 @@ export default createSchema({
     link,
     dropdown,
     metadata,
+    icon_search,
   ]),
 });
