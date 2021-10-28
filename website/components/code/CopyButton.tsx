@@ -13,7 +13,7 @@ const ScButton = styled.button`
   ${S.ButtonCss}
   color: white;
   position: absolute;
-  top: 3px;
+  top: 4px;
   right: 8px;
   border-radius: 4px;
   background-color: var(--navds-color-darkgray);
