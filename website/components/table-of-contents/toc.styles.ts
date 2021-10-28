@@ -10,7 +10,6 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   order: 1;
-  float: right;
   width: 300px;
   height: 100%;
   padding-left: 1rem;
@@ -32,9 +31,8 @@ export const Div = styled.div`
   flex-direction: column;
   padding-left: 1rem;
   order: 1;
-  padding-right: 2rem;
 
-  width: 300px;
+  width: 100%;
 
   &:before {
     content: "";

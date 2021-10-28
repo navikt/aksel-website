@@ -44,7 +44,7 @@ const ScTabButton = styled.button`
   width: 4rem;
 
   :active {
-    background-color: var(--navds-color-blue-20);
+    background-color: var(--navds-color-blue-10);
   }
   > svg {
     font-size: 1.5rem;
