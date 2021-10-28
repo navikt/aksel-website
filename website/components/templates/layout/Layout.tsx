@@ -76,6 +76,7 @@ const ScSkipLink = styled.a`
   transform: translateY(-100%);
   transition: transform 0.1s;
   text-decoration: none;
+  z-index: 1;
 
   :focus-within {
     transform: translateY(0%);

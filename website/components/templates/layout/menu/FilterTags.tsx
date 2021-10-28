@@ -33,14 +33,14 @@ const Tag = styled.button<{ active: boolean }>`
   ${(props) =>
     props.active &&
     `
-    background-color: var(--navds-color-blue-10);
+    background-color: var(--navds-color-blue-20);
     border-color: var(--navds-color-blue-50);
     border-width: 2px;
     padding: calc(0.125rem - 1px) calc(0.25rem - 1px);
     color: var(--navds-color-gray-90);
 
     :hover {
-      background-color: var(--navds-color-blue-10);
+      background-color: var(--navds-color-blue-20);
     }
   `}
 `;

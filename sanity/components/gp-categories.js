@@ -35,7 +35,7 @@ const ButtonTag = styled.button`
   padding: 0.5rem 1.5rem;
   background: none;
   border: none;
-  background-color: var(--navds-color-blue-10);
+  background-color: var(--navds-color-blue-20);
   border-radius: 4px;
   border: 1px solid var(--navds-color-blue-20);
   display: flex;

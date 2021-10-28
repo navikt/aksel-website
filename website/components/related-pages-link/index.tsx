@@ -49,7 +49,7 @@ const ScInnerWrapper = styled.div<{ context: LayoutContextProps }>`
 
     :focus {
       outline: none;
-      box-shadow: inset 0 0 0 3px var(--navds-color-blue-10);
+      box-shadow: inset 0 0 0 3px var(--navds-color-blue-20);
     }
   }
 `;

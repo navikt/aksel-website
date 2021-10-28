@@ -31,7 +31,7 @@ export const Link = styled(DsHeader.Title)<{ $active: boolean }>`
 
   :focus {
     box-shadow: inset 0 0 0 1px var(--navds-color-gray-90),
-      inset 0 0 0 3px var(--navds-color-blue-10);
+      inset 0 0 0 3px var(--navds-color-blue-20);
   }
 
   > * {
@@ -82,7 +82,7 @@ export const LinkCss = css`
   text-decoration: none;
 
   :hover {
-    background-color: var(--navds-color-blue-10);
+    background-color: var(--navds-color-blue-20);
   }
 
   :focus {

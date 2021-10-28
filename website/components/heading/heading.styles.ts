@@ -41,6 +41,6 @@ export const Anchor = styled.button`
   }
 
   :active {
-    background-color: var(--navds-color-blue-10);
+    background-color: var(--navds-color-blue-20);
   }
 `;

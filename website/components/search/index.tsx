@@ -75,7 +75,7 @@ const ScSearchButton = styled(Header.Button)`
 
   :focus {
     box-shadow: inset 0 0 0 1px var(--navds-color-gray-90),
-      inset 0 0 0 3px var(--navds-color-blue-10);
+      inset 0 0 0 3px var(--navds-color-blue-20);
   }
 `;
 
@@ -96,7 +96,7 @@ const ScCloseButton = styled.button`
   :focus {
     outline: none;
     box-shadow: inset 0 0 0 2px var(--navds-color-gray-90),
-      0 0 0 3px var(--navds-color-blue-10);
+      0 0 0 3px var(--navds-color-blue-20);
     z-index: 1;
   }
 `;
@@ -138,7 +138,7 @@ const ScTextField = styled(TextField)<{ $tablet: boolean }>`
 
   > input:focus {
     box-shadow: inset 0 0 0 2px var(--navds-color-gray-90),
-      0 0 0 3px var(--navds-color-blue-10);
+      0 0 0 3px var(--navds-color-blue-20);
     z-index: 1;
   }
 `;
