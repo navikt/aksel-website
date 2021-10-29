@@ -92,7 +92,6 @@ import Icon from "@navikt/ds-icons/svg/${icon};"`,
       {doc && (
         <>
           <ScMutedBodyShort>{doc.pageName}</ScMutedBodyShort>
-
           <ScMutedBodyShort spacing>{`${
             doc.description && `${doc.description}`
           }`}</ScMutedBodyShort>
