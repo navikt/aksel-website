@@ -71,7 +71,7 @@ const tabbedRecords = (page: DsTabbedArticlePage, category: string) => {
       category,
       title,
       page: tab.title,
-      path,
+      path: `${path}/${tab.title?.toLowerCase().replace(/\s+/g, "-")}`,
       content:
         x === 0
           ? `${page.ingress ?? ""} ${flattenBlocks(tab.body)}`

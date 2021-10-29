@@ -30,13 +30,7 @@ interface HitProps {
 
 const Hit = React.forwardRef<HTMLAnchorElement, HitProps>(
   ({ hit, ...props }: HitProps, ref) => {
-    const isComponent = [
-      "bruk",
-      "design",
-      "utvikling",
-      "tilgjengelighet",
-      "props",
-    ].includes(hit.page);
+    const isArticle = ["artikkel"].includes(hit.page);
 
     const context = useContext(SearchContext);
     return (
@@ -48,7 +42,7 @@ const Hit = React.forwardRef<HTMLAnchorElement, HitProps>(
             tabIndex={-1}
             ref={ref}
           >
-            {`${hit.title}${isComponent ? ` - ${capitalize(hit.page)}` : ""}`}
+            {`${hit.title}${!isArticle ? ` - ${capitalize(hit.page)}` : ""}`}
           </ScHit>
         </NextLink>
       </BodyShort>
