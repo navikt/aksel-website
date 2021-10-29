@@ -40,7 +40,6 @@ const ScIcon = styled.button`
     0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14); */
 
   :hover {
-    border: 1px solid var(--navds-color-gray-60);
     background-color: var(--navds-color-gray-10);
   }
 
