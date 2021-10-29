@@ -1,16 +1,13 @@
 import styled from "styled-components";
 import * as Icons from "@navikt/ds-icons";
 import { Detail } from "@navikt/ds-react";
-const ScIconSearch = styled.div`
+import { LayoutContext } from "../templates/layout/Layout";
+import { useContext } from "react";
+
+const ScIconSearch = styled.div<{ $isTablet: boolean }>`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  /* position: absolute;
-  right: 0;
-  left: 0;
-  max-height: 50vh;
-  overflow-y: auto; */
-  width: calc(100vw - 400px);
+  width: ${(props) => (props.$isTablet ? `100%` : `60vw`)};
   position: relative;
 `;
 
@@ -71,8 +68,10 @@ const getTag = (name: string) => {
 };
 
 const IconSearch = () => {
+  const context = useContext(LayoutContext);
+
   return (
-    <ScIconSearch>
+    <ScIconSearch $isTablet={context.isTablet}>
       <ScIcons>
         {Object.keys(Icons).map((Icon, x) => {
           const T = Icons[Icon];

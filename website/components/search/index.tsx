@@ -122,12 +122,12 @@ const ScOpenSearchWrapper = styled.div<{ $isTablet: boolean }>`
     props.$isTablet
       ? css`
           animation: ${expandKeyframes(true)} 0.2s
-            cubic-bezier(0.65, 0, 0.35, 1);
+            cubic-bezier(0.215, 0.61, 0.355, 1);
           width: 100%;
         `
       : css`
           animation: ${expandKeyframes(false)} 0.2s
-            cubic-bezier(0.65, 0, 0.35, 1);
+            cubic-bezier(0.215, 0.61, 0.355, 1);
           width: 500px;
         `}
 `;
