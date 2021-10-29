@@ -2,27 +2,18 @@ import * as Icons from "@navikt/ds-icons";
 import canvg from "canvg";
 import JSZip from "jszip";
 import { renderToString } from "react-dom/server";
+import fileDownload from "js-file-download";
 
 export const downloadSvg = (icon: string) => {
   const Icon = Icons[icon];
-  const element = document.createElement("a");
   const file = new Blob([renderToString(<Icon />)], { type: "text/plain" });
-  element.href = URL.createObjectURL(file);
-  element.download = `${icon}.svg`;
-  document.body.appendChild(element);
-  element.click();
-  document.body.removeChild(element);
+  fileDownload(file, `${icon}.svg`);
 };
 
 export const downloadPng = async (icon: string) => {
   const Icon = Icons[icon];
-  const element = document.createElement("a");
   const file = await generatePngZip(renderToString(<Icon />), icon);
-  element.href = URL.createObjectURL(file);
-  element.download = `${icon}-png.zip`;
-  document.body.appendChild(element);
-  element.click();
-  document.body.removeChild(element);
+  fileDownload(file, `${icon}-png.zip`);
 };
 
 export const generatePngZip = async (svgstring: string, name: string) => {
@@ -63,10 +54,40 @@ export const downloadAllSvg = async () => {
   });
   const data = await zip.generateAsync({ type: "blob" });
 
-  const element = document.createElement("a");
-  element.href = URL.createObjectURL(data);
-  element.download = `NAV-svg-ikoner.zip`;
-  document.body.appendChild(element);
-  element.click();
-  document.body.removeChild(element);
+  fileDownload(data, "NAV-svg-ikoner.zip");
+};
+
+const generatePngInSize = (size: number, iconString: string) => {
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+
+  let svg = iconString.replace(/width="[^"]*"/, `width="${size}px"`);
+  svg = svg.replace(/height="[^"]*"/, `height="${size}px"`);
+
+  const v = canvg.fromString(ctx, svg);
+  v.start();
+
+  const data = canvas
+    .toDataURL("image/png", 1)
+    .replace(/^data:image\/\w+;base64,/, "");
+
+  v.stop();
+
+  return data;
+};
+
+export const downloadPngInSize = async (size: number) => {
+  const zip = new JSZip();
+
+  Object.keys(Icons).forEach((key) => {
+    const Icon = Icons[key];
+    const iconString = renderToString(<Icon />);
+    const data = generatePngInSize(size, iconString);
+    zip
+      .folder(`NAV-ikoner-${size}px-png`)
+      .file(`${key}.png`, data, { base64: true });
+  });
+
+  const data = await zip.generateAsync({ type: "blob" });
+  fileDownload(data, `NAV-ikoner-${size}px-png.zip`);
 };

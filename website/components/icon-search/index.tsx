@@ -1,14 +1,14 @@
-import styled from "styled-components";
 import * as Icons from "@navikt/ds-icons";
 import meta from "@navikt/ds-icons/meta.json";
-import { BodyLong, Button, Detail, Heading, Modal } from "@navikt/ds-react";
-import { LayoutContext } from "../templates/layout/Layout";
-import React, { useCallback, useContext, useEffect, useState } from "react";
-import ModalContent from "./ModalContent";
+import { BodyLong, Detail, Heading, Modal } from "@navikt/ds-react";
 import { useRouter } from "next/router";
-import { categorizeIcons, CategoryT, IconMetaT } from "./iconCategories";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import styled from "styled-components";
+import { LayoutContext } from "../templates/layout/Layout";
+import DownloadButtons from "./DownloadButtons";
 import Filter, { FilterT } from "./Filter";
-import { downloadAllSvg } from "./downloads";
+import { categorizeIcons, CategoryT, IconMetaT } from "./iconCategories";
+import ModalContent from "./ModalContent";
 
 const ScIconSearch = styled.div<{ $isTablet: boolean }>`
   display: flex;
@@ -85,6 +85,13 @@ const ScIconTexts = styled.div`
       color: var(--navds-color-gray-60);
     }
   }
+`;
+
+const ScFlex = styled.div`
+  display: flex;
+  flex-wrap: wrap-reverse;
+  column-gap: 2rem;
+  justify-content: space-between;
 `;
 
 const getName = (name: string) => {
@@ -192,8 +199,10 @@ const IconSearch = () => {
 
   return (
     <ScIconSearch $isTablet={context.isTablet}>
-      <Filter onFilterChange={handleFilterChange} />
-      <Button onClick={() => downloadAllSvg()}>Last ned</Button>
+      <ScFlex>
+        <Filter onFilterChange={handleFilterChange} />
+        <DownloadButtons />
+      </ScFlex>
       {categories.length === 0 && <BodyLong spacing>Ingen treff...</BodyLong>}
       {categories.map((cat) => {
         return (

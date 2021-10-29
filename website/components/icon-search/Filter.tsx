@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 
 const ScFilter = styled.div`
-  margin: 2rem 0;
+  margin-bottom: 2rem;
   max-width: 400px;
 `;
 
