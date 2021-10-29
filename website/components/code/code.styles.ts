@@ -39,6 +39,10 @@ export const Pre = styled.pre`
   /* background-color: var(--navds-color-darkgray); */
   margin: 0;
   padding: 1rem 1rem 1rem 1rem;
+
+  &[data-tabs="true"] {
+    max-width: 100%;
+  }
 `;
 
 export const Code = styled.code`

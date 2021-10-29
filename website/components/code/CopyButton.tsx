@@ -25,6 +25,7 @@ const ScButton = styled.button`
 
   :hover {
     background-color: var(--navds-color-gray-80);
+    text-decoration: none;
   }
 
   :focus {

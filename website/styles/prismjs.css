@@ -7,6 +7,7 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
+  max-width: calc(100% - 4.5rem);
   color: #f8f8f8;
   background: none;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
@@ -15,7 +16,6 @@ pre[class*="language-"] {
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
-  white-space: break-spaces;
   line-height: 1.5;
   -moz-tab-size: 4;
   -o-tab-size: 4;

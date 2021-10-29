@@ -1,9 +1,13 @@
 import styled from "styled-components";
 import * as Icons from "@navikt/ds-icons";
-import { Detail, Modal } from "@navikt/ds-react";
+import meta from "@navikt/ds-icons/meta.json";
+import { BodyShort, Detail, Heading, Modal } from "@navikt/ds-react";
 import { LayoutContext } from "../templates/layout/Layout";
-import { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import ModalContent from "./ModalContent";
+import { useRouter } from "next/router";
+import { categorizeIcons, CategoryT, IconMetaT } from "./iconCategories";
+import Filter, { FilterT } from "./Filter";
 
 const ScIconSearch = styled.div<{ $isTablet: boolean }>`
   display: flex;
@@ -15,12 +19,12 @@ const ScIconSearch = styled.div<{ $isTablet: boolean }>`
 
 const ScIcons = styled.div`
   grid-template-columns: repeat(auto-fit, 160px);
-  justify-content: space-between;
   align-content: start;
   display: grid;
   column-gap: 16px;
   row-gap: 24px;
-  justify-content: space-around;
+  justify-content: flex-start;
+  padding: 2rem 0;
 `;
 
 const ScIcon = styled.button`
@@ -71,10 +75,13 @@ const ScIconTexts = styled.div`
 `;
 
 const getName = (name: string) => {
-  return name.replace("Filled", "").replace("Outline", "");
+  return name
+    .replace("Filled", "")
+    .replace("Outline", "")
+    .replace("Stroke", "");
 };
 
-const getTag = (name: string) => {
+export const getTag = (name: string) => {
   switch (true) {
     case name.endsWith("Filled"):
       return "Filled";
@@ -92,25 +99,115 @@ const IconSearch = () => {
 
   const [open, setOpen] = useState(false);
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
+  const router = useRouter();
+  const [visibleIcons, setVisibleIcons] = useState<IconMetaT[]>([]);
+
+  const setQuery = useCallback((icon: string) => {
+    const query = router.query;
+    query.icon = icon;
+    router.replace(
+      {
+        pathname: router.pathname,
+        query,
+      },
+      undefined,
+      { shallow: true }
+    );
+  }, []);
+
+  const handleSelect = useCallback((icon: string) => {
+    setSelectedIcon(icon);
+    setOpen(true);
+    setQuery(icon);
+  }, []);
 
   useEffect(() => {
     Modal.setAppElement("#__next");
+    router.query.icon && handleSelect(router.query.icon as string);
+    setVisibleIcons(meta.filter((x) => "Outline" === getTag(x.name)));
   }, []);
-  useEffect(() => {
-    selectedIcon && setOpen(true);
-  }, [selectedIcon]);
 
-  useEffect(() => {
-    !open && setSelectedIcon(null);
-  }, [open]);
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedIcon(null);
+
+    const query = router.query;
+    delete query["icon"];
+
+    router.replace(
+      {
+        pathname: router.pathname,
+        query,
+      },
+      undefined,
+      { shallow: true }
+    );
+  };
+
+  const handleFilterChange = async (filter: FilterT) => {
+    if (filter.toggle === "" && filter.value === "") {
+      setVisibleIcons(meta);
+      return;
+    }
+
+    let metaIcons = [...meta];
+
+    metaIcons = metaIcons.filter(
+      (x) => filter.toggle === getTag(x.name).toLowerCase()
+    );
+
+    if (filter.value) {
+      metaIcons = metaIcons.filter(
+        (x) =>
+          x.name.toLowerCase().includes(filter.value) ||
+          x.pageName.toLowerCase().includes(filter.value)
+      );
+    }
+
+    setVisibleIcons([...metaIcons]);
+  };
+
+  const categories: CategoryT[] = categorizeIcons(visibleIcons);
 
   return (
     <ScIconSearch $isTablet={context.isTablet}>
-      <ScIcons>
+      <Filter onFilterChange={handleFilterChange} />
+      <BodyShort spacing>{`Treff: ${visibleIcons.length}`}</BodyShort>
+      {categories.map((cat) => {
+        return (
+          <div key={cat.category}>
+            <Heading level="3" size="small">
+              {cat.category}
+            </Heading>
+            <ScIcons>
+              {cat.icons.map((i) => {
+                const T = Icons[i.name];
+                return (
+                  <ScIcon
+                    key={i.created_at}
+                    onClick={() => handleSelect(i.name)}
+                  >
+                    <ScIconInner>
+                      <div>
+                        <T />
+                      </div>
+                      <ScIconTexts>
+                        <Detail size="small"> {getName(i.name)}</Detail>
+                        <Detail size="small"> {getTag(i.name)}</Detail>
+                      </ScIconTexts>
+                    </ScIconInner>
+                  </ScIcon>
+                );
+              })}
+            </ScIcons>
+          </div>
+        );
+      })}
+      {/* <ScIcons>
         {Object.keys(Icons).map((Icon, x) => {
           const T = Icons[Icon];
           return (
-            <ScIcon key={x} onClick={() => setSelectedIcon(Icon)}>
+            <ScIcon key={x} onClick={() => handleSelect(Icon)}>
               <ScIconInner>
                 <div>
                   <T />
@@ -123,10 +220,10 @@ const IconSearch = () => {
             </ScIcon>
           );
         })}
-      </ScIcons>
-      <Modal open={open} onClose={() => setOpen(false)}>
+      </ScIcons> */}
+      <Modal open={open} onClose={() => handleClose()}>
         <Modal.Content>
-          <ModalContent icon={selectedIcon} />
+          {selectedIcon && <ModalContent icon={selectedIcon} />}
         </Modal.Content>
       </Modal>
     </ScIconSearch>
