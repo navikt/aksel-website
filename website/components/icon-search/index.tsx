@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import * as Icons from "@navikt/ds-icons";
 import meta from "@navikt/ds-icons/meta.json";
-import { BodyShort, Detail, Heading, Modal } from "@navikt/ds-react";
+import { BodyLong, Detail, Heading, Modal } from "@navikt/ds-react";
 import { LayoutContext } from "../templates/layout/Layout";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import ModalContent from "./ModalContent";
@@ -171,7 +171,7 @@ const IconSearch = () => {
   return (
     <ScIconSearch $isTablet={context.isTablet}>
       <Filter onFilterChange={handleFilterChange} />
-      <BodyShort spacing>{`Treff: ${visibleIcons.length}`}</BodyShort>
+      {categories.length === 0 && <BodyLong spacing>Ingen treff...</BodyLong>}
       {categories.map((cat) => {
         return (
           <div key={cat.category}>
@@ -202,24 +202,6 @@ const IconSearch = () => {
           </div>
         );
       })}
-      {/* <ScIcons>
-        {Object.keys(Icons).map((Icon, x) => {
-          const T = Icons[Icon];
-          return (
-            <ScIcon key={x} onClick={() => handleSelect(Icon)}>
-              <ScIconInner>
-                <div>
-                  <T />
-                </div>
-                <ScIconTexts>
-                  <Detail size="small"> {getName(Icon)}</Detail>
-                  <Detail size="small"> {getTag(Icon)}</Detail>
-                </ScIconTexts>
-              </ScIconInner>
-            </ScIcon>
-          );
-        })}
-      </ScIcons> */}
       <Modal open={open} onClose={() => handleClose()}>
         <Modal.Content>
           {selectedIcon && <ModalContent icon={selectedIcon} />}

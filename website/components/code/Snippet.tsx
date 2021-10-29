@@ -2,7 +2,7 @@ import Prism from "prismjs";
 import "prismjs/components/prism-bash.min";
 import "prismjs/components/prism-jsx.min";
 import "prismjs/components/prism-typescript.min";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { withErrorBoundary } from "../error-boundary";
 import * as S from "./code.styles";
 import { CodeSnippet as CodeSnippetT } from "../../lib/autogen-types";
@@ -28,6 +28,8 @@ const CodeSnippet = ({
 }: {
   node: CodeSnippetT;
 }): JSX.Element => {
+  const [highlightedCode, setHighlightedCode] = useState(null);
+
   if (!code || !code.code) {
     return null;
   }
@@ -36,12 +38,13 @@ const CodeSnippet = ({
   language =
     language === "terminal" || language === "default" ? "bash" : language;
 
-  const highlighted = Prism.highlight(
-    code.code,
-    Prism.languages[language],
-    language
-  );
+  useEffect(() => {
+    setHighlightedCode(
+      Prism.highlight(code.code, Prism.languages[language], language)
+    );
+  }, [code.code, code.language]);
 
+  if (!highlightedCode) return null;
   return (
     <>
       <S.PreWrapper active={true}>
@@ -50,7 +53,7 @@ const CodeSnippet = ({
           <ScCode
             className="language-"
             language={language}
-            dangerouslySetInnerHTML={{ __html: highlighted }}
+            dangerouslySetInnerHTML={{ __html: highlightedCode }}
           />
         </S.Pre>
       </S.PreWrapper>

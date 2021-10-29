@@ -63,13 +63,13 @@ const ModalContent = ({ icon }: { icon: string }) => {
     code: {
       language: "jsx",
       code: `// React ESM
-import { ${icon} } from "@navikt/ds-icons;"
+import { ${icon} } from "@navikt/ds-icons";
 
 // React CJS
-import { ${icon} } from "@navikt/ds-icons/cjs;"
+import { ${icon} } from "@navikt/ds-icons/cjs";
 
-// Svg
-import Icon from "@navikt/ds-icons/svg/${icon};"`,
+// SVG
+import Icon from "@navikt/ds-icons/svg/${icon}";`,
     },
   };
 
