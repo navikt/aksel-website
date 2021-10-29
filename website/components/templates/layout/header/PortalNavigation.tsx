@@ -31,7 +31,7 @@ export const ScMenu = styled(Dropdown.Menu)`
 export const ScLinkCss = css`
   color: var(--navds-color-gray-90);
   border-radius: 2px;
-  padding: 0.5rem 1rem;
+
   min-height: 5rem;
   width: 100%;
   display: flex;
@@ -51,7 +51,7 @@ export const ScLinkCss = css`
 export const ScLink = styled(Dropdown.Menu.List.Item)`
   ${ScLinkCss}
   flex-direction: column;
-
+  padding: 0.75rem 1rem 0.5rem 1rem;
   align-items: flex-start;
 
   :hover > :first-child {
@@ -65,6 +65,7 @@ export const ScIconLink = styled(Dropdown.Menu.List.Item)`
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  padding: 0.25rem 1rem;
   border-bottom: 1px solid var(--navds-color-gray-60);
 `;
 
