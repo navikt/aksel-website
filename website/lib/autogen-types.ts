@@ -74,6 +74,28 @@ export interface DsComponentPage extends SanityDocument {
   };
 
   /**
+   * Forbedre søk — `object`
+   *
+   *
+   */
+  metadata_search?: {
+    _type: "metadata_search";
+    /**
+     * Høyere prioritet i søk — `boolean`
+     *
+     *
+     */
+    high_priority?: boolean;
+
+    /**
+     * Søkbare tags — `array`
+     *
+     *
+     */
+    tags?: Array<SanityKeyed<string>>;
+  };
+
+  /**
    * Dokument tittel (Bare for søk internt i Sanity) — `string`
    *
    * Bruke en beskrivende tittel slik at det er lett å finne siden.
@@ -207,6 +229,28 @@ export interface DsArticlePage extends SanityDocument {
      *
      */
     doctype?: string;
+  };
+
+  /**
+   * Forbedre søk — `object`
+   *
+   *
+   */
+  metadata_search?: {
+    _type: "metadata_search";
+    /**
+     * Høyere prioritet i søk — `boolean`
+     *
+     *
+     */
+    high_priority?: boolean;
+
+    /**
+     * Søkbare tags — `array`
+     *
+     *
+     */
+    tags?: Array<SanityKeyed<string>>;
   };
 
   /**
@@ -354,6 +398,28 @@ export interface DsTabbedArticlePage extends SanityDocument {
       title?: string;
 
       /**
+       * Forbedre søk — `object`
+       *
+       *
+       */
+      metadata_search?: {
+        _type: "metadata_search";
+        /**
+         * Høyere prioritet i søk — `boolean`
+         *
+         *
+         */
+        high_priority?: boolean;
+
+        /**
+         * Søkbare tags — `array`
+         *
+         *
+         */
+        tags?: Array<SanityKeyed<string>>;
+      };
+
+      /**
        * Innhold — `blockContent`
        *
        *
@@ -453,6 +519,28 @@ export interface GpArticlePage extends SanityDocument {
      *
      */
     doctype?: string;
+  };
+
+  /**
+   * Forbedre søk — `object`
+   *
+   *
+   */
+  metadata_search?: {
+    _type: "metadata_search";
+    /**
+     * Høyere prioritet i søk — `boolean`
+     *
+     *
+     */
+    high_priority?: boolean;
+
+    /**
+     * Søkbare tags — `array`
+     *
+     *
+     */
+    tags?: Array<SanityKeyed<string>>;
   };
 
   /**
@@ -909,6 +997,7 @@ export type BlockContent = Array<
   | SanityKeyed<CodeExampleRef>
   | SanityKeyed<UuInteraction>
   | SanityKeyed<PropTable>
+  | SanityKeyed<IconSearch>
 >;
 
 export type BlockContentSimple = Array<SanityKeyed<SanityBlock>>;
@@ -1294,6 +1383,16 @@ export type NavigationDropdown = {
   dropdown?: Array<
     SanityKeyed<NavigationLink> | SanityKeyed<NavigationDropdown>
   >;
+};
+
+export type IconSearch = {
+  _type: "icon_search";
+  /**
+   * Tittel — `string`
+   *
+   *
+   */
+  title?: string;
 };
 
 export type Documents =

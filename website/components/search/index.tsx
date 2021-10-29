@@ -42,9 +42,9 @@ const getCategories = (hits: any[]) => {
       categories,
       hit.category
     )
-      ? [...categories[hit.category], hit].sort((a, b) =>
-          a.title.localeCompare(b.title)
-        )
+      ? [...categories[hit.category], hit]
+          .sort((a, b) => a.title.localeCompare(b.title))
+          .sort((a, b) => b.high_priority - a.high_priority)
       : [hit];
   });
 

@@ -29,11 +29,14 @@ export const Figure = styled.figure`
   display: flex;
   flex-direction: column;
   margin: 0;
-  width: 280px;
+  width: 300px;
+  max-width: 100%;
+  flex-grow: 1;
 
   &[data-fullwidth="true"] {
     flex-basis: 100%;
     min-width: 300px;
+    max-width: none;
   }
 
   img {
@@ -45,7 +48,7 @@ export const Section = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 2rem;
   row-gap: 2rem;
   margin-bottom: 2rem;
 `;

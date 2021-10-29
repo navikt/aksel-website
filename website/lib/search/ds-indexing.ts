@@ -38,6 +38,8 @@ const getDesignsystemRecords = async () => {
             category,
             title: page.heading,
             page: "artikkel",
+            tags: page?.metadata_search?.tags ?? [],
+            high_priority: !!page?.metadata_search?.high_priority,
             path: page.slug.current,
             content: `${page.ingress ?? ""} ${flattenBlocks(page.body)}`,
           });
@@ -72,6 +74,8 @@ const tabbedRecords = (page: DsTabbedArticlePage, category: string) => {
       title,
       page: tab.title,
       path: `${path}/${tab.title?.toLowerCase().replace(/\s+/g, "-")}`,
+      tags: tab?.metadata_search?.tags ?? [],
+      high_priority: !!tab?.metadata_search?.high_priority,
       content:
         x === 0
           ? `${page.ingress ?? ""} ${flattenBlocks(tab.body)}`
@@ -94,7 +98,9 @@ const componentRecords = (page: DsComponentPage, category: string) => {
       objectID: `${id}_bruk`,
       category,
       title,
+      tags: page?.metadata_search?.tags ?? [],
       page: "bruk",
+      high_priority: false,
       path,
       content: `${page.ingress ?? ""} ${flattenBlocks(page.usage)}`,
     });
@@ -103,6 +109,8 @@ const componentRecords = (page: DsComponentPage, category: string) => {
       objectID: `${id}_design`,
       category,
       title,
+      tags: [],
+      high_priority: false,
       page: "design",
       path: `${path}/design`,
       content: flattenBlocks(page.design),
@@ -112,6 +120,8 @@ const componentRecords = (page: DsComponentPage, category: string) => {
       objectID: `${id}_utvikling`,
       category,
       title,
+      tags: [],
+      high_priority: false,
       page: "utvikling",
       path: `${path}/utvikling`,
       content: flattenBlocks(page.development),
@@ -121,6 +131,8 @@ const componentRecords = (page: DsComponentPage, category: string) => {
       objectID: `${id}_tilgjengelighet`,
       category,
       title,
+      tags: [],
+      high_priority: false,
       page: "tilgjengelighet",
       path: `${path}/tilgjengelighet`,
       content: flattenBlocks(page.accessibility),
@@ -130,6 +142,7 @@ const componentRecords = (page: DsComponentPage, category: string) => {
       objectID: `${id}_props`,
       category,
       title,
+      tags: [],
       page: "props",
       path: `${path}/utvikling`,
       content: "proptable, api, props, types",

@@ -16,7 +16,7 @@ export const ScWrapper = styled.div`
 
 export const ScMenu = styled(Dropdown.Menu)`
   ${fadeInCss}
-  padding: 0.5rem;
+  padding: 0.5rem 0;
   border: none;
   width: 300px;
   z-index: 1003;
@@ -38,11 +38,11 @@ export const ScLinkCss = css`
   text-decoration: none;
 
   :hover {
-    background-color: var(--navds-color-blue-10);
+    background-color: var(--navds-color-gray-10);
   }
 
   :focus {
-    box-shadow: inset 0 0 0 2px var(--navds-color-blue-50);
+    box-shadow: inset 0 0 0 3px var(--navds-color-blue-80);
     z-index: 2;
     outline: none;
   }
@@ -53,6 +53,7 @@ export const ScLink = styled(Dropdown.Menu.List.Item)`
   flex-direction: column;
 
   align-items: flex-start;
+
   :hover > :first-child {
     color: var(--navds-color-blue-50);
   }
@@ -64,6 +65,7 @@ export const ScIconLink = styled(Dropdown.Menu.List.Item)`
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  border-bottom: 1px solid var(--navds-color-gray-60);
 `;
 
 const ScToggle = styled(Header.Button)`
@@ -101,7 +103,6 @@ const HeadingDropDown = ({ title }: { title: string }) => {
                 <BodyShort>Tilbake til Verktøykassa</BodyShort>
               </ScIconLink>
             </NextLink>
-
             <NextLink href="/designsystem" passHref>
               <ScLink forwardedAs="a">
                 <BodyShort>Designsystemet</BodyShort>
