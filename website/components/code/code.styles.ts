@@ -12,7 +12,7 @@ export const ButtonCss = css`
   justify-content: center;
 
   :hover {
-    background-color: var(--navds-color-blue-20);
+    background-color: var(--navds-color-blue-10);
   }
 
   :focus {

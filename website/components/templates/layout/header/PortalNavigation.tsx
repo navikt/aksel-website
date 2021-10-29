@@ -94,18 +94,6 @@ const HeadingDropDown = ({ title }: { title: string }) => {
           <Expand focusable={false} role="presentation" />
         </ScToggle>
         <ScMenu onClose={() => setOpen(false)}>
-          {/* <motion.div
-            animate={open ? "open" : "closed"}
-            variants={{
-              open: {
-                opacity: 1,
-              },
-              closed: {
-                opacity: 0,
-              },
-            }}
-            transition={{ type: "tween", duration: 0.2 }}
-          > */}
           <Dropdown.Menu.List>
             <NextLink href="/" passHref>
               <ScIconLink forwardedAs="a">
@@ -132,7 +120,6 @@ const HeadingDropDown = ({ title }: { title: string }) => {
               </ScLink>
             </NextLink>
           </Dropdown.Menu.List>
-          {/* </motion.div> */}
         </ScMenu>
       </Dropdown>
     </ScWrapper>

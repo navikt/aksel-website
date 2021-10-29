@@ -44,6 +44,8 @@ const Hits = React.forwardRef<HTMLInputElement, HitsProps>(
     const hitsRef = useRef<HTMLDListElement>(null);
     const [counterList, setCounterList] = useState([]);
 
+    const skipFirstNoHit = useRef(true);
+
     useEffect(() => {
       setCounterList([
         ...Object.values(hits).reduce((prev, next) => [...prev, ...next], []),
@@ -82,6 +84,12 @@ const Hits = React.forwardRef<HTMLInputElement, HitsProps>(
       const el: any = itemsRef.current?.[activeN];
       el && el?.current && el.current?.focus();
     }, [activeN]);
+
+    /* Algolia returns a empty result first call, avoids flickering betwenn nohits and results */
+    if (skipFirstNoHit && Object.keys(hits).length === 0) {
+      skipFirstNoHit.current = false;
+      return null;
+    }
 
     return (
       <ScHits ref={hitsRef}>
