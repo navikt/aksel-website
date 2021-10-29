@@ -4,6 +4,7 @@ import { defaultPreview } from "../templates/document-preview-template";
 /* import { situations } from "./situations";
 import CustomCategories from "../../../components/gp-categories";
 import CustomDisplay from "../../../components/metadata-display"; */
+import { documentSearchMetadata } from "../templates/document-search-template";
 const prefix = "god-praksis/side/";
 
 export default {
@@ -43,6 +44,7 @@ export default {
       inputComponent: CustomCategories,
     }, */
     documentMetadata("article"),
+    documentSearchMetadata,
     ...documentInformation(prefix).filter((x) => x.name !== "tags"),
     {
       name: "body",

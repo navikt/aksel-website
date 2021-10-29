@@ -1,6 +1,8 @@
 import { documentMetadata } from "../templates/document-metadata-template";
 import { documentInformation } from "../templates/document-template";
 import { defaultPreview } from "../templates/document-preview-template";
+import { documentSearchMetadata } from "../templates/document-search-template";
+
 const prefix = "designsystem/side/";
 
 export default {
@@ -10,6 +12,7 @@ export default {
   ...defaultPreview(),
   fields: [
     documentMetadata("article"),
+    documentSearchMetadata,
     ...documentInformation(prefix),
     {
       name: "body",
