@@ -1,4 +1,4 @@
-import { BodyShort, Heading } from "@navikt/ds-react";
+import { BodyShort, Button, Heading } from "@navikt/ds-react";
 import styled, { css } from "styled-components";
 import meta from "@navikt/ds-icons/meta.json";
 import React, { useEffect, useState } from "react";
@@ -6,6 +6,7 @@ import * as Icons from "@navikt/ds-icons";
 import { Snippet } from "..";
 import { CodeSnippet } from "../../lib/autogen-types";
 import { renderToString } from "react-dom/server";
+import { downloadPng, downloadSvg } from "./downloads";
 
 const ScModalContent = styled.div`
   width: 560px;
@@ -45,6 +46,13 @@ const ScIconInverted = styled.div`
   color: white;
 `;
 
+const ScButtonWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+`;
+
 const ModalContent = ({ icon }: { icon: string }) => {
   const [doc, setDoc] = useState<{
     name: string;
@@ -64,9 +72,6 @@ const ModalContent = ({ icon }: { icon: string }) => {
       language: "jsx",
       code: `// React ESM
 import { ${icon} } from "@navikt/ds-icons";
-
-// React CJS
-import { ${icon} } from "@navikt/ds-icons/cjs";
 
 // SVG
 import Icon from "@navikt/ds-icons/svg/${icon}";`,
@@ -97,6 +102,18 @@ import Icon from "@navikt/ds-icons/svg/${icon}";`,
           }`}</ScMutedBodyShort>
         </>
       )}
+      <Heading spacing level="3" size="small">
+        Last ned
+      </Heading>
+      <ScButtonWrapper>
+        <Button onClick={() => downloadSvg(icon)}>
+          <Icons.Download aria-label="last ned" /> SVG
+        </Button>
+        <Button onClick={() => downloadPng(icon)}>
+          <Icons.Download aria-label="last ned" />
+          PNG
+        </Button>
+      </ScButtonWrapper>
       <Heading spacing level="3" size="small">
         Import
       </Heading>

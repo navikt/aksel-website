@@ -53,7 +53,9 @@
     "@popperjs/core": "^2.10.2",
     "algoliasearch": "^4.11.0",
     "sanity-algolia": "^1.0.2",
-    "@sanity/webhook": "^1.0.2"
+    "@sanity/webhook": "^1.0.2",
+    "canvg": "^3.0.9",
+    "jszip": "^3.7.1"
   },
   "devDependencies": {
     "@types/node": "^16.9.2",

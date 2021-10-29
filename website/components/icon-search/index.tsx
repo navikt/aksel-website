@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import * as Icons from "@navikt/ds-icons";
 import meta from "@navikt/ds-icons/meta.json";
-import { BodyLong, Detail, Heading, Modal } from "@navikt/ds-react";
+import { BodyLong, Button, Detail, Heading, Modal } from "@navikt/ds-react";
 import { LayoutContext } from "../templates/layout/Layout";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import ModalContent from "./ModalContent";
 import { useRouter } from "next/router";
 import { categorizeIcons, CategoryT, IconMetaT } from "./iconCategories";
 import Filter, { FilterT } from "./Filter";
+import { downloadAllSvg } from "./downloads";
 
 const ScIconSearch = styled.div<{ $isTablet: boolean }>`
   display: flex;
@@ -35,12 +36,18 @@ const ScIcon = styled.button`
   background: none;
   border: none;
   border: 1px solid transparent;
+  position: relative;
 
-  /* box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
-    0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14); */
+  svg {
+    transition: font-size 0.2s ease-in-out;
+    font-size: 2rem;
+  }
 
   :hover {
     background-color: var(--navds-color-gray-10);
+    svg {
+      font-size: 2.4rem;
+    }
   }
 
   :focus {
@@ -64,6 +71,13 @@ const ScIconInner = styled.div`
   }
 `;
 
+const ScNew = styled(Detail)`
+  position: absolute;
+  top: 0.25rem;
+  right: 0.5rem;
+  font-weight: 400;
+`;
+
 const ScIconTexts = styled.div`
   text-align: center;
   > * {
@@ -78,6 +92,14 @@ const getName = (name: string) => {
     .replace("Filled", "")
     .replace("Outline", "")
     .replace("Stroke", "");
+};
+
+const isNew = (date: string) => {
+  const date1 = new Date(date);
+  const now = new Date();
+  const timeDiff = Math.abs(now.getTime() - date1.getTime());
+  const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+  return diffDays <= 90;
 };
 
 export const getTag = (name: string) => {
@@ -171,6 +193,7 @@ const IconSearch = () => {
   return (
     <ScIconSearch $isTablet={context.isTablet}>
       <Filter onFilterChange={handleFilterChange} />
+      <Button onClick={() => downloadAllSvg()}>Last ned</Button>
       {categories.length === 0 && <BodyLong spacing>Ingen treff...</BodyLong>}
       {categories.map((cat) => {
         return (
@@ -186,6 +209,7 @@ const IconSearch = () => {
                     key={i.created_at}
                     onClick={() => handleSelect(i.name)}
                   >
+                    {isNew(i.created_at) && <ScNew>New</ScNew>}
                     <ScIconInner>
                       <div>
                         <T />
