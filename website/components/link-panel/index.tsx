@@ -3,6 +3,11 @@ import React from "react";
 import Link from "next/link";
 import { LinkPanel as LinkPanelT } from "../../lib/autogen-types";
 import { slugger } from "..";
+import styled from "styled-components";
+
+const ScPanel = styled(DsLinkPanel)`
+  max-width: 400px;
+`;
 
 const LinkPanel = ({ node }: { node: LinkPanelT }): JSX.Element => {
   if (
@@ -26,14 +31,14 @@ const LinkPanel = ({ node }: { node: LinkPanelT }): JSX.Element => {
 
   return (
     <Link href={link} passHref>
-      <DsLinkPanel>
+      <ScPanel>
         <DsLinkPanel.Title as={node.heading_level} id={slug}>
           {node.heading}
         </DsLinkPanel.Title>
         {node.body && (
           <DsLinkPanel.Description>{node.body}</DsLinkPanel.Description>
         )}
-      </DsLinkPanel>
+      </ScPanel>
     </Link>
   );
 };

@@ -41,7 +41,7 @@ const Links = styled.div`
 
     :hover {
       text-decoration: underline;
-      background: var(--navds-color-blue-20);
+      background: var(--navds-color-blue-10);
     }
 
     :focus {

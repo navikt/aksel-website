@@ -1,29 +1,49 @@
 import styled from "styled-components";
 import * as Icons from "@navikt/ds-icons";
-import { Detail } from "@navikt/ds-react";
+import { Detail, Modal } from "@navikt/ds-react";
 import { LayoutContext } from "../templates/layout/Layout";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import ModalContent from "./ModalContent";
 
 const ScIconSearch = styled.div<{ $isTablet: boolean }>`
   display: flex;
   flex-direction: column;
-  width: ${(props) => (props.$isTablet ? `100%` : `60vw`)};
+  ${(props) =>
+    props.$isTablet ? `width: 100%;` : `width: 864px; max-width: 60vw;`};
   position: relative;
 `;
 
 const ScIcons = styled.div`
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fit, 160px);
+  justify-content: space-between;
+  align-content: start;
+  display: grid;
+  column-gap: 16px;
+  row-gap: 24px;
+  justify-content: space-around;
 `;
 
-const ScIcon = styled.div`
+const ScIcon = styled.button`
   height: 8rem;
   width: 10rem;
   flex-shrink: 1;
-  box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
-    0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
   border-radius: 4px;
+  background: none;
+  border: none;
+  border: 1px solid transparent;
+
+  /* box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
+    0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14); */
+
+  :hover {
+    border: 1px solid var(--navds-color-gray-60);
+    background-color: var(--navds-color-gray-10);
+  }
+
+  :focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--navds-color-blue-80);
+  }
 `;
 
 const ScIconInner = styled.div`
@@ -70,13 +90,27 @@ const getTag = (name: string) => {
 const IconSearch = () => {
   const context = useContext(LayoutContext);
 
+  const [open, setOpen] = useState(false);
+  const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
+
+  useEffect(() => {
+    Modal.setAppElement("#__next");
+  }, []);
+  useEffect(() => {
+    selectedIcon && setOpen(true);
+  }, [selectedIcon]);
+
+  useEffect(() => {
+    !open && setSelectedIcon(null);
+  }, [open]);
+
   return (
     <ScIconSearch $isTablet={context.isTablet}>
       <ScIcons>
         {Object.keys(Icons).map((Icon, x) => {
           const T = Icons[Icon];
           return (
-            <ScIcon key={x}>
+            <ScIcon key={x} onClick={() => setSelectedIcon(Icon)}>
               <ScIconInner>
                 <div>
                   <T />
@@ -90,6 +124,11 @@ const IconSearch = () => {
           );
         })}
       </ScIcons>
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <Modal.Content>
+          <ModalContent icon={selectedIcon} />
+        </Modal.Content>
+      </Modal>
     </ScIconSearch>
   );
 };

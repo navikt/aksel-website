@@ -10,14 +10,13 @@ export const ButtonCss = css`
   background-color: transparent;
   min-width: 50px;
   justify-content: center;
-
+  outline-offset: -2px;
   :hover {
-    background-color: var(--navds-color-blue-10);
+    text-decoration: underline;
   }
 
   :focus {
     outline: 2px solid var(--navds-color-blue-80);
-    outline-offset: -2px;
   }
 
   &[aria-selected="true"] {
