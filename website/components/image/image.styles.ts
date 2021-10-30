@@ -7,9 +7,14 @@ export const Figure = styled.figure`
   margin-bottom: var(--navds-spacing-12);
 `;
 
-export const Image = styled.div`
+export const Image = styled.button`
   background-color: #f7f7f7;
   border: 1px solid var(--navds-color-gray-20);
+
+  :focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--navds-color-blue-80);
+  }
 `;
 
 export const Caption = styled.figcaption`
