@@ -22,9 +22,10 @@ import {
 import { SanityBlockContent } from "../../SanityBlockContent";
 import * as S from "./page.styles";
 
-const Links = styled.div`
+const ScLinks = styled.div`
   display: flex;
   column-gap: 0.25rem;
+  flex-wrap: wrap;
 
   margin-left: var(--navds-spacing-4);
   right: 0;
@@ -56,7 +57,7 @@ const Links = styled.div`
   }
 `;
 
-const StyledDiv = styled.div`
+const ScDiv = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: var(--navds-spacing-2);
@@ -108,12 +109,12 @@ const ComponentPageTemplate = ({
           <Heading size="2xlarge" level="1" spacing>
             {data.heading}
           </Heading>
-          <StyledDiv>
+          <ScDiv>
             <S.Inline>
               <StatusTag status={data.status} />
               <LastUpdateTag date={data?.metadata?.last_update} />
             </S.Inline>
-            <Links>
+            <ScLinks>
               {data.npm_link && (
                 <BodyShort size="small" as="a" href={data.npm_link}>
                   NPM
@@ -132,8 +133,8 @@ const ComponentPageTemplate = ({
                   <ExternalLink />
                 </BodyShort>
               )}
-            </Links>
-          </StyledDiv>
+            </ScLinks>
+          </ScDiv>
         </S.HeadingContainer>
 
         {data.ingress && <Ingress spacing>{data.ingress}</Ingress>}
