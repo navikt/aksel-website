@@ -9,9 +9,9 @@ import { renderToString } from "react-dom/server";
 import { downloadPng, downloadSvg } from "./downloads";
 
 const ScModalContent = styled.div`
-  width: 560px;
   min-width: 300px;
-  min-height: 300px;
+  max-width: 600px;
+  flex-shrink: 1;
   display: flex;
   flex-direction: column;
 `;
@@ -27,7 +27,10 @@ const ScIcons = styled.div`
 
 const ScIconCss = css`
   flex: 1 1;
-  height: 176px;
+
+  /* Helps avoid un-needed scroll */
+  max-height: 180px;
+  min-height: 140px;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -84,7 +84,7 @@ const DownloadButtons = () => {
 
         <Popover
           anchorEl={buttonRef.current}
-          open={openPopover}
+          open={openPopover && !isDownloadingPng}
           onClose={() => setOpenPopover(false)}
           placement="bottom"
         >
