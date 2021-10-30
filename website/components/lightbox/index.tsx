@@ -26,16 +26,20 @@ const ScWrapper = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
+  display: flex;
+  justify-content: center;
 `;
 
 const ScImage = styled.div`
   position: relative;
-  height: 80%;
+  max-height: 80%;
+  display: flex;
+  align-items: center;
+  width: fit-content;
   top: 50%;
   transform: translateY(-50%);
-  display: block;
-
   background-color: var(--navds-color-gray-10);
+  overflow-y: auto;
 `;
 
 const ScCloseButton = styled.button`

@@ -1,4 +1,3 @@
-import { omit } from "@navikt/ds-react";
 import NextImage from "next/image";
 import React, { useState } from "react";
 import { Lightbox } from "..";
@@ -37,8 +36,8 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
       <Lightbox open={open} onClose={() => setOpen(false)}>
         {open && (
           <NextImage
-            {...(omit(imageProps, ["width", "height"]) as null)}
-            layout="fill"
+            {...imageProps}
+            layout="fixed"
             sizes="(max-width: 100vw) 100vw, 1000px"
             alt={node.title}
           />

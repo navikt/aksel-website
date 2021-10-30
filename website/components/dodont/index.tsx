@@ -57,8 +57,8 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
         {open && (
           <NextImage
             {...imageProps}
-            layout="responsive"
-            sizes="(max-width: 100vw) 100vw, 1000px"
+            layout="fixed"
+            /* sizes="(max-width: 100vw) 100vw, 1000px" */
             alt={block.alt}
           />
         )}
