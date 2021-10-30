@@ -47,6 +47,7 @@ const ScInnerDiv = styled.div`
   position: relative;
   width: 100%;
   justify-content: flex-start;
+  overflow-x: auto;
 `;
 
 const CodePreview = (): JSX.Element => {
