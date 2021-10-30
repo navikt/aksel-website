@@ -34,12 +34,14 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
         </S.Caption>
       )}
       <Lightbox open={open} onClose={() => setOpen(false)}>
-        <NextImage
-          {...imageProps}
-          layout="responsive"
-          sizes="(max-width: 90vw) 100vw, 1000px"
-          alt={node.title}
-        />
+        {open && (
+          <NextImage
+            {...imageProps}
+            layout="fill"
+            sizes="(max-width: 100vw) 100vw, 1000px"
+            alt={node.title}
+          />
+        )}
       </Lightbox>
     </S.Figure>
   );

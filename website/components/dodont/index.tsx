@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import NextImage from "next/image";
 import { BodyShort } from "@navikt/ds-react";
 import { useSanityImage } from "../../lib/santiy";
@@ -8,13 +8,19 @@ import {
   DoDont as DoDontT,
   DoDontBlock as DoDontBlockT,
 } from "../../lib/autogen-types";
+import { Lightbox } from "..";
 
 const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
   const imageProps = useSanityImage(block.picture);
+  const [open, setOpen] = useState(false);
 
   return (
     <S.Figure data-fullwidth={block.fullwidth}>
-      <S.FigureBorder>
+      <S.FigureBorder
+        aria-label="Klikk for å åpne bildet i fullskjerm"
+        tabIndex={0}
+        onClick={() => setOpen(!open)}
+      >
         <NextImage
           {...imageProps}
           layout="responsive"
@@ -47,6 +53,16 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
           </S.Icon>
         )}
       </S.Caption>
+      <Lightbox open={open} onClose={() => setOpen(false)}>
+        {open && (
+          <NextImage
+            {...imageProps}
+            layout="responsive"
+            sizes="(max-width: 100vw) 100vw, 1000px"
+            alt={block.alt}
+          />
+        )}
+      </Lightbox>
     </S.Figure>
   );
 };

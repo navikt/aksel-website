@@ -53,10 +53,16 @@ export const Section = styled.section`
   margin-bottom: 2rem;
 `;
 
-export const FigureBorder = styled.div`
+export const FigureBorder = styled.button`
   border: 1px solid #c9c9c9;
   border-bottom: none;
   border-radius: 4px 4px 0 0;
+  background: none;
+
+  :focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--navds-color-blue-80);
+  }
 `;
 
 export const Caption = styled.figcaption`
