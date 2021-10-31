@@ -9,7 +9,7 @@ import {
 import { PagePropsContext } from "../../../../pages/_app";
 
 const ScNav = styled.nav`
-  overflow: scroll;
+  overflow-y: auto;
 
   ul,
   ul > li {
