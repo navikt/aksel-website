@@ -13,7 +13,7 @@ import PortalNavigation from "./PortalNavigation";
 
 const DesignsystemHeader = (): JSX.Element => {
   const context = useContext(LayoutContext);
-  const useMobileHeader = useMedia("(max-width: 968px)");
+  const useMobileHeader = useMedia("(max-width: 1023px)");
 
   const [pageProps] = useContext<any>(PagePropsContext);
 
@@ -43,7 +43,7 @@ const DesignsystemHeader = (): JSX.Element => {
                 passHref
               >
                 <S.Link
-                  $active={context?.activeHeading?.title === heading.title}
+                  data-active={context?.activeHeading?.title === heading.title}
                 >
                   {heading.title}
                 </S.Link>

@@ -27,7 +27,7 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
   return (
     <>
       <S.PreWrapper active={activeTab === index}>
-        {!showPreview && (
+        {!showPreview && !showTabs && (
           <CopyButton content={tabs[index].content.toString()} />
         )}
         <S.Pre className="language-" data-tabs={showTabs}>

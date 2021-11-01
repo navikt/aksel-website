@@ -5,7 +5,6 @@ import styled, { css } from "styled-components";
 export const Header = styled(DsHeader)`
   height: 64px;
   position: relative;
-  box-shadow: 0 2px 3px 0 rgba(11, 11, 11, 0.2);
 `;
 
 export const Links = styled.div`
@@ -13,6 +12,10 @@ export const Links = styled.div`
   /* margin-left: auto; */
   margin-left: 1rem;
   margin-right: auto;
+
+  a.navdsi-header__title[data-active="true"]:hover {
+    background-color: white;
+  }
 `;
 
 export const Link = styled(DsHeader.Title)<{ $active: boolean }>`
@@ -22,23 +25,30 @@ export const Link = styled(DsHeader.Title)<{ $active: boolean }>`
   min-width: 64px;
   justify-content: center;
   align-items: center;
-
-  ${({ $active }) =>
-    $active &&
-    `
-    box-shadow: inset 0 -2px 0 0 var(--navds-color-gray-90), inset 0 -5px 0 0 white;
-  `}
+  padding-top: 4px;
+  cursor: pointer;
 
   :focus {
     box-shadow: inset 0 0 0 1px var(--navds-color-gray-90),
       inset 0 0 0 3px var(--navds-color-blue-20);
   }
 
-  > * {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    gap: 1rem;
+  &[data-active="true"] {
+    box-shadow: inset 0 0 0 1px var(--navds-color-gray-90);
+    background-color: white;
+    color: var(--navds-color-gray-90);
+
+    :focus {
+      box-shadow: inset 0 0 0 1px var(--navds-color-gray-90),
+        inset 0 0 0 2px white, inset 0 0 0 4px var(--navds-color-gray-90);
+    }
+
+    > * {
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      gap: 1rem;
+    }
   }
 `;
 

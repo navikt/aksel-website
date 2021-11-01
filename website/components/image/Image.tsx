@@ -1,5 +1,6 @@
 import NextImage from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import { Lightbox } from "..";
 import { useSanityImage } from "../../lib";
 import { Picture as PictureT } from "../../lib/autogen-types";
 import * as S from "./image.styles";
@@ -9,11 +10,17 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
     return null;
   }
 
+  const [open, setOpen] = useState(false);
+
   const imageProps = useSanityImage(node);
 
   return (
     <S.Figure>
-      <S.Image>
+      <S.Image
+        aria-label="Klikk for å åpne bildet i fullskjerm"
+        tabIndex={0}
+        onClick={() => setOpen(!open)}
+      >
         <NextImage
           {...imageProps}
           layout="responsive"
@@ -26,6 +33,16 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
           {node.caption}
         </S.Caption>
       )}
+      <Lightbox open={open} onClose={() => setOpen(false)}>
+        {open && (
+          <NextImage
+            {...imageProps}
+            layout="fixed"
+            sizes="(max-width: 100vw) 100vw, 1000px"
+            alt={node.title}
+          />
+        )}
+      </Lightbox>
     </S.Figure>
   );
 };

@@ -3,9 +3,9 @@ import { BodyShort } from "@navikt/ds-react";
 import { Dropdown, Header } from "@navikt/ds-react-internal";
 import { motion } from "framer-motion";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 import * as React from "react";
 import { useState } from "react";
-import { useMedia } from "react-use";
 import styled, { css } from "styled-components";
 import { fadeInCss, NavLogoWhite } from "../../..";
 
@@ -30,7 +30,6 @@ export const ScMenu = styled(Dropdown.Menu)`
 
 export const ScLinkCss = css`
   color: var(--navds-color-gray-90);
-  border-radius: 2px;
 
   min-height: 5rem;
   width: 100%;
@@ -54,8 +53,13 @@ export const ScLink = styled(Dropdown.Menu.List.Item)`
   padding: 0.75rem 1rem 0.5rem 1rem;
   align-items: flex-start;
 
-  :hover > :first-child {
-    color: var(--navds-color-blue-50);
+  &[data-active="true"] {
+    box-shadow: inset 6px 0 0 0 var(--navds-color-gray-90);
+    background-color: var(--navds-color-gray-10);
+
+    > :first-child {
+      font-weight: 600;
+    }
   }
 `;
 
@@ -70,6 +74,17 @@ export const ScIconLink = styled(Dropdown.Menu.List.Item)`
 `;
 
 const ScToggle = styled(Header.Button)`
+  > span {
+    margin-top: 4px;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+
+    svg {
+      font-size: 1rem;
+    }
+  }
+
   :focus {
     box-shadow: inset 0 0 0 1px var(--navds-color-gray-90),
       inset 0 0 0 3px var(--navds-color-blue-20);
@@ -77,7 +92,10 @@ const ScToggle = styled(Header.Button)`
 `;
 
 const HeadingDropDown = ({ title }: { title: string }) => {
-  const showLogo = useMedia("(min-width: 563px)");
+  /* const showLogo = useMedia("(min-width: 563px)"); */
+
+  const router = useRouter();
+  console.log(router);
 
   const [open, setOpen] = useState(false);
 
@@ -92,9 +110,11 @@ const HeadingDropDown = ({ title }: { title: string }) => {
     >
       <Dropdown>
         <ScToggle onClick={() => setOpen(!open)} forwardedAs={Dropdown.Toggle}>
-          {showLogo && <NavLogoWhite focusable={false} />}
-          {title}
-          <Expand focusable={false} role="presentation" />
+          <NavLogoWhite focusable={false} />
+          <span>
+            {title}
+            <Expand focusable={false} aria-label="Åpne Portal-navigasjon" />
+          </span>
         </ScToggle>
         <ScMenu onClose={() => setOpen(false)}>
           <Dropdown.Menu.List>
@@ -105,7 +125,10 @@ const HeadingDropDown = ({ title }: { title: string }) => {
               </ScIconLink>
             </NextLink>
             <NextLink href="/designsystem" passHref>
-              <ScLink forwardedAs="a">
+              <ScLink
+                data-active={router.asPath.startsWith(`/designsystem`)}
+                forwardedAs="a"
+              >
                 <BodyShort>Designsystemet</BodyShort>
                 <BodyShort size="small">
                   Informasjon omhandlende designsystemet
@@ -114,7 +137,10 @@ const HeadingDropDown = ({ title }: { title: string }) => {
             </NextLink>
 
             <NextLink href="/god-praksis" passHref>
-              <ScLink forwardedAs="a">
+              <ScLink
+                data-active={router.asPath.startsWith(`/god-praksis`)}
+                forwardedAs="a"
+              >
                 <BodyShort>God Praksis</BodyShort>
                 <BodyShort spacing size="small">
                   Informasjon omhandlende God Praksis

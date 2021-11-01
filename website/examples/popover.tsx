@@ -25,8 +25,7 @@ export const PopoverExample = () => {
 };
 
 PopoverExample.html = "";
-PopoverExample.react = `const buttonRef = useRef(null);
-const [open, setOpen] = useState(false);
+PopoverExample.react = `
 return (
   <>
     <Button ref={buttonRef} onClick={() => setOpen(true)}>
@@ -64,7 +63,7 @@ export const PopoverArrow = () => {
 };
 
 PopoverArrow.html = "";
-PopoverArrow.react = `const buttonRef = useRef(null);
+PopoverArrow.react = `
 return (
   <>
     <Button ref={buttonRef}>Anker</Button>
@@ -102,7 +101,7 @@ export const PopoverOffset = () => {
 };
 
 PopoverOffset.html = ``;
-PopoverOffset.react = `const buttonRef = useRef(null);
+PopoverOffset.react = `
 return (
   <>
     <Button ref={buttonRef}>Anker</Button>
@@ -122,6 +121,9 @@ return (
 
 const Wrapper = styled.div`
   margin: 3rem 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 export const PopoverPlacement = () => {

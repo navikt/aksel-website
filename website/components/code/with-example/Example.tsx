@@ -50,7 +50,7 @@ const ScExampleDiv = styled.div`
   border-bottom: none;
 
   :only-child {
-    border-bottom: 1px solid var(--navds-color-gray-20);
+    border-top: 1px solid var(--navds-color-gray-20);
   }
 `;
 
@@ -101,7 +101,7 @@ const Code = ({ node }: { node: DsCodeExampleT }): JSX.Element => {
         tabs,
         setTabs,
         showPreview,
-        activeTab,
+        activeTab: activeTab === -1 && !showPreview ? 0 : activeTab,
         setActiveTab,
         showTabs,
         fullscreenLink,
