@@ -47,6 +47,8 @@ const ScIcon = styled.button`
 
   :hover {
     background-color: var(--navds-color-gray-10);
+    box-shadow: none;
+
     svg {
       font-size: 2.4rem;
     }
