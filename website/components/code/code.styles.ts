@@ -13,16 +13,25 @@ export const ButtonCss = css`
   outline-offset: -2px;
   position: relative;
 
+  :before {
+    opacity: 0;
+    width: 30%;
+    transition: opacity 0.25s ease-in-out, width 0.1s ease-in-out;
+    content: "";
+    position: absolute;
+  }
+
   :hover {
     color: var(--navds-color-gray-90);
 
     :before {
       content: "";
-      width: 40px;
+      width: 60%;
       height: 2px;
       background-color: var(--navds-color-gray-90);
       bottom: 0.75rem;
       position: absolute;
+      opacity: 1;
     }
   }
 
@@ -35,11 +44,12 @@ export const ButtonCss = css`
 
     :before {
       content: "";
-      width: 40px;
+      width: 60%;
       height: 2px;
       background-color: var(--navds-color-gray-90);
       bottom: 0.75rem;
       position: absolute;
+      opacity: 1;
     }
   }
 `;

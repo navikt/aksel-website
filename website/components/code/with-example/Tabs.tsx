@@ -32,9 +32,17 @@ const ScLinkButton = styled.a`
   text-decoration: none;
   color: var(--navds-color-gray-90);
 
+  ::before {
+    content: none;
+  }
+
   :hover {
     outline: 2px solid var(--navds-color-gray-90);
     outline-offset: -2px;
+
+    ::before {
+      content: none;
+    }
   }
 
   :focus {

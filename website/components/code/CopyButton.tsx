@@ -26,6 +26,11 @@ const ScButton = styled.button`
   :hover {
     background-color: var(--navds-color-gray-80);
     text-decoration: none;
+    color: white;
+
+    ::before {
+      content: none;
+    }
   }
 
   :focus {
@@ -43,6 +48,17 @@ const ScTabButton = styled.button`
   align-items: center;
   justify-content: center;
   width: 4rem;
+
+  ::before {
+    content: none;
+  }
+
+  :hover {
+    outline: 2px solid var(--navds-color-gray-90);
+    ::before {
+      content: none;
+    }
+  }
 
   :active {
     background-color: var(--navds-color-blue-20);
