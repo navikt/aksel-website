@@ -11,10 +11,6 @@ const ScDownloadButtons = styled.div`
   margin-top: 0.5rem;
   margin-bottom: 2rem;
   width: 250px;
-
-  > * {
-    flex: 1 1;
-  }
 `;
 
 const ScContent = styled(Popover.Content)`
@@ -25,6 +21,31 @@ const ScContent = styled(Popover.Content)`
 const ScHeading = styled(Heading)`
   padding: 0.5rem 1rem;
   border-bottom: 1px solid var(--navds-color-gray-60);
+`;
+
+const ScButton = styled.button`
+  background: none;
+  border: none;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0;
+  justify-self: center;
+  color: var(--navds-color-blue-50);
+  padding: calc(0.75rem + 2px) 0.25rem;
+
+  > svg {
+    font-size: 1.25rem;
+  }
+
+  :hover {
+    text-decoration: underline;
+  }
+
+  :focus {
+    outline: none;
+    color: white;
+    background-color: var(--navds-color-blue-80);
+  }
 `;
 
 const DownloadButtons = () => {
@@ -55,11 +76,15 @@ const DownloadButtons = () => {
         Last ned alle ikoner
       </Heading>
       <ScDownloadButtons>
-        <Button onClick={() => handleSvgDownload()}>
+        <ScButton onClick={() => handleSvgDownload()}>
           {isDownloadingSvg ? (
             <>
-              Laster...
-              <Loader aria-label="Genererer fil for nedlastning" />
+              <Loader
+                size="small"
+                variant="interaction"
+                aria-label="Genererer fil for nedlastning"
+              />
+              SVG
             </>
           ) : (
             <>
@@ -67,12 +92,16 @@ const DownloadButtons = () => {
               SVG
             </>
           )}
-        </Button>
-        <Button ref={buttonRef} onClick={() => setOpenPopover((x) => !x)}>
+        </ScButton>
+        <ScButton ref={buttonRef} onClick={() => setOpenPopover((x) => !x)}>
           {isDownloadingPng ? (
             <>
-              Laster...
-              <Loader aria-label="Genererer fil for nedlastning" />
+              <Loader
+                size="small"
+                variant="interaction"
+                aria-label="Genererer fil for nedlastning"
+              />
+              PNG
             </>
           ) : (
             <>
@@ -80,7 +109,7 @@ const DownloadButtons = () => {
               PNG
             </>
           )}
-        </Button>
+        </ScButton>
 
         <Popover
           anchorEl={buttonRef.current}

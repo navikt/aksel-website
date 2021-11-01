@@ -107,36 +107,40 @@ const ScToggleGroup = styled(Detail)`
 `;
 
 const ScToggle = styled.button`
-  padding: calc(0.5rem - 1px) 1rem;
+  padding: calc(0.5rem - 2px) 1rem;
   box-shadow: inset 0 0 0 1px var(--navds-color-gray-60);
   flex: 1 1;
   display: flex;
   align-items: center;
   justify-content: center;
   background: none;
-  color: var(--navds-color-blue-50);
+  color: var(--navds-color-gray-90);
   border: none;
 
   :not(:first-child) {
     margin-left: -1px;
   }
 
+  :hover {
+    background-color: var(--navds-color-gray-10);
+  }
+
   :focus {
     box-shadow: inset 0 0 0 1px var(--navds-color-gray-60), 0 0 0 1px white,
-      0 0 0 3px var(--navds-color-blue-80);
+      0 0 0 4px var(--navds-color-blue-80);
     border-color: var(--navds-color-blue-50);
     z-index: 2;
     outline: none;
   }
 
   &[data-active="true"] {
-    box-shadow: inset 0 0 0 2px var(--navds-color-blue-50);
-    background-color: var(--navds-color-blue-10);
-    color: var(--navds-color-gray-90);
+    box-shadow: none;
+    background-color: var(--navds-color-deepblue-50);
+    color: white;
 
     :focus {
-      box-shadow: inset 0 0 0 2px var(--navds-color-blue-50), 0 0 0 1px white,
-        0 0 0 3px var(--navds-color-blue-80);
+      box-shadow: inset 0 0 0 2px var(--navds-color-deepblue-50),
+        0 0 0 1px white, 0 0 0 4px var(--navds-color-blue-80);
     }
   }
 `;
@@ -197,12 +201,14 @@ const Filter = ({
       </ScTextFieldWrapper>
       <ScToggleGroup forwardedAs="div" size="small">
         <ScToggle
+          className="navds-label navds-label--small"
           data-active={toggle === "outline"}
           onClick={() => setToggle("outline")}
         >
           Outline
         </ScToggle>
         <ScToggle
+          className="navds-label navds-label--small"
           data-active={toggle === "filled"}
           onClick={() => {
             toggle === "filled" ? setToggle("outline") : setToggle("filled");
@@ -211,6 +217,7 @@ const Filter = ({
           Filled
         </ScToggle>
         <ScToggle
+          className="navds-label navds-label--small"
           data-active={toggle === "stroke"}
           onClick={() => {
             toggle === "stroke" ? setToggle("outline") : setToggle("stroke");

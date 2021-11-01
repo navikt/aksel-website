@@ -1,4 +1,4 @@
-import { BodyShort, Button, Heading } from "@navikt/ds-react";
+import { BodyShort, Button, Detail, Heading } from "@navikt/ds-react";
 import styled, { css } from "styled-components";
 import meta from "@navikt/ds-icons/meta.json";
 import React, { useEffect, useState } from "react";
@@ -7,6 +7,7 @@ import { Snippet } from "..";
 import { CodeSnippet } from "../../lib/autogen-types";
 import { renderToString } from "react-dom/server";
 import { downloadPng, downloadSvg } from "./downloads";
+import { isNew } from ".";
 
 const ScModalContent = styled.div`
   min-width: 300px;
@@ -56,11 +57,25 @@ const ScButtonWrapper = styled.div`
   margin-bottom: 2rem;
 `;
 
+const ScNew = styled(Detail)`
+  padding: 0.25rem 0.5rem;
+  background-color: var(--navds-color-lightblue-10);
+  border-radius: 4px;
+  height: 100%;
+`;
+
+const ScHeading = styled(Heading)`
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+`;
+
 const ModalContent = ({ icon }: { icon: string }) => {
   const [doc, setDoc] = useState<{
     name: string;
     pageName: string;
     description: string;
+    created_at: string;
   } | null>(null);
 
   useEffect(() => {
@@ -94,9 +109,10 @@ import Icon from "@navikt/ds-icons/svg/${icon}";`,
 
   return (
     <ScModalContent>
-      <Heading spacing level="2" size="medium">
+      <ScHeading spacing level="2" size="medium">
         {icon}
-      </Heading>
+        {isNew(doc?.created_at) && <ScNew forwardedAs="span">Ny!</ScNew>}
+      </ScHeading>
       {doc && (
         <>
           <ScMutedBodyShort>{doc.pageName}</ScMutedBodyShort>

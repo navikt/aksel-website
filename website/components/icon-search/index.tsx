@@ -79,11 +79,10 @@ const ScNew = styled(Detail)`
   position: absolute;
   top: 0;
   right: 0;
-  padding: 0.25rem;
+  padding: 0.25rem 0.5rem;
   font-weight: 400;
-  background-color: var(--navds-color-gray-80);
-  color: white;
-  border-bottom-left-radius: 4px;
+  background-color: var(--navds-color-lightblue-10);
+  border-bottom-left-radius: 6px;
 `;
 
 const ScIconTexts = styled.div`
@@ -99,7 +98,7 @@ const ScFlex = styled.div`
   display: flex;
   flex-wrap: wrap-reverse;
   column-gap: 2rem;
-  justify-content: space-between;
+  justify-content: flex-start;
 `;
 
 const getName = (name: string) => {
@@ -109,7 +108,7 @@ const getName = (name: string) => {
     .replace("Stroke", "");
 };
 
-const isNew = (date: string) => {
+export const isNew = (date: string) => {
   const date1 = new Date(date);
   const now = new Date();
   const timeDiff = Math.abs(now.getTime() - date1.getTime());
