@@ -31,7 +31,6 @@ export const ButtonCss = css`
   }
 
   &[aria-selected="true"] {
-    /* box-shadow: inset 0 -2px 0 0 var(--navds-color-gray-90); */
     color: var(--navds-color-gray-90);
 
     :before {
