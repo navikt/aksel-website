@@ -72,7 +72,14 @@ export const gpDocumentBySlug = `*[slug.current == $slug][0]
 {
   ...,
   "slug": slug.current,
-  ${deRefs}
+  ingress[]{
+    ...,
+    ${deRefs}
+  },
+  body[]{
+    ...,
+    ${deRefs}
+  }
 }`;
 
 export const dsDocuments = `*[_type in ["ds_component_page", "ds_article_page", "ds_tabbed_article_page"]]{ _type, 'slug': slug.current }`;
@@ -83,6 +90,10 @@ export const dsDocumentBySlug = `*[slug.current == $slug][0]
   "slug": slug.current,
   linked_packages[]{
     "title": @->title
+  },
+  ingress[]{
+    ...,
+    ${deRefs}
   },
 	body[]{
     ...,

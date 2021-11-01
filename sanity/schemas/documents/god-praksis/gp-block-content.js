@@ -1,6 +1,7 @@
 import React from "react";
 import { Warning, SuccessStroke, ExternalLink } from "@navikt/ds-icons";
 import { styles, TitleRenderer } from "../../block-content";
+import { allDocumentTypes } from "../../../config";
 
 export default {
   title: "Block Content",
@@ -67,9 +68,9 @@ export default {
                 name: "reference",
                 type: "reference",
                 to: [
-                  {
-                    type: "ds_article_page",
-                  },
+                  ...allDocumentTypes.map((doc) => ({
+                    type: doc,
+                  })),
                 ],
               },
             ],

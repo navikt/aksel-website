@@ -26,6 +26,7 @@ const ActiclePageTemplate = ({
             <LastUpdateTag date={data.metadata.last_update} />
           </S.Inline>
         </S.HeadingContainer>
+        {data.ingress && <SanityBlockContent isIngress blocks={data.ingress} />}
       </S.MaxWidthContainer>
       <S.SanityBlockContainer>
         <TableOfContents changedState={data.body} />

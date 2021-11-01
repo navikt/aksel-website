@@ -59,9 +59,15 @@ const serializers = {
       switch (style) {
         case "normal":
           return (
-            <BodyLong size={context.size} spacing>
-              {children}
-            </BodyLong>
+            <>
+              {context.isIngress ? (
+                <Ingress>{children}</Ingress>
+              ) : (
+                <BodyLong size={context.size} spacing>
+                  {children}
+                </BodyLong>
+              )}
+            </>
           );
         case "detail":
           return (
@@ -129,22 +135,28 @@ const MarginTopDiv = styled.div`
 
 export type BlockContextT = {
   size: "medium" | "small";
+  isIngress: boolean;
 };
 
-export const BlockContext = createContext<BlockContextT>({ size: "medium" });
+export const BlockContext = createContext<BlockContextT>({
+  size: "medium",
+  isIngress: false,
+});
 
 export const SanityBlockContent = ({
   blocks,
   withMargin = false,
   size = "medium",
+  isIngress = false,
 }: {
   blocks: any;
   withMargin?: boolean;
   size?: "medium" | "small";
+  isIngress?: boolean;
 }): JSX.Element => {
   return (
     <>
-      <BlockContext.Provider value={{ size }}>
+      <BlockContext.Provider value={{ size, isIngress }}>
         {withMargin ? (
           <MarginTopDiv>
             <BlockContent

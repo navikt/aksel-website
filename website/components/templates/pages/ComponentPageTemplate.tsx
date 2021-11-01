@@ -1,5 +1,5 @@
 import { ExternalLink } from "@navikt/ds-icons";
-import { BodyShort, Heading, Ingress } from "@navikt/ds-react";
+import { BodyShort, Heading } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React from "react";
 import { useMedia } from "react-use";
@@ -162,8 +162,7 @@ const ComponentPageTemplate = ({
             </ScLinks>
           </ScDiv>
         </S.HeadingContainer>
-
-        {data.ingress && <Ingress spacing>{data.ingress}</Ingress>}
+        {data.ingress && <SanityBlockContent isIngress blocks={data.ingress} />}
       </S.MaxWidthContainer>
 
       <Tabs>

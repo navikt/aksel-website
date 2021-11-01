@@ -117,11 +117,11 @@ export interface DsComponentPage extends SanityDocument {
   slug?: { _type: "slug"; current: string };
 
   /**
-   * Ingress (optional) — `text`
+   * Ingress (optional) — `array`
    *
    *
    */
-  ingress?: string;
+  ingress?: Array<SanityKeyed<SanityBlock>>;
 
   /**
    * Tags — `array`
@@ -275,11 +275,11 @@ export interface DsArticlePage extends SanityDocument {
   slug?: { _type: "slug"; current: string };
 
   /**
-   * Ingress (optional) — `text`
+   * Ingress (optional) — `array`
    *
    *
    */
-  ingress?: string;
+  ingress?: Array<SanityKeyed<SanityBlock>>;
 
   /**
    * Tags — `array`
@@ -362,11 +362,11 @@ export interface DsTabbedArticlePage extends SanityDocument {
   slug?: { _type: "slug"; current: string };
 
   /**
-   * Ingress (optional) — `text`
+   * Ingress (optional) — `array`
    *
    *
    */
-  ingress?: string;
+  ingress?: Array<SanityKeyed<SanityBlock>>;
 
   /**
    * Tags — `array`
@@ -565,11 +565,11 @@ export interface GpArticlePage extends SanityDocument {
   slug?: { _type: "slug"; current: string };
 
   /**
-   * Ingress (optional) — `text`
+   * Ingress (optional) — `array`
    *
    *
    */
-  ingress?: string;
+  ingress?: Array<SanityKeyed<SanityBlock>>;
 
   /**
    * Status — `string`

@@ -10,6 +10,7 @@ import {
   ExternalLink,
 } from "@navikt/ds-icons";
 import { KBD } from "@sanity/ui";
+import { allDocumentTypes } from "../config";
 
 export const TitleRenderer = (props, size, level) => (
   <Heading size={size} level={level}>
@@ -95,9 +96,9 @@ export const block = {
             name: "reference",
             type: "reference",
             to: [
-              {
-                type: "ds_article_page",
-              },
+              ...allDocumentTypes.map((doc) => ({
+                type: doc,
+              })),
             ],
           },
         ],

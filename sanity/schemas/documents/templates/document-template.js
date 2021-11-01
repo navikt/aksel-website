@@ -1,4 +1,5 @@
 import { validateSlug, isSlugUnique } from "../../validateSlug";
+import { ingressBlock } from "./block-content-ingress";
 
 export function documentInformation(prefix) {
   return [
@@ -34,8 +35,8 @@ export function documentInformation(prefix) {
     {
       title: "Ingress (optional)",
       name: "ingress",
-      type: "text",
-      rows: 3,
+      type: "array",
+      of: [ingressBlock],
     },
     {
       title: "Tags",

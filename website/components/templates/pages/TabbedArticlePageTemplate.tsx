@@ -43,6 +43,7 @@ const TabbedActiclePageTemplate = ({
             <LastUpdateTag date={data.metadata.last_update} />
           </S.Inline>
         </S.HeadingContainer>
+        {data.ingress && <SanityBlockContent isIngress blocks={data.ingress} />}
       </S.MaxWidthContainer>
       {tabs.length > 1 && (
         <Tabs>
