@@ -30,7 +30,6 @@ export const ScMenu = styled(Dropdown.Menu)`
 
 export const ScLinkCss = css`
   color: var(--navds-color-gray-90);
-  border-radius: 2px;
 
   min-height: 5rem;
   width: 100%;
@@ -54,8 +53,13 @@ export const ScLink = styled(Dropdown.Menu.List.Item)`
   padding: 0.75rem 1rem 0.5rem 1rem;
   align-items: flex-start;
 
-  :hover > :first-child {
-    color: var(--navds-color-blue-50);
+  &[data-active="true"] {
+    box-shadow: inset 6px 0 0 0 var(--navds-color-gray-90);
+    background-color: var(--navds-color-gray-10);
+
+    > :first-child {
+      font-weight: 600;
+    }
   }
 `;
 
@@ -121,7 +125,10 @@ const HeadingDropDown = ({ title }: { title: string }) => {
               </ScIconLink>
             </NextLink>
             <NextLink href="/designsystem" passHref>
-              <ScLink forwardedAs="a">
+              <ScLink
+                data-active={router.asPath.startsWith(`/designsystem`)}
+                forwardedAs="a"
+              >
                 <BodyShort>Designsystemet</BodyShort>
                 <BodyShort size="small">
                   Informasjon omhandlende designsystemet
@@ -130,7 +137,10 @@ const HeadingDropDown = ({ title }: { title: string }) => {
             </NextLink>
 
             <NextLink href="/god-praksis" passHref>
-              <ScLink forwardedAs="a">
+              <ScLink
+                data-active={router.asPath.startsWith(`/god-praksis`)}
+                forwardedAs="a"
+              >
                 <BodyShort>God Praksis</BodyShort>
                 <BodyShort spacing size="small">
                   Informasjon omhandlende God Praksis

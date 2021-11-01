@@ -9,14 +9,12 @@ import {
   CodeExample,
   LastUpdateTag,
   LevelTwoHeading,
-  Snippet,
   StatusTag,
   Tab,
   TableOfContents,
   Tabs,
 } from "../..";
 import {
-  CodeSnippet,
   DsChangelog,
   DsCodeExample,
   DsComponentPage,
