@@ -35,8 +35,10 @@ const ScIcon = styled.button`
   border-radius: 4px;
   background: none;
   border: none;
-  border: 1px solid transparent;
   position: relative;
+
+  box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
+    0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
 
   svg {
     transition: font-size 0.2s ease-in-out;
@@ -73,9 +75,13 @@ const ScIconInner = styled.div`
 
 const ScNew = styled(Detail)`
   position: absolute;
-  top: 0.25rem;
-  right: 0.5rem;
+  top: 0;
+  right: 0;
+  padding: 0.25rem;
   font-weight: 400;
+  background-color: var(--navds-color-gray-80);
+  color: white;
+  border-bottom-left-radius: 4px;
 `;
 
 const ScIconTexts = styled.div`
@@ -218,7 +224,7 @@ const IconSearch = () => {
                     key={i.created_at}
                     onClick={() => handleSelect(i.name)}
                   >
-                    {isNew(i.created_at) && <ScNew>New</ScNew>}
+                    {isNew(i.created_at) && <ScNew>Ny!</ScNew>}
                     <ScIconInner>
                       <div>
                         <T />

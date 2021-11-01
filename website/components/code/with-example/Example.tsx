@@ -101,7 +101,7 @@ const Code = ({ node }: { node: DsCodeExampleT }): JSX.Element => {
         tabs,
         setTabs,
         showPreview,
-        activeTab,
+        activeTab: activeTab === -1 && !showPreview ? 0 : activeTab,
         setActiveTab,
         showTabs,
         fullscreenLink,

@@ -54,23 +54,27 @@ const CodeTabs = (): JSX.Element => {
     <>
       <ScTabs>
         <ul role="tablist">
-          <li role="presentation">
-            <ScButton
-              role="tab"
-              className="navds-body-short navds-body--small"
-              onClick={() => setActiveTab(-1)}
-              aria-selected={activeTab === -1}
-            >
-              {"Preview"}
-            </ScButton>
-          </li>
+          {showPreview && (
+            <li role="presentation">
+              <ScButton
+                role="tab"
+                className="navds-body-short navds-body--small"
+                onClick={() => setActiveTab(-1)}
+                aria-selected={activeTab === -1}
+              >
+                {"Preview"}
+              </ScButton>
+            </li>
+          )}
           {tabs.map((tab, i) => (
             <li key={tab.content.toString()} role="presentation">
               <ScButton
                 role="tab"
                 className="navds-body-short navds-body--small"
                 onClick={() =>
-                  i === activeTab ? setActiveTab(-1) : setActiveTab(i)
+                  i === activeTab
+                    ? setActiveTab(showPreview ? -1 : 0)
+                    : setActiveTab(i)
                 }
                 aria-selected={i === activeTab}
               >
