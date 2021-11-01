@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const ButtonCss = css`
   border: none;
-  color: var(--navds-color-gray-90);
+  color: var(--navds-color-gray-80);
   padding: 0.75rem 0.75rem;
   display: flex;
   align-items: center;
@@ -11,9 +11,19 @@ export const ButtonCss = css`
   min-width: 50px;
   justify-content: center;
   outline-offset: -2px;
+  position: relative;
 
   :hover {
-    text-decoration: underline;
+    color: var(--navds-color-gray-90);
+
+    :before {
+      content: "";
+      width: 40px;
+      height: 2px;
+      background-color: var(--navds-color-gray-90);
+      bottom: 0.75rem;
+      position: absolute;
+    }
   }
 
   :focus {
@@ -21,7 +31,17 @@ export const ButtonCss = css`
   }
 
   &[aria-selected="true"] {
-    box-shadow: inset 0 -2px 0 0 var(--navds-color-gray-90);
+    /* box-shadow: inset 0 -2px 0 0 var(--navds-color-gray-90); */
+    color: var(--navds-color-gray-90);
+
+    :before {
+      content: "";
+      width: 40px;
+      height: 2px;
+      background-color: var(--navds-color-gray-90);
+      bottom: 0.75rem;
+      position: absolute;
+    }
   }
 `;
 

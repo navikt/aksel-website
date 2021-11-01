@@ -30,9 +30,9 @@ const ScFlex = styled.div`
 const ScLinkButton = styled.a`
   ${S.ButtonCss}
   text-decoration: none;
+  color: var(--navds-color-gray-90);
 
   :hover {
-    text-decoration: underline;
     outline: 2px solid var(--navds-color-gray-90);
     outline-offset: -2px;
   }
