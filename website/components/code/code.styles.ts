@@ -11,6 +11,7 @@ export const ButtonCss = css`
   min-width: 50px;
   justify-content: center;
   outline-offset: -2px;
+
   :hover {
     text-decoration: underline;
   }

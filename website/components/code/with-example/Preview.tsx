@@ -30,7 +30,6 @@ const formatCode = (code: string, tag: string) => {
 
 const ScDiv = styled.div`
   display: flex;
-  padding: 2rem;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -40,11 +39,11 @@ const ScDiv = styled.div`
 
 const ScInnerDiv = styled.div`
   gap: 1rem;
+  padding: 2rem;
   align-items: "center";
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
-  position: relative;
   width: 100%;
   justify-content: flex-start;
   overflow-x: auto;

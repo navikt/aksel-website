@@ -58,7 +58,7 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
           <NextImage
             {...imageProps}
             layout="fixed"
-            /* sizes="(max-width: 100vw) 100vw, 1000px" */
+            sizes="(max-width: 100vw) 100vw, 1000px"
             alt={block.alt}
           />
         )}

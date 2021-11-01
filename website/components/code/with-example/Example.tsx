@@ -50,7 +50,7 @@ const ScExampleDiv = styled.div`
   border-bottom: none;
 
   :only-child {
-    border-bottom: 1px solid var(--navds-color-gray-20);
+    border-top: 1px solid var(--navds-color-gray-20);
   }
 `;
 
