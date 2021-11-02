@@ -20,7 +20,7 @@ const PagePicker = (props: {
   const enablePreview = !!props.preview || !!router.query.preview;
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, setPageData] = useContext(PagePropsContext);
+  const { setPageData } = useContext(PagePropsContext);
 
   const { data } = usePreviewSubscription(gpDocumentBySlug, {
     params: { slug: "god-praksis/" + props?.slug },

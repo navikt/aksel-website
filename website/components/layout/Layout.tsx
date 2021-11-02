@@ -107,7 +107,7 @@ export const LayoutContext = createContext<LayoutContextProps | null>(null);
 
 // TODO: Move metadata to SEO component
 const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
-  const [pageProps] = useContext<any>(PagePropsContext);
+  const { pageProps } = useContext(PagePropsContext);
   const [activeHeading, setActiveHeading] = useState<
     DsNavigationHeadingT | undefined
   >();

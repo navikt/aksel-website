@@ -52,7 +52,7 @@ const ScInnerWrapper = styled.div<{ $isTablet: boolean }>`
 `;
 
 const RelatedPagesLink = () => {
-  const [pageProps] = useContext<any>(PagePropsContext);
+  const { pageProps } = useContext<any>(PagePropsContext);
   const context = useContext(LayoutContext);
 
   const [links, setLinks] = useState<{

@@ -1,6 +1,5 @@
-import { useClientLayoutEffect } from "@navikt/ds-react";
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LayoutPicker, PreviewBanner } from "../../components";
 import {
   changelogQuery,
@@ -30,7 +29,7 @@ const PagePicker = (props: {
   const enablePreview = !!props.preview || !!router.query.preview;
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, setPageData] = useContext(PagePropsContext);
+  const { setPageData } = useContext(PagePropsContext);
 
   const { data } = usePreviewSubscription(dsDocumentBySlug, {
     params: { slug: "designsystem/" + props.slug },
@@ -48,11 +47,11 @@ const PagePicker = (props: {
     enabled: enablePreview,
   });
 
-  useClientLayoutEffect(() => {
+  useEffect(() => {
     setPageData({ ...props, navigation: nav });
   }, [nav]);
 
-  useClientLayoutEffect(() => {
+  useEffect(() => {
     setPageData({ ...props, page: data });
   }, [data]);
 

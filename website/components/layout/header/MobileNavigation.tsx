@@ -113,7 +113,7 @@ const ScHamburgerButton = styled(Header.Button)<{ $open: boolean }>`
 
 const MobileNavigation = () => {
   const context = useContext(LayoutContext);
-  const [pageProps] = useContext<any>(PagePropsContext);
+  const { pageProps } = useContext<any>(PagePropsContext);
   const [openHamb, setOpenHamb] = useState(false);
   const [heading, setHeading] = useState(context.activeHeading);
   const [isHeadingMenu, setIsHeadingMenu] = useState(true);

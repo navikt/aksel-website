@@ -8,7 +8,12 @@ import {
 } from "../components";
 import "../styles/index.css";
 
-export const PagePropsContext = createContext<any[]>([]);
+type PagePropsContextT = {
+  pageProps: any;
+  setPageData: React.Dispatch<any>;
+};
+
+export const PagePropsContext = createContext<PagePropsContextT>(null);
 
 function App({
   Component,
@@ -51,7 +56,7 @@ function App({
 
   return (
     <AmplitudeProvider>
-      <PagePropsContext.Provider value={[pageData, setPageData]}>
+      <PagePropsContext.Provider value={{ pageProps: pageData, setPageData }}>
         <Layout>
           <Component {...pageProps} />
         </Layout>

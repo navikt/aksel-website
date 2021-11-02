@@ -51,7 +51,7 @@ const Menu = ({
   heading?: DsNavigationHeadingT;
   onClick?: () => void;
 }): JSX.Element => {
-  const [pageProps] = useContext<any>(PagePropsContext);
+  const { pageProps } = useContext<any>(PagePropsContext);
 
   const [sidebarMenu, setSidebarMenu] = useState<DsNavigationHeadingMenuT[]>(
     []

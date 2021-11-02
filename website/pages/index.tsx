@@ -117,7 +117,7 @@ const ScFrontpage = styled.div`
 
 const Page = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, setPageData] = useContext(PagePropsContext);
+  const { setPageData } = useContext(PagePropsContext);
   useEffect(() => {
     setPageData({});
   }, []);

@@ -15,7 +15,7 @@ const DesignsystemHeader = (): JSX.Element => {
   const context = useContext(LayoutContext);
   const useMobileHeader = useMedia("(max-width: 1023px)");
 
-  const [pageProps] = useContext<any>(PagePropsContext);
+  const { pageProps } = useContext(PagePropsContext);
 
   const [searchisOpen, setSearchisOpen] = useState(false);
 
