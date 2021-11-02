@@ -27,8 +27,8 @@ const ScWrapper = styled.div`
 const ScContentWrapper = styled.div<{ isTablet: boolean }>`
   flex-direction: column;
   width: 100%;
-  /* width: ${({ isTablet }) => (isTablet ? `100%` : `calc(100% - 250px)`)}; */
   position: relative;
+  overflow-x: hidden;
 `;
 
 const ScMain = styled.main<{ $tablet: boolean }>`

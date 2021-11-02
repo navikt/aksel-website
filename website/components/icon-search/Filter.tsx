@@ -6,11 +6,13 @@ import styled, { css } from "styled-components";
 const ScFilter = styled.div`
   margin-bottom: 2rem;
   max-width: 400px;
+  width: 100%;
 `;
 
 const ScTextField = styled(TextField)`
   position: relative;
   width: 100%;
+
   > input {
     border-radius: 4px 0 0 4px;
     padding: 0 1rem 0 3rem;
@@ -79,7 +81,9 @@ const ScTextFieldWrapper = styled.div`
   > :last-child {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
+
     input {
+      flex: 1 1;
       border-top-right-radius: 4px;
       border-bottom-right-radius: 4px;
       border-right: 1px solid var(--navds-color-gray-60);

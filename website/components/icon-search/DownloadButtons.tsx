@@ -4,7 +4,7 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { downloadAllSvg, downloadPngInSize } from "./downloads";
 
-const ScDownloadButtons = styled.div`
+export const ScDownloadButtons = styled.div`
   display: flex;
   align-self: flex-end;
   gap: 1rem;
@@ -23,7 +23,7 @@ const ScHeading = styled(Heading)`
   border-bottom: 1px solid var(--navds-color-gray-60);
 `;
 
-const ScButton = styled.button`
+export const ScButton = styled.button`
   background: none;
   border: none;
   display: flex;

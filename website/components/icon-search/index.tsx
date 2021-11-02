@@ -99,6 +99,7 @@ const ScFlex = styled.div`
   flex-wrap: wrap-reverse;
   column-gap: 2rem;
   justify-content: flex-start;
+  width: 100%;
 `;
 
 const getName = (name: string) => {

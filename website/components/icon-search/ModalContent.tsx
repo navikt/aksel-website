@@ -1,13 +1,14 @@
-import { BodyShort, Button, Detail, Heading } from "@navikt/ds-react";
-import styled, { css } from "styled-components";
-import meta from "@navikt/ds-icons/meta.json";
-import React, { useEffect, useState } from "react";
 import * as Icons from "@navikt/ds-icons";
+import meta from "@navikt/ds-icons/meta.json";
+import { BodyShort, Detail, Heading } from "@navikt/ds-react";
+import React, { useEffect, useState } from "react";
+import { renderToString } from "react-dom/server";
+import styled, { css } from "styled-components";
+import { isNew } from ".";
 import { Snippet } from "..";
 import { CodeSnippet } from "../../lib/autogen-types";
-import { renderToString } from "react-dom/server";
+import { ScButton } from "./DownloadButtons";
 import { downloadPng, downloadSvg } from "./downloads";
-import { isNew } from ".";
 
 const ScModalContent = styled.div`
   min-width: 300px;
@@ -125,13 +126,13 @@ import Icon from "@navikt/ds-icons/svg/${icon}";`,
         Last ned
       </Heading>
       <ScButtonWrapper>
-        <Button onClick={() => downloadSvg(icon)}>
+        <ScButton onClick={() => downloadSvg(icon)}>
           <Icons.Download aria-label="last ned" /> SVG
-        </Button>
-        <Button onClick={() => downloadPng(icon)}>
+        </ScButton>
+        <ScButton onClick={() => downloadPng(icon)}>
           <Icons.Download aria-label="last ned" />
           PNG
-        </Button>
+        </ScButton>
       </ScButtonWrapper>
       <Heading spacing level="3" size="small">
         Import

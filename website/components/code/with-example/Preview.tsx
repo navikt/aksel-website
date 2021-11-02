@@ -30,23 +30,23 @@ const formatCode = (code: string, tag: string) => {
 
 const ScDiv = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   width: 100%;
+  background-color: #f7f7f7;
+  border: 1px solid var(--navds-color-gray-20);
   border-bottom: 1px solid var(--navds-color-gray-20);
+  border-top: none;
+  overflow-x: auto;
+
+  :only-child {
+    border-top: 1px solid var(--navds-color-gray-20);
+  }
 `;
 
 const ScInnerDiv = styled.div`
   gap: 1rem;
   padding: 2rem;
-  align-items: "center";
   display: inline-flex;
   flex-wrap: wrap;
-  align-items: center;
-  width: 100%;
-  justify-content: flex-start;
-  overflow-x: auto;
 `;
 
 const CodePreview = (): JSX.Element => {

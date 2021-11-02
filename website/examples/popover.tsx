@@ -15,6 +15,7 @@ export const PopoverExample = () => {
         open={open}
         onClose={() => setOpen(false)}
         anchorEl={buttonRef.current}
+        placement="auto"
       >
         <Popover.Content>
           Officia reprehenderit irure aliqua cupidatat quis
@@ -26,7 +27,6 @@ export const PopoverExample = () => {
 
 PopoverExample.html = "";
 PopoverExample.react = `
-return (
   <>
     <Button ref={buttonRef} onClick={() => setOpen(true)}>
       Åpne popover
@@ -35,24 +35,28 @@ return (
       open={open}
       onClose={() => setOpen(false)}
       anchorEl={buttonRef.current}
+      placement="auto"
     >
       <Popover.Content>
         Officia reprehenderit irure aliqua cupidatat quis
       </Popover.Content>
     </Popover>
-  </>
-);`;
+  </>`;
 
 export const PopoverArrow = () => {
   const buttonRef = useRef(null);
+  const [open, setOpen] = useState(false);
   return (
     <>
-      <Button ref={buttonRef}>Anker</Button>
+      <Button ref={buttonRef} onClick={() => setOpen(true)}>
+        Åpne popover
+      </Button>
       <Popover
-        open={true}
-        onClose={() => null}
+        open={open}
+        onClose={() => setOpen(false)}
         anchorEl={buttonRef.current}
         arrow={false}
+        placement="auto"
       >
         <Popover.Content>
           Officia reprehenderit irure aliqua cupidatat quis
@@ -64,33 +68,37 @@ export const PopoverArrow = () => {
 
 PopoverArrow.html = "";
 PopoverArrow.react = `
-return (
   <>
-    <Button ref={buttonRef}>Anker</Button>
+    <Button ref={buttonRef} onClick={() => setOpen(true)}>Åpne popover</Button>
     <Popover
-      open={true}
-      onClose={() => null}
+      open={open}
+      onClose={() => setOpen(false)}
       anchorEl={buttonRef.current}
       arrow={false}
+      placement="auto"
     >
       <Popover.Content>
         Officia reprehenderit irure aliqua cupidatat quis
       </Popover.Content>
     </Popover>
   </>
-);`;
+`;
 
 export const PopoverOffset = () => {
   const buttonRef = useRef(null);
+  const [open, setOpen] = useState(false);
   return (
     <>
-      <Button ref={buttonRef}>Anker</Button>
+      <Button ref={buttonRef} onClick={() => setOpen(true)}>
+        Åpne popover
+      </Button>
       <Popover
-        open={true}
-        onClose={() => null}
+        open={open}
+        onClose={() => setOpen(false)}
         anchorEl={buttonRef.current}
         arrow={false}
         offset={32}
+        placement="auto"
       >
         <Popover.Content>
           Officia reprehenderit irure aliqua cupidatat quis
@@ -102,12 +110,11 @@ export const PopoverOffset = () => {
 
 PopoverOffset.html = ``;
 PopoverOffset.react = `
-return (
   <>
-    <Button ref={buttonRef}>Anker</Button>
+    <Button ref={buttonRef}>Åpne popover</Button>
     <Popover
-      open={true}
-      onClose={() => null}
+      open={open}
+      onClose={() => setOpen(false)}
       anchorEl={buttonRef.current}
       arrow={false}
       offset={32}
@@ -116,8 +123,7 @@ return (
         Officia reprehenderit irure aliqua cupidatat quis
       </Popover.Content>
     </Popover>
-  </>
-);`;
+  </>`;
 
 const Wrapper = styled.div`
   margin: 3rem 1rem;
@@ -130,11 +136,15 @@ export const PopoverPlacement = () => {
   const selectRef = useRef(null);
   const [selectedPlacement, setselectedPlacement] = useState<Placement>("auto");
 
+  const [open, setOpen] = useState(false);
   return (
     <Wrapper>
       <Select
         value={selectedPlacement}
-        onChange={(e) => setselectedPlacement(e.target.value as Placement)}
+        onChange={(e) => {
+          setselectedPlacement(e.target.value as Placement);
+          setOpen(true);
+        }}
         ref={selectRef}
         label="Placement av popover"
       >
@@ -146,8 +156,8 @@ export const PopoverPlacement = () => {
       </Select>
       <Popover
         placement={selectedPlacement}
-        open={true}
-        onClose={() => null}
+        open={open}
+        onClose={() => setOpen(false)}
         anchorEl={selectRef.current}
       >
         <Popover.Content>

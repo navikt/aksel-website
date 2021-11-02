@@ -39,21 +39,6 @@ const ScDiv = styled.div`
   flex-direction: column;
 `;
 
-const ScExampleDiv = styled.div`
-  background-color: #f7f7f7;
-  display: flex;
-  justify-content: center;
-  padding: 0;
-  position: relative;
-  border: 1px solid var(--navds-color-gray-20);
-  border-top: none;
-  border-bottom: none;
-
-  :only-child {
-    border-top: 1px solid var(--navds-color-gray-20);
-  }
-`;
-
 const Code = ({ node }: { node: DsCodeExampleT }): JSX.Element => {
   const [tabs, setTabs] = useState<TabType[]>(
     node?.infercode
@@ -110,11 +95,7 @@ const Code = ({ node }: { node: DsCodeExampleT }): JSX.Element => {
     >
       <ScDiv>
         {showTabs && <CodeTabs />}
-        {showPreview && activeTab === -1 && (
-          <ScExampleDiv>
-            <CodePreview />
-          </ScExampleDiv>
-        )}
+        {showPreview && activeTab === -1 && <CodePreview />}
         {(node.tabs || tabs) &&
           tabs.map((tab, i) => (
             <CodeBlock key={tab.content.toString()} index={i} />
