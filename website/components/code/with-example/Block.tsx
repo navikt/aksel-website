@@ -11,25 +11,19 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
   const { tabs, showTabs, activeTab, showPreview } = useContext(CodeContext);
   const [highlightedCode, setHighlightedCode] = useState(null);
 
-  if (activeTab === -1) {
-    return null;
-  }
-
   let language = tabs[index].language ?? "jsx";
   language =
     language === "terminal" || language === "default" ? "bash" : language;
-
-  const highlighted = Prism.highlight(
-    tabs[index].content,
-    Prism.languages[language],
-    language
-  );
 
   useEffect(() => {
     setHighlightedCode(
       Prism.highlight(tabs[index].content, Prism.languages[language], language)
     );
-  }, [tabs[index].content, tabs[index].language]);
+  }, [index]);
+
+  if (activeTab === -1) {
+    return null;
+  }
 
   return (
     <>
