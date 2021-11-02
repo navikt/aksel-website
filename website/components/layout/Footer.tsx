@@ -14,7 +14,6 @@ const StyledFooter = styled.footer<{ context: LayoutContextProps }>`
   justify-content: space-between;
   flex-direction: column;
   color: white;
-  /* border-top: 1px solid var(--navds-color-gray-20); */
 `;
 
 /* const LogoWrapper = styled.div`

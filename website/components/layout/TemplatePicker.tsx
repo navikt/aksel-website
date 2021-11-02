@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Error from "next/error";
-import ComponentPageTemplate from "./pages/ComponentPageTemplate";
-import ActiclePageTemplate from "./pages/ArticlePageTemplate";
-import TabbedActiclePageTemplate from "./pages/TabbedArticlePageTemplate";
+import ComponentPageTemplate from "./page-templates/ComponentPageTemplate";
+import ActiclePageTemplate from "./page-templates/ArticlePageTemplate";
+import TabbedActiclePageTemplate from "./page-templates/TabbedArticlePageTemplate";
 import {
   DsArticlePage,
   DsChangelog,

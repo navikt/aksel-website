@@ -2,10 +2,13 @@ import "@navikt/ds-css";
 import "@navikt/ds-css-internal";
 import "../styles/prismjs.css";
 import "../styles/theme.css";
-import { AmplitudeProvider, useScrollToHashOnPageLoad } from "../components";
 import React, { createContext, useEffect, useState } from "react";
-import Layout from "../components/templates/layout/Layout";
-import { slugger } from "../components";
+import {
+  slugger,
+  Layout,
+  AmplitudeProvider,
+  useScrollToHashOnPageLoad,
+} from "../components";
 import { useRouter } from "next/router";
 import Error from "next/error";
 import styled from "styled-components";

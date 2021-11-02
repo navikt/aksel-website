@@ -3,9 +3,9 @@ import { Heading } from "@navikt/ds-react";
 import { Dropdown, Header } from "@navikt/ds-react-internal";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import { ScFadeIn } from "../../..";
-import { DsNavigationHeadingT } from "../../../../lib";
-import { PagePropsContext } from "../../../../pages/_app";
+import { ScFadeIn } from "../..";
+import { DsNavigationHeadingT } from "../../../lib";
+import { PagePropsContext } from "../../../pages/_app";
 import { LayoutContext } from "../Layout";
 import Menu from "../menu/DesignsystemMenu";
 

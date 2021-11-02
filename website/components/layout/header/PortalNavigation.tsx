@@ -8,7 +8,7 @@ import * as React from "react";
 import { useState } from "react";
 import { useMedia } from "react-use";
 import styled, { css } from "styled-components";
-import { fadeInCss, NavLogoWhite } from "../../..";
+import { fadeInCss, NavLogoWhite } from "../..";
 
 export const ScWrapper = styled.div`
   height: 100%;

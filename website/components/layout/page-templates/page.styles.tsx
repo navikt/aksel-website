@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { LayoutContext } from "../layout/Layout";
+import { LayoutContext } from "../Layout";
 
 export const SanityBlockContainer = styled.div`
   position: relative;

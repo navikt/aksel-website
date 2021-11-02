@@ -3,15 +3,15 @@ import Head from "next/head";
 import styled from "styled-components";
 import Header from "./header/Header";
 import Footer from "./Footer";
-import { PagePropsContext } from "../../../pages/_app";
+import { PagePropsContext } from "../../pages/_app";
 import DesignsystemSidebar from "./sidebar/DesignsystemSidebar";
 import { useMedia } from "react-use";
-import { Feedback, RelatedPagesLink } from "../..";
+import { Feedback, RelatedPagesLink } from "..";
 import { useClientLayoutEffect } from "@navikt/ds-react";
 import DesignsystemHeader from "./header/DesignsystemHeader";
 import GodPraksisHeader from "./header/GodPraksisHeader";
 import Sidebar from "./sidebar/Sidebar";
-import { DsNavigationHeadingT } from "../../../lib";
+import { DsNavigationHeadingT } from "../../lib";
 
 const ScWrapper = styled.div`
   display: flex;

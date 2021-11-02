@@ -5,9 +5,7 @@ import {
   gpDocuments,
   gpDocumentBySlug,
 } from "../../lib";
-import { isDevelopment } from "../../components";
-import PreviewBanner from "../../components/PreviewBanner";
-import TemplatePicker from "../../components/templates/TemplatePicker";
+import { isDevelopment, PreviewBanner, LayoutPicker } from "../../components";
 import { useContext, useEffect } from "react";
 import { PagePropsContext } from "../_app";
 import { GpArticlePage } from "../../lib/autogen-types";
@@ -37,7 +35,7 @@ const PagePicker = (props: {
   return (
     <>
       {enablePreview && <PreviewBanner />}
-      <TemplatePicker data={data} /* sidebar={sidebar} */ />
+      <LayoutPicker data={data} />
     </>
   );
 };

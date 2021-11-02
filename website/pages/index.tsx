@@ -1,13 +1,13 @@
 /* Frontpage */
 
 import { Heading, Link } from "@navikt/ds-react";
-import { useContext, useEffect } from "react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
-import PreviewBanner from "../components/PreviewBanner";
-import { usePreviewSubscription, allDocuments, getClient } from "../lib";
-import { PagePropsContext } from "./_app";
+import { useContext, useEffect } from "react";
 import styled from "styled-components";
+import { PreviewBanner } from "../components";
+import { allDocuments, getClient, usePreviewSubscription } from "../lib";
+import { PagePropsContext } from "./_app";
 
 const StyledDiv = styled.div`
   padding: 1rem;

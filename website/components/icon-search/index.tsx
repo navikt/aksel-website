@@ -4,11 +4,11 @@ import { BodyLong, Detail, Heading, Modal } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import { LayoutContext } from "../templates/layout/Layout";
 import DownloadButtons from "./DownloadButtons";
 import Filter, { FilterT } from "./Filter";
 import { categorizeIcons, CategoryT, IconMetaT } from "./iconCategories";
 import ModalContent from "./ModalContent";
+import { LayoutContext } from "..";
 
 const ScIconSearch = styled.div<{ $isTablet: boolean }>`
   display: flex;

@@ -2,11 +2,8 @@ import { BodyShort, useClientLayoutEffect } from "@navikt/ds-react";
 import NextLink from "next/link";
 import React, { createContext, useContext, useState } from "react";
 import styled from "styled-components";
-import {
-  DsNavigationHeadingMenuT,
-  DsNavigationHeadingT,
-} from "../../../../lib";
-import { PagePropsContext } from "../../../../pages/_app";
+import { DsNavigationHeadingMenuT, DsNavigationHeadingT } from "../../../lib";
+import { PagePropsContext } from "../../../pages/_app";
 
 const ScNav = styled.nav`
   overflow-y: auto;

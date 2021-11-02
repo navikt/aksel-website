@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ExampleKeys, Examples } from "../../examples";
 
-const CodePreview = (key) => {
+const CodePreview = (key: string) => {
   if (!key || !(key in Examples)) {
     return null;
   }

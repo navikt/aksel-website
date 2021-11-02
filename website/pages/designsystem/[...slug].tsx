@@ -1,8 +1,7 @@
 import { useClientLayoutEffect } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import { useContext } from "react";
-import PreviewBanner from "../../components/PreviewBanner";
-import TemplatePicker from "../../components/templates/TemplatePicker";
+import { LayoutPicker, PreviewBanner } from "../../components";
 import {
   changelogQuery,
   dsDocumentBySlug,
@@ -60,7 +59,7 @@ const PagePicker = (props: {
   return (
     <>
       {enablePreview && <PreviewBanner />}
-      <TemplatePicker data={data} changelogs={changelogs} />
+      <LayoutPicker data={data} changelogs={changelogs} />
     </>
   );
 };
