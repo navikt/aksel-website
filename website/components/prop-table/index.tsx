@@ -8,7 +8,7 @@ import {
 import * as S from "./prop-table.styles";
 import NextLink from "next/link";
 import styled from "styled-components";
-import { StyledCode } from "../SanityBlockContent";
+import { ScCode } from "../SanityBlockContent";
 
 export const TypeCode = styled.code`
   color: var(--navds-color-lightblue-80);
@@ -66,12 +66,12 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
         )}
         {node.refplacement && (
           <li>
-            <StyledCode>ref</StyledCode> er plassert på {node.refplacement}
+            <ScCode>ref</ScCode> er plassert på {node.refplacement}
           </li>
         )}
         {node.extends && (
           <li>
-            Props extends <StyledCode>{node.extends}</StyledCode>
+            Props extends <ScCode>{node.extends}</ScCode>
           </li>
         )}
       </BodyLong>

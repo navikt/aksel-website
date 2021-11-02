@@ -14,7 +14,7 @@ const ScIconSearch = styled.div<{ $isTablet: boolean }>`
   display: flex;
   flex-direction: column;
   ${(props) =>
-    props.$isTablet ? `width: 100%;` : `width: 864px; max-width: 60vw;`};
+    props.$isTablet ? `width: 100%;` : `width: 864px; max-width: 62vw;`};
   position: relative;
 `;
 

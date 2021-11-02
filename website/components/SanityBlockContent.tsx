@@ -19,7 +19,7 @@ import {
   UuInteraction,
 } from ".";
 
-export const StyledCode = styled.code`
+export const ScCode = styled.code`
   color: var(--navds-color-gray-80);
   background-color: var(--navds-color-gray-10);
   border-radius: 2px;
@@ -27,7 +27,7 @@ export const StyledCode = styled.code`
   padding: 0 4px;
 `;
 
-const StyledKbd = styled.code`
+const ScKbd = styled.code`
   display: inline-block;
   margin: 0 var(--navds-spacing-1);
   color: var(--navds-color-darkgray);
@@ -98,23 +98,16 @@ const serializers = {
     },
   },
   marks: {
-    kbd: (props: any) => {
-      return <StyledKbd>{props.children}</StyledKbd>;
-    },
-    code: (props: any) => {
-      return <StyledCode>{props.children}</StyledCode>;
-    },
-    link: ({ mark, children }: { mark: any; children: any }) => {
-      const { blank, href } = mark;
-
-      return blank ? (
+    kbd: (props: any) => <ScKbd>{props.children}</ScKbd>,
+    code: (props: any) => <ScCode>{props.children}</ScCode>,
+    link: ({ mark: { blank, href }, children }: { mark: any; children: any }) =>
+      blank ? (
         <Link href={href} target="_blank" rel="noreferrer noopener">
           {children}
         </Link>
       ) : (
         <Link href={href}>{children}</Link>
-      );
-    },
+      ),
     internalLink: ({ mark, children }: { mark: any; children: any }) => {
       const { slug = {} } = mark;
       if (!slug || !slug.current) return children;
@@ -129,7 +122,7 @@ const serializers = {
   },
 };
 
-const MarginTopDiv = styled.div`
+const ScMarginTop = styled.div`
   margin-top: 3rem;
 `;
 
@@ -158,13 +151,13 @@ export const SanityBlockContent = ({
     <>
       <BlockContext.Provider value={{ size, isIngress }}>
         {withMargin ? (
-          <MarginTopDiv>
+          <ScMarginTop>
             <BlockContent
               blocks={blocks}
               serializers={serializers}
               size="small"
             />
-          </MarginTopDiv>
+          </ScMarginTop>
         ) : (
           <BlockContent
             blocks={blocks}
