@@ -116,22 +116,22 @@ export const ButtonWithIcon = () => (
   <>
     <Button variant="primary">
       Button
-      <Close aria-label="presentation" />
+      <Close aria-label="Lukk skjema" />
     </Button>
     <Button variant="primary" size="small">
       Button
-      <Close aria-label="presentation" />
+      <Close aria-label="Lukk skjema" />
     </Button>
   </>
 );
 
 ButtonWithIcon.react = `<Button variant="primary">
 Button
-<Close aria-label="presentation" />
+<Close aria-label="Lukk skjema" />
 </Button>
 <Button variant="primary" size="small">
 Button
-<Close aria-label="presentation" />
+<Close aria-label="Lukk skjema" />
 </Button>`;
 
 export const ButtonWithLoader = () => (
