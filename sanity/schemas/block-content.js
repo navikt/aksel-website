@@ -117,6 +117,7 @@ export const block = {
             title: "Open in new tab",
             name: "blank",
             type: "boolean",
+            initialValue: true,
           },
         ],
       },

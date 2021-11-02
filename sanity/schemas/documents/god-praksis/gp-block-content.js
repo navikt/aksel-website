@@ -89,6 +89,7 @@ export default {
                 title: "Open in new tab",
                 name: "blank",
                 type: "boolean",
+                initialValue: true,
               },
             ],
           },

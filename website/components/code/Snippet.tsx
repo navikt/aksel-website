@@ -44,7 +44,6 @@ const CodeSnippet = ({
     );
   }, [code.code, code.language]);
 
-  if (!highlightedCode) return null;
   return (
     <>
       <S.PreWrapper active={true}>
@@ -53,7 +52,7 @@ const CodeSnippet = ({
           <ScCode
             className="language-"
             language={language}
-            dangerouslySetInnerHTML={{ __html: highlightedCode }}
+            dangerouslySetInnerHTML={{ __html: highlightedCode ?? code.code }}
           />
         </S.Pre>
       </S.PreWrapper>

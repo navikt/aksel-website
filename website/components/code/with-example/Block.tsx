@@ -2,13 +2,14 @@ import Prism from "prismjs";
 import "prismjs/components/prism-bash.min";
 import "prismjs/components/prism-jsx.min";
 import "prismjs/components/prism-typescript.min";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import * as S from "../code.styles";
 import CopyButton from "../CopyButton";
 import { CodeContext } from "./Example";
 
 const CodeBlock = ({ index }: { index: number }): JSX.Element => {
   const { tabs, showTabs, activeTab, showPreview } = useContext(CodeContext);
+  const [highlightedCode, setHighlightedCode] = useState(null);
 
   if (activeTab === -1) {
     return null;
@@ -24,6 +25,12 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
     language
   );
 
+  useEffect(() => {
+    setHighlightedCode(
+      Prism.highlight(tabs[index].content, Prism.languages[language], language)
+    );
+  }, [tabs[index].content, tabs[index].language]);
+
   return (
     <>
       <S.PreWrapper active={activeTab === index}>
@@ -33,7 +40,9 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
         <S.Pre className="language-" data-tabs={showTabs}>
           <S.Code
             className="language-"
-            dangerouslySetInnerHTML={{ __html: highlighted }}
+            dangerouslySetInnerHTML={{
+              __html: highlightedCode ?? tabs[index].content,
+            }}
           />
         </S.Pre>
       </S.PreWrapper>
