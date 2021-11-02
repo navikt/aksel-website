@@ -65,7 +65,7 @@ const Menu = ({
   }, [heading]);
 
   return (
-    <ScNav>
+    <ScNav aria-label="Sidemeny">
       <BodyShort as="ul">
         {sidebarMenu.map((item) => (
           <li key={item.title}>

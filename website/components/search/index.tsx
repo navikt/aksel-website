@@ -220,7 +220,7 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
   }, [open]);
 
   return (
-    <ScSearch ref={searchRef} $open={open}>
+    <ScSearch role="search" ref={searchRef} $open={open}>
       {open && (
         <ScOpenSearchWrapper $isTablet={context.isTablet}>
           <ScSearchIcon>

@@ -136,7 +136,7 @@ const Page = () => {
         </Ingress>
       </ScIntro>
 
-      <ScNav aria-label="Hovedmeny">
+      <ScNav aria-label="Portal navigasjon">
         <ScOl>
           <li>
             <NextLink passHref href="/designsystem">
