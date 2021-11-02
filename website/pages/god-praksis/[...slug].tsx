@@ -41,7 +41,7 @@ const PagePicker = (props: {
 };
 
 export const getStaticPaths = async (): Promise<{
-  fallback: boolean;
+  fallback: string;
   paths: { params: { slug: string[] } }[];
 }> => {
   const documents: any[] | null = await getClient(false).fetch(gpDocuments);
@@ -62,7 +62,7 @@ export const getStaticPaths = async (): Promise<{
 
   return {
     paths,
-    fallback: true,
+    fallback: "blocking",
   };
 };
 
@@ -97,9 +97,8 @@ export const getStaticProps = async ({
       page,
       preview: enablePreview,
       slug: joinedSlug,
-      /* sidebar: sidebar, */
     },
-    revalidate: 60,
+    revalidate: 30,
   };
 };
 

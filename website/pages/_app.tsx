@@ -1,50 +1,38 @@
-import "@navikt/ds-css";
-import "@navikt/ds-css-internal";
-import "../styles/prismjs.css";
-import "../styles/theme.css";
+import Error from "next/error";
 import React, { createContext, useEffect, useState } from "react";
 import {
-  slugger,
-  Layout,
   AmplitudeProvider,
+  Layout,
+  slugger,
   useScrollToHashOnPageLoad,
 } from "../components";
-import { useRouter } from "next/router";
-import Error from "next/error";
-import styled from "styled-components";
-import { Label, Loader } from "@navikt/ds-react";
+import "../styles/index.css";
 
 export const PagePropsContext = createContext<any[]>([]);
-
-const StyledLoader = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
-`;
 
 function App({
   Component,
   pageProps,
-  router: appRoute,
+  router,
 }: {
   Component: any;
   pageProps: any;
   router: any;
 }): JSX.Element {
-  useScrollToHashOnPageLoad();
-  const router = useRouter();
   const [pageData, setPageData] = useState(null);
+
+  useScrollToHashOnPageLoad();
 
   useEffect(() => {
     setPageData(pageProps);
   }, []);
 
+  useEffect(() => {
+    slugger.reset();
+  });
+
   /* Is example */
-  if (Component && appRoute?.asPath.startsWith("/examples")) {
+  if (Component && router?.asPath.startsWith("/examples")) {
     return (
       <AmplitudeProvider>
         <Component {...pageProps} />
@@ -52,23 +40,13 @@ function App({
     );
   }
 
-  if (Component && appRoute?.asPath.startsWith("/admin")) {
+  if (Component && router?.asPath.startsWith("/admin")) {
     return <Component {...pageProps} />;
   }
 
-  slugger.reset();
-
-  if (!router.isFallback && !pageProps?.slug) {
+  if (!pageProps?.slug) {
+    setPageData({});
     return <Error statusCode={404} />;
-  }
-
-  if (router.isFallback) {
-    return (
-      <StyledLoader>
-        <Loader size="2xlarge" aria-label="Laster inn preview-side" />
-        <Label>Laster inn preview innhold...</Label>
-      </StyledLoader>
-    );
   }
 
   return (

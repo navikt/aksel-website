@@ -65,7 +65,7 @@ const PagePicker = (props: {
 };
 
 export const getStaticPaths = async (): Promise<{
-  fallback: boolean;
+  fallback: string;
   paths: { params: { slug: string[] } }[];
 }> => {
   const documents: any[] | null = await getClient(false).fetch(dsDocuments);
@@ -117,7 +117,7 @@ export const getStaticPaths = async (): Promise<{
 
   return {
     paths,
-    fallback: true,
+    fallback: "blocking",
   };
 };
 
@@ -166,7 +166,7 @@ export const getStaticProps = async ({
       navigation,
       changelogs,
     },
-    revalidate: 60,
+    revalidate: 30,
   };
 };
 
