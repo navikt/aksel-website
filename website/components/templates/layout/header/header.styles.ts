@@ -9,8 +9,6 @@ export const Header = styled(DsHeader)`
 
 export const Links = styled.div`
   display: flex;
-  /* margin-left: auto; */
-  margin-left: 1rem;
   margin-right: auto;
 
   a.navdsi-header__title[data-active="true"]:hover {

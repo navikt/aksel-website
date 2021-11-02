@@ -6,6 +6,7 @@ import NextLink from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
 import { useState } from "react";
+import { useMedia } from "react-use";
 import styled, { css } from "styled-components";
 import { fadeInCss, NavLogoWhite } from "../../..";
 
@@ -92,7 +93,7 @@ const ScToggle = styled(Header.Button)`
 `;
 
 const HeadingDropDown = ({ title }: { title: string }) => {
-  /* const showLogo = useMedia("(min-width: 563px)"); */
+  const showLogo = useMedia("(min-width: 563px)");
 
   const router = useRouter();
   console.log(router);
@@ -110,7 +111,7 @@ const HeadingDropDown = ({ title }: { title: string }) => {
     >
       <Dropdown>
         <ScToggle onClick={() => setOpen(!open)} forwardedAs={Dropdown.Toggle}>
-          <NavLogoWhite focusable={false} />
+          {showLogo && <NavLogoWhite focusable={false} />}
           <span>
             {title}
             <Expand focusable={false} aria-label="Åpne Portal-navigasjon" />

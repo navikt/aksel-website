@@ -57,7 +57,6 @@ const ScSearch = styled.div<{ $open?: boolean }>`
   margin-left: auto;
   align-items: center;
   ${({ $open }) => $open && `width: 100%;`}
-  padding-left: 1rem;
 `;
 
 const ScButtonCss = css`
