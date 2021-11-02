@@ -30,9 +30,9 @@ const ScContentWrapper = styled.div<{ isTablet: boolean }>`
   position: relative;
 `;
 
-const ScMain = styled.main<{ $tablet: boolean }>`
+const ScMain = styled.main<{ $tablet: boolean; $hasSidebar: boolean }>`
   min-height: calc(100vh - var(--header-height));
-  width: calc(100vw - 250px);
+  width: ${(props) => (props.$hasSidebar ? `calc(100vw - 250px)` : "100%")};
   display: flex;
   flex-direction: column;
   position: relative;
@@ -152,7 +152,12 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
           <ScWrapper>
             <Sidebar />
             <ScContentWrapper isTablet={isTablet}>
-              <ScMain $tablet={isTablet} tabIndex={-1} id="hovedinnhold">
+              <ScMain
+                $tablet={isTablet}
+                $hasSidebar={!!LayoutParts[pageType]?.sidebar}
+                tabIndex={-1}
+                id="hovedinnhold"
+              >
                 {children}
                 <ScGrow />
                 <Feedback docId={pageProps?.page?._id} />

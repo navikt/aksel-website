@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useContext } from "react";
 import styled from "styled-components";
-import { LayoutContext, LayoutContextProps } from "./Layout";
+import { LayoutContext, LayoutContextProps, LayoutParts } from "./Layout";
 /* import { NavLogoWhite } from "../.."; */
 
 const StyledFooter = styled.footer<{ context: LayoutContextProps }>`
@@ -25,6 +25,11 @@ const StyledFooter = styled.footer<{ context: LayoutContextProps }>`
 
 function Footer(): JSX.Element {
   const context = useContext(LayoutContext);
+
+  const title = LayoutParts[context.version]?.title;
+  if (!title) {
+    return null;
+  }
 
   return (
     <StyledFooter context={context} className="navds-body-short">

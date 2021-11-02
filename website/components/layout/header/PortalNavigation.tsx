@@ -134,7 +134,7 @@ const HeadingDropDown = ({ title }: { title: string }) => {
               </ScLink>
             </NextLink>
 
-            <NextLink href="/god-praksis" passHref>
+            {/* <NextLink href="/god-praksis" passHref>
               <ScLink
                 data-active={router.asPath.startsWith(`/god-praksis`)}
                 forwardedAs="a"
@@ -144,7 +144,7 @@ const HeadingDropDown = ({ title }: { title: string }) => {
                   Informasjon omhandlende God Praksis
                 </BodyShort>
               </ScLink>
-            </NextLink>
+            </NextLink> */}
           </Dropdown.Menu.List>
         </ScMenu>
       </Dropdown>
