@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Error from "next/error";
 import ComponentPageTemplate from "./page-templates/ComponentPageTemplate";
-import ActiclePageTemplate from "./page-templates/ArticlePageTemplate";
-import TabbedActiclePageTemplate from "./page-templates/TabbedArticlePageTemplate";
+import ArticleTemplate from "./page-templates/ArticlePageTemplate";
+import TabbedArticleTemplate from "./page-templates/TabbedArticlePageTemplate";
 import {
   DsArticlePage,
   DsChangelog,
@@ -36,9 +36,9 @@ const templates: templateT = {
   ds_component_page: (props: { data: any; changelogs: DsChangelog[] }) => (
     <ComponentPageTemplate {...props} />
   ),
-  ds_article_page: (props) => <ActiclePageTemplate {...props} />,
-  ds_tabbed_article_page: (props) => <TabbedActiclePageTemplate {...props} />,
-  gp_article_page: (props) => <ActiclePageTemplate {...props} />,
+  ds_article_page: (props) => <ArticleTemplate {...props} />,
+  ds_tabbed_article_page: (props) => <TabbedArticleTemplate {...props} />,
+  gp_article_page: (props) => <ArticleTemplate {...props} />,
 };
 
 const TemplatePicker = ({

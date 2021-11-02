@@ -16,7 +16,6 @@ import { DsNavigationHeadingT } from "../../lib";
 const ScWrapper = styled.div`
   display: flex;
   min-height: calc(100vh - var(--header-height));
-  justify-content: center;
   background-color: #ffffff;
 
   p {

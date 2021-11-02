@@ -118,7 +118,7 @@ const HeadingDropDown = ({ title }: { title: string }) => {
           <Dropdown.Menu.List>
             <NextLink href="/" passHref>
               <ScIconLink forwardedAs="a">
-                <Left />
+                <Left aria-label="Gå til forsiden" />
                 <BodyShort>Tilbake til Verktøykassa</BodyShort>
               </ScIconLink>
             </NextLink>
