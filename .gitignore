@@ -71,3 +71,6 @@ lerna-debug.log
 dist
 website/public/studio/
 .vercel
+
+.next
+out

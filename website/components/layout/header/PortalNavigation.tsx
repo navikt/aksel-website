@@ -94,10 +94,7 @@ const ScToggle = styled(Header.Button)`
 
 const HeadingDropDown = ({ title }: { title: string }) => {
   const showLogo = useMedia("(min-width: 563px)");
-
   const router = useRouter();
-  console.log(router);
-
   const [open, setOpen] = useState(false);
 
   return (
