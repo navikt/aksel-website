@@ -6,6 +6,9 @@ import {
 } from "../autogen-types";
 import { flattenBlocks } from "sanity-algolia";
 
+/* Tmp siden ingress string -> block in sanity */
+const verifyIngress = (ingress) => ingress && typeof ingress !== "string";
+
 const dsIndexingQuery = `*[_type == 'ds_navigation'][0] {
   headings[]{
     title,
@@ -42,7 +45,8 @@ const getDesignsystemRecords = async () => {
             high_priority: !!page?.metadata_search?.high_priority,
             path: page.slug.current,
             content: `${
-              (page?.ingress && flattenBlocks(page.ingress)) ?? ""
+              (verifyIngress(page?.ingress) && flattenBlocks(page.ingress)) ??
+              ""
             } ${flattenBlocks(page.body)}`,
           });
           break;
@@ -81,7 +85,8 @@ const tabbedRecords = (page: DsTabbedArticlePage, category: string) => {
       content:
         x === 0
           ? `${
-              (page?.ingress && flattenBlocks(page.ingress)) ?? ""
+              (verifyIngress(page?.ingress) && flattenBlocks(page.ingress)) ??
+              ""
             } ${flattenBlocks(tab.body)}`
           : flattenBlocks(tab.body),
     });
@@ -107,7 +112,7 @@ const componentRecords = (page: DsComponentPage, category: string) => {
       high_priority: false,
       path,
       content: `${
-        (page?.ingress && flattenBlocks(page.ingress)) ?? ""
+        (verifyIngress(page?.ingress) && flattenBlocks(page.ingress)) ?? ""
       } ${flattenBlocks(page.usage)}`,
     });
   page.design &&
