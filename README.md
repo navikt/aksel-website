@@ -28,9 +28,9 @@ yarn sanity
 Blir brukt fire keys i .env under `./website`, men ingen av dem trengs for å teste lokalt
 
 - SANITY_WRITE_KEY: Secret for å sende feedback dokumenter til sanity (Feedback-komponent fungerer ikke lokalt uten denne)
-  ALGOLIA_ADMIN: Secret for å oppdatere records i søkemotoren. Gjøres automatisk i prod ved hjelp av Sanity-webhook hver gang et dokument endres.
-  ALGOLIA_ID: Søkemotor Index-id for å redigere riktig Index. ---||---
-  HOOK_SECRET: Secret som sanity-webhook bruker for å verifisere at index-oppdatering blir sendt fra riktig sender. Trengs bare for å oppdatere index-records lokalt.
+- ALGOLIA_ADMIN: Secret for å oppdatere records i søkemotoren. Gjøres automatisk i prod ved hjelp av Sanity-webhook hver gang et dokument endres.
+- ALGOLIA_ID: Søkemotor Index-id for å redigere riktig Index. ---||---
+- HOOK_SECRET: Secret som sanity-webhook bruker for å verifisere at index-oppdatering blir sendt fra riktig sender. Trengs bare for å oppdatere index-records lokalt.
 
 ## Henvendelser
 
