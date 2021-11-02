@@ -2,30 +2,28 @@ import styled from "styled-components";
 import NextLink from "next/link";
 import { BodyShort, Heading } from "@navikt/ds-react";
 import React, { useContext, useEffect, useState } from "react";
-import { LayoutContext, LayoutContextProps } from "../templates/layout/Layout";
+import { LayoutContext } from "..";
 import { DsNavigationHeadingMenuT } from "../../lib";
 import { PagePropsContext } from "../../pages/_app";
 
-const ScWrapper = styled.div<{ context: LayoutContextProps }>`
+const ScWrapper = styled.div<{ $isTablet: boolean }>`
   width: 100%;
   background-color: var(--navds-color-gray-80);
   padding: 0 0;
 
   display: flex;
-  justify-content: ${(props) =>
-    props.context.isTablet ? "center" : "flex-start"};
+  justify-content: ${(props) => (props.$isTablet ? "center" : "flex-start")};
 
   @media (max-width: 564px) {
     padding: 0;
   }
 `;
 
-const ScInnerWrapper = styled.div<{ context: LayoutContextProps }>`
+const ScInnerWrapper = styled.div<{ $isTablet: boolean }>`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: ${(props) =>
-    props.context.isTablet ? "center" : "flex-start"};
+  justify-content: ${(props) => (props.$isTablet ? "center" : "flex-start")};
   max-width: 648px;
 
   > * {
@@ -36,8 +34,7 @@ const ScInnerWrapper = styled.div<{ context: LayoutContextProps }>`
     flex: 1 1;
     max-width: 400px;
     transition: background-color 200ms;
-    padding: ${(props) =>
-      props.context.isTablet ? "1rem 1.5rem" : "1rem 3rem"};
+    padding: ${(props) => (props.$isTablet ? "1rem 1.5rem" : "1rem 3rem")};
 
     @media (max-width: 564px) {
       padding: 1rem;
@@ -89,8 +86,8 @@ const RelatedPagesLink = () => {
   }
 
   return (
-    <ScWrapper context={context}>
-      <ScInnerWrapper context={context}>
+    <ScWrapper $isTablet={context.isTablet}>
+      <ScInnerWrapper $isTablet={context.isTablet}>
         {links.prev && (
           <NextLink href={`/${links.prev.link.slug.current}`} passHref>
             <a>

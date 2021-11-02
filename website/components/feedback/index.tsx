@@ -1,7 +1,7 @@
 import * as S from "./feedback.styles";
 import { Button, Heading } from "@navikt/ds-react";
 import React, { useCallback, useContext, useEffect, useState } from "react";
-import { LayoutContext } from "../templates/layout/Layout";
+import { LayoutContext } from "..";
 import { useRouter } from "next/router";
 
 const Feedback = ({ docId }: { docId?: string }): JSX.Element => {

@@ -2,11 +2,10 @@ import { Heading } from "@navikt/ds-react";
 import React from "react";
 import { UuInteraction as UuInteractionT } from "../../lib/autogen-types";
 import { SanityBlockContent } from "../SanityBlockContent";
-import { PreviewBox } from "../templates/pages/page.styles";
 import * as S from "./uu.styles";
 
 const UuInteraction = ({ node }: { node: UuInteractionT }): JSX.Element => {
-  return <PreviewBox>🚧 Komponent interaksjoner 🚧</PreviewBox>;
+  return null;
   return (
     <S.Div>
       {node.focus && (

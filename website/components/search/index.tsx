@@ -12,8 +12,7 @@ import React, {
 } from "react";
 import { useClickAway, useEvent, useKey } from "react-use";
 import styled, { css } from "styled-components";
-import { expandKeyframes, fadeInCss } from "..";
-import { LayoutContext } from "../templates/layout/Layout";
+import { expandKeyframes, fadeInCss, LayoutContext } from "..";
 import Hits from "./Hits";
 
 const searchClient = algoliasearch(

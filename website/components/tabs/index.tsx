@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
-import { LayoutContext } from "../templates/layout/Layout";
+import { LayoutContext } from "..";
 import * as S from "./tabs.styles";
 
 export const Tabs = ({
