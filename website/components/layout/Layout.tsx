@@ -68,7 +68,6 @@ const ScGrow = styled.div`
 const ScSkipLink = styled.a`
   background: var(--navds-color-deepblue-80);
   color: white;
-
   left: 0;
   padding: 1rem;
   position: absolute;
