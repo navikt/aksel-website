@@ -41,9 +41,9 @@ const getDesignsystemRecords = async () => {
             tags: page?.metadata_search?.tags ?? [],
             high_priority: !!page?.metadata_search?.high_priority,
             path: page.slug.current,
-            content: `${flattenBlocks(page.ingress) ?? ""} ${flattenBlocks(
-              page.body
-            )}`,
+            content: `${
+              (page?.ingress && flattenBlocks(page.ingress)) ?? ""
+            } ${flattenBlocks(page.body)}`,
           });
           break;
         case "ds_tabbed_article_page":
@@ -80,7 +80,9 @@ const tabbedRecords = (page: DsTabbedArticlePage, category: string) => {
       high_priority: !!tab?.metadata_search?.high_priority,
       content:
         x === 0
-          ? `${flattenBlocks(page.ingress) ?? ""} ${flattenBlocks(tab.body)}`
+          ? `${
+              (page?.ingress && flattenBlocks(page.ingress)) ?? ""
+            } ${flattenBlocks(tab.body)}`
           : flattenBlocks(tab.body),
     });
   });
@@ -104,9 +106,9 @@ const componentRecords = (page: DsComponentPage, category: string) => {
       page: "bruk",
       high_priority: false,
       path,
-      content: `${flattenBlocks(page.ingress) ?? ""} ${flattenBlocks(
-        page.usage
-      )}`,
+      content: `${
+        (page?.ingress && flattenBlocks(page.ingress)) ?? ""
+      } ${flattenBlocks(page.usage)}`,
     });
   page.design &&
     records.push({
