@@ -28,7 +28,6 @@ const ScContentWrapper = styled.div<{ isTablet: boolean }>`
   flex-direction: column;
   width: 100%;
   position: relative;
-  overflow-x: hidden;
 `;
 
 const ScMain = styled.main<{ $tablet: boolean }>`
