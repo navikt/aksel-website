@@ -4,7 +4,6 @@ import { LayoutPicker, PreviewBanner } from "../../components";
 import {
   changelogQuery,
   dsDocumentBySlug,
-  dsDocuments,
   dsIsDraft,
   dsNavigationQuery,
   getClient,
