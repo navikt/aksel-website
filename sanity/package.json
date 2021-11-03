@@ -33,7 +33,10 @@
     "react-dom": "^17.0",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.13",
     "styled-components": "^5.3.1",
-    "sanity-codegen": "^0.9.5"
+    "sanity-codegen": "^0.9.5",
+    "@navikt/ds-css": "^0.10",
+    "@navikt/ds-icons": "^0.6",
+    "@navikt/ds-react": "^0.11"
   },
   "devDependencies": {
     "react-is": "^17.0.2",

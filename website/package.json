@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@navikt/ds-css": "^0.10",
-    "@navikt/ds-icons": "^0.5",
+    "@navikt/ds-icons": "^0.6",
     "@navikt/ds-react": "^0.11",
     "@navikt/ds-tokens": "^0.5",
     "@navikt/ds-css-internal": "^0.6",
@@ -56,7 +56,8 @@
     "@sanity/webhook": "^1.0.2",
     "canvg": "^3.0.9",
     "jszip": "^3.7.1",
-    "js-file-download": "^0.4.12"
+    "js-file-download": "^0.4.12",
+    "sitemap": "^7.0.0"
   },
   "devDependencies": {
     "@types/node": "^16.9.2",
