@@ -207,25 +207,31 @@ const Filter = ({
         <ScToggle
           className="navds-label navds-label--small"
           data-active={toggle === "outline"}
+          aria-pressed={toggle === "outline"}
           onClick={() => setToggle("outline")}
+          aria-label="Trykk for å filtrere for outline-ikoner"
         >
           Outline
         </ScToggle>
         <ScToggle
           className="navds-label navds-label--small"
           data-active={toggle === "filled"}
+          aria-pressed={toggle === "filled"}
           onClick={() => {
             toggle === "filled" ? setToggle("outline") : setToggle("filled");
           }}
+          aria-label="Trykk for å filtrere for filled-ikoner"
         >
           Filled
         </ScToggle>
         <ScToggle
           className="navds-label navds-label--small"
           data-active={toggle === "stroke"}
+          aria-pressed={toggle === "stroke"}
           onClick={() => {
             toggle === "stroke" ? setToggle("outline") : setToggle("stroke");
           }}
+          aria-label="Trykk for å filtrere for stroke-ikoner"
         >
           Stroke
         </ScToggle>

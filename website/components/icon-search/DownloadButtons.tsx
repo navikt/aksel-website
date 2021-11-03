@@ -82,7 +82,7 @@ const DownloadButtons = () => {
               <Loader
                 size="small"
                 variant="interaction"
-                aria-label="Genererer fil for nedlastning"
+                title="Genererer fil for nedlastning"
               />
               SVG
             </>
@@ -99,7 +99,7 @@ const DownloadButtons = () => {
               <Loader
                 size="small"
                 variant="interaction"
-                aria-label="Genererer fil for nedlastning"
+                title="Genererer fil for nedlastning"
               />
               PNG
             </>

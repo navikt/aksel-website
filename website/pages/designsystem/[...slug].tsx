@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
-import { useUpdateEffect } from "react-use";
 import { LayoutPicker, PreviewBanner } from "../../components";
 import {
   changelogQuery,
