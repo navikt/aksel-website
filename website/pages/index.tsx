@@ -1,6 +1,5 @@
-/* Frontpage */
-
 import { Facilitet } from "@navikt/ds-icons";
+import Head from "next/head";
 import { Heading, Ingress, BodyLong, Label } from "@navikt/ds-react";
 import NextLink from "next/link";
 import React, { useContext, useEffect } from "react";
@@ -123,38 +122,44 @@ const Page = () => {
   }, []);
 
   return (
-    <ScFrontpage>
-      <ScIntro>
-        <ScLogoWrapper>
-          <NAVLogoDark />
-        </ScLogoWrapper>
-        <Heading spacing level="1" size="2xlarge">
-          Verktøykassen BETA
-        </Heading>
-        <Ingress>
-          BETA-løsning for nye Designsystem-sider og God praksis
-        </Ingress>
-      </ScIntro>
+    <>
+      <Head>
+        <title>Verktøykassen</title>
+        <meta property="og:title" content="Verktøykassen NAV" />
+      </Head>
+      <ScFrontpage>
+        <ScIntro>
+          <ScLogoWrapper>
+            <NAVLogoDark />
+          </ScLogoWrapper>
+          <Heading spacing level="1" size="2xlarge">
+            Verktøykassen BETA
+          </Heading>
+          <Ingress>
+            BETA-løsning for nye Designsystem-sider og God praksis
+          </Ingress>
+        </ScIntro>
 
-      <ScNav aria-label="Portal navigasjon">
-        <ScOl>
-          <li>
-            <NextLink passHref href="/designsystem">
-              <ScCard>
-                <ScBeta>BETA</ScBeta>
-                <ScIcon className="card__icon">
-                  <Facilitet aria-label="pusslebrikke ikon" />
-                </ScIcon>
-                <Heading spacing level="2" size="medium">
-                  Designsystem V2
-                </Heading>
-                <ScBodyLong>BETA-løsning for ny dokumentasjon</ScBodyLong>
-              </ScCard>
-            </NextLink>
-          </li>
-        </ScOl>
-      </ScNav>
-    </ScFrontpage>
+        <ScNav aria-label="Portal navigasjon">
+          <ScOl>
+            <li>
+              <NextLink passHref href="/designsystem">
+                <ScCard>
+                  <ScBeta>BETA</ScBeta>
+                  <ScIcon className="card__icon">
+                    <Facilitet aria-label="pusslebrikke ikon" />
+                  </ScIcon>
+                  <Heading spacing level="2" size="medium">
+                    Designsystem V2
+                  </Heading>
+                  <ScBodyLong>BETA-løsning for ny dokumentasjon</ScBodyLong>
+                </ScCard>
+              </NextLink>
+            </li>
+          </ScOl>
+        </ScNav>
+      </ScFrontpage>
+    </>
   );
 };
 

@@ -1,5 +1,6 @@
 import { Loader } from "@navikt/ds-react";
 import Error from "next/error";
+import Head from "next/head";
 import React, { createContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import {
@@ -73,19 +74,26 @@ function App({
   }
 
   return (
-    <AmplitudeProvider>
-      <PagePropsContext.Provider value={{ pageProps: pageData, setPageData }}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-        {router.query.preview && !pageData.page && (
-          <ScLoader>
-            <Loader title="Laster inn innhold for preview" size="2xlarge" />
-            Laster inn innhold for preview...
-          </ScLoader>
-        )}
-      </PagePropsContext.Provider>
-    </AmplitudeProvider>
+    <>
+      <Head>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta property="og:url" content={router.asPath.split("?")[0]} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <AmplitudeProvider>
+        <PagePropsContext.Provider value={{ pageProps: pageData, setPageData }}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+          {router.query.preview && !pageData.page && (
+            <ScLoader>
+              <Loader title="Laster inn innhold for preview" size="2xlarge" />
+              Laster inn innhold for preview...
+            </ScLoader>
+          )}
+        </PagePropsContext.Provider>
+      </AmplitudeProvider>
+    </>
   );
 }
 

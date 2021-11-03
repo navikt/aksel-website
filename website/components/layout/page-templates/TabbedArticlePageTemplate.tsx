@@ -1,11 +1,19 @@
 import { Heading } from "@navikt/ds-react";
-import Error from "next/error";
 import { useRouter } from "next/router";
-import React from "react";
-import { LastUpdateTag, StatusTag, TableOfContents, Tab, Tabs } from "../..";
+import Head from "next/head";
+import React, { useContext } from "react";
+import {
+  LastUpdateTag,
+  StatusTag,
+  TableOfContents,
+  Tab,
+  Tabs,
+  LayoutContext,
+} from "../..";
 import { DsTabbedArticlePage } from "../../../lib/autogen-types";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import * as S from "./page.styles";
+import { LayoutParts } from "../Layout";
 
 const TabbedActiclePageTemplate = ({
   data,
@@ -13,6 +21,7 @@ const TabbedActiclePageTemplate = ({
   data: DsTabbedArticlePage;
 }): JSX.Element => {
   const { query } = useRouter();
+  const { version } = useContext(LayoutContext);
 
   if (!data.tabs || !data.heading || !data.status) {
     return null;
@@ -27,12 +36,19 @@ const TabbedActiclePageTemplate = ({
   );
   const activeTab = query.slug[2] ? tabs.indexOf(query.slug[2]) : 0;
 
-  if (!tabs.includes(query.slug[2]) && query.slug[2]) {
-    return <Error statusCode={404} />;
-  }
-
   return (
     <>
+      <Head>
+        {data.heading && LayoutParts?.[version]?.title && (
+          <>
+            <title>{`${data.heading} - ${LayoutParts?.[version].title}`}</title>
+            <meta
+              property="og:title"
+              content={`${data.heading} - ${LayoutParts?.[version].title}`}
+            />
+          </>
+        )}
+      </Head>
       <S.MaxWidthContainer>
         <S.HeadingContainer>
           <Heading size="2xlarge" level="1" spacing>

@@ -1,7 +1,8 @@
 import { ExternalLink } from "@navikt/ds-icons";
 import { BodyShort, Heading } from "@navikt/ds-react";
+import Head from "next/head";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useContext } from "react";
 import { useMedia } from "react-use";
 import styled from "styled-components";
 import {
@@ -19,6 +20,7 @@ import {
   DsCodeExample,
   DsComponentPage,
 } from "../../../lib/autogen-types";
+import { PagePropsContext } from "../../../pages/_app";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import * as S from "./page.styles";
 
@@ -77,6 +79,7 @@ const ComponentPageTemplate = ({
 }): JSX.Element => {
   const { query } = useRouter();
   const changeTab = useMedia("(max-width: 564px)");
+  const { pageProps } = useContext(PagePropsContext);
 
   const basePath = `/designsystem/${(query.slug as string[])
     .slice(0, 2)
@@ -84,8 +87,8 @@ const ComponentPageTemplate = ({
 
   const tabs = {
     bruk: "usage",
-    utvikling: "development",
     design: "design",
+    utvikling: "development",
     tilgjengelighet: "accessibility",
   };
 
@@ -131,6 +134,20 @@ const ComponentPageTemplate = ({
 
   return (
     <>
+      <Head>
+        <>
+          <title>
+            {pageProps?.page?.heading
+              ? `${pageProps?.page?.heading} - Designsystemet`
+              : "Designsystemet"}
+          </title>
+          <meta
+            property="og:title"
+            content={`${data.heading} - Designsystemet`}
+          />
+        </>
+      </Head>
+
       <S.MaxWidthContainer>
         <S.HeadingContainer>
           <Heading size="2xlarge" level="1" spacing>

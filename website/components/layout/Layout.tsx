@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState } from "react";
-import Head from "next/head";
 import styled from "styled-components";
 import Header from "./header/Header";
 import Footer from "./Footer";
@@ -132,13 +131,6 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
 
   return (
     <>
-      <Head>
-        <title>{LayoutParts[pageType]?.title}</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        {/* <meta property="og:site_name" content="NAV IT" />
-  <meta property="og:url" content="https://www.design.nav.no/" /> */}
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <div style={{ position: "relative" }}>
         <ScSkipLink href="#hovedinnhold" tab-index={-1}>
           Hopp til innhold
