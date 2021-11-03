@@ -72,10 +72,7 @@ const PagePicker = (props: {
   );
 };
 
-export const getStaticPaths = async (): Promise<{
-  fallback: string;
-  paths: { params: { slug: string[] } }[];
-}> => {
+const generatePaths = async (): Promise<string[][]> => {
   const documents: any[] | null = await getClient(false).fetch(dsDocuments);
   const paths = [];
   const componentPageTabs = ["design", "utvikling", "tilgjengelighet"];
@@ -86,20 +83,12 @@ export const getStaticPaths = async (): Promise<{
     }
     const slug = page.slug.split("/");
 
-    const defaultPush = () =>
-      paths.push({
-        params: {
-          slug,
-        },
-      });
+    const defaultPush = () => paths.push(slug);
+
     switch (page._type) {
       case "ds_component_page":
         componentPageTabs.forEach((tab) => {
-          paths.push({
-            params: {
-              slug: [...slug, tab],
-            },
-          });
+          paths.push([...slug, tab]);
         });
         defaultPush();
         break;
@@ -109,12 +98,9 @@ export const getStaticPaths = async (): Promise<{
           (tab) => tab.title?.toLowerCase().replace(/\s+/g, "-") || "undefined"
         );
         tabbedArticleTabs.forEach((tab) => {
-          paths.push({
-            params: {
-              slug: [...slug, tab],
-            },
-          });
+          paths.push([...slug, tab]);
         });
+        defaultPush();
         break;
       }
       default:
@@ -122,6 +108,19 @@ export const getStaticPaths = async (): Promise<{
         break;
     }
   });
+  return paths;
+};
+
+export const getStaticPaths = async (): Promise<{
+  fallback: string;
+  paths: { params: { slug: string[] } }[];
+}> => {
+  const slugs = await generatePaths();
+  const paths = slugs.map((slug) => ({
+    params: {
+      slug,
+    },
+  }));
 
   return {
     paths,
@@ -144,7 +143,7 @@ export const getStaticProps = async ({
   params: { slug },
 }: {
   params: { slug: string[] };
-}): Promise<StaticProps> => {
+}): Promise<StaticProps | { notFound: true }> => {
   /* Hack: Build slug: ["designsystem", "side", "button"], dev slug: ["side", "button"] */
   const joinedSlug = slug
     .filter((x) => x !== "designsystem")
@@ -167,16 +166,28 @@ export const getStaticProps = async ({
     slug: "designsystem/" + joinedSlug,
   });
 
-  return {
-    props: {
-      page,
-      slug: joinedSlug,
-      navigation,
-      changelogs,
-      isDraft: isDraft.length === 0,
-    },
-    revalidate: 30,
-  };
+  const allPaths = await generatePaths().then((paths) =>
+    paths.map((slugs) =>
+      slugs.filter((slug) => slug !== "designsystem").join("/")
+    )
+  );
+
+  const isFound = allPaths.includes(
+    slug.filter((x) => x !== "designsystem").join("/")
+  );
+
+  return isFound || isDraft
+    ? {
+        props: {
+          page,
+          slug: joinedSlug,
+          navigation,
+          changelogs,
+          isDraft: isDraft.length === 0,
+        },
+        revalidate: 30,
+      }
+    : { notFound: true };
 };
 
 export default PagePicker;

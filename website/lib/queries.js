@@ -82,7 +82,7 @@ export const gpDocumentBySlug = `*[slug.current == $slug][0]
   }
 }`;
 
-export const dsDocuments = `*[_type in ["ds_component_page", "ds_article_page", "ds_tabbed_article_page"]]{ _type, 'slug': slug.current }`;
+export const dsDocuments = `*[_type in ["ds_component_page", "ds_article_page", "ds_tabbed_article_page"]]{ _type, 'slug': slug.current, tabs[]{title} }`;
 export const dsIsDraft = `*[slug.current == $slug && !(_id in path("drafts.**"))]`;
 
 export const dsDocumentBySlug = `*[slug.current == $slug][0]
