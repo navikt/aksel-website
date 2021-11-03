@@ -1,0 +1,10 @@
+Sitemap: https://verktoykassen.vercel.app/api/sitemap
+
+User-agent: *
+Allow: /*
+
+Disallow: /api/*
+Disallow: /examples/*
+
+# Gjemmer god-praksis for nå
+Disallow: /god-praksis/*
