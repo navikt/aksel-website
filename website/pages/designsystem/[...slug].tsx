@@ -49,12 +49,13 @@ const PagePicker = (props: {
   });
 
   useEffect(() => {
-    nav && setPageData({ ...pageProps, navigation: nav });
+    nav && setPageData({ ...props, ...pageProps, navigation: nav });
   }, [nav]);
 
   useEffect(() => {
     data &&
       setPageData({
+        ...props,
         ...pageProps,
         page: data,
       });

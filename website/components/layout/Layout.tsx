@@ -126,6 +126,10 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
     );
   }, [pageProps?.navigation]);
 
+  if (!pageProps) {
+    return null;
+  }
+
   return (
     <>
       <Head>
