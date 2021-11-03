@@ -9,6 +9,7 @@ export const sanityClient = createClient(config);
 export const previewClient = createClient({
   ...config,
   useCdn: false,
+  ignoreBrowserTokenWarning: true,
   token:
     "skXMkLVwRPUcKEyYa92OfXtwSmDiaFoSPTG23GMisJ3ExGWTOITHBnDjtYfWTUsxhrGswGAdSUGyLDaMr7PrnPfMIeenZOgIjCIPI4x8NRpfNi8KwyzI2fYPLiPxD7vOEFdmvtnGNs64eQUjElnqZkULNMJGQVjjZLHm8QkfKqkX5REdifzk",
 });
