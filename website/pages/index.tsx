@@ -160,7 +160,7 @@ const Page = () => {
 
 export const getStaticProps = async () => {
   return {
-    props: { slug: "/" },
+    props: { slug: "/", validPath: true, isDraft: false },
   };
 };
 

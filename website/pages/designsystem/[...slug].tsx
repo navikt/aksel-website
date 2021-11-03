@@ -8,6 +8,7 @@ import {
   dsIsDraft,
   dsNavigationQuery,
   getClient,
+  getDsPaths,
   usePreviewSubscription,
 } from "../../lib";
 import {
@@ -72,55 +73,17 @@ const PagePicker = (props: {
   );
 };
 
-const generatePaths = async (): Promise<string[][]> => {
-  const documents: any[] | null = await getClient(false).fetch(dsDocuments);
-  const paths = [];
-  const componentPageTabs = ["design", "utvikling", "tilgjengelighet"];
-
-  documents?.forEach((page) => {
-    if (!page.slug) {
-      return null;
-    }
-    const slug = page.slug.split("/");
-
-    const defaultPush = () => paths.push(slug);
-
-    switch (page._type) {
-      case "ds_component_page":
-        componentPageTabs.forEach((tab) => {
-          paths.push([...slug, tab]);
-        });
-        defaultPush();
-        break;
-      case "ds_tabbed_article_page": {
-        if (!page.tabs) break;
-        const tabbedArticleTabs = page.tabs.map(
-          (tab) => tab.title?.toLowerCase().replace(/\s+/g, "-") || "undefined"
-        );
-        tabbedArticleTabs.forEach((tab) => {
-          paths.push([...slug, tab]);
-        });
-        defaultPush();
-        break;
-      }
-      default:
-        defaultPush();
-        break;
-    }
-  });
-  return paths;
-};
-
 export const getStaticPaths = async (): Promise<{
   fallback: string;
   paths: { params: { slug: string[] } }[];
 }> => {
-  const slugs = await generatePaths();
-  const paths = slugs.map((slug) => ({
-    params: {
-      slug,
-    },
-  }));
+  const paths = await getDsPaths().then((paths) =>
+    paths.map((slug) => ({
+      params: {
+        slug,
+      },
+    }))
+  );
 
   return {
     paths,
@@ -135,6 +98,7 @@ interface StaticProps {
     changelogs: DsChangelog[] | null;
     navigation: DsNavigation;
     isDraft: boolean;
+    validPath: boolean;
   };
   revalidate: number;
 }
@@ -166,28 +130,23 @@ export const getStaticProps = async ({
     slug: "designsystem/" + joinedSlug,
   });
 
-  const allPaths = await generatePaths().then((paths) =>
-    paths.map((slugs) =>
-      slugs.filter((slug) => slug !== "designsystem").join("/")
-    )
+  const validPath = await getDsPaths().then((paths) =>
+    paths
+      .map((slugs) => slugs.filter((slug) => slug !== "designsystem").join("/"))
+      .includes(slug.filter((x) => x !== "designsystem").join("/"))
   );
 
-  const isFound = allPaths.includes(
-    slug.filter((x) => x !== "designsystem").join("/")
-  );
-
-  return isFound || isDraft
-    ? {
-        props: {
-          page,
-          slug: joinedSlug,
-          navigation,
-          changelogs,
-          isDraft: isDraft.length === 0,
-        },
-        revalidate: 30,
-      }
-    : { notFound: true };
+  return {
+    props: {
+      page,
+      slug: joinedSlug,
+      navigation,
+      changelogs,
+      isDraft: isDraft.length === 0,
+      validPath,
+    },
+    revalidate: 30,
+  };
 };
 
 export default PagePicker;

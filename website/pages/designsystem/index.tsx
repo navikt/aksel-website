@@ -181,7 +181,7 @@ const Page = () => {
 
 export const getStaticProps = async () => {
   return {
-    props: { slug: "/designsystem" },
+    props: { slug: "/designsystem", validPath: true, isDraft: false },
   };
 };
 
