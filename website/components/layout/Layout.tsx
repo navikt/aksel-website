@@ -1,12 +1,11 @@
 import React, { createContext, useContext, useState } from "react";
 import styled from "styled-components";
 import Header from "./header/Header";
-import Footer from "./Footer";
 import { PagePropsContext } from "../../pages/_app";
 import DesignsystemSidebar from "./sidebar/DesignsystemSidebar";
-import { useMedia } from "react-use";
+import { useIsomorphicLayoutEffect, useMedia } from "react-use";
+import Footer from "./Footer";
 import { Feedback, RelatedPagesLink } from "..";
-import { useClientLayoutEffect } from "@navikt/ds-react";
 import DesignsystemHeader from "./header/DesignsystemHeader";
 import GodPraksisHeader from "./header/GodPraksisHeader";
 import Sidebar from "./sidebar/Sidebar";
@@ -104,7 +103,6 @@ export type LayoutContextProps = {
 
 export const LayoutContext = createContext<LayoutContextProps | null>(null);
 
-// TODO: Move metadata to SEO component
 const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   const { pageProps } = useContext(PagePropsContext);
   const [activeHeading, setActiveHeading] = useState<
@@ -115,7 +113,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   const isMobile = useMedia("(max-width: 480px)");
   const pageType = pageProps?.page?._type?.split("_")[0];
 
-  useClientLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     setActiveHeading(
       pageProps?.navigation?.headings.find((heading) =>
         heading.menu.find(
@@ -123,7 +121,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
         )
       )
     );
-  }, [pageProps?.navigation]);
+  }, [pageProps?.page]);
 
   if (!pageProps) {
     return null;
@@ -131,36 +129,34 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
 
   return (
     <>
-      <div style={{ position: "relative" }}>
-        <ScSkipLink href="#hovedinnhold" tab-index={-1}>
-          Hopp til innhold
-        </ScSkipLink>
-        <LayoutContext.Provider
-          value={{ isMobile, isTablet, version: pageType, activeHeading }}
-        >
-          <Header />
-          <ScWrapper>
-            <Sidebar />
-            <ScContentWrapper isTablet={isTablet}>
-              <ScMain
-                $tablet={isTablet}
-                $hasSidebar={!!LayoutParts[pageType]?.sidebar}
-                tabIndex={-1}
-                id="hovedinnhold"
-              >
-                {children}
-                <ScGrow />
-                <Feedback docId={pageProps?.page?._id} />
-                {/* {LayoutParts[pageType]?.title === "Designsystemet" && (
+      <ScSkipLink href="#hovedinnhold" tab-index={-1}>
+        Hopp til innhold
+      </ScSkipLink>
+      <LayoutContext.Provider
+        value={{ isMobile, isTablet, version: pageType, activeHeading }}
+      >
+        <Header />
+        <ScWrapper>
+          <Sidebar />
+          <ScContentWrapper isTablet={isTablet}>
+            <ScMain
+              $tablet={isTablet}
+              $hasSidebar={!!LayoutParts[pageType]?.sidebar}
+              tabIndex={-1}
+              id="hovedinnhold"
+            >
+              {children}
+              <ScGrow />
+              <Feedback docId={pageProps?.page?._id} />
+              {/* {LayoutParts[pageType]?.title === "Designsystemet" && (
                   <RelatedPagesLink />
                 )} */}
-              </ScMain>
-              {/* {!pageProps?.preview && <Feedback docId={pageProps?.page?._id} />} */}
-              {/* <Footer /> */}
-            </ScContentWrapper>
-          </ScWrapper>
-        </LayoutContext.Provider>
-      </div>
+            </ScMain>
+            {/* {!pageProps?.preview && <Feedback docId={pageProps?.page?._id} />} */}
+            {/* <Footer /> */}
+          </ScContentWrapper>
+        </ScWrapper>
+      </LayoutContext.Provider>
     </>
   );
 };

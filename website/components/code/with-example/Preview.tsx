@@ -47,6 +47,7 @@ const ScInnerDiv = styled.div`
   padding: 2rem;
   display: inline-flex;
   flex-wrap: wrap;
+  width: 100%;
 `;
 
 const CodePreview = (): JSX.Element => {

@@ -17,9 +17,7 @@ export const PopoverExample = () => {
         anchorEl={buttonRef.current}
         placement="auto"
       >
-        <Popover.Content>
-          Officia reprehenderit irure aliqua cupidatat quis
-        </Popover.Content>
+        <Popover.Content>Innhold her!</Popover.Content>
       </Popover>
     </>
   );
@@ -38,7 +36,7 @@ PopoverExample.react = `
       placement="auto"
     >
       <Popover.Content>
-        Officia reprehenderit irure aliqua cupidatat quis
+        Innhold her!
       </Popover.Content>
     </Popover>
   </>`;
@@ -58,9 +56,7 @@ export const PopoverArrow = () => {
         arrow={false}
         placement="auto"
       >
-        <Popover.Content>
-          Officia reprehenderit irure aliqua cupidatat quis
-        </Popover.Content>
+        <Popover.Content>Innhold her!</Popover.Content>
       </Popover>
     </>
   );
@@ -78,7 +74,7 @@ PopoverArrow.react = `
       placement="auto"
     >
       <Popover.Content>
-        Officia reprehenderit irure aliqua cupidatat quis
+        Innhold her!
       </Popover.Content>
     </Popover>
   </>
@@ -100,9 +96,7 @@ export const PopoverOffset = () => {
         offset={32}
         placement="auto"
       >
-        <Popover.Content>
-          Officia reprehenderit irure aliqua cupidatat quis
-        </Popover.Content>
+        <Popover.Content>Innhold her!</Popover.Content>
       </Popover>
     </>
   );
@@ -120,7 +114,7 @@ PopoverOffset.react = `
       offset={32}
     >
       <Popover.Content>
-        Officia reprehenderit irure aliqua cupidatat quis
+        Innhold her!
       </Popover.Content>
     </Popover>
   </>`;
@@ -160,9 +154,7 @@ export const PopoverPlacement = () => {
         onClose={() => setOpen(false)}
         anchorEl={selectRef.current}
       >
-        <Popover.Content>
-          Officia reprehenderit irure aliqua cupidatat quis
-        </Popover.Content>
+        <Popover.Content>Innhold her!</Popover.Content>
       </Popover>
     </Wrapper>
   );

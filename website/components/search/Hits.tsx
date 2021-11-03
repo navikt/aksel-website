@@ -37,6 +37,7 @@ interface HitsProps {
   value: string;
 }
 
+// TODO: Fix unreliable wayt o handle refs here
 const Hits = React.forwardRef<HTMLInputElement, HitsProps>(
   ({ hits, value }: HitsProps, ref) => {
     const itemsRef = useRef<any>([ref]);
@@ -65,7 +66,7 @@ const Hits = React.forwardRef<HTMLInputElement, HitsProps>(
     const handleTab = (e) => {
       setActiveN(0);
       !e.shiftKey &&
-        hitsRef.current.contains(document.activeElement) &&
+        hitsRef.current?.contains(document.activeElement) &&
         itemsRef.current[0]?.current?.focus();
     };
 
