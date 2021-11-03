@@ -37,7 +37,7 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
         {open && (
           <NextImage
             {...imageProps}
-            layout="fixed"
+            layout="intrinsic"
             sizes="(max-width: 100vw) 100vw, 1000px"
             alt={node.title}
           />

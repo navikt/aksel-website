@@ -35,8 +35,11 @@ const ScImage = styled.div`
   max-height: 80%;
   display: flex;
   align-items: center;
-  width: fit-content;
   top: 50%;
+  height: 100%;
+  width: 100%;
+  max-width: 1280px;
+  justify-content: center;
   transform: translateY(-50%);
   background-color: var(--navds-color-gray-10);
   overflow-y: auto;
