@@ -9,7 +9,7 @@ export const ComponentPageWebPreview = (ctx: any) => {
   }
   /* Nais dev-server */
   /* const webUrl = "https://verktoykasse-prototype.dev.nav.no"; */
-  const webUrl = "https://verktoykassen-kenajoh.vercel.app";
+  const webUrl = "https://verktoykassen.vercel.app";
   const previewUrl = `/${slug}?preview=true`;
   const url =
     process.env.NODE_ENV === "production"
