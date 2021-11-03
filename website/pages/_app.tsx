@@ -50,7 +50,6 @@ function App({
   }
 
   if (!pageProps?.slug) {
-    setPageData({});
     return <Error statusCode={404} />;
   }
 
