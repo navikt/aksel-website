@@ -1,10 +1,12 @@
 import { useRouter } from "next/router";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useUpdateEffect } from "react-use";
 import { LayoutPicker, PreviewBanner } from "../../components";
 import {
   changelogQuery,
   dsDocumentBySlug,
   dsDocuments,
+  dsIsDraft,
   dsNavigationQuery,
   getClient,
   usePreviewSubscription,
@@ -19,45 +21,52 @@ import {
 import { PagePropsContext } from "../_app";
 
 const PagePicker = (props: {
-  preview: boolean;
   slug?: string;
   page: DsComponentPage | DsTabbedArticlePage | DsArticlePage;
   navigation: DsNavigation;
   changelogs?: DsChangelog[];
 }): JSX.Element => {
   const router = useRouter();
-  const enablePreview = !!props.preview || !!router.query.preview;
-
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { setPageData } = useContext(PagePropsContext);
+  const { pageProps, setPageData } = useContext(PagePropsContext);
+
+  const [isPreview, setIsPreview] = useState(false);
 
   const { data } = usePreviewSubscription(dsDocumentBySlug, {
     params: { slug: "designsystem/" + props.slug },
     initialData: props.page,
-    enabled: enablePreview,
+    enabled: isPreview,
   });
 
   const { data: changelogs } = usePreviewSubscription(changelogQuery, {
     initialData: props.changelogs,
-    enabled: enablePreview,
+    enabled: isPreview,
   });
 
   const { data: nav } = usePreviewSubscription(dsNavigationQuery, {
     initialData: props.navigation,
-    enabled: enablePreview,
+    enabled: isPreview,
   });
 
   useEffect(() => {
-    setPageData({ ...props, navigation: nav });
+    nav && setPageData({ ...pageProps, navigation: nav });
   }, [nav]);
 
   useEffect(() => {
-    setPageData({ ...props, page: data });
+    data &&
+      setPageData({
+        ...pageProps,
+        page: data,
+      });
   }, [data]);
+
+  useEffect(() => {
+    setIsPreview(!!router.query.preview);
+  }, [router.query]);
 
   return (
     <>
-      {enablePreview && <PreviewBanner />}
+      {isPreview && <PreviewBanner />}
       <LayoutPicker data={data} changelogs={changelogs} />
     </>
   );
@@ -123,20 +132,18 @@ export const getStaticPaths = async (): Promise<{
 interface StaticProps {
   props: {
     page: DsComponentPage | DsTabbedArticlePage | DsArticlePage;
-    preview: boolean;
     slug: string;
     changelogs: DsChangelog[] | null;
     navigation: DsNavigation;
+    isDraft: boolean;
   };
   revalidate: number;
 }
 
 export const getStaticProps = async ({
   params: { slug },
-  preview,
 }: {
   params: { slug: string[] };
-  preview: boolean;
 }): Promise<StaticProps> => {
   /* Hack: Build slug: ["designsystem", "side", "button"], dev slug: ["side", "button"] */
   const joinedSlug = slug
@@ -144,8 +151,7 @@ export const getStaticProps = async ({
     .slice(0, 2)
     .join("/");
 
-  const enablePreview = !!preview;
-  const client = getClient(enablePreview);
+  const client = getClient(false);
   const page = await client.fetch(dsDocumentBySlug, {
     slug: "designsystem/" + joinedSlug,
   });
@@ -157,13 +163,17 @@ export const getStaticProps = async ({
 
   const navigation = await client.fetch(dsNavigationQuery);
 
+  const isDraft = await client.fetch(dsIsDraft, {
+    slug: "designsystem/" + joinedSlug,
+  });
+
   return {
     props: {
       page,
-      preview: enablePreview,
       slug: joinedSlug,
       navigation,
       changelogs,
+      isDraft: isDraft.length === 0,
     },
     revalidate: 30,
   };

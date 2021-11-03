@@ -126,10 +126,6 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
     );
   }, [pageProps?.navigation]);
 
-  if (!pageProps) {
-    return null;
-  }
-
   return (
     <>
       <Head>
@@ -159,12 +155,12 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
                 {children}
                 <ScGrow />
                 <Feedback docId={pageProps?.page?._id} />
-                {LayoutParts[pageType]?.title === "Designsystemet" && (
+                {/* {LayoutParts[pageType]?.title === "Designsystemet" && (
                   <RelatedPagesLink />
-                )}
+                )} */}
               </ScMain>
               {/* {!pageProps?.preview && <Feedback docId={pageProps?.page?._id} />} */}
-              <Footer />
+              {/* <Footer /> */}
             </ScContentWrapper>
           </ScWrapper>
         </LayoutContext.Provider>

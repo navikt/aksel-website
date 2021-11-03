@@ -36,7 +36,6 @@ function App({
     slugger.reset();
   });
 
-  /* Is example */
   if (Component && router?.asPath.startsWith("/examples")) {
     return (
       <AmplitudeProvider>

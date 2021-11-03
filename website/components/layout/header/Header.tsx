@@ -9,7 +9,8 @@ function Header(): JSX.Element {
 
   const [openSearchBar, setOpenSearchBar] = useState(false);
 
-  const Comp = LayoutParts[context.version]?.header;
+  const Comp = LayoutParts?.[context.version]?.header;
+
   if (!Comp) {
     return null;
   }

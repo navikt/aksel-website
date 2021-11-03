@@ -5,36 +5,39 @@ import {
   gpDocuments,
   gpDocumentBySlug,
 } from "../../lib";
-import { isDevelopment, PreviewBanner, LayoutPicker } from "../../components";
-import { useContext, useEffect } from "react";
+import { PreviewBanner, LayoutPicker } from "../../components";
+import { useContext, useEffect, useState } from "react";
 import { PagePropsContext } from "../_app";
 import { GpArticlePage } from "../../lib/autogen-types";
 
 const PagePicker = (props: {
-  preview: boolean;
   slug?: string;
   page: GpArticlePage;
   sidebar: any;
 }): JSX.Element => {
   const router = useRouter();
-  const enablePreview = !!props.preview || !!router.query.preview;
-
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { setPageData } = useContext(PagePropsContext);
+  const { pageProps, setPageData } = useContext(PagePropsContext);
+
+  const [isPreview, setIsPreview] = useState(false);
+
+  useEffect(() => {
+    setIsPreview(!!router.query.preview);
+  }, [router.query]);
 
   const { data } = usePreviewSubscription(gpDocumentBySlug, {
     params: { slug: "god-praksis/" + props?.slug },
     initialData: props.page,
-    enabled: enablePreview,
+    enabled: isPreview,
   });
 
   useEffect(() => {
-    setPageData({ ...props, page: data });
+    setPageData({ ...pageProps, page: data });
   }, [data]);
 
   return (
     <>
-      {enablePreview && <PreviewBanner />}
+      {isPreview && <PreviewBanner />}
       <LayoutPicker data={data} />
     </>
   );
@@ -69,7 +72,6 @@ export const getStaticPaths = async (): Promise<{
 interface StaticProps {
   props: {
     page: GpArticlePage;
-    preview: boolean;
     slug: string;
   };
   revalidate: number;
@@ -77,25 +79,21 @@ interface StaticProps {
 
 export const getStaticProps = async ({
   params: { slug },
-  preview,
 }: {
   params: { slug: string[] };
-  preview: boolean;
 }): Promise<StaticProps> => {
   const joinedSlug = slug
     .filter((x) => x !== "god-praksis")
     .slice(0, 2)
     .join("/");
 
-  const enablePreview = !!preview || isDevelopment();
-  const page = await getClient(enablePreview).fetch(gpDocumentBySlug, {
+  const page = await getClient(false).fetch(gpDocumentBySlug, {
     slug: "god-praksis/" + joinedSlug,
   });
 
   return {
     props: {
       page,
-      preview: enablePreview,
       slug: joinedSlug,
     },
     revalidate: 30,
