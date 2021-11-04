@@ -19,7 +19,7 @@ const ScIconSearch = styled.div<{ $isTablet: boolean }>`
 `;
 
 const ScIcons = styled.div`
-  grid-template-columns: repeat(auto-fit, 160px);
+  grid-template-columns: repeat(auto-fit, 12rem);
   align-content: start;
   display: grid;
   column-gap: 16px;
@@ -30,7 +30,7 @@ const ScIcons = styled.div`
 
 const ScIcon = styled.button`
   height: 8rem;
-  width: 10rem;
+  width: 12rem;
   flex-shrink: 1;
   border-radius: 4px;
   background: none;

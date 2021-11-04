@@ -1,4 +1,5 @@
 import "@navikt/ds-css";
+import { ExternalLink } from "@navikt/ds-icons";
 import { BodyLong, Detail, Heading, Ingress, Link } from "@navikt/ds-react";
 import BlockContent from "@sanity/block-content-to-react";
 import NextjsLink from "next/link";
@@ -103,7 +104,7 @@ const serializers = {
     link: ({ mark: { blank, href }, children }: { mark: any; children: any }) =>
       blank ? (
         <Link href={href} target="_blank" rel="noreferrer noopener">
-          {children}
+          {children} <ExternalLink />
         </Link>
       ) : (
         <Link href={href}>{children}</Link>

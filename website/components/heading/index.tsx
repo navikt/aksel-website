@@ -8,7 +8,7 @@ import { Link as LinkIcon } from "@navikt/ds-icons";
 const LevelTwoHeading = ({
   children,
 }: {
-  children: React.ReactNode;
+  children: [React.ReactNode | string];
 }): JSX.Element => {
   const anchorRef = useRef(null);
   const [openPopover, setOpenPopover] = useState(false);
@@ -36,12 +36,16 @@ const LevelTwoHeading = ({
     });
   };
 
+  const cleanedChildren = children
+    .filter((x) => typeof x === "string")
+    .filter((x) => !!x);
+
   return (
     <>
       <S.TitleWithScrollMargin id={slug} spacing level={2} size="large">
-        {children}
+        {cleanedChildren}
         <S.Anchor
-          aria-label={`Kopier lenke til ${children.toString()}`}
+          aria-label={`Kopier lenke til ${cleanedChildren.toString()}`}
           onClick={() => copyAnchor(slug)}
           ref={anchorRef}
         >

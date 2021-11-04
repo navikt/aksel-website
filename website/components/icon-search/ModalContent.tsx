@@ -54,7 +54,7 @@ const ScIconInverted = styled.div`
 const ScButtonWrapper = styled.div`
   display: flex;
   gap: 1rem;
-  flex-wrap: wrap;
+
   margin-bottom: 2rem;
 `;
 
@@ -69,6 +69,21 @@ const ScHeading = styled(Heading)`
   display: flex;
   gap: 0.5rem;
   align-items: center;
+`;
+
+const ScTopWrapper = styled.div`
+  display: inline-flex;
+  justify-content: space-between;
+  margin-right: 4rem;
+  gap: 1rem;
+
+  @media (max-width: 564px) {
+    flex-direction: column;
+  }
+
+  /* > * {
+    flex: 1 1;
+  } */
 `;
 
 const ModalContent = ({ icon }: { icon: string }) => {
@@ -110,30 +125,36 @@ import Icon from "@navikt/ds-icons/svg/${icon}";`,
 
   return (
     <ScModalContent>
-      <ScHeading spacing level="2" size="medium">
-        {icon}
-        {isNew(doc?.created_at) && <ScNew forwardedAs="span">Ny!</ScNew>}
-      </ScHeading>
-      {doc && (
-        <>
-          <ScMutedBodyShort>{doc.pageName}</ScMutedBodyShort>
-          <ScMutedBodyShort spacing>{`${
-            doc.description && `${doc.description}`
-          }`}</ScMutedBodyShort>
-        </>
-      )}
-      <Heading spacing level="3" size="small">
-        Last ned
-      </Heading>
-      <ScButtonWrapper>
-        <ScButton onClick={() => downloadSvg(icon)}>
-          <Icons.Download aria-label="last ned" /> SVG
-        </ScButton>
-        <ScButton onClick={() => downloadPng(icon)}>
-          <Icons.Download aria-label="last ned" />
-          PNG
-        </ScButton>
-      </ScButtonWrapper>
+      <ScTopWrapper>
+        <div>
+          <ScHeading spacing level="2" size="medium">
+            {icon}
+            {isNew(doc?.created_at) && <ScNew forwardedAs="span">Ny!</ScNew>}
+          </ScHeading>
+          {doc && (
+            <>
+              <ScMutedBodyShort>{doc.pageName}</ScMutedBodyShort>
+              <ScMutedBodyShort spacing>{`${
+                doc.description && `${doc.description}`
+              }`}</ScMutedBodyShort>
+            </>
+          )}
+        </div>
+        <div>
+          <Heading spacing level="3" size="medium">
+            Last ned
+          </Heading>
+          <ScButtonWrapper>
+            <ScButton onClick={() => downloadSvg(icon)}>
+              <Icons.Download aria-label="last ned" /> SVG
+            </ScButton>
+            <ScButton onClick={() => downloadPng(icon)}>
+              <Icons.Download aria-label="last ned" />
+              PNG
+            </ScButton>
+          </ScButtonWrapper>
+        </div>
+      </ScTopWrapper>
       <Heading spacing level="3" size="small">
         Import
       </Heading>
