@@ -64,9 +64,11 @@ const LevelTwoHeading = ({
         placement="right"
         arrow={false}
         offset={8}
+        aria-live="polite"
+        role="alert"
       >
         <Popover.Content style={{ padding: "0.25rem" }}>
-          Kopierte lenke
+          {`Kopier lenke til ${cleanedChildren.toString()}`}
         </Popover.Content>
       </Popover>
     </>

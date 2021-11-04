@@ -23,6 +23,16 @@ export const Image = styled.button`
   }
 
   img {
+    @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+      image-rendering: -webkit-optimize-contrast !important;
+    }
+
+    /* Unset for Safari 11+ */
+    @media not all and (min-resolution: 0.001dpcm) {
+      @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+        image-rendering: unset !important;
+      }
+    }
     /* object-fit: contain;
     width: 100% !important;
     position: relative !important;

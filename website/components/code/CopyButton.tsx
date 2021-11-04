@@ -94,16 +94,13 @@ const CopyButton = ({
   const Button = inTabs ? ScTabButton : ScButton;
 
   return (
-    <Button className="navds-body-short" onClick={handleCopy}>
-      {active ? (
-        <SuccessStroke
-          focusable="false"
-          aria-label="Kopiert kodesnutt"
-          role="img"
-        />
-      ) : (
-        "Copy"
-      )}
+    <Button
+      aria-live={active ? "polite" : "off"}
+      role={active ? "alert" : undefined}
+      className="navds-body-short"
+      onClick={handleCopy}
+    >
+      {active ? <SuccessStroke aria-label="Kopierte kodesnutt" /> : "Copy"}
     </Button>
   );
 };

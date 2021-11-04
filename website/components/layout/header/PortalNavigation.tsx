@@ -107,11 +107,15 @@ const HeadingDropDown = ({ title }: { title: string }) => {
       exit={{ opacity: 0 }}
     >
       <Dropdown>
-        <ScToggle onClick={() => setOpen(!open)} forwardedAs={Dropdown.Toggle}>
+        <ScToggle
+          aria-haspopup="false"
+          onClick={() => setOpen(!open)}
+          forwardedAs={Dropdown.Toggle}
+        >
           {showLogo && <NavLogoWhite focusable={false} />}
           <span>
             {title}
-            <Expand focusable={false} aria-label="Åpne Portal-navigasjon" />
+            <Expand aria-label="Åpne Portal-navigasjon" />
           </span>
         </ScToggle>
         <ScMenu onClose={() => setOpen(false)}>

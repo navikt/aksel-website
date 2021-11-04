@@ -105,7 +105,7 @@ const serializers = {
       blank ? (
         <NextjsLink href={href} passHref>
           <Link target="_blank" rel="noreferrer noopener">
-            {children} <ExternalLink />
+            {children} <ExternalLink title="Åpner lenken i en ny fane" />
           </Link>
         </NextjsLink>
       ) : (
