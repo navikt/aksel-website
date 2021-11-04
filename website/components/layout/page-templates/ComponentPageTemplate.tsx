@@ -201,7 +201,7 @@ const ComponentPageTemplate = ({
         <S.MaxWidthContainer>
           {activeTab === "utvikling" && installSnippetTabs && (
             <MarginTop>
-              <LevelTwoHeading>Installasjon</LevelTwoHeading>
+              <LevelTwoHeading>{["Installasjon"]}</LevelTwoHeading>
               <CodeExample node={installSnippetTabs} />
             </MarginTop>
           )}

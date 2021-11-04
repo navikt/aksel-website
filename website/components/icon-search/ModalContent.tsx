@@ -104,7 +104,7 @@ const ModalContent = ({ icon }: { icon: string }) => {
     title: `Install-snippet for ${icon} icon`,
     code: {
       language: "jsx",
-      code: `// React ESM
+      code: `// React
 import { ${icon} } from "@navikt/ds-icons";
 
 // SVG
