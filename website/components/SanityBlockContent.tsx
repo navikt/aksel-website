@@ -103,11 +103,15 @@ const serializers = {
     code: (props: any) => <ScCode>{props.children}</ScCode>,
     link: ({ mark: { blank, href }, children }: { mark: any; children: any }) =>
       blank ? (
-        <Link href={href} target="_blank" rel="noreferrer noopener">
-          {children} <ExternalLink />
-        </Link>
+        <NextjsLink href={href} passHref>
+          <Link target="_blank" rel="noreferrer noopener">
+            {children} <ExternalLink />
+          </Link>
+        </NextjsLink>
       ) : (
-        <Link href={href}>{children}</Link>
+        <NextjsLink href={href} passHref>
+          <Link>{children}</Link>
+        </NextjsLink>
       ),
     internalLink: ({ mark, children }: { mark: any; children: any }) => {
       const { slug = {} } = mark;
