@@ -44,7 +44,7 @@ const ScOl = styled.ol`
 
 const ScCard = styled.a`
   height: 20rem;
-  width: 18rem;
+  max-width: 18rem;
   text-decoration: none;
   color: var(--navds-color-darkgray);
   display: flex;
@@ -147,9 +147,9 @@ const Page = () => {
                 <ScCard>
                   <ScBeta>BETA</ScBeta>
                   <ScIcon className="card__icon">
-                    <Facilitet aria-label="pusslebrikke ikon" />
+                    <Facilitet aria-hidden aria-label="pusslebrikke ikon" />
                   </ScIcon>
-                  <Heading spacing level="2" size="medium">
+                  <Heading spacing level="2" size="medium" as="span">
                     Designsystem V2
                   </Heading>
                   <ScBodyLong>BETA-løsning for ny dokumentasjon</ScBodyLong>

@@ -47,7 +47,7 @@ const ScOl = styled.ol`
 
 const ScCard = styled.a`
   height: 20rem;
-  width: 18rem;
+  max-width: 18rem;
   text-decoration: none;
   color: var(--navds-color-darkgray);
   display: flex;
@@ -152,9 +152,9 @@ const Page = () => {
                 <ScCard>
                   <ScBeta>BETA</ScBeta>
                   <ScIcon className="card__icon">
-                    <Facilitet aria-label="pusslebrikke ikon" />
+                    <Facilitet aria-hidden aria-label="pusslebrikke ikon" />
                   </ScIcon>
-                  <Heading spacing level="2" size="medium">
+                  <Heading spacing level="2" size="medium" as="span">
                     Komponenter
                   </Heading>
                   <ScBodyLong>Dokumentasjon for nye komponenter</ScBodyLong>
@@ -166,9 +166,9 @@ const Page = () => {
                 <ScCard>
                   <ScBeta>BETA</ScBeta>
                   <ScIcon className="card__icon">
-                    <Search aria-label="søk-ikon" />
+                    <Search aria-hidden aria-label="søk-ikon" />
                   </ScIcon>
-                  <Heading spacing level="2" size="medium">
+                  <Heading spacing level="2" size="medium" as="span">
                     Ikonsøk
                   </Heading>
                   <ScBodyLong>

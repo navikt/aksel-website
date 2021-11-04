@@ -36,6 +36,7 @@ const ScIcon = styled.button`
   background: none;
   border: none;
   position: relative;
+  cursor: pointer;
 
   box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
     0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
@@ -230,7 +231,7 @@ const IconSearch = () => {
                     {isNew(i.created_at) && <ScNew>Ny!</ScNew>}
                     <ScIconInner>
                       <div>
-                        <T />
+                        <T title={i.name} />
                       </div>
                       <ScIconTexts>
                         <Detail size="small"> {getName(i.name)}</Detail>
