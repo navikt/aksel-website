@@ -24,7 +24,7 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
         <NextImage
           {...imageProps}
           layout="responsive"
-          sizes="(max-width: 636px) 100vw, 1000px"
+          sizes="(max-width: 800px)"
           alt={block.alt}
         />
       </S.FigureBorder>
@@ -58,7 +58,7 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
           <NextImage
             {...imageProps}
             layout="intrinsic"
-            sizes="(max-width: 100vw) 100vw, 1000px"
+            sizes="(max-width: 100vw) 100vw"
             alt={block.alt}
           />
         )}
