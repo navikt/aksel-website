@@ -26,6 +26,7 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
           layout="responsive"
           sizes="(max-width: 800px)"
           alt={block.alt}
+          quality="100"
         />
       </S.FigureBorder>
 

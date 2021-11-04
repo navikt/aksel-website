@@ -26,6 +26,7 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
           layout="responsive"
           sizes="(max-width: 800px)"
           alt={node.title}
+          quality="100"
         />
       </S.Image>
       {node.caption && (
