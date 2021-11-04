@@ -195,8 +195,9 @@ const IconSearch = () => {
     if (filter.value) {
       metaIcons = metaIcons.filter(
         (x) =>
-          x.name.toLowerCase().includes(filter.value) ||
-          x.pageName.toLowerCase().includes(filter.value)
+          x?.name.toLowerCase().includes(filter.value) ||
+          x?.pageName.toLowerCase().includes(filter.value) ||
+          x?.description.toLowerCase().includes(filter.value)
       );
     }
 
