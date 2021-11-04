@@ -23,10 +23,11 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
       >
         <NextImage
           {...imageProps}
-          layout="responsive"
-          sizes="(max-width: 800px)"
+          layout="fill"
+          objectFit="contain"
           alt={node.title}
           quality="100"
+          sizes="(max-width: 800px)"
         />
       </S.Image>
       {node.caption && (
@@ -38,7 +39,9 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
         {open && (
           <NextImage
             {...imageProps}
-            layout="intrinsic"
+            className="image"
+            layout="fill"
+            objectFit="contain"
             sizes="(max-width: 100vw)"
             alt={node.title}
           />

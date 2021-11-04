@@ -43,6 +43,16 @@ const ScImage = styled.div`
   transform: translateY(-50%);
   background-color: var(--navds-color-gray-10);
   overflow-y: auto;
+
+  > div {
+    position: unset !important;
+  }
+
+  img {
+    object-fit: contain;
+    width: 100% !important;
+    height: unset !important;
+  }
 `;
 
 const ScCloseButton = styled.button`

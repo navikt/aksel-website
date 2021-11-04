@@ -15,6 +15,19 @@ export const Image = styled.button`
     outline: none;
     box-shadow: 0 0 0 3px var(--navds-color-blue-80);
   }
+
+  width: 100%;
+
+  > div {
+    position: unset !important;
+  }
+
+  img {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+  }
 `;
 
 export const Caption = styled.figcaption`
