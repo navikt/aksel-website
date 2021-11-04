@@ -42,18 +42,20 @@ const LevelTwoHeading = ({
 
   return (
     <>
-      <S.TitleWithScrollMargin id={slug} spacing level={2} size="large">
-        {cleanedChildren}
+      <div>
+        <S.TitleWithScrollMargin id={slug} spacing level={2} size="large">
+          {cleanedChildren}
+        </S.TitleWithScrollMargin>
         <S.Anchor
           aria-label={`Kopier lenke til ${cleanedChildren.toString()}`}
           onClick={() => copyAnchor(slug)}
           ref={anchorRef}
         >
           <span>
-            <LinkIcon aria-label="ankerlenke ikon" focusable={false} />
+            <LinkIcon aria-label="Ankerlenke" />
           </span>
         </S.Anchor>
-      </S.TitleWithScrollMargin>
+      </div>
 
       <Popover
         anchorEl={anchorRef.current}
