@@ -1,5 +1,6 @@
 import NextImage from "next/image";
 import React, { useState } from "react";
+import { useMeasure } from "react-use";
 import { Lightbox } from "..";
 import { useSanityImage } from "../../lib";
 import { Picture as PictureT } from "../../lib/autogen-types";
@@ -14,20 +15,26 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
 
   const imageProps = useSanityImage(node);
 
+  const [ref, { width }] = useMeasure();
+
   return (
     <S.Figure>
       <S.Image
+        ref={ref}
         aria-label="Klikk for å åpne bildet i fullskjerm"
         tabIndex={0}
         onClick={() => setOpen(!open)}
       >
         <NextImage
           {...imageProps}
-          layout="fill"
-          objectFit="contain"
           alt={node.title}
           quality="100"
-          sizes="(max-width: 800px)"
+          layout="responsive"
+          sizes={
+            width !== undefined
+              ? `${Math.round(width)}px`
+              : "(max-width: 800px)"
+          }
         />
       </S.Image>
       {node.caption && (
@@ -37,14 +44,7 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
       )}
       <Lightbox open={open} onClose={() => setOpen(false)}>
         {open && (
-          <NextImage
-            {...imageProps}
-            className="image"
-            layout="fill"
-            objectFit="contain"
-            sizes="(max-width: 100vw)"
-            alt={node.title}
-          />
+          <NextImage {...imageProps} layout="responsive" alt={node.title} />
         )}
       </Lightbox>
     </S.Figure>
