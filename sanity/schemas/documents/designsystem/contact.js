@@ -30,7 +30,7 @@ export default {
   ],
   preview: {
     select: {
-      comment: "page.title",
+      comment: "comment",
       mail: "feedbacktype",
     },
     prepare(selection) {
