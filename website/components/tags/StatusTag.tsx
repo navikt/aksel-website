@@ -17,11 +17,12 @@ const StatusTag = ({ status }: { status: string }): JSX.Element => {
           </DsTag>
         );
       case "published":
-        return (
+        return null;
+      /* return (
           <DsTag variant="success" size="small">
             Publisert
           </DsTag>
-        );
+        ); */
       default:
         return null;
     }

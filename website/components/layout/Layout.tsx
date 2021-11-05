@@ -29,7 +29,8 @@ const ScContentWrapper = styled.div<{ isTablet: boolean }>`
 
 const ScMain = styled.main<{ $tablet: boolean; $hasSidebar: boolean }>`
   min-height: calc(100vh - var(--header-height));
-  width: ${(props) => (props.$hasSidebar ? `calc(100vw - 250px)` : "100%")};
+  width: ${(props) =>
+    props.$hasSidebar ? `calc(100vw - var(--sidebar-max-width))` : "100%"};
   display: flex;
   flex-direction: column;
   position: relative;
