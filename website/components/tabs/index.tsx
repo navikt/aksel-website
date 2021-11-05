@@ -1,27 +1,26 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useContext } from "react";
+import React, { createRef, useContext, useRef } from "react";
 import { LayoutContext } from "..";
 import * as S from "./tabs.styles";
 
 export const Tabs = ({
   tabs,
-  activeTab,
 }: {
-  tabs: { name: string; path: string }[];
-  activeTab: number;
+  tabs: { name: string; path: string; active: boolean }[];
 }): JSX.Element => {
   const context = useContext(LayoutContext);
 
   const {
     query: { preview },
-    asPath,
   } = useRouter();
+
+  const tabWRefs = tabs.map((t) => ({ ...t, ref: createRef() }));
 
   return (
     <S.Nav isTablet={context.isTablet} aria-label="Tabmeny for sideinnhold">
       <S.Ul isTablet={context.isTablet} role="tablist">
-        {tabs.map((tab, i) => (
+        {tabWRefs.map((tab, i) => (
           <li key={tab.name} role="presentation">
             <Link
               href={{
@@ -31,15 +30,7 @@ export const Tabs = ({
               passHref
               shallow
             >
-              <S.A
-                role="tab"
-                aria-selected={
-                  activeTab === i
-                    ? activeTab === i
-                    : tab.path ===
-                      new URL(asPath, "http://example.com").pathname
-                }
-              >
+              <S.A role="tab" aria-selected={tab.active}>
                 {tab.name}
               </S.A>
             </Link>

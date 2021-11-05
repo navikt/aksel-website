@@ -27,6 +27,8 @@ const TabbedActiclePageTemplate = ({
     slugger.reset();
   });
 
+  const { asPath } = useRouter();
+
   if (!data.tabs || !data.heading || !data.status) {
     return null;
   }
@@ -67,12 +69,19 @@ const TabbedActiclePageTemplate = ({
       </S.MaxWidthContainer>
       {tabs.length > 1 && (
         <Tabs
-          activeTab={activeTab}
           tabs={[
             ...tabs
               .map((tab, i) =>
                 data.tabs[i]
-                  ? { name: data.tabs[i].title, path: `${basePath}/${tab}` }
+                  ? {
+                      name: data.tabs[i].title,
+                      path: `${basePath}/${tab}`,
+                      active:
+                        activeTab === i
+                          ? activeTab === i
+                          : `${basePath}/${tab}` ===
+                            new URL(asPath, "http://example.com").pathname,
+                    }
                   : null
               )
               .filter((x) => !!x),

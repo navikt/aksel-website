@@ -2,7 +2,7 @@ import { ExternalLink } from "@navikt/ds-icons";
 import { BodyShort, Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useMedia } from "react-use";
 import styled from "styled-components";
 import {
@@ -77,13 +77,10 @@ const ComponentPageTemplate = ({
   data: DsComponentPage;
   changelogs: DsChangelog[];
 }): JSX.Element => {
-  const { query } = useRouter();
+  const { query, asPath } = useRouter();
   const changeTab = useMedia("(max-width: 564px)");
   const { pageProps } = useContext(PagePropsContext);
-
-  const basePath = `/designsystem/${(query.slug as string[])
-    .slice(0, 2)
-    .join("/")}`;
+  const [activeTab, setActiveTab] = useState(0);
 
   const tabs = {
     bruk: "usage",
@@ -92,7 +89,13 @@ const ComponentPageTemplate = ({
     tilgjengelighet: "accessibility",
   };
 
-  const activeTab = Object.keys(tabs).indexOf(query.slug[2] ?? "bruk");
+  useEffect(() => {
+    slugger.reset();
+  });
+
+  useEffect(() => {
+    setActiveTab(Object.keys(tabs).indexOf(query.slug[2] ?? "bruk"));
+  }, [query.slug]);
 
   // TODO: Simplify this atrocity
   const installSnippetTabs: DsCodeExample | undefined =
@@ -132,9 +135,11 @@ const ComponentPageTemplate = ({
       ],
     };
 
-  useEffect(() => {
-    slugger.reset();
-  });
+  const basePath = `/designsystem/${(query.slug as string[])
+    .slice(0, 2)
+    .join("/")}`;
+
+  const value = Object.values(tabs)?.[activeTab];
 
   return (
     <>
@@ -187,10 +192,9 @@ const ComponentPageTemplate = ({
         {data.ingress && <SanityBlockContent isIngress blocks={data.ingress} />}
       </S.MaxWidthContainer>
       <Tabs
-        activeTab={activeTab}
         tabs={[
           ...Object.entries(tabs)
-            .map(([key, value]) =>
+            .map(([key, value], i) =>
               data[value]
                 ? {
                     name: changeTab
@@ -199,6 +203,11 @@ const ComponentPageTemplate = ({
                         : key
                       : key,
                     path: `${basePath}${key === "bruk" ? "" : "/" + key}`,
+                    active:
+                      activeTab === i
+                        ? activeTab === i
+                        : `${basePath}${key === "bruk" ? "" : "/" + key}` ===
+                          new URL(asPath, "http://example.com").pathname,
                   }
                 : null
             )
@@ -206,18 +215,18 @@ const ComponentPageTemplate = ({
         ]}
       />
       <S.SanityBlockContainer>
-        <TableOfContents changedState={data[tabs[activeTab]]} />
+        <TableOfContents changedState={data[value]} />
         <S.MaxWidthContainer>
-          {activeTab === 3 && installSnippetTabs && (
+          {value === "development" && installSnippetTabs && (
             <MarginTop>
               <LevelTwoHeading>{["Installasjon"]}</LevelTwoHeading>
               <CodeExample node={installSnippetTabs} />
             </MarginTop>
           )}
-          {data[tabs[activeTab]] && (
-            <SanityBlockContent withMargin blocks={data[tabs[activeTab]]} />
+          {data[value] && (
+            <SanityBlockContent withMargin blocks={data[value]} />
           )}
-          {activeTab === 3 && (
+          {value === "development" && (
             <Changelog changelogs={changelogs} id={data._id} />
           )}
         </S.MaxWidthContainer>
