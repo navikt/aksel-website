@@ -37,6 +37,24 @@ export const Tabs = ({
   );
 
   useKey(
+    " ",
+    (e) => {
+      const index = tabWRefs.findIndex(
+        (x) => x.ref.current === document.activeElement
+      );
+      if (index === -1) return;
+      e.preventDefault();
+      if (tabWRefs[index].active) return;
+      router.push({
+        pathname: tabWRefs[index].path,
+        query: router.query.preview ? { preview: true } : {},
+      });
+    },
+    {},
+    [tabs]
+  );
+
+  useKey(
     "ArrowRight",
     () => {
       const index = tabWRefs.findIndex(
