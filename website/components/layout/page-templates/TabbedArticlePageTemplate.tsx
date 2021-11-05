@@ -6,7 +6,6 @@ import {
   LastUpdateTag,
   StatusTag,
   TableOfContents,
-  Tab,
   Tabs,
   LayoutContext,
   slugger,
@@ -67,20 +66,18 @@ const TabbedActiclePageTemplate = ({
         {data.ingress && <SanityBlockContent isIngress blocks={data.ingress} />}
       </S.MaxWidthContainer>
       {tabs.length > 1 && (
-        <Tabs>
-          {tabs.map(
-            (tab, i) =>
-              data.tabs[i] && (
-                <Tab
-                  active={activeTab === i}
-                  key={data.tabs[i]._key}
-                  path={`${basePath}/${tab}`}
-                >
-                  {data.tabs[i].title}
-                </Tab>
+        <Tabs
+          activeTab={activeTab}
+          tabs={[
+            ...tabs
+              .map((tab, i) =>
+                data.tabs[i]
+                  ? { name: data.tabs[i].title, path: `${basePath}/${tab}` }
+                  : null
               )
-          )}
-        </Tabs>
+              .filter((x) => !!x),
+          ]}
+        />
       )}
       <S.SanityBlockContainer>
         <TableOfContents changedState={data.tabs[activeTab].body} />

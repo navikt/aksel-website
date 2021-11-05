@@ -5,56 +5,47 @@ import { LayoutContext } from "..";
 import * as S from "./tabs.styles";
 
 export const Tabs = ({
-  children,
+  tabs,
+  activeTab,
 }: {
-  children: React.ReactNode;
+  tabs: { name: string; path: string }[];
+  activeTab: number;
 }): JSX.Element => {
   const context = useContext(LayoutContext);
 
-  return (
-    <S.Nav isTablet={context.isTablet} aria-label="Tabmeny for sideinnhold">
-      <S.Ul isTablet={context.isTablet} role="tablist">
-        {children}
-      </S.Ul>
-    </S.Nav>
-  );
-};
-
-export const Tab = ({
-  children,
-  path = "",
-  active,
-}: {
-  children: React.ReactNode;
-  path?: string;
-  active?: boolean;
-}): JSX.Element => {
   const {
     query: { preview },
     asPath,
   } = useRouter();
 
   return (
-    <li role="presentation">
-      <Link
-        href={{
-          pathname: path,
-          query: preview ? { preview: true } : {},
-        }}
-        passHref
-        shallow
-      >
-        <S.A
-          role="tab"
-          aria-selected={
-            active
-              ? active
-              : path === new URL(asPath, "http://example.com").pathname
-          }
-        >
-          {children}
-        </S.A>
-      </Link>
-    </li>
+    <S.Nav isTablet={context.isTablet} aria-label="Tabmeny for sideinnhold">
+      <S.Ul isTablet={context.isTablet} role="tablist">
+        {tabs.map((tab, i) => (
+          <li key={tab.name} role="presentation">
+            <Link
+              href={{
+                pathname: tab.path,
+                query: preview ? { preview: true } : {},
+              }}
+              passHref
+              shallow
+            >
+              <S.A
+                role="tab"
+                aria-selected={
+                  activeTab === i
+                    ? activeTab === i
+                    : tab.path ===
+                      new URL(asPath, "http://example.com").pathname
+                }
+              >
+                {tab.name}
+              </S.A>
+            </Link>
+          </li>
+        ))}
+      </S.Ul>
+    </S.Nav>
   );
 };

@@ -12,7 +12,6 @@ import {
   LevelTwoHeading,
   slugger,
   StatusTag,
-  Tab,
   TableOfContents,
   Tabs,
 } from "../..";
@@ -93,7 +92,7 @@ const ComponentPageTemplate = ({
     tilgjengelighet: "accessibility",
   };
 
-  const activeTab = query.slug[2] ?? "bruk";
+  const activeTab = Object.keys(tabs).indexOf(query.slug[2] ?? "bruk");
 
   // TODO: Simplify this atrocity
   const installSnippetTabs: DsCodeExample | undefined =
@@ -187,24 +186,29 @@ const ComponentPageTemplate = ({
         </S.HeadingContainer>
         {data.ingress && <SanityBlockContent isIngress blocks={data.ingress} />}
       </S.MaxWidthContainer>
-
-      <Tabs>
-        {Object.entries(tabs).map(
-          ([key, value]) =>
-            data[value] && (
-              <Tab
-                key={key}
-                path={`${basePath}${key === "bruk" ? "" : "/" + key}`}
-              >
-                {changeTab ? (key === "tilgjengelighet" ? "UU" : key) : key}
-              </Tab>
+      <Tabs
+        activeTab={activeTab}
+        tabs={[
+          ...Object.entries(tabs)
+            .map(([key, value]) =>
+              data[value]
+                ? {
+                    name: changeTab
+                      ? key === "tilgjengelighet"
+                        ? "UU"
+                        : key
+                      : key,
+                    path: `${basePath}${key === "bruk" ? "" : "/" + key}`,
+                  }
+                : null
             )
-        )}
-      </Tabs>
+            .filter((x) => !!x),
+        ]}
+      />
       <S.SanityBlockContainer>
         <TableOfContents changedState={data[tabs[activeTab]]} />
         <S.MaxWidthContainer>
-          {activeTab === "utvikling" && installSnippetTabs && (
+          {activeTab === 3 && installSnippetTabs && (
             <MarginTop>
               <LevelTwoHeading>{["Installasjon"]}</LevelTwoHeading>
               <CodeExample node={installSnippetTabs} />
@@ -213,7 +217,7 @@ const ComponentPageTemplate = ({
           {data[tabs[activeTab]] && (
             <SanityBlockContent withMargin blocks={data[tabs[activeTab]]} />
           )}
-          {activeTab === "utvikling" && (
+          {activeTab === 3 && (
             <Changelog changelogs={changelogs} id={data._id} />
           )}
         </S.MaxWidthContainer>
