@@ -192,6 +192,7 @@ const ComponentPageTemplate = ({
         {data.ingress && <SanityBlockContent isIngress blocks={data.ingress} />}
       </S.MaxWidthContainer>
       <Tabs
+        title={data.heading}
         tabs={[
           ...Object.entries(tabs)
             .map(([key, value], i) =>

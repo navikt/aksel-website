@@ -69,6 +69,7 @@ const TabbedActiclePageTemplate = ({
       </S.MaxWidthContainer>
       {tabs.length > 1 && (
         <Tabs
+          title={data.heading}
           tabs={[
             ...tabs
               .map((tab, i) =>
