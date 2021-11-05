@@ -1,5 +1,5 @@
 import { Facilitet } from "@navikt/ds-icons";
-import { BodyLong, Heading } from "@navikt/ds-react";
+import { BodyLong, BodyShort, Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
@@ -61,7 +61,7 @@ const ScIcon = styled.div`
 `;
 
 const ScFrontpage = styled.div`
-  min-height: 100vh;
+  min-height: calc(100vh - var(--header-height));
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -74,9 +74,6 @@ const ScFlex = styled.div`
 `;
 
 const ScFlexReverse = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap-reverse;
   position: relative;
 `;
 
@@ -88,8 +85,8 @@ const ScTitle = styled.div`
   }
 
   background-color: var(--navds-color-gray-10);
+  height: 250px;
   width: 100%;
-  /* width: 600px; */
   flex: 1 1 500px;
 `;
 
@@ -97,6 +94,11 @@ const ScIllustration = styled.div`
   width: 100%;
   position: absolute;
   top: 0;
+  z-index: -1;
+
+  filter: blur(3px);
+  opacity: 0.1;
+  display: none;
 
   /* max-width: 600px; */
 
@@ -132,6 +134,18 @@ const ScCards = styled.div`
   }
 `;
 
+const ScHeading = styled(Heading)`
+  position: relative;
+  width: fit-content;
+`;
+
+const ScBodyShort = styled(BodyShort)`
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(120%);
+`;
+
 const Page = () => {
   return (
     <>
@@ -144,15 +158,16 @@ const Page = () => {
 
         <ScFrontpage>
           <ScFlexReverse>
-            <ScTitle>
-              <Heading spacing level="1" size="2xlarge">
-                Designsystemet
-              </Heading>
-              <BodyLong>Gjør det enkelt å lage produkter i NAV</BodyLong>
-            </ScTitle>
             <ScIllustration>
               <DsFrontpageIllustration />
             </ScIllustration>
+            <ScTitle>
+              <ScHeading spacing level="1" size="2xlarge">
+                Designsystemet
+                <ScBodyShort>Beta</ScBodyShort>
+              </ScHeading>
+              <BodyLong>Gjør det enkelt å lage produkter i NAV</BodyLong>
+            </ScTitle>
           </ScFlexReverse>
           <ScFlex>
             <ScDescriptionWrapper>
@@ -178,8 +193,7 @@ const Page = () => {
                     Komponenter
                   </Heading>
                   <BodyLong>
-                    Se forhåndsvisninger og kode-eksempler for alle våre
-                    komponenter.
+                    Se forhåndsvisninger og kode-eksempler for komponenter.
                   </BodyLong>
                 </ScCard>
               </NextLink>
