@@ -13,7 +13,7 @@ const Image = ({ node }: { node: PictureTextT }): JSX.Element => {
   const imageProps = useSanityImage(node);
 
   return (
-    <S.Wrapper>
+    <div>
       <S.TextImage placement={node.placement ?? "left"}>
         <NextImage
           {...imageProps}
@@ -22,10 +22,10 @@ const Image = ({ node }: { node: PictureTextT }): JSX.Element => {
           alt={node.title}
         />
       </S.TextImage>
-      <S.TextWrapper>
+      <div>
         <SanityBlockContent blocks={node.body} />
-      </S.TextWrapper>
-    </S.Wrapper>
+      </div>
+    </div>
   );
 };
 

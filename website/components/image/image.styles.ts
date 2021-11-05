@@ -15,29 +15,6 @@ export const Image = styled.button`
     outline: none;
     box-shadow: 0 0 0 3px var(--navds-color-blue-80);
   }
-
-  /* width: 100%; */
-
-  > div {
-    /*  position: unset !important; */
-  }
-
-  img {
-    @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-      image-rendering: -webkit-optimize-contrast !important;
-    }
-
-    /* Unset for Safari 11+ */
-    @media not all and (min-resolution: 0.001dpcm) {
-      @supports (-webkit-appearance: none) and (stroke-color: transparent) {
-        image-rendering: unset !important;
-      }
-    }
-    /* object-fit: contain;
-    width: 100% !important;
-    position: relative !important;
-    height: unset !important; */
-  }
 `;
 
 export const Caption = styled.figcaption`
@@ -45,15 +22,6 @@ export const Caption = styled.figcaption`
   align-self: center;
   font-style: italic;
 `;
-
-/* With text */
-
-export const Wrapper = styled.div`
-  /* display: flex;
-  flex-wrap: wrap; */
-`;
-
-export const TextWrapper = styled.div``;
 
 export const TextImage = styled.div<{ placement: "right" | "left" }>`
   background-color: #f7f7f7;
