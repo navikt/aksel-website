@@ -114,13 +114,7 @@ const ScFrontpage = styled.div`
   flex-direction: column;
 `;
 
-const Page = (props) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { setPageData } = useContext(PagePropsContext);
-  useEffect(() => {
-    setPageData({ ...props });
-  }, []);
-
+const Page = () => {
   return (
     <>
       <Head>
