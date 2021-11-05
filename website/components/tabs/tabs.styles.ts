@@ -21,7 +21,7 @@ export const Nav = styled.nav<{ isTablet: boolean }>`
     !props.isTablet &&
     `::after {
         content: "";
-        background-color: var(--navds-color-gray-20);
+        background-color: var(--navds-color-gray-10);
         height: 1px;
         width: 100%;
         bottom: 0px;
@@ -55,7 +55,7 @@ export const Ul = styled.ul<{ isTablet: boolean }>`
       props.isTablet &&
       `::after {
       content: "";
-      background-color: var(--navds-color-gray-20);
+      background-color: var(--navds-color-gray-10);
       height: 1px;
       width: fit-content;
       bottom: 0px;

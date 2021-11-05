@@ -22,6 +22,7 @@ export const Anchor = styled.button`
   opacity: 0.5;
   transition: opacity 100ms;
   align-self: flex-start;
+  margin-top: -4px;
 
   > * {
     display: flex;
