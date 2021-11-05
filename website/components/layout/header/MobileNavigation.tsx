@@ -63,13 +63,17 @@ const ScTopButton = styled(Heading)`
   color: var(--navds-color-gray-90);
   display: flex;
   align-items: center;
-  padding: 1rem;
-  gap: 1rem;
+  padding: 1rem 0.5rem;
+  gap: 0.5rem;
   border-bottom: 1px solid var(--navds-color-gray-20);
   width: 100%;
   border: none;
   background: none;
   margin-bottom: 0.5rem;
+
+  svg {
+    font-size: 1rem;
+  }
 
   :hover {
     text-decoration: underline;
@@ -106,6 +110,7 @@ const ScHamburgerButton = styled(Header.Button)<{ $open: boolean }>`
      `}
   > * {
     display: flex;
+
     /* Bug-fix where popover thinks svg inside button is not a child and thus closes it */
     pointer-events: none;
   }

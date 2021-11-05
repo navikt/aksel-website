@@ -1,5 +1,5 @@
 import { Expand, Left } from "@navikt/ds-icons";
-import { BodyShort } from "@navikt/ds-react";
+import { BodyShort, Label } from "@navikt/ds-react";
 import { Dropdown, Header } from "@navikt/ds-react-internal";
 import { motion } from "framer-motion";
 import NextLink from "next/link";
@@ -17,8 +17,7 @@ export const ScWrapper = styled.div`
 
 export const ScMenu = styled(Dropdown.Menu)`
   ${fadeInCss}
-  padding: 0;
-  padding-bottom: 0.5rem;
+  padding: 0.5rem 0;
   border: none;
   width: 300px;
   max-width: 100%;
@@ -28,6 +27,10 @@ export const ScMenu = styled(Dropdown.Menu)`
 
   > * {
     background-color: white;
+  }
+
+  > * > :nth-child(2) {
+    border-top: 1px solid var(--navds-color-gray-60);
   }
 `;
 
@@ -77,11 +80,15 @@ export const ScIconLink = styled(Dropdown.Menu.List.Item)`
   align-items: center;
   min-height: 3.25rem;
   gap: 0.5rem;
-  padding: 0rem calc(0.5rem + 1px);
-  border-bottom: 1px solid var(--navds-color-gray-60);
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
 
   svg {
     font-size: 1rem;
+  }
+
+  :hover {
+    text-decoration: underline;
   }
 `;
 
@@ -140,7 +147,7 @@ const HeadingDropDown = ({ title }: { title: string }) => {
             <NextLink href="/" passHref>
               <ScIconLink forwardedAs="a">
                 <Left aria-label="Gå til forsiden" />
-                <BodyShort>Tilbake til Verktøykassa</BodyShort>
+                <Label>Tilbake til Verktøykassa</Label>
               </ScIconLink>
             </NextLink>
             <NextLink href="/designsystem" passHref>
