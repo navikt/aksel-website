@@ -99,7 +99,7 @@ const ScFlex = styled.div`
   display: flex;
   flex-wrap: wrap-reverse;
   column-gap: 2rem;
-  justify-content: flex-start;
+  justify-content: space-between;
   width: 100%;
 `;
 
