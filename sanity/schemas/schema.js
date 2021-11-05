@@ -17,6 +17,7 @@ import designsystem_packages from "./documents/designsystem/packages";
 import designsystem_navigation, {
   ds_header_heading,
 } from "./documents/designsystem/navigation";
+import designssytem_contact from "./documents/designsystem/contact";
 /*--  God Praksis */
 import god_praksis_article_page from "./documents/god-praksis/gp-article-page";
 import god_praksis_frontpage from "./documents/god-praksis/gp-frontpage";
@@ -51,6 +52,7 @@ export default createSchema({
     designsystem_frontpage,
     designsystem_navigation,
     designsystem_packages,
+    designssytem_contact,
     ds_header_heading,
     god_praksis_article_page,
     god_praksis_frontpage,

@@ -12,6 +12,7 @@ import {
   Search,
   Picture,
   Ruler,
+  Email,
 } from "@navikt/ds-icons";
 
 export default () =>
@@ -24,6 +25,10 @@ export default () =>
           S.list()
             .title("Designsystemet")
             .items([
+              S.listItem()
+                .title("Meldinger/feedback")
+                .icon(() => <Email />)
+                .child(S.documentTypeList("ds_contact")),
               S.listItem()
                 .title("Komponenter")
                 .icon(() => <Facilitet />)
@@ -114,6 +119,7 @@ export default () =>
             "ds_article_page",
             "ds_frontpage",
             "ds_changelog",
+            "ds_contact",
             "ds_code_example",
             "ds_navigation",
             "ds_package",

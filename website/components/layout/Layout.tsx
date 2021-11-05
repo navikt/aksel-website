@@ -4,12 +4,13 @@ import Header from "./header/Header";
 import { PagePropsContext } from "../../pages/_app";
 import DesignsystemSidebar from "./sidebar/DesignsystemSidebar";
 import { useIsomorphicLayoutEffect, useMedia } from "react-use";
-import Footer from "./Footer";
+import Footer from "./footer/Footer";
 import { Feedback, RelatedPagesLink } from "..";
 import DesignsystemHeader from "./header/DesignsystemHeader";
 import GodPraksisHeader from "./header/GodPraksisHeader";
 import Sidebar from "./sidebar/Sidebar";
 import { DsNavigationHeadingT } from "../../lib";
+import DesignsystemFooter from "./footer/DesignsystemFooter";
 
 const ScWrapper = styled.div`
   display: flex;
@@ -87,11 +88,13 @@ export const LayoutParts = {
     title: "Designsystemet",
     header: DesignsystemHeader,
     sidebar: DesignsystemSidebar,
+    footer: DesignsystemFooter,
   },
   gp: {
     title: "God Praksis",
     header: GodPraksisHeader,
     sidebar: ScPlaceholderPadding,
+    footer: null,
   },
 };
 
@@ -154,7 +157,7 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
                 )} */}
             </ScMain>
             {/* {!pageProps?.preview && <Feedback docId={pageProps?.page?._id} />} */}
-            {/* <Footer /> */}
+            <Footer />
           </ScContentWrapper>
         </ScWrapper>
       </LayoutContext.Provider>

@@ -485,6 +485,43 @@ export interface DsPackage extends SanityDocument {
 }
 
 /**
+ * Meldinger
+ *
+ *
+ */
+export interface DsContact extends SanityDocument {
+  _type: "ds_contact";
+
+  /**
+   * Kommentar — `text`
+   *
+   *
+   */
+  comment?: string;
+
+  /**
+   * Mail — `string`
+   *
+   *
+   */
+  mail?: string;
+
+  /**
+   * Er medlingen håndtert? — `boolean`
+   *
+   *
+   */
+  done?: boolean;
+
+  /**
+   * Interne notater — `text`
+   *
+   * Hva gjorde vi med denne medlingen?
+   */
+  notes?: string;
+}
+
+/**
  * Artikkelside
  *
  *
@@ -1402,6 +1439,7 @@ export type Documents =
   | DsFrontpage
   | DsNavigation
   | DsPackage
+  | DsContact
   | GpArticlePage
   | GpFrontpage
   | GpSituations
