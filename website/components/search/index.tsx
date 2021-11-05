@@ -116,6 +116,8 @@ const ScOpenSearchWrapper = styled.div<{ $isTablet: boolean }>`
   margin-left: auto;
   justify-content: flex-end;
 
+  padding-left: 0.5rem;
+
   ${(props) =>
     props.$isTablet
       ? css`
