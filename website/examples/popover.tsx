@@ -140,7 +140,7 @@ export const PopoverPlacement = () => {
           setOpen(true);
         }}
         ref={selectRef}
-        label="Placement av popover"
+        label="Placement"
       >
         {placements?.map((placement) => (
           <option key={placement} value={placement}>
