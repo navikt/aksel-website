@@ -49,10 +49,6 @@ function App({
     setPageData(pageProps);
   }, []);
 
-  useEffect(() => {
-    slugger.reset();
-  });
-
   if (Component && router?.asPath.startsWith("/examples")) {
     return (
       <AmplitudeProvider>

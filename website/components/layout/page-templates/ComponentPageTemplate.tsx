@@ -2,7 +2,7 @@ import { ExternalLink } from "@navikt/ds-icons";
 import { BodyShort, Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useMedia } from "react-use";
 import styled from "styled-components";
 import {
@@ -10,6 +10,7 @@ import {
   CodeExample,
   LastUpdateTag,
   LevelTwoHeading,
+  slugger,
   StatusTag,
   Tab,
   TableOfContents,
@@ -132,6 +133,10 @@ const ComponentPageTemplate = ({
       ],
     };
 
+  useEffect(() => {
+    slugger.reset();
+  });
+
   return (
     <>
       <Head>
@@ -197,7 +202,7 @@ const ComponentPageTemplate = ({
         )}
       </Tabs>
       <S.SanityBlockContainer>
-        <TableOfContents changedState={query.slug} />
+        <TableOfContents changedState={data[tabs[activeTab]]} />
         <S.MaxWidthContainer>
           {activeTab === "utvikling" && installSnippetTabs && (
             <MarginTop>

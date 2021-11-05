@@ -1,6 +1,6 @@
 import { Heading } from "@navikt/ds-react";
-import React, { useContext } from "react";
-import { LastUpdateTag, StatusTag, TableOfContents } from "../..";
+import React, { useContext, useEffect } from "react";
+import { LastUpdateTag, slugger, StatusTag, TableOfContents } from "../..";
 import { DsArticlePage, GpArticlePage } from "../../../lib/autogen-types";
 import Head from "next/head";
 import { SanityBlockContent } from "../../SanityBlockContent";
@@ -13,6 +13,10 @@ const ActiclePageTemplate = ({
   data: GpArticlePage | DsArticlePage;
 }): JSX.Element => {
   const { version } = useContext(LayoutContext);
+
+  useEffect(() => {
+    slugger.reset();
+  });
 
   if (!data.body || !data.heading || !data.status) {
     return null;

@@ -12,7 +12,7 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
 
   React.useLayoutEffect(() => {
     const main = document.getElementsByTagName("main")?.[0];
-    const tags = main.getElementsByTagName("h2");
+    const tags = main?.getElementsByTagName("h2");
     if (!tags) return;
     const toc = [];
     for (const item of tags) {

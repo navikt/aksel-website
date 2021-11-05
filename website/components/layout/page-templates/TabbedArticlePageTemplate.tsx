@@ -1,7 +1,7 @@
 import { Heading } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   LastUpdateTag,
   StatusTag,
@@ -9,6 +9,7 @@ import {
   Tab,
   Tabs,
   LayoutContext,
+  slugger,
 } from "../..";
 import { DsTabbedArticlePage } from "../../../lib/autogen-types";
 import { SanityBlockContent } from "../../SanityBlockContent";
@@ -22,6 +23,10 @@ const TabbedActiclePageTemplate = ({
 }): JSX.Element => {
   const { query } = useRouter();
   const { version } = useContext(LayoutContext);
+
+  useEffect(() => {
+    slugger.reset();
+  });
 
   if (!data.tabs || !data.heading || !data.status) {
     return null;
