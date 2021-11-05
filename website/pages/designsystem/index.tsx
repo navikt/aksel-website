@@ -166,7 +166,7 @@ const Page = () => {
                 Designsystemet
                 <ScBodyShort>Beta</ScBodyShort>
               </ScHeading>
-              <BodyLong>Gjør det enkelt å lage produkter i NAV</BodyLong>
+              <BodyLong>Gjør det enklere å lage produkter i NAV</BodyLong>
             </ScTitle>
           </ScFlexReverse>
           <ScFlex>

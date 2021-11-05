@@ -34,7 +34,8 @@ const ScLogoWrapper = styled.div`
 
 const ScInner = styled.div`
   display: flex;
-  gap: 3rem;
+  row-gap: 3rem;
+  column-gap: 8rem;
   flex-wrap: wrap;
 
   > * {
