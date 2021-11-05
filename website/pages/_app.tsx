@@ -6,7 +6,6 @@ import styled from "styled-components";
 import {
   AmplitudeProvider,
   Layout,
-  slugger,
   useScrollToHashOnPageLoad,
 } from "../components";
 import "../styles/index.css";

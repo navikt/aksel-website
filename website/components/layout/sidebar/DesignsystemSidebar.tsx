@@ -5,7 +5,7 @@ import { LayoutContext, LayoutContextProps } from "../Layout";
 import Menu from "../menu/DesignsystemMenu";
 
 const Wrapper = styled.div<{ context: LayoutContextProps }>`
-  width: 250px;
+  width: var(--sidebar-max-width);
   padding: var(--navds-spacing-8) 0;
   position: relative;
   flex-shrink: 0;

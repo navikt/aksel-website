@@ -42,7 +42,7 @@ const LevelTwoHeading = ({
 
   return (
     <>
-      <div>
+      <S.HeadingWrapper>
         <S.TitleWithScrollMargin id={slug} spacing level={2} size="large">
           {cleanedChildren}
         </S.TitleWithScrollMargin>
@@ -55,7 +55,7 @@ const LevelTwoHeading = ({
             <LinkIcon aria-label="Ankerlenke" />
           </span>
         </S.Anchor>
-      </div>
+      </S.HeadingWrapper>
 
       <Popover
         anchorEl={anchorRef.current}

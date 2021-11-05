@@ -17,9 +17,11 @@ export const ScWrapper = styled.div`
 
 export const ScMenu = styled(Dropdown.Menu)`
   ${fadeInCss}
-  padding: 0.5rem 0;
+  padding: 0;
+  padding-bottom: 0.5rem;
   border: none;
   width: 300px;
+  max-width: 100%;
   z-index: 1003;
   box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
     0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
@@ -51,7 +53,7 @@ export const ScLinkCss = css`
 export const ScLink = styled(Dropdown.Menu.List.Item)`
   ${ScLinkCss}
   flex-direction: column;
-  padding: 0.75rem 1rem 0.5rem 1rem;
+  padding: 0.75rem 1rem 0.5rem 2rem;
   align-items: flex-start;
 
   &[data-active="true"] {
@@ -62,19 +64,34 @@ export const ScLink = styled(Dropdown.Menu.List.Item)`
       font-weight: 600;
     }
   }
+  :focus {
+    box-shadow: inset 0 0 0 3px var(--navds-color-blue-80);
+    z-index: 2;
+    outline: none;
+  }
 `;
 
 export const ScIconLink = styled(Dropdown.Menu.List.Item)`
   ${ScLinkCss}
   flex-direction: row;
-  justify-content: center;
   align-items: center;
-  gap: 1rem;
-  padding: 0.25rem 1rem;
+  min-height: 3.25rem;
+  gap: 0.5rem;
+  padding: 0rem calc(0.5rem + 1px);
   border-bottom: 1px solid var(--navds-color-gray-60);
+
+  svg {
+    font-size: 1rem;
+  }
 `;
 
 const ScToggle = styled(Header.Button)`
+  min-width: 240px;
+
+  @media (max-width: 564px) {
+    min-width: unset;
+  }
+
   > span {
     margin-top: 4px;
     display: flex;

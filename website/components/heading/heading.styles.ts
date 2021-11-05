@@ -44,3 +44,7 @@ export const Anchor = styled.button`
     background-color: var(--navds-color-blue-20);
   }
 `;
+
+export const HeadingWrapper = styled.div`
+  display: inline-flex;
+`;
