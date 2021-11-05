@@ -67,7 +67,7 @@ export const Buttons = styled.div`
 export const Heading = styled(DsHeading)`
   opacity: 1;
   transition: opacity 400ms;
-
+  margin-right: auto;
   &[aria-hidden="true"] {
     opacity: 0;
     pointer-events: none;
