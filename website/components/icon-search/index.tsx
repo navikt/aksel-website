@@ -10,12 +10,16 @@ import { categorizeIcons, CategoryT, IconMetaT } from "./iconCategories";
 import ModalContent from "./ModalContent";
 import { LayoutContext } from "..";
 
-const ScIconSearch = styled.div<{ $isTablet: boolean }>`
+const ScIconSearch = styled.div`
   display: flex;
   flex-direction: column;
-  ${(props) =>
-    props.$isTablet ? `width: 100%;` : `width: 864px; max-width: 62vw;`};
   position: relative;
+  width: 864px;
+  max-width: 62vw;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const ScIcons = styled.div`
@@ -208,7 +212,7 @@ const IconSearch = () => {
   const categories: CategoryT[] = categorizeIcons(visibleIcons);
 
   return (
-    <ScIconSearch $isTablet={context.isTablet}>
+    <ScIconSearch>
       <ScFlex>
         <Filter onFilterChange={handleFilterChange} />
         <DownloadButtons />

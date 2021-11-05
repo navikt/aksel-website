@@ -5,14 +5,13 @@ import algoliasearch from "algoliasearch/lite";
 import React, {
   createContext,
   useCallback,
-  useContext,
   useEffect,
   useRef,
   useState,
 } from "react";
 import { useClickAway, useEvent, useKey } from "react-use";
 import styled, { css } from "styled-components";
-import { expandKeyframes, fadeInCss, LayoutContext } from "..";
+import { expandKeyframes, fadeInCss } from "..";
 import Hits from "./Hits";
 
 const searchClient = algoliasearch(
@@ -109,7 +108,7 @@ const ScSearchIcon = styled.div`
   z-index: 1;
 `;
 
-const ScOpenSearchWrapper = styled.div<{ $isTablet: boolean }>`
+const ScOpenSearchWrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
@@ -118,21 +117,16 @@ const ScOpenSearchWrapper = styled.div<{ $isTablet: boolean }>`
 
   padding-left: 0.5rem;
 
-  ${(props) =>
-    props.$isTablet
-      ? css`
-          animation: ${expandKeyframes(true)} 0.2s
-            cubic-bezier(0.215, 0.61, 0.355, 1);
-          width: 100%;
-        `
-      : css`
-          animation: ${expandKeyframes(false)} 0.2s
-            cubic-bezier(0.215, 0.61, 0.355, 1);
-          width: 500px;
-        `}
+  animation: ${expandKeyframes(false)} 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  width: 500px;
+
+  @media (max-width: 768px) {
+    animation: ${expandKeyframes(true)} 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    width: 100%;
+  }
 `;
 
-const ScTextField = styled(TextField)<{ $tablet: boolean }>`
+const ScTextField = styled(TextField)`
   width: 100%;
   z-index: 0;
 
@@ -173,7 +167,6 @@ interface SearchContextProps {
 export const SearchContext = createContext<SearchContextProps>(null);
 
 const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
-  const context = useContext(LayoutContext);
   const searchIndex = useRef(null);
   const [open, setOpen] = useState(false);
   const anchor = useRef(null);
@@ -224,7 +217,7 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
   return (
     <ScSearch role="search" ref={searchRef} $open={open}>
       {open && (
-        <ScOpenSearchWrapper $isTablet={context.isTablet}>
+        <ScOpenSearchWrapper>
           <ScSearchIcon>
             <SearchIcon
               style={{ fontSize: "1.5rem", marginLeft: 3 }}
@@ -235,7 +228,6 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
           </ScSearchIcon>
           <ScTextField
             placeholder="Søk"
-            $tablet={context.isTablet}
             ref={anchor}
             hideLabel
             label="Søk"

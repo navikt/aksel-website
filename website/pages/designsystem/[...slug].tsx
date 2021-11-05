@@ -26,7 +26,7 @@ const PagePicker = (props: {
   changelogs?: DsChangelog[];
 }): JSX.Element => {
   const router = useRouter();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const { pageProps, setPageData } = useContext(PagePropsContext);
 
   const [isPreview, setIsPreview] = useState(false);

@@ -131,6 +131,10 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
     return null;
   }
 
+  if (pageProps.noLayout) {
+    return <>{children}</>;
+  }
+
   return (
     <>
       <ScSkipLink href="#hovedinnhold" tab-index={-1}>

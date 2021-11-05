@@ -12,16 +12,17 @@ import MobileNavigation from "./MobileNavigation";
 import PortalNavigation from "./PortalNavigation";
 
 const DesignsystemHeader = (): JSX.Element => {
+  const { pageProps } = useContext(PagePropsContext);
   const context = useContext(LayoutContext);
   const useMobileHeader = useMedia("(max-width: 1023px)");
 
-  const { pageProps } = useContext(PagePropsContext);
-
   const [searchisOpen, setSearchisOpen] = useState(false);
 
+  const title = context ? LayoutParts[context.version].title : "Designsystemet";
+  console.log(pageProps);
   const nonMobile = (
     <>
-      <PortalNavigation title={LayoutParts[context.version].title ?? ""} />
+      <PortalNavigation title={title} />
 
       {!searchisOpen && (
         <S.Links
@@ -32,7 +33,7 @@ const DesignsystemHeader = (): JSX.Element => {
           transition={{ type: "tween", duration: 0.2 }}
           exit={{ opacity: 0 }}
         >
-          {pageProps?.navigation.headings.map(
+          {pageProps?.navigation?.headings.map(
             (heading: DsNavigationHeadingT) => (
               <NextLink
                 key={heading.title + heading.link_ref}
@@ -43,7 +44,11 @@ const DesignsystemHeader = (): JSX.Element => {
                 passHref
               >
                 <S.Link
-                  data-active={context?.activeHeading?.title === heading.title}
+                  data-active={
+                    context
+                      ? context?.activeHeading?.title === heading.title
+                      : false
+                  }
                 >
                   {heading.title}
                 </S.Link>
@@ -65,9 +70,7 @@ const DesignsystemHeader = (): JSX.Element => {
 
   const mobile = (
     <>
-      {!searchisOpen && (
-        <PortalNavigation title={LayoutParts[context.version].title ?? ""} />
-      )}
+      {!searchisOpen && <PortalNavigation title={title} />}
       <Search isOpen={(v: boolean) => setSearchisOpen(v)} />
       <MobileNavigation />
     </>

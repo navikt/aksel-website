@@ -1,7 +1,3 @@
-import React, { useContext, useState } from "react";
-import styled, { css } from "styled-components";
-import { LayoutContextProps, LayoutContext } from "../Layout";
-import { NavLogoWhite } from "../..";
 import {
   BodyLong,
   BodyShort,
@@ -13,12 +9,21 @@ import {
   TextField,
 } from "@navikt/ds-react";
 import NextLink from "next/link";
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
+import isEmail from "validator/lib/isEmail";
+import isEmpty from "validator/lib/isEmpty";
+import { NavLogoWhite } from "../..";
 
-const ScFooter = styled.footer<{ context: LayoutContextProps }>`
+const ScFooter = styled.footer`
   width: 100%;
   background-color: var(--navds-color-gray-90);
-  padding: ${(props) => (props.context.isTablet ? "1.5rem" : "3rem")};
   color: white;
+  padding: 3rem;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
 `;
 
 const ScLogoWrapper = styled.div`
@@ -105,20 +110,33 @@ const ScTextField = styled(TextField)`
 `;
 
 const DesignsystemFooter = () => {
-  const context = useContext(LayoutContext);
-
   const [contactForm, setContactForm] = useState({ content: "", mail: "" });
 
-  const [contentError, setContentError] = useState("");
+  const [contentError, setContentError] = useState({ content: "", mail: "" });
   const [sent, setSent] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (contactForm.content === "") {
-      setContentError("Du må skrive en melding før du kan sende den.");
-      return;
+    let fail = false;
+    if (isEmpty(contactForm.content, { ignore_whitespace: true })) {
+      setContentError({
+        ...contentError,
+        content: "Melding kan ikke være tom. Fyll inn meldingen.",
+      });
+      fail = true;
     }
-    setContentError("");
+    if (
+      !isEmpty(contactForm.mail, { ignore_whitespace: true }) &&
+      !isEmail(contactForm.mail)
+    ) {
+      setContentError({
+        ...contentError,
+        mail: "Email ikke gyldig.",
+      });
+      fail = true;
+    }
+    if (fail) return;
+    setContentError({ content: "", mail: "" });
 
     fetch("/api/dsContact", {
       method: "POST",
@@ -133,7 +151,7 @@ const DesignsystemFooter = () => {
   };
 
   return (
-    <ScFooter context={context}>
+    <ScFooter>
       <ScInner>
         <div>
           <ScLogoWrapper>
@@ -175,21 +193,27 @@ const DesignsystemFooter = () => {
                 hideLegend
               >
                 <ScTextarea
-                  error={contentError}
+                  error={contentError.content}
                   label="Skriv til oss"
                   value={contactForm.content}
                   onChange={(e) => {
                     setContactForm({ ...contactForm, content: e.target.value });
-                    e.target.value && setContentError("");
+                    e.target.value &&
+                      !isEmpty(e.target.value, { ignore_whitespace: true }) &&
+                      setContentError({ ...contentError, content: "" });
                   }}
                   maxLength={500}
                 />
                 <ScTextField
                   label="Vi svarer til e-post (ikke påkrevd)"
+                  error={contentError.mail}
                   value={contactForm.mail}
-                  onChange={(e) =>
-                    setContactForm({ ...contactForm, mail: e.target.value })
-                  }
+                  onChange={(e) => {
+                    setContactForm({ ...contactForm, mail: e.target.value });
+                    e.target.value &&
+                      isEmail(e.target.value) &&
+                      setContentError({ ...contentError, mail: "" });
+                  }}
                 />
               </ScFieldset>
               <Button>Send melding</Button>

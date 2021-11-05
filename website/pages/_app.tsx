@@ -46,7 +46,7 @@ function App({
 
   useEffect(() => {
     setPageData(pageProps);
-  }, []);
+  }, [pageProps]);
 
   if (Component && router?.asPath.startsWith("/examples")) {
     return (

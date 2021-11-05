@@ -114,11 +114,11 @@ const ScFrontpage = styled.div`
   flex-direction: column;
 `;
 
-const Page = () => {
+const Page = (props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { setPageData } = useContext(PagePropsContext);
   useEffect(() => {
-    setPageData({});
+    setPageData({ ...props });
   }, []);
 
   return (
@@ -165,7 +165,7 @@ const Page = () => {
 
 export const getStaticProps = async () => {
   return {
-    props: { slug: "/", validPath: true, isDraft: false },
+    props: { slug: "/", validPath: true, isDraft: false, noLayout: true },
   };
 };
 

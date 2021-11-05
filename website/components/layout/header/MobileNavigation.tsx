@@ -9,15 +9,18 @@ import { PagePropsContext } from "../../../pages/_app";
 import { LayoutContext } from "../Layout";
 import Menu from "../menu/DesignsystemMenu";
 
-const ScMenu = styled(Dropdown.Menu)<{ $isMobile: boolean }>`
+const ScMenu = styled(Dropdown.Menu)`
   border: none;
   width: 300px;
   z-index: 1003;
   position: sticky;
   box-shadow: 0 0 10px 0 rgba(24, 39, 75, 0.1), 0 0 6px 0 rgba(24, 39, 75, 0.12);
-  ${(props) => props.$isMobile && `width: 100%;`}
   background-color: transparent;
   padding: 0;
+
+  @media (max-width: 564px) {
+    width: 100%;
+  }
 
   ul,
   li {
@@ -120,11 +123,11 @@ const MobileNavigation = () => {
   const context = useContext(LayoutContext);
   const { pageProps } = useContext<any>(PagePropsContext);
   const [openHamb, setOpenHamb] = useState(false);
-  const [heading, setHeading] = useState(context.activeHeading);
+  const [heading, setHeading] = useState(context?.activeHeading);
   const [isHeadingMenu, setIsHeadingMenu] = useState(true);
 
   useEffect(() => {
-    setHeading(context.activeHeading);
+    context?.activeHeading && setHeading(context.activeHeading);
   }, [context?.activeHeading]);
 
   return (
@@ -143,7 +146,6 @@ const MobileNavigation = () => {
         </span>
       </ScHamburgerButton>
       <ScMenu
-        $isMobile={context.isMobile}
         onClose={() => {
           setOpenHamb(false);
         }}
@@ -164,14 +166,18 @@ const MobileNavigation = () => {
                 {pageProps?.navigation.headings.map(
                   (heading: DsNavigationHeadingT) => (
                     <ScListItem
-                      key={heading.title}
-                      $active={context?.activeHeading?.title === heading.title}
+                      key={heading._key}
+                      $active={
+                        context
+                          ? context?.activeHeading?.title === heading.title
+                          : false
+                      }
                       onClick={() => {
                         setHeading(heading);
                         setIsHeadingMenu(false);
                       }}
                     >
-                      {heading.title}
+                      {heading?.title}
                     </ScListItem>
                   )
                 )}
@@ -188,7 +194,7 @@ const MobileNavigation = () => {
                     size="xsmall"
                   >
                     <Left />
-                    {context?.activeHeading?.title}
+                    {heading?.title}
                   </ScTopButton>
                 </ScTopDiv>
                 <ScMenuScroll>

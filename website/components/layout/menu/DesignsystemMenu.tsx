@@ -65,7 +65,7 @@ const Menu = ({
   }, [heading]);
 
   return (
-    <ScNav aria-label={heading.title}>
+    <ScNav aria-label="mobilmeny">
       <BodyShort as="ul">
         {sidebarMenu.map((item) => (
           <li key={item.title}>
@@ -74,7 +74,11 @@ const Menu = ({
                 onClick={() => {
                   onClick && onClick();
                 }}
-                active={pageProps.page.slug === item.link.slug.current}
+                active={
+                  pageProps?.page
+                    ? pageProps.page.slug === item.link.slug.current
+                    : false
+                }
               >
                 {item.title}
               </ScLink>

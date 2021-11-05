@@ -6,6 +6,10 @@ import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { NAVLogoDark } from "../../components";
 import { PagePropsContext } from "../_app";
+import DesignsystemFooter from "../../components/layout/footer/DesignsystemFooter";
+import { getClient, dsNavigationQuery } from "../../lib";
+import { DsNavigation } from "../../lib/autogen-types";
+import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
 
 const ScIntro = styled.div`
   margin: 0 auto;
@@ -118,75 +122,84 @@ const ScFrontpage = styled.div`
 `;
 
 const Page = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { setPageData } = useContext(PagePropsContext);
-  useEffect(() => {
-    setPageData({});
-  }, []);
-
   return (
     <>
       <Head>
         <title>Designsystemet</title>
         <meta property="og:title" content="Designsystemet NAV" />
       </Head>
-      <ScFrontpage>
-        <ScIntro>
-          <ScLogoWrapper>
-            <NAVLogoDark />
-          </ScLogoWrapper>
-          <Heading spacing level="1" size="2xlarge">
-            Designsystemet v2 BETA
-          </Heading>
-          <Ingress>
-            Dokumentasjon for komponenter, ressurser, guider og alt som skal til
-            for å komme i gang med design og utvikling av frontend-løsninger i
-            NAV.
-          </Ingress>
-        </ScIntro>
+      <div>
+        <DesignsystemHeader />
+        <ScFrontpage>
+          <ScIntro>
+            <ScLogoWrapper>
+              <NAVLogoDark />
+            </ScLogoWrapper>
+            <Heading spacing level="1" size="2xlarge">
+              Designsystemet v2 BETA
+            </Heading>
+            <Ingress>
+              Dokumentasjon for komponenter, ressurser, guider og alt som skal
+              til for å komme i gang med design og utvikling av
+              frontend-løsninger i NAV.
+            </Ingress>
+          </ScIntro>
 
-        <ScNav aria-label="Side navigasjon">
-          <ScOl>
-            <li>
-              <NextLink passHref href="/designsystem/side/oversikt-komponenter">
-                <ScCard>
-                  <ScBeta>BETA</ScBeta>
-                  <ScIcon className="card__icon">
-                    <Facilitet aria-hidden aria-label="pusslebrikke ikon" />
-                  </ScIcon>
-                  <Heading spacing level="2" size="medium" as="span">
-                    Komponenter
-                  </Heading>
-                  <ScBodyLong>Dokumentasjon for nye komponenter</ScBodyLong>
-                </ScCard>
-              </NextLink>
-            </li>
-            <li>
-              <NextLink passHref href="/designsystem/side/ikoner/ikonsøk">
-                <ScCard>
-                  <ScBeta>BETA</ScBeta>
-                  <ScIcon className="card__icon">
-                    <Search aria-hidden aria-label="søk-ikon" />
-                  </ScIcon>
-                  <Heading spacing level="2" size="medium" as="span">
-                    Ikonsøk
-                  </Heading>
-                  <ScBodyLong>
-                    Se gjennom alle NAV sine publiserte ikoner
-                  </ScBodyLong>
-                </ScCard>
-              </NextLink>
-            </li>
-          </ScOl>
-        </ScNav>
-      </ScFrontpage>
+          <ScNav aria-label="Side navigasjon">
+            <ScOl>
+              <li>
+                <NextLink
+                  passHref
+                  href="/designsystem/side/oversikt-komponenter"
+                >
+                  <ScCard>
+                    <ScBeta>BETA</ScBeta>
+                    <ScIcon className="card__icon">
+                      <Facilitet aria-hidden aria-label="pusslebrikke ikon" />
+                    </ScIcon>
+                    <Heading spacing level="2" size="medium" as="span">
+                      Komponenter
+                    </Heading>
+                    <ScBodyLong>Dokumentasjon for nye komponenter</ScBodyLong>
+                  </ScCard>
+                </NextLink>
+              </li>
+              <li>
+                <NextLink passHref href="/designsystem/side/ikoner/ikonsøk">
+                  <ScCard>
+                    <ScBeta>BETA</ScBeta>
+                    <ScIcon className="card__icon">
+                      <Search aria-hidden aria-label="søk-ikon" />
+                    </ScIcon>
+                    <Heading spacing level="2" size="medium" as="span">
+                      Ikonsøk
+                    </Heading>
+                    <ScBodyLong>
+                      Se gjennom alle NAV sine publiserte ikoner
+                    </ScBodyLong>
+                  </ScCard>
+                </NextLink>
+              </li>
+            </ScOl>
+          </ScNav>
+        </ScFrontpage>
+        <DesignsystemFooter />
+      </div>
     </>
   );
 };
 
 export const getStaticProps = async () => {
+  const navigation = await getClient(false).fetch(dsNavigationQuery);
+
   return {
-    props: { slug: "/designsystem", validPath: true, isDraft: false },
+    props: {
+      slug: "/designsystem",
+      validPath: true,
+      isDraft: false,
+      navigation,
+      noLayout: true,
+    },
   };
 };
 
