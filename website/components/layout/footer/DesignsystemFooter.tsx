@@ -30,16 +30,19 @@ const ScLogoWrapper = styled.div`
   font-size: 1.5rem;
   display: inline-flex;
   align-items: center;
+  height: 48px;
 `;
 
 const ScInner = styled.div`
   display: flex;
   row-gap: 3rem;
-  column-gap: 8rem;
+  column-gap: 2rem;
   flex-wrap: wrap;
+  justify-content: space-between;
 
   > * {
-    flex: 1 1 350px;
+    max-width: 500px;
+    flex: 1 1 400px;
   }
 `;
 
@@ -47,19 +50,10 @@ const ScRightColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  max-width: 608px;
 
   form {
     max-width: 350px;
-    button {
-      --navds-button-color-primary-background: var(--navds-color-blue-30);
-      --navds-button-color-primary-background-hover: var(--navds-color-blue-40);
-      --navds-button-color-primary-background-active: var(
-        --navds-color-deepblue-40
-      );
-      --navds-button-color-primary-text: var(--navds-color-gray-90);
-      --navds-shadow-focus: 0 0 0 2px var(--navds-color-blue-10);
-      --navds-button-color-primary-border-focus: var(--navds-color-blue-10);
-    }
   }
 
   a {
@@ -70,6 +64,17 @@ const ScRightColumn = styled.div`
       color: var(--navds-color-gray-90);
     }
   }
+`;
+
+const ScPrimaryButton = styled(Button)`
+  --navds-button-color-primary-background: var(--navds-color-blue-30);
+  --navds-button-color-primary-background-hover: var(--navds-color-blue-40);
+  --navds-button-color-primary-background-active: var(
+    --navds-color-deepblue-40
+  );
+  --navds-button-color-primary-text: var(--navds-color-gray-90);
+  --navds-shadow-focus: 0 0 0 2px var(--navds-color-blue-10);
+  --navds-button-color-primary-border-focus: var(--navds-color-blue-10);
 `;
 
 const ScFieldset = styled(Fieldset)`
@@ -217,7 +222,7 @@ const DesignsystemFooter = () => {
                   }}
                 />
               </ScFieldset>
-              <Button>Send melding</Button>
+              <ScPrimaryButton>Send melding</ScPrimaryButton>
             </form>
           )}
         </ScRightColumn>

@@ -102,8 +102,6 @@ const ScIllustration = styled.div`
   opacity: 0.1;
   display: none;
 
-  /* max-width: 600px; */
-
   svg {
     height: calc(100% - 7px);
     max-width: 100%;
@@ -113,6 +111,7 @@ const ScIllustration = styled.div`
 const ScDescriptionWrapper = styled.div`
   padding: 4rem 3rem;
   max-width: 600px;
+  flex: 1 1 400px;
 
   @media (max-width: 564px) {
     padding: 3rem 1rem;
@@ -170,7 +169,10 @@ const Page = () => {
                 Designsystemet
                 <ScBodyShort>Beta</ScBodyShort>
               </ScHeading>
-              <BodyLong>Gjør det enklere å lage produkter i NAV</BodyLong>
+              <BodyLong>
+                Gjør det enklere å komme i gang med utvikling og design for NAVs
+                produkter.
+              </BodyLong>
             </ScTitle>
           </ScFlexReverse>
           <ScFlex>
