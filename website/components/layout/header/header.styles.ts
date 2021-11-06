@@ -3,7 +3,7 @@ import { Header as DsHeader } from "@navikt/ds-react-internal";
 import styled, { css } from "styled-components";
 
 export const Header = styled(DsHeader)`
-  height: 64px;
+  height: var(--header-height);
   position: relative;
 `;
 
@@ -20,7 +20,7 @@ export const Link = styled(DsHeader.Title)<{ $active: boolean }>`
   padding: 0 var(--navds-spacing-2);
   white-space: nowrap;
   border-right: none;
-  min-width: 64px;
+  min-width: var(--header-height);
   justify-content: center;
   align-items: center;
   padding-top: 4px;
@@ -58,8 +58,8 @@ export const HeaderItem = css<{ $isTablet: boolean }>`
   color: white;
   column-gap: 0.5rem;
   height: 100%;
-  min-height: 64px;
-  min-width: 64px;
+  min-height: var(--header-height);
+  min-width: var(--header-height);
   justify-content: center;
 
   > * {
@@ -101,7 +101,7 @@ export const LinkCss = css`
 `;
 
 export const DropdownButton = styled.button`
-  min-width: 64px;
+  min-width: var(--header-height);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,7 +113,7 @@ export const MobileMenu = styled(Popover)`
   padding: 1rem;
   border: none;
   overflow-y: scroll;
-  height: calc(100vh - 64px);
+  height: calc(100vh - var(--header-height));
   width: 600px;
   max-width: 100%;
   box-shadow: none;
@@ -121,7 +121,7 @@ export const MobileMenu = styled(Popover)`
 `;
 
 export const MenuOverlay = styled.div<{ $open: boolean }>`
-  top: 64px;
+  top: var(--header-height);
   height: 100%;
   width: 100%;
   position: absolute;

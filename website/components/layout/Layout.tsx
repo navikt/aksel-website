@@ -65,7 +65,7 @@ const ScGrow = styled.div`
   margin-bottom: auto;
 `;
 
-const ScSkipLink = styled.a`
+export const ScSkipLink = styled.a`
   background: var(--navds-color-deepblue-80);
   color: white;
   left: 0;

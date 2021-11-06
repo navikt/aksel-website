@@ -19,7 +19,6 @@ const DesignsystemHeader = (): JSX.Element => {
   const [searchisOpen, setSearchisOpen] = useState(false);
 
   const title = context ? LayoutParts[context.version].title : "Designsystemet";
-  console.log(pageProps);
   const nonMobile = (
     <>
       <PortalNavigation title={title} />

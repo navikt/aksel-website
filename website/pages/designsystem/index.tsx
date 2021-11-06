@@ -1,4 +1,3 @@
-import { Facilitet } from "@navikt/ds-icons";
 import { BodyLong, BodyShort, Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
@@ -11,6 +10,7 @@ import {
 } from "../../components/assets/pictograms";
 import DesignsystemFooter from "../../components/layout/footer/DesignsystemFooter";
 import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
+import { ScSkipLink } from "../../components/layout/Layout";
 import { dsNavigationQuery, getClient } from "../../lib";
 
 const ScCard = styled.a`
@@ -38,6 +38,7 @@ const ScCard = styled.a`
   :focus {
     border-color: var(--navds-color-text-focus);
     outline: none;
+    box-shadow: 0 0 0 3px var(--navds-color-blue-80);
   }
 
   h2 {
@@ -60,11 +61,12 @@ const ScIcon = styled.div`
   }
 `;
 
-const ScFrontpage = styled.div`
+const ScFrontpage = styled.main`
   min-height: calc(100vh - var(--header-height));
   width: 100%;
   display: flex;
   flex-direction: column;
+  background-color: white;
 `;
 
 const ScFlex = styled.div`
@@ -154,9 +156,11 @@ const Page = () => {
         <meta property="og:title" content="Designsystemet NAV" />
       </Head>
       <div>
+        <ScSkipLink href="#hovedinnhold" tab-index={-1}>
+          Hopp til innhold
+        </ScSkipLink>
         <DesignsystemHeader />
-
-        <ScFrontpage>
+        <ScFrontpage tabIndex={-1} id="hovedinnhold">
           <ScFlexReverse>
             <ScIllustration>
               <DsFrontpageIllustration />
