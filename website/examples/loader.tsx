@@ -26,19 +26,30 @@ LoaderAllSizes.react = `<Loader size="2xlarge" />
 <Loader size="small" />
 <Loader size="xsmall" />`;
 
-export const LoaderAllVariants = () => (
-  <div>
+export const LoaderNeutral = () => (
+  <>
     <Loader size="2xlarge" variant="neutral" />
-    <Loader size="2xlarge" variant="interaction" />
-    <Loader size="2xlarge" variant="inverted" />
-  </div>
+  </>
 );
 
-LoaderAllVariants.react = `<Loader size="2xlarge" variant="neutral" />
-<Loader size="2xlarge" variant="interaction" />
-<Loader size="2xlarge" variant="inverted" />`;
+LoaderNeutral.react = `<Loader size="2xlarge" variant="neutral" />`;
 
-LoaderAllVariants.inverted = true;
+export const LoaderInteraction = () => (
+  <>
+    <Loader size="2xlarge" variant="interaction" />
+  </>
+);
+
+LoaderInteraction.react = `<Loader size="2xlarge" variant="interaction" />`;
+
+export const LoaderInverted = () => (
+  <>
+    <Loader size="2xlarge" variant="inverted" />
+  </>
+);
+
+LoaderInverted.react = `<Loader size="2xlarge" variant="inverted" />`;
+LoaderInverted.inverted = true;
 
 export const LoaderTransparent = () => (
   <>
