@@ -33,9 +33,12 @@ export const LoaderAllVariants = () => (
     <Loader size="2xlarge" variant="inverted" />
   </div>
 );
+
 LoaderAllVariants.react = `<Loader size="2xlarge" variant="neutral" />
 <Loader size="2xlarge" variant="interaction" />
 <Loader size="2xlarge" variant="inverted" />`;
+
+LoaderAllVariants.inverted = true;
 
 export const LoaderTransparent = () => (
   <>

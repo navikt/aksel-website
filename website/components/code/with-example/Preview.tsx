@@ -48,6 +48,10 @@ const ScInnerDiv = styled.div`
   display: inline-flex;
   flex-wrap: wrap;
   width: 100%;
+
+  &[data-inverted="true"] {
+    background-color: var(--navds-color-gray-90);
+  }
 `;
 
 const CodePreview = (): JSX.Element => {
@@ -56,6 +60,7 @@ const CodePreview = (): JSX.Element => {
   const [url, setUrl] = useState<string>();
   const id = useId();
   const [wrapperRef, setWrapperRef] = useState(null);
+  const [inverted, setInverted] = useState(false);
 
   useEffect(() => {
     const url = node.preview.split("/examples/")?.[1];
@@ -71,6 +76,8 @@ const CodePreview = (): JSX.Element => {
     const newTabs = [];
     // {react?: string, html?: string}
     const { ...rest }: any = CodeExample(url);
+
+    rest?.inverted && setInverted(true);
 
     rest?.react &&
       newTabs.push({
@@ -105,7 +112,7 @@ const CodePreview = (): JSX.Element => {
     <>
       {Comp && (
         <ScDiv>
-          <ScInnerDiv ref={setWrapperRef}>
+          <ScInnerDiv data-inverted={inverted} ref={setWrapperRef}>
             <Comp />
           </ScInnerDiv>
         </ScDiv>
