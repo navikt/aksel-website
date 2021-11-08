@@ -7,10 +7,21 @@ import {
   Label,
   Ingress,
 } from "@navikt/ds-react";
+import styled from "styled-components";
+
+const ScColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const ScMutedHeading = styled(Heading)`
+  color: var(--navds-color-gray-60);
+`;
 
 export const TypographyHeading = () => {
   return (
-    <>
+    <ScColumn>
       <Heading spacing size="2xlarge" level="1">
         Heading 2xlarge
       </Heading>
@@ -29,7 +40,7 @@ export const TypographyHeading = () => {
       <Heading size="xsmall" level="6">
         Heading xsmall
       </Heading>
-    </>
+    </ScColumn>
   );
 };
 
@@ -54,10 +65,10 @@ Heading xsmall
 
 export const TypographyBodyLong = () => {
   return (
-    <>
-      <Heading size="medium" level="3">
+    <ScColumn>
+      <ScMutedHeading size="medium" level="3">
         Medium
-      </Heading>
+      </ScMutedHeading>
       <BodyLong spacing>
         Ullamco ut laboris irure excepteur velit nisi occaecat proident. Amet
         aliquip dolor eu occaecat. Elit sunt occaecat excepteur ea. Quis commodo
@@ -66,9 +77,9 @@ export const TypographyBodyLong = () => {
         officia.
       </BodyLong>
 
-      <Heading size="medium" level="3">
+      <ScMutedHeading size="medium" level="3">
         Small
-      </Heading>
+      </ScMutedHeading>
       <BodyLong size="small">
         Ullamco ut laboris irure excepteur velit nisi occaecat proident. Amet
         aliquip dolor eu occaecat. Elit sunt occaecat excepteur ea. Quis commodo
@@ -76,7 +87,7 @@ export const TypographyBodyLong = () => {
         cillum. Non in consequat ex esse exercitation cillum Lorem voluptate
         officia.
       </BodyLong>
-    </>
+    </ScColumn>
   );
 };
 
@@ -100,17 +111,17 @@ TypographyBodyLong.react = `
 
 export const TypographyBodyShort = () => {
   return (
-    <>
-      <Heading size="medium" level="3">
+    <ScColumn>
+      <ScMutedHeading size="medium" level="3">
         Medium
-      </Heading>
+      </ScMutedHeading>
       <BodyShort spacing>Ullamco ut laboris irure</BodyShort>
 
-      <Heading size="medium" level="3">
+      <ScMutedHeading size="medium" level="3">
         Small
-      </Heading>
+      </ScMutedHeading>
       <BodyShort size="small">Ullamco ut laboris irure</BodyShort>
-    </>
+    </ScColumn>
   );
 };
 
@@ -136,17 +147,17 @@ incididunt et non quis magna consequat.
 
 export const TypographyLabel = () => {
   return (
-    <>
-      <Heading size="medium" level="3">
+    <ScColumn>
+      <ScMutedHeading size="medium" level="3">
         Medium
-      </Heading>
+      </ScMutedHeading>
       <Label spacing>Ullamco ut laboris irure</Label>
 
-      <Heading size="medium" level="3">
+      <ScMutedHeading size="medium" level="3">
         Small
-      </Heading>
+      </ScMutedHeading>
       <Label size="small">Ullamco ut laboris irure</Label>
-    </>
+    </ScColumn>
   );
 };
 
@@ -156,17 +167,17 @@ TypographyLabel.react = `
 
 export const TypographyDetail = () => {
   return (
-    <>
-      <Heading size="medium" level="3">
+    <ScColumn>
+      <ScMutedHeading size="medium" level="3">
         Medium
-      </Heading>
+      </ScMutedHeading>
       <Detail spacing>Ullamco ut laboris irure</Detail>
 
-      <Heading size="medium" level="3">
+      <ScMutedHeading size="medium" level="3">
         Small
-      </Heading>
+      </ScMutedHeading>
       <Detail size="small">Ullamco ut laboris irure</Detail>
-    </>
+    </ScColumn>
   );
 };
 
