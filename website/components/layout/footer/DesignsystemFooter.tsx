@@ -30,7 +30,8 @@ const ScLogoWrapper = styled.div`
   font-size: 1.5rem;
   display: inline-flex;
   align-items: center;
-  height: 48px;
+  height: 49px;
+  margin-bottom: 4rem;
 `;
 
 const ScInner = styled.div`
