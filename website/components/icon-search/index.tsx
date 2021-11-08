@@ -4,11 +4,11 @@ import { BodyLong, Detail, Heading, Modal } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
+import { LayoutContext } from "..";
 import DownloadButtons from "./DownloadButtons";
 import Filter, { FilterT } from "./Filter";
 import { categorizeIcons, CategoryT, IconMetaT } from "./iconCategories";
 import ModalContent from "./ModalContent";
-import { LayoutContext } from "..";
 
 const ScIconSearch = styled.div`
   display: flex;
@@ -136,8 +136,6 @@ export const getTag = (name: string) => {
 };
 
 const IconSearch = () => {
-  const context = useContext(LayoutContext);
-
   const [open, setOpen] = useState(false);
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
   const router = useRouter();

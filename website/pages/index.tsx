@@ -1,11 +1,10 @@
 import { Facilitet } from "@navikt/ds-icons";
+import { BodyLong, Heading, Ingress, Label } from "@navikt/ds-react";
 import Head from "next/head";
-import { Heading, Ingress, BodyLong, Label } from "@navikt/ds-react";
 import NextLink from "next/link";
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { NAVLogoDark } from "../components";
-import { PagePropsContext } from "./_app";
 
 const ScIntro = styled.div`
   margin: 0 auto;
