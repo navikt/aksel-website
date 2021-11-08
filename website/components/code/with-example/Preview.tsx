@@ -46,6 +46,7 @@ const ScInnerDiv = styled.div`
   gap: 1rem;
   padding: 2rem;
   display: inline-flex;
+  align-items: baseline;
   flex-wrap: wrap;
   width: 100%;
 

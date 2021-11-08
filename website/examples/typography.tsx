@@ -8,12 +8,7 @@ import {
   Ingress,
 } from "@navikt/ds-react";
 import styled from "styled-components";
-
-const ScColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
+import { ScColumn } from "./styles";
 
 const ScMutedHeading = styled(Heading)`
   color: var(--navds-color-gray-60);
