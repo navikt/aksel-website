@@ -40,6 +40,7 @@ const ScInner = styled.div`
   column-gap: 2rem;
   flex-wrap: wrap;
   justify-content: space-between;
+  max-width: 1280px;
 
   > * {
     max-width: 500px;

@@ -73,6 +73,7 @@ const ScFlex = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  max-width: 1280px;
 `;
 
 const ScFlexReverse = styled.div`
@@ -98,9 +99,9 @@ const ScIllustration = styled.div`
   top: 0;
   z-index: -1;
 
-  filter: blur(3px);
+  /* filter: blur(3px);
   opacity: 0.1;
-  display: none;
+  display: none; */
 
   svg {
     height: calc(100% - 7px);
