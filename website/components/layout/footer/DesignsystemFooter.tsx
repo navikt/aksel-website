@@ -96,9 +96,9 @@ const ScStateCss = css`
 `;
 
 const ScTextarea = styled(Textarea)`
-  --navds-textarea-color-shadow-error: var(--navds-color-red-40);
+  --navds-textarea-color-shadow-error: var(--navds-color-red-30);
   --navds-textarea-color-border-error: var(--navds-color-red-40);
-  --navds-error-message-color-text: var(--navds-color-red-40);
+  --navds-error-message-color-text: var(--navds-color-red-30);
 
   > * textarea {
     background-color: transparent;
@@ -109,6 +109,12 @@ const ScTextarea = styled(Textarea)`
 `;
 
 const ScTextField = styled(TextField)`
+  .navds-text-field--error
+    > .navds-text-field__input:not(:hover):not(:focus):not(:disabled) {
+    --navds-text-field-color-shadow-error: var(--navds-color-red-30);
+    --navds-text-field-color-border-error: var(--navds-color-red-40);
+    --navds-text-field-color-shadow-error: var(--navds-color-red-30);
+  }
   > input {
     background-color: transparent;
     color: white;
@@ -212,7 +218,7 @@ const DesignsystemFooter = () => {
                   maxLength={500}
                 />
                 <ScTextField
-                  label="Vi svarer til e-post (ikke påkrevd)"
+                  label="Vi svarer til e-post (valgfritt)"
                   error={contentError.mail}
                   value={contactForm.mail}
                   onChange={(e) => {
