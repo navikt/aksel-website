@@ -109,12 +109,10 @@ const ScTextarea = styled(Textarea)`
 `;
 
 const ScTextField = styled(TextField)`
-  .navds-text-field--error
-    > .navds-text-field__input:not(:hover):not(:focus):not(:disabled) {
-    --navds-text-field-color-shadow-error: var(--navds-color-red-30);
-    --navds-text-field-color-border-error: var(--navds-color-red-40);
-    --navds-text-field-color-shadow-error: var(--navds-color-red-30);
-  }
+  --navds-text-field-color-shadow-error: var(--navds-color-red-30);
+  --navds-text-field-color-border-error: var(--navds-color-red-40);
+  --navds-text-field-color-shadow-error: var(--navds-color-red-30);
+
   > input {
     background-color: transparent;
     color: white;
