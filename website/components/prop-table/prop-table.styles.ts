@@ -10,17 +10,20 @@ export const PropTable = styled.div`
     margin: 0;
     padding: 0;
     padding-left: 1.25rem;
+    /* border-bottom: 1px solid var(--navds-color-gray-20); */
+    margin-bottom: 2rem;
   }
 
   > p:first-of-type {
-    border-bottom: 1px solid var(--navds-color-gray-20);
     padding-bottom: 1.5rem;
   }
 `;
 
 export const Table = styled.table`
-  border-collapse: collapse;
-  margin-top: 0.75rem;
+  /* border-collapse: collapse; */
+  padding-top: 1.25rem;
+  margin-bottom: 0rem;
+  border-top: 1px solid var(--navds-color-gray-20);
 
   code,
   * {
@@ -33,6 +36,7 @@ export const Table = styled.table`
 
   :last-child {
     margin-bottom: 3rem;
+    border-bottom: 1px solid var(--navds-color-gray-20);
   }
 `;
 
@@ -50,13 +54,16 @@ export const Required = styled(Detail)`
 
 export const Tbody = styled.tbody`
   border: none;
-  border-bottom: 1px solid var(--navds-color-gray-20);
 `;
 
 export const Th = styled.th`
   text-align: left;
   padding: 0 1rem 0.75rem 0.125rem;
   vertical-align: top;
+
+  &:last-child {
+    margin-bottom: 1.25rem;
+  }
 `;
 
 export const Td = styled.td`

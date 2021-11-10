@@ -127,7 +127,7 @@ const ComponentPageTemplate = ({
           title: "Npm",
           example: {
             language: "bash",
-            code: `npm add ${((data as any)?.linked_packages)
+            code: `npm i ${((data as any)?.linked_packages)
               .map((x) => x.title)
               .join(" ")}`,
           },

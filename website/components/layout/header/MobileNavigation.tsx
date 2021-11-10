@@ -1,5 +1,5 @@
 import { Close, Hamburger, Left } from "@navikt/ds-icons";
-import { Heading } from "@navikt/ds-react";
+import { Heading, Detail } from "@navikt/ds-react";
 import { Dropdown, Header } from "@navikt/ds-react-internal";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
@@ -8,6 +8,7 @@ import { DsNavigationHeadingT } from "../../../lib";
 import { PagePropsContext } from "../../../pages/_app";
 import { LayoutContext } from "../Layout";
 import Menu from "../menu/DesignsystemMenu";
+import NextLink from "next/link";
 
 const ScMenu = styled(Dropdown.Menu)`
   border: none;
@@ -58,7 +59,6 @@ const ScListItem = styled(Dropdown.Menu.List.Item)<{ $active?: boolean }>`
 `;
 
 const ScTopDiv = styled.div`
-  border-bottom: 1px solid var(--navds-color-gray-20);
   margin: 0;
 `;
 
@@ -68,11 +68,9 @@ const ScTopButton = styled(Heading)`
   align-items: center;
   padding: 1rem 0.5rem;
   gap: 0.5rem;
-  border-bottom: 1px solid var(--navds-color-gray-20);
   width: 100%;
   border: none;
   background: none;
-  margin-bottom: 0.5rem;
 
   svg {
     font-size: 1rem;
@@ -119,6 +117,12 @@ const ScHamburgerButton = styled(Header.Button)<{ $open: boolean }>`
   }
 `;
 
+const ScCategory = styled(Detail)`
+  background-color: #f7f7f7;
+  padding: 0.5rem;
+  text-transform: uppercase;
+`;
+
 const MobileNavigation = () => {
   const context = useContext(LayoutContext);
   const { pageProps } = useContext<any>(PagePropsContext);
@@ -159,27 +163,45 @@ const MobileNavigation = () => {
         >
           {openHamb && (
             <>
-              <ScFadeIn
-                hidden={!isHeadingMenu}
-                style={{ padding: "2rem 0", margin: 0 }}
-              >
+              <ScFadeIn hidden={!isHeadingMenu}>
                 {pageProps?.navigation.headings.map(
-                  (heading: DsNavigationHeadingT) => (
-                    <ScListItem
-                      key={heading._key}
-                      $active={
-                        context
-                          ? context?.activeHeading?.title === heading.title
-                          : false
-                      }
-                      onClick={() => {
-                        setHeading(heading);
-                        setIsHeadingMenu(false);
-                      }}
-                    >
-                      {heading?.title}
-                    </ScListItem>
-                  )
+                  (heading: DsNavigationHeadingT) =>
+                    context.isTablet && !context.isMobile ? (
+                      <NextLink
+                        href={`/${heading.link_ref.slug.current}`}
+                        passHref
+                      >
+                        <ScListItem
+                          key={heading._key}
+                          forwardedAs="a"
+                          $active={
+                            context
+                              ? context?.activeHeading?.title === heading.title
+                              : false
+                          }
+                          onClick={() => {
+                            setHeading(heading);
+                          }}
+                        >
+                          {heading?.title}
+                        </ScListItem>
+                      </NextLink>
+                    ) : (
+                      <ScListItem
+                        key={heading._key}
+                        $active={
+                          context
+                            ? context?.activeHeading?.title === heading.title
+                            : false
+                        }
+                        onClick={() => {
+                          setHeading(heading);
+                          setIsHeadingMenu(false);
+                        }}
+                      >
+                        {heading?.title}
+                      </ScListItem>
+                    )
                 )}
               </ScFadeIn>
               <ScFadeIn
@@ -194,8 +216,9 @@ const MobileNavigation = () => {
                     size="xsmall"
                   >
                     <Left />
-                    {heading?.title}
+                    Tilbake
                   </ScTopButton>
+                  <ScCategory size="small">{heading.title}</ScCategory>
                 </ScTopDiv>
                 <ScMenuScroll>
                   <ScFadeIn>
