@@ -1,6 +1,7 @@
-import { Close } from "@navikt/ds-icons";
+import { Star } from "@navikt/ds-icons";
 import { Button, Loader } from "@navikt/ds-react";
 import React from "react";
+import { ScFlexGrow } from "./styles";
 
 export const ButtonAllVariants = () => (
   <>
@@ -114,40 +115,40 @@ class="navds-button navds-button--primary navds-button--small"
 
 export const ButtonWithIcon = () => (
   <>
-    <Button variant="primary">
+    <Button variant="secondary">
+      <Star aria-label="label-melding" />
       Button
-      <Close aria-label="Lukk skjema" />
     </Button>
-    <Button variant="primary" size="small">
+    <Button variant="secondary" size="small">
+      <Star aria-label="label-melding" />
       Button
-      <Close aria-label="Lukk skjema" />
     </Button>
   </>
 );
 
 ButtonWithIcon.react = `<Button variant="primary">
+<Star aria-label="label-melding"/>
 Button
-<Close aria-label="Lukk skjema" />
 </Button>
 <Button variant="primary" size="small">
+<Star aria-label="label-melding"/>
 Button
-<Close aria-label="Lukk skjema" />
 </Button>`;
 
 export const ButtonWithLoader = () => (
-  <>
+  <ScFlexGrow>
     <Button variant="primary" aria-label="laster innhold...">
-      Button <Loader aria-label="lastesirkel" />
+      <Loader title="laster inn data.." />
     </Button>
     <Button variant="primary" size="small" aria-label="laster innhold...">
-      Button <Loader aria-label="lastesirkel" />
+      <Loader title="laster inn data.." />
     </Button>
-  </>
+  </ScFlexGrow>
 );
 
 ButtonWithLoader.react = `<Button variant="primary" aria-label="laster innhold...">
-Button <Loader aria-label="lastesirkel"/>
+<Loader title="laster inn data.." />
 </Button>
 <Button variant="primary" size="small" aria-label="laster innhold...">
-Button <Loader aria-label="lastesirkel"/>
+<Loader title="laster inn data.." />
 </Button>`;
