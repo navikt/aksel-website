@@ -39,7 +39,7 @@ const PagePicker = (props: {
   return (
     <>
       {isPreview && <PreviewBanner />}
-      <LayoutPicker data={data} />
+      <LayoutPicker title="God Praksis" data={data} />
     </>
   );
 };

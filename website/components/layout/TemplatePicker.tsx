@@ -15,27 +15,35 @@ type ds_component = {
   ds_component_page: (props: {
     data: DsComponentPage;
     changelogs: DsChangelog[];
+    title: string;
   }) => JSX.Element;
 };
 
 type ds_tabbed = {
-  ds_tabbed_article_page: (props: { data: DsTabbedArticlePage }) => JSX.Element;
+  ds_tabbed_article_page: (props: {
+    data: DsTabbedArticlePage;
+    title: string;
+  }) => JSX.Element;
 };
 
 type ds_article = {
-  ds_article_page: (props: { data: DsArticlePage }) => JSX.Element;
+  ds_article_page: (props: {
+    data: DsArticlePage;
+    title: string;
+  }) => JSX.Element;
 };
 
 type gp_article = {
-  gp_article_page: (props: { data: DsArticlePage }) => JSX.Element;
+  gp_article_page: (props: {
+    data: DsArticlePage;
+    title: string;
+  }) => JSX.Element;
 };
 
 type templateT = ds_component | ds_tabbed | ds_article | gp_article;
 
 const templates: templateT = {
-  ds_component_page: (props: { data: any; changelogs: DsChangelog[] }) => (
-    <ComponentPageTemplate {...props} />
-  ),
+  ds_component_page: (props) => <ComponentPageTemplate {...props} />,
   ds_article_page: (props) => <ArticleTemplate {...props} />,
   ds_tabbed_article_page: (props) => <TabbedArticleTemplate {...props} />,
   gp_article_page: (props) => <ArticleTemplate {...props} />,
@@ -44,9 +52,11 @@ const templates: templateT = {
 const TemplatePicker = ({
   data,
   changelogs,
+  title,
 }: {
   data: DsComponentPage | DsTabbedArticlePage | DsArticlePage | GpArticlePage;
   changelogs?: DsChangelog[];
+  title: string;
 }): JSX.Element => {
   const [mounted, setMounted] = useState(false);
 
@@ -74,9 +84,9 @@ const TemplatePicker = ({
   const Template = templates[data._type];
 
   return data._type === "ds_component_page" ? (
-    <Template data={data} changelogs={changelogs} />
+    <Template data={data} changelogs={changelogs} title={title} />
   ) : (
-    <Template data={data} />
+    <Template data={data} title={title} />
   );
 };
 

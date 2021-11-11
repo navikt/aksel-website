@@ -1,27 +1,26 @@
 import { Heading } from "@navikt/ds-react";
-import { useRouter } from "next/router";
 import Head from "next/head";
-import React, { useContext, useEffect } from "react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 import {
   LastUpdateTag,
+  slugger,
   StatusTag,
   TableOfContents,
   Tabs,
-  LayoutContext,
-  slugger,
 } from "../..";
 import { DsTabbedArticlePage } from "../../../lib/autogen-types";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import * as S from "./page.styles";
-import { LayoutParts } from "../Layout";
 
 const TabbedActiclePageTemplate = ({
   data,
+  title,
 }: {
   data: DsTabbedArticlePage;
+  title: string;
 }): JSX.Element => {
   const { query } = useRouter();
-  const { version } = useContext(LayoutContext);
 
   useEffect(() => {
     slugger.reset();
@@ -45,13 +44,10 @@ const TabbedActiclePageTemplate = ({
   return (
     <>
       <Head>
-        {data.heading && LayoutParts?.[version]?.title && (
+        {data.heading && (
           <>
-            <title>{`${data.heading} - ${LayoutParts?.[version].title}`}</title>
-            <meta
-              property="og:title"
-              content={`${data.heading} - ${LayoutParts?.[version].title}`}
-            />
+            <title>{`${data.heading} - ${title}`}</title>
+            <meta property="og:title" content={`${data.heading} - ${title}`} />
           </>
         )}
       </Head>

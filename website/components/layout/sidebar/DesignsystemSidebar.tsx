@@ -1,7 +1,8 @@
 import * as React from "react";
 import { useContext } from "react";
 import styled from "styled-components";
-import { LayoutContext, LayoutContextProps } from "../Layout";
+import { LayoutContextProps } from "../Layout";
+import { LayoutContext } from "../LayoutProvider";
 import Menu from "../menu/DesignsystemMenu";
 
 const Wrapper = styled.div<{ context: LayoutContextProps }>`
@@ -19,10 +20,10 @@ const Wrapper = styled.div<{ context: LayoutContextProps }>`
   height: 100vh;
 `;
 
-function Sidebar(): JSX.Element {
+function DesignsystemSidebar(): JSX.Element {
   const context = useContext(LayoutContext);
 
-  if (!context.activeHeading) return null;
+  if (!context?.activeHeading) return null;
 
   return (
     <Wrapper context={context}>
@@ -31,4 +32,4 @@ function Sidebar(): JSX.Element {
   );
 }
 
-export default Sidebar;
+export default DesignsystemSidebar;

@@ -1,19 +1,18 @@
 import { Heading } from "@navikt/ds-react";
-import React, { useContext, useEffect } from "react";
+import Head from "next/head";
+import React, { useEffect } from "react";
 import { LastUpdateTag, slugger, StatusTag, TableOfContents } from "../..";
 import { DsArticlePage, GpArticlePage } from "../../../lib/autogen-types";
-import Head from "next/head";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import * as S from "./page.styles";
-import { LayoutContext, LayoutParts } from "../Layout";
 
 const ActiclePageTemplate = ({
   data,
+  title,
 }: {
   data: GpArticlePage | DsArticlePage;
+  title: string;
 }): JSX.Element => {
-  const { version } = useContext(LayoutContext);
-
   useEffect(() => {
     slugger.reset();
   });
@@ -25,13 +24,10 @@ const ActiclePageTemplate = ({
   return (
     <>
       <Head>
-        {data.heading && LayoutParts?.[version]?.title && (
+        {data.heading && (
           <>
-            <title>{`${data.heading} - ${LayoutParts?.[version].title}`}</title>
-            <meta
-              property="og:title"
-              content={`${data.heading} - ${LayoutParts?.[version].title}`}
-            />
+            <title>{`${data.heading} - ${title}`}</title>
+            <meta property="og:title" content={`${data.heading} - ${title}`} />
           </>
         )}
       </Head>

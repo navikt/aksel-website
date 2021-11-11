@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { ScFadeIn } from "../..";
 import { DsNavigationHeadingT } from "../../../lib";
 import { PagePropsContext } from "../../../pages/_app";
-import { LayoutContext } from "../Layout";
+import { LayoutContext } from "../LayoutProvider";
 import Menu from "../menu/DesignsystemMenu";
 import NextLink from "next/link";
 

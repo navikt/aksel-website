@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
-import { LayoutContext, LayoutParts } from "../Layout";
+import { LayoutContext } from "../LayoutProvider";
 import PortalNavigation from "./PortalNavigation";
 
 import * as S from "./header.styles";
@@ -10,7 +10,7 @@ const DesignsystemHeader = (): JSX.Element => {
 
   const nonMobile = (
     <>
-      <PortalNavigation title={LayoutParts[context.version].title ?? ""} />
+      <PortalNavigation title="God Praksis" />
       {/* <HeaderSearchBar /> */}
       {/* <S.Link href="#">
         <Bell
@@ -24,7 +24,7 @@ const DesignsystemHeader = (): JSX.Element => {
 
   const mobile = (
     <>
-      <PortalNavigation title={LayoutParts[context.version].title ?? ""} />
+      <PortalNavigation title="God Praksis" />
     </>
   );
 

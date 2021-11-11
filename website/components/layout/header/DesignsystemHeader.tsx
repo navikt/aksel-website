@@ -6,7 +6,7 @@ import { useMedia } from "react-use";
 import { Search } from "../..";
 import { DsNavigationHeadingT } from "../../../lib";
 import { PagePropsContext } from "../../../pages/_app";
-import { LayoutContext, LayoutParts } from "../Layout";
+import { LayoutContext } from "../LayoutProvider";
 import * as S from "./header.styles";
 import MobileNavigation from "./MobileNavigation";
 import PortalNavigation from "./PortalNavigation";
@@ -18,10 +18,9 @@ const DesignsystemHeader = (): JSX.Element => {
 
   const [searchisOpen, setSearchisOpen] = useState(false);
 
-  const title = context ? LayoutParts[context.version].title : "Designsystemet";
   const nonMobile = (
     <>
-      <PortalNavigation title={title} />
+      <PortalNavigation title={"Designsystemet"} />
 
       {!searchisOpen && (
         <S.Links
@@ -69,7 +68,7 @@ const DesignsystemHeader = (): JSX.Element => {
 
   const mobile = (
     <>
-      {!searchisOpen && <PortalNavigation title={title} />}
+      {!searchisOpen && <PortalNavigation title={"Designsystemet"} />}
       <Search isOpen={(v: boolean) => setSearchisOpen(v)} />
       <MobileNavigation />
     </>

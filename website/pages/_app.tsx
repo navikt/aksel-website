@@ -3,11 +3,8 @@ import Error from "next/error";
 import Head from "next/head";
 import React, { createContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import {
-  AmplitudeProvider,
-  Layout,
-  useScrollToHashOnPageLoad,
-} from "../components";
+import { AmplitudeProvider, useScrollToHashOnPageLoad } from "../components";
+import LayoutProvider from "../components/layout/LayoutProvider";
 import "../styles/index.css";
 
 const ScLoader = styled.div`
@@ -65,9 +62,10 @@ function App({
     (!pageProps.validPath && pageProps.isDraft && !router.query.preview) ||
     (!pageProps.validPath && !pageProps.isDraft)
   ) {
-    console.log("here");
     return <Error statusCode={404} />;
   }
+
+  const getLayout = Component.getLayout || ((page) => page);
 
   return (
     <>
@@ -79,15 +77,24 @@ function App({
       </Head>
       <AmplitudeProvider>
         <PagePropsContext.Provider value={{ pageProps: pageData, setPageData }}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-          {router.query.preview && !pageData.page && (
-            <ScLoader>
-              <Loader title="Laster inn innhold for preview" size="2xlarge" />
-              Laster inn innhold for preview...
-            </ScLoader>
-          )}
+          <LayoutProvider>
+            {getLayout(
+              <>
+                {/* <Layout> */}
+                <Component {...pageProps} />
+                {/* </Layout> */}
+                {router.query.preview && !pageData.page && (
+                  <ScLoader>
+                    <Loader
+                      title="Laster inn innhold for preview"
+                      size="2xlarge"
+                    />
+                    Laster inn innhold for preview...
+                  </ScLoader>
+                )}
+              </>
+            )}
+          </LayoutProvider>
         </PagePropsContext.Provider>
       </AmplitudeProvider>
     </>

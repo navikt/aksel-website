@@ -1,16 +1,9 @@
 import React, { createContext, useContext, useState } from "react";
-import styled from "styled-components";
-import Header from "./header/Header";
-import { PagePropsContext } from "../../pages/_app";
-import DesignsystemSidebar from "./sidebar/DesignsystemSidebar";
 import { useIsomorphicLayoutEffect, useMedia } from "react-use";
-import Footer from "./footer/Footer";
-import { Feedback, RelatedPagesLink } from "..";
-import DesignsystemHeader from "./header/DesignsystemHeader";
-import GodPraksisHeader from "./header/GodPraksisHeader";
-import Sidebar from "./sidebar/Sidebar";
+import styled from "styled-components";
+import { Feedback } from "..";
 import { DsNavigationHeadingT } from "../../lib";
-import DesignsystemFooter from "./footer/DesignsystemFooter";
+import { PagePropsContext } from "../../pages/_app";
 
 const ScWrapper = styled.div`
   display: flex;
@@ -42,23 +35,6 @@ const ScMain = styled.main<{ $tablet: boolean; $hasSidebar: boolean }>`
   }
 `;
 
-const ScPlaceholderPadding = styled.div`
-  width: 288px;
-  padding: var(--navds-spacing-8) 0;
-  position: relative;
-  flex-shrink: 0;
-  background-color: white;
-  position: sticky;
-  top: 0;
-  align-self: flex-start;
-  overflow-y: auto;
-  height: 100vh;
-
-  @media (max-width: 964px) {
-    display: none;
-  }
-`;
-
 const ScGrow = styled.div`
   flex: 1 1;
   height: 100%;
@@ -83,21 +59,6 @@ export const ScSkipLink = styled.a`
   }
 `;
 
-export const LayoutParts = {
-  ds: {
-    title: "Designsystemet",
-    header: DesignsystemHeader,
-    sidebar: DesignsystemSidebar,
-    footer: DesignsystemFooter,
-  },
-  gp: {
-    title: "God Praksis",
-    header: GodPraksisHeader,
-    sidebar: ScPlaceholderPadding,
-    footer: null,
-  },
-};
-
 export type LayoutContextProps = {
   isMobile: boolean;
   isTablet: boolean;
@@ -105,7 +66,7 @@ export type LayoutContextProps = {
   activeHeading?: DsNavigationHeadingT;
 };
 
-export const LayoutContext = createContext<LayoutContextProps | null>(null);
+export const LayoutContextOld = createContext<LayoutContextProps | null>(null);
 
 const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   const { pageProps } = useContext(PagePropsContext);
@@ -140,31 +101,25 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
       <ScSkipLink href="#hovedinnhold" tab-index={-1}>
         Hopp til innhold
       </ScSkipLink>
-      <LayoutContext.Provider
+      <LayoutContextOld.Provider
         value={{ isMobile, isTablet, version: pageType, activeHeading }}
       >
-        <Header />
         <ScWrapper>
-          <Sidebar />
           <ScContentWrapper isTablet={isTablet}>
             <ScMain
               $tablet={isTablet}
-              $hasSidebar={!!LayoutParts[pageType]?.sidebar}
+              $hasSidebar={true}
               tabIndex={-1}
               id="hovedinnhold"
             >
               {children}
               <ScGrow />
               <Feedback docId={pageProps?.page?._id} />
-              {/* {LayoutParts[pageType]?.title === "Designsystemet" && (
-                  <RelatedPagesLink />
-                )} */}
             </ScMain>
             {/* {!pageProps?.preview && <Feedback docId={pageProps?.page?._id} />} */}
-            <Footer />
           </ScContentWrapper>
         </ScWrapper>
-      </LayoutContext.Provider>
+      </LayoutContextOld.Provider>
     </>
   );
 };

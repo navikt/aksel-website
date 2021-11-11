@@ -73,9 +73,11 @@ const MarginTop = styled.div`
 const ComponentPageTemplate = ({
   data,
   changelogs,
+  title,
 }: {
   data: DsComponentPage;
   changelogs: DsChangelog[];
+  title: string;
 }): JSX.Element => {
   const { query, asPath } = useRouter();
   const changeTab = useMedia("(max-width: 564px)");
@@ -147,8 +149,8 @@ const ComponentPageTemplate = ({
         <>
           <title>
             {pageProps?.page?.heading
-              ? `${pageProps?.page?.heading} - Designsystemet`
-              : "Designsystemet"}
+              ? `${pageProps?.page?.heading} - ${title}`
+              : title}
           </title>
           <meta
             property="og:title"
