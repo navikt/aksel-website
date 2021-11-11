@@ -71,7 +71,8 @@
     "eslint-config-next": "^11.1.2",
     "typescript": "^4.4.3",
     "vercel": "^23.1.2",
-    "sanity-codegen": "^0.9.5"
+    "sanity-codegen": "^0.9.5",
+    "bottleneck": "^2.19.5"
   },
   "prettier": {}
 }

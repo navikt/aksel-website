@@ -65,6 +65,7 @@ function App({
     (!pageProps.validPath && pageProps.isDraft && !router.query.preview) ||
     (!pageProps.validPath && !pageProps.isDraft)
   ) {
+    console.log("here");
     return <Error statusCode={404} />;
   }
 

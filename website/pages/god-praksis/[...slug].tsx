@@ -4,6 +4,7 @@ import {
   getClient,
   gpDocuments,
   gpDocumentBySlug,
+  isDraftQuery,
 } from "../../lib";
 import { PreviewBanner, LayoutPicker } from "../../components";
 import { useContext, useEffect, useState } from "react";
@@ -73,6 +74,8 @@ interface StaticProps {
   props: {
     page: GpArticlePage;
     slug: string;
+    isDraft: boolean;
+    validPath: boolean;
   };
   revalidate: number;
 }
@@ -87,7 +90,13 @@ export const getStaticProps = async ({
     .slice(0, 2)
     .join("/");
 
-  const page = await getClient(false).fetch(gpDocumentBySlug, {
+  const client = getClient(false);
+
+  const page = await client.fetch(gpDocumentBySlug, {
+    slug: "god-praksis/" + joinedSlug,
+  });
+
+  const isDraft = await client.fetch(isDraftQuery, {
     slug: "god-praksis/" + joinedSlug,
   });
 
@@ -95,6 +104,8 @@ export const getStaticProps = async ({
     props: {
       page,
       slug: joinedSlug,
+      isDraft: isDraft.length === 0,
+      validPath: !!page,
     },
     revalidate: 30,
   };

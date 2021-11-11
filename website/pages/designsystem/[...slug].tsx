@@ -4,7 +4,7 @@ import { LayoutPicker, PreviewBanner } from "../../components";
 import {
   changelogQuery,
   dsDocumentBySlug,
-  dsIsDraft,
+  isDraftQuery,
   dsNavigationQuery,
   getClient,
   getDsPaths,
@@ -125,7 +125,7 @@ export const getStaticProps = async ({
 
   const navigation = await client.fetch(dsNavigationQuery);
 
-  const isDraft = await client.fetch(dsIsDraft, {
+  const isDraft = await client.fetch(isDraftQuery, {
     slug: "designsystem/" + joinedSlug,
   });
 
