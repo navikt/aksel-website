@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
-import { LayoutContext } from "../LayoutProvider";
+import { LayoutContext } from "../..";
 import PortalNavigation from "./PortalNavigation";
 
 import * as S from "./header.styles";

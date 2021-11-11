@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useContext } from "react";
 import styled from "styled-components";
-import { LayoutContext } from "../LayoutProvider";
+import { LayoutContext } from "../..";
 import Menu from "../menu/DesignsystemMenu";
 
 const Wrapper = styled.div`

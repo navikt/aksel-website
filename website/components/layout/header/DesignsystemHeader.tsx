@@ -6,7 +6,7 @@ import { useMedia } from "react-use";
 import { Search } from "../..";
 import { DsNavigationHeadingT } from "../../../lib";
 import { PagePropsContext } from "../../../pages/_app";
-import { LayoutContext } from "../LayoutProvider";
+import { LayoutContext } from "../..";
 import * as S from "./header.styles";
 import MobileNavigation from "./MobileNavigation";
 import PortalNavigation from "./PortalNavigation";
