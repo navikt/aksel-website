@@ -209,6 +209,7 @@ const DesignsystemFooter = () => {
                   error={contentError.content}
                   label="Skriv til oss"
                   value={contactForm.content}
+                  placeholder="melding"
                   onChange={(e) => {
                     setContactForm({ ...contactForm, content: e.target.value });
                     e.target.value &&
@@ -221,6 +222,7 @@ const DesignsystemFooter = () => {
                   label="Vi svarer til e-post (valgfritt)"
                   error={contentError.mail}
                   value={contactForm.mail}
+                  placeholder="email"
                   onChange={(e) => {
                     setContactForm({ ...contactForm, mail: e.target.value });
                     e.target.value &&

@@ -73,7 +73,7 @@ const ScFlex = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 1280px;
+  max-width: 1440px;
 `;
 
 const ScFlexReverse = styled.div`
