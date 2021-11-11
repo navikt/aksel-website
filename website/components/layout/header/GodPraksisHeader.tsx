@@ -5,7 +5,7 @@ import PortalNavigation from "./PortalNavigation";
 
 import * as S from "./header.styles";
 
-const DesignsystemHeader = (): JSX.Element => {
+const GodPraksisHeader = (): JSX.Element => {
   const context = useContext(LayoutContext);
 
   const nonMobile = (
@@ -30,4 +30,4 @@ const DesignsystemHeader = (): JSX.Element => {
 
   return <S.Header>{context.isTablet ? mobile : nonMobile}</S.Header>;
 };
-export default DesignsystemHeader;
+export default GodPraksisHeader;

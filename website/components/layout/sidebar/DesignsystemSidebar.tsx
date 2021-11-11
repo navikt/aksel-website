@@ -1,23 +1,26 @@
 import * as React from "react";
 import { useContext } from "react";
 import styled from "styled-components";
-import { LayoutContextProps } from "../Layout";
 import { LayoutContext } from "../LayoutProvider";
 import Menu from "../menu/DesignsystemMenu";
 
-const Wrapper = styled.div<{ context: LayoutContextProps }>`
+const Wrapper = styled.div`
   width: var(--sidebar-max-width);
   padding: var(--navds-spacing-8) 0;
   position: relative;
   flex-shrink: 0;
   background-color: white;
   border-right: 1px solid var(--navds-color-gray-10);
-  display: ${(props) => (props.context.isTablet ? "none" : "block")};
   position: sticky;
   top: 0;
   align-self: flex-start;
   overflow-y: auto;
   height: 100vh;
+  display: block;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 function DesignsystemSidebar(): JSX.Element {
@@ -26,7 +29,7 @@ function DesignsystemSidebar(): JSX.Element {
   if (!context?.activeHeading) return null;
 
   return (
-    <Wrapper context={context}>
+    <Wrapper>
       <Menu heading={context.activeHeading} />
     </Wrapper>
   );

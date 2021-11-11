@@ -1,10 +1,8 @@
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
-import styled from "styled-components";
 import { Feedback, LayoutPicker, PreviewBanner } from "../../components";
 import DesignsystemFooter from "../../components/layout/footer/DesignsystemFooter";
 import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
-import LayoutProvider from "../../components/layout/LayoutProvider";
 import DesignsystemSidebar from "../../components/layout/sidebar/DesignsystemSidebar";
 import {
   changelogQuery,
@@ -23,6 +21,7 @@ import {
   DsTabbedArticlePage,
 } from "../../lib/autogen-types";
 import { PagePropsContext } from "../_app";
+import * as Sc from "../../components";
 
 const Page = (props: {
   slug?: string;
@@ -78,7 +77,7 @@ const Page = (props: {
           data={data}
           changelogs={changelogs}
         />
-        <ScGrow />
+        <Sc.Grow />
         <Feedback docId={pageProps?.page?._id} />
         {/* {LayoutParts[pageType]?.title === "Designsystemet" && (
               <RelatedPagesLink />
@@ -88,78 +87,22 @@ const Page = (props: {
   );
 };
 
-const ScWrapper = styled.div`
-  display: flex;
-  min-height: calc(100vh - var(--header-height));
-  background-color: #ffffff;
-
-  p {
-    max-width: var(--text-max-width);
-  }
-`;
-
-const ScContentWrapper = styled.div`
-  flex-direction: column;
-  width: 100%;
-  position: relative;
-`;
-
-const ScMain = styled.main`
-  min-height: calc(100vh - var(--header-height));
-  width: calc(100vw - var(--sidebar-max-width));
-  display: flex;
-  flex-direction: column;
-  position: relative;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-
-  :focus {
-    outline: none;
-  }
-`;
-
-const ScGrow = styled.div`
-  flex: 1 1;
-  height: 100%;
-  margin-bottom: auto;
-`;
-
-export const ScSkipLink = styled.a`
-  background: var(--navds-color-deepblue-80);
-  color: white;
-  left: 0;
-  padding: 1rem;
-  position: absolute;
-  transform: translateY(-100%);
-  transition: transform 0.1s;
-  text-decoration: none;
-  z-index: 1;
-
-  :focus-within {
-    transform: translateY(0%);
-    outline: none;
-    box-shadow: inset 0 0 0 2px white;
-  }
-`;
-
 Page.getLayout = (page) => {
   return (
     <>
-      <ScSkipLink href="#hovedinnhold" tab-index={-1}>
+      <Sc.SkipLink href="#hovedinnhold" tab-index={-1}>
         Hopp til innhold
-      </ScSkipLink>
-      {/* <DesignsystemHeader /> */}
-      <ScWrapper>
+      </Sc.SkipLink>
+      <DesignsystemHeader />
+      <Sc.SidebarMain>
         <DesignsystemSidebar />
-        <ScContentWrapper>
-          <ScMain tabIndex={-1} id="hovedinnhold">
+        <Sc.MainFooter>
+          <Sc.Main tabIndex={-1} id="hovedinnhold">
             {page}
-          </ScMain>
+          </Sc.Main>
           <DesignsystemFooter />
-        </ScContentWrapper>
-      </ScWrapper>
+        </Sc.MainFooter>
+      </Sc.SidebarMain>
     </>
   );
 };
@@ -236,7 +179,7 @@ export const getStaticProps = async ({
       isDraft: isDraft.length === 0,
       validPath,
     },
-    revalidate: 30,
+    revalidate: 10,
   };
 };
 

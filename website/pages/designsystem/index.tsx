@@ -10,8 +10,8 @@ import {
 } from "../../components/assets/pictograms";
 import DesignsystemFooter from "../../components/layout/footer/DesignsystemFooter";
 import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
-import { ScSkipLink } from "../../components/layout/Layout";
 import { dsNavigationQuery, getClient } from "../../lib";
+import * as Sc from "../../components";
 
 const ScCard = styled.a`
   height: 22rem;
@@ -59,14 +59,6 @@ const ScIcon = styled.div`
     margin-top: 0.25rem;
     margin-left: 0.25rem;
   }
-`;
-
-const ScFrontpage = styled.main`
-  min-height: calc(100vh - var(--header-height));
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: white;
 `;
 
 const ScFlex = styled.div`
@@ -155,72 +147,83 @@ const Page = () => {
         <title>Designsystemet</title>
         <meta property="og:title" content="Designsystemet NAV" />
       </Head>
-      <div>
-        <ScSkipLink href="#hovedinnhold" tab-index={-1}>
-          Hopp til innhold
-        </ScSkipLink>
-        <DesignsystemHeader />
-        <ScFrontpage tabIndex={-1} id="hovedinnhold">
-          <ScFlexReverse>
-            <ScIllustration>
-              <DsFrontpageIllustration />
-            </ScIllustration>
-            <ScTitle>
-              <ScHeading spacing level="1" size="2xlarge">
-                Designsystemet
-                <ScBodyShort>Beta</ScBodyShort>
-              </ScHeading>
-              <BodyLong>
-                Gjør det enklere å komme i gang med utvikling og design for NAVs
-                produkter.
-              </BodyLong>
-            </ScTitle>
-          </ScFlexReverse>
-          <ScFlex>
-            <ScDescriptionWrapper>
-              <Heading spacing level="2" size="xlarge">
-                Hva er nytt?
-              </Heading>
-              <BodyLong spacing>
-                Designsystemet er i utvikling, og her vil det komme nytt innhold
-                med ujevne mellomrom.
-              </BodyLong>
-              <BodyLong>
-                Siden dette er en beta-versjon vil ikke alt relevant innhold
-                være på plass samtidig, men vi jobber stadig med saken.
-              </BodyLong>
-            </ScDescriptionWrapper>
-            <ScCards>
-              <NextLink passHref href="/designsystem/side/oversikt-komponenter">
-                <ScCard>
-                  <ScIcon className="card__icon">
-                    <ComponentPictogram />
-                  </ScIcon>
-                  <Heading spacing level="2" size="medium">
-                    Komponenter
-                  </Heading>
-                  <BodyLong>
-                    Se forhåndsvisninger og kode-eksempler for komponenter.
-                  </BodyLong>
-                </ScCard>
-              </NextLink>
-              <NextLink passHref href="/designsystem/side/ikoner/ikons%C3%B8k">
-                <ScCard>
-                  <ScIcon className="card__icon">
-                    <IconsPictogram />
-                  </ScIcon>
-                  <Heading spacing level="2" size="medium">
-                    Ikoner
-                  </Heading>
-                  <BodyLong>Søk og ta i bruk alle NAVs egne ikoner.</BodyLong>
-                </ScCard>
-              </NextLink>
-            </ScCards>
-          </ScFlex>
-        </ScFrontpage>
+      <>
+        <ScFlexReverse>
+          <ScIllustration>
+            <DsFrontpageIllustration />
+          </ScIllustration>
+          <ScTitle>
+            <ScHeading spacing level="1" size="2xlarge">
+              Designsystemet
+              <ScBodyShort>Beta</ScBodyShort>
+            </ScHeading>
+            <BodyLong>
+              Gjør det enklere å komme i gang med utvikling og design for NAVs
+              produkter.
+            </BodyLong>
+          </ScTitle>
+        </ScFlexReverse>
+        <ScFlex>
+          <ScDescriptionWrapper>
+            <Heading spacing level="2" size="xlarge">
+              Hva er nytt?
+            </Heading>
+            <BodyLong spacing>
+              Designsystemet er i utvikling, og her vil det komme nytt innhold
+              med ujevne mellomrom.
+            </BodyLong>
+            <BodyLong>
+              Siden dette er en beta-versjon vil ikke alt relevant innhold være
+              på plass samtidig, men vi jobber stadig med saken.
+            </BodyLong>
+          </ScDescriptionWrapper>
+          <ScCards>
+            <NextLink passHref href="/designsystem/side/oversikt-komponenter">
+              <ScCard>
+                <ScIcon className="card__icon">
+                  <ComponentPictogram />
+                </ScIcon>
+                <Heading spacing level="2" size="medium">
+                  Komponenter
+                </Heading>
+                <BodyLong>
+                  Se forhåndsvisninger og kode-eksempler for komponenter.
+                </BodyLong>
+              </ScCard>
+            </NextLink>
+            <NextLink passHref href="/designsystem/side/ikoner/ikons%C3%B8k">
+              <ScCard>
+                <ScIcon className="card__icon">
+                  <IconsPictogram />
+                </ScIcon>
+                <Heading spacing level="2" size="medium">
+                  Ikoner
+                </Heading>
+                <BodyLong>Søk og ta i bruk alle NAVs egne ikoner.</BodyLong>
+              </ScCard>
+            </NextLink>
+          </ScCards>
+        </ScFlex>
+      </>
+    </>
+  );
+};
 
-        <DesignsystemFooter />
-      </div>
+Page.getLayout = (page) => {
+  return (
+    <>
+      <Sc.SkipLink href="#hovedinnhold" tab-index={-1}>
+        Hopp til innhold
+      </Sc.SkipLink>
+      <DesignsystemHeader />
+      <Sc.SidebarMain>
+        <Sc.MainFooter>
+          <Sc.Main fullwidth tabIndex={-1} id="hovedinnhold">
+            {page}
+          </Sc.Main>
+          <DesignsystemFooter />
+        </Sc.MainFooter>
+      </Sc.SidebarMain>
     </>
   );
 };

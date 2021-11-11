@@ -46,14 +46,6 @@ function App({
   }, [pageProps]);
 
   if (Component && router?.asPath.startsWith("/examples")) {
-    return (
-      <AmplitudeProvider>
-        <Component {...pageProps} />
-      </AmplitudeProvider>
-    );
-  }
-
-  if (Component && router?.asPath.startsWith("/admin")) {
     return <Component {...pageProps} />;
   }
 
@@ -65,7 +57,7 @@ function App({
     return <Error statusCode={404} />;
   }
 
-  const getLayout = Component.getLayout || ((page) => page);
+  const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
     <>
@@ -80,9 +72,7 @@ function App({
           <LayoutProvider>
             {getLayout(
               <>
-                {/* <Layout> */}
                 <Component {...pageProps} />
-                {/* </Layout> */}
                 {router.query.preview && !pageData.page && (
                   <ScLoader>
                     <Loader

@@ -7,11 +7,12 @@ import {
   isDraftQuery,
 } from "../../lib";
 import { PreviewBanner, LayoutPicker } from "../../components";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { PagePropsContext } from "../_app";
 import { GpArticlePage } from "../../lib/autogen-types";
-
-const PagePicker = (props: {
+import * as Sc from "../../components";
+import GodPraksisHeader from "../../components/layout/header/GodPraksisHeader";
+const Page = (props: {
   slug?: string;
   page: GpArticlePage;
   sidebar: any;
@@ -44,6 +45,24 @@ const PagePicker = (props: {
   );
 };
 
+Page.getLayout = (page) => {
+  return (
+    <>
+      <Sc.SkipLink href="#hovedinnhold" tab-index={-1}>
+        Hopp til innhold
+      </Sc.SkipLink>
+      <GodPraksisHeader />
+      <Sc.SidebarMain>
+        <Sc.MainFooter>
+          <Sc.Main tabIndex={-1} id="hovedinnhold">
+            {page}
+          </Sc.Main>
+        </Sc.MainFooter>
+      </Sc.SidebarMain>
+    </>
+  );
+};
+
 export const getStaticPaths = async (): Promise<{
   fallback: string;
   paths: { params: { slug: string[] } }[];
@@ -52,16 +71,12 @@ export const getStaticPaths = async (): Promise<{
   const paths = [];
 
   documents?.forEach((page) => {
-    if (!page.slug) {
-      return null;
-    }
-    const slug = page.slug.split("/");
-
-    paths.push({
-      params: {
-        slug,
-      },
-    });
+    page.slug &&
+      paths.push({
+        params: {
+          slug: page.slug.split("/"),
+        },
+      });
   });
 
   return {
@@ -107,8 +122,8 @@ export const getStaticProps = async ({
       isDraft: isDraft.length === 0,
       validPath: !!page,
     },
-    revalidate: 30,
+    revalidate: 10,
   };
 };
 
-export default PagePicker;
+export default Page;

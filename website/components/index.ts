@@ -20,7 +20,7 @@ export * from "./tags";
 export * from "./utils";
 export { default as UuInteraction } from "./uu-interactions";
 export { default as Lightbox } from "./lightbox";
-export { default as Layout } from "./layout/Layout";
 export { LayoutContext } from "./layout/LayoutProvider";
+export * from "./layout/layout.styles";
 export { default as LayoutPicker } from "./layout/TemplatePicker";
 export { default as PreviewBanner } from "./PreviewBanner";
