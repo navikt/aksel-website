@@ -9,6 +9,7 @@ import { PagePropsContext } from "../../../pages/_app";
 import { LayoutContext } from "../..";
 import Menu from "../menu/DesignsystemMenu";
 import NextLink from "next/link";
+import { useMedia } from "react-use";
 
 const ScMenu = styled(Dropdown.Menu)`
   border: none;
@@ -129,6 +130,7 @@ const MobileNavigation = () => {
   const [openHamb, setOpenHamb] = useState(false);
   const [heading, setHeading] = useState(context?.activeHeading);
   const [isHeadingMenu, setIsHeadingMenu] = useState(true);
+  const useMobileHeader = useMedia("(max-width: 1023px)");
 
   useEffect(() => {
     context?.activeHeading && setHeading(context.activeHeading);
@@ -166,13 +168,13 @@ const MobileNavigation = () => {
               <ScFadeIn hidden={!isHeadingMenu}>
                 {pageProps?.navigation.headings.map(
                   (heading: DsNavigationHeadingT) =>
-                    context.isTablet && !context.isMobile ? (
+                    useMobileHeader && !context.isTablet ? (
                       <NextLink
                         href={`/${heading.link_ref.slug.current}`}
                         passHref
+                        key={heading._key}
                       >
                         <ScListItem
-                          key={heading._key}
                           forwardedAs="a"
                           $active={
                             context
@@ -181,6 +183,7 @@ const MobileNavigation = () => {
                           }
                           onClick={() => {
                             setHeading(heading);
+                            setOpenHamb(false);
                           }}
                         >
                           {heading?.title}

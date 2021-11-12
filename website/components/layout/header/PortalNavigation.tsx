@@ -93,7 +93,6 @@ export const ScIconLink = styled(Dropdown.Menu.List.Item)`
 `;
 
 const ScToggle = styled(Header.Button)`
-  min-width: 240px;
   gap: 1rem;
 
   @media (max-width: 564px) {
