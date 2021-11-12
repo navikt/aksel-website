@@ -207,31 +207,33 @@ const MobileNavigation = () => {
                     )
                 )}
               </ScFadeIn>
-              <ScFadeIn
-                as="ul"
-                style={{ padding: "0", margin: 0 }}
-                hidden={isHeadingMenu}
-              >
-                <ScTopDiv hidden={isHeadingMenu}>
-                  <ScTopButton
-                    onClick={() => setIsHeadingMenu(true)}
-                    forwardedAs="button"
-                    size="xsmall"
-                  >
-                    <Left />
-                    Tilbake
-                  </ScTopButton>
-                  <ScCategory size="small">{heading.title}</ScCategory>
-                </ScTopDiv>
-                <ScMenuScroll>
-                  <ScFadeIn>
-                    <Menu
-                      heading={heading}
-                      onClick={() => setOpenHamb(false)}
-                    />
-                  </ScFadeIn>
-                </ScMenuScroll>
-              </ScFadeIn>
+              {heading && (
+                <ScFadeIn
+                  as="ul"
+                  style={{ padding: "0", margin: 0 }}
+                  hidden={isHeadingMenu}
+                >
+                  <ScTopDiv hidden={isHeadingMenu}>
+                    <ScTopButton
+                      onClick={() => setIsHeadingMenu(true)}
+                      forwardedAs="button"
+                      size="xsmall"
+                    >
+                      <Left />
+                      Tilbake
+                    </ScTopButton>
+                    <ScCategory size="small">{heading.title}</ScCategory>
+                  </ScTopDiv>
+                  <ScMenuScroll>
+                    <ScFadeIn>
+                      <Menu
+                        heading={heading}
+                        onClick={() => setOpenHamb(false)}
+                      />
+                    </ScFadeIn>
+                  </ScMenuScroll>
+                </ScFadeIn>
+              )}
             </>
           )}
         </ScFadeIn>

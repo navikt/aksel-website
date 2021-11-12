@@ -6,7 +6,6 @@ import { PagePropsContext } from "../../pages/_app";
 export type LayoutContextProps = {
   isMobile: boolean;
   isTablet: boolean;
-  version: "ds" | "gp";
   activeHeading?: DsNavigationHeadingT;
 };
 
@@ -24,7 +23,6 @@ const LayoutProvider = ({
 
   const isTablet = useMedia("(max-width: 768px)");
   const isMobile = useMedia("(max-width: 480px)");
-  const pageType = pageProps?.page?._type?.split("_")[0];
 
   useIsomorphicLayoutEffect(() => {
     setActiveHeading(
@@ -36,18 +34,13 @@ const LayoutProvider = ({
     );
   }, [pageProps?.page]);
 
+  // Breaks page if removed
   if (!pageProps) {
     return null;
   }
 
-  if (pageProps.noLayout) {
-    return <>{children}</>;
-  }
-
   return (
-    <LayoutContext.Provider
-      value={{ isMobile, isTablet, version: pageType, activeHeading }}
-    >
+    <LayoutContext.Provider value={{ isMobile, isTablet, activeHeading }}>
       {children}
     </LayoutContext.Provider>
   );
