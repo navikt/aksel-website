@@ -207,6 +207,7 @@ const DesignsystemFooter = () => {
               >
                 <ScTextarea
                   error={contentError.content}
+                  autoComplete="off"
                   label="Skriv til oss"
                   value={contactForm.content}
                   onChange={(e) => {
@@ -221,6 +222,7 @@ const DesignsystemFooter = () => {
                   label="Vi svarer til e-post (valgfritt)"
                   error={contentError.mail}
                   value={contactForm.mail}
+                  autoComplete="work email"
                   onChange={(e) => {
                     setContactForm({ ...contactForm, mail: e.target.value });
                     e.target.value &&
