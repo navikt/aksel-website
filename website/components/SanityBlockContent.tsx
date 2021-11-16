@@ -21,8 +21,8 @@ import {
 } from ".";
 
 export const ScCode = styled.code`
-  color: var(--navds-color-gray-80);
-  background-color: var(--navds-color-gray-10);
+  color: var(--navds-semantic-color-text-default);
+  background-color: var(--navds-semantic-color-canvas-background-default);
   border-radius: 2px;
   font-size: 1rem;
   padding: 0 4px;
@@ -32,7 +32,7 @@ const ScKbd = styled.code`
   display: inline-block;
   margin: 0 var(--navds-spacing-1);
   color: var(--navds-color-darkgray);
-  border: 1px solid var(--navds-color-gray-40);
+  border: 1px solid var(--navds-semantic-color-border-muted);
   border-radius: 3px;
   padding: 0.1rem 0.25rem;
   font-family: var(--font-family-code);

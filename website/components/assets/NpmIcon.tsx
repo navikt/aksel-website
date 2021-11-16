@@ -43,7 +43,7 @@ export const NpmIconGrayScale = (
     {...props}
   >
     <path
-      fill="var(--navds-color-gray-60)"
+      fill="var(--navds-semantic-color-text-muted)"
       d="M0,0h18v6H9v1H5V6H0V0z M1,5h2V2h1v3h1V1H1V5z M6,1v5h2V5h2V1H6z M8,2h1v2H8V2z M11,1v4h2V2h1v3h1V2h1v3h1V1H11z"
     />
     <polygon fill="transparent" points="1,5 3,5 3,2 4,2 4,5 5,5 5,1 1,1 " />
