@@ -65,7 +65,7 @@ const Menu = ({
   }, [heading]);
 
   return (
-    <ScNav aria-label="mobilmeny">
+    <ScNav aria-label={heading.title}>
       <BodyShort as="ul">
         {sidebarMenu.map((item) => (
           <li key={item.title}>
