@@ -43,7 +43,13 @@ const LevelTwoHeading = ({
   return (
     <>
       <S.HeadingWrapper>
-        <S.TitleWithScrollMargin id={slug} spacing level={2} size="large">
+        <S.TitleWithScrollMargin
+          tabIndex={-1}
+          id={slug}
+          spacing
+          level={2}
+          size="large"
+        >
           {cleanedChildren}
         </S.TitleWithScrollMargin>
         <S.Anchor

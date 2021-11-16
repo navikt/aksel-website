@@ -6,6 +6,10 @@ export const TitleWithScrollMargin = styled(Heading)`
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
+
+  :focus {
+    outline: none;
+  }
 `;
 
 export const Anchor = styled.button`

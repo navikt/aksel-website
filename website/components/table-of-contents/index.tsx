@@ -58,9 +58,15 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
     activeId && window.history.replaceState(null, null, `#${activeId}`);
   }, [activeId]);
 
+  const handleFocus = (id: string) => {
+    const element = document.getElementById(id);
+    element && element?.focus();
+  };
+
   if (toc.length === 0) {
     return null;
   }
+
   return (
     <S.Wrapper>
       <Heading size="small" as="p" id="toc-heading">
@@ -75,7 +81,10 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
                 key={link.id + link.heading}
               >
                 <Link href={`#${link.id}`} passHref>
-                  <a className="navds-link navds-body-short navds-body--small">
+                  <a
+                    onClick={() => handleFocus(`${link.id}`)}
+                    className="navds-link navds-body-short navds-body--small"
+                  >
                     {link.heading}
                   </a>
                 </Link>
