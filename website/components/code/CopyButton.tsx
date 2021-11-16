@@ -16,7 +16,7 @@ const ScButton = styled.button`
   top: 4px;
   right: 8px;
   border-radius: 4px;
-  background-color: var(--navds-color-darkgray);
+  background-color: var(--navds-semantic-color-component-background-inverted);
   height: 48px;
   width: 4rem;
   display: flex;
@@ -54,7 +54,7 @@ const ScTabButton = styled.button`
   }
 
   :hover {
-    outline: 2px solid var(--navds-color-gray-90);
+    outline: 2px solid var(--navds-semantic-color-text-default);
     ::before {
       content: none;
     }

@@ -6,13 +6,13 @@ import styled from "styled-components";
 import CopyButton from "../CopyButton";
 
 export const ScTabs = styled.div`
-  background-color: #f7f7f7;
+  background-color: var(--navds-semantic-color-component-background-alternate);
   padding: 1px;
   min-height: 50px;
 
   display: flex;
   justify-content: space-between;
-  border: 1px solid var(--navds-color-gray-20);
+  border: 1px solid var(--navds-semantic-color-divider);
 
   ul,
   li {
@@ -30,14 +30,14 @@ const ScFlex = styled.div`
 const ScLinkButton = styled.a`
   ${S.ButtonCss}
   text-decoration: none;
-  color: var(--navds-color-gray-90);
+  color: var(--navds-semantic-color-text-default);
 
   ::before {
     content: none;
   }
 
   :hover {
-    outline: 2px solid var(--navds-color-gray-90);
+    outline: 2px solid var(--navds-semantic-color-component-background-inverted);
     outline-offset: -2px;
 
     ::before {

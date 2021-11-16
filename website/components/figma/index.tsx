@@ -5,7 +5,7 @@ import { FigmaEmbed as FigmaEmbedT } from "../../lib/autogen-types";
 import { withErrorBoundary } from "../error-boundary";
 
 const Skeleton = styled.div`
-  background-color: var(--navds-color-gray-10);
+  background-color: var(--navds-semantic-color-canvas-background-default);
   height: 500px;
   width: 100%;
   display: flex;

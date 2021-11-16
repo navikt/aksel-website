@@ -32,13 +32,13 @@ const ScDiv = styled.div`
   display: flex;
   width: 100%;
   background-color: #f7f7f7;
-  border: 1px solid var(--navds-color-gray-20);
-  border-bottom: 1px solid var(--navds-color-gray-20);
+  border: 1px solid var(--navds-semantic-color-);
+  border-bottom: 1px solid var(--navds-semantic-color-);
   border-top: none;
   overflow-x: auto;
 
   :only-child {
-    border-top: 1px solid var(--navds-color-gray-20);
+    border-top: 1px solid var(--navds-semantic-color-);
   }
 `;
 
@@ -51,7 +51,7 @@ const ScInnerDiv = styled.div`
   width: 100%;
 
   &[data-inverted="true"] {
-    background-color: var(--navds-color-gray-90);
+    background-color: var(--navds-semantic-color-canvas-background-inverted);
   }
 `;
 

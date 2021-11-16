@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const ButtonCss = css`
   border: none;
-  color: var(--navds-color-gray-80);
+  color: var(--navds-semantic-color-text-muted);
   padding: 0.75rem 0.75rem;
   display: flex;
   align-items: center;
@@ -22,13 +22,13 @@ export const ButtonCss = css`
   }
 
   :hover {
-    color: var(--navds-color-gray-90);
+    color: var(--navds-semantic-color-text-default);
 
     :before {
       content: "";
       width: 60%;
       height: 2px;
-      background-color: var(--navds-color-gray-90);
+      background-color: var(--navds-semantic-color-text-default);
       bottom: 0.75rem;
       position: absolute;
       opacity: 1;
@@ -40,13 +40,13 @@ export const ButtonCss = css`
   }
 
   &[aria-selected="true"] {
-    color: var(--navds-color-gray-90);
+    color: var(--navds-semantic-color-text-default);
 
     :before {
       content: "";
       width: 60%;
       height: 2px;
-      background-color: var(--navds-color-gray-90);
+      background-color: var(--navds-semantic-color-text-default);
       bottom: 0.75rem;
       position: absolute;
       opacity: 1;
@@ -57,7 +57,7 @@ export const ButtonCss = css`
 /* Snippet/Block */
 export const PreWrapper = styled.div<{ active: boolean }>`
   position: relative;
-  background-color: var(--navds-color-gray-90);
+  background-color: var(--navds-semantic-color-component-background-inverted);
   display: ${(props) => (props.active ? "block" : "none")};
   margin-bottom: var(--navds-spacing-8);
 `;

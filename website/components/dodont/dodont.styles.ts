@@ -21,7 +21,7 @@ export const Icon = styled.div<{ variant: string }>`
     }};
     ${(props) =>
       props.variant === "warning" &&
-      `background: radial-gradient( circle, var(--navds-color-gray-90) 50%, 0, transparent );`}
+      `background: radial-gradient( circle, var(--navds-semantic-color-component-background-inverted) 50%, 0, transparent );`}
   }
 `;
 

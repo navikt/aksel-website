@@ -20,7 +20,7 @@ const ScContent = styled(Popover.Content)`
 
 const ScHeading = styled(Heading)`
   padding: 0.5rem 1rem;
-  border-bottom: 1px solid var(--navds-color-gray-60);
+  border-bottom: 1px solid var(--navds-semantic-color-border-default);
 `;
 
 export const ScButton = styled.button`

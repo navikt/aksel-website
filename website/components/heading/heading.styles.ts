@@ -41,7 +41,9 @@ export const Anchor = styled.button`
 
   :hover,
   :focus {
-    background-color: var(--navds-color-gray-10);
+    background-color: var(
+      --navds-semantic-color-component-background-alternate
+    );
     opacity: 1;
   }
 
