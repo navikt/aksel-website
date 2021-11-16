@@ -8,7 +8,7 @@ const NAVLogoDark = (props): JSX.Element => (
     xmlns="http://www.w3.org/2000/svg"
     focusable="false"
     role="img"
-    aria-label="NAV logo"
+    aria-label="NAV"
     {...props}
   >
     <path

@@ -8,7 +8,7 @@ const NAVLogoWhite = (props): JSX.Element => (
     xmlns="http://www.w3.org/2000/svg"
     focusable="false"
     role="img"
-    aria-label="NAV logo"
+    aria-label="NAV"
     {...props}
   >
     <path d="M0 121.359L17.265 78.6299H33.854L16.611 121.359H0Z" fill="white" />

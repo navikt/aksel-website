@@ -63,11 +63,11 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
   }
   return (
     <S.Wrapper>
-      <Heading size="small" as="p">
+      <Heading size="small" as="p" id="toc-heading">
         Innhold på siden
       </Heading>
       <S.Div>
-        <nav aria-label="Liste over innhold på siden">
+        <nav aria-aria-labelledby="toc-heading">
           <S.Ul>
             {toc.map((link) => (
               <S.Li
