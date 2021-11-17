@@ -1,5 +1,12 @@
 import * as React from "react";
 import { Tag as DsTag } from "@navikt/ds-react";
+import styled from "styled-components";
+
+const ScPurpleTag = styled(DsTag)`
+  background-color: var(--navds-global-color-purple-400);
+  color: var(--navds-semantic-color-text-inverted);
+  border: none;
+`;
 
 const StatusTag = ({ status }: { status: string }): JSX.Element => {
   const getTag = () => {
@@ -12,17 +19,12 @@ const StatusTag = ({ status }: { status: string }): JSX.Element => {
         );
       case "beta":
         return (
-          <DsTag variant="info" size="small">
+          <ScPurpleTag variant="info" size="small">
             Beta
-          </DsTag>
+          </ScPurpleTag>
         );
       case "published":
         return null;
-      /* return (
-          <DsTag variant="success" size="small">
-            Publisert
-          </DsTag>
-        ); */
       default:
         return null;
     }
