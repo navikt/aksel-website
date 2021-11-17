@@ -79,7 +79,7 @@ export const Li = styled.li`
       color: var(--navds-semantic-color-text-default);
 
       :focus {
-        color: white;
+        color: var(--navds-semantic-color-text-inverted);
       }
 
       &:before {

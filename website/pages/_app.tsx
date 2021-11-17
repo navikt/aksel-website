@@ -13,7 +13,7 @@ const ScLoader = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  background-color: white;
+  background-color: var(--navds-semantic-color-canvas-background-light);
   display: flex;
   flex-direction: column;
   justify-content: center;

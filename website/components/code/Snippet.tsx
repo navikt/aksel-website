@@ -10,7 +10,7 @@ import CopyButton from "./CopyButton";
 import styled from "styled-components";
 
 const ScCode = styled.code<{ language: string }>`
-  color: white;
+  color: var(--navds-semantic-color-text-inverted);
   font-size: 1rem;
 
   ${(props) => {

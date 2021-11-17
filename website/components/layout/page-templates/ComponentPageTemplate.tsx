@@ -54,7 +54,7 @@ const ScLinks = styled.div`
 
     :active {
       background-color: var(--navds-semantic-color-focus);
-      color: white;
+      color: var(--navds-semantic-color-text-inverted);
     }
   }
 `;

@@ -12,7 +12,7 @@ export const Links = styled.div`
   margin-right: auto;
 
   a.navdsi-header__title[data-active="true"]:hover {
-    background-color: white;
+    background-color: var(--navds-semantic-color-canvas-background-light);
   }
 `;
 
@@ -35,13 +35,13 @@ export const Link = styled(DsHeader.Title)<{ $active: boolean }>`
   &[data-active="true"] {
     box-shadow: inset 0 0 0 1px
       var(--navds-semantic-color-canvas-background-inverted);
-    background-color: white;
+    background-color: var(--navds-semantic-color-canvas-background-light);
     color: var(--navds-semantic-color-text-default);
 
     :focus {
       box-shadow: inset 0 0 0 1px
           var(--navds-semantic-color-canvas-background-inverted),
-        inset 0 0 0 2px white,
+        inset 0 0 0 2px var(--navds-semantic-color-canvas-background-light),
         inset 0 0 0 4px var(--navds-semantic-color-canvas-background-inverted);
     }
 
@@ -59,7 +59,7 @@ export const HeaderItem = css<{ $isTablet: boolean }>`
   display: flex;
   align-items: center;
   padding: ${(props) => (props.$isTablet ? "0 0.75rem" : "0 0.75rem")};
-  color: white;
+  color: var(--navds-semantic-color-text-inverted);
   column-gap: 0.5rem;
   height: 100%;
   min-height: var(--header-height);
@@ -75,7 +75,7 @@ export const HeaderItem = css<{ $isTablet: boolean }>`
   }
 
   :focus {
-    outline: 2px solid white;
+    outline: 2px solid var(--navds-semantic-color-canvas-background-light);
     outline-offset: -2px;
   }
 

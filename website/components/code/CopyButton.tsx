@@ -11,7 +11,7 @@ const copyCode = (content: string) =>
 
 const ScButton = styled.button`
   ${S.ButtonCss}
-  color: white;
+  color: var(--navds-semantic-color-text-inverted);
   position: absolute;
   top: 4px;
   right: 8px;
@@ -26,7 +26,7 @@ const ScButton = styled.button`
   :hover {
     background-color: var(--navds-global-color-gray-800);
     text-decoration: none;
-    color: white;
+    color: var(--navds-semantic-color-text-inverted);
 
     ::before {
       content: none;
@@ -34,7 +34,7 @@ const ScButton = styled.button`
   }
 
   :focus {
-    outline: 2px solid white;
+    outline: 2px solid var(--navds-semantic-color-canvas-background-light);
   }
 
   > svg {

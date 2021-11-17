@@ -26,13 +26,13 @@ const ScLink = styled.a<{ active?: boolean }>`
     props.active &&
     `
     box-shadow: inset 6px 0 0 0 var(--navds-semantic-color-canvas-background-inverted);
-    background-color: #f8f8f8;
+    background-color: var(--navds-global-color-gray-50);;
     color: var(--navds-semantic-color-text-default);
     font-weight: 600;
   `}
 
   :hover {
-    background-color: #f8f8f8;
+    background-color: var(--navds-global-color-gray-50);
     color: var(--navds-semantic-color-text-default);
   }
 

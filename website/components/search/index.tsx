@@ -87,7 +87,8 @@ const ScCloseButton = styled.button`
   z-index: auto;
 
   :hover {
-    box-shadow: inset 0 0 0 1px white,
+    box-shadow: inset 0 0 0 1px
+        var(--navds-semantic-color-canvas-background-light),
       inset 0 0 0 3px var(--navds-semantic-color-focus);
   }
 

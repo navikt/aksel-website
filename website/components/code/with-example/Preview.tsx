@@ -31,7 +31,7 @@ const formatCode = (code: string, tag: string) => {
 const ScDiv = styled.div`
   display: flex;
   width: 100%;
-  background-color: #f7f7f7;
+  background-color: var(--navds-global-color-gray-50);
   border: 1px solid var(--navds-global-color-gray-200);
   border-bottom: 1px solid var(--navds-global-color-gray-200);
   border-top: none;

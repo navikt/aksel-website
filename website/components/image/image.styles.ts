@@ -8,7 +8,7 @@ export const Figure = styled.figure`
 `;
 
 export const Image = styled.button`
-  background-color: #f7f7f7;
+  background-color: var(--navds-global-color-gray-50);
   border: 1px solid var(--navds-semantic-color-divider);
 
   :focus {
@@ -24,7 +24,7 @@ export const Caption = styled.figcaption`
 `;
 
 export const TextImage = styled.div<{ placement: "right" | "left" }>`
-  background-color: #f7f7f7;
+  background-color: var(--navds-global-color-gray-50);
   border: 1px solid var(--navds-semantic-color-divider);
   width: 300px;
 

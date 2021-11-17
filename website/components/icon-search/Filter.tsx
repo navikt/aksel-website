@@ -40,7 +40,7 @@ const ScCloseButton = styled.button`
   height: 48px;
   border: 1px solid var(--navds-semantic-color-border-default);
   border-left: none;
-  background-color: white;
+  background-color: var(--navds-semantic-color-canvas-background-light);
   z-index: auto;
   margin-top: auto;
 
@@ -131,7 +131,8 @@ const ScToggle = styled.button`
 
   :focus {
     box-shadow: inset 0 0 0 1px var(--navds-semantic-color-border-default),
-      0 0 0 1px white, 0 0 0 4px var(--navds-semantic-color-focus);
+      0 0 0 1px var(--navds-semantic-color-canvas-background-light),
+      0 0 0 4px var(--navds-semantic-color-focus);
     border-color: var(--navds-semantic-color-interaction-primary-default);
     z-index: 2;
     outline: none;
@@ -140,12 +141,13 @@ const ScToggle = styled.button`
   &[data-active="true"] {
     box-shadow: none;
     background-color: var(--navds-semantic-color-interaction-primary-selected);
-    color: white;
+    color: var(--navds-semantic-color-text-inverted);
 
     :focus {
       box-shadow: inset 0 0 0 2px
           var(--navds-semantic-color-interaction-primary-selected),
-        0 0 0 1px white, 0 0 0 4px var(--navds-semantic-color-focus);
+        0 0 0 1px var(--navds-semantic-color-canvas-background-light),
+        0 0 0 4px var(--navds-semantic-color-focus);
     }
   }
 `;

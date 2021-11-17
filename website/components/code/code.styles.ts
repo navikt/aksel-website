@@ -75,6 +75,6 @@ export const Pre = styled.pre`
 `;
 
 export const Code = styled.code`
-  color: white;
+  color: var(--navds-semantic-color-text-inverted);
   font-size: 1rem;
 `;

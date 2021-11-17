@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   padding: var(--navds-spacing-8) 0;
   position: relative;
   flex-shrink: 0;
-  background-color: white;
+  background-color: var(--navds-semantic-color-canvas-background-light);
   border-right: 1px solid var(--navds-semantic-color-canvas-background-default);
   position: sticky;
   top: 0;

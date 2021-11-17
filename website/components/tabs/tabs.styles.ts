@@ -5,7 +5,7 @@ export const Nav = styled.nav<{ isTablet: boolean }>`
   position: sticky;
   top: 0;
   z-index: 1001;
-  background-color: white;
+  background-color: var(--navds-semantic-color-canvas-background-light);
 
   ${(props) => {
     return !props.isTablet

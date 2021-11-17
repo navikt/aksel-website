@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const Style = styled.div`
   background-color: var(--navds-global-color-red-500);
-  color: white;
+  color: var(--navds-semantic-color-canvas-background-light);
   padding: 0.5rem;
   width: 12rem;
   position: fixed;

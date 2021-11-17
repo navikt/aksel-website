@@ -27,7 +27,7 @@ const ScInnerWrapper = styled.div<{ $isTablet: boolean }>`
   max-width: 648px;
 
   > * {
-    color: white;
+    color: var(--navds-semantic-color-text-inverted);
     text-decoration: none;
     padding: 1rem 3rem;
     height: 7rem;

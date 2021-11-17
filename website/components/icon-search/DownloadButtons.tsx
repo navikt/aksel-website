@@ -43,7 +43,7 @@ export const ScButton = styled.button`
 
   :focus {
     outline: none;
-    color: white;
+    color: var(--navds-semantic-color-text-inverted);
     background-color: var(--navds-semantic-color-focus);
   }
 `;

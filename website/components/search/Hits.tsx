@@ -11,12 +11,12 @@ const ScHits = styled.dl`
   max-height: 600px;
   overflow-y: auto;
   border-radius: 4px;
-  background-color: white;
+  background-color: var(--navds-semantic-color-canvas-background-light);
   margin: 0;
 `;
 
 const ScCategory = styled(Detail)`
-  background-color: #f7f7f7;
+  background-color: var(--navds-global-color-gray-50);
   padding: 0.5rem;
   text-transform: uppercase;
 `;

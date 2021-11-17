@@ -8,7 +8,7 @@
 code[class*="language-"],
 pre[class*="language-"] {
   max-width: calc(100% - 4.5rem);
-  color: #f8f8f8;
+  color: var(--navds-global-color-gray-50);
   background: none;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   text-align: left;
@@ -51,7 +51,7 @@ pre[class*="language-"] {
 }
 
 .token.punctuation {
-  color: #f8f8f8;
+  color: var(--navds-global-color-gray-50);
 }
 
 .namespace {
@@ -87,7 +87,7 @@ pre[class*="language-"] {
 .language-css .token.string,
 .style .token.string,
 .token.variable {
-  color: #f8f8f8;
+  color: var(--navds-global-color-gray-50);
 }
 
 .token.atrule,

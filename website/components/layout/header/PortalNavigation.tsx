@@ -26,7 +26,7 @@ export const ScMenu = styled(Dropdown.Menu)`
     0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
 
   > * {
-    background-color: white;
+    background-color: var(--navds-semantic-color-canvas-background-light);
   }
 
   > * > :nth-child(2) {

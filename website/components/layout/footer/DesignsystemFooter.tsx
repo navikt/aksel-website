@@ -18,7 +18,7 @@ import { NavLogoWhite } from "../..";
 const ScFooter = styled.footer`
   width: 100%;
   background-color: var(--navds-semantic-color-canvas-background-inverted);
-  color: white;
+  color: var(--navds-semantic-color-text-inverted);
   padding: 3rem;
 
   @media (max-width: 768px) {
@@ -59,7 +59,7 @@ const ScRightColumn = styled.div`
   }
 
   a {
-    color: white;
+    color: var(--navds-semantic-color-text-inverted);
 
     :focus {
       background-color: var(--navds-global-color-blue-200);
@@ -140,7 +140,7 @@ const ScTextarea = styled(Textarea)`
 
   > * textarea {
     background-color: transparent;
-    color: white;
+    color: var(--navds-semantic-color-text-inverted);
 
     ${ScStateCss}
   }
@@ -154,7 +154,7 @@ const ScTextField = styled(TextField)`
 
   > input {
     background-color: transparent;
-    color: white;
+    color: var(--navds-semantic-color-text-inverted);
     ${ScStateCss}
   }
 `;

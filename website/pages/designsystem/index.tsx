@@ -23,7 +23,7 @@ const ScCard = styled.a`
   justify-content: flex-start;
   padding: 3rem 2rem 2rem 2rem;
   border-radius: 4px;
-  background-color: white;
+  background-color: var(--navds-semantic-color-canvas-background-light);
   position: relative;
   box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
     0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);

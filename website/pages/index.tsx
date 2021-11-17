@@ -53,7 +53,7 @@ const ScCard = styled.a`
   padding: 3rem 2rem 2rem 2rem;
   border-radius: 8px;
   border: 2px solid var(--navds-semantic-color-divider);
-  background-color: white;
+  background-color: var(--navds-semantic-color-canvas-background-light);
   position: relative;
 
   :hover {

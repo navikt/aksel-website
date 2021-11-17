@@ -44,7 +44,7 @@ const ScListItem = styled(Dropdown.Menu.List.Item)<{ $active?: boolean }>`
     props.$active &&
     `
     box-shadow: inset 6px 0 0 0 var(--navds-semantic-color-canvas-background-inverted);
-    background-color: #f8f8f8;
+    background-color: var(--navds-global-color-gray-50);;
     color: var(--navds-semantic-color-text-default);
     font-weight: 600;
   `}
@@ -101,7 +101,7 @@ const ScHamburgerButton = styled(Header.Button)<{ $open: boolean }>`
 
   ${(props) =>
     props.$open &&
-    `background-color: white;
+    `background-color: var(--navds-semantic-color-canvas-background-light);
      color: var(--navds-semantic-color-text-default);
      :hover {
        background-color: var(--navds-semantic-color-canvas-background-default);
@@ -119,7 +119,7 @@ const ScHamburgerButton = styled(Header.Button)<{ $open: boolean }>`
 `;
 
 const ScCategory = styled(Detail)`
-  background-color: #f7f7f7;
+  background-color: var(--navds-global-color-gray-50);
   padding: 0.5rem;
   text-transform: uppercase;
 `;
@@ -160,7 +160,8 @@ const MobileNavigation = () => {
           style={{
             padding: "0.5rem 0",
             margin: 0,
-            backgroundColor: "white",
+            backgroundColor:
+              "var(--navds-semantic-color-canvas-background-light)",
           }}
         >
           {openHamb && (

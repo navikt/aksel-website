@@ -18,7 +18,7 @@ const Style = styled.div`
   padding: 2rem;
   text-align: center;
   background-color: var(--navds-global-color-blue-50);
-  color: white;
+  color: var(--navds-semantic-color-text-inverted); ;
 `;
 
 class ErrorBoundary extends React.Component<Props, State> {

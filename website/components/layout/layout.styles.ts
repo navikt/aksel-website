@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const SidebarMain = styled.div`
   display: flex;
   min-height: calc(100vh - var(--header-height));
-  background-color: #ffffff;
+  background-color: var(--navds-semantic-color-canvas-background-light);
 
   p {
     max-width: var(--text-max-width);
@@ -41,7 +41,7 @@ export const Grow = styled.div`
 
 export const SkipLink = styled.a`
   background: var(--navds-semantic-color-focus);
-  color: white;
+  color: var(--navds-semantic-color-text-inverted);
   left: 0;
   padding: 1rem;
   position: absolute;
@@ -53,6 +53,7 @@ export const SkipLink = styled.a`
   :focus-within {
     transform: translateY(0%);
     outline: none;
-    box-shadow: inset 0 0 0 2px white;
+    box-shadow: inset 0 0 0 2px
+      var(--navds-semantic-color-canvas-background-light);
   }
 `;
