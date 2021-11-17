@@ -19,7 +19,7 @@ const ScModalContent = styled.div`
 `;
 
 const ScMutedBodyShort = styled(BodyShort)`
-  color: var(--navds-semantic-color-text-);
+  color: var(--navds-semantic-color-text-muted);
 `;
 
 const ScIcons = styled.div`

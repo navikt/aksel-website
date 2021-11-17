@@ -64,6 +64,7 @@ const ScRightColumn = styled.div`
     :focus {
       background-color: var(--navds-global-color-blue-200);
       color: var(--navds-semantic-color-text-default);
+      box-shadow: 0 0 0 2px var(--navds-global-color-blue-200);
     }
   }
 `;
@@ -134,9 +135,9 @@ const ScStateCss = css`
 `;
 
 const ScTextarea = styled(Textarea)`
-  --navds-textarea-color-shadow-error: var(--navds-global-color-red-30);
-  --navds-textarea-color-border-error: var(--navds-global-color-red-40);
-  --navds-error-message-color-text: var(--navds-global-color-red-30);
+  --navds-textarea-color-shadow-error: var(--navds-global-color-red-300);
+  --navds-textarea-color-border-error: var(--navds-global-color-red-400);
+  --navds-error-message-color-text: var(--navds-global-color-red-300);
 
   > * textarea {
     background-color: transparent;
@@ -147,10 +148,10 @@ const ScTextarea = styled(Textarea)`
 `;
 
 const ScTextField = styled(TextField)`
-  --navds-text-field-color-shadow-error: var(--navds-global-color-red-30);
-  --navds-text-field-color-border-error: var(--navds-global-color-red-40);
-  --navds-text-field-color-shadow-error: var(--navds-global-color-red-30);
-  --navds-error-message-color-text: var(--navds-global-color-red-30);
+  --navds-text-field-color-shadow-error: var(--navds-global-color-red-300);
+  --navds-text-field-color-border-error: var(--navds-global-color-red-400);
+  --navds-text-field-color-shadow-error: var(--navds-global-color-red-300);
+  --navds-error-message-color-text: var(--navds-global-color-red-300);
 
   > input {
     background-color: transparent;
