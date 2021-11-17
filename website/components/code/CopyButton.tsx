@@ -24,7 +24,7 @@ const ScButton = styled.button`
   justify-content: center;
 
   :hover {
-    background-color: var(--navds-color-gray-80);
+    background-color: var(--navds-global-color-gray-800);
     text-decoration: none;
     color: white;
 

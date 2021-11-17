@@ -19,13 +19,7 @@ const ScTextField = styled(TextField)`
     border-right: none;
   }
 
-  > input:hover {
-    border-color: var(--navds-color-gray-90);
-  }
-
   > input:focus {
-    /* box-shadow: inset 0 0 0 2px var(--navds-color-gray-90),
-      0 0 0 3px var(--navds-color-blue-20); */
     z-index: 1;
   }
 `;
@@ -44,19 +38,21 @@ const ScCloseButton = styled.button`
   ${ScButtonCss}
   width: 48px;
   height: 48px;
-  border: 1px solid var(--navds-color-gray-60);
+  border: 1px solid var(--navds-semantic-color-border-default);
   border-left: none;
   background-color: white;
   z-index: auto;
   margin-top: auto;
 
   :hover {
-    background-color: var(--navds-color-gray-10);
+    background-color: var(
+      --navds-semantic-color-component-background-alternate
+    );
   }
 
   :focus {
     outline: none;
-    box-shadow: 0 0 0 3px var(--navds-color-blue-80);
+    box-shadow: 0 0 0 3px var(--navds-semantic-color-focus);
     z-index: 2;
   }
 `;
@@ -86,12 +82,16 @@ const ScTextFieldWrapper = styled.div`
       flex: 1 1;
       border-top-right-radius: 4px;
       border-bottom-right-radius: 4px;
-      border-right: 1px solid var(--navds-color-gray-60);
+      border-right: 1px solid var(--navds-semantic-color-border-default);
+
+      :hover {
+        border-color: var(--navds-semantic-color-interaction-primary-hover);
+      }
     }
   }
 
   :hover > * {
-    border-color: var(--navds-color-gray-90);
+    border-color: var(--navds-semantic-color-interaction-primary-hover);
   }
 `;
 
@@ -112,13 +112,13 @@ const ScToggleGroup = styled(Detail)`
 
 const ScToggle = styled.button`
   padding: calc(0.5rem - 2px) 1rem;
-  box-shadow: inset 0 0 0 1px var(--navds-color-gray-60);
+  box-shadow: inset 0 0 0 1px var(--navds-semantic-color-border-default);
   flex: 1 1;
   display: flex;
   align-items: center;
   justify-content: center;
   background: none;
-  color: var(--navds-color-gray-90);
+  color: var(--navds-semantic-color-text-default);
   border: none;
 
   :not(:first-child) {
@@ -126,25 +126,26 @@ const ScToggle = styled.button`
   }
 
   :hover {
-    background-color: var(--navds-color-gray-10);
+    background-color: var(--navds-semantic-color-canvas-background-default);
   }
 
   :focus {
-    box-shadow: inset 0 0 0 1px var(--navds-color-gray-60), 0 0 0 1px white,
-      0 0 0 4px var(--navds-color-blue-80);
-    border-color: var(--navds-color-blue-50);
+    box-shadow: inset 0 0 0 1px var(--navds-semantic-color-border-default),
+      0 0 0 1px white, 0 0 0 4px var(--navds-semantic-color-focus);
+    border-color: var(--navds-semantic-color-interaction-primary-default);
     z-index: 2;
     outline: none;
   }
 
   &[data-active="true"] {
     box-shadow: none;
-    background-color: var(--navds-color-deepblue-50);
+    background-color: var(--navds-semantic-color-interaction-primary-selected);
     color: white;
 
     :focus {
-      box-shadow: inset 0 0 0 2px var(--navds-color-deepblue-50),
-        0 0 0 1px white, 0 0 0 4px var(--navds-color-blue-80);
+      box-shadow: inset 0 0 0 2px
+          var(--navds-semantic-color-interaction-primary-selected),
+        0 0 0 1px white, 0 0 0 4px var(--navds-semantic-color-focus);
     }
   }
 `;

@@ -50,7 +50,7 @@ const ScIcon = styled.button`
   }
 
   :hover {
-    background-color: var(--navds-color-gray-10);
+    background-color: var(--navds-semantic-color-canvas-background-default);
     box-shadow: none;
 
     svg {
@@ -60,7 +60,7 @@ const ScIcon = styled.button`
 
   :focus {
     outline: none;
-    box-shadow: 0 0 0 3px var(--navds-color-blue-80);
+    box-shadow: 0 0 0 3px var(--navds-semantic-color-focus);
   }
 `;
 
@@ -91,11 +91,6 @@ const ScNew = styled(Detail)`
 
 const ScIconTexts = styled.div`
   text-align: center;
-  > * {
-    :last-child {
-      color: var(--navds-color-gray-60);
-    }
-  }
 `;
 
 const ScFlex = styled.div`
@@ -236,7 +231,6 @@ const IconSearch = () => {
                       </div>
                       <ScIconTexts>
                         <Detail size="small"> {getName(i.name)}</Detail>
-                        <Detail size="small"> {getTag(i.name)}</Detail>
                       </ScIconTexts>
                     </ScIconInner>
                   </ScIcon>
