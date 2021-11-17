@@ -1,11 +1,10 @@
 import { Expand, Left } from "@navikt/ds-icons";
-import { BodyShort, Label } from "@navikt/ds-react";
-import { Dropdown, Header } from "@navikt/ds-react-internal";
+import { BodyShort, Label, Popover } from "@navikt/ds-react";
 import { motion } from "framer-motion";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useMedia } from "react-use";
 import styled, { css } from "styled-components";
 import { fadeInCss, NavLogoWhite } from "../..";
@@ -15,7 +14,7 @@ export const ScWrapper = styled.div`
   display: flex;
 `;
 
-export const ScMenu = styled(Dropdown.Menu)`
+const ScPopover = styled(Popover)`
   ${fadeInCss}
   padding: 0.5rem 0;
   border: none;
@@ -29,7 +28,7 @@ export const ScMenu = styled(Dropdown.Menu)`
     background-color: var(--navds-semantic-color-canvas-background-light);
   }
 
-  > * > :nth-child(2) {
+  > :nth-child(2) {
     border-top: 1px solid var(--navds-semantic-color-border-default);
   }
 `;
@@ -53,7 +52,7 @@ export const ScLinkCss = css`
   }
 `;
 
-export const ScLink = styled(Dropdown.Menu.List.Item)`
+export const ScLink = styled.li`
   ${ScLinkCss}
   flex-direction: column;
   padding: 0.75rem 1rem 0.5rem 2rem;
@@ -75,7 +74,7 @@ export const ScLink = styled(Dropdown.Menu.List.Item)`
   }
 `;
 
-export const ScIconLink = styled(Dropdown.Menu.List.Item)`
+export const ScIconLink = styled.li`
   ${ScLinkCss}
   flex-direction: row;
   align-items: center;
@@ -93,7 +92,7 @@ export const ScIconLink = styled(Dropdown.Menu.List.Item)`
   }
 `;
 
-const ScToggle = styled(Header.Button)`
+const ScToggle = styled.button`
   gap: 1rem;
 
   @media (max-width: 564px) {
@@ -118,25 +117,48 @@ const ScToggle = styled(Header.Button)`
   }
 `;
 
+const ScOverlay = styled.div`
+  width: 100vw;
+  height: calc(100vh - var(--header-height));
+  background-color: var(--navds-semantic-color-canvas-background-inverted);
+  opacity: 0;
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  transition: opacity 200ms ease-in-out;
+  visibility: hidden;
+
+  &[data-visible="true"] {
+    opacity: 0.5;
+    visibility: visible;
+  }
+`;
+
 const HeadingDropDown = ({ title }: { title: string }) => {
   const showLogo = useMedia("(min-width: 563px)");
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const buttonRef = useRef(null);
 
   return (
-    <ScWrapper
-      as={motion.div}
-      key="Portalmenu"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ type: "tween", duration: 0.2 }}
-      exit={{ opacity: 0 }}
-    >
-      <Dropdown>
+    <>
+      <ScWrapper
+        as={motion.div}
+        key="Portalmenu"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ type: "tween", duration: 0.2 }}
+        exit={{ opacity: 0 }}
+      >
         <ScToggle
+          ref={buttonRef}
+          className="navdsi-dropdown__toggle navdsi-header__button"
           aria-haspopup="false"
           onClick={() => setOpen(!open)}
-          forwardedAs={Dropdown.Toggle}
+          aria-expanded={open}
         >
           {showLogo && <NavLogoWhite focusable={false} />}
           <span>
@@ -144,8 +166,16 @@ const HeadingDropDown = ({ title }: { title: string }) => {
             <Expand aria-label="Åpne Portal-navigasjon" />
           </span>
         </ScToggle>
-        <ScMenu onClose={() => setOpen(false)}>
-          <Dropdown.Menu.List>
+
+        <ScPopover
+          onClose={() => setOpen(false)}
+          anchorEl={buttonRef.current}
+          open={open}
+          arrow={false}
+          placement={"bottom-start"}
+          offset={8}
+        >
+          <>
             <NextLink href="/" passHref>
               <ScIconLink forwardedAs="a">
                 <Left aria-label="Gå til forsiden" />
@@ -163,22 +193,11 @@ const HeadingDropDown = ({ title }: { title: string }) => {
                 </BodyShort>
               </ScLink>
             </NextLink>
-
-            {/* <NextLink href="/god-praksis" passHref>
-              <ScLink
-                data-active={router.asPath.startsWith(`/god-praksis`)}
-                forwardedAs="a"
-              >
-                <BodyShort>God Praksis</BodyShort>
-                <BodyShort spacing size="small">
-                  Informasjon omhandlende God Praksis
-                </BodyShort>
-              </ScLink>
-            </NextLink> */}
-          </Dropdown.Menu.List>
-        </ScMenu>
-      </Dropdown>
-    </ScWrapper>
+          </>
+        </ScPopover>
+      </ScWrapper>
+      <ScOverlay data-visible={open} />
+    </>
   );
 };
 export default HeadingDropDown;

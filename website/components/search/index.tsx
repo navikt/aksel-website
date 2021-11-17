@@ -167,13 +167,21 @@ const ScPopover = styled(Popover)`
 const ScOverlay = styled.div`
   width: 100vw;
   height: calc(100vh - var(--header-height));
-  background-color: rgba(41, 41, 41, 0.5);
+  background-color: var(--navds-semantic-color-canvas-background-inverted);
+  opacity: 0;
   position: absolute;
   top: var(--header-height);
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 2;
+  transition: opacity 200ms ease-in-out;
+  visibility: hidden;
+
+  &[data-visible="true"] {
+    opacity: 0.5;
+    visibility: visible;
+  }
 `;
 
 interface SearchContextProps {
@@ -292,9 +300,7 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
         )}
       </ScSearch>
       <ScOverlay
-        style={{
-          display: !(Object.keys(result).length > 0 || query !== "") && "none",
-        }}
+        data-visible={Object.keys(result).length > 0 || query !== ""}
       />
     </>
   );
