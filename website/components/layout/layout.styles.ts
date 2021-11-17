@@ -48,7 +48,7 @@ export const SkipLink = styled.a`
   transform: translateY(-100%);
   transition: transform 0.1s;
   text-decoration: none;
-  z-index: 1;
+  z-index: 1200;
 
   :focus-within {
     transform: translateY(0%);
