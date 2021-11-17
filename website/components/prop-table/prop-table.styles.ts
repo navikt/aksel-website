@@ -47,7 +47,7 @@ export const Caption = styled.caption`
 `;
 
 export const Required = styled(Detail)`
-  color: var(--navds-color-red-50);
+  color: var(--navds-semantic-color-feedback-danger-text);
 `;
 
 export const Tbody = styled.tbody`

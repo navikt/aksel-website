@@ -107,7 +107,7 @@ const ScHamburgerButton = styled(Header.Button)<{ $open: boolean }>`
        background-color: var(--navds-semantic-color-canvas-background-default);
      }
      :focus {
-       box-shadow: inset 0 0 0 2px var(--navds-color-blue-20), inset 0 0 0 4px var(--navds-semantic-color-canvas-background-inverted);
+       box-shadow: inset 0 0 0 2px var(--navds-global-color-blue-200), inset 0 0 0 4px var(--navds-semantic-color-canvas-background-inverted);
      }
      `}
   > * {

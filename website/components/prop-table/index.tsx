@@ -11,7 +11,7 @@ import styled from "styled-components";
 import { ScCode } from "../SanityBlockContent";
 
 export const TypeCode = styled.code`
-  color: var(--navds-color-lightblue-80);
+  color: var(--navds-global-color-lightblue-800);
   font-size: 1rem;
 `;
 

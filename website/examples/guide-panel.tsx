@@ -35,16 +35,16 @@ er forlenget.
 </GuidePanel>`;
 
 const GreenWrapper = styled.div`
-  --navds-guide-panel-color-border: var(--navds-color-green-40);
+  --navds-guide-panel-color-border: var(--navds-global-color-green-400);
   --navds-guide-panel-color-illustration-background: var(
-    --navds-color-green-20
+    --navds-global-color-green-200
   );
 `;
 
 const PurpleWrapper = styled.div`
-  --navds-guide-panel-color-border: var(--navds-color-purple-40);
+  --navds-guide-panel-color-border: var(--navds-global-color-purple-400);
   --navds-guide-panel-color-illustration-background: var(
-    --navds-color-purple-20
+    --navds-global-color-purple-200
   );
 `;
 

@@ -114,7 +114,7 @@ const ScToggle = styled(Header.Button)`
   :focus {
     box-shadow: inset 0 0 0 1px
         var(--navds-semantic-color-component-background-inverted),
-      inset 0 0 0 3px var(--navds-color-blue-20);
+      inset 0 0 0 3px var(--navds-global-color-blue-200);
   }
 `;
 

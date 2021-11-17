@@ -78,7 +78,7 @@ pre[class*="language-"] {
 .token.builtin,
 .token.inserted {
   color: #50fa7b;
-  color: var(--navds-color-green-20);
+  color: var(--navds-global-color-green-200);
 }
 
 .token.operator,
@@ -94,11 +94,11 @@ pre[class*="language-"] {
 .token.attr-value,
 .token.function,
 .token.class-name {
-  color: var(--navds-color-blue-20);
+  color: var(--navds-global-color-blue-200);
 }
 
 .token.attr-value {
-  color: var(--navds-color-orange-20);
+  color: var(--navds-global-color-orange-200);
 }
 
 .token.keyword {
@@ -107,7 +107,7 @@ pre[class*="language-"] {
 
 .token.regex,
 .token.important {
-  color: var(--navds-color-blue-20);
+  color: var(--navds-global-color-blue-200);
 }
 
 .token.important,

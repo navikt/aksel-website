@@ -62,7 +62,7 @@ const ScCard = styled.a`
   }
 
   :focus {
-    border-color: var(--navds-color-text-focus);
+    border-color: var(--navds-semantic-color-focus);
     outline: none;
   }
 `;
@@ -72,7 +72,7 @@ const ScBeta = styled(Label)`
   top: 0;
   right: 0;
   padding: 0.25rem 0.5rem;
-  background-color: var(--navds-color-lightblue-10);
+  background-color: var(--navds-semantic-color-feedback-info-background);
   border-bottom-left-radius: 4px;
   border-top-right-radius: 6px;
 `;

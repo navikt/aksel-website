@@ -64,8 +64,8 @@ export const SpeechBubbleFarger = () => (
   <>
     <SpeechBubble
       illustration="OLA"
-      illustrationBgColor="var(--navds-color-lightblue-10)"
-      backgroundColor="var(--navds-color-lightblue-20)"
+      illustrationBgColor="var(--navds-global-color-lightblue-100)"
+      backgroundColor="var(--navds-global-color-lightblue-200)"
     >
       <SpeechBubble.Bubble>
         Aute minim nisi sunt mollit duis sunt nulla minim non proident.
@@ -79,8 +79,8 @@ export const SpeechBubbleFarger = () => (
 
 SpeechBubbleFarger.react = `<SpeechBubble
 illustration="OLA"
-illustrationBgColor="var(--navds-color-lightblue-10)"
-backgroundColor="var(--navds-color-lightblue-20)"
+illustrationBgColor="var(--navds-global-color-lightblue-100)"
+backgroundColor="var(--navds-global-color-lightblue-200)"
 >
 <SpeechBubble.Bubble>
   Aute minim nisi sunt mollit duis sunt nulla minim non proident.
