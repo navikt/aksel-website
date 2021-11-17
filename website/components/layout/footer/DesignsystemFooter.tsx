@@ -17,7 +17,7 @@ import { NavLogoWhite } from "../..";
 
 const ScFooter = styled.footer`
   width: 100%;
-  background-color: var(--navds-color-gray-90);
+  background-color: var(--navds-semantic-color-canvas-background-inverted);
   color: white;
   padding: 3rem;
 
@@ -63,20 +63,57 @@ const ScRightColumn = styled.div`
 
     :focus {
       background-color: var(--navds-color-blue-10);
-      color: var(--navds-color-gray-90);
+      color: var(--navds-semantic-color-text-default);
     }
   }
 `;
 
 const ScPrimaryButton = styled(Button)`
-  --navds-button-color-primary-background: var(--navds-color-blue-30);
-  --navds-button-color-primary-background-hover: var(--navds-color-blue-40);
-  --navds-button-color-primary-background-active: var(
-    --navds-color-deepblue-40
+  --navds-button-color-secondary-text: var(
+    --navds-semantic-color-text-inverted
   );
-  --navds-button-color-primary-text: var(--navds-color-gray-90);
-  --navds-shadow-focus: 0 0 0 2px var(--navds-color-blue-10);
-  --navds-button-color-primary-border-focus: var(--navds-color-blue-10);
+  --navds-button-color-secondary-text-hover: var(
+    --navds-semantic-color-text-default
+  );
+  --navds-button-color-secondary-text-active: var(
+    --navds-semantic-color-text-default
+  );
+  --navds-button-color-secondary-border: var(
+    --navds-semantic-color-component-background-light
+  );
+  --navds-button-color-secondary-border-focus-active-hover: var(
+    --navds-semantic-color-component-background-light
+  );
+  --navds-button-color-secondary-background: var(
+    --navds-semantic-color-component-background-inverted
+  );
+  --navds-button-color-secondary-background-hover: var(
+    --navds-semantic-color-component-background-light
+  );
+  --navds-button-color-secondary-background-active: var(
+    --navds-semantic-color-canvas-background-default
+  );
+
+  :focus {
+    box-shadow: inset 0 0 0 2px
+        var(--navds-semantic-color-component-background-light),
+      0 0 0 1px var(--navds-semantic-color-component-background-inverted),
+      0 0 0 3px var(--navds-global-color-lightblue-100);
+  }
+
+  :hover:focus {
+    box-shadow: inset 0 0 0 2px
+        var(--navds-semantic-color-component-background-light),
+      0 0 0 1px var(--navds-semantic-color-component-background-inverted),
+      0 0 0 3px var(--navds-global-color-lightblue-100);
+  }
+
+  :active:focus {
+    box-shadow: inset 0 0 0 2px
+        var(--navds-semantic-color-canvas-background-default),
+      0 0 0 1px var(--navds-semantic-color-component-background-inverted),
+      0 0 0 3px var(--navds-global-color-lightblue-100);
+  }
 `;
 
 const ScFieldset = styled(Fieldset)`
@@ -231,7 +268,9 @@ const DesignsystemFooter = () => {
                   }}
                 />
               </ScFieldset>
-              <ScPrimaryButton>Send melding</ScPrimaryButton>
+              <ScPrimaryButton variant="secondary">
+                Send melding
+              </ScPrimaryButton>
             </form>
           )}
         </ScRightColumn>

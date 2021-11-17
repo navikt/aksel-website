@@ -19,7 +19,7 @@ const ScModalContent = styled.div`
 `;
 
 const ScMutedBodyShort = styled(BodyShort)`
-  color: var(--navds-color-gray-60);
+  color: var(--navds-semantic-color-text-);
 `;
 
 const ScIcons = styled.div`
@@ -41,14 +41,14 @@ const ScIconCss = css`
 
 const ScIcon = styled.div`
   ${ScIconCss}
-  background-color: white;
-  color: var(--navds-color-gray-90);
+  background-color: var(--navds-semantic-color-canvas-background-light);
+  color: var(--navds-semantic-color-text-default);
 `;
 
 const ScIconInverted = styled.div`
   ${ScIconCss}
-  background-color: var(--navds-color-gray-90);
-  color: white;
+  background-color: var(--navds-semantic-color-canvas-background-inverted);
+  color: var(--navds-semantic-color-text-inverted);
 `;
 
 const ScButtonWrapper = styled.div`

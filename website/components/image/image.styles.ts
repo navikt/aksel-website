@@ -9,11 +9,11 @@ export const Figure = styled.figure`
 
 export const Image = styled.button`
   background-color: #f7f7f7;
-  border: 1px solid var(--navds-color-gray-20);
+  border: 1px solid var(--navds-semantic-color-divider);
 
   :focus {
     outline: none;
-    box-shadow: 0 0 0 3px var(--navds-color-blue-80);
+    box-shadow: 0 0 0 3px var(--navds-semantic-color-focus);
   }
 `;
 
@@ -25,7 +25,7 @@ export const Caption = styled.figcaption`
 
 export const TextImage = styled.div<{ placement: "right" | "left" }>`
   background-color: #f7f7f7;
-  border: 1px solid var(--navds-color-gray-20);
+  border: 1px solid var(--navds-semantic-color-divider);
   width: 300px;
 
   ${({ placement }) =>
