@@ -66,7 +66,6 @@ export const Pre = styled.pre`
   overflow-x: auto;
   align-items: center;
   display: flex;
-  /* background-color: var(--navds-color-darkgray); */
   margin: 0;
   padding: 1rem 1rem 1rem 1rem;
 

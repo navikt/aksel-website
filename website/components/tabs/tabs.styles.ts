@@ -21,7 +21,7 @@ export const Nav = styled.nav<{ isTablet: boolean }>`
     !props.isTablet &&
     `::after {
         content: "";
-        background-color: var(--navds-color-gray-10);
+        background-color: var(--navds-semantic-color-canvas-background-default);
         height: 1px;
         width: 100%;
         bottom: 0px;
@@ -55,7 +55,7 @@ export const Ul = styled.ul<{ isTablet: boolean }>`
       props.isTablet &&
       `::after {
       content: "";
-      background-color: var(--navds-color-gray-10);
+      background-color: var(--navds-semantic-color-canvas-background-default);
       height: 1px;
       width: fit-content;
       bottom: 0px;
@@ -72,7 +72,7 @@ export const A = styled.a`
   cursor: pointer;
   text-decoration: none;
   text-transform: capitalize;
-  color: var(--navds-color-gray-80);
+  color: var(--navds-global-color-gray-800);
   flex: 1 1;
   display: flex;
   align-items: center;
@@ -82,18 +82,18 @@ export const A = styled.a`
   font-weight: 400;
 
   &[aria-selected="true"] {
-    border-color: var(--navds-color-gray-90);
-    color: var(--navds-color-darkgray);
+    border-color: var(--navds-semantic-color-canvas-background-inverted);
+    color: var(--navds-semantic-color-text-default);
     font-weight: 600;
   }
 
   :hover {
-    color: var(--navds-color-darkgray);
-    border-color: var(--navds-color-darkgray);
+    color: var(--navds-semantic-color-text-default);
+    border-color: var(--navds-semantic-color-canvas-background-inverted);
   }
 
   :focus {
-    outline: 3px solid var(--navds-color-blue-80);
+    outline: 3px solid var(--navds-semantic-color-focus);
     outline-offset: -3px;
   }
 `;

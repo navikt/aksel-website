@@ -11,7 +11,7 @@ import styled from "styled-components";
 import { ScColumn } from "./styles";
 
 const ScMutedHeading = styled(Heading)`
-  color: var(--navds-color-gray-60);
+  color: var(--navds-semantic-color-text-muted);
 `;
 
 export const TypographyHeading = () => {

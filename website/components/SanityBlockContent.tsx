@@ -31,7 +31,7 @@ export const ScCode = styled.code`
 const ScKbd = styled.code`
   display: inline-block;
   margin: 0 var(--navds-spacing-1);
-  color: var(--navds-color-darkgray);
+  color: var(--navds-semantic-color-text-default);
   border: 1px solid var(--navds-semantic-color-border-muted);
   border-radius: 3px;
   padding: 0.1rem 0.25rem;

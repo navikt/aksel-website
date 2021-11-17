@@ -71,8 +71,9 @@ const ScSearchButton = styled(Header.Button)`
   ${ScButtonCss}
 
   :focus {
-    box-shadow: inset 0 0 0 1px var(--navds-color-gray-90),
-      inset 0 0 0 3px var(--navds-color-blue-20);
+    box-shadow: inset 0 0 0 1px
+        var(--navds-semantic-color-component-background-inverted),
+      inset 0 0 0 3px var(--navds-global-color-blue-200);
   }
 `;
 
@@ -82,18 +83,19 @@ const ScCloseButton = styled.button`
   width: 48px;
   height: 48px;
   border-radius: 0 4px 4px 0;
-  background-color: var(--navds-color-gray-10);
+  background-color: var(--navds-semantic-color-canvas-background-default);
   z-index: auto;
 
   :hover {
     box-shadow: inset 0 0 0 1px white,
-      inset 0 0 0 3px var(--navds-color-blue-80);
+      inset 0 0 0 3px var(--navds-semantic-color-focus);
   }
 
   :focus {
     outline: none;
-    box-shadow: inset 0 0 0 2px var(--navds-color-gray-90),
-      0 0 0 3px var(--navds-color-blue-20);
+    box-shadow: inset 0 0 0 2px
+        var(--navds-semantic-color-canvas-background-inverted),
+      0 0 0 3px var(--navds-global-color-blue-200);
     z-index: 1;
   }
 `;
@@ -136,16 +138,17 @@ const ScTextField = styled(TextField)`
     height: 48px;
     font-size: 1.25rem;
     padding: 0 1rem 0 3rem;
-    background-color: var(--navds-color-gray-10);
+    background-color: var(--navds-semantic-color-canvas-background-default);
   }
 
   > input:hover {
-    border-color: var(--navds-color-gray-90);
+    border-color: var(--navds-semantic-color-canvas-background-inverted);
   }
 
   > input:focus {
-    box-shadow: inset 0 0 0 2px var(--navds-color-gray-90),
-      0 0 0 3px var(--navds-color-blue-20);
+    box-shadow: inset 0 0 0 2px
+        var(--navds-semantic-color-canvas-background-inverted),
+      0 0 0 3px var(--navds-global-color-blue-200);
     z-index: 1;
   }
 `;

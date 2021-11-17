@@ -11,15 +11,15 @@ const ScHit = styled.a`
   padding: 0.75rem;
   padding-right: 0.5rem;
   text-decoration: none;
-  color: var(--navds-color-gray-90);
+  color: var(--navds-semantic-color-text-default);
 
   :hover {
-    background-color: var(--navds-color-gray-10);
+    background-color: var(--navds-semantic-color-canvas-background-default);
   }
 
   :focus {
     outline: none;
-    box-shadow: inset 0 0 0 3px var(--navds-color-blue-80);
+    box-shadow: inset 0 0 0 3px var(--navds-semantic-color-focus);
   }
 `;
 

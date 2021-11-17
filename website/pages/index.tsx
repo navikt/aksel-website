@@ -45,14 +45,14 @@ const ScCard = styled.a`
   height: 20rem;
   max-width: 18rem;
   text-decoration: none;
-  color: var(--navds-color-darkgray);
+  color: var(--navds-semantic-color-text-default);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   padding: 3rem 2rem 2rem 2rem;
   border-radius: 8px;
-  border: 2px solid var(--navds-color-gray-20);
+  border: 2px solid var(--navds-semantic-color-divider);
   background-color: white;
   position: relative;
 

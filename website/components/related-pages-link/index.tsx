@@ -8,7 +8,7 @@ import { PagePropsContext } from "../../pages/_app";
 
 const ScWrapper = styled.div<{ $isTablet: boolean }>`
   width: 100%;
-  background-color: var(--navds-color-gray-80);
+  background-color: var(--navds-global-color-gray-800);
   padding: 0 0;
 
   display: flex;
@@ -41,12 +41,12 @@ const ScInnerWrapper = styled.div<{ $isTablet: boolean }>`
     }
 
     :hover {
-      background-color: var(--navds-color-gray-60);
+      background-color: var(--navds-global-color-gray-600);
     }
 
     :focus {
       outline: none;
-      box-shadow: inset 0 0 0 3px var(--navds-color-blue-20);
+      box-shadow: inset 0 0 0 3px var(--navds-global-color-blue-200);
     }
   }
 `;

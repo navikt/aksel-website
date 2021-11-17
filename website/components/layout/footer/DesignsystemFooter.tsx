@@ -98,21 +98,21 @@ const ScPrimaryButton = styled(Button)`
     box-shadow: inset 0 0 0 2px
         var(--navds-semantic-color-component-background-light),
       0 0 0 1px var(--navds-semantic-color-component-background-inverted),
-      0 0 0 3px var(--navds-global-color-blue-100);
+      0 0 0 3px var(--navds-global-color-blue-200);
   }
 
   :hover:focus {
     box-shadow: inset 0 0 0 2px
         var(--navds-semantic-color-component-background-light),
       0 0 0 1px var(--navds-semantic-color-component-background-inverted),
-      0 0 0 3px var(--navds-global-color-blue-100);
+      0 0 0 3px var(--navds-global-color-blue-200);
   }
 
   :active:focus {
     box-shadow: inset 0 0 0 2px
         var(--navds-semantic-color-canvas-background-default),
       0 0 0 1px var(--navds-semantic-color-component-background-inverted),
-      0 0 0 3px var(--navds-global-color-blue-100);
+      0 0 0 3px var(--navds-global-color-blue-200);
   }
 `;
 

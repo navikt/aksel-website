@@ -10,7 +10,6 @@ export const PropTable = styled.div`
     margin: 0;
     padding: 0;
     padding-left: 1.25rem;
-    /* border-bottom: 1px solid var(--navds-color-gray-20); */
     margin-bottom: 2rem;
   }
 
@@ -20,10 +19,9 @@ export const PropTable = styled.div`
 `;
 
 export const Table = styled.table`
-  /* border-collapse: collapse; */
   padding-top: 1.25rem;
   margin-bottom: 0rem;
-  border-top: 1px solid var(--navds-color-gray-20);
+  border-top: 1px solid var(--navds-semantic-color-divider);
 
   code,
   * {
@@ -36,7 +34,7 @@ export const Table = styled.table`
 
   :last-child {
     margin-bottom: 3rem;
-    border-bottom: 1px solid var(--navds-color-gray-20);
+    border-bottom: 1px solid var(--navds-semantic-color-divider);
   }
 `;
 

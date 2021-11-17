@@ -36,7 +36,7 @@ export const Div = styled.div`
 
   &:before {
     content: "";
-    background-color: var(--navds-color-gray-40);
+    background-color: var(--navds-semantic-color-border-muted);
     width: 1px;
     height: calc(100% - 1px);
     margin-top: 0.5rem;
@@ -66,7 +66,7 @@ export const Li = styled.li`
     overflow: hidden;
 
     text-overflow: ellipsis;
-    color: var(--navds-color-darkgray);
+    color: var(--navds-semantic-color-text-default);
 
     :hover {
       text-decoration: underline;
@@ -76,7 +76,7 @@ export const Li = styled.li`
   &[data-active="true"] {
     a {
       font-weight: bold;
-      color: var(--navds-color-gray-90);
+      color: var(--navds-semantic-color-text-default);
 
       :focus {
         color: white;
@@ -88,7 +88,9 @@ export const Li = styled.li`
         height: 2.5rem;
         margin-top: 0;
         margin-left: -1px;
-        background-color: var(--navds-color-gray-90);
+        background-color: var(
+          --navds-semantic-color-canvas-background-inverted
+        );
         position: absolute;
         left: 0;
       }

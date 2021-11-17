@@ -77,7 +77,7 @@ const ScCloseButton = styled.button`
     box-shadow: inset 0 0 0 2px
         var(--navds-semantic-color-component-background-light),
       0 0 0 1px var(--navds-semantic-color-component-background-inverted),
-      0 0 0 3px var(--navds-global-color-blue-100);
+      0 0 0 3px var(--navds-global-color-blue-200);
     outline: none;
   }
 

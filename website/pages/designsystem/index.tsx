@@ -17,7 +17,7 @@ const ScCard = styled.a`
   height: 22rem;
   max-width: 18rem;
   text-decoration: none;
-  color: var(--navds-color-darkgray);
+  color: var(--navds-semantic-color-text-default);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -29,16 +29,14 @@ const ScCard = styled.a`
     0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
 
   :hover {
-    /* box-shadow: 0 16px 18px -13px rgba(0, 0, 0, 0.1),
-      0 17px 36px -14px rgba(0, 0, 0, 0.17); */
     box-shadow: none;
-    background-color: var(--navds-color-gray-10);
+    background-color: var(--navds-semantic-color-canvas-background-default);
   }
 
   :focus {
-    border-color: var(--navds-color-text-focus);
+    border-color: var(--navds-semantic-color-focus);
     outline: none;
-    box-shadow: 0 0 0 3px var(--navds-color-blue-80);
+    box-shadow: 0 0 0 3px var(--navds-semantic-color-focus);
   }
 
   h2 {
@@ -79,7 +77,7 @@ const ScTitle = styled.div`
     padding: 3rem 1rem;
   }
 
-  background-color: var(--navds-color-gray-10);
+  background-color: var(--navds-semantic-color-canvas-background-default);
   height: 250px;
   width: 100%;
   flex: 1 1 500px;
