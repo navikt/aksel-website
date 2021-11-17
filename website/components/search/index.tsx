@@ -164,6 +164,18 @@ const ScPopover = styled(Popover)`
   ${fadeInCss}
 `;
 
+const ScOverlay = styled.div`
+  width: 100vw;
+  height: calc(100vh - var(--header-height));
+  background-color: rgba(41, 41, 41, 0.5);
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+`;
+
 interface SearchContextProps {
   clicked: () => void;
 }
@@ -219,65 +231,72 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
   }, [open]);
 
   return (
-    <ScSearch role="search" ref={searchRef} $open={open}>
-      {open && (
-        <ScOpenSearchWrapper>
-          <ScSearchIcon>
+    <>
+      <ScSearch role="search" ref={searchRef} $open={open}>
+        {open && (
+          <ScOpenSearchWrapper>
+            <ScSearchIcon>
+              <SearchIcon
+                style={{ fontSize: "1.5rem", marginLeft: 3 }}
+                aria-label="Søk ikon"
+                aria-hidden={true}
+                role="img"
+              />
+            </ScSearchIcon>
+            <ScTextField
+              placeholder="Søk"
+              ref={anchor}
+              hideLabel
+              label="Søk"
+              description="Søk etter sider i designsystemet"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              aria-expanded={Object.keys(result).length > 0 || query !== ""}
+              aria-haspopup="menu"
+              autoComplete="off"
+              aria-autocomplete="list"
+              type="text"
+            />
+            <ScCloseButton onClick={() => setOpen(false)}>
+              <Close
+                style={{ fontSize: "1.5rem" }}
+                role="img"
+                aria-label="Lukk søk"
+              />
+              <span className="navds-sr-only">Lukk Søk</span>
+            </ScCloseButton>
+            <ScPopover
+              onClose={() => null}
+              anchorEl={anchor.current}
+              open={Object.keys(result).length > 0 || query !== ""}
+              arrow={false}
+              placement={"bottom-start"}
+              offset={12}
+            >
+              <SearchContext.Provider value={{ clicked: () => setOpen(false) }}>
+                <Hits ref={anchor} hits={result} value={query} />
+              </SearchContext.Provider>
+            </ScPopover>
+          </ScOpenSearchWrapper>
+        )}
+
+        {!open && (
+          <ScSearchButton onClick={() => setOpen(!open)}>
             <SearchIcon
               style={{ fontSize: "1.5rem", marginLeft: 3 }}
-              aria-label="Søk ikon"
-              aria-hidden={true}
+              aria-label="Åpne søk"
               role="img"
             />
-          </ScSearchIcon>
-          <ScTextField
-            placeholder="Søk"
-            ref={anchor}
-            hideLabel
-            label="Søk"
-            description="Søk etter sider i designsystemet"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            aria-expanded={Object.keys(result).length > 0 || query !== ""}
-            aria-haspopup="menu"
-            autoComplete="off"
-            aria-autocomplete="list"
-            type="text"
-          />
-          <ScCloseButton onClick={() => setOpen(false)}>
-            <Close
-              style={{ fontSize: "1.5rem" }}
-              role="img"
-              aria-label="Lukk søk"
-            />
-            <span className="navds-sr-only">Lukk Søk</span>
-          </ScCloseButton>
-          <ScPopover
-            onClose={() => null}
-            anchorEl={anchor.current}
-            open={Object.keys(result).length > 0 || query !== ""}
-            arrow={false}
-            placement={"bottom-start"}
-            offset={12}
-          >
-            <SearchContext.Provider value={{ clicked: () => setOpen(false) }}>
-              <Hits ref={anchor} hits={result} value={query} />
-            </SearchContext.Provider>
-          </ScPopover>
-        </ScOpenSearchWrapper>
-      )}
-
-      {!open && (
-        <ScSearchButton onClick={() => setOpen(!open)}>
-          <SearchIcon
-            style={{ fontSize: "1.5rem", marginLeft: 3 }}
-            aria-label="Åpne søk"
-            role="img"
-          />
-          <span className="navds-sr-only">Åpne søk</span>
-        </ScSearchButton>
-      )}
-    </ScSearch>
+            <span className="navds-sr-only">Åpne søk</span>
+          </ScSearchButton>
+        )}
+      </ScSearch>
+      <ScOverlay
+        style={{
+          display: !(Object.keys(result).length > 0 || query !== "") && "none",
+        }}
+      />
+    </>
   );
 };
 
