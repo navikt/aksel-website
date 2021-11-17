@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   position: relative;
   flex-shrink: 0;
   background-color: white;
-  border-right: 1px solid var(--navds-color-gray-10);
+  border-right: 1px solid var(--navds-semantic-color-canvas-background-default);
   position: sticky;
   top: 0;
   align-self: flex-start;

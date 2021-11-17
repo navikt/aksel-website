@@ -22,7 +22,7 @@ const ScModal = styled(Modal)`
 `;
 
 const ScWrapper = styled.div`
-  background-color: var(--navds-color-gray-90);
+  background-color: var(--navds-semantic-color-canvas-background-inverted);
   width: 100%;
   height: 100%;
   position: relative;
@@ -41,7 +41,7 @@ const ScImage = styled.div`
   justify-content: center;
   top: 50%;
   transform: translateY(-50%);
-  background-color: var(--navds-color-gray-10);
+  background-color: var(--navds-semantic-color-canvas-background-default);
   overflow-y: auto;
 
   > div {
@@ -69,11 +69,15 @@ const ScCloseButton = styled.button`
   padding: 0.75rem 1rem;
 
   :hover {
-    background-color: var(--navds-color-gray-80);
+    box-shadow: inset 0 0 0 2px
+      var(--navds-semantic-color-component-background-light);
   }
 
   :focus {
-    box-shadow: 0 0 0 2px white;
+    box-shadow: inset 0 0 0 2px
+        var(--navds-semantic-color-component-background-light),
+      0 0 0 1px var(--navds-semantic-color-component-background-inverted),
+      0 0 0 3px var(--navds-global-color-blue-100);
     outline: none;
   }
 

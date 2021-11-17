@@ -20,25 +20,25 @@ const ScLink = styled.a<{ active?: boolean }>`
   display: flex;
   padding: 0.75rem 1rem 0.75rem 2rem;
   text-decoration: none;
-  color: var(--navds-color-gray-60);
+  color: var(--navds-semantic-color-text-muted);
 
   ${(props) =>
     props.active &&
     `
-    box-shadow: inset 6px 0 0 0 var(--navds-color-gray-90);
+    box-shadow: inset 6px 0 0 0 var(--navds-semantic-color-canvas-background-inverted);
     background-color: #f8f8f8;
-    color: var(--navds-color-gray-90);
+    color: var(--navds-semantic-color-text-default);
     font-weight: 600;
   `}
 
   :hover {
     background-color: #f8f8f8;
-    color: var(--navds-color-gray-90);
+    color: var(--navds-semantic-color-text-default);
   }
 
   :focus {
     outline: none;
-    box-shadow: inset 0 0 0 3px var(--navds-color-blue-80);
+    box-shadow: inset 0 0 0 3px var(--navds-semantic-color-focus);
   }
 `;
 

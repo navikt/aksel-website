@@ -30,12 +30,12 @@ export const ScMenu = styled(Dropdown.Menu)`
   }
 
   > * > :nth-child(2) {
-    border-top: 1px solid var(--navds-color-gray-60);
+    border-top: 1px solid var(--navds-semantic-color-border-default);
   }
 `;
 
 export const ScLinkCss = css`
-  color: var(--navds-color-gray-90);
+  color: var(--navds-semantic-color-text-default);
 
   min-height: 5rem;
   width: 100%;
@@ -43,11 +43,11 @@ export const ScLinkCss = css`
   text-decoration: none;
 
   :hover {
-    background-color: var(--navds-color-gray-10);
+    background-color: var(--navds-semantic-color-canvas-background-default);
   }
 
   :focus {
-    box-shadow: inset 0 0 0 3px var(--navds-color-blue-80);
+    box-shadow: inset 0 0 0 3px var(--navds-semantic-color-focus);
     z-index: 2;
     outline: none;
   }
@@ -60,15 +60,16 @@ export const ScLink = styled(Dropdown.Menu.List.Item)`
   align-items: flex-start;
 
   &[data-active="true"] {
-    box-shadow: inset 6px 0 0 0 var(--navds-color-gray-90);
-    background-color: var(--navds-color-gray-10);
+    box-shadow: inset 6px 0 0 0
+      var(--navds-semantic-color-canvas-background-inverted);
+    background-color: var(--navds-semantic-color-canvas-background-default);
 
     > :first-child {
       font-weight: 600;
     }
   }
   :focus {
-    box-shadow: inset 0 0 0 3px var(--navds-color-blue-80);
+    box-shadow: inset 0 0 0 3px var(--navds-semantic-color-focus);
     z-index: 2;
     outline: none;
   }
@@ -111,7 +112,8 @@ const ScToggle = styled(Header.Button)`
   }
 
   :focus {
-    box-shadow: inset 0 0 0 1px var(--navds-color-gray-90),
+    box-shadow: inset 0 0 0 1px
+        var(--navds-semantic-color-component-background-inverted),
       inset 0 0 0 3px var(--navds-color-blue-20);
   }
 `;

@@ -38,19 +38,19 @@ const ScListItem = styled(Dropdown.Menu.List.Item)<{ $active?: boolean }>`
   border: none;
   background: none;
   width: 100%;
-  color: var(--navds-color-gray-90);
+  color: var(--navds-semantic-color-text-default);
 
   ${(props) =>
     props.$active &&
     `
-    box-shadow: inset 6px 0 0 0 var(--navds-color-gray-90);
+    box-shadow: inset 6px 0 0 0 var(--navds-semantic-color-canvas-background-inverted);
     background-color: #f8f8f8;
-    color: var(--navds-color-gray-90);
+    color: var(--navds-semantic-color-text-default);
     font-weight: 600;
   `}
 
   :hover {
-    background-color: var(--navds-color-gray-10);
+    background-color: var(--navds-semantic-color-canvas-background-default);
   }
 
   :focus {
@@ -64,7 +64,7 @@ const ScTopDiv = styled.div`
 `;
 
 const ScTopButton = styled(Heading)`
-  color: var(--navds-color-gray-90);
+  color: var(--navds-semantic-color-text-default);
   display: flex;
   align-items: center;
   padding: 1rem 0.5rem;
@@ -79,7 +79,7 @@ const ScTopButton = styled(Heading)`
 
   :hover {
     text-decoration: underline;
-    background-color: var(--navds-color-gray-10);
+    background-color: var(--navds-semantic-color-canvas-background-default);
   }
 
   :focus {
@@ -102,12 +102,12 @@ const ScHamburgerButton = styled(Header.Button)<{ $open: boolean }>`
   ${(props) =>
     props.$open &&
     `background-color: white;
-     color: var(--navds-color-gray-90);
+     color: var(--navds-semantic-color-text-default);
      :hover {
-       background-color: var(--navds-color-gray-10);
+       background-color: var(--navds-semantic-color-canvas-background-default);
      }
      :focus {
-       box-shadow: inset 0 0 0 2px var(--navds-color-blue-20), inset 0 0 0 4px var(--navds-color-gray-90);
+       box-shadow: inset 0 0 0 2px var(--navds-color-blue-20), inset 0 0 0 4px var(--navds-semantic-color-canvas-background-inverted);
      }
      `}
   > * {

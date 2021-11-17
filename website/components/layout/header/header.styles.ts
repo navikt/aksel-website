@@ -27,18 +27,22 @@ export const Link = styled(DsHeader.Title)<{ $active: boolean }>`
   cursor: pointer;
 
   :focus {
-    box-shadow: inset 0 0 0 1px var(--navds-color-gray-90),
+    box-shadow: inset 0 0 0 1px
+        var(--navds-semantic-color-canvas-background-inverted),
       inset 0 0 0 3px var(--navds-color-blue-20);
   }
 
   &[data-active="true"] {
-    box-shadow: inset 0 0 0 1px var(--navds-color-gray-90);
+    box-shadow: inset 0 0 0 1px
+      var(--navds-semantic-color-canvas-background-inverted);
     background-color: white;
-    color: var(--navds-color-gray-90);
+    color: var(--navds-semantic-color-text-default);
 
     :focus {
-      box-shadow: inset 0 0 0 1px var(--navds-color-gray-90),
-        inset 0 0 0 2px white, inset 0 0 0 4px var(--navds-color-gray-90);
+      box-shadow: inset 0 0 0 1px
+          var(--navds-semantic-color-canvas-background-inverted),
+        inset 0 0 0 2px white,
+        inset 0 0 0 4px var(--navds-semantic-color-canvas-background-inverted);
     }
 
     > * {
@@ -67,7 +71,7 @@ export const HeaderItem = css<{ $isTablet: boolean }>`
   }
 
   :hover {
-    background-color: var(--navds-color-gray-80);
+    background-color: var(--navds-global-color-gray-800);
   }
 
   :focus {
@@ -81,7 +85,7 @@ export const HeaderItem = css<{ $isTablet: boolean }>`
 `;
 
 export const LinkCss = css`
-  color: var(--navds-color-gray-90);
+  color: var(--navds-semantic-color-text-default);
   border-radius: 2px;
   padding: 0.5rem 1rem;
   min-height: 5rem;
