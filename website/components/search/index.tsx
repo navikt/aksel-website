@@ -51,10 +51,10 @@ const getCategories = (hits: any[]) => {
 
 const ScSearch = styled.div<{ $open?: boolean }>`
   display: flex;
-  z-index: 1003;
   margin-left: auto;
   align-items: center;
   ${({ $open }) => $open && `width: 100%;`}
+  z-index: 1050;
 `;
 
 const ScButtonCss = css`
@@ -84,7 +84,7 @@ const ScCloseButton = styled.button`
   height: 48px;
   border-radius: 0 4px 4px 0;
   background-color: var(--navds-semantic-color-canvas-background-default);
-  z-index: auto;
+  z-index: -1;
 
   :hover {
     box-shadow: inset 0 0 0 1px
@@ -97,7 +97,7 @@ const ScCloseButton = styled.button`
     box-shadow: inset 0 0 0 2px
         var(--navds-semantic-color-canvas-background-inverted),
       0 0 0 3px var(--navds-global-color-blue-200);
-    z-index: 1;
+    z-index: 1051;
   }
 `;
 
@@ -108,7 +108,7 @@ const ScSearchIcon = styled.div`
   background-color: transparent;
   left: 0;
   position: absolute;
-  z-index: 1;
+  z-index: 1011;
 `;
 
 const ScOpenSearchWrapper = styled.div`
@@ -119,6 +119,7 @@ const ScOpenSearchWrapper = styled.div`
   justify-content: flex-end;
 
   padding-left: 0.5rem;
+  z-index: 1050;
 
   animation: ${expandKeyframes(false)} 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
   width: 500px;
@@ -150,33 +151,34 @@ const ScTextField = styled(TextField)`
     box-shadow: inset 0 0 0 2px
         var(--navds-semantic-color-canvas-background-inverted),
       0 0 0 3px var(--navds-global-color-blue-200);
-    z-index: 1;
+    z-index: 1051;
   }
 `;
 
 const ScPopover = styled(Popover)`
   border: none;
-  z-index: -1;
   box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
     0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
   width: calc(100% - 1rem);
   background-color: transparent;
   ${fadeInCss}
+  z-index: 1050;
 `;
 
 const ScOverlay = styled.div`
   width: 100vw;
-  height: calc(100vh - var(--header-height));
+  height: 100%;
   background-color: var(--navds-semantic-color-canvas-background-inverted);
   opacity: 0;
-  position: absolute;
+  position: fixed;
   top: var(--header-height);
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 2;
   transition: opacity 200ms ease-in-out;
   visibility: hidden;
+  z-index: 1010;
 
   &[data-visible="true"] {
     opacity: 0.5;

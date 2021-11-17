@@ -12,6 +12,7 @@ import { fadeInCss, NavLogoWhite } from "../..";
 export const ScWrapper = styled.div`
   height: 100%;
   display: flex;
+  z-index: 1050;
 `;
 
 const ScPopover = styled(Popover)`
@@ -20,16 +21,28 @@ const ScPopover = styled(Popover)`
   border: none;
   width: 300px;
   max-width: 100%;
-  z-index: 1003;
+  z-index: 1100;
   box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
     0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
+
+  :focus {
+    box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
+      0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
+  }
 
   > * {
     background-color: var(--navds-semantic-color-canvas-background-light);
   }
 
-  > :nth-child(2) {
+  > * > li:nth-child(2) {
     border-top: 1px solid var(--navds-semantic-color-border-default);
+  }
+
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 `;
 
@@ -52,7 +65,7 @@ export const ScLinkCss = css`
   }
 `;
 
-export const ScLink = styled.li`
+export const ScLink = styled.a`
   ${ScLinkCss}
   flex-direction: column;
   padding: 0.75rem 1rem 0.5rem 2rem;
@@ -74,7 +87,7 @@ export const ScLink = styled.li`
   }
 `;
 
-export const ScIconLink = styled.li`
+export const ScIconLink = styled.a`
   ${ScLinkCss}
   flex-direction: row;
   align-items: center;
@@ -119,17 +132,18 @@ const ScToggle = styled.button`
 
 const ScOverlay = styled.div`
   width: 100vw;
-  height: calc(100vh - var(--header-height));
+  height: 100%;
   background-color: var(--navds-semantic-color-canvas-background-inverted);
   opacity: 0;
-  position: absolute;
+  position: fixed;
   top: var(--header-height);
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 2;
   transition: opacity 200ms ease-in-out;
   visibility: hidden;
+  z-index: 1010;
 
   &[data-visible="true"] {
     opacity: 0.5;
@@ -175,25 +189,26 @@ const HeadingDropDown = ({ title }: { title: string }) => {
           placement={"bottom-start"}
           offset={8}
         >
-          <>
-            <NextLink href="/" passHref>
-              <ScIconLink forwardedAs="a">
-                <Left aria-label="Gå til forsiden" />
-                <Label>Tilbake til Verktøykassa</Label>
-              </ScIconLink>
-            </NextLink>
-            <NextLink href="/designsystem" passHref>
-              <ScLink
-                data-active={router.asPath.startsWith(`/designsystem`)}
-                forwardedAs="a"
-              >
-                <BodyShort>Designsystemet</BodyShort>
-                <BodyShort size="small">
-                  Informasjon omhandlende designsystemet
-                </BodyShort>
-              </ScLink>
-            </NextLink>
-          </>
+          <ul>
+            <li>
+              <NextLink href="/" passHref>
+                <ScIconLink>
+                  <Left aria-label="Gå til forsiden" />
+                  <Label>Tilbake til Verktøykassa</Label>
+                </ScIconLink>
+              </NextLink>
+            </li>
+            <li>
+              <NextLink href="/designsystem" passHref>
+                <ScLink data-active={router.asPath.startsWith(`/designsystem`)}>
+                  <BodyShort>Designsystemet</BodyShort>
+                  <BodyShort size="small">
+                    Informasjon omhandlende designsystemet
+                  </BodyShort>
+                </ScLink>
+              </NextLink>
+            </li>
+          </ul>
         </ScPopover>
       </ScWrapper>
       <ScOverlay data-visible={open} />

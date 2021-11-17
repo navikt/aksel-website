@@ -4,12 +4,14 @@ import styled, { css } from "styled-components";
 
 export const Header = styled(DsHeader)`
   height: var(--header-height);
-  position: relative;
+  /* position: relative; */
+  z-index: 1050;
 `;
 
 export const Links = styled.div`
   display: flex;
   margin-right: auto;
+  z-index: 1050;
 
   a.navdsi-header__title[data-active="true"]:hover {
     background-color: var(--navds-semantic-color-canvas-background-light);

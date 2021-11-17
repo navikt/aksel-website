@@ -1,7 +1,6 @@
 import { Close, Hamburger, Left } from "@navikt/ds-icons";
-import { Heading, Detail } from "@navikt/ds-react";
-import { Dropdown, Header } from "@navikt/ds-react-internal";
-import React, { useContext, useEffect, useState } from "react";
+import { Heading, Detail, Popover } from "@navikt/ds-react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { ScFadeIn } from "../..";
 import { DsNavigationHeadingT } from "../../../lib";
@@ -11,17 +10,28 @@ import Menu from "../menu/DesignsystemMenu";
 import NextLink from "next/link";
 import { useMedia } from "react-use";
 
-const ScMenu = styled(Dropdown.Menu)`
+const ScPopover = styled(Popover)`
   border: none;
   width: 300px;
-  z-index: 1003;
+  z-index: 1100;
   position: sticky;
-  box-shadow: 0 0 10px 0 rgba(24, 39, 75, 0.1), 0 0 6px 0 rgba(24, 39, 75, 0.12);
+  box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
+    0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
   background-color: transparent;
   padding: 0;
+  border-radius: 4px;
+
+  > * {
+    border-radius: 4px;
+  }
 
   @media (max-width: 564px) {
     width: 100%;
+  }
+
+  :focus {
+    box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
+      0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
   }
 
   ul,
@@ -32,13 +42,34 @@ const ScMenu = styled(Dropdown.Menu)`
   }
 `;
 
-const ScListItem = styled(Dropdown.Menu.List.Item)<{ $active?: boolean }>`
+const ScOverlay = styled.div`
+  width: 100vw;
+  height: 100%;
+  background-color: var(--navds-semantic-color-canvas-background-inverted);
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: opacity 200ms ease-in-out;
+  visibility: hidden;
+  z-index: 1010;
+
+  &[data-visible="true"] {
+    opacity: 0.5;
+    visibility: visible;
+  }
+`;
+
+const ScListItem = styled.button<{ $active?: boolean }>`
   display: flex;
   padding: 0.75rem 1rem 0.75rem 2rem;
   border: none;
   background: none;
   width: 100%;
   color: var(--navds-semantic-color-text-default);
+  text-decoration: none;
 
   ${(props) =>
     props.$active &&
@@ -94,10 +125,11 @@ const ScMenuScroll = styled.div`
   margin-top: 0;
 `;
 
-const ScHamburgerButton = styled(Header.Button)<{ $open: boolean }>`
+const ScHamburgerButton = styled.button<{ $open: boolean }>`
   min-width: var(--header-height);
   justify-content: center;
   border: none;
+  z-index: 1050;
 
   ${(props) =>
     props.$open &&
@@ -131,16 +163,20 @@ const MobileNavigation = () => {
   const [heading, setHeading] = useState(context?.activeHeading);
   const [isHeadingMenu, setIsHeadingMenu] = useState(true);
   const useMobileHeader = useMedia("(max-width: 1023px)");
+  const buttonRef = useRef(null);
 
   useEffect(() => {
     context?.activeHeading && setHeading(context.activeHeading);
   }, [context?.activeHeading]);
 
   return (
-    <Dropdown>
+    <>
       <ScHamburgerButton
-        forwardedAs={Dropdown.Toggle}
+        ref={buttonRef}
+        className="navdsi-dropdown__toggle navdsi-header__button"
+        aria-haspopup="false"
         onClick={() => setOpenHamb(!openHamb)}
+        aria-expanded={openHamb}
         $open={openHamb}
       >
         <span>
@@ -151,10 +187,13 @@ const MobileNavigation = () => {
           )}
         </span>
       </ScHamburgerButton>
-      <ScMenu
-        onClose={() => {
-          setOpenHamb(false);
-        }}
+      <ScPopover
+        onClose={() => setOpenHamb(false)}
+        anchorEl={buttonRef.current}
+        open={openHamb}
+        arrow={false}
+        placement={"bottom-start"}
+        offset={8}
       >
         <ScFadeIn
           style={{
@@ -167,16 +206,36 @@ const MobileNavigation = () => {
           {openHamb && (
             <>
               <ScFadeIn hidden={!isHeadingMenu}>
-                {pageProps?.navigation.headings.map(
-                  (heading: DsNavigationHeadingT) =>
-                    useMobileHeader && !context.isTablet ? (
-                      <NextLink
-                        href={`/${heading.link_ref.slug.current}`}
-                        passHref
-                        key={heading._key}
-                      >
+                <ul>
+                  {pageProps?.navigation.headings.map(
+                    (heading: DsNavigationHeadingT) =>
+                      useMobileHeader && !context.isTablet ? (
+                        <li>
+                          <NextLink
+                            href={`/${heading.link_ref.slug.current}`}
+                            passHref
+                            key={heading._key}
+                          >
+                            <ScListItem
+                              as="a"
+                              $active={
+                                context
+                                  ? context?.activeHeading?.title ===
+                                    heading.title
+                                  : false
+                              }
+                              onClick={() => {
+                                setHeading(heading);
+                                setOpenHamb(false);
+                              }}
+                            >
+                              {heading?.title}
+                            </ScListItem>
+                          </NextLink>
+                        </li>
+                      ) : (
                         <ScListItem
-                          forwardedAs="a"
+                          key={heading._key}
                           $active={
                             context
                               ? context?.activeHeading?.title === heading.title
@@ -184,29 +243,14 @@ const MobileNavigation = () => {
                           }
                           onClick={() => {
                             setHeading(heading);
-                            setOpenHamb(false);
+                            setIsHeadingMenu(false);
                           }}
                         >
                           {heading?.title}
                         </ScListItem>
-                      </NextLink>
-                    ) : (
-                      <ScListItem
-                        key={heading._key}
-                        $active={
-                          context
-                            ? context?.activeHeading?.title === heading.title
-                            : false
-                        }
-                        onClick={() => {
-                          setHeading(heading);
-                          setIsHeadingMenu(false);
-                        }}
-                      >
-                        {heading?.title}
-                      </ScListItem>
-                    )
-                )}
+                      )
+                  )}
+                </ul>
               </ScFadeIn>
               {heading && (
                 <ScFadeIn
@@ -238,8 +282,9 @@ const MobileNavigation = () => {
             </>
           )}
         </ScFadeIn>
-      </ScMenu>
-    </Dropdown>
+      </ScPopover>
+      <ScOverlay data-visible={openHamb} />
+    </>
   );
 };
 
