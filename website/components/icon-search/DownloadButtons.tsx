@@ -30,7 +30,7 @@ export const ScButton = styled.button`
   gap: 0.5rem;
   padding: 0;
   justify-self: center;
-  color: var(--navds-color-blue-50);
+  color: var(--navds-semantic-color-interaction-primary-default);
   padding: calc(0.75rem + 2px) 0.75rem;
 
   > svg {
@@ -44,7 +44,7 @@ export const ScButton = styled.button`
   :focus {
     outline: none;
     color: white;
-    background-color: var(--navds-color-blue-80);
+    background-color: var(--navds-semantic-color-focus);
   }
 `;
 

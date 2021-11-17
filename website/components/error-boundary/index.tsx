@@ -17,7 +17,7 @@ interface State {
 const Style = styled.div`
   padding: 2rem;
   text-align: center;
-  background-color: var(--navds-color-blue-50);
+  background-color: var(--navds-global-color-blue-50);
   color: white;
 `;
 

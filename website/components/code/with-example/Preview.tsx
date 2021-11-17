@@ -32,13 +32,13 @@ const ScDiv = styled.div`
   display: flex;
   width: 100%;
   background-color: #f7f7f7;
-  border: 1px solid var(--navds-semantic-color-);
-  border-bottom: 1px solid var(--navds-semantic-color-);
+  border: 1px solid var(--navds-global-color-gray-200);
+  border-bottom: 1px solid var(--navds-global-color-gray-200);
   border-top: none;
   overflow-x: auto;
 
   :only-child {
-    border-top: 1px solid var(--navds-semantic-color-);
+    border-top: 1px solid var(--navds-global-color-gray-200);
   }
 `;
 

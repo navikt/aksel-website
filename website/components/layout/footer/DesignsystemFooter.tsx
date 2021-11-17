@@ -62,7 +62,7 @@ const ScRightColumn = styled.div`
     color: white;
 
     :focus {
-      background-color: var(--navds-color-blue-10);
+      background-color: var(--navds-global-color-blue-200);
       color: var(--navds-semantic-color-text-default);
     }
   }
@@ -125,11 +125,11 @@ const ScFieldset = styled(Fieldset)`
 
 const ScStateCss = css`
   :hover {
-    border-color: var(--navds-color-blue-10);
+    border-color: var(--navds-global-color-blue-200);
   }
 
   :focus {
-    box-shadow: 0 0 0 3px var(--navds-color-blue-10);
+    box-shadow: 0 0 0 3px var(--navds-global-color-blue-200);
   }
 `;
 

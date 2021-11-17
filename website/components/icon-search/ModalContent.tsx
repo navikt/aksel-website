@@ -60,7 +60,7 @@ const ScButtonWrapper = styled.div`
 
 const ScNew = styled(Detail)`
   padding: 0.25rem 0.5rem;
-  background-color: var(--navds-color-lightblue-10);
+  background-color: var(--navds-semantic-color-feedback-info-background);
   border-radius: 4px;
   height: 100%;
 `;

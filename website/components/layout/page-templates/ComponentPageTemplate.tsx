@@ -44,16 +44,16 @@ const ScLinks = styled.div`
 
     :hover {
       text-decoration: underline;
-      background: var(--navds-color-blue-10);
+      background: var(--navds-global-color-blue-200);
     }
 
     :focus {
       outline: none;
-      box-shadow: 0 0 0 3px var(--navds-color-blue-80);
+      box-shadow: 0 0 0 3px var(--navds-semantic-color-focus);
     }
 
     :active {
-      background-color: var(--navds-color-blue-80);
+      background-color: var(--navds-semantic-color-focus);
       color: white;
     }
   }

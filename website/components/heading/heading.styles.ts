@@ -36,7 +36,7 @@ export const Anchor = styled.button`
 
   :focus {
     outline: none;
-    box-shadow: 0 0 0 2px var(--navds-color-blue-80);
+    box-shadow: 0 0 0 2px var(--navds-semantic-color-focus);
   }
 
   :hover,
@@ -48,7 +48,7 @@ export const Anchor = styled.button`
   }
 
   :active {
-    background-color: var(--navds-color-blue-20);
+    background-color: var(--navds-global-color-blue-50);
   }
 `;
 

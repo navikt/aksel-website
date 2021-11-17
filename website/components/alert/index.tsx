@@ -13,7 +13,7 @@ const StyledAlert = styled(DsAlert)`
 
   /* Contrast fix */
   code {
-    color: var(--navds-color-red-50);
+    color: var(--navds-global-color-red-500);
     background-color: transparent;
     padding: 0;
   }

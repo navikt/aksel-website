@@ -5,7 +5,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 const Style = styled.div`
-  background-color: var(--navds-color-text-error);
+  background-color: var(--navds-global-color-red-500);
   color: white;
   padding: 0.5rem;
   width: 12rem;

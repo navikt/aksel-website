@@ -61,7 +61,7 @@ const ScTabButton = styled.button`
   }
 
   :active {
-    background-color: var(--navds-color-blue-20);
+    background-color: var(--navds-global-color-blue-50);
   }
   > svg {
     font-size: 1.5rem;

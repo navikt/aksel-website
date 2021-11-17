@@ -40,7 +40,7 @@ export const Grow = styled.div`
 `;
 
 export const SkipLink = styled.a`
-  background: var(--navds-color-deepblue-80);
+  background: var(--navds-semantic-color-focus);
   color: white;
   left: 0;
   padding: 1rem;

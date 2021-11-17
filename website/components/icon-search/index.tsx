@@ -85,7 +85,7 @@ const ScNew = styled(Detail)`
   right: 0;
   padding: 0.25rem 0.5rem;
   font-weight: 400;
-  background-color: var(--navds-color-lightblue-10);
+  background-color: var(--navds-semantic-color-feedback-info-background);
   border-bottom-left-radius: 6px;
 `;
 

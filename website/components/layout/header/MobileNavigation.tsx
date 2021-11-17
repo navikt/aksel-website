@@ -55,7 +55,7 @@ const ScListItem = styled(Dropdown.Menu.List.Item)<{ $active?: boolean }>`
 
   :focus {
     outline: none;
-    box-shadow: inset 0 0 0 3px var(--navds-color-blue-80);
+    box-shadow: inset 0 0 0 3px var(--navds-semantic-color-focus);
   }
 `;
 
@@ -84,7 +84,7 @@ const ScTopButton = styled(Heading)`
 
   :focus {
     outline: none;
-    box-shadow: inset 0 0 0 3px var(--navds-color-blue-80);
+    box-shadow: inset 0 0 0 3px var(--navds-semantic-color-focus);
   }
 `;
 

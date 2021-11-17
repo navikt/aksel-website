@@ -12,11 +12,11 @@ export const Icon = styled.div<{ variant: string }>`
     color: ${(props) => {
       switch (props.variant) {
         case "do":
-          return `var(--navds-color-green-50)`;
+          return `var(--navds-semantic-color-feedback-success-icon)`;
         case "warning":
-          return `var(--navds-color-orange-50)`;
+          return `var(--navds-semantic-color-feedback-warning-icon)`;
         default:
-          return `var(--navds-color-red-50)`;
+          return `var(--navds-semantic-color-feedback-danger-icon)`;
       }
     }};
     ${(props) =>
@@ -61,7 +61,7 @@ export const FigureBorder = styled.button`
 
   :focus {
     outline: none;
-    box-shadow: 0 0 0 3px var(--navds-color-blue-80);
+    box-shadow: 0 0 0 3px var(--navds-semantic-color-focus);
     z-index: 1;
   }
 `;
@@ -71,11 +71,11 @@ export const Caption = styled.figcaption`
   border-color: ${(props) => {
     switch (props["data-variant"]) {
       case "do":
-        return "var(--navds-color-green-50)";
+        return "var(--navds-semantic-color-feedback-success-icon)";
       case "dont":
-        return "var(--navds-color-red-50)";
+        return "var(--navds-semantic-color-feedback-danger-icon)";
       case "warning":
-        return "var(--navds-color-orange-50)";
+        return "var(--navds-semantic-color-feedback-warning-icon)";
       default:
     }
   }};

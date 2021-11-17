@@ -2,7 +2,6 @@ import { documentMetadata } from "../templates/document-metadata-template";
 import { documentInformation } from "../templates/document-template";
 import { defaultPreview } from "../templates/document-preview-template";
 /* import { situations } from "./situations";
-import CustomCategories from "../../../components/gp-categories";
 import CustomDisplay from "../../../components/metadata-display"; */
 import { documentSearchMetadata } from "../templates/document-search-template";
 const prefix = "god-praksis/side/";

@@ -36,7 +36,7 @@ export const ButtonCss = css`
   }
 
   :focus {
-    outline: 2px solid var(--navds-color-blue-80);
+    outline: 2px solid var(--navds-semantic-color-focus);
   }
 
   &[aria-selected="true"] {
