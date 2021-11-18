@@ -13,7 +13,6 @@ export function defaultPreview() {
       },
       prepare(selection) {
         const { title, status, metadata, id } = selection;
-        console.log(id);
         return {
           title: title,
           subtitle: id.includes("drafts.") ? "Draft" : "Publisert",
