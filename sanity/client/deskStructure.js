@@ -31,12 +31,44 @@ export default () =>
                 .icon(() => <Email />)
                 .child(S.documentTypeList("ds_contact")),
               S.listItem()
-                .title("Komponenter")
+                .title("Komponentsider")
                 .icon(() => <Facilitet />)
                 .child(
-                  S.documentTypeList("ds_component_page").initialValueTemplates(
-                    [S.initialValueTemplateItem("ds_component_page_template")]
-                  )
+                  S.list()
+                    .title("Komponentsider")
+                    .items([
+                      S.listItem()
+                        .title("Publisert")
+                        .icon(() => <FileContent />)
+                        .child(
+                          S.documentList()
+                            .title("Publiserte komponentsider")
+                            .filter(
+                              `_type in ["ds_component_page"] && !(_id in path('drafts.**'))`
+                            )
+                        ),
+                      S.listItem()
+                        .title("Under arbeid")
+                        .icon(() => <Edit />)
+                        .child(
+                          S.documentList()
+                            .title("U-publiserte komponentsider")
+                            .filter(
+                              `_type == "ds_component_page" && _id in path("drafts.**") &&
+                            (
+                           (_id in path("drafts.**")) &&
+                           (count(*[
+                             _type == "ds_component_page" && !(_id in path("drafts.**"))
+                             && (slug.current == ^.slug.current)
+                           ]) == 0)
+                         )`
+                            )
+                        ),
+                      S.listItem()
+                        .title("Alle komponentsider")
+                        .icon(() => <FileContent />)
+                        .child(S.documentTypeList("ds_component_page")),
+                    ])
                 ),
               S.listItem()
                 .title("Artikler")
