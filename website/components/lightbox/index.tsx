@@ -61,6 +61,7 @@ const ScCloseButton = styled.button`
   position: absolute;
   top: 0.4rem;
   right: 1rem;
+  background-color: var(--navds-semantic-color-canvas-background-inverted);
   color: var(--navds-semantic-color-text-inverted);
   display: flex;
   gap: 0.5rem;

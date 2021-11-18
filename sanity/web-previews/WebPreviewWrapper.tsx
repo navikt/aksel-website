@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import { Link } from "@navikt/ds-react";
+import { Link, BodyLong } from "@navikt/ds-react";
 
 const StyledDiv = styled.div`
   iframe {
@@ -25,6 +25,13 @@ const StyledWrapper = styled.div`
 export const WebPreviewWrapper = (props: { url: string }) => {
   return (
     <StyledWrapper>
+      <BodyLong>
+        Preview prøver å vise innhold på den publiserte nettsiden. Dette er en
+        litt skjør prosess som lett brekker, så kan forvente litt bugs og rare
+        feil. Sjekk om du har noen feil i sanity først hvis preview brekker.
+        Hvis disse feilene dukker opp for publisert versjon, ta kontakt med
+        utvikler.
+      </BodyLong>
       <Link target="_blank" href={props.url} aria-label="opens preview in web">
         Åpne i egen side
       </Link>

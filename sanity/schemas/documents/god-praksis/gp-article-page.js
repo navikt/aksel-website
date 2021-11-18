@@ -3,6 +3,7 @@ import { documentInformation } from "../templates/document-template";
 import { defaultPreview } from "../templates/document-preview-template";
 /* import { situations } from "./situations";
 import CustomDisplay from "../../../components/metadata-display"; */
+import GodPraksisForklaring from "../../../components/gp-forklaring";
 import { documentSearchMetadata } from "../templates/document-search-template";
 const prefix = "god-praksis/side/";
 
@@ -42,6 +43,20 @@ export default {
       ],
       inputComponent: CustomCategories,
     }, */
+    {
+      name: "visningstekst",
+      type: "string",
+      title: "Innhold",
+      inputComponent: GodPraksisForklaring,
+    },
+    {
+      name: "notes",
+      description:
+        "Vises bare her internt i Sanity. Kan brukes for å holde styringen på hva som er status etc",
+      type: "text",
+      title: "Interne notater",
+      rows: 4,
+    },
     documentMetadata("article"),
     documentSearchMetadata,
     ...documentInformation(prefix).filter((x) => x.name !== "tags"),
