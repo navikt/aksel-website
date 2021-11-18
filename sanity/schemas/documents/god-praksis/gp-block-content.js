@@ -106,9 +106,6 @@ export default {
       type: "alert",
       icon: () => <Warning />,
     },
-    {
-      type: "figma_embed",
-    },
     { type: "code_snippet", icon: () => <span>{`< />`}</span> },
     {
       type: "do_dont",

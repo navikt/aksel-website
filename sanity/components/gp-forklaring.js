@@ -1,18 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import { Heading, Stack, Text } from "@sanity/ui";
 import { withDocument } from "part:@sanity/form-builder";
-import {
-  TextInput,
-  Stack,
-  Label,
-  Checkbox,
-  Radio,
-  Flex,
-  Text,
-  Box,
-  Card,
-  Heading,
-} from "@sanity/ui";
-import styled from "styled-components";
+import React from "react";
 
 const CustomDisplay = React.forwardRef((props, ref) => {
   return (
@@ -34,6 +22,10 @@ const CustomDisplay = React.forwardRef((props, ref) => {
         Når IA og løsningen er på plass både i CMS og Frontend vil vi gå gjennom
         å fikse alt av struktur som mangler. Er også et lite notatfelt rett
         under der man kan notere litt slik at man lettere kan holde kontrollen.
+      </Text>
+      <Text size={2} muted>
+        Husk at sanity autolagerer alle endringer (med versjonskontroll), slik
+        at "Publish"-knapper bare skal brukes for å publisere ferdig resultat.
       </Text>
     </Stack>
   );
