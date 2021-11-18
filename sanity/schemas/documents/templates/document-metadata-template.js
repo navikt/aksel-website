@@ -18,7 +18,7 @@ export function documentMetadata(docType) {
       {
         title: "Kontaktperson",
         description:
-          "Linker dokumentet til en person, slik at man kan lettere ta kontakt hvis noe oppstår",
+          "Linker dokumentet til en person, slik at man kan lettere ta kontakt hvis noe oppstår.",
         name: "contact",
         type: "reference",
         to: [{ type: "editor" }],

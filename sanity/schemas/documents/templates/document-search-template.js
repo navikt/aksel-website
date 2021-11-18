@@ -11,9 +11,6 @@ export const documentSearchMetadata = {
       name: "high_priority",
       type: "boolean",
       initialValue: false,
-      options: {
-        layout: "checkbox",
-      },
     },
     {
       title: "Søkbare tags",

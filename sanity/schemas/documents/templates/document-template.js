@@ -4,9 +4,9 @@ import { ingressBlock } from "./block-content-ingress";
 export function documentInformation(prefix) {
   return [
     {
-      title: "Dokument tittel (Bare for søk internt i Sanity)",
+      title: "Dokument tittel (For søk og visning internt i Sanity)",
       description:
-        "Bruke en beskrivende tittel slik at det er lett å finne siden.",
+        "Bruke en beskrivende tittel slik at det er lett å finne siden i CMS et.",
       name: "title",
       type: "string",
       validation: (Rule) => Rule.required(),
@@ -15,15 +15,15 @@ export function documentInformation(prefix) {
       title: "Sidetittel",
       name: "heading",
       type: "string",
-      description: "Blir satt som `<H1 />` på toppen av siden",
+      description:
+        "Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.",
       validation: (Rule) => Rule.required(),
     },
     {
       title: "url",
       name: "slug",
       type: "slug",
-      description:
-        "Vil bli oppdatert etterhvert når navigasjon og struktur er bestemt..",
+      description: "Note: Strukturen bestemmes ikke av URL-en",
       validation: (Rule) => validateSlug(Rule, prefix, 3),
       options: {
         isUnique: isSlugUnique,
@@ -33,14 +33,15 @@ export function documentInformation(prefix) {
       },
     },
     {
-      title: "Ingress (optional)",
+      title: "Ingress (valgfritt)",
       name: "ingress",
       type: "array",
       of: [ingressBlock],
     },
     {
       title: "Tags",
-      description: "Setter en tag på toppen av siden med status",
+      description:
+        "Tagger siden slik at vi i fremtiden kan forbedre søk og visning.",
       name: "tags",
       type: "array",
       of: [{ type: "string" }],
@@ -60,6 +61,7 @@ export function documentInformation(prefix) {
       name: "status",
       type: "string",
       validation: (Rule) => Rule.required(),
+      initialValue: ["published"],
       options: {
         list: [
           {
