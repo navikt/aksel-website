@@ -42,7 +42,9 @@ import alert from "./objects/alert";
 import figma_embed from "./objects/figma-embed";
 import link_panel from "./objects/link-panel";
 import icon_search from "./objects/uniques/ikonsok";
-import component_overview from "./objects/uniques/oversikt";
+import component_overview, {
+  OverviewComponent,
+} from "./objects/uniques/oversikt";
 
 export default createSchema({
   name: "default",
@@ -86,5 +88,6 @@ export default createSchema({
     metadata,
     icon_search,
     component_overview,
+    OverviewComponent,
   ]),
 });
