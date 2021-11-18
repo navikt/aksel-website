@@ -61,7 +61,6 @@ export function documentInformation(prefix) {
       name: "status",
       type: "string",
       validation: (Rule) => Rule.required(),
-      initialValue: ["published"],
       options: {
         list: [
           {

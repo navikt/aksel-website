@@ -13,6 +13,7 @@ import {
   Picture,
   Ruler,
   Email,
+  Edit,
 } from "@navikt/ds-icons";
 
 export default () =>
@@ -84,12 +85,31 @@ export default () =>
             .title("God Praksis")
             .items([
               S.listItem()
-                .title("Artikler")
+                .title("Publiserte Artikler")
                 .icon(() => <FileContent />)
                 .child(
                   S.documentList()
-                    .title("Artikler")
-                    .filter('_type in ["gp_article_page"]')
+                    .title("Publiserte Artikler")
+                    .filter(
+                      `_type in ["gp_article_page"] && !(_id in path('drafts.**'))`
+                    )
+                ),
+              S.listItem()
+                .title("Artikler under arbeid")
+                .icon(() => <Edit />)
+                .child(
+                  S.documentList()
+                    .title("Publiserte Artikler")
+                    .filter(
+                      `_type == "gp_article_page" && _id in path("drafts.**") &&
+                         (
+                           (_id in path("drafts.**")) &&
+                           (count(*[
+                             _type == "gp_article_page" && !(_id in path("drafts.**"))
+                             && (slug.current == ^.slug.current)
+                           ]) == 0)
+                         )`
+                    )
                 ),
               S.listItem()
                 .title("Situasjoner")

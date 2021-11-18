@@ -1,5 +1,6 @@
 import React from "react";
 import { Tag } from "@navikt/ds-react";
+import { Edit } from "@navikt/ds-icons";
 
 export function defaultPreview() {
   return {
@@ -8,13 +9,28 @@ export function defaultPreview() {
         title: "heading",
         status: "status",
         metadata: "metadata",
+        id: "_id",
       },
       prepare(selection) {
-        const { title, status, metadata } = selection;
+        const { title, status, metadata, id } = selection;
+        console.log(id);
         return {
           title: title,
-          subtitle: metadata.last_update,
-          media: (
+          subtitle: id.includes("drafts.") ? "Draft" : "Publisert",
+          media: id.includes("drafts.") ? (
+            <Edit />
+          ) : (
+            <Tag
+              size="small"
+              variant="success"
+              style={{ color: "black", padding: "0 1px" }}
+            >
+              Live
+            </Tag>
+          ),
+          /* media: id.includes("drafts.") && console.log(title) ? "Draft" : "Publisert" */
+
+          /* (
             <Tag
               size="small"
               variant={
@@ -24,7 +40,7 @@ export function defaultPreview() {
                   ? "info"
                   : "warning"
               }
-              /* Hack to fit tag into preview panel */
+
               style={{ color: "black", padding: "0 1px" }}
             >
               {status === "published"
@@ -32,8 +48,7 @@ export function defaultPreview() {
                 : status === "legacy"
                 ? "dep"
                 : status}
-            </Tag>
-          ),
+            </Tag> */
         };
       },
     },
