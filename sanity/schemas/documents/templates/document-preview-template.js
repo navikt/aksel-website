@@ -28,27 +28,6 @@ export function defaultPreview() {
               Live
             </Tag>
           ),
-          /* media: id.includes("drafts.") && console.log(title) ? "Draft" : "Publisert" */
-
-          /* (
-            <Tag
-              size="small"
-              variant={
-                status === "published"
-                  ? "success"
-                  : status === "beta"
-                  ? "info"
-                  : "warning"
-              }
-
-              style={{ color: "black", padding: "0 1px" }}
-            >
-              {status === "published"
-                ? "live"
-                : status === "legacy"
-                ? "dep"
-                : status}
-            </Tag> */
         };
       },
     },
