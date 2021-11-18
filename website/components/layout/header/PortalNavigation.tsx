@@ -192,7 +192,7 @@ const HeadingDropDown = ({ title }: { title: string }) => {
           <ul>
             <li>
               <NextLink href="/" passHref>
-                <ScIconLink>
+                <ScIconLink onClick={() => setOpen(false)}>
                   <Left aria-label="Gå til forsiden" />
                   <Label>Tilbake til Verktøykassa</Label>
                 </ScIconLink>
@@ -200,7 +200,10 @@ const HeadingDropDown = ({ title }: { title: string }) => {
             </li>
             <li>
               <NextLink href="/designsystem" passHref>
-                <ScLink data-active={router.asPath.startsWith(`/designsystem`)}>
+                <ScLink
+                  onClick={() => setOpen(false)}
+                  data-active={router.asPath.startsWith(`/designsystem`)}
+                >
                   <BodyShort>Designsystemet</BodyShort>
                   <BodyShort size="small">
                     Informasjon omhandlende designsystemet
