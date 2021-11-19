@@ -13,6 +13,10 @@ export const ScWrapper = styled.div`
   height: 100%;
   display: flex;
   z-index: 1050;
+
+  &[data-mobile="true"] {
+    margin-right: var(--navds-spacing-8);
+  }
 `;
 
 const ScPopover = styled(Popover)`
@@ -166,6 +170,7 @@ const HeadingDropDown = ({ title }: { title: string }) => {
         animate={{ opacity: 1 }}
         transition={{ type: "tween", duration: 0.2 }}
         exit={{ opacity: 0 }}
+        data-mobile={!showLogo}
       >
         <ScToggle
           ref={buttonRef}
