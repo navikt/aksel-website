@@ -1,0 +1,11 @@
+@import "part:@sanity/base/theme/variables-style";
+
+.link {
+  composes: item from "part:@sanity/base/theme/layout/selectable-style";
+  display: block;
+  color: inherit;
+  text-decoration: inherit;
+  outline: none;
+  padding: 0.5rem 0;
+  height: 100%;
+}

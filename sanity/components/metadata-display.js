@@ -17,7 +17,6 @@ const CustomDisplay = React.forwardRef((props, ref) => {
   const [doc, setDoc] = useState(null);
 
   useEffect(() => {
-    console.log(props);
     doc && setDoc(props.document);
   }, [props]);
 
