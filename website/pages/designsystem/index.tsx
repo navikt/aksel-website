@@ -176,7 +176,7 @@ const Page = () => {
             </BodyLong>
           </ScDescriptionWrapper>
           <ScCards>
-            <NextLink passHref href="/designsystem/side/oversikt-komponenter">
+            <NextLink passHref href="/designsystem/side/komponentoversikt">
               <ScCard>
                 <ScIcon className="card__icon">
                   <ComponentPictogram />
