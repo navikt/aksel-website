@@ -580,6 +580,13 @@ export interface DsComponentOverview extends SanityDocument {
       in_code?: boolean;
 
       /**
+       * Er komponenten fortsatt i Beta? — `boolean`
+       *
+       *
+       */
+      in_code_beta?: boolean;
+
+      /**
        * Er komponentkoden i synk med Figma? — `boolean`
        *
        *
@@ -592,13 +599,6 @@ export interface DsComponentOverview extends SanityDocument {
        *
        */
       in_doc?: boolean;
-
-      /**
-       * Dokumentasjons-status — `string`
-       *
-       *
-       */
-      doc_status?: "yes" | "beta";
     }>
   >;
 }
@@ -1131,6 +1131,7 @@ export type BlockContent = Array<
   | SanityKeyed<UuInteraction>
   | SanityKeyed<PropTable>
   | SanityKeyed<IconSearch>
+  | SanityKeyed<ComponentOverview>
 >;
 
 export type BlockContentSimple = Array<SanityKeyed<SanityBlock>>;
@@ -1525,6 +1526,16 @@ export type IconSearch = {
    *
    */
   title?: string;
+};
+
+export type ComponentOverview = {
+  _type: "component_overview";
+  /**
+   * Ref til kodeoversikt — `reference`
+   *
+   * Legger til en tabell med komponentoversikt. Skal bare brukes for siden Komponenter oversikt
+   */
+  ref?: SanityReference<DsComponentOverview>;
 };
 
 export type Documents =
