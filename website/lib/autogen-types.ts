@@ -61,7 +61,7 @@ export interface DsComponentPage extends SanityDocument {
     /**
      * Kontaktperson — `reference`
      *
-     * Linker dokumentet til en person, slik at man kan lettere ta kontakt hvis noe oppstår
+     * Linker dokumentet til en person, slik at man kan lettere ta kontakt hvis noe oppstår.
      */
     contact?: SanityReference<Editor>;
 
@@ -96,28 +96,28 @@ export interface DsComponentPage extends SanityDocument {
   };
 
   /**
-   * Dokument tittel (Bare for søk internt i Sanity) — `string`
+   * Dokument tittel (For søk og visning internt i Sanity) — `string`
    *
-   * Bruke en beskrivende tittel slik at det er lett å finne siden.
+   * Bruke en beskrivende tittel slik at det er lett å finne siden i CMS et.
    */
   title?: string;
 
   /**
    * Sidetittel — `string`
    *
-   * Blir satt som `<H1 />` på toppen av siden
+   * Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.
    */
   heading?: string;
 
   /**
    * url — `slug`
    *
-   * Vil bli oppdatert etterhvert når navigasjon og struktur er bestemt..
+   * Note: Strukturen bestemmes ikke av URL-en
    */
   slug?: { _type: "slug"; current: string };
 
   /**
-   * Ingress (optional) — `array`
+   * Ingress (valgfritt) — `array`
    *
    *
    */
@@ -126,7 +126,7 @@ export interface DsComponentPage extends SanityDocument {
   /**
    * Tags — `array`
    *
-   * Setter en tag på toppen av siden med status
+   * Tagger siden slik at vi i fremtiden kan forbedre søk og visning.
    */
   tags?: Array<SanityKeyed<string>>;
 
@@ -219,7 +219,7 @@ export interface DsArticlePage extends SanityDocument {
     /**
      * Kontaktperson — `reference`
      *
-     * Linker dokumentet til en person, slik at man kan lettere ta kontakt hvis noe oppstår
+     * Linker dokumentet til en person, slik at man kan lettere ta kontakt hvis noe oppstår.
      */
     contact?: SanityReference<Editor>;
 
@@ -254,28 +254,28 @@ export interface DsArticlePage extends SanityDocument {
   };
 
   /**
-   * Dokument tittel (Bare for søk internt i Sanity) — `string`
+   * Dokument tittel (For søk og visning internt i Sanity) — `string`
    *
-   * Bruke en beskrivende tittel slik at det er lett å finne siden.
+   * Bruke en beskrivende tittel slik at det er lett å finne siden i CMS et.
    */
   title?: string;
 
   /**
    * Sidetittel — `string`
    *
-   * Blir satt som `<H1 />` på toppen av siden
+   * Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.
    */
   heading?: string;
 
   /**
    * url — `slug`
    *
-   * Vil bli oppdatert etterhvert når navigasjon og struktur er bestemt..
+   * Note: Strukturen bestemmes ikke av URL-en
    */
   slug?: { _type: "slug"; current: string };
 
   /**
-   * Ingress (optional) — `array`
+   * Ingress (valgfritt) — `array`
    *
    *
    */
@@ -284,7 +284,7 @@ export interface DsArticlePage extends SanityDocument {
   /**
    * Tags — `array`
    *
-   * Setter en tag på toppen av siden med status
+   * Tagger siden slik at vi i fremtiden kan forbedre søk og visning.
    */
   tags?: Array<SanityKeyed<string>>;
 
@@ -328,7 +328,7 @@ export interface DsTabbedArticlePage extends SanityDocument {
     /**
      * Kontaktperson — `reference`
      *
-     * Linker dokumentet til en person, slik at man kan lettere ta kontakt hvis noe oppstår
+     * Linker dokumentet til en person, slik at man kan lettere ta kontakt hvis noe oppstår.
      */
     contact?: SanityReference<Editor>;
 
@@ -341,28 +341,28 @@ export interface DsTabbedArticlePage extends SanityDocument {
   };
 
   /**
-   * Dokument tittel (Bare for søk internt i Sanity) — `string`
+   * Dokument tittel (For søk og visning internt i Sanity) — `string`
    *
-   * Bruke en beskrivende tittel slik at det er lett å finne siden.
+   * Bruke en beskrivende tittel slik at det er lett å finne siden i CMS et.
    */
   title?: string;
 
   /**
    * Sidetittel — `string`
    *
-   * Blir satt som `<H1 />` på toppen av siden
+   * Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.
    */
   heading?: string;
 
   /**
    * url — `slug`
    *
-   * Vil bli oppdatert etterhvert når navigasjon og struktur er bestemt..
+   * Note: Strukturen bestemmes ikke av URL-en
    */
   slug?: { _type: "slug"; current: string };
 
   /**
-   * Ingress (optional) — `array`
+   * Ingress (valgfritt) — `array`
    *
    *
    */
@@ -371,7 +371,7 @@ export interface DsTabbedArticlePage extends SanityDocument {
   /**
    * Tags — `array`
    *
-   * Setter en tag på toppen av siden med status
+   * Tagger siden slik at vi i fremtiden kan forbedre søk og visning.
    */
   tags?: Array<SanityKeyed<string>>;
 
@@ -522,12 +522,108 @@ export interface DsContact extends SanityDocument {
 }
 
 /**
+ * Komponentoversikt
+ *
+ *
+ */
+export interface DsComponentOverview extends SanityDocument {
+  _type: "ds_component_overview";
+
+  /**
+   * Komponent — `array`
+   *
+   *
+   */
+  components?: Array<
+    SanityKeyed<{
+      _type: "component";
+      /**
+       * Komponentnavn — `string`
+       *
+       *
+       */
+      title?: string;
+
+      /**
+       * Pakkenavn — `reference`
+       *
+       * Kobler komponenten til en pakke og da om den er core/intern/navno. Alle tilgjengelige valg ligge under <Kodepakker>
+       */
+      linked_package?: SanityReference<DsPackage>;
+
+      /**
+       * Er komponenten ny? — `boolean`
+       *
+       *
+       */
+      new?: boolean;
+
+      /**
+       * Er komponenten i Figma/designet? — `boolean`
+       *
+       *
+       */
+      in_design?: boolean;
+
+      /**
+       * Figma bibliotek — `string`
+       *
+       *
+       */
+      figma_version?: "new" | "old" | "beta";
+
+      /**
+       * Er komponenten Kodet? — `boolean`
+       *
+       *
+       */
+      in_code?: boolean;
+
+      /**
+       * Er komponentkoden i synk med Figma? — `boolean`
+       *
+       *
+       */
+      figma_sync?: boolean;
+
+      /**
+       * Er komponenten i dokumentert? — `boolean`
+       *
+       *
+       */
+      in_doc?: boolean;
+
+      /**
+       * Dokumentasjons-status — `string`
+       *
+       *
+       */
+      doc_status?: "yes" | "beta";
+    }>
+  >;
+}
+
+/**
  * Artikkelside
  *
  *
  */
 export interface GpArticlePage extends SanityDocument {
   _type: "gp_article_page";
+
+  /**
+   * Innhold — `string`
+   *
+   *
+   */
+  visningstekst?: string;
+
+  /**
+   * Interne notater — `text`
+   *
+   * Vises bare her internt i Sanity. Kan brukes for å holde styringen på hva som er status etc
+   */
+  notes?: string;
 
   /**
    * Ekstra informasjon (brukes bare internt i Sanity) — `object`
@@ -546,7 +642,7 @@ export interface GpArticlePage extends SanityDocument {
     /**
      * Kontaktperson — `reference`
      *
-     * Linker dokumentet til en person, slik at man kan lettere ta kontakt hvis noe oppstår
+     * Linker dokumentet til en person, slik at man kan lettere ta kontakt hvis noe oppstår.
      */
     contact?: SanityReference<Editor>;
 
@@ -581,28 +677,28 @@ export interface GpArticlePage extends SanityDocument {
   };
 
   /**
-   * Dokument tittel (Bare for søk internt i Sanity) — `string`
+   * Dokument tittel (For søk og visning internt i Sanity) — `string`
    *
-   * Bruke en beskrivende tittel slik at det er lett å finne siden.
+   * Bruke en beskrivende tittel slik at det er lett å finne siden i CMS et.
    */
   title?: string;
 
   /**
    * Sidetittel — `string`
    *
-   * Blir satt som `<H1 />` på toppen av siden
+   * Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.
    */
   heading?: string;
 
   /**
    * url — `slug`
    *
-   * Vil bli oppdatert etterhvert når navigasjon og struktur er bestemt..
+   * Note: Strukturen bestemmes ikke av URL-en
    */
   slug?: { _type: "slug"; current: string };
 
   /**
-   * Ingress (optional) — `array`
+   * Ingress (valgfritt) — `array`
    *
    *
    */
@@ -1044,7 +1140,6 @@ export type GpBlockContent = Array<
   | SanityKeyed<Picture>
   | SanityKeyed<PictureText>
   | SanityKeyed<Alert>
-  | SanityKeyed<FigmaEmbed>
   | SanityKeyed<CodeSnippet>
   | SanityKeyed<DoDont>
 >;
@@ -1440,6 +1535,7 @@ export type Documents =
   | DsNavigation
   | DsPackage
   | DsContact
+  | DsComponentOverview
   | GpArticlePage
   | GpFrontpage
   | GpSituations
