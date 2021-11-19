@@ -43,6 +43,7 @@ import alert from "./objects/alert";
 import figma_embed from "./objects/figma-embed";
 import link_panel from "./objects/link-panel";
 import icon_search from "./objects/uniques/ikonsok";
+import component_overview from "./objects/overview-ref";
 
 export default createSchema({
   name: "default",
@@ -86,5 +87,6 @@ export default createSchema({
     dropdown,
     metadata,
     icon_search,
+    component_overview,
   ]),
 });

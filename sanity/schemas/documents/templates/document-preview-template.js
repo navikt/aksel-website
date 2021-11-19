@@ -6,16 +6,17 @@ export function defaultPreview() {
   return {
     preview: {
       select: {
-        title: "heading",
+        title: "title",
+        heading: "heading",
         status: "status",
         metadata: "metadata",
         id: "_id",
       },
       prepare(selection) {
-        const { title, status, metadata, id } = selection;
+        const { title, id, heading } = selection;
         return {
           title: title,
-          subtitle: id.includes("drafts.") ? "Draft" : "Publisert",
+          subtitle: heading,
           media: id.includes("drafts.") ? (
             <Edit />
           ) : (
