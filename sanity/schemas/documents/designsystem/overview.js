@@ -74,6 +74,17 @@ export default {
               initialValue: false,
             },
             {
+              name: "in_code_beta",
+              title: "Er komponenten fortsatt i Beta?",
+              type: "boolean",
+              validation: (Rule) => Rule.required(),
+              hidden: ({ parent }) => !parent?.in_code,
+              options: {
+                layout: "checkbox",
+              },
+              initialValue: true,
+            },
+            {
               title: "Er komponentkoden i synk med Figma?",
               name: "figma_sync",
               type: "boolean",
@@ -90,21 +101,6 @@ export default {
                 layout: "checkbox",
               },
               initialValue: false,
-            },
-            {
-              title: "Dokumentasjons-status",
-              name: "doc_status",
-              type: "string",
-              hidden: ({ parent }) => !parent?.in_doc,
-              validation: (Rule) => Rule.required(),
-              initialValue: "yes",
-              options: {
-                layout: "radio",
-                list: [
-                  { value: "yes", title: "Ja" },
-                  { value: "beta", title: "I Beta" },
-                ],
-              },
             },
           ],
         },

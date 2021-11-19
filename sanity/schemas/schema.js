@@ -18,7 +18,7 @@ import designsystem_navigation, {
   ds_header_heading,
 } from "./documents/designsystem/navigation";
 import designssytem_contact from "./documents/designsystem/contact";
-import ds_component_overview from "./documents/designsystem/oversikt";
+import ds_component_overview from "./documents/designsystem/overview";
 /*--  God Praksis */
 import god_praksis_article_page from "./documents/god-praksis/gp-article-page";
 import god_praksis_frontpage from "./documents/god-praksis/gp-frontpage";
