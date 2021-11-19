@@ -159,6 +159,7 @@ const Page = () => {
 export const getStaticProps = async () => {
   return {
     props: { slug: "/", validPath: true, isDraft: false, noLayout: true },
+    revalidate: 10,
   };
 };
 

@@ -237,6 +237,7 @@ export const getStaticProps = async () => {
       navigation,
       noLayout: true,
     },
+    revalidate: 10,
   };
 };
 
