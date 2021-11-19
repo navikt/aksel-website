@@ -14,6 +14,7 @@ import {
   Ruler,
   Email,
   Edit,
+  Findout,
 } from "@navikt/ds-icons";
 
 export default () =>
@@ -97,6 +98,14 @@ export default () =>
                     .documentId("ds_navigationid")
                 ),
               S.listItem()
+                .title("Komponentoversikt")
+                .icon(() => <Findout />)
+                .child(
+                  S.document()
+                    .schemaType("ds_component_overview")
+                    .documentId("ds_component_overview_id")
+                ),
+              S.listItem()
                 .title("Changelog")
                 .icon(() => <Historic />)
                 .child(S.documentTypeList("ds_changelog")),
@@ -175,6 +184,7 @@ export default () =>
             "ds_code_example",
             "ds_navigation",
             "ds_package",
+            "ds_component_overview",
             "gp_article_page",
             "gp_frontpage",
             "gp_situations",

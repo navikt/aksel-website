@@ -185,6 +185,5 @@ export default {
     { type: "uu_interaction", icon: () => <Braille /> },
     { type: "prop_table", icon: () => <List /> },
     { type: "icon_search" },
-    { type: "components_overview" },
   ],
 };

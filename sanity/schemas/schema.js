@@ -18,6 +18,7 @@ import designsystem_navigation, {
   ds_header_heading,
 } from "./documents/designsystem/navigation";
 import designssytem_contact from "./documents/designsystem/contact";
+import ds_component_overview from "./documents/designsystem/oversikt";
 /*--  God Praksis */
 import god_praksis_article_page from "./documents/god-praksis/gp-article-page";
 import god_praksis_frontpage from "./documents/god-praksis/gp-frontpage";
@@ -42,9 +43,6 @@ import alert from "./objects/alert";
 import figma_embed from "./objects/figma-embed";
 import link_panel from "./objects/link-panel";
 import icon_search from "./objects/uniques/ikonsok";
-import component_overview, {
-  OverviewComponent,
-} from "./objects/uniques/oversikt";
 
 export default createSchema({
   name: "default",
@@ -57,6 +55,7 @@ export default createSchema({
     designsystem_packages,
     designssytem_contact,
     ds_header_heading,
+    ds_component_overview,
     god_praksis_article_page,
     god_praksis_frontpage,
     gp_situations,
@@ -87,7 +86,5 @@ export default createSchema({
     dropdown,
     metadata,
     icon_search,
-    component_overview,
-    OverviewComponent,
   ]),
 });
