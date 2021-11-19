@@ -1,4 +1,4 @@
-import { BodyShort, useClientLayoutEffect } from "@navikt/ds-react";
+import { BodyShort } from "@navikt/ds-react";
 import NextLink from "next/link";
 import React, { createContext, useContext, useState } from "react";
 import { useIsomorphicLayoutEffect } from "react-use";
