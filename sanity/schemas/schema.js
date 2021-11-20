@@ -7,7 +7,6 @@ import metadata from "./documents/admin/metadata";
 import editors from "./documents/editors";
 import navigation, { dropdown, link } from "./documents/navigation";
 import changelog from "./documents/designsystem/changelog";
-import feedback from "./documents/feedback";
 /*--  Designsystem */
 import designsystem_component_page from "./documents/designsystem/ds-component-page";
 import designsystem_article_page from "./documents/designsystem/ds-article-page";
@@ -17,7 +16,6 @@ import designsystem_packages from "./documents/designsystem/packages";
 import designsystem_navigation, {
   ds_header_heading,
 } from "./documents/designsystem/navigation";
-import designssytem_contact from "./documents/designsystem/contact";
 import ds_component_overview from "./documents/designsystem/overview";
 /*--  God Praksis */
 import god_praksis_article_page from "./documents/god-praksis/gp-article-page";
@@ -54,7 +52,6 @@ export default createSchema({
     designsystem_frontpage,
     designsystem_navigation,
     designsystem_packages,
-    designssytem_contact,
     ds_header_heading,
     ds_component_overview,
     god_praksis_article_page,
@@ -71,7 +68,6 @@ export default createSchema({
     prop_table,
     prop,
     changelog,
-    feedback,
     do_dont,
     doDont,
     editors,

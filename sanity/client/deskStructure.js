@@ -28,10 +28,6 @@ export default () =>
             .title("Designsystemet")
             .items([
               S.listItem()
-                .title("Meldinger/feedback")
-                .icon(() => <Email />)
-                .child(S.documentTypeList("ds_contact")),
-              S.listItem()
                 .title("Komponentsider")
                 .icon(() => <Facilitet />)
                 .child(
@@ -180,7 +176,6 @@ export default () =>
             "ds_article_page",
             "ds_frontpage",
             "ds_changelog",
-            "ds_contact",
             "ds_code_example",
             "ds_navigation",
             "ds_package",
