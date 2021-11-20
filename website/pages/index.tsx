@@ -132,19 +132,6 @@ const Page = () => {
             BETA-løsning for nye Designsystem-sider og God praksis
           </Ingress>
         </ScIntro>
-        <button
-          onClick={() => {
-            fetch("/api/slackMsg", {
-              method: "POST",
-              body: JSON.stringify({
-                message: "<@U0116FA1B16> Hello world!",
-              }),
-            });
-          }}
-        >
-          Send msg til slack
-        </button>
-
         <ScNav aria-label="Portal navigasjon">
           <ScOl>
             <li>

@@ -78,7 +78,10 @@ const Page = (props: {
           changelogs={changelogs}
         />
         <Sc.Grow />
-        <Feedback docId={pageProps?.page?._id} />
+        <Feedback
+          docId={pageProps?.page?._id}
+          docType={pageProps?.page?._type}
+        />
         {/* {LayoutParts[pageType]?.title === "Designsystemet" && (
               <RelatedPagesLink />
             )} */}

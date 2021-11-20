@@ -73,7 +73,7 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
         Innhold på siden
       </Heading>
       <S.Div>
-        <nav aria-aria-labelledby="toc-heading">
+        <nav aria-labelledby="toc-heading">
           <S.Ul>
             {toc.map((link) => (
               <S.Li

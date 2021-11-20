@@ -9,3 +9,16 @@ export type DsNavigationHeadingT = {
   link_ref: { _id: string; slug: { current: string } };
   menu?: DsNavigationHeadingMenuT[];
 };
+
+export type FoundOnPageFeedbackT = {
+  answer: boolean;
+  message: string;
+  url: string;
+  docId: string;
+  docType: string;
+};
+
+export type DsFeddbackMsgT = {
+  message: string;
+  user?: string;
+};
