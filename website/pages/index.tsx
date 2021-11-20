@@ -132,7 +132,6 @@ const Page = () => {
             BETA-løsning for nye Designsystem-sider og God praksis
           </Ingress>
         </ScIntro>
-
         <ScNav aria-label="Portal navigasjon">
           <ScOl>
             <li>

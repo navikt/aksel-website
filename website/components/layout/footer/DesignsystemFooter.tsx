@@ -189,11 +189,11 @@ const DesignsystemFooter = () => {
     if (fail) return;
     setContentError({ content: "", mail: "" });
 
-    fetch("/api/dsContact", {
+    fetch("/api/dsMessage", {
       method: "POST",
       body: JSON.stringify({
-        comment: contactForm.content,
-        mail: contactForm.mail,
+        message: contactForm.content,
+        user: contactForm.mail,
       }),
     });
 
@@ -254,7 +254,7 @@ const DesignsystemFooter = () => {
                       !isEmpty(e.target.value, { ignore_whitespace: true }) &&
                       setContentError({ ...contentError, content: "" });
                   }}
-                  maxLength={500}
+                  minRows={2}
                 />
                 <ScTextField
                   label="Vi svarer til e-post (valgfritt)"

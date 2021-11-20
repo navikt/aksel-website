@@ -3,47 +3,55 @@ import { Button, Heading } from "@navikt/ds-react";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { LayoutContext } from "..";
 import { useRouter } from "next/router";
+import { FoundOnPageFeedbackT } from "../../lib";
 
-const Feedback = ({ docId }: { docId?: string }): JSX.Element => {
-  if (!docId) return null;
+const Feedback = ({
+  docId,
+  docType,
+}: {
+  docId?: string;
+  docType?: string;
+}): JSX.Element => {
+  if (!docId || !docType) return null;
 
   const context = useContext(LayoutContext);
-  const { asPath } = useRouter();
-
+  const { asPath, basePath } = useRouter();
   const [step, setStep] = useState(0);
   const [feedbackValue, setFeedbackValue] = useState("");
-  const [feedbackType, setFeedbackType] = useState<
-    "negative" | "positive" | null
-  >(null);
+  const [feedbackType, setFeedbackType] = useState<boolean | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
 
   const handlePositiveClick = async () => {
-    setFeedbackType("positive");
+    setFeedbackType(true);
     setStep(1);
   };
 
   const handleNegativeClick = async () => {
-    setFeedbackType("negative");
+    setFeedbackType(false);
     setStep(1);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    !feedbackValue && setErrorMsg("Tekstfelt må inneholde tekst.");
+    if (!feedbackValue) {
+      setErrorMsg("Tekstfelt må inneholde tekst.");
+      return;
+    }
 
-    fetch("/api/feedback", {
+    const msg: FoundOnPageFeedbackT = {
+      answer: feedbackType,
+      message: feedbackValue,
+      url: `${basePath}${asPath}`,
+      docId: docId,
+      docType: docType,
+    };
+
+    fetch("/api/foundOrNotSlackMsg", {
       method: "POST",
-      body: JSON.stringify({
-        page: {
-          _type: "reference",
-          _ref: docId,
-          _weak: true,
-        },
-        feedbacktype: feedbackType,
-        comment: feedbackValue,
-      }),
+      body: JSON.stringify(msg),
     });
+
     setStep(2);
   };
 
@@ -60,7 +68,6 @@ const Feedback = ({ docId }: { docId?: string }): JSX.Element => {
     node && node.scrollIntoView();
   }, []);
 
-  // TODO: Changing tab before timeout runs sets step to 3 after its "reset"
   useEffect(() => {
     const timeout =
       step === 2 &&
