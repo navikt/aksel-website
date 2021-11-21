@@ -485,43 +485,6 @@ export interface DsPackage extends SanityDocument {
 }
 
 /**
- * Meldinger
- *
- *
- */
-export interface DsContact extends SanityDocument {
-  _type: "ds_contact";
-
-  /**
-   * Kommentar — `text`
-   *
-   *
-   */
-  comment?: string;
-
-  /**
-   * Mail — `string`
-   *
-   *
-   */
-  mail?: string;
-
-  /**
-   * Er medlingen håndtert? — `boolean`
-   *
-   *
-   */
-  done?: boolean;
-
-  /**
-   * Interne notater — `text`
-   *
-   * Hva gjorde vi med denne medlingen?
-   */
-  notes?: string;
-}
-
-/**
  * Komponentoversikt
  *
  *
@@ -901,52 +864,6 @@ export interface DsChangelog extends SanityDocument {
 }
 
 /**
- * Feedback
- *
- *
- */
-export interface Feedback extends SanityDocument {
-  _type: "feedback";
-
-  /**
-   * Side — `reference`
-   *
-   *
-   */
-  page?: SanityReference<
-    DsComponentPage | DsArticlePage | DsTabbedArticlePage | GpArticlePage
-  >;
-
-  /**
-   * Positiv/Negativ — `string`
-   *
-   *
-   */
-  feedbacktype?: "positive" | "negative";
-
-  /**
-   * Kommentar — `text`
-   *
-   *
-   */
-  comment?: string;
-
-  /**
-   * Er tilbakemeldingen tatt rede for? — `boolean`
-   *
-   *
-   */
-  done?: boolean;
-
-  /**
-   * Interne notater — `text`
-   *
-   * Hva gjorde vi med denne tilbakemeldingen
-   */
-  notes?: string;
-}
-
-/**
  * Redaktører
  *
  *
@@ -967,6 +884,13 @@ export interface Editor extends SanityDocument {
    *
    */
   team?: string;
+
+  /**
+   * Relaterte artikler — `string`
+   *
+   *
+   */
+  user_related_articles?: string;
 }
 
 /**
@@ -1545,7 +1469,6 @@ export type Documents =
   | DsFrontpage
   | DsNavigation
   | DsPackage
-  | DsContact
   | DsComponentOverview
   | GpArticlePage
   | GpFrontpage
@@ -1553,7 +1476,6 @@ export type Documents =
   | VkFrontpage
   | DsCodeExample
   | DsChangelog
-  | Feedback
   | Editor
   | Navigation
   | Metadata;
