@@ -58,7 +58,8 @@
     "jszip": "^3.7.1",
     "js-file-download": "^0.4.12",
     "sitemap": "^7.0.0",
-    "validator": "^13.7.0"
+    "validator": "^13.7.0",
+    "react-tooltip": "^4.2.21"
   },
   "devDependencies": {
     "@types/node": "^16.9.2",
