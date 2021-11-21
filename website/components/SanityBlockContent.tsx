@@ -18,6 +18,7 @@ import {
   Snippet,
   UuInteraction,
 } from ".";
+import ComponentOverview from "./component-overview";
 
 export const ScCode = styled.code`
   color: var(--navds-semantic-color-text-default);
@@ -40,7 +41,11 @@ const ScKbd = styled.code`
 
 const serializers = {
   types: {
+    /* Unique page modules */
+    ds_component_overview: ({ node }) => <ComponentOverview node={node} />,
     icon_search: () => <IconSearch />,
+
+    /* General page modules */
     code_snippet: ({ node }) => <Snippet node={node} />,
     code_example_ref: ({ node }) => <CodeExample node={node.ref} />,
     prop_table: ({ node }) => <PropTable node={node} />,

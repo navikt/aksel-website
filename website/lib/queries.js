@@ -7,6 +7,15 @@ markDefs[]{
 },`;
 
 const deRefs = `
+_type == "component_overview" =>{
+  ...@.ref->{
+    ...,
+    components[]{
+      ...,
+      linked_package->{...}
+    }
+  }
+},
 _type == "code_example_ref" =>{
   "ref": @.ref->
 },

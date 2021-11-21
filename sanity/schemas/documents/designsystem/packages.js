@@ -9,5 +9,20 @@ export default {
       type: "string",
       validation: (Rule) => Rule.required(),
     },
+    {
+      title: "Scope",
+      name: "scope",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+      initialValue: "core",
+      options: {
+        layout: "radio",
+        list: [
+          { value: "core", title: "Core" },
+          { value: "internal", title: "Intern" },
+          { value: "navno", title: "Navno" },
+        ],
+      },
+    },
   ],
 };
