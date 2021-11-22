@@ -1,3 +1,4 @@
+import { Back, Next } from "@navikt/ds-icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { createRef, useContext, useState } from "react";
@@ -16,11 +17,15 @@ export const Tabs = ({
 
   const router = useRouter();
 
-  const [parentRef, setParentRef] = useState(null);
-  const [innerRef, setInnerRef] = useState(null);
+  const [parentRef, setParentRef] = useState<HTMLElement>(null);
+  const [innerRef, setInnerRef] = useState<HTMLUListElement>(null);
+  const [lastItemRef, setLastItemRef] = useState<HTMLLIElement>(null);
 
-  const [overflowLeft, overflowRight] = useOverflowX(innerRef, parentRef);
-  console.log({ left: overflowLeft, right: overflowRight });
+  const [overflowLeft, overflowRight] = useOverflowX(
+    innerRef,
+    parentRef,
+    lastItemRef
+  );
 
   const tabWRefs = tabs.map((t) => ({
     ...t,
@@ -76,30 +81,54 @@ export const Tabs = ({
     [tabs]
   );
 
+  const scrollLeft = () => {
+    if (innerRef) {
+      innerRef.scrollLeft = 0;
+    }
+  };
+
+  const scrollRight = () => {
+    if (innerRef) {
+      innerRef.scrollLeft = innerRef.offsetWidth;
+    }
+  };
+
   return (
-    <S.Nav
-      isTablet={context.isTablet}
-      aria-label={`Om ${title}`}
-      ref={setParentRef}
-    >
-      <S.Ul isTablet={context.isTablet} ref={setInnerRef}>
-        {tabWRefs.map((tab) => (
-          <li key={tab.name}>
-            <Link
-              href={{
-                pathname: tab.path,
-                query: router.query.preview ? { preview: true } : {},
-              }}
-              passHref
-              shallow
-            >
-              <S.A ref={tab.ref} aria-selected={tab.active}>
-                {tab.name}
-              </S.A>
-            </Link>
-          </li>
-        ))}
-      </S.Ul>
-    </S.Nav>
+    <S.Wrapper>
+      <S.Nav
+        isTablet={context.isTablet}
+        aria-label={`Om ${title}`}
+        ref={setParentRef}
+      >
+        <S.Ul isTablet={context.isTablet} ref={setInnerRef}>
+          {tabWRefs.map((tab, i) => (
+            <li key={tab.name} ref={setLastItemRef}>
+              <Link
+                href={{
+                  pathname: tab.path,
+                  query: router.query.preview ? { preview: true } : {},
+                }}
+                passHref
+                shallow
+              >
+                <S.A ref={tab.ref} aria-selected={tab.active}>
+                  {tab.name}
+                </S.A>
+              </Link>
+            </li>
+          ))}
+        </S.Ul>
+      </S.Nav>
+      {overflowLeft && (
+        <S.ScrollLeftButton onClick={() => scrollLeft()}>
+          <Back aria-label="scroll meny til venstre" />
+        </S.ScrollLeftButton>
+      )}
+      {overflowRight && (
+        <S.ScrollRightButton onClick={() => scrollRight()}>
+          <Next aria-label="scroll meny til høyre" />
+        </S.ScrollRightButton>
+      )}
+    </S.Wrapper>
   );
 };

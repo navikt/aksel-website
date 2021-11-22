@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Nav = styled.nav<{ isTablet: boolean }>`
-  /* overflow-x: auto; */
+  overflow-x: auto;
   position: sticky;
   top: 0;
   z-index: 1001;
@@ -37,7 +37,7 @@ export const Ul = styled.ul<{ isTablet: boolean }>`
   margin: 0;
   display: flex;
   align-items: center;
-  overflow-x: auto;
+  /* overflow-x: auto; */
   max-width: ${(props) => (props.isTablet ? "" : "600px")};
   margin-top: 0.5rem;
   margin-left: ${(props) => (!props.isTablet ? "3rem" : "")};
@@ -96,4 +96,42 @@ export const A = styled.a`
     outline: 3px solid var(--navds-semantic-color-focus);
     outline-offset: -3px;
   }
+`;
+
+const ScButtonCss = css`
+  background: none;
+  border: none;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  width: 48px;
+  top: 50%;
+  justify-content: center;
+  transform: translateY(-50%);
+  background: var(--navds-semantic-color-canvas-background-light);
+  z-index: 1002;
+`;
+export const Wrapper = styled.div`
+  position: relative;
+`;
+
+export const ScrollLeftButton = styled.button`
+  ${ScButtonCss}
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+`;
+
+export const ScrollRightButton = styled.button`
+  ${ScButtonCss}
+  right: 0;
+  background: linear-gradient(
+    -90deg,
+    rgba(255, 255, 255, 1) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
 `;
