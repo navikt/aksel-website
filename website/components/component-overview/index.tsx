@@ -1,5 +1,5 @@
 import { Error, Success } from "@navikt/ds-icons";
-import { BodyLong, BodyShort, Label, Table, Tag } from "@navikt/ds-react";
+import { BodyLong, BodyShort, Label, Link, Table, Tag } from "@navikt/ds-react";
 import React from "react";
 import ReactTooltip from "react-tooltip";
 import styled from "styled-components";
@@ -204,6 +204,11 @@ const ComponentOverview = ({
         Tabellen viser en oversikt over alle komponentene og deres status på
         design, kode og dokumentasjon. Noe du savner? Send oss en meldig så
         legger vi det til!
+      </BodyLong>
+      <BodyLong spacing>
+        <strong> Viktig:</strong> Kode er her relatert til de nye kodepakkene.
+        For eldre løsninginger som er implementert i Figma v2.5, se{" "}
+        <Link href="https://design.nav.no"> Design.nav.no</Link>
       </BodyLong>
       <Label spacing>Tegnforklaring</Label>
       <ScUl>
