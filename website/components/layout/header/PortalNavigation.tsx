@@ -13,9 +13,9 @@ export const ScWrapper = styled.div`
   height: 100%;
   display: flex;
   z-index: 1050;
-
+  margin-right: var(--navds-spacing-8);
   &[data-mobile="true"] {
-    margin-right: var(--navds-spacing-8);
+    margin-right: 0;
   }
 `;
 
