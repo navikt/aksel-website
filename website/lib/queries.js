@@ -12,7 +12,8 @@ _type == "component_overview" =>{
     ...,
     components[]{
       ...,
-      linked_package->{...}
+      linked_package->{...},
+      "doc_link": doc_link->slug.current
     }
   }
 },

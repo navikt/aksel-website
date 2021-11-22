@@ -5,6 +5,7 @@ import ReactTooltip from "react-tooltip";
 import styled from "styled-components";
 import { FigmaIcon, FigmaIconNoSync } from "..";
 import { DsComponentOverview } from "../../lib/autogen-types";
+import NextLink from "next/link";
 
 const ScComponentOverview = styled.div``;
 const ScHeaderCell = styled(BodyShort)`
@@ -159,7 +160,14 @@ const ComponentOverview = ({
     return (
       <Table.Row>
         <Table.HeaderCell>
-          <BodyShort>{comp.title}</BodyShort>
+          {comp.doc_link ? (
+            <NextLink href={`/${comp.doc_link}`} passHref>
+              <Link>{comp.title}</Link>
+            </NextLink>
+          ) : (
+            <BodyShort>{comp.title}</BodyShort>
+          )}
+
           {comp.linked_package?.scope && (
             <>
               <ScBodyShortMuted size="small">

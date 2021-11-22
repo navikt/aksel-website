@@ -482,6 +482,13 @@ export interface DsPackage extends SanityDocument {
    *
    */
   title?: string;
+
+  /**
+   * Scope — `string`
+   *
+   *
+   */
+  scope?: "core" | "internal" | "navno";
 }
 
 /**
@@ -562,6 +569,15 @@ export interface DsComponentOverview extends SanityDocument {
        *
        */
       in_doc?: boolean;
+
+      /**
+       * Legger til link til dokumentasjonen — `reference`
+       *
+       *
+       */
+      doc_link?: SanityReference<
+        DsComponentPage | DsArticlePage | DsTabbedArticlePage
+      >;
     }>
   >;
 }
