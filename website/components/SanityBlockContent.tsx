@@ -1,4 +1,3 @@
-import { ExternalLink } from "@navikt/ds-icons";
 import { BodyLong, Detail, Heading, Ingress, Link } from "@navikt/ds-react";
 import BlockContent from "@sanity/block-content-to-react";
 import NextjsLink from "next/link";
@@ -109,7 +108,7 @@ const serializers = {
       blank ? (
         <NextjsLink href={href} passHref>
           <Link target="_blank" rel="noreferrer noopener">
-            {children} <ExternalLink title="Åpner lenken i en ny fane" />
+            {children} (åpner lenken i ny fane)
           </Link>
         </NextjsLink>
       ) : (
