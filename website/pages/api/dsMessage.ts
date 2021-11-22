@@ -29,22 +29,29 @@ export default async function handler(
                   text: `Bruker: ${data.user !== "" ? data.user : "Ukjent"}`,
                 },
               },
+            ],
+            attachments: [
               {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: `:speaking_head_in_silhouette: *Melding*\n\n${data.message}`,
-                },
-              },
-              {
-                type: "divider",
-              },
-              {
-                type: "context",
-                elements: [
+                color: "#66CBEC",
+                blocks: [
                   {
-                    type: "mrkdwn",
-                    text: "Tag melding med :white_check_mark: hvis feedback er håndtert og bruker har fått respons.\n",
+                    type: "section",
+                    text: {
+                      type: "mrkdwn",
+                      text: `:speaking_head_in_silhouette: *Melding*\n\n${data.message}`,
+                    },
+                  },
+                  {
+                    type: "divider",
+                  },
+                  {
+                    type: "context",
+                    elements: [
+                      {
+                        type: "mrkdwn",
+                        text: "Tag melding med :white_check_mark: hvis feedback er håndtert og bruker har fått respons.\n",
+                      },
+                    ],
                   },
                 ],
               },

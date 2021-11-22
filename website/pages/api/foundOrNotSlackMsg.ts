@@ -31,36 +31,43 @@ export default async function handler(
                   }`,
                 },
               },
+            ],
+            attachments: [
               {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: `:speaking_head_in_silhouette: *Melding*\n\n${data.message}`,
-                },
-              },
-              {
-                type: "divider",
-              },
-              {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: data.url,
-                },
-              },
-              {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: `<https://verktoykasse.sanity.studio/desk/__edit__${data.docId}%2Ctype%3D${data.docType}|Rediger side i CMS>`,
-                },
-              },
-              {
-                type: "context",
-                elements: [
+                color: data.answer ? "#06893A" : "#BA3A26",
+                blocks: [
                   {
-                    type: "mrkdwn",
-                    text: "Tag melding med :white_check_mark: hvis feedback er håndtert.\n",
+                    type: "section",
+                    text: {
+                      type: "mrkdwn",
+                      text: `:speaking_head_in_silhouette: *Melding*\n\n${data.message}`,
+                    },
+                  },
+                  {
+                    type: "divider",
+                  },
+                  {
+                    type: "section",
+                    text: {
+                      type: "mrkdwn",
+                      text: data.url,
+                    },
+                  },
+                  {
+                    type: "section",
+                    text: {
+                      type: "mrkdwn",
+                      text: `<https://verktoykasse.sanity.studio/desk/__edit__${data.docId}%2Ctype%3D${data.docType}|Rediger side i CMS>`,
+                    },
+                  },
+                  {
+                    type: "context",
+                    elements: [
+                      {
+                        type: "mrkdwn",
+                        text: "Tag melding med :white_check_mark: hvis feedback er håndtert.\n",
+                      },
+                    ],
                   },
                 ],
               },

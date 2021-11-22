@@ -65,7 +65,6 @@ const Feedback = ({
 
   const setFocus = useCallback((node: HTMLElement) => {
     node && node.focus();
-    node && node.scrollIntoView();
   }, []);
 
   useEffect(() => {
