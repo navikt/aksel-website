@@ -54,10 +54,11 @@ export const Section = styled.section`
 `;
 
 export const FigureBorder = styled.button`
-  border: 1px solid #c9c9c9;
+  border: 1px solid var(--navds-semantic-color-divider);
   border-bottom: none;
   border-radius: 4px 4px 0 0;
   background: none;
+  padding: 0;
 
   :focus {
     outline: none;

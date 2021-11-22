@@ -281,7 +281,7 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
               open={Object.keys(result).length > 0 || query !== ""}
               arrow={false}
               placement={"bottom-start"}
-              offset={12}
+              offset={16}
             >
               <SearchContext.Provider value={{ clicked: () => setOpen(false) }}>
                 <Hits ref={anchor} hits={result} value={query} />

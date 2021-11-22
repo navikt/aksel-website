@@ -9,6 +9,7 @@ import {
   Changelog,
   CodeExample,
   LastUpdateTag,
+  LayoutContext,
   LevelTwoHeading,
   slugger,
   StatusTag,
@@ -82,6 +83,7 @@ const ComponentPageTemplate = ({
   const { query, asPath } = useRouter();
   const changeTab = useMedia("(max-width: 564px)");
   const { pageProps } = useContext(PagePropsContext);
+  const layout = useContext(LayoutContext);
   const [activeTab, setActiveTab] = useState(0);
 
   const tabs = {
@@ -161,7 +163,17 @@ const ComponentPageTemplate = ({
 
       <S.MaxWidthContainer>
         <S.HeadingContainer>
-          <Heading size="2xlarge" level="1" spacing>
+          <Heading
+            size={
+              layout.isTablet
+                ? layout.isMobile
+                  ? "large"
+                  : "xlarge"
+                : "2xlarge"
+            }
+            level="1"
+            spacing
+          >
             {data.heading}
           </Heading>
           <ScDiv>

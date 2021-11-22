@@ -1,9 +1,10 @@
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   LastUpdateTag,
+  LayoutContext,
   slugger,
   StatusTag,
   TableOfContents,
@@ -21,7 +22,7 @@ const TabbedActiclePageTemplate = ({
   title: string;
 }): JSX.Element => {
   const { query } = useRouter();
-
+  const layout = useContext(LayoutContext);
   useEffect(() => {
     slugger.reset();
   });
@@ -53,7 +54,17 @@ const TabbedActiclePageTemplate = ({
       </Head>
       <S.MaxWidthContainer>
         <S.HeadingContainer>
-          <Heading size="2xlarge" level="1" spacing>
+          <Heading
+            size={
+              layout.isTablet
+                ? layout.isMobile
+                  ? "large"
+                  : "xlarge"
+                : "2xlarge"
+            }
+            level="1"
+            spacing
+          >
             {data.heading}
           </Heading>
           <S.Inline>

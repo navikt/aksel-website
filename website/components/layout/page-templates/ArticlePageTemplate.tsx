@@ -1,7 +1,13 @@
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
-import React, { useEffect } from "react";
-import { LastUpdateTag, slugger, StatusTag, TableOfContents } from "../..";
+import React, { useContext, useEffect } from "react";
+import {
+  LastUpdateTag,
+  LayoutContext,
+  slugger,
+  StatusTag,
+  TableOfContents,
+} from "../..";
 import { DsArticlePage, GpArticlePage } from "../../../lib/autogen-types";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import * as S from "./page.styles";
@@ -16,6 +22,8 @@ const ActiclePageTemplate = ({
   useEffect(() => {
     slugger.reset();
   });
+
+  const layout = useContext(LayoutContext);
 
   if (!data.body || !data.heading || !data.status) {
     return null;
@@ -33,7 +41,17 @@ const ActiclePageTemplate = ({
       </Head>
       <S.MaxWidthContainer>
         <S.HeadingContainer>
-          <Heading size="2xlarge" level="1" spacing>
+          <Heading
+            size={
+              layout.isTablet
+                ? layout.isMobile
+                  ? "large"
+                  : "xlarge"
+                : "2xlarge"
+            }
+            level="1"
+            spacing
+          >
             {data.heading}
           </Heading>
           <S.Inline>

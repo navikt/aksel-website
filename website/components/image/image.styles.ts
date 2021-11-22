@@ -10,6 +10,7 @@ export const Figure = styled.figure`
 export const Image = styled.button`
   background-color: var(--navds-global-color-gray-50);
   border: 1px solid var(--navds-semantic-color-divider);
+  padding: 0;
 
   :focus {
     outline: none;

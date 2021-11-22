@@ -6,9 +6,7 @@ import styled from "styled-components";
 import { FigmaIcon, FigmaIconNoSync } from "..";
 import { DsComponentOverview } from "../../lib/autogen-types";
 
-const ScComponentOverview = styled.div`
-  overflow-x: auto;
-`;
+const ScComponentOverview = styled.div``;
 const ScHeaderCell = styled(BodyShort)`
   color: var(--navds-semantic-color-text-muted);
 `;
@@ -79,6 +77,10 @@ const ScUl = styled.ul`
     padding: 0.5rem 0;
     gap: 0.5rem;
   }
+`;
+
+const ScTableOverflow = styled.div`
+  overflow-x: auto;
 `;
 
 const SuccessIcon = () => (
@@ -232,31 +234,33 @@ const ComponentOverview = ({
           <SuccessIcon /> ⏤ Lansert 🎉
         </li>
       </ScUl>
-      <Table size="small">
-        <Table.Header>
-          <Table.Row>
-            <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
-              Komponent
-            </ScHeaderCell>
-            <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
-              Design
-            </ScHeaderCell>
-            <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
-              Kode
-            </ScHeaderCell>
-            <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
-              Dok
-            </ScHeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {node.components
-            .sort((x, y) => x.title.localeCompare(y.title))
-            .map((c) => (
-              <TableRow key={c.title} comp={c} />
-            ))}
-        </Table.Body>
-      </Table>
+      <ScTableOverflow>
+        <Table>
+          <Table.Header>
+            <Table.Row>
+              <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
+                Komponent
+              </ScHeaderCell>
+              <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
+                Design
+              </ScHeaderCell>
+              <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
+                Kode
+              </ScHeaderCell>
+              <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
+                Dok
+              </ScHeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {node.components
+              .sort((x, y) => x.title.localeCompare(y.title))
+              .map((c) => (
+                <TableRow key={c.title} comp={c} />
+              ))}
+          </Table.Body>
+        </Table>
+      </ScTableOverflow>
     </ScComponentOverview>
   );
 };
