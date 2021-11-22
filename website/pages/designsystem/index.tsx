@@ -68,6 +68,7 @@ const ScFlex = styled.div`
 
 const ScFlexReverse = styled.div`
   position: relative;
+  display: flex;
 `;
 
 const ScTitle = styled.div`
@@ -78,24 +79,14 @@ const ScTitle = styled.div`
   }
 
   background-color: var(--navds-semantic-color-canvas-background-default);
-  height: 250px;
+  height: 240px;
   width: 100%;
   flex: 1 1 500px;
 `;
 
 const ScIllustration = styled.div`
-  width: 100%;
-  position: absolute;
-  top: 0;
-  z-index: -1;
-
-  /* filter: blur(3px);
-  opacity: 0.1;
-  display: none; */
-
-  svg {
-    height: calc(100% - 7px);
-    max-width: 100%;
+  @media (max-width: 1064px) {
+    display: none;
   }
 `;
 
@@ -147,9 +138,6 @@ const Page = () => {
       </Head>
       <>
         <ScFlexReverse>
-          <ScIllustration>
-            <DsFrontpageIllustration />
-          </ScIllustration>
           <ScTitle>
             <ScHeading spacing level="1" size="2xlarge">
               Designsystemet
@@ -160,6 +148,9 @@ const Page = () => {
               produkter.
             </BodyLong>
           </ScTitle>
+          <ScIllustration>
+            <DsFrontpageIllustration />
+          </ScIllustration>
         </ScFlexReverse>
         <ScFlex>
           <ScDescriptionWrapper>
