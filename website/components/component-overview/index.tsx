@@ -164,7 +164,7 @@ const ComponentOverview = ({
                 <ScFocusSpan
                   tabIndex={0}
                   data-tip=""
-                  data-for={comp.linked_package?.scope}
+                  data-for={comp.linked_package?.title}
                 >
                   {comp.linked_package?.scope}
                   <span className="navds-sr-only">
@@ -173,7 +173,7 @@ const ComponentOverview = ({
                 </ScFocusSpan>
               </ScBodyShortMuted>
               <ReactTooltip
-                id={comp.linked_package?.scope}
+                id={comp.linked_package?.title}
                 place="top"
                 type="dark"
                 effect="solid"
@@ -223,7 +223,7 @@ const ComponentOverview = ({
           <FigmaIconNoSync /> ⏤ Kode ikke i synk med Figma
         </li>
         <li>
-          <BetaTag /> ⏤ Finnes som testversjon
+          <BetaTag /> ⏤ Finnes som testversjon i Figma v3.0
         </li>
         <li>
           <ErrorIcon /> ⏤ Ikke tilgjengelig
