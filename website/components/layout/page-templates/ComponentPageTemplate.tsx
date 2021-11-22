@@ -45,7 +45,7 @@ const ScLinks = styled.div`
 
     :hover {
       text-decoration: underline;
-      background: var(--navds-global-color-blue-200);
+      background: var(--navds-global-color-blue-50);
     }
 
     :focus {

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Nav = styled.nav<{ isTablet: boolean }>`
-  overflow-x: auto;
+  /* overflow-x: auto; */
   position: sticky;
   top: 0;
   z-index: 1001;

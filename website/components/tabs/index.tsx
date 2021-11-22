@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { createRef, useContext } from "react";
+import React, { createRef, useContext, useState } from "react";
 import { useKey } from "react-use";
-import { LayoutContext } from "..";
+import { LayoutContext, useOverflowX } from "..";
 import * as S from "./tabs.styles";
 
 export const Tabs = ({
@@ -15,6 +15,12 @@ export const Tabs = ({
   const context = useContext(LayoutContext);
 
   const router = useRouter();
+
+  const [parentRef, setParentRef] = useState(null);
+  const [innerRef, setInnerRef] = useState(null);
+
+  const [overflowLeft, overflowRight] = useOverflowX(innerRef, parentRef);
+  console.log({ left: overflowLeft, right: overflowRight });
 
   const tabWRefs = tabs.map((t) => ({
     ...t,
@@ -71,8 +77,12 @@ export const Tabs = ({
   );
 
   return (
-    <S.Nav isTablet={context.isTablet} aria-label={`Om ${title}`}>
-      <S.Ul isTablet={context.isTablet}>
+    <S.Nav
+      isTablet={context.isTablet}
+      aria-label={`Om ${title}`}
+      ref={setParentRef}
+    >
+      <S.Ul isTablet={context.isTablet} ref={setInnerRef}>
         {tabWRefs.map((tab) => (
           <li key={tab.name}>
             <Link
