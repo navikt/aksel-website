@@ -161,7 +161,11 @@ const ComponentOverview = ({
           {comp.linked_package?.scope && (
             <>
               <ScBodyShortMuted size="small">
-                <ScFocusSpan tabIndex={0} data-tip="" data-for="tooltip-scope">
+                <ScFocusSpan
+                  tabIndex={0}
+                  data-tip=""
+                  data-for={comp.linked_package?.scope}
+                >
                   {comp.linked_package?.scope}
                   <span className="navds-sr-only">
                     Pakkenavn: {comp.linked_package?.title}
@@ -169,7 +173,7 @@ const ComponentOverview = ({
                 </ScFocusSpan>
               </ScBodyShortMuted>
               <ReactTooltip
-                id="tooltip-scope"
+                id={comp.linked_package?.scope}
                 place="top"
                 type="dark"
                 effect="solid"
@@ -246,9 +250,11 @@ const ComponentOverview = ({
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {node.components.map((c) => (
-            <TableRow key={c.title} comp={c} />
-          ))}
+          {node.components
+            .sort((x, y) => x.title.localeCompare(y.title))
+            .map((c) => (
+              <TableRow key={c.title} comp={c} />
+            ))}
         </Table.Body>
       </Table>
     </ScComponentOverview>
