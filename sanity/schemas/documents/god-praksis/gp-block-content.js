@@ -97,6 +97,9 @@ export default {
       },
     },
     {
+      type: "spacing",
+    },
+    {
       type: "picture",
     },
     {

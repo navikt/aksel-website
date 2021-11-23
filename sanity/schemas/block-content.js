@@ -8,6 +8,7 @@ import {
   Laptop,
   List,
   ExternalLink,
+  Link,
 } from "@navikt/ds-icons";
 import { KBD } from "@sanity/ui";
 import { allDocumentTypes } from "../config";
@@ -88,7 +89,7 @@ export const block = {
         name: "internalLink",
         type: "object",
         blockEditor: {
-          icon: () => <ExternalLink />,
+          icon: () => <Link />,
         },
         fields: [
           {
@@ -107,6 +108,9 @@ export const block = {
         title: "External link",
         name: "link",
         type: "object",
+        blockEditor: {
+          icon: () => <ExternalLink />,
+        },
         fields: [
           {
             title: "URL",
@@ -158,6 +162,9 @@ export default {
       ],
     },
     // Custom types (add components here)
+    {
+      type: "spacing",
+    },
     {
       type: "picture",
     },
