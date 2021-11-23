@@ -1060,6 +1060,7 @@ export type CodeExampleExample = {
 
 export type BlockContent = Array<
   | SanityKeyed<SanityBlock>
+  | SanityKeyed<Spacing>
   | SanityKeyed<Picture>
   | SanityKeyed<PictureText>
   | SanityKeyed<Alert>
@@ -1078,6 +1079,7 @@ export type BlockContentSimple = Array<SanityKeyed<SanityBlock>>;
 
 export type GpBlockContent = Array<
   | SanityKeyed<SanityBlock>
+  | SanityKeyed<Spacing>
   | SanityKeyed<Picture>
   | SanityKeyed<PictureText>
   | SanityKeyed<Alert>
@@ -1476,6 +1478,16 @@ export type ComponentOverview = {
    * Legger til en tabell med komponentoversikt. Skal bare brukes for siden Komponenter oversikt
    */
   ref?: SanityReference<DsComponentOverview>;
+};
+
+export type Spacing = {
+  _type: "spacing";
+  /**
+   * Spacing-verdi — `string`
+   *
+   *
+   */
+  space?: "s-4" | "s-8" | "s-12" | "s-16";
 };
 
 export type Documents =

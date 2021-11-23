@@ -10,6 +10,7 @@ export { default as Figma } from "./figma";
 export { default as LevelTwoHeading } from "./heading";
 export { default as IconSearch } from "./icon-search";
 export * from "./image";
+export { default as Spacing } from "./spacing";
 export { default as LinkPanel } from "./link-panel";
 export { default as PropTable } from "./prop-table";
 export { default as RelatedPagesLink } from "./related-pages-link";

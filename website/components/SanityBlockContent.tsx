@@ -16,6 +16,7 @@ import {
   PropTable,
   Snippet,
   UuInteraction,
+  Spacing,
 } from ".";
 import ComponentOverview from "./component-overview";
 
@@ -55,6 +56,7 @@ const serializers = {
     figma_embed: ({ node }) => <Figma node={node} />,
     alert: ({ node }) => <Alert node={node} />,
     link_panel: ({ node }) => <LinkPanel node={node} />,
+    spacing: ({ node }) => <Spacing node={node} />,
 
     block: ({ node, children }) => {
       const context: BlockContextT = useContext(BlockContext);
