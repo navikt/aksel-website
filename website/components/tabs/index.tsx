@@ -82,14 +82,14 @@ export const Tabs = ({
   );
 
   const scrollLeft = () => {
-    if (innerRef) {
-      innerRef.scrollLeft = 0;
+    if (parentRef) {
+      parentRef.scrollLeft = 0;
     }
   };
 
   const scrollRight = () => {
-    if (innerRef) {
-      innerRef.scrollLeft = innerRef.offsetWidth;
+    if (parentRef) {
+      parentRef.scrollLeft = parentRef.offsetWidth;
     }
   };
 
@@ -101,7 +101,7 @@ export const Tabs = ({
         ref={setParentRef}
       >
         <S.Ul isTablet={context.isTablet} ref={setInnerRef}>
-          {tabWRefs.map((tab, i) => (
+          {tabWRefs.map((tab) => (
             <li key={tab.name} ref={setLastItemRef}>
               <Link
                 href={{
