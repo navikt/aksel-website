@@ -54,4 +54,5 @@ export const Anchor = styled.button`
 
 export const HeadingWrapper = styled.div`
   display: inline-flex;
+  margin-top: var(--navds-spacing-12);
 `;

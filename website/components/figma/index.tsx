@@ -11,7 +11,7 @@ const Skeleton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: var(--navds-spacing-12);
+  margin-bottom: var(--navds-spacing-7);
 `;
 
 const Figma = ({ node }: { node: FigmaEmbedT }): JSX.Element => {
@@ -30,7 +30,7 @@ const Figma = ({ node }: { node: FigmaEmbedT }): JSX.Element => {
           border: "none",
           width: "100%",
           display: loaded ? "block" : "none",
-          marginBottom: "var(--navds-spacing-12)",
+          marginBottom: "var(--navds-spacing-7)",
         }}
         src={src || ""}
         height="500px"

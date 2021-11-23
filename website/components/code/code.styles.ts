@@ -59,7 +59,7 @@ export const PreWrapper = styled.div<{ active: boolean }>`
   position: relative;
   background-color: var(--navds-semantic-color-component-background-inverted);
   display: ${(props) => (props.active ? "block" : "none")};
-  margin-bottom: var(--navds-spacing-8);
+  margin-bottom: var(--navds-spacing-7);
 `;
 
 export const Pre = styled.pre`

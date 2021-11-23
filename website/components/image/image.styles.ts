@@ -4,7 +4,7 @@ export const Figure = styled.figure`
   display: flex;
   flex-direction: column;
   margin: 0;
-  margin-bottom: var(--navds-spacing-12);
+  margin-bottom: var(--navds-spacing-7);
 `;
 
 export const Image = styled.button`
