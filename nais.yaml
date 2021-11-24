@@ -6,17 +6,17 @@ metadata:
   labels:
     team: designsystem
 spec:
-  image: { { image } }
+  image: {{image}}
   port: 3000
   liveness:
     path: /api/isAlive
-    initialDelay: 5
+    initialDelay: 20
     timeout: 1
     periodSeconds: 5
     failureThreshold: 10
   readiness:
     path: /api/isAlive
-    initialDelay: 5
+    initialDelay: 20
     timeout: 1
   replicas:
     min: 2
@@ -36,3 +36,10 @@ spec:
         - host: apicdn.sanity.io
         - host: hnbe3yhs.apicdn.sanity.io
         - host: cdn.sanity.io
+      rules: []
+      env:
+# prettier ignore
+{{#each env}}
+    - name: {{@key}}
+      value: "{{this}}"
+{{/each}}
