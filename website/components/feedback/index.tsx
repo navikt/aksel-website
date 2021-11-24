@@ -47,11 +47,11 @@ const Feedback = ({
       docType: docType,
     };
 
-    fetch("/api/foundOrNotSlackMsg", {
+    fetch("/api/foundOrNotFeedback", {
       method: "POST",
       body: JSON.stringify(msg),
     });
-
+    setFeedbackValue("");
     setStep(2);
   };
 

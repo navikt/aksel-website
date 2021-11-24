@@ -111,7 +111,12 @@ const ScButtonCss = css`
   transform: translateY(-50%);
   background: var(--navds-semantic-color-canvas-background-light);
   z-index: 1002;
+
+  :focus {
+    box-shadow: 0 0 0 2px var(--navds-global-color-focus);
+  }
 `;
+
 export const Wrapper = styled.div`
   position: relative;
 `;
