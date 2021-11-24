@@ -583,6 +583,36 @@ export interface DsComponentOverview extends SanityDocument {
 }
 
 /**
+ * Fargekategori
+ *
+ *
+ */
+export interface DsColorCategories extends SanityDocument {
+  _type: "ds_color_categories";
+
+  /**
+   * Tittel — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Beskrivelse — `text`
+   *
+   *
+   */
+  description?: string;
+
+  /**
+   * Farger — `array`
+   *
+   *
+   */
+  colors?: Array<SanityKeyed<DsColor>>;
+}
+
+/**
  * Artikkelside
  *
  *
@@ -1012,6 +1042,44 @@ export type DsNavigationHeading = {
       >;
     }>
   >;
+};
+
+export type DsColor = {
+  _type: "ds_color";
+  /**
+   * Navn — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Fargetype/nivå — `string`
+   *
+   *
+   */
+  color_type?: "global" | "semantic";
+
+  /**
+   * Brukt fargenavn — `string`
+   *
+   *
+   */
+  color_name?: string;
+
+  /**
+   * Fargeroller — `array`
+   *
+   *
+   */
+  color_roles?: Array<SanityKeyed<string>>;
+
+  /**
+   * Brukt farge — `string`
+   *
+   *
+   */
+  color_value?: string;
 };
 
 export type CodeSnippet = {
@@ -1498,6 +1566,7 @@ export type Documents =
   | DsNavigation
   | DsPackage
   | DsComponentOverview
+  | DsColorCategories
   | GpArticlePage
   | GpFrontpage
   | GpSituations

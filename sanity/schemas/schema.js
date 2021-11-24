@@ -17,6 +17,9 @@ import designsystem_navigation, {
   ds_header_heading,
 } from "./documents/designsystem/navigation";
 import ds_component_overview from "./documents/designsystem/overview";
+import ds_color_categories, {
+  Color,
+} from "./documents/designsystem/color-categories";
 /*--  God Praksis */
 import god_praksis_article_page from "./documents/god-praksis/gp-article-page";
 import god_praksis_frontpage from "./documents/god-praksis/gp-frontpage";
@@ -55,6 +58,8 @@ export default createSchema({
     designsystem_packages,
     ds_header_heading,
     ds_component_overview,
+    ds_color_categories,
+    Color,
     god_praksis_article_page,
     god_praksis_frontpage,
     gp_situations,
