@@ -10,6 +10,7 @@ export default async function handler(
       try {
         const trelloKey = "c319bd921b9b1a9d8fb2d3c872c0134e";
         const trelloToken = process.env.TRELLO_TOKEN;
+        const labels = "619e2f030ae5bb5e10c9572f";
 
         const data: DsFeddbackMsgT = JSON.parse(req.body);
 
@@ -17,10 +18,11 @@ export default async function handler(
           res.status(500).json({ msg: "Could not find needed tokens in .env" });
           return;
         }
-        const card = `&name=Generell feedback&desc=Bruker: ${
+
+        const card = `&name=${data.message}&desc=**Bruker:**\n ${
           data.user ? data.user : "Ukjent"
-        }\n\n${data.message}`;
-        const url = `https://api.trello.com/1/cards?idList=619cc5721924df5816bcc45f&key=${trelloKey}&token=${trelloToken}${card}`;
+        }`;
+        const url = `https://api.trello.com/1/cards?idList=619cc5721924df5816bcc45f&idLabels=${labels}&key=${trelloKey}&token=${trelloToken}${card}`;
 
         const postRes = await fetch(url, {
           method: "POST",
