@@ -41,7 +41,6 @@ import uu_interactions, { keyboardTable } from "./objects/uu-interaction";
 import picture from "./objects/image";
 import picture_text from "./objects/image-with-text";
 import alert from "./objects/alert";
-import figma_embed from "./objects/figma-embed";
 import link_panel from "./objects/link-panel";
 import icon_search from "./objects/uniques/ikonsok";
 import component_overview from "./objects/overview-ref";
@@ -82,7 +81,6 @@ export default createSchema({
     picture,
     picture_text,
     alert,
-    figma_embed,
     link_panel,
     navigation,
     link,
