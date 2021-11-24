@@ -1,7 +1,8 @@
 /* https://github.com/sanity-io/dashboard-widget-document-list/blob/master/src/DocumentList.js */
 
 import client from "@sanity/client";
-import { Button, Spinner } from "@sanity/ui";
+import { Button, Flex } from "@sanity/ui";
+import { DashboardWidget } from "@sanity/dashboard";
 
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import config from "../../config";
@@ -78,54 +79,55 @@ const OutDatedComponents = ({ type }) => {
     load();
   };
 
-  return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <h2 className={styles.title}>
-          {type === "error" ? "Utdaterte sider" : "Stagnerte sider"}
-        </h2>
-      </header>
-      <div className={styles.content}>
-        {loading ? (
-          <Spinner center message="Loading..." />
-        ) : (
-          <List>
-            {docs &&
-              docs.map((doc) => {
-                const lastUpdate = moment(doc.metadata.last_update);
-                const daysSince = moment().diff(lastUpdate, "days");
-
-                return (
-                  <Item key={doc._id}>
-                    <IntentLink
-                      intent="edit"
-                      params={{
-                        type: doc._type,
-                        id: getPublishedId(doc._id),
-                      }}
-                      className={styles.link}
-                    >
-                      <span className={styles.spacing}>
-                        <Tag size="small" variant={type}>
-                          {daysSince}d
-                        </Tag>
-                        {doc?.heading}
-                      </span>
-                    </IntentLink>
-                  </Item>
-                );
-              })}
-          </List>
-        )}
-      </div>
+  const footer = (
+    <Flex direction="column" align="stretch">
       <Button
         fontSize={[2]}
         tone="primary"
-        padding={[2, 3, 2]}
+        paddingX={2}
+        paddingY={4}
         text={`Updated ${fromTime}`}
         onClick={() => refresh()}
+        mode="bleed"
+        loading={loading}
+        disabled={loading}
       />
-    </div>
+    </Flex>
+  );
+
+  return (
+    <DashboardWidget
+      header={type === "error" ? "Utdaterte sider" : "Stagnerte sider"}
+      footer={footer}
+    >
+      <List>
+        {docs &&
+          docs.map((doc) => {
+            const lastUpdate = moment(doc.metadata.last_update);
+            const daysSince = moment().diff(lastUpdate, "days");
+
+            return (
+              <Item key={doc._id}>
+                <IntentLink
+                  intent="edit"
+                  params={{
+                    type: doc._type,
+                    id: getPublishedId(doc._id),
+                  }}
+                  className={styles.link}
+                >
+                  <span className={styles.spacing}>
+                    <Tag size="small" variant={type}>
+                      {daysSince}d
+                    </Tag>
+                    {doc?.heading}
+                  </span>
+                </IntentLink>
+              </Item>
+            );
+          })}
+      </List>
+    </DashboardWidget>
   );
 };
 
