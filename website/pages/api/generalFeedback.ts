@@ -8,7 +8,7 @@ export default async function handler(
   switch (req.method) {
     case "POST":
       try {
-        const trelloKey = process.env.TRELLO_AUTH;
+        const trelloKey = "c319bd921b9b1a9d8fb2d3c872c0134e";
         const trelloToken = process.env.TRELLO_TOKEN;
 
         const data: DsFeddbackMsgT = JSON.parse(req.body);
