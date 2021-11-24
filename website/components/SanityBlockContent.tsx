@@ -7,7 +7,6 @@ import {
   Alert,
   CodeExample,
   DoDont,
-  Figma,
   IconSearch,
   Image,
   ImageWithText,
@@ -15,7 +14,6 @@ import {
   LinkPanel,
   PropTable,
   Snippet,
-  UuInteraction,
   Spacing,
 } from ".";
 import ComponentOverview from "./component-overview";
@@ -50,10 +48,8 @@ const serializers = {
     code_example_ref: ({ node }) => <CodeExample node={node.ref} />,
     prop_table: ({ node }) => <PropTable node={node} />,
     do_dont: ({ node }) => <DoDont node={node} />,
-    uu_interaction: ({ node }) => <UuInteraction node={node} />,
     picture: ({ node }) => <Image node={node} />,
     picture_text: ({ node }) => <ImageWithText node={node} />,
-    figma_embed: ({ node }) => <Figma node={node} />,
     alert: ({ node }) => <Alert node={node} />,
     link_panel: ({ node }) => <LinkPanel node={node} />,
     spacing: ({ node }) => <Spacing node={node} />,
