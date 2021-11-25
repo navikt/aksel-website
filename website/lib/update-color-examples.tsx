@@ -21,8 +21,8 @@ type GlobalColorEntry = {
 };
 
 function declarationToColor(declaration, declarationList): [string, string] {
-  var value: string;
-  var name: string;
+  let value: string;
+  let name: string;
   if (declaration.value.startsWith("var(")) {
     const target = declaration.value.slice(4, -1);
     const resolved = declarationList.find((d) => d.property == target);
@@ -45,7 +45,7 @@ function parseDeclaration(
   const value = declaration.value;
   const ignoredTags = ["navds"];
   const globalAndSemanticTags = ["semantic", "global"];
-  const specialCases = ["text", "divider", "focus", "border"];
+  const specialCases = ["text", "divider", "focus", "border", "link"];
   const propOrMainCategory = (prev: string, cur: string) =>
     globalAndSemanticTags.includes(prev) ? `${prev}-${cur}` : cur;
 
@@ -124,13 +124,13 @@ const colors = root.declarations
   .filter((d) => d.property.includes(global) || d.property.includes(semantic))
   .map((d) => parseDeclaration(d, root.declarations));
 
-var colorMap = new Map();
+const colorMap = new Map();
 
 // for simplicity's sake later on, we'll shape our list into a map
 colors.forEach((color) => {
   const colors =
     colorMap.get(color.subcategory) === undefined
-      ? new Array()
+      ? []
       : colorMap.get(color.subcategory);
   const key = `${color.title.replace("-", "_")}_autogen_color`;
   if (color.category === global) {
@@ -178,7 +178,7 @@ const updateColors = async () => {
     // but we'll reuse the description from remote if it exists!
     const description = remoteColor?.description;
 
-    var colorList = localColor.map((c) => {
+    const colorList = localColor.map((c) => {
       const remoteRoles = remoteColor?.colors.find(
         (f) => c._id == f._id
       ).color_roles;
