@@ -120,12 +120,20 @@ export const Tabs = ({
         </S.Ul>
       </S.Nav>
       {overflowLeft && (
-        <S.ScrollLeftButton onClick={() => scrollLeft()}>
+        <S.ScrollLeftButton
+          aria-hidden="true"
+          tabIndex={-1}
+          onClick={() => scrollLeft()}
+        >
           <Back aria-label="scroll meny til venstre" />
         </S.ScrollLeftButton>
       )}
       {overflowRight && (
-        <S.ScrollRightButton onClick={() => scrollRight()}>
+        <S.ScrollRightButton
+          aria-hidden="true"
+          tabIndex={-1}
+          onClick={() => scrollRight()}
+        >
           <Next aria-label="scroll meny til høyre" />
         </S.ScrollRightButton>
       )}

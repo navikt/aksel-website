@@ -17,6 +17,9 @@ import designsystem_navigation, {
   ds_header_heading,
 } from "./documents/designsystem/navigation";
 import ds_component_overview from "./documents/designsystem/overview";
+import ds_color_categories, {
+  Color,
+} from "./documents/designsystem/color-categories";
 /*--  God Praksis */
 import god_praksis_article_page from "./documents/god-praksis/gp-article-page";
 import god_praksis_frontpage from "./documents/god-praksis/gp-frontpage";
@@ -38,7 +41,6 @@ import uu_interactions, { keyboardTable } from "./objects/uu-interaction";
 import picture from "./objects/image";
 import picture_text from "./objects/image-with-text";
 import alert from "./objects/alert";
-import figma_embed from "./objects/figma-embed";
 import link_panel from "./objects/link-panel";
 import icon_search from "./objects/uniques/ikonsok";
 import component_overview from "./objects/overview-ref";
@@ -55,6 +57,8 @@ export default createSchema({
     designsystem_packages,
     ds_header_heading,
     ds_component_overview,
+    ds_color_categories,
+    Color,
     god_praksis_article_page,
     god_praksis_frontpage,
     gp_situations,
@@ -77,7 +81,6 @@ export default createSchema({
     picture,
     picture_text,
     alert,
-    figma_embed,
     link_panel,
     navigation,
     link,

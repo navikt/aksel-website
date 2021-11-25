@@ -12,9 +12,9 @@ import {
   Search,
   Picture,
   Ruler,
-  Email,
   Edit,
   Findout,
+  Folder,
 } from "@navikt/ds-icons";
 
 export default () =>
@@ -113,6 +113,10 @@ export default () =>
                 .title("Kode eksempler")
                 .icon(() => <span>{`< />`}</span>)
                 .child(S.documentTypeList("ds_code_example")),
+              S.listItem()
+                .title("Fargekategorier")
+                .icon(() => <Folder />)
+                .child(S.documentTypeList("ds_color_categories")),
             ])
         ),
       S.listItem()
@@ -179,6 +183,7 @@ export default () =>
             "ds_code_example",
             "ds_navigation",
             "ds_package",
+            "ds_color_categories",
             "ds_component_overview",
             "gp_article_page",
             "gp_frontpage",

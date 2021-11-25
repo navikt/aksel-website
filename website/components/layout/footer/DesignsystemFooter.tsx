@@ -189,7 +189,7 @@ const DesignsystemFooter = () => {
     if (fail) return;
     setContentError({ content: "", mail: "" });
 
-    fetch("/api/dsMessage", {
+    fetch("/api/generalFeedback", {
       method: "POST",
       body: JSON.stringify({
         message: contactForm.content,
