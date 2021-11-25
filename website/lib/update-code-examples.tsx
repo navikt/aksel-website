@@ -1,4 +1,4 @@
-import { codeExamplesClient } from ".";
+import { noCdnClient } from ".";
 import { ExampleKeys } from "../examples";
 import lowerCase from "lodash.lowercase";
 
@@ -10,7 +10,7 @@ const updateExamples = async () => {
   const token = process.env.SANITY_WRITE_KEY;
 
   for (const key of ExampleKeys) {
-    await codeExamplesClient(token)
+    await noCdnClient(token)
       .createIfNotExists({
         _id: `${key}_autogen_example`,
         _type: "ds_code_example",
@@ -27,11 +27,11 @@ const updateExamples = async () => {
 const deleteRemovedExamples = async () => {
   const token = process.env.SANITY_WRITE_KEY;
   const query = `*[_type == "ds_code_example"]`;
-  const docs = await codeExamplesClient(token).fetch(query);
+  const docs = await noCdnClient(token).fetch(query);
 
   for (const doc of docs) {
     if (!ExampleKeys.includes(doc._id.replace("_autogen_example", ""))) {
-      await codeExamplesClient(token)
+      await noCdnClient(token)
         .delete(doc._id)
         .then(() => console.log(`Deleted ${doc._id}`))
         .catch((e) => {
