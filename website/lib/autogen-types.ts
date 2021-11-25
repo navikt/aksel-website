@@ -1132,12 +1132,11 @@ export type BlockContent = Array<
   | SanityKeyed<Picture>
   | SanityKeyed<PictureText>
   | SanityKeyed<Alert>
+  | SanityKeyed<RelatedPages>
   | SanityKeyed<LinkPanel>
   | SanityKeyed<CodeSnippet>
   | SanityKeyed<DoDont>
-  | SanityKeyed<FigmaEmbed>
   | SanityKeyed<CodeExampleRef>
-  | SanityKeyed<UuInteraction>
   | SanityKeyed<PropTable>
   | SanityKeyed<IconSearch>
   | SanityKeyed<ComponentOverview>
@@ -1433,16 +1432,6 @@ export type Alert = {
   body?: BlockContentSimple;
 };
 
-export type FigmaEmbed = {
-  _type: "figma_embed";
-  /**
-   * Embed lenke — `string`
-   *
-   *
-   */
-  embed?: string;
-};
-
 export type LinkPanel = {
   _type: "link_panel";
   /**
@@ -1556,6 +1545,56 @@ export type Spacing = {
    *
    */
   space?: "s-4" | "s-8" | "s-12" | "s-16";
+};
+
+export type RelatedPages = {
+  _type: "related_pages";
+  /**
+   * Sider — `array`
+   *
+   *
+   */
+  links?: Array<
+    SanityKeyed<{
+      _type: "link";
+      /**
+       * Tittel — `string`
+       *
+       *
+       */
+      title?: string;
+
+      /**
+       * Beskrivelse — `string`
+       *
+       *
+       */
+      description?: string;
+
+      /**
+       * Intern side i Sanity — `boolean`
+       *
+       *
+       */
+      internal?: boolean;
+
+      /**
+       * Lenke til Intern sanity-side — `reference`
+       *
+       *
+       */
+      internal_link?: SanityReference<
+        DsComponentPage | DsArticlePage | DsTabbedArticlePage | GpArticlePage
+      >;
+
+      /**
+       * Lenke til ekstern side — `url`
+       *
+       *
+       */
+      external_link?: string;
+    }>
+  >;
 };
 
 export type Documents =
