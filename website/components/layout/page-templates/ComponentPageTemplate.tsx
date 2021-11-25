@@ -3,7 +3,6 @@ import { BodyShort, Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
-import { useMedia } from "react-use";
 import styled from "styled-components";
 import {
   Changelog,
@@ -81,7 +80,6 @@ const ComponentPageTemplate = ({
   title: string;
 }): JSX.Element => {
   const { query, asPath } = useRouter();
-  const changeTab = useMedia("(max-width: 564px)");
   const { pageProps } = useContext(PagePropsContext);
   const layout = useContext(LayoutContext);
   const [activeTab, setActiveTab] = useState(0);
@@ -212,11 +210,7 @@ const ComponentPageTemplate = ({
             .map(([key, value], i) =>
               data[value]
                 ? {
-                    name: changeTab
-                      ? key === "tilgjengelighet"
-                        ? "UU"
-                        : key
-                      : key,
+                    name: key,
                     path: `${basePath}${key === "bruk" ? "" : "/" + key}`,
                     active:
                       activeTab === i
