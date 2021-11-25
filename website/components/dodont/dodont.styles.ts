@@ -57,7 +57,7 @@ export const FigureBorder = styled.button`
   border: 1px solid var(--navds-semantic-color-divider);
   border-bottom: none;
   border-radius: 4px 4px 0 0;
-  background: none;
+  background: var(--navds-global-color-gray-50);
   padding: 0;
 
   :focus {
