@@ -1,4 +1,4 @@
-import { feedbackClient } from "..";
+import { noCdnClient } from "..";
 import {
   DsArticlePage,
   DsComponentPage,
@@ -21,7 +21,7 @@ const dsIndexingQuery = `*[_type == 'ds_navigation'][0] {
 const token = process.env.SANITY_WRITE_KEY;
 
 const getDesignsystemRecords = async () => {
-  const sanity = feedbackClient(token);
+  const sanity = noCdnClient(token);
   const nav = await sanity.fetch(dsIndexingQuery);
 
   const records: Record<string, any>[] = [];
