@@ -11,6 +11,18 @@ export const Nav = styled.nav<{ isTablet: boolean }>`
   overflow-x: auto;
   background-color: var(--navds-semantic-color-canvas-background-light);
 
+  /* Firefox */
+  scrollbar-width: none;
+
+  /* Internet Explorer 10+ */
+  -ms-overflow-style: none;
+
+  ::-webkit-scrollbar {
+    /* WebKit */
+    width: 0;
+    height: 0;
+  }
+
   ${(props) => {
     return !props.isTablet
       ? `margin-left: 0;
@@ -21,19 +33,16 @@ export const Nav = styled.nav<{ isTablet: boolean }>`
          padding-left: 0.5rem;`;
   }};
 
-  ${(props) =>
-    !props.isTablet &&
-    `::after {
-        content: "";
-        background-color: var(--navds-semantic-color-canvas-background-default);
-        height: 1px;
-        width: 100%;
-        bottom: 0px;
-        left: 0;
-        z-index: -1;
+  ::after {
+    content: "";
+    background-color: var(--navds-semantic-color-divider);
+    height: 1px;
+    width: 100%;
+    bottom: 0px;
+    left: 0;
 
-        position: absolute;
-      }`}
+    position: absolute;
+  }
 `;
 
 export const Ul = styled.ul<{ isTablet: boolean }>`
@@ -54,19 +63,6 @@ export const Ul = styled.ul<{ isTablet: boolean }>`
     justify-content: center;
     align-items: center;
     position: relative;
-
-    ${(props) =>
-      props.isTablet &&
-      `::after {
-      content: "";
-      background-color: var(--navds-semantic-color-canvas-background-default);
-      height: 1px;
-      width: fit-content;
-      bottom: 0px;
-      z-index: -1;
-      width: 100%;
-      position: absolute;
-    }`}
   }
 `;
 
