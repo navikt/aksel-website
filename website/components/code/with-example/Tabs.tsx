@@ -57,6 +57,9 @@ export const ScButton = styled.button`
 const CodeTabs = (): JSX.Element => {
   const { node, tabs, showPreview, activeTab, setActiveTab, fullscreenLink } =
     useContext(CodeContext);
+  console.log(fullscreenLink);
+
+  const exampleName = fullscreenLink.split("/")?.[2].split("-").join(" ");
 
   return (
     <>
@@ -98,7 +101,9 @@ const CodeTabs = (): JSX.Element => {
           )}
           {showPreview && fullscreenLink && activeTab === -1 && (
             <ScLinkButton target="_blank" href={fullscreenLink}>
-              <span className="sr-only">Åpne eksempel i ny tab</span>
+              <span className="sr-only">{`Åpne ${
+                exampleName ?? " "
+              } eksempel i ny tab`}</span>
               <NewTab focusable="false" role="presentation" />
             </ScLinkButton>
           )}
