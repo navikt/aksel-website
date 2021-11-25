@@ -142,6 +142,7 @@ const ComponentPageTemplate = ({
     .join("/")}`;
 
   const value = Object.values(tabs)?.[activeTab];
+  const tabKey = Object.keys(tabs)?.[activeTab];
 
   return (
     <>
@@ -149,7 +150,7 @@ const ComponentPageTemplate = ({
         <>
           <title>
             {pageProps?.page?.heading
-              ? `${pageProps?.page?.heading} - ${title}`
+              ? `${pageProps?.page?.heading} ${tabKey} - ${title}`
               : title}
           </title>
           <meta

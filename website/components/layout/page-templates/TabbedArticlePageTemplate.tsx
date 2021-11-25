@@ -41,13 +41,14 @@ const TabbedActiclePageTemplate = ({
     (tab) => tab.title?.toLowerCase().replace(/\s+/g, "-") || "undefined"
   );
   const activeTab = query.slug[2] ? tabs.indexOf(query.slug[2]) : 0;
+  const tabTitle = data?.tabs?.[activeTab]?.title;
 
   return (
     <>
       <Head>
         {data.heading && (
           <>
-            <title>{`${data.heading} - ${title}`}</title>
+            <title>{`${data.heading} ${tabTitle ?? ""} - ${title}`}</title>
             <meta property="og:title" content={`${data.heading} - ${title}`} />
           </>
         )}
