@@ -3,6 +3,7 @@ import React from "react";
 import { useSanityImage } from "../../lib";
 import { PictureText as PictureTextT } from "../../lib/autogen-types";
 import { SanityBlockContent } from "../SanityBlockContent";
+import { withErrorBoundary } from "../error-boundary";
 import * as S from "./image.styles";
 
 const Image = ({ node }: { node: PictureTextT }): JSX.Element => {
@@ -29,4 +30,4 @@ const Image = ({ node }: { node: PictureTextT }): JSX.Element => {
   );
 };
 
-export default Image;
+export default withErrorBoundary(Image, "ImageWithText");

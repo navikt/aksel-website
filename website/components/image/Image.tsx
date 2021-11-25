@@ -4,6 +4,7 @@ import { useMeasure } from "react-use";
 import { Lightbox } from "..";
 import { useSanityImage } from "../../lib";
 import { Picture as PictureT } from "../../lib/autogen-types";
+import { withErrorBoundary } from "../error-boundary";
 import * as S from "./image.styles";
 
 const Image = ({ node }: { node: PictureT }): JSX.Element => {
@@ -51,4 +52,4 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
   );
 };
 
-export default Image;
+export default withErrorBoundary(Image, "Image");

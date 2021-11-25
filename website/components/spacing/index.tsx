@@ -7,7 +7,6 @@ const ScSpacing = styled.div<{ $space: string }>`
 `;
 
 const Spacing = ({ node }: { node: SpacingT }): JSX.Element => {
-  console.log(node.space);
   if (!node.space) {
     return null;
   }

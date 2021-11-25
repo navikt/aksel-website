@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { LinkPanel as LinkPanelT } from "../../lib/autogen-types";
 import { slugger } from "..";
+import { withErrorBoundary } from "../error-boundary";
 import styled from "styled-components";
 
 const ScPanel = styled(DsLinkPanel)`
@@ -29,6 +30,7 @@ const LinkPanel = ({ node }: { node: LinkPanelT }): JSX.Element => {
     node.heading_level === "h2" &&
     slugger.slug(node.heading.toString());
 
+  console.log(slug);
   return (
     <Link href={link} passHref>
       <ScPanel>
@@ -43,4 +45,4 @@ const LinkPanel = ({ node }: { node: LinkPanelT }): JSX.Element => {
   );
 };
 
-export default LinkPanel;
+export default withErrorBoundary(LinkPanel, "LinkPanel");

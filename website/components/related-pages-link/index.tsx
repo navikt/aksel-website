@@ -5,6 +5,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { LayoutContext } from "..";
 import { DsNavigationHeadingMenuT } from "../../lib";
 import { PagePropsContext } from "../../pages/_app";
+import { withErrorBoundary } from "../error-boundary";
 
 const ScWrapper = styled.div<{ $isTablet: boolean }>`
   width: 100%;
@@ -112,4 +113,5 @@ const RelatedPagesLink = () => {
     </ScWrapper>
   );
 };
-export default RelatedPagesLink;
+
+export default withErrorBoundary(RelatedPagesLink, "RelatedPagesLinks");

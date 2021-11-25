@@ -9,6 +9,7 @@ import {
   DoDontBlock as DoDontBlockT,
 } from "../../lib/autogen-types";
 import { Lightbox } from "..";
+import { withErrorBoundary } from "../error-boundary";
 
 const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
   const imageProps = useSanityImage(block.picture);
@@ -74,4 +75,4 @@ const DoDont = ({ node: { blocks } }: { node: DoDontT }): JSX.Element => {
   );
 };
 
-export default DoDont;
+export default withErrorBoundary(DoDont, "DoDont");
