@@ -45,6 +45,7 @@ import link_panel from "./objects/link-panel";
 import icon_search from "./objects/uniques/ikonsok";
 import component_overview from "./objects/overview-ref";
 import spacing from "./objects/spacing";
+import relatedPages from "./objects/related-pages";
 
 export default createSchema({
   name: "default",
@@ -89,5 +90,6 @@ export default createSchema({
     icon_search,
     component_overview,
     spacing,
+    relatedPages,
   ]),
 });

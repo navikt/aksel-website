@@ -176,6 +176,10 @@ export default {
       icon: () => <Warning />,
     },
     {
+      type: "related_pages",
+      icon: () => <ExternalLink />,
+    },
+    {
       type: "link_panel",
       icon: () => <ExternalLink />,
     },
