@@ -86,13 +86,13 @@ const ScTableOverflow = styled.div`
 
 const SuccessIcon = () => (
   <ScSuccess>
-    <Success />
+    <Success aria-label="lansert" />
   </ScSuccess>
 );
 
 const ErrorIcon = () => (
   <ScError>
-    <Error />
+    <Error aria-label="ikke laget enda" />
   </ScError>
 );
 
