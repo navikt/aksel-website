@@ -20,13 +20,13 @@ export default {
               title: "Tittel",
               name: "title",
               type: "string",
-              validation: (Rule) => Rule.required().max(30),
+              validation: (Rule) => Rule.required().max(35),
             },
             {
               title: "Beskrivelse",
               name: "description",
               type: "string",
-              validation: (Rule) => Rule.required().max(100),
+              validation: (Rule) => Rule.required().max(60),
             },
             {
               title: "Intern side i Sanity",

@@ -6,9 +6,63 @@ import NextLink from "next/link";
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import { ExternalLink } from "@navikt/ds-icons";
 
-const ScRelatedPagesCard = styled.div``;
-const ScCard = styled.a``;
-const ScDetail = styled(Detail)``;
+const ScRelatedPagesCard = styled.div`
+  grid-template-columns: repeat(auto-fit, 15rem);
+  align-content: start;
+  display: grid;
+  gap: var(--navds-spacing-6);
+  justify-content: flex-start;
+  margin-bottom: var(--navds-spacing-7);
+`;
+
+const ScCard = styled.a`
+  position: relative;
+  height: 100%;
+  min-height: 10rem;
+  width: 100%;
+  background-color: var(--navds-semantic-color-component-light);
+  padding: var(--navds-spacing-6);
+  box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
+    0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
+  color: var(--navds-semantic-color-text-default);
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: 4px;
+
+  :hover > :first-child,
+  :focus > :first-child {
+    color: var(--navds-semantic-color-text-link);
+  }
+
+  :hover,
+  :focus {
+    border-color: var(--navds-semantic-color-text-link);
+  }
+
+  :active {
+    color: var(--navds-semantic-color-text-inverted);
+    border-color: transparent;
+    background-color: var(--navds-global-color-blue-700);
+  }
+  :active > *,
+  :active > :first-child {
+    color: var(--navds-semantic-color-text-inverted);
+  }
+`;
+
+const ScBodyShort = styled(BodyShort)`
+  margin-bottom: var(--navds-spacing-6);
+`;
+
+const ScDetail = styled(Detail)`
+  color: var(--navds-semantic-color-text-muted);
+  position: absolute;
+  bottom: var(--navds-spacing-6);
+
+  > svg {
+    margin-left: var(--navds-spacing-2);
+  }
+`;
 
 /* Query changes internal_link type  */
 interface LinkT {
@@ -25,14 +79,18 @@ const Card = ({ link }: { link: LinkT }) => {
   return (
     <NextLink href={href} passHref>
       <ScCard>
-        <Heading size="xsmall" as="span">
+        <Heading spacing size="xsmall" as="span">
           {link.title}
         </Heading>
-        <BodyShort size="small">{link.description}</BodyShort>
+        <ScBodyShort size="small">{link.description}</ScBodyShort>
         <ScDetail>
-          {link.internal
-            ? "RELATERT INNHOLD"
-            : `EKSTERN LINK ${(<ExternalLink aria-label="Ekstern side" />)}`}
+          {link.internal ? (
+            "RELATERT INNHOLD"
+          ) : (
+            <>
+              EKSTERN LINK <ExternalLink aria-label="Ekstern side" />
+            </>
+          )}
         </ScDetail>
       </ScCard>
     </NextLink>
