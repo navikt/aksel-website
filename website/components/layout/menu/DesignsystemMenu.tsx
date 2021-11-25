@@ -15,6 +15,13 @@ const ScNav = styled.nav`
     margin: 0;
     padding: 0;
   }
+
+  &[data-incategory="true"] {
+    li:first-child > a {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
 `;
 
 const ScLink = styled.a<{ active?: boolean }>`
@@ -26,8 +33,9 @@ const ScLink = styled.a<{ active?: boolean }>`
   ${(props) =>
     props.active &&
     `
-    box-shadow: inset 6px 0 0 0 var(--navds-semantic-color-canvas-background-inverted);
-    background-color: var(--navds-global-color-gray-50);;
+    border-left: 6px solid var(--navds-semantic-color-canvas-background-inverted);
+    padding-left: calc(2rem - 6px);
+    background-color: var(--navds-global-color-gray-50);
     color: var(--navds-semantic-color-text-default);
     font-weight: 600;
   `}
@@ -48,9 +56,11 @@ export const MenuContext = createContext(null);
 const Menu = ({
   heading,
   onClick,
+  inCategory,
 }: {
   heading?: DsNavigationHeadingT;
   onClick?: () => void;
+  inCategory?: boolean;
 }): JSX.Element => {
   const { pageProps } = useContext<any>(PagePropsContext);
 
@@ -66,7 +76,7 @@ const Menu = ({
   }, [heading]);
 
   return (
-    <ScNav aria-label={heading.title}>
+    <ScNav aria-label={heading.title} data-incategory={inCategory}>
       <BodyShort as="ul">
         {sidebarMenu.map((item) => (
           <li key={item.title}>

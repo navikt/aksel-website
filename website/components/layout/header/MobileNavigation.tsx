@@ -40,6 +40,13 @@ const ScPopover = styled(Popover)`
     margin: 0;
     padding: 0;
   }
+
+  li:first-child > a {
+    border-radius: 4px 4px 0 0;
+  }
+  li:last-child > a {
+    border-radius: 0 0 4px 4px;
+  }
 `;
 
 const ScOverlay = styled.div`
@@ -71,11 +78,20 @@ const ScListItem = styled.button<{ $active?: boolean }>`
   color: var(--navds-semantic-color-text-default);
   text-decoration: none;
 
+  :first-child {
+    border-radius: 4px 4px 0 0;
+  }
+
+  :last-child {
+    border-radius: 0 0 4px 4px;
+  }
+
   ${(props) =>
     props.$active &&
     `
-    box-shadow: inset 6px 0 0 0 var(--navds-semantic-color-canvas-background-inverted);
-    background-color: var(--navds-global-color-gray-50);;
+    border-left: 6px solid var(--navds-semantic-color-canvas-background-inverted);
+    padding-left: calc(2rem - 6px);
+    background-color: var(--navds-global-color-gray-50);
     color: var(--navds-semantic-color-text-default);
     font-weight: 600;
   `}
@@ -103,6 +119,7 @@ const ScTopButton = styled(Heading)`
   width: 100%;
   border: none;
   background: none;
+  border-radius: 4px 4px 0 0;
 
   svg {
     font-size: 1rem;
@@ -197,7 +214,6 @@ const MobileNavigation = () => {
       >
         <ScFadeIn
           style={{
-            padding: "0.5rem 0",
             margin: 0,
             backgroundColor:
               "var(--navds-semantic-color-canvas-background-light)",
@@ -272,6 +288,7 @@ const MobileNavigation = () => {
                   <ScMenuScroll>
                     <ScFadeIn>
                       <Menu
+                        inCategory={!isHeadingMenu}
                         heading={heading}
                         onClick={() => setOpenHamb(false)}
                       />
