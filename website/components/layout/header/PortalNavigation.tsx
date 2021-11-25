@@ -21,7 +21,7 @@ export const ScWrapper = styled.div`
 
 const ScPopover = styled(Popover)`
   ${fadeInCss}
-  padding: 0.5rem 0;
+  border-radius: 4px;
   border: none;
   width: 300px;
   max-width: 100%;
@@ -35,6 +35,7 @@ const ScPopover = styled(Popover)`
   }
 
   > * {
+    border-radius: 4px;
     background-color: var(--navds-semantic-color-canvas-background-light);
   }
 
@@ -47,6 +48,14 @@ const ScPopover = styled(Popover)`
     margin: 0;
     padding: 0;
     list-style: none;
+  }
+
+  li:first-child > a {
+    border-radius: 4px 4px 0 0;
+  }
+
+  li:last-child > a {
+    border-radius: 0 0 4px 4px;
   }
 `;
 
@@ -76,14 +85,16 @@ export const ScLink = styled.a`
   align-items: flex-start;
 
   &[data-active="true"] {
-    box-shadow: inset 6px 0 0 0
+    border-left: 6px solid
       var(--navds-semantic-color-canvas-background-inverted);
+    padding-left: calc(2rem - 6px);
     background-color: var(--navds-semantic-color-canvas-background-default);
 
     > :first-child {
       font-weight: 600;
     }
   }
+
   :focus {
     box-shadow: inset 0 0 0 3px var(--navds-semantic-color-focus);
     z-index: 2;
@@ -98,7 +109,6 @@ export const ScIconLink = styled.a`
   min-height: 3.25rem;
   gap: 0.5rem;
   padding: 0.5rem;
-  margin-bottom: 0.5rem;
 
   svg {
     font-size: 1rem;
