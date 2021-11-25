@@ -15,6 +15,7 @@ import {
   PropTable,
   Snippet,
   Spacing,
+  RelatedPagesCards,
 } from ".";
 import ComponentOverview from "./component-overview";
 
@@ -44,6 +45,7 @@ const serializers = {
     icon_search: () => <IconSearch />,
 
     /* General page modules */
+    related_pages: ({ node }) => <RelatedPagesCards node={node} />,
     code_snippet: ({ node }) => <Snippet node={node} />,
     code_example_ref: ({ node }) => <CodeExample node={node.ref} />,
     prop_table: ({ node }) => <PropTable node={node} />,

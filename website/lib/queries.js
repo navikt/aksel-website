@@ -7,6 +7,12 @@ markDefs[]{
 },`;
 
 const deRefs = `
+_type == "related_pages" =>{
+  links[]{
+    ...,
+    "internal_link": internal_link->slug.current
+  }
+},
 _type == "component_overview" =>{
   ...@.ref->{
     ...,

@@ -23,3 +23,4 @@ export { LayoutContext } from "./layout/LayoutProvider";
 export * from "./layout/layout.styles";
 export { default as LayoutPicker } from "./layout/TemplatePicker";
 export { default as PreviewBanner } from "./PreviewBanner";
+export { default as RelatedPagesCards } from "./related-pages-cards";
