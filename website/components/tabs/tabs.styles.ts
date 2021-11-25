@@ -1,10 +1,14 @@
 import styled, { css } from "styled-components";
 
-export const Nav = styled.nav<{ isTablet: boolean }>`
-  overflow-x: auto;
+export const Wrapper = styled.div`
+  position: relative;
   position: sticky;
   top: 0;
   z-index: 1001;
+`;
+
+export const Nav = styled.nav<{ isTablet: boolean }>`
+  overflow-x: auto;
   background-color: var(--navds-semantic-color-canvas-background-light);
 
   ${(props) => {
@@ -115,10 +119,6 @@ const ScButtonCss = css`
   :focus {
     box-shadow: 0 0 0 2px var(--navds-global-color-focus);
   }
-`;
-
-export const Wrapper = styled.div`
-  position: relative;
 `;
 
 export const ScrollLeftButton = styled.button`
