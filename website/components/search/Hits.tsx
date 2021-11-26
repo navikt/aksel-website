@@ -53,12 +53,12 @@ const Hits = React.forwardRef<HTMLInputElement, HitsProps>(
 
     const handleUp = (e) => {
       e.preventDefault();
-      setActiveN((n) => (n - 1 < 0 ? counterList.length : n - 1));
+      setActiveN(() => (activeN - 1 < 0 ? counterList.length : activeN - 1));
     };
 
     const handleDown = (e) => {
       e.preventDefault();
-      setActiveN((n) => (n === counterList.length ? 0 : n + 1));
+      setActiveN(() => (activeN === counterList.length ? 0 : activeN + 1));
     };
 
     const handleTab = (e) => {
@@ -68,15 +68,15 @@ const Hits = React.forwardRef<HTMLInputElement, HitsProps>(
         itemsRef.current[0]?.current?.focus();
     };
 
-    useKey("ArrowUp", (e) => handleUp(e), {}, [counterList]);
-    useKey("ArrowDown", (e) => handleDown(e), {}, [counterList]);
+    useKey("ArrowUp", (e) => handleUp(e), {}, [counterList, activeN]);
+    useKey("ArrowDown", (e) => handleDown(e), {}, [counterList, activeN]);
     useKey("Tab", (e) => handleTab(e), {}, [counterList]);
 
     /* Reset */
     useEffect(() => {
       setActiveN(0);
       itemsRef.current = [ref];
-    }, [value]);
+    }, [hits]);
 
     /* Only runs when updated, not on mount */
     useUpdateEffect(() => {
@@ -100,11 +100,16 @@ const Hits = React.forwardRef<HTMLInputElement, HitsProps>(
 
                 {hits[category].map((hit) => (
                   <Hit
-                    ref={(el) =>
-                      (itemsRef.current[
+                    ref={(el) => {
+                      if (
+                        counterList.findIndex((x) => hit.path === x.path) === -1
+                      ) {
+                        return;
+                      }
+                      return (itemsRef.current[
                         counterList.findIndex((x) => hit.path === x.path) + 1
-                      ] = { current: el })
-                    }
+                      ] = { current: el });
+                    }}
                     key={hit.objectID}
                     hit={hit}
                     onFocus={() =>

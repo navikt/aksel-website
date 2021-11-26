@@ -226,11 +226,10 @@ const MobileNavigation = () => {
                   {pageProps?.navigation.headings.map(
                     (heading: DsNavigationHeadingT) =>
                       useMobileHeader && !context.isTablet ? (
-                        <li>
+                        <li key={heading._key}>
                           <NextLink
                             href={`/${heading.link_ref.slug.current}`}
                             passHref
-                            key={heading._key}
                           >
                             <ScListItem
                               as="a"
