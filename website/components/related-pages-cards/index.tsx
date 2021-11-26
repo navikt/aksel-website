@@ -51,7 +51,7 @@ const ScCard = styled.a`
 `;
 
 const ScBodyShort = styled(BodyShort)`
-  margin-bottom: var(--navds-spacing-6);
+  margin-bottom: var(--navds-spacing-8);
 `;
 
 const ScDetail = styled(Detail)`

@@ -9,7 +9,7 @@ export default {
       title: "Sider",
       name: "links",
       type: "array",
-      validation: (Rule) => Rule.required().max(6),
+      validation: (Rule) => Rule.required().max(4),
       of: [
         {
           title: "Lenke",
