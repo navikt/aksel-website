@@ -34,6 +34,7 @@ import block_content_simple from "./block-content-simple";
 import code_example, { example } from "./documents/designsystem/code-example";
 import code_snippet from "./objects/code-snippet";
 import code_example_ref from "./objects/code-example-ref";
+import color_category_ref from "./objects/color-ref";
 
 import prop_table, { prop } from "./objects/proptable";
 import do_dont, { doDont } from "./objects/do-dont";
@@ -67,6 +68,7 @@ export default createSchema({
     code_example,
     code_snippet,
     code_example_ref,
+    color_category_ref,
     example,
     block_content,
     block_content_simple,

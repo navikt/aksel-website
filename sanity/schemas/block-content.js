@@ -9,6 +9,7 @@ import {
   List,
   ExternalLink,
   Link,
+  Folder,
 } from "@navikt/ds-icons";
 import { KBD } from "@sanity/ui";
 import { allDocumentTypes } from "../config";
@@ -189,6 +190,7 @@ export default {
       icon: () => <SuccessStroke />,
     },
     { type: "code_example_ref", icon: () => <Laptop /> },
+    { type: "color_category_ref", icon: () => <Folder /> },
     /* { type: "uu_interaction", icon: () => <Braille /> }, */
     { type: "prop_table", icon: () => <List /> },
     { type: "icon_search" },
