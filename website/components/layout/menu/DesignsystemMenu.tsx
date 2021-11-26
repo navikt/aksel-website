@@ -35,13 +35,13 @@ const ScLink = styled.a<{ active?: boolean }>`
     `
     border-left: 6px solid var(--navds-semantic-color-canvas-background-inverted);
     padding-left: calc(2rem - 6px);
-    background-color: var(--navds-global-color-gray-50);
+    background-color: var(--navds-semantic-color-canvas-background-default);
     color: var(--navds-semantic-color-text-default);
     font-weight: 600;
   `}
 
   :hover {
-    background-color: var(--navds-global-color-gray-50);
+    background-color: var(--navds-semantic-color-canvas-background-default);
     color: var(--navds-semantic-color-text-default);
   }
 
