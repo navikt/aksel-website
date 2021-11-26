@@ -4,13 +4,14 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import throttle from "lodash.throttle";
 import * as S from "./toc.styles";
+import { useIsomorphicLayoutEffect } from "react-use";
 
 function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
   const [toc, setToc] = useState<{ heading: string; id: string }[]>([]);
 
   const [activeId, setActiveId] = useState(null);
 
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const main = document.getElementsByTagName("main")?.[0];
     const tags = main?.getElementsByTagName("h2");
     if (!tags) return;
@@ -22,28 +23,26 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
   }, [changedState]);
 
   useEffect(() => {
-    const inViewPort = (el: HTMLElement) => {
+    const validPick = (el: HTMLElement) => {
       if (!el) return false;
       const rect = el.getBoundingClientRect();
-      const test = document.body.scrollHeight - window.scrollY;
 
-      return (
-        (rect.top > 0 &&
-          rect.bottom <=
-            (window.innerHeight || document.documentElement.clientHeight) /
-              2) ||
-        (rect.top <= window.innerHeight && rect.top <= test)
-      );
+      console.log(JSON.stringify({ top: rect.top }));
+      return rect.top < 120;
     };
 
     const handleScroll = () => {
       let active = null;
       for (const x of toc) {
         const el = document.getElementById(x.id);
-        if (inViewPort(el)) {
+        if (validPick(el)) {
           active = x.id;
         }
       }
+      if (toc && !active) {
+        setActiveId(null);
+      }
+
       active && setActiveId(active);
     };
     const func = throttle(handleScroll, 50);
@@ -55,7 +54,9 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
   }, [toc]);
 
   useEffect(() => {
-    activeId && window.history.replaceState(null, null, `#${activeId}`);
+    activeId
+      ? window.history.replaceState(null, null, `#${activeId}`)
+      : window.history.replaceState(null, null, " ");
   }, [activeId]);
 
   const handleFocus = (id: string) => {
