@@ -3,7 +3,7 @@ import { BodyLong, BodyShort, Label, Link, Table, Tag } from "@navikt/ds-react";
 import React from "react";
 import ReactTooltip from "react-tooltip";
 import styled from "styled-components";
-import { FigmaIcon, FigmaIconNoSync } from "..";
+import { FigmaIcon, FigmaIconNoSync, OverflowDetector } from "..";
 import { DsComponentOverview } from "../../lib/autogen-types";
 import NextLink from "next/link";
 
@@ -78,10 +78,6 @@ const ScUl = styled.ul`
     padding: 0.5rem 0;
     gap: 0.5rem;
   }
-`;
-
-const ScTableOverflow = styled.div`
-  overflow-x: auto;
 `;
 
 const SuccessIcon = () => (
@@ -242,7 +238,7 @@ const ComponentOverview = ({
           <SuccessIcon /> ⏤ Lansert 🎉
         </li>
       </ScUl>
-      <ScTableOverflow>
+      <OverflowDetector>
         <Table>
           <Table.Header>
             <Table.Row>
@@ -268,7 +264,7 @@ const ComponentOverview = ({
               ))}
           </Table.Body>
         </Table>
-      </ScTableOverflow>
+      </OverflowDetector>
     </ScComponentOverview>
   );
 };

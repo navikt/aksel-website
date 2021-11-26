@@ -26,8 +26,6 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
     const validPick = (el: HTMLElement) => {
       if (!el) return false;
       const rect = el.getBoundingClientRect();
-
-      console.log(JSON.stringify({ top: rect.top }));
       return rect.top < 120;
     };
 

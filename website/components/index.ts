@@ -18,6 +18,7 @@ export { default as TableOfContents } from "./table-of-contents";
 export * from "./tabs";
 export * from "./tags";
 export * from "./utils";
+export { default as OverflowDetector } from "./overflow-detector";
 export { default as Lightbox } from "./lightbox";
 export { LayoutContext } from "./layout/LayoutProvider";
 export * from "./layout/layout.styles";

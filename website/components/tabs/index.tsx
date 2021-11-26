@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { createRef, useContext, useState } from "react";
 import { useEvent, useKey } from "react-use";
-import { LayoutContext, useOverflowX } from "..";
+import { LayoutContext, useOverflowTabsX } from "..";
 import * as S from "./tabs.styles";
 
 export const Tabs = ({
@@ -22,7 +22,7 @@ export const Tabs = ({
   const [lastItemRef, setLastItemRef] = useState<HTMLLIElement>(null);
   const [isSticky, setIsSticky] = useState(false);
 
-  const [overflowLeft, overflowRight] = useOverflowX(
+  const [overflowLeft, overflowRight] = useOverflowTabsX(
     innerRef,
     parentRef,
     lastItemRef
