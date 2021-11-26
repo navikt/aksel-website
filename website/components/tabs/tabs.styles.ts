@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   z-index: 1001;
 `;
 
-export const Nav = styled.nav<{ isTablet: boolean }>`
+export const Nav = styled.nav<{ isTablet: boolean; isSticky: boolean }>`
   overflow-x: auto;
   background-color: var(--navds-semantic-color-canvas-background-light);
 
@@ -33,16 +33,34 @@ export const Nav = styled.nav<{ isTablet: boolean }>`
          padding-left: 0.5rem;`;
   }};
 
-  ::after {
+  ::before {
     content: "";
     background-color: var(--navds-semantic-color-divider);
     height: 1px;
     width: 100%;
     bottom: 0px;
     left: 0;
-
     position: absolute;
   }
+
+  ${({ isSticky }) =>
+    isSticky &&
+    `
+  ::after {
+    content: "";
+    height: 8px;
+    width: 100%;
+    bottom: -8px;
+    left: 0;
+    position: absolute;
+    background: linear-gradient(
+      -180deg,
+      rgba(0, 0, 0, 0.16) 0%,
+      rgba(0, 0, 0, 0.08) 30%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+  `}
 `;
 
 export const Ul = styled.ul<{ isTablet: boolean }>`

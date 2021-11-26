@@ -2,7 +2,7 @@ import { Back, Next } from "@navikt/ds-icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { createRef, useContext, useState } from "react";
-import { useKey } from "react-use";
+import { useEvent, useKey } from "react-use";
 import { LayoutContext, useOverflowX } from "..";
 import * as S from "./tabs.styles";
 
@@ -20,6 +20,7 @@ export const Tabs = ({
   const [parentRef, setParentRef] = useState<HTMLElement>(null);
   const [innerRef, setInnerRef] = useState<HTMLUListElement>(null);
   const [lastItemRef, setLastItemRef] = useState<HTMLLIElement>(null);
+  const [isSticky, setIsSticky] = useState(false);
 
   const [overflowLeft, overflowRight] = useOverflowX(
     innerRef,
@@ -31,6 +32,10 @@ export const Tabs = ({
     ...t,
     ref: createRef<HTMLAnchorElement>(),
   }));
+
+  useEvent("scroll", () => {
+    parentRef && setIsSticky(parentRef.getBoundingClientRect().top === 0);
+  });
 
   useKey(
     "ArrowLeft",
@@ -97,6 +102,7 @@ export const Tabs = ({
     <S.Wrapper>
       <S.Nav
         isTablet={context.isTablet}
+        isSticky={isSticky}
         aria-label={`Om ${title}`}
         ref={setParentRef}
       >

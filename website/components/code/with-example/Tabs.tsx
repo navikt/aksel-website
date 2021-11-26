@@ -57,7 +57,6 @@ export const ScButton = styled.button`
 const CodeTabs = (): JSX.Element => {
   const { node, tabs, showPreview, activeTab, setActiveTab, fullscreenLink } =
     useContext(CodeContext);
-  console.log(fullscreenLink);
 
   const exampleName = fullscreenLink.split("/")?.[2]?.split("-")?.join(" ");
 
