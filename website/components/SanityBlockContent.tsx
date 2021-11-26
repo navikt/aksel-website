@@ -131,7 +131,9 @@ const serializers = {
 };
 
 const ScMarginTop = styled.div`
-  margin-top: 3rem;
+  :first-child {
+    margin-top: 3rem;
+  }
 `;
 
 export type BlockContextT = {
