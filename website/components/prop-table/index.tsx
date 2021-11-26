@@ -71,7 +71,7 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
         )}
         {node.extends && (
           <li>
-            Props extends <ScCode>{node.extends}</ScCode>
+            Props extender <ScCode>{node.extends}</ScCode>
           </li>
         )}
       </BodyLong>
@@ -93,6 +93,8 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
             name: "className",
             type: "string",
             required: false,
+            description:
+              "Legger til egne klassenavn på elementet Props ekstender",
           }}
         />
       )}
