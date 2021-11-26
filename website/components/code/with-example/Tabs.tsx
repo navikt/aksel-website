@@ -59,7 +59,7 @@ const CodeTabs = (): JSX.Element => {
     useContext(CodeContext);
   console.log(fullscreenLink);
 
-  const exampleName = fullscreenLink.split("/")?.[2].split("-").join(" ");
+  const exampleName = fullscreenLink.split("/")?.[2]?.split("-")?.join(" ");
 
   return (
     <>
