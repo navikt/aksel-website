@@ -98,8 +98,6 @@ const Card = ({ link }: { link: LinkT }) => {
 };
 
 const RelatedPagesCard = ({ node }: { node: RelatedPages }): JSX.Element => {
-  console.log(node);
-
   if (!node || node?.links.length === 0) {
     return null;
   }

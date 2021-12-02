@@ -30,11 +30,10 @@ const LinkPanel = ({ node }: { node: LinkPanelT }): JSX.Element => {
     node.heading_level === "h2" &&
     slugger.slug(node.heading.toString());
 
-  console.log(slug);
   return (
     <Link href={link} passHref>
       <ScPanel>
-        <DsLinkPanel.Title as={node.heading_level} id={slug}>
+        <DsLinkPanel.Title as={node.heading_level} id={slug && ""}>
           {node.heading}
         </DsLinkPanel.Title>
         {node.body && (

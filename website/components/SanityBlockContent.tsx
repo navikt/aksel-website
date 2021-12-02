@@ -27,6 +27,12 @@ export const ScCode = styled.code`
   padding: 0 4px;
 `;
 
+const ScUl = styled.ul`
+  > li {
+    max-width: calc(var(--text-max-width) - 1em);
+  }
+`;
+
 const ScKbd = styled.code`
   display: inline-block;
   margin: 0 var(--navds-spacing-1);
@@ -100,6 +106,9 @@ const serializers = {
           return children;
       }
     },
+  },
+  list: (props: any) => {
+    return <ScUl>{props.children}</ScUl>;
   },
   marks: {
     kbd: (props: any) => <ScKbd>{props.children}</ScKbd>,
