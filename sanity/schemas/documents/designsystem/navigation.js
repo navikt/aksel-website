@@ -25,7 +25,10 @@ export default {
           title: "Header link",
         },
       ],
-      validation: (Rule) => Rule.required().min(1),
+      validation: (Rule) =>
+        Rule.required()
+          .min(1)
+          .error("Headingmenyen må ha minst en koblet lenke i sidemenyen"),
     },
   ],
 };
@@ -39,7 +42,8 @@ export const ds_header_heading = {
       name: "title",
       title: "Heading tittel",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Header lenken må ha en tittel"),
     },
     {
       title: "Side selve headingen linker til",
@@ -52,7 +56,8 @@ export const ds_header_heading = {
         { type: "ds_article_page" },
         { type: "ds_tabbed_article_page" },
       ],
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Header lenken må linke til en startside"),
     },
     {
       title: "Meny for denne headingen",
@@ -68,7 +73,8 @@ export const ds_header_heading = {
               title: "Menypunkt tittel",
               name: "title",
               type: "string",
-              validation: (Rule) => Rule.required(),
+              validation: (Rule) =>
+                Rule.required().error("Sidemeny-lenken må ha en tittel"),
             },
             {
               title: "Link til side",
@@ -79,7 +85,8 @@ export const ds_header_heading = {
                 { type: "ds_article_page" },
                 { type: "ds_tabbed_article_page" },
               ],
-              validation: (Rule) => Rule.required(),
+              validation: (Rule) =>
+                Rule.required().error("Sidemeny-lenken må lenke til en side"),
             },
           ],
         },

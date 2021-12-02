@@ -9,7 +9,8 @@ export function documentInformation(prefix) {
         "Bruke en beskrivende tittel slik at det er lett å finne siden i CMS et.",
       name: "title",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Siden må ha en enkel forklarende tittel"),
     },
     {
       title: "Sidetittel",
@@ -17,7 +18,8 @@ export function documentInformation(prefix) {
       type: "string",
       description:
         "Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Siden må ha en kort heading (<h1>)"),
     },
     {
       title: "url",
@@ -45,7 +47,8 @@ export function documentInformation(prefix) {
       name: "tags",
       type: "array",
       of: [{ type: "string" }],
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Siden må være koblet til minst en av taggene"),
       options: {
         list: [
           { value: "core", title: "Core" },

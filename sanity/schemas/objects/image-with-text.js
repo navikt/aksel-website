@@ -16,7 +16,8 @@ export default {
       name: "title",
       title: "Alt-tekst",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Bilde med tekst må ha en alt-tekst"),
       description: "Beskriv bildet for skjermlesere",
       options: {
         isHighlighted: true,
@@ -41,7 +42,10 @@ export default {
       title: "Innhold",
       name: "body",
       type: "blockContent_simple",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error(
+          "Bilde med tekst må ha noe tekst lagt ved bildet"
+        ),
       options: {
         isHighlighted: true,
       },

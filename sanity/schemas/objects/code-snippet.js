@@ -9,13 +9,14 @@ export default {
       name: "title",
       title: "Tittel (for preview internt i sanity)",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Kodesnutt må ha en enkel tittel"),
     },
     {
       name: "code",
       title: "Kode",
       type: "code",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error("Kodesnutt må ha noe kode"),
       options: {
         languageAlternatives: [
           { value: "js", title: "Javascript" },

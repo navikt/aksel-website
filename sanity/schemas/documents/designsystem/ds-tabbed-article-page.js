@@ -28,19 +28,21 @@ export default {
               description: "Innhold vil da legges under url/tab-tittel",
               name: "title",
               type: "string",
-              validation: (Rule) => Rule.required(),
+              validation: (Rule) =>
+                Rule.required().error("Tabben må ha en enkel tittel"),
             },
             documentSearchMetadata,
             {
               title: "Innhold",
               name: "body",
               type: "blockContent",
-              validation: (Rule) => Rule.required(),
+              validation: (Rule) =>
+                Rule.required().error("Tabben må ha noe innhold"),
             },
           ],
         },
       ],
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error("Siden må ha minst en tab"),
     },
   ],
 };

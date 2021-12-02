@@ -64,7 +64,7 @@ export default {
       name: "body",
       type: "gp_blockContent",
       title: "Innhold",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error("Siden må ha noe innhold"),
     },
   ],
 };

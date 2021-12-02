@@ -13,7 +13,7 @@ export default {
       name: "title",
       title: "Alt-tekst",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error("Bilde må ha en alt-tekst"),
       description: "Beskriv bildet for skjermlesere",
       options: {
         isHighlighted: true,

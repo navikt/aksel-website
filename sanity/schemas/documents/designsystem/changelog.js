@@ -7,7 +7,7 @@ export default {
       title: "Tittel for endring",
       name: "title",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error("Må legge til tittel"),
     },
     {
       title: "Dato",
@@ -26,7 +26,8 @@ export default {
       description: "Linker endringen til alle/spesifike komponenter",
       name: "dependents",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Må velge hvilken pakker dette gjelder"),
       options: {
         list: [
           { value: "all", title: "Alle" },
@@ -50,7 +51,8 @@ export default {
       title: "Tekst",
       description: "Beskrivelse av hva endringen gjorde",
       type: "blockContent_simple",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Må legge til en liten forklaring"),
     },
   ],
 };

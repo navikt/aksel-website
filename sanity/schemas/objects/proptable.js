@@ -66,13 +66,13 @@ export const prop = {
       title: "Name",
       name: "name",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error("Proptable må ha et navn"),
     },
     {
       title: "Type",
       name: "type",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error("Proptable må ha en type"),
     },
     {
       title: "Beskrivelse (optional)",
@@ -88,7 +88,8 @@ export const prop = {
       title: "Required",
       name: "required",
       type: "boolean",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("proptable må ha togglet Required on/off"),
     },
   ],
   initialValue: () => ({

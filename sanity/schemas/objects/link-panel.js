@@ -43,7 +43,8 @@ export default {
       title: "Tittel",
       name: "heading",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Lenkepanel må ha en enkel tittel"),
     },
     {
       title: "Heading nivå",

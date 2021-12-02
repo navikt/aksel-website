@@ -9,13 +9,14 @@ export default {
       title: "Navn",
       name: "title",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error("Må legge til navn"),
     },
     {
       title: "Team",
       name: "team",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Må legge til tilhørende team"),
     },
     {
       name: "user_related_articles",

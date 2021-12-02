@@ -17,7 +17,8 @@ export default {
               name: "title",
               title: "Komponentnavn",
               type: "string",
-              validation: (Rule) => Rule.required(),
+              validation: (Rule) =>
+                Rule.required().error("Komponenten må ha et navn"),
             },
             {
               title: "Pakkenavn",

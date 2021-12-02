@@ -7,7 +7,8 @@ export default {
       title: "Tittel (vises bare internt i sanity)",
       name: "title",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Do/dont må ha en enkel tittel"),
     },
     {
       type: "array",
@@ -15,7 +16,8 @@ export default {
       title: "Do / donts",
       description: "Liste med do/donts",
       of: [{ type: "do_dont_block" }],
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Do/dont må ha noen do eller donts lagt til"),
     },
   ],
 };
@@ -37,7 +39,8 @@ export const doDont = {
       title: "Bilde",
       name: "picture",
       type: "image",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Do/dont må ha et bilde lagt til"),
       options: {
         hotspot: true,
       },
@@ -46,7 +49,7 @@ export const doDont = {
       title: "alt tekst for bilde",
       name: "alt",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error("Do/dont må ha en alt-tekst"),
       options: {
         isHighlighted: true,
       },

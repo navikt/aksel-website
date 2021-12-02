@@ -18,7 +18,8 @@ export default {
       name: "body",
       type: "blockContent",
       title: "Innhold",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Må legge til noe innhold på siden"),
     },
   ],
 };

@@ -41,7 +41,8 @@ export default {
       name: "linked_packages",
       type: "array",
       of: [{ type: "reference", to: [{ type: "ds_package" }] }],
-      validation: (Rule) => Rule.required().min(1),
+      validation: (Rule) =>
+        Rule.required().min(1).error("Siden må være koblet til minst en pakke"),
     },
     {
       title: "Npm-pakke lenke (optional)",

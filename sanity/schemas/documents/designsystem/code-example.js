@@ -9,7 +9,8 @@ export default {
       title: "Tittel",
       name: "title",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Må legge til en enkel tittel"),
     },
     {
       title: "Lenke til eksempel",
@@ -22,7 +23,7 @@ export default {
       description: "Prøver å hente React og HTML kode automatisk fra storybook",
       name: "infercode",
       type: "boolean",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error("Må være valgt/ikke valgt"),
       initialValue: true,
       hidden: ({ parent }) => !parent.preview,
     },
@@ -38,7 +39,7 @@ export default {
       name: "tabs",
       title: "Kode",
       of: [{ type: "code_example_example" }],
-      validation: (Rule) => Rule.max(4),
+      validation: (Rule) => Rule.max(4).error("Kan ha maks 4 tabber med kode"),
     },
     {
       name: "github",
@@ -71,13 +72,13 @@ export const example = {
       name: "title",
       title: "Tab tittel",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error("Må ha en enkel tittel"),
     },
     {
       name: "example",
       title: "Kode eksempel",
       type: "code",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error("Må legge til noe kode"),
       options: {
         languageAlternatives: [
           { value: "js", title: "Javascript" },

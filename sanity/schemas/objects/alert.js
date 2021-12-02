@@ -19,7 +19,8 @@ export default {
       title: "Variant",
       name: "variant",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Alert må ha en valgt variant"),
       options: {
         list: [
           { value: "success", title: "Suksess" },
@@ -32,10 +33,11 @@ export default {
       initialValue: "info",
     },
     {
-      title: "Size",
+      title: "Størrelse",
       name: "size",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Alert må ha valgt en størrelse"),
       options: {
         list: [
           { value: "medium", title: "Medium" },
@@ -54,7 +56,8 @@ export default {
       title: "Heading nivå",
       name: "heading_level",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().error("Alert må ha valgt et heading-nivå"),
       options: {
         list: [
           { value: "h2", title: "H2" },
@@ -70,7 +73,7 @@ export default {
       title: "Innhold",
       name: "body",
       type: "blockContent_simple",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error("Alert må ha noe innhold"),
     },
   ],
   preview: {
