@@ -102,7 +102,6 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
           <ColorBox prop={prop} />
         </ScColorCell>
         <ScDataCell>{prop.title}</ScDataCell>
-        <ScDataCell>WCAG {color.contrast(targetText).toFixed(2)}</ScDataCell>
       </ScTableRow>
     );
   };
@@ -122,9 +121,11 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
             <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
               Token
             </ScHeaderCell>
-            <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
-              Rolle
-            </ScHeaderCell>
+            {node.colors[0].color_type === "semantic" && (
+              <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
+                Rolle
+              </ScHeaderCell>
+            )}
           </Table.Row>
         </Table.Header>
         <Table.Body>
