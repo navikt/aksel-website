@@ -2,8 +2,8 @@ name: Sanity backup
 on:
   workflow_dispatch:
   schedule:
-    # Midnight every day
-    - cron: "1 0 * * *"
+    # 01.00 & 12.00 every day
+    - cron: "00 01,12 * * *"
 jobs:
   execute:
     runs-on: ubuntu-latest
