@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 
-module.exports = {
+const withTM = require("next-transpile-modules")(["@navikt/ds-tokens"]);
+
+module.exports = withTM({
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -13,4 +15,4 @@ module.exports = {
   images: {
     domains: ["cdn.sanity.io"],
   },
-};
+});
