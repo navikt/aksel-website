@@ -6,6 +6,7 @@ import styled from "styled-components";
 import {
   Alert,
   CodeExample,
+  ColorCategory,
   DoDont,
   IconSearch,
   Image,
@@ -55,6 +56,7 @@ const serializers = {
     related_pages: ({ node }) => <RelatedPagesCards node={node} />,
     code_snippet: ({ node }) => <Snippet node={node} />,
     code_example_ref: ({ node }) => <CodeExample node={node.ref} />,
+    color_category_ref: ({ node }) => <ColorCategory node={node.ref} />,
     prop_table: ({ node }) => <PropTable node={node} />,
     do_dont: ({ node }) => <DoDont node={node} />,
     picture: ({ node }) => <Image node={node} />,
