@@ -5,29 +5,33 @@ import styled from "styled-components";
 import { Heading, Table, BodyShort } from "@navikt/ds-react";
 import { Text } from "@sanity/ui";
 import Color from "color";
+import {
+  NavdsSemanticColorTextDefault,
+  NavdsSemanticColorTextInverted,
+} from "@navikt/ds-tokens";
 
 const capitalize = (s) => (s && s[0].toUpperCase() + s.slice(1)) || "";
-
-const ScMutedText = styled(BodyShort)`
-  color: var(--navds-semantic-color-text-muted);
-`;
 
 const ScColorBox = styled.div<{ background: string; dark: boolean }>`
   background-color: ${(props) => props.background};
   color: var(--navds-semantic-color-text-default);
   color: ${(props) =>
     props.dark && "var(--navds-semantic-color-text-inverted)"};
-  width: 248px;
-  height: 72px;
+  width: 128px;
+  height: 66px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   border-radius: 4px;
 
   p {
-    margin: 0;
+    margin: 0 1rem;
   }
+`;
+
+const ScColorCell = styled(Table.DataCell)`
+  white-space: nowrap;
+  width: 0;
 `;
 
 const ScColorRoles = styled.ul`
@@ -38,14 +42,20 @@ const ScColorRoles = styled.ul`
   }
 `;
 
-const ScHeaderCell = styled(Table.HeaderCell)`
-  width: 248px;
-  font-weight: inherit;
-  vertical-align: top;
+const ScHeaderCell = styled(BodyShort)`
+  color: var(--navds-semantic-color-text-muted);
 `;
 
 const ScDataCell = styled(Table.DataCell)`
   vertical-align: top;
+`;
+
+const ScTableRow = styled(Table.Row)`
+  font-size: 16px;
+`;
+
+const ScHexColor = styled.p`
+  font-size: 14px;
 `;
 
 const ColorBox = ({ prop }: { prop: DsColor }): JSX.Element => {
@@ -53,8 +63,8 @@ const ColorBox = ({ prop }: { prop: DsColor }): JSX.Element => {
   console.log(color.isDark());
   return (
     <ScColorBox background={color.hex()} dark={color.isDark()}>
-      <p>{prop.title}</p>
-      {prop.color_type === "global" && <p>{color.hex()}</p>}
+      <p>{prop.color_name}</p>
+      <ScHexColor>{color.hex()}</ScHexColor>
     </ScColorBox>
   );
 };
@@ -62,16 +72,12 @@ const ColorBox = ({ prop }: { prop: DsColor }): JSX.Element => {
 const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
   const SemanticTableRow = ({ prop }: { prop: DsColor }) => {
     return (
-      <Table.Row>
-        <ScHeaderCell>
+      <ScTableRow>
+        <ScColorCell>
           <ColorBox prop={prop} />
-        </ScHeaderCell>
+        </ScColorCell>
+        <ScDataCell>{prop.title}</ScDataCell>
         <ScDataCell>
-          <ScMutedText>Bruker:</ScMutedText>
-          {prop.color_name}
-        </ScDataCell>
-        <ScDataCell>
-          <ScMutedText>Rolle:</ScMutedText>
           {prop.color_roles && (
             <ScColorRoles>
               {prop.color_roles.map((role) => (
@@ -80,21 +86,24 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
             </ScColorRoles>
           )}
         </ScDataCell>
-      </Table.Row>
+      </ScTableRow>
     );
   };
 
   const GlobalTableRow = ({ prop }: { prop: DsColor }) => {
     const color = Color(prop.color_value);
-    const targetText = color.isDark() ? Color("#ffffff") : Color("#262626");
+    const targetText = color.isDark()
+      ? Color(NavdsSemanticColorTextInverted)
+      : Color(NavdsSemanticColorTextDefault);
 
     return (
-      <Table.Row>
-        <ScHeaderCell>
+      <ScTableRow>
+        <ScColorCell>
           <ColorBox prop={prop} />
-        </ScHeaderCell>
+        </ScColorCell>
+        <ScDataCell>{prop.title}</ScDataCell>
         <ScDataCell>WCAG {color.contrast(targetText).toFixed(2)}</ScDataCell>
-      </Table.Row>
+      </ScTableRow>
     );
   };
 
@@ -105,13 +114,28 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
       </Heading>
       {node.description ? <Text size={2}>{node.description}</Text> : null}
       <Table>
-        {node.colors?.map((color) =>
-          color.color_type === "semantic" ? (
-            <SemanticTableRow prop={color} key={color._key} />
-          ) : (
-            <GlobalTableRow prop={color} key={color._key} />
-          )
-        )}
+        <Table.Header>
+          <Table.Row>
+            <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
+              Eksempel
+            </ScHeaderCell>
+            <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
+              Token
+            </ScHeaderCell>
+            <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
+              Rolle
+            </ScHeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {node.colors?.map((color) =>
+            color.color_type === "semantic" ? (
+              <SemanticTableRow prop={color} key={color._key} />
+            ) : (
+              <GlobalTableRow prop={color} key={color._key} />
+            )
+          )}
+        </Table.Body>
       </Table>
     </div>
   );
