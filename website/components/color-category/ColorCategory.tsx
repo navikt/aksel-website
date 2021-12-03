@@ -8,7 +8,7 @@ import Color from "color";
 import {
   NavdsSemanticColorTextDefault,
   NavdsSemanticColorTextInverted,
-} from "@navikt/ds-tokens";
+} from "@navikt/ds-tokens/dist/tokens";
 
 const capitalize = (s) => (s && s[0].toUpperCase() + s.slice(1)) || "";
 
