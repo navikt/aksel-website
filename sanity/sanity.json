@@ -25,7 +25,8 @@
     "@sanity/dashboard",
     "dashboard-widget-document-list",
     "outdated-documents-widget",
-    "document-in-nav-widget"
+    "document-in-nav-widget",
+    "@ssfbank/sanity-plugin-byo-table"
   ],
   "parts": [
     {

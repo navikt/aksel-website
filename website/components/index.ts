@@ -21,6 +21,7 @@ export * from "./utils";
 export { default as OverflowDetector } from "./overflow-detector";
 export { default as Lightbox } from "./lightbox";
 export { LayoutContext } from "./layout/LayoutProvider";
+export { default as Table } from "./table";
 export * from "./layout/layout.styles";
 export { default as LayoutPicker } from "./layout/TemplatePicker";
 export { default as PreviewBanner } from "./PreviewBanner";

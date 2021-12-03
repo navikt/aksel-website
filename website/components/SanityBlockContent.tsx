@@ -16,6 +16,7 @@ import {
   Snippet,
   Spacing,
   RelatedPagesCards,
+  Table,
 } from ".";
 import ComponentOverview from "./component-overview";
 
@@ -61,6 +62,7 @@ const serializers = {
     alert: ({ node }) => <Alert node={node} />,
     link_panel: ({ node }) => <LinkPanel node={node} />,
     spacing: ({ node }) => <Spacing node={node} />,
+    table: ({ node }) => <Table node={node} />,
 
     block: ({ node, children }) => {
       const context: BlockContextT = useContext(BlockContext);
@@ -94,7 +96,7 @@ const serializers = {
               {children}
             </Heading>
           );
-        case "h4":
+        case "heading4":
           return (
             <Heading spacing level="4" size="medium">
               {children}

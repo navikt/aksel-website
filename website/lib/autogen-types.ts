@@ -1109,6 +1109,16 @@ export type CodeExampleRef = {
   ref?: SanityReference<DsCodeExample>;
 };
 
+export type ColorCategoryRef = {
+  _type: "color_category_ref";
+  /**
+   * Fargekategori — `reference`
+   *
+   *
+   */
+  ref?: SanityReference<DsColorCategories>;
+};
+
 export type CodeExampleExample = {
   _type: "code_example_example";
   /**
@@ -1136,7 +1146,9 @@ export type BlockContent = Array<
   | SanityKeyed<LinkPanel>
   | SanityKeyed<CodeSnippet>
   | SanityKeyed<DoDont>
+  | SanityKeyed<Table>
   | SanityKeyed<CodeExampleRef>
+  | SanityKeyed<ColorCategoryRef>
   | SanityKeyed<PropTable>
   | SanityKeyed<IconSearch>
   | SanityKeyed<ComponentOverview>
@@ -1404,7 +1416,7 @@ export type Alert = {
   variant?: "success" | "info" | "warning" | "error";
 
   /**
-   * Size — `string`
+   * Størrelse — `string`
    *
    *
    */
@@ -1595,6 +1607,57 @@ export type RelatedPages = {
       external_link?: string;
     }>
   >;
+};
+
+export type Table = {
+  _type: "table";
+  /**
+   * Tabell tittel (Brukes bare internt i sanity) — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Tabell headers — `string`
+   *
+   * Definerer hva som regnes som tabell-headers for semantisk visning
+   */
+  header_direction?: "row" | "column";
+
+  /**
+   * Rader — `array`
+   *
+   *
+   */
+  rows?: Array<SanityKeyed<Row>>;
+};
+
+export type Cell = {
+  _type: "cell";
+  /**
+   * Innhold — `blockContent_simple`
+   *
+   *
+   */
+  body?: BlockContentSimple;
+
+  /**
+   * Plassering av innhold — `string`
+   *
+   * Ved ingen valgt er venstre standard
+   */
+  alignment?: "left" | "center" | "right";
+};
+
+export type Row = {
+  _type: "row";
+  /**
+   * cells — `array`
+   *
+   *
+   */
+  cells?: Array<SanityKeyed<Cell>>;
 };
 
 export type Documents =

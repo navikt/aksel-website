@@ -47,6 +47,7 @@ import icon_search from "./objects/uniques/ikonsok";
 import component_overview from "./objects/overview-ref";
 import spacing from "./objects/spacing";
 import relatedPages from "./objects/related-pages";
+import table, { Rows, Cells } from "./objects/table";
 
 export default createSchema({
   name: "default",
@@ -93,5 +94,8 @@ export default createSchema({
     component_overview,
     spacing,
     relatedPages,
+    table,
+    Cells,
+    Rows,
   ]),
 });
