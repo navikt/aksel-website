@@ -1,4 +1,11 @@
-import RowsInput from "part:@ssfbank/sanity-plugin-byo-table/rows-input";
+function toPlainText(blocks = []) {
+  return blocks
+    .filter((block) => !(block._type !== "block" || !block.children))
+    .map((block) => {
+      return block.children.map((child) => child.text).join("");
+    })
+    .join("\n");
+}
 
 export default {
   title: "Tabell",
@@ -34,7 +41,6 @@ export default {
           type: "row",
         },
       ],
-      inputComponent: RowsInput,
     },
   ],
   preview: {
@@ -55,6 +61,17 @@ export const Rows = {
       of: [{ type: "cell" }],
     },
   ],
+  preview: {
+    select: {
+      cells: "cells",
+    },
+    prepare({ cells }) {
+      return {
+        title: toPlainText(cells?.[0]?.body ?? []),
+        subtitle: `Kolonner: ${cells.length}`,
+      };
+    },
+  },
 };
 
 export const Cells = {
