@@ -1054,6 +1054,13 @@ export type DsColor = {
   title?: string;
 
   /**
+   * CSS variabelnavn — `string`
+   *
+   *
+   */
+  full_title?: string;
+
+  /**
    * Fargetype/nivå — `string`
    *
    *

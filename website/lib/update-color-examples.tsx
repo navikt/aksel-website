@@ -7,6 +7,7 @@ dotenv.config();
 
 type SemanticColorEntry = {
   title: string;
+  full_title: string;
   color_value: string;
   color_name: string;
   category: string;
@@ -15,6 +16,7 @@ type SemanticColorEntry = {
 
 type GlobalColorEntry = {
   title: string;
+  full_title: string;
   color_value: string;
   category: string;
   subcategory: string;
@@ -29,7 +31,7 @@ function declarationToColor(declaration, declarationList): [string, string] {
     if (resolved === null) {
       return null;
     }
-    value = declaration.value;
+    value = resolved.value;
     name = resolved.property.replace("--navds-global-color-", "");
   } else {
     value = declaration.value;
@@ -69,6 +71,7 @@ function parseDeclaration(
     // in the case of global, we can just put "blue" and "500" together to form the name
     return {
       title: props.slice(1).join("-"),
+      full_title: property,
       color_value: value, // this'll be something like rgba(0, 0, 1, 1) in this case
       subcategory,
       category,
@@ -90,6 +93,7 @@ function parseDeclaration(
     // produces "text-link" as well, and not just "link" :thinking:
     return {
       title: title === "" ? subcategory : `${subcategory}-${title}`,
+      full_title: property,
       color_value,
       color_name,
       subcategory,
@@ -101,6 +105,7 @@ function parseDeclaration(
   // e.g. "warning-background" in the "feedback" category
   return {
     title: props.slice(2).join("-"),
+    full_title: property,
     color_value,
     color_name,
     subcategory,
@@ -138,6 +143,7 @@ colors.forEach((color) => {
       _key: key,
       _type: "ds_color",
       title: color.title,
+      full_title: color.full_title,
       color_type: "global",
       color_value: color.color_value,
     });
@@ -146,6 +152,7 @@ colors.forEach((color) => {
       _key: key,
       _type: "ds_color",
       title: color.title,
+      full_title: color.full_title,
       color_type: "semantic",
       color_value: color.color_value,
       color_name: color.color_name,
