@@ -33,6 +33,14 @@ export const Color = {
       title: "Navn",
       type: "string",
       validation: (Rule) => Rule.required(),
+      readOnly: true,
+    },
+    {
+      name: "full_title",
+      title: "CSS variabelnavn",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+      readOnly: true,
     },
     {
       title: "Fargetype/nivå",
@@ -40,6 +48,7 @@ export const Color = {
       type: "string",
       validation: (Rule) => Rule.required(),
       initialValue: "global",
+      readOnly: true,
       options: {
         layout: "radio",
         list: [
@@ -52,6 +61,7 @@ export const Color = {
       name: "color_name",
       title: "Brukt fargenavn",
       type: "string",
+      readOnly: true,
       hidden: ({ parent }) => parent?.color_type === "global",
     },
     {
@@ -65,6 +75,7 @@ export const Color = {
       name: "color_value",
       title: "Brukt farge",
       type: "string",
+      readOnly: true,
       validation: (Rule) => Rule.required(),
     },
   ],
