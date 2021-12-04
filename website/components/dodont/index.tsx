@@ -36,21 +36,27 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
           <S.Icon variant={block.variant}>
             <SuccessFilled />
             {block.description && (
-              <BodyShort size="small">{block.description}</BodyShort>
+              <BodyShort size="small" as="span">
+                {block.description}
+              </BodyShort>
             )}
           </S.Icon>
         ) : block.variant === "warning" ? (
           <S.Icon variant={block.variant}>
             <WarningFilled />
             {block.description && (
-              <BodyShort size="small">{block.description}</BodyShort>
+              <BodyShort size="small" as="span">
+                {block.description}
+              </BodyShort>
             )}
           </S.Icon>
         ) : (
           <S.Icon variant={block.variant}>
             <ErrorFilled />
             {block.description && (
-              <BodyShort size="small">{block.description}</BodyShort>
+              <BodyShort size="small" as="span">
+                {block.description}
+              </BodyShort>
             )}
           </S.Icon>
         )}

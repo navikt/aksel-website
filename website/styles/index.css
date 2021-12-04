@@ -1,5 +1,5 @@
+@import "@navikt/ds-css";
+@import "@navikt/ds-css-internal";
 @import "./prismjs.css";
 @import "./theme.css";
 @import "./global.css";
-@import "@navikt/ds-css";
-@import "@navikt/ds-css-internal";

@@ -21,11 +21,11 @@ import {
 import ComponentOverview from "./component-overview";
 
 export const ScCode = styled.code`
-  color: var(--navds-semantic-color-text-default);
-  background-color: var(--navds-semantic-color-canvas-background-default);
-  border-radius: 2px;
+  color: var(--navds-global-color-deepblue-500);
+  background-color: var(--navds-global-color-deepblue-50);
+  border-radius: 6px;
   font-size: 1rem;
-  padding: 0 4px;
+  padding: 0.25rem;
 `;
 
 const ScUl = styled.ul`
@@ -38,11 +38,16 @@ const ScKbd = styled.code`
   display: inline-block;
   margin: 0 var(--navds-spacing-1);
   color: var(--navds-semantic-color-text-default);
-  border: 1px solid var(--navds-semantic-color-border-muted);
-  border-radius: 3px;
-  padding: 0.1rem 0.25rem;
+  border: 1px solid var(--navds-global-color-gray-800);
+  border-radius: 2px;
+  padding: 0 0.5rem;
+  min-width: 28px;
   font-family: var(--font-family-code);
   font-size: 1rem;
+`;
+
+const ScHeading = styled(Heading)`
+  margin-top: var(--navds-spacing-11);
 `;
 
 const serializers = {
@@ -92,15 +97,15 @@ const serializers = {
         }
         case "h3":
           return (
-            <Heading spacing level="3" size="medium">
+            <ScHeading spacing level="3" size="medium">
               {children}
-            </Heading>
+            </ScHeading>
           );
         case "heading4":
           return (
-            <Heading spacing level="4" size="medium">
+            <ScHeading spacing level="4" size="medium">
               {children}
-            </Heading>
+            </ScHeading>
           );
         case "ingress":
           return <Ingress spacing>{children}</Ingress>;

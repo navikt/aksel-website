@@ -20,6 +20,14 @@ export const TitleRenderer = (props, size, level) => (
   </Heading>
 );
 
+const ScCode = styled.code`
+  color: var(--navds-global-color-deepblue-500);
+  background-color: var(--navds-global-color-deepblue-50);
+  border-radius: 6px;
+  font-size: 1rem;
+  padding: 0.25rem;
+`;
+
 export const styles = [
   {
     title: "Normal (18px)",
@@ -61,9 +69,7 @@ export const block = {
         title: "Code",
         value: "code",
         blockEditor: {
-          render: (props) => (
-            <code style={{ color: "#BA3A26" }}>{props.children}</code>
-          ),
+          render: (props) => <ScCode>{props.children}</ScCode>,
         },
       },
       {
