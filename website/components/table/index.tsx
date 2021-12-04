@@ -12,6 +12,11 @@ const ScWrapper = styled(Table)`
 
 const ScHeaderCell = styled(Table.HeaderCell)`
   color: var(--navds-semantic-color-text-muted);
+
+  > span,
+  > * > span {
+    font-size: 1rem;
+  }
 `;
 
 const ScCenter = styled.span`

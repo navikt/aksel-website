@@ -1,3 +1,6 @@
+import React from "react";
+import { Table } from "@navikt/ds-react";
+
 function toPlainText(blocks = []) {
   return blocks
     .filter((block) => !(block._type !== "block" || !block.children))
@@ -45,7 +48,30 @@ export default {
   ],
   preview: {
     select: {
-      title: "title",
+      rows: "rows",
+    },
+    prepare(selection) {
+      return { ...selection };
+    },
+    component: (selection) => {
+      console.log(selection);
+      return (
+        <Table>
+          <Table.Body>
+            {selection.value.rows &&
+              selection.value.rows.map((row) => (
+                <Table.Row key={row._key}>
+                  {row.cells &&
+                    row.cells.map((cell) => (
+                      <Table.DataCell key={cell._key}>
+                        {toPlainText(cell?.body ?? [])}
+                      </Table.DataCell>
+                    ))}
+                </Table.Row>
+              ))}
+          </Table.Body>
+        </Table>
+      );
     },
   },
 };

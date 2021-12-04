@@ -1,5 +1,6 @@
 import React from "react";
 import "@navikt/ds-css?raw";
+import styled from "styled-components";
 import { Detail, Heading, BodyLong } from "@navikt/ds-react/cjs";
 import {
   Warning,
