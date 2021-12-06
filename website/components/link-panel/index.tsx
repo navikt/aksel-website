@@ -33,7 +33,7 @@ const LinkPanel = ({ node }: { node: LinkPanelT }): JSX.Element => {
   return (
     <Link href={link} passHref>
       <ScPanel>
-        <DsLinkPanel.Title as={node.heading_level} id={slug && ""}>
+        <DsLinkPanel.Title as={node.heading_level} id={slug || undefined}>
           {node.heading}
         </DsLinkPanel.Title>
         {node.body && (
