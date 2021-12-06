@@ -38,7 +38,7 @@ export default () =>
             .title("Designsystemet")
             .items([
               S.listItem()
-                .title("Kategoriserte sider")
+                .title("Hovedmeny")
                 .child(async () => {
                   const doc = await client.fetch(
                     `*[_id == 'ds_navigationid'][0]{
@@ -62,7 +62,7 @@ export default () =>
                     .join(",");
 
                   return S.list()
-                    .title("Headings")
+                    .title("Hovedmeny")
                     .items([
                       ...doc.headings.map((heading) => {
                         const ids = heading.menu.map((item) => item.link._ref);
@@ -77,7 +77,57 @@ export default () =>
                           );
                       }),
                       S.listItem()
-                        .title("Sider ikke i navigasjon")
+                        .title("Komponent artikler")
+                        .icon(() => <Facilitet />)
+                        .child(
+                          S.list()
+                            .title("Komponentsider")
+                            .items([
+                              S.listItem()
+                                .title("Publisert")
+                                .icon(() => <FileContent />)
+                                .child(
+                                  S.documentList()
+                                    .title("Publiserte komponentsider")
+                                    .filter(
+                                      `_type in ["ds_component_page"] && !(_id in path('drafts.**'))`
+                                    )
+                                ),
+                              S.listItem()
+                                .title("Under arbeid")
+                                .icon(() => <Edit />)
+                                .child(
+                                  S.documentList()
+                                    .title("U-publiserte komponentsider")
+                                    .filter(
+                                      `_type == "ds_component_page" && _id in path("drafts.**") &&
+                            (
+                           (_id in path("drafts.**")) &&
+                           (count(*[
+                             _type == "ds_component_page" && !(_id in path("drafts.**"))
+                             && (slug.current == ^.slug.current)
+                           ]) == 0)
+                         )`
+                                    )
+                                ),
+                              S.listItem()
+                                .title("Alle komponentsider")
+                                .icon(() => <FileContent />)
+                                .child(S.documentTypeList("ds_component_page")),
+                            ])
+                        ),
+                      S.listItem()
+                        .title("Artikler")
+                        .icon(() => <FileContent />)
+                        .child(
+                          S.documentList()
+                            .title("Artikler")
+                            .filter(
+                              '_type in ["ds_article_page", "ds_tabbed_article_page"]'
+                            )
+                        ),
+                      S.listItem()
+                        .title("Publiserte sider ikke i navigasjon")
                         .child(
                           S.documentList()
                             .title("Sider ikke i navigasjon")
@@ -87,56 +137,6 @@ export default () =>
                         ),
                     ]);
                 }),
-              S.listItem()
-                .title("Komponentsider")
-                .icon(() => <Facilitet />)
-                .child(
-                  S.list()
-                    .title("Komponentsider")
-                    .items([
-                      S.listItem()
-                        .title("Publisert")
-                        .icon(() => <FileContent />)
-                        .child(
-                          S.documentList()
-                            .title("Publiserte komponentsider")
-                            .filter(
-                              `_type in ["ds_component_page"] && !(_id in path('drafts.**'))`
-                            )
-                        ),
-                      S.listItem()
-                        .title("Under arbeid")
-                        .icon(() => <Edit />)
-                        .child(
-                          S.documentList()
-                            .title("U-publiserte komponentsider")
-                            .filter(
-                              `_type == "ds_component_page" && _id in path("drafts.**") &&
-                            (
-                           (_id in path("drafts.**")) &&
-                           (count(*[
-                             _type == "ds_component_page" && !(_id in path("drafts.**"))
-                             && (slug.current == ^.slug.current)
-                           ]) == 0)
-                         )`
-                            )
-                        ),
-                      S.listItem()
-                        .title("Alle komponentsider")
-                        .icon(() => <FileContent />)
-                        .child(S.documentTypeList("ds_component_page")),
-                    ])
-                ),
-              S.listItem()
-                .title("Artikler")
-                .icon(() => <FileContent />)
-                .child(
-                  S.documentList()
-                    .title("Artikler")
-                    .filter(
-                      '_type in ["ds_article_page", "ds_tabbed_article_page"]'
-                    )
-                ),
               /* S.listItem()
                 .title("Forside")
                 .icon(() => <Picture />)
