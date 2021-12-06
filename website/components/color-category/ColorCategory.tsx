@@ -3,12 +3,7 @@ import { withErrorBoundary } from "../error-boundary";
 import { DsColorCategories, DsColor } from "../../lib/autogen-types";
 import styled from "styled-components";
 import { Heading, Table, BodyShort, BodyLong } from "@navikt/ds-react";
-import { Text } from "@sanity/ui";
 import Color from "color";
-import {
-  NavdsSemanticColorTextDefault,
-  NavdsSemanticColorTextInverted,
-} from "@navikt/ds-tokens/dist/tokens";
 
 const capitalize = (s) => (s && s[0].toUpperCase() + s.slice(1)) || "";
 
@@ -101,11 +96,6 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
   };
 
   const GlobalTableRow = ({ prop }: { prop: DsColor }) => {
-    const color = Color(prop.color_value);
-    const targetText = color.isDark()
-      ? Color(NavdsSemanticColorTextInverted)
-      : Color(NavdsSemanticColorTextDefault);
-
     return (
       <ScTableRow>
         <ScColorCell>
