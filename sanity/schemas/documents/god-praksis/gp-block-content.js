@@ -1,7 +1,8 @@
 import React from "react";
-import { Warning, SuccessStroke, ExternalLink } from "@navikt/ds-icons";
+import { Warning, SuccessStroke, ExternalLink, Notes } from "@navikt/ds-icons";
 import { styles, TitleRenderer } from "../../block-content";
 import { allDocumentTypes } from "../../../config";
+import { ScDraft } from "../../block-content";
 
 export default {
   title: "Block Content",
@@ -43,6 +44,14 @@ export default {
         decorators: [
           { title: "Strong", value: "strong" },
           { title: "Emphasis", value: "em" },
+          {
+            title: "Utkast",
+            value: "draft_only",
+            blockEditor: {
+              icon: () => <Notes />,
+              render: (props) => <ScDraft>{props.children}</ScDraft>,
+            },
+          },
           {
             title: "Code",
             value: "code",

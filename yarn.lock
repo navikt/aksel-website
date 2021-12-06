@@ -1136,10 +1136,6 @@
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@navikt/ds-css-internal/-/ds-css-internal-0.6.0.tgz#7ba5ba312c156fe20f1f0d6fe3ae022f2f7c8f36"
 
-"@navikt/ds-css@^0.10":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.10.0.tgz#6835cb70f5ee83581d4a0838ffe1e87558102f40"
-
 "@navikt/ds-css@^0.11":
   version "0.11.3"
   resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.11.3.tgz#2ba614f4137f45d62ec765ac8e30ff6d70143219"
@@ -2071,17 +2067,6 @@
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
-
-"@ssfbank/sanity-plugin-byo-table@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.npmjs.org/@ssfbank/sanity-plugin-byo-table/-/sanity-plugin-byo-table-2.3.1.tgz#8abce4b05ba44fbc6c24938664824583d550c257"
-  dependencies:
-    "@sanity/uuid" "^3.0.1"
-    prop-types "^15.7.2"
-    react "^16.14.0"
-    react-dom "^16.14.0"
-    react-sortable-hoc "^1.11.0"
-    slim-object-hash "^0.1.2"
 
 "@svgr/babel-plugin-add-jsx-attribute@^5.4.0":
   version "5.4.0"
@@ -9105,15 +9090,6 @@ react-collapse@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/react-collapse/-/react-collapse-5.1.0.tgz#36f69ecb0fe797f976aaf5e4f2b2c248d2760140"
 
-react-dom@^16.14.0:
-  version "16.14.0"
-  resolved "https://registry.npmjs.org/react-dom/-/react-dom-16.14.0.tgz#7ad838ec29a777fb3c75c3a190f661cf92ab8b89"
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "^0.19.1"
-
 react-dom@^17.0, react-dom@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
@@ -9311,14 +9287,6 @@ react@17.0.1:
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-
-react@^16.14.0:
-  version "16.14.0"
-  resolved "https://registry.npmjs.org/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
 
 react@^17.0, react@^17.0.2:
   version "17.0.2"
@@ -10057,10 +10025,6 @@ slice-ansi@^4.0.0:
     ansi-styles "^4.0.0"
     astral-regex "^2.0.0"
     is-fullwidth-code-point "^3.0.0"
-
-slim-object-hash@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.npmjs.org/slim-object-hash/-/slim-object-hash-0.1.2.tgz#eee4b0ff3b48cec89df8dac4a70cbc11aecfa08f"
 
 snapdragon-node@^2.0.1:
   version "2.1.1"

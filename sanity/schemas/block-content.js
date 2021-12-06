@@ -5,12 +5,12 @@ import { Detail, Heading, BodyLong } from "@navikt/ds-react/cjs";
 import {
   Warning,
   SuccessStroke,
-  Braille,
   Laptop,
   List,
   ExternalLink,
   Link,
   Folder,
+  Notes,
 } from "@navikt/ds-icons";
 import { KBD } from "@sanity/ui";
 import { allDocumentTypes } from "../config";
@@ -27,6 +27,25 @@ const ScCode = styled.code`
   border-radius: 6px;
   font-size: 1rem;
   padding: 0.25rem;
+`;
+
+export const ScDraft = styled.div`
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 0.25rem;
+  padding-bottom: 1rem;
+  position: relative;
+
+  ::before {
+    content: "utkast";
+    font-size: 1rem;
+    font-weight: 400;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0 0.25rem;
+    border-top-left-radius: 4px;
+    background-color: var(--navds-global-color-orange-200);
+  }
 `;
 
 export const styles = [
@@ -87,6 +106,14 @@ export const block = {
               {props.children}
             </KBD>
           ),
+        },
+      },
+      {
+        title: "Utkast",
+        value: "draft_only",
+        blockEditor: {
+          icon: () => <Notes />,
+          render: (props) => <ScDraft>{props.children}</ScDraft>,
         },
       },
     ],

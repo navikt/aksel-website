@@ -40,6 +40,10 @@ const LevelTwoHeading = ({
     .filter((x) => typeof x === "string")
     .filter((x) => !!x);
 
+  if (cleanedChildren.length == 0) {
+    return null;
+  }
+
   return (
     <>
       <S.HeadingWrapper>

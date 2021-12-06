@@ -118,6 +118,7 @@ const serializers = {
     return <ScUl>{props.children}</ScUl>;
   },
   marks: {
+    draft_only: () => null,
     kbd: (props: any) => <ScKbd>{props.children}</ScKbd>,
     code: (props: any) => <ScCode>{props.children}</ScCode>,
     link: ({ mark: { blank, href }, children }: { mark: any; children: any }) =>
