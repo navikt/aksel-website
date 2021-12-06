@@ -10,7 +10,11 @@ export const ScDownloadButtons = styled.div`
   gap: 1rem;
   margin-top: 0.5rem;
   margin-bottom: 2rem;
-  width: 250px;
+  width: 200px;
+
+  > * {
+    flex: 1 1;
+  }
 `;
 
 const ScContent = styled(Popover.Content)`
@@ -30,8 +34,10 @@ export const ScButton = styled.button`
   gap: 0.5rem;
   padding: 0;
   justify-self: center;
+  justify-content: center;
   color: var(--navds-semantic-color-interaction-primary-default);
   padding: calc(0.75rem + 2px) 0.75rem;
+  align-items: center;
 
   > svg {
     font-size: 1.25rem;
@@ -84,7 +90,6 @@ const DownloadButtons = () => {
                 variant="interaction"
                 title="Genererer fil for nedlastning"
               />
-              SVG
             </>
           ) : (
             <>
@@ -101,7 +106,6 @@ const DownloadButtons = () => {
                 variant="interaction"
                 title="Genererer fil for nedlastning"
               />
-              PNG
             </>
           ) : (
             <>
