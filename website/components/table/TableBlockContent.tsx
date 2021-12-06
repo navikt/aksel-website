@@ -2,26 +2,7 @@ import { BodyShort, Detail, Link } from "@navikt/ds-react";
 import BlockContent from "@sanity/block-content-to-react";
 import NextjsLink from "next/link";
 import React from "react";
-import styled from "styled-components";
-
-export const ScCode = styled.code`
-  color: var(--navds-semantic-color-text-default);
-  background-color: var(--navds-semantic-color-canvas-background-default);
-  border-radius: 2px;
-  font-size: 1rem;
-  padding: 0 4px;
-`;
-
-const ScKbd = styled.code`
-  display: inline-block;
-  margin: 0 var(--navds-spacing-1);
-  color: var(--navds-semantic-color-text-default);
-  border: 1px solid var(--navds-semantic-color-border-muted);
-  border-radius: 3px;
-  padding: 0.1rem 0.25rem;
-  font-family: var(--font-family-code);
-  font-size: 1rem;
-`;
+import { ScKbd, ScCode } from "../SanityBlockContent";
 
 const serializers = {
   types: {

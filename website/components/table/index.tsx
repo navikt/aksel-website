@@ -6,7 +6,7 @@ import { Table as TableT } from "../../lib/autogen-types";
 import { withErrorBoundary } from "../error-boundary";
 import { TableBlockContent } from "./TableBlockContent";
 
-const ScWrapper = styled(Table)`
+const ScWrapper = styled.div`
   margin-bottom: var(--navds-spacing-7);
 `;
 
@@ -30,7 +30,6 @@ const ScRight = styled.span`
 `;
 
 const TableComponent = ({ node }: { node: TableT }): JSX.Element => {
-  console.log(node);
   if (!node || !node.rows || node.rows.length < 2) {
     return null;
   }

@@ -34,7 +34,7 @@ const ScUl = styled.ul`
   }
 `;
 
-const ScKbd = styled.code`
+export const ScKbd = styled.code`
   display: inline-block;
   margin: 0 var(--navds-spacing-1);
   color: var(--navds-semantic-color-text-default);
