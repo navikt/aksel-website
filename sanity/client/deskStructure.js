@@ -17,6 +17,16 @@ import {
   Folder,
 } from "@navikt/ds-icons";
 
+const sanityClient = require("@sanity/client");
+const SanityConfig = require("../sanity.json");
+
+const client = sanityClient({
+  projectId: SanityConfig.api.projectId,
+  dataset: SanityConfig.api.dataset,
+  apiVersion: "2020-06-19",
+  useCdn: false,
+});
+
 export default () =>
   S.list()
     .title("Verktøykassen")
@@ -27,6 +37,56 @@ export default () =>
           S.list()
             .title("Designsystemet")
             .items([
+              S.listItem()
+                .title("Kategoriserte sider")
+                .child(async () => {
+                  const doc = await client.fetch(
+                    `*[_id == 'ds_navigationid'][0]{
+                      headings[]{
+                        title,
+                        menu
+                      }
+                    }`
+                  );
+                  if (!doc.headings) {
+                    return [];
+                  }
+
+                  const allIds = doc.headings
+                    .map((heading) =>
+                      heading.menu
+                        .map((item) => item.link._ref)
+                        .map((x) => `"${x}"`)
+                        .join(",")
+                    )
+                    .join(",");
+
+                  return S.list()
+                    .title("Headings")
+                    .items([
+                      ...doc.headings.map((heading) => {
+                        const ids = heading.menu.map((item) => item.link._ref);
+                        return S.listItem()
+                          .title(heading.title)
+                          .child(
+                            S.documentList()
+                              .title(heading.title)
+                              .filter(
+                                `_id in [${ids.map((x) => `"${x}"`).join(",")}]`
+                              )
+                          );
+                      }),
+                      S.listItem()
+                        .title("Sider ikke i navigasjon")
+                        .child(
+                          S.documentList()
+                            .title("Sider ikke i navigasjon")
+                            .filter(
+                              `!(_id in [${allIds}]) && !(_id in path('drafts.**')) && _type in ["ds_component_page","ds_article_page","ds_tabbed_article_page"]`
+                            )
+                        ),
+                    ]);
+                }),
               S.listItem()
                 .title("Komponentsider")
                 .icon(() => <Facilitet />)
