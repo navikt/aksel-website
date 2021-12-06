@@ -62,9 +62,7 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
         )}
       </S.Caption>
       <Lightbox open={open} onClose={() => setOpen(false)}>
-        {open && (
-          <NextImage {...imageProps} layout="responsive" alt={block.alt} />
-        )}
+        {open && <NextImage {...imageProps} layout="fill" alt={block.alt} />}
       </Lightbox>
     </S.Figure>
   );
