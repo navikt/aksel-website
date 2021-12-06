@@ -41,19 +41,10 @@ const Page = (props: {
     enabled: isPreview,
   });
 
-  const { data: changelogs } = usePreviewSubscription(changelogQuery, {
-    initialData: props.changelogs,
-    enabled: isPreview,
-  });
-
-  const { data: nav } = usePreviewSubscription(dsNavigationQuery, {
-    initialData: props.navigation,
-    enabled: isPreview,
-  });
-
   useEffect(() => {
-    nav && setPageData({ ...props, ...pageProps, navigation: nav });
-  }, [nav]);
+    props.navigation &&
+      setPageData({ ...props, ...pageProps, navigation: props.navigation });
+  }, [props.navigation]);
 
   useEffect(() => {
     data &&
@@ -75,7 +66,7 @@ const Page = (props: {
         <LayoutPicker
           title="Designsystemet"
           data={data}
-          changelogs={changelogs}
+          changelogs={props.changelogs}
         />
         <Sc.Grow />
         <Feedback
