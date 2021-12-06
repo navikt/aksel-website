@@ -2,7 +2,7 @@ import React from "react";
 import { withErrorBoundary } from "../error-boundary";
 import { DsColorCategories, DsColor } from "../../lib/autogen-types";
 import styled from "styled-components";
-import { Heading, Table, BodyShort } from "@navikt/ds-react";
+import { Heading, Table, BodyShort, BodyLong } from "@navikt/ds-react";
 import { Text } from "@sanity/ui";
 import Color from "color";
 import {
@@ -58,9 +58,19 @@ const ScHexColor = styled.p`
   font-size: 14px;
 `;
 
+const ScSection = styled.div`
+  margin-bottom: 2rem;
+`;
+
 const ColorBox = ({ prop }: { prop: DsColor }): JSX.Element => {
   const color = Color(prop.color_value);
-  console.log(color.isDark());
+  if (prop.color_type === "global") {
+    return (
+      <ScColorBox background={color.hex()} dark={color.isDark()}>
+        <p>{color.hex()}</p>
+      </ScColorBox>
+    );
+  }
   return (
     <ScColorBox background={color.hex()} dark={color.isDark()}>
       <p>{prop.color_name}</p>
@@ -107,11 +117,11 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
   };
 
   return (
-    <div>
-      <Heading size="small" as="h2" id={node._id}>
+    <ScSection>
+      <Heading size="medium" as="h2" id={node._id}>
         {capitalize(node.title)}
       </Heading>
-      {node.description ? <Text size={2}>{node.description}</Text> : null}
+      {node.description ? <BodyLong>{node.description}</BodyLong> : null}
       <Table>
         <Table.Header>
           <Table.Row>
@@ -138,7 +148,7 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
           )}
         </Table.Body>
       </Table>
-    </div>
+    </ScSection>
   );
 };
 
