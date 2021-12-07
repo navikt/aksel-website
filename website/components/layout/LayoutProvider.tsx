@@ -28,8 +28,10 @@ const LayoutProvider = ({
     setActiveHeading(
       pageProps?.navigation?.headings.find((heading) => {
         if (heading?.menu) {
-          return heading.menu.find(
-            (item) => item.link.slug.current === pageProps?.page?.slug
+          return (
+            heading.menu.find(
+              (item) => item.link.slug.current === pageProps?.page?.slug
+            ) ?? heading.link_ref.slug.current === pageProps?.page?.slug
           );
         } else {
           return heading.link_ref.slug.current === pageProps?.page?.slug;
