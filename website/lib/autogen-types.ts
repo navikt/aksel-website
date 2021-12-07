@@ -1087,6 +1087,13 @@ export type DsColor = {
    *
    */
   color_value?: string;
+
+  /**
+   * Fargeindeks — `number`
+   *
+   * Brukes for å endre rekkefølgen på listen. Farger med indeks 0 vil være først, større tall sorteres under der igjen
+   */
+  color_index?: number;
 };
 
 export type CodeSnippet = {
