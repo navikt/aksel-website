@@ -73,7 +73,6 @@ const serializers = {
       const context: BlockContextT = useContext(BlockContext);
       const style = node.style;
       if (children && children.length === 1 && children[0] === "") return null;
-      console.log(children);
 
       switch (style) {
         case "normal":
