@@ -76,56 +76,7 @@ export default () =>
                               )
                           );
                       }),
-                      S.listItem()
-                        .title("Komponent artikler")
-                        .icon(() => <Facilitet />)
-                        .child(
-                          S.list()
-                            .title("Komponentsider")
-                            .items([
-                              S.listItem()
-                                .title("Publisert")
-                                .icon(() => <FileContent />)
-                                .child(
-                                  S.documentList()
-                                    .title("Publiserte komponentsider")
-                                    .filter(
-                                      `_type in ["ds_component_page"] && !(_id in path('drafts.**'))`
-                                    )
-                                ),
-                              S.listItem()
-                                .title("Under arbeid")
-                                .icon(() => <Edit />)
-                                .child(
-                                  S.documentList()
-                                    .title("U-publiserte komponentsider")
-                                    .filter(
-                                      `_type == "ds_component_page" && _id in path("drafts.**") &&
-                            (
-                           (_id in path("drafts.**")) &&
-                           (count(*[
-                             _type == "ds_component_page" && !(_id in path("drafts.**"))
-                             && (slug.current == ^.slug.current)
-                           ]) == 0)
-                         )`
-                                    )
-                                ),
-                              S.listItem()
-                                .title("Alle komponentsider")
-                                .icon(() => <FileContent />)
-                                .child(S.documentTypeList("ds_component_page")),
-                            ])
-                        ),
-                      S.listItem()
-                        .title("Artikler")
-                        .icon(() => <FileContent />)
-                        .child(
-                          S.documentList()
-                            .title("Artikler")
-                            .filter(
-                              '_type in ["ds_article_page", "ds_tabbed_article_page"]'
-                            )
-                        ),
+
                       S.listItem()
                         .title("Publiserte sider ikke i navigasjon")
                         .child(
@@ -145,6 +96,56 @@ export default () =>
                     .schemaType("ds_frontpage")
                     .documentId("frontpage_designsystem")
                 ), */
+              S.listItem()
+                .title("Komponent artikler")
+                .icon(() => <Facilitet />)
+                .child(
+                  S.list()
+                    .title("Komponentsider")
+                    .items([
+                      S.listItem()
+                        .title("Publisert")
+                        .icon(() => <FileContent />)
+                        .child(
+                          S.documentList()
+                            .title("Publiserte komponentsider")
+                            .filter(
+                              `_type in ["ds_component_page"] && !(_id in path('drafts.**'))`
+                            )
+                        ),
+                      S.listItem()
+                        .title("Under arbeid")
+                        .icon(() => <Edit />)
+                        .child(
+                          S.documentList()
+                            .title("U-publiserte komponentsider")
+                            .filter(
+                              `_type == "ds_component_page" && _id in path("drafts.**") &&
+                            (
+                           (_id in path("drafts.**")) &&
+                           (count(*[
+                             _type == "ds_component_page" && !(_id in path("drafts.**"))
+                             && (slug.current == ^.slug.current)
+                           ]) == 0)
+                         )`
+                            )
+                        ),
+                      S.listItem()
+                        .title("Alle komponentsider")
+                        .icon(() => <FileContent />)
+                        .child(S.documentTypeList("ds_component_page")),
+                    ])
+                ),
+              S.listItem()
+                .title("Artikler")
+                .icon(() => <FileContent />)
+                .child(
+                  S.documentList()
+                    .title("Artikler")
+                    .filter(
+                      '_type in ["ds_article_page", "ds_tabbed_article_page"]'
+                    )
+                ),
               S.listItem()
                 .title("Navigasjon")
                 .icon(() => <Place />)
