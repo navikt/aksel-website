@@ -208,10 +208,11 @@ const ComponentPageTemplate = ({
         title={data.heading}
         tabs={[
           ...Object.entries(tabs)
-            .map(([key, value], i) =>
-              data[value]
+            .map(([key, value], i) => {
+              const [first, ...rest] = key;
+              return data[value]
                 ? {
-                    name: key,
+                    name: first.toUpperCase() + rest.join(""),
                     path: `${basePath}${key === "bruk" ? "" : "/" + key}`,
                     active:
                       activeTab === i
@@ -219,8 +220,8 @@ const ComponentPageTemplate = ({
                         : `${basePath}${key === "bruk" ? "" : "/" + key}` ===
                           new URL(asPath, "http://example.com").pathname,
                   }
-                : null
-            )
+                : null;
+            })
             .filter((x) => !!x),
         ]}
       />
