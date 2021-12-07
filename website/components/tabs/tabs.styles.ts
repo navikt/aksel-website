@@ -67,7 +67,7 @@ export const Ul = styled.ul<{ isTablet: boolean }>`
   padding: 0;
   margin: 0;
   display: flex;
-  align-items: center;
+  align-items: end;
   /* overflow-x: auto; */
   max-width: ${(props) => (props.isTablet ? "" : "600px")};
   margin-top: 0.5rem;
@@ -98,6 +98,9 @@ export const A = styled.a`
   padding: 0.5rem 1rem;
   min-height: 48px;
   font-weight: 400;
+
+  overflow: hidden;
+  white-space: nowrap;
 
   &[aria-selected="true"] {
     border-color: var(--navds-semantic-color-canvas-background-inverted);
