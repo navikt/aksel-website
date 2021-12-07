@@ -223,6 +223,7 @@ const IconSearch = () => {
                   <ScIcon
                     key={i.created_at}
                     onClick={() => handleSelect(i.name)}
+                    className="vk-icon_button"
                   >
                     {isNew(i.created_at) && <ScNew>Ny!</ScNew>}
                     <ScIconInner>
