@@ -103,7 +103,7 @@ const serializers = {
           );
         case "heading4":
           return (
-            <ScHeading spacing level="4" size="medium">
+            <ScHeading spacing level="4" size="small">
               {children}
             </ScHeading>
           );
