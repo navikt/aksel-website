@@ -89,7 +89,6 @@ export const A = styled.a`
   background: none;
   cursor: pointer;
   text-decoration: none;
-  text-transform: capitalize;
   color: var(--navds-global-color-gray-800);
   flex: 1 1;
   display: flex;
