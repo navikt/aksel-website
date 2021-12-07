@@ -25,7 +25,7 @@ export const ScCode = styled.code`
   background-color: var(--navds-global-color-deepblue-50);
   border-radius: 6px;
   font-size: 1rem;
-  padding: 0.25rem;
+  padding: 2px 0.5rem;
 `;
 
 const ScUl = styled.ul`
