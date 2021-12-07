@@ -101,7 +101,7 @@ export const A = styled.a`
   overflow: hidden;
   white-space: nowrap;
 
-  &[aria-selected="true"] {
+  &[data-selected="true"] {
     border-color: var(--navds-semantic-color-canvas-background-inverted);
     color: var(--navds-semantic-color-text-default);
     font-weight: 600;

@@ -117,7 +117,7 @@ export const Tabs = ({
                 passHref
                 shallow
               >
-                <S.A ref={tab.ref} aria-selected={tab.active}>
+                <S.A ref={tab.ref} data-selected={tab.active}>
                   {tab.name}
                 </S.A>
               </Link>
