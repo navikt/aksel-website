@@ -1,5 +1,13 @@
 import { Error, Success } from "@navikt/ds-icons";
-import { BodyLong, BodyShort, Label, Link, Table, Tag } from "@navikt/ds-react";
+import {
+  BodyLong,
+  BodyShort,
+  Label,
+  Link,
+  Table,
+  Tag,
+  useId,
+} from "@navikt/ds-react";
 import React from "react";
 import ReactTooltip from "react-tooltip";
 import styled from "styled-components";
@@ -115,6 +123,7 @@ const DesignCell = ({ comp }: { comp: any }) => {
 
 // TODO: Replace react-tooltip with ds-react tooltip when possible
 const CodeCell = ({ comp }: { comp: any }) => {
+  const id = useId();
   return (
     <>
       <SuccessIcon />
@@ -123,14 +132,14 @@ const CodeCell = ({ comp }: { comp: any }) => {
           <ScCenterBodyShort
             tabIndex={0}
             data-tip=""
-            data-for="tooltip-sync"
+            data-for={`tooltip-sync-${id}`}
             size="small"
             aria-label="Kodet komponent er ikke i synk med design i Figma"
           >
             <FigmaIconNoSync />
           </ScCenterBodyShort>
           <ReactTooltip
-            id="tooltip-sync"
+            id={`tooltip-sync-${id}`}
             place="top"
             type="dark"
             effect="solid"
@@ -152,6 +161,8 @@ const ComponentOverview = ({
     return null;
   }
 
+  const id = useId();
+
   const TableRow = ({ comp }: { comp: any }) => {
     return (
       <Table.Row>
@@ -170,7 +181,7 @@ const ComponentOverview = ({
                 <ScFocusSpan
                   tabIndex={0}
                   data-tip=""
-                  data-for={comp.linked_package?.title}
+                  data-for={`${comp.linked_package?.title}-${id}`}
                 >
                   {comp.linked_package?.scope}
                   <span className="navds-sr-only">
@@ -179,7 +190,7 @@ const ComponentOverview = ({
                 </ScFocusSpan>
               </ScBodyShortMuted>
               <ReactTooltip
-                id={comp.linked_package?.title}
+                id={`${comp.linked_package?.title}-${id}`}
                 place="top"
                 type="dark"
                 effect="solid"
