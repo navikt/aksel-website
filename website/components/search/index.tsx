@@ -106,7 +106,7 @@ const ScSearchIcon = styled.div`
   width: 48px;
   height: 48px;
   background-color: transparent;
-  left: 0;
+  left: 7px;
   position: absolute;
   z-index: 1011;
 `;

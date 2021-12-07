@@ -63,6 +63,8 @@ export const ds_header_heading = {
       title: "Meny for denne headingen",
       name: "menu",
       type: "array",
+      validation: (Rule) =>
+        Rule.required().error("Sidemeny må ha misnt en lenke"),
       of: [
         {
           title: "Menypunkt",

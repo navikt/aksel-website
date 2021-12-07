@@ -19,7 +19,7 @@ export const Links = styled.div`
 `;
 
 export const Link = styled(DsHeader.Title)<{ $active: boolean }>`
-  padding: 0 var(--navds-spacing-2);
+  padding: 0 var(--navds-spacing-4);
   white-space: nowrap;
   border-right: none;
   min-width: var(--header-height);
@@ -27,6 +27,10 @@ export const Link = styled(DsHeader.Title)<{ $active: boolean }>`
   align-items: center;
   padding-top: 4px;
   cursor: pointer;
+
+  @media (max-width: 1124px) {
+    padding: 0 var(--navds-spacing-2);
+  }
 
   :focus {
     box-shadow: inset 0 0 0 1px
