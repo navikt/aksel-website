@@ -26,11 +26,15 @@ const LayoutProvider = ({
 
   useIsomorphicLayoutEffect(() => {
     setActiveHeading(
-      pageProps?.navigation?.headings.find((heading) =>
-        heading.menu.find(
-          (item) => item.link.slug.current === pageProps?.page?.slug
-        )
-      )
+      pageProps?.navigation?.headings.find((heading) => {
+        if (heading?.menu) {
+          return heading.menu.find(
+            (item) => item.link.slug.current === pageProps?.page?.slug
+          );
+        } else {
+          return heading.link_ref.slug.current === pageProps?.page?.slug;
+        }
+      })
     );
   }, [pageProps?.page]);
 

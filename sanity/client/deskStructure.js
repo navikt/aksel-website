@@ -52,31 +52,90 @@ export default () =>
                     return [];
                   }
 
-                  const allIds = doc.headings
-                    .map((heading) =>
-                      heading.menu
-                        .map((item) => item.link._ref)
-                        .map((x) => `"${x}"`)
-                        .join(",")
-                    )
-                    .join(",");
+                  let menuItems = [];
+                  let allIds = "";
+                  try {
+                    menuItems = doc.headings.map((heading) => {
+                      const ids = heading.menu.map((item) => item.link._ref);
+                      return S.listItem()
+                        .title(heading.title)
+                        .child(
+                          S.documentList()
+                            .title(heading.title)
+                            .filter(
+                              `_id in [${ids.map((x) => `"${x}"`).join(",")}]`
+                            )
+                        );
+                    });
+
+                    allIds = doc.headings
+                      .map((heading) =>
+                        heading.menu
+                          .map((item) => item.link._ref)
+                          .map((x) => `"${x}"`)
+                          .join(",")
+                      )
+                      .join(",");
+                  } catch (e) {
+                    console.log(e);
+                  }
 
                   return S.list()
                     .title("Hovedmeny")
                     .items([
-                      ...doc.headings.map((heading) => {
-                        const ids = heading.menu.map((item) => item.link._ref);
-                        return S.listItem()
-                          .title(heading.title)
-                          .child(
-                            S.documentList()
-                              .title(heading.title)
-                              .filter(
-                                `_id in [${ids.map((x) => `"${x}"`).join(",")}]`
-                              )
-                          );
-                      }),
-
+                      ...menuItems,
+                      menuItems && S.divider(),
+                      S.listItem()
+                        .title("Komponent artikler")
+                        .icon(() => <Facilitet />)
+                        .child(
+                          S.list()
+                            .title("Komponentsider")
+                            .items([
+                              S.listItem()
+                                .title("Publisert")
+                                .icon(() => <FileContent />)
+                                .child(
+                                  S.documentList()
+                                    .title("Publiserte komponentsider")
+                                    .filter(
+                                      `_type in ["ds_component_page"] && !(_id in path('drafts.**'))`
+                                    )
+                                ),
+                              S.listItem()
+                                .title("Under arbeid")
+                                .icon(() => <Edit />)
+                                .child(
+                                  S.documentList()
+                                    .title("U-publiserte komponentsider")
+                                    .filter(
+                                      `_type == "ds_component_page" && _id in path("drafts.**") &&
+                                  (
+                                 (_id in path("drafts.**")) &&
+                                 (count(*[
+                                   _type == "ds_component_page" && !(_id in path("drafts.**"))
+                                   && (slug.current == ^.slug.current)
+                                 ]) == 0)
+                               )`
+                                    )
+                                ),
+                              S.listItem()
+                                .title("Alle komponentsider")
+                                .icon(() => <FileContent />)
+                                .child(S.documentTypeList("ds_component_page")),
+                            ])
+                        ),
+                      S.listItem()
+                        .title("Artikler")
+                        .icon(() => <FileContent />)
+                        .child(
+                          S.documentList()
+                            .title("Artikler")
+                            .filter(
+                              '_type in ["ds_article_page", "ds_tabbed_article_page"]'
+                            )
+                        ),
+                      S.divider(),
                       S.listItem()
                         .title("Publiserte sider ikke i navigasjon")
                         .child(
@@ -97,56 +156,6 @@ export default () =>
                     .documentId("frontpage_designsystem")
                 ), */
               S.listItem()
-                .title("Komponent artikler")
-                .icon(() => <Facilitet />)
-                .child(
-                  S.list()
-                    .title("Komponentsider")
-                    .items([
-                      S.listItem()
-                        .title("Publisert")
-                        .icon(() => <FileContent />)
-                        .child(
-                          S.documentList()
-                            .title("Publiserte komponentsider")
-                            .filter(
-                              `_type in ["ds_component_page"] && !(_id in path('drafts.**'))`
-                            )
-                        ),
-                      S.listItem()
-                        .title("Under arbeid")
-                        .icon(() => <Edit />)
-                        .child(
-                          S.documentList()
-                            .title("U-publiserte komponentsider")
-                            .filter(
-                              `_type == "ds_component_page" && _id in path("drafts.**") &&
-                            (
-                           (_id in path("drafts.**")) &&
-                           (count(*[
-                             _type == "ds_component_page" && !(_id in path("drafts.**"))
-                             && (slug.current == ^.slug.current)
-                           ]) == 0)
-                         )`
-                            )
-                        ),
-                      S.listItem()
-                        .title("Alle komponentsider")
-                        .icon(() => <FileContent />)
-                        .child(S.documentTypeList("ds_component_page")),
-                    ])
-                ),
-              S.listItem()
-                .title("Artikler")
-                .icon(() => <FileContent />)
-                .child(
-                  S.documentList()
-                    .title("Artikler")
-                    .filter(
-                      '_type in ["ds_article_page", "ds_tabbed_article_page"]'
-                    )
-                ),
-              S.listItem()
                 .title("Navigasjon")
                 .icon(() => <Place />)
                 .child(
@@ -154,6 +163,7 @@ export default () =>
                     .schemaType("ds_navigation")
                     .documentId("ds_navigationid")
                 ),
+              S.divider(),
               S.listItem()
                 .title("Komponentoversikt")
                 .icon(() => <Findout />)

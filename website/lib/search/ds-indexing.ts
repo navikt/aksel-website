@@ -33,6 +33,10 @@ const getDesignsystemRecords = async () => {
     const menu: (DsComponentPage | DsArticlePage | DsTabbedArticlePage)[] =
       head.menu;
 
+    if (!menu) {
+      return;
+    }
+
     menu.forEach((page) => {
       switch (page._type) {
         case "ds_article_page":

@@ -62,7 +62,7 @@ const RelatedPagesLink = () => {
   }>({});
 
   useEffect(() => {
-    if (!context.activeHeading) return null;
+    if (!context.activeHeading || !context.activeHeading.menu) return null;
 
     const activeIndex = context.activeHeading.menu.findIndex(
       (x) => x.link.slug.current === pageProps?.page?.slug
