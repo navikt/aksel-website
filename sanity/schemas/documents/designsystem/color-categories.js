@@ -78,5 +78,12 @@ export const Color = {
       readOnly: true,
       validation: (Rule) => Rule.required(),
     },
+    {
+      name: "color_index",
+      title: "Fargeindeks",
+      type: "number",
+      description:
+        "Brukes for å endre rekkefølgen på listen. Farger med indeks 0 vil være først, større tall sorteres under der igjen",
+    },
   ],
 };

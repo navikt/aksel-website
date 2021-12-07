@@ -174,30 +174,30 @@ const updateColors = async () => {
   const transactionClient = noCdnClient(token).transaction();
 
   for (const key of colorMap.keys()) {
-    const localColor = colorMap.get(key);
+    const localCategory = colorMap.get(key);
 
     // fetch the remote color if it exists
-    const remoteColor = remoteColors.find(
-      (c) => c._id.replace("_autogen_color", "") === key
+    const remoteCategory = remoteColors.find(
+      (c) => c._id.replace("_autogen_color_example", "") === key
     );
 
     // these'll be undefined if the color doesn't exist and that's fine,
     // but we'll reuse the description from remote if it exists!
-    const description = remoteColor?.description;
+    const description = remoteCategory?.description;
 
-    const colorList = localColor.map((c) => {
-      const remoteRoles = remoteColor?.colors.find(
-        (f) => c._id == f._id
-      ).color_roles;
-      // we'll shape our final color list with the color_role from remote,
+    const colorList = localCategory.map((c) => {
+      const remoteColor = remoteCategory?.colors.find((f) => c._id === f._id);
+      // we'll shape our final color list with some values from remote,
       // as to not overwrite it!
       return {
-        color_roles: remoteRoles,
+        color_roles: remoteColor?.color_roles,
+        color_index: remoteColor?.color_index,
         ...c,
       };
     });
 
     // sort so that we'll get gray-50 before gray-100, etc.
+    // possibly unnecessary with color_index being used to sort on the frontend. :shrug:
     colorList.sort((a, b) =>
       a.title.localeCompare(b.title, undefined, {
         numeric: true,
