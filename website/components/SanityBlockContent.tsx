@@ -72,7 +72,7 @@ const serializers = {
     block: ({ node, children }) => {
       const context: BlockContextT = useContext(BlockContext);
       const style = node.style;
-
+      console.log(style);
       switch (style) {
         case "normal":
           return (
@@ -110,7 +110,11 @@ const serializers = {
         case "ingress":
           return <Ingress spacing>{children}</Ingress>;
         default:
-          return children;
+          return (
+            <BodyLong size={context.size} spacing>
+              {children}
+            </BodyLong>
+          );
       }
     },
   },
