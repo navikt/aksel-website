@@ -19,6 +19,9 @@ export default {
       name: "colors",
       title: "Farger",
       of: [{ type: "ds_color" }],
+      options: {
+        sortable: false,
+      },
     },
   ],
 };
