@@ -14,6 +14,7 @@ import {
 } from "@navikt/ds-icons";
 import { KBD } from "@sanity/ui";
 import { allDocumentTypes } from "../config";
+import iconDecorator from "./objects/icon-decorator";
 
 export const TitleRenderer = (props, size, level) => (
   <Heading size={size} level={level}>
@@ -163,6 +164,7 @@ export const block = {
           },
         ],
       },
+      iconDecorator,
     ],
   },
 };

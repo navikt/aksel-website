@@ -2,7 +2,14 @@ import { BodyShort, Detail, Link } from "@navikt/ds-react";
 import BlockContent from "@sanity/block-content-to-react";
 import NextjsLink from "next/link";
 import React from "react";
-import { ScKbd, ScCode } from "../SanityBlockContent";
+import styled from "styled-components";
+import { ScKbd, ScCode, DsIconAnnotation } from "../SanityBlockContent";
+
+const ScWrapper = styled.span`
+  svg {
+    margin-bottom: -3px;
+  }
+`;
 
 const serializers = {
   types: {
@@ -49,13 +56,14 @@ const serializers = {
         </NextjsLink>
       );
     },
+    ...DsIconAnnotation,
   },
 };
 
 export const TableBlockContent = ({ blocks }: { blocks: any }): JSX.Element => {
   return (
-    <>
+    <ScWrapper>
       <BlockContent blocks={blocks} serializers={serializers} />
-    </>
+    </ScWrapper>
   );
 };

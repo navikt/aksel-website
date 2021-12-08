@@ -15,12 +15,12 @@
     "update:colors": "npx ts-node --project tsconfig.tsnode.json ./lib/update-color-examples"
   },
   "dependencies": {
-    "@navikt/ds-css": "^0.11",
-    "@navikt/ds-css-internal": "^0.6",
-    "@navikt/ds-icons": "^0.6",
-    "@navikt/ds-react": "^0.13",
-    "@navikt/ds-react-internal": "^0.8",
-    "@navikt/ds-tokens": "^0.6",
+    "@navikt/ds-css": "^0.12",
+    "@navikt/ds-css-internal": "^0.7",
+    "@navikt/ds-icons": "^0.7",
+    "@navikt/ds-react": "^0.14",
+    "@navikt/ds-react-internal": "^0.9",
+    "@navikt/ds-tokens": "^0.7",
     "@popperjs/core": "^2.10.2",
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^2.19.0",

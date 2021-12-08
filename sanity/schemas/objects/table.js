@@ -54,7 +54,6 @@ export default {
       return { ...selection };
     },
     component: (selection) => {
-      console.log(selection);
       return (
         <Table>
           <Table.Body>

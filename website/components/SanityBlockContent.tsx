@@ -19,6 +19,8 @@ import {
   Table,
 } from ".";
 import ComponentOverview from "./component-overview";
+import * as Icons from "@navikt/ds-icons";
+import * as Tokens from "@navikt/ds-tokens/dist/tokens";
 
 export const ScCode = styled.code`
   color: var(--navds-global-color-deepblue-500);
@@ -55,6 +57,19 @@ export const ScKbd = styled.code`
 const ScHeading = styled(Heading)`
   margin-top: var(--navds-spacing-11);
 `;
+
+export const DsIconAnnotation = {
+  ds_icon: ({ mark }: { mark: { color?: string; name?: string } }) => {
+    if (!mark.name) {
+      return null;
+    }
+
+    const Ic = Icons?.[mark.name];
+    const tokenColor = mark.color ? Tokens[mark.color] : "currentColor";
+
+    return Ic ? <Ic color={tokenColor} aria-hidden /> : null;
+  },
+};
 
 const serializers = {
   types: {
@@ -126,7 +141,6 @@ const serializers = {
     },
   },
   list: (props: any) => {
-    console.log(props);
     if (props?.type == "number") {
       return <ScOl type="1">{props.children}</ScOl>;
     }
@@ -159,6 +173,7 @@ const serializers = {
         </NextjsLink>
       );
     },
+    ...DsIconAnnotation,
   },
 };
 
