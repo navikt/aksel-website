@@ -92,6 +92,32 @@ export const ds_header_heading = {
             },
           ],
         },
+        {
+          title: "Subheading",
+          name: "subheading",
+          type: "object",
+          fields: [
+            {
+              title: "Subheading",
+              name: "title",
+              type: "string",
+              validation: (Rule) =>
+                Rule.required().error("Subheading må være fylt ut"),
+            },
+          ],
+          preview: {
+            select: {
+              title: "title",
+            },
+            prepare(selection) {
+              const { title } = selection;
+              return {
+                title: title,
+                subtitle: "Subheading",
+              };
+            },
+          },
+        },
       ],
     },
   ],
