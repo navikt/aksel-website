@@ -56,7 +56,9 @@ export default () =>
                   let allIds = "";
                   try {
                     menuItems = doc.headings.map((heading) => {
-                      const ids = heading.menu.map((item) => item.link._ref);
+                      const ids = heading.menu
+                        .filter((item) => item._type === "item")
+                        .map((item) => item.link._ref);
                       return S.listItem()
                         .title(heading.title)
                         .child(
@@ -71,6 +73,7 @@ export default () =>
                     allIds = doc.headings
                       .map((heading) =>
                         heading.menu
+                          .filter((item) => item._type === "item")
                           .map((item) => item.link._ref)
                           .map((x) => `"${x}"`)
                           .join(",")
@@ -134,7 +137,6 @@ export default () =>
                             )
                         ),
                       S.divider(),
-                      /* ...menuItems, */
                       S.listItem()
                         .title("Visning av sider i navigasjon")
                         .child(
