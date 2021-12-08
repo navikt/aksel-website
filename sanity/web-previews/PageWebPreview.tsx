@@ -9,7 +9,7 @@ export const PageWebPreview = (ctx: any) => {
   }
   /* const webUrl = "https://verktoykasse-prototype.dev.nav.no"; */
   const webUrl = "https://verktoykassen.vercel.app";
-  const previewUrl = `/preview/?slug=${slug}`;
+  const previewUrl = `/preview/${slug}`;
   const url =
     process.env.NODE_ENV === "production"
       ? webUrl + previewUrl
