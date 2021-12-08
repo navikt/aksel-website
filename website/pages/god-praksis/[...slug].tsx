@@ -74,7 +74,7 @@ export const getStaticPaths = async (): Promise<{
     page.slug &&
       paths.push({
         params: {
-          slug: page.slug.split("/"),
+          slug: page.slug.split("/").filter((x) => x !== "god-praksis"),
         },
       });
   });
@@ -100,10 +100,7 @@ export const getStaticProps = async ({
 }: {
   params: { slug: string[] };
 }): Promise<StaticProps> => {
-  const joinedSlug = slug
-    .filter((x) => x !== "god-praksis")
-    .slice(0, 2)
-    .join("/");
+  const joinedSlug = slug.slice(0, 2).join("/");
 
   const client = getClient(false);
 
