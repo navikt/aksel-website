@@ -138,9 +138,9 @@ export default () =>
                       S.listItem()
                         .title("Visning av sider i navigasjon")
                         .child(
-                          S.listItem()
+                          S.list()
                             .title("Visning av sider i navigasjon")
-                            .child(...menuItems)
+                            .items(menuItems)
                         ),
                       S.listItem()
                         .title("Publiserte sider ikke i navigasjon")
