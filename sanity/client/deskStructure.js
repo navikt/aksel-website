@@ -1,7 +1,6 @@
 // deskStructure.js
 import React from "react";
 import S from "@sanity/desk-tool/structure-builder";
-/* import { FrontpageWebPreview } from "./web-previews/FrontpageWebPreview"; */
 import { PageWebPreview } from "../web-previews/PageWebPreview";
 import { ComponentPageWebPreview } from "../web-previews/ComponentWebPreview";
 import {
