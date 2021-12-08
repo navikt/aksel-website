@@ -1,4 +1,4 @@
-import { BodyShort } from "@navikt/ds-react";
+import { BodyShort, Detail } from "@navikt/ds-react";
 import NextLink from "next/link";
 import React, { createContext, useContext, useState } from "react";
 import { useIsomorphicLayoutEffect } from "react-use";
@@ -14,6 +14,12 @@ const ScNav = styled.nav`
     list-style: none;
     margin: 0;
     padding: 0;
+
+    li:first-child > p {
+      margin-top: 0;
+      border-top: 0px;
+      padding-top: calc(0.75rem + 2px);
+    }
   }
 
   &[data-incategory="true"] {
@@ -51,6 +57,14 @@ const ScLink = styled.a<{ active?: boolean }>`
   }
 `;
 
+const ScDetail = styled(Detail)`
+  text-transform: uppercase;
+  padding: calc(0.75rem + 2px + 32px) 1rem calc(0.75rem + 2px) 2rem;
+  margin-top: 32px;
+  color: var(--navds-semantic-color-text);
+  border-top: 1px solid var(--navds-semantic-color-divider);
+`;
+
 export const MenuContext = createContext(null);
 
 const Menu = ({
@@ -78,24 +92,33 @@ const Menu = ({
   return (
     <ScNav aria-label={heading.title} data-incategory={inCategory}>
       <BodyShort as="ul">
-        {sidebarMenu.map((item) => (
-          <li key={item.title}>
-            <NextLink href={`/${item.link.slug.current}`} passHref>
-              <ScLink
-                onClick={() => {
-                  onClick && onClick();
-                }}
-                active={
-                  pageProps?.page
-                    ? pageProps.page.slug === item.link.slug.current
-                    : false
-                }
-              >
-                {item.title}
-              </ScLink>
-            </NextLink>
-          </li>
-        ))}
+        {sidebarMenu.map((item) => {
+          if (item._type === "subheading") {
+            return (
+              <li key={item.title}>
+                <ScDetail size="small">{item.title}</ScDetail>
+              </li>
+            );
+          }
+          return (
+            <li key={item.title}>
+              <NextLink href={`/${item.link.slug.current}`} passHref>
+                <ScLink
+                  onClick={() => {
+                    onClick && onClick();
+                  }}
+                  active={
+                    pageProps?.page
+                      ? pageProps.page.slug === item.link.slug.current
+                      : false
+                  }
+                >
+                  {item.title}
+                </ScLink>
+              </NextLink>
+            </li>
+          );
+        })}
       </BodyShort>
     </ScNav>
   );

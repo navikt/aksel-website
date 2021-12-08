@@ -1,5 +1,6 @@
 export type DsNavigationHeadingMenuT = {
   title: string;
+  _type: "subheading" | "item";
   link: { _id: string; slug: { current: string }; tags?: string[] };
 };
 

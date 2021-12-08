@@ -1023,24 +1023,33 @@ export type DsNavigationHeading = {
    *
    */
   menu?: Array<
-    SanityKeyed<{
-      _type: "item";
-      /**
-       * Menypunkt tittel — `string`
-       *
-       *
-       */
-      title?: string;
+    | SanityKeyed<{
+        _type: "item";
+        /**
+         * Menypunkt tittel — `string`
+         *
+         *
+         */
+        title?: string;
 
-      /**
-       * Link til side — `reference`
-       *
-       *
-       */
-      link?: SanityReference<
-        DsComponentPage | DsArticlePage | DsTabbedArticlePage
-      >;
-    }>
+        /**
+         * Link til side — `reference`
+         *
+         *
+         */
+        link?: SanityReference<
+          DsComponentPage | DsArticlePage | DsTabbedArticlePage
+        >;
+      }>
+    | SanityKeyed<{
+        _type: "subheading";
+        /**
+         * Subheading — `string`
+         *
+         *
+         */
+        title?: string;
+      }>
   >;
 };
 

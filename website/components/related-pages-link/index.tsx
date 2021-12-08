@@ -64,20 +64,24 @@ const RelatedPagesLink = () => {
   useEffect(() => {
     if (!context.activeHeading || !context.activeHeading.menu) return null;
 
-    const activeIndex = context.activeHeading.menu.findIndex(
-      (x) => x.link.slug.current === pageProps?.page?.slug
-    );
+    const activeIndex = context.activeHeading.menu
+      .filter((x) => x._type !== "subheading")
+      .findIndex((x) => x.link.slug.current === pageProps?.page?.slug);
     if (activeIndex === -1) return null;
 
     const pages = {
       prev:
         activeIndex === 0
           ? undefined
-          : context.activeHeading.menu[activeIndex - 1],
+          : context.activeHeading.menu.filter((x) => x._type !== "subheading")[
+              activeIndex - 1
+            ],
       next:
         activeIndex === context.activeHeading.menu.length - 1
           ? undefined
-          : context.activeHeading.menu[activeIndex + 1],
+          : context.activeHeading.menu.filter((x) => x._type !== "subheading")[
+              activeIndex + 1
+            ],
     };
     setLinks(pages);
   }, [pageProps, context.activeHeading]);

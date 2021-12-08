@@ -37,33 +37,35 @@ const getDesignsystemRecords = async () => {
       return;
     }
 
-    menu.forEach((page) => {
-      switch (page._type) {
-        case "ds_article_page":
-          records.push({
-            objectID: `${page._id}`,
-            category,
-            title: page.heading,
-            page: "artikkel",
-            tags: page?.metadata_search?.tags ?? [],
-            high_priority: !!page?.metadata_search?.high_priority,
-            path: page.slug.current,
-            content: `${
-              (verifyIngress(page?.ingress) && flattenBlocks(page.ingress)) ??
-              ""
-            } ${flattenBlocks(page.body)}`,
-          });
-          break;
-        case "ds_tabbed_article_page":
-          records.push(...tabbedRecords(page, category));
-          break;
-        case "ds_component_page":
-          records.push(...componentRecords(page, category));
-          break;
-        default:
-          break;
-      }
-    });
+    menu
+      .filter((x) => Object.keys(x).length > 0)
+      .forEach((page) => {
+        switch (page._type) {
+          case "ds_article_page":
+            records.push({
+              objectID: `${page._id}`,
+              category,
+              title: page.heading,
+              page: "artikkel",
+              tags: page?.metadata_search?.tags ?? [],
+              high_priority: !!page?.metadata_search?.high_priority,
+              path: page.slug.current,
+              content: `${
+                (verifyIngress(page?.ingress) && flattenBlocks(page.ingress)) ??
+                ""
+              } ${flattenBlocks(page.body)}`,
+            });
+            break;
+          case "ds_tabbed_article_page":
+            records.push(...tabbedRecords(page, category));
+            break;
+          case "ds_component_page":
+            records.push(...componentRecords(page, category));
+            break;
+          default:
+            break;
+        }
+      });
   });
 
   return records;
