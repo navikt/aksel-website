@@ -28,6 +28,12 @@ export const ScCode = styled.code`
   padding: 2px 0.5rem;
 `;
 
+const ScOl = styled.ol`
+  > li {
+    max-width: calc(var(--text-max-width) - 1em);
+  }
+`;
+
 const ScUl = styled.ul`
   > li {
     max-width: calc(var(--text-max-width) - 1em);
@@ -120,6 +126,10 @@ const serializers = {
     },
   },
   list: (props: any) => {
+    console.log(props);
+    if (props?.type == "number") {
+      return <ScOl type="1">{props.children}</ScOl>;
+    }
     return <ScUl>{props.children}</ScUl>;
   },
   marks: {
