@@ -106,16 +106,16 @@ const Menu = ({
   return (
     <ScNav aria-label={heading.title} data-incategory={inCategory}>
       <BodyShort as="ul">
-        {sidebarMenu.map((item) => {
+        {sidebarMenu.map((item, x) => {
           if (item._type === "subheading") {
             return (
-              <li key={item.title}>
+              <li key={item.title + x}>
                 <ScDetail size="small">{item.title}</ScDetail>
               </li>
             );
           }
           return (
-            <li key={item.title}>
+            <li key={item.title + x}>
               <NextLink href={`/${item.link.slug.current}`} passHref>
                 <ScLink
                   onClick={() => {
