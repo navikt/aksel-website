@@ -17,8 +17,11 @@ const ScNav = styled.nav`
 
     li:first-child > p {
       margin-top: 0;
-      border-top: 0px;
       padding-top: calc(0.75rem + 2px);
+
+      ::before {
+        background-color: transparent;
+      }
     }
   }
 
@@ -62,7 +65,18 @@ const ScDetail = styled(Detail)`
   padding: calc(0.75rem + 2px + 24px) 1rem calc(0.75rem + 2px) 2rem;
   margin-top: 24px;
   color: var(--navds-semantic-color-text);
-  border-top: 1px solid var(--navds-semantic-color-divider);
+  position: relative;
+
+  ::before {
+    content: "";
+    top: 0;
+    left: auto;
+    right: auto;
+    position: absolute;
+    background-color: var(--navds-semantic-color-divider);
+    width: 75%;
+    height: 1px;
+  }
 `;
 
 export const MenuContext = createContext(null);
