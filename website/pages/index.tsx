@@ -155,9 +155,18 @@ const Page = () => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps = async ({
+  preview = false,
+}: {
+  preview?: boolean;
+}) => {
   return {
-    props: { slug: "/", validPath: true, isDraft: false, noLayout: true },
+    props: {
+      slug: "/",
+      validPath: true,
+      isDraft: false,
+      preview,
+    },
     revalidate: 10,
   };
 };

@@ -1,25 +1,9 @@
-import { Loader } from "@navikt/ds-react";
 import Error from "next/error";
 import Head from "next/head";
 import React, { createContext, useEffect, useState } from "react";
-import styled from "styled-components";
 import { AmplitudeProvider, useScrollToHashOnPageLoad } from "../components";
 import LayoutProvider from "../components/layout/LayoutProvider";
 import "../styles/index.css";
-
-const ScLoader = styled.div`
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: var(--navds-semantic-color-canvas-background-light);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-`;
 
 type PagePropsContextT = {
   pageProps: any;
@@ -51,7 +35,7 @@ function App({
 
   if (
     !pageProps?.slug ||
-    (!pageProps.validPath && pageProps.isDraft && !router.query.preview) ||
+    (!pageProps.validPath && pageProps.isDraft && !pageProps.preview) ||
     (!pageProps.validPath && !pageProps.isDraft)
   ) {
     return <Error statusCode={404} />;
@@ -73,15 +57,6 @@ function App({
             {getLayout(
               <>
                 <Component {...pageProps} />
-                {router.query.preview && !pageData.page && (
-                  <ScLoader>
-                    <Loader
-                      title="Laster inn innhold for preview"
-                      size="2xlarge"
-                    />
-                    Laster inn innhold for preview...
-                  </ScLoader>
-                )}
               </>
             )}
           </LayoutProvider>

@@ -87,7 +87,7 @@ export const changelogQuery = `*[_type == "ds_changelog"]{
 
 export const gpDocuments = `*[_type in ["gp_article_page"]]{ _type, 'slug': slug.current }`;
 
-export const gpDocumentBySlug = `*[slug.current == $slug][0]
+export const gpDocumentBySlug = `*[slug.current == $slug]
 {
   ...,
   "slug": slug.current,
@@ -102,9 +102,8 @@ export const gpDocumentBySlug = `*[slug.current == $slug][0]
 }`;
 
 export const dsDocuments = `*[_type in ["ds_component_page", "ds_article_page", "ds_tabbed_article_page"]]{ _type, 'slug': slug.current, tabs[]{title} }`;
-export const isDraftQuery = `*[slug.current == $slug && !(_id in path("drafts.**"))]`;
 
-export const dsDocumentBySlug = `*[slug.current == $slug][0]
+export const dsDocumentBySlug = `*[slug.current == $slug]
 {
   ...,
   "slug": slug.current,

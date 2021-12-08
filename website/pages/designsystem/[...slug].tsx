@@ -1,5 +1,5 @@
-import { useRouter } from "next/router";
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
+import * as Sc from "../../components";
 import { Feedback, LayoutPicker, PreviewBanner } from "../../components";
 import DesignsystemFooter from "../../components/layout/footer/DesignsystemFooter";
 import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
@@ -7,11 +7,9 @@ import DesignsystemSidebar from "../../components/layout/sidebar/DesignsystemSid
 import {
   changelogQuery,
   dsDocumentBySlug,
-  isDraftQuery,
   dsNavigationQuery,
   getClient,
   getDsPaths,
-  usePreviewSubscription,
 } from "../../lib";
 import {
   DsArticlePage,
@@ -20,59 +18,25 @@ import {
   DsNavigation,
   DsTabbedArticlePage,
 } from "../../lib/autogen-types";
-import { PagePropsContext } from "../_app";
-import * as Sc from "../../components";
 
 const Page = (props: {
   slug?: string;
   page: DsComponentPage | DsTabbedArticlePage | DsArticlePage;
   navigation: DsNavigation;
   changelogs?: DsChangelog[];
+  preview: boolean;
 }): JSX.Element => {
-  const router = useRouter();
-
-  const { pageProps, setPageData } = useContext(PagePropsContext);
-
-  const [isPreview, setIsPreview] = useState(false);
-
-  const { data } = usePreviewSubscription(dsDocumentBySlug, {
-    params: { slug: "designsystem/" + props.slug },
-    initialData: props.page,
-    enabled: isPreview,
-  });
-
-  useEffect(() => {
-    props.navigation &&
-      setPageData({ ...props, ...pageProps, navigation: props.navigation });
-  }, [props.navigation]);
-
-  useEffect(() => {
-    data &&
-      setPageData({
-        ...props,
-        ...pageProps,
-        page: data,
-      });
-  }, [data]);
-
-  useEffect(() => {
-    setIsPreview(!!router.query.preview);
-  }, [router.query]);
-
   return (
     <>
-      {isPreview && <PreviewBanner />}
+      {props.preview && <PreviewBanner />}
       <>
         <LayoutPicker
           title="Designsystemet"
-          data={data}
+          data={props.page}
           changelogs={props.changelogs}
         />
         <Sc.Grow />
-        <Feedback
-          docId={pageProps?.page?._id}
-          docType={pageProps?.page?._type}
-        />
+        <Feedback docId={props.page?._id} docType={props.page?._type} />
         {/* {LayoutParts[pageType]?.title === "Designsystemet" && (
               <RelatedPagesLink />
             )} */}
@@ -127,21 +91,28 @@ interface StaticProps {
     navigation: DsNavigation;
     isDraft: boolean;
     validPath: boolean;
+    preview: boolean;
   };
   revalidate: number;
 }
 
 export const getStaticProps = async ({
   params: { slug },
+  preview = false,
 }: {
   params: { slug: string[] };
+  preview?: boolean;
 }): Promise<StaticProps | { notFound: true }> => {
   const joinedSlug = slug.slice(0, 2).join("/");
 
-  const client = getClient(false);
-  const page = await client.fetch(dsDocumentBySlug, {
+  const client = getClient(true);
+  let page = await client.fetch(dsDocumentBySlug, {
     slug: "designsystem/" + joinedSlug,
   });
+
+  const isDraft = page.filter((item) => !item._id.startsWith("drafts.")).length;
+
+  page = page.find((item) => item._id.startsWith(`drafts.`)) || page[0];
 
   const changelogs =
     page?._type === "ds_component_page"
@@ -149,10 +120,6 @@ export const getStaticProps = async ({
       : null;
 
   const navigation = await client.fetch(dsNavigationQuery);
-
-  const isDraft = await client.fetch(isDraftQuery, {
-    slug: "designsystem/" + joinedSlug,
-  });
 
   const validPath = await getDsPaths().then((paths) =>
     paths
@@ -166,8 +133,9 @@ export const getStaticProps = async ({
       slug: joinedSlug,
       navigation,
       changelogs,
-      isDraft: isDraft.length === 0,
+      isDraft: isDraft === 0,
       validPath,
+      preview,
     },
     revalidate: 10,
   };
