@@ -59,8 +59,8 @@ const ScLink = styled.a<{ active?: boolean }>`
 
 const ScDetail = styled(Detail)`
   text-transform: uppercase;
-  padding: calc(0.75rem + 2px + 32px) 1rem calc(0.75rem + 2px) 2rem;
-  margin-top: 32px;
+  padding: calc(0.75rem + 2px + 24px) 1rem calc(0.75rem + 2px) 2rem;
+  margin-top: 24px;
   color: var(--navds-semantic-color-text);
   border-top: 1px solid var(--navds-semantic-color-divider);
 `;

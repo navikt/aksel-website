@@ -1,7 +1,5 @@
 import React, { createContext, useContext, useEffect } from "react";
-
-const amplitude =
-  typeof window !== "undefined" ? require("amplitude-js") : () => null;
+import amplitude from "amplitude-js";
 
 const initAmplitude = () => {
   if (amplitude) {
