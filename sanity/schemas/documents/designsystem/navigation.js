@@ -1,6 +1,3 @@
-import React from "react";
-const config = require("../../../config");
-
 export default {
   name: "ds_navigation",
   title: "Navigation",
