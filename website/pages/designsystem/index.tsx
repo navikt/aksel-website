@@ -17,7 +17,7 @@ const ScCard = styled.a`
   height: 22rem;
   max-width: 18rem;
   text-decoration: none;
-  color: var(--navds-semantic-color-text-default);
+  color: var(--navds-semantic-color-text);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -30,7 +30,7 @@ const ScCard = styled.a`
 
   :hover {
     box-shadow: none;
-    background-color: var(--navds-semantic-color-canvas-background-default);
+    background-color: var(--navds-semantic-color-canvas-background);
   }
 
   :focus {
@@ -78,7 +78,7 @@ const ScTitle = styled.div`
     padding: 3rem 1rem;
   }
 
-  background-color: var(--navds-semantic-color-canvas-background-default);
+  background-color: var(--navds-semantic-color-canvas-background);
   height: 240px;
   width: 100%;
   flex: 1 1 500px;

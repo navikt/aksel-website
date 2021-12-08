@@ -63,7 +63,7 @@ const ScRightColumn = styled.div`
 
     :focus {
       background-color: var(--navds-global-color-blue-200);
-      color: var(--navds-semantic-color-text-default);
+      color: var(--navds-semantic-color-text);
       box-shadow: 0 0 0 2px var(--navds-global-color-blue-200);
     }
   }
@@ -73,12 +73,8 @@ const ScPrimaryButton = styled(Button)`
   --navds-button-color-secondary-text: var(
     --navds-semantic-color-text-inverted
   );
-  --navds-button-color-secondary-text-hover: var(
-    --navds-semantic-color-text-default
-  );
-  --navds-button-color-secondary-text-active: var(
-    --navds-semantic-color-text-default
-  );
+  --navds-button-color-secondary-text-hover: var(--navds-semantic-color-text);
+  --navds-button-color-secondary-text-active: var(--navds-semantic-color-text);
   --navds-button-color-secondary-border: var(
     --navds-semantic-color-component-background-light
   );
@@ -92,7 +88,7 @@ const ScPrimaryButton = styled(Button)`
     --navds-semantic-color-component-background-light
   );
   --navds-button-color-secondary-background-active: var(
-    --navds-semantic-color-canvas-background-default
+    --navds-semantic-color-canvas-background
   );
 
   :focus {
@@ -110,8 +106,7 @@ const ScPrimaryButton = styled(Button)`
   }
 
   :active:focus {
-    box-shadow: inset 0 0 0 2px
-        var(--navds-semantic-color-canvas-background-default),
+    box-shadow: inset 0 0 0 2px var(--navds-semantic-color-canvas-background),
       0 0 0 1px var(--navds-semantic-color-component-background-inverted),
       0 0 0 3px var(--navds-global-color-blue-200);
   }

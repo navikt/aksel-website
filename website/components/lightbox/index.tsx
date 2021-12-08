@@ -41,7 +41,7 @@ const ScImage = styled.div`
   justify-content: center;
   top: 50%;
   transform: translateY(-50%);
-  background-color: var(--navds-semantic-color-canvas-background-default);
+  background-color: var(--navds-semantic-color-canvas-background);
   overflow-y: auto;
 
   > div {

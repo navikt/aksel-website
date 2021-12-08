@@ -103,12 +103,12 @@ export const A = styled.a`
 
   &[data-selected="true"] {
     border-color: var(--navds-semantic-color-canvas-background-inverted);
-    color: var(--navds-semantic-color-text-default);
+    color: var(--navds-semantic-color-text);
     font-weight: 600;
   }
 
   :hover {
-    color: var(--navds-semantic-color-text-default);
+    color: var(--navds-semantic-color-text);
     border-color: var(--navds-semantic-color-canvas-background-inverted);
   }
 

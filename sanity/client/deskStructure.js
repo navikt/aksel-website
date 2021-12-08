@@ -38,7 +38,7 @@ export default () =>
             .title("Designsystemet")
             .items([
               S.listItem()
-                .title("Hovedmeny")
+                .title("Innhold")
                 .child(async () => {
                   const doc = await client.fetch(
                     `*[_id == 'ds_navigationid'][0]{
@@ -63,9 +63,7 @@ export default () =>
                           S.documentList()
                             .title(heading.title)
                             .filter(
-                              `_type in ["ds_article_page", "ds_tabbed_article_page", "ds_component_page"] && _id in [${ids
-                                .map((x) => `"${x}"`)
-                                .join(",")}]`
+                              `_id in [${ids.map((x) => `"${x}"`).join(",")}]`
                             )
                         );
                     });
@@ -83,10 +81,8 @@ export default () =>
                   }
 
                   return S.list()
-                    .title("Hovedmeny")
+                    .title("Innhold")
                     .items([
-                      ...menuItems,
-                      menuItems && S.divider(),
                       S.listItem()
                         .title("Komponent artikler")
                         .icon(() => <Facilitet />)
@@ -138,6 +134,14 @@ export default () =>
                             )
                         ),
                       S.divider(),
+                      /* ...menuItems, */
+                      S.listItem()
+                        .title("Visning av sider i navigasjon")
+                        .child(
+                          S.listItem()
+                            .title("Visning av sider i navigasjon")
+                            .child(...menuItems)
+                        ),
                       S.listItem()
                         .title("Publiserte sider ikke i navigasjon")
                         .child(

@@ -35,14 +35,14 @@ const ScLink = styled.a<{ active?: boolean }>`
     `
     border-left: 6px solid var(--navds-semantic-color-canvas-background-inverted);
     padding-left: calc(2rem - 6px);
-    background-color: var(--navds-semantic-color-canvas-background-default);
-    color: var(--navds-semantic-color-text-default);
+    background-color: var(--navds-semantic-color-canvas-background);
+    color: var(--navds-semantic-color-text);
     font-weight: 600;
   `}
 
   :hover {
-    background-color: var(--navds-semantic-color-canvas-background-default);
-    color: var(--navds-semantic-color-text-default);
+    background-color: var(--navds-semantic-color-canvas-background);
+    color: var(--navds-semantic-color-text);
   }
 
   :focus {

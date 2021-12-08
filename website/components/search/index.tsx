@@ -83,7 +83,7 @@ const ScCloseButton = styled.button`
   width: 48px;
   height: 48px;
   border-radius: 0 4px 4px 0;
-  background-color: var(--navds-semantic-color-canvas-background-default);
+  background-color: var(--navds-semantic-color-canvas-background);
   z-index: -1;
 
   :hover {
@@ -140,7 +140,7 @@ const ScTextField = styled(TextField)`
     height: 48px;
     font-size: 1.25rem;
     padding: 0 1rem 0 3rem;
-    background-color: var(--navds-semantic-color-canvas-background-default);
+    background-color: var(--navds-semantic-color-canvas-background);
   }
 
   > input:hover {

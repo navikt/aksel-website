@@ -42,7 +42,7 @@ const ScIconCss = css`
 const ScIcon = styled.div`
   ${ScIconCss}
   background-color: var(--navds-semantic-color-canvas-background-light);
-  color: var(--navds-semantic-color-text-default);
+  color: var(--navds-semantic-color-text);
 `;
 
 const ScIconInverted = styled.div`

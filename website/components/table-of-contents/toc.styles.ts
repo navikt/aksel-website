@@ -66,7 +66,7 @@ export const Li = styled.li`
     overflow: hidden;
 
     text-overflow: ellipsis;
-    color: var(--navds-semantic-color-text-default);
+    color: var(--navds-semantic-color-text);
 
     :hover {
       text-decoration: underline;
@@ -76,7 +76,7 @@ export const Li = styled.li`
   &[data-active="true"] {
     a {
       font-weight: bold;
-      color: var(--navds-semantic-color-text-default);
+      color: var(--navds-semantic-color-text);
 
       :focus {
         color: var(--navds-semantic-color-text-inverted);

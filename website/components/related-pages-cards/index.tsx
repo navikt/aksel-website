@@ -24,7 +24,7 @@ const ScCard = styled.a`
   padding: var(--navds-spacing-6);
   box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
     0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
-  color: var(--navds-semantic-color-text-default);
+  color: var(--navds-semantic-color-text);
   text-decoration: none;
   border: 2px solid transparent;
   border-radius: 4px;

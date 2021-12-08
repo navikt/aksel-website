@@ -35,7 +35,7 @@ const ScLinks = styled.div`
 
   a {
     text-decoration: none;
-    color: var(--navds-semantic-color-text-default);
+    color: var(--navds-semantic-color-text);
     padding: calc(0.75rem + 2px) 0.25rem;
     transition: box-shadow 100ms;
     justify-content: center;

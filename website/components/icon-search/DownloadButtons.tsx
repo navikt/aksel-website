@@ -24,7 +24,7 @@ const ScContent = styled(Popover.Content)`
 
 const ScHeading = styled(Heading)`
   padding: 0.5rem 1rem;
-  border-bottom: 1px solid var(--navds-semantic-color-border-default);
+  border-bottom: 1px solid var(--navds-semantic-color-border);
 `;
 
 export const ScButton = styled.button`
@@ -35,7 +35,7 @@ export const ScButton = styled.button`
   padding: 0;
   justify-self: center;
   justify-content: center;
-  color: var(--navds-semantic-color-interaction-primary-default);
+  color: var(--navds-semantic-color-interaction-primary);
   padding: calc(0.75rem + 2px) 0.75rem;
   align-items: center;
 

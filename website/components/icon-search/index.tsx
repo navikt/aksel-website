@@ -50,7 +50,7 @@ const ScIcon = styled.button`
   }
 
   :hover {
-    background-color: var(--navds-semantic-color-canvas-background-default);
+    background-color: var(--navds-semantic-color-canvas-background);
     box-shadow: none;
 
     svg {

@@ -11,10 +11,10 @@ const ScHit = styled.a`
   padding: 0.75rem;
   padding-right: 0.5rem;
   text-decoration: none;
-  color: var(--navds-semantic-color-text-default);
+  color: var(--navds-semantic-color-text);
 
   :hover {
-    background-color: var(--navds-semantic-color-canvas-background-default);
+    background-color: var(--navds-semantic-color-canvas-background);
   }
 
   :focus {

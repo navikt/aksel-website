@@ -75,7 +75,7 @@ const ScListItem = styled.button<{ $active?: boolean }>`
   border: none;
   background: none;
   width: 100%;
-  color: var(--navds-semantic-color-text-default);
+  color: var(--navds-semantic-color-text);
   text-decoration: none;
 
   :first-child {
@@ -91,13 +91,13 @@ const ScListItem = styled.button<{ $active?: boolean }>`
     `
     border-left: 6px solid var(--navds-semantic-color-canvas-background-inverted);
     padding-left: calc(2rem - 6px);
-    background-color: var(--navds-semantic-color-canvas-background-default);
-    color: var(--navds-semantic-color-text-default);
+    background-color: var(--navds-semantic-color-canvas-background);
+    color: var(--navds-semantic-color-text);
     font-weight: 600;
   `}
 
   :hover {
-    background-color: var(--navds-semantic-color-canvas-background-default);
+    background-color: var(--navds-semantic-color-canvas-background);
   }
 
   :focus {
@@ -111,7 +111,7 @@ const ScTopDiv = styled.div`
 `;
 
 const ScTopButton = styled(Heading)`
-  color: var(--navds-semantic-color-text-default);
+  color: var(--navds-semantic-color-text);
   display: flex;
   align-items: center;
   padding: 1rem 0.5rem;
@@ -127,7 +127,7 @@ const ScTopButton = styled(Heading)`
 
   :hover {
     text-decoration: underline;
-    background-color: var(--navds-semantic-color-canvas-background-default);
+    background-color: var(--navds-semantic-color-canvas-background);
   }
 
   :focus {
@@ -151,9 +151,9 @@ const ScHamburgerButton = styled.button<{ $open: boolean }>`
   ${(props) =>
     props.$open &&
     `background-color: var(--navds-semantic-color-canvas-background-light);
-     color: var(--navds-semantic-color-text-default);
+     color: var(--navds-semantic-color-text);
      :hover {
-       background-color: var(--navds-semantic-color-canvas-background-default);
+       background-color: var(--navds-semantic-color-canvas-background);
      }
      :focus {
        box-shadow: inset 0 0 0 2px var(--navds-global-color-blue-200), inset 0 0 0 4px var(--navds-semantic-color-canvas-background-inverted);

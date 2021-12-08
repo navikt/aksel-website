@@ -38,7 +38,7 @@ const ScCloseButton = styled.button`
   ${ScButtonCss}
   width: 48px;
   height: 48px;
-  border: 1px solid var(--navds-semantic-color-border-default);
+  border: 1px solid var(--navds-semantic-color-border);
   border-left: none;
   background-color: var(--navds-semantic-color-canvas-background-light);
   z-index: auto;
@@ -82,7 +82,7 @@ const ScTextFieldWrapper = styled.div`
       flex: 1 1;
       border-top-right-radius: 4px;
       border-bottom-right-radius: 4px;
-      border-right: 1px solid var(--navds-semantic-color-border-default);
+      border-right: 1px solid var(--navds-semantic-color-border);
 
       :hover {
         border-color: var(--navds-semantic-color-interaction-primary-hover);
@@ -112,13 +112,13 @@ const ScToggleGroup = styled(Detail)`
 
 const ScToggle = styled.button`
   padding: calc(0.5rem - 2px) 1rem;
-  box-shadow: inset 0 0 0 1px var(--navds-semantic-color-border-default);
+  box-shadow: inset 0 0 0 1px var(--navds-semantic-color-border);
   flex: 1 1;
   display: flex;
   align-items: center;
   justify-content: center;
   background: none;
-  color: var(--navds-semantic-color-text-default);
+  color: var(--navds-semantic-color-text);
   border: none;
 
   :not(:first-child) {
@@ -126,14 +126,14 @@ const ScToggle = styled.button`
   }
 
   :hover {
-    background-color: var(--navds-semantic-color-canvas-background-default);
+    background-color: var(--navds-semantic-color-canvas-background);
   }
 
   :focus {
-    box-shadow: inset 0 0 0 1px var(--navds-semantic-color-border-default),
+    box-shadow: inset 0 0 0 1px var(--navds-semantic-color-border),
       0 0 0 1px var(--navds-semantic-color-canvas-background-light),
       0 0 0 4px var(--navds-semantic-color-focus);
-    border-color: var(--navds-semantic-color-interaction-primary-default);
+    border-color: var(--navds-semantic-color-interaction-primary);
     z-index: 2;
     outline: none;
   }

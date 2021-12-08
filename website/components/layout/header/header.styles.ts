@@ -42,7 +42,7 @@ export const Link = styled(DsHeader.Title)<{ $active: boolean }>`
     box-shadow: inset 0 0 0 1px
       var(--navds-semantic-color-canvas-background-inverted);
     background-color: var(--navds-semantic-color-canvas-background-light);
-    color: var(--navds-semantic-color-text-default);
+    color: var(--navds-semantic-color-text);
 
     :focus {
       box-shadow: inset 0 0 0 1px
@@ -91,7 +91,7 @@ export const HeaderItem = css<{ $isTablet: boolean }>`
 `;
 
 export const LinkCss = css`
-  color: var(--navds-semantic-color-text-default);
+  color: var(--navds-semantic-color-text);
   border-radius: 2px;
   padding: 0.5rem 1rem;
   min-height: 5rem;

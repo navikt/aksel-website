@@ -45,7 +45,7 @@ const ScCard = styled.a`
   height: 20rem;
   max-width: 18rem;
   text-decoration: none;
-  color: var(--navds-semantic-color-text-default);
+  color: var(--navds-semantic-color-text);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

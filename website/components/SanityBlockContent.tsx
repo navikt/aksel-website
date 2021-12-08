@@ -45,7 +45,7 @@ const ScUl = styled.ul`
 export const ScKbd = styled.code`
   display: inline-block;
   margin: 0 var(--navds-spacing-1);
-  color: var(--navds-semantic-color-text-default);
+  color: var(--navds-semantic-color-text);
   border: 1px solid var(--navds-global-color-gray-800);
   border-radius: 2px;
   padding: 0 0.5rem;

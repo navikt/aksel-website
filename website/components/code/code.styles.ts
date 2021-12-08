@@ -22,13 +22,13 @@ export const ButtonCss = css`
   }
 
   :hover {
-    color: var(--navds-semantic-color-text-default);
+    color: var(--navds-semantic-color-text);
 
     :before {
       content: "";
       width: 60%;
       height: 2px;
-      background-color: var(--navds-semantic-color-text-default);
+      background-color: var(--navds-semantic-color-text);
       bottom: 0.75rem;
       position: absolute;
       opacity: 1;
@@ -40,13 +40,13 @@ export const ButtonCss = css`
   }
 
   &[aria-selected="true"] {
-    color: var(--navds-semantic-color-text-default);
+    color: var(--navds-semantic-color-text);
 
     :before {
       content: "";
       width: 60%;
       height: 2px;
-      background-color: var(--navds-semantic-color-text-default);
+      background-color: var(--navds-semantic-color-text);
       bottom: 0.75rem;
       position: absolute;
       opacity: 1;

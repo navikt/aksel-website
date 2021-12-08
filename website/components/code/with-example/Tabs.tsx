@@ -30,7 +30,7 @@ const ScFlex = styled.div`
 const ScLinkButton = styled.a`
   ${S.ButtonCss}
   text-decoration: none;
-  color: var(--navds-semantic-color-text-default);
+  color: var(--navds-semantic-color-text);
 
   ::before {
     content: none;

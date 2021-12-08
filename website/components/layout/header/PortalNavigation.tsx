@@ -40,7 +40,7 @@ const ScPopover = styled(Popover)`
   }
 
   > * > li:nth-child(2) {
-    border-top: 1px solid var(--navds-semantic-color-border-default);
+    border-top: 1px solid var(--navds-semantic-color-border);
   }
 
   ul,
@@ -60,7 +60,7 @@ const ScPopover = styled(Popover)`
 `;
 
 export const ScLinkCss = css`
-  color: var(--navds-semantic-color-text-default);
+  color: var(--navds-semantic-color-text);
 
   min-height: 5rem;
   width: 100%;
@@ -68,7 +68,7 @@ export const ScLinkCss = css`
   text-decoration: none;
 
   :hover {
-    background-color: var(--navds-semantic-color-canvas-background-default);
+    background-color: var(--navds-semantic-color-canvas-background);
   }
 
   :focus {
@@ -88,7 +88,7 @@ export const ScLink = styled.a`
     border-left: 6px solid
       var(--navds-semantic-color-canvas-background-inverted);
     padding-left: calc(2rem - 6px);
-    background-color: var(--navds-semantic-color-canvas-background-default);
+    background-color: var(--navds-semantic-color-canvas-background);
 
     > :first-child {
       font-weight: 600;
