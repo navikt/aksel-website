@@ -61,7 +61,7 @@ export const ConfirmationPanelWithError = () => {
         checked={checked}
         onChange={() => null}
         label="Ja, jeg samtykker."
-        error="Du må bekrefte dette før du kan sende inn søknaden."
+        error
       >
         For å komme videre må du gi oss lov til å hente inn og bruke
         opplysninger om deg.
@@ -74,7 +74,7 @@ ConfirmationPanelWithError.react = `<ConfirmationPanel
 checked={checked}
 onChange={() => handleConfirm()}
 label="Ja, jeg samtykker."
-error="Du må bekrefte dette før du kan sende inn søknaden."
+error
 >
 For å komme videre må du gi oss lov til å hente inn og bruke
 opplysninger om deg.

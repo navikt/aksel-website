@@ -11,7 +11,7 @@ CheckboxStandard.react = `<Checkbox value="eple">Eple</Checkbox>`;
 
 export const CheckboxMedError = () => (
   <>
-    <Checkbox value="melon" error="Melon må være valgt.">
+    <Checkbox value="melon" error>
       Melon
     </Checkbox>
   </>
@@ -103,12 +103,9 @@ export const CheckboxGroupMedErrorUtenErrorPropagation = () => (
     <CheckboxGroup
       legend="Velg frukt du vil ha levert."
       error="Alle leveringer må inkludere melon"
-      errorPropagation={false}
       defaultValue={["eple", "pære"]}
     >
-      <Checkbox value="melon" error="Leveringen din må inneholde Melon">
-        Melon
-      </Checkbox>
+      <Checkbox value="melon">Melon</Checkbox>
       <Checkbox value="eple">Eple</Checkbox>
       <Checkbox value="pære" defaultChecked>
         Pære
@@ -120,10 +117,9 @@ export const CheckboxGroupMedErrorUtenErrorPropagation = () => (
 CheckboxGroupMedErrorUtenErrorPropagation.react = `<CheckboxGroup
 legend="Velg frukt du vil ha levert."
 error="Alle leveringer må inkludere melon"
-errorPropagation={false}
 defaultValue={["eple", "pære"]}
 >
-<Checkbox value="melon" error="Leveringen din må inneholde Melon">
+<Checkbox value="melon" error>
   Melon
 </Checkbox>
 <Checkbox value="eple">Eple</Checkbox>

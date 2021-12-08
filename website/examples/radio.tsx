@@ -82,13 +82,10 @@ export const RadioGroupMedErrorUtenErrorPropagation = () => (
     <RadioGroup
       legend="Velg frukten du vil ha levert."
       error="Valget ditt kan ikke bli levert idag."
-      errorPropagation={false}
       defaultValue={"eple"}
     >
       <Radio value="melon">Melon</Radio>
-      <Radio value="eple" error="Lageret er for tiden tomt for Epler">
-        Eple
-      </Radio>
+      <Radio value="eple">Eple</Radio>
       <Radio value="pære">Pære</Radio>
     </RadioGroup>
   </>
@@ -97,11 +94,10 @@ export const RadioGroupMedErrorUtenErrorPropagation = () => (
 RadioGroupMedErrorUtenErrorPropagation.react = `<RadioGroup
 legend="Velg frukten du vil ha levert."
 error="Valget ditt kan ikke bli levert idag."
-errorPropagation={false}
 defaultValue={"eple"}
 >
 <Radio value="melon">Melon</Radio>
-<Radio value="eple" error="Lageret er for tiden tomt for Epler">
+<Radio value="eple" >
   Eple
 </Radio>
 <Radio value="pære">Pære</Radio>
