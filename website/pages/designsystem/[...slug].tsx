@@ -105,7 +105,7 @@ export const getStaticProps = async ({
 }): Promise<StaticProps | { notFound: true }> => {
   const joinedSlug = slug.slice(0, 2).join("/");
 
-  const client = getClient(true);
+  const client = getClient(preview);
   let page = await client.fetch(dsDocumentBySlug, {
     slug: "designsystem/" + joinedSlug,
   });
@@ -116,10 +116,10 @@ export const getStaticProps = async ({
 
   const changelogs =
     page?._type === "ds_component_page"
-      ? await client.fetch(changelogQuery)
+      ? await getClient(false).fetch(changelogQuery)
       : null;
 
-  const navigation = await client.fetch(dsNavigationQuery);
+  const navigation = await getClient(false).fetch(dsNavigationQuery);
 
   const validPath = await getDsPaths().then((paths) =>
     paths
