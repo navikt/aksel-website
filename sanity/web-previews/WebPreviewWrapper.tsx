@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import { Link, HelpText } from "@navikt/ds-react";
+import { Link, HelpText, Button } from "@navikt/ds-react";
 import { CopyToClipboard } from "@navikt/ds-react-internal";
 
 const StyledDiv = styled.div`
@@ -34,6 +34,15 @@ const ScTop = styled.div`
 `;
 
 export const WebPreviewWrapper = (props: { url: string }) => {
+  const reloadIframe = () => {
+    const el: HTMLIFrameElement | null =
+      document &&
+      (document.getElementById("preview-iframe") as HTMLIFrameElement);
+    if (el) {
+      el.src = el.src;
+    }
+  };
+
   return (
     <StyledWrapper>
       <ScTop>
@@ -58,9 +67,12 @@ export const WebPreviewWrapper = (props: { url: string }) => {
         >
           Åpne i egen side
         </Link>
+        <Button size="small" onClick={() => reloadIframe()}>
+          Reload preview
+        </Button>
       </ScTop>
       <StyledDiv>
-        <iframe src={props.url} frameBorder={0} />
+        <iframe id="preview-iframe" src={props.url} frameBorder={0} />
       </StyledDiv>
     </StyledWrapper>
   );
