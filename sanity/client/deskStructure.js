@@ -63,7 +63,9 @@ export default () =>
                           S.documentList()
                             .title(heading.title)
                             .filter(
-                              `_id in [${ids.map((x) => `"${x}"`).join(",")}]`
+                              `_type in ["ds_article_page", "ds_tabbed_article_page", "ds_component_page"] && _id in [${ids
+                                .map((x) => `"${x}"`)
+                                .join(",")}]`
                             )
                         );
                     });
