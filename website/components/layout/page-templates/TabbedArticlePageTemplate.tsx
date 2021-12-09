@@ -69,8 +69,8 @@ const TabbedActiclePageTemplate = ({
             {data.heading}
           </Heading>
           <S.Inline>
-            <StatusTag status={data.status} />
             <LastUpdateTag date={data.metadata.last_update} />
+            <StatusTag status={data.status} />
           </S.Inline>
         </S.HeadingContainer>
         {data.ingress && <SanityBlockContent isIngress blocks={data.ingress} />}
