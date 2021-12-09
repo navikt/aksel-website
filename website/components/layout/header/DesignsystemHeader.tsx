@@ -3,20 +3,31 @@ import NextLink from "next/link";
 import * as React from "react";
 import { useContext, useState } from "react";
 import { useMedia } from "react-use";
-import { Search } from "../..";
+import { AmplitudeEvents, Search, useAmplitude } from "../..";
 import { DsNavigationHeadingT } from "../../../lib";
 import { PagePropsContext } from "../../../pages/_app";
 import { LayoutContext } from "../..";
 import * as S from "./header.styles";
 import MobileNavigation from "./MobileNavigation";
 import PortalNavigation from "./PortalNavigation";
+import { useRouter } from "next/router";
 
 const DesignsystemHeader = (): JSX.Element => {
   const { pageProps } = useContext(PagePropsContext);
   const context = useContext(LayoutContext);
   const useMobileHeader = useMedia("(max-width: 1023px)");
+  const { logAmplitudeEvent } = useAmplitude();
+  const { asPath } = useRouter();
 
   const [searchisOpen, setSearchisOpen] = useState(false);
+
+  const logNavigation = (e) => {
+    logAmplitudeEvent(AmplitudeEvents.navigasjon, {
+      kilde: "header",
+      fra: asPath,
+      til: e.currentTarget.getAttribute("href"),
+    });
+  };
 
   const nonMobile = (
     <>
@@ -47,6 +58,7 @@ const DesignsystemHeader = (): JSX.Element => {
                       ? context?.activeHeading?.title === heading.title
                       : false
                   }
+                  onClick={(e) => logNavigation(e)}
                 >
                   {heading.title}
                 </S.Link>

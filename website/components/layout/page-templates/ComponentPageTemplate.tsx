@@ -2,9 +2,10 @@ import { ExternalLink } from "@navikt/ds-icons";
 import { BodyShort, Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import {
+  AmplitudeEvents,
   Changelog,
   CodeExample,
   LastUpdateTag,
@@ -84,6 +85,7 @@ const ComponentPageTemplate = ({
   const { pageProps } = useContext(PagePropsContext);
   const layout = useContext(LayoutContext);
   const [activeTab, setActiveTab] = useState(0);
+  const visited = useRef([]);
 
   const { logAmplitudeEvent } = useAmplitude();
 
@@ -97,6 +99,14 @@ const ComponentPageTemplate = ({
   useEffect(() => {
     slugger.reset();
   });
+
+  useEffect(() => {
+    !visited.current.includes(asPath) &&
+      logAmplitudeEvent(AmplitudeEvents.sidevisning, {
+        side: asPath,
+      });
+    visited.current = [...visited.current, asPath];
+  }, [asPath]);
 
   useEffect(() => {
     setActiveTab(Object.keys(tabs).indexOf(query.slug[2] ?? "bruk"));
@@ -147,7 +157,12 @@ const ComponentPageTemplate = ({
   const value = Object.values(tabs)?.[activeTab];
   const tabKey = Object.keys(tabs)?.[activeTab];
 
-  console.log(logAmplitudeEvent);
+  useEffect(() => {
+    logAmplitudeEvent(AmplitudeEvents.sidevisning, {
+      side: asPath,
+    });
+  }, [asPath]);
+
   return (
     <>
       <Head>

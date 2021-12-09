@@ -84,13 +84,15 @@ export const getStaticProps = async ({
     slug: "god-praksis/" + joinedSlug,
   });
 
-  const isDraft = page.filter((item) => !item._id.startsWith("drafts.")).length;
+  const isDraft = page?.filter(
+    (item) => !item._id.startsWith("drafts.")
+  ).length;
 
-  page = page.find((item) => item._id.startsWith(`drafts.`)) || page[0];
+  page = page?.find((item) => item._id.startsWith(`drafts.`)) || page?.[0];
 
   return {
     props: {
-      page,
+      page: page ?? null,
       slug: joinedSlug,
       isDraft: isDraft === 0,
       validPath: !!page,

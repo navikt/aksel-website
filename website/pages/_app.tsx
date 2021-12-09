@@ -1,9 +1,9 @@
-import Error from "next/error";
 import Head from "next/head";
 import React, { createContext, useEffect, useState } from "react";
 import { AmplitudeProvider, useScrollToHashOnPageLoad } from "../components";
 import LayoutProvider from "../components/layout/LayoutProvider";
 import "../styles/index.css";
+import NotFound from "./404";
 
 type PagePropsContextT = {
   pageProps: any;
@@ -33,15 +33,12 @@ function App({
     return <Component {...pageProps} />;
   }
 
-  if (
+  const getLayout = Component.getLayout ?? ((page) => page);
+
+  const notFound =
     !pageProps?.slug ||
     (!pageProps.validPath && pageProps.isDraft && !pageProps.preview) ||
-    (!pageProps.validPath && !pageProps.isDraft)
-  ) {
-    return <Error statusCode={404} />;
-  }
-
-  const getLayout = Component.getLayout ?? ((page) => page);
+    (!pageProps.validPath && !pageProps.isDraft);
 
   return (
     <>
@@ -54,10 +51,14 @@ function App({
       <PagePropsContext.Provider value={{ pageProps: pageData, setPageData }}>
         <AmplitudeProvider>
           <LayoutProvider>
-            {getLayout(
-              <>
-                <Component {...pageProps} />
-              </>
+            {notFound ? (
+              <NotFound />
+            ) : (
+              getLayout(
+                <>
+                  <Component {...pageProps} />
+                </>
+              )
             )}
           </LayoutProvider>
         </AmplitudeProvider>

@@ -4,6 +4,7 @@ import { BodyLong, Detail, Heading, Modal } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
+import { AmplitudeEvents, useAmplitude } from "..";
 import DownloadButtons from "./DownloadButtons";
 import Filter, { FilterT } from "./Filter";
 import { categorizeIcons, CategoryT, IconMetaT } from "./iconCategories";
@@ -134,6 +135,7 @@ const IconSearch = () => {
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
   const router = useRouter();
   const [visibleIcons, setVisibleIcons] = useState<IconMetaT[]>([]);
+  const { logAmplitudeEvent } = useAmplitude();
 
   const setQuery = useCallback((icon: string) => {
     const query = router.query;
@@ -149,9 +151,16 @@ const IconSearch = () => {
   }, []);
 
   const handleSelect = useCallback((icon: string) => {
+    const logIconClick = (icon: string) => {
+      logAmplitudeEvent(AmplitudeEvents.ikonklikk, {
+        ikon: icon,
+      });
+    };
+
     setSelectedIcon(icon);
     setOpen(true);
     setQuery(icon);
+    logIconClick(icon);
   }, []);
 
   useEffect(() => {

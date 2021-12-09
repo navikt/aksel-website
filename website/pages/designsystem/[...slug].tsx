@@ -112,7 +112,7 @@ export const getStaticProps = async ({
 
   const isDraft = page.filter((item) => !item._id.startsWith("drafts.")).length;
 
-  page = page.find((item) => item._id.startsWith(`drafts.`)) || page[0];
+  page = page?.find((item) => item._id.startsWith(`drafts.`)) || page?.[0];
 
   const changelogs =
     page?._type === "ds_component_page"
@@ -129,7 +129,7 @@ export const getStaticProps = async ({
 
   return {
     props: {
-      page,
+      page: page ?? null,
       slug: joinedSlug,
       navigation,
       changelogs,

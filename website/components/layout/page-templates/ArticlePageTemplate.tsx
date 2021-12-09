@@ -1,15 +1,18 @@
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import {
+  AmplitudeEvents,
   LastUpdateTag,
   LayoutContext,
   slugger,
   StatusTag,
   TableOfContents,
+  useAmplitude,
 } from "../..";
 import { DsArticlePage, GpArticlePage } from "../../../lib/autogen-types";
 import { SanityBlockContent } from "../../SanityBlockContent";
+import { useRouter } from "next/router";
 import * as S from "./page.styles";
 
 const ActiclePageTemplate = ({
@@ -24,6 +27,17 @@ const ActiclePageTemplate = ({
   });
 
   const layout = useContext(LayoutContext);
+  const { logAmplitudeEvent } = useAmplitude();
+  const { asPath } = useRouter();
+  const visited = useRef([]);
+
+  useEffect(() => {
+    !visited.current.includes(asPath) &&
+      logAmplitudeEvent(AmplitudeEvents.sidevisning, {
+        side: asPath,
+      });
+    visited.current = [...visited.current, asPath];
+  }, [asPath]);
 
   if (!data.body || !data.heading || !data.status) {
     return null;

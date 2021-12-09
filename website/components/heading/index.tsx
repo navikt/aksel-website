@@ -1,9 +1,10 @@
 import { Popover } from "@navikt/ds-react";
 import copy from "copy-to-clipboard";
 import React, { useEffect, useRef, useState } from "react";
-import { slugger } from "..";
+import { AmplitudeEvents, slugger, useAmplitude } from "..";
 import * as S from "./heading.styles";
 import { Link as LinkIcon } from "@navikt/ds-icons";
+import { useRouter } from "next/router";
 
 const LevelTwoHeading = ({
   children,
@@ -12,6 +13,8 @@ const LevelTwoHeading = ({
 }): JSX.Element => {
   const anchorRef = useRef(null);
   const [openPopover, setOpenPopover] = useState(false);
+  const { logAmplitudeEvent } = useAmplitude();
+  const { asPath } = useRouter();
 
   const timeoutRef = useRef<NodeJS.Timeout>();
 
@@ -21,6 +24,13 @@ const LevelTwoHeading = ({
       return () => timeoutRef.current && clearTimeout(timeoutRef.current);
     }
   }, [openPopover]);
+
+  const logAnchor = (anchor) => {
+    logAmplitudeEvent(AmplitudeEvents.ankerklikk, {
+      side: asPath,
+      anker: anchor,
+    });
+  };
 
   if (children.toString() === "") {
     return null;
@@ -58,7 +68,10 @@ const LevelTwoHeading = ({
         </S.TitleWithScrollMargin>
         <S.Anchor
           aria-label={`Kopier lenke til ${cleanedChildren.toString()}`}
-          onClick={() => copyAnchor(slug)}
+          onClick={() => {
+            copyAnchor(slug);
+            logAnchor(slug);
+          }}
           ref={anchorRef}
         >
           <span>

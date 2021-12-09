@@ -290,6 +290,7 @@ const MobileNavigation = () => {
                         inCategory={!isHeadingMenu}
                         heading={heading}
                         onClick={() => setOpenHamb(false)}
+                        mobileNavigation
                       />
                     </ScFadeIn>
                   </ScMenuScroll>

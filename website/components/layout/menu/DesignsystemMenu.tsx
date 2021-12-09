@@ -1,8 +1,10 @@
 import { BodyShort, Detail } from "@navikt/ds-react";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 import React, { createContext, useContext, useState } from "react";
 import { useIsomorphicLayoutEffect } from "react-use";
 import styled from "styled-components";
+import { AmplitudeEvents, useAmplitude } from "../..";
 import { DsNavigationHeadingMenuT, DsNavigationHeadingT } from "../../../lib";
 import { PagePropsContext } from "../../../pages/_app";
 
@@ -85,13 +87,17 @@ const Menu = ({
   heading,
   onClick,
   inCategory,
+  mobileNavigation,
 }: {
   heading?: DsNavigationHeadingT;
   onClick?: () => void;
   inCategory?: boolean;
+  mobileNavigation?: boolean;
 }): JSX.Element => {
   const { pageProps } = useContext<any>(PagePropsContext);
+  const { logAmplitudeEvent } = useAmplitude();
 
+  const { asPath } = useRouter();
   const [sidebarMenu, setSidebarMenu] = useState<DsNavigationHeadingMenuT[]>(
     []
   );
@@ -102,6 +108,15 @@ const Menu = ({
     }
     setSidebarMenu([...heading.menu]);
   }, [heading]);
+
+  const logNavigation = (e) => {
+    logAmplitudeEvent(AmplitudeEvents.navigasjon, {
+      kilde: "meny",
+      fra: asPath,
+      til: e.currentTarget.getAttribute("href"),
+      mobilnavigasjon: mobileNavigation,
+    });
+  };
 
   return (
     <ScNav aria-label={heading.title} data-incategory={inCategory}>
@@ -118,8 +133,9 @@ const Menu = ({
             <li key={item.title + x}>
               <NextLink href={`/${item.link.slug.current}`} passHref>
                 <ScLink
-                  onClick={() => {
+                  onClick={(e) => {
                     onClick && onClick();
+                    logNavigation(e);
                   }}
                   active={
                     pageProps?.page

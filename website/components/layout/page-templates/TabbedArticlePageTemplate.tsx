@@ -1,14 +1,16 @@
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import {
+  AmplitudeEvents,
   LastUpdateTag,
   LayoutContext,
   slugger,
   StatusTag,
   TableOfContents,
   Tabs,
+  useAmplitude,
 } from "../..";
 import { DsTabbedArticlePage } from "../../../lib/autogen-types";
 import { SanityBlockContent } from "../../SanityBlockContent";
@@ -21,13 +23,23 @@ const TabbedActiclePageTemplate = ({
   data: DsTabbedArticlePage;
   title: string;
 }): JSX.Element => {
-  const { query } = useRouter();
+  const { query, asPath } = useRouter();
   const layout = useContext(LayoutContext);
+  const { logAmplitudeEvent } = useAmplitude();
+
   useEffect(() => {
     slugger.reset();
   });
 
-  const { asPath } = useRouter();
+  const visited = useRef([]);
+
+  useEffect(() => {
+    !visited.current.includes(asPath) &&
+      logAmplitudeEvent(AmplitudeEvents.sidevisning, {
+        side: asPath,
+      });
+    visited.current = [...visited.current, asPath];
+  }, [asPath]);
 
   if (!data.tabs || !data.heading || !data.status) {
     return null;
