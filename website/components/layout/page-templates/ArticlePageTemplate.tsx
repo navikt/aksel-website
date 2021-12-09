@@ -36,7 +36,9 @@ const ActiclePageTemplate = ({
       logAmplitudeEvent(AmplitudeEvents.sidevisning, {
         side: asPath,
       });
-    visited.current = [...visited.current, asPath];
+    visited.current = !visited.current.includes(asPath)
+      ? [...visited.current, asPath]
+      : [...visited.current];
   }, [asPath]);
 
   if (!data.body || !data.heading || !data.status) {

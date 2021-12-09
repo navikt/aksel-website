@@ -38,7 +38,9 @@ const TabbedActiclePageTemplate = ({
       logAmplitudeEvent(AmplitudeEvents.sidevisning, {
         side: asPath,
       });
-    visited.current = [...visited.current, asPath];
+    visited.current = !visited.current.includes(asPath)
+      ? [...visited.current, asPath]
+      : [...visited.current];
   }, [asPath]);
 
   if (!data.tabs || !data.heading || !data.status) {
