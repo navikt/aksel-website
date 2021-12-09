@@ -11,8 +11,10 @@ yarn install
 yarn dev
 ```
 
-I `development`-mode vil nettsiden alltid bruke `live` og ikke cached innhold fra Sanity. I prod
-kan man bruke `live`-innhold ved å legge til `?preview=true` på slutten av URL-en.
+For å se preview innhold kan man legge til `preview` i URL-en´.
+Eks:
+
+`/preview/designsystem/side/button´
 
 ### Sanity (localhost:3333)
 

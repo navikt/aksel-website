@@ -217,7 +217,11 @@ Page.getLayout = (page) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps = async ({
+  preview = false,
+}: {
+  preview?: boolean;
+}) => {
   const navigation = await getClient(false).fetch(dsNavigationQuery);
 
   return {
@@ -226,7 +230,7 @@ export const getStaticProps = async () => {
       validPath: true,
       isDraft: false,
       navigation,
-      noLayout: true,
+      preview,
     },
     revalidate: 10,
   };

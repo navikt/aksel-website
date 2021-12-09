@@ -31,7 +31,7 @@ export function documentInformation(prefix) {
         isUnique: isSlugUnique,
         source: "heading",
         slugify: (input) =>
-          `${prefix}${input}`.toLowerCase().replace(/\s+/g, "-").slice(0, 50),
+          `${prefix}${input}`.toLowerCase().replace(/\s+/g, "-").slice(0, 70),
       },
     },
     {

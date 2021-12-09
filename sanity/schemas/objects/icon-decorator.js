@@ -11,7 +11,6 @@ const ScLine = styled.span`
 
 const DisplayIcon = (props) => {
   const Ic = Icons?.[props?.name];
-  console.log(props);
   return Ic ? (
     <span style={{ color: Tokens?.[props?.color] ?? "currentcolor" }}>
       <Ic /> <ScLine>{props.children}</ScLine>

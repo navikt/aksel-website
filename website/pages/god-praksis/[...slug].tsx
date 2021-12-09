@@ -1,46 +1,19 @@
-import { useRouter } from "next/router";
-import {
-  usePreviewSubscription,
-  getClient,
-  gpDocuments,
-  gpDocumentBySlug,
-  isDraftQuery,
-} from "../../lib";
-import { PreviewBanner, LayoutPicker } from "../../components";
-import React, { useContext, useEffect, useState } from "react";
-import { PagePropsContext } from "../_app";
-import { GpArticlePage } from "../../lib/autogen-types";
+import React from "react";
 import * as Sc from "../../components";
+import { LayoutPicker, PreviewBanner } from "../../components";
 import GodPraksisHeader from "../../components/layout/header/GodPraksisHeader";
+import { getClient, gpDocumentBySlug, gpDocuments } from "../../lib";
+import { GpArticlePage } from "../../lib/autogen-types";
 const Page = (props: {
   slug?: string;
   page: GpArticlePage;
   sidebar: any;
+  preview: boolean;
 }): JSX.Element => {
-  const router = useRouter();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { pageProps, setPageData } = useContext(PagePropsContext);
-
-  const [isPreview, setIsPreview] = useState(false);
-
-  useEffect(() => {
-    setIsPreview(!!router.query.preview);
-  }, [router.query]);
-
-  const { data } = usePreviewSubscription(gpDocumentBySlug, {
-    params: { slug: "god-praksis/" + props?.slug },
-    initialData: props.page,
-    enabled: isPreview,
-  });
-
-  useEffect(() => {
-    setPageData({ ...pageProps, page: data });
-  }, [data]);
-
   return (
     <>
-      {isPreview && <PreviewBanner />}
-      <LayoutPicker title="God Praksis" data={data} />
+      {props.preview && <PreviewBanner />}
+      <LayoutPicker title="God Praksis" data={props.page} />
     </>
   );
 };
@@ -91,33 +64,37 @@ interface StaticProps {
     slug: string;
     isDraft: boolean;
     validPath: boolean;
+    preview: boolean;
   };
   revalidate: number;
 }
 
 export const getStaticProps = async ({
   params: { slug },
+  preview = false,
 }: {
   params: { slug: string[] };
-}): Promise<StaticProps> => {
+  preview?: boolean;
+}): Promise<StaticProps | { notFound: true }> => {
   const joinedSlug = slug.slice(0, 2).join("/");
 
-  const client = getClient(false);
+  const client = getClient(preview);
 
-  const page = await client.fetch(gpDocumentBySlug, {
+  let page = await client.fetch(gpDocumentBySlug, {
     slug: "god-praksis/" + joinedSlug,
   });
 
-  const isDraft = await client.fetch(isDraftQuery, {
-    slug: "god-praksis/" + joinedSlug,
-  });
+  const isDraft = page.filter((item) => !item._id.startsWith("drafts.")).length;
+
+  page = page.find((item) => item._id.startsWith(`drafts.`)) || page[0];
 
   return {
     props: {
       page,
       slug: joinedSlug,
-      isDraft: isDraft.length === 0,
+      isDraft: isDraft === 0,
       validPath: !!page,
+      preview,
     },
     revalidate: 10,
   };

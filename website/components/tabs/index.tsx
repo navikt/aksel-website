@@ -63,7 +63,6 @@ export const Tabs = ({
       if (tabWRefs[index].active) return;
       router.push({
         pathname: tabWRefs[index].path,
-        query: router.query.preview ? { preview: true } : {},
       });
     },
     {},
@@ -112,7 +111,6 @@ export const Tabs = ({
               <Link
                 href={{
                   pathname: tab.path,
-                  query: router.query.preview ? { preview: true } : {},
                 }}
                 passHref
                 shallow
