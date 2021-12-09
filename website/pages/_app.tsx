@@ -51,8 +51,8 @@ function App({
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
       </Head>
-      <AmplitudeProvider>
-        <PagePropsContext.Provider value={{ pageProps: pageData, setPageData }}>
+      <PagePropsContext.Provider value={{ pageProps: pageData, setPageData }}>
+        <AmplitudeProvider>
           <LayoutProvider>
             {getLayout(
               <>
@@ -60,8 +60,8 @@ function App({
               </>
             )}
           </LayoutProvider>
-        </PagePropsContext.Provider>
-      </AmplitudeProvider>
+        </AmplitudeProvider>
+      </PagePropsContext.Provider>
     </>
   );
 }

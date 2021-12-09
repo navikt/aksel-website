@@ -14,6 +14,7 @@ import {
   StatusTag,
   TableOfContents,
   Tabs,
+  useAmplitude,
 } from "../..";
 import {
   DsChangelog,
@@ -84,6 +85,8 @@ const ComponentPageTemplate = ({
   const layout = useContext(LayoutContext);
   const [activeTab, setActiveTab] = useState(0);
 
+  const { logAmplitudeEvent } = useAmplitude();
+
   const tabs = {
     bruk: "usage",
     design: "design",
@@ -144,6 +147,7 @@ const ComponentPageTemplate = ({
   const value = Object.values(tabs)?.[activeTab];
   const tabKey = Object.keys(tabs)?.[activeTab];
 
+  console.log(logAmplitudeEvent);
   return (
     <>
       <Head>

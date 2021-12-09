@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect } from "react";
 import amplitude from "amplitude-js";
+import { PagePropsContext } from "../../pages/_app";
 
 const initAmplitude = () => {
   if (amplitude) {
@@ -42,10 +43,11 @@ export function AmplitudeProvider({
 
 export function useAmplitude(): any {
   const context = useContext(AmplitudeContext);
-  // TODO: Implement this for preview?
-  /* if (isTest()) {
+  const { pageProps } = useContext(PagePropsContext);
+
+  if (pageProps.preview) {
     return { logAmplitudeEvent: () => undefined };
-  } */
+  }
 
   if (context === undefined) {
     throw new Error("useAmplitude må brukes under en AmplitudeProvider");

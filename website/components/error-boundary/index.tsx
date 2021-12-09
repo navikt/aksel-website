@@ -1,7 +1,5 @@
 import React from "react";
 import { ErrorInfo } from "react";
-/* import { isTest } from "../utils/environment"; */
-/* import { loggError } from "../utils/logger"; */
 import styled from "styled-components";
 
 interface Props {
@@ -32,11 +30,8 @@ class ErrorBoundary extends React.Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    /* if (isTest()) {
-      throw error;
-    } */
     this.setState({ hasError: true, error, errorInfo });
-    /* loggError(error); */
+    console.error(error);
   }
 
   render(): React.ReactNode {
