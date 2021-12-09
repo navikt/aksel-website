@@ -1,4 +1,6 @@
 import React from "react";
+import styled from "styled-components";
+import { Detail } from "@navikt/ds-react";
 
 function toPlainText(blocks = []) {
   return blocks
@@ -8,6 +10,19 @@ function toPlainText(blocks = []) {
     })
     .join("\n");
 }
+
+const ScTips = styled.div`
+  box-shadow: -3px 0 0 0 #6a6a6a;
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const ScMuted = styled(Detail)`
+  text-transform: uppercase;
+  color: var(--navds-semantic-color-text-muted);
+`;
 
 export default {
   name: "tips",
@@ -30,7 +45,12 @@ export default {
       return { ...selection };
     },
     component: (selection) => {
-      return <div>{toPlainText(selection.value.body)}</div>;
+      return (
+        <ScTips>
+          <ScMuted>Tips</ScMuted>
+          <div>{toPlainText(selection.value.body)}</div>
+        </ScTips>
+      );
     },
   },
 };
