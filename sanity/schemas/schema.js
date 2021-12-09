@@ -48,6 +48,7 @@ import component_overview from "./objects/overview-ref";
 import spacing from "./objects/spacing";
 import relatedPages from "./objects/related-pages";
 import table, { Rows, Cells } from "./objects/table";
+import tips from "./objects/tips";
 
 export default createSchema({
   name: "default",
@@ -97,5 +98,6 @@ export default createSchema({
     table,
     Cells,
     Rows,
+    tips,
   ]),
 });

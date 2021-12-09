@@ -11,6 +11,7 @@ import {
   Link,
   Folder,
   Notes,
+  Information,
 } from "@navikt/ds-icons";
 import { KBD } from "@sanity/ui";
 import { allDocumentTypes } from "../config";
@@ -210,6 +211,10 @@ export default {
     },
     {
       type: "picture_text",
+    },
+    {
+      type: "tips",
+      icon: () => <Information />,
     },
     {
       type: "alert",

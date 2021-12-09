@@ -38,7 +38,7 @@ const ScCloseButton = styled.button`
   ${ScButtonCss}
   width: 48px;
   height: 48px;
-  border: 1px solid var(--navds-semantic-color-border);
+  border: 2px solid var(--navds-semantic-color-border);
   border-left: none;
   background-color: var(--navds-semantic-color-canvas-background-light);
   z-index: auto;
@@ -82,7 +82,7 @@ const ScTextFieldWrapper = styled.div`
       flex: 1 1;
       border-top-right-radius: 4px;
       border-bottom-right-radius: 4px;
-      border-right: 1px solid var(--navds-semantic-color-border);
+      border-right: 2px solid var(--navds-semantic-color-border);
 
       :hover {
         border-color: var(--navds-semantic-color-interaction-primary-hover);
@@ -90,7 +90,8 @@ const ScTextFieldWrapper = styled.div`
     }
   }
 
-  :hover > * {
+  :hover > *,
+  :hover input {
     border-color: var(--navds-semantic-color-interaction-primary-hover);
   }
 `;

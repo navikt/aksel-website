@@ -1,5 +1,11 @@
 import React from "react";
-import { Warning, SuccessStroke, ExternalLink, Notes } from "@navikt/ds-icons";
+import {
+  Warning,
+  SuccessStroke,
+  ExternalLink,
+  Notes,
+  Information,
+} from "@navikt/ds-icons";
 import { styles, TitleRenderer } from "../../block-content";
 import { allDocumentTypes } from "../../../config";
 import { ScDraft } from "../../block-content";
@@ -116,6 +122,10 @@ export default {
     },
     {
       type: "picture_text",
+    },
+    {
+      type: "tips",
+      icon: () => <Information />,
     },
     {
       type: "alert",
