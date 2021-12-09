@@ -1567,7 +1567,7 @@
   resolved "https://registry.yarnpkg.com/@sanity/asset-utils/-/asset-utils-1.2.3.tgz#a90c7895c6506405d64c2363db131923ba1fa6ef"
   integrity sha512-0eOR0D6zcqd6nEmAGIJ93ibRGO6ocYzQ5aEuyYvngHy5MDDjUfC821UnF/YPIcxiMXg2DLDjWd4EPt9F8frKNQ==
 
-"@sanity/base@2.23.0", "@sanity/base@^2.21.3":
+"@sanity/base@2.23.0", "@sanity/base@^2.23.0":
   version "2.23.0"
   resolved "https://registry.yarnpkg.com/@sanity/base/-/base-2.23.0.tgz#60723e5a0c0f71fcd2e571ea47d3fd7e1f4e3c14"
   integrity sha512-kYM6ZJVcuVDTI21D5YkqPCr1Ud3MIbENfncZotH3t/8XrGxUuTXPpkPJ6kNbRnv+g8CxV5RPC5Nq3vRUPbcc9g==
@@ -1662,12 +1662,12 @@
     get-random-values "^1.2.2"
     lodash "^4.17.15"
 
-"@sanity/cli@^2.21.3":
+"@sanity/cli@^2.23.0":
   version "2.23.0"
   resolved "https://registry.yarnpkg.com/@sanity/cli/-/cli-2.23.0.tgz#984818a36a4c560e21a2d0a90b7eb263f3f7d701"
   integrity sha512-myYjdVz5S99l4WGefC9wnU/beEipC0Q7OG+vuJWV/26PI46fVIEqxZpl08H4a2kd3Qzl3PphC8IMzPN8Jcf2kQ==
 
-"@sanity/client@2.23.0", "@sanity/client@^2.0.1", "@sanity/client@^2.14.0", "@sanity/client@^2.19.0":
+"@sanity/client@2.23.0", "@sanity/client@^2.0.1", "@sanity/client@^2.14.0", "@sanity/client@^2.23.0":
   version "2.23.0"
   resolved "https://registry.yarnpkg.com/@sanity/client/-/client-2.23.0.tgz#6b52701ac165e8458019cbf2d5a9a214130c5181"
   integrity sha512-B7MCavPzfeLgH2WI7sf9srDp43IOLQfZqie430O61CJb6bh6/Yl7BZXo53CHdaOplFKX272nfcbtWxXcAnx05Q==
@@ -1680,7 +1680,7 @@
     make-error "^1.3.0"
     object-assign "^4.1.1"
 
-"@sanity/code-input@^2.21.3":
+"@sanity/code-input@^2.23.0":
   version "2.23.0"
   resolved "https://registry.yarnpkg.com/@sanity/code-input/-/code-input-2.23.0.tgz#01564c2de148dbbcc568a16999eb398ed896c624"
   integrity sha512-0sUyYmwU9/p/GgFoL193a2VXTSRTY/e0o9DGpkz4AZLEHvLRlA2/75xyp1qfGEDmet+EhjMoybh/I8+F+fA+gQ==
@@ -1705,7 +1705,7 @@
   resolved "https://registry.yarnpkg.com/@sanity/components/-/components-2.14.0.tgz#840d8e98fd55f35e2db2b211310c983b9f78cac4"
   integrity sha512-D8t7l+exvw1cg80m8yDZDRboAI6L827FeCacGjTOdElvgrR2shtsbepYui7ODfRgx9ynAceNDsQ1VSNnUgIHug==
 
-"@sanity/core@^2.21.3":
+"@sanity/core@^2.23.0":
   version "2.23.0"
   resolved "https://registry.yarnpkg.com/@sanity/core/-/core-2.23.0.tgz#18ff5282621f5e9373c31f25d7b79b4275b7c19f"
   integrity sha512-eaopdLvHrb45FyryDsMRbUeVo0PQqC3kECLxkqLl7scSTDP5CpzTTrsHy3sDW/gkQSrvmWqCy1MUdwblPxNtZA==
@@ -1776,7 +1776,7 @@
     postcss-value-parser "^3.3.0"
     source-list-map "^2.0.0"
 
-"@sanity/dashboard@^2.21.3":
+"@sanity/dashboard@^2.23.0":
   version "2.23.0"
   resolved "https://registry.yarnpkg.com/@sanity/dashboard/-/dashboard-2.23.0.tgz#7e94f8b5303f05fc4172fa6e6111a364b2500785"
   integrity sha512-W1HzN7II5rh3fVg7tYeJ8ZVgHBATQ4VjnyBgFzwWnRvdKOUBBKuf+K7PWukbgi5zEl5APrhn4BV2yxMjOFLb+g==
@@ -1796,7 +1796,7 @@
     "@sanity/generate-help-url" "2.18.0"
     lodash "^4.17.15"
 
-"@sanity/default-layout@^2.21.3":
+"@sanity/default-layout@^2.23.0":
   version "2.23.0"
   resolved "https://registry.yarnpkg.com/@sanity/default-layout/-/default-layout-2.23.0.tgz#1f60094bc473a25e539a35d41995260f68269e39"
   integrity sha512-NHRvUZF4Z5kjT1gGEBejcTVv13xJPL9oKYArG303ZPaOBhMOmNL1LHb04HeMufpRQNnlmspefqtIrpn5iabpQw==
@@ -1812,7 +1812,7 @@
     react-rx "^1.0.0-beta.6"
     rxjs "^6.5.3"
 
-"@sanity/default-login@^2.21.3":
+"@sanity/default-login@^2.23.0":
   version "2.23.0"
   resolved "https://registry.yarnpkg.com/@sanity/default-login/-/default-login-2.23.0.tgz#0ab5c8f400b11b534ad278143496f2625cf41175"
   integrity sha512-Vxr2W5tVkeTIeau+JTORFAkV0kuJV4iZBguse8Ids88akhSn6Bo/Zime802a5Y4wFKuUNX22v5gLFpfwxd8/ag==
@@ -1823,7 +1823,7 @@
     prop-types "^15.6.0"
     rxjs "^6.5.3"
 
-"@sanity/desk-tool@^2.21.3":
+"@sanity/desk-tool@^2.23.0":
   version "2.23.0"
   resolved "https://registry.yarnpkg.com/@sanity/desk-tool/-/desk-tool-2.23.0.tgz#b0ba99e0e0c139b872583564d89ea6f422bbf67c"
   integrity sha512-xSJT0SeKlouzVww+7daWYdmgEAzMZIh/3KGV5mzwzztOQG2PocyKi4BgKg3dTqmJ8NX8293Ag1UuhG0ttrmYHg==
@@ -2261,7 +2261,7 @@
     date-fns "^2.16.1"
     lodash "^4.17.15"
 
-"@sanity/vision@^2.21.3":
+"@sanity/vision@^2.23.0":
   version "2.23.0"
   resolved "https://registry.yarnpkg.com/@sanity/vision/-/vision-2.23.0.tgz#d7815018504148f8f87d4966511d81bfcc4bcffe"
   integrity sha512-reAAzEiasl4PzsWsniN6Etb945gncLk3qEMLmtmUrDcr9YCTay/KhEp7yoWcnZ6iVw6wnBpvvvD8zDfDl2xJbA==
