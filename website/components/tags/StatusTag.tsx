@@ -14,7 +14,7 @@ const StatusTag = ({ status }: { status: string }): JSX.Element => {
       case "wip":
         return (
           <DsTag variant="warning" size="small">
-            Work in progress
+            Under arbeid
           </DsTag>
         );
       case "beta":
