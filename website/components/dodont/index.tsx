@@ -34,7 +34,7 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
       <S.Caption data-variant={block.variant}>
         {block.variant === "do" ? (
           <S.Icon variant={block.variant}>
-            <SuccessFilled />
+            <SuccessFilled aria-hidden />
             {block.description && (
               <BodyShort size="small" as="span">
                 {block.description}
@@ -43,7 +43,7 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
           </S.Icon>
         ) : block.variant === "warning" ? (
           <S.Icon variant={block.variant}>
-            <WarningFilled />
+            <WarningFilled aria-hidden />
             {block.description && (
               <BodyShort size="small" as="span">
                 {block.description}
@@ -52,7 +52,7 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
           </S.Icon>
         ) : (
           <S.Icon variant={block.variant}>
-            <ErrorFilled />
+            <ErrorFilled aria-hidden />
             {block.description && (
               <BodyShort size="small" as="span">
                 {block.description}
