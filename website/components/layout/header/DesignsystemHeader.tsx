@@ -86,6 +86,10 @@ const DesignsystemHeader = (): JSX.Element => {
     </>
   );
 
-  return <S.Header>{useMobileHeader ? mobile : nonMobile}</S.Header>;
+  return (
+    <S.Header>
+      {useMobileHeader || context.isTablet ? mobile : nonMobile}
+    </S.Header>
+  );
 };
 export default DesignsystemHeader;

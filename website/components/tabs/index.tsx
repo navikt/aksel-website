@@ -115,7 +115,11 @@ export const Tabs = ({
                 passHref
                 shallow
               >
-                <S.A ref={tab.ref} data-selected={tab.active}>
+                <S.A
+                  className="vk-tab_link"
+                  ref={tab.ref}
+                  data-selected={tab.active}
+                >
                   {tab.name}
                 </S.A>
               </Link>

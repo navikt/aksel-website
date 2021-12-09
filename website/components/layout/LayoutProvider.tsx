@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { useIsomorphicLayoutEffect, useMedia } from "react-use";
 import { DsNavigationHeadingT } from "../../lib";
 import { PagePropsContext } from "../../pages/_app";
@@ -20,9 +20,21 @@ const LayoutProvider = ({
   const [activeHeading, setActiveHeading] = useState<
     DsNavigationHeadingT | undefined
   >();
+  const [largerFontsize, setLargerFontsize] = useState(false);
 
   const isTablet = useMedia("(max-width: 768px)");
   const isMobile = useMedia("(max-width: 480px)");
+
+  useEffect(() => {
+    setLargerFontsize(
+      Number(
+        window
+          .getComputedStyle(document.documentElement)
+          .getPropertyValue("font-size")
+          .replace("px", "")
+      ) > 18
+    );
+  }, []);
 
   useIsomorphicLayoutEffect(() => {
     setActiveHeading(
@@ -48,7 +60,9 @@ const LayoutProvider = ({
   }
 
   return (
-    <LayoutContext.Provider value={{ isMobile, isTablet, activeHeading }}>
+    <LayoutContext.Provider
+      value={{ isMobile, isTablet: isTablet || largerFontsize, activeHeading }}
+    >
       {children}
     </LayoutContext.Provider>
   );
