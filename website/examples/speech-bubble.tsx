@@ -1,7 +1,8 @@
 import { SpeechBubble } from "@navikt/ds-react";
 import React from "react";
+import { ExampleComponent } from "../lib";
 
-export const SpeechBubbleExample = () => (
+export const SpeechBubbleExample: ExampleComponent = () => (
   <>
     <SpeechBubble illustration="OLA" topText="Ola Normann 01.01.21 14:00">
       <SpeechBubble.Bubble>
@@ -31,7 +32,7 @@ SpeechBubbleExample.react = `<SpeechBubble illustration="OLA" topText="Ola Norma
 </SpeechBubble.Bubble>
 </SpeechBubble>`;
 
-export const SpeechBubblePosisjonering = () => (
+export const SpeechBubblePosisjonering: ExampleComponent = () => (
   <div>
     <SpeechBubble illustration="OLA" position="left">
       <SpeechBubble.Bubble>Aute minim nisi sunt mollit</SpeechBubble.Bubble>
@@ -60,7 +61,7 @@ SpeechBubblePosisjonering.react = `<SpeechBubble illustration="OLA" position="le
 </SpeechBubble.Bubble>
 </SpeechBubble>`;
 
-export const SpeechBubbleFarger = () => (
+export const SpeechBubbleFarger: ExampleComponent = () => (
   <>
     <SpeechBubble
       illustration="OLA"
@@ -90,7 +91,7 @@ backgroundColor="var(--navds-global-color-lightblue-200)"
 </SpeechBubble.Bubble>
 </SpeechBubble>`;
 
-export const SpeechBubbleIllustrasjon = () => (
+export const SpeechBubbleIllustrasjon: ExampleComponent = () => (
   <>
     <SpeechBubble illustration={<Illustration />} position="left">
       <SpeechBubble.Bubble>

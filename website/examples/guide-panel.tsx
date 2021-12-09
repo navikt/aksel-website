@@ -1,8 +1,9 @@
 import React from "react";
 import { GuidePanel } from "@navikt/ds-react";
 import styled from "styled-components";
+import { ExampleComponent } from "../lib";
 
-export const GuidepanelExample = () => (
+export const GuidepanelExample: ExampleComponent = () => (
   <>
     <GuidePanel>
       Saksbehandlingstiden varierer fra kommune til kommune. Hvis det går mer
@@ -18,7 +19,7 @@ enn X måneder siden du søkte, skal du få brev om at saksbehandlingstiden
 er forlenget.
 </GuidePanel>`;
 
-export const GuidepanelPoster = () => (
+export const GuidepanelPoster: ExampleComponent = () => (
   <>
     <GuidePanel poster>
       Saksbehandlingstiden varierer fra kommune til kommune. Hvis det går mer
@@ -48,7 +49,7 @@ const PurpleWrapper = styled.div`
   );
 `;
 
-export const GuidepanelColors = () => (
+export const GuidepanelColors: ExampleComponent = () => (
   <>
     <GreenWrapper>
       <GuidePanel>
@@ -68,3 +69,4 @@ export const GuidepanelColors = () => (
 );
 
 GuidepanelColors.html = "";
+GuidepanelColors.react = "";

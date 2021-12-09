@@ -1,8 +1,9 @@
 import React from "react";
 import { Link, Alert } from "@navikt/ds-react";
 import { ExternalLink } from "@navikt/ds-icons";
+import { ExampleComponent } from "../lib";
 
-export const LinkExample = () => (
+export const LinkExample: ExampleComponent = () => (
   <p>
     Dette er en <Link href="#">tekstlenke</Link> i en setning.
   </p>
@@ -12,7 +13,7 @@ LinkExample.react = `<p>
 Dette er en <Link href="#">tekstlenke</Link> i en setning.
 </p>`;
 
-export const LinkOnAlert = () => (
+export const LinkOnAlert: ExampleComponent = () => (
   <>
     <Alert variant="info">
       Dette er en <Link href="#">tekstlenke</Link> i en setning.
@@ -24,7 +25,7 @@ LinkOnAlert.react = `<Alert variant="info">
 Dette er en <Link href="#">tekstlenke</Link> i en setning.
 </Alert>`;
 
-export const LinkMedIkon = () => (
+export const LinkMedIkon: ExampleComponent = () => (
   <>
     <p>
       Dette er en{" "}

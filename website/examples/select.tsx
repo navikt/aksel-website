@@ -1,7 +1,8 @@
 import React from "react";
 import { Select } from "@navikt/ds-react";
+import { ExampleComponent } from "../lib";
 
-export const SelectExample = () => (
+export const SelectExample: ExampleComponent = () => (
   <>
     <Select label="Velg hvilket land du bosted i.">
       <option value="">Velg land</option>
@@ -19,7 +20,7 @@ SelectExample.react = `<Select label="Velg hvilket land du bosted i.">
 <option value="danmark">Danmark</option>
 </Select>`;
 
-export const SelectSmall = () => (
+export const SelectSmall: ExampleComponent = () => (
   <>
     <Select label="Velg hvilket land du bosted i." size="small">
       <option value="">Velg land</option>
@@ -37,7 +38,7 @@ SelectSmall.react = `<Select label="Velg hvilket land du bosted i." size="small"
 <option value="danmark">Danmark</option>
 </Select>`;
 
-export const SelectMedDescription = () => (
+export const SelectMedDescription: ExampleComponent = () => (
   <>
     <Select
       label="Velg hvilket land du bosted i."
@@ -58,7 +59,7 @@ SelectMedDescription.react = `<Select label="Velg hvilket land du bosted i." des
 <option value="danmark">Danmark</option>
 </Select>`;
 
-export const SelectMedError = () => (
+export const SelectMedError: ExampleComponent = () => (
   <>
     <Select label="Velg hvilket land du bosted i." error="Du må velge et land.">
       <option value="">Velg land</option>
@@ -76,7 +77,7 @@ SelectMedError.react = `<Select label="Velg hvilket land du bosted i." error="Du
 <option value="danmark">Danmark</option>
 </Select>`;
 
-export const SelectMedHideLabel = () => (
+export const SelectMedHideLabel: ExampleComponent = () => (
   <>
     <Select label="Velg hvilket land du bosted i." hideLabel>
       <option value="">Velg land</option>

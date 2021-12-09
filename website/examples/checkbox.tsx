@@ -1,7 +1,8 @@
 import React from "react";
 import { CheckboxGroup, Checkbox } from "@navikt/ds-react";
+import { ExampleComponent } from "../lib";
 
-export const CheckboxStandard = () => (
+export const CheckboxStandard: ExampleComponent = () => (
   <>
     <Checkbox value="eple">Eple</Checkbox>
   </>
@@ -9,7 +10,7 @@ export const CheckboxStandard = () => (
 
 CheckboxStandard.react = `<Checkbox value="eple">Eple</Checkbox>`;
 
-export const CheckboxMedError = () => (
+export const CheckboxMedError: ExampleComponent = () => (
   <>
     <Checkbox value="melon" error>
       Melon
@@ -21,7 +22,7 @@ CheckboxMedError.react = `<Checkbox value="melon" error="Melon må være valgt."
 Melon
 </Checkbox>`;
 
-export const CheckboxGroupStandard = () => (
+export const CheckboxGroupStandard: ExampleComponent = () => (
   <>
     <CheckboxGroup legend="Velg frukt du vil ha levert.">
       <Checkbox value="eple">Eple</Checkbox>
@@ -37,7 +38,7 @@ CheckboxGroupStandard.react = `<CheckboxGroup legend="Velg frukt du vil ha lever
 <Checkbox value="melon">Melon</Checkbox>
 </CheckboxGroup>`;
 
-export const CheckboxGroupSmall = () => (
+export const CheckboxGroupSmall: ExampleComponent = () => (
   <>
     <CheckboxGroup size="small" legend="Velg frukt du vil ha levert.">
       <Checkbox value="eple">Eple</Checkbox>
@@ -53,7 +54,7 @@ CheckboxGroupSmall.react = `<CheckboxGroup size="small" legend="Velg frukt du vi
 <Checkbox value="melon">Melon</Checkbox>
 </CheckboxGroup>`;
 
-export const CheckboxGroupMedDescription = () => (
+export const CheckboxGroupMedDescription: ExampleComponent = () => (
   <>
     <CheckboxGroup
       legend="Velg frukt du vil ha levert."
@@ -75,7 +76,7 @@ description="Velg minst 2 frukter for levering."
 <Checkbox value="melon">Melon</Checkbox>
 </CheckboxGroup>`;
 
-export const CheckboxGroupMedError = () => (
+export const CheckboxGroupMedError: ExampleComponent = () => (
   <>
     <CheckboxGroup
       legend="Velg frukt du vil ha levert."
@@ -98,21 +99,22 @@ error="Du må velge minst 2 frukter."
 <Checkbox value="melon">Melon</Checkbox>
 </CheckboxGroup>`;
 
-export const CheckboxGroupMedErrorUtenErrorPropagation = () => (
-  <>
-    <CheckboxGroup
-      legend="Velg frukt du vil ha levert."
-      error="Alle leveringer må inkludere melon"
-      defaultValue={["eple", "pære"]}
-    >
-      <Checkbox value="melon">Melon</Checkbox>
-      <Checkbox value="eple">Eple</Checkbox>
-      <Checkbox value="pære" defaultChecked>
-        Pære
-      </Checkbox>
-    </CheckboxGroup>
-  </>
-);
+export const CheckboxGroupMedErrorUtenErrorPropagation: ExampleComponent =
+  () => (
+    <>
+      <CheckboxGroup
+        legend="Velg frukt du vil ha levert."
+        error="Alle leveringer må inkludere melon"
+        defaultValue={["eple", "pære"]}
+      >
+        <Checkbox value="melon">Melon</Checkbox>
+        <Checkbox value="eple">Eple</Checkbox>
+        <Checkbox value="pære" defaultChecked>
+          Pære
+        </Checkbox>
+      </CheckboxGroup>
+    </>
+  );
 
 CheckboxGroupMedErrorUtenErrorPropagation.react = `<CheckboxGroup
 legend="Velg frukt du vil ha levert."
@@ -128,7 +130,7 @@ defaultValue={["eple", "pære"]}
 </Checkbox>
 </CheckboxGroup>`;
 
-export const CheckboxGroupMedHidelegend = () => (
+export const CheckboxGroupMedHidelegend: ExampleComponent = () => (
   <>
     <CheckboxGroup
       legend="Velg frukt du vil ha levert."
@@ -151,7 +153,7 @@ hideLegend
 <Checkbox value="melon">Melon</Checkbox>
 </CheckboxGroup>`;
 
-export const CheckboxMedHideLabel = () => (
+export const CheckboxMedHideLabel: ExampleComponent = () => (
   <>
     <Checkbox value="eple" hideLabel>
       Eple

@@ -1,7 +1,8 @@
 import React from "react";
 import { RadioGroup, Radio } from "@navikt/ds-react";
+import { ExampleComponent } from "../lib";
 
-export const RadioGroupStandard = () => (
+export const RadioGroupStandard: ExampleComponent = () => (
   <>
     <RadioGroup legend="Velg frukten du vil ha levert.">
       <Radio value="eple">Eple</Radio>
@@ -17,7 +18,7 @@ RadioGroupStandard.react = `<RadioGroup legend="Velg frukten du vil ha levert.">
 <Radio value="melon">Melon</Radio>
 </RadioGroup>`;
 
-export const RadioGroupSmall = () => (
+export const RadioGroupSmall: ExampleComponent = () => (
   <>
     <RadioGroup size="small" legend="Velg frukten du vil ha levert.">
       <Radio value="eple">Eple</Radio>
@@ -33,7 +34,7 @@ RadioGroupSmall.react = `<RadioGroup size="small" legend="Velg frukten du vil ha
 <Radio value="melon">Melon</Radio>
 </RadioGroup>`;
 
-export const RadioGroupMedDescription = () => (
+export const RadioGroupMedDescription: ExampleComponent = () => (
   <>
     <RadioGroup
       legend="Velg frukten du vil ha levert."
@@ -55,7 +56,7 @@ description="Melon er bare tilgjengelig i helgene."
 <Radio value="melon">Melon</Radio>
 </RadioGroup>`;
 
-export const RadioGroupMedError = () => (
+export const RadioGroupMedError: ExampleComponent = () => (
   <>
     <RadioGroup
       legend="Velg frukten du vil ha levert."
@@ -77,7 +78,7 @@ error="Du må velge hvilken frukt du ønsker inkludert i leveransen din."
 <Radio value="melon">Melon</Radio>
 </RadioGroup>`;
 
-export const RadioGroupMedErrorUtenErrorPropagation = () => (
+export const RadioGroupMedErrorUtenErrorPropagation: ExampleComponent = () => (
   <>
     <RadioGroup
       legend="Velg frukten du vil ha levert."
@@ -103,7 +104,7 @@ defaultValue={"eple"}
 <Radio value="pære">Pære</Radio>
 </RadioGroup>`;
 
-export const RadioGroupMedHidelegend = () => (
+export const RadioGroupMedHidelegend: ExampleComponent = () => (
   <>
     <RadioGroup legend="Velg frukten du vil ha levert." hideLegend>
       <Radio value="eple">Eple</Radio>

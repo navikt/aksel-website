@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Textarea } from "@navikt/ds-react";
+import { ExampleComponent } from "../lib";
 
-export const TextareaExample = () => {
+export const TextareaExample: ExampleComponent = () => {
   const [value, setValue] = useState("");
   return (
     <Textarea
@@ -18,7 +19,7 @@ value={value}
 onChange={(e) => setValue(e.target.value)}
 />`;
 
-export const TextareaSmall = () => {
+export const TextareaSmall: ExampleComponent = () => {
   const [value, setValue] = useState("");
   return (
     <Textarea
@@ -37,7 +38,7 @@ onChange={(e) => setValue(e.target.value)}
 size="small"
 />`;
 
-export const TextareaMedDescription = () => {
+export const TextareaMedDescription: ExampleComponent = () => {
   const [value, setValue] = useState("");
   return (
     <Textarea
@@ -56,7 +57,7 @@ value={value}
 onChange={(e) => setValue(e.target.value)}
 />`;
 
-export const TextareaMedMaxlength = () => {
+export const TextareaMedMaxlength: ExampleComponent = () => {
   const [value, setValue] = useState("");
   return (
     <Textarea
@@ -75,7 +76,7 @@ value={value}
 onChange={(e) => setValue(e.target.value)}
 />`;
 
-export const TextareaMedError = () => {
+export const TextareaMedError: ExampleComponent = () => {
   const [value, setValue] = useState("");
   return (
     <Textarea
@@ -96,7 +97,7 @@ value={value}
 onChange={(e) => setValue(e.target.value)}
 />`;
 
-export const TextareaMedHideLabel = () => {
+export const TextareaMedHideLabel: ExampleComponent = () => {
   const [value, setValue] = useState("");
   return (
     <Textarea

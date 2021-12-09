@@ -1,21 +1,9 @@
 import React from "react";
 import { AccordionMenu } from "@navikt/ds-react";
+import { ExampleComponent } from "../lib";
 
-export const AccordionMenuExample = () => (
+export const AccordionMenuExample: ExampleComponent = () => (
   <>
-    {/*
-
-
-
-
-
-
-
-
-
-
-
- */}
     <AccordionMenu>
       <AccordionMenu.Item href="#leo">Satser</AccordionMenu.Item>
       <AccordionMenu.Item href="#leo">Regelverk</AccordionMenu.Item>

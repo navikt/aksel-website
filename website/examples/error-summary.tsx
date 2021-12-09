@@ -1,7 +1,8 @@
 import React from "react";
 import { ErrorSummary } from "@navikt/ds-react";
+import { ExampleComponent } from "../lib";
 
-export const ErrorSummaryExample = () => (
+export const ErrorSummaryExample: ExampleComponent = () => (
   <>
     <ErrorSummary heading="Du må fikse disse feilene før du kan sende inn søknad.">
       <ErrorSummary.Item href="#1">
@@ -21,7 +22,7 @@ ErrorSummaryExample.react = `<ErrorSummary heading="Du må fikse disse feilene f
 </ErrorSummary.Item>
 </ErrorSummary>`;
 
-export const ErrorSummarySmall = () => (
+export const ErrorSummarySmall: ExampleComponent = () => (
   <>
     <ErrorSummary
       size="small"
@@ -44,7 +45,7 @@ ErrorSummarySmall.react = `<ErrorSummary size="small" heading="Du må fikse diss
 </ErrorSummary.Item>
 </ErrorSummary>`;
 
-export const ErrorSummaryWithCustomHeading = () => (
+export const ErrorSummaryWithCustomHeading: ExampleComponent = () => (
   <>
     <ErrorSummary
       headingTag="h3"

@@ -1,7 +1,8 @@
 import React from "react";
 import { Table } from "@navikt/ds-react";
+import { ExampleComponent } from "../lib";
 
-export const TableExample = () => {
+export const TableExample: ExampleComponent = () => {
   return (
     <Table>
       <Table.Header>
@@ -36,6 +37,7 @@ export const TableExample = () => {
   );
 };
 
+TableExample.bg = "white";
 TableExample.react = `<Table>
 <Table.Header>
   <Table.Row>
@@ -67,7 +69,7 @@ TableExample.react = `<Table>
 </Table.Body>
 </Table>`;
 
-export const TableSmall = () => {
+export const TableSmall: ExampleComponent = () => {
   return (
     <Table size="small">
       <Table.Header>
@@ -102,6 +104,7 @@ export const TableSmall = () => {
   );
 };
 
+TableSmall.bg = "white";
 TableSmall.react = `<Table size="small">
 <Table.Header>
   <Table.Row>

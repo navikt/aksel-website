@@ -1,9 +1,10 @@
 import { Star } from "@navikt/ds-icons";
 import { Button, Loader } from "@navikt/ds-react";
 import React from "react";
+import { ExampleComponent } from "../lib";
 import { ScFlexGrow } from "./styles";
 
-export const ButtonAllVariants = () => (
+export const ButtonAllVariants: ExampleComponent = () => (
   <>
     <Button variant="primary">Primary button</Button>
     <Button variant="secondary">Secondary button</Button>
@@ -18,7 +19,7 @@ ButtonAllVariants.react = `
     <Button variant="tertiary">Tertiary button</Button>
     <Button variant="danger">Danger button</Button>`;
 
-export const ButtonPrimary = () => (
+export const ButtonPrimary: ExampleComponent = () => (
   <>
     <Button variant="primary">Primary button</Button>
     <Button variant="primary" size="small">
@@ -32,7 +33,7 @@ ButtonPrimary.react = `<Button variant="primary">Primary button</Button>
   Primary button
 </Button>`;
 
-export const ButtonSecondary = () => (
+export const ButtonSecondary: ExampleComponent = () => (
   <>
     <Button variant="secondary">Secondary button</Button>
     <Button variant="secondary" size="small">
@@ -46,7 +47,7 @@ ButtonSecondary.react = `<Button variant="secondary">Secondary button</Button>
   Secondary button
 </Button>`;
 
-export const ButtonTertiary = () => {
+export const ButtonTertiary: ExampleComponent = () => {
   return (
     <>
       <Button variant="tertiary">Tertiary button</Button>
@@ -64,7 +65,7 @@ ButtonTertiary.react = `
     </Button>
 `;
 
-export const ButtonDanger = () => (
+export const ButtonDanger: ExampleComponent = () => (
   <>
     <Button variant="danger">Danger button</Button>
     <Button variant="danger" size="small">
@@ -78,7 +79,7 @@ ButtonDanger.react = `<Button variant="danger">Danger button</Button>
   Danger button
 </Button>`;
 
-export const ButtonDisabled = () => (
+export const ButtonDisabled: ExampleComponent = () => (
   <>
     <Button variant="primary" disabled={true}>
       Disabled button
@@ -113,7 +114,7 @@ class="navds-button navds-button--primary navds-button--small"
 </span>
 </button>`;
 
-export const ButtonWithIcon = () => (
+export const ButtonWithIcon: ExampleComponent = () => (
   <>
     <Button variant="secondary">
       <Star aria-label="label-melding" />
@@ -135,7 +136,7 @@ Button
 Button
 </Button>`;
 
-export const ButtonWithLoader = () => (
+export const ButtonWithLoader: ExampleComponent = () => (
   <ScFlexGrow>
     <Button variant="primary" aria-label="laster innhold...">
       <Loader title="laster inn data.." />

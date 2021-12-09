@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { ConfirmationPanel } from "@navikt/ds-react";
+import { ExampleComponent } from "../lib";
 
-export const ConfirmationPanelExample = () => {
+export const ConfirmationPanelExample: ExampleComponent = () => {
   const [checked, setChecked] = useState(false);
   return (
     <>
@@ -26,7 +27,7 @@ For å komme videre må du gi oss lov til å hente inn og bruke
 opplysninger om deg.
 </ConfirmationPanel>`;
 
-export const ConfirmationPanelSmall = () => {
+export const ConfirmationPanelSmall: ExampleComponent = () => {
   const [checked, setChecked] = useState(false);
   return (
     <>
@@ -53,7 +54,7 @@ For å komme videre må du gi oss lov til å hente inn og bruke
 opplysninger om deg.
 </ConfirmationPanel>`;
 
-export const ConfirmationPanelWithError = () => {
+export const ConfirmationPanelWithError: ExampleComponent = () => {
   const [checked] = useState(false);
   return (
     <>

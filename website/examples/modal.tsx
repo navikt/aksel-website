@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Modal, Button, Heading, BodyLong } from "@navikt/ds-react";
+import { ExampleComponent } from "../lib";
 
 Modal.setAppElement("#__next");
 
-export const ModalExample = () => {
+export const ModalExample: ExampleComponent = () => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -44,7 +45,7 @@ ModalExample.react = `<Modal open={open} onClose={() => setOpen(false)}>
 </Modal.Content>
 </Modal>`;
 
-export const ModalShouldNotcloseonoverlayclick = () => {
+export const ModalShouldNotcloseonoverlayclick: ExampleComponent = () => {
   const [open, setOpen] = useState(false);
 
   return (

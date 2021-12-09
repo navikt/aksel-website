@@ -1,8 +1,9 @@
 import React from "react";
 import { Loader, Button } from "@navikt/ds-react";
 import styled from "styled-components";
+import { ExampleComponent } from "../lib";
 
-export const LoaderExample = () => (
+export const LoaderExample: ExampleComponent = () => (
   <>
     <Loader title="Laster inn ny data..." />
   </>
@@ -10,7 +11,7 @@ export const LoaderExample = () => (
 
 LoaderExample.react = `<Loader title="Laster inn ny data..." />`;
 
-export const LoaderAllSizes = () => (
+export const LoaderAllSizes: ExampleComponent = () => (
   <div>
     <Loader size="2xlarge" />
     <Loader size="xlarge" />
@@ -20,6 +21,7 @@ export const LoaderAllSizes = () => (
     <Loader size="xsmall" />
   </div>
 );
+
 LoaderAllSizes.react = `<Loader size="2xlarge" />
 <Loader size="xlarge" />
 <Loader size="large" />
@@ -27,7 +29,7 @@ LoaderAllSizes.react = `<Loader size="2xlarge" />
 <Loader size="small" />
 <Loader size="xsmall" />`;
 
-export const LoaderNeutral = () => (
+export const LoaderNeutral: ExampleComponent = () => (
   <>
     <Loader size="2xlarge" variant="neutral" />
   </>
@@ -35,7 +37,7 @@ export const LoaderNeutral = () => (
 
 LoaderNeutral.react = `<Loader size="2xlarge" variant="neutral" />`;
 
-export const LoaderInteraction = () => (
+export const LoaderInteraction: ExampleComponent = () => (
   <>
     <Loader size="2xlarge" variant="interaction" />
   </>
@@ -43,16 +45,16 @@ export const LoaderInteraction = () => (
 
 LoaderInteraction.react = `<Loader size="2xlarge" variant="interaction" />`;
 
-export const LoaderInverted = () => (
+export const LoaderInverted: ExampleComponent = () => (
   <>
     <Loader size="2xlarge" variant="inverted" />
   </>
 );
 
 LoaderInverted.react = `<Loader size="2xlarge" variant="inverted" />`;
-LoaderInverted.inverted = true;
+LoaderInverted.bg = "inverted";
 
-export const LoaderTransparent = () => (
+export const LoaderTransparent: ExampleComponent = () => (
   <>
     <Loader size="2xlarge" transparent />
   </>
@@ -68,7 +70,7 @@ const ScFlexGrow = styled.div`
   }
 `;
 
-export const LoaderMedButton = () => (
+export const LoaderMedButton: ExampleComponent = () => (
   <ScFlexGrow>
     <Button>
       <Loader title="Laster inn nytt innhold..." />

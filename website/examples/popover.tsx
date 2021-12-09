@@ -2,8 +2,9 @@ import React, { useRef, useState } from "react";
 import { Popover, Button, Select } from "@navikt/ds-react";
 import { placements, Placement } from "@popperjs/core";
 import styled from "styled-components";
+import { ExampleComponent } from "../lib";
 
-export const PopoverExample = () => {
+export const PopoverExample: ExampleComponent = () => {
   const buttonRef = useRef(null);
   const [open, setOpen] = useState(false);
   return (
@@ -41,7 +42,7 @@ PopoverExample.react = `
     </Popover>
   </>`;
 
-export const PopoverArrow = () => {
+export const PopoverArrow: ExampleComponent = () => {
   const buttonRef = useRef(null);
   const [open, setOpen] = useState(false);
   return (
@@ -80,7 +81,7 @@ PopoverArrow.react = `
   </>
 `;
 
-export const PopoverOffset = () => {
+export const PopoverOffset: ExampleComponent = () => {
   const buttonRef = useRef(null);
   const [open, setOpen] = useState(false);
   return (
@@ -126,7 +127,7 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
-export const PopoverPlacement = () => {
+export const PopoverPlacement: ExampleComponent = () => {
   const selectRef = useRef(null);
   const [selectedPlacement, setselectedPlacement] = useState<Placement>("auto");
 

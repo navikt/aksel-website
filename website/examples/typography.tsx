@@ -9,12 +9,13 @@ import {
 } from "@navikt/ds-react";
 import styled from "styled-components";
 import { ScColumn } from "./styles";
+import { ExampleComponent } from "../lib";
 
 const ScMutedHeading = styled(Heading)`
   color: var(--navds-semantic-color-text-muted);
 `;
 
-export const TypographyHeading = () => {
+export const TypographyHeading: ExampleComponent = () => {
   return (
     <ScColumn>
       <Heading spacing size="2xlarge" level="1">
@@ -58,7 +59,7 @@ Heading small
 Heading xsmall
 </Heading>`;
 
-export const TypographyBodyLong = () => {
+export const TypographyBodyLong: ExampleComponent = () => {
   return (
     <ScColumn>
       <ScMutedHeading size="medium" level="3">
@@ -104,7 +105,7 @@ TypographyBodyLong.react = `
       </BodyLong>
 `;
 
-export const TypographyBodyShort = () => {
+export const TypographyBodyShort: ExampleComponent = () => {
   return (
     <ScColumn>
       <ScMutedHeading size="medium" level="3">
@@ -124,7 +125,7 @@ TypographyBodyShort.react = `
 <BodyShort spacing>Ullamco ut laboris irure</BodyShort>
 <BodyShort size="small">Ullamco ut laboris irure</BodyShort>`;
 
-export const TypographyIngress = () => {
+export const TypographyIngress: ExampleComponent = () => {
   return (
     <>
       <Ingress>
@@ -140,7 +141,7 @@ Esse reprehenderit mollit sunt occaecat sit. Minim voluptate dolor
 incididunt et non quis magna consequat.
 </Ingress>`;
 
-export const TypographyLabel = () => {
+export const TypographyLabel: ExampleComponent = () => {
   return (
     <ScColumn>
       <ScMutedHeading size="medium" level="3">
@@ -160,7 +161,7 @@ TypographyLabel.react = `
 <Label spacing>Ullamco ut laboris irure</Label>
 <Label size="small">Ullamco ut laboris irure</Label>`;
 
-export const TypographyDetail = () => {
+export const TypographyDetail: ExampleComponent = () => {
   return (
     <ScColumn>
       <ScMutedHeading size="medium" level="3">

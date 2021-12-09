@@ -1,7 +1,8 @@
 import React from "react";
 import { LinkPanel } from "@navikt/ds-react";
+import { ExampleComponent } from "../lib";
 
-export const LinkPanelExample = () => (
+export const LinkPanelExample: ExampleComponent = () => (
   <>
     <LinkPanel href="#">
       <LinkPanel.Title>
@@ -17,7 +18,7 @@ LinkPanelExample.react = `<LinkPanel href="#">
 </LinkPanel.Title>
 </LinkPanel>`;
 
-export const LinkPanelMedDescription = () => (
+export const LinkPanelMedDescription: ExampleComponent = () => (
   <>
     <LinkPanel href="#">
       <LinkPanel.Title>Arbeidssøker eller permittert</LinkPanel.Title>
@@ -35,7 +36,7 @@ LinkPanelMedDescription.react = `<LinkPanel href="#">
 </LinkPanel.Description>
 </LinkPanel>`;
 
-export const LinkPanelUtenBorder = () => (
+export const LinkPanelUtenBorder: ExampleComponent = () => (
   <>
     <LinkPanel href="#" border={false}>
       <LinkPanel.Title>Arbeidssøker eller permittert</LinkPanel.Title>
@@ -47,7 +48,7 @@ LinkPanelUtenBorder.react = `<LinkPanel href="#" border={false}>
 <LinkPanel.Title>Arbeidssøker eller permittert</LinkPanel.Title>
 </LinkPanel>`;
 
-export const LinkPanelMedIllustrasjon = () => (
+export const LinkPanelMedIllustrasjon: ExampleComponent = () => (
   <>
     <LinkPanel href="#">
       <div

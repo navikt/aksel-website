@@ -1,6 +1,7 @@
 import React from "react";
 import { Tag } from "@navikt/ds-react";
 import styled from "styled-components";
+import { ExampleComponent } from "../lib";
 
 const Wrapper = styled.div`
   display: flex;
@@ -8,7 +9,7 @@ const Wrapper = styled.div`
   gap: 1rem;
 `;
 
-export const TagAllVariants = () => {
+export const TagAllVariants: ExampleComponent = () => {
   return (
     <Wrapper>
       <Tag variant="info">Info</Tag>
@@ -24,7 +25,7 @@ TagAllVariants.react = `<Tag variant="info">Info</Tag>
 <Tag variant="warning">Warning</Tag>
 <Tag variant="error">Error</Tag>`;
 
-export const TagSmall = () => {
+export const TagSmall: ExampleComponent = () => {
   return (
     <Wrapper>
       <Tag size="small" variant="info">

@@ -23,3 +23,9 @@ export type DsFeddbackMsgT = {
   message: string;
   user?: string;
 };
+
+export type ExampleComponent = {
+  react: string;
+  html?: string | boolean;
+  bg?: "white" | "default" | "inverted";
+};

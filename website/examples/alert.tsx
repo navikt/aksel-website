@@ -1,8 +1,9 @@
 import React from "react";
 import { Alert, BodyLong, Heading, Link } from "@navikt/ds-react";
 import { ScColumn } from "./styles";
+import { ExampleComponent } from "../lib";
 
-export const AlertAllVariants = () => (
+export const AlertAllVariants: ExampleComponent = () => (
   <ScColumn>
     <Alert variant="info">Nå kan du sende inn søknaden.</Alert>
     <Alert variant="success">Du har sendt søknaden.</Alert>
@@ -31,7 +32,7 @@ AlertAllVariants.react = `
       <Link href="#">følge med på hvordan det går.</Link>
     </Alert>`;
 
-export const AlertWithSmall = () => (
+export const AlertWithSmall: ExampleComponent = () => (
   <ScColumn>
     <Alert variant="info">Nå kan du sende inn søknaden.</Alert>
     <Alert variant="info" size="small">
@@ -44,7 +45,7 @@ AlertWithSmall.react = `
 <Alert variant="info">Nå kan du sende inn søknaden.</Alert>
     <Alert variant="info" size="small">Nå kan du sende inn søknaden.</Alert>`;
 
-export const AlertWithHeading = () => (
+export const AlertWithHeading: ExampleComponent = () => (
   <ScColumn>
     <Alert variant="info">
       <Heading spacing size="small" level="2">
@@ -91,7 +92,7 @@ AlertWithHeading.react = `
       </BodyLong>
     </Alert>`;
 
-export const AlertInline = () => (
+export const AlertInline: ExampleComponent = () => (
   <ScColumn>
     <Alert variant="info" inline>
       Nå kan du sende inn søknaden.
@@ -110,7 +111,7 @@ AlertInline.react = `
       Nå kan du sende inn søknaden.
     </Alert>`;
 
-export const AlertFullwidth = () => (
+export const AlertFullwidth: ExampleComponent = () => (
   <ScColumn>
     <Alert variant="info" fullWidth>
       Nå kan du sende inn søknaden.
