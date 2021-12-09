@@ -18,6 +18,8 @@ type ContextProps = {
   setActiveTab: React.Dispatch<React.SetStateAction<number>>;
   fullscreenLink: string;
   setFullscreenLink: React.Dispatch<React.SetStateAction<string>>;
+  previewBg: string;
+  setPreviewBg: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const CodeContext = createContext<ContextProps>({
@@ -30,6 +32,8 @@ export const CodeContext = createContext<ContextProps>({
   setActiveTab: () => null,
   fullscreenLink: "",
   setFullscreenLink: () => null,
+  previewBg: "default",
+  setPreviewBg: () => null,
 });
 
 const ScDiv = styled.div`
@@ -53,6 +57,7 @@ const Code = ({ node }: { node: DsCodeExampleT }): JSX.Element => {
   );
   const [activeTab, setActiveTab] = useState(-1);
   const [fullscreenLink, setFullscreenLink] = useState("");
+  const [previewBg, setPreviewBg] = useState("default");
 
   if (
     (!node.preview && !node?.tabs) ||
@@ -91,6 +96,8 @@ const Code = ({ node }: { node: DsCodeExampleT }): JSX.Element => {
         showTabs,
         fullscreenLink,
         setFullscreenLink,
+        previewBg,
+        setPreviewBg,
       }}
     >
       <ScDiv>
