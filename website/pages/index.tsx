@@ -2,9 +2,9 @@ import { Facilitet } from "@navikt/ds-icons";
 import { BodyLong, Heading, Ingress, Label } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { NAVLogoDark } from "../components";
+import { AmplitudeEvents, NAVLogoDark, useAmplitude } from "../components";
 
 const ScIntro = styled.div`
   margin: 0 auto;
@@ -114,6 +114,14 @@ const ScFrontpage = styled.div`
 `;
 
 const Page = () => {
+  const { logAmplitudeEvent } = useAmplitude();
+
+  useEffect(() => {
+    logAmplitudeEvent(AmplitudeEvents.sidevisning, {
+      side: "/",
+    });
+  }, []);
+
   return (
     <>
       <Head>

@@ -1,7 +1,7 @@
 import { BodyLong, BodyShort, Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { DsFrontpageIllustration } from "../../components/assets/DsFrontpageIllustration";
 import {
@@ -12,6 +12,7 @@ import DesignsystemFooter from "../../components/layout/footer/DesignsystemFoote
 import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
 import { dsNavigationQuery, getClient } from "../../lib";
 import * as Sc from "../../components";
+import { useAmplitude, AmplitudeEvents } from "../../components";
 
 const ScCard = styled.a`
   height: 22rem;
@@ -130,6 +131,14 @@ const ScBodyShort = styled(BodyShort)`
 `;
 
 const Page = () => {
+  const { logAmplitudeEvent } = useAmplitude();
+
+  useEffect(() => {
+    logAmplitudeEvent(AmplitudeEvents.sidevisning, {
+      side: "/designsystem",
+    });
+  }, []);
+
   return (
     <>
       <Head>
