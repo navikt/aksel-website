@@ -101,8 +101,6 @@ const ComponentPageTemplate = ({
   });
 
   useEffect(() => {
-    console.log(!visited.current.includes(asPath));
-
     !visited.current.includes(asPath) &&
       logAmplitudeEvent(AmplitudeEvents.sidevisning, {
         side: asPath,
