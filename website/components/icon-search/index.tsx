@@ -231,7 +231,10 @@ const IconSearch = () => {
                         <T title={i.name} />
                       </div>
                       <ScIconTexts>
-                        <Detail size="small"> {getName(i.name)}</Detail>
+                        <Detail size="small" className="vk-icon_button-detail">
+                          {" "}
+                          {getName(i.name)}
+                        </Detail>
                       </ScIconTexts>
                     </ScIconInner>
                   </ScIcon>
