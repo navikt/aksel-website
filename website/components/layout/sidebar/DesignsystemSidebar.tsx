@@ -17,6 +17,7 @@ const Wrapper = styled.div`
   overflow-y: auto;
   height: 100vh;
   display: block;
+  padding-bottom: calc(var(--navds-spacing-8) + var(--header-height));
 
   @media (max-width: 768px) {
     display: none;
