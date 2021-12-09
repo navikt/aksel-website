@@ -1,5 +1,5 @@
 import React from "react";
-import { ExternalLink } from "@navikt/ds-icons";
+import { Star } from "@navikt/ds-icons";
 import * as Icons from "@navikt/ds-icons";
 import * as Tokens from "@navikt/ds-tokens/dist/tokens";
 
@@ -25,7 +25,7 @@ export default {
   name: "ds_icon",
   type: "object",
   blockEditor: {
-    icon: () => <ExternalLink />,
+    icon: () => <Star />,
     render: DisplayIcon,
   },
   fields: [
