@@ -1164,6 +1164,7 @@ export type BlockContent = Array<
   | SanityKeyed<Spacing>
   | SanityKeyed<Picture>
   | SanityKeyed<PictureText>
+  | SanityKeyed<Tips>
   | SanityKeyed<Alert>
   | SanityKeyed<RelatedPages>
   | SanityKeyed<LinkPanel>
@@ -1184,6 +1185,7 @@ export type GpBlockContent = Array<
   | SanityKeyed<Spacing>
   | SanityKeyed<Picture>
   | SanityKeyed<PictureText>
+  | SanityKeyed<Tips>
   | SanityKeyed<Alert>
   | SanityKeyed<CodeSnippet>
   | SanityKeyed<DoDont>
@@ -1681,6 +1683,16 @@ export type Row = {
    *
    */
   cells?: Array<SanityKeyed<Cell>>;
+};
+
+export type Tips = {
+  _type: "tips";
+  /**
+   * Innhold — `blockContent_simple`
+   *
+   *
+   */
+  body?: BlockContentSimple;
 };
 
 export type Documents =
