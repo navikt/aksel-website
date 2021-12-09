@@ -1,13 +1,12 @@
 import { Examples } from "../../../examples";
+import { ExampleComponent } from "../../../lib";
 
 const getCodeExample = (url: string) => {
   if (!url || !(url in Examples)) {
     return null;
   }
 
-  const Comp: {
-    (): JSX.Element;
-  } = Examples[url];
+  const Comp: ExampleComponent = Examples[url];
 
   return Comp;
 };

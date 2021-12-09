@@ -50,7 +50,15 @@ const ScInnerDiv = styled.div`
   flex-wrap: wrap;
   width: 100%;
 
-  &[data-inverted="true"] {
+  &[data-bg="white"] {
+    background-color: var(--navds-semantic-color-canvas-background-light);
+  }
+  &[data-bg="default"] {
+    background-color: var(
+      --navds-semantic-color-component-background-alternate
+    );
+  }
+  &[data-bg="inverted"] {
     background-color: var(--navds-semantic-color-canvas-background-inverted);
   }
 `;
@@ -61,7 +69,7 @@ const CodePreview = (): JSX.Element => {
   const [url, setUrl] = useState<string>();
   const id = useId();
   const [wrapperRef, setWrapperRef] = useState(null);
-  const [inverted, setInverted] = useState(false);
+  const [bg, setBg] = useState<string>("default");
 
   useEffect(() => {
     const url = node.preview.split("/examples/")?.[1];
@@ -75,31 +83,30 @@ const CodePreview = (): JSX.Element => {
     if (!node.infercode || !wrapperRef || !CodeExample(url)) return;
 
     const newTabs = [];
-    // {react?: string, html?: string}
-    const { ...rest }: any = CodeExample(url);
 
-    rest?.inverted && setInverted(true);
+    const { react, html, bg } = CodeExample(url);
 
-    rest?.react &&
+    bg && setBg(bg);
+
+    react &&
       newTabs.push({
         name: "React",
-        content: formatCode(rest.react, ""),
+        content: formatCode(react, ""),
         language: "jsx",
       });
 
-    if (rest?.html === undefined) {
+    if (html === undefined) {
       wrapperRef &&
         newTabs.push({
           name: "HTML",
           content: formatCode(wrapperRef.innerHTML, "div"),
           language: "html",
         });
-    } else if (rest?.html !== null) {
-      console.log("hre");
-      rest?.html &&
+    } else if (html && html !== "") {
+      html &&
         newTabs.push({
           name: "HTML",
-          content: formatCode(rest.html, "div"),
+          content: formatCode(html, "div"),
           language: "html",
         });
     }
@@ -114,7 +121,7 @@ const CodePreview = (): JSX.Element => {
     <>
       {Comp && (
         <ScDiv>
-          <ScInnerDiv data-inverted={inverted} ref={setWrapperRef}>
+          <ScInnerDiv data-bg={bg} ref={setWrapperRef}>
             <Comp />
           </ScInnerDiv>
         </ScDiv>

@@ -24,8 +24,8 @@ export type DsFeddbackMsgT = {
   user?: string;
 };
 
-export type ExampleComponent = {
+export interface ExampleComponent extends React.FC {
   react: string;
-  html?: string | boolean;
+  html?: string | null;
   bg?: "white" | "default" | "inverted";
-};
+}
