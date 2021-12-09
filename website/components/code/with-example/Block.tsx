@@ -27,7 +27,10 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
 
   return (
     <>
-      <S.PreWrapper active={activeTab === index}>
+      <S.PreWrapper
+        active={activeTab === index}
+        standalone={!showPreview && !showTabs}
+      >
         {!showPreview && !showTabs && (
           <CopyButton content={tabs[index].content.toString()} />
         )}

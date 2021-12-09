@@ -21,9 +21,9 @@ const formatCode = (code: string, tag: string) => {
       printWidth: 60,
       semi: false,
     });
-
     return formated.startsWith(";") ? formated.slice(1) : formated;
-  } catch {
+  } catch (e) {
+    console.error(e);
     return code;
   }
 };
@@ -95,6 +95,7 @@ const CodePreview = (): JSX.Element => {
           language: "html",
         });
     } else if (rest?.html !== null) {
+      console.log("hre");
       rest?.html &&
         newTabs.push({
           name: "HTML",

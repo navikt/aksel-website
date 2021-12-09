@@ -46,7 +46,7 @@ const CodeSnippet = ({
 
   return (
     <>
-      <S.PreWrapper active={true}>
+      <S.PreWrapper active={true} standalone>
         <CopyButton content={code.code} />
         <S.Pre className="language-">
           <ScCode
