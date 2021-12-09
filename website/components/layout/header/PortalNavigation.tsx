@@ -7,7 +7,7 @@ import * as React from "react";
 import { useRef, useState } from "react";
 import { useMedia } from "react-use";
 import styled, { css } from "styled-components";
-import { fadeInCss, NavLogoWhite } from "../..";
+import { AmplitudeEvents, fadeInCss, NavLogoWhite, useAmplitude } from "../..";
 
 export const ScWrapper = styled.div`
   height: 100%;
@@ -170,6 +170,17 @@ const HeadingDropDown = ({ title }: { title: string }) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const buttonRef = useRef(null);
+  const { logAmplitudeEvent } = useAmplitude();
+
+  const { asPath } = useRouter();
+
+  const logNavigation = (e) => {
+    logAmplitudeEvent(AmplitudeEvents.navigasjon, {
+      kilde: "portalnavigasjon",
+      fra: asPath,
+      til: e.currentTarget.getAttribute("href"),
+    });
+  };
 
   return (
     <>
@@ -207,7 +218,12 @@ const HeadingDropDown = ({ title }: { title: string }) => {
           <ul>
             <li>
               <NextLink href="/" passHref>
-                <ScIconLink onClick={() => setOpen(false)}>
+                <ScIconLink
+                  onClick={(e) => {
+                    setOpen(false);
+                    logNavigation(e);
+                  }}
+                >
                   <Left aria-label="Gå til forsiden" />
                   <Label>Tilbake til Verktøykassa</Label>
                 </ScIconLink>
@@ -216,7 +232,10 @@ const HeadingDropDown = ({ title }: { title: string }) => {
             <li>
               <NextLink href="/designsystem" passHref>
                 <ScLink
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => {
+                    setOpen(false);
+                    logNavigation(e);
+                  }}
                   data-active={router.asPath.startsWith(`/designsystem`)}
                 >
                   <BodyShort>Designsystemet</BodyShort>
@@ -233,4 +252,5 @@ const HeadingDropDown = ({ title }: { title: string }) => {
     </>
   );
 };
+
 export default HeadingDropDown;

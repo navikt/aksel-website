@@ -1,8 +1,10 @@
 import { BodyShort } from "@navikt/ds-react";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { SearchContext } from ".";
+import { AmplitudeEvents, useAmplitude } from "..";
 
 const capitalize = (s) => (s && s[0].toUpperCase() + s.slice(1)) || "";
 
@@ -33,11 +35,26 @@ const Hit = React.forwardRef<HTMLAnchorElement, HitProps>(
     const isArticle = ["artikkel"].includes(hit.page);
 
     const context = useContext(SearchContext);
+
+    const { logAmplitudeEvent } = useAmplitude();
+    const { asPath } = useRouter();
+
+    const logNavigation = (e) => {
+      logAmplitudeEvent(AmplitudeEvents.navigasjon, {
+        kilde: "sok",
+        fra: asPath,
+        til: e.currentTarget.getAttribute("href"),
+      });
+    };
+
     return (
       <BodyShort as="dd">
         <NextLink href={`/${hit.path}`} passHref>
           <ScHit
-            onClick={() => context.clicked()}
+            onClick={(e) => {
+              context.clicked();
+              logNavigation(e);
+            }}
             {...props}
             tabIndex={-1}
             ref={ref}
