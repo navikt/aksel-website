@@ -2,6 +2,7 @@ import { Download } from "@navikt/ds-icons";
 import { Button, Heading, Loader, Popover } from "@navikt/ds-react";
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
+import { AmplitudeEvents, useAmplitude } from "..";
 import { downloadAllSvg, downloadPngInSize } from "./downloads";
 
 export const ScDownloadButtons = styled.div`
@@ -58,8 +59,16 @@ const DownloadButtons = () => {
   const [isDownloadingSvg, setIsDownloadingSvg] = useState(false);
   const [isDownloadingPng, setIsDownloadingPng] = useState(false);
   const [openPopover, setOpenPopover] = useState(false);
+  const { logAmplitudeEvent } = useAmplitude();
 
   const buttonRef = useRef(null);
+
+  const logDownload = (format) => {
+    logAmplitudeEvent(AmplitudeEvents.ikonnedlastning, {
+      all: true,
+      format,
+    });
+  };
 
   const handleSvgDownload = async () => {
     if (isDownloadingSvg) return;
@@ -82,7 +91,12 @@ const DownloadButtons = () => {
         Last ned alle ikoner
       </Heading>
       <ScDownloadButtons>
-        <ScButton onClick={() => handleSvgDownload()}>
+        <ScButton
+          onClick={() => {
+            handleSvgDownload();
+            logDownload("svg");
+          }}
+        >
           {isDownloadingSvg ? (
             <>
               <Loader
@@ -125,10 +139,38 @@ const DownloadButtons = () => {
             Størrelser
           </ScHeading>
           <ScContent>
-            <Button onClick={() => handlePngDownload(16)}>16px</Button>
-            <Button onClick={() => handlePngDownload(24)}>24px</Button>
-            <Button onClick={() => handlePngDownload(128)}>128px</Button>
-            <Button onClick={() => handlePngDownload(256)}>256px</Button>
+            <Button
+              onClick={() => {
+                handlePngDownload(16);
+                logDownload("png");
+              }}
+            >
+              16px
+            </Button>
+            <Button
+              onClick={() => {
+                handlePngDownload(24);
+                logDownload("png");
+              }}
+            >
+              24px
+            </Button>
+            <Button
+              onClick={() => {
+                handlePngDownload(128);
+                logDownload("png");
+              }}
+            >
+              128px
+            </Button>
+            <Button
+              onClick={() => {
+                handlePngDownload(256);
+                logDownload("png");
+              }}
+            >
+              256px
+            </Button>
           </ScContent>
         </Popover>
       </ScDownloadButtons>

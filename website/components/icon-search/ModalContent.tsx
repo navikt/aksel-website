@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { renderToString } from "react-dom/server";
 import styled, { css } from "styled-components";
 import { isNew } from ".";
-import { Snippet } from "..";
+import { AmplitudeEvents, Snippet, useAmplitude } from "..";
 import { CodeSnippet } from "../../lib/autogen-types";
 import { ScButton } from "./DownloadButtons";
 import { downloadPng, downloadSvg } from "./downloads";
@@ -87,6 +87,8 @@ const ScTopWrapper = styled.div`
 `;
 
 const ModalContent = ({ icon }: { icon: string }) => {
+  const { logAmplitudeEvent } = useAmplitude();
+
   const [doc, setDoc] = useState<{
     name: string;
     pageName: string;
@@ -98,6 +100,13 @@ const ModalContent = ({ icon }: { icon: string }) => {
     const doc = meta.find((x) => x.name === icon);
     setDoc(doc ?? null);
   }, [icon]);
+
+  const logDownload = (icon, format) => {
+    logAmplitudeEvent(AmplitudeEvents.ikonnedlastning, {
+      icon,
+      format,
+    });
+  };
 
   const importSnippet: CodeSnippet = {
     _type: "code_snippet",
@@ -145,10 +154,20 @@ import ${icon} from "@navikt/ds-icons/svg/${icon}";`,
             Last ned
           </Heading>
           <ScButtonWrapper>
-            <ScButton onClick={() => downloadSvg(icon)}>
+            <ScButton
+              onClick={() => {
+                downloadSvg(icon);
+                logDownload(icon, "svg");
+              }}
+            >
               <Icons.Download aria-label="last ned" /> SVG
             </ScButton>
-            <ScButton onClick={() => downloadPng(icon)}>
+            <ScButton
+              onClick={() => {
+                downloadPng(icon);
+                logDownload(icon, "png");
+              }}
+            >
               <Icons.Download aria-label="last ned" />
               PNG
             </ScButton>

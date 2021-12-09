@@ -13,7 +13,7 @@ function Page() {
     });
   }, [asPath]);
 
-  return <Error statusCode={404} />;
+  return <Error statusCode={404} title="Fant ikke siden" />;
 }
 
 export default Page;
