@@ -40,6 +40,13 @@ _type == "alert" =>{
     ${markDef}
   }
 },
+_type == "tips" =>{
+  ...,
+  body[]{
+    ...,
+    ${markDef}
+  }
+},
 _type == "picture_text" =>{
   ...,
   body[]{

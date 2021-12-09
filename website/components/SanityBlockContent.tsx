@@ -17,6 +17,7 @@ import {
   Spacing,
   RelatedPagesCards,
   Table,
+  Tips,
 } from ".";
 import ComponentOverview from "./component-overview";
 import * as Icons from "@navikt/ds-icons";
@@ -86,6 +87,7 @@ const serializers = {
     picture: ({ node }) => <Image node={node} />,
     picture_text: ({ node }) => <ImageWithText node={node} />,
     alert: ({ node }) => <Alert node={node} />,
+    tips: ({ node }) => <Tips node={node} />,
     link_panel: ({ node }) => <LinkPanel node={node} />,
     spacing: ({ node }) => <Spacing node={node} />,
     table: ({ node }) => <Table node={node} />,
