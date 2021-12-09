@@ -6,20 +6,20 @@ import { documentSearchMetadata } from "../templates/document-search-template";
 const prefix = "designsystem/side/";
 
 export default {
-  title: "Artikkelside",
+  title: "Artikkel",
   name: "ds_article_page",
   type: "document",
   ...defaultPreview(),
   fields: [
     documentMetadata("article"),
-    documentSearchMetadata,
     ...documentInformation(prefix),
     {
       name: "body",
       type: "blockContent",
-      title: "Innhold",
+      title: "Sideinnhold",
       validation: (Rule) =>
         Rule.required().error("Må legge til noe innhold på siden"),
     },
+    documentSearchMetadata,
   ],
 };

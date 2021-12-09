@@ -6,14 +6,12 @@ import { defaultPreview } from "../templates/document-preview-template";
 const prefix = "designsystem/side/";
 
 export default {
-  title: "Komponentside",
+  title: "Komponentartikkel",
   name: "ds_component_page",
   type: "document",
-  //__experimental_actions: [, /* "create" */ "update", /*'delete',*/ "publish"],
   ...defaultPreview(),
   fields: [
     documentMetadata("article"),
-    documentSearchMetadata,
     ...documentInformation(prefix),
     {
       name: "usage",
@@ -36,7 +34,7 @@ export default {
       title: "Tilgjengelighet-tab",
     },
     {
-      title: "Pakkenavn",
+      title: "Relaterte pakker",
       description: "Kobler komponenten til en eller flere pakker",
       name: "linked_packages",
       type: "array",
@@ -59,5 +57,6 @@ export default {
       name: "figma_link",
       type: "url",
     },
+    documentSearchMetadata,
   ],
 };

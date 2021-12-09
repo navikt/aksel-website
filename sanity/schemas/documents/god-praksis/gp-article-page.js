@@ -52,19 +52,19 @@ export default {
     {
       name: "notes",
       description:
-        "Vises bare her internt i Sanity. Kan brukes for å holde styringen på hva som er status etc",
+        "Redaktør-notater. Noe som ble igjen på TODO lista? Legg det til her!",
       type: "text",
-      title: "Interne notater",
+      title: "Notater",
       rows: 4,
     },
     documentMetadata("article"),
-    documentSearchMetadata,
     ...documentInformation(prefix).filter((x) => x.name !== "tags"),
     {
       name: "body",
       type: "gp_blockContent",
-      title: "Innhold",
+      title: "Sideinnhold",
       validation: (Rule) => Rule.required().error("Siden må ha noe innhold"),
     },
+    documentSearchMetadata,
   ],
 };

@@ -20,7 +20,7 @@ const CustomDisplay = React.forwardRef((props, ref) => {
       </Text>
       <Text size={2}>
         Når IA og løsningen er på plass både i CMS og Frontend vil vi gå gjennom
-        å fikse alt av struktur som mangler. Er også et lite notatfelt rett
+        og fikse alt av struktur som mangler. Er også et lite notatfelt rett
         under der man kan notere litt slik at man lettere kan holde kontrollen.
       </Text>
       <Text size={2} muted>

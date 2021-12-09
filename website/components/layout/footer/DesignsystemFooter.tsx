@@ -9,7 +9,8 @@ import {
   TextField,
 } from "@navikt/ds-react";
 import NextLink from "next/link";
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import isEmail from "validator/lib/isEmail";
 import isEmpty from "validator/lib/isEmpty";
@@ -160,6 +161,9 @@ const DesignsystemFooter = () => {
 
   const [contentError, setContentError] = useState({ content: "", mail: "" });
   const [sent, setSent] = useState(false);
+  const [hasWritten, setHasWritten] = useState(false);
+
+  const { asPath } = useRouter();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -195,6 +199,19 @@ const DesignsystemFooter = () => {
     setContactForm({ content: "", mail: "" });
     setSent(true);
   };
+
+  useEffect(() => {
+    !hasWritten &&
+      (contactForm.mail || contactForm.content) &&
+      setHasWritten(true);
+  }, [contactForm]);
+
+  useEffect(() => {
+    setHasWritten(false);
+    setSent(false);
+    setContactForm({ content: "", mail: "" });
+    setContentError({ content: "", mail: "" });
+  }, [asPath]);
 
   return (
     <ScFooter>
@@ -264,9 +281,11 @@ const DesignsystemFooter = () => {
                   }}
                 />
               </ScFieldset>
-              <ScPrimaryButton variant="secondary">
-                Send melding
-              </ScPrimaryButton>
+              {hasWritten && (
+                <ScPrimaryButton variant="secondary">
+                  Send melding
+                </ScPrimaryButton>
+              )}
             </form>
           )}
         </ScRightColumn>

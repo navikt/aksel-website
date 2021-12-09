@@ -6,7 +6,7 @@ import { documentSearchMetadata } from "../templates/document-search-template";
 const prefix = "designsystem/side/";
 
 export default {
-  title: "Artikkelside med tabs",
+  title: "Artikkel med tabs",
   name: "ds_tabbed_article_page",
   type: "document",
   ...defaultPreview(),
@@ -24,21 +24,21 @@ export default {
           type: "object",
           fields: [
             {
-              title: "Tab tittel",
+              title: "Tittel",
               description: "Innhold vil da legges under url/tab-tittel",
               name: "title",
               type: "string",
               validation: (Rule) =>
                 Rule.required().error("Tabben må ha en enkel tittel"),
             },
-            documentSearchMetadata,
             {
-              title: "Innhold",
+              title: "Sideinnhold",
               name: "body",
               type: "blockContent",
               validation: (Rule) =>
                 Rule.required().error("Tabben må ha noe innhold"),
             },
+            documentSearchMetadata,
           ],
         },
       ],

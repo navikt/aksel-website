@@ -4,9 +4,8 @@ import { ingressBlock } from "./block-content-ingress";
 export function documentInformation(prefix) {
   return [
     {
-      title: "Dokument tittel (For søk og visning internt i Sanity)",
-      description:
-        "Bruke en beskrivende tittel slik at det er lett å finne siden i CMS et.",
+      title: "Dokument tittel (For søk og visning i Sanity)",
+      description: "Eks Guide: <tekst> eller Prinsipp: <tekst>",
       name: "title",
       type: "string",
       validation: (Rule) =>
@@ -25,7 +24,7 @@ export function documentInformation(prefix) {
       title: "url",
       name: "slug",
       type: "slug",
-      description: "Note: Strukturen bestemmes ikke av URL-en",
+      description: "Strukturen bestemmes ikke av URL-en",
       validation: (Rule) => validateSlug(Rule, prefix, 3),
       options: {
         isUnique: isSlugUnique,
@@ -33,12 +32,6 @@ export function documentInformation(prefix) {
         slugify: (input) =>
           `${prefix}${input}`.toLowerCase().replace(/\s+/g, "-").slice(0, 70),
       },
-    },
-    {
-      title: "Ingress (valgfritt)",
-      name: "ingress",
-      type: "array",
-      of: [ingressBlock],
     },
     {
       title: "Tags",
@@ -60,7 +53,6 @@ export function documentInformation(prefix) {
     },
     {
       title: "Status",
-      description: "Statusen på denne siden/komponenten",
       name: "status",
       type: "string",
       validation: (Rule) => Rule.required(),
@@ -69,14 +61,20 @@ export function documentInformation(prefix) {
         list: [
           {
             value: "published",
-            title: "Publisert (Bruk denne som standard)",
+            title: "Publisert (default)",
           },
           { value: "beta", title: "Beta" },
-          { value: "wip", title: "WIP" },
-          { value: "legacy", title: "Legacy / deprecated" },
+          { value: "wip", title: "Under arbeid" },
+          { value: "legacy", title: "Utdatert / deprecated" },
         ],
         layout: "radio",
       },
+    },
+    {
+      title: "Ingress (valgfritt)",
+      name: "ingress",
+      type: "array",
+      of: [ingressBlock],
     },
   ];
 }

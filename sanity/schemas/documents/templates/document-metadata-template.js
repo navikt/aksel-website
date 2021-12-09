@@ -1,10 +1,8 @@
-import { getExpireDates } from "../../../config";
 import LastUpdate from "../../../components/last-update";
 
 export function documentMetadata(docType) {
-  const dates = getExpireDates(docType);
   return {
-    title: "Ekstra informasjon (brukes bare internt i Sanity)",
+    title: "Dokument-info",
     name: "metadata",
     type: "object",
     fields: [
@@ -16,9 +14,7 @@ export function documentMetadata(docType) {
         inputComponent: LastUpdate,
       },
       {
-        title: "Kontaktperson",
-        description:
-          "Linker dokumentet til en person, slik at man kan lettere ta kontakt hvis noe oppstår.",
+        title: "Redaktør",
         name: "contact",
         type: "reference",
         to: [{ type: "editor" }],

@@ -1,5 +1,5 @@
 export const documentSearchMetadata = {
-  title: "Forbedre søk",
+  title: "Søk",
   name: "metadata_search",
   type: "object",
   initialValue: {
@@ -8,13 +8,14 @@ export const documentSearchMetadata = {
   fields: [
     {
       title: "Høyere prioritet i søk",
+      description: "Bruk bare hvis siden virkeling trenger det!",
       name: "high_priority",
       type: "boolean",
       initialValue: false,
     },
     {
       title: "Søkbare tags",
-      title: "Søkbare tags",
+      description: "Tags som skiller seg ut fra selve innholdet eller heading",
       name: "tags",
       type: "array",
       of: [{ type: "string" }],
