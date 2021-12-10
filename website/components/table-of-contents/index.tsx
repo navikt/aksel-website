@@ -60,6 +60,7 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
   const handleFocus = (id: string) => {
     const element = document.getElementById(id);
     element && element?.focus();
+    element && element?.scrollIntoView();
   };
 
   if (toc.length === 0) {

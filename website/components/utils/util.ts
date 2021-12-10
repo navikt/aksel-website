@@ -26,10 +26,11 @@ export function isDevelopment(): boolean {
 export function useScrollToHashOnPageLoad(): void {
   useEffect(() => {
     if (window.location.hash) {
+      const hash = window.location.hash;
       setTimeout(() => {
-        const hash = window.location.hash;
         window.location.hash = "";
         window.location.hash = hash;
+        console.log(hash);
       }, 500);
     }
   }, []);
