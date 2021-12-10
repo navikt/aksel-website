@@ -1,9 +1,10 @@
 import { SandboxComponent } from "./types";
 
 const ButtonSandbox: SandboxComponent = (props, variant) => {
-  const propVariant = props?.variant ? ` variant={${props.variant}}` : "";
+  console.log(props);
+  const propVariant = props?.variant ? ` variant="${props.variant}"` : "";
   const propDisabled = props?.disabled ? ` disabled` : "";
-  const propSize = props?.size ? ` size={${props.size}}` : "";
+  const propSize = props?.size ? ` size="${props.size}"` : "";
 
   const comp = `<Button${propVariant}${propSize}${propDisabled}>Knapp</Button>`;
   const compIcon = `<Button${propVariant}${propSize}${propDisabled}><Star /></Button>`;
@@ -23,11 +24,12 @@ const ButtonSandbox: SandboxComponent = (props, variant) => {
 
 ButtonSandbox.args = {
   props: {
-    variant: ["primary", "secondary", "tertiary", "danger"],
+    variant: ["", "primary", "secondary", "tertiary", "danger"],
     disabled: false,
-    size: ["medium", "small"],
+    size: ["", "medium", "small"],
+    teststring: "a-string",
   },
-  variants: ["standard", "ikon", "loader"],
+  variants: ["", "ikon", "loader"],
 };
 
 export default ButtonSandbox;

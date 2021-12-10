@@ -1,7 +1,7 @@
 import * as DsIcons from "@navikt/ds-icons";
 import * as DsReact from "@navikt/ds-react";
 import theme from "prism-react-renderer/themes/dracula";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { createContext, useEffect, useMemo, useState } from "react";
 import {
   LiveEditor,
   LiveError,
@@ -14,6 +14,7 @@ import { DsCodeSandbox as SandboxT } from "../../lib/autogen-types";
 import getSandbox from "../../sandbox";
 import { SandboxComponent } from "../../sandbox/types";
 import { withErrorBoundary } from "../error-boundary";
+import { generateState, getInitialState, ParsedPropsT } from "./generateState";
 import SettingsPanel from "./PropsPanel";
 import { EditorWrapper, PreviewWrapper } from "./StyleWrappers";
 import Tabs from "./Tabs";
@@ -49,10 +50,24 @@ const scope = {
   styled,
 };
 
+type SandboxContextProps = {
+  state: { [key: string]: string | boolean };
+  setState: React.Dispatch<any>;
+  args: ParsedPropsT;
+};
+
+export const SandboxContext = createContext<SandboxContextProps>({
+  state: {},
+  setState: () => null,
+  args: {},
+});
+
 const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   /* const layout = useContext(LayoutContext); */
 
   const [code, setCode] = useState(null);
+  const [parsedArgs, setParsedArgs] = useState(null);
+  const [state, setState] = useState(null);
 
   const sandboxComp: SandboxComponent | null = useMemo(
     () => getSandbox(node?.title),
@@ -60,25 +75,37 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   );
 
   useEffect(() => {
-    sandboxComp && setCode(sandboxComp({}));
+    if (sandboxComp) {
+      const args = generateState(sandboxComp.args);
+      const newState = getInitialState(args);
+      setParsedArgs(args);
+      setState(newState);
+      setCode(sandboxComp(newState));
+    }
   }, [sandboxComp]);
 
   const reset = () => {
     console.log("reset!");
-    sandboxComp && setCode(sandboxComp({}));
+    setState(getInitialState(parsedArgs));
   };
 
   if (!node || !node.title) {
     return null;
   }
 
+  useEffect(() => {
+    state && setCode(sandboxComp(state));
+  }, [state]);
+
+  console.log(code);
   return (
     <>
       {code === null ? null : (
-        <LiveProvider code={code} scope={scope}>
-          {/* <button onClick={() => setIsDis(!isDis)}>change</button> */}
-          <LiveComponent onEdit={setCode} reset={reset} />
-        </LiveProvider>
+        <SandboxContext.Provider value={{ state, setState, args: parsedArgs }}>
+          <LiveProvider code={code} scope={scope}>
+            <LiveComponent onEdit={setCode} reset={reset} />
+          </LiveProvider>
+        </SandboxContext.Provider>
       )}
     </>
   );

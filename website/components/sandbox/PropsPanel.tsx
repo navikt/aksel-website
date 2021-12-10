@@ -1,7 +1,7 @@
 import { Close } from "@navikt/ds-icons";
-import { Checkbox, Fieldset, Select } from "@navikt/ds-react";
 import React from "react";
 import styled, { css } from "styled-components";
+import PropFilter from "./PropFilter";
 
 export const ScTabCss = css`
   background-color: transparent;
@@ -74,28 +74,7 @@ const SettingsPanel = ({
         <Close aria-hidden />
         <span className="sr-only">Lukk props panel for kode sandbox</span>
       </ScCloseButton>
-      <Fieldset legend="Props" size="small">
-        <Select label="variant">
-          <option value=""></option>
-          <option value="medium">Primary</option>
-          <option value="medium">Secondary</option>
-          <option value="medium">Tertiary</option>
-          <option value="medium">Danger</option>
-        </Select>
-        <Select label="size">
-          <option value=""></option>
-          <option value="medium">Ikon</option>
-          <option value="small">Loader</option>
-        </Select>
-        <Checkbox>Disabled</Checkbox>
-      </Fieldset>
-      <Fieldset legend="Varianter" size="small">
-        <Select label="Velg varianter" hideLabel>
-          <option value=""></option>
-          <option value="norge">Ikon</option>
-          <option value="sverige">Loader</option>
-        </Select>
-      </Fieldset>
+      <PropFilter />
     </ScSettingsPanel>
   );
 };
