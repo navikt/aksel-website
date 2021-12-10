@@ -236,6 +236,7 @@ export default {
     {
       type: "table",
     },
+    { type: "code_sandbox_ref", icon: () => <Laptop /> },
     { type: "code_example_ref", icon: () => <Laptop /> },
     { type: "color_category_ref", icon: () => <Folder /> },
     /* { type: "uu_interaction", icon: () => <Braille /> }, */

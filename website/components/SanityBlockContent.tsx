@@ -19,6 +19,7 @@ import {
   RelatedPagesCards,
   Table,
   Tips,
+  Sandbox,
 } from ".";
 import ComponentOverview from "./component-overview";
 import * as Icons from "@navikt/ds-icons";
@@ -81,6 +82,7 @@ const serializers = {
 
     /* General page modules */
     related_pages: ({ node }) => <RelatedPagesCards node={node} />,
+    ds_code_sandbox: ({ node }) => <Sandbox node={node} />,
     code_snippet: ({ node }) => <Snippet node={node} />,
     code_example_ref: ({ node }) => <CodeExample node={node.ref} />,
     color_category_ref: ({ node }) => <ColorCategory node={node.ref} />,

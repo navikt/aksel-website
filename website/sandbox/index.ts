@@ -12,7 +12,7 @@ export const Sandboxes = Object.keys(allSandboxes).reduce((prev, y) => {
 
 export const SandboxKeys = Object.keys(Sandboxes);
 
-const getSandbox = (name: string): SandboxComponent | null => {
+const getSandbox = (name?: string): SandboxComponent | null => {
   if (!name || !(name in Sandboxes)) {
     return null;
   }

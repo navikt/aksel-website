@@ -26,6 +26,9 @@ _type == "component_overview" =>{
 _type == "code_example_ref" =>{
   "ref": @.ref->
 },
+_type == "code_sandbox_ref" =>{
+  ...@.ref->
+},
 _type == "color_category_ref" => {
   "ref": @.ref->
 },
