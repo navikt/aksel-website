@@ -2,7 +2,7 @@ import React from "react";
 import { withErrorBoundary } from "../error-boundary";
 import { DsColorCategories, DsColor } from "../../lib/autogen-types";
 import styled from "styled-components";
-import { Heading, Table, BodyShort, BodyLong } from "@navikt/ds-react";
+import { Heading, Table, BodyShort, BodyLong, Detail } from "@navikt/ds-react";
 import Color from "color";
 
 const capitalize = (s) => (s && s[0].toUpperCase() + s.slice(1)) || "";
@@ -49,8 +49,8 @@ const ScTableRow = styled(Table.Row)`
   font-size: 16px;
 `;
 
-const ScHexColor = styled.p`
-  font-size: 14px;
+const ScHexColor = styled(Detail)`
+  /* font-size: 14px; */
 `;
 
 const ScSection = styled.div`
@@ -69,7 +69,7 @@ const ColorBox = ({ prop }: { prop: DsColor }): JSX.Element => {
   return (
     <ScColorBox background={color.hex()} dark={color.isDark()}>
       <p>{prop.color_name}</p>
-      <ScHexColor>{color.hex()}</ScHexColor>
+      <ScHexColor size="small">{color.hex()}</ScHexColor>
     </ScColorBox>
   );
 };
