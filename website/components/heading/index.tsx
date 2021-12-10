@@ -91,7 +91,7 @@ const LevelTwoHeading = ({
         role="alert"
       >
         <Popover.Content style={{ padding: "0.25rem" }}>
-          {`Kopier lenke til ${cleanedChildren.toString()}`}
+          {`Kopierte lenke til ${cleanedChildren.toString()}`}
         </Popover.Content>
       </Popover>
     </>
