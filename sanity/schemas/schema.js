@@ -3,7 +3,6 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 
 /* Schemas */
 /* Documents */
-import metadata from "./documents/admin/metadata";
 import editors from "./documents/editors";
 import navigation, { dropdown, link } from "./documents/navigation";
 import changelog from "./documents/designsystem/changelog";
@@ -25,8 +24,6 @@ import god_praksis_article_page from "./documents/god-praksis/gp-article-page";
 import god_praksis_frontpage from "./documents/god-praksis/gp-frontpage";
 import gp_block_content from "./documents/god-praksis/gp-block-content";
 import gp_situations from "./documents/god-praksis/gp-situations";
-/*--  Admin */
-import vk_frontpage from "./documents/admin/frontpage";
 
 /*  Components */
 import block_content from "./block-content";
@@ -66,7 +63,6 @@ export default createSchema({
     god_praksis_article_page,
     god_praksis_frontpage,
     gp_situations,
-    vk_frontpage,
     code_example,
     code_snippet,
     code_example_ref,
@@ -90,7 +86,6 @@ export default createSchema({
     navigation,
     link,
     dropdown,
-    metadata,
     icon_search,
     component_overview,
     spacing,
