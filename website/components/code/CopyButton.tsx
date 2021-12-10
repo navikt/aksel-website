@@ -54,7 +54,6 @@ const ScTabButton = styled.button`
   }
 
   :hover {
-    outline: 2px solid var(--navds-semantic-color-text);
     ::before {
       content: none;
     }

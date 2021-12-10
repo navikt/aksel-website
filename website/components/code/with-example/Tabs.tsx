@@ -7,7 +7,7 @@ import CopyButton from "../CopyButton";
 import { CanvasIcon } from "../..";
 
 export const ScTabs = styled.div`
-  background-color: var(--navds-semantic-color-component-background-alternate);
+  background-color: var(--navds-semantic-color-canvas-background-light);
   padding: 1px;
   min-height: 50px;
 

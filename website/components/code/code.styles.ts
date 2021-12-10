@@ -15,7 +15,7 @@ export const ButtonCss = css`
 
   :before {
     opacity: 0;
-    width: 30%;
+    width: 50%;
     transition: opacity 0.25s ease-in-out, width 0.1s ease-in-out;
     content: "";
     position: absolute;
@@ -23,13 +23,16 @@ export const ButtonCss = css`
 
   :hover {
     color: var(--navds-semantic-color-text);
+    background-color: var(
+      --navds-semantic-color-interaction-primary-hover-subtle
+    );
 
     :before {
       content: "";
-      width: 60%;
-      height: 2px;
+      width: 100%;
+      height: 3px;
       background-color: var(--navds-semantic-color-text);
-      bottom: 0.75rem;
+      bottom: 1px;
       position: absolute;
       opacity: 1;
     }
@@ -44,10 +47,10 @@ export const ButtonCss = css`
 
     :before {
       content: "";
-      width: 60%;
-      height: 2px;
+      width: 100%;
+      height: 3px;
       background-color: var(--navds-semantic-color-text);
-      bottom: 0.75rem;
+      bottom: 1px;
       position: absolute;
       opacity: 1;
     }
