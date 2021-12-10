@@ -270,29 +270,6 @@ export default () =>
             "metadata",
           ].includes(listItem.getId())
       ),
-      S.divider(),
-      S.listItem()
-        .title("Admin")
-        .child(
-          S.list()
-            .title("Admin")
-            .items([
-              S.listItem()
-                .title("Forside")
-                .icon(() => <Picture />)
-                .child(
-                  S.document()
-                    .schemaType("vk_frontpage")
-                    .documentId("frontpage_verktoykasse")
-                ),
-              S.listItem()
-                .title("Metadata")
-                .icon(() => <Search />)
-                .child(
-                  S.editor().schemaType("metadata").documentId("metadata")
-                ),
-            ])
-        ),
     ]);
 
 export const getDefaultDocumentNode = ({ schemaType }) => {
