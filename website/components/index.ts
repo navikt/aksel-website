@@ -3,6 +3,7 @@ export * from "./animations";
 export * from "./assets";
 export { default as Changelog } from "./changelog";
 export * from "./code";
+export * from "./color-category";
 export { default as DoDont } from "./dodont";
 export * from "./error-boundary";
 export { default as Feedback } from "./feedback";
