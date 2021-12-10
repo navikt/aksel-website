@@ -12,6 +12,7 @@
     "deploy:vercel": "npx vercel --prod",
     "lint": "yarn eslint components/* pages/* --ext .jsx --ext .tsx --ext .ts",
     "update:examples": "npx ts-node --project tsconfig.tsnode.json ./lib/update-code-examples",
+    "update:sandboxes": "npx ts-node --project tsconfig.tsnode.json ./lib/update-code-sandboxes",
     "update:colors": "npx ts-node --project tsconfig.tsnode.json ./lib/update-color-examples"
   },
   "dependencies": {

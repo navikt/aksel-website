@@ -10,7 +10,7 @@ export const Sandboxes = Object.keys(allSandboxes).reduce((prev, y) => {
   return { ...prev, [kebabCase(y)]: allSandboxes[y] };
 }, {});
 
-export const SandboxeKeys = Object.keys(Sandboxes);
+export const SandboxKeys = Object.keys(Sandboxes);
 
 const getSandbox = (name: string): SandboxComponent | null => {
   if (!name || !(name in Sandboxes)) {
