@@ -272,6 +272,7 @@ export default () =>
             "ds_frontpage",
             "ds_changelog",
             "ds_code_example",
+            "ds_code_sandbox",
             "ds_navigation",
             "ds_package",
             "ds_color_categories",
