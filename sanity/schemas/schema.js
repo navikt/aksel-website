@@ -31,6 +31,8 @@ import block_content_simple from "./block-content-simple";
 import code_example, { example } from "./documents/designsystem/code-example";
 import code_snippet from "./objects/code-snippet";
 import code_example_ref from "./objects/code-example-ref";
+import codeSandboxRef from "./objects/code-sandbox-ref";
+import codeSandbox from "./documents/designsystem/code-sandbox";
 import color_category_ref from "./objects/color-ref";
 
 import prop_table, { prop } from "./objects/proptable";
@@ -66,6 +68,8 @@ export default createSchema({
     code_example,
     code_snippet,
     code_example_ref,
+    codeSandboxRef,
+    codeSandbox,
     color_category_ref,
     example,
     block_content,

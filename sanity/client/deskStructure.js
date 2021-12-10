@@ -187,10 +187,23 @@ export default () =>
                 .title("Kodepakker")
                 .icon(() => <Ruler />)
                 .child(S.documentTypeList("ds_package")),
+              S.divider(),
               S.listItem()
-                .title("Kode eksempler")
-                .icon(() => <span>{`< />`}</span>)
-                .child(S.documentTypeList("ds_code_example")),
+                .title("Kodevisning på side")
+                .child(
+                  S.list()
+                    .title("Kodevisning på side")
+                    .items([
+                      S.listItem()
+                        .title("Eksempler")
+                        .icon(() => <span>{`< />`}</span>)
+                        .child(S.documentTypeList("ds_code_example")),
+                      S.listItem()
+                        .title("Sandboxes")
+                        .icon(() => <span>{`< />`}</span>)
+                        .child(S.documentTypeList("ds_code_sandbox")),
+                    ])
+                ),
               S.listItem()
                 .title("Fargekategorier")
                 .icon(() => <Folder />)
