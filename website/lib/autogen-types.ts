@@ -37,7 +37,7 @@ export type {
 };
 
 /**
- * Komponentside
+ * Komponentartikkel
  *
  *
  */
@@ -45,7 +45,7 @@ export interface DsComponentPage extends SanityDocument {
   _type: "ds_component_page";
 
   /**
-   * Ekstra informasjon (brukes bare internt i Sanity) — `object`
+   * Dokument-info — `object`
    *
    *
    */
@@ -59,9 +59,9 @@ export interface DsComponentPage extends SanityDocument {
     last_update?: string;
 
     /**
-     * Kontaktperson — `reference`
+     * Redaktør — `reference`
      *
-     * Linker dokumentet til en person, slik at man kan lettere ta kontakt hvis noe oppstår.
+     *
      */
     contact?: SanityReference<Editor>;
 
@@ -74,31 +74,9 @@ export interface DsComponentPage extends SanityDocument {
   };
 
   /**
-   * Forbedre søk — `object`
+   * Dokument tittel (For søk og visning i Sanity) — `string`
    *
-   *
-   */
-  metadata_search?: {
-    _type: "metadata_search";
-    /**
-     * Høyere prioritet i søk — `boolean`
-     *
-     *
-     */
-    high_priority?: boolean;
-
-    /**
-     * Søkbare tags — `array`
-     *
-     *
-     */
-    tags?: Array<SanityKeyed<string>>;
-  };
-
-  /**
-   * Dokument tittel (For søk og visning internt i Sanity) — `string`
-   *
-   * Bruke en beskrivende tittel slik at det er lett å finne siden i CMS et.
+   * Eks Guide: <tekst> eller Prinsipp: <tekst>
    */
   title?: string;
 
@@ -112,16 +90,9 @@ export interface DsComponentPage extends SanityDocument {
   /**
    * url — `slug`
    *
-   * Note: Strukturen bestemmes ikke av URL-en
+   * Strukturen bestemmes ikke av URL-en
    */
   slug?: { _type: "slug"; current: string };
-
-  /**
-   * Ingress (valgfritt) — `array`
-   *
-   *
-   */
-  ingress?: Array<SanityKeyed<SanityBlock>>;
 
   /**
    * Tags — `array`
@@ -133,9 +104,16 @@ export interface DsComponentPage extends SanityDocument {
   /**
    * Status — `string`
    *
-   * Statusen på denne siden/komponenten
+   *
    */
   status?: "published" | "beta" | "wip" | "legacy";
+
+  /**
+   * Ingress (valgfritt) — `array`
+   *
+   *
+   */
+  ingress?: Array<SanityKeyed<SanityBlock>>;
 
   /**
    * Bruk-tab — `blockContent`
@@ -166,7 +144,7 @@ export interface DsComponentPage extends SanityDocument {
   accessibility?: BlockContent;
 
   /**
-   * Pakkenavn — `array`
+   * Relaterte pakker — `array`
    *
    * Kobler komponenten til en eller flere pakker
    */
@@ -192,47 +170,9 @@ export interface DsComponentPage extends SanityDocument {
    *
    */
   figma_link?: string;
-}
-
-/**
- * Artikkelside
- *
- *
- */
-export interface DsArticlePage extends SanityDocument {
-  _type: "ds_article_page";
 
   /**
-   * Ekstra informasjon (brukes bare internt i Sanity) — `object`
-   *
-   *
-   */
-  metadata?: {
-    _type: "metadata";
-    /**
-     * Oppdatering av innhold — `string`
-     *
-     *
-     */
-    last_update?: string;
-
-    /**
-     * Kontaktperson — `reference`
-     *
-     * Linker dokumentet til en person, slik at man kan lettere ta kontakt hvis noe oppstår.
-     */
-    contact?: SanityReference<Editor>;
-
-    /**
-     * Dokument type — `string`
-     *
-     *
-     */
-    doctype?: string;
-  };
-
-  /**
-   * Forbedre søk — `object`
+   * Søk — `object`
    *
    *
    */
@@ -241,78 +181,29 @@ export interface DsArticlePage extends SanityDocument {
     /**
      * Høyere prioritet i søk — `boolean`
      *
-     *
+     * Bruk bare hvis siden virkeling trenger det!
      */
     high_priority?: boolean;
 
     /**
      * Søkbare tags — `array`
      *
-     *
+     * Tags som skiller seg ut fra selve innholdet eller heading
      */
     tags?: Array<SanityKeyed<string>>;
   };
-
-  /**
-   * Dokument tittel (For søk og visning internt i Sanity) — `string`
-   *
-   * Bruke en beskrivende tittel slik at det er lett å finne siden i CMS et.
-   */
-  title?: string;
-
-  /**
-   * Sidetittel — `string`
-   *
-   * Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.
-   */
-  heading?: string;
-
-  /**
-   * url — `slug`
-   *
-   * Note: Strukturen bestemmes ikke av URL-en
-   */
-  slug?: { _type: "slug"; current: string };
-
-  /**
-   * Ingress (valgfritt) — `array`
-   *
-   *
-   */
-  ingress?: Array<SanityKeyed<SanityBlock>>;
-
-  /**
-   * Tags — `array`
-   *
-   * Tagger siden slik at vi i fremtiden kan forbedre søk og visning.
-   */
-  tags?: Array<SanityKeyed<string>>;
-
-  /**
-   * Status — `string`
-   *
-   * Statusen på denne siden/komponenten
-   */
-  status?: "published" | "beta" | "wip" | "legacy";
-
-  /**
-   * Innhold — `blockContent`
-   *
-   *
-   */
-  body?: BlockContent;
 }
 
 /**
- * Artikkelside med tabs
+ * Artikkel
  *
  *
  */
-export interface DsTabbedArticlePage extends SanityDocument {
-  _type: "ds_tabbed_article_page";
+export interface DsArticlePage extends SanityDocument {
+  _type: "ds_article_page";
 
   /**
-   * Ekstra informasjon (brukes bare internt i Sanity) — `object`
+   * Dokument-info — `object`
    *
    *
    */
@@ -326,9 +217,9 @@ export interface DsTabbedArticlePage extends SanityDocument {
     last_update?: string;
 
     /**
-     * Kontaktperson — `reference`
+     * Redaktør — `reference`
      *
-     * Linker dokumentet til en person, slik at man kan lettere ta kontakt hvis noe oppstår.
+     *
      */
     contact?: SanityReference<Editor>;
 
@@ -341,9 +232,9 @@ export interface DsTabbedArticlePage extends SanityDocument {
   };
 
   /**
-   * Dokument tittel (For søk og visning internt i Sanity) — `string`
+   * Dokument tittel (For søk og visning i Sanity) — `string`
    *
-   * Bruke en beskrivende tittel slik at det er lett å finne siden i CMS et.
+   * Eks Guide: <tekst> eller Prinsipp: <tekst>
    */
   title?: string;
 
@@ -357,16 +248,9 @@ export interface DsTabbedArticlePage extends SanityDocument {
   /**
    * url — `slug`
    *
-   * Note: Strukturen bestemmes ikke av URL-en
+   * Strukturen bestemmes ikke av URL-en
    */
   slug?: { _type: "slug"; current: string };
-
-  /**
-   * Ingress (valgfritt) — `array`
-   *
-   *
-   */
-  ingress?: Array<SanityKeyed<SanityBlock>>;
 
   /**
    * Tags — `array`
@@ -378,9 +262,125 @@ export interface DsTabbedArticlePage extends SanityDocument {
   /**
    * Status — `string`
    *
-   * Statusen på denne siden/komponenten
+   *
    */
   status?: "published" | "beta" | "wip" | "legacy";
+
+  /**
+   * Ingress (valgfritt) — `array`
+   *
+   *
+   */
+  ingress?: Array<SanityKeyed<SanityBlock>>;
+
+  /**
+   * Sideinnhold — `blockContent`
+   *
+   *
+   */
+  body?: BlockContent;
+
+  /**
+   * Søk — `object`
+   *
+   *
+   */
+  metadata_search?: {
+    _type: "metadata_search";
+    /**
+     * Høyere prioritet i søk — `boolean`
+     *
+     * Bruk bare hvis siden virkeling trenger det!
+     */
+    high_priority?: boolean;
+
+    /**
+     * Søkbare tags — `array`
+     *
+     * Tags som skiller seg ut fra selve innholdet eller heading
+     */
+    tags?: Array<SanityKeyed<string>>;
+  };
+}
+
+/**
+ * Artikkel med tabs
+ *
+ *
+ */
+export interface DsTabbedArticlePage extends SanityDocument {
+  _type: "ds_tabbed_article_page";
+
+  /**
+   * Dokument-info — `object`
+   *
+   *
+   */
+  metadata?: {
+    _type: "metadata";
+    /**
+     * Oppdatering av innhold — `string`
+     *
+     *
+     */
+    last_update?: string;
+
+    /**
+     * Redaktør — `reference`
+     *
+     *
+     */
+    contact?: SanityReference<Editor>;
+
+    /**
+     * Dokument type — `string`
+     *
+     *
+     */
+    doctype?: string;
+  };
+
+  /**
+   * Dokument tittel (For søk og visning i Sanity) — `string`
+   *
+   * Eks Guide: <tekst> eller Prinsipp: <tekst>
+   */
+  title?: string;
+
+  /**
+   * Sidetittel — `string`
+   *
+   * Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.
+   */
+  heading?: string;
+
+  /**
+   * url — `slug`
+   *
+   * Strukturen bestemmes ikke av URL-en
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Tags — `array`
+   *
+   * Tagger siden slik at vi i fremtiden kan forbedre søk og visning.
+   */
+  tags?: Array<SanityKeyed<string>>;
+
+  /**
+   * Status — `string`
+   *
+   *
+   */
+  status?: "published" | "beta" | "wip" | "legacy";
+
+  /**
+   * Ingress (valgfritt) — `array`
+   *
+   *
+   */
+  ingress?: Array<SanityKeyed<SanityBlock>>;
 
   /**
    * Tabs — `array`
@@ -391,14 +391,21 @@ export interface DsTabbedArticlePage extends SanityDocument {
     SanityKeyed<{
       _type: "tab";
       /**
-       * Tab tittel — `string`
+       * Tittel — `string`
        *
        * Innhold vil da legges under url/tab-tittel
        */
       title?: string;
 
       /**
-       * Forbedre søk — `object`
+       * Sideinnhold — `blockContent`
+       *
+       *
+       */
+      body?: BlockContent;
+
+      /**
+       * Søk — `object`
        *
        *
        */
@@ -407,24 +414,17 @@ export interface DsTabbedArticlePage extends SanityDocument {
         /**
          * Høyere prioritet i søk — `boolean`
          *
-         *
+         * Bruk bare hvis siden virkeling trenger det!
          */
         high_priority?: boolean;
 
         /**
          * Søkbare tags — `array`
          *
-         *
+         * Tags som skiller seg ut fra selve innholdet eller heading
          */
         tags?: Array<SanityKeyed<string>>;
       };
-
-      /**
-       * Innhold — `blockContent`
-       *
-       *
-       */
-      body?: BlockContent;
     }>
   >;
 }
@@ -628,14 +628,14 @@ export interface GpArticlePage extends SanityDocument {
   visningstekst?: string;
 
   /**
-   * Interne notater — `text`
+   * Notater — `text`
    *
-   * Vises bare her internt i Sanity. Kan brukes for å holde styringen på hva som er status etc
+   * Redaktør-notater. Noe som ble igjen på TODO lista? Legg det til her!
    */
   notes?: string;
 
   /**
-   * Ekstra informasjon (brukes bare internt i Sanity) — `object`
+   * Dokument-info — `object`
    *
    *
    */
@@ -649,9 +649,9 @@ export interface GpArticlePage extends SanityDocument {
     last_update?: string;
 
     /**
-     * Kontaktperson — `reference`
+     * Redaktør — `reference`
      *
-     * Linker dokumentet til en person, slik at man kan lettere ta kontakt hvis noe oppstår.
+     *
      */
     contact?: SanityReference<Editor>;
 
@@ -664,31 +664,9 @@ export interface GpArticlePage extends SanityDocument {
   };
 
   /**
-   * Forbedre søk — `object`
+   * Dokument tittel (For søk og visning i Sanity) — `string`
    *
-   *
-   */
-  metadata_search?: {
-    _type: "metadata_search";
-    /**
-     * Høyere prioritet i søk — `boolean`
-     *
-     *
-     */
-    high_priority?: boolean;
-
-    /**
-     * Søkbare tags — `array`
-     *
-     *
-     */
-    tags?: Array<SanityKeyed<string>>;
-  };
-
-  /**
-   * Dokument tittel (For søk og visning internt i Sanity) — `string`
-   *
-   * Bruke en beskrivende tittel slik at det er lett å finne siden i CMS et.
+   * Eks Guide: <tekst> eller Prinsipp: <tekst>
    */
   title?: string;
 
@@ -702,9 +680,16 @@ export interface GpArticlePage extends SanityDocument {
   /**
    * url — `slug`
    *
-   * Note: Strukturen bestemmes ikke av URL-en
+   * Strukturen bestemmes ikke av URL-en
    */
   slug?: { _type: "slug"; current: string };
+
+  /**
+   * Status — `string`
+   *
+   *
+   */
+  status?: "published" | "beta" | "wip" | "legacy";
 
   /**
    * Ingress (valgfritt) — `array`
@@ -714,18 +699,33 @@ export interface GpArticlePage extends SanityDocument {
   ingress?: Array<SanityKeyed<SanityBlock>>;
 
   /**
-   * Status — `string`
-   *
-   * Statusen på denne siden/komponenten
-   */
-  status?: "published" | "beta" | "wip" | "legacy";
-
-  /**
-   * Innhold — `gp_blockContent`
+   * Sideinnhold — `gp_blockContent`
    *
    *
    */
   body?: GpBlockContent;
+
+  /**
+   * Søk — `object`
+   *
+   *
+   */
+  metadata_search?: {
+    _type: "metadata_search";
+    /**
+     * Høyere prioritet i søk — `boolean`
+     *
+     * Bruk bare hvis siden virkeling trenger det!
+     */
+    high_priority?: boolean;
+
+    /**
+     * Søkbare tags — `array`
+     *
+     * Tags som skiller seg ut fra selve innholdet eller heading
+     */
+    tags?: Array<SanityKeyed<string>>;
+  };
 }
 
 /**
@@ -792,22 +792,6 @@ export interface GpSituations extends SanityDocument {
 }
 
 /**
- * Forside
- *
- *
- */
-export interface VkFrontpage extends SanityDocument {
-  _type: "vk_frontpage";
-
-  /**
-   * Innhold — `string`
-   *
-   *
-   */
-  content?: string;
-}
-
-/**
  * Kode med eksempel
  *
  *
@@ -856,6 +840,29 @@ export interface DsCodeExample extends SanityDocument {
    *
    */
   github?: string;
+}
+
+/**
+ * Sandbox for komponent
+ *
+ *
+ */
+export interface DsCodeSandbox extends SanityDocument {
+  _type: "ds_code_sandbox";
+
+  /**
+   * Tittel — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Sier om navnet er autegenerert — `boolean`
+   *
+   *
+   */
+  autogenerated?: boolean;
 }
 
 /**
@@ -962,41 +969,6 @@ export interface Navigation extends SanityDocument {
   sidemenu?: Array<
     SanityKeyed<NavigationDropdown> | SanityKeyed<NavigationLink>
   >;
-}
-
-/**
- * Verktøykasse Metadata
- *
- *
- */
-export interface Metadata extends SanityDocument {
-  _type: "metadata";
-
-  /**
-   * Tittel som dukker opp på google — `string`
-   *
-   * Eks: Verktøykassen til nav
-   */
-  title?: string;
-
-  /**
-   * Beskrivelse som dukker opp under tittelen på google — `text`
-   *
-   * Eks: Verktøykassen til nav gjør x og y for å forbedre z
-   */
-  description?: string;
-
-  /**
-   * Preview-bilde som kan dukke opp på søk — `image`
-   *
-   *
-   */
-  previewImage?: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
 }
 
 export type DsNavigationHeading = {
@@ -1130,6 +1102,16 @@ export type CodeExampleRef = {
    *
    */
   ref?: SanityReference<DsCodeExample>;
+};
+
+export type CodeSandboxRef = {
+  _type: "code_sandbox_ref";
+  /**
+   * Sandbox — `reference`
+   *
+   *
+   */
+  ref?: SanityReference<DsCodeSandbox>;
 };
 
 export type ColorCategoryRef = {
@@ -1707,12 +1689,11 @@ export type Documents =
   | GpArticlePage
   | GpFrontpage
   | GpSituations
-  | VkFrontpage
   | DsCodeExample
+  | DsCodeSandbox
   | DsChangelog
   | Editor
-  | Navigation
-  | Metadata;
+  | Navigation;
 
 /**
  * This interface is a stub. It was referenced in your sanity schema but

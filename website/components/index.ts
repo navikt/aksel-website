@@ -27,4 +27,5 @@ export { default as TableOfContents } from "./table-of-contents";
 export * from "./tabs";
 export * from "./tags";
 export { default as Tips } from "./tips";
+export { default as Sandbox } from "./sandbox";
 export * from "./utils";
