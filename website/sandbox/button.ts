@@ -1,4 +1,4 @@
-import { SandboxComponent } from "./util";
+import { SandboxComponent } from "./types";
 
 const ButtonSandbox: SandboxComponent = (props, variant) => {
   const propVariant = props?.variant ? ` variant={${props.variant}}` : "";

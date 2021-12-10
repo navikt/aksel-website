@@ -1,15 +1,6 @@
 import ButtonSandbox from "./button";
 import kebabCase from "lodash.kebabcase";
-
-export interface SandboxComponent {
-  (props: any, variant?: string): string;
-  args: {
-    props: {
-      [key: string]: string | string[] | boolean;
-    };
-    variants?: string[];
-  };
-}
+import { SandboxComponent } from "./types";
 
 const allSandboxes = {
   ButtonSandbox,
@@ -29,5 +20,4 @@ const getSandbox = (name: string): SandboxComponent | null => {
   return Sandboxes[name];
 };
 
-const s = getSandbox("button-sandbox");
-console.log(s({}));
+export default getSandbox;
