@@ -95,14 +95,14 @@ const CodeTabs = (): JSX.Element => {
 
   const updateBg = () => {
     switch (previewBg) {
-      case "white":
-        setPreviewBg("default");
-        break;
       case "default":
+        setPreviewBg("white");
+        break;
+      case "white":
         setPreviewBg("inverted");
         break;
       case "inverted":
-        setPreviewBg("white");
+        setPreviewBg("default");
         break;
       default:
         break;

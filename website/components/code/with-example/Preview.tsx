@@ -56,9 +56,7 @@ const ScInnerDiv = styled.div`
   }
 
   &[data-bg="default"] {
-    background-color: var(
-      --navds-semantic-color-component-background-alternate
-    );
+    background-color: var(--navds-semantic-color-canvas-background);
   }
   &[data-bg="inverted"] {
     background-color: var(--navds-semantic-color-canvas-background-inverted);
@@ -139,7 +137,7 @@ const CodePreview = (): JSX.Element => {
       case "white":
         return "canvas-background-light";
       case "default":
-        return "component-background-alternate";
+        return "canvas-background";
       case "inverted":
         return "canvas-background-inverted";
       default:
