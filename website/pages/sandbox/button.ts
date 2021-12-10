@@ -1,13 +1,13 @@
 import { SandboxComponent } from "./util";
 
 const ButtonSandbox: SandboxComponent = (props, variant) => {
-  const propVariant = props?.variant && `variant={${props.variant}}`;
-  const propDisabled = props?.disabled && `disabled`;
-  const propSize = props?.size && `size={${props.size}}`;
+  const propVariant = props?.variant ? ` variant={${props.variant}}` : "";
+  const propDisabled = props?.disabled ? ` disabled` : "";
+  const propSize = props?.size ? ` size={${props.size}}` : "";
 
-  const comp = `<Button ${propVariant} ${propSize} ${propDisabled}>Knapp</Button>`;
-  const compIcon = `<Button ${propVariant} ${propSize} ${propDisabled}><Star /></Button>`;
-  const compLoader = `<Button ${propVariant} ${propSize} ${propDisabled}><Loader title="Laster inn data"/></Button>`;
+  const comp = `<Button${propVariant}${propSize}${propDisabled}>Knapp</Button>`;
+  const compIcon = `<Button${propVariant}${propSize}${propDisabled}><Star /></Button>`;
+  const compLoader = `<Button${propVariant}${propSize}${propDisabled}><Loader title="Laster inn data"/></Button>`;
 
   switch (variant) {
     case "standard":
