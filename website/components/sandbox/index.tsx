@@ -25,6 +25,22 @@ import { generateState, getInitialState, ParsedPropsT } from "./generateState";
 import SettingsPanel from "./PropsPanel";
 import { EditorWrapper, PreviewWrapper } from "./StyleWrappers";
 import Tabs from "./Tabs";
+import prettier from "prettier/standalone";
+import babel from "prettier/parser-babel";
+
+const formatCode = (code: string) => {
+  try {
+    const formated = prettier.format(`${code}`, {
+      parser: "babel",
+      plugins: [babel],
+      printWidth: 60,
+      semi: false,
+    });
+    return formated.startsWith(";") ? formated.slice(1) : formated;
+  } catch (e) {
+    return code;
+  }
+};
 
 const scope = {
   ...DsReact,
@@ -81,7 +97,7 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
       const newState = getInitialState(args);
       setParsedArgs(args);
       setState(newState);
-      setCode(sandboxComp(newState));
+      setCode(formatCode(sandboxComp(newState)));
     }
   }, [sandboxComp]);
 
@@ -100,7 +116,7 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   useEffect(() => {
     state &&
       variant?.value !== null &&
-      setCode(sandboxComp(state, variant.value));
+      setCode(formatCode(sandboxComp(state, variant.value)));
 
     /* Hack to make editor update */
     setReseting(true);
@@ -133,14 +149,18 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
               <EditorWrapper>
                 {reseting ? (
                   <LiveEditor
+                    style={{
+                      overflowX: "auto",
+                      whiteSpace: "pre",
+                      backgroundColor: "transparent",
+                    }}
                     key="old-editor"
                     theme={theme}
-                    style={{ backgroundColor: "transparent" }}
                   />
                 ) : (
                   <LiveEditor
                     key="new-editor"
-                    onChange={setCode}
+                    onChange={(v) => setCode(v)}
                     theme={theme}
                     style={{ backgroundColor: "transparent" }}
                     onKeyDown={handleKeyDown}

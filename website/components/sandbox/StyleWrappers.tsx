@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const ScPreWrapper = styled.div`
   position: relative;
+  max-height: 400px;
 
   > pre {
     position: relative;
