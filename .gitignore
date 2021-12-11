@@ -75,3 +75,4 @@ website/public/studio/
 .next
 out
 */cypress/test-urls.json
+*/cypress/videos
