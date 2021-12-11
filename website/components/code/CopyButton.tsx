@@ -70,7 +70,7 @@ const ScTabButton = styled.button`
 
 interface CopyButtonProps {
   content: string;
-  inTabs: boolean;
+  inTabs?: boolean;
 }
 
 const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
