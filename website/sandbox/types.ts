@@ -3,11 +3,11 @@ export interface SandboxComponentProps {
 }
 
 export interface SandboxComponentArgs {
-  props: SandboxComponentProps;
+  props?: SandboxComponentProps;
   variants?: string[];
 }
 
 export interface SandboxComponent {
-  (props: any, variant?: string): string;
-  args: SandboxComponentArgs;
+  (props?: any, variant?: string): string;
+  args?: SandboxComponentArgs;
 }

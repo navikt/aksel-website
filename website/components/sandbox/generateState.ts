@@ -36,11 +36,13 @@ export interface StateT {
 }
 
 export const getInitialState = (args: ParsedArgsT): StateT => ({
-  props: Object.entries(args.props).reduce(
-    (old, [key, value]) => ({ ...old, [key]: value.default }),
-    {}
-  ),
-  variants: args.variants ? args.variants.default : null,
+  props: args?.props
+    ? Object.entries(args.props).reduce(
+        (old, [key, value]) => ({ ...old, [key]: value.default }),
+        {}
+      )
+    : null,
+  variants: args?.variants ? args.variants.default : null,
 });
 
 const parseProps = (props: SandboxComponentProps): ParsedPropsT =>
@@ -78,17 +80,15 @@ const parseProps = (props: SandboxComponentProps): ParsedPropsT =>
   }, {});
 
 export const generateState = (args: SandboxComponentArgs): ParsedArgsT => {
-  const { props } = args;
-
-  if (!props) {
-    console.warn("Missing props for sandbox");
+  if (!args || (!args?.props && !args?.variants)) {
     return null;
   }
 
   return {
-    props: parseProps(props),
-    variants: args.variants
-      ? { default: args.variants[0], options: args.variants, format: "array" }
-      : null,
+    props: parseProps(args.props),
+    variants:
+      args.variants && args.variants.length > 1
+        ? { default: args.variants[0], options: args.variants, format: "array" }
+        : null,
   };
 };

@@ -17,8 +17,10 @@ const ScPre = styled.pre`
   font-family: var(--font-family-code);
   padding: 1rem;
   padding-right: 5rem;
+  overflow-x: auto;
 
   > div {
+    overflow-x: auto;
     color: var(--navds-semantic-color-text-inverted);
     max-width: 100%;
     font-family: var(--font-family-code) !important;
