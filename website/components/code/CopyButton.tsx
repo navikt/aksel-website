@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from "react";
 import * as S from "./code.styles";
 import copy from "copy-to-clipboard";
 import styled from "styled-components";
+import React from "react";
 
 const copyCode = (content: string) =>
   copy(content, {
@@ -67,41 +68,53 @@ const ScTabButton = styled.button`
   }
 `;
 
-const CopyButton = ({
+interface CopyButtonProps {
+  content: string;
+  inTabs: boolean;
+}
+
+const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
+  ({ content, inTabs }, ref) => {
+    const [active, setActive] = useState(false);
+
+    const timeoutRef = useRef<NodeJS.Timeout>();
+
+    useEffect(() => {
+      if (active) {
+        timeoutRef.current = setTimeout(() => setActive(false), 3000);
+        return () => timeoutRef.current && clearTimeout(timeoutRef.current);
+      }
+    }, [active]);
+
+    const handleCopy = () => {
+      copyCode(content);
+      setActive(true);
+    };
+
+    const Button = inTabs ? ScTabButton : ScButton;
+
+    return (
+      <Button
+        ref={ref}
+        aria-live={active ? "polite" : "off"}
+        role={active ? "alert" : undefined}
+        className="navds-body-short"
+        onClick={handleCopy}
+      >
+        {active ? <SuccessStroke aria-label="Kopierte kodesnutt" /> : "Copy"}
+      </Button>
+    );
+  }
+);
+
+/* const CopyButton = ({
   content,
   inTabs,
 }: {
   content: string;
   inTabs?: boolean;
 }) => {
-  const [active, setActive] = useState(false);
 
-  const timeoutRef = useRef<NodeJS.Timeout>();
-
-  useEffect(() => {
-    if (active) {
-      timeoutRef.current = setTimeout(() => setActive(false), 3000);
-      return () => timeoutRef.current && clearTimeout(timeoutRef.current);
-    }
-  }, [active]);
-
-  const handleCopy = () => {
-    copyCode(content);
-    setActive(true);
-  };
-
-  const Button = inTabs ? ScTabButton : ScButton;
-
-  return (
-    <Button
-      aria-live={active ? "polite" : "off"}
-      role={active ? "alert" : undefined}
-      className="navds-body-short"
-      onClick={handleCopy}
-    >
-      {active ? <SuccessStroke aria-label="Kopierte kodesnutt" /> : "Copy"}
-    </Button>
-  );
-};
+}; */
 
 export default CopyButton;

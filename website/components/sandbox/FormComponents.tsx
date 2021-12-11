@@ -10,6 +10,7 @@ export const SelectComp = ({ arg, name }: { arg: EnumT; name: string }) => {
     <Select
       label={name}
       onChange={(e) => setState({ ...state, [name]: e.target.value })}
+      value={state[name] as string}
     >
       {arg.options.map((opt, i) => (
         <option key={opt + i} value={opt}>
@@ -24,6 +25,7 @@ export const StringComp = ({ name }: { name: string }) => {
   const { state, setState } = useContext(SandboxContext);
   return (
     <TextField
+      value={state[name] as string}
       label={name}
       onChange={(e) => setState({ ...state, [name]: e.target.value })}
     />
@@ -34,32 +36,10 @@ export const BooleanComp = ({ name }: { name: string }) => {
   const { state, setState } = useContext(SandboxContext);
   return (
     <Checkbox
+      checked={state[name] as boolean}
       onChange={(e) => setState({ ...state, [name]: e.target.checked })}
     >
       {name}
     </Checkbox>
   );
 };
-
-/* <Fieldset legend="Props" size="small">
-        <Select label="variant">
-          <option value=""></option>
-          <option value="medium">Primary</option>
-          <option value="medium">Secondary</option>
-          <option value="medium">Tertiary</option>
-          <option value="medium">Danger</option>
-        </Select>
-        <Select label="size">
-          <option value=""></option>
-          <option value="medium">Ikon</option>
-          <option value="small">Loader</option>
-        </Select>
-        <Checkbox>Disabled</Checkbox>
-      </Fieldset>
-      <Fieldset legend="Varianter" size="small">
-        <Select label="Velg varianter" hideLabel>
-          <option value=""></option>
-          <option value="norge">Ikon</option>
-          <option value="sverige">Loader</option>
-        </Select>
-      </Fieldset> */

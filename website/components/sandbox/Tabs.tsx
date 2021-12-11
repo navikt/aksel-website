@@ -55,12 +55,12 @@ const Tabs = ({
           <span className="sr-only">Reset sandbox</span>
           <Refresh />
         </ScTabButton>
-        <ScTabButton>
-          {/* <span className="sr-only">
-      Endre bakgrunnsfarge på komponent preview
-    </span> */}
+        {/* <ScTabButton>
+          <span className="sr-only">
+            Endre bakgrunnsfarge på komponent sanbox
+          </span>
           <CanvasIcon />
-        </ScTabButton>
+        </ScTabButton> */}
         <ScTabButton onClick={() => openPanel()}>
           <span className="sr-only">Åpne props-panel</span>
           <SettingsFilled />

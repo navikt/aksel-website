@@ -1,7 +1,6 @@
 import { SandboxComponent } from "./types";
 
 const ButtonSandbox: SandboxComponent = (props, variant) => {
-  console.log(props);
   const propVariant = props?.variant ? ` variant="${props.variant}"` : "";
   const propDisabled = props?.disabled ? ` disabled` : "";
   const propSize = props?.size ? ` size="${props.size}"` : "";
@@ -13,9 +12,9 @@ const ButtonSandbox: SandboxComponent = (props, variant) => {
   switch (variant) {
     case "standard":
       return comp;
-    case "ikon":
+    case "Ikon":
       return compIcon;
-    case "loader":
+    case "Loader":
       return compLoader;
     default:
       return comp;
@@ -27,9 +26,8 @@ ButtonSandbox.args = {
     variant: ["", "primary", "secondary", "tertiary", "danger"],
     disabled: false,
     size: ["", "medium", "small"],
-    teststring: "a-string",
   },
-  variants: ["", "ikon", "loader"],
+  variants: ["", "Ikon", "Loader"],
 };
 
 export default ButtonSandbox;

@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const ScPreWrapper = styled.div`
+  position: relative;
+
   > pre {
     position: relative;
     background-color: var(--navds-semantic-color-component-background-inverted);
@@ -11,7 +13,10 @@ const ScPreWrapper = styled.div`
 `;
 
 const ScPre = styled.pre`
+  font-family: var(--font-family-code);
   padding: 1rem;
+  padding-right: 5rem;
+
   > div {
     color: var(--navds-semantic-color-text-inverted);
     max-width: 100%;

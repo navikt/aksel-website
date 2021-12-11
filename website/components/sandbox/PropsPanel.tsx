@@ -1,6 +1,9 @@
 import { Close } from "@navikt/ds-icons";
-import React from "react";
+import { Fieldset, Select } from "@navikt/ds-react";
+import React, { useCallback, useContext, useEffect, useRef } from "react";
+import { useClickAway, useEvent, useKey } from "react-use";
 import styled, { css } from "styled-components";
+import { SandboxContext } from ".";
 import PropFilter from "./PropFilter";
 
 export const ScTabCss = css`
@@ -47,13 +50,16 @@ const ScSettingsPanel = styled.div`
   padding: var(--navds-spacing-8);
   overflow-y: auto;
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   flex-direction: column;
-
   transform: translateX(100%);
   transition: transform 0ms ease-in-out;
   visibility: hidden;
   border: 1px solid var(--navds-global-color-gray-200);
+
+  :focus {
+    outline: none;
+  }
 
   &[data-open="true"] {
     transform: translateX(0);
@@ -68,13 +74,45 @@ const SettingsPanel = ({
   open: boolean;
   setOpen: (boolean) => void;
 }) => {
+  const panelRef = useRef<HTMLDivElement>(null);
+  const { variant, setVariant } = useContext(SandboxContext);
+
+  useKey("Escape", () => setOpen(false), {}, []);
+  useClickAway(panelRef, () => open && setOpen(false));
+
+  const onFocusChange = useCallback(() => {
+    !panelRef.current.contains(document.activeElement) && setOpen(false);
+  }, []);
+
+  useEvent("focusin", onFocusChange);
+
+  useEffect(() => {
+    open && panelRef?.current?.focus();
+  }, [open]);
+
   return (
-    <ScSettingsPanel data-open={open}>
+    <ScSettingsPanel ref={panelRef} data-open={open} tabIndex={-1}>
       <ScCloseButton onClick={() => setOpen(false)}>
         <Close aria-hidden />
         <span className="sr-only">Lukk props panel for kode sandbox</span>
       </ScCloseButton>
       <PropFilter />
+      {variant.options.length > 1 && (
+        <Fieldset legend="Varianter">
+          <Select
+            value={variant.value}
+            label="Endre preview variant"
+            hideLabel
+            onChange={(e) => setVariant({ ...variant, value: e.target.value })}
+          >
+            {variant.options.map((opt, i) => (
+              <option key={opt + i} value={opt}>
+                {opt}
+              </option>
+            ))}
+          </Select>
+        </Fieldset>
+      )}
     </ScSettingsPanel>
   );
 };
