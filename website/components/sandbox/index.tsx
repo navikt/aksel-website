@@ -103,10 +103,11 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
 
   const reset = () => {
     setState(getInitialState(parsedArgs));
-    setVariant({
-      options: sandboxComp.args.variants,
-      value: sandboxComp.args.variants[0],
-    });
+    sandboxComp.args.variants &&
+      setVariant({
+        options: sandboxComp.args.variants,
+        value: sandboxComp.args.variants[0],
+      });
   };
 
   if (!node || !node.title) {
@@ -115,7 +116,7 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
 
   useEffect(() => {
     state &&
-      variant?.value !== null &&
+      (variant?.value || variant?.value === "") &&
       setCode(formatCode(sandboxComp(state, variant.value)));
 
     /* Hack to make editor update */

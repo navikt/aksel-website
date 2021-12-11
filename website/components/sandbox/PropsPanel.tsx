@@ -97,9 +97,9 @@ const SettingsPanel = ({
         <span className="sr-only">Lukk props panel for kode sandbox</span>
       </ScCloseButton>
       <PropFilter />
-      {variant.options.length > 1 && (
+      {variant?.options.length > 1 && (
         <>
-          {variant.options.length > 5 ? (
+          {variant?.options.length > 5 ? (
             <Fieldset legend="Varianter" size="small">
               <Select
                 value={variant.value}

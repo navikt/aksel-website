@@ -1,7 +1,8 @@
 import { Refresh, SettingsFilled } from "@navikt/ds-icons";
 import { Label } from "@navikt/ds-react";
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { SandboxContext } from ".";
 /* import { CanvasIcon } from ".."; */
 import { ScTabCss } from "./PropsPanel";
 
@@ -47,6 +48,8 @@ const Tabs = ({
   openPanel: () => void;
   reset: () => void;
 }) => {
+  const { args, variant } = useContext(SandboxContext);
+
   return (
     <ScTabs>
       <ScLabel>Sandbox</ScLabel>
@@ -61,10 +64,12 @@ const Tabs = ({
           </span>
           <CanvasIcon />
         </ScTabButton> */}
-        <ScTabButton onClick={() => openPanel()}>
-          <span className="sr-only">Åpne props-panel</span>
-          <SettingsFilled />
-        </ScTabButton>
+        {!(!args || (Object.keys(args).length === 0 && !variant)) && (
+          <ScTabButton onClick={() => openPanel()}>
+            <span className="sr-only">Åpne props-panel</span>
+            <SettingsFilled />
+          </ScTabButton>
+        )}
       </ScFlex>
     </ScTabs>
   );
