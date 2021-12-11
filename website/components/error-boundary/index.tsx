@@ -36,7 +36,11 @@ class ErrorBoundary extends React.Component<Props, State> {
 
   render(): React.ReactNode {
     if (this.state.hasError) {
-      return <Style>Beklager, det skjedde en teknisk feil 🤷‍♀️</Style>;
+      return (
+        <Style className="vk-errorboundary">
+          Beklager, det skjedde en teknisk feil
+        </Style>
+      );
     }
     return this.props.children;
   }

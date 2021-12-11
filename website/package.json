@@ -10,10 +10,15 @@
     "export": "next export",
     "start": "next start",
     "deploy:vercel": "npx vercel --prod",
+    "cypress": "cypress open",
+    "cypress:ci": "cypress run",
+    "e2e": "start-server-and-test start http://localhost:3000 cypress",
+    "e2e:ci": "start-server-and-test start http://localhost:3000 cypress:ci",
     "lint": "yarn eslint components/* pages/* --ext .jsx --ext .tsx --ext .ts",
     "update:examples": "npx ts-node --project tsconfig.tsnode.json ./lib/update-code-examples",
     "update:sandboxes": "npx ts-node --project tsconfig.tsnode.json ./lib/update-code-sandboxes",
-    "update:colors": "npx ts-node --project tsconfig.tsnode.json ./lib/update-color-examples"
+    "update:colors": "npx ts-node --project tsconfig.tsnode.json ./lib/update-color-examples",
+    "generate:testurls": "npx ts-node --project tsconfig.tsnode.json ./lib/generateTestUrls"
   },
   "dependencies": {
     "@navikt/ds-css": "^0.12",
@@ -36,6 +41,7 @@
     "classnames": "^2.3.1",
     "color": "^4.0.2",
     "copy-to-clipboard": "^3.3.1",
+    "cypress": "^9.1.1",
     "dotenv": "^10.0.0",
     "framer-motion": "4.1.17",
     "gh-pages": "^3.2.3",
