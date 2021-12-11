@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect } from "react";
 import amplitude from "amplitude-js";
 import { PagePropsContext } from "../../pages/_app";
+import { isDevelopment } from ".";
 
 /* TODO: Denne skal kunne fjernes når appen er lastet opp til Nais */
 const defaultConfig = {
@@ -9,7 +10,6 @@ const defaultConfig = {
 };
 
 const initAmplitude = () => {
-  console.log(process.env);
   if (amplitude) {
     amplitude.getInstance().init("default", "", {
       apiEndpoint: "amplitude.nav.no/collect-auto",
@@ -54,7 +54,7 @@ export function useAmplitude(): any {
   const context = useContext(AmplitudeContext);
   const { pageProps } = useContext(PagePropsContext);
 
-  if (pageProps?.preview) {
+  if (pageProps?.preview || isDevelopment()) {
     return { logAmplitudeEvent: () => undefined };
   }
 
