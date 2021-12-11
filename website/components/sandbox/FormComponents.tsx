@@ -1,5 +1,11 @@
-import { Checkbox, Select, TextField } from "@navikt/ds-react";
-import { useContext } from "react";
+import {
+  Checkbox,
+  Radio,
+  RadioGroup,
+  Select,
+  TextField,
+} from "@navikt/ds-react";
+import React, { useContext } from "react";
 import { SandboxContext } from ".";
 import { EnumT } from "./generateState";
 
@@ -7,17 +13,33 @@ export const SelectComp = ({ arg, name }: { arg: EnumT; name: string }) => {
   const { state, setState } = useContext(SandboxContext);
 
   return (
-    <Select
-      label={name}
-      onChange={(e) => setState({ ...state, [name]: e.target.value })}
-      value={state[name] as string}
-    >
-      {arg.options.map((opt, i) => (
-        <option key={opt + i} value={opt}>
-          {opt}
-        </option>
-      ))}
-    </Select>
+    <>
+      {arg.options.length > 5 ? (
+        <Select
+          label={name}
+          onChange={(e) => setState({ ...state, [name]: e.target.value })}
+          value={state[name] as string}
+        >
+          {arg.options.map((opt, i) => (
+            <option key={opt + i} value={opt}>
+              {opt}
+            </option>
+          ))}
+        </Select>
+      ) : (
+        <RadioGroup
+          legend={name}
+          onChange={(e) => setState({ ...state, [name]: e })}
+          value={state[name] as string}
+        >
+          {arg.options.map((opt, i) => (
+            <Radio key={opt + i} value={opt}>
+              {opt || "Ingen"}
+            </Radio>
+          ))}
+        </RadioGroup>
+      )}
+    </>
   );
 };
 

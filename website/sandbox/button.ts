@@ -24,8 +24,8 @@ const ButtonSandbox: SandboxComponent = (props, variant) => {
 ButtonSandbox.args = {
   props: {
     variant: ["", "primary", "secondary", "tertiary", "danger"],
-    disabled: false,
     size: ["", "medium", "small"],
+    disabled: false,
   },
   variants: ["", "Ikon", "Loader"],
 };

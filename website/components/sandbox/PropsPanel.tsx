@@ -1,5 +1,5 @@
 import { Close } from "@navikt/ds-icons";
-import { Fieldset, Select } from "@navikt/ds-react";
+import { Fieldset, Radio, RadioGroup, Select } from "@navikt/ds-react";
 import React, { useCallback, useContext, useEffect, useRef } from "react";
 import { useClickAway, useEvent, useKey } from "react-use";
 import styled, { css } from "styled-components";
@@ -98,20 +98,39 @@ const SettingsPanel = ({
       </ScCloseButton>
       <PropFilter />
       {variant.options.length > 1 && (
-        <Fieldset legend="Varianter">
-          <Select
-            value={variant.value}
-            label="Endre preview variant"
-            hideLabel
-            onChange={(e) => setVariant({ ...variant, value: e.target.value })}
-          >
-            {variant.options.map((opt, i) => (
-              <option key={opt + i} value={opt}>
-                {opt}
-              </option>
-            ))}
-          </Select>
-        </Fieldset>
+        <>
+          {variant.options.length > 5 ? (
+            <Fieldset legend="Varianter" size="small">
+              <Select
+                value={variant.value}
+                label="Endre preview variant"
+                hideLabel
+                onChange={(e) =>
+                  setVariant({ ...variant, value: e.target.value })
+                }
+              >
+                {variant.options.map((opt, i) => (
+                  <option key={opt + i} value={opt}>
+                    {opt}
+                  </option>
+                ))}
+              </Select>
+            </Fieldset>
+          ) : (
+            <RadioGroup
+              size="small"
+              legend="Varianter"
+              onChange={(e) => setVariant({ ...variant, value: e })}
+              value={variant.value}
+            >
+              {variant.options.map((opt, i) => (
+                <Radio key={opt + i} value={opt}>
+                  {opt || "Ingen"}
+                </Radio>
+              ))}
+            </RadioGroup>
+          )}
+        </>
       )}
     </ScSettingsPanel>
   );
