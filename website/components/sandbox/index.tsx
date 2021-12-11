@@ -23,6 +23,7 @@ import getSandbox from "../../sandbox";
 import { SandboxComponent } from "../../sandbox/types";
 import CopyButton from "../code/CopyButton";
 import { withErrorBoundary } from "../error-boundary";
+import Fullscreen from "./FullScreen";
 import {
   generateState,
   getInitialState,
@@ -32,6 +33,13 @@ import {
 import SettingsPanel from "./PropsPanel";
 import { EditorWrapper, PreviewWrapper } from "./StyleWrappers";
 import Tabs from "./Tabs";
+
+const ScRelativeDiv = styled.div`
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
 
 const formatCode = (code: string) => {
   try {
@@ -59,12 +67,16 @@ type SandboxContextProps = {
   state: StateT;
   setState: React.Dispatch<StateT>;
   args: ParsedArgsT;
+  fullscreen: boolean;
+  setFullscreen: React.Dispatch<boolean>;
 };
 
 export const SandboxContext = createContext<SandboxContextProps>({
   state: null,
   setState: () => null,
   args: null,
+  fullscreen: false,
+  setFullscreen: () => null,
 });
 
 const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
@@ -77,6 +89,7 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   const [reseting, setReseting] = useState(false);
   const preFocusCapture = useRef<HTMLDivElement>(null);
   const focusCapture = useRef<HTMLButtonElement>(null);
+  const [fullscreen, setFullscreen] = useState(false);
 
   const sandboxComp: SandboxComponent | null = useMemo(
     () => getSandbox(node?.title),
@@ -118,43 +131,55 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
     }
   };
 
+  const Editor = (
+    <LiveProvider code={code} scope={scope}>
+      <ScRelativeDiv>
+        <Tabs reset={reset} openPanel={() => setSettingsOpen(true)} />
+        <PreviewWrapper>
+          <LivePreview />
+          <LiveError />
+        </PreviewWrapper>
+        <div ref={preFocusCapture} tabIndex={-1} />
+        <EditorWrapper>
+          {reseting ? (
+            <LiveEditor
+              style={{
+                overflowX: "auto",
+                whiteSpace: "pre",
+                backgroundColor: "transparent",
+              }}
+              key="old-editor"
+              theme={theme}
+            />
+          ) : (
+            <LiveEditor
+              key="new-editor"
+              onChange={(v) => setCode(v)}
+              theme={theme}
+              style={{ backgroundColor: "transparent" }}
+              onKeyDown={handleKeyDown}
+            />
+          )}
+          <CopyButton ref={focusCapture} content={code} inTabs={false} />
+        </EditorWrapper>
+        <SettingsPanel open={settingsOpen} setOpen={setSettingsOpen} />
+      </ScRelativeDiv>
+    </LiveProvider>
+  );
+
   return (
     <>
       {code !== null ? (
-        <SandboxContext.Provider value={{ state, setState, args: parsedArgs }}>
-          <LiveProvider code={code} scope={scope}>
-            <div style={{ position: "relative" }}>
-              <Tabs reset={reset} openPanel={() => setSettingsOpen(true)} />
-              <PreviewWrapper>
-                <LivePreview />
-                <LiveError />
-              </PreviewWrapper>
-              <div ref={preFocusCapture} tabIndex={-1} />
-              <EditorWrapper>
-                {reseting ? (
-                  <LiveEditor
-                    style={{
-                      overflowX: "auto",
-                      whiteSpace: "pre",
-                      backgroundColor: "transparent",
-                    }}
-                    key="old-editor"
-                    theme={theme}
-                  />
-                ) : (
-                  <LiveEditor
-                    key="new-editor"
-                    onChange={(v) => setCode(v)}
-                    theme={theme}
-                    style={{ backgroundColor: "transparent" }}
-                    onKeyDown={handleKeyDown}
-                  />
-                )}
-                <CopyButton ref={focusCapture} content={code} inTabs={false} />
-              </EditorWrapper>
-              <SettingsPanel open={settingsOpen} setOpen={setSettingsOpen} />
-            </div>
-          </LiveProvider>
+        <SandboxContext.Provider
+          value={{
+            state,
+            setState,
+            args: parsedArgs,
+            fullscreen,
+            setFullscreen,
+          }}
+        >
+          {fullscreen ? <Fullscreen>{Editor}</Fullscreen> : Editor}
         </SandboxContext.Provider>
       ) : null}
     </>

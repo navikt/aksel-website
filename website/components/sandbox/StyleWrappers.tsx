@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { SandboxContext } from ".";
 
 const ScPreWrapper = styled.div`
   position: relative;
-  max-height: 400px;
+
+  &[data-fullscreen="true"] {
+    height: 40%;
+
+    > pre {
+      height: 100%;
+      margin: 0;
+    }
+  }
 
   > pre {
+    max-height: 400px;
+    overflow-y: auto;
     position: relative;
     background-color: var(--navds-semantic-color-component-background-inverted);
     margin: 0;
@@ -43,6 +54,16 @@ const ScDiv = styled.div`
   overflow-x: auto;
   position: relative;
   min-height: 300px;
+
+  &[data-fullscreen="true"] {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 3;
+
+    > * {
+      flex-grow: 1;
+    }
+  }
 `;
 
 const ScInnerDiv = styled.div`
@@ -66,14 +87,20 @@ const ScInnerDiv = styled.div`
   }
 `;
 
-export const PreviewWrapper = ({ children }: { children: React.ReactNode }) => (
-  <ScDiv>
-    <ScInnerDiv>{children}</ScInnerDiv>
-  </ScDiv>
-);
+export const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
+  const context = useContext(SandboxContext);
+  return (
+    <ScDiv data-fullscreen={context.fullscreen}>
+      <ScInnerDiv>{children}</ScInnerDiv>
+    </ScDiv>
+  );
+};
 
-export const EditorWrapper = ({ children }: { children: React.ReactNode }) => (
-  <ScPreWrapper>
-    <ScPre>{children}</ScPre>
-  </ScPreWrapper>
-);
+export const EditorWrapper = ({ children }: { children: React.ReactNode }) => {
+  const context = useContext(SandboxContext);
+  return (
+    <ScPreWrapper data-fullscreen={context.fullscreen}>
+      <ScPre>{children}</ScPre>
+    </ScPreWrapper>
+  );
+};

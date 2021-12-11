@@ -1,4 +1,4 @@
-import { Refresh, SettingsFilled } from "@navikt/ds-icons";
+import { Add, Refresh, SettingsFilled } from "@navikt/ds-icons";
 import { Label } from "@navikt/ds-react";
 import React, { useContext } from "react";
 import styled from "styled-components";
@@ -48,7 +48,7 @@ const Tabs = ({
   openPanel: () => void;
   reset: () => void;
 }) => {
-  const { args } = useContext(SandboxContext);
+  const { args, fullscreen, setFullscreen } = useContext(SandboxContext);
 
   const hideProps =
     !args ||
@@ -74,6 +74,12 @@ const Tabs = ({
             <SettingsFilled />
           </ScTabButton>
         )}
+        <ScTabButton onClick={() => setFullscreen(!fullscreen)}>
+          <span className="sr-only">
+            {fullscreen ? "Lukk fullskjerm" : "Åpne sandbox i fullskjerm"}
+          </span>
+          <Add />
+        </ScTabButton>
       </ScFlex>
     </ScTabs>
   );
