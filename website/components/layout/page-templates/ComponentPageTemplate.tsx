@@ -111,8 +111,14 @@ const ComponentPageTemplate = ({
       : [...visited.current];
   }, [asPath]);
 
+  /* Defaults back to a tab with content if first does not */
   useEffect(() => {
-    setActiveTab(Object.keys(tabs).indexOf(query.slug[2] ?? "bruk"));
+    let active = Object.keys(tabs).indexOf(query.slug[2] ?? "bruk");
+
+    active = !data[tabs[Object.keys(tabs)[active]]]
+      ? Object.keys(tabs).findIndex((x) => !!data[tabs[x]])
+      : active;
+    setActiveTab(active);
   }, [query.slug]);
 
   // TODO: Simplify this atrocity

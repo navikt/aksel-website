@@ -10,6 +10,12 @@ export const getDsPaths = async (): Promise<string[][]> => {
   const paths = [];
   const componentPageTabs = ["design", "utvikling", "tilgjengelighet"];
 
+  const tabs = {
+    design: "design",
+    utvikling: "development",
+    tilgjengelighet: "accessibility",
+  };
+
   documents?.forEach((page) => {
     if (!page.slug) {
       return null;
@@ -21,15 +27,19 @@ export const getDsPaths = async (): Promise<string[][]> => {
     switch (page._type) {
       case "ds_component_page":
         componentPageTabs.forEach((tab) => {
-          paths.push([...slug, tab]);
+          page[tabs[tab]] && paths.push([...slug, tab]);
         });
         defaultPush();
         break;
       case "ds_tabbed_article_page": {
         if (!page.tabs) break;
-        const tabbedArticleTabs = page.tabs.map(
-          (tab) => tab.title?.toLowerCase().replace(/\s+/g, "-") || "undefined"
-        );
+        const tabbedArticleTabs = page.tabs
+          .map((tab) => {
+            return tab.body && tab.title
+              ? tab.title?.toLowerCase().replace(/\s+/g, "-")
+              : null;
+          })
+          .filter((x) => !!x);
         tabbedArticleTabs.forEach((tab) => {
           paths.push([...slug, tab]);
         });
