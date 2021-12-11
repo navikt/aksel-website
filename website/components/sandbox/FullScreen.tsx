@@ -10,6 +10,10 @@ const ScModal = styled(Modal)`
   border-radius: 0%;
   position: relative;
 
+  > * {
+    margin: 0;
+  }
+
   :focus {
     box-shadow: none;
   }

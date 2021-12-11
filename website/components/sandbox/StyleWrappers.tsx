@@ -10,7 +10,6 @@ const ScPreWrapper = styled.div`
 
     > pre {
       height: 100%;
-      margin: 0;
     }
   }
 
@@ -20,7 +19,6 @@ const ScPreWrapper = styled.div`
     position: relative;
     background-color: var(--navds-semantic-color-component-background-inverted);
     margin: 0;
-    margin-bottom: var(--navds-spacing-7);
   }
 `;
 

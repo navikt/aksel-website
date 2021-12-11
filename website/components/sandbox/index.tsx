@@ -39,6 +39,7 @@ const ScRelativeDiv = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: var(--navds-spacing-7);
 `;
 
 const formatCode = (code: string) => {
