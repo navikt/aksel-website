@@ -13,7 +13,11 @@ function Page() {
     });
   }, [asPath]);
 
-  return <Error statusCode={404} title="Fant ikke siden" />;
+  return (
+    <div id="vk-notFoundId">
+      <Error statusCode={404} title="Fant ikke siden" />
+    </div>
+  );
 }
 
 export default Page;
