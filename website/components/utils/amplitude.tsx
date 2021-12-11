@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect } from "react";
 import amplitude from "amplitude-js";
 import { PagePropsContext } from "../../pages/_app";
-import { isDevelopment } from ".";
+import { isDevelopment, isTest } from ".";
 
 /* TODO: Denne skal kunne fjernes når appen er lastet opp til Nais */
 const defaultConfig = {
@@ -54,13 +54,14 @@ export function useAmplitude(): any {
   const context = useContext(AmplitudeContext);
   const { pageProps } = useContext(PagePropsContext);
 
-  if (pageProps?.preview || isDevelopment()) {
+  if (pageProps?.preview || isDevelopment() || isTest()) {
     return { logAmplitudeEvent: () => undefined };
   }
 
   if (context === undefined) {
     throw new Error("useAmplitude må brukes under en AmplitudeProvider");
   }
+
   return context;
 }
 
