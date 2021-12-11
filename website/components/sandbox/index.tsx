@@ -36,7 +36,9 @@ const formatCode = (code: string) => {
       printWidth: 60,
       semi: false,
     });
-    return formated.startsWith(";") ? formated.slice(1) : formated;
+    return formated.startsWith(";")
+      ? formated.slice(1).replace(/\n$/, "")
+      : formated.replace(/\n$/, "");
   } catch (e) {
     return code;
   }
