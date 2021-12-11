@@ -98,7 +98,9 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   }
 
   useEffect(() => {
-    state && variant?.value && setCode(sandboxComp(state, variant.value));
+    state &&
+      variant?.value !== null &&
+      setCode(sandboxComp(state, variant.value));
 
     /* Hack to make editor update */
     setReseting(true);

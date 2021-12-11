@@ -10,7 +10,7 @@ const ButtonSandbox: SandboxComponent = (props, variant) => {
   const compLoader = `<Button${propVariant}${propSize}${propDisabled}><Loader title="Laster inn data"/></Button>`;
 
   switch (variant) {
-    case "standard":
+    case "":
       return comp;
     case "Ikon":
       return compIcon;

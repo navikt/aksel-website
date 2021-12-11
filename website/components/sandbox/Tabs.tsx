@@ -2,7 +2,7 @@ import { Refresh, SettingsFilled } from "@navikt/ds-icons";
 import { Label } from "@navikt/ds-react";
 import React from "react";
 import styled from "styled-components";
-import { CanvasIcon } from "..";
+/* import { CanvasIcon } from ".."; */
 import { ScTabCss } from "./PropsPanel";
 
 const ScTabs = styled.div`
