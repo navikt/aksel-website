@@ -48,7 +48,11 @@ const Tabs = ({
   openPanel: () => void;
   reset: () => void;
 }) => {
-  const { args, variant } = useContext(SandboxContext);
+  const { args } = useContext(SandboxContext);
+
+  const hideProps =
+    !args ||
+    ((!args.props || Object.keys(args.props).length === 0) && !args.variants);
 
   return (
     <ScTabs>
@@ -64,7 +68,7 @@ const Tabs = ({
           </span>
           <CanvasIcon />
         </ScTabButton> */}
-        {!(!args || (Object.keys(args).length === 0 && !variant)) && (
+        {!hideProps && (
           <ScTabButton onClick={() => openPanel()}>
             <span className="sr-only">Åpne props-panel</span>
             <SettingsFilled />

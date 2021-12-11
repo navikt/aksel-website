@@ -23,11 +23,25 @@ export interface ParsedPropsT {
   [key: string]: EnumT | BooleanT | StringT;
 }
 
-export const getInitialState = (args: ParsedPropsT) =>
-  Object.entries(args).reduce(
+export interface ParsedArgsT {
+  props: ParsedPropsT;
+  variants: EnumT | null;
+}
+
+export interface StateT {
+  props: {
+    [key: string]: string | boolean;
+  };
+  variants: string | null;
+}
+
+export const getInitialState = (args: ParsedArgsT): StateT => ({
+  props: Object.entries(args.props).reduce(
     (old, [key, value]) => ({ ...old, [key]: value.default }),
     {}
-  );
+  ),
+  variants: args.variants ? args.variants.default : null,
+});
 
 const parseProps = (props: SandboxComponentProps): ParsedPropsT =>
   Object.entries(props).reduce((old, [key, value]) => {
@@ -63,7 +77,7 @@ const parseProps = (props: SandboxComponentProps): ParsedPropsT =>
     }
   }, {});
 
-export const generateState = (args: SandboxComponentArgs) => {
+export const generateState = (args: SandboxComponentArgs): ParsedArgsT => {
   const { props } = args;
 
   if (!props) {
@@ -71,5 +85,10 @@ export const generateState = (args: SandboxComponentArgs) => {
     return null;
   }
 
-  return parseProps(props);
+  return {
+    props: parseProps(props),
+    variants: args.variants
+      ? { default: args.variants[0], options: args.variants, format: "array" }
+      : null,
+  };
 };

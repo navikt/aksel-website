@@ -12,26 +12,36 @@ const PropFilter = () => {
   }
 
   return (
-    <Fieldset legend="Props" size="small">
-      {Object.keys(context.state).map((key) => {
-        switch (context.args[key].format) {
-          case "array":
-            return (
-              <SelectComp
-                key={key}
-                arg={context.args[key] as EnumT}
-                name={key}
-              />
-            );
-          case "boolean":
-            return <BooleanComp key={key} name={key} />;
-          case "string":
-            return <StringComp key={key} name={key} />;
-          default:
-            return null;
-        }
-      })}
-    </Fieldset>
+    <>
+      <Fieldset legend="Props" size="small">
+        {Object.keys(context.state.props).map((key) => {
+          switch (context.args.props[key].format) {
+            case "array":
+              return (
+                <SelectComp
+                  key={key}
+                  arg={context.args.props[key] as EnumT}
+                  name={key}
+                  type="prop"
+                />
+              );
+            case "boolean":
+              return <BooleanComp key={key} name={key} />;
+            case "string":
+              return <StringComp key={key} name={key} />;
+            default:
+              return null;
+          }
+        })}
+      </Fieldset>
+      <Fieldset legend="Variants" size="small">
+        <SelectComp
+          type="variant"
+          arg={context.args.variants}
+          name="Variants"
+        />
+      </Fieldset>
+    </>
   );
 };
 

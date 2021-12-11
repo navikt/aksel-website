@@ -1,9 +1,7 @@
 import { Close } from "@navikt/ds-icons";
-import { Fieldset, Radio, RadioGroup, Select } from "@navikt/ds-react";
-import React, { useCallback, useContext, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { useClickAway, useEvent, useKey } from "react-use";
 import styled, { css } from "styled-components";
-import { SandboxContext } from ".";
 import PropFilter from "./PropFilter";
 
 export const ScTabCss = css`
@@ -75,7 +73,6 @@ const SettingsPanel = ({
   setOpen: (boolean) => void;
 }) => {
   const panelRef = useRef<HTMLDivElement>(null);
-  const { variant, setVariant } = useContext(SandboxContext);
 
   useKey("Escape", () => setOpen(false), {}, []);
   useClickAway(panelRef, () => open && setOpen(false));
@@ -97,41 +94,6 @@ const SettingsPanel = ({
         <span className="sr-only">Lukk props panel for kode sandbox</span>
       </ScCloseButton>
       <PropFilter />
-      {variant?.options.length > 1 && (
-        <>
-          {variant?.options.length > 5 ? (
-            <Fieldset legend="Varianter" size="small">
-              <Select
-                value={variant.value}
-                label="Endre preview variant"
-                hideLabel
-                onChange={(e) =>
-                  setVariant({ ...variant, value: e.target.value })
-                }
-              >
-                {variant.options.map((opt, i) => (
-                  <option key={opt + i} value={opt}>
-                    {opt}
-                  </option>
-                ))}
-              </Select>
-            </Fieldset>
-          ) : (
-            <RadioGroup
-              size="small"
-              legend="Varianter"
-              onChange={(e) => setVariant({ ...variant, value: e })}
-              value={variant.value}
-            >
-              {variant.options.map((opt, i) => (
-                <Radio key={opt + i} value={opt}>
-                  {opt || "Ingen"}
-                </Radio>
-              ))}
-            </RadioGroup>
-          )}
-        </>
-      )}
     </ScSettingsPanel>
   );
 };

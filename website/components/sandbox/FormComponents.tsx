@@ -9,16 +9,37 @@ import React, { useContext } from "react";
 import { SandboxContext } from ".";
 import { EnumT } from "./generateState";
 
-export const SelectComp = ({ arg, name }: { arg: EnumT; name: string }) => {
+export const SelectComp = ({
+  arg,
+  name,
+  type = "prop",
+}: {
+  arg: EnumT;
+  name: string;
+  type: "prop" | "variant";
+}) => {
   const { state, setState } = useContext(SandboxContext);
 
   return (
     <>
       {arg.options.length > 5 ? (
         <Select
-          label={name}
-          onChange={(e) => setState({ ...state, [name]: e.target.value })}
-          value={state[name] as string}
+          hideLabel={type === "variant"}
+          label={type === "variant" ? "Endre sandbox variant" : name}
+          onChange={(e) =>
+            type === "prop"
+              ? setState({
+                  ...state,
+                  props: { ...state.props, [name]: e.target.value },
+                })
+              : setState({
+                  ...state,
+                  variants: e.target.value,
+                })
+          }
+          value={
+            (type === "prop" ? state.props[name] : state.variants) as string
+          }
         >
           {arg.options.map((opt, i) => (
             <option key={opt + i} value={opt}>
@@ -28,9 +49,22 @@ export const SelectComp = ({ arg, name }: { arg: EnumT; name: string }) => {
         </Select>
       ) : (
         <RadioGroup
-          legend={name}
-          onChange={(e) => setState({ ...state, [name]: e })}
-          value={state[name] as string}
+          legend={type === "variant" ? "Endre sandbox variant" : name}
+          hideLegend={type === "variant"}
+          onChange={(e) =>
+            type === "prop"
+              ? setState({
+                  ...state,
+                  props: { ...state.props, [name]: e },
+                })
+              : setState({
+                  ...state,
+                  variants: e,
+                })
+          }
+          value={
+            (type === "prop" ? state.props[name] : state.variants) as string
+          }
         >
           {arg.options.map((opt, i) => (
             <Radio key={opt + i} value={opt}>
@@ -47,9 +81,14 @@ export const StringComp = ({ name }: { name: string }) => {
   const { state, setState } = useContext(SandboxContext);
   return (
     <TextField
-      value={state[name] as string}
+      value={state.props[name] as string}
       label={name}
-      onChange={(e) => setState({ ...state, [name]: e.target.value })}
+      onChange={(e) =>
+        setState({
+          ...state,
+          props: { ...state.props, [name]: e.target.value },
+        })
+      }
     />
   );
 };
@@ -58,8 +97,13 @@ export const BooleanComp = ({ name }: { name: string }) => {
   const { state, setState } = useContext(SandboxContext);
   return (
     <Checkbox
-      checked={state[name] as boolean}
-      onChange={(e) => setState({ ...state, [name]: e.target.checked })}
+      checked={state.props[name] as boolean}
+      onChange={(e) =>
+        setState({
+          ...state,
+          props: { ...state.props, [name]: e.target.checked },
+        })
+      }
     >
       {name}
     </Checkbox>

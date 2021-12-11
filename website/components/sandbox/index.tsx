@@ -1,5 +1,7 @@
 import * as DsIcons from "@navikt/ds-icons";
 import * as DsReact from "@navikt/ds-react";
+import babel from "prettier/parser-babel";
+import prettier from "prettier/standalone";
 import theme from "prism-react-renderer/themes/dracula";
 import React, {
   createContext,
@@ -21,12 +23,15 @@ import getSandbox from "../../sandbox";
 import { SandboxComponent } from "../../sandbox/types";
 import CopyButton from "../code/CopyButton";
 import { withErrorBoundary } from "../error-boundary";
-import { generateState, getInitialState, ParsedPropsT } from "./generateState";
+import {
+  generateState,
+  getInitialState,
+  ParsedArgsT,
+  StateT,
+} from "./generateState";
 import SettingsPanel from "./PropsPanel";
 import { EditorWrapper, PreviewWrapper } from "./StyleWrappers";
 import Tabs from "./Tabs";
-import prettier from "prettier/standalone";
-import babel from "prettier/parser-babel";
 
 const formatCode = (code: string) => {
   try {
@@ -51,34 +56,24 @@ const scope = {
 };
 
 type SandboxContextProps = {
-  state: { [key: string]: string | boolean };
-  setState: React.Dispatch<any>;
-  args: ParsedPropsT;
-  setVariant: React.Dispatch<any>;
-  variant: VariantT;
+  state: StateT;
+  setState: React.Dispatch<StateT>;
+  args: ParsedArgsT;
 };
 
 export const SandboxContext = createContext<SandboxContextProps>({
   state: null,
   setState: () => null,
   args: null,
-  setVariant: () => null,
-  variant: null,
 });
-
-export type VariantT = {
-  options: string[];
-  value: string;
-};
 
 const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   /* const layout = useContext(LayoutContext); */
 
   const [code, setCode] = useState(null);
   const [parsedArgs, setParsedArgs] = useState(null);
-  const [state, setState] = useState(null);
+  const [state, setState] = useState<StateT>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [variant, setVariant] = useState<VariantT>(null);
   const [reseting, setReseting] = useState(false);
   const preFocusCapture = useRef<HTMLDivElement>(null);
   const focusCapture = useRef<HTMLButtonElement>(null);
@@ -91,25 +86,15 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   useEffect(() => {
     if (sandboxComp) {
       const args = generateState(sandboxComp.args);
-      sandboxComp?.args?.variants &&
-        setVariant({
-          options: sandboxComp.args.variants,
-          value: sandboxComp.args.variants[0],
-        });
       const newState = getInitialState(args);
       setParsedArgs(args);
       setState(newState);
-      setCode(formatCode(sandboxComp(newState)));
+      setCode(formatCode(sandboxComp(newState.props, newState.variants)));
     }
   }, [sandboxComp]);
 
   const reset = () => {
     setState(getInitialState(parsedArgs));
-    sandboxComp.args.variants &&
-      setVariant({
-        options: sandboxComp.args.variants,
-        value: sandboxComp.args.variants[0],
-      });
   };
 
   if (!node || !node.title) {
@@ -117,14 +102,12 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   }
 
   useEffect(() => {
-    state &&
-      (variant?.value || variant?.value === "") &&
-      setCode(formatCode(sandboxComp(state, variant.value)));
+    state && setCode(formatCode(sandboxComp(state.props, state.variants)));
 
     /* Hack to make editor update */
     setReseting(true);
     setTimeout(() => setReseting(false), 50);
-  }, [state, variant]);
+  }, [state]);
 
   const handleKeyDown = (event) => {
     if (event.key === "Tab") {
@@ -138,9 +121,7 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   return (
     <>
       {code !== null ? (
-        <SandboxContext.Provider
-          value={{ state, setState, args: parsedArgs, variant, setVariant }}
-        >
+        <SandboxContext.Provider value={{ state, setState, args: parsedArgs }}>
           <LiveProvider code={code} scope={scope}>
             <div style={{ position: "relative" }}>
               <Tabs reset={reset} openPanel={() => setSettingsOpen(true)} />
