@@ -9,6 +9,7 @@ const defaultConfig = {
 };
 
 const initAmplitude = () => {
+  console.log(process.env);
   if (amplitude) {
     amplitude.getInstance().init("default", "", {
       apiEndpoint: "amplitude.nav.no/collect-auto",
