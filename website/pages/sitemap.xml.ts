@@ -21,9 +21,11 @@ const generateSitemap = (pages: string[]): string =>
 class Sitemap extends React.Component {
   static getInitialProps = async ({ res }) => {
     // List of posts
-    const pages = await getDsPaths().then((paths) =>
+    let pages = await getDsPaths().then((paths) =>
       paths.map((slugs) => slugs.join("/"))
     );
+
+    pages = ["", "designsytem", ...pages];
 
     res.setHeader("Content-Type", "application/xml");
     res.write(generateSitemap(pages));

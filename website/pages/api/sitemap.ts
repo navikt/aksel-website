@@ -10,9 +10,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     });
 
     // List of posts
-    const pages = await getDsPaths().then((paths) =>
+    let pages = await getDsPaths().then((paths) =>
       paths.map((slugs) => slugs.join("/"))
     );
+
+    pages = ["", "designsytem", ...pages];
 
     // Create each URL row
     pages.forEach((post) => {

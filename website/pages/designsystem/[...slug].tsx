@@ -69,16 +69,14 @@ export const getStaticPaths = async (): Promise<{
   fallback: string;
   paths: { params: { slug: string[] } }[];
 }> => {
-  const paths = await getDsPaths().then((paths) =>
-    paths.map((slug) => ({
-      params: {
-        slug: slug.filter((x) => x !== "designsystem"),
-      },
-    }))
-  );
-
   return {
-    paths,
+    paths: await getDsPaths().then((paths) =>
+      paths.map((slug) => ({
+        params: {
+          slug: slug.filter((x) => x !== "designsystem"),
+        },
+      }))
+    ),
     fallback: "blocking",
   };
 };

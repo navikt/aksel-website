@@ -1,9 +1,21 @@
 import { getClient, sanityClient } from "./sanity.server";
 import { useNextSanityImage } from "next-sanity-image";
-import { dsDocuments } from ".";
+import { dsDocuments, gpDocuments } from ".";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useSanityImage = (node) => useNextSanityImage(sanityClient, node);
+
+export const getGpPaths = async (): Promise<string[][]> => {
+  const documents: any[] | null = await getClient(false).fetch(gpDocuments);
+
+  const paths = [];
+
+  documents?.forEach((page) => {
+    page.slug && paths.push(page.slug.split("/"));
+  });
+
+  return paths;
+};
 
 export const getDsPaths = async (): Promise<string[][]> => {
   const documents: any[] | null = await getClient(false).fetch(dsDocuments);

@@ -2,8 +2,9 @@ import React from "react";
 import * as Sc from "../../components";
 import { LayoutPicker, PreviewBanner } from "../../components";
 import GodPraksisHeader from "../../components/layout/header/GodPraksisHeader";
-import { getClient, gpDocumentBySlug, gpDocuments } from "../../lib";
+import { getClient, getGpPaths, gpDocumentBySlug } from "../../lib";
 import { GpArticlePage } from "../../lib/autogen-types";
+
 const Page = (props: {
   slug?: string;
   page: GpArticlePage;
@@ -40,20 +41,14 @@ export const getStaticPaths = async (): Promise<{
   fallback: string;
   paths: { params: { slug: string[] } }[];
 }> => {
-  const documents: any[] | null = await getClient(false).fetch(gpDocuments);
-  const paths = [];
-
-  documents?.forEach((page) => {
-    page.slug &&
-      paths.push({
-        params: {
-          slug: page.slug.split("/").filter((x) => x !== "god-praksis"),
-        },
-      });
-  });
-
   return {
-    paths,
+    paths: await getGpPaths().then((paths) =>
+      paths.map((slug) => ({
+        params: {
+          slug: slug.filter((x) => x !== "god-praksis"),
+        },
+      }))
+    ),
     fallback: "blocking",
   };
 };
