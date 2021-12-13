@@ -48,10 +48,14 @@ const ScCard = styled.a`
   :active > :first-child {
     color: var(--navds-semantic-color-text-inverted);
   }
+
+  > *:first-child {
+    margin-bottom: var(--navds-spacing-2);
+  }
 `;
 
 const ScBodyShort = styled(BodyShort)`
-  margin-bottom: var(--navds-spacing-8);
+  margin-bottom: var(--navds-spacing-12);
 `;
 
 const ScDetail = styled(Detail)`
@@ -79,7 +83,7 @@ const Card = ({ link }: { link: LinkT }) => {
   return (
     <NextLink href={href} passHref>
       <ScCard>
-        <Heading spacing size="xsmall" as="span">
+        <Heading size="xsmall" as="div">
           {link.title}
         </Heading>
         <ScBodyShort size="small">{link.description}</ScBodyShort>
