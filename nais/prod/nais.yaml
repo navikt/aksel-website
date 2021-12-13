@@ -9,8 +9,8 @@ spec:
   image: {{ image }}
   port: 3000
   ingresses:
-    - "design.nav.no"
-    - "design.intern.nav.no"
+    - "https://design.nav.no"
+    - "https://design.intern.nav.no"
   liveness:
     path: /api/isAlive
     initialDelay: 20

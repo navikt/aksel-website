@@ -26,14 +26,14 @@ jobs:
 
       - name: Install dependencies
         run: yarn
+      - name: Build application
+        run: yarn build:next
       - name: Run tests
-        run: yarn workspace website e2e:ci
+        run: NEXT_PUBLIC_TEST=true yarn workspace website e2e:ci
       - name: Update code examples
         run: yarn sanity:codeexamples
       - name: Update colors
         run: yarn sanity:colors
-      - name: Build application
-        run: yarn build:next
       - name: Login to GitHub Container Registry
         uses: docker/login-action@ab80d026d4753220c4243394c07c7d80f9638d06 # Use commit-sha1 instead of tag for security concerns
         with:
@@ -57,7 +57,7 @@ jobs:
           tag_name: ${{ env.TAG }}
           release_name: ${{ env.TAG }}
           commitish: ${{ github.sha }}
-      - name: Deploy til dev
+      - name: Deploy to prod-gcp
         uses: nais/deploy/actions/deploy@master
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
