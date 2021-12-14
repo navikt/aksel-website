@@ -62,7 +62,8 @@ const ColorBox = ({ prop }: { prop: DsColor }): JSX.Element => {
   if (prop.color_type === "global") {
     return (
       <ScColorBox background={color.hex()} dark={color.isDark()}>
-        <p>{color.hex()}</p>
+        <p>{prop.title}</p>
+        <ScHexColor size="small">{color.hex()}</ScHexColor>
       </ScColorBox>
     );
   }
