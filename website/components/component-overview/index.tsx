@@ -221,16 +221,6 @@ const ComponentOverview = ({
 
   return (
     <ScComponentOverview>
-      <BodyLong spacing>
-        Tabellen viser en oversikt over alle komponentene og deres status på
-        design, kode og dokumentasjon. Noe du savner? Send oss en meldig så
-        legger vi det til!
-      </BodyLong>
-      <BodyLong spacing>
-        <strong> Viktig:</strong> Kode er her relatert til de nye kodepakkene.
-        For eldre løsninginger som er implementert i Figma v2.5, se{" "}
-        <Link href="https://design.nav.no"> Design.nav.no</Link>
-      </BodyLong>
       <Label spacing>Tegnforklaring</Label>
       <ScUl>
         <li>
