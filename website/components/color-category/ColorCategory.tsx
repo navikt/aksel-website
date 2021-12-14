@@ -110,7 +110,9 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
   return (
     <ScSection>
       <Heading size="medium" as="h2" id={node._id}>
-        {capitalize(node.title)}
+        {node.title.indexOf("-") > -1
+          ? capitalize(node.title.split("-")[1])
+          : capitalize(node.title)}
       </Heading>
       {node.description ? <BodyLong>{node.description}</BodyLong> : null}
       <Table>
