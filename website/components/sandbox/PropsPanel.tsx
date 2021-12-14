@@ -39,7 +39,7 @@ const ScCloseButton = styled.button`
 
 const ScSettingsPanel = styled.div`
   height: 100%;
-  width: 300px;
+  width: 250px;
   max-width: 100%;
   position: absolute;
   right: 0;
@@ -50,8 +50,6 @@ const ScSettingsPanel = styled.div`
   display: flex;
   gap: 2rem;
   flex-direction: column;
-  transform: translateX(100%);
-  transition: transform 0ms ease-in-out;
   visibility: hidden;
   border: 1px solid var(--navds-global-color-gray-200);
 
@@ -60,7 +58,6 @@ const ScSettingsPanel = styled.div`
   }
 
   &[data-open="true"] {
-    transform: translateX(0);
     visibility: visible;
   }
 `;
