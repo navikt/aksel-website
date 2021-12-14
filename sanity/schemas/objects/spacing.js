@@ -15,7 +15,7 @@ export default {
       options: {
         layout: "radio",
         list: [
-          { value: "s-4", title: "S-2" },
+          { value: "s-4", title: "S-4" },
           { value: "s-8", title: "S-8" },
           { value: "s-12", title: "S-12" },
           { value: "s-16", title: "S-16" },
