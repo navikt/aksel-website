@@ -1,19 +1,11 @@
 import { Error, Success } from "@navikt/ds-icons";
-import {
-  BodyLong,
-  BodyShort,
-  Label,
-  Link,
-  Table,
-  Tag,
-  useId,
-} from "@navikt/ds-react";
+import { BodyShort, Label, Link, Table, Tag, useId } from "@navikt/ds-react";
+import NextLink from "next/link";
 import React from "react";
 import ReactTooltip from "react-tooltip";
 import styled from "styled-components";
 import { FigmaIcon, FigmaIconNoSync, OverflowDetector } from "..";
 import { DsComponentOverview } from "../../lib/autogen-types";
-import NextLink from "next/link";
 
 const ScComponentOverview = styled.div``;
 const ScHeaderCell = styled(BodyShort)`
