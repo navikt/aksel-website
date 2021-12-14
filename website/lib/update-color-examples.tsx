@@ -48,6 +48,7 @@ function parseDeclaration(
   const ignoredTags = ["navds"];
   const globalAndSemanticTags = ["semantic", "global"];
   const specialCases = ["text", "divider", "focus", "border", "link"];
+  const semanticCases = ["danger", "warning", "success", "primary", "info"];
   const propOrMainCategory = (prev: string, cur: string) =>
     globalAndSemanticTags.includes(prev) ? `${prev}-${cur}` : cur;
 
@@ -101,6 +102,17 @@ function parseDeclaration(
     };
   }
 
+  const semanticCategory = props.slice(2)[0];
+  if (semanticCases.includes(semanticCategory)) {
+    return {
+      title: props.slice(2).join("-"),
+      full_title: property,
+      color_value,
+      color_name,
+      subcategory: `${subcategory}-${semanticCategory}`,
+      category,
+    };
+  }
   // in every other case, we can say the title is everything after category/subcategory joined with "-"
   // e.g. "warning-background" in the "feedback" category
   return {
