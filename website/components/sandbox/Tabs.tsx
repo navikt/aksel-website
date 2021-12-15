@@ -41,14 +41,15 @@ const ScFlex = styled.div`
   display: flex;
 `;
 
-const Tabs = ({
-  openPanel,
-  reset,
-}: {
-  openPanel: () => void;
-  reset: () => void;
-}) => {
-  const { args, fullscreen, setFullscreen } = useContext(SandboxContext);
+const Tabs = ({ reset }: { reset: () => void }) => {
+  const {
+    args,
+    fullscreen,
+    setFullscreen,
+    inlinePropsPanel,
+    openPropsPanel,
+    setOpenPropsPanel,
+  } = useContext(SandboxContext);
 
   const hideProps =
     !args ||
@@ -68,18 +69,19 @@ const Tabs = ({
           </span>
           <CanvasIcon />
         </ScTabButton> */}
-        {!hideProps && (
-          <ScTabButton onClick={() => openPanel()}>
-            <span className="sr-only">Åpne props-panel</span>
-            <SettingsFilled />
-          </ScTabButton>
-        )}
+
         <ScTabButton onClick={() => setFullscreen(!fullscreen)}>
           <span className="sr-only">
             {fullscreen ? "Lukk fullskjerm" : "Åpne sandbox i fullskjerm"}
           </span>
           <Add />
         </ScTabButton>
+        {!hideProps && !inlinePropsPanel && (
+          <ScTabButton onClick={() => setOpenPropsPanel(!openPropsPanel)}>
+            <span className="sr-only">Åpne props-panel</span>
+            <SettingsFilled />
+          </ScTabButton>
+        )}
       </ScFlex>
     </ScTabs>
   );

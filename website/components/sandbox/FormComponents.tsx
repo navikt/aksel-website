@@ -22,7 +22,7 @@ export const SelectComp = ({
 
   return (
     <>
-      {arg.options.length > 5 ? (
+      {arg.options.length > 4 ? (
         <Select
           hideLabel={type === "variant"}
           label={type === "variant" ? "Endre sandbox variant" : name}

@@ -70,6 +70,10 @@ type SandboxContextProps = {
   args: ParsedArgsT;
   fullscreen: boolean;
   setFullscreen: React.Dispatch<boolean>;
+  inlinePropsPanel: boolean;
+  setInlinePropsPanel: React.Dispatch<boolean>;
+  openPropsPanel: boolean;
+  setOpenPropsPanel: React.Dispatch<boolean>;
 };
 
 export const SandboxContext = createContext<SandboxContextProps>({
@@ -78,6 +82,10 @@ export const SandboxContext = createContext<SandboxContextProps>({
   args: null,
   fullscreen: false,
   setFullscreen: () => null,
+  inlinePropsPanel: true,
+  setInlinePropsPanel: () => null,
+  setOpenPropsPanel: () => null,
+  openPropsPanel: true,
 });
 
 const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
@@ -91,6 +99,7 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   const preFocusCapture = useRef<HTMLDivElement>(null);
   const focusCapture = useRef<HTMLButtonElement>(null);
   const [fullscreen, setFullscreen] = useState(false);
+  const [inlinePropsPanel, setInlinePropsPanel] = useState(true);
 
   const sandboxComp: SandboxComponent | null = useMemo(
     () => getSandbox(node?.title),
@@ -135,10 +144,11 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   const Editor = (
     <LiveProvider code={code} scope={scope}>
       <ScRelativeDiv>
-        <Tabs reset={reset} openPanel={() => setSettingsOpen(true)} />
+        <Tabs reset={reset} />
         <PreviewWrapper>
           <LivePreview />
           <LiveError />
+          <SettingsPanel />
         </PreviewWrapper>
         <div ref={preFocusCapture} tabIndex={-1} />
         <EditorWrapper>
@@ -163,7 +173,6 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
           )}
           <CopyButton ref={focusCapture} content={code} inTabs={false} />
         </EditorWrapper>
-        <SettingsPanel open={settingsOpen} setOpen={setSettingsOpen} />
       </ScRelativeDiv>
     </LiveProvider>
   );
@@ -178,6 +187,10 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
             args: parsedArgs,
             fullscreen,
             setFullscreen,
+            inlinePropsPanel,
+            setInlinePropsPanel,
+            setOpenPropsPanel: setSettingsOpen,
+            openPropsPanel: settingsOpen,
           }}
         >
           {fullscreen ? <Fullscreen>{Editor}</Fullscreen> : Editor}

@@ -43,7 +43,7 @@ const ScPre = styled.pre`
   }
 `;
 
-const ScDiv = styled.div`
+const ScDiv = styled.div<{ fullscreen: boolean; inlineProps: boolean }>`
   display: flex;
   width: 100%;
   background-color: var(--navds-semantic-color-canvas-background);
@@ -51,17 +51,19 @@ const ScDiv = styled.div`
   border-top: none;
   overflow-x: auto;
   position: relative;
-  min-height: 300px;
+  height: 400px;
 
-  &[data-fullscreen="true"] {
-    display: flex;
+  ${(props) => props.inlineProps && `padding-right: 250px;`}
+
+  ${(props) =>
+    props.fullscreen &&
+    `display: flex;
     flex-direction: column;
     flex-grow: 3;
 
     > * {
       flex-grow: 1;
-    }
-  }
+    }`}
 `;
 
 const ScInnerDiv = styled.div`
@@ -88,7 +90,10 @@ const ScInnerDiv = styled.div`
 export const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
   const context = useContext(SandboxContext);
   return (
-    <ScDiv data-fullscreen={context.fullscreen}>
+    <ScDiv
+      fullscreen={context.fullscreen}
+      inlineProps={context.inlinePropsPanel}
+    >
       <ScInnerDiv>{children}</ScInnerDiv>
     </ScDiv>
   );
