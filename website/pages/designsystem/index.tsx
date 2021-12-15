@@ -87,6 +87,8 @@ const ScTitle = styled.div`
 `;
 
 const ScIllustration = styled.div`
+  height: 240px;
+
   @media (max-width: 1064px) {
     display: none;
   }
