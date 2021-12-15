@@ -10,7 +10,6 @@ const ScColorBox = styled.div<{ background: string; dark: boolean }>`
   color: var(--navds-semantic-color-text-default);
   color: ${(props) =>
     props.dark && "var(--navds-semantic-color-text-inverted)"};
-  width: 128px;
   height: 66px;
   display: flex;
   flex-direction: column;
@@ -55,6 +54,10 @@ const ScSection = styled.div`
   margin-bottom: 2rem;
 `;
 
+const ScTable = styled(Table)`
+  table-layout: fixed;
+`;
+
 const TwoBeforeOne = 1;
 const OneBeforeTwo = -1;
 
@@ -86,8 +89,7 @@ const ColorBox = ({ prop }: { prop: DsColor }): JSX.Element => {
   }
   return (
     <ScColorBox background={color.hex()} dark={color.isDark()}>
-      <p>{prop.color_name}</p>
-      <ScHexColor size="small">{color.hex()}</ScHexColor>
+      <p>{prop.title}</p>
     </ScColorBox>
   );
 };
@@ -99,7 +101,6 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
         <ScColorCell>
           <ColorBox prop={prop} />
         </ScColorCell>
-        <ScDataCell>{prop.title}</ScDataCell>
         <ScDataCell>
           {prop.color_roles && (
             <ScColorRoles>
@@ -119,7 +120,6 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
         <ScColorCell>
           <ColorBox prop={prop} />
         </ScColorCell>
-        <ScDataCell>{prop.title}</ScDataCell>
       </ScTableRow>
     );
   };
@@ -129,12 +129,9 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
   return (
     <ScSection>
       {node.description ? <BodyLong>{node.description}</BodyLong> : null}
-      <Table>
+      <ScTable>
         <Table.Header>
           <Table.Row>
-            <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
-              Eksempel
-            </ScHeaderCell>
             <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
               Token
             </ScHeaderCell>
@@ -154,7 +151,7 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
             )
           )}
         </Table.Body>
-      </Table>
+      </ScTable>
     </ScSection>
   );
 };
