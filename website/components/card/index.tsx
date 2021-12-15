@@ -7,7 +7,7 @@ import { useAmplitude, AmplitudeEvents } from "..";
 
 const ScCard = styled.a`
   min-height: 22rem;
-  max-width: 18rem;
+  width: 18rem;
   text-decoration: none;
   color: var(--navds-semantic-color-text);
   display: flex;
@@ -20,7 +20,7 @@ const ScCard = styled.a`
     0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
   position: relative;
 
-  transition: background-color 100ms ease-in-out;
+  transition: background-color 200ms ease-in-out;
 
   :hover {
     box-shadow: 0 0 0 2px var(--navds-semantic-color-link);
@@ -49,16 +49,23 @@ const ScCard = styled.a`
     color: var(--navds-semantic-color-text-inverted);
     border-color: transparent;
     background-color: var(--navds-global-color-blue-700);
+
     > * {
       color: var(--navds-semantic-color-text-inverted);
     }
 
-    svg {
+    svg > * {
+      transition: filter 200ms ease-in-out;
+    }
+    svg > .circle {
+      transition: fill 200ms ease-in-out;
+    }
+
+    svg > *:not(.circle) {
       filter: invert(1);
     }
 
     .circle {
-      filter: invert(1);
       fill: var(--navds-semantic-color-link);
     }
   }

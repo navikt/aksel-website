@@ -46,14 +46,23 @@ const ScNav = styled.nav`
 
 const ScDiv = styled.div`
   gap: 1.5rem;
-  display: flex;
   padding: 0;
   list-style: none;
-  justify-content: flex-start;
-  flex-wrap: wrap;
 
-  @media (max-width: 1007px) {
-    justify-content: center;
+  grid-template-columns: repeat(4, 18rem);
+  place-content: start flex-start;
+  display: grid;
+
+  @media (max-width: 1320px) {
+    grid-template-columns: repeat(3, 18rem);
+  }
+
+  @media (max-width: 1020px) {
+    grid-template-columns: repeat(2, 18rem);
+  }
+
+  @media (max-width: 700px) {
+    grid-template-columns: repeat(1, 18rem);
   }
 `;
 
@@ -64,6 +73,10 @@ const ScFrontpage = styled.div`
   display: flex;
   flex-direction: column;
   background-color: var(--navds-semantic-color-component-background-alternate);
+
+  > a {
+    color: var(--navds-semantic-color-text);
+  }
 `;
 
 const ScLink = styled(Link)`
@@ -105,7 +118,7 @@ const Page = () => {
         />
         <ScFrontpage>
           <NextLink passHref href="https://old-design-nav.vercel.app/">
-            <ScLink>Gå til den gamle versjonen</ScLink>
+            <ScLink>Gå til gammel dokumentasjon</ScLink>
           </NextLink>
 
           <ScIntro>

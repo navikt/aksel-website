@@ -124,7 +124,7 @@ const Page = () => {
             </BodyLong>
             <BodyLong>
               <NextLink passHref href="https://old-design-nav.vercel.app/">
-                <Link>Gå til den gamle versjonen</Link>
+                <Link>Gå til gammel dokumentasjon</Link>
               </NextLink>
             </BodyLong>
           </ScDescriptionWrapper>
