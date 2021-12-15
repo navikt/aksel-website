@@ -1,12 +1,7 @@
-import {
-  Checkbox,
-  Radio,
-  RadioGroup,
-  Select,
-  TextField,
-} from "@navikt/ds-react";
+import { Checkbox, Select, TextField } from "@navikt/ds-react";
 import React, { useContext } from "react";
 import { SandboxContext } from ".";
+import { ScToggle, ScToggleGroup } from "../icon-search/Filter";
 import { EnumT } from "./generateState";
 
 export const SelectComp = ({
@@ -19,6 +14,31 @@ export const SelectComp = ({
   type: "prop" | "variant";
 }) => {
   const { state, setState } = useContext(SandboxContext);
+
+  const isActive = (opt: string) =>
+    type === "prop" ? state.props[name] === opt : state.variants === opt;
+
+  const handleToggle = (opt: string) => {
+    return isActive(opt)
+      ? type === "prop"
+        ? setState({
+            ...state,
+            props: { ...state.props, [name]: "" },
+          })
+        : setState({
+            ...state,
+            variants: "",
+          })
+      : type === "prop"
+      ? setState({
+          ...state,
+          props: { ...state.props, [name]: opt },
+        })
+      : setState({
+          ...state,
+          variants: opt,
+        });
+  };
 
   return (
     <>
@@ -48,7 +68,29 @@ export const SelectComp = ({
           ))}
         </Select>
       ) : (
-        <RadioGroup
+        <ScToggleGroup forwardedAs="div" size="small">
+          {arg.options.map((opt, i) =>
+            opt ? (
+              <ScToggle
+                key={opt + i}
+                className="navds-label navds-label--small"
+                data-active={isActive(opt)}
+                aria-pressed={isActive(opt)}
+                onClick={() => handleToggle(opt)}
+                aria-label="Trykk for å filtrere for outline-ikoner"
+              >
+                {opt || "Ingen"}
+              </ScToggle>
+            ) : null
+          )}
+        </ScToggleGroup>
+      )}
+    </>
+  );
+};
+
+/*
+<RadioGroup
           legend={type === "variant" ? "Endre sandbox variant" : name}
           hideLegend={type === "variant"}
           onChange={(e) =>
@@ -72,10 +114,7 @@ export const SelectComp = ({
             </Radio>
           ))}
         </RadioGroup>
-      )}
-    </>
-  );
-};
+         */
 
 export const StringComp = ({ name }: { name: string }) => {
   const { state, setState } = useContext(SandboxContext);
