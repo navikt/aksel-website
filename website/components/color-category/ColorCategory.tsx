@@ -57,6 +57,25 @@ const ScSection = styled.div`
   margin-bottom: 2rem;
 `;
 
+const TwoBeforeOne = 1;
+const OneBeforeTwo = -1;
+
+function compare(one: DsColor, two: DsColor): number {
+  if (one.color_index === undefined && two.color_index === undefined) {
+    return one.title?.localeCompare(two.title, "no", { numeric: true });
+  }
+  if (one.color_index === undefined) {
+    return TwoBeforeOne;
+  }
+  if (two.color_index === undefined) {
+    return OneBeforeTwo;
+  }
+  if (one.color_index == two.color_index) {
+    return one.title?.localeCompare(two.title, "no", { numeric: true });
+  }
+  return one.color_index > two.color_index ? TwoBeforeOne : OneBeforeTwo;
+}
+
 const ColorBox = ({ prop }: { prop: DsColor }): JSX.Element => {
   const color = Color(prop.color_value);
   if (prop.color_type === "global") {
@@ -106,6 +125,8 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
       </ScTableRow>
     );
   };
+
+  node.colors.sort(compare);
 
   return (
     <ScSection>
