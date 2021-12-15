@@ -81,6 +81,10 @@ export const ScBodyShort = styled(BodyShort)`
   transform: translateX(120%);
 `;
 
+const ScBg = styled.div`
+  background-color: var(--navds-semantic-color-component-background-alternate);
+`;
+
 const Page = () => {
   const { logAmplitudeEvent } = useAmplitude();
 
@@ -96,7 +100,7 @@ const Page = () => {
         <title>Designsystemet</title>
         <meta property="og:title" content="Designsystemet NAV" />
       </Head>
-      <>
+      <ScBg>
         <ScFlexReverse>
           <ScTitle>
             <ScHeading spacing level="1" size="2xlarge">
@@ -148,7 +152,7 @@ const Page = () => {
             />
           </ScCards>
         </ScFlex>
-      </>
+      </ScBg>
     </>
   );
 };
