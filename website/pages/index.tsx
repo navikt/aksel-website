@@ -1,6 +1,6 @@
 import { BodyShort, Ingress, Link } from "@navikt/ds-react";
 import Head from "next/head";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import {
   AmplitudeEvents,
@@ -8,6 +8,7 @@ import {
   Card,
   DsPictogram,
   GpPictogram,
+  LayoutContext,
   NAVLogoDark,
   SecurityPictogram,
   useAmplitude,
@@ -76,8 +77,14 @@ const ScLink = styled(Link)`
   }
 `;
 
+const ScRelative = styled.div`
+  position: relative;
+`;
+
 const Page = () => {
   const { logAmplitudeEvent } = useAmplitude();
+
+  const context = useContext(LayoutContext);
 
   useEffect(() => {
     logAmplitudeEvent(AmplitudeEvents.sidevisning, {
@@ -91,67 +98,73 @@ const Page = () => {
         <title>Verktøykassen</title>
         <meta property="og:title" content="Verktøykassen NAV" />
       </Head>
-      <Snowfall color="#dee4fd" snowflakeCount={200} />
-      <ScFrontpage>
-        <NextLink passHref href="https://old-design-nav.vercel.app/">
-          <ScLink>Gå til den gamle versjonen</ScLink>
-        </NextLink>
+      <ScRelative>
+        <Snowfall
+          color="#dee4fd"
+          snowflakeCount={context.isMobile ? 80 : 150}
+        />
+        <ScFrontpage>
+          <NextLink passHref href="https://old-design-nav.vercel.app/">
+            <ScLink>Gå til den gamle versjonen</ScLink>
+          </NextLink>
 
-        <ScIntro>
-          <ScLogoWrapper>
-            <NAVLogoDark />
-          </ScLogoWrapper>
-          <ScHeading spacing level="1" size="2xlarge">
-            Verktøykassen
-            <ScBodyShort>Beta</ScBodyShort>
-          </ScHeading>
-          <Ingress>
-            En samling ressurser fra ulike fagdisipliner som hjelper oss å skape
-            bedre, universelt tilgjengelige og sammenhengende produkter i NAV.
-          </Ingress>
-        </ScIntro>
-        <ScNav aria-label="Portal navigasjon">
-          <ScDiv>
-            <Card
-              pictogram={<BrandPictogram />}
-              heading="Brand"
-              content="Brand og visuell profil basert på vår visjon og våre verdier"
-              href="https://identitet.nav.no/"
-            />
-            <Card
-              pictogram={<DsPictogram />}
-              heading="Designsystem"
-              content="Se forhåndsvisninger og kode-eksempler for alle våre komponenter."
-              href="/designsystem"
-            />
-            <Card
-              pictogram={<UuPictogram />}
-              heading="Universell utforming"
-              content="Gjør det enklere å lage produkter i NAV."
-              href="https://navikt.github.io/uu/"
-            />
-            <Card
-              pictogram={<GpPictogram />}
-              heading="God praksis"
-              content="Gjør det enklere å lage produkter i NAV."
-              href="https://old-design-nav.vercel.app/god-praksis"
-            />
-            <Card
-              pictogram={<SecurityPictogram />}
-              heading="Security Champions Playbook"
-              content={
-                <>
-                  <BodyShort spacing>
-                    Hvordan vi utvikler sikker software i NAV.
-                  </BodyShort>
-                  <BodyShort>(Krever Github-bruker i navikt org)</BodyShort>
-                </>
-              }
-              href="https://improved-train-2f244007.pages.github.io/"
-            />
-          </ScDiv>
-        </ScNav>
-      </ScFrontpage>
+          <ScIntro>
+            <ScLogoWrapper>
+              <NAVLogoDark />
+            </ScLogoWrapper>
+            <ScHeading spacing level="1" size="2xlarge">
+              Verktøykassen
+              <ScBodyShort>Beta</ScBodyShort>
+            </ScHeading>
+            <Ingress>
+              En samling ressurser fra ulike fagdisipliner som hjelper oss å
+              skape bedre, universelt tilgjengelige og sammenhengende produkter
+              i NAV.
+            </Ingress>
+          </ScIntro>
+          <ScNav aria-label="Portal navigasjon">
+            <ScDiv>
+              <Card
+                pictogram={<BrandPictogram />}
+                heading="Brand"
+                content="Brand og visuell profil basert på vår visjon og våre verdier"
+                href="https://identitet.nav.no/"
+              />
+              <Card
+                pictogram={<DsPictogram />}
+                heading="Designsystem"
+                content="Se forhåndsvisninger og kode-eksempler for alle våre komponenter."
+                href="/designsystem"
+              />
+              <Card
+                pictogram={<UuPictogram />}
+                heading="Universell utforming"
+                content="Gjør det enklere å lage produkter i NAV."
+                href="https://navikt.github.io/uu/"
+              />
+              <Card
+                pictogram={<GpPictogram />}
+                heading="God praksis"
+                content="Gjør det enklere å lage produkter i NAV."
+                href="https://old-design-nav.vercel.app/god-praksis"
+              />
+              <Card
+                pictogram={<SecurityPictogram />}
+                heading="Security Champions Playbook"
+                content={
+                  <>
+                    <BodyShort spacing>
+                      Hvordan vi utvikler sikker software i NAV.
+                    </BodyShort>
+                    <BodyShort>(Krever Github-bruker i navikt org)</BodyShort>
+                  </>
+                }
+                href="https://improved-train-2f244007.pages.github.io/"
+              />
+            </ScDiv>
+          </ScNav>
+        </ScFrontpage>
+      </ScRelative>
     </>
   );
 };
