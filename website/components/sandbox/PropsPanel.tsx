@@ -1,7 +1,7 @@
-import { Close } from "@navikt/ds-icons";
-import React, { useCallback, useEffect, useRef } from "react";
-import { useClickAway, useEvent, useKey } from "react-use";
+import React, { useCallback, useContext, useEffect, useRef } from "react";
+import { useKey } from "react-use";
 import styled, { css } from "styled-components";
+import { SandboxContext } from ".";
 import PropFilter from "./PropFilter";
 
 export const ScTabCss = css`
@@ -26,70 +26,93 @@ export const ScTabCss = css`
   }
 `;
 
-const ScCloseButton = styled.button`
-  ${ScTabCss}
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  svg {
-    font-size: 1.5rem;
-  }
-`;
-
-const ScSettingsPanel = styled.div`
+const ScSettingsPanel = styled.div<{ open: boolean; inlinePanel: boolean }>`
   height: 100%;
   width: 250px;
   max-width: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
+
   background-color: var(--navds-semantic-color-canvas-background-light);
-  padding: var(--navds-spacing-8);
+  padding: var(--navds-spacing-4);
   overflow-y: auto;
   display: flex;
   gap: 2rem;
   flex-direction: column;
   visibility: hidden;
   border: 1px solid var(--navds-global-color-gray-200);
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  ${(props) =>
+    props.open &&
+    `border: none;
+     border-left: 1px solid var(--navds-global-color-gray-200);`}
+  ${(props) =>
+    props.inlinePanel
+      ? `
+     visibility: visible;
+     border: none;
+     border-left: 1px solid var(--navds-global-color-gray-200);
+  `
+      : props.open &&
+        `
+      visibility: visible;
+      `}
 
   :focus {
     outline: none;
   }
 
-  &[data-open="true"] {
-    visibility: visible;
+  > * {
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
-const SettingsPanel = ({
-  open,
-  setOpen,
-}: {
-  open: boolean;
-  setOpen: (boolean) => void;
-}) => {
+const SettingsPanel = () => {
+  const { sandboxState, setSandboxState } = useContext(SandboxContext);
   const panelRef = useRef<HTMLDivElement>(null);
 
-  useKey("Escape", () => setOpen(false), {}, []);
-  useClickAway(panelRef, () => open && setOpen(false));
-
-  const onFocusChange = useCallback(() => {
-    !panelRef.current.contains(document.activeElement) && setOpen(false);
-  }, []);
-
-  useEvent("focusin", onFocusChange);
+  useKey(
+    "Escape",
+    () => setSandboxState({ ...sandboxState, openSettings: false }),
+    {},
+    []
+  );
 
   useEffect(() => {
     open && panelRef?.current?.focus();
   }, [open]);
 
+  const checkParentWidth = useCallback(() => {
+    if (!panelRef.current) return;
+    const inlineSettings =
+      panelRef.current.parentElement.getBoundingClientRect().width >
+      (sandboxState.inlineSettings ? 600 - 250 : 600);
+
+    inlineSettings !== sandboxState.inlineSettings &&
+      setSandboxState({
+        ...sandboxState,
+        inlineSettings,
+      });
+  }, [sandboxState.inlineSettings]);
+
+  useEffect(() => {
+    window.addEventListener("resize", checkParentWidth);
+    checkParentWidth();
+    return () => {
+      window.removeEventListener("resize", checkParentWidth);
+    };
+  }, [checkParentWidth]);
+
   return (
-    <ScSettingsPanel ref={panelRef} data-open={open} tabIndex={-1}>
-      <ScCloseButton onClick={() => setOpen(false)}>
-        <Close aria-hidden />
-        <span className="sr-only">Lukk props panel for kode sandbox</span>
-      </ScCloseButton>
+    <ScSettingsPanel
+      ref={panelRef}
+      inlinePanel={sandboxState.inlineSettings && !!sandboxState.args}
+      open={sandboxState.openSettings}
+      tabIndex={-1}
+    >
       <PropFilter />
     </ScSettingsPanel>
   );

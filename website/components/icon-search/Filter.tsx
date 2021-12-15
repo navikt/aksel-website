@@ -96,7 +96,7 @@ const ScTextFieldWrapper = styled.div`
   }
 `;
 
-const ScToggleGroup = styled(Detail)`
+export const ScToggleGroup = styled(Detail)`
   display: flex;
 
   > :first-child {
@@ -111,7 +111,7 @@ const ScToggleGroup = styled(Detail)`
   }
 `;
 
-const ScToggle = styled.button`
+export const ScToggle = styled.button`
   padding: calc(0.5rem - 2px) 1rem;
   box-shadow: inset 0 0 0 1px var(--navds-semantic-color-border);
   flex: 1 1;

@@ -43,7 +43,7 @@ const ScPre = styled.pre`
   }
 `;
 
-const ScDiv = styled.div`
+const ScDiv = styled.div<{ fullscreen: boolean; inlineProps: boolean }>`
   display: flex;
   width: 100%;
   background-color: var(--navds-semantic-color-canvas-background);
@@ -51,17 +51,19 @@ const ScDiv = styled.div`
   border-top: none;
   overflow-x: auto;
   position: relative;
-  min-height: 300px;
+  height: 400px;
 
-  &[data-fullscreen="true"] {
-    display: flex;
+  ${(props) => props.inlineProps && `padding-right: 250px;`}
+
+  ${(props) =>
+    props.fullscreen &&
+    `display: flex;
     flex-direction: column;
     flex-grow: 3;
 
     > * {
       flex-grow: 1;
-    }
-  }
+    }`}
 `;
 
 const ScInnerDiv = styled.div`
@@ -73,31 +75,25 @@ const ScInnerDiv = styled.div`
   flex-wrap: wrap;
   width: 100%;
 
-  &[data-bg="white"] {
-    background-color: var(--navds-semantic-color-canvas-background-light);
-  }
-
-  &[data-bg="default"] {
-    background-color: var(--navds-semantic-color-canvas-background);
-  }
-  &[data-bg="inverted"] {
-    background-color: var(--navds-semantic-color-canvas-background-inverted);
+  @media (max-width: 768px) {
+    padding: 1rem;
   }
 `;
 
 export const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
-  const context = useContext(SandboxContext);
+  const { sandboxState } = useContext(SandboxContext);
+  const inlineProps = sandboxState.inlineSettings && !!sandboxState.args;
   return (
-    <ScDiv data-fullscreen={context.fullscreen}>
+    <ScDiv fullscreen={sandboxState.fullscreen} inlineProps={inlineProps}>
       <ScInnerDiv>{children}</ScInnerDiv>
     </ScDiv>
   );
 };
 
 export const EditorWrapper = ({ children }: { children: React.ReactNode }) => {
-  const context = useContext(SandboxContext);
+  const { sandboxState } = useContext(SandboxContext);
   return (
-    <ScPreWrapper data-fullscreen={context.fullscreen}>
+    <ScPreWrapper data-fullscreen={sandboxState.fullscreen}>
       <ScPre>{children}</ScPre>
     </ScPreWrapper>
   );

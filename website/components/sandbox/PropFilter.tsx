@@ -5,23 +5,25 @@ import { BooleanComp, SelectComp, StringComp } from "./FormComponents";
 import { EnumT } from "./generateState";
 
 const PropFilter = () => {
-  const context = useContext(SandboxContext);
+  const { sandboxState } = useContext(SandboxContext);
 
-  if (!context.state || !context.args) {
+  if (!sandboxState.propsState || !sandboxState?.args) {
     return null;
   }
 
+  const { args } = sandboxState;
+
   return (
     <>
-      {Object.keys(context.args.props).length > 0 && (
+      {Object.keys(args.props).length > 0 && (
         <Fieldset legend="Props" size="small">
-          {Object.keys(context.state.props).map((key) => {
-            switch (context.args.props[key].format) {
+          {Object.keys(sandboxState.propsState.props).map((key) => {
+            switch (args.props[key].format) {
               case "array":
                 return (
                   <SelectComp
                     key={key}
-                    arg={context.args.props[key] as EnumT}
+                    arg={args.props[key] as EnumT}
                     name={key}
                     type="prop"
                   />
@@ -36,13 +38,9 @@ const PropFilter = () => {
           })}
         </Fieldset>
       )}
-      {context.args.variants && (
+      {args.variants && (
         <Fieldset legend="Variants" size="small">
-          <SelectComp
-            type="variant"
-            arg={context.args.variants}
-            name="Variants"
-          />
+          <SelectComp type="variant" arg={args.variants} name="Variants" />
         </Fieldset>
       )}
     </>

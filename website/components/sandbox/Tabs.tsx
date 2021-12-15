@@ -41,45 +41,51 @@ const ScFlex = styled.div`
   display: flex;
 `;
 
-const Tabs = ({
-  openPanel,
-  reset,
-}: {
-  openPanel: () => void;
-  reset: () => void;
-}) => {
-  const { args, fullscreen, setFullscreen } = useContext(SandboxContext);
+const Tabs = ({ reset }: { reset: () => void }) => {
+  const { sandboxState, setSandboxState } = useContext(SandboxContext);
 
   const hideProps =
-    !args ||
-    ((!args.props || Object.keys(args.props).length === 0) && !args.variants);
+    !sandboxState.args ||
+    ((!sandboxState.args.props ||
+      Object.keys(sandboxState.args.props).length === 0) &&
+      !sandboxState.args.variants);
 
   return (
     <ScTabs>
-      <ScLabel>Sandbox</ScLabel>
+      <ScLabel>Sandkasse</ScLabel>
       <ScFlex>
         <ScTabButton onClick={() => reset()}>
           <span className="sr-only">Reset sandbox</span>
           <Refresh />
         </ScTabButton>
-        {/* <ScTabButton>
+        <ScTabButton
+          onClick={() =>
+            setSandboxState({
+              ...sandboxState,
+              fullscreen: !sandboxState.fullscreen,
+            })
+          }
+        >
           <span className="sr-only">
-            Endre bakgrunnsfarge på komponent sanbox
+            {sandboxState.fullscreen
+              ? "Lukk fullskjerm"
+              : "Åpne sandbox i fullskjerm"}
           </span>
-          <CanvasIcon />
-        </ScTabButton> */}
-        {!hideProps && (
-          <ScTabButton onClick={() => openPanel()}>
+          <Add />
+        </ScTabButton>
+        {!hideProps && !sandboxState.inlineSettings && (
+          <ScTabButton
+            onClick={() =>
+              setSandboxState({
+                ...sandboxState,
+                openSettings: !sandboxState.openSettings,
+              })
+            }
+          >
             <span className="sr-only">Åpne props-panel</span>
             <SettingsFilled />
           </ScTabButton>
         )}
-        <ScTabButton onClick={() => setFullscreen(!fullscreen)}>
-          <span className="sr-only">
-            {fullscreen ? "Lukk fullskjerm" : "Åpne sandbox i fullskjerm"}
-          </span>
-          <Add />
-        </ScTabButton>
       </ScFlex>
     </ScTabs>
   );

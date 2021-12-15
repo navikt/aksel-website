@@ -65,32 +65,36 @@ const scope = {
 };
 
 type SandboxContextProps = {
-  state: StateT;
-  setState: React.Dispatch<StateT>;
-  args: ParsedArgsT;
-  fullscreen: boolean;
-  setFullscreen: React.Dispatch<boolean>;
+  sandboxState: SandboxStateT;
+  setSandboxState: React.Dispatch<SandboxStateT>;
 };
 
 export const SandboxContext = createContext<SandboxContextProps>({
-  state: null,
-  setState: () => null,
-  args: null,
-  fullscreen: false,
-  setFullscreen: () => null,
+  sandboxState: null,
+  setSandboxState: () => null,
 });
 
-const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
-  /* const layout = useContext(LayoutContext); */
+interface SandboxStateT {
+  args: ParsedArgsT;
+  propsState: StateT;
+  openSettings: boolean;
+  fullscreen: boolean;
+  inlineSettings: boolean;
+}
 
+const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   const [code, setCode] = useState(null);
-  const [parsedArgs, setParsedArgs] = useState(null);
-  const [state, setState] = useState<StateT>(null);
-  const [settingsOpen, setSettingsOpen] = useState(false);
   const [reseting, setReseting] = useState(false);
   const preFocusCapture = useRef<HTMLDivElement>(null);
   const focusCapture = useRef<HTMLButtonElement>(null);
-  const [fullscreen, setFullscreen] = useState(false);
+
+  const [sandboxState, setSandboxState] = useState<SandboxStateT>({
+    args: null,
+    propsState: null,
+    openSettings: false,
+    fullscreen: false,
+    inlineSettings: true,
+  });
 
   const sandboxComp: SandboxComponent | null = useMemo(
     () => getSandbox(node?.title),
@@ -101,27 +105,36 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
     if (sandboxComp) {
       const args = generateState(sandboxComp.args);
       const newState = getInitialState(args);
-      setParsedArgs(args);
-      setState(newState);
+      setSandboxState({ ...sandboxState, args, propsState: newState });
       setCode(formatCode(sandboxComp(newState.props, newState.variants)));
     }
   }, [sandboxComp]);
 
-  const reset = () => {
-    setState(getInitialState(parsedArgs));
-  };
-
-  if (!node || !node.title) {
-    return null;
-  }
+  const reset = () =>
+    setSandboxState({
+      ...sandboxState,
+      propsState: getInitialState(sandboxState.args),
+    });
 
   useEffect(() => {
-    state && setCode(formatCode(sandboxComp(state.props, state.variants)));
+    sandboxState.propsState &&
+      setCode(
+        formatCode(
+          sandboxComp(
+            sandboxState.propsState.props,
+            sandboxState.propsState.variants
+          )
+        )
+      );
 
     /* Hack to make editor update */
     setReseting(true);
     setTimeout(() => setReseting(false), 50);
-  }, [state]);
+  }, [sandboxState.propsState]);
+
+  if (!node || !node.title) {
+    return null;
+  }
 
   const handleKeyDown = (event) => {
     if (event.key === "Tab") {
@@ -135,10 +148,11 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   const Editor = (
     <LiveProvider code={code} scope={scope}>
       <ScRelativeDiv>
-        <Tabs reset={reset} openPanel={() => setSettingsOpen(true)} />
+        <Tabs reset={reset} />
         <PreviewWrapper>
           <LivePreview />
           <LiveError />
+          <SettingsPanel />
         </PreviewWrapper>
         <div ref={preFocusCapture} tabIndex={-1} />
         <EditorWrapper>
@@ -163,7 +177,6 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
           )}
           <CopyButton ref={focusCapture} content={code} inTabs={false} />
         </EditorWrapper>
-        <SettingsPanel open={settingsOpen} setOpen={setSettingsOpen} />
       </ScRelativeDiv>
     </LiveProvider>
   );
@@ -173,14 +186,11 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
       {code !== null ? (
         <SandboxContext.Provider
           value={{
-            state,
-            setState,
-            args: parsedArgs,
-            fullscreen,
-            setFullscreen,
+            sandboxState,
+            setSandboxState,
           }}
         >
-          {fullscreen ? <Fullscreen>{Editor}</Fullscreen> : Editor}
+          {sandboxState.fullscreen ? <Fullscreen>{Editor}</Fullscreen> : Editor}
         </SandboxContext.Provider>
       ) : null}
     </>

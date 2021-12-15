@@ -11,7 +11,7 @@ export const SanityBlockContainer = styled.div`
 export const MaxWidthContainerDiv = styled.div<{ isTablet: boolean }>`
   max-width: calc(var(--content-max-width) + 5rem);
   width: 100%;
-  padding: 0 2rem 1rem 3rem;
+  padding: 0 1.5rem 1rem 3rem;
   margin: ${(props) => (props.isTablet ? "0 auto" : "0 auto 0 0")};
 
   @media (max-width: 564px) {
