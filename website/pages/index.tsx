@@ -16,6 +16,8 @@ import {
 import { ScBodyShort, ScHeading } from "./designsystem";
 import NextLink from "next/link";
 
+import Snowfall from "react-snowfall";
+
 const ScIntro = styled.div`
   margin: 0 auto;
   display: flex;
@@ -89,6 +91,7 @@ const Page = () => {
         <title>Verktøykassen</title>
         <meta property="og:title" content="Verktøykassen NAV" />
       </Head>
+      <Snowfall color="#dee4fd" snowflakeCount={200} />
       <ScFrontpage>
         <NextLink passHref href="https://old-design-nav.vercel.app/">
           <ScLink>Gå til den gamle versjonen</ScLink>
