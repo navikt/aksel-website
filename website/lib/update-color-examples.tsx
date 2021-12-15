@@ -214,7 +214,9 @@ const updateColors = async () => {
     const description = remoteCategory?.description;
 
     const colorList = localCategory.map((c) => {
-      const remoteColor = remoteCategory?.colors.find((f) => c._id === f._id);
+      const remoteColor = remoteCategory?.colors.find(
+        (f) => c.full_title === f.full_title
+      );
       // we'll shape our final color list with some values from remote,
       // as to not overwrite it!
       return {
