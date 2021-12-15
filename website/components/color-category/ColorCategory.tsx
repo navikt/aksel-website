@@ -2,10 +2,8 @@ import React from "react";
 import { withErrorBoundary } from "../error-boundary";
 import { DsColorCategories, DsColor } from "../../lib/autogen-types";
 import styled from "styled-components";
-import { Heading, Table, BodyShort, BodyLong, Detail } from "@navikt/ds-react";
+import { Table, BodyShort, BodyLong, Detail } from "@navikt/ds-react";
 import Color from "color";
-
-const capitalize = (s) => (s && s[0].toUpperCase() + s.slice(1)) || "";
 
 const ScColorBox = styled.div<{ background: string; dark: boolean }>`
   background-color: ${(props) => props.background};
