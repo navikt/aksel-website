@@ -49,6 +49,9 @@ function parseDeclaration(
   const globalAndSemanticTags = ["semantic", "global"];
   const specialCases = ["text", "divider", "focus", "border", "link"];
   const semanticCases = ["danger", "warning", "success", "primary", "info"];
+  const specialGlobalColors = {
+    white: "gray",
+  };
   const propOrMainCategory = (prev: string, cur: string) =>
     globalAndSemanticTags.includes(prev) ? `${prev}-${cur}` : cur;
 
@@ -69,9 +72,19 @@ function parseDeclaration(
   // subcategory will always be something like "blue", "text", or "feedback", etc.
   const subcategory = props[1];
   if (category === global) {
+    const title = props.slice(1).join("-");
+    if (Object.keys(specialGlobalColors).includes(title)) {
+      return {
+        title: title,
+        full_title: property,
+        color_value: value,
+        subcategory: specialGlobalColors[title],
+        category,
+      };
+    }
     // in the case of global, we can just put "blue" and "500" together to form the name
     return {
-      title: props.slice(1).join("-"),
+      title: title,
       full_title: property,
       color_value: value, // this'll be something like rgba(0, 0, 1, 1) in this case
       subcategory,
@@ -86,14 +99,17 @@ function parseDeclaration(
     declarationList
   );
 
+  const semanticColorTitle = props.slice(2).join("-");
   if (specialCases.includes(subcategory)) {
-    const title = props.slice(2).join("-");
     // in special cases, we'd like to prepend the title with the subcategory
     // e.g. "text-inverted" and not just "inverted"
     // TODO: we might need some more checks at this point, since this approach
     // produces "text-link" as well, and not just "link" :thinking:
     return {
-      title: title === "" ? subcategory : `${subcategory}-${title}`,
+      title:
+        semanticColorTitle === ""
+          ? subcategory
+          : `${subcategory}-${semanticColorTitle}`,
       full_title: property,
       color_value,
       color_name,
@@ -105,7 +121,7 @@ function parseDeclaration(
   const semanticCategory = props.slice(2)[0];
   if (semanticCases.includes(semanticCategory)) {
     return {
-      title: props.slice(2).join("-"),
+      title: semanticColorTitle,
       full_title: property,
       color_value,
       color_name,
@@ -116,7 +132,7 @@ function parseDeclaration(
   // in every other case, we can say the title is everything after category/subcategory joined with "-"
   // e.g. "warning-background" in the "feedback" category
   return {
-    title: props.slice(2).join("-"),
+    title: semanticColorTitle,
     full_title: property,
     color_value,
     color_name,
