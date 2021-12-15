@@ -52,7 +52,7 @@ const Tabs = ({ reset }: { reset: () => void }) => {
 
   return (
     <ScTabs>
-      <ScLabel>Sandbox</ScLabel>
+      <ScLabel>Sandkasse</ScLabel>
       <ScFlex>
         <ScTabButton onClick={() => reset()}>
           <span className="sr-only">Reset sandbox</span>

@@ -66,24 +66,17 @@ const ScDiv = styled.div<{ fullscreen: boolean; inlineProps: boolean }>`
     }`}
 `;
 
-const ScInnerDiv = styled.div<{ inlineProps: boolean }>`
+const ScInnerDiv = styled.div`
   gap: 1rem;
-  padding: ${({ inlineProps }) => (inlineProps ? "2rem" : "1rem")}};
+  padding: 2rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
 
-  &[data-bg="white"] {
-    background-color: var(--navds-semantic-color-canvas-background-light);
-  }
-
-  &[data-bg="default"] {
-    background-color: var(--navds-semantic-color-canvas-background);
-  }
-  &[data-bg="inverted"] {
-    background-color: var(--navds-semantic-color-canvas-background-inverted);
+  @media (max-width: 768px) {
+    padding: 1rem;
   }
 `;
 
@@ -92,7 +85,7 @@ export const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
   const inlineProps = sandboxState.inlineSettings && !!sandboxState.args;
   return (
     <ScDiv fullscreen={sandboxState.fullscreen} inlineProps={inlineProps}>
-      <ScInnerDiv inlineProps={inlineProps}>{children}</ScInnerDiv>
+      <ScInnerDiv>{children}</ScInnerDiv>
     </ScDiv>
   );
 };
