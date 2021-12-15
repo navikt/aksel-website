@@ -60,6 +60,7 @@ const ScFrontpage = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  background-color: var(--navds-semantic-color-component-background-alternate);
 `;
 
 const ScLink = styled(Link)`
