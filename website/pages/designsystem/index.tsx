@@ -1,4 +1,4 @@
-import { BodyLong, BodyShort, Heading } from "@navikt/ds-react";
+import { BodyLong, BodyShort, Heading, Link } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React, { useEffect } from "react";
@@ -62,9 +62,10 @@ const ScIcon = styled.div`
 
 const ScFlex = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   flex-wrap: wrap;
   max-width: 1440px;
+  background-color: var(--navds-semantic-color-component-background-alternate);
 `;
 
 const ScFlexReverse = styled.div`
@@ -79,7 +80,7 @@ const ScTitle = styled.div`
     padding: 3rem 1rem;
   }
 
-  background-color: var(--navds-semantic-color-canvas-background);
+  background-color: var(--navds-semantic-color-canvas-background-light);
   height: 240px;
   width: 100%;
   flex: 1 1 500px;
@@ -92,9 +93,7 @@ const ScIllustration = styled.div`
 `;
 
 const ScDescriptionWrapper = styled.div`
-  padding: 4rem 3rem;
-  max-width: 600px;
-  flex: 1 1 400px;
+  padding: 2.5rem 3rem;
 
   @media (max-width: 564px) {
     padding: 3rem 1rem;
@@ -102,20 +101,15 @@ const ScDescriptionWrapper = styled.div`
 `;
 
 const ScCards = styled.div`
-  padding: 4rem 3rem;
+  padding: 0 3rem 4rem 3rem;
 
   @media (max-width: 564px) {
-    padding: 3rem 1rem;
+    padding: 0 1rem 3rem 1rem;
   }
 
-  display: grid;
-  gap: 2rem;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  @media screen and (max-width: 700px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 `;
 
 const ScHeading = styled(Heading)`
@@ -152,10 +146,7 @@ const Page = () => {
               Designsystemet
               <ScBodyShort>Beta</ScBodyShort>
             </ScHeading>
-            <BodyLong>
-              Gjør det enklere å komme i gang med utvikling og design for NAVs
-              produkter.
-            </BodyLong>
+            <BodyLong>Gjør det enkelt å lage produkter i NAV</BodyLong>
           </ScTitle>
           <ScIllustration>
             <DsFrontpageIllustration />
@@ -163,16 +154,17 @@ const Page = () => {
         </ScFlexReverse>
         <ScFlex>
           <ScDescriptionWrapper>
-            <Heading spacing level="2" size="xlarge">
+            <Heading spacing level="2" size="small">
               Hva er nytt?
             </Heading>
-            <BodyLong spacing>
-              Designsystemet er i utvikling, og her vil det komme nytt innhold
-              med ujevne mellomrom.
+            <BodyLong>
+              Vi ruller for tiden ut ny beta-versjon av designsystemet, og alt
+              innhold er ikke på plass enda.🔧
             </BodyLong>
             <BodyLong>
-              Siden dette er en beta-versjon vil ikke alt relevant innhold være
-              på plass samtidig, men vi jobber stadig med saken.
+              <NextLink passHref href="https://old-design-nav.vercel.app/">
+                <Link>Gå til den gamle versjonen</Link>
+              </NextLink>
             </BodyLong>
           </ScDescriptionWrapper>
           <ScCards>
