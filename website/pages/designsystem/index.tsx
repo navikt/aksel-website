@@ -12,38 +12,7 @@ import DesignsystemFooter from "../../components/layout/footer/DesignsystemFoote
 import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
 import { dsNavigationQuery, getClient } from "../../lib";
 import * as Sc from "../../components";
-import { useAmplitude, AmplitudeEvents } from "../../components";
-
-const ScCard = styled.a`
-  height: 22rem;
-  max-width: 18rem;
-  text-decoration: none;
-  color: var(--navds-semantic-color-text);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 3rem 2rem 2rem 2rem;
-  border-radius: 4px;
-  background-color: var(--navds-semantic-color-canvas-background-light);
-  position: relative;
-  box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
-    0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
-
-  :hover {
-    box-shadow: none;
-    background-color: var(--navds-semantic-color-canvas-background);
-  }
-
-  :focus {
-    border-color: var(--navds-semantic-color-focus);
-    outline: none;
-    box-shadow: 0 0 0 3px var(--navds-semantic-color-focus);
-  }
-
-  h2 {
-    text-decoration: underline;
-  }
-`;
+import { useAmplitude, AmplitudeEvents, Card } from "../../components";
 
 const ScIcon = styled.div`
   display: flex;
@@ -170,30 +139,27 @@ const Page = () => {
             </BodyLong>
           </ScDescriptionWrapper>
           <ScCards>
-            <NextLink passHref href="/designsystem/side/komponenter">
-              <ScCard>
-                <ScIcon className="card__icon">
-                  <ComponentPictogram />
-                </ScIcon>
-                <Heading spacing level="2" size="medium">
-                  Komponenter
-                </Heading>
-                <BodyLong>
-                  Se forhåndsvisninger og kode-eksempler for komponenter.
-                </BodyLong>
-              </ScCard>
-            </NextLink>
-            <NextLink passHref href="/designsystem/side/ikoner/ikons%C3%B8k">
-              <ScCard>
-                <ScIcon className="card__icon">
-                  <IconsPictogram />
-                </ScIcon>
-                <Heading spacing level="2" size="medium">
-                  Ikoner
-                </Heading>
-                <BodyLong>Søk og ta i bruk alle NAVs egne ikoner.</BodyLong>
-              </ScCard>
-            </NextLink>
+            <Card
+              pictogram={<ComponentPictogram />}
+              heading="Komponenter"
+              content="Se forhåndsvisninger og kode-eksempler for komponenter."
+              tag="KOMPONENTER"
+              href="/designsystem/side/komponenter"
+            />
+            <Card
+              pictogram={<IconsPictogram />}
+              heading="Farger"
+              content="Se over alle NAV sine globale og semantiske farger"
+              tag="RESSURSER"
+              href="/designsystem/side/ikoner/ikons%C3%B8k"
+            />
+            <Card
+              pictogram={<IconsPictogram />}
+              heading="Farger"
+              content="Se over alle NAV sine globale og semantiske farger"
+              tag="RESSURSER"
+              href="/designsystem/side/ikoner/ikons%C3%B8k"
+            />
           </ScCards>
         </ScFlex>
       </>

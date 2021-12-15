@@ -2,6 +2,7 @@ export { default as Alert } from "./alert";
 export * from "./animations";
 export * from "./assets";
 export { default as Changelog } from "./changelog";
+export { default as Card } from "./card";
 export * from "./code";
 export * from "./color-category";
 export { default as DoDont } from "./dodont";
