@@ -5,7 +5,8 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { DsFrontpageIllustration } from "../../components/assets/DsFrontpageIllustration";
 import {
-  ComponentPictogram,
+  ColorsPictogram,
+  CompPictogram,
   IconsPictogram,
 } from "../../components/assets/pictograms";
 import DesignsystemFooter from "../../components/layout/footer/DesignsystemFooter";
@@ -13,21 +14,6 @@ import DesignsystemHeader from "../../components/layout/header/DesignsystemHeade
 import { dsNavigationQuery, getClient } from "../../lib";
 import * as Sc from "../../components";
 import { useAmplitude, AmplitudeEvents, Card } from "../../components";
-
-const ScIcon = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  margin-bottom: 1.5rem;
-  flex-shrink: 0;
-
-  svg {
-    font-size: 3rem;
-    margin-top: 0.25rem;
-    margin-left: 0.25rem;
-  }
-`;
 
 const ScFlex = styled.div`
   display: flex;
@@ -83,12 +69,12 @@ const ScCards = styled.div`
   gap: 1.5rem;
 `;
 
-const ScHeading = styled(Heading)`
+export const ScHeading = styled(Heading)`
   position: relative;
   width: fit-content;
 `;
 
-const ScBodyShort = styled(BodyShort)`
+export const ScBodyShort = styled(BodyShort)`
   position: absolute;
   right: 0;
   top: 0;
@@ -140,7 +126,7 @@ const Page = () => {
           </ScDescriptionWrapper>
           <ScCards>
             <Card
-              pictogram={<ComponentPictogram />}
+              pictogram={<CompPictogram />}
               heading="Komponenter"
               content="Se forhåndsvisninger og kode-eksempler for komponenter."
               tag="KOMPONENTER"
@@ -148,13 +134,13 @@ const Page = () => {
             />
             <Card
               pictogram={<IconsPictogram />}
-              heading="Farger"
+              heading="Ikoner"
               content="Se over alle NAV sine globale og semantiske farger"
               tag="RESSURSER"
               href="/designsystem/side/ikoner/ikons%C3%B8k"
             />
             <Card
-              pictogram={<IconsPictogram />}
+              pictogram={<ColorsPictogram />}
               heading="Farger"
               content="Se over alle NAV sine globale og semantiske farger"
               tag="RESSURSER"

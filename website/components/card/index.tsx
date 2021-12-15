@@ -1,10 +1,12 @@
+import { BodyShort, Detail, Heading } from "@navikt/ds-react";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
-import NextLink from "next/link";
-import { BodyLong, Detail, Heading } from "@navikt/ds-react";
+import { useAmplitude, AmplitudeEvents } from "..";
 
 const ScCard = styled.a`
-  height: 22rem;
+  min-height: 22rem;
   max-width: 18rem;
   text-decoration: none;
   color: var(--navds-semantic-color-text);
@@ -14,9 +16,11 @@ const ScCard = styled.a`
   padding: 3rem 2rem 2rem 2rem;
   border-radius: 4px;
   background-color: var(--navds-semantic-color-canvas-background-light);
-  position: relative;
   box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
     0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
+  position: relative;
+
+  transition: background-color 100ms ease-in-out;
 
   :hover {
     box-shadow: 0 0 0 2px var(--navds-semantic-color-link);
@@ -45,6 +49,18 @@ const ScCard = styled.a`
     color: var(--navds-semantic-color-text-inverted);
     border-color: transparent;
     background-color: var(--navds-global-color-blue-700);
+    > * {
+      color: var(--navds-semantic-color-text-inverted);
+    }
+
+    svg {
+      filter: invert(1);
+    }
+
+    .circle {
+      filter: invert(1);
+      fill: var(--navds-semantic-color-link);
+    }
   }
 
   h2 {
@@ -62,14 +78,18 @@ const ScPictogram = styled.div`
 
   svg {
     font-size: 3rem;
-    margin-top: 0.25rem;
-    margin-left: 0.25rem;
   }
 `;
 
-const ScHeading = styled(Heading)``;
-const ScContent = styled(BodyLong)``;
-const ScTag = styled(Detail)``;
+const ScContent = styled(BodyShort)<{ tag: boolean }>`
+  margin-bottom: ${({ tag }) => (tag ? `3rem` : `1.5rem`)};
+`;
+
+const ScTag = styled(Detail)`
+  position: absolute;
+  bottom: 1.5rem;
+  color: var(--navds-semantic-color-text-muted);
+`;
 
 const Card = ({
   href,
@@ -81,16 +101,30 @@ const Card = ({
   href: string;
   pictogram: React.ReactNode;
   heading: string;
-  content: string;
-  tag: string;
+  content: React.ReactNode;
+  tag?: string;
 }) => {
+  const { logAmplitudeEvent } = useAmplitude();
+
+  const { asPath } = useRouter();
+
+  const logNavigation = (e) => {
+    logAmplitudeEvent(AmplitudeEvents.navigasjon, {
+      kilde: "card",
+      fra: asPath,
+      til: e.currentTarget.getAttribute("href"),
+    });
+  };
+
   return (
     <NextLink passHref href={href}>
-      <ScCard>
+      <ScCard onClick={(e) => logNavigation(e)}>
         <ScPictogram>{pictogram}</ScPictogram>
-        <ScHeading>{heading}</ScHeading>
-        <ScContent>{content}</ScContent>
-        <ScTag>{tag}</ScTag>
+        <Heading size="medium" spacing level="2">
+          {heading}
+        </Heading>
+        <ScContent tag={!!tag}>{content}</ScContent>
+        {tag && <ScTag size="small">{tag}</ScTag>}
       </ScCard>
     </NextLink>
   );

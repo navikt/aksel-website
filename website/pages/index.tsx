@@ -1,10 +1,20 @@
-import { Facilitet } from "@navikt/ds-icons";
-import { BodyLong, Heading, Ingress, Label } from "@navikt/ds-react";
+import { BodyShort, Ingress, Link } from "@navikt/ds-react";
 import Head from "next/head";
-import NextLink from "next/link";
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { AmplitudeEvents, NAVLogoDark, useAmplitude } from "../components";
+import {
+  AmplitudeEvents,
+  BrandPictogram,
+  Card,
+  DsPictogram,
+  GpPictogram,
+  NAVLogoDark,
+  SecurityPictogram,
+  useAmplitude,
+  UuPictogram,
+} from "../components";
+import { ScBodyShort, ScHeading } from "./designsystem";
+import NextLink from "next/link";
 
 const ScIntro = styled.div`
   margin: 0 auto;
@@ -31,78 +41,17 @@ const ScNav = styled.nav`
   margin: 4rem auto 0 auto;
 `;
 
-const ScOl = styled.ol`
-  margin: 0;
-  column-gap: 1rem;
-  row-gap: 1rem;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
+const ScDiv = styled.div`
+  gap: 1.5rem;
+  display: flex;
   padding: 0;
   list-style: none;
-`;
-
-const ScCard = styled.a`
-  height: 20rem;
-  max-width: 18rem;
-  text-decoration: none;
-  color: var(--navds-semantic-color-text);
-  display: flex;
-  flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
-  padding: 3rem 2rem 2rem 2rem;
-  border-radius: 8px;
-  border: 2px solid var(--navds-semantic-color-divider);
-  background-color: var(--navds-semantic-color-canvas-background-light);
-  position: relative;
+  flex-wrap: wrap;
 
-  :hover {
-    box-shadow: 0 16px 18px -13px rgba(0, 0, 0, 0.1),
-      0 17px 36px -14px rgba(0, 0, 0, 0.17);
+  @media (max-width: 1007px) {
+    justify-content: center;
   }
-
-  :focus {
-    border-color: var(--navds-semantic-color-focus);
-    outline: none;
-  }
-`;
-
-const ScBeta = styled(Label)`
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.25rem 0.5rem;
-  background-color: var(--navds-semantic-color-feedback-info-background);
-  border-bottom-left-radius: 4px;
-  border-top-right-radius: 6px;
-`;
-
-const ScIcon = styled.div`
-  width: 4.5rem;
-  height: 4.5rem;
-  border-radius: 10rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 3rem;
-  flex-shrink: 0;
-  background: linear-gradient(
-    -52deg,
-    rgba(153, 195, 255, 1) 0%,
-    rgba(153, 195, 255, 1) 50%,
-    rgba(204, 225, 255, 1) 50%,
-    rgba(204, 225, 255, 1) 100%
-  );
-
-  svg {
-    font-size: 1.5rem;
-    margin-top: 0.25rem;
-    margin-left: 0.25rem;
-  }
-`;
-
-const ScBodyLong = styled(BodyLong)`
-  text-align: center;
 `;
 
 const ScFrontpage = styled.div`
@@ -111,6 +60,17 @@ const ScFrontpage = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+`;
+
+const ScLink = styled(Link)`
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+
+  @media (max-width: 768px) {
+    top: 1rem;
+    left: 1rem;
+  }
 `;
 
 const Page = () => {
@@ -129,34 +89,63 @@ const Page = () => {
         <meta property="og:title" content="Verktøykassen NAV" />
       </Head>
       <ScFrontpage>
+        <NextLink passHref href="https://old-design-nav.vercel.app/">
+          <ScLink>Gå til den gamle versjonen</ScLink>
+        </NextLink>
+
         <ScIntro>
           <ScLogoWrapper>
             <NAVLogoDark />
           </ScLogoWrapper>
-          <Heading spacing level="1" size="2xlarge">
-            Verktøykassen BETA
-          </Heading>
+          <ScHeading spacing level="1" size="2xlarge">
+            Verktøykassen
+            <ScBodyShort>Beta</ScBodyShort>
+          </ScHeading>
           <Ingress>
-            BETA-løsning for nye Designsystem-sider og God praksis
+            En samling ressurser fra ulike fagdisipliner som hjelper oss å skape
+            bedre, universelt tilgjengelige og sammenhengende produkter i NAV.
           </Ingress>
         </ScIntro>
         <ScNav aria-label="Portal navigasjon">
-          <ScOl>
-            <li>
-              <NextLink passHref href="/designsystem">
-                <ScCard>
-                  <ScBeta>BETA</ScBeta>
-                  <ScIcon className="card__icon">
-                    <Facilitet aria-hidden aria-label="pusslebrikke ikon" />
-                  </ScIcon>
-                  <Heading spacing level="2" size="medium" as="span">
-                    Designsystem V2
-                  </Heading>
-                  <ScBodyLong>BETA-løsning for ny dokumentasjon</ScBodyLong>
-                </ScCard>
-              </NextLink>
-            </li>
-          </ScOl>
+          <ScDiv>
+            <Card
+              pictogram={<BrandPictogram />}
+              heading="Brand"
+              content="Brand og visuell profil basert på vår visjon og våre verdier"
+              href="https://identitet.nav.no/"
+            />
+            <Card
+              pictogram={<DsPictogram />}
+              heading="Designsystem"
+              content="Se forhåndsvisninger og kode-eksempler for alle våre komponenter."
+              href="/designsystem"
+            />
+            <Card
+              pictogram={<UuPictogram />}
+              heading="Universell utforming"
+              content="Gjør det enklere å lage produkter i NAV."
+              href="https://navikt.github.io/uu/"
+            />
+            <Card
+              pictogram={<GpPictogram />}
+              heading="God praksis"
+              content="Gjør det enklere å lage produkter i NAV."
+              href="https://old-design-nav.vercel.app/god-praksis"
+            />
+            <Card
+              pictogram={<SecurityPictogram />}
+              heading="Security Champions Playbook"
+              content={
+                <>
+                  <BodyShort spacing>
+                    Hvordan vi utvikler sikker software i NAV.
+                  </BodyShort>
+                  <BodyShort>(Krever Github-bruker i navikt org)</BodyShort>
+                </>
+              }
+              href="https://improved-train-2f244007.pages.github.io/"
+            />
+          </ScDiv>
         </ScNav>
       </ScFrontpage>
     </>
