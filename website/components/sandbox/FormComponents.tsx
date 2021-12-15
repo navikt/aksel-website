@@ -19,7 +19,7 @@ export const SelectComp = ({
     type === "prop" ? state.props[name] === opt : state.variants === opt;
 
   const handleToggle = (opt: string) => {
-    return isActive(opt)
+    return isActive(opt) && arg.options.includes("")
       ? type === "prop"
         ? setState({
             ...state,
@@ -42,7 +42,7 @@ export const SelectComp = ({
 
   return (
     <>
-      {arg.options.length > 4 ? (
+      {arg.options.length > 3 ? (
         <Select
           hideLabel={type === "variant"}
           label={type === "variant" ? "Endre sandbox variant" : name}
