@@ -24,7 +24,7 @@ const ScModal = styled(Modal)`
 `;
 
 const Fullscreen = ({ children }: { children: React.ReactNode }) => {
-  const context = useContext(SandboxContext);
+  const { sandboxState, setSandboxState } = useContext(SandboxContext);
 
   useEffect(() => {
     Modal.setAppElement("#__next");
@@ -32,8 +32,8 @@ const Fullscreen = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <ScModal
-      open={context.fullscreen}
-      onClose={() => context.setFullscreen(false)}
+      open={sandboxState.fullscreen}
+      onClose={() => setSandboxState({ ...sandboxState, fullscreen: false })}
     >
       {children}
     </ScModal>

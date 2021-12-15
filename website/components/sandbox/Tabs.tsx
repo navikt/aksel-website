@@ -42,18 +42,13 @@ const ScFlex = styled.div`
 `;
 
 const Tabs = ({ reset }: { reset: () => void }) => {
-  const {
-    args,
-    fullscreen,
-    setFullscreen,
-    inlinePropsPanel,
-    openPropsPanel,
-    setOpenPropsPanel,
-  } = useContext(SandboxContext);
+  const { sandboxState, setSandboxState } = useContext(SandboxContext);
 
   const hideProps =
-    !args ||
-    ((!args.props || Object.keys(args.props).length === 0) && !args.variants);
+    !sandboxState.args ||
+    ((!sandboxState.args.props ||
+      Object.keys(sandboxState.args.props).length === 0) &&
+      !sandboxState.args.variants);
 
   return (
     <ScTabs>
@@ -63,21 +58,30 @@ const Tabs = ({ reset }: { reset: () => void }) => {
           <span className="sr-only">Reset sandbox</span>
           <Refresh />
         </ScTabButton>
-        {/* <ScTabButton>
+        <ScTabButton
+          onClick={() =>
+            setSandboxState({
+              ...sandboxState,
+              fullscreen: !sandboxState.fullscreen,
+            })
+          }
+        >
           <span className="sr-only">
-            Endre bakgrunnsfarge på komponent sanbox
-          </span>
-          <CanvasIcon />
-        </ScTabButton> */}
-
-        <ScTabButton onClick={() => setFullscreen(!fullscreen)}>
-          <span className="sr-only">
-            {fullscreen ? "Lukk fullskjerm" : "Åpne sandbox i fullskjerm"}
+            {sandboxState.fullscreen
+              ? "Lukk fullskjerm"
+              : "Åpne sandbox i fullskjerm"}
           </span>
           <Add />
         </ScTabButton>
-        {!hideProps && !inlinePropsPanel && (
-          <ScTabButton onClick={() => setOpenPropsPanel(!openPropsPanel)}>
+        {!hideProps && !sandboxState.inlineSettings && (
+          <ScTabButton
+            onClick={() =>
+              setSandboxState({
+                ...sandboxState,
+                openSettings: !sandboxState.openSettings,
+              })
+            }
+          >
             <span className="sr-only">Åpne props-panel</span>
             <SettingsFilled />
           </ScTabButton>

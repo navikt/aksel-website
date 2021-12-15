@@ -71,12 +71,15 @@ const ScSettingsPanel = styled.div<{ open: boolean; inlinePanel: boolean }>`
 `;
 
 const SettingsPanel = () => {
-  const context = useContext(SandboxContext);
+  const { sandboxState, setSandboxState } = useContext(SandboxContext);
   const panelRef = useRef<HTMLDivElement>(null);
 
-  useKey("Escape", () => context.setOpenPropsPanel(false), {}, [
-    context.setOpenPropsPanel,
-  ]);
+  useKey(
+    "Escape",
+    () => setSandboxState({ ...sandboxState, openSettings: false }),
+    {},
+    []
+  );
 
   useEffect(() => {
     open && panelRef?.current?.focus();
@@ -84,11 +87,16 @@ const SettingsPanel = () => {
 
   const checkParentWidth = useCallback(() => {
     if (!panelRef.current) return;
-    context.setInlinePropsPanel(
+    const inlineSettings =
       panelRef.current.parentElement.getBoundingClientRect().width >
-        (context.inlinePropsPanel ? 600 - 250 : 600)
-    );
-  }, [context.setInlinePropsPanel, context.inlinePropsPanel]);
+      (sandboxState.inlineSettings ? 600 - 250 : 600);
+
+    inlineSettings !== sandboxState.inlineSettings &&
+      setSandboxState({
+        ...sandboxState,
+        inlineSettings,
+      });
+  }, [sandboxState.inlineSettings]);
 
   useEffect(() => {
     window.addEventListener("resize", checkParentWidth);
@@ -101,8 +109,8 @@ const SettingsPanel = () => {
   return (
     <ScSettingsPanel
       ref={panelRef}
-      inlinePanel={context.inlinePropsPanel}
-      open={context.openPropsPanel}
+      inlinePanel={sandboxState.inlineSettings && !!sandboxState.args}
+      open={sandboxState.openSettings}
       tabIndex={-1}
     >
       <PropFilter />

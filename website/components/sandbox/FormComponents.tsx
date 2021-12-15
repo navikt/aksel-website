@@ -13,30 +13,45 @@ export const SelectComp = ({
   name: string;
   type: "prop" | "variant";
 }) => {
-  const { state, setState } = useContext(SandboxContext);
+  const { sandboxState, setSandboxState } = useContext(SandboxContext);
+  const { propsState } = sandboxState;
 
   const isActive = (opt: string) =>
-    type === "prop" ? state.props[name] === opt : state.variants === opt;
+    type === "prop"
+      ? propsState.props[name] === opt
+      : propsState.variants === opt;
 
   const handleToggle = (opt: string) => {
     return isActive(opt) && arg.options.includes("")
       ? type === "prop"
-        ? setState({
-            ...state,
-            props: { ...state.props, [name]: "" },
+        ? setSandboxState({
+            ...sandboxState,
+            propsState: {
+              ...propsState,
+              props: { ...propsState.props, [name]: "" },
+            },
           })
-        : setState({
-            ...state,
-            variants: "",
+        : setSandboxState({
+            ...sandboxState,
+            propsState: {
+              ...propsState,
+              variants: "",
+            },
           })
       : type === "prop"
-      ? setState({
-          ...state,
-          props: { ...state.props, [name]: opt },
+      ? setSandboxState({
+          ...sandboxState,
+          propsState: {
+            ...propsState,
+            props: { ...propsState.props, [name]: opt },
+          },
         })
-      : setState({
-          ...state,
-          variants: opt,
+      : setSandboxState({
+          ...sandboxState,
+          propsState: {
+            ...propsState,
+            variants: opt,
+          },
         });
   };
 
@@ -48,17 +63,25 @@ export const SelectComp = ({
           label={type === "variant" ? "Endre sandbox variant" : name}
           onChange={(e) =>
             type === "prop"
-              ? setState({
-                  ...state,
-                  props: { ...state.props, [name]: e.target.value },
+              ? setSandboxState({
+                  ...sandboxState,
+                  propsState: {
+                    ...propsState,
+                    props: { ...propsState.props, [name]: e.target.value },
+                  },
                 })
-              : setState({
-                  ...state,
-                  variants: e.target.value,
+              : setSandboxState({
+                  ...sandboxState,
+                  propsState: {
+                    ...propsState,
+                    variants: e.target.value,
+                  },
                 })
           }
           value={
-            (type === "prop" ? state.props[name] : state.variants) as string
+            (type === "prop"
+              ? propsState.props[name]
+              : propsState.variants) as string
           }
         >
           {arg.options.map((opt, i) => (
@@ -89,43 +112,19 @@ export const SelectComp = ({
   );
 };
 
-/*
-<RadioGroup
-          legend={type === "variant" ? "Endre sandbox variant" : name}
-          hideLegend={type === "variant"}
-          onChange={(e) =>
-            type === "prop"
-              ? setState({
-                  ...state,
-                  props: { ...state.props, [name]: e },
-                })
-              : setState({
-                  ...state,
-                  variants: e,
-                })
-          }
-          value={
-            (type === "prop" ? state.props[name] : state.variants) as string
-          }
-        >
-          {arg.options.map((opt, i) => (
-            <Radio key={opt + i} value={opt}>
-              {opt || "Ingen"}
-            </Radio>
-          ))}
-        </RadioGroup>
-         */
-
 export const StringComp = ({ name }: { name: string }) => {
-  const { state, setState } = useContext(SandboxContext);
+  const { sandboxState, setSandboxState } = useContext(SandboxContext);
   return (
     <TextField
-      value={state.props[name] as string}
+      value={sandboxState.propsState.props[name] as string}
       label={name}
       onChange={(e) =>
-        setState({
-          ...state,
-          props: { ...state.props, [name]: e.target.value },
+        setSandboxState({
+          ...sandboxState,
+          propsState: {
+            ...sandboxState.propsState,
+            props: { ...sandboxState.propsState.props, [name]: e.target.value },
+          },
         })
       }
     />
@@ -133,14 +132,20 @@ export const StringComp = ({ name }: { name: string }) => {
 };
 
 export const BooleanComp = ({ name }: { name: string }) => {
-  const { state, setState } = useContext(SandboxContext);
+  const { sandboxState, setSandboxState } = useContext(SandboxContext);
   return (
     <Checkbox
-      checked={state.props[name] as boolean}
+      checked={sandboxState.propsState.props[name] as boolean}
       onChange={(e) =>
-        setState({
-          ...state,
-          props: { ...state.props, [name]: e.target.checked },
+        setSandboxState({
+          ...sandboxState,
+          propsState: {
+            ...sandboxState.propsState,
+            props: {
+              ...sandboxState.propsState.props,
+              [name]: e.target.checked,
+            },
+          },
         })
       }
     >

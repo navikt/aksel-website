@@ -66,9 +66,9 @@ const ScDiv = styled.div<{ fullscreen: boolean; inlineProps: boolean }>`
     }`}
 `;
 
-const ScInnerDiv = styled.div`
+const ScInnerDiv = styled.div<{ inlineProps: boolean }>`
   gap: 1rem;
-  padding: 2rem;
+  padding: ${({ inlineProps }) => (inlineProps ? "2rem" : "1rem")}};
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -88,21 +88,19 @@ const ScInnerDiv = styled.div`
 `;
 
 export const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
-  const context = useContext(SandboxContext);
+  const { sandboxState } = useContext(SandboxContext);
+  const inlineProps = sandboxState.inlineSettings && !!sandboxState.args;
   return (
-    <ScDiv
-      fullscreen={context.fullscreen}
-      inlineProps={context.inlinePropsPanel}
-    >
-      <ScInnerDiv>{children}</ScInnerDiv>
+    <ScDiv fullscreen={sandboxState.fullscreen} inlineProps={inlineProps}>
+      <ScInnerDiv inlineProps={inlineProps}>{children}</ScInnerDiv>
     </ScDiv>
   );
 };
 
 export const EditorWrapper = ({ children }: { children: React.ReactNode }) => {
-  const context = useContext(SandboxContext);
+  const { sandboxState } = useContext(SandboxContext);
   return (
-    <ScPreWrapper data-fullscreen={context.fullscreen}>
+    <ScPreWrapper data-fullscreen={sandboxState.fullscreen}>
       <ScPre>{children}</ScPre>
     </ScPreWrapper>
   );
