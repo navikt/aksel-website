@@ -1,0 +1,34 @@
+{
+  "gp": {
+    "sources": [
+      "/god-praksis/amplitude",
+      "/god-praksis/brukertest",
+      "/god-praksis/hotjar",
+      "/god-praksis/innhold",
+      "/god-praksis/kortsortering",
+      "/god-praksis/malinger",
+      "/god-praksis/task-analytics",
+      "/god-praksis/tretesting"
+    ],
+    "destitation": "https://old-design-nav.vercel.app/god-praksis"
+  },
+  "ds-components": {
+    "sources": ["/designsystem/components/:slug*", "/designsystem/components"],
+    "destitation": "https://old-design-nav.vercel.app/designsystem/components"
+  },
+  "ds-accessibility": {
+    "sources": [
+      "/designsystem/accessibility/:slug*",
+      "/designsystem/accessibility"
+    ],
+    "destitation": "https://old-design-nav.vercel.app/designsystem/accessibility"
+  },
+  "ds-patterns": {
+    "sources": ["/designsystem/patterns/:slug*", "/designsystem/patterns"],
+    "destitation": "https://old-design-nav.vercel.app/designsystem/patterns"
+  },
+  "ds-resources": {
+    "sources": ["/designsystem/resources/:slug*", "/designsystem/resources"],
+    "destitation": "https://old-design-nav.vercel.app/designsystem/resources"
+  }
+}
