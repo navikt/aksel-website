@@ -23,12 +23,12 @@ export const TitleRenderer = (props, size, level) => (
   </Heading>
 );
 
-const ScCode = styled.code`
+export const ScCode = styled.code`
   color: var(--navds-global-color-deepblue-500);
   background-color: var(--navds-global-color-deepblue-50);
   border-radius: 6px;
   font-size: 1rem;
-  padding: 0.25rem;
+  padding: 2px 0.5rem;
 `;
 
 export const ScDraft = styled.div`
