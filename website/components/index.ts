@@ -1,6 +1,6 @@
 export { default as Alert } from "./alert";
 export { default as Accordion } from "./accordion";
-export * from "./animations";
+export * from "./styling";
 export * from "./assets";
 export { default as Changelog } from "./changelog";
 export { default as Card } from "./card";
