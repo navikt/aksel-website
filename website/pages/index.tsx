@@ -79,6 +79,10 @@ const ScFrontpage = styled.div`
   > a {
     color: var(--navds-semantic-color-text);
   }
+
+  @media (max-width: 564px) {
+    padding: 2rem 1rem;
+  }
 `;
 
 const ScLink = styled(Link)`
@@ -89,6 +93,10 @@ const ScLink = styled(Link)`
   @media (max-width: 768px) {
     top: 1rem;
     left: 1rem;
+  }
+
+  @media (max-width: 564px) {
+    padding: 0rem;
   }
 `;
 

@@ -22,6 +22,10 @@ const ScCard = styled.a`
 
   transition: background-color 200ms ease-in-out;
 
+  @media (max-width: 564px) {
+    padding: 2rem 1rem 1rem 1rem;
+  }
+
   :hover {
     box-shadow: 0 0 0 2px var(--navds-semantic-color-link);
 

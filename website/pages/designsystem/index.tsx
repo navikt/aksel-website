@@ -3,7 +3,10 @@ import Head from "next/head";
 import NextLink from "next/link";
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { DsFrontpageIllustration } from "../../components/assets/DsFrontpageIllustration";
+import {
+  DsFrontpageFooterIllustration,
+  DsFrontpageIllustration,
+} from "../../components/assets/DsFrontpageIllustration";
 import {
   ColorsPictogram,
   CompPictogram,
@@ -49,6 +52,16 @@ const ScIllustration = styled.div`
   }
 `;
 
+const ScFooterIllustration = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
+
 const ScDescriptionWrapper = styled.div`
   padding: 2.5rem 3rem;
 
@@ -79,6 +92,10 @@ export const ScBodyShort = styled(BodyShort)`
   right: 0;
   top: 0;
   transform: translateX(120%);
+
+  @media (max-width: 564px) {
+    transform: translateX(100%);
+  }
 `;
 
 const ScBg = styled.div`
@@ -152,6 +169,9 @@ const Page = () => {
             />
           </ScCards>
         </ScFlex>
+        <ScFooterIllustration>
+          <DsFrontpageFooterIllustration />
+        </ScFooterIllustration>
       </ScBg>
     </>
   );
