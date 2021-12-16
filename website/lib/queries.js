@@ -30,7 +30,10 @@ _type == "code_sandbox_ref" =>{
   ...@.ref->
 },
 _type == "color_category_ref" => {
-  "ref": @.ref->
+  "ref": @.ref->{..., description[]{
+    ...,
+    ${markDef}
+  }}
 },
 _type == "link_panel" =>{
   ...,
