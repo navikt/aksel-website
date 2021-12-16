@@ -24,18 +24,6 @@ const Accordion = ({ node }: { node: AccordionT }): JSX.Element => {
           </DsAccordion.Content>
         </DsAccordion.Item>
       ))}
-
-      {/* {node.heading && (
-        <Heading
-          spacing
-          size={node.size === "medium" ? "small" : "xsmall"}
-          as={node.heading_level}
-          id={slug}
-        >
-          {node.heading}
-        </Heading>
-      )}
-      <SanityBlockContent blocks={node.body} size={node.size} /> */}
     </ScAccordion>
   );
 };
