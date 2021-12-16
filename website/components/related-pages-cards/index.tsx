@@ -28,6 +28,7 @@ const ScCard = styled.a`
   text-decoration: none;
   border: 2px solid transparent;
   border-radius: 4px;
+  transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
 
   :hover > :first-child,
   :focus > :first-child {
@@ -36,7 +37,7 @@ const ScCard = styled.a`
 
   :hover,
   :focus {
-    border-color: var(--navds-semantic-color-text-link);
+    border-color: var(--navds-semantic-color-link);
   }
 
   :active {
@@ -44,6 +45,7 @@ const ScCard = styled.a`
     border-color: transparent;
     background-color: var(--navds-global-color-blue-700);
   }
+
   :active > *,
   :active > :first-child {
     color: var(--navds-semantic-color-text-inverted);
