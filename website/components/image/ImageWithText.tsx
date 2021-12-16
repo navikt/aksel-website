@@ -5,6 +5,11 @@ import { PictureText as PictureTextT } from "../../lib/autogen-types";
 import { SanityBlockContent } from "../SanityBlockContent";
 import { withErrorBoundary } from "../error-boundary";
 import * as S from "./image.styles";
+import styled from "styled-components";
+
+const ScSection = styled.div`
+  display: flow-root;
+`;
 
 const Image = ({ node }: { node: PictureTextT }): JSX.Element => {
   if (!node || !node.asset || !node.body) {
@@ -14,7 +19,7 @@ const Image = ({ node }: { node: PictureTextT }): JSX.Element => {
   const imageProps = useSanityImage(node);
 
   return (
-    <div>
+    <ScSection>
       <S.TextImage placement={node.placement ?? "left"}>
         <NextImage
           {...imageProps}
@@ -26,7 +31,7 @@ const Image = ({ node }: { node: PictureTextT }): JSX.Element => {
       <div>
         <SanityBlockContent blocks={node.body} />
       </div>
-    </div>
+    </ScSection>
   );
 };
 
