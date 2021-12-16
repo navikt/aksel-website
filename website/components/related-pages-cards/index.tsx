@@ -5,6 +5,8 @@ import { withErrorBoundary } from "../error-boundary";
 import NextLink from "next/link";
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import { ExternalLink } from "@navikt/ds-icons";
+import { AmplitudeEvents, useAmplitude } from "..";
+import { useRouter } from "next/router";
 
 const ScRelatedPagesCard = styled.div`
   grid-template-columns: repeat(auto-fit, 15rem);
@@ -81,10 +83,22 @@ interface LinkT {
 }
 
 const Card = ({ link }: { link: LinkT }) => {
+  const { logAmplitudeEvent } = useAmplitude();
+
+  const { asPath } = useRouter();
+
+  const logNavigation = (e) => {
+    logAmplitudeEvent(AmplitudeEvents.navigasjon, {
+      kilde: "related-pages-card",
+      fra: asPath,
+      til: e.currentTarget.getAttribute("href"),
+    });
+  };
   const href = link.internal ? `/${link.internal_link}` : link.external_link;
+
   return (
     <NextLink href={href} passHref>
-      <ScCard>
+      <ScCard onClick={(e) => logNavigation(e)}>
         <Heading size="xsmall" as="div">
           {link.title}
         </Heading>

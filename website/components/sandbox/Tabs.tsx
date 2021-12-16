@@ -3,7 +3,6 @@ import { Label } from "@navikt/ds-react";
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { SandboxContext } from ".";
-/* import { CanvasIcon } from ".."; */
 import { ScTabCss } from "./PropsPanel";
 
 const ScTabs = styled.div`
