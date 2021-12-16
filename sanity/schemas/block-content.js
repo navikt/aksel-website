@@ -12,6 +12,7 @@ import {
   Folder,
   Notes,
   Information,
+  Expand,
 } from "@navikt/ds-icons";
 import { KBD } from "@sanity/ui";
 import { allDocumentTypes } from "../config";
@@ -221,6 +222,10 @@ export default {
     {
       type: "alert",
       icon: () => <Warning />,
+    },
+    {
+      type: "accordion",
+      icon: () => <Expand />,
     },
     {
       type: "related_pages",

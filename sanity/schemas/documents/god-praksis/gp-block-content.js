@@ -122,6 +122,10 @@ export default {
       type: "picture_text",
     },
     {
+      type: "accordion",
+      icon: () => <Expand />,
+    },
+    {
       type: "tips",
       icon: () => <Information />,
     },
