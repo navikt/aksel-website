@@ -5,6 +5,7 @@ import {
   ExternalLink,
   Notes,
   Information,
+  Expand,
 } from "@navikt/ds-icons";
 import { styles, TitleRenderer } from "../../block-content";
 import { allDocumentTypes } from "../../../config";
