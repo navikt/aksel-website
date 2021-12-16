@@ -36,6 +36,16 @@ _type == "link_panel" =>{
   ...,
   internal_link-> {_id, slug}
 },
+_type == "accordion" =>{
+  ...,
+  list[]{
+    ...,
+    body[]{
+      ...,
+      ${markDef}
+    },
+  }
+},
 _type == "alert" =>{
   ...,
   body[]{
