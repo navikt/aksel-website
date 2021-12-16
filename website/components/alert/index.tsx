@@ -6,7 +6,8 @@ import { Alert as AlertT } from "../../lib/autogen-types";
 import { SanityBlockContent } from "../SanityBlockContent";
 
 const StyledAlert = styled(DsAlert)`
-  margin-bottom: 2rem;
+  margin-bottom: var(--navds-spacing-7);
+
   > * .navds-typo--spacing :last-child {
     margin: 0;
   }

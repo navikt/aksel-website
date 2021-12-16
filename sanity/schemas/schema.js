@@ -28,6 +28,7 @@ import gp_situations from "./documents/god-praksis/gp-situations";
 /*  Components */
 import block_content from "./block-content";
 import block_content_simple from "./block-content-simple";
+import block_content_accordion from "./block-content-accordion";
 import code_example, { example } from "./documents/designsystem/code-example";
 import code_snippet from "./objects/code-snippet";
 import code_example_ref from "./objects/code-example-ref";
@@ -75,6 +76,7 @@ export default createSchema({
     example,
     block_content,
     block_content_simple,
+    block_content_accordion,
     gp_block_content,
     prop_table,
     prop,

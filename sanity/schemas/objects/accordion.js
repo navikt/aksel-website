@@ -1,4 +1,4 @@
-import { Accordion, Alert } from "@navikt/ds-react";
+import { Accordion } from "@navikt/ds-react";
 import React from "react";
 
 function toPlainText(blocks = []) {
@@ -33,25 +33,9 @@ export default {
                 Rule.required().error("Accordion må ha en heading"),
             },
             {
-              title: "Heading nivå",
-              name: "heading_level",
-              type: "string",
-              validation: (Rule) =>
-                Rule.required().error("Accordion må ha valgt et heading-nivå"),
-              options: {
-                list: [
-                  { value: "h3", title: "H3" },
-                  { value: "h4", title: "H4" },
-                ],
-                layout: "radio",
-              },
-              hidden: ({ parent }) => !parent.heading,
-              initialValue: "h3",
-            },
-            {
               title: "Innhold",
               name: "body",
-              type: "blockContent_simple",
+              type: "blockContent_accordion",
               validation: (Rule) =>
                 Rule.required().error("Accordion må ha noe innhold"),
             },
@@ -87,7 +71,7 @@ export default {
           <Accordion>
             {value?.list?.map((el) => {
               return (
-                <Accordion.Item>
+                <Accordion.Item key={el._key}>
                   <Accordion.Header>{el?.heading}</Accordion.Header>
                   <Accordion.Content>
                     {el?.body && toPlainText(el.body)}

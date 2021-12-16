@@ -1,4 +1,5 @@
 export { default as Alert } from "./alert";
+export { default as Accordion } from "./accordion";
 export * from "./animations";
 export * from "./assets";
 export { default as Changelog } from "./changelog";
