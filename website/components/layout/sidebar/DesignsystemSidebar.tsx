@@ -7,7 +7,6 @@ import Menu from "../menu/DesignsystemMenu";
 const Wrapper = styled.div`
   width: var(--sidebar-max-width);
   padding: var(--navds-spacing-8) 0;
-  position: relative;
   flex-shrink: 0;
   background-color: var(--navds-semantic-color-canvas-background-light);
   border-right: 1px solid var(--navds-semantic-color-divider);

@@ -51,14 +51,14 @@ const ScLink = styled.a<{ active?: boolean }>`
     font-weight: 600;
   `}
 
-  :hover {
-    background-color: var(--navds-semantic-color-canvas-background);
-    color: var(--navds-semantic-color-text);
-  }
-
   :focus {
     outline: none;
     box-shadow: inset 0 0 0 3px var(--navds-semantic-color-focus);
+  }
+
+  :hover {
+    background-color: var(--navds-semantic-color-canvas-background);
+    color: var(--navds-semantic-color-text);
   }
 `;
 

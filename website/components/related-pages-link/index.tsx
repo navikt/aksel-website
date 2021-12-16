@@ -30,7 +30,6 @@ const ScInnerWrapper = styled.div<{ $isTablet: boolean }>`
   > * {
     color: var(--navds-semantic-color-text-inverted);
     text-decoration: none;
-    padding: 1rem 3rem;
     height: 7rem;
     flex: 1 1;
     max-width: 400px;
