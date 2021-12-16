@@ -1,5 +1,5 @@
 import React from "react";
-import { withErrorBoundary } from "../error-boundary";
+import { withErrorBoundary } from "../website-features/error-boundary";
 import { DsColorCategories, DsColor } from "../../lib/autogen-types";
 import styled from "styled-components";
 import { Table, BodyShort, Detail } from "@navikt/ds-react";

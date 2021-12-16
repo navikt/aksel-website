@@ -21,8 +21,9 @@ import {
   Tips,
   Sandbox,
   Accordion,
+  ComponentOverview,
 } from ".";
-import ComponentOverview from "./component-overview";
+
 import * as Icons from "@navikt/ds-icons";
 import * as Tokens from "@navikt/ds-tokens/dist/tokens";
 
