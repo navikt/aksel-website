@@ -23,7 +23,8 @@
     "sanity:sandboxes": "yarn workspace website update:sandboxes",
     "sanity:codeexamples": "yarn workspace website update:examples",
     "sanity:colors": "yarn workspace website update:colors",
-    "lint": "yarn workspace website lint"
+    "lint": "yarn workspace website lint",
+    "lint:css": "stylelint './**/*.tsx'"
   },
   "workspaces": [
     "sanity",
@@ -35,5 +36,14 @@
     "husky": "^7.0.2",
     "pretty-quick": "^3.1.1",
     "@babel/core": "^7.0.0"
+  },
+  "stylelint": {
+    "processors": [
+      "stylelint-processor-styled-components"
+    ],
+    "extends": [
+      "stylelint-config-recommended",
+      "stylelint-config-styled-components"
+    ]
   }
 }
