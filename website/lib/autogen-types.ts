@@ -1148,11 +1148,13 @@ export type BlockContent = Array<
   | SanityKeyed<PictureText>
   | SanityKeyed<Tips>
   | SanityKeyed<Alert>
+  | SanityKeyed<Accordion>
   | SanityKeyed<RelatedPages>
   | SanityKeyed<LinkPanel>
   | SanityKeyed<CodeSnippet>
   | SanityKeyed<DoDont>
   | SanityKeyed<Table>
+  | SanityKeyed<CodeSandboxRef>
   | SanityKeyed<CodeExampleRef>
   | SanityKeyed<ColorCategoryRef>
   | SanityKeyed<PropTable>
@@ -1167,6 +1169,7 @@ export type GpBlockContent = Array<
   | SanityKeyed<Spacing>
   | SanityKeyed<Picture>
   | SanityKeyed<PictureText>
+  | SanityKeyed<Accordion>
   | SanityKeyed<Tips>
   | SanityKeyed<Alert>
   | SanityKeyed<CodeSnippet>
@@ -1449,6 +1452,40 @@ export type Alert = {
    *
    */
   body?: BlockContentSimple;
+};
+
+export type Accordion = {
+  _type: "accordion";
+  /**
+   * Accordions — `array`
+   *
+   *
+   */
+  list?: Array<
+    SanityKeyed<{
+      _type: "element";
+      /**
+       * Heading (optional) — `string`
+       *
+       *
+       */
+      heading?: string;
+
+      /**
+       * Heading nivå — `string`
+       *
+       *
+       */
+      heading_level?: "h3" | "h4";
+
+      /**
+       * Innhold — `blockContent_simple`
+       *
+       *
+       */
+      body?: BlockContentSimple;
+    }>
+  >;
 };
 
 export type LinkPanel = {
