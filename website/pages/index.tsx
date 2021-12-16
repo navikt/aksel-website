@@ -1,6 +1,7 @@
 import { BodyShort, Ingress, Link } from "@navikt/ds-react";
 import Head from "next/head";
 import React, { useContext, useEffect } from "react";
+import * as Sc from "../components";
 import styled from "styled-components";
 import {
   AmplitudeEvents,
@@ -16,6 +17,7 @@ import {
 } from "../components";
 import { ScBodyShort, ScHeading } from "./designsystem";
 import NextLink from "next/link";
+import FrontpageFooter from "../components/layout/footer/FrontpageFooter";
 
 import Snowfall from "react-snowfall";
 
@@ -178,6 +180,24 @@ const Page = () => {
           </ScNav>
         </ScFrontpage>
       </ScRelative>
+    </>
+  );
+};
+
+Page.getLayout = (page) => {
+  return (
+    <>
+      <Sc.SkipLink href="#hovedinnhold" tab-index={-1}>
+        Hopp til innhold
+      </Sc.SkipLink>
+      <Sc.SidebarMain>
+        <Sc.MainFooter>
+          <Sc.Main fullwidth tabIndex={-1} id="hovedinnhold">
+            {page}
+          </Sc.Main>
+          <FrontpageFooter />
+        </Sc.MainFooter>
+      </Sc.SidebarMain>
     </>
   );
 };
