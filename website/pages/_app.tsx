@@ -29,7 +29,10 @@ function App({
     setPageData(pageProps);
   }, [pageProps]);
 
-  if (Component && router?.asPath.startsWith("/examples")) {
+  if (
+    Component &&
+    ["/examples", "/sandboxes"].some((path) => router?.asPath.startsWith(path))
+  ) {
     return <Component {...pageProps} />;
   }
 
