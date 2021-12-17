@@ -51,7 +51,9 @@ const ScDiv = styled.div<{
   display: flex;
   width: 100%;
   background-color: ${(props) =>
-    `${props.background}` ?? `var(--navds-semantic-color-canvas-background)`};
+    props.background
+      ? `${props.background}`
+      : `var(--navds-semantic-color-canvas-background)`};
   border: 1px solid var(--navds-global-color-gray-200);
   border-top: none;
   position: relative;
