@@ -87,6 +87,11 @@ const ScInnerDiv = styled.div`
 
   > div:first-child {
     width: 100%;
+    gap: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 `;
 
