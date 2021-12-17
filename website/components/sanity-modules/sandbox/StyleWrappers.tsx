@@ -51,10 +51,9 @@ const ScDiv = styled.div<{
   display: flex;
   width: 100%;
   background-color: ${(props) =>
-    props.background ?? "var(--navds-semantic-color-canvas-background)"};
+    `${props.background}` ?? `var(--navds-semantic-color-canvas-background)`};
   border: 1px solid var(--navds-global-color-gray-200);
   border-top: none;
-  overflow-x: auto;
   position: relative;
   min-height: 400px;
   height: 100%;
@@ -80,6 +79,7 @@ const ScInnerDiv = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
+  overflow-x: auto;
 
   @media (max-width: 768px) {
     padding: 1rem;
