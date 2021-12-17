@@ -92,8 +92,12 @@ const ScPictogram = styled.div`
   }
 `;
 
-const ScContent = styled(BodyShort)<{ tag: boolean }>`
-  margin-bottom: ${({ tag }) => (tag ? `3rem` : `1.5rem`)};
+const ScContent = styled(BodyShort)`
+  margin-bottom: 1.5rem;
+
+  &[data-tag="true"] {
+    margin-bottom: 3rem;
+  }
 `;
 
 const ScTag = styled(Detail)`
@@ -134,7 +138,7 @@ const Card = ({
         <Heading size="medium" spacing level="2">
           {heading}
         </Heading>
-        <ScContent tag={!!tag}>{content}</ScContent>
+        <ScContent data-tag={!!tag}>{content}</ScContent>
         {tag && <ScTag size="small">{tag}</ScTag>}
       </ScCard>
     </NextLink>

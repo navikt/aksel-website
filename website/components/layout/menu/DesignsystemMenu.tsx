@@ -121,6 +121,23 @@ const Menu = ({
   return (
     <ScNav aria-label={heading.title} data-incategory={inCategory}>
       <BodyShort as="ul">
+        {heading.link_ref && (
+          <NextLink href={`/${heading.link_ref.slug.current}`} passHref>
+            <ScLink
+              onClick={(e) => {
+                onClick && onClick();
+                logNavigation(e);
+              }}
+              active={
+                pageProps?.page
+                  ? pageProps.page.slug === heading.link_ref.slug.current
+                  : false
+              }
+            >
+              Oversikt
+            </ScLink>
+          </NextLink>
+        )}
         {sidebarMenu.map((item, x) => {
           if (item._type === "subheading") {
             return (

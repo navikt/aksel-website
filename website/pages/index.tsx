@@ -176,10 +176,12 @@ const Page = () => {
                 heading="Security Champions Playbook"
                 content={
                   <>
-                    <BodyShort spacing>
+                    <BodyShort spacing as="span">
                       Hvordan vi utvikler sikker software i NAV.
                     </BodyShort>
-                    <BodyShort>(Krever Github-bruker i navikt org)</BodyShort>
+                    <BodyShort as="span">
+                      (Krever Github-bruker i navikt org)
+                    </BodyShort>
                   </>
                 }
                 href="https://improved-train-2f244007.pages.github.io/"
