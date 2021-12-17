@@ -136,7 +136,7 @@ const Page = () => {
               <NAVLogoDark />
             </ScLogoWrapper>
             <ScHeading spacing level="1" size="2xlarge">
-              Verktøykassen
+              Verktøykassa
               <ScBodyShort>Beta</ScBodyShort>
             </ScHeading>
             <Ingress>
