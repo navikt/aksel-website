@@ -29,7 +29,7 @@ export const SantaHat = ({ ...props }) => (
         width="62"
         height="55"
         filterUnits="userSpaceOnUse"
-        colorInterpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix

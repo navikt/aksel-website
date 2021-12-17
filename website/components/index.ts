@@ -1,5 +1,5 @@
 export * from "./assets";
-export * from "./color-category";
+export * from "./sanity-modules/color-category";
 export * from "./layout/layout.styles";
 export { LayoutContext } from "./layout/LayoutProvider";
 export { default as LayoutPicker } from "./layout/TemplatePicker";

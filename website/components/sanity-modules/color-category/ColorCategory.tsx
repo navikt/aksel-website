@@ -1,11 +1,10 @@
 import React from "react";
-import { withErrorBoundary } from "../website-features/error-boundary";
-import { DsColorCategories, DsColor } from "../../lib/autogen-types";
+import { withErrorBoundary } from "../../website-features/error-boundary";
+import { DsColorCategories, DsColor } from "../../../lib/autogen-types";
 import styled from "styled-components";
 import { Table, BodyShort, Detail } from "@navikt/ds-react";
 import Color from "color";
-import { SanityBlockContent } from "../SanityBlockContent";
-import { isBoxedPrimitive } from "util/types";
+import { SanityBlockContent } from "../../SanityBlockContent";
 
 const ScColorBox = styled.div<{ background: string; dark: boolean }>`
   background-color: ${(props) => props.background};
