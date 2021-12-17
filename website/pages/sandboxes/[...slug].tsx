@@ -7,7 +7,7 @@ const CodePreview = (key: string) => {
     return null;
   }
 
-  const node = {
+  const node: any = {
     _type: "ds_code_sandbox",
     title: key,
     _id: "",
