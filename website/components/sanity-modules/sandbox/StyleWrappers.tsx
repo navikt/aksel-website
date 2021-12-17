@@ -63,12 +63,12 @@ const ScDiv = styled.div<{
   ${(props) =>
     props.fullscreen &&
     `display: flex;
-    flex-direction: column;
-    flex-grow: 3;
+  flex-direction: column;
+  flex-grow: 3;
 
-    > * {
-      flex-grow: 1;
-    }`}
+  > * {
+    flex-grow: 1;
+  }`}
 `;
 
 const ScInnerDiv = styled.div`
@@ -83,6 +83,10 @@ const ScInnerDiv = styled.div`
 
   @media (max-width: 768px) {
     padding: 1rem;
+  }
+
+  > div {
+    width: 100%;
   }
 `;
 

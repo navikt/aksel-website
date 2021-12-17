@@ -76,9 +76,12 @@ const SettingsPanel = () => {
 
   useKey(
     "Escape",
-    () => setSandboxState({ ...sandboxState, openSettings: false }),
+    () =>
+      !sandboxState.inlineSettings &&
+      sandboxState.openSettings &&
+      setSandboxState({ ...sandboxState, openSettings: false }),
     {},
-    []
+    [sandboxState.inlineSettings, sandboxState.openSettings]
   );
 
   useEffect(() => {
