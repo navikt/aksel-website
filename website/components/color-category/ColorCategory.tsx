@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Table, BodyShort, Detail } from "@navikt/ds-react";
 import Color from "color";
 import { SanityBlockContent } from "../SanityBlockContent";
+import { isBoxedPrimitive } from "util/types";
 
 const ScColorBox = styled.div<{ background: string; dark: boolean }>`
   background-color: ${(props) => props.background};
@@ -20,6 +21,10 @@ const ScColorBox = styled.div<{ background: string; dark: boolean }>`
   p {
     margin: 0 1rem;
   }
+`;
+
+const WhiteColorBox = styled(ScColorBox)`
+  border: 1px solid var(--navds-semantic-color-divider);
 `;
 
 const ScColorCell = styled(Table.DataCell)`
@@ -80,18 +85,19 @@ function compare(one: DsColor, two: DsColor): number {
 
 const ColorBox = ({ prop }: { prop: DsColor }): JSX.Element => {
   const color = Color(prop.color_value);
+  const Box = color.luminosity() === 1.0 ? WhiteColorBox : ScColorBox;
   if (prop.color_type === "global") {
     return (
-      <ScColorBox background={color.hex()} dark={color.isDark()}>
+      <Box background={color.hex()} dark={color.isDark()}>
         <p>{prop.title}</p>
         <ScHexColor size="small">{color.hex()}</ScHexColor>
-      </ScColorBox>
+      </Box>
     );
   }
   return (
-    <ScColorBox background={color.hex()} dark={color.isDark()}>
+    <Box background={color.hex()} dark={color.isDark()}>
       <p>{prop.title}</p>
-    </ScColorBox>
+    </Box>
   );
 };
 
