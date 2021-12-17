@@ -16,13 +16,16 @@ export const MainFooter = styled.div`
   position: relative;
 `;
 
-export const Main = styled.main<{ fullwidth?: boolean }>`
+export const Main = styled.main<{ fullwidth?: boolean; graybg?: boolean }>`
   min-height: calc(100vh - var(--header-height));
   width: calc(100vw - var(--sidebar-max-width));
   display: flex;
   flex-direction: column;
   position: relative;
 
+  ${(props) =>
+    props.graybg &&
+    `background-color: var(--navds-semantic-color-component-background-alternate);`}
   ${(props) => props.fullwidth && `width: 100%;`}
   @media (max-width: 768px) {
     width: 100%;

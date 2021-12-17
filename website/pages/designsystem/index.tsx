@@ -186,7 +186,7 @@ Page.getLayout = (page) => {
       <DesignsystemHeader />
       <Sc.SidebarMain>
         <Sc.MainFooter>
-          <Sc.Main fullwidth tabIndex={-1} id="hovedinnhold">
+          <Sc.Main fullwidth tabIndex={-1} id="hovedinnhold" graybg>
             {page}
           </Sc.Main>
           <DesignsystemFooter />
