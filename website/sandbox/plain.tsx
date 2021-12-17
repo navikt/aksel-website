@@ -1,3 +1,4 @@
+import React from "react";
 import ReactDOMServer from "react-dom/server";
 import { BodyLong, Heading, Panel, Tag } from "@navikt/ds-react";
 import { SandboxComponent } from "./types";
