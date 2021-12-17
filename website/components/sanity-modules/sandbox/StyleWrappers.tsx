@@ -56,7 +56,7 @@ const ScDiv = styled.div<{
   border-top: none;
   overflow-x: auto;
   position: relative;
-  height: 400px;
+  min-height: 400px;
   height: 100%;
 
   ${(props) => props.inlineProps && `padding-right: 250px;`}
