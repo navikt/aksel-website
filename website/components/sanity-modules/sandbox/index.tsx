@@ -146,7 +146,11 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   };
 
   const Editor = (
-    <LiveProvider code={code} scope={scope}>
+    <LiveProvider
+      code={code}
+      scope={scope}
+      noInline={sandboxState.propsState?.variants === "Selectable"}
+    >
       <ScRelativeDiv>
         <Tabs reset={reset} />
         <PreviewWrapper>

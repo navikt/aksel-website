@@ -26,6 +26,7 @@ export interface ParsedPropsT {
 export interface ParsedArgsT {
   props: ParsedPropsT;
   variants: EnumT | null;
+  background?: string;
 }
 
 export interface StateT {
@@ -85,6 +86,7 @@ export const generateState = (args: SandboxComponentArgs): ParsedArgsT => {
   }
 
   return {
+    ...args,
     props: parseProps(args.props),
     variants:
       args.variants && args.variants.length > 1
