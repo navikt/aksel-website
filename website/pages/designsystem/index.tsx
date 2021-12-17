@@ -91,6 +91,15 @@ const ScCards = styled.div`
 export const ScHeading = styled(Heading)`
   position: relative;
   width: fit-content;
+
+  .santahat {
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    transform: translateX(-50%) translateY(-32%) rotateZ(-10deg);
+  }
 `;
 
 export const ScBodyShort = styled(BodyShort)`

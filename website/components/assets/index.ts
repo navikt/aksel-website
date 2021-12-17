@@ -6,3 +6,4 @@ export { default as NAVLogoDark } from "./NavLogoDark";
 export * from "./Canvas";
 export * from "./AlgoliaIcon";
 export * from "./pictograms";
+export * from "./Santahat";

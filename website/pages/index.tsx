@@ -11,6 +11,7 @@ import {
   GpPictogram,
   LayoutContext,
   NAVLogoDark,
+  SantaHat,
   SecurityPictogram,
   useAmplitude,
   UuPictogram,
@@ -138,6 +139,7 @@ const Page = () => {
             <ScHeading spacing level="1" size="2xlarge">
               Verktøykassa
               <ScBodyShort>Beta</ScBodyShort>
+              <SantaHat className="santahat" />
             </ScHeading>
             <Ingress>
               En samling ressurser fra ulike fagdisipliner som hjelper oss å
