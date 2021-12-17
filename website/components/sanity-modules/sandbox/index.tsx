@@ -82,7 +82,7 @@ interface SandboxStateT {
 }
 
 const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
-  const [code, setCode] = useState(null);
+  const [code, setCode] = useState<string>(null);
   const [reseting, setReseting] = useState(false);
   const preFocusCapture = useRef<HTMLDivElement>(null);
   const focusCapture = useRef<HTMLButtonElement>(null);
@@ -105,7 +105,9 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
       const args = generateState(sandboxComp.args);
       const newState = getInitialState(args);
       setSandboxState({ ...sandboxState, args, propsState: newState });
-      setCode(formatCode(sandboxComp(newState.props, newState.variants)));
+      setCode(
+        formatCode(sandboxComp(newState.props, newState.variants).trim())
+      );
     }
   }, [sandboxComp]);
 
@@ -122,7 +124,7 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
           sandboxComp(
             sandboxState.propsState.props,
             sandboxState.propsState.variants
-          )
+          ).trim()
         )
       );
 
@@ -145,11 +147,7 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   };
 
   const Editor = (
-    <LiveProvider
-      code={code}
-      scope={scope}
-      noInline={sandboxState.propsState?.variants === "Selectable"}
-    >
+    <LiveProvider code={code} scope={scope} noInline={!code?.startsWith("<")}>
       <ScRelativeDiv>
         <Tabs reset={reset} />
         <PreviewWrapper>
