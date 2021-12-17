@@ -1,4 +1,4 @@
-import { Checkbox, Select, TextField } from "@navikt/ds-react";
+import { Checkbox, Label, Select, TextField } from "@navikt/ds-react";
 import React, { useContext } from "react";
 import { SandboxContext } from ".";
 import { ScToggle, ScToggleGroup } from "../icon-search/Filter";
@@ -91,22 +91,29 @@ export const SelectComp = ({
           ))}
         </Select>
       ) : (
-        <ScToggleGroup forwardedAs="div" size="small">
-          {arg.options.map((opt, i) =>
-            opt ? (
-              <ScToggle
-                key={opt + i}
-                className="navds-label navds-label--small"
-                data-active={isActive(opt)}
-                aria-pressed={isActive(opt)}
-                onClick={() => handleToggle(opt)}
-                aria-label="Trykk for å filtrere for outline-ikoner"
-              >
-                {opt || "Ingen"}
-              </ScToggle>
-            ) : null
+        <div>
+          {type !== "variant" && (
+            <Label size="small" spacing>
+              {name}
+            </Label>
           )}
-        </ScToggleGroup>
+          <ScToggleGroup forwardedAs="div" size="small">
+            {arg.options.map((opt, i) =>
+              opt ? (
+                <ScToggle
+                  key={opt + i}
+                  className="navds-label navds-label--small"
+                  data-active={isActive(opt)}
+                  aria-pressed={isActive(opt)}
+                  onClick={() => handleToggle(opt)}
+                  aria-label="Trykk for å filtrere for outline-ikoner"
+                >
+                  {opt || "Ingen"}
+                </ScToggle>
+              ) : null
+            )}
+          </ScToggleGroup>
+        </div>
       )}
     </>
   );
