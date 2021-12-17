@@ -3,62 +3,20 @@ import Head from "next/head";
 import NextLink from "next/link";
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { DsFrontpageIllustration } from "../../components/assets/DsFrontpageIllustration";
 import {
-  ComponentPictogram,
+  DsFrontpageFooterIllustration,
+  DsFrontpageIllustration,
+} from "../../components/assets/DsFrontpageIllustration";
+import {
+  ColorsPictogram,
+  CompPictogram,
   IconsPictogram,
 } from "../../components/assets/pictograms";
 import DesignsystemFooter from "../../components/layout/footer/DesignsystemFooter";
 import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
 import { dsNavigationQuery, getClient } from "../../lib";
 import * as Sc from "../../components";
-import { useAmplitude, AmplitudeEvents } from "../../components";
-
-const ScCard = styled.a`
-  height: 22rem;
-  max-width: 18rem;
-  text-decoration: none;
-  color: var(--navds-semantic-color-text);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 3rem 2rem 2rem 2rem;
-  border-radius: 4px;
-  background-color: var(--navds-semantic-color-canvas-background-light);
-  position: relative;
-  box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
-    0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
-
-  :hover {
-    box-shadow: none;
-    background-color: var(--navds-semantic-color-canvas-background);
-  }
-
-  :focus {
-    border-color: var(--navds-semantic-color-focus);
-    outline: none;
-    box-shadow: 0 0 0 3px var(--navds-semantic-color-focus);
-  }
-
-  h2 {
-    text-decoration: underline;
-  }
-`;
-
-const ScIcon = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  margin-bottom: 1.5rem;
-  flex-shrink: 0;
-
-  svg {
-    font-size: 3rem;
-    margin-top: 0.25rem;
-    margin-left: 0.25rem;
-  }
-`;
+import { useAmplitude, AmplitudeEvents, Card } from "../../components";
 
 const ScFlex = styled.div`
   display: flex;
@@ -87,7 +45,19 @@ const ScTitle = styled.div`
 `;
 
 const ScIllustration = styled.div`
+  height: 240px;
+
   @media (max-width: 1064px) {
+    display: none;
+  }
+`;
+
+const ScFooterIllustration = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+
+  @media (min-width: 769px) {
     display: none;
   }
 `;
@@ -112,16 +82,24 @@ const ScCards = styled.div`
   gap: 1.5rem;
 `;
 
-const ScHeading = styled(Heading)`
+export const ScHeading = styled(Heading)`
   position: relative;
   width: fit-content;
 `;
 
-const ScBodyShort = styled(BodyShort)`
+export const ScBodyShort = styled(BodyShort)`
   position: absolute;
   right: 0;
   top: 0;
   transform: translateX(120%);
+
+  @media (max-width: 564px) {
+    transform: translateX(100%);
+  }
+`;
+
+const ScBg = styled.div`
+  background-color: var(--navds-semantic-color-component-background-alternate);
 `;
 
 const Page = () => {
@@ -139,7 +117,7 @@ const Page = () => {
         <title>Designsystemet</title>
         <meta property="og:title" content="Designsystemet NAV" />
       </Head>
-      <>
+      <ScBg>
         <ScFlexReverse>
           <ScTitle>
             <ScHeading spacing level="1" size="2xlarge">
@@ -163,38 +141,38 @@ const Page = () => {
             </BodyLong>
             <BodyLong>
               <NextLink passHref href="https://old-design-nav.vercel.app/">
-                <Link>Gå til den gamle versjonen</Link>
+                <Link>Gå til gammel dokumentasjon</Link>
               </NextLink>
             </BodyLong>
           </ScDescriptionWrapper>
           <ScCards>
-            <NextLink passHref href="/designsystem/side/komponenter">
-              <ScCard>
-                <ScIcon className="card__icon">
-                  <ComponentPictogram />
-                </ScIcon>
-                <Heading spacing level="2" size="medium">
-                  Komponenter
-                </Heading>
-                <BodyLong>
-                  Se forhåndsvisninger og kode-eksempler for komponenter.
-                </BodyLong>
-              </ScCard>
-            </NextLink>
-            <NextLink passHref href="/designsystem/side/ikoner/ikons%C3%B8k">
-              <ScCard>
-                <ScIcon className="card__icon">
-                  <IconsPictogram />
-                </ScIcon>
-                <Heading spacing level="2" size="medium">
-                  Ikoner
-                </Heading>
-                <BodyLong>Søk og ta i bruk alle NAVs egne ikoner.</BodyLong>
-              </ScCard>
-            </NextLink>
+            <Card
+              pictogram={<CompPictogram />}
+              heading="Komponenter"
+              content="Se forhåndsvisninger og kode-eksempler for komponenter."
+              tag="KOMPONENTER"
+              href="/designsystem/side/komponenter"
+            />
+            <Card
+              pictogram={<IconsPictogram />}
+              heading="Ikoner"
+              content="Se over alle NAV sine globale og semantiske farger"
+              tag="RESSURSER"
+              href="/designsystem/side/ikoner/ikons%C3%B8k"
+            />
+            <Card
+              pictogram={<ColorsPictogram />}
+              heading="Farger"
+              content="Se over alle NAV sine globale og semantiske farger"
+              tag="RESSURSER"
+              href="/designsystem/side/ikoner/ikons%C3%B8k"
+            />
           </ScCards>
         </ScFlex>
-      </>
+        <ScFooterIllustration>
+          <DsFrontpageFooterIllustration />
+        </ScFooterIllustration>
+      </ScBg>
     </>
   );
 };

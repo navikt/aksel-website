@@ -5,7 +5,7 @@ const ButtonSandbox: SandboxComponent = (props, variant) => {
   const propDisabled = props?.disabled ? ` disabled` : "";
   const propSize = props?.size ? ` size="${props.size}"` : "";
 
-  const comp = `<Button${propVariant}${propSize}${propDisabled}>Knapp</Button>`;
+  const comp = `<Button${propVariant}${propSize}${propDisabled}>Button</Button>`;
   const compIcon = `<Button${propVariant}${propSize}${propDisabled}><Star /></Button>`;
   const compLoader = `<Button${propVariant}${propSize}${propDisabled}><Loader title="Laster inn data"/></Button>`;
 

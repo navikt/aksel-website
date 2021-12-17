@@ -28,6 +28,7 @@ import gp_situations from "./documents/god-praksis/gp-situations";
 /*  Components */
 import block_content from "./block-content";
 import block_content_simple from "./block-content-simple";
+import block_content_accordion from "./block-content-accordion";
 import code_example, { example } from "./documents/designsystem/code-example";
 import code_snippet from "./objects/code-snippet";
 import code_example_ref from "./objects/code-example-ref";
@@ -41,6 +42,7 @@ import uu_interactions, { keyboardTable } from "./objects/uu-interaction";
 import picture from "./objects/image";
 import picture_text from "./objects/image-with-text";
 import alert from "./objects/alert";
+import accordion from "./objects/accordion";
 import link_panel from "./objects/link-panel";
 import icon_search from "./objects/uniques/ikonsok";
 import component_overview from "./objects/overview-ref";
@@ -74,6 +76,7 @@ export default createSchema({
     example,
     block_content,
     block_content_simple,
+    block_content_accordion,
     gp_block_content,
     prop_table,
     prop,
@@ -86,6 +89,7 @@ export default createSchema({
     picture,
     picture_text,
     alert,
+    accordion,
     link_panel,
     navigation,
     link,

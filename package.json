@@ -23,7 +23,8 @@
     "sanity:sandboxes": "yarn workspace website update:sandboxes",
     "sanity:codeexamples": "yarn workspace website update:examples",
     "sanity:colors": "yarn workspace website update:colors",
-    "lint": "yarn workspace website lint"
+    "lint": "yarn workspace website lint",
+    "lint:css": "stylelint './**/*.tsx'"
   },
   "workspaces": [
     "sanity",

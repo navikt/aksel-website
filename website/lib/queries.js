@@ -30,11 +30,24 @@ _type == "code_sandbox_ref" =>{
   ...@.ref->
 },
 _type == "color_category_ref" => {
-  "ref": @.ref->
+  "ref": @.ref->{..., description[]{
+    ...,
+    ${markDef}
+  }}
 },
 _type == "link_panel" =>{
   ...,
   internal_link-> {_id, slug}
+},
+_type == "accordion" =>{
+  ...,
+  list[]{
+    ...,
+    body[]{
+      ...,
+      ${markDef}
+    },
+  }
 },
 _type == "alert" =>{
   ...,

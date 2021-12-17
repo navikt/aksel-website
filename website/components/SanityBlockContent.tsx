@@ -20,8 +20,10 @@ import {
   Table,
   Tips,
   Sandbox,
+  Accordion,
+  ComponentOverview,
 } from ".";
-import ComponentOverview from "./component-overview";
+
 import * as Icons from "@navikt/ds-icons";
 import * as Tokens from "@navikt/ds-tokens/dist/tokens";
 
@@ -90,6 +92,7 @@ const serializers = {
     do_dont: ({ node }) => <DoDont node={node} />,
     picture: ({ node }) => <Image node={node} />,
     picture_text: ({ node }) => <ImageWithText node={node} />,
+    accordion: ({ node }) => <Accordion node={node} />,
     alert: ({ node }) => <Alert node={node} />,
     tips: ({ node }) => <Tips node={node} />,
     link_panel: ({ node }) => <LinkPanel node={node} />,

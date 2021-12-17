@@ -1,9 +1,10 @@
 import React from "react";
-import { withErrorBoundary } from "../error-boundary";
+import { withErrorBoundary } from "../website-features/error-boundary";
 import { DsColorCategories, DsColor } from "../../lib/autogen-types";
 import styled from "styled-components";
-import { Table, BodyShort, BodyLong, Detail } from "@navikt/ds-react";
+import { Table, BodyShort, Detail } from "@navikt/ds-react";
 import Color from "color";
+import { SanityBlockContent } from "../SanityBlockContent";
 
 const ScColorBox = styled.div<{ background: string; dark: boolean }>`
   background-color: ${(props) => props.background};
@@ -51,7 +52,7 @@ const ScHexColor = styled(Detail)`
 `;
 
 const ScSection = styled.div`
-  margin-bottom: 2rem;
+  margin-bottom: var(--navds-spacing-7);
 `;
 
 const ScTable = styled(Table)`
@@ -128,7 +129,7 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
 
   return (
     <ScSection>
-      {node.description ? <BodyLong>{node.description}</BodyLong> : null}
+      {node?.description && <SanityBlockContent blocks={node?.description} />}
       <ScTable>
         <Table.Header>
           <Table.Row>

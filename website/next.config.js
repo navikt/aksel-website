@@ -2,6 +2,7 @@
 /* eslint-disable no-undef */
 
 const withTM = require("next-transpile-modules")(["@navikt/ds-tokens"]);
+const oldRedirects = require("./redirects.json");
 
 module.exports = withTM({
   async redirects() {
@@ -11,6 +12,16 @@ module.exports = withTM({
         destination: "/api/preview?slug=:slug*",
         permanent: true,
       },
+      ...Object.values(oldRedirects).reduce((old, value) => {
+        return [
+          ...old,
+          ...value.sources.map((source) => ({
+            source,
+            destination: value.destitation,
+            permanent: false,
+          })),
+        ];
+      }, []),
     ];
   },
 

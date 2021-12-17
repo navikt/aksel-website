@@ -5,10 +5,11 @@ import {
   ExternalLink,
   Notes,
   Information,
+  Expand,
 } from "@navikt/ds-icons";
 import { styles, TitleRenderer } from "../../block-content";
 import { allDocumentTypes } from "../../../config";
-import { ScDraft } from "../../block-content";
+import { ScDraft, ScCode } from "../../block-content";
 
 export default {
   title: "Block Content",
@@ -65,9 +66,7 @@ export default {
             title: "Code",
             value: "code",
             blockEditor: {
-              render: (props) => (
-                <code style={{ color: "#BA3A26" }}>{props.children}</code>
-              ),
+              render: (props) => <ScCode>{props.children}</ScCode>,
             },
           },
         ],
@@ -122,6 +121,10 @@ export default {
     },
     {
       type: "picture_text",
+    },
+    {
+      type: "accordion",
+      icon: () => <Expand />,
     },
     {
       type: "tips",

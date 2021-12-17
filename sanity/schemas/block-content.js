@@ -12,6 +12,7 @@ import {
   Folder,
   Notes,
   Information,
+  Expand,
 } from "@navikt/ds-icons";
 import { KBD } from "@sanity/ui";
 import { allDocumentTypes } from "../config";
@@ -23,19 +24,21 @@ export const TitleRenderer = (props, size, level) => (
   </Heading>
 );
 
-const ScCode = styled.code`
+export const ScCode = styled.code`
   color: var(--navds-global-color-deepblue-500);
   background-color: var(--navds-global-color-deepblue-50);
   border-radius: 6px;
   font-size: 1rem;
-  padding: 0.25rem;
+  padding: 2px 0.5rem;
 `;
 
-export const ScDraft = styled.div`
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 0.25rem;
-  padding-bottom: 1rem;
+export const ScDraft = styled.span`
+  background-color: #f1f1f1;
+
+  /* margin-bottom: 1rem; */
+  padding-bottom: 2rem;
   position: relative;
+  display: inline-block;
 
   ::before {
     content: "utkast";
@@ -219,6 +222,10 @@ export default {
     {
       type: "alert",
       icon: () => <Warning />,
+    },
+    {
+      type: "accordion",
+      icon: () => <Expand />,
     },
     {
       type: "related_pages",
