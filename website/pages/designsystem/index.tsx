@@ -29,6 +29,12 @@ const ScFlex = styled.div`
 const ScFlexReverse = styled.div`
   position: relative;
   display: flex;
+  max-width: 1440px;
+`;
+
+const ScTopBg = styled.div`
+  background-color: var(--navds-semantic-color-canvas-background-light);
+  widht: 100%;
 `;
 
 const ScTitle = styled.div`
@@ -118,18 +124,20 @@ const Page = () => {
         <meta property="og:title" content="Designsystemet NAV" />
       </Head>
       <ScBg>
-        <ScFlexReverse>
-          <ScTitle>
-            <ScHeading spacing level="1" size="2xlarge">
-              Designsystemet
-              <ScBodyShort>Beta</ScBodyShort>
-            </ScHeading>
-            <BodyLong>Gjør det enkelt å lage produkter i NAV</BodyLong>
-          </ScTitle>
-          <ScIllustration>
-            <DsFrontpageIllustration />
-          </ScIllustration>
-        </ScFlexReverse>
+        <ScTopBg>
+          <ScFlexReverse>
+            <ScTitle>
+              <ScHeading spacing level="1" size="2xlarge">
+                Designsystemet
+                <ScBodyShort>Beta</ScBodyShort>
+              </ScHeading>
+              <BodyLong>Gjør det enkelt å lage produkter i NAV</BodyLong>
+            </ScTitle>
+            <ScIllustration>
+              <DsFrontpageIllustration />
+            </ScIllustration>
+          </ScFlexReverse>
+        </ScTopBg>
         <ScFlex>
           <ScDescriptionWrapper>
             <Heading spacing level="2" size="small">
