@@ -1,6 +1,11 @@
 import React from "react";
 import * as Sc from "../../components";
-import { Feedback, LayoutPicker, PreviewBanner } from "../../components";
+import {
+  Feedback,
+  LayoutPicker,
+  PreviewBanner,
+  ScrollTop,
+} from "../../components";
 import DesignsystemFooter from "../../components/layout/footer/DesignsystemFooter";
 import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
 import DesignsystemSidebar from "../../components/layout/sidebar/DesignsystemSidebar";
@@ -57,6 +62,7 @@ Page.getLayout = (page) => {
         <Sc.MainFooter>
           <Sc.Main tabIndex={-1} id="hovedinnhold">
             {page}
+            <ScrollTop />
           </Sc.Main>
           <DesignsystemFooter />
         </Sc.MainFooter>

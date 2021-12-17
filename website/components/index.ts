@@ -27,6 +27,7 @@ export { default as Lightbox } from "./website-features/lightbox";
 export { default as OverflowDetector } from "./website-features/overflow-detector";
 export { default as PreviewBanner } from "./website-features/PreviewBanner";
 export { default as RelatedPagesLink } from "./website-features/related-pages-link";
+export { default as ScrollTop } from "./website-features/scroll-top";
 export { default as Search } from "./website-features/search";
 export { default as TableOfContents } from "./website-features/table-of-contents";
 export * from "./website-features/tabs";

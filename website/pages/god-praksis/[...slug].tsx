@@ -1,6 +1,6 @@
 import React from "react";
 import * as Sc from "../../components";
-import { LayoutPicker, PreviewBanner } from "../../components";
+import { LayoutPicker, PreviewBanner, ScrollTop } from "../../components";
 import GodPraksisHeader from "../../components/layout/header/GodPraksisHeader";
 import { getClient, getGpPaths, gpDocumentBySlug } from "../../lib";
 import { GpArticlePage } from "../../lib/autogen-types";
@@ -30,6 +30,7 @@ Page.getLayout = (page) => {
         <Sc.MainFooter>
           <Sc.Main tabIndex={-1} id="hovedinnhold">
             {page}
+            <ScrollTop />
           </Sc.Main>
         </Sc.MainFooter>
       </Sc.SidebarMain>
