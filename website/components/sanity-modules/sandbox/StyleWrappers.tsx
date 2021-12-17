@@ -85,7 +85,7 @@ const ScInnerDiv = styled.div`
     padding: 1rem;
   }
 
-  > div {
+  > div:first-child {
     width: 100%;
   }
 `;
