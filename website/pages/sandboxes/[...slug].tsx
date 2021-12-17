@@ -1,8 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import Sandbox from "../../components/sanity-modules/sandbox";
 import { SandboxKeys, Sandboxes } from "../../sandbox";
-import { DsCodeSandbox } from "../../lib/autogen-types";
 
 const CodePreview = (key: string) => {
   if (!key || !(key in Sandboxes)) {
@@ -18,7 +16,6 @@ const CodePreview = (key: string) => {
     _updatedAt: "",
   };
   return <Sandbox node={node} />;
-  /* ds_code_sandbox: ({ node }) => <Sandbox node={node} />, */
 };
 
 const Page = ({ compkey }: { compkey: string }) => {
