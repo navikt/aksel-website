@@ -46,7 +46,7 @@ const ScPre = styled.pre`
 const ScDiv = styled.div<{
   fullscreen: boolean;
   inlineProps: boolean;
-  background: string;
+  background?: string;
 }>`
   display: flex;
   width: 100%;
@@ -98,7 +98,7 @@ export const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
     <ScDiv
       fullscreen={sandboxState.fullscreen}
       inlineProps={inlineProps}
-      background={sandboxState.args.background}
+      background={sandboxState.args?.background}
     >
       <ScInnerDiv>{children}</ScInnerDiv>
     </ScDiv>
