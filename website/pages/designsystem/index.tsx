@@ -182,7 +182,7 @@ const Page = () => {
               heading="Farger"
               content="Se over alle NAV sine globale og semantiske farger"
               tag="RESSURSER"
-              href="/designsystem/side/ikoner/ikons%C3%B8k"
+              href="/designsystem/side/color"
             />
           </ScCards>
         </ScFlex>

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { withErrorBoundary } from "../../website-features/error-boundary";
 import { DsColorCategories, DsColor } from "../../../lib/autogen-types";
 import styled from "styled-components";
-import { Table, BodyShort, Detail } from "@navikt/ds-react";
+import { Table, BodyShort, Detail, Modal } from "@navikt/ds-react";
 import Color from "color";
 import { SanityBlockContent } from "../../SanityBlockContent";
+import { useRouter } from "next/router";
+import ColorModal from "./ColorModal";
 
 const ScColorBox = styled.div<{ background: string; dark: boolean }>`
   background-color: ${(props) => props.background};
@@ -101,9 +103,75 @@ const ColorBox = ({ prop }: { prop: DsColor }): JSX.Element => {
 };
 
 const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
-  const SemanticTableRow = ({ prop }: { prop: DsColor }) => {
+  const [open, setOpen] = useState(false);
+  const [selectedColor, setSelectedColor] = useState<any>(null);
+  const router = useRouter();
+
+  const setQuery = useCallback((color: string) => {
+    const query = router.query;
+    query.color = color;
+    router.replace(
+      {
+        pathname: router.pathname,
+        query,
+      },
+      undefined,
+      { shallow: true }
+    );
+  }, []);
+
+  const handleSelect = useCallback((c: any) => {
+    console.log(c);
+    if (!c) {
+      return;
+    }
+    /* const logIconClick = (icon: string) => {
+      logAmplitudeEvent(AmplitudeEvents.ikonklikk, {
+        ikon: icon,
+      });
+    };
+
+    logIconClick(icon); */
+    setSelectedColor(c);
+    setOpen(true);
+    setQuery(c.full_title.slice(2));
+  }, []);
+
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedColor(null);
+
+    const query = router.query;
+    delete query["color"];
+
+    router.replace(
+      {
+        pathname: router.pathname,
+        query,
+      },
+      undefined,
+      { shallow: true }
+    );
+  };
+
+  useEffect(() => {
+    Modal.setAppElement("#__next");
+
+    router.query.color &&
+      handleSelect(
+        node.colors.find((x) => x.full_title === `--${router.query.color}`)
+      );
+  }, []);
+
+  const SemanticTableRow = ({
+    prop,
+    ...rest
+  }: {
+    prop: DsColor;
+    onClick: (c: any) => void;
+  }) => {
     return (
-      <ScTableRow>
+      <ScTableRow {...rest}>
         <ScColorCell>
           <ColorBox prop={prop} />
         </ScColorCell>
@@ -120,9 +188,15 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
     );
   };
 
-  const GlobalTableRow = ({ prop }: { prop: DsColor }) => {
+  const GlobalTableRow = ({
+    prop,
+    ...rest
+  }: {
+    prop: DsColor;
+    onClick: (c: any) => void;
+  }) => {
     return (
-      <ScTableRow>
+      <ScTableRow {...rest}>
         <ScColorCell>
           <ColorBox prop={prop} />
         </ScColorCell>
@@ -151,13 +225,26 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
         <Table.Body>
           {node.colors?.map((color) =>
             color.color_type === "semantic" ? (
-              <SemanticTableRow prop={color} key={color._key} />
+              <SemanticTableRow
+                onClick={() => handleSelect(color)}
+                prop={color}
+                key={color._key}
+              />
             ) : (
-              <GlobalTableRow prop={color} key={color._key} />
+              <GlobalTableRow
+                onClick={() => handleSelect(color)}
+                prop={color}
+                key={color._key}
+              />
             )
           )}
         </Table.Body>
       </ScTable>
+      <Modal open={open} onClose={() => handleClose()}>
+        <Modal.Content>
+          {selectedColor && <ColorModal color={selectedColor} />}
+        </Modal.Content>
+      </Modal>
     </ScSection>
   );
 };
