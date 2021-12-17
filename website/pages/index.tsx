@@ -118,7 +118,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>Verktøykassen</title>
+        <title>Verktøykassa</title>
         <meta property="og:title" content="Verktøykassen NAV" />
       </Head>
       <ScRelative>
