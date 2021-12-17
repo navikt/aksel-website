@@ -35,6 +35,7 @@ export default {
       name: "name",
       type: "string",
       validation: (Rule) => Rule.required().error("Må velge ikon-navn"),
+      initialValue: "Add",
       options: {
         list: [
           ...Object.keys(Icons).map((icon) => ({ title: icon, value: icon })),
