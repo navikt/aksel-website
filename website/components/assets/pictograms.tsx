@@ -117,7 +117,7 @@ export const IconsPictogram = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g clipPath="url(#clip0_2861_23787)">
+    <g clipPath="url(#clip0_2861_23787)" className="parent-circle">
       <circle cx="48" cy="48" r="32" fill="#CCE1FF" className="circle" />
       <circle
         cx="24.5406"

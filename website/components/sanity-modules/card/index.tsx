@@ -61,15 +61,20 @@ const ScCard = styled.a`
     svg > * {
       transition: filter 200ms ease-in-out;
     }
-    svg > .circle {
+    svg .circle {
       transition: fill 200ms ease-in-out;
     }
 
-    svg > *:not(.circle) {
+    svg > *:not(.circle):not(.parent-circle) {
       filter: invert(1);
     }
 
-    .circle {
+    svg > .parent-circle > *:not(.circle) {
+      filter: invert(1);
+    }
+
+    .circle,
+    > * .circle {
       fill: var(--navds-semantic-color-link);
     }
   }
