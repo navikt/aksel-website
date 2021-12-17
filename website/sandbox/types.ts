@@ -5,6 +5,7 @@ export interface SandboxComponentProps {
 export interface SandboxComponentArgs {
   props?: SandboxComponentProps;
   variants?: string[];
+  background?: string;
 }
 
 export interface SandboxComponent {

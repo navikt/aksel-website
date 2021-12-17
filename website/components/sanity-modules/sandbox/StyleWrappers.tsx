@@ -43,10 +43,15 @@ const ScPre = styled.pre`
   }
 `;
 
-const ScDiv = styled.div<{ fullscreen: boolean; inlineProps: boolean }>`
+const ScDiv = styled.div<{
+  fullscreen: boolean;
+  inlineProps: boolean;
+  background: string;
+}>`
   display: flex;
   width: 100%;
-  background-color: var(--navds-semantic-color-canvas-background);
+  background-color: ${(props) =>
+    props.background ?? "var(--navds-semantic-color-canvas-background)"};
   border: 1px solid var(--navds-global-color-gray-200);
   border-top: none;
   overflow-x: auto;
@@ -83,8 +88,13 @@ const ScInnerDiv = styled.div`
 export const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
   const { sandboxState } = useContext(SandboxContext);
   const inlineProps = sandboxState.inlineSettings && !!sandboxState.args;
+
   return (
-    <ScDiv fullscreen={sandboxState.fullscreen} inlineProps={inlineProps}>
+    <ScDiv
+      fullscreen={sandboxState.fullscreen}
+      inlineProps={inlineProps}
+      background={sandboxState.args.background}
+    >
       <ScInnerDiv>{children}</ScInnerDiv>
     </ScDiv>
   );
