@@ -163,9 +163,21 @@ const IconSearch = () => {
     logIconClick(icon);
   }, []);
 
+  const handlePageEntry = useCallback((icon: string) => {
+    const logIconClick = (icon: string) => {
+      logAmplitudeEvent(AmplitudeEvents.ikonklikk, {
+        ikon: icon,
+      });
+    };
+
+    setSelectedIcon(icon);
+    setOpen(true);
+    logIconClick(icon);
+  }, []);
+
   useEffect(() => {
     Modal.setAppElement("#__next");
-    router.query.icon && handleSelect(router.query.icon as string);
+    router.query.icon && handlePageEntry(router.query.icon as string);
     setVisibleIcons(meta.filter((x) => "Outline" === getTag(x.name)));
   }, []);
 

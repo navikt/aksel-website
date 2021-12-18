@@ -40,7 +40,6 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
   }, []);
 
   const handleSelect = useCallback((c: any) => {
-    console.log(c);
     if (!c) {
       return;
     }
@@ -54,6 +53,14 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
     setSelectedColor(c);
     setOpen(true);
     setQuery(c.full_title.slice(2));
+  }, []);
+
+  const handlePageEntry = useCallback((c: any) => {
+    if (!c) {
+      return;
+    }
+    setSelectedColor(c);
+    setOpen(true);
   }, []);
 
   const handleClose = () => {
@@ -75,12 +82,14 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
 
   useEffect(() => {
     Modal.setAppElement("#__next");
-
-    /* router.query.color &&
-      handleSelect(
-        node.colors.find((x) => x.full_title === `--${router.query.color}`)
-      ); */
   }, []);
+
+  useEffect(() => {
+    router.query.color &&
+      handlePageEntry(
+        node.colors.find((x) => x.full_title === `--${router.query.color}`)
+      );
+  }, [router.query]);
 
   node.colors.sort(compare);
 
