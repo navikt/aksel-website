@@ -10,13 +10,13 @@ const copyCode = (content: string) =>
     format: "text/plain",
   });
 
-const ScButton = styled.button`
+const ScButton = styled.button<{ inverted: boolean }>`
   ${S.ButtonCss}
-  color: var(--navds-semantic-color-text-inverted);
   position: absolute;
   top: 4px;
   right: 8px;
   border-radius: 4px;
+  color: var(--navds-semantic-color-text-inverted);
   background-color: var(--navds-semantic-color-component-background-inverted);
   height: 48px;
   width: 4rem;
@@ -41,9 +41,27 @@ const ScButton = styled.button`
   > svg {
     font-size: 1.5rem;
   }
+
+  ${(props) =>
+    props.inverted &&
+    `
+    color: var(--navds-semantic-color-text);
+    background-color: var(--navds-semantic-color-component-background);
+
+    :hover {
+      /* background-color: var(--navds-semantic-color-interaction-primary-hover-subtle); */
+      background-color: var(--navds-semantic-color-component-background);
+      color: var(--navds-semantic-color-text);
+      text-decoration: underline;
+    }
+
+    :focus {
+      outline: 2px solid var(--navds-semantic-color-focus);
+    }
+  `}
 `;
 
-const ScTabButton = styled.button`
+const ScTabButton = styled.button<{ inverted: boolean }>`
   ${S.ButtonCss}
   display: flex;
   align-items: center;
@@ -71,10 +89,11 @@ const ScTabButton = styled.button`
 interface CopyButtonProps {
   content: string;
   inTabs?: boolean;
+  inverted?: boolean;
 }
 
 const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
-  ({ content, inTabs }, ref) => {
+  ({ content, inTabs, inverted = false }, ref) => {
     const [active, setActive] = useState(false);
 
     const timeoutRef = useRef<NodeJS.Timeout>();
@@ -100,6 +119,7 @@ const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
         role={active ? "alert" : undefined}
         className="navds-body-short"
         onClick={handleCopy}
+        inverted={inverted}
       >
         {active ? <SuccessStroke aria-label="Kopierte kodesnutt" /> : "Copy"}
       </Button>

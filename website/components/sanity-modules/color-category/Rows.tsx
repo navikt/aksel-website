@@ -46,7 +46,7 @@ const WhiteColorBox = styled(ScColorBox)`
 
 const ColorBox = ({ prop }: { prop: DsColor }): JSX.Element => {
   const color = Color(prop.color_value);
-  const Box = color.luminosity() === 1.0 ? WhiteColorBox : ScColorBox;
+  const Box = color.luminosity() > 0.8 ? WhiteColorBox : ScColorBox;
   if (prop.color_type === "global") {
     return (
       <Box background={color.hex()} dark={color.isDark()}>
