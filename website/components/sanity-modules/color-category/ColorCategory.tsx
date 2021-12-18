@@ -2,6 +2,7 @@ import { BodyShort, Modal, Table } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
+import { AmplitudeEvents, useAmplitude } from "../..";
 import { DsColorCategories } from "../../../lib/autogen-types";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import { withErrorBoundary } from "../../website-features/error-boundary";
@@ -25,6 +26,7 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
   const [open, setOpen] = useState(false);
   const [selectedColor, setSelectedColor] = useState<any>(null);
   const router = useRouter();
+  const { logAmplitudeEvent } = useAmplitude();
 
   const setQuery = useCallback((color: string) => {
     const query = router.query;
@@ -39,29 +41,37 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
     );
   }, []);
 
-  const handleSelect = useCallback((c: any) => {
-    if (!c) {
-      return;
-    }
-    /* const logIconClick = (icon: string) => {
-      logAmplitudeEvent(AmplitudeEvents.ikonklikk, {
-        ikon: icon,
-      });
-    };
-
-    logIconClick(icon); */
-    setSelectedColor(c);
-    setOpen(true);
-    setQuery(c.full_title.slice(2));
+  const logColorClick = useCallback((c: any) => {
+    logAmplitudeEvent(AmplitudeEvents.fargeklikk, {
+      farge: c.full_title,
+    });
   }, []);
 
-  const handlePageEntry = useCallback((c: any) => {
-    if (!c) {
-      return;
-    }
-    setSelectedColor(c);
-    setOpen(true);
-  }, []);
+  const handleSelect = useCallback(
+    (c: any) => {
+      if (!c) {
+        return;
+      }
+
+      logColorClick(c);
+      setSelectedColor(c);
+      setOpen(true);
+      setQuery(c.full_title.slice(2));
+    },
+    [logColorClick]
+  );
+
+  const handlePageEntry = useCallback(
+    (c: any) => {
+      if (!c) {
+        return;
+      }
+      logColorClick(c);
+      setSelectedColor(c);
+      setOpen(true);
+    },
+    [logColorClick]
+  );
 
   const handleClose = () => {
     setOpen(false);

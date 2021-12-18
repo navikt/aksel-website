@@ -150,30 +150,30 @@ const IconSearch = () => {
     );
   }, []);
 
-  const handleSelect = useCallback((icon: string) => {
-    const logIconClick = (icon: string) => {
-      logAmplitudeEvent(AmplitudeEvents.ikonklikk, {
-        ikon: icon,
-      });
-    };
-
-    setSelectedIcon(icon);
-    setOpen(true);
-    setQuery(icon);
-    logIconClick(icon);
+  const logIconClick = useCallback((icon: string) => {
+    logAmplitudeEvent(AmplitudeEvents.ikonklikk, {
+      ikon: icon,
+    });
   }, []);
 
-  const handlePageEntry = useCallback((icon: string) => {
-    const logIconClick = (icon: string) => {
-      logAmplitudeEvent(AmplitudeEvents.ikonklikk, {
-        ikon: icon,
-      });
-    };
+  const handleSelect = useCallback(
+    (icon: string) => {
+      setSelectedIcon(icon);
+      setOpen(true);
+      setQuery(icon);
+      logIconClick(icon);
+    },
+    [logIconClick]
+  );
 
-    setSelectedIcon(icon);
-    setOpen(true);
-    logIconClick(icon);
-  }, []);
+  const handlePageEntry = useCallback(
+    (icon: string) => {
+      setSelectedIcon(icon);
+      setOpen(true);
+      logIconClick(icon);
+    },
+    [logIconClick]
+  );
 
   useEffect(() => {
     Modal.setAppElement("#__next");
