@@ -98,7 +98,7 @@ export const ScHeading = styled(Heading)`
     left: 0;
     top: 0;
 
-    transform: translateX(-50%) translateY(-32%) rotateZ(-10deg);
+    transform: translateX(-45%) translateY(-28%) rotateZ(-10deg) scale(0.7);
   }
 `;
 
