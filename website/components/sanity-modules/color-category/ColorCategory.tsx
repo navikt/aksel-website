@@ -66,7 +66,6 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
       if (!c) {
         return;
       }
-      logColorClick(c);
       setSelectedColor(c);
       setOpen(true);
     },

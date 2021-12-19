@@ -170,7 +170,6 @@ const IconSearch = () => {
     (icon: string) => {
       setSelectedIcon(icon);
       setOpen(true);
-      logIconClick(icon);
     },
     [logIconClick]
   );
