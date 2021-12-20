@@ -1,6 +1,7 @@
 import ButtonSandbox from "./button";
 import PlainSandbox from "./plain";
 import TableSandbox from "./table";
+import CheckboxSandbox from "./checkbox";
 import kebabCase from "lodash.kebabcase";
 import { SandboxComponent } from "./types";
 
@@ -8,6 +9,7 @@ const allSandboxes = {
   ButtonSandbox,
   PlainSandbox,
   TableSandbox,
+  CheckboxSandbox,
 };
 
 export const Sandboxes = Object.keys(allSandboxes).reduce((prev, y) => {

@@ -68,6 +68,9 @@ const ScSettingsPanel = styled.div<{ open: boolean; inlinePanel: boolean }>`
     display: flex;
     flex-direction: column;
   }
+  > * > .navds-checkbox ~ .navds-checkbox {
+    margin-top: -1rem;
+  }
 `;
 
 const SettingsPanel = () => {

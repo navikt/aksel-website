@@ -34,7 +34,7 @@ const Page = () => {
     <Wrapper>
       <InnerWrapper>
         <Heading level="1" size="medium" spacing>
-          Alle kode-eksempler ({`${SandboxKeys.length}`})
+          Alle sandbox-eksempler ({`${SandboxKeys.length}`})
         </Heading>
         <TextField
           label="Filtrer"
