@@ -22,6 +22,11 @@ const ScTable = styled(Table)`
   table-layout: fixed;
 `;
 
+const ScGlobalWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
   const [open, setOpen] = useState(false);
   const [selectedColor, setSelectedColor] = useState<any>(null);
@@ -105,37 +110,41 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
   return (
     <ScSection>
       {node?.description && <SanityBlockContent blocks={node?.description} />}
-      <ScTable>
-        <Table.Header>
-          <Table.Row>
-            <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
-              Token
-            </ScHeaderCell>
-            {node.colors[0].color_type === "semantic" && (
+      {node.colors[0].color_type === "global" ? (
+        <ScGlobalWrapper>
+          {node.colors?.map((color) => (
+            <GlobalTableRow
+              onClick={() => handleSelect(color)}
+              prop={color}
+              key={color._key}
+            />
+          ))}
+        </ScGlobalWrapper>
+      ) : (
+        <ScTable>
+          <Table.Header>
+            <Table.Row>
               <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
-                Rolle
+                Token
               </ScHeaderCell>
-            )}
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {node.colors?.map((color) =>
-            color.color_type === "semantic" ? (
+              {node.colors[0].color_type === "semantic" && (
+                <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
+                  Rolle
+                </ScHeaderCell>
+              )}
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {node.colors?.map((color) => (
               <SemanticTableRow
                 onClick={() => handleSelect(color)}
                 prop={color}
                 key={color._key}
               />
-            ) : (
-              <GlobalTableRow
-                onClick={() => handleSelect(color)}
-                prop={color}
-                key={color._key}
-              />
-            )
-          )}
-        </Table.Body>
-      </ScTable>
+            ))}
+          </Table.Body>
+        </ScTable>
+      )}
       <Modal open={open} onClose={() => handleClose()}>
         <Modal.Content>
           {selectedColor && <ColorModal color={selectedColor} />}

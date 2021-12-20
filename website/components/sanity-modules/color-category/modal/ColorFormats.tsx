@@ -10,10 +10,12 @@ const format = (val: "hex" | "rgb" | "cmyk" | "hsla", color: DsColor) => {
       return Color(color.color_value).hex().toString();
     case "rgb":
       return Color(color.color_value).rgb().toString();
-    case "cmyk":
-      return Color(color.color_value).cmyk().round().toString();
     case "hsla":
       return Color(color.color_value).hsl().round().toString();
+    /* case "cmyk":
+          return JSON.stringify(Color(color.color_value).cmyk().round().color)
+            .replace("[", "")
+            .replace("]", ""); */
     default:
       return color.color_value;
   }
@@ -57,10 +59,15 @@ const ColorFormats = ({ color }: { color: DsColor }) => {
         <ScCode>{format("rgb", color)}</ScCode>
       </ScBox>
       <ScBox>
-        <ScName size="small">HSLA:</ScName>
+        <ScName size="small">HSL:</ScName>
         <CopyButton content={format("hsla", color)} inverted />
         <ScCode>{format("hsla", color)}</ScCode>
       </ScBox>
+      {/* <ScBox>
+        <ScName size="small">CMYK:</ScName>
+        <CopyButton content={format("cmyk", color)} inverted />
+        <ScCode>{format("cmyk", color)}</ScCode>
+      </ScBox> */}
     </ScWrapper>
   );
 };

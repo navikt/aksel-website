@@ -44,7 +44,7 @@ const tokenSnippet = (color: DsColor): CodeSnippet => ({
   _type: "code_snippet",
   title: `Token-snippet for ${color.title} icon`,
   code: {
-    language: "jsx",
+    language: "css",
     code: `/* CSS */
 var(${color.full_title});
 

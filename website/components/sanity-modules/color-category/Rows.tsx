@@ -21,7 +21,13 @@ const ScDataCell = styled(Table.DataCell)`
 `;
 
 const ScTableRow = styled(Table.Row)`
-  font-size: 16px;
+  font-size: 1rem;
+
+  :focus {
+    outline: none;
+    box-shadow: var(--navds-shadow-focus);
+    z-index: 1;
+  }
 `;
 
 const ScColorBox = styled.div<{ background: string; dark: boolean }>`
@@ -42,6 +48,28 @@ const ScColorBox = styled.div<{ background: string; dark: boolean }>`
 
 const WhiteColorBox = styled(ScColorBox)`
   border: 1px solid var(--navds-semantic-color-divider);
+`;
+
+const ScGlobalBlock = styled.button`
+  white-space: nowrap;
+  vertical-align: top;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin: 0 -1rem;
+  background: none;
+  border: none;
+  appearance: none;
+  text-align: left;
+  max-width: var(--text-max-width);
+
+  :hover {
+    background-color: var(--navds-semantic-color-canvas-background);
+  }
+
+  :focus {
+    outline: none;
+    box-shadow: var(--navds-shadow-focus);
+    z-index: 1;
+  }
 `;
 
 const ColorBox = ({ prop }: { prop: DsColor }): JSX.Element => {
@@ -70,11 +98,9 @@ export const GlobalTableRow = ({
   onClick: (c: any) => void;
 }) => {
   return (
-    <ScTableRow {...rest}>
-      <ScColorCell>
-        <ColorBox prop={prop} />
-      </ScColorCell>
-    </ScTableRow>
+    <ScGlobalBlock {...rest}>
+      <ColorBox prop={prop} />
+    </ScGlobalBlock>
   );
 };
 
@@ -86,7 +112,7 @@ export const SemanticTableRow = ({
   onClick: (c: any) => void;
 }) => {
   return (
-    <ScTableRow {...rest}>
+    <ScTableRow tabIndex={0} forwardedAs="button" {...rest}>
       <ScColorCell>
         <ColorBox prop={prop} />
       </ScColorCell>
