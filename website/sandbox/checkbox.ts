@@ -5,7 +5,7 @@ const CheckboxSandbox: SandboxComponent = (props) => {
   const propSize = props?.size ? ` size="${props.size}"` : "";
   const propDesc = props?.description ? ` description="Beskrivelse"` : "";
   const propErrorGruppe =
-    props?.error && props.error === "Gruppe" ? ` error="Feilmdeling"` : "";
+    props?.error && props.error === "Gruppe" ? ` error="Feilmelding"` : "";
   const propErrorEnkel =
     props?.error && props.error === "Enkel" ? ` error` : "";
   const propTekstHideLegend = props?.hideLegend ? ` hideLegend` : "";
