@@ -69,7 +69,7 @@ const ScSettingsPanel = styled.div<{ open: boolean; inlinePanel: boolean }>`
     flex-direction: column;
   }
   > * > .navds-switch ~ .navds-switch {
-    margin-top: -1rem;
+    margin-top: -0.5rem;
   }
 `;
 
