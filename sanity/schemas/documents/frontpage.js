@@ -6,15 +6,9 @@ const prefix = "designsystem"; */
 
 export default {
   title: "Forside",
-  name: "ds_frontpage",
+  name: "vk_frontpage",
   type: "document",
   fields: [
-    {
-      name: "body",
-      type: "blockContent_simple",
-      title: "Innhold",
-      validation: (Rule) => Rule.required(),
-    },
     {
       name: "cards",
       type: "array",
@@ -26,20 +20,32 @@ export default {
           type: "object",
           fields: [
             {
-              title: "Lenke",
-              name: "category",
+              title: "Kategori",
+              name: "category_ref",
               type: "reference",
-              to: [
-                { type: "ds_component_page" },
-                { type: "ds_article_page" },
-                { type: "ds_tabbed_article_page" },
-              ],
-              validation: (Rule) => Rule.required(),
+              to: [{ type: "main_categories" }],
+              validation: (Rule) =>
+                Rule.required().error("Card må ha en hovedkategori"),
+            },
+            {
+              title: "Lenke url",
+              name: "link",
+              type: "url",
+              validation: (Rule) =>
+                Rule.required().error("Card må ha en lenke url"),
+            },
+            {
+              title: "Side under design.nav.no",
+              name: "internal",
+              type: "boolean",
+              initialValue: true,
             },
             {
               title: "Tittel",
               name: "title",
               type: "string",
+              validation: (Rule) =>
+                Rule.required().error("Card må ha en Tittel"),
             },
             {
               title: "Innhold",

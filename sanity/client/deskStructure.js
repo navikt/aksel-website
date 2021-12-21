@@ -194,14 +194,6 @@ export default () =>
                         ),
                     ]);
                 }),
-              /* S.listItem()
-                .title("Forside")
-                .icon(() => <Picture />)
-                .child(
-                  S.document()
-                    .schemaType("ds_frontpage")
-                    .documentId("frontpage_designsystem")
-                ), */
               S.listItem()
                 .title("Navigasjon")
                 .icon(() => <Place />)
@@ -209,6 +201,14 @@ export default () =>
                   S.document()
                     .schemaType("ds_navigation")
                     .documentId("ds_navigationid")
+                ),
+              S.listItem()
+                .title("Forside")
+                .icon(() => <Picture />)
+                .child(
+                  S.document()
+                    .schemaType("ds_frontpage")
+                    .documentId("frontpage_designsystem")
                 ),
               S.divider(),
               S.listItem()
@@ -295,15 +295,15 @@ export default () =>
                     .schemaType("gp_situations")
                     .documentId("gp_situation_doc")
                 ),
-              /* S.listItem()
-                .title("Forside")
-                .icon(() => <Picture />)
-                .child(
-                  S.document()
-                    .schemaType("gp_frontpage")
-                    .documentId("frontpage_god_praksis")
-                ), */
             ])
+        ),
+      S.listItem()
+        .title("Forside")
+        .icon(() => <Picture />)
+        .child(
+          S.document()
+            .schemaType("vk_frontpage")
+            .documentId("frontpage_vk_praksis")
         ),
       S.divider(),
       ...S.documentTypeListItems().filter(

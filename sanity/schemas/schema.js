@@ -51,10 +51,12 @@ import relatedPages from "./objects/related-pages";
 import table, { Rows, Cells } from "./objects/table";
 import tips from "./objects/tips";
 import mainCategories from "./documents/designsystem/main-categories";
+import frontpage from "./documents/frontpage";
 
 export default createSchema({
   name: "default",
   types: schemaTypes.concat([
+    frontpage,
     mainCategories,
     designsystem_component_page,
     designsystem_article_page,
