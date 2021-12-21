@@ -37,6 +37,60 @@ export type {
 };
 
 /**
+ * Forside
+ *
+ *
+ */
+export interface VkFrontpage extends SanityDocument {
+  _type: "vk_frontpage";
+
+  /**
+   * Cards — `array`
+   *
+   *
+   */
+  cards?: Array<
+    SanityKeyed<{
+      _type: "card";
+      /**
+       * Kategori — `reference`
+       *
+       *
+       */
+      category_ref?: SanityReference<MainCategories>;
+
+      /**
+       * Lenke url — `url`
+       *
+       *
+       */
+      link?: string;
+
+      /**
+       * Side under design.nav.no — `boolean`
+       *
+       *
+       */
+      internal?: boolean;
+
+      /**
+       * Tittel — `string`
+       *
+       *
+       */
+      title?: string;
+
+      /**
+       * Innhold — `string`
+       *
+       *
+       */
+      content?: string;
+    }>
+  >;
+}
+
+/**
  * Hovedkategorier
  *
  *
@@ -480,11 +534,44 @@ export interface DsFrontpage extends SanityDocument {
   _type: "ds_frontpage";
 
   /**
-   * Innhold — `string`
+   * Innhold — `blockContent_simple`
    *
    *
    */
-  content?: string;
+  body?: BlockContentSimple;
+
+  /**
+   * Cards — `array`
+   *
+   *
+   */
+  cards?: Array<
+    SanityKeyed<{
+      _type: "card";
+      /**
+       * Lenke — `reference`
+       *
+       *
+       */
+      category?: SanityReference<
+        DsComponentPage | DsArticlePage | DsTabbedArticlePage
+      >;
+
+      /**
+       * Tittel — `string`
+       *
+       *
+       */
+      title?: string;
+
+      /**
+       * Innhold — `string`
+       *
+       *
+       */
+      content?: string;
+    }>
+  >;
 }
 
 /**
@@ -1761,6 +1848,7 @@ export type Tips = {
 };
 
 export type Documents =
+  | VkFrontpage
   | MainCategories
   | DsComponentPage
   | DsArticlePage
