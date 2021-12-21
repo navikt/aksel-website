@@ -1,9 +1,3 @@
-/* import { documentMetadata } from "../templates/document-metadata-template";
-import { documentInformation } from "../templates/document-template";
-import { defaultPreview } from "../templates/document-preview-template";
-
-const prefix = "designsystem"; */
-
 export default {
   title: "Forside",
   name: "vk_frontpage",
@@ -58,4 +52,7 @@ export default {
       validation: (Rule) => Rule.required(),
     },
   ],
+  preview: {
+    prepare: () => ({ title: "Forside verktøykassen" }),
+  },
 };
