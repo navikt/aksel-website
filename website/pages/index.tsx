@@ -1,26 +1,22 @@
-import { BodyShort, Ingress, Link } from "@navikt/ds-react";
+import { Ingress, Link } from "@navikt/ds-react";
 import Head from "next/head";
+import NextLink from "next/link";
 import React, { useContext, useEffect } from "react";
-import * as Sc from "../components";
+import Snowfall from "react-snowfall";
 import styled from "styled-components";
+import * as Sc from "../components";
 import {
   AmplitudeEvents,
-  BrandPictogram,
-  CardOld as Card,
-  DsPictogram,
-  GpPictogram,
+  Card,
   LayoutContext,
   NAVLogoDark,
   SantaHat,
-  SecurityPictogram,
   useAmplitude,
-  UuPictogram,
 } from "../components";
-import { ScBodyShort, ScHeading } from "./designsystem";
-import NextLink from "next/link";
 import FrontpageFooter from "../components/layout/footer/FrontpageFooter";
-
-import Snowfall from "react-snowfall";
+import { getClient, vkFrontpageQuery } from "../lib";
+import { VkFrontpage } from "../lib/autogen-types";
+import { ScBodyShort, ScHeading } from "./designsystem";
 
 const ScIntro = styled.div`
   margin: 0 auto;
@@ -105,7 +101,7 @@ const ScRelative = styled.div`
   position: relative;
 `;
 
-const Page = () => {
+const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
   const { logAmplitudeEvent } = useAmplitude();
 
   const context = useContext(LayoutContext);
@@ -116,12 +112,14 @@ const Page = () => {
     });
   }, []);
 
+  console.log(props.page?.cards);
   return (
     <>
       <Head>
         <title>Verktøykassa</title>
         <meta property="og:title" content="Verktøykassen NAV" />
       </Head>
+      {props.preview && <Sc.PreviewBanner />}
       <ScRelative>
         <Snowfall
           color="#dee4fd"
@@ -149,45 +147,15 @@ const Page = () => {
           </ScIntro>
           <ScNav aria-label="Portal navigasjon">
             <ScDiv>
-              <Card
-                pictogram={<BrandPictogram />}
-                heading="Brand"
-                content="Brand og visuell profil basert på vår visjon og våre verdier"
-                href="https://identitet.nav.no/"
-              />
-              <Card
-                pictogram={<DsPictogram />}
-                heading="Designsystem"
-                content="Se forhåndsvisninger og kode-eksempler for alle våre komponenter."
-                href="/designsystem"
-              />
-              <Card
-                pictogram={<UuPictogram />}
-                heading="Universell utforming"
-                content="Gjør det enklere å lage produkter i NAV."
-                href="https://navikt.github.io/uu/"
-              />
-              <Card
-                pictogram={<GpPictogram />}
-                heading="God praksis"
-                content="Gjør det enklere å lage produkter i NAV."
-                href="https://old-design-nav.vercel.app/god-praksis"
-              />
-              <Card
-                pictogram={<SecurityPictogram />}
-                heading="Security Champions Playbook"
-                content={
-                  <>
-                    <BodyShort spacing as="span">
-                      Hvordan vi utvikler sikker software i NAV.
-                    </BodyShort>
-                    <BodyShort as="span">
-                      (Krever Github-bruker i navikt org)
-                    </BodyShort>
-                  </>
-                }
-                href="https://improved-train-2f244007.pages.github.io/"
-              />
+              {props?.page?.cards &&
+                props.page.cards.map((card) => (
+                  <Card
+                    key={card._key}
+                    node={card}
+                    categoryRef={card.category_ref}
+                    href={card.link}
+                  />
+                ))}
             </ScDiv>
           </ScNav>
         </ScFrontpage>
@@ -219,8 +187,14 @@ export const getStaticProps = async ({
 }: {
   preview?: boolean;
 }) => {
+  const client = getClient(preview);
+
+  let page = await client.fetch(vkFrontpageQuery);
+  page = page?.find((item) => item._id.startsWith(`drafts.`)) || page?.[0];
+
   return {
     props: {
+      page: page ?? null,
       slug: "/",
       validPath: true,
       isDraft: false,

@@ -100,6 +100,17 @@ ${markDef}
 
 export const allDocuments = `*[]{...,'slug': slug.current }`;
 
+export const vkFrontpageQuery = `*[_id == "frontpage_vk_praksis"]
+{
+ ...,
+  cards[]{
+    _type == "card" =>{
+      ...,
+      category_ref->{...}
+    }
+  }
+}`;
+
 export const changelogQuery = `*[_type == "ds_changelog"]{
   ...,
   body[]{

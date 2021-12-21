@@ -135,8 +135,6 @@ const Page = (props: {
     });
   }, []);
 
-  /* console.log(pageProps); */
-
   return (
     <>
       <Head>

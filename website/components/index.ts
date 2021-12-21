@@ -6,7 +6,6 @@ export { default as LayoutPicker } from "./layout/TemplatePicker";
 export { default as Accordion } from "./sanity-modules/accordion";
 export { default as Alert } from "./sanity-modules/alert";
 export { default as Card } from "./sanity-modules/card";
-export { default as CardOld } from "./sanity-modules/card/card-old";
 export * from "./sanity-modules/code";
 export { default as DoDont } from "./sanity-modules/dodont";
 export { default as IconSearch } from "./sanity-modules/icon-search";

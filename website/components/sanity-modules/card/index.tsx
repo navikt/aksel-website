@@ -82,10 +82,12 @@ const Card = ({
   node,
   tag,
   categoryRef,
+  href,
 }: {
   node: DsFrontPageCardT;
   tag?: boolean;
   categoryRef?: any;
+  href?: string;
 }) => {
   const { logAmplitudeEvent } = useAmplitude();
   const { pageProps } = useContext(PagePropsContext);
@@ -132,7 +134,7 @@ const Card = ({
   }
 
   return (
-    <NextLink passHref href={`/${node?.link_ref?.slug}`}>
+    <NextLink passHref href={href ?? `/${node?.link_ref?.slug}`}>
       <ScCard onClick={(e) => logNavigation(e)}>
         {imageProps && (
           <ScPictogram>
