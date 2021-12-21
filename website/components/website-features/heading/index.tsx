@@ -36,7 +36,11 @@ const LevelTwoHeading = ({
     return null;
   }
 
-  const slug = slugger.slug(children.toString());
+  const cleanedChildren = children
+    .filter((x) => typeof x === "string")
+    .filter((x) => !!x);
+
+  const slug = slugger.slug(cleanedChildren.toString());
 
   const copyAnchor = (id: string): void => {
     setOpenPopover(true);
@@ -45,10 +49,6 @@ const LevelTwoHeading = ({
       format: "text/plain",
     });
   };
-
-  const cleanedChildren = children
-    .filter((x) => typeof x === "string")
-    .filter((x) => !!x);
 
   if (cleanedChildren.length == 0) {
     return null;
