@@ -50,10 +50,12 @@ import spacing from "./objects/spacing";
 import relatedPages from "./objects/related-pages";
 import table, { Rows, Cells } from "./objects/table";
 import tips from "./objects/tips";
+import mainCategories from "./documents/designsystem/main-categories";
 
 export default createSchema({
   name: "default",
   types: schemaTypes.concat([
+    mainCategories,
     designsystem_component_page,
     designsystem_article_page,
     designsystem_tabbed_article_page,

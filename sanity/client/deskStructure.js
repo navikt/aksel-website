@@ -220,6 +220,10 @@ export default () =>
                     .documentId("ds_component_overview_id")
                 ),
               S.listItem()
+                .title("Hovedkategorier")
+                .icon(() => <Folder />)
+                .child(S.documentTypeList("main_categories")),
+              S.listItem()
                 .title("Changelog")
                 .icon(() => <Historic />)
                 .child(S.documentTypeList("ds_changelog")),
@@ -321,6 +325,7 @@ export default () =>
             "gp_frontpage",
             "gp_situations",
             "vk_frontpage",
+            "main_categories",
             "metadata",
           ].includes(listItem.getId())
       ),
