@@ -1,4 +1,4 @@
-import { Checkbox, Label, Select, TextField } from "@navikt/ds-react";
+import { Label, Select, TextField, Switch } from "@navikt/ds-react";
 import React, { useContext } from "react";
 import { SandboxContext } from ".";
 import { ScToggle, ScToggleGroup } from "../icon-search/Filter";
@@ -141,7 +141,7 @@ export const StringComp = ({ name }: { name: string }) => {
 export const BooleanComp = ({ name }: { name: string }) => {
   const { sandboxState, setSandboxState } = useContext(SandboxContext);
   return (
-    <Checkbox
+    <Switch
       checked={sandboxState.propsState.props[name] as boolean}
       onChange={(e) =>
         setSandboxState({
@@ -157,6 +157,6 @@ export const BooleanComp = ({ name }: { name: string }) => {
       }
     >
       {name}
-    </Checkbox>
+    </Switch>
   );
 };
