@@ -119,6 +119,7 @@ export const Tabs = ({
                   className="vk-tab_link"
                   ref={tab.ref}
                   data-selected={tab.active}
+                  onClick={() => window && window.scrollTo(0, 0)}
                 >
                   {tab.name}
                 </S.A>
