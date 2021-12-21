@@ -20,6 +20,19 @@ export function documentMetadata(docType) {
         to: [{ type: "editor" }],
       },
       {
+        title: "Redaktør/Kontakt",
+        name: "contacts",
+        type: "reference",
+        to: [{ type: "editor" }],
+      },
+      {
+        title: "Bidragsytere",
+        description: "Legg til de som har bidratt med denne siden!",
+        name: "contributors",
+        type: "array",
+        of: [{ type: "reference", to: [{ type: "editor" }] }],
+      },
+      {
         title: "Dokument type",
         name: "doctype",
         type: "string",
