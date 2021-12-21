@@ -1,9 +1,13 @@
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import NextLink from "next/link";
+import NextImage from "next/image";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAmplitude, AmplitudeEvents } from "../..";
+import { DsFrontPageCardT, useSanityImage } from "../../../lib";
+import { PagePropsContext } from "../../../pages/_app";
+import { withErrorBoundary } from "../../website-features/error-boundary";
 
 const ScCard = styled.a`
   min-height: 22rem;
@@ -16,11 +20,8 @@ const ScCard = styled.a`
   padding: 3rem 2rem 2rem 2rem;
   border-radius: 4px;
   background-color: var(--navds-semantic-color-canvas-background-light);
-  box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
-    0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
+  box-shadow: var(--navds-shadow-card);
   position: relative;
-
-  transition: background-color 200ms ease-in-out;
 
   @media (max-width: 564px) {
     padding: 2rem 1rem 1rem 1rem;
@@ -35,48 +36,17 @@ const ScCard = styled.a`
     }
   }
 
-  :hover:active {
-    > .navds-heading {
-      color: var(--navds-semantic-color-text-inverted);
-    }
-  }
-
   :focus {
     outline: none;
-    color: var(--navds-semantic-color-link);
+    box-shadow: var(--navds-shadow-focus);
+
     > * {
       text-decoration: none;
     }
   }
 
   :active {
-    color: var(--navds-semantic-color-text-inverted);
-    border-color: transparent;
-    background-color: var(--navds-global-color-blue-700);
-
-    > * {
-      color: var(--navds-semantic-color-text-inverted);
-    }
-
-    svg > * {
-      transition: filter 200ms ease-in-out;
-    }
-    svg .circle {
-      transition: fill 200ms ease-in-out;
-    }
-
-    svg > *:not(.circle):not(.parent-circle) {
-      filter: invert(1);
-    }
-
-    svg > .parent-circle > *:not(.circle) {
-      filter: invert(1);
-    }
-
-    .circle,
-    > * .circle {
-      fill: var(--navds-semantic-color-link);
-    }
+    color: var(--navds-semantic-color-link);
   }
 
   h2 {
@@ -91,10 +61,6 @@ const ScPictogram = styled.div`
   align-self: center;
   margin-bottom: 1.5rem;
   flex-shrink: 0;
-
-  svg {
-    font-size: 3rem;
-  }
 `;
 
 const ScContent = styled(BodyShort)`
@@ -109,23 +75,22 @@ const ScTag = styled(Detail)`
   position: absolute;
   bottom: 1.5rem;
   color: var(--navds-semantic-color-text-muted);
+  text-transform: uppercase;
 `;
 
 const Card = ({
-  href,
-  pictogram,
-  heading,
-  content,
+  node,
   tag,
+  categoryRef,
 }: {
-  href: string;
-  pictogram: React.ReactNode;
-  heading: string;
-  content: React.ReactNode;
-  tag?: string;
+  node: DsFrontPageCardT;
+  tag?: boolean;
+  categoryRef?: any;
 }) => {
   const { logAmplitudeEvent } = useAmplitude();
-
+  const { pageProps } = useContext(PagePropsContext);
+  const [category, setCategory] = useState(categoryRef ?? null);
+  const imageProps = useSanityImage(category?.picture);
   const { asPath } = useRouter();
 
   const logNavigation = (e) => {
@@ -136,18 +101,51 @@ const Card = ({
     });
   };
 
+  useEffect(() => {
+    setCategory(categoryRef);
+  }, [categoryRef]);
+
+  useEffect(() => {
+    if (!pageProps.navigation || !node || !!categoryRef) return;
+    const index = pageProps?.navigation?.headings.findIndex((heading) => {
+      if (heading?.menu) {
+        return (
+          heading.menu
+            .filter((x) => x._type !== "subheading")
+            .find((item) => item.link._id.includes(node.link_ref._id)) ??
+          heading.link_ref._id.includes(node.link_ref._id)
+        );
+      } else {
+        return heading.link_ref._id.includes(node.link_ref._id);
+      }
+    });
+    setCategory(pageProps.navigation.headings[index].category_ref);
+  }, [pageProps, node, categoryRef]);
+
+  const tagName = category?.title ?? "";
+
   return (
-    <NextLink passHref href={href}>
+    <NextLink passHref href={`/${node?.link_ref?.slug}`}>
       <ScCard onClick={(e) => logNavigation(e)}>
-        <ScPictogram>{pictogram}</ScPictogram>
+        {imageProps && (
+          <ScPictogram>
+            <NextImage
+              {...imageProps}
+              alt={category?.picture?.title}
+              quality="100"
+              layout="fixed"
+              aria-hidden
+            />
+          </ScPictogram>
+        )}
         <Heading size="medium" spacing level="2">
-          {heading}
+          {node.title}
         </Heading>
-        <ScContent data-tag={!!tag}>{content}</ScContent>
-        {tag && <ScTag size="small">{tag}</ScTag>}
+        <ScContent data-tag={!!tag}>{node.content}</ScContent>
+        {tag && <ScTag size="small">{tagName}</ScTag>}
       </ScCard>
     </NextLink>
   );
 };
 
-export default Card;
+export default withErrorBoundary(Card, "Card");

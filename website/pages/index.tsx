@@ -6,7 +6,7 @@ import styled from "styled-components";
 import {
   AmplitudeEvents,
   BrandPictogram,
-  Card,
+  CardOld as Card,
   DsPictogram,
   GpPictogram,
   LayoutContext,

@@ -27,7 +27,7 @@ export default {
           fields: [
             {
               title: "Lenke",
-              name: "category",
+              name: "link_ref",
               type: "reference",
               to: [
                 { type: "ds_component_page" },

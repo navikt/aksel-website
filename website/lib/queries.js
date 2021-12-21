@@ -126,6 +126,21 @@ export const gpDocumentBySlug = `*[slug.current == $slug]
 
 export const dsDocuments = `*[_type in ["ds_component_page", "ds_article_page", "ds_tabbed_article_page"]]{ _type, 'slug': slug.current, tabs, design, development, accessibility }`;
 
+export const dsFrontpageQuery = `*[_id == "frontpage_designsystem"]
+{
+ ...,
+  body[]{
+    ...,
+    ${deRefs}
+  },
+  cards[]{
+    _type == "card" =>{
+      ...,
+      link_ref->{_id, "slug": slug.current}
+    }
+  }
+}`;
+
 export const dsDocumentBySlug = `*[slug.current == $slug]
 {
   ...,
@@ -171,6 +186,7 @@ export const dsNavigationQuery = `
   "headings": headings[]{
     ...,
     link_ref->{_id, slug},
+    category_ref->{...},
     menu[]{
       ...,
       link->{_id, slug, tags},

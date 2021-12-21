@@ -1,8 +1,20 @@
+import type { SanityKeyed } from "sanity-codegen";
+
 export type DsNavigationHeadingMenuT = {
   title: string;
   _type: "subheading" | "item";
   link: { _id: string; slug: { current: string }; tags?: string[] };
 };
+
+export type DsFrontPageCardT = SanityKeyed<{
+  _type: "card";
+  link_ref?: {
+    _id: string;
+    slug: string;
+  };
+  title?: string;
+  content?: string;
+}>;
 
 export type DsNavigationHeadingT = {
   _key: string;

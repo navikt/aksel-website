@@ -1,22 +1,23 @@
-import { BodyLong, BodyShort, Heading, Link } from "@navikt/ds-react";
+import { BodyLong, BodyShort, Heading } from "@navikt/ds-react";
 import Head from "next/head";
-import NextLink from "next/link";
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import * as Sc from "../../components";
+import { AmplitudeEvents, Card, useAmplitude } from "../../components";
 import {
   DsFrontpageFooterIllustration,
   DsFrontpageIllustration,
 } from "../../components/assets/DsFrontpageIllustration";
-import {
-  ColorsPictogram,
-  CompPictogram,
-  IconsPictogram,
-} from "../../components/assets/pictograms";
 import DesignsystemFooter from "../../components/layout/footer/DesignsystemFooter";
 import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
-import { dsNavigationQuery, getClient } from "../../lib";
-import * as Sc from "../../components";
-import { useAmplitude, AmplitudeEvents, Card } from "../../components";
+import { SanityBlockContent } from "../../components/SanityBlockContent";
+import {
+  DsFrontPageCardT,
+  dsFrontpageQuery,
+  dsNavigationQuery,
+  getClient,
+} from "../../lib";
+import { DsFrontpage, DsNavigation } from "../../lib/autogen-types";
 
 const ScFlex = styled.div`
   display: flex;
@@ -74,6 +75,10 @@ const ScDescriptionWrapper = styled.div`
   @media (max-width: 564px) {
     padding: 3rem 1rem;
   }
+
+  > * > *.navds-typo--spacing {
+    margin-bottom: var(--navds-spacing-2);
+  }
 `;
 
 const ScCards = styled.div`
@@ -117,7 +122,11 @@ const ScBg = styled.div`
   background-color: var(--navds-semantic-color-component-background-alternate);
 `;
 
-const Page = () => {
+const Page = (props: {
+  page: DsFrontpage;
+  navigation: DsNavigation;
+  preview: boolean;
+}): JSX.Element => {
   const { logAmplitudeEvent } = useAmplitude();
 
   useEffect(() => {
@@ -126,12 +135,15 @@ const Page = () => {
     });
   }, []);
 
+  /* console.log(pageProps); */
+
   return (
     <>
       <Head>
         <title>Designsystemet</title>
         <meta property="og:title" content="Designsystemet NAV" />
       </Head>
+      {props.preview && <Sc.PreviewBanner />}
       <ScBg>
         <ScTopBg>
           <ScFlexReverse>
@@ -149,41 +161,15 @@ const Page = () => {
         </ScTopBg>
         <ScFlex>
           <ScDescriptionWrapper>
-            <Heading spacing level="2" size="small">
-              Hva er nytt?
-            </Heading>
-            <BodyLong>
-              Vi ruller for tiden ut ny beta-versjon av designsystemet, og alt
-              innhold er ikke på plass enda.🔧
-            </BodyLong>
-            <BodyLong>
-              <NextLink passHref href="https://old-design-nav.vercel.app/">
-                <Link>Gå til gammel dokumentasjon</Link>
-              </NextLink>
-            </BodyLong>
+            {props?.page?.body && (
+              <SanityBlockContent blocks={props?.page?.body} />
+            )}
           </ScDescriptionWrapper>
           <ScCards>
-            <Card
-              pictogram={<CompPictogram />}
-              heading="Komponenter"
-              content="Se forhåndsvisninger og kode-eksempler for komponenter."
-              tag="KOMPONENTER"
-              href="/designsystem/side/komponenter"
-            />
-            <Card
-              pictogram={<IconsPictogram />}
-              heading="Ikoner"
-              content="Se over alle NAV sine globale og semantiske farger"
-              tag="RESSURSER"
-              href="/designsystem/side/ikoner/ikons%C3%B8k"
-            />
-            <Card
-              pictogram={<ColorsPictogram />}
-              heading="Farger"
-              content="Se over alle NAV sine globale og semantiske farger"
-              tag="RESSURSER"
-              href="/designsystem/side/color"
-            />
+            {props?.page?.cards &&
+              props?.page?.cards.map((card: DsFrontPageCardT) => {
+                return <Card key={card._key} node={card} tag={true} />;
+              })}
           </ScCards>
         </ScFlex>
         <ScFooterIllustration>
@@ -218,10 +204,16 @@ export const getStaticProps = async ({
 }: {
   preview?: boolean;
 }) => {
+  const client = getClient(preview);
+
+  let page = await client.fetch(dsFrontpageQuery);
+  page = page?.find((item) => item._id.startsWith(`drafts.`)) || page?.[0];
+
   const navigation = await getClient(false).fetch(dsNavigationQuery);
 
   return {
     props: {
+      page: page ?? null,
       slug: "/designsystem",
       validPath: true,
       isDraft: false,
