@@ -1,4 +1,4 @@
-Sitemap: https://verktoykassen.vercel.app/api/sitemap
+Sitemap: https://design.nav.no/api/sitemap
 
 User-agent: *
 Allow: /*

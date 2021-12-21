@@ -10,7 +10,7 @@ const generateSitemap = (pages: string[]): string =>
           .map((slug) => {
             return `
                     <url>
-                        <loc>${`https://verktoykassen.vercel.app/${slug}`}</loc>
+                        <loc>${`https://design.nav.no/${slug}`}</loc>
                     </url>
                 `;
           })

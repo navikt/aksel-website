@@ -17,7 +17,7 @@ export default async function handler(
         }
 
         const data: FoundOnPageFeedbackT = JSON.parse(req.body);
-        const sideUrl = "https://verktoykassen.vercel.app";
+        const sideUrl = "https://design.nav.no";
         const trelloList = data.answer
           ? "619e32343427c94d3e47d3fe"
           : "619cc57d84cb8a4c9be3bb9c";
