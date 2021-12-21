@@ -13,6 +13,20 @@ export default {
         Rule.required().error("Må legge til en enkel tittel"),
     },
     {
+      name: "level",
+      title: "Nivå",
+      type: "string",
+      options: {
+        list: [
+          { title: "top", value: "top" },
+          { title: "designsystem", value: "designsystem" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "top",
+      validation: (Rule) => Rule.required(),
+    },
+    {
       title: "Pictogram",
       name: "picture",
       type: "image",
@@ -35,4 +49,14 @@ export default {
       validation: (Rule) => Rule.required().error("Må legge til et pictogram"),
     },
   ],
+  preview: {
+    select: {
+      title: "title",
+      level: "level",
+    },
+    prepare: ({ title, level }) => ({
+      title: title,
+      subtitle: `Nivå: ${level}`,
+    }),
+  },
 };
