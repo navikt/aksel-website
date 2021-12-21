@@ -119,10 +119,17 @@ const Card = ({
         return heading.link_ref._id.includes(node.link_ref._id);
       }
     });
+    if (index === -1) {
+      return;
+    }
     setCategory(pageProps.navigation.headings[index].category_ref);
   }, [pageProps, node, categoryRef]);
 
   const tagName = category?.title ?? "";
+
+  if (!category) {
+    return null;
+  }
 
   return (
     <NextLink passHref href={`/${node?.link_ref?.slug}`}>
