@@ -37,6 +37,48 @@ export type {
 };
 
 /**
+ * Hovedkategorier
+ *
+ *
+ */
+export interface MainCategories extends SanityDocument {
+  _type: "main_categories";
+
+  /**
+   * Tittel — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Nivå — `string`
+   *
+   *
+   */
+  level?: "top" | "designsystem";
+
+  /**
+   * Pictogram — `image`
+   *
+   *
+   */
+  picture?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+
+    /**
+     * Alt-tekst — `string`
+     *
+     * Beskriv bildet for skjermlesere
+     */
+    title?: string;
+  };
+}
+
+/**
  * Komponentartikkel
  *
  *
@@ -598,11 +640,11 @@ export interface DsColorCategories extends SanityDocument {
   title?: string;
 
   /**
-   * Beskrivelse — `text`
+   * Beskrivelse — `blockContent_simple`
    *
    *
    */
-  description?: string;
+  description?: BlockContentSimple;
 
   /**
    * Farger — `array`
@@ -981,6 +1023,13 @@ export type DsNavigationHeading = {
   title?: string;
 
   /**
+   * Hovedkategori — `reference`
+   *
+   *
+   */
+  category_ref?: SanityReference<MainCategories>;
+
+  /**
    * Side selve headingen linker til — `reference`
    *
    * Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via headern
@@ -1163,6 +1212,10 @@ export type BlockContent = Array<
 >;
 
 export type BlockContentSimple = Array<SanityKeyed<SanityBlock>>;
+
+export type BlockContentAccordion = Array<
+  SanityKeyed<SanityBlock> | SanityKeyed<Tips> | SanityKeyed<CodeSnippet>
+>;
 
 export type GpBlockContent = Array<
   | SanityKeyed<SanityBlock>
@@ -1472,18 +1525,11 @@ export type Accordion = {
       heading?: string;
 
       /**
-       * Heading nivå — `string`
+       * Innhold — `blockContent_accordion`
        *
        *
        */
-      heading_level?: "h3" | "h4";
-
-      /**
-       * Innhold — `blockContent_simple`
-       *
-       *
-       */
-      body?: BlockContentSimple;
+      body?: BlockContentAccordion;
     }>
   >;
 };
@@ -1715,6 +1761,7 @@ export type Tips = {
 };
 
 export type Documents =
+  | MainCategories
   | DsComponentPage
   | DsArticlePage
   | DsTabbedArticlePage
