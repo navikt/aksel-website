@@ -1,10 +1,9 @@
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
-import NextLink from "next/link";
 import NextImage from "next/image";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import { useAmplitude, AmplitudeEvents } from "../..";
+import { AmplitudeEvents, useAmplitude } from "../..";
 import { DsFrontPageCardT, useSanityImage } from "../../../lib";
 import { PagePropsContext } from "../../../pages/_app";
 import { withErrorBoundary } from "../../website-features/error-boundary";
@@ -134,26 +133,27 @@ const Card = ({
   }
 
   return (
-    <NextLink passHref href={href ?? `/${node?.link_ref?.slug}`}>
-      <ScCard onClick={(e) => logNavigation(e)}>
-        {imageProps && (
-          <ScPictogram>
-            <NextImage
-              {...imageProps}
-              alt={category?.picture?.title}
-              quality="100"
-              layout="fixed"
-              aria-hidden
-            />
-          </ScPictogram>
-        )}
-        <Heading size="medium" spacing level="2">
-          {node.title}
-        </Heading>
-        <ScContent data-tag={!!tag}>{node.content}</ScContent>
-        {tag && <ScTag size="small">{tagName}</ScTag>}
-      </ScCard>
-    </NextLink>
+    <ScCard
+      onClick={(e) => logNavigation(e)}
+      href={href ?? `/${node?.link_ref?.slug}`}
+    >
+      {imageProps && (
+        <ScPictogram>
+          <NextImage
+            {...imageProps}
+            alt={category?.picture?.title}
+            quality="100"
+            layout="fixed"
+            aria-hidden
+          />
+        </ScPictogram>
+      )}
+      <Heading size="medium" spacing level="2">
+        {node.title}
+      </Heading>
+      <ScContent data-tag={!!tag}>{node.content}</ScContent>
+      {tag && <ScTag size="small">{tagName}</ScTag>}
+    </ScCard>
   );
 };
 

@@ -8,7 +8,6 @@ import {
   Textarea,
   TextField,
 } from "@navikt/ds-react";
-import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
@@ -186,12 +185,9 @@ const FooterForm = () => {
         <BodyShort as="ul">
           {/* <li>5. etg. bygg A</li> */}
           <li>
-            <NextLink
-              href="https://nav-it.slack.com/archives/C7NE7A8UF"
-              passHref
-            >
-              <Link>Designsystemet på Slack</Link>
-            </NextLink>
+            <Link href="https://nav-it.slack.com/archives/C7NE7A8UF">
+              Designsystemet på Slack
+            </Link>
           </li>
         </BodyShort>
       </div>

@@ -1,10 +1,9 @@
 import { Heading } from "@navikt/ds-react";
-import Link from "next/link";
+import throttle from "lodash.throttle";
 import * as React from "react";
 import { useEffect, useState } from "react";
-import throttle from "lodash.throttle";
-import * as S from "./toc.styles";
 import { useIsomorphicLayoutEffect } from "react-use";
+import * as S from "./toc.styles";
 
 function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
   const [toc, setToc] = useState<{ heading: string; id: string }[]>([]);
@@ -80,14 +79,13 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
                 data-active={link.id === activeId}
                 key={link.id + link.heading}
               >
-                <Link href={`#${link.id}`} passHref>
-                  <a
-                    onClick={() => handleFocus(`${link.id}`)}
-                    className="navds-link navds-body-short navds-body--small"
-                  >
-                    {link.heading}
-                  </a>
-                </Link>
+                <a
+                  href={`#${link.id}`}
+                  onClick={() => handleFocus(`${link.id}`)}
+                  className="navds-link navds-body-short navds-body--small"
+                >
+                  {link.heading}
+                </a>
               </S.Li>
             ))}
           </S.Ul>

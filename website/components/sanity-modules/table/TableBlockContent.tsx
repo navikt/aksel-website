@@ -1,9 +1,8 @@
 import { BodyShort, Detail, Link } from "@navikt/ds-react";
 import BlockContent from "@sanity/block-content-to-react";
-import NextjsLink from "next/link";
 import React from "react";
 import styled from "styled-components";
-import { ScKbd, ScCode, DsIconAnnotation } from "../../SanityBlockContent";
+import { DsIconAnnotation, ScCode, ScKbd } from "../../SanityBlockContent";
 
 const ScWrapper = styled.span`
   svg {
@@ -35,26 +34,18 @@ const serializers = {
     code: (props: any) => <ScCode>{props.children}</ScCode>,
     link: ({ mark: { blank, href }, children }: { mark: any; children: any }) =>
       blank ? (
-        <NextjsLink href={href} passHref>
-          <Link target="_blank" rel="noreferrer noopener">
-            {children} (åpner lenken i ny fane)
-          </Link>
-        </NextjsLink>
+        <Link href={href} target="_blank" rel="noreferrer noopener">
+          {children} (åpner lenken i ny fane)
+        </Link>
       ) : (
-        <NextjsLink href={href} passHref>
-          <Link>{children}</Link>
-        </NextjsLink>
+        <Link href={href}>{children}</Link>
       ),
     internalLink: ({ mark, children }: { mark: any; children: any }) => {
       const { slug = {} } = mark;
       if (!slug || !slug.current) return children;
 
       const href = `/${slug?.current}`;
-      return (
-        <NextjsLink href={href} passHref>
-          <Link>{children}</Link>
-        </NextjsLink>
-      );
+      return <Link href={href}>{children}</Link>;
     },
     ...DsIconAnnotation,
   },

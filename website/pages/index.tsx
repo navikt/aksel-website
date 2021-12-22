@@ -1,6 +1,5 @@
 import { Ingress, Link } from "@navikt/ds-react";
 import Head from "next/head";
-import NextLink from "next/link";
 import React, { useContext, useEffect } from "react";
 import Snowfall from "react-snowfall";
 import styled from "styled-components";
@@ -125,9 +124,9 @@ const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
           snowflakeCount={context.isMobile ? 80 : 150}
         />
         <ScFrontpage>
-          <NextLink passHref href="https://old-design-nav.vercel.app/">
-            <ScLink>Gå til gammel dokumentasjon</ScLink>
-          </NextLink>
+          <ScLink href="https://old-design-nav.vercel.app/">
+            Gå til gammel dokumentasjon
+          </ScLink>
 
           <ScIntro>
             <ScLogoWrapper>

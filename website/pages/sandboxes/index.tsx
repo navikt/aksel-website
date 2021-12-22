@@ -1,8 +1,7 @@
 import { Heading, Link, TextField } from "@navikt/ds-react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { SandboxKeys } from "../../sandbox";
-import NextLink from "next/link";
-import React, { useState } from "react";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -48,9 +47,7 @@ const Page = () => {
             })
             .map((path) => (
               <li key={path}>
-                <NextLink href={`/sandboxes/${path}`} passHref>
-                  <Link>{path}</Link>
-                </NextLink>
+                <Link href={`/sandboxes/${path}`}>{path}</Link>
               </li>
             ))}
         </ul>

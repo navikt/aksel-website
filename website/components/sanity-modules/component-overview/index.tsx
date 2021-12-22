@@ -1,6 +1,5 @@
 import { Error, Success } from "@navikt/ds-icons";
 import { BodyShort, Label, Link, Table, Tag, useId } from "@navikt/ds-react";
-import NextLink from "next/link";
 import React from "react";
 import ReactTooltip from "react-tooltip";
 import styled from "styled-components";
@@ -160,9 +159,7 @@ const ComponentOverview = ({
       <Table.Row>
         <Table.HeaderCell>
           {comp.doc_link ? (
-            <NextLink href={`/${comp.doc_link}`} passHref>
-              <Link>{comp.title}</Link>
-            </NextLink>
+            <Link href={`/${comp.doc_link}`}>{comp.title}</Link>
           ) : (
             <BodyShort>{comp.title}</BodyShort>
           )}

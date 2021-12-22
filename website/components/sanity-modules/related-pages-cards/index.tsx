@@ -1,12 +1,11 @@
+import { ExternalLink } from "@navikt/ds-icons";
+import { BodyShort, Detail, Heading } from "@navikt/ds-react";
+import { useRouter } from "next/router";
 import React, { useMemo } from "react";
 import styled from "styled-components";
+import { AmplitudeEvents, useAmplitude } from "../..";
 import { RelatedPages } from "../../../lib/autogen-types";
 import { withErrorBoundary } from "../../website-features/error-boundary";
-import NextLink from "next/link";
-import { BodyShort, Detail, Heading } from "@navikt/ds-react";
-import { ExternalLink } from "@navikt/ds-icons";
-import { AmplitudeEvents, useAmplitude } from "../..";
-import { useRouter } from "next/router";
 
 const ScRelatedPagesCard = styled.div`
   grid-template-columns: repeat(auto-fit, 15rem);
@@ -97,23 +96,21 @@ const Card = ({ link }: { link: LinkT }) => {
   const href = link.internal ? `/${link.internal_link}` : link.external_link;
 
   return (
-    <NextLink href={href} passHref>
-      <ScCard onClick={(e) => logNavigation(e)}>
-        <Heading size="xsmall" as="div">
-          {link.title}
-        </Heading>
-        <ScBodyShort size="small">{link.description}</ScBodyShort>
-        <ScDetail>
-          {link.internal ? (
-            "RELATERT INNHOLD"
-          ) : (
-            <>
-              EKSTERN LINK <ExternalLink aria-label="Ekstern side" />
-            </>
-          )}
-        </ScDetail>
-      </ScCard>
-    </NextLink>
+    <ScCard href={href} onClick={(e) => logNavigation(e)}>
+      <Heading size="xsmall" as="div">
+        {link.title}
+      </Heading>
+      <ScBodyShort size="small">{link.description}</ScBodyShort>
+      <ScDetail>
+        {link.internal ? (
+          "RELATERT INNHOLD"
+        ) : (
+          <>
+            EKSTERN LINK <ExternalLink aria-label="Ekstern side" />
+          </>
+        )}
+      </ScDetail>
+    </ScCard>
   );
 };
 

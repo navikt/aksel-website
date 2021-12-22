@@ -1,5 +1,4 @@
 import { BodyShort } from "@navikt/ds-react";
-import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import styled from "styled-components";
@@ -49,19 +48,18 @@ const Hit = React.forwardRef<HTMLAnchorElement, HitProps>(
 
     return (
       <BodyShort as="dd">
-        <NextLink href={`/${hit.path}`} passHref>
-          <ScHit
-            onClick={(e) => {
-              context.clicked();
-              logNavigation(e);
-            }}
-            {...props}
-            tabIndex={-1}
-            ref={ref}
-          >
-            {`${hit.title}${!isArticle ? ` - ${capitalize(hit.page)}` : ""}`}
-          </ScHit>
-        </NextLink>
+        <ScHit
+          href={`/${hit.path}`}
+          onClick={(e) => {
+            context.clicked();
+            logNavigation(e);
+          }}
+          {...props}
+          tabIndex={-1}
+          ref={ref}
+        >
+          {`${hit.title}${!isArticle ? ` - ${capitalize(hit.page)}` : ""}`}
+        </ScHit>
       </BodyShort>
     );
   }

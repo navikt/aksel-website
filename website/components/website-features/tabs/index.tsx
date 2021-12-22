@@ -1,5 +1,4 @@
 import { Back, Next } from "@navikt/ds-icons";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { createRef, useContext, useState } from "react";
 import { useEvent, useKey } from "react-use";
@@ -108,22 +107,15 @@ export const Tabs = ({
         <S.Ul isTablet={context.isTablet} ref={setInnerRef}>
           {tabWRefs.map((tab) => (
             <li key={tab.name} ref={setLastItemRef}>
-              <Link
-                href={{
-                  pathname: tab.path,
-                }}
-                passHref
-                shallow
+              <S.A
+                className="vk-tab_link"
+                ref={tab.ref}
+                data-selected={tab.active}
+                onClick={() => window && window.scrollTo(0, 0)}
+                href={tab.path}
               >
-                <S.A
-                  className="vk-tab_link"
-                  ref={tab.ref}
-                  data-selected={tab.active}
-                  onClick={() => window && window.scrollTo(0, 0)}
-                >
-                  {tab.name}
-                </S.A>
-              </Link>
+                {tab.name}
+              </S.A>
             </li>
           ))}
         </S.Ul>

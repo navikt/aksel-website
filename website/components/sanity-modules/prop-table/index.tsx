@@ -1,14 +1,13 @@
 import { BodyLong, Link, Tag } from "@navikt/ds-react";
 import React from "react";
-import { withErrorBoundary } from "../../website-features/error-boundary";
+import styled from "styled-components";
 import {
   PropTable as PropTableT,
   PropTableProp as PropTablePropT,
 } from "../../../lib/autogen-types";
-import * as S from "./prop-table.styles";
-import NextLink from "next/link";
-import styled from "styled-components";
 import { ScCode } from "../../SanityBlockContent";
+import { withErrorBoundary } from "../../website-features/error-boundary";
+import * as S from "./prop-table.styles";
 
 export const TypeCode = styled.code`
   color: var(--navds-global-color-lightblue-800);
@@ -59,9 +58,9 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
         {node.overridable && (
           <li>
             Komponenten er implementert med{" "}
-            <NextLink href="/designsystem/side/overridablecomponent" passHref>
-              <Link>OverridableComponent</Link>
-            </NextLink>
+            <Link href="/designsystem/side/overridablecomponent">
+              OverridableComponent
+            </Link>
           </li>
         )}
         {node.refplacement && (

@@ -1,14 +1,12 @@
 import { Close, Hamburger, Left } from "@navikt/ds-icons";
-import { Heading, Detail, Popover } from "@navikt/ds-react";
+import { Detail, Heading, Popover } from "@navikt/ds-react";
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { useMedia } from "react-use";
 import styled from "styled-components";
-import { ScFadeIn } from "../..";
+import { LayoutContext, ScFadeIn } from "../..";
 import { DsNavigationHeadingT } from "../../../lib";
 import { PagePropsContext } from "../../../pages/_app";
-import { LayoutContext } from "../..";
 import Menu from "../menu/DesignsystemMenu";
-import NextLink from "next/link";
-import { useMedia } from "react-use";
 
 const ScPopover = styled(Popover)`
   border: none;
@@ -227,26 +225,22 @@ const MobileNavigation = () => {
                     (heading: DsNavigationHeadingT) =>
                       useMobileHeader && !context.isTablet ? (
                         <li key={heading._key}>
-                          <NextLink
+                          <ScListItem
                             href={`/${heading.link_ref.slug.current}`}
-                            passHref
+                            as="a"
+                            $active={
+                              context
+                                ? context?.activeHeading?.title ===
+                                  heading.title
+                                : false
+                            }
+                            onClick={() => {
+                              setHeading(heading);
+                              setOpenHamb(false);
+                            }}
                           >
-                            <ScListItem
-                              as="a"
-                              $active={
-                                context
-                                  ? context?.activeHeading?.title ===
-                                    heading.title
-                                  : false
-                              }
-                              onClick={() => {
-                                setHeading(heading);
-                                setOpenHamb(false);
-                              }}
-                            >
-                              {heading?.title}
-                            </ScListItem>
-                          </NextLink>
+                            {heading?.title}
+                          </ScListItem>
                         </li>
                       ) : (
                         <ScListItem

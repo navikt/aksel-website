@@ -1,7 +1,6 @@
 import { Expand, Left } from "@navikt/ds-icons";
 import { BodyShort, Label, Popover } from "@navikt/ds-react";
 import { motion } from "framer-motion";
-import NextLink from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
 import { useRef, useState } from "react";
@@ -217,33 +216,31 @@ const HeadingDropDown = ({ title }: { title: string }) => {
         >
           <ul>
             <li>
-              <NextLink href="/" passHref>
-                <ScIconLink
-                  onClick={(e) => {
-                    setOpen(false);
-                    logNavigation(e);
-                  }}
-                >
-                  <Left aria-label="Gå til forsiden" />
-                  <Label>Tilbake til Verktøykassa</Label>
-                </ScIconLink>
-              </NextLink>
+              <ScIconLink
+                href="/"
+                onClick={(e) => {
+                  setOpen(false);
+                  logNavigation(e);
+                }}
+              >
+                <Left aria-label="Gå til forsiden" />
+                <Label>Tilbake til Verktøykassa</Label>
+              </ScIconLink>
             </li>
             <li>
-              <NextLink href="/designsystem" passHref>
-                <ScLink
-                  onClick={(e) => {
-                    setOpen(false);
-                    logNavigation(e);
-                  }}
-                  data-active={router.asPath.startsWith(`/designsystem`)}
-                >
-                  <BodyShort>Designsystemet</BodyShort>
-                  <BodyShort size="small">
-                    Informasjon omhandlende designsystemet
-                  </BodyShort>
-                </ScLink>
-              </NextLink>
+              <ScLink
+                href="/designsystem"
+                onClick={(e) => {
+                  setOpen(false);
+                  logNavigation(e);
+                }}
+                data-active={router.asPath.startsWith(`/designsystem`)}
+              >
+                <BodyShort>Designsystemet</BodyShort>
+                <BodyShort size="small">
+                  Informasjon omhandlende designsystemet
+                </BodyShort>
+              </ScLink>
             </li>
           </ul>
         </ScPopover>

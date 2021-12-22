@@ -1,16 +1,14 @@
-import { motion } from "framer-motion";
-import NextLink from "next/link";
+import { useRouter } from "next/router";
+/* import NextLink from "next/link"; */
 import * as React from "react";
 import { useContext, useState } from "react";
 import { useMedia } from "react-use";
-import { AmplitudeEvents, Search, useAmplitude } from "../..";
+import { AmplitudeEvents, LayoutContext, Search, useAmplitude } from "../..";
 import { DsNavigationHeadingT } from "../../../lib";
 import { PagePropsContext } from "../../../pages/_app";
-import { LayoutContext } from "../..";
 import * as S from "./header.styles";
 import MobileNavigation from "./MobileNavigation";
 import PortalNavigation from "./PortalNavigation";
-import { useRouter } from "next/router";
 
 const DesignsystemHeader = (): JSX.Element => {
   const { pageProps } = useContext(PagePropsContext);
@@ -34,39 +32,29 @@ const DesignsystemHeader = (): JSX.Element => {
       <PortalNavigation title={"Designsystemet"} />
 
       {!searchisOpen && (
-        <S.Links
-          as={motion.div}
-          key="Links"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ type: "tween", duration: 0.2 }}
-          exit={{ opacity: 0 }}
-        >
+        <S.Links>
           {pageProps?.navigation?.headings.map(
             (heading: DsNavigationHeadingT) => (
-              <NextLink
+              <S.Link
                 key={heading.title + heading.link_ref}
                 href={`/${
                   (heading.link_ref as { slug?: { current: string } })?.slug
                     ?.current
                 }`}
-                passHref
+                data-active={
+                  context
+                    ? context?.activeHeading?.title === heading.title
+                    : false
+                }
+                onClick={(e) => logNavigation(e)}
               >
-                <S.Link
-                  data-active={
-                    context
-                      ? context?.activeHeading?.title === heading.title
-                      : false
-                  }
-                  onClick={(e) => logNavigation(e)}
-                >
-                  {heading.title}
-                </S.Link>
-              </NextLink>
+                {heading.title}
+              </S.Link>
             )
           )}
         </S.Links>
       )}
+
       <Search isOpen={(v: boolean) => setSearchisOpen(v)} />
       {/* <S.Link href="#">
         <Bell

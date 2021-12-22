@@ -1,7 +1,6 @@
-import styled from "styled-components";
-import NextLink from "next/link";
 import { BodyShort, Heading } from "@navikt/ds-react";
 import React, { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
 import { LayoutContext } from "../..";
 import { DsNavigationHeadingMenuT } from "../../../lib";
 import { PagePropsContext } from "../../../pages/_app";
@@ -93,24 +92,20 @@ const RelatedPagesLink = () => {
     <ScWrapper $isTablet={context.isTablet}>
       <ScInnerWrapper $isTablet={context.isTablet}>
         {links.prev && (
-          <NextLink href={`/${links.prev.link.slug.current}`} passHref>
-            <a>
-              <BodyShort size="small">Forrige</BodyShort>
-              <Heading as="div" size="medium">
-                {links.prev.title}
-              </Heading>
-            </a>
-          </NextLink>
+          <a href={`/${links.prev.link.slug.current}`}>
+            <BodyShort size="small">Forrige</BodyShort>
+            <Heading as="div" size="medium">
+              {links.prev.title}
+            </Heading>
+          </a>
         )}
         {links.next && (
-          <NextLink href={`/${links.next.link.slug.current}`} passHref>
-            <a>
-              <BodyShort size="small">Neste</BodyShort>
-              <Heading as="div" size="medium">
-                {links.next.title}
-              </Heading>
-            </a>
-          </NextLink>
+          <a href={`/${links.next.link.slug.current}`}>
+            <BodyShort size="small">Neste</BodyShort>
+            <Heading as="div" size="medium">
+              {links.next.title}
+            </Heading>
+          </a>
         )}
       </ScInnerWrapper>
     </ScWrapper>
