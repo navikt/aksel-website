@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
 import React, { createContext, useEffect, useState } from "react";
 import { AmplitudeProvider, useScrollToHashOnPageLoad } from "../components";
 import LayoutProvider from "../components/layout/LayoutProvider";
