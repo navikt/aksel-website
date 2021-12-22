@@ -167,9 +167,9 @@ const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
 Page.getLayout = (page) => {
   return (
     <>
-      <Sc.SkipLink href="#hovedinnhold" tab-index={-1}>
+      {/* <Sc.SkipLink href="#hovedinnhold" tab-index={-1}>
         Hopp til innhold
-      </Sc.SkipLink>
+      </Sc.SkipLink> */}
       <Sc.SidebarMain>
         <Sc.MainFooter>
           <Sc.Main fullwidth tabIndex={-1} id="hovedinnhold" graybg>
