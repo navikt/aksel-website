@@ -50,10 +50,6 @@ const DesignsystemHeader = (): JSX.Element => {
                   (heading.link_ref as { slug?: { current: string } })?.slug
                     ?.current
                 }`}
-                as={`/${
-                  (heading.link_ref as { slug?: { current: string } })?.slug
-                    ?.current
-                }`}
                 passHref
               >
                 <S.Link
