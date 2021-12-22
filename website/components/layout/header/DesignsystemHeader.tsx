@@ -44,21 +44,29 @@ const DesignsystemHeader = (): JSX.Element => {
         >
           {pageProps?.navigation?.headings.map(
             (heading: DsNavigationHeadingT) => (
-              <S.Link
-                key={heading._key}
+              <NextLink
+                key={heading.title + heading.link_ref}
                 href={`/${
                   (heading.link_ref as { slug?: { current: string } })?.slug
                     ?.current
                 }`}
-                data-active={
-                  context
-                    ? context?.activeHeading?.title === heading.title
-                    : false
-                }
-                onClick={(e) => logNavigation(e)}
+                as={`/${
+                  (heading.link_ref as { slug?: { current: string } })?.slug
+                    ?.current
+                }`}
+                passHref
               >
-                {heading.title}
-              </S.Link>
+                <S.Link
+                  data-active={
+                    context
+                      ? context?.activeHeading?.title === heading.title
+                      : false
+                  }
+                  onClick={(e) => logNavigation(e)}
+                >
+                  {heading.title}
+                </S.Link>
+              </NextLink>
             )
           )}
         </S.Links>

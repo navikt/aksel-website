@@ -112,7 +112,6 @@ const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
     });
   }, []);
 
-  console.log(props.page?.cards);
   return (
     <>
       <Head>
