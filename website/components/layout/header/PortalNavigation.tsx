@@ -1,6 +1,5 @@
 import { Expand, Left } from "@navikt/ds-icons";
 import { BodyShort, Label, Popover } from "@navikt/ds-react";
-import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import * as React from "react";
 import { useRef, useState } from "react";
@@ -13,6 +12,7 @@ export const ScWrapper = styled.div`
   display: flex;
   z-index: 1050;
   margin-right: var(--navds-spacing-8);
+
   &[data-mobile="true"] {
     margin-right: 0;
   }
@@ -183,15 +183,7 @@ const HeadingDropDown = ({ title }: { title: string }) => {
 
   return (
     <>
-      <ScWrapper
-        as={motion.div}
-        key="Portalmenu"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ type: "tween", duration: 0.2 }}
-        exit={{ opacity: 0 }}
-        data-mobile={!showLogo}
-      >
+      <ScWrapper data-mobile={!showLogo}>
         <ScToggle
           ref={buttonRef}
           className="navdsi-dropdown__toggle navdsi-header__button"
