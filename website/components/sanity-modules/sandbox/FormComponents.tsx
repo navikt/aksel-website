@@ -106,7 +106,7 @@ export const SelectComp = ({
                   data-active={isActive(opt)}
                   aria-pressed={isActive(opt)}
                   onClick={() => handleToggle(opt)}
-                  aria-label="Trykk for å filtrere for outline-ikoner"
+                  aria-label={opt || "Ingen"}
                 >
                   {opt || "Ingen"}
                 </ScToggle>
