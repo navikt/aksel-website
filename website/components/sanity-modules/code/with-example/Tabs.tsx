@@ -157,7 +157,7 @@ const CodeTabs = (): JSX.Element => {
               <span className="sr-only">
                 Endre bakgrunnsfarge på komponent preview
               </span>
-              <CanvasIcon />
+              <CanvasIcon aria-hidden aria-label="Endre bakgrunnsfarge" />
             </ScCanvasButton>
           )}
           {showPreview && fullscreenLink && activeTab === -1 && (
@@ -165,7 +165,11 @@ const CodeTabs = (): JSX.Element => {
               <span className="sr-only">{`Åpne ${
                 exampleName ?? " "
               } eksempel i ny tab`}</span>
-              <NewTab focusable="false" />
+              <NewTab
+                aria-hidden
+                aria-label="åpne i ny fane"
+                focusable="false"
+              />
             </ScLinkButton>
           )}
           {node.github && (
