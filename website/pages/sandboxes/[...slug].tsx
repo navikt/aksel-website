@@ -1,3 +1,4 @@
+import { Heading } from "@navikt/ds-react";
 import React from "react";
 import Sandbox from "../../components/sanity-modules/sandbox";
 import { SandboxKeys, Sandboxes } from "../../sandbox";
@@ -15,7 +16,14 @@ const CodePreview = (key: string) => {
     _rev: "",
     _updatedAt: "",
   };
-  return <Sandbox node={node} />;
+  return (
+    <>
+      <Heading level="1" size="medium" className="navds-sr-only">
+        {key}
+      </Heading>
+      <Sandbox node={node} />;
+    </>
+  );
 };
 
 const Page = ({ compkey }: { compkey: string }) => {
