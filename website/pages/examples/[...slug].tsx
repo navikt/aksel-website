@@ -1,4 +1,5 @@
 import { Heading } from "@navikt/ds-react";
+import Head from "next/head";
 import React from "react";
 import styled from "styled-components";
 import { ExampleKeys, Examples } from "../../examples";
@@ -31,6 +32,9 @@ const InnerWrapper = styled.div`
 const Page = ({ compkey }: { compkey: string }) => {
   return (
     <>
+      <Head>
+        <title>{`${compkey} - example`}</title>
+      </Head>
       <Heading level="1" size="medium" className="navds-sr-only">
         {compkey}
       </Heading>

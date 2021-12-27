@@ -1,4 +1,5 @@
 import { Heading } from "@navikt/ds-react";
+import Head from "next/head";
 import React from "react";
 import Sandbox from "../../components/sanity-modules/sandbox";
 import { SandboxKeys, Sandboxes } from "../../sandbox";
@@ -18,6 +19,9 @@ const CodePreview = (key: string) => {
   };
   return (
     <>
+      <Head>
+        <title>{`${key} - sandbox`}</title>
+      </Head>
       <Heading level="1" size="medium" className="navds-sr-only">
         {key}
       </Heading>
