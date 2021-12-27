@@ -49,7 +49,7 @@ const ScrollTop = () => {
 
   return (
     <ScScrollTop ref={ref} onClick={handleClick} aria-hidden={!showButton}>
-      <Up />
+      <Up aria-hidden aria-label="Til toppen" />
       Til toppen
     </ScScrollTop>
   );
