@@ -3,6 +3,7 @@ import { Label } from "@navikt/ds-react";
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { SandboxContext } from ".";
+import ColorPicker from "./ColorPicker";
 import { ScTabCss } from "./PropsPanel";
 
 const ScTabs = styled.div`
@@ -28,7 +29,7 @@ const ScTabs = styled.div`
   }
 `;
 
-const ScTabButton = styled.button`
+export const ScTabButton = styled.button`
   ${ScTabCss}
 `;
 
@@ -41,7 +42,8 @@ const ScFlex = styled.div`
 `;
 
 const Tabs = ({ reset }: { reset: () => void }) => {
-  const { sandboxState, setSandboxState } = useContext(SandboxContext);
+  const { sandboxState, setSandboxState, bg, setBg } =
+    useContext(SandboxContext);
 
   const hideProps =
     !sandboxState.args ||
@@ -53,6 +55,7 @@ const Tabs = ({ reset }: { reset: () => void }) => {
     <ScTabs>
       <ScLabel>Sandkasse</ScLabel>
       <ScFlex>
+        <ColorPicker defaultColor={bg} onChange={(c) => setBg(c)} />
         <ScTabButton onClick={() => reset()}>
           <span className="sr-only">Reset sandbox</span>
           <Refresh />

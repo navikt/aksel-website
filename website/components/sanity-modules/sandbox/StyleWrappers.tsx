@@ -51,9 +51,9 @@ const ScDiv = styled.div<{
   display: flex;
   width: 100%;
   background-color: ${(props) =>
-    props.background
-      ? `${props.background}`
-      : `var(--navds-semantic-color-canvas-background)`};
+    props.background.startsWith("--")
+      ? `var(${props.background})`
+      : `${props.background}`};
   border: 1px solid var(--navds-global-color-gray-200);
   border-top: none;
   position: relative;
@@ -98,14 +98,14 @@ const ScInnerDiv = styled.div`
 `;
 
 export const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
-  const { sandboxState } = useContext(SandboxContext);
+  const { sandboxState, bg } = useContext(SandboxContext);
   const inlineProps = sandboxState.inlineSettings && !!sandboxState.args;
 
   return (
     <ScDiv
       fullscreen={sandboxState.fullscreen}
       inlineProps={inlineProps}
-      background={sandboxState.args?.background}
+      background={bg}
     >
       <ScInnerDiv>{children}</ScInnerDiv>
     </ScDiv>

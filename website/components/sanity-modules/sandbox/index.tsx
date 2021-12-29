@@ -66,11 +66,15 @@ const scope = {
 type SandboxContextProps = {
   sandboxState: SandboxStateT;
   setSandboxState: React.Dispatch<SandboxStateT>;
+  bg: string;
+  setBg: React.Dispatch<string>;
 };
 
 export const SandboxContext = createContext<SandboxContextProps>({
   sandboxState: null,
   setSandboxState: () => null,
+  bg: "--navds-semantic-color-canvas-background",
+  setBg: () => null,
 });
 
 interface SandboxStateT {
@@ -86,6 +90,9 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   const [reseting, setReseting] = useState(false);
   const preFocusCapture = useRef<HTMLDivElement>(null);
   const focusCapture = useRef<HTMLButtonElement>(null);
+  const [background, setBackground] = useState(
+    "--navds-semantic-color-canvas-background"
+  );
 
   const [sandboxState, setSandboxState] = useState<SandboxStateT>({
     args: null,
@@ -108,6 +115,8 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
       setCode(
         formatCode(sandboxComp(newState.props, newState.variants).trim())
       );
+      sandboxComp?.args?.background &&
+        setBackground(sandboxComp.args.background);
     }
   }, [sandboxComp]);
 
@@ -189,6 +198,8 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
           value={{
             sandboxState,
             setSandboxState,
+            bg: background,
+            setBg: setBackground,
           }}
         >
           {sandboxState.fullscreen ? <Fullscreen>{Editor}</Fullscreen> : Editor}
