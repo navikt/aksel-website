@@ -1,15 +1,12 @@
 import { Ingress, Link } from "@navikt/ds-react";
 import Head from "next/head";
-import React, { useContext, useEffect } from "react";
-import Snowfall from "react-snowfall";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import * as Sc from "../components";
 import {
   AmplitudeEvents,
   Card,
-  LayoutContext,
   NAVLogoDark,
-  SantaHat,
   useAmplitude,
 } from "../components";
 import FrontpageFooter from "../components/layout/footer/FrontpageFooter";
@@ -103,8 +100,6 @@ const ScRelative = styled.div`
 const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
   const { logAmplitudeEvent } = useAmplitude();
 
-  const context = useContext(LayoutContext);
-
   useEffect(() => {
     logAmplitudeEvent(AmplitudeEvents.sidevisning, {
       side: "/",
@@ -119,10 +114,6 @@ const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
       </Head>
       {props.preview && <Sc.PreviewBanner />}
       <ScRelative>
-        <Snowfall
-          color="#dee4fd"
-          snowflakeCount={context.isMobile ? 80 : 150}
-        />
         <ScFrontpage>
           <ScLink href="https://old-design-nav.vercel.app/">
             Gå til gammel dokumentasjon
@@ -135,7 +126,6 @@ const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
             <ScHeading spacing level="1" size="2xlarge">
               Verktøykassa
               <ScBodyShort>Beta</ScBodyShort>
-              <SantaHat className="santahat" />
             </ScHeading>
             <Ingress>
               En samling ressurser fra ulike fagdisipliner som hjelper oss å
