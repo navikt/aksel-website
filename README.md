@@ -1,6 +1,6 @@
 # Verktoykassen BETA
 
-Ny løsning for Verktøykassen, vil dekke Designsystemet v2 og God praksis.
+Løsning for Verktøykassen, Designsystemet v2 og God praksis.
 
 ## Kom i gang
 

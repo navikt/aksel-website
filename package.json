@@ -2,7 +2,7 @@
   "name": "verktoykassen",
   "version": "0.1.0",
   "private": true,
-  "description": "Prototype-løsning for en verktøykasse med sanity",
+  "description": "NAVs verktøykasse. God praksis og Designsystem nettside",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/navikt/verktoykassen.git"
@@ -16,7 +16,6 @@
     "dev": "yarn workspace website dev",
     "build:next": "yarn workspace website build",
     "serve:next": "yarn workspace website start",
-    "deploy": "npx vercel --prod",
     "sanity": "yarn workspace sanity start",
     "sanity:deploy": "yarn workspace sanity deploy",
     "sanity:backup": "yarn workspace sanity backup",

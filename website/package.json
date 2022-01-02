@@ -9,7 +9,6 @@
     "build": "next build",
     "export": "next export",
     "start": "next start",
-    "deploy:vercel": "npx vercel --prod",
     "cypress": "yarn generate:testurls && cypress open",
     "cypress:ci": "yarn generate:testurls && cypress run",
     "e2e": "yarn generate:testurls && yarn build && yarn start-server-and-test start http://localhost:3000 cypress",
