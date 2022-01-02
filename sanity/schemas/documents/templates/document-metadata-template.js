@@ -14,14 +14,8 @@ export function documentMetadata(docType) {
         inputComponent: LastUpdate,
       },
       {
-        title: "Redaktør",
+        title: "Redaktør/kontakt",
         name: "contact",
-        type: "reference",
-        to: [{ type: "editor" }],
-      },
-      {
-        title: "Redaktør/Kontakt",
-        name: "contacts",
         type: "reference",
         to: [{ type: "editor" }],
       },
