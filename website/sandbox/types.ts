@@ -1,3 +1,9 @@
+export enum BgColors {
+  "WHITE" = "--navds-semantic-color-canvas-background-light",
+  "DEFAULT" = "--navds-semantic-color-canvas-background",
+  "INVERTED" = "--navds-semantic-color-canvas-background-inverted",
+}
+
 export interface SandboxComponentProps {
   [key: string]: string | string[] | boolean;
 }
@@ -5,7 +11,7 @@ export interface SandboxComponentProps {
 export interface SandboxComponentArgs {
   props?: SandboxComponentProps;
   variants?: string[];
-  background?: string;
+  background?: BgColors;
 }
 
 export interface SandboxComponent {

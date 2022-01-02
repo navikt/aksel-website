@@ -3,7 +3,7 @@ import { CodeContext } from "./Example";
 import prettier from "prettier/standalone";
 import babel from "prettier/parser-babel";
 import CodeExample from "./getCodeExample";
-import { Detail, useId } from "@navikt/ds-react";
+import { useId } from "@navikt/ds-react";
 import styled from "styled-components";
 import React from "react";
 
@@ -43,7 +43,7 @@ const ScDiv = styled.div`
   }
 `;
 
-const ScInnerDiv = styled.div`
+const ScInnerDiv = styled.div<{ bg?: string }>`
   gap: 1rem;
   padding: 2rem;
   display: inline-flex;
@@ -51,38 +51,12 @@ const ScInnerDiv = styled.div`
   flex-wrap: wrap;
   width: 100%;
 
-  &[data-bg="white"] {
-    background-color: var(--navds-semantic-color-canvas-background-light);
-  }
-
-  &[data-bg="default"] {
-    background-color: var(--navds-semantic-color-canvas-background);
-  }
-  &[data-bg="inverted"] {
-    background-color: var(--navds-semantic-color-canvas-background-inverted);
-  }
-`;
-
-const ScBgText = styled(Detail)`
-  position: absolute;
-  top: var(--navds-spacing-2);
-  right: var(--navds-spacing-4);
-  color: var(--navds-semantic-color-text-muted);
-
-  &[data-bg="inverted"] {
-    color: var(--navds-semantic-color-text-inverted);
-  }
+  ${(props) => props.bg && `background-color: var(${props.bg});`}
 `;
 
 const CodePreview = (): JSX.Element => {
-  const {
-    node,
-    setTabs,
-    setFullscreenLink,
-    previewBg,
-    setPreviewBg,
-    showTabs,
-  } = useContext(CodeContext);
+  const { node, setTabs, setFullscreenLink, previewBg, setPreviewBg } =
+    useContext(CodeContext);
 
   const [url, setUrl] = useState<string>();
   const id = useId();
@@ -132,31 +106,13 @@ const CodePreview = (): JSX.Element => {
 
   if (!url) return null;
 
-  const getBgName = () => {
-    switch (previewBg) {
-      case "white":
-        return "canvas-background-light";
-      case "default":
-        return "canvas-background";
-      case "inverted":
-        return "canvas-background-inverted";
-      default:
-        return "";
-    }
-  };
-
   const Comp = CodeExample(url);
 
   return (
     <>
       {Comp && (
         <ScDiv>
-          {showTabs && (
-            <ScBgText size="small" data-bg={previewBg}>
-              {getBgName()}
-            </ScBgText>
-          )}
-          <ScInnerDiv data-bg={previewBg} ref={setWrapperRef}>
+          <ScInnerDiv bg={previewBg} ref={setWrapperRef}>
             <Comp />
           </ScInnerDiv>
         </ScDiv>

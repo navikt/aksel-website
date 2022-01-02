@@ -1,4 +1,5 @@
 import type { SanityKeyed } from "sanity-codegen";
+import { BgColors } from "../sandbox/types";
 
 export type DsNavigationHeadingMenuT = {
   title: string;
@@ -39,5 +40,5 @@ export type DsFeddbackMsgT = {
 export interface ExampleComponent extends React.FC {
   react: string;
   html?: string | null;
-  bg?: "white" | "default" | "inverted";
+  bg?: BgColors;
 }

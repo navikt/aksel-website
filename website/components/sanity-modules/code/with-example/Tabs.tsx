@@ -4,7 +4,7 @@ import { CodeContext } from "./Example";
 import * as S from "../code.styles";
 import styled from "styled-components";
 import CopyButton from "../CopyButton";
-import { CanvasIcon } from "../../..";
+import ColorPicker from "../../sandbox/ColorPicker";
 
 export const ScTabs = styled.div`
   background-color: var(--navds-semantic-color-canvas-background-light);
@@ -35,7 +35,7 @@ const ScFlex = styled.div`
 const ScLinkButton = styled.a`
   ${S.ButtonCss}
   text-decoration: none;
-  color: var(--navds-semantic-color-text);
+  color: var(--navds-semantic-color-text-muted);
 
   ::before {
     content: none;
@@ -55,28 +55,6 @@ const ScLinkButton = styled.a`
   }
 `;
 
-const ScCanvasButton = styled.button`
-  background-color: transparent;
-  border: none;
-  color: var(--navds-semantic-color-text-muted);
-  padding: 0.75rem 0.75rem;
-  display: flex;
-  align-items: center;
-  min-width: 50px;
-  justify-content: center;
-
-  :hover {
-    background-color: var(
-      --navds-semantic-color-interaction-primary-hover-subtle
-    );
-  }
-
-  :focus {
-    outline: 2px solid var(--navds-semantic-color-focus);
-    outline-offset: -2px;
-  }
-`;
-
 export const ScButton = styled.button`
   ${S.ButtonCss}
 `;
@@ -92,22 +70,6 @@ const CodeTabs = (): JSX.Element => {
     previewBg,
     setPreviewBg,
   } = useContext(CodeContext);
-
-  const updateBg = () => {
-    switch (previewBg) {
-      case "default":
-        setPreviewBg("white");
-        break;
-      case "white":
-        setPreviewBg("inverted");
-        break;
-      case "inverted":
-        setPreviewBg("default");
-        break;
-      default:
-        break;
-    }
-  };
 
   const exampleName = fullscreenLink.split("/")?.[2]?.split("-")?.join(" ");
 
@@ -150,15 +112,10 @@ const CodeTabs = (): JSX.Element => {
             <CopyButton content={tabs[activeTab].content.toString()} inTabs />
           )}
           {showPreview && activeTab === -1 && (
-            <ScCanvasButton
-              className="navds-body-short navds-body--small"
-              onClick={() => updateBg()}
-            >
-              <span className="sr-only">
-                Endre bakgrunnsfarge på komponent preview
-              </span>
-              <CanvasIcon aria-hidden aria-label="Endre bakgrunnsfarge" />
-            </ScCanvasButton>
+            <ColorPicker
+              defaultColor={previewBg}
+              onChange={(c) => setPreviewBg(c)}
+            />
           )}
           {showPreview && fullscreenLink && activeTab === -1 && (
             <ScLinkButton target="_blank" href={fullscreenLink}>
@@ -174,7 +131,7 @@ const CodeTabs = (): JSX.Element => {
           )}
           {node.github && (
             <ScLinkButton
-              className="navds-body-short navds-body--s"
+              className="navds-body-short navds-body--small"
               href={node.github}
             >
               Github

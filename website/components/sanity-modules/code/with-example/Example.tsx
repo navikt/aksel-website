@@ -32,7 +32,7 @@ export const CodeContext = createContext<ContextProps>({
   setActiveTab: () => null,
   fullscreenLink: "",
   setFullscreenLink: () => null,
-  previewBg: "default",
+  previewBg: "--navds-semantic-color-canvas-background",
   setPreviewBg: () => null,
 });
 
@@ -57,7 +57,9 @@ const Code = ({ node }: { node: DsCodeExampleT }): JSX.Element => {
   );
   const [activeTab, setActiveTab] = useState(-1);
   const [fullscreenLink, setFullscreenLink] = useState("");
-  const [previewBg, setPreviewBg] = useState("default");
+  const [previewBg, setPreviewBg] = useState(
+    "--navds-semantic-color-canvas-background"
+  );
 
   if (
     (!node.preview && !node?.tabs) ||

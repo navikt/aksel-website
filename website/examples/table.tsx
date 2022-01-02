@@ -1,6 +1,7 @@
 import React from "react";
 import { Table } from "@navikt/ds-react";
 import { ExampleComponent } from "../lib";
+import { BgColors } from "../sandbox/types";
 
 export const TableExample: ExampleComponent = () => {
   return (
@@ -37,7 +38,7 @@ export const TableExample: ExampleComponent = () => {
   );
 };
 
-TableExample.bg = "white";
+TableExample.bg = BgColors.WHITE;
 TableExample.react = `<Table>
 <Table.Header>
   <Table.Row>
@@ -104,7 +105,7 @@ export const TableSmall: ExampleComponent = () => {
   );
 };
 
-TableSmall.bg = "white";
+TableSmall.bg = BgColors.WHITE;
 TableSmall.react = `<Table size="small">
 <Table.Header>
   <Table.Row>

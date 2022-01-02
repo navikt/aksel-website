@@ -110,7 +110,7 @@ const ColorPicker = ({
         onClose={() => setOpen(false)}
         placement="bottom"
       >
-        <ScLabel forwardedAs="div">Bakgrunnsfarge</ScLabel>
+        <ScLabel forwardedAs="div">Bakgrunnsfarge (token)</ScLabel>
         <ScContent>
           <ColorLabel
             activeColor={selectedColor}

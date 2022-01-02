@@ -1,4 +1,4 @@
-import { SandboxComponent } from "./types";
+import { BgColors, SandboxComponent } from "./types";
 
 const data = [
   { name: "Donald Smith", country: "USA", points: 38 },
@@ -111,7 +111,7 @@ ButtonSandbox.args = {
     zebraStripes: false,
   },
   variants: ["", "Selectable"],
-  background: "white",
+  background: BgColors.WHITE,
 };
 
 export default ButtonSandbox;

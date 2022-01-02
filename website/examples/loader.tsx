@@ -2,6 +2,7 @@ import React from "react";
 import { Loader, Button } from "@navikt/ds-react";
 import styled from "styled-components";
 import { ExampleComponent } from "../lib";
+import { BgColors } from "../sandbox/types";
 
 export const LoaderExample: ExampleComponent = () => (
   <>
@@ -52,7 +53,7 @@ export const LoaderInverted: ExampleComponent = () => (
 );
 
 LoaderInverted.react = `<Loader size="2xlarge" variant="inverted" />`;
-LoaderInverted.bg = "inverted";
+LoaderInverted.bg = BgColors.INVERTED;
 
 export const LoaderTransparent: ExampleComponent = () => (
   <>
