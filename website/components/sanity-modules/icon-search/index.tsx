@@ -42,8 +42,7 @@ const ScIcon = styled.button`
   position: relative;
   cursor: pointer;
 
-  box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
-    0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
+  box-shadow: var(--navds-shadow-card);
 
   svg {
     transition: font-size 0.2s ease-in-out;
@@ -51,8 +50,7 @@ const ScIcon = styled.button`
   }
 
   :hover {
-    background-color: var(--navds-semantic-color-canvas-background);
-    box-shadow: none;
+    box-shadow: 0 0 0 2px var(--navds-semantic-color-link);
 
     svg {
       font-size: 2.4rem;

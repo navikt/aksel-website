@@ -29,27 +29,18 @@ const ScCard = styled.a`
   text-decoration: none;
   border: 2px solid transparent;
   border-radius: 4px;
-  transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
 
   :hover > :first-child,
   :focus > :first-child {
-    color: var(--navds-semantic-color-text-link);
+    color: var(--navds-semantic-color-link);
   }
 
-  :hover,
-  :focus {
+  :hover {
     border-color: var(--navds-semantic-color-link);
   }
 
-  :active {
-    color: var(--navds-semantic-color-text-inverted);
-    border-color: transparent;
-    background-color: var(--navds-global-color-blue-700);
-  }
-
-  :active > *,
-  :active > :first-child {
-    color: var(--navds-semantic-color-text-inverted);
+  :focus {
+    border-color: var(--navds-semantic-color-focus);
   }
 
   > *:first-child {

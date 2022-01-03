@@ -12,6 +12,7 @@ export const ScDownloadButtons = styled.div`
   margin-top: 0.5rem;
   margin-bottom: 2rem;
   width: 200px;
+  margin-left: -1rem;
 
   > * {
     flex: 1 1;
