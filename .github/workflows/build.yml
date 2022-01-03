@@ -26,10 +26,10 @@ jobs:
 
       - name: Install dependencies
         run: yarn
-      - name: Build application
-        run: yarn build:next
       - name: Run tests
         run: NEXT_PUBLIC_TEST=true yarn workspace website e2e:ci
+      - name: Build application
+        run: yarn build:next
       - name: Update code examples
         run: yarn sanity:codeexamples
       - name: Update colors
