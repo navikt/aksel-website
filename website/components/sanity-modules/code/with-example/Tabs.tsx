@@ -57,6 +57,10 @@ const ScLinkButton = styled.a`
 
 export const ScButton = styled.button`
   ${S.ButtonCss}
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const CodeTabs = (): JSX.Element => {

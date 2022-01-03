@@ -31,6 +31,12 @@ const ScTabs = styled.div`
 
 export const ScTabButton = styled.button`
   ${ScTabCss}
+
+  :hover,
+  :hover:focus {
+    cursor: pointer;
+    color: var(--navds-semantic-color-text);
+  }
 `;
 
 const ScLabel = styled(Label)`
