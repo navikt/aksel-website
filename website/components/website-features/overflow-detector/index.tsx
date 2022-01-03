@@ -40,6 +40,32 @@ const ScWrapper = styled.div`
       );
     }
   }
+
+  @media (max-width: 564px) {
+    margin: 0 -1rem;
+
+    &[data-left="true"] {
+      ::before {
+        background: linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.32) 0%,
+          rgba(0, 0, 0, 0.16) 30%,
+          rgba(0, 0, 0, 0) 100%
+        );
+      }
+    }
+
+    &[data-right="true"] {
+      ::after {
+        background: linear-gradient(
+          -90deg,
+          rgba(0, 0, 0, 0.32) 0%,
+          rgba(0, 0, 0, 0.16) 30%,
+          rgba(0, 0, 0, 0) 100%
+        );
+      }
+    }
+  }
 `;
 
 const ScOverflow = styled.div`
