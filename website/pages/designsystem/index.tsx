@@ -156,8 +156,14 @@ const Page = (props: {
           </ScDescriptionWrapper>
           <ScCards>
             {props?.page?.cards &&
-              props?.page?.cards.map((card: DsFrontPageCardT) => {
-                return <Card key={card._key} node={card} tag={true} />;
+              props?.page?.cards.map((card) => {
+                return (
+                  <Card
+                    key={card._key}
+                    node={card as unknown as DsFrontPageCardT}
+                    tag={true}
+                  />
+                );
               })}
           </ScCards>
         </ScFlex>
