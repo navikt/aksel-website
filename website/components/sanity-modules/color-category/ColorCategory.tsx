@@ -2,7 +2,7 @@ import { BodyShort, Modal, Table } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
-import { AmplitudeEvents, useAmplitude } from "../..";
+import { AmplitudeEvents, OverflowDetector, useAmplitude } from "../..";
 import { DsColorCategories } from "../../../lib/autogen-types";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import { withErrorBoundary } from "../../website-features/error-boundary";
@@ -20,6 +20,7 @@ const ScSection = styled.div`
 
 const ScTable = styled(Table)`
   table-layout: fixed;
+  min-width: 400px;
 `;
 
 const ScGlobalWrapper = styled.div`
@@ -121,29 +122,31 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
           ))}
         </ScGlobalWrapper>
       ) : (
-        <ScTable>
-          <Table.Header>
-            <Table.Row>
-              <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
-                Token
-              </ScHeaderCell>
-              {node.colors[0].color_type === "semantic" && (
+        <OverflowDetector>
+          <ScTable>
+            <Table.Header>
+              <Table.Row>
                 <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
-                  Rolle
+                  Token
                 </ScHeaderCell>
-              )}
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {node.colors?.map((color) => (
-              <SemanticTableRow
-                onClick={() => handleSelect(color)}
-                prop={color}
-                key={color._key}
-              />
-            ))}
-          </Table.Body>
-        </ScTable>
+                {node.colors[0].color_type === "semantic" && (
+                  <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
+                    Rolle
+                  </ScHeaderCell>
+                )}
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {node.colors?.map((color) => (
+                <SemanticTableRow
+                  onClick={() => handleSelect(color)}
+                  prop={color}
+                  key={color._key}
+                />
+              ))}
+            </Table.Body>
+          </ScTable>
+        </OverflowDetector>
       )}
       <Modal open={open} onClose={() => handleClose()}>
         <Modal.Content>

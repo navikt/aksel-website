@@ -1,16 +1,12 @@
-import { Detail, Table } from "@navikt/ds-react";
+import { BodyShort, Detail, Table } from "@navikt/ds-react";
 import styled from "styled-components";
 import { DsColor } from "../../../lib/autogen-types";
 import Color from "color";
 
-const ScColorCell = styled(Table.DataCell)`
-  white-space: nowrap;
-  width: 0;
-`;
-
 const ScColorRoles = styled.ul`
   padding: 0;
   margin: 0;
+
   li {
     list-style-type: none;
   }
@@ -18,32 +14,33 @@ const ScColorRoles = styled.ul`
 
 const ScDataCell = styled(Table.DataCell)`
   vertical-align: top;
+  min-width: fit-content;
 `;
 
 const ScTableRow = styled(Table.Row)`
   font-size: 1rem;
+  width: 100%;
 
   :focus {
     outline: none;
-    box-shadow: var(--navds-shadow-focus);
+    box-shadow: inset var(--navds-shadow-focus);
+    border-color: red;
     z-index: 1;
   }
 `;
 
 const ScColorBox = styled.div<{ background: string; dark: boolean }>`
   background-color: ${(props) => props.background};
-  color: var(--navds-semantic-color-text-default);
+  color: var(--navds-semantic-color-text);
   color: ${(props) =>
-    props.dark && "var(--navds-semantic-color-text-inverted)"};
+    props.dark && "var(--navds-semantic-color-text-inverted);"};
   height: 66px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-radius: 4px;
-
-  p {
-    margin: 0 1rem;
-  }
+  padding: 0 1rem;
+  min-width: 10rem;
 `;
 
 const WhiteColorBox = styled(ScColorBox)`
@@ -78,14 +75,14 @@ const ColorBox = ({ prop }: { prop: DsColor }): JSX.Element => {
   if (prop.color_type === "global") {
     return (
       <Box background={color.hex()} dark={color.isDark()}>
-        <p>{prop.title}</p>
+        <BodyShort>{prop.title}</BodyShort>
         <Detail size="small">{color.hex()}</Detail>
       </Box>
     );
   }
   return (
     <Box background={color.hex()} dark={color.isDark()}>
-      <p>{prop.title}</p>
+      {prop.title}
     </Box>
   );
 };
@@ -113,9 +110,9 @@ export const SemanticTableRow = ({
 }) => {
   return (
     <ScTableRow tabIndex={0} forwardedAs="button" {...rest}>
-      <ScColorCell>
+      <Table.DataCell>
         <ColorBox prop={prop} />
-      </ScColorCell>
+      </Table.DataCell>
       <ScDataCell>
         {prop.color_roles && (
           <ScColorRoles>
