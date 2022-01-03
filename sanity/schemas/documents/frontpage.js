@@ -35,6 +35,12 @@ export default {
               initialValue: true,
             },
             {
+              title: "Krever innlogging for tilgang",
+              name: "locked",
+              type: "boolean",
+              initialValue: false,
+            },
+            {
               title: "Tittel",
               name: "title",
               type: "string",

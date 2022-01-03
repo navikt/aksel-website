@@ -1,4 +1,4 @@
-import { Ingress, Link } from "@navikt/ds-react";
+import { Heading, Ingress, Link } from "@navikt/ds-react";
 import Head from "next/head";
 import React, { useEffect } from "react";
 import styled from "styled-components";
@@ -22,6 +22,11 @@ const ScIntro = styled.div`
   align-items: center;
   max-width: 650px;
   text-align: center;
+`;
+
+const ScHeadingLogin = styled(Heading)`
+  margin-top: 6rem;
+  margin-bottom: 2rem;
 `;
 
 const ScLogoWrapper = styled.div`
@@ -136,15 +141,55 @@ const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
           <ScNav aria-label="Portal navigasjon">
             <ScDiv>
               {props?.page?.cards &&
-                props.page.cards.map((card) => (
-                  <Card
-                    key={card._key}
-                    node={card}
-                    categoryRef={card.category_ref}
-                    href={card.link}
-                  />
-                ))}
+                props.page.cards
+                  .filter((x) => !x.locked)
+                  .map((card) => (
+                    <Card
+                      key={card._key}
+                      node={card}
+                      categoryRef={card.category_ref}
+                      href={
+                        card.internal
+                          ? `/${
+                              card.link
+                                ?.split("design.nav.no/")
+                                ?.slice(1)
+                                ?.join("/") ?? card.link
+                            }`
+                          : card.link
+                      }
+                    />
+                  ))}
             </ScDiv>
+            {props?.page?.cards &&
+              props.page.cards.filter((x) => x.locked).length > 0 && (
+                <>
+                  <ScHeadingLogin level="2" size="small">
+                    Krever innlogging
+                  </ScHeadingLogin>
+                  <ScDiv>
+                    {props.page.cards
+                      .filter((x) => x.locked)
+                      .map((card) => (
+                        <Card
+                          key={card._key}
+                          node={card}
+                          categoryRef={card.category_ref}
+                          href={
+                            card.internal
+                              ? `/${
+                                  card.link
+                                    ?.split("design.nav.no/")
+                                    ?.slice(1)
+                                    ?.join("/") ?? card.link
+                                }`
+                              : card.link
+                          }
+                        />
+                      ))}
+                  </ScDiv>
+                </>
+              )}
           </ScNav>
         </ScFrontpage>
       </ScRelative>

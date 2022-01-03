@@ -74,6 +74,13 @@ export interface VkFrontpage extends SanityDocument {
       internal?: boolean;
 
       /**
+       * Krever innlogging for tilgang — `boolean`
+       *
+       *
+       */
+      locked?: boolean;
+
+      /**
        * Tittel — `string`
        *
        *
@@ -155,11 +162,18 @@ export interface DsComponentPage extends SanityDocument {
     last_update?: string;
 
     /**
-     * Redaktør — `reference`
+     * Redaktør/kontakt — `reference`
      *
      *
      */
     contact?: SanityReference<Editor>;
+
+    /**
+     * Bidragsytere — `array`
+     *
+     * Legg til de som har bidratt med denne siden!
+     */
+    contributors?: Array<SanityKeyedReference<Editor>>;
 
     /**
      * Dokument type — `string`
@@ -313,11 +327,18 @@ export interface DsArticlePage extends SanityDocument {
     last_update?: string;
 
     /**
-     * Redaktør — `reference`
+     * Redaktør/kontakt — `reference`
      *
      *
      */
     contact?: SanityReference<Editor>;
+
+    /**
+     * Bidragsytere — `array`
+     *
+     * Legg til de som har bidratt med denne siden!
+     */
+    contributors?: Array<SanityKeyedReference<Editor>>;
 
     /**
      * Dokument type — `string`
@@ -422,11 +443,18 @@ export interface DsTabbedArticlePage extends SanityDocument {
     last_update?: string;
 
     /**
-     * Redaktør — `reference`
+     * Redaktør/kontakt — `reference`
      *
      *
      */
     contact?: SanityReference<Editor>;
+
+    /**
+     * Bidragsytere — `array`
+     *
+     * Legg til de som har bidratt med denne siden!
+     */
+    contributors?: Array<SanityKeyedReference<Editor>>;
 
     /**
      * Dokument type — `string`
@@ -553,7 +581,7 @@ export interface DsFrontpage extends SanityDocument {
        *
        *
        */
-      category?: SanityReference<
+      link_ref?: SanityReference<
         DsComponentPage | DsArticlePage | DsTabbedArticlePage
       >;
 
@@ -778,11 +806,18 @@ export interface GpArticlePage extends SanityDocument {
     last_update?: string;
 
     /**
-     * Redaktør — `reference`
+     * Redaktør/kontakt — `reference`
      *
      *
      */
     contact?: SanityReference<Editor>;
+
+    /**
+     * Bidragsytere — `array`
+     *
+     * Legg til de som har bidratt med denne siden!
+     */
+    contributors?: Array<SanityKeyedReference<Editor>>;
 
     /**
      * Dokument type — `string`
