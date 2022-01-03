@@ -249,8 +249,8 @@ const ComponentOverview = ({
           <Table.Body>
             {node.components
               .sort((x, y) => x.title.localeCompare(y.title))
-              .map((c) => (
-                <TableRow key={c.title} comp={c} />
+              .map((c, i) => (
+                <TableRow key={c.title + i} comp={c} />
               ))}
           </Table.Body>
         </Table>

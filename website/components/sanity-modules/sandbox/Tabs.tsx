@@ -64,7 +64,7 @@ const Tabs = ({ reset }: { reset: () => void }) => {
         <ColorPicker defaultColor={bg} onChange={(c) => setBg(c)} />
         <ScTabButton onClick={() => reset()}>
           <span className="sr-only">Reset sandbox</span>
-          <Refresh />
+          <Refresh aria-hidden aria-label="reset sandkasse visning" />
         </ScTabButton>
         <ScTabButton
           onClick={() =>

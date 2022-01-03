@@ -56,7 +56,7 @@ export const DsFrontpageFooterIllustration = () => (
     aria-hidden
     aria-label="illustrasjon for designsystemet"
   >
-    <g clipPath="url(#clip0_2835_38953)">
+    <g clipPath="url(#clip0_2835_38954)">
       <circle cx="386.5" cy="144.5" r="95.5" fill="#E6F0FF" />
       <rect x="144" y="97" width="144" height="144" fill="#66A5F4" />
       <rect x="49" y="193" width="48" height="48" fill="#0067C5" />
@@ -87,7 +87,7 @@ export const DsFrontpageFooterIllustration = () => (
       />
     </g>
     <defs>
-      <clipPath id="clip0_2835_38953">
+      <clipPath id="clip0_2835_38954">
         <rect width="624" height="240" fill="white" />
       </clipPath>
     </defs>

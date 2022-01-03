@@ -3,7 +3,7 @@ import { LayoutContext } from "../..";
 import { RelatedLinkT } from "../../../lib";
 
 export const useRelatedCategory = (link: RelatedLinkT) => {
-  console.log(link);
+  /* console.log(link); */
 
   /* const context = useContext(LayoutContext); */
 
