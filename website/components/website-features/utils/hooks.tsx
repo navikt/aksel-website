@@ -1,4 +1,14 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
+import { LayoutContext } from "../..";
+import { RelatedLinkT } from "../../../lib";
+
+export const useRelatedCategory = (link: RelatedLinkT) => {
+  console.log(link);
+
+  /* const context = useContext(LayoutContext); */
+
+  return link.internal ? "RELATERT INNHOLD" : null;
+};
 
 export const useOverflowTabsX = (elementRef, parentRef, lastItemRef) => {
   const [overflowLeft, setOverflowLeft] = useState(false);

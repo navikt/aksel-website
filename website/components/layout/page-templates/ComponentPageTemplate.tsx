@@ -210,19 +210,37 @@ const ComponentPageTemplate = ({
             </S.Inline>
             <ScLinks>
               {data.npm_link && (
-                <BodyShort size="small" as="a" href={data.npm_link}>
+                <BodyShort
+                  size="small"
+                  as="a"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  href={data.npm_link}
+                >
                   NPM
                   <ExternalLink aria-label="Gå til NPM pakke" />
                 </BodyShort>
               )}
               {data.github_link && (
-                <BodyShort size="small" as="a" href={data.github_link}>
+                <BodyShort
+                  size="small"
+                  as="a"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  href={data.github_link}
+                >
                   Github
                   <ExternalLink aria-label="Gå til github-kode" />
                 </BodyShort>
               )}
               {data.figma_link && (
-                <BodyShort size="small" as="a" href={data.figma_link}>
+                <BodyShort
+                  size="small"
+                  as="a"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  href={data.figma_link}
+                >
                   Figma
                   <ExternalLink aria-label="Åpne i Figma" />
                 </BodyShort>

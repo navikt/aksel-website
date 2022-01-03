@@ -3,7 +3,8 @@ import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React, { useMemo } from "react";
 import styled from "styled-components";
-import { AmplitudeEvents, useAmplitude } from "../..";
+import { AmplitudeEvents, useAmplitude, useRelatedCategory } from "../..";
+import { RelatedLinkT } from "../../../lib";
 import { RelatedPages } from "../../../lib/autogen-types";
 import { withErrorBoundary } from "../../website-features/error-boundary";
 
@@ -62,20 +63,11 @@ const ScDetail = styled(Detail)`
   }
 `;
 
-/* Query changes internal_link type  */
-interface LinkT {
-  _type: "link";
-  title?: string;
-  description?: string;
-  internal?: boolean;
-  internal_link?: string;
-  external_link?: string;
-}
-
-const Card = ({ link }: { link: LinkT }) => {
+const Card = ({ link }: { link: RelatedLinkT }) => {
   const { logAmplitudeEvent } = useAmplitude();
 
   const { asPath } = useRouter();
+  const related = useRelatedCategory(link);
 
   const logNavigation = (e) => {
     logAmplitudeEvent(AmplitudeEvents.navigasjon, {
@@ -94,7 +86,7 @@ const Card = ({ link }: { link: LinkT }) => {
       <ScBodyShort size="small">{link.description}</ScBodyShort>
       <ScDetail>
         {link.internal ? (
-          "RELATERT INNHOLD"
+          related
         ) : (
           <>
             EKSTERN LINK <ExternalLink aria-label="Ekstern side" />
@@ -118,7 +110,7 @@ const RelatedPagesCard = ({ node }: { node: RelatedPages }): JSX.Element => {
   return (
     <ScRelatedPagesCard>
       {links.map((x) => (
-        <Card key={x._key} link={x as unknown as LinkT} />
+        <Card key={x._key} link={x as unknown as RelatedLinkT} />
       ))}
     </ScRelatedPagesCard>
   );

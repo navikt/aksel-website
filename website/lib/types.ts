@@ -1,6 +1,16 @@
 import type { SanityKeyed } from "sanity-codegen";
 import { BgColors } from "../sandbox/types";
 
+/* Query changes internal_link type  */
+export interface RelatedLinkT {
+  _type: "link";
+  title?: string;
+  description?: string;
+  internal?: boolean;
+  internal_link?: string;
+  external_link?: string;
+}
+
 export type DsNavigationHeadingMenuT = {
   title: string;
   _type: "subheading" | "item";
