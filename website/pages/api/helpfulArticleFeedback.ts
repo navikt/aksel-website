@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { FoundOnPageFeedbackT } from "../../lib";
+import { HelpfulArticleT, HelpfulArticleEnum } from "../../lib";
 
 export default async function handler(
   req: NextApiRequest,
@@ -16,18 +16,34 @@ export default async function handler(
           return;
         }
 
-        const data: FoundOnPageFeedbackT = JSON.parse(req.body);
+        const data: HelpfulArticleT = JSON.parse(req.body);
         const sideUrl = "https://design.nav.no";
-        const trelloList = data.answer
-          ? "619e32343427c94d3e47d3fe"
-          : "619cc57d84cb8a4c9be3bb9c";
-        const label = data.answer
-          ? "619e2f1de9dace4f5e4d69b0"
-          : "619e30b17e833981fcc79136";
+
+        /* Var denne artikkelen til hjelp? */
+        const trelloList = "61d44fc3995604743a83f5cb";
+
+        let label = "";
+        switch (data.answer) {
+          case HelpfulArticleEnum.JA:
+            label = "61d44fd76c19645dd4d423ab";
+            break;
+          case HelpfulArticleEnum.DELVIS:
+            label = "61d44fe8180b832f7c89c3d4";
+            break;
+          case HelpfulArticleEnum.NEI:
+            label = "61d44fdeb5bfff71c69d619b";
+            break;
+          case HelpfulArticleEnum.MISC:
+            label = "61d44ff4f92e56297e937af8";
+            break;
+          default:
+            break;
+        }
+
         const editUrl = `https://verktoykasse.sanity.studio/desk/__edit__${data.docId}%2Ctype%3D${data.docType}`;
 
-        const card = `&name=${data.message}&desc=**Side:**\n${
-          sideUrl + data.url
+        const card = `&desc=**Side:**\n${sideUrl + data.url}\n\n**Melding**\n${
+          data.message
         }\n\n**[Rediger side](${editUrl})**`;
         const url = `https://api.trello.com/1/cards?idList=${trelloList}&idLabels=${label}&key=${trelloKey}&token=${trelloToken}${card}`;
 

@@ -36,9 +36,16 @@ export type DsNavigationHeadingT = {
   menu?: DsNavigationHeadingMenuT[];
 };
 
-export type FoundOnPageFeedbackT = {
-  answer: boolean;
-  message: string;
+export enum HelpfulArticleEnum {
+  "JA" = "ja",
+  "DELVIS" = "delvis",
+  "NEI" = "nei",
+  "MISC" = "misc",
+}
+
+export type HelpfulArticleT = {
+  answer: HelpfulArticleEnum;
+  message?: string;
   url: string;
   docId: string;
   docType: string;

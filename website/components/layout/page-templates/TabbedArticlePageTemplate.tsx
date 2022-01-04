@@ -5,7 +5,7 @@ import React, { useContext, useEffect, useRef } from "react";
 import { flattenBlocks } from "sanity-algolia";
 import {
   AmplitudeEvents,
-  Feedbackv2,
+  Feedback,
   LastUpdateTag,
   LayoutContext,
   slugger,
@@ -122,7 +122,7 @@ const TabbedActiclePageTemplate = ({
         <TableOfContents changedState={data.tabs[activeTab].body} />
         <S.MaxWidthContainer>
           <SanityBlockContent withMargin blocks={data.tabs[activeTab].body} />
-          <Feedbackv2
+          <Feedback
             docId={pageProps?.page?._id}
             docType={pageProps?.page?._type}
           />
