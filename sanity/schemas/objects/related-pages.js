@@ -60,6 +60,35 @@ export default {
               type: "url",
               hidden: ({ parent }) => parent?.internal,
             },
+            {
+              title: "Tagging",
+              description: "Velg hvordan kortet skal tagges",
+              name: "tags",
+              type: "string",
+              initialValue: "default",
+              hidden: ({ parent }) => !parent?.internal,
+              options: {
+                list: [
+                  {
+                    value: "default",
+                    title: "Generisk tag (RELATERT INNHOLD)",
+                  },
+                  {
+                    value: "main_categories",
+                    title: "Kategorier (Henter tag fra valgt kategori)",
+                  },
+                ],
+                layout: "radio",
+              },
+            },
+            {
+              title: "Kategori",
+              name: "category_ref",
+              type: "reference",
+              to: [{ type: "main_categories" }],
+              hidden: ({ parent }) =>
+                parent?.tags !== "main_categories" || !parent?.internal,
+            },
           ],
         },
       ],
