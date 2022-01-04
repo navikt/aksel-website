@@ -45,6 +45,19 @@ const ScrollTop = () => {
       setShowButton(
         ref.current.parentElement.getBoundingClientRect().height >= 1000
       );
+  }, []);
+
+  useEffect(() => {
+    const updateShow = () =>
+      ref.current &&
+      setShowButton(
+        ref.current.parentElement.getBoundingClientRect().height >= 1000
+      );
+
+    window.addEventListener("resize", updateShow);
+    return () => {
+      window.removeEventListener("resize", updateShow);
+    };
   }, [asPath]);
 
   return (

@@ -9,7 +9,7 @@ const ScWrapper = styled.div`
     ::before {
       content: "";
       height: 100%;
-      width: 20px;
+      width: 30px;
       bottom: 0;
       top: 0;
       left: 0;
@@ -27,7 +27,7 @@ const ScWrapper = styled.div`
     ::after {
       content: "";
       height: 100%;
-      width: 20px;
+      width: 30px;
       bottom: 0;
       top: 0;
       right: 0;

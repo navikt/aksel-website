@@ -84,7 +84,7 @@ const LevelTwoHeading = ({
         anchorEl={anchorRef.current}
         open={openPopover}
         onClose={() => setOpenPopover(false)}
-        placement="right"
+        placement="auto"
         arrow={false}
         offset={8}
         aria-live="polite"

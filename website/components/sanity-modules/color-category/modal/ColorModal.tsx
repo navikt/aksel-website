@@ -54,7 +54,6 @@ ${color.full_title.replace("--", "@")};`,
 });
 
 const ColorModal = ({ color }: { color: DsColor }) => {
-  console.log(color.color_roles);
   return (
     <ScModalContent>
       <div>
