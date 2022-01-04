@@ -22,6 +22,7 @@ export * from "./styling";
 export { default as Changelog } from "./website-features/changelog";
 export * from "./website-features/error-boundary";
 export { default as Feedback } from "./website-features/feedback";
+export { default as Feedbackv2 } from "./website-features/feedbackv2";
 export { default as LevelTwoHeading } from "./website-features/heading";
 export { default as Lightbox } from "./website-features/lightbox";
 export { default as OverflowDetector } from "./website-features/overflow-detector";

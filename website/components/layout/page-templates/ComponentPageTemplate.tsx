@@ -9,6 +9,7 @@ import {
   AmplitudeEvents,
   Changelog,
   CodeExample,
+  Feedbackv2,
   LastUpdateTag,
   LayoutContext,
   LevelTwoHeading,
@@ -290,6 +291,10 @@ const ComponentPageTemplate = ({
           {value === "development" && (
             <Changelog changelogs={changelogs} id={data._id} />
           )}
+          <Feedbackv2
+            docId={pageProps?.page?._id}
+            docType={pageProps?.page?._type}
+          />
         </S.MaxWidthContainer>
       </S.SanityBlockContainer>
     </>

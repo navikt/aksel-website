@@ -5,6 +5,7 @@ import React, { useContext, useEffect, useRef } from "react";
 import { flattenBlocks } from "sanity-algolia";
 import {
   AmplitudeEvents,
+  Feedbackv2,
   LastUpdateTag,
   LayoutContext,
   slugger,
@@ -14,6 +15,7 @@ import {
   useAmplitude,
 } from "../..";
 import { DsTabbedArticlePage } from "../../../lib/autogen-types";
+import { PagePropsContext } from "../../../pages/_app";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import * as S from "./page.styles";
 
@@ -26,6 +28,7 @@ const TabbedActiclePageTemplate = ({
 }): JSX.Element => {
   const { query, asPath } = useRouter();
   const layout = useContext(LayoutContext);
+  const { pageProps } = useContext(PagePropsContext);
   const { logAmplitudeEvent } = useAmplitude();
 
   useEffect(() => {
@@ -119,6 +122,10 @@ const TabbedActiclePageTemplate = ({
         <TableOfContents changedState={data.tabs[activeTab].body} />
         <S.MaxWidthContainer>
           <SanityBlockContent withMargin blocks={data.tabs[activeTab].body} />
+          <Feedbackv2
+            docId={pageProps?.page?._id}
+            docType={pageProps?.page?._type}
+          />
         </S.MaxWidthContainer>
       </S.SanityBlockContainer>
     </>

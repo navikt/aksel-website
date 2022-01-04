@@ -1,8 +1,11 @@
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import React, { useContext, useEffect, useRef } from "react";
+import { flattenBlocks } from "sanity-algolia";
 import {
   AmplitudeEvents,
+  Feedbackv2,
   LastUpdateTag,
   LayoutContext,
   slugger,
@@ -11,10 +14,9 @@ import {
   useAmplitude,
 } from "../..";
 import { DsArticlePage, GpArticlePage } from "../../../lib/autogen-types";
+import { PagePropsContext } from "../../../pages/_app";
 import { SanityBlockContent } from "../../SanityBlockContent";
-import { useRouter } from "next/router";
 import * as S from "./page.styles";
-import { flattenBlocks } from "sanity-algolia";
 
 const ActiclePageTemplate = ({
   data,
@@ -28,6 +30,7 @@ const ActiclePageTemplate = ({
   });
 
   const layout = useContext(LayoutContext);
+  const { pageProps } = useContext(PagePropsContext);
   const { logAmplitudeEvent } = useAmplitude();
   const { asPath } = useRouter();
   const visited = useRef([]);
@@ -85,6 +88,10 @@ const ActiclePageTemplate = ({
         <TableOfContents changedState={data.body} />
         <S.MaxWidthContainer>
           <SanityBlockContent withMargin blocks={data.body} />
+          <Feedbackv2
+            docId={pageProps?.page?._id}
+            docType={pageProps?.page?._type}
+          />
         </S.MaxWidthContainer>
       </S.SanityBlockContainer>
     </>
