@@ -95,6 +95,12 @@ const ScInnerDiv = styled.div`
     justify-content: center;
     flex-wrap: wrap;
   }
+
+  > pre {
+    max-width: 100%;
+    font-family: var(--font-family-code);
+    white-space: break-spaces;
+  }
 `;
 
 export const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
