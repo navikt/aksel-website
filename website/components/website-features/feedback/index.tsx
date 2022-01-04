@@ -254,7 +254,7 @@ const Feedback = ({
       case HelpfulArticleEnum.DELVIS:
         return "Hm.. Hva er det som mangler?";
       case HelpfulArticleEnum.NEI:
-        return "Kjipt! Hva e de du ikke liker?";
+        return "Kjipt! Hva er det du ikke liker?";
       case HelpfulArticleEnum.MISC:
         return "Hva kan forbedres?";
       default:
