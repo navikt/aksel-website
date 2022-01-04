@@ -6,6 +6,10 @@ export const SanityBlockContainer = styled.div`
   position: relative;
   max-width: 1280px;
   display: flex;
+
+  @media (max-width: 768px) {
+    max-width: 100vw;
+  }
 `;
 
 export const MaxWidthContainerDiv = styled.div<{ isTablet: boolean }>`
