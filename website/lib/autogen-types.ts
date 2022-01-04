@@ -1817,6 +1817,20 @@ export type RelatedPages = {
        *
        */
       external_link?: string;
+
+      /**
+       * Tagging — `string`
+       *
+       * Velg hvordan kortet skal tagges
+       */
+      tags?: "default" | "main_categories";
+
+      /**
+       * Kategori — `reference`
+       *
+       *
+       */
+      category_ref?: SanityReference<MainCategories>;
     }>
   >;
 };

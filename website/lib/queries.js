@@ -10,7 +10,8 @@ const deRefs = `
 _type == "related_pages" =>{
   links[]{
     ...,
-    "internal_link": internal_link->slug.current
+    "internal_link": internal_link->slug.current,
+    category_ref->{...}
   }
 },
 _type == "component_overview" =>{

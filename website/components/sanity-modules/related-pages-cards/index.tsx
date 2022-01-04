@@ -3,7 +3,7 @@ import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React, { useMemo } from "react";
 import styled from "styled-components";
-import { AmplitudeEvents, useAmplitude, useRelatedCategory } from "../..";
+import { AmplitudeEvents, useAmplitude } from "../..";
 import { RelatedLinkT } from "../../../lib";
 import { RelatedPages } from "../../../lib/autogen-types";
 import { withErrorBoundary } from "../../website-features/error-boundary";
@@ -57,6 +57,7 @@ const ScDetail = styled(Detail)`
   color: var(--navds-semantic-color-text-muted);
   position: absolute;
   bottom: var(--navds-spacing-6);
+  text-transform: uppercase;
 
   > svg {
     margin-left: var(--navds-spacing-2);
@@ -67,7 +68,6 @@ const Card = ({ link }: { link: RelatedLinkT }) => {
   const { logAmplitudeEvent } = useAmplitude();
 
   const { asPath } = useRouter();
-  const related = useRelatedCategory(link);
 
   const logNavigation = (e) => {
     logAmplitudeEvent(AmplitudeEvents.navigasjon, {
@@ -78,6 +78,11 @@ const Card = ({ link }: { link: RelatedLinkT }) => {
   };
   const href = link.internal ? `/${link.internal_link}` : link.external_link;
 
+  const tag =
+    (link.tags !== "main_categories" || !link.category_ref
+      ? "RELATERT INNHOLD"
+      : link?.category_ref?.title) ?? "RELATERT INNHOLD";
+
   return (
     <ScCard href={href} onClick={(e) => logNavigation(e)}>
       <Heading size="xsmall" as="div">
@@ -86,7 +91,7 @@ const Card = ({ link }: { link: RelatedLinkT }) => {
       <ScBodyShort size="small">{link.description}</ScBodyShort>
       <ScDetail>
         {link.internal ? (
-          related
+          tag
         ) : (
           <>
             EKSTERN LINK <ExternalLink aria-label="Ekstern side" />

@@ -9,6 +9,8 @@ export interface RelatedLinkT {
   internal?: boolean;
   internal_link?: string;
   external_link?: string;
+  category_ref?: any;
+  tags?: "default" | "main_categories";
 }
 
 export type DsNavigationHeadingMenuT = {
