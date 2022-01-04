@@ -23,7 +23,6 @@ const formatCode = (code: string, tag: string) => {
     });
     return formated.startsWith(";") ? formated.slice(1) : formated;
   } catch (e) {
-    console.error(e);
     return code;
   }
 };

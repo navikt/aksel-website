@@ -1,9 +1,16 @@
 import { BodyShort, Button, Heading, Label, Textarea } from "@navikt/ds-react";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import styled, { css } from "styled-components";
-import { LayoutContext } from "../..";
+import { LayoutContext, useAmplitude } from "../..";
 import { HelpfulArticleEnum, HelpfulArticleT } from "../../../lib";
+import { AmplitudeEvents } from "../utils";
 
 const ScFeedback = styled.div<{ isTablet?: boolean }>`
   width: 100%;
@@ -144,8 +151,7 @@ const Feedback = ({
   docId?: string;
   docType?: string;
 }): JSX.Element => {
-  if (!docId || !docType) return null;
-
+  const { logAmplitudeEvent } = useAmplitude();
   const { asPath, basePath } = useRouter();
   const context = useContext(LayoutContext);
   const [textValue, setTextValue] = useState("");
@@ -155,6 +161,7 @@ const Feedback = ({
   const timeoutTimer = useRef<number | null>();
   const [thanksFeedback, setThanksFeedback] = useState<boolean>(false);
   const textAreaRef = useRef(null);
+  const [hasLoggedFeedback, setHasLoggedFeedback] = useState(false);
 
   const fetchFeedback = () => {
     const msg: HelpfulArticleT = {
@@ -171,10 +178,36 @@ const Feedback = ({
     });
   };
 
+  const logFeedback = useCallback(
+    (completed: boolean) => {
+      !hasLoggedFeedback && activeState && console.log("logFeedback");
+      !hasLoggedFeedback &&
+        activeState &&
+        logAmplitudeEvent(AmplitudeEvents.feedbackinteraksjon, {
+          fra: asPath,
+          valg: activeState,
+          completed,
+        });
+    },
+    [asPath, activeState, hasLoggedFeedback]
+  );
+
+  useEffect(() => {
+    const callLogFeedback = () => logFeedback(false);
+
+    window.addEventListener("beforeunload", callLogFeedback);
+    return () => {
+      window.removeEventListener("beforeunload", callLogFeedback);
+    };
+  }, [logFeedback]);
+
   const handleSend = (e) => {
     e.preventDefault();
 
     fetchFeedback();
+
+    logFeedback(true);
+    setHasLoggedFeedback(true);
 
     setActiveState(null);
     setTextValue("");
@@ -228,6 +261,8 @@ const Feedback = ({
         return "Hva kan forbedres?";
     }
   };
+
+  if (!docId || !docType) return null;
 
   return (
     <ScFeedback isTablet={context.isTablet}>
