@@ -131,6 +131,10 @@ const Page = (props: {
       <Head>
         <title>Designsystemet</title>
         <meta property="og:title" content="Designsystemet NAV" />
+        <meta
+          name="description"
+          content="Gjør det enkelt å lage produkter i NAV."
+        />
       </Head>
       {props.preview && <Sc.PreviewBanner />}
       <ScBg>

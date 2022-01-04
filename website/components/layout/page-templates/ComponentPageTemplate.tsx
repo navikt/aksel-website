@@ -3,6 +3,7 @@ import { BodyShort, Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { flattenBlocks } from "sanity-algolia";
 import styled from "styled-components";
 import {
   AmplitudeEvents,
@@ -185,6 +186,9 @@ const ComponentPageTemplate = ({
             property="og:title"
             content={`${data.heading} - Designsystemet`}
           />
+          {data.ingress && (
+            <meta name="description" content={flattenBlocks(data.ingress)} />
+          )}
         </>
       </Head>
 

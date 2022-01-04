@@ -116,6 +116,10 @@ const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
       <Head>
         <title>Verktøykassa</title>
         <meta property="og:title" content="Verktøykassen NAV" />
+        <meta
+          name="description"
+          content="En samling ressurser fra ulike fagdisipliner som hjelper oss å skape bedre, universelt tilgjengelige og sammenhengende produkter i NAV."
+        />
       </Head>
       {props.preview && <Sc.PreviewBanner />}
       <ScRelative>

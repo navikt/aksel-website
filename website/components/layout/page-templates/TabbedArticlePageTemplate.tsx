@@ -2,6 +2,7 @@ import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useRef } from "react";
+import { flattenBlocks } from "sanity-algolia";
 import {
   AmplitudeEvents,
   LastUpdateTag,
@@ -64,6 +65,9 @@ const TabbedActiclePageTemplate = ({
           <>
             <title>{`${data.heading} ${tabTitle ?? ""} - ${title}`}</title>
             <meta property="og:title" content={`${data.heading} - ${title}`} />
+            {data.ingress && (
+              <meta name="description" content={flattenBlocks(data.ingress)} />
+            )}
           </>
         )}
       </Head>

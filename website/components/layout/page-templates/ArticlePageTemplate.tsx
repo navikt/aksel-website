@@ -14,6 +14,7 @@ import { DsArticlePage, GpArticlePage } from "../../../lib/autogen-types";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import { useRouter } from "next/router";
 import * as S from "./page.styles";
+import { flattenBlocks } from "sanity-algolia";
 
 const ActiclePageTemplate = ({
   data,
@@ -52,6 +53,9 @@ const ActiclePageTemplate = ({
           <>
             <title>{`${data.heading} - ${title}`}</title>
             <meta property="og:title" content={`${data.heading} - ${title}`} />
+            {data.ingress && (
+              <meta name="description" content={flattenBlocks(data.ingress)} />
+            )}
           </>
         )}
       </Head>
