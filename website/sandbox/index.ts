@@ -3,6 +3,7 @@ import ButtonSandbox from "./button";
 import PlainSandbox from "./plain";
 import HeaderSandbox from "./header";
 import TableSandbox from "./table";
+import LoaderSandbox from "./loader";
 import CheckboxSandbox from "./checkbox";
 import kebabCase from "lodash.kebabcase";
 import { SandboxComponent } from "./types";
@@ -14,6 +15,7 @@ const allSandboxes = {
   PlainSandbox,
   TableSandbox,
   CheckboxSandbox,
+  LoaderSandbox,
 };
 
 export const Sandboxes = Object.keys(allSandboxes).reduce((prev, y) => {
