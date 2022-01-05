@@ -20,7 +20,7 @@ export const ConfirmationPanelExample: ExampleComponent = () => {
 
 ConfirmationPanelExample.react = `<ConfirmationPanel
 checked={checked}
-onChange={() => handleConfirm}
+onChange={() => handleConfirm()}
 label="Ja, jeg samtykker."
 >
 For å komme videre må du gi oss lov til å hente inn og bruke
@@ -46,7 +46,7 @@ export const ConfirmationPanelSmall: ExampleComponent = () => {
 
 ConfirmationPanelSmall.react = `<ConfirmationPanel
 checked={checked}
-onChange={() => handleConfirm}
+onChange={() => handleConfirm()}
 label="Ja, jeg samtykker."
 size="small"
 >

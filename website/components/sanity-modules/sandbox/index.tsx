@@ -1,5 +1,6 @@
 import * as DsIcons from "@navikt/ds-icons";
 import * as DsReact from "@navikt/ds-react";
+import * as DsReactInternal from "@navikt/ds-react-internal";
 import babel from "prettier/parser-babel";
 import prettier from "prettier/standalone";
 import theme from "prism-react-renderer/themes/dracula";
@@ -59,6 +60,7 @@ const formatCode = (code: string) => {
 
 const scope = {
   ...DsReact,
+  ...DsReactInternal,
   ...DsIcons,
   styled,
 };
