@@ -1,6 +1,6 @@
 import { SandboxComponent } from "./types";
 
-const AlertSandbox: SandboxComponent = (props) => {
+const HeaderSandbox: SandboxComponent = (props) => {
   let user = `<Header.User name="Ola Normann" ${
     !props["system-meny"] && `style={{ marginLeft: "auto" }}`
   } />`;
@@ -95,7 +95,7 @@ const AlertSandbox: SandboxComponent = (props) => {
   </Header>`;
 };
 
-AlertSandbox.args = {
+HeaderSandbox.args = {
   props: {
     title: ["H-tag", "Lenke"],
     user: ["", "Med description", "Meny", "Initialer"],
@@ -103,4 +103,4 @@ AlertSandbox.args = {
   },
 };
 
-export default AlertSandbox;
+export default HeaderSandbox;
