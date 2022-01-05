@@ -1,6 +1,6 @@
 import { SandboxComponent } from "./types";
 
-const SelectSandbox: SandboxComponent = (props) => {
+const TextareaSandbox: SandboxComponent = (props) => {
   const size = props?.size ? ` size="${props.size}"` : "";
   const description = props?.description
     ? ` description="Vi lagrer bare selve meldingen, ikke hvem som sendte den."`
@@ -30,7 +30,7 @@ const SelectSandbox: SandboxComponent = (props) => {
   `;
 };
 
-SelectSandbox.args = {
+TextareaSandbox.args = {
   props: {
     size: ["", "medium", "small"],
     description: false,
@@ -43,4 +43,4 @@ SelectSandbox.args = {
   },
 };
 
-export default SelectSandbox;
+export default TextareaSandbox;

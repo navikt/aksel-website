@@ -9,6 +9,7 @@ import PanelSandbox from "./panel";
 import RadioSandbox from "./radio";
 import SelectSandbox from "./select";
 import TextareaSandbox from "./textarea";
+import TextFieldSandox from "./textfield";
 import CheckboxSandbox from "./checkbox";
 import kebabCase from "lodash.kebabcase";
 import { SandboxComponent } from "./types";
@@ -26,6 +27,7 @@ const allSandboxes = {
   RadioSandbox,
   SelectSandbox,
   TextareaSandbox,
+  TextFieldSandox,
 };
 
 export const Sandboxes = Object.keys(allSandboxes).reduce((prev, y) => {
