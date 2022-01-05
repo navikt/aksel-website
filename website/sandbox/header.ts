@@ -6,12 +6,12 @@ const AlertSandbox: SandboxComponent = (props) => {
   } />`;
 
   switch (props.user) {
-    case "description":
+    case "Med description":
       user = `<Header.User name="Ola Normann" description="D123456" ${
         !props["system-meny"] && `style={{ marginLeft: "auto" }}`
       } />`;
       break;
-    case "initialer":
+    case "Initialer":
       user = `<Dropdown>
       <Header.Button as={Dropdown.Toggle} ${
         !props["system-meny"] && `style={{ marginLeft: "auto" }}`
@@ -43,7 +43,7 @@ const AlertSandbox: SandboxComponent = (props) => {
       </Dropdown.Menu>
     </Dropdown>`;
       break;
-    case "Menu":
+    case "Meny":
       user = `<Dropdown>
       <Header.UserButton
         ${!props["system-meny"] && `style={{ marginLeft: "auto" }}`}
@@ -87,8 +87,8 @@ const AlertSandbox: SandboxComponent = (props) => {
     : "";
 
   return `<Header className="sandbox-header">
-    <Header.Title ${props.title === "Heading" ? `as="h1"` : `href="#"`}>${
-    props.title === "Heading" ? "NAV Sykepenger" : "Hjem"
+    <Header.Title ${props.title === "H-tag" ? `as="h1"` : `href="#"`}>${
+    props.title === "H-tag" ? "NAV Sykepenger" : "Hjem"
   }</Header.Title>
     ${system}
     ${user}
@@ -97,8 +97,8 @@ const AlertSandbox: SandboxComponent = (props) => {
 
 AlertSandbox.args = {
   props: {
-    title: ["Heading", "Lenke"],
-    user: ["", "description", "Menu", "initialer"],
+    title: ["H-tag", "Lenke"],
+    user: ["", "Med description", "Meny", "Initialer"],
     "system-meny": false,
   },
 };
