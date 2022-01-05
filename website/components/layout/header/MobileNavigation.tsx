@@ -1,4 +1,4 @@
-import { Close, Hamburger, Left } from "@navikt/ds-icons";
+import { Close, Hamburger, Left, Next } from "@navikt/ds-icons";
 import { Detail, Heading, Popover } from "@navikt/ds-react";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useMedia } from "react-use";
@@ -75,6 +75,9 @@ const ScListItem = styled.button<{ $active?: boolean }>`
   width: 100%;
   color: var(--navds-semantic-color-text);
   text-decoration: none;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
 
   :first-child {
     border-radius: 4px 4px 0 0;
@@ -176,13 +179,17 @@ const MobileNavigation = () => {
   const { pageProps } = useContext<any>(PagePropsContext);
   const [openHamb, setOpenHamb] = useState(false);
   const [heading, setHeading] = useState(context?.activeHeading);
-  const [isHeadingMenu, setIsHeadingMenu] = useState(true);
+  const [isHeadingMenu, setIsHeadingMenu] = useState(false);
   const useMobileHeader = useMedia("(max-width: 1023px)");
   const buttonRef = useRef(null);
 
   useEffect(() => {
     context?.activeHeading && setHeading(context.activeHeading);
   }, [context?.activeHeading]);
+
+  useEffect(() => {
+    setIsHeadingMenu(!heading || (useMobileHeader && !context.isTablet));
+  }, [heading, useMobileHeader, context.isTablet]);
 
   return (
     <>
@@ -256,6 +263,10 @@ const MobileNavigation = () => {
                           }}
                         >
                           {heading?.title}
+                          <Next
+                            aria-hidden
+                            aria-label={`åpne ${heading?.title} menyen`}
+                          />
                         </ScListItem>
                       )
                   )}
