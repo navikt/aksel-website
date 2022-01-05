@@ -15,6 +15,7 @@ const ScTabs = styled.div`
   justify-content: space-between;
   border: 1px solid var(--navds-semantic-color-divider);
   align-items: center;
+  overflow-x: auto;
 
   ul,
   li {

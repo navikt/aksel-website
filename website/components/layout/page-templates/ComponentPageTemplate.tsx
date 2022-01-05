@@ -1,5 +1,5 @@
 import { ExternalLink } from "@navikt/ds-icons";
-import { BodyShort, Heading } from "@navikt/ds-react";
+import { BodyShort, Heading, Link } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useRef, useState } from "react";
@@ -30,44 +30,36 @@ import * as S from "./page.styles";
 
 const ScLinks = styled.div`
   display: flex;
-  column-gap: 0.25rem;
+  column-gap: 0.5rem;
   flex-wrap: wrap;
 
-  margin-left: var(--navds-spacing-4);
   right: 0;
   top: 0;
 
   a {
-    text-decoration: none;
-    color: var(--navds-semantic-color-text);
-    padding: calc(0.75rem + 2px) 0.25rem;
-    transition: box-shadow 100ms;
-    justify-content: center;
-    display: flex;
-    gap: 0.25rem;
+    color: var(--navds-semantic-color-text-muted);
 
-    :hover {
-      text-decoration: underline;
-      background: var(--navds-global-color-blue-50);
+    > * {
+      color: var(--navds-semantic-color-text-muted);
     }
 
-    :focus {
-      outline: none;
-      box-shadow: 0 0 0 3px var(--navds-semantic-color-focus);
-    }
-
-    :active {
-      background-color: var(--navds-semantic-color-focus);
-      color: var(--navds-semantic-color-text-inverted);
+    :hover:not(:focus) {
+      color: var(--navds-semantic-color-text);
+      > * {
+        color: var(--navds-semantic-color-text);
+      }
     }
   }
 `;
 
-const ScDiv = styled.div`
+const ScDiv = styled(BodyShort)`
   display: flex;
   align-items: center;
   margin-bottom: var(--navds-spacing-2);
   justify-content: flex-start;
+  flex-wrap: wrap;
+  column-gap: 1.5rem;
+  row-gap: 0.75rem;
 `;
 
 const MarginTop = styled.div`
@@ -195,6 +187,7 @@ const ComponentPageTemplate = ({
 
       <S.MaxWidthContainer>
         <S.HeadingContainer>
+          <StatusTag status={data.status} />
           <Heading
             size={
               layout.isTablet
@@ -208,47 +201,39 @@ const ComponentPageTemplate = ({
           >
             {data.heading}
           </Heading>
-          <ScDiv>
-            <S.Inline>
-              <LastUpdateTag date={data?.metadata?.last_update} />
-              <StatusTag status={data.status} />
-            </S.Inline>
+          <ScDiv forwardedAs="div" size="small">
+            <LastUpdateTag date={data?.metadata?.last_update} />
+
             <ScLinks>
               {data.npm_link && (
-                <BodyShort
-                  size="small"
-                  as="a"
+                <Link
                   target="_blank"
                   rel="noreferrer noopener"
                   href={data.npm_link}
                 >
                   NPM
                   <ExternalLink aria-label="Gå til NPM pakke" />
-                </BodyShort>
+                </Link>
               )}
               {data.github_link && (
-                <BodyShort
-                  size="small"
-                  as="a"
+                <Link
                   target="_blank"
                   rel="noreferrer noopener"
                   href={data.github_link}
                 >
                   Github
                   <ExternalLink aria-label="Gå til github-kode" />
-                </BodyShort>
+                </Link>
               )}
               {data.figma_link && (
-                <BodyShort
-                  size="small"
-                  as="a"
+                <Link
                   target="_blank"
                   rel="noreferrer noopener"
                   href={data.figma_link}
                 >
                   Figma
                   <ExternalLink aria-label="Åpne i Figma" />
-                </BodyShort>
+                </Link>
               )}
             </ScLinks>
           </ScDiv>

@@ -50,6 +50,10 @@ export const Anchor = styled.button`
   :active {
     background-color: var(--navds-global-color-blue-50);
   }
+
+  @media (max-width: 564px) {
+    margin: 0;
+  }
 `;
 
 export const HeadingWrapper = styled.div`

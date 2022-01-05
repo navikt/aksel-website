@@ -16,8 +16,10 @@ export const MainFooter = styled.div`
   position: relative;
 `;
 
-export const Main = styled.main<{ graybg?: boolean }>`
+export const Main = styled.main<{ fullwidth?: boolean; graybg?: boolean }>`
   min-height: calc(100vh - var(--header-height));
+  width: 100%;
+  max-width: calc(100vw - var(--sidebar-max-width));
   display: flex;
   flex-direction: column;
   position: relative;
@@ -25,6 +27,12 @@ export const Main = styled.main<{ graybg?: boolean }>`
   ${(props) =>
     props.graybg &&
     `background-color: var(--navds-semantic-color-component-background-alternate);`}
+
+  ${(props) => props.fullwidth && `max-width: 100%;`}
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 
   :focus {
     outline: none;

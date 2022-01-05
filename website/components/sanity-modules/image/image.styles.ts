@@ -40,6 +40,12 @@ export const TextImage = styled.div<{ placement: "right" | "left" }>`
       margin-bottom: 1.5rem;`}
 
   @media (max-width: 564px) {
+    margin: 0;
+    margin-bottom: 1.5rem;
     float: none;
+  }
+
+  @media (max-width: 400px) {
+    width: 100%;
   }
 `;

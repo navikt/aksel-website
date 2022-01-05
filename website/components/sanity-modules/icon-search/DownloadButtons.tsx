@@ -39,6 +39,7 @@ export const ScButton = styled.button`
   color: var(--navds-semantic-color-interaction-primary);
   padding: calc(0.75rem + 2px) 0.75rem;
   align-items: center;
+  cursor: pointer;
 
   > svg {
     font-size: 1.25rem;

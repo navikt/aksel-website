@@ -76,6 +76,7 @@ const TabbedActiclePageTemplate = ({
       </Head>
       <S.MaxWidthContainer>
         <S.HeadingContainer>
+          <StatusTag status={data.status} />
           <Heading
             size={
               layout.isTablet
@@ -89,10 +90,7 @@ const TabbedActiclePageTemplate = ({
           >
             {data.heading}
           </Heading>
-          <S.Inline>
-            <LastUpdateTag date={data.metadata.last_update} />
-            <StatusTag status={data.status} />
-          </S.Inline>
+          <LastUpdateTag date={data.metadata.last_update} />
         </S.HeadingContainer>
         {data.ingress && <SanityBlockContent isIngress blocks={data.ingress} />}
       </S.MaxWidthContainer>
