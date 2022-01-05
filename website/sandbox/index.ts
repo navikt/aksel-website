@@ -4,6 +4,9 @@ import PlainSandbox from "./plain";
 import HeaderSandbox from "./header";
 import TableSandbox from "./table";
 import LoaderSandbox from "./loader";
+import TagSandbox from "./tag";
+import PanelSandbox from "./panel";
+import RadioSandbox from "./radio";
 import CheckboxSandbox from "./checkbox";
 import kebabCase from "lodash.kebabcase";
 import { SandboxComponent } from "./types";
@@ -13,9 +16,12 @@ const allSandboxes = {
   ButtonSandbox,
   HeaderSandbox,
   PlainSandbox,
+  TagSandbox,
   TableSandbox,
   CheckboxSandbox,
   LoaderSandbox,
+  PanelSandbox,
+  RadioSandbox,
 };
 
 export const Sandboxes = Object.keys(allSandboxes).reduce((prev, y) => {
