@@ -1,4 +1,4 @@
-import { Close, Hamburger, Left, Next } from "@navikt/ds-icons";
+import { Back, Close, Hamburger, Next } from "@navikt/ds-icons";
 import { Detail, Heading, Popover } from "@navikt/ds-react";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useMedia } from "react-use";
@@ -284,7 +284,7 @@ const MobileNavigation = () => {
                       forwardedAs="button"
                       size="xsmall"
                     >
-                      <Left />
+                      <Back aria-hidden aria-label="tilbake til hovedmeny" />
                       Tilbake
                     </ScTopButton>
                     <ScCategory size="small">{heading.title}</ScCategory>

@@ -1,4 +1,4 @@
-import { Expand, Left } from "@navikt/ds-icons";
+import { Back, Expand } from "@navikt/ds-icons";
 import { BodyShort, Label, Popover } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import * as React from "react";
@@ -215,7 +215,7 @@ const HeadingDropDown = ({ title }: { title: string }) => {
                   logNavigation(e);
                 }}
               >
-                <Left aria-label="Gå til forsiden" />
+                <Back aria-hidden aria-label="Gå til forsiden" />
                 <Label>Tilbake til Verktøykassa</Label>
               </ScIconLink>
             </li>
