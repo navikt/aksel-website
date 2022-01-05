@@ -209,7 +209,7 @@ Page.getLayout = (page) => {
       </Sc.SkipLink> */}
       <Sc.SidebarMain>
         <Sc.MainFooter>
-          <Sc.Main fullwidth tabIndex={-1} id="hovedinnhold" graybg>
+          <Sc.Main tabIndex={-1} id="hovedinnhold" graybg>
             {page}
           </Sc.Main>
           <FrontpageFooter />
