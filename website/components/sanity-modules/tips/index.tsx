@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { LayoutContext } from "../..";
 import { Tips as TipsT } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
-import { withErrorBoundary } from "../../website-features/error-boundary";
+import { withErrorBoundary } from "../../ErrorBoundary";
 
 const ScWrapper = styled.div`
   padding-left: var(--navds-spacing-8);

@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { PictureText as PictureTextT, useSanityImage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
-import { withErrorBoundary } from "../../website-features/error-boundary";
+import { withErrorBoundary } from "../../ErrorBoundary";
 import * as S from "./image.styles";
 
 const ScSection = styled.div`

@@ -5,7 +5,7 @@ import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { AmplitudeEvents, PagePropsContext, useAmplitude } from "../..";
 import { DsFrontPageCardT, useSanityImage } from "../../../lib";
-import { withErrorBoundary } from "../../website-features/error-boundary";
+import { withErrorBoundary } from "../../ErrorBoundary";
 
 const ScCard = styled.a`
   min-height: 22rem;

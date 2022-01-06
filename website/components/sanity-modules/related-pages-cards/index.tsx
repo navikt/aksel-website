@@ -5,7 +5,7 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 import { AmplitudeEvents, useAmplitude } from "../..";
 import { RelatedLinkT, RelatedPages } from "../../../lib";
-import { withErrorBoundary } from "../../website-features/error-boundary";
+import { withErrorBoundary } from "../../ErrorBoundary";
 
 const ScRelatedPagesCard = styled.div`
   grid-template-columns: repeat(auto-fit, 15rem);

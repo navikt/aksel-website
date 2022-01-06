@@ -6,7 +6,7 @@ import {
   PropTableProp as PropTablePropT,
 } from "../../../lib";
 import { ScCode } from "../../SanityBlockContent";
-import { withErrorBoundary } from "../../website-features/error-boundary";
+import { withErrorBoundary } from "../../ErrorBoundary";
 import * as S from "./prop-table.styles";
 
 export const TypeCode = styled.code`

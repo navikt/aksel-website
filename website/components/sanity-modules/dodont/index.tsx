@@ -8,7 +8,7 @@ import {
   DoDontBlock as DoDontBlockT,
   useSanityImage,
 } from "../../../lib";
-import { withErrorBoundary } from "../../website-features/error-boundary";
+import { withErrorBoundary } from "../../ErrorBoundary";
 import * as S from "./dodont.styles";
 
 const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {

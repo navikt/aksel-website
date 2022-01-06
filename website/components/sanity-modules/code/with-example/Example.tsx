@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import { withErrorBoundary } from "../../../website-features/error-boundary";
+import { withErrorBoundary } from "../../../ErrorBoundary";
 import CodeBlock from "./Block";
 import CodePreview from "./Preview";
 import CodeTabs from "./Tabs";

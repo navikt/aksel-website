@@ -3,7 +3,7 @@ import "prismjs/components/prism-bash.min";
 import "prismjs/components/prism-jsx.min";
 import "prismjs/components/prism-typescript.min";
 import React, { useEffect, useState } from "react";
-import { withErrorBoundary } from "../../website-features/error-boundary";
+import { withErrorBoundary } from "../../ErrorBoundary";
 import * as S from "./code.styles";
 import { CodeSnippet as CodeSnippetT } from "../../../lib";
 import CopyButton from "./CopyButton";

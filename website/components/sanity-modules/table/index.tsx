@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { OverflowDetector } from "../..";
 import { Table as TableT } from "../../../lib";
-import { withErrorBoundary } from "../../website-features/error-boundary";
+import { withErrorBoundary } from "../../ErrorBoundary";
 import { TableBlockContent } from "./TableBlockContent";
 
 const ScWrapper = styled.div`

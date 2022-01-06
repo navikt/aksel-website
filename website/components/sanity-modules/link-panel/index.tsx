@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { slugger } from "../..";
 import { LinkPanel as LinkPanelT } from "../../../lib";
-import { withErrorBoundary } from "../../website-features/error-boundary";
+import { withErrorBoundary } from "../../ErrorBoundary";
 
 const ScPanel = styled(DsLinkPanel)`
   max-width: 400px;

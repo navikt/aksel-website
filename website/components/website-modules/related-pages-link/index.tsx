@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { LayoutContext, PagePropsContext } from "../..";
 import { DsNavigationHeadingMenuT } from "../../../lib";
-import { withErrorBoundary } from "../error-boundary";
+import { withErrorBoundary } from "../../ErrorBoundary";
 
 const ScWrapper = styled.div<{ $isTablet: boolean }>`
   width: 100%;

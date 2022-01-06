@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { LevelTwoHeading } from "../..";
 import { DsChangelog } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
-import { withErrorBoundary } from "../error-boundary";
+import { withErrorBoundary } from "../../ErrorBoundary";
 import * as S from "./changelog.styles";
 
 const Changelog = ({

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useMeasure } from "react-use";
 import { Lightbox } from "../..";
 import { useSanityImage, Picture as PictureT } from "../../../lib";
-import { withErrorBoundary } from "../../website-features/error-boundary";
+import { withErrorBoundary } from "../../ErrorBoundary";
 import * as S from "./image.styles";
 
 const Image = ({ node }: { node: PictureT }): JSX.Element => {

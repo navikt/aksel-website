@@ -22,7 +22,7 @@ import styled from "styled-components";
 import { DsCodeSandbox as SandboxT } from "../../../lib";
 import getSandbox from "../../../stories/sandbox";
 import { SandboxComponent } from "../../../stories/sandbox/types";
-import { withErrorBoundary } from "../../website-features/error-boundary";
+import { withErrorBoundary } from "../../ErrorBoundary";
 import CopyButton from "../code/CopyButton";
 import Fullscreen from "./FullScreen";
 import {
