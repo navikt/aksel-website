@@ -26,36 +26,45 @@ import gp_block_content from "./documents/god-praksis/gp-block-content";
 import gp_situations from "./documents/god-praksis/gp-situations";
 
 /*  Components */
-import block_content from "./block-content";
-import block_content_simple from "./block-content-simple";
-import block_content_accordion from "./block-content-accordion";
-import code_example, { example } from "./documents/designsystem/code-example";
-import code_snippet from "./objects/code-snippet";
-import code_example_ref from "./objects/code-example-ref";
-import codeSandboxRef from "./objects/code-sandbox-ref";
-import codeSandbox from "./documents/designsystem/code-sandbox";
-import color_category_ref from "./objects/color-ref";
 
-import prop_table, { prop } from "./objects/proptable";
-import do_dont, { doDont } from "./objects/do-dont";
-import uu_interactions, { keyboardTable } from "./objects/uu-interaction";
-import picture from "./objects/image";
-import picture_text from "./objects/image-with-text";
-import alert from "./objects/alert";
-import accordion from "./objects/accordion";
-import link_panel from "./objects/link-panel";
-import icon_search from "./objects/uniques/ikonsok";
-import component_overview from "./objects/overview-ref";
-import spacing from "./objects/spacing";
-import relatedPages from "./objects/related-pages";
-import table, { Rows, Cells } from "./objects/table";
-import tips from "./objects/tips";
+import code_example, { example } from "./documents/designsystem/code-example";
+import codeSandbox from "./documents/designsystem/code-sandbox";
+
 import mainCategories from "./documents/designsystem/main-categories";
 import frontpage from "./documents/frontpage";
+
+import * as SanityModules from "./sanity-modules";
+import * as RichText from "./rich-text";
 
 export default createSchema({
   name: "default",
   types: schemaTypes.concat([
+    SanityModules.Accordion,
+    SanityModules.Alert,
+    SanityModules.CodeExampleRef,
+    SanityModules.CodeSandboxRef,
+    SanityModules.CodeSnippet,
+    SanityModules.ColorRef,
+    SanityModules.DoDont,
+    SanityModules.doDont,
+    SanityModules.IkonSok,
+    SanityModules.Image,
+    SanityModules.ImageWithText,
+    SanityModules.LinkPanel,
+    SanityModules.OverviewRef,
+    SanityModules.PropTable,
+    SanityModules.prop,
+    SanityModules.RelatedPages,
+    SanityModules.Spacing,
+    SanityModules.Table,
+    SanityModules.Cells,
+    SanityModules.Rows,
+    SanityModules.Tips,
+    RichText.BlockContent,
+    RichText.BlockContentAccordion,
+    RichText.BlockContentSimple,
+    RichText.IconDecorator,
+
     frontpage,
     mainCategories,
     designsystem_component_page,
@@ -72,39 +81,13 @@ export default createSchema({
     god_praksis_frontpage,
     gp_situations,
     code_example,
-    code_snippet,
-    code_example_ref,
-    codeSandboxRef,
     codeSandbox,
-    color_category_ref,
     example,
-    block_content,
-    block_content_simple,
-    block_content_accordion,
     gp_block_content,
-    prop_table,
-    prop,
     changelog,
-    do_dont,
-    doDont,
     editors,
-    uu_interactions,
-    keyboardTable,
-    picture,
-    picture_text,
-    alert,
-    accordion,
-    link_panel,
     navigation,
     link,
     dropdown,
-    icon_search,
-    component_overview,
-    spacing,
-    relatedPages,
-    table,
-    Cells,
-    Rows,
-    tips,
   ]),
 });

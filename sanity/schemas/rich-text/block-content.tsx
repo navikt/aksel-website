@@ -14,9 +14,10 @@ import {
   Information,
   Expand,
 } from "@navikt/ds-icons";
+
 import { KBD } from "@sanity/ui";
-import { allDocumentTypes } from "../config";
-import iconDecorator from "./objects/icon-decorator";
+import { allDocumentTypes } from "../../config";
+import IconDecorator from "../rich-text/icon-decorator";
 
 export const TitleRenderer = (props, size, level) => (
   <Heading size={size} level={level}>
@@ -34,8 +35,6 @@ export const ScCode = styled.code`
 
 export const ScDraft = styled.span`
   background-color: #f1f1f1;
-
-  /* margin-bottom: 1rem; */
   padding-bottom: 2rem;
   position: relative;
   display: inline-block;
@@ -106,11 +105,7 @@ export const block = {
         blockEditor: {
           icon: () => <KBD style={{ verticalAlign: "top" }}>Ctrl</KBD>,
           render: (props) => (
-            <KBD
-              padding={[1, 1, 2]}
-              size={[1, 1, 2]}
-              style={{ verticalAlign: "top" }}
-            >
+            <KBD padding={[1, 1, 2]} style={{ verticalAlign: "top" }}>
               {props.children}
             </KBD>
           ),
@@ -168,7 +163,7 @@ export const block = {
           },
         ],
       },
-      iconDecorator,
+      IconDecorator,
     ],
   },
 };

@@ -16,7 +16,6 @@ export default {
       name: "situations",
       type: "array",
       title: "Situasjoner med faser",
-      validation: (Rule) => Rule.required(),
       of: [
         {
           name: "situation_list",
