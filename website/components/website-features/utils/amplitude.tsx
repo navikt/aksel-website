@@ -1,7 +1,6 @@
-import React, { createContext, useContext, useEffect } from "react";
 import amplitude from "amplitude-js";
-import { PagePropsContext } from "../../../pages/_app";
-import { isDevelopment, isTest } from ".";
+import React, { createContext, useContext, useEffect } from "react";
+import { isDevelopment, isTest, PagePropsContext } from ".";
 
 /* TODO: Denne skal kunne fjernes når appen er lastet opp til Nais */
 const defaultConfig = {

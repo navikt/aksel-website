@@ -1,9 +1,8 @@
 import { BodyShort, Heading } from "@navikt/ds-react";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import { LayoutContext } from "../..";
+import { LayoutContext, PagePropsContext } from "../..";
 import { DsNavigationHeadingMenuT } from "../../../lib";
-import { PagePropsContext } from "../../../pages/_app";
 import { withErrorBoundary } from "../error-boundary";
 
 const ScWrapper = styled.div<{ $isTablet: boolean }>`

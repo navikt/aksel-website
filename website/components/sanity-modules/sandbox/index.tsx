@@ -22,8 +22,8 @@ import styled from "styled-components";
 import { DsCodeSandbox as SandboxT } from "../../../lib";
 import getSandbox from "../../../stories/sandbox";
 import { SandboxComponent } from "../../../stories/sandbox/types";
-import CopyButton from "../code/CopyButton";
 import { withErrorBoundary } from "../../website-features/error-boundary";
+import CopyButton from "../code/CopyButton";
 import Fullscreen from "./FullScreen";
 import {
   generateState,

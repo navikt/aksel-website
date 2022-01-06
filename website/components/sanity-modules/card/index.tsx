@@ -3,9 +3,8 @@ import NextImage from "next/image";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import { AmplitudeEvents, useAmplitude } from "../..";
+import { AmplitudeEvents, PagePropsContext, useAmplitude } from "../..";
 import { DsFrontPageCardT, useSanityImage } from "../../../lib";
-import { PagePropsContext } from "../../../pages/_app";
 import { withErrorBoundary } from "../../website-features/error-boundary";
 
 const ScCard = styled.a`

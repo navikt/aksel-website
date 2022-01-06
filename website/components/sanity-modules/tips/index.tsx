@@ -1,10 +1,10 @@
 import { Detail } from "@navikt/ds-react";
 import React, { useContext } from "react";
 import styled from "styled-components";
+import { LayoutContext } from "../..";
 import { Tips as TipsT } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import { withErrorBoundary } from "../../website-features/error-boundary";
-import { LayoutContext } from "../..";
 
 const ScWrapper = styled.div`
   padding-left: var(--navds-spacing-8);

@@ -2,8 +2,7 @@ import NextImage from "next/image";
 import React, { useState } from "react";
 import { useMeasure } from "react-use";
 import { Lightbox } from "../..";
-import { useSanityImage } from "../../../lib";
-import { Picture as PictureT } from "../../../lib";
+import { useSanityImage, Picture as PictureT } from "../../../lib";
 import { withErrorBoundary } from "../../website-features/error-boundary";
 import * as S from "./image.styles";
 

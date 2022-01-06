@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Link, Heading, BodyShort, Modal } from "@navikt/ds-react";
-import { SanityBlockContent } from "../../SanityBlockContent";
-import * as S from "./changelog.styles";
-import { withErrorBoundary } from "../error-boundary";
-import { LevelTwoHeading } from "../..";
+import { BodyShort, Heading, Link, Modal } from "@navikt/ds-react";
 import moment from "moment";
+import React, { useEffect, useState } from "react";
+import { LevelTwoHeading } from "../..";
 import { DsChangelog } from "../../../lib";
+import { SanityBlockContent } from "../../SanityBlockContent";
+import { withErrorBoundary } from "../error-boundary";
+import * as S from "./changelog.styles";
 
 const Changelog = ({
   changelogs,

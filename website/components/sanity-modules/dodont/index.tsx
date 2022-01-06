@@ -1,12 +1,15 @@
-import React, { useState } from "react";
-import NextImage from "next/image";
-import { BodyShort } from "@navikt/ds-react";
-import { useSanityImage } from "../../../lib/santiy";
-import * as S from "./dodont.styles";
 import { ErrorFilled, SuccessFilled, WarningFilled } from "@navikt/ds-icons";
-import { DoDont as DoDontT, DoDontBlock as DoDontBlockT } from "../../../lib";
+import { BodyShort } from "@navikt/ds-react";
+import NextImage from "next/image";
+import React, { useState } from "react";
 import { Lightbox } from "../..";
+import {
+  DoDont as DoDontT,
+  DoDontBlock as DoDontBlockT,
+  useSanityImage,
+} from "../../../lib";
 import { withErrorBoundary } from "../../website-features/error-boundary";
+import * as S from "./dodont.styles";
 
 const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
   const imageProps = useSanityImage(block.picture);

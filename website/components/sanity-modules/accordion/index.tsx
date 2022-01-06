@@ -1,9 +1,9 @@
 import { Accordion as DsAccordion } from "@navikt/ds-react";
 import React from "react";
+import { ScSectionSmall } from "../..";
 import { Accordion as AccordionT } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import { withErrorBoundary } from "../../website-features/error-boundary";
-import { ScSectionSmall } from "../..";
 
 const Accordion = ({ node }: { node: AccordionT }): JSX.Element => {
   if (!node || !node.list) {
