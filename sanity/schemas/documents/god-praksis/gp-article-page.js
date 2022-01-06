@@ -5,6 +5,7 @@ import { defaultPreview } from "../templates/document-preview-template";
 import CustomDisplay from "../../../components/metadata-display"; */
 import GodPraksisForklaring from "../../../components/gp-forklaring";
 import { documentSearchMetadata } from "../templates/document-search-template";
+import { documentFeedbackMetadata } from "../templates/document-feedback-template";
 const prefix = "god-praksis/side/";
 
 export default {
@@ -66,5 +67,6 @@ export default {
       validation: (Rule) => Rule.required().error("Siden må ha noe innhold"),
     },
     documentSearchMetadata,
+    documentFeedbackMetadata,
   ],
 };
