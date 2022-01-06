@@ -88,8 +88,8 @@ const SettingsPanel = () => {
   );
 
   useEffect(() => {
-    open && panelRef?.current?.focus();
-  }, [open]);
+    sandboxState.openSettings && panelRef?.current?.focus();
+  }, [sandboxState?.openSettings]);
 
   const checkParentWidth = useCallback(() => {
     if (!panelRef.current) return;
