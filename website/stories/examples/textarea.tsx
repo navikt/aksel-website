@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Textarea } from "@navikt/ds-react";
-import { ExampleComponent } from "../lib";
+import { ExampleComponent } from "../../lib";
 
 export const TextareaExample: ExampleComponent = () => {
   const [value, setValue] = useState("");

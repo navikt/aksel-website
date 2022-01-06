@@ -1,7 +1,7 @@
 import { Heading, Link, TextField } from "@navikt/ds-react";
 import React, { useState } from "react";
 import styled from "styled-components";
-import { ExampleKeys } from "../../examples";
+import { ExampleKeys } from "../../stories/examples";
 
 const Wrapper = styled.div`
   width: 100vw;

@@ -1,5 +1,5 @@
 import { noCdnClient } from ".";
-import { ExampleKeys } from "../examples";
+import { ExampleKeys } from "../stories/examples";
 import lowerCase from "lodash.lowercase";
 import dotenv from "dotenv";
 dotenv.config();

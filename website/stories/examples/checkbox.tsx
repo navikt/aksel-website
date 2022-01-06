@@ -1,6 +1,6 @@
 import React from "react";
 import { CheckboxGroup, Checkbox } from "@navikt/ds-react";
-import { ExampleComponent } from "../lib";
+import { ExampleComponent } from "../../lib";
 
 export const CheckboxStandard: ExampleComponent = () => (
   <>

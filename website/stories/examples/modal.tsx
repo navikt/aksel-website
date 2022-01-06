@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button, Heading, BodyLong } from "@navikt/ds-react";
-import { ExampleComponent } from "../lib";
+import { ExampleComponent } from "../../lib";
 
 Modal.setAppElement("#__next");
 

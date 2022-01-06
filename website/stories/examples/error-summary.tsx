@@ -1,6 +1,6 @@
 import React from "react";
 import { ErrorSummary } from "@navikt/ds-react";
-import { ExampleComponent } from "../lib";
+import { ExampleComponent } from "../../lib";
 
 export const ErrorSummaryExample: ExampleComponent = () => (
   <>

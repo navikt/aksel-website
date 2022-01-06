@@ -1,7 +1,7 @@
 import React from "react";
 import { Alert, BodyLong, Heading, Link } from "@navikt/ds-react";
 import { ScColumn } from "./styles";
-import { ExampleComponent } from "../lib";
+import { ExampleComponent } from "../../lib";
 
 export const AlertAllVariants: ExampleComponent = () => (
   <ScColumn>

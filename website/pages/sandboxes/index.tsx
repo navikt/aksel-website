@@ -1,7 +1,7 @@
 import { Heading, Link, TextField } from "@navikt/ds-react";
 import React, { useState } from "react";
 import styled from "styled-components";
-import { SandboxKeys } from "../../sandbox";
+import { SandboxKeys } from "../../stories/sandbox";
 
 const Wrapper = styled.div`
   width: 100vw;

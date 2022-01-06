@@ -1,7 +1,7 @@
 import React from "react";
 import { HelpText } from "@navikt/ds-react";
 import styled from "styled-components";
-import { ExampleComponent } from "../lib";
+import { ExampleComponent } from "../../lib";
 
 const Wrapper = styled.div`
   margin: 3rem 1rem;

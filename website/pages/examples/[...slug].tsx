@@ -2,7 +2,7 @@ import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
 import styled from "styled-components";
-import { ExampleKeys, Examples } from "../../examples";
+import { ExampleKeys, Examples } from "../../stories/examples";
 
 const CodePreview = (key: string) => {
   if (!key || !(key in Examples)) {

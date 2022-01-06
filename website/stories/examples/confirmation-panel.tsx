@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ConfirmationPanel } from "@navikt/ds-react";
-import { ExampleComponent } from "../lib";
+import { ExampleComponent } from "../../lib";
 
 export const ConfirmationPanelExample: ExampleComponent = () => {
   const [checked, setChecked] = useState(false);

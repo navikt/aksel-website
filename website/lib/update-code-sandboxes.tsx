@@ -1,5 +1,5 @@
 import { noCdnClient } from ".";
-import { SandboxKeys } from "../sandbox";
+import { SandboxKeys } from "../stories/sandbox";
 import dotenv from "dotenv";
 dotenv.config();
 

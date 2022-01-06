@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Popover, Button, Select } from "@navikt/ds-react";
 import { placements, Placement } from "@popperjs/core";
 import styled from "styled-components";
-import { ExampleComponent } from "../lib";
+import { ExampleComponent } from "../../lib";
 
 export const PopoverExample: ExampleComponent = () => {
   const buttonRef = useRef(null);

@@ -1,6 +1,6 @@
 import React from "react";
 import { Table } from "@navikt/ds-react";
-import { ExampleComponent } from "../lib";
+import { ExampleComponent } from "../../lib";
 import { BgColors } from "../sandbox/types";
 
 export const TableExample: ExampleComponent = () => {

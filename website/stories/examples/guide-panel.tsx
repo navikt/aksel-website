@@ -1,7 +1,7 @@
 import React from "react";
 import { GuidePanel } from "@navikt/ds-react";
 import styled from "styled-components";
-import { ExampleComponent } from "../lib";
+import { ExampleComponent } from "../../lib";
 
 export const GuidepanelExample: ExampleComponent = () => (
   <>

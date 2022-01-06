@@ -1,4 +1,4 @@
-import { Examples } from "../../../../examples";
+import { Examples } from "../../../../stories/examples";
 import { ExampleComponent } from "../../../../lib";
 
 const getCodeExample = (url: string) => {

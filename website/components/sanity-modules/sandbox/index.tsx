@@ -20,8 +20,8 @@ import {
 } from "react-live";
 import styled from "styled-components";
 import { DsCodeSandbox as SandboxT } from "../../../lib/autogen-types";
-import getSandbox from "../../../sandbox";
-import { SandboxComponent } from "../../../sandbox/types";
+import getSandbox from "../../../stories/sandbox";
+import { SandboxComponent } from "../../../stories/sandbox/types";
 import CopyButton from "../code/CopyButton";
 import { withErrorBoundary } from "../../website-features/error-boundary";
 import Fullscreen from "./FullScreen";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Loader, Button } from "@navikt/ds-react";
 import styled from "styled-components";
-import { ExampleComponent } from "../lib";
+import { ExampleComponent } from "../../lib";
 import { BgColors } from "../sandbox/types";
 
 export const LoaderExample: ExampleComponent = () => (

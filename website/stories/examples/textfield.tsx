@@ -1,6 +1,6 @@
 import React from "react";
 import { TextField } from "@navikt/ds-react";
-import { ExampleComponent } from "../lib";
+import { ExampleComponent } from "../../lib";
 
 export const TextFieldExample: ExampleComponent = () => {
   return <TextField label="Legg til adressen din." />;

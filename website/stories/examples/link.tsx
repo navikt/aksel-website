@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Alert } from "@navikt/ds-react";
 import { ExternalLink } from "@navikt/ds-icons";
-import { ExampleComponent } from "../lib";
+import { ExampleComponent } from "../../lib";
 
 export const LinkExample: ExampleComponent = () => (
   <p>

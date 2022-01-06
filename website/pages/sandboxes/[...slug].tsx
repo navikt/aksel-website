@@ -2,7 +2,7 @@ import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
 import Sandbox from "../../components/sanity-modules/sandbox";
-import { SandboxKeys, Sandboxes } from "../../sandbox";
+import { SandboxKeys, Sandboxes } from "../../stories/sandbox";
 
 const CodePreview = (key: string) => {
   if (!key || !(key in Sandboxes)) {

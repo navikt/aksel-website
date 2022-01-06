@@ -9,7 +9,7 @@ import {
 } from "@navikt/ds-react";
 import styled from "styled-components";
 import { ScColumn } from "./styles";
-import { ExampleComponent } from "../lib";
+import { ExampleComponent } from "../../lib";
 
 const ScMutedHeading = styled(Heading)`
   color: var(--navds-semantic-color-text-muted);

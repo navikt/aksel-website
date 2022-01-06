@@ -1,7 +1,7 @@
 import { Star } from "@navikt/ds-icons";
 import { Button, Loader } from "@navikt/ds-react";
 import React from "react";
-import { ExampleComponent } from "../lib";
+import { ExampleComponent } from "../../lib";
 import { ScFlexGrow } from "./styles";
 
 export const ButtonAllVariants: ExampleComponent = () => (
