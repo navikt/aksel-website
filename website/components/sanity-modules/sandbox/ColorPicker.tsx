@@ -102,7 +102,13 @@ const ColorPicker = ({
   return (
     <>
       <ScTabButton ref={anchorRef} onClick={() => setOpen(!open)}>
-        <CanvasIcon />
+        <span className="navds-sr-only">
+          {open ? "Lukk fargevelger" : "Åpne fargevelger"}
+        </span>
+        <CanvasIcon
+          aria-hidden
+          aria-label={open ? "Lukk fargevelger" : "Åpne fargevelger"}
+        />
       </ScTabButton>
       <Popover
         open={open}
