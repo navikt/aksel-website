@@ -2,7 +2,7 @@ import { LinkPanel as DsLinkPanel } from "@navikt/ds-react";
 import React from "react";
 import styled from "styled-components";
 import { slugger } from "../..";
-import { LinkPanel as LinkPanelT } from "../../../lib/autogen-types";
+import { LinkPanel as LinkPanelT } from "../../../lib";
 import { withErrorBoundary } from "../../website-features/error-boundary";
 
 const ScPanel = styled(DsLinkPanel)`

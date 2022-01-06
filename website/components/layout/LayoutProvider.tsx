@@ -1,15 +1,7 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useIsomorphicLayoutEffect, useMedia } from "react-use";
-import { PagePropsContext } from "..";
+import { LayoutContext, PagePropsContext } from "..";
 import { DsNavigationHeadingT } from "../../lib";
-
-export type LayoutContextProps = {
-  isMobile: boolean;
-  isTablet: boolean;
-  activeHeading?: DsNavigationHeadingT;
-};
-
-export const LayoutContext = createContext<LayoutContextProps | null>(null);
 
 const LayoutProvider = ({
   children,

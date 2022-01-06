@@ -9,7 +9,7 @@ import {
   DsComponentPage,
   DsTabbedArticlePage,
   GpArticlePage,
-} from "../../lib/autogen-types";
+} from "../../lib";
 
 type ds_component = {
   ds_component_page: (props: {

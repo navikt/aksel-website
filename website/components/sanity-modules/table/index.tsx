@@ -2,7 +2,7 @@ import { Table } from "@navikt/ds-react";
 import React from "react";
 import styled from "styled-components";
 import { OverflowDetector } from "../..";
-import { Table as TableT } from "../../../lib/autogen-types";
+import { Table as TableT } from "../../../lib";
 import { withErrorBoundary } from "../../website-features/error-boundary";
 import { TableBlockContent } from "./TableBlockContent";
 

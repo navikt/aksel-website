@@ -1,6 +1,6 @@
 import { BodyShort, Detail, Table } from "@navikt/ds-react";
 import styled from "styled-components";
-import { DsColor } from "../../../lib/autogen-types";
+import { DsColor } from "../../../lib";
 import Color from "color";
 
 const ScColorRoles = styled.ul`

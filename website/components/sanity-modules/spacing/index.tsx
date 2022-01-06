@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Spacing as SpacingT } from "../../../lib/autogen-types";
+import { Spacing as SpacingT } from "../../../lib";
 
 const ScSpacing = styled.div<{ $space: string }>`
   margin-top: ${({ $space }) =>

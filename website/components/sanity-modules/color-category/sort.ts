@@ -1,4 +1,4 @@
-import { DsColor } from "../../../lib/autogen-types";
+import { DsColor } from "../../../lib";
 
 const TwoBeforeOne = 1;
 const OneBeforeTwo = -1;

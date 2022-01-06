@@ -5,7 +5,7 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 import { AmplitudeEvents, useAmplitude } from "../..";
 import { RelatedLinkT } from "../../../lib";
-import { RelatedPages } from "../../../lib/autogen-types";
+import { RelatedPages } from "../../../lib";
 import { withErrorBoundary } from "../../website-features/error-boundary";
 
 const ScRelatedPagesCard = styled.div`

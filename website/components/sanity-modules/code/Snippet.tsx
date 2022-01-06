@@ -5,7 +5,7 @@ import "prismjs/components/prism-typescript.min";
 import React, { useEffect, useState } from "react";
 import { withErrorBoundary } from "../../website-features/error-boundary";
 import * as S from "./code.styles";
-import { CodeSnippet as CodeSnippetT } from "../../../lib/autogen-types";
+import { CodeSnippet as CodeSnippetT } from "../../../lib";
 import CopyButton from "./CopyButton";
 import styled from "styled-components";
 

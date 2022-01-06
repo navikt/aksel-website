@@ -4,10 +4,7 @@ import { BodyShort } from "@navikt/ds-react";
 import { useSanityImage } from "../../../lib/santiy";
 import * as S from "./dodont.styles";
 import { ErrorFilled, SuccessFilled, WarningFilled } from "@navikt/ds-icons";
-import {
-  DoDont as DoDontT,
-  DoDontBlock as DoDontBlockT,
-} from "../../../lib/autogen-types";
+import { DoDont as DoDontT, DoDontBlock as DoDontBlockT } from "../../../lib";
 import { Lightbox } from "../..";
 import { withErrorBoundary } from "../../website-features/error-boundary";
 

@@ -2,7 +2,7 @@ import { Alert as DsAlert, Heading } from "@navikt/ds-react";
 import React from "react";
 import styled from "styled-components";
 import { ScSectionSmall, slugger } from "../..";
-import { Alert as AlertT } from "../../../lib/autogen-types";
+import { Alert as AlertT } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 
 const ScAlert = styled(DsAlert)`

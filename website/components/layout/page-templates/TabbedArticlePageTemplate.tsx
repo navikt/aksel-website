@@ -13,9 +13,9 @@ import {
   TableOfContents,
   Tabs,
   useAmplitude,
+  PagePropsContext,
 } from "../..";
-import { DsTabbedArticlePage } from "../../../lib/autogen-types";
-import { PagePropsContext } from "../../../pages/_app";
+import { DsTabbedArticlePage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import * as S from "./page.styles";
 

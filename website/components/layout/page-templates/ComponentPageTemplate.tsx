@@ -18,13 +18,9 @@ import {
   TableOfContents,
   Tabs,
   useAmplitude,
+  PagePropsContext,
 } from "../..";
-import {
-  DsChangelog,
-  DsCodeExample,
-  DsComponentPage,
-} from "../../../lib/autogen-types";
-import { PagePropsContext } from "../../../pages/_app";
+import { DsChangelog, DsCodeExample, DsComponentPage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import * as S from "./page.styles";
 

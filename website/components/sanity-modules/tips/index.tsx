@@ -1,7 +1,7 @@
 import { Detail } from "@navikt/ds-react";
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { Tips as TipsT } from "../../../lib/autogen-types";
+import { Tips as TipsT } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import { withErrorBoundary } from "../../website-features/error-boundary";
 import { LayoutContext } from "../..";

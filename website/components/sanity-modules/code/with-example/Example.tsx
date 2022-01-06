@@ -3,7 +3,7 @@ import { withErrorBoundary } from "../../../website-features/error-boundary";
 import CodeBlock from "./Block";
 import CodePreview from "./Preview";
 import CodeTabs from "./Tabs";
-import { DsCodeExample as DsCodeExampleT } from "../../../../lib/autogen-types";
+import { DsCodeExample as DsCodeExampleT } from "../../../../lib";
 import styled from "styled-components";
 
 type TabType = { name: string; content: React.ReactNode; language?: string };

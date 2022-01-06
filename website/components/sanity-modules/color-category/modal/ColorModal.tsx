@@ -1,7 +1,7 @@
 import { BodyShort, Heading } from "@navikt/ds-react";
 import styled from "styled-components";
 import { Snippet } from "../../..";
-import { CodeSnippet, DsColor } from "../../../../lib/autogen-types";
+import { CodeSnippet, DsColor } from "../../../../lib";
 import Color from "color";
 import ColorFormats from "./ColorFormats";
 

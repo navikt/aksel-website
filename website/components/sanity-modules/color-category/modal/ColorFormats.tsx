@@ -1,7 +1,7 @@
 import { BodyShort } from "@navikt/ds-react";
 import Color from "color";
 import styled from "styled-components";
-import { DsColor } from "../../../../lib/autogen-types";
+import { DsColor } from "../../../../lib";
 import CopyButton from "../../code/CopyButton";
 
 const format = (val: "hex" | "rgb" | "cmyk" | "hsla", color: DsColor) => {

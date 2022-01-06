@@ -4,7 +4,7 @@ import styled from "styled-components";
 import {
   PropTable as PropTableT,
   PropTableProp as PropTablePropT,
-} from "../../../lib/autogen-types";
+} from "../../../lib";
 import { ScCode } from "../../SanityBlockContent";
 import { withErrorBoundary } from "../../website-features/error-boundary";
 import * as S from "./prop-table.styles";

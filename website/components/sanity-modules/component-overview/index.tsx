@@ -4,7 +4,7 @@ import React from "react";
 import ReactTooltip from "react-tooltip";
 import styled from "styled-components";
 import { FigmaIcon, FigmaIconNoSync, OverflowDetector } from "../..";
-import { DsComponentOverview } from "../../../lib/autogen-types";
+import { DsComponentOverview } from "../../../lib";
 
 const ScComponentOverview = styled.div``;
 const ScHeaderCell = styled(BodyShort)`

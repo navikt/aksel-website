@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { AmplitudeEvents, OverflowDetector, useAmplitude } from "../..";
-import { DsColorCategories } from "../../../lib/autogen-types";
+import { DsColorCategories } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import { withErrorBoundary } from "../../website-features/error-boundary";
 import ColorModal from "./modal/ColorModal";

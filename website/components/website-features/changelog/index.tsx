@@ -5,7 +5,7 @@ import * as S from "./changelog.styles";
 import { withErrorBoundary } from "../error-boundary";
 import { LevelTwoHeading } from "../..";
 import moment from "moment";
-import { DsChangelog } from "../../../lib/autogen-types";
+import { DsChangelog } from "../../../lib";
 
 const Changelog = ({
   changelogs,

@@ -1,6 +1,12 @@
 import type { SanityKeyed } from "sanity-codegen";
 import { BgColors } from "../../stories/sandbox/types";
 
+export type LayoutContextProps = {
+  isMobile: boolean;
+  isTablet: boolean;
+  activeHeading?: DsNavigationHeadingT;
+};
+
 export type PagePropsContextT = {
   pageProps: any;
   setPageData: React.Dispatch<any>;

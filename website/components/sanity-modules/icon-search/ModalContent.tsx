@@ -6,7 +6,7 @@ import { renderToString } from "react-dom/server";
 import styled, { css } from "styled-components";
 import { isNew } from ".";
 import { AmplitudeEvents, Snippet, useAmplitude } from "../..";
-import { CodeSnippet } from "../../../lib/autogen-types";
+import { CodeSnippet } from "../../../lib";
 import { ScButton } from "./DownloadButtons";
 import { downloadPng, downloadSvg } from "./downloads";
 

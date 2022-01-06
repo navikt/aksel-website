@@ -1,6 +1,6 @@
 import { Accordion as DsAccordion } from "@navikt/ds-react";
 import React from "react";
-import { Accordion as AccordionT } from "../../../lib/autogen-types";
+import { Accordion as AccordionT } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import { withErrorBoundary } from "../../website-features/error-boundary";
 import { ScSectionSmall } from "../..";

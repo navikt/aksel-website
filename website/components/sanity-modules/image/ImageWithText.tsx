@@ -1,7 +1,7 @@
 import NextImage from "next/image";
 import React from "react";
 import { useSanityImage } from "../../../lib";
-import { PictureText as PictureTextT } from "../../../lib/autogen-types";
+import { PictureText as PictureTextT } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import { withErrorBoundary } from "../../website-features/error-boundary";
 import * as S from "./image.styles";
