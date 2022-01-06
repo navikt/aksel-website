@@ -1,7 +1,6 @@
 /*
-* Styled components server -> client sync issue fix
-https://github.com/navikt/detsombetyrnoe/blob/main/.babelrc
-*/
+ * Styled components server -> client sync issue fix
+ */
 {
   "presets": ["next/babel"],
   "plugins": [
