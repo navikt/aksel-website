@@ -152,9 +152,8 @@ const ComponentOverview = ({
     return null;
   }
 
-  const id = useId();
-
   const TableRow = ({ comp }: { comp: any }) => {
+    const id = useId();
     return (
       <Table.Row>
         <Table.HeaderCell>
