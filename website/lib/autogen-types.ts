@@ -302,6 +302,21 @@ export interface DsComponentPage extends SanityDocument {
      */
     tags?: Array<SanityKeyed<string>>;
   };
+
+  /**
+   * Tilbakemeldinger — `object`
+   *
+   *
+   */
+  metadata_feedback?: {
+    _type: "metadata_feedback";
+    /**
+     * Skjul artikkel feedback modul — `boolean`
+     *
+     * Gjemmer <<Var denne artikkelen til hjelp?>> modulen.
+     */
+    hide_feedback?: boolean;
+  };
 }
 
 /**
@@ -417,6 +432,21 @@ export interface DsArticlePage extends SanityDocument {
      * Tags som skiller seg ut fra selve innholdet eller heading
      */
     tags?: Array<SanityKeyed<string>>;
+  };
+
+  /**
+   * Tilbakemeldinger — `object`
+   *
+   *
+   */
+  metadata_feedback?: {
+    _type: "metadata_feedback";
+    /**
+     * Skjul artikkel feedback modul — `boolean`
+     *
+     * Gjemmer <<Var denne artikkelen til hjelp?>> modulen.
+     */
+    hide_feedback?: boolean;
   };
 }
 
@@ -548,6 +578,21 @@ export interface DsTabbedArticlePage extends SanityDocument {
          * Tags som skiller seg ut fra selve innholdet eller heading
          */
         tags?: Array<SanityKeyed<string>>;
+      };
+
+      /**
+       * Tilbakemeldinger — `object`
+       *
+       *
+       */
+      metadata_feedback?: {
+        _type: "metadata_feedback";
+        /**
+         * Skjul artikkel feedback modul — `boolean`
+         *
+         * Gjemmer <<Var denne artikkelen til hjelp?>> modulen.
+         */
+        hide_feedback?: boolean;
       };
     }>
   >;
@@ -889,6 +934,21 @@ export interface GpArticlePage extends SanityDocument {
      * Tags som skiller seg ut fra selve innholdet eller heading
      */
     tags?: Array<SanityKeyed<string>>;
+  };
+
+  /**
+   * Tilbakemeldinger — `object`
+   *
+   *
+   */
+  metadata_feedback?: {
+    _type: "metadata_feedback";
+    /**
+     * Skjul artikkel feedback modul — `boolean`
+     *
+     * Gjemmer <<Var denne artikkelen til hjelp?>> modulen.
+     */
+    hide_feedback?: boolean;
   };
 }
 
