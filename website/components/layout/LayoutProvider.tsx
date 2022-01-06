@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useIsomorphicLayoutEffect, useMedia } from "react-use";
+import { PagePropsContext } from "..";
 import { DsNavigationHeadingT } from "../../lib";
-import { PagePropsContext } from "../../pages/_app";
 
 export type LayoutContextProps = {
   isMobile: boolean;

@@ -3,21 +3,24 @@ import Head from "next/head";
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import * as Sc from "../../components";
-import { AmplitudeEvents, Card, useAmplitude } from "../../components";
 import {
+  AmplitudeEvents,
+  Card,
   DsFrontpageFooterIllustration,
   DsFrontpageIllustration,
-} from "../../components/assets/DsFrontpageIllustration";
+  useAmplitude,
+} from "../../components";
 import DesignsystemFooter from "../../components/layout/footer/DesignsystemFooter";
 import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
 import { SanityBlockContent } from "../../components/SanityBlockContent";
 import {
+  DsFrontpage,
   DsFrontPageCardT,
   dsFrontpageQuery,
+  DsNavigation,
   dsNavigationQuery,
   getClient,
 } from "../../lib";
-import { DsFrontpage, DsNavigation } from "../../lib/autogen-types";
 
 const ScFlex = styled.div`
   display: flex;

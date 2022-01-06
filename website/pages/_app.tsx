@@ -1,16 +1,13 @@
 import Head from "next/head";
-import React, { createContext, useEffect, useState } from "react";
-import { AmplitudeProvider, useScrollToHashOnPageLoad } from "../components";
+import React, { useEffect, useState } from "react";
+import {
+  AmplitudeProvider,
+  PagePropsContext,
+  useScrollToHashOnPageLoad,
+} from "../components";
 import LayoutProvider from "../components/layout/LayoutProvider";
 import "../styles/index.css";
 import NotFound from "./404";
-
-type PagePropsContextT = {
-  pageProps: any;
-  setPageData: React.Dispatch<any>;
-};
-
-export const PagePropsContext = createContext<PagePropsContextT>(null);
 
 function App({
   Component,

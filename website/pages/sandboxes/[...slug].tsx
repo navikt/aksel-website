@@ -1,7 +1,7 @@
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
-import Sandbox from "../../components/sanity-modules/sandbox";
+import { Sandbox } from "../../components";
 import { SandboxKeys, Sandboxes } from "../../stories/sandbox";
 
 const CodePreview = (key: string) => {

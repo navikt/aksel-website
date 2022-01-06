@@ -1,6 +1,11 @@
 import type { SanityKeyed } from "sanity-codegen";
 import { BgColors } from "../../stories/sandbox/types";
 
+export type PagePropsContextT = {
+  pageProps: any;
+  setPageData: React.Dispatch<any>;
+};
+
 /* Query changes internal_link type  */
 export interface RelatedLinkT {
   _type: "link";

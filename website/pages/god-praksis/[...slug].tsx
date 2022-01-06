@@ -2,8 +2,12 @@ import React from "react";
 import * as Sc from "../../components";
 import { LayoutPicker, PreviewBanner, ScrollTop } from "../../components";
 import GodPraksisHeader from "../../components/layout/header/GodPraksisHeader";
-import { getClient, getGpPaths, gpDocumentBySlug } from "../../lib";
-import { GpArticlePage } from "../../lib/autogen-types";
+import {
+  getClient,
+  getGpPaths,
+  gpDocumentBySlug,
+  GpArticlePage,
+} from "../../lib";
 
 const Page = (props: {
   slug?: string;

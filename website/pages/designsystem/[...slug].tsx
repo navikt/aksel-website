@@ -5,19 +5,17 @@ import DesignsystemFooter from "../../components/layout/footer/DesignsystemFoote
 import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
 import DesignsystemSidebar from "../../components/layout/sidebar/DesignsystemSidebar";
 import {
+  DsArticlePage,
+  DsChangelog,
+  DsComponentPage,
+  DsNavigation,
+  DsTabbedArticlePage,
   changelogQuery,
   dsDocumentBySlug,
   dsNavigationQuery,
   getClient,
   getDsPaths,
 } from "../../lib";
-import {
-  DsArticlePage,
-  DsChangelog,
-  DsComponentPage,
-  DsNavigation,
-  DsTabbedArticlePage,
-} from "../../lib/autogen-types";
 
 const Page = (props: {
   slug?: string;

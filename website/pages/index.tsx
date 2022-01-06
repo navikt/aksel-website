@@ -10,8 +10,7 @@ import {
   useAmplitude,
 } from "../components";
 import FrontpageFooter from "../components/layout/footer/FrontpageFooter";
-import { getClient, vkFrontpageQuery } from "../lib";
-import { VkFrontpage } from "../lib/autogen-types";
+import { getClient, vkFrontpageQuery, VkFrontpage } from "../lib";
 import { ScBodyShort, ScHeading } from "./designsystem";
 
 const ScIntro = styled.div`
