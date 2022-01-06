@@ -1,6 +1,6 @@
 import { getClient, sanityClient } from "./sanity.server";
 import { useNextSanityImage } from "next-sanity-image";
-import { dsDocuments, gpDocuments } from ".";
+import { dsDocuments, gpDocuments } from "./queries";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useSanityImage = (node) => useNextSanityImage(sanityClient, node);

@@ -1,5 +1,5 @@
 import type { SanityKeyed } from "sanity-codegen";
-import { BgColors } from "../stories/sandbox/types";
+import { BgColors } from "../../stories/sandbox/types";
 
 /* Query changes internal_link type  */
 export interface RelatedLinkT {

@@ -1,9 +1,9 @@
-import { noCdnClient } from "..";
 import {
   DsArticlePage,
   DsComponentPage,
   DsTabbedArticlePage,
-} from "../autogen-types";
+  noCdnClient,
+} from "..";
 import { flattenBlocks } from "sanity-algolia";
 
 /* Tmp siden ingress string -> block in sanity */

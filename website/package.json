@@ -17,7 +17,7 @@
     "update:examples": "npx ts-node --project tsconfig.tsnode.json ./lib/update-documents/update-code-examples",
     "update:sandboxes": "npx ts-node --project tsconfig.tsnode.json ./lib/update-documents/update-code-sandboxes",
     "update:colors": "npx ts-node --project tsconfig.tsnode.json ./lib/update-documents/update-color-examples",
-    "generate:testurls": "npx ts-node --project tsconfig.tsnode.json ./lib/generateTestUrls"
+    "generate:testurls": "npx ts-node --project tsconfig.tsnode.json ./lib/testing/generateTestUrls"
   },
   "dependencies": {
     "@navikt/ds-css": "^0.12",

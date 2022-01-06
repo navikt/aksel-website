@@ -1,6 +1,5 @@
 import fs from "fs";
-import { getDsPaths } from "../lib";
-import { getGpPaths } from "./santiy";
+import { getDsPaths, getGpPaths } from "..";
 
 const generateUrls = async () => {
   const urls = [
