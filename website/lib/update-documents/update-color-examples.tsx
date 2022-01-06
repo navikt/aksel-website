@@ -1,6 +1,6 @@
 import css from "css";
 import { readFileSync } from "fs";
-import { noCdnClient } from ".";
+import { noCdnClient } from "..";
 import dotenv from "dotenv";
 
 dotenv.config();

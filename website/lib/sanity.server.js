@@ -1,6 +1,12 @@
 // lib/sanity.server.js
 import { createClient } from "next-sanity";
-import { config } from "./config";
+
+const config = {
+  projectId: "hnbe3yhs",
+  dataset: "production",
+  useCdn: true, // False for fresh data
+  apiVersion: "2021-05-31",
+};
 
 // Set up the client for fetching data in the getProps page functions
 export const sanityClient = createClient(config);
