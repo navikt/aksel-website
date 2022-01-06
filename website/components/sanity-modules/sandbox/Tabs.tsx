@@ -1,4 +1,4 @@
-import { Add, Refresh, SettingsFilled } from "@navikt/ds-icons";
+import { Add, Minus, Refresh, SettingsFilled } from "@navikt/ds-icons";
 import { Label } from "@navikt/ds-react";
 import React, { useContext } from "react";
 import styled from "styled-components";
@@ -75,12 +75,16 @@ const Tabs = ({ reset }: { reset: () => void }) => {
             })
           }
         >
-          <span className="sr-only">
+          <span className="navds-sr-only">
             {sandboxState.fullscreen
               ? "Lukk fullskjerm"
               : "Åpne sandbox i fullskjerm"}
           </span>
-          <Add />
+          {sandboxState.fullscreen ? (
+            <Minus aria-hidden />
+          ) : (
+            <Add aria-hidden />
+          )}
         </ScTabButton>
         {!hideProps && !sandboxState.inlineSettings && (
           <ScTabButton
