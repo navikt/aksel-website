@@ -1,5 +1,5 @@
 import { block, TitleRenderer } from "./block-content";
-import { Information } from "@navikt/ds-icons";
+import { Information, Warning, ExternalLink } from "@navikt/ds-icons";
 import React from "react";
 
 export default {
@@ -32,5 +32,16 @@ export default {
       icon: () => <Information />,
     },
     { type: "code_snippet", icon: () => <span>{`< />`}</span> },
+    {
+      type: "alert",
+      icon: () => <Warning />,
+    },
+    {
+      type: "related_pages",
+      icon: () => <ExternalLink />,
+    },
+    {
+      type: "table",
+    },
   ],
 };

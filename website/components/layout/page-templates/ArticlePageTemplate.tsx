@@ -86,10 +86,12 @@ const ActiclePageTemplate = ({
         <TableOfContents changedState={data.body} />
         <S.MaxWidthContainer>
           <SanityBlockContent withMargin blocks={data.body} />
-          <Feedback
-            docId={pageProps?.page?._id}
-            docType={pageProps?.page?._type}
-          />
+          {!data?.metadata_feedback?.hide_feedback && (
+            <Feedback
+              docId={pageProps?.page?._id}
+              docType={pageProps?.page?._type}
+            />
+          )}
         </S.MaxWidthContainer>
       </S.SanityBlockContainer>
     </>

@@ -4,17 +4,53 @@ markDefs[]{
   _type == 'internalLink' => {
       "slug": @.reference->slug,
   },
-},`;
+}`;
 
-const deRefs = `
-_type == "related_pages" =>{
+const relatedCards = `_type == "related_pages" =>{
   links[]{
     ...,
     "internal_link": internal_link->slug.current,
     category_ref->{...}
   }
-},
-_type == "component_overview" =>{
+}`;
+
+const linkPanel = `_type == "link_panel" =>{
+  ...,
+  internal_link-> {_id, slug}
+}`;
+
+const alert = `_type == "alert" =>{
+  ...,
+  body[]{
+    ...,
+    ${markDef}
+  }
+}`;
+
+const tips = `_type == "tips" =>{
+  ...,
+  body[]{
+    ...,
+    ${markDef}
+  }
+}`;
+
+const accordion = `_type == "accordion" =>{
+  ...,
+  list[]{
+    ...,
+    body[]{
+      ...,
+      ${markDef},
+      ${relatedCards},
+      ${linkPanel},
+      ${alert},
+      ${tips},
+    },
+  }
+}`;
+
+const componentOverview = `_type == "component_overview" =>{
   ...@.ref->{
     ...,
     components[]{
@@ -23,8 +59,9 @@ _type == "component_overview" =>{
       "doc_link": doc_link->slug.current
     }
   }
-},
-_type == "code_example_ref" =>{
+}`;
+
+const uniqueModules = `_type == "code_example_ref" =>{
   "ref": @.ref->
 },
 _type == "code_sandbox_ref" =>{
@@ -35,43 +72,17 @@ _type == "color_category_ref" => {
     ...,
     ${markDef}
   }}
-},
-_type == "link_panel" =>{
-  ...,
-  internal_link-> {_id, slug}
-},
-_type == "accordion" =>{
-  ...,
-  list[]{
-    ...,
-    body[]{
-      ...,
-      ${markDef}
-    },
-  }
-},
-_type == "alert" =>{
+}`;
+
+const pictureWText = `_type == "picture_text" =>{
   ...,
   body[]{
     ...,
     ${markDef}
   }
-},
-_type == "tips" =>{
-  ...,
-  body[]{
-    ...,
-    ${markDef}
-  }
-},
-_type == "picture_text" =>{
-  ...,
-  body[]{
-    ...,
-    ${markDef}
-  }
-},
-_type == "do_dont" =>{
+}`;
+
+const doDont = `_type == "do_dont" =>{
   ...,
   blocks[]{
     ...,
@@ -80,23 +91,19 @@ _type == "do_dont" =>{
       ${markDef}
     },
   }
-},
-_type == "uu_interaction" =>{
-  ...,
-  focus[]{
-    ...,
-    ${markDef}
-  },
-  mouse[]{
-    ...,
-    ${markDef}
-  },
-  screen_reader[]{
-    ...,
-    ${markDef}
-  }
-},
-${markDef}
+}`;
+
+const deRefs = `
+${relatedCards},
+${linkPanel},
+${alert},
+${tips},
+${accordion},
+${componentOverview},
+${uniqueModules},
+${pictureWText},
+${doDont},
+${markDef},
 `;
 
 export const allDocuments = `*[]{...,'slug': slug.current }`;

@@ -276,10 +276,12 @@ const ComponentPageTemplate = ({
           {value === "development" && (
             <Changelog changelogs={changelogs} id={data._id} />
           )}
-          <Feedback
-            docId={pageProps?.page?._id}
-            docType={pageProps?.page?._type}
-          />
+          {!data?.metadata_feedback?.hide_feedback && (
+            <Feedback
+              docId={pageProps?.page?._id}
+              docType={pageProps?.page?._type}
+            />
+          )}
         </S.MaxWidthContainer>
       </S.SanityBlockContainer>
     </>

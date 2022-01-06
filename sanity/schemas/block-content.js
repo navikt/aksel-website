@@ -161,7 +161,7 @@ export const block = {
             type: "url",
           },
           {
-            title: "Open in new tab",
+            title: "Åpne siden i ny tab",
             name: "blank",
             type: "boolean",
             initialValue: true,

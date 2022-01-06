@@ -120,10 +120,12 @@ const TabbedActiclePageTemplate = ({
         <TableOfContents changedState={data.tabs[activeTab].body} />
         <S.MaxWidthContainer>
           <SanityBlockContent withMargin blocks={data.tabs[activeTab].body} />
-          <Feedback
-            docId={pageProps?.page?._id}
-            docType={pageProps?.page?._type}
-          />
+          {!data.tabs[activeTab]?.metadata_feedback?.hide_feedback && (
+            <Feedback
+              docId={pageProps?.page?._id}
+              docType={pageProps?.page?._type}
+            />
+          )}
         </S.MaxWidthContainer>
       </S.SanityBlockContainer>
     </>
