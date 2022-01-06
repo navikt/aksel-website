@@ -38,7 +38,7 @@ export default () =>
             .items([
               S.listItem()
                 .title("Innhold")
-                .child(async () => {
+                .child(async (): Promise<any> => {
                   const doc = await client.fetch(
                     `*[_id == 'ds_navigationid'][0]{
                       headings[]{

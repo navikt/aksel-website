@@ -34,19 +34,19 @@
     },
     {
       "name": "part:@sanity/desk-tool/structure",
-      "path": "./client/deskStructure.js"
+      "path": "./client/deskStructure.tsx"
     },
     {
       "implements": "part:@sanity/dashboard/config",
-      "path": "./client/dashboardConfig.js"
+      "path": "./client/dashboardConfig.tsx"
     },
     {
       "name": "part:@sanity/base/initial-value-templates",
-      "path": "./client/initialValueTemplates.js"
+      "path": "./client/initialValueTemplates.tsx"
     },
     {
       "name": "part:@sanity/base/new-document-structure",
-      "path": "./client/newDocumentStructure.js"
+      "path": "./client/newDocumentStructure.tsx"
     }
   ]
 }

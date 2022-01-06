@@ -1,5 +1,5 @@
 import { validateSlug, isSlugUnique } from "../../validateSlug";
-import { ingressBlock } from "./block-content-ingress";
+import { ingressBlock } from "../../rich-text/block-content-ingress";
 
 export function documentInformation(prefix) {
   return [

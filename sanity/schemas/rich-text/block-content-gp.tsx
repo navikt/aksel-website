@@ -7,8 +7,8 @@ import {
   Information,
   Expand,
 } from "@navikt/ds-icons";
-import { allDocumentTypes } from "../../../config";
-import { styles, TitleRenderer, ScDraft, ScCode } from "../../rich-text";
+import { allDocumentTypes } from "../../config";
+import { styles, TitleRenderer, ScDraft, ScCode } from ".";
 
 export default {
   title: "Block Content",

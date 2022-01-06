@@ -1,7 +1,7 @@
 import React from "react";
 import { Ingress } from "@navikt/ds-react";
 import { ExternalLink } from "@navikt/ds-icons";
-import { allDocumentTypes } from "../../../config";
+import { allDocumentTypes } from "../../config";
 
 export const ingressBlock = {
   title: "Block",
