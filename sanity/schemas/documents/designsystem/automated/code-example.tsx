@@ -24,7 +24,7 @@ export default {
       name: "infercode",
       type: "boolean",
       validation: (Rule) => Rule.required().error("Må være valgt/ikke valgt"),
-      initialValue: true,
+      initialValue: false,
       hidden: ({ parent }) => !parent.preview,
     },
     {
