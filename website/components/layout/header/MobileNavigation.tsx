@@ -3,9 +3,8 @@ import { Detail, Heading, Popover } from "@navikt/ds-react";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useMedia } from "react-use";
 import styled from "styled-components";
-import { LayoutContext, ScFadeIn } from "../..";
+import { LayoutContext, PagePropsContext, ScFadeIn } from "../..";
 import { DsNavigationHeadingT } from "../../../lib";
-import { PagePropsContext } from "../../../pages/_app";
 import Menu from "../menu/DesignsystemMenu";
 
 const ScPopover = styled(Popover)`

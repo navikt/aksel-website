@@ -1,8 +1,7 @@
 import { Back, Expand } from "@navikt/ds-icons";
 import { BodyShort, Label, Popover } from "@navikt/ds-react";
 import { useRouter } from "next/router";
-import * as React from "react";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useMedia } from "react-use";
 import styled, { css } from "styled-components";
 import { AmplitudeEvents, fadeInCss, NavLogoWhite, useAmplitude } from "../..";

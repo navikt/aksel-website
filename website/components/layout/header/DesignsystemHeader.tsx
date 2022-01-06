@@ -3,9 +3,14 @@ import { useRouter } from "next/router";
 import * as React from "react";
 import { useContext, useState } from "react";
 import { useMedia } from "react-use";
-import { AmplitudeEvents, LayoutContext, Search, useAmplitude } from "../..";
+import {
+  AmplitudeEvents,
+  LayoutContext,
+  PagePropsContext,
+  Search,
+  useAmplitude,
+} from "../..";
 import { DsNavigationHeadingT } from "../../../lib";
-import { PagePropsContext } from "../../../pages/_app";
 import * as S from "./header.styles";
 import MobileNavigation from "./MobileNavigation";
 import PortalNavigation from "./PortalNavigation";

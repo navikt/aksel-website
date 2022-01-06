@@ -4,9 +4,8 @@ import { useRouter } from "next/router";
 import React, { createContext, useContext, useState } from "react";
 import { useIsomorphicLayoutEffect } from "react-use";
 import styled from "styled-components";
-import { AmplitudeEvents, useAmplitude } from "../..";
+import { AmplitudeEvents, useAmplitude, PagePropsContext } from "../..";
 import { DsNavigationHeadingMenuT, DsNavigationHeadingT } from "../../../lib";
-import { PagePropsContext } from "../../../pages/_app";
 
 const ScNav = styled.nav`
   overflow-y: auto;

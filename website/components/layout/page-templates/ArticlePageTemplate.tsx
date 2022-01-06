@@ -12,9 +12,9 @@ import {
   StatusTag,
   TableOfContents,
   useAmplitude,
+  PagePropsContext,
 } from "../..";
-import { DsArticlePage, GpArticlePage } from "../../../lib/autogen-types";
-import { PagePropsContext } from "../../../pages/_app";
+import { DsArticlePage, GpArticlePage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import * as S from "./page.styles";
 
