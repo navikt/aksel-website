@@ -1,8 +1,8 @@
 {
   "name": "verktoykassen",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "description": "NAVs verktøykasse. God praksis og Designsystem nettside",
+  "description": "NAVs verktøykasse. God praksis og Designsystem.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/navikt/verktoykassen.git"
@@ -22,8 +22,7 @@
     "sanity:sandboxes": "yarn workspace website update:sandboxes",
     "sanity:codeexamples": "yarn workspace website update:examples",
     "sanity:colors": "yarn workspace website update:colors",
-    "lint": "yarn workspace website lint",
-    "lint:css": "stylelint './**/*.tsx'"
+    "lint": "yarn workspace website lint"
   },
   "workspaces": [
     "sanity",
