@@ -53,6 +53,7 @@ export default createSchema({
     Designsystem.ArticlePage,
     Designsystem.Changelog,
     Designsystem.CodeExamples,
+    Designsystem.example,
     Designsystem.CodeSandboxes,
     Designsystem.ColorCategories,
     Designsystem.ComponentPage,
