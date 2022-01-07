@@ -21,6 +21,10 @@ const ScTableRow = styled(Table.Row)`
   font-size: 1rem;
   width: 100%;
 
+  :hover {
+    cursor: pointer;
+  }
+
   :focus {
     outline: none;
     box-shadow: inset var(--navds-shadow-focus);
