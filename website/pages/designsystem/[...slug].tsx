@@ -1,29 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 import * as Sc from "../../components";
-import {
-  LayoutPicker,
-  PreviewBanner,
-  RelatedNavigation,
-  ScrollTop,
-} from "../../components";
+import { LayoutPicker, PreviewBanner, ScrollTop } from "../../components";
 import DesignsystemFooter from "../../components/layout/footer/DesignsystemFooter";
 import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
 import DesignsystemSidebar from "../../components/layout/sidebar/DesignsystemSidebar";
 import {
+  changelogQuery,
   DsArticlePage,
   DsChangelog,
   DsComponentPage,
-  DsNavigation,
-  DsTabbedArticlePage,
-  changelogQuery,
   dsDocumentBySlug,
+  DsNavigation,
   dsNavigationQuery,
+  DsTabbedArticlePage,
   getClient,
   getDsPaths,
 } from "../../lib";
 
-const ScGrow = styled.div`
+export const ScGrow = styled.div`
   margin-top: auto;
 `;
 
@@ -65,7 +60,6 @@ Page.getLayout = (page) => {
             {page}
             <ScGrow />
             <ScrollTop />
-            <RelatedNavigation />
           </Sc.Main>
           <DesignsystemFooter />
         </Sc.MainFooter>

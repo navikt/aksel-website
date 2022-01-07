@@ -1,6 +1,4 @@
-import React from "react";
-import { ErrorInfo } from "react";
-import styled from "styled-components";
+import React, { ErrorInfo } from "react";
 
 interface Props {
   boundaryName?: string;
@@ -11,13 +9,6 @@ interface State {
   error?: Error;
   errorInfo?: ErrorInfo;
 }
-
-const Style = styled.div`
-  padding: 2rem;
-  text-align: center;
-  background-color: var(--navds-global-color-blue-50);
-  color: var(--navds-semantic-color-text-inverted);
-`;
 
 class ErrorBoundary extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -36,11 +27,7 @@ class ErrorBoundary extends React.Component<Props, State> {
 
   render(): React.ReactNode {
     if (this.state.hasError) {
-      return (
-        <Style className="vk-errorboundary">
-          Beklager, det skjedde en teknisk feil
-        </Style>
-      );
+      return <div className="vk-errorboundary" />;
     }
     return this.props.children;
   }

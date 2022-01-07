@@ -1,4 +1,4 @@
-import { BodyShort, Heading } from "@navikt/ds-react";
+import { BodyShort, Label } from "@navikt/ds-react";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { LayoutContext, PagePropsContext } from "../..";
@@ -7,44 +7,40 @@ import { withErrorBoundary } from "../../ErrorBoundary";
 
 const ScWrapper = styled.div<{ $isTablet: boolean }>`
   width: 100%;
-  background-color: var(--navds-global-color-gray-800);
-  padding: 0 0;
-
-  display: flex;
-  justify-content: ${(props) => (props.$isTablet ? "center" : "flex-start")};
-
-  @media (max-width: 564px) {
-    padding: 0;
-  }
-`;
-
-const ScInnerWrapper = styled.div<{ $isTablet: boolean }>`
-  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: ${(props) => (props.$isTablet ? "center" : "flex-start")};
-  max-width: 648px;
+  justify-content: space-between;
+  row-gap: 0.5rem;
 
   > * {
-    color: var(--navds-semantic-color-text-inverted);
+    color: var(--navds-semantic-color-text);
     text-decoration: none;
-    height: 7rem;
-    flex: 1 1;
-    max-width: 400px;
-    transition: background-color 200ms;
-    padding: ${(props) => (props.$isTablet ? "1rem 1.5rem" : "1rem 3rem")};
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 4rem;
+    padding: 0.5rem;
 
-    @media (max-width: 564px) {
-      padding: 1rem;
+    > svg {
+      flex-shrink: 0;
+    }
+
+    &[data-dir="next"]:only-child {
+      margin-left: auto;
     }
 
     :hover {
-      background-color: var(--navds-global-color-gray-600);
+      > *:not(:first-child) {
+        text-decoration: underline;
+      }
     }
-
     :focus {
       outline: none;
-      box-shadow: inset 0 0 0 3px var(--navds-global-color-blue-200);
+      box-shadow: var(--navds-shadow-focus);
+      > *:not(:first-child) {
+      }
     }
   }
 `;
@@ -89,24 +85,29 @@ const RelatedPagesLink = () => {
 
   return (
     <ScWrapper $isTablet={context.isTablet}>
-      <ScInnerWrapper $isTablet={context.isTablet}>
-        {links.prev && (
-          <a href={`/${links.prev.link.slug.current}`}>
-            <BodyShort size="small">Forrige</BodyShort>
-            <Heading as="div" size="medium">
-              {links.prev.title}
-            </Heading>
-          </a>
-        )}
-        {links.next && (
-          <a href={`/${links.next.link.slug.current}`}>
-            <BodyShort size="small">Neste</BodyShort>
-            <Heading as="div" size="medium">
-              {links.next.title}
-            </Heading>
-          </a>
-        )}
-      </ScInnerWrapper>
+      {links.prev && (
+        <a
+          href={`/${links.prev.link.slug.current}`}
+          aria-label={`Gå til forrige side ${links.prev.title}`}
+        >
+          <BodyShort as="div" size="small">
+            Forrige
+          </BodyShort>
+          <Label as="div">{links.prev.title}</Label>
+        </a>
+      )}
+      {links.next && (
+        <a
+          href={`/${links.next.link.slug.current}`}
+          data-dir="next"
+          aria-label={`Gå til neste side ${links.next.title}`}
+        >
+          <BodyShort as="div" size="small">
+            Neste
+          </BodyShort>
+          <Label as="div">{links.next.title}</Label>
+        </a>
+      )}
     </ScWrapper>
   );
 };

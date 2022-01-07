@@ -12,6 +12,7 @@ import {
   LastUpdateTag,
   LayoutContext,
   PagePropsContext,
+  RelatedNavigation,
   slugger,
   StatusTag,
   TableOfContents,
@@ -228,6 +229,7 @@ const ComponentPageTemplate = ({
               docType={pageProps?.page?._type}
             />
           )}
+          <RelatedNavigation />
         </S.MaxWidthContainer>
       </S.SanityBlockContainer>
     </>

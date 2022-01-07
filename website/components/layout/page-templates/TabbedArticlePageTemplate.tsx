@@ -14,6 +14,7 @@ import {
   Tabs,
   useAmplitude,
   PagePropsContext,
+  RelatedNavigation,
 } from "../..";
 import { DsTabbedArticlePage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
@@ -126,6 +127,7 @@ const TabbedActiclePageTemplate = ({
               docType={pageProps?.page?._type}
             />
           )}
+          <RelatedNavigation />
         </S.MaxWidthContainer>
       </S.SanityBlockContainer>
     </>

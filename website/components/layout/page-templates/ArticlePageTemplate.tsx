@@ -13,6 +13,7 @@ import {
   TableOfContents,
   useAmplitude,
   PagePropsContext,
+  RelatedNavigation,
 } from "../..";
 import { DsArticlePage, GpArticlePage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
@@ -92,6 +93,7 @@ const ActiclePageTemplate = ({
               docType={pageProps?.page?._type}
             />
           )}
+          <RelatedNavigation />
         </S.MaxWidthContainer>
       </S.SanityBlockContainer>
     </>

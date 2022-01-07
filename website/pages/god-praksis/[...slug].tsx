@@ -8,6 +8,7 @@ import {
   gpDocumentBySlug,
   GpArticlePage,
 } from "../../lib";
+import { ScGrow } from "../designsystem/[...slug]";
 
 const Page = (props: {
   slug?: string;
@@ -34,6 +35,7 @@ Page.getLayout = (page) => {
         <Sc.MainFooter>
           <Sc.Main tabIndex={-1} id="hovedinnhold">
             {page}
+            <ScGrow />
             <ScrollTop />
           </Sc.Main>
         </Sc.MainFooter>
