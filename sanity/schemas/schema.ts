@@ -66,6 +66,5 @@ export default createSchema({
 
     GodPraksis.Frontpage,
     GodPraksis.Article,
-    GodPraksis.Situations,
   ]),
 });

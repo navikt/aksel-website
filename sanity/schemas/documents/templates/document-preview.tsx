@@ -15,8 +15,8 @@ export function defaultPreview() {
       prepare(selection) {
         const { title, id, heading } = selection;
         return {
-          title: title,
-          subtitle: heading,
+          title: heading,
+          subtitle: title,
           media: id.includes("drafts.") ? (
             <Edit />
           ) : (

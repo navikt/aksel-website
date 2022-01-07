@@ -37,7 +37,7 @@ export default {
       title: "Sideinnhold",
       validation: (Rule) => Rule.required().error("Siden må ha noe innhold"),
     },
-    documentSearchMetadata,
+    /* documentSearchMetadata, */
     documentFeedbackMetadata,
   ],
 };

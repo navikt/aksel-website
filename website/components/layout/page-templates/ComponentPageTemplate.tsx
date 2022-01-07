@@ -8,17 +8,15 @@ import styled from "styled-components";
 import {
   AmplitudeEvents,
   Changelog,
-  CodeExample,
   Feedback,
   LastUpdateTag,
   LayoutContext,
-  LevelTwoHeading,
+  PagePropsContext,
   slugger,
   StatusTag,
   TableOfContents,
   Tabs,
   useAmplitude,
-  PagePropsContext,
 } from "../..";
 import { DsChangelog, DsComponentPage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
@@ -56,10 +54,6 @@ const ScDiv = styled(BodyShort)`
   flex-wrap: wrap;
   column-gap: 1.5rem;
   row-gap: 0.75rem;
-`;
-
-const MarginTop = styled.div`
-  margin-top: 3rem;
 `;
 
 const ComponentPageTemplate = ({

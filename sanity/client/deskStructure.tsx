@@ -287,14 +287,6 @@ export default () =>
                          )`
                     )
                 ),
-              S.listItem()
-                .title("Situasjoner")
-                .icon(() => <Picture />)
-                .child(
-                  S.document()
-                    .schemaType("gp_situations")
-                    .documentId("gp_situation_doc")
-                ),
             ])
         ),
       S.listItem()
@@ -323,7 +315,6 @@ export default () =>
             "ds_component_overview",
             "gp_article_page",
             "gp_frontpage",
-            "gp_situations",
             "vk_frontpage",
             "main_categories",
             "metadata",
