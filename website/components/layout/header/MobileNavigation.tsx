@@ -179,7 +179,7 @@ const MobileNavigation = () => {
   const [openHamb, setOpenHamb] = useState(false);
   const [heading, setHeading] = useState(context?.activeHeading);
   const [isHeadingMenu, setIsHeadingMenu] = useState(false);
-  const useMobileHeader = useMedia("(max-width: 1023px)");
+  const useMobileHeader = useMedia("(max-width: 1023px)", false);
   const buttonRef = useRef(null);
 
   useEffect(() => {

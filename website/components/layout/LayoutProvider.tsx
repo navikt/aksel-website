@@ -14,8 +14,8 @@ const LayoutProvider = ({
   >();
   const [largerFontsize, setLargerFontsize] = useState(false);
 
-  const isTablet = useMedia("(max-width: 768px)");
-  const isMobile = useMedia("(max-width: 480px)");
+  const isTablet = useMedia("(max-width: 768px)", false);
+  const isMobile = useMedia("(max-width: 480px)", false);
 
   useEffect(() => {
     setLargerFontsize(

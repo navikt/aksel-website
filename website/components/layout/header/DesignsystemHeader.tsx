@@ -18,7 +18,7 @@ import PortalNavigation from "./PortalNavigation";
 const DesignsystemHeader = (): JSX.Element => {
   const { pageProps } = useContext(PagePropsContext);
   const context = useContext(LayoutContext);
-  const useMobileHeader = useMedia("(max-width: 1023px)");
+  const useMobileHeader = useMedia("(max-width: 1023px)", false);
   const { logAmplitudeEvent } = useAmplitude();
   const { asPath } = useRouter();
 

@@ -164,7 +164,7 @@ const ScOverlay = styled.div`
 `;
 
 const HeadingDropDown = ({ title }: { title: string }) => {
-  const showLogo = useMedia("(min-width: 563px)");
+  const showLogo = useMedia("(min-width: 563px)", true);
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const buttonRef = useRef(null);
