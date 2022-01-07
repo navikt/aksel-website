@@ -4,9 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 const ScScrollTop = styled.button`
-  /* position: absolute;
-  bottom: 0.5rem;
-  right: 1rem; */
   background: none;
   appearance: none;
   border: none;
@@ -34,7 +31,7 @@ const ScScrollTop = styled.button`
 
 const ScrollTop = () => {
   const ref = useRef<HTMLButtonElement>(null);
-  const [showButton, setShowButton] = useState(true);
+  const [showButton, setShowButton] = useState(false);
 
   const { asPath } = useRouter();
   const handleClick = () => {
@@ -42,10 +39,12 @@ const ScrollTop = () => {
   };
 
   useEffect(() => {
-    ref.current &&
-      setShowButton(
-        ref.current.parentElement.getBoundingClientRect().height >= 1000
-      );
+    setTimeout(() => {
+      ref.current &&
+        setShowButton(
+          ref.current.parentElement.getBoundingClientRect().height >= 1000
+        );
+    }, 1000);
   }, []);
 
   useEffect(() => {
