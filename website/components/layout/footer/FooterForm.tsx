@@ -210,7 +210,7 @@ const FooterForm = () => {
                   !isEmpty(e.target.value, { ignore_whitespace: true }) &&
                   setContentError({ ...contentError, content: "" });
               }}
-              minRows={2}
+              minRows={3}
             />
             <ScTextField
               label="Vi svarer til e-post (valgfritt)"
