@@ -1,6 +1,12 @@
 import React from "react";
+import styled from "styled-components";
 import * as Sc from "../../components";
-import { LayoutPicker, PreviewBanner, ScrollTop } from "../../components";
+import {
+  LayoutPicker,
+  PreviewBanner,
+  RelatedNavigation,
+  ScrollTop,
+} from "../../components";
 import DesignsystemFooter from "../../components/layout/footer/DesignsystemFooter";
 import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
 import DesignsystemSidebar from "../../components/layout/sidebar/DesignsystemSidebar";
@@ -16,6 +22,10 @@ import {
   getClient,
   getDsPaths,
 } from "../../lib";
+
+const ScGrow = styled.div`
+  margin-top: auto;
+`;
 
 const Page = (props: {
   slug?: string;
@@ -53,7 +63,9 @@ Page.getLayout = (page) => {
         <Sc.MainFooter>
           <Sc.Main tabIndex={-1} id="hovedinnhold">
             {page}
+            <ScGrow />
             <ScrollTop />
+            <RelatedNavigation />
           </Sc.Main>
           <DesignsystemFooter />
         </Sc.MainFooter>

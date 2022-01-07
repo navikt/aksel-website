@@ -24,7 +24,7 @@ export { default as LevelTwoHeading } from "./website-modules/heading";
 export { default as Lightbox } from "./website-modules/lightbox";
 export { default as OverflowDetector } from "./website-modules/overflow-detector";
 export { default as PreviewBanner } from "./website-modules/PreviewBanner";
-export { default as RelatedPagesLink } from "./website-modules/related-pages-link";
+export { default as RelatedNavigation } from "./website-modules/related-nav";
 export { default as ScrollTop } from "./website-modules/scroll-top";
 export { default as Search } from "./website-modules/search";
 export { default as TableOfContents } from "./website-modules/table-of-contents";

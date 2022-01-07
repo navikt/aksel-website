@@ -4,17 +4,18 @@ import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 const ScScrollTop = styled.button`
-  position: absolute;
+  /* position: absolute;
   bottom: 0.5rem;
-  right: 1rem;
+  right: 1rem; */
   background: none;
   appearance: none;
   border: none;
   gap: 0.5rem;
   display: flex;
   min-height: 48px;
+  margin: 0 1rem 0.5rem auto;
   padding: 0.5rem;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 
   :hover {
