@@ -78,14 +78,6 @@ const ScListItem = styled.button<{ $active?: boolean }>`
   justify-content: space-between;
   min-height: 48px;
 
-  :first-child {
-    border-radius: 4px 4px 0 0;
-  }
-
-  :last-child {
-    border-radius: 0 0 4px 4px;
-  }
-
   ${(props) =>
     props.$active &&
     `
