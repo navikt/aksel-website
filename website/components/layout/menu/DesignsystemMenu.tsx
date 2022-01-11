@@ -1,5 +1,5 @@
 import { BodyShort, Detail } from "@navikt/ds-react";
-/* import NextLink from "next/link"; */
+import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React, { createContext, useContext, useState } from "react";
 import { useIsomorphicLayoutEffect } from "react-use";
@@ -130,20 +130,21 @@ const Menu = ({
           }
           return (
             <li key={item.title + x}>
-              <ScLink
-                href={`/${item.link.slug.current}`}
-                onClick={(e) => {
-                  onClick && onClick();
-                  logNavigation(e);
-                }}
-                active={
-                  pageProps?.page
-                    ? pageProps.page.slug === item.link.slug.current
-                    : false
-                }
-              >
-                {item.title}
-              </ScLink>
+              <NextLink href={`/${item.link.slug.current}`} passHref>
+                <ScLink
+                  onClick={(e) => {
+                    onClick && onClick();
+                    logNavigation(e);
+                  }}
+                  active={
+                    pageProps?.page
+                      ? pageProps.page.slug === item.link.slug.current
+                      : false
+                  }
+                >
+                  {item.title}
+                </ScLink>
+              </NextLink>
             </li>
           );
         })}
