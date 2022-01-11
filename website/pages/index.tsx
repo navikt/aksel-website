@@ -119,6 +119,10 @@ const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
           name="description"
           content="En samling ressurser fra ulike fagdisipliner som hjelper oss å skape bedre, universelt tilgjengelige og sammenhengende produkter i NAV."
         />
+        <meta
+          name="google-site-verification"
+          content="gBKU9VILlx0pOK3eFKR08WsCdYjWJqM26b5LS-eVgOI"
+        />
       </Head>
       {props.preview && <Sc.PreviewBanner />}
       <ScRelative>
