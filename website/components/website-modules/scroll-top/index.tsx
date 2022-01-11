@@ -44,7 +44,7 @@ const ScrollTop = () => {
         setShowButton(
           ref.current.parentElement.getBoundingClientRect().height >= 1000
         );
-    }, 1000);
+    }, 300);
   }, []);
 
   useEffect(() => {
