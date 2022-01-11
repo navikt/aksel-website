@@ -1,8 +1,8 @@
 import * as Icons from "@navikt/ds-icons";
 import canvg from "canvg";
+import fileDownload from "js-file-download";
 import JSZip from "jszip";
 import { renderToString } from "react-dom/server";
-import fileDownload from "js-file-download";
 
 export const downloadSvg = (icon: string) => {
   const Icon = Icons[icon];

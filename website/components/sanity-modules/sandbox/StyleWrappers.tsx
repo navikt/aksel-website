@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { SandboxContext } from ".";
+import { SandboxContext } from "./Sandbox";
 
 const ScPreWrapper = styled.div`
   position: relative;

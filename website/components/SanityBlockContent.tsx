@@ -13,12 +13,12 @@ import {
   LevelTwoHeading,
   LinkPanel,
   PropTable,
+  Sandbox,
   Snippet,
   Spacing,
   RelatedPagesCards,
   Table,
   Tips,
-  Sandbox,
   Accordion,
   ComponentOverview,
 } from ".";

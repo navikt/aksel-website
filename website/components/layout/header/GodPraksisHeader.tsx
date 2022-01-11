@@ -1,9 +1,8 @@
-import * as React from "react";
+import React from "react";
 import { useContext } from "react";
 import { LayoutContext } from "../..";
-import PortalNavigation from "./PortalNavigation";
-
 import * as S from "./header.styles";
+import PortalNavigation from "./PortalNavigation";
 
 const GodPraksisHeader = (): JSX.Element => {
   const context = useContext(LayoutContext);

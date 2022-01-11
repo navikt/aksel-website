@@ -2,7 +2,7 @@ import { Add, Minus, Refresh, SettingsFilled } from "@navikt/ds-icons";
 import { Label } from "@navikt/ds-react";
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { SandboxContext } from ".";
+import { SandboxContext } from "./Sandbox";
 import ColorPicker from "./ColorPicker";
 import { ScTabCss } from "./PropsPanel";
 

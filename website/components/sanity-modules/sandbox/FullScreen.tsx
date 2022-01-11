@@ -1,7 +1,7 @@
 import { Modal } from "@navikt/ds-react";
 import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
-import { SandboxContext } from ".";
+import { SandboxContext } from "./Sandbox";
 
 const ScModal = styled(Modal)`
   background-color: transparent;

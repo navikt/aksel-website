@@ -1,10 +1,26 @@
 import React, { createContext, useEffect, useState } from "react";
 import { withErrorBoundary } from "../../../ErrorBoundary";
 import CodeBlock from "./Block";
-import CodePreview from "./Preview";
 import CodeTabs from "./Tabs";
 import { DsCodeExample as DsCodeExampleT } from "../../../../lib";
 import styled from "styled-components";
+
+import dynamic from "next/dynamic";
+
+const ScSkeleton = styled.div`
+  display: flex;
+  width: 100%;
+  background-color: var(--navds-global-color-gray-50);
+  border: 1px solid var(--navds-global-color-gray-200);
+  border-bottom: 1px solid var(--navds-global-color-gray-200);
+  border-top: none;
+  height: 100px;
+`;
+
+const CodePreview = dynamic(() => import("./Preview"), {
+  loading: () => <ScSkeleton />,
+  ssr: false,
+});
 
 type TabType = { name: string; content: React.ReactNode; language?: string };
 

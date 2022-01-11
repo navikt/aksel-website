@@ -17,7 +17,8 @@
     "update:examples": "npx ts-node --project tsconfig.tsnode.json ./lib/update-documents/update-code-examples",
     "update:sandboxes": "npx ts-node --project tsconfig.tsnode.json ./lib/update-documents/update-code-sandboxes",
     "update:colors": "npx ts-node --project tsconfig.tsnode.json ./lib/update-documents/update-color-examples",
-    "generate:testurls": "npx ts-node --project tsconfig.tsnode.json ./lib/testing/generateTestUrls"
+    "generate:testurls": "npx ts-node --project tsconfig.tsnode.json ./lib/testing/generateTestUrls",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
     "@navikt/ds-css": "^0.12",
@@ -76,7 +77,9 @@
     "@types/styled-components": "^5.1.14",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
+    "@next/bundle-analyzer": "^12.0.7",
     "bottleneck": "^2.19.5",
+    "cross-env": "^7.0.3",
     "cypress": "^9.1.1",
     "start-server-and-test": "^1.14.0",
     "css": "^3.0.0",

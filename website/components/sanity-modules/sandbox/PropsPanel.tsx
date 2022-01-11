@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useRef } from "react";
 import { useKey } from "react-use";
 import styled, { css } from "styled-components";
-import { SandboxContext } from ".";
+import { SandboxContext } from "./Sandbox";
 import PropFilter from "./PropFilter";
 
 export const ScTabCss = css`
