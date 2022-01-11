@@ -158,6 +158,7 @@ const Feedback = ({
   const [activeState, setActiveState] = useState<HelpfulArticleEnum | null>(
     null
   );
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const timeoutTimer = useRef<number | null>();
   const [thanksFeedback, setThanksFeedback] = useState<boolean>(false);
   const textAreaRef = useRef(null);
@@ -204,6 +205,14 @@ const Feedback = ({
   const handleSend = (e) => {
     e.preventDefault();
 
+    if (!(activeState === HelpfulArticleEnum.JA) && textValue === "") {
+      setErrorMsg(
+        "Tilbakemeldingen kan ikke være tom. Legg til tekst i feltet."
+      );
+      return;
+    }
+    setErrorMsg(null);
+
     fetchFeedback();
 
     logFeedback(true);
@@ -225,6 +234,10 @@ const Feedback = ({
   };
 
   useEffect(() => {
+    textValue && errorMsg && setErrorMsg(null);
+  }, [textValue, errorMsg]);
+
+  useEffect(() => {
     if (timeoutTimer.current && activeState) {
       setThanksFeedback(false);
       window.clearTimeout(timeoutTimer.current);
@@ -234,6 +247,7 @@ const Feedback = ({
 
   useEffect(() => {
     activeState && textAreaRef.current && textAreaRef.current.focus();
+    setErrorMsg(null);
   }, [activeState]);
 
   useEffect(() => {
@@ -300,20 +314,20 @@ const Feedback = ({
         </ScButtonLabel>
         <ScFormWrapper>
           {activeState !== null && (
-            <Textarea
-              ref={textAreaRef}
-              /* error={errorMsg} */
-              label="Skriv inn feedbacken du ønsker å gi."
-              hideLabel
-              placeholder={getPlaceholder()}
-              value={textValue}
-              onChange={(e) => setTextValue(e.target.value)}
-              maxLength={600}
-              minRows={3}
-            />
-          )}
-          {(textValue !== "" || activeState === HelpfulArticleEnum.JA) && (
-            <ScSendButton onClick={handleSend}>Send inn svar</ScSendButton>
+            <>
+              <Textarea
+                ref={textAreaRef}
+                error={errorMsg}
+                label="Skriv inn feedbacken du ønsker å gi."
+                hideLabel
+                placeholder={getPlaceholder()}
+                value={textValue}
+                onChange={(e) => setTextValue(e.target.value)}
+                maxLength={600}
+                minRows={3}
+              />
+              <ScSendButton onClick={handleSend}>Send inn svar</ScSendButton>
+            </>
           )}
         </ScFormWrapper>
         {thanksFeedback && (
