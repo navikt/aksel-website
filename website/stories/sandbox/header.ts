@@ -88,7 +88,7 @@ const HeaderSandbox: SandboxComponent = (props) => {
 
   return `<Header className="sandbox-header">
     <Header.Title ${props.title === "H-tag" ? `as="h1"` : `href="#"`}>${
-    props.title === "H-tag" ? "NAV Sykepenger" : "Hjem"
+    props.title === "H-tag" ? "Sykepenger" : "Hjem"
   }</Header.Title>
     ${system}${user}
   </Header>`;
