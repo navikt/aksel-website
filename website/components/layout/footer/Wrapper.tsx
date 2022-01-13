@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { NavLogoWhite } from "../..";
+import { NavLogoWhite, ScrollTop } from "../..";
 import FooterForm from "./FooterForm";
 
 const ScFooter = styled.footer`
+  position: relative;
   width: 100%;
   background-color: var(--navds-semantic-color-canvas-background-inverted);
   color: var(--navds-semantic-color-text-inverted);
@@ -39,6 +40,7 @@ const ScInner = styled.div`
 const FooterWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <ScFooter>
+      <ScrollTop />
       <ScInner>
         <div>
           <ScLogoWrapper>

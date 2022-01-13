@@ -1,9 +1,11 @@
 import { Up } from "@navikt/ds-icons";
-import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 const ScScrollTop = styled.button`
+  position: absolute;
+  top: 1rem;
+  right: 0rem;
+  color: var(--navds-semantic-color-text-inverted);
   background: none;
   appearance: none;
   border: none;
@@ -17,51 +19,22 @@ const ScScrollTop = styled.button`
 
   :hover {
     text-decoration: underline;
+    cursor: pointer;
   }
 
   :focus {
     outline: none;
-    box-shadow: var(--navds-shadow-focus);
-  }
-
-  &[aria-hidden="true"] {
-    display: none;
+    box-shadow: var(--navds-shadow-focus-inverted);
   }
 `;
 
 const ScrollTop = () => {
-  const ref = useRef<HTMLButtonElement>(null);
-  const [showButton, setShowButton] = useState(false);
-
-  const { asPath } = useRouter();
   const handleClick = () => {
     window.scrollTo(0, 0);
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      ref.current &&
-        setShowButton(
-          ref.current.parentElement.getBoundingClientRect().height >= 1000
-        );
-    }, 300);
-  }, []);
-
-  useEffect(() => {
-    const updateShow = () =>
-      ref.current &&
-      setShowButton(
-        ref.current.parentElement.getBoundingClientRect().height >= 1000
-      );
-
-    window.addEventListener("resize", updateShow);
-    return () => {
-      window.removeEventListener("resize", updateShow);
-    };
-  }, [asPath]);
-
   return (
-    <ScScrollTop ref={ref} onClick={handleClick} aria-hidden={!showButton}>
+    <ScScrollTop onClick={handleClick}>
       <Up aria-hidden aria-label="Til toppen" />
       Til toppen
     </ScScrollTop>

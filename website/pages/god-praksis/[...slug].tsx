@@ -1,12 +1,12 @@
 import React from "react";
 import * as Sc from "../../components";
-import { LayoutPicker, PreviewBanner, ScrollTop } from "../../components";
+import { LayoutPicker, PreviewBanner } from "../../components";
 import GodPraksisHeader from "../../components/layout/header/GodPraksisHeader";
 import {
   getClient,
   getGpPaths,
-  gpDocumentBySlug,
   GpArticlePage,
+  gpDocumentBySlug,
 } from "../../lib";
 import { ScGrow } from "../designsystem/[...slug]";
 
@@ -36,7 +36,6 @@ Page.getLayout = (page) => {
           <Sc.Main tabIndex={-1} id="hovedinnhold">
             {page}
             <ScGrow />
-            <ScrollTop />
           </Sc.Main>
         </Sc.MainFooter>
       </Sc.SidebarMain>

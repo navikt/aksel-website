@@ -8,7 +8,7 @@ import { withErrorBoundary } from "../../ErrorBoundary";
 
 const ScWrapper = styled.div<{ $isTablet: boolean }>`
   width: 100%;
-  margin: 0 auto;
+  margin: 0 auto 7rem auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

@@ -23,7 +23,7 @@ const ScFeedback = styled.div<{ isTablet?: boolean }>`
   background-color: var(--navds-semantic-color-component-background-alternate);
 
   margin: ${(props) =>
-    props.isTablet ? "4rem auto 4rem 0" : "4rem auto 4rem 0"};
+    props.isTablet ? "11rem auto 4rem 0" : "11rem auto 4rem 0"};
 
   @media (max-width: 564px) {
     padding: 1rem;
