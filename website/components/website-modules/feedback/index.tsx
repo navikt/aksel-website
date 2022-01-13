@@ -311,24 +311,22 @@ const Feedback = ({
             Jeg vil foreslå forbedringer til artikkelen.
           </Label>
         </ScButtonLabel>
-        <ScFormWrapper>
-          {activeState !== null && (
-            <>
-              <Textarea
-                ref={textAreaRef}
-                error={errorMsg}
-                label="Skriv inn feedbacken du ønsker å gi."
-                hideLabel
-                placeholder={getPlaceholder()}
-                value={textValue}
-                onChange={(e) => setTextValue(e.target.value)}
-                maxLength={600}
-                minRows={3}
-              />
-              <ScSendButton onClick={handleSend}>Send inn svar</ScSendButton>
-            </>
-          )}
-        </ScFormWrapper>
+        {activeState !== null && (
+          <ScFormWrapper>
+            <Textarea
+              ref={textAreaRef}
+              error={errorMsg}
+              label="Skriv inn feedbacken du ønsker å gi."
+              hideLabel
+              placeholder={getPlaceholder()}
+              value={textValue}
+              onChange={(e) => setTextValue(e.target.value)}
+              maxLength={600}
+              minRows={3}
+            />
+            <ScSendButton onClick={handleSend}>Send inn svar</ScSendButton>
+          </ScFormWrapper>
+        )}
         {thanksFeedback && (
           <BodyShort size="small">Takk for tilbakemeldingen!</BodyShort>
         )}
