@@ -20,8 +20,7 @@ const ScFeedback = styled.div<{ isTablet?: boolean }>`
   align-items: center;
   gap: 1rem;
 
-  border-top: 1px solid var(--navds-semantic-color-border-muted);
-  border-bottom: 1px solid var(--navds-semantic-color-border-muted);
+  background-color: var(--navds-semantic-color-component-background-alternate);
 
   margin: ${(props) =>
     props.isTablet ? "4rem auto 4rem 0" : "4rem auto 4rem 0"};
@@ -134,10 +133,10 @@ const ScButtonLabel = styled.button<{ active?: boolean }>`
 const ScFormWrapper = styled.form`
   width: 100%;
   max-width: 400px;
-
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-top: 1rem;
 `;
 
 const ScSendButton = styled(Button)`
