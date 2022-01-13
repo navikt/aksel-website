@@ -86,7 +86,7 @@ export const SelectComp = ({
         >
           {arg.options.map((opt, i) => (
             <option key={opt + i} value={opt}>
-              {opt ? opt : "default"}
+              {opt ? opt : ""}
             </option>
           ))}
         </Select>
