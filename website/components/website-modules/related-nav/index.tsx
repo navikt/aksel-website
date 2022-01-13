@@ -1,4 +1,5 @@
-import { BodyShort, Label } from "@navikt/ds-react";
+import { Back, Next } from "@navikt/ds-icons";
+import { BodyShort, Heading } from "@navikt/ds-react";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { LayoutContext, PagePropsContext } from "../..";
@@ -7,21 +8,23 @@ import { withErrorBoundary } from "../../ErrorBoundary";
 
 const ScWrapper = styled.div<{ $isTablet: boolean }>`
   width: 100%;
-  max-width: 600px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  row-gap: 0.5rem;
+  gap: 1rem;
 
   > * {
-    color: var(--navds-semantic-color-text);
+    position: relative;
+    color: var(--navds-semantic-color-text-inverted);
     text-decoration: none;
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    align-items: center;
     min-width: 4rem;
-    padding: 0.5rem;
+    padding: 0.5rem 2rem;
+    background-color: var(--navds-global-color-gray-800);
+    flex: 1 1 200px;
 
     > svg {
       flex-shrink: 0;
@@ -35,14 +38,29 @@ const ScWrapper = styled.div<{ $isTablet: boolean }>`
       > *:not(:first-child) {
         text-decoration: underline;
       }
+
+      > svg {
+      }
     }
     :focus {
       outline: none;
-      box-shadow: var(--navds-shadow-focus);
-      > *:not(:first-child) {
-      }
+      box-shadow: 0 0 0 1px white, 0 0 0 4px var(--navds-semantic-color-focus);
     }
   }
+`;
+
+const ScLeftIcon = styled.span`
+  position: absolute;
+  left: 0.5rem;
+  height: calc(100% - 1rem);
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+`;
+
+const ScRightIcon = styled(ScLeftIcon)`
+  right: 0.5rem;
+  left: auto;
 `;
 
 const RelatedPagesLink = () => {
@@ -55,7 +73,12 @@ const RelatedPagesLink = () => {
   }>({});
 
   useEffect(() => {
-    if (!context.activeHeading || !context.activeHeading.menu) return null;
+    if (
+      !context.activeHeading ||
+      !context.activeHeading.menu ||
+      context.activeHeading.title !== "Komponenter"
+    )
+      return null;
 
     const activeIndex = context.activeHeading.menu
       .filter((x) => x._type !== "subheading")
@@ -93,7 +116,12 @@ const RelatedPagesLink = () => {
           <BodyShort as="div" size="small">
             Forrige
           </BodyShort>
-          <Label as="div">{links.prev.title}</Label>
+          <Heading size="small" as="div">
+            {links.prev.title}
+          </Heading>
+          <ScLeftIcon>
+            <Back aria-hidden />
+          </ScLeftIcon>
         </a>
       )}
       {links.next && (
@@ -105,7 +133,12 @@ const RelatedPagesLink = () => {
           <BodyShort as="div" size="small">
             Neste
           </BodyShort>
-          <Label as="div">{links.next.title}</Label>
+          <Heading size="small" as="div">
+            {links.next.title}
+          </Heading>
+          <ScRightIcon>
+            <Next aria-hidden />
+          </ScRightIcon>
         </a>
       )}
     </ScWrapper>
