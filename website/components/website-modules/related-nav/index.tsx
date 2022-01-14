@@ -13,46 +13,49 @@ const ScWrapper = styled.div<{ $isTablet: boolean }>`
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 1rem;
+`;
 
-  > * {
-    position: relative;
-    color: var(--navds-semantic-color-text-inverted);
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 4rem;
-    padding: 0.5rem 2rem;
-    background-color: var(--navds-global-color-gray-800);
-    flex: 1 1 200px;
+const ScA = styled.a`
+  position: relative;
+  color: var(--navds-semantic-color-text);
+  border: 1px solid var(--navds-semantic-color-border);
+  border-radius: 2px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--navds-semantic-color-component-background-light);
+  flex: 1 1 300px;
+
+  > svg {
+    flex-shrink: 0;
+  }
+
+  &[data-dir="next"]:only-child {
+    margin-left: auto;
+  }
+
+  :hover {
+    box-shadow: var(--navds-shadow-card);
+    > *:not(:first-child) {
+      text-decoration: underline;
+    }
 
     > svg {
-      flex-shrink: 0;
     }
+  }
 
-    &[data-dir="next"]:only-child {
-      margin-left: auto;
-    }
-
-    :hover {
-      > *:not(:first-child) {
-        text-decoration: underline;
-      }
-
-      > svg {
-      }
-    }
-    :focus {
-      outline: none;
-      box-shadow: 0 0 0 1px white, 0 0 0 4px var(--navds-semantic-color-focus);
-    }
+  :focus {
+    outline: none;
+    box-shadow: var(--navds-shadow-focus);
   }
 `;
 
 const ScLeftIcon = styled.span`
   position: absolute;
   left: 0.5rem;
-  height: calc(100% - 1rem);
+  height: calc(100% - 2rem);
   display: flex;
   align-items: center;
   font-size: 1.5rem;
@@ -61,6 +64,13 @@ const ScLeftIcon = styled.span`
 const ScRightIcon = styled(ScLeftIcon)`
   right: 0.5rem;
   left: auto;
+`;
+
+const ScDummy = styled.div`
+  display: flex;
+  min-width: 4rem;
+  padding: 1rem 2rem;
+  flex: 1 1 300px;
 `;
 
 const RelatedPagesLink = () => {
@@ -108,8 +118,8 @@ const RelatedPagesLink = () => {
 
   return (
     <ScWrapper $isTablet={context.isTablet}>
-      {links.prev && (
-        <a
+      {links.prev ? (
+        <ScA
           href={`/${links.prev.link.slug.current}`}
           aria-label={`Gå til forrige side ${links.prev.title}`}
         >
@@ -122,10 +132,12 @@ const RelatedPagesLink = () => {
           <ScLeftIcon>
             <Back aria-hidden />
           </ScLeftIcon>
-        </a>
+        </ScA>
+      ) : (
+        <ScDummy aria-hidden />
       )}
-      {links.next && (
-        <a
+      {links.next ? (
+        <ScA
           href={`/${links.next.link.slug.current}`}
           data-dir="next"
           aria-label={`Gå til neste side ${links.next.title}`}
@@ -139,7 +151,9 @@ const RelatedPagesLink = () => {
           <ScRightIcon>
             <Next aria-hidden />
           </ScRightIcon>
-        </a>
+        </ScA>
+      ) : (
+        <ScDummy aria-hidden />
       )}
     </ScWrapper>
   );
