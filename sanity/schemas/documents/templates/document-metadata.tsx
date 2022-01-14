@@ -5,6 +5,7 @@ export function documentMetadata(docType) {
     title: "Dokument metadata",
     name: "metadata",
     type: "object",
+    group: "metadata",
     fields: [
       {
         title: "Oppdatering av innhold",

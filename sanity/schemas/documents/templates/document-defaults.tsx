@@ -8,6 +8,7 @@ export function documentInformation(prefix) {
       description: "Eks Guide: <tekst> eller Prinsipp: <tekst>",
       name: "title",
       type: "string",
+      group: "settings",
       validation: (Rule) =>
         Rule.required().error("Siden må ha en enkel forklarende tittel"),
     },
@@ -15,6 +16,7 @@ export function documentInformation(prefix) {
       title: "Sidetittel",
       name: "heading",
       type: "string",
+      group: "innhold",
       description:
         "Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.",
       validation: (Rule) =>
@@ -26,6 +28,7 @@ export function documentInformation(prefix) {
       type: "slug",
       description: "Strukturen bestemmes ikke av URL-en",
       validation: (Rule) => validateSlug(Rule, prefix, 3),
+      group: "settings",
       options: {
         isUnique: isSlugUnique,
         source: "heading",
@@ -49,6 +52,7 @@ export function documentInformation(prefix) {
           { value: "internal", title: "Intern" },
         ],
       },
+      group: "metadata",
       initialValue: ["core"],
     },
     {
@@ -57,6 +61,7 @@ export function documentInformation(prefix) {
       type: "string",
       validation: (Rule) => Rule.required(),
       initialValue: "published",
+      group: "metadata",
       options: {
         list: [
           {
@@ -74,6 +79,7 @@ export function documentInformation(prefix) {
       title: "Ingress (valgfritt)",
       name: "ingress",
       type: "array",
+      group: "innhold",
       of: [ingressBlock],
     },
   ];

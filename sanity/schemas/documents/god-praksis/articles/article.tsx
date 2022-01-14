@@ -5,6 +5,7 @@ import {
   documentMetadata,
   documentFeedbackMetadata,
   documentSearchMetadata,
+  groups,
 } from "../../templates";
 
 const prefix = "god-praksis/side/";
@@ -13,6 +14,7 @@ export default {
   title: "Artikkelside",
   name: "gp_article_page",
   type: "document",
+  groups: [...groups],
   ...defaultPreview(),
   fields: [
     {

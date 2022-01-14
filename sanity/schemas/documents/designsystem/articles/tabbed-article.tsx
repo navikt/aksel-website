@@ -4,6 +4,7 @@ import {
   defaultPreview,
   documentSearchMetadata,
   documentInformation,
+  groups,
 } from "../../templates";
 
 const prefix = "designsystem/side/";
@@ -13,6 +14,7 @@ export default {
   name: "ds_tabbed_article_page",
   type: "document",
   ...defaultPreview(),
+  groups: [...groups],
   fields: [
     documentMetadata("article"),
     ...documentInformation(prefix),

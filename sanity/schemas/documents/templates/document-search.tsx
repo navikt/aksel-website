@@ -2,6 +2,7 @@ export const documentSearchMetadata = {
   title: "Søk",
   name: "metadata_search",
   type: "object",
+  group: "settings",
   initialValue: {
     high_priority: false,
   },
