@@ -54,7 +54,7 @@ const ScButtons = styled.div`
 
 const ScStateCss = css`
   :hover {
-    background-color: var(--navds-semantic-color-canvas-background);
+    background-color: var(--navds-global-color-gray-100);
   }
 
   :active {
@@ -109,6 +109,10 @@ const ScButtonLabel = styled.button<{ active?: boolean }>`
   border-radius: 2px;
 
   ${ScStateCss}
+
+  :hover {
+    background-color: var(--navds-global-color-gray-200);
+  }
 
   ${({ active }) =>
     active &&
