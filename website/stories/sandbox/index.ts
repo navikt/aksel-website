@@ -11,6 +11,7 @@ import SelectSandbox from "./select";
 import TextareaSandbox from "./textarea";
 import TextFieldSandox from "./textfield";
 import CheckboxSandbox from "./checkbox";
+import SwitchSandbox from "./switch";
 import kebabCase from "lodash.kebabcase";
 import { SandboxComponent } from "./types";
 
@@ -28,6 +29,7 @@ const allSandboxes = {
   SelectSandbox,
   TextareaSandbox,
   TextFieldSandox,
+  SwitchSandbox,
 };
 
 export const Sandboxes = Object.keys(allSandboxes).reduce((prev, y) => {
