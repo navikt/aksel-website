@@ -21,14 +21,6 @@ export default {
       title: "Innhold",
       inputComponent: GodPraksisForklaring,
     },
-    {
-      name: "notes",
-      description:
-        "Redaktør-notater. Noe som ble igjen på TODO lista? Legg det til her!",
-      type: "text",
-      title: "Notater",
-      rows: 4,
-    },
     documentMetadata("article"),
     ...documentInformation(prefix).filter((x) => x.name !== "tags"),
     {

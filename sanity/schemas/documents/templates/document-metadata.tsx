@@ -2,7 +2,7 @@ import LastUpdate from "../../../components/last-update";
 
 export function documentMetadata(docType) {
   return {
-    title: "Dokument-info",
+    title: "Dokument metadata",
     name: "metadata",
     type: "object",
     fields: [
