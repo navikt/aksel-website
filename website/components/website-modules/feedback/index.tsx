@@ -19,9 +19,7 @@ const ScFeedback = styled.div<{ isTablet?: boolean }>`
   justify-content: center;
   align-items: center;
   gap: 1rem;
-
   background-color: var(--navds-semantic-color-component-background-alternate);
-
   margin: ${(props) =>
     props.isTablet ? "11rem auto 4rem 0" : "11rem auto 4rem 0"};
 
