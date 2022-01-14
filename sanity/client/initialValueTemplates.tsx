@@ -404,7 +404,6 @@ export default [
         _type: "slug",
         current: "designsystem/side/ny-komponentmal",
       },
-      status: "wip",
       tags: ["core"],
       title: "Ny komponentmal",
       usage: [

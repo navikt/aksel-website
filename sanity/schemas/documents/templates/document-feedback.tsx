@@ -2,9 +2,6 @@ export const documentFeedbackMetadata = {
   title: "Tilbakemeldinger",
   name: "metadata_feedback",
   type: "object",
-  initialValue: {
-    high_priority: false,
-  },
   fields: [
     {
       title: "Skjul artikkel feedback modul",
