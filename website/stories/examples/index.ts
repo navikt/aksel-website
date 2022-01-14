@@ -23,6 +23,7 @@ import * as SpeechBubble from "./speech-bubble";
 import * as Table from "./table";
 import * as Tag from "./tag";
 import * as Typography from "./typography";
+import * as StepIndicator from "./step-indicator";
 
 const allExamples = {
   ...Button,
@@ -44,6 +45,7 @@ const allExamples = {
   ...Modal,
   ...Panel,
   ...Popover,
+  ...StepIndicator,
   ...SpeechBubble,
   ...Table,
   ...Tag,
