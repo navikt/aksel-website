@@ -224,7 +224,7 @@ export default () =>
                 .icon(() => <Folder />)
                 .child(S.documentTypeList("main_categories")),
               S.listItem()
-                .title("Changelog")
+                .title("Changelogs")
                 .icon(() => <Historic />)
                 .child(S.documentTypeList("ds_changelog")),
               S.listItem()
