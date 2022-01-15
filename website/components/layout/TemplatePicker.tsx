@@ -5,7 +5,6 @@ import ArticleTemplate from "./page-templates/ArticlePageTemplate";
 import TabbedArticleTemplate from "./page-templates/TabbedArticlePageTemplate";
 import {
   DsArticlePage,
-  DsChangelog,
   DsComponentPage,
   DsTabbedArticlePage,
   GpArticlePage,
@@ -14,7 +13,6 @@ import {
 type ds_component = {
   ds_component_page: (props: {
     data: DsComponentPage;
-    changelogs: DsChangelog[];
     title: string;
   }) => JSX.Element;
 };
@@ -51,11 +49,9 @@ const templates: templateT = {
 
 const TemplatePicker = ({
   data,
-  changelogs,
   title,
 }: {
   data: DsComponentPage | DsTabbedArticlePage | DsArticlePage | GpArticlePage;
-  changelogs?: DsChangelog[];
   title: string;
 }): JSX.Element => {
   const [mounted, setMounted] = useState(false);
@@ -83,11 +79,7 @@ const TemplatePicker = ({
 
   const Template = templates[data._type];
 
-  return data._type === "ds_component_page" ? (
-    <Template data={data} changelogs={changelogs} title={title} />
-  ) : (
-    <Template data={data} title={title} />
-  );
+  return <Template data={data} title={title} />;
 };
 
 export default TemplatePicker;

@@ -7,7 +7,6 @@ import { flattenBlocks } from "sanity-algolia";
 import styled from "styled-components";
 import {
   AmplitudeEvents,
-  Changelog,
   Feedback,
   LastUpdateTag,
   LayoutContext,
@@ -19,7 +18,7 @@ import {
   Tabs,
   useAmplitude,
 } from "../..";
-import { DsChangelog, DsComponentPage } from "../../../lib";
+import { DsComponentPage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import * as S from "./page.styles";
 
@@ -59,11 +58,9 @@ const ScDiv = styled(BodyShort)`
 
 const ComponentPageTemplate = ({
   data,
-  changelogs,
   title,
 }: {
   data: DsComponentPage;
-  changelogs: DsChangelog[];
   title: string;
 }): JSX.Element => {
   const { query, asPath } = useRouter();
@@ -219,9 +216,6 @@ const ComponentPageTemplate = ({
         <S.MaxWidthContainer>
           {data[value] && (
             <SanityBlockContent withMargin blocks={data[value]} />
-          )}
-          {value === "development" && (
-            <Changelog changelogs={changelogs} id={data._id} />
           )}
           {!data?.metadata_feedback?.hide_feedback && (
             <Feedback

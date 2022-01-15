@@ -6,9 +6,7 @@ import DesignsystemFooter from "../../components/layout/footer/DesignsystemFoote
 import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
 import DesignsystemSidebar from "../../components/layout/sidebar/DesignsystemSidebar";
 import {
-  changelogQuery,
   DsArticlePage,
-  DsChangelog,
   DsComponentPage,
   dsDocumentBySlug,
   DsNavigation,
@@ -26,22 +24,12 @@ const Page = (props: {
   slug?: string;
   page: DsComponentPage | DsTabbedArticlePage | DsArticlePage;
   navigation: DsNavigation;
-  changelogs?: DsChangelog[];
   preview: boolean;
 }): JSX.Element => {
   return (
     <>
       {props.preview && <PreviewBanner />}
-      <>
-        <LayoutPicker
-          title="Designsystemet"
-          data={props.page}
-          changelogs={props.changelogs}
-        />
-        {/* {LayoutParts[pageType]?.title === "Designsystemet" && (
-              <RelatedPagesLink />
-            )} */}
-      </>
+      <LayoutPicker title="Designsystemet" data={props.page} />
     </>
   );
 };
@@ -87,7 +75,6 @@ interface StaticProps {
   props: {
     page: DsComponentPage | DsTabbedArticlePage | DsArticlePage;
     slug: string;
-    changelogs: DsChangelog[] | null;
     navigation: DsNavigation;
     isDraft: boolean;
     validPath: boolean;
@@ -114,11 +101,6 @@ export const getStaticProps = async ({
 
   page = page?.find((item) => item._id.startsWith(`drafts.`)) || page?.[0];
 
-  const changelogs =
-    page?._type === "ds_component_page"
-      ? await getClient(false).fetch(changelogQuery)
-      : null;
-
   const navigation = await getClient(false).fetch(dsNavigationQuery);
 
   const validPath = await getDsPaths().then((paths) =>
@@ -132,7 +114,6 @@ export const getStaticProps = async ({
       page: page ?? null,
       slug: joinedSlug,
       navigation,
-      changelogs,
       isDraft: isDraft === 0,
       validPath,
       preview,
