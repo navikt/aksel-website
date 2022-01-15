@@ -1,99 +1,14 @@
-import { Close, Search as SearchIcon } from "@navikt/ds-icons";
-import { Detail, TextField } from "@navikt/ds-react";
+import { Detail, SearchField } from "@navikt/ds-react";
 import React, { useEffect, useState } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const ScFilter = styled.div`
   margin-bottom: 2rem;
   max-width: 400px;
   width: 100%;
-`;
-
-const ScTextField = styled(TextField)`
-  position: relative;
-  width: 100%;
-
-  > input {
-    border-radius: 4px 0 0 4px;
-    padding: 0 1rem 0 3rem;
-    border-right: none;
-  }
-
-  > input:focus {
-    z-index: 1;
-  }
-`;
-
-const ScButtonCss = css`
   display: flex;
-  border: none;
-  flex-shrink: 0;
-  width: var(--header-height);
-  height: var(--header-height);
-  justify-content: center;
-  align-items: center;
-`;
-
-const ScCloseButton = styled.button`
-  ${ScButtonCss}
-  width: 48px;
-  height: 48px;
-  border: 2px solid var(--navds-semantic-color-border);
-  border-left: none;
-  background-color: var(--navds-semantic-color-canvas-background-light);
-  z-index: auto;
-  margin-top: auto;
-
-  :hover {
-    background-color: var(
-      --navds-semantic-color-component-background-alternate
-    );
-  }
-
-  :focus {
-    outline: none;
-    box-shadow: 0 0 0 3px var(--navds-semantic-color-focus);
-    z-index: 2;
-  }
-`;
-
-const ScSearchIcon = styled.div`
-  ${ScButtonCss}
-  width: 48px;
-  height: 48px;
-  background-color: transparent;
-  left: 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 0;
-`;
-
-const ScTextFieldWrapper = styled.div`
-  position: relative;
-  display: flex;
-  width: 100%;
-  margin-bottom: 1rem;
-
-  > :last-child {
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-
-    input {
-      flex: 1 1;
-      border-top-right-radius: 4px;
-      border-bottom-right-radius: 4px;
-      border-right: 2px solid var(--navds-semantic-color-border);
-
-      :hover {
-        border-color: var(--navds-semantic-color-interaction-primary-hover);
-      }
-    }
-  }
-
-  :hover > *,
-  :hover input {
-    border-color: var(--navds-semantic-color-interaction-primary-hover);
-  }
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 export const ScToggleGroup = styled(Detail)`
@@ -182,31 +97,11 @@ const Filter = ({
 
   return (
     <ScFilter>
-      <ScTextFieldWrapper>
-        <ScSearchIcon>
-          <SearchIcon
-            style={{ fontSize: "1.5rem", marginLeft: 3 }}
-            aria-label="Søk ikon"
-            aria-hidden={true}
-            role="img"
-          />
-        </ScSearchIcon>
-        <ScTextField
-          value={value}
-          label="Søk i alle NAV-ikoner"
-          onChange={(e) => setValue(e.target.value)}
-        />
-        {value && (
-          <ScCloseButton onClick={() => setValue("")}>
-            <Close
-              style={{ fontSize: "1.5rem" }}
-              role="img"
-              aria-label="Lukk søk"
-            />
-            <span className="navds-sr-only">Lukk Søk</span>
-          </ScCloseButton>
-        )}
-      </ScTextFieldWrapper>
+      <SearchField
+        value={value}
+        label="Søk i alle NAV-ikoner"
+        onChange={(v) => setValue(v)}
+      />
       <ScToggleGroup forwardedAs="div" size="small">
         <ScToggle
           className="navds-label navds-label--small"
