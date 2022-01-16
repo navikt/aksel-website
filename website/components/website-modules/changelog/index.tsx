@@ -46,6 +46,7 @@ const ScLink = styled(Link)<{ open: boolean }>`
   margin: 0;
   padding: 0;
   margin-bottom: ${(props) => (props.open ? "1rem" : "2rem")};
+  cursor: pointer;
 `;
 
 const Log = ({ log }: { log: ChangelogT }) => {
