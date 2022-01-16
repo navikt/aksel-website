@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StepIndicator } from "@navikt/ds-react";
 import { ExampleComponent } from "../../lib";
+import { BgColors } from "../sandbox/types";
 
 export const StepIndicatorDefault: ExampleComponent = () => {
   const [state, setState] = useState(1);
@@ -21,6 +22,8 @@ StepIndicatorDefault.react = `<StepIndicator activeStep={state} onStepChange={(x
 <StepIndicator.Step>Levering</StepIndicator.Step>
 <StepIndicator.Step>Oppsummering</StepIndicator.Step>
 </StepIndicator>`;
+
+StepIndicatorDefault.bg = BgColors.WHITE;
 
 export const StepIndicatorResponsive: ExampleComponent = () => {
   const [state, setState] = useState(1);
@@ -46,6 +49,8 @@ StepIndicatorResponsive.react = `<StepIndicator responsive activeStep={state} on
 <StepIndicator.Step>Oppsummering</StepIndicator.Step>
 </StepIndicator>`;
 
+StepIndicatorResponsive.bg = BgColors.WHITE;
+
 export const StepIndicatorHideLabels: ExampleComponent = () => {
   const [state, setState] = useState(1);
 
@@ -70,6 +75,8 @@ StepIndicatorHideLabels.react = `<StepIndicator responsive activeStep={state} on
 <StepIndicator.Step>Oppsummering</StepIndicator.Step>
 </StepIndicator>`;
 
+StepIndicatorHideLabels.bg = BgColors.WHITE;
+
 export const StepIndicatorDisabled: ExampleComponent = () => {
   const [state, setState] = useState(1);
 
@@ -89,3 +96,5 @@ StepIndicatorDisabled.react = `<StepIndicator activeStep={state} onStepChange={(
 <StepIndicator.Step>Levering</StepIndicator.Step>
 <StepIndicator.Step>Oppsummering</StepIndicator.Step>
 </StepIndicator>`;
+
+StepIndicatorDisabled.bg = BgColors.WHITE;

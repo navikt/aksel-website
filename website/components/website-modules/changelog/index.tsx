@@ -40,6 +40,7 @@ const ScFilter = styled.div`
     max-width: 250px;
   }
 `;
+
 const ScLink = styled(Link)<{ open: boolean }>`
   background: none;
   border: none;
@@ -47,6 +48,12 @@ const ScLink = styled(Link)<{ open: boolean }>`
   padding: 0;
   margin-bottom: ${(props) => (props.open ? "1rem" : "2rem")};
   cursor: pointer;
+`;
+
+const ScHr = styled.hr`
+  width: 100%;
+  border-bottom: 1px var(--navds-semantic-color-divider);
+  margin-top: 2.5rem;
 `;
 
 const Log = ({ log }: { log: ChangelogT }) => {
@@ -82,6 +89,7 @@ const Log = ({ log }: { log: ChangelogT }) => {
           ))}
       </ScTagWrapper>
       <SanityBlockContent blocks={log.body} />
+      <ScHr />
     </div>
   );
 };
