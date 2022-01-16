@@ -1,12 +1,12 @@
+import { Collapse, Expand } from "@navikt/ds-icons";
 import { BodyShort, Heading, Link, Select, Tag } from "@navikt/ds-react";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
+import Semver from "semver";
 import styled from "styled-components";
 import { ChangelogListT, ChangelogT } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import { SanityBlockContent } from "../../SanityBlockContent";
-import Semver from "semver";
-import { Collapse, Down, Expand } from "@navikt/ds-icons";
 
 const ScNeutralTag = styled(Tag)`
   background-color: var(--navds-semantic-color-canvas-background);
