@@ -1,4 +1,5 @@
 import type { SanityKeyed } from "sanity-codegen";
+import { DsChangelog } from "..";
 import { BgColors } from "../../stories/sandbox/types";
 
 export type LayoutContextProps = {
@@ -72,3 +73,17 @@ export interface ExampleComponent extends React.FC {
   html?: string | null;
   bg?: BgColors;
 }
+
+export interface ChangelogT extends Omit<DsChangelog, "packages"> {
+  packages: {
+    version: string;
+    pack: { title: string; scope: string };
+    _key: string;
+  }[];
+}
+
+export type ChangelogListT = {
+  title: string;
+  _key: string;
+  logs: ChangelogT[];
+};

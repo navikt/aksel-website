@@ -93,6 +93,17 @@ const doDont = `_type == "do_dont" =>{
   }
 }`;
 
+const changelogs = `_type == "changelogs_ref" =>{
+  ...,
+  "logs": *[_type == 'ds_changelog' && !(_id in path("drafts.**"))]{
+    ...,
+    packages[]{
+      ...,
+      "pack": @.pack->{...}
+    }
+  }
+}`;
+
 const deRefs = `
 ${relatedCards},
 ${linkPanel},
@@ -103,6 +114,7 @@ ${componentOverview},
 ${uniqueModules},
 ${pictureWText},
 ${doDont},
+${changelogs},
 ${markDef},
 `;
 

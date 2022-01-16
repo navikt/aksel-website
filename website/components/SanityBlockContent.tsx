@@ -21,6 +21,7 @@ import {
   Tips,
   Accordion,
   ComponentOverview,
+  Changelog,
 } from ".";
 
 import * as Icons from "@navikt/ds-icons";
@@ -82,6 +83,7 @@ const serializers = {
     icon_search: () => <IconSearch />,
 
     /* General page modules */
+    changelogs_ref: ({ node }) => <Changelog node={node} />,
     related_pages: ({ node }) => <RelatedPagesCards node={node} />,
     ds_code_sandbox: ({ node }) => <Sandbox node={node} />,
     code_snippet: ({ node }) => <Snippet node={node} />,
