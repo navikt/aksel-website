@@ -100,7 +100,11 @@ const changelogs = `_type == "changelogs_ref" =>{
     packages[]{
       ...,
       "pack": @.pack->{...}
-    }
+    },
+    body[]{
+      ...,
+      ${markDef}
+    },
   }
 }`;
 
