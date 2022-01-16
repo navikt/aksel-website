@@ -22,6 +22,7 @@ export default {
       name: "tabs",
       title: "Tabs",
       type: "array",
+      group: "innhold",
       of: [
         {
           name: "tab",

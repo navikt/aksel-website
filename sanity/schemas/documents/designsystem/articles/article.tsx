@@ -22,6 +22,7 @@ export default {
       name: "body",
       type: "blockContent",
       title: "Sideinnhold",
+      group: "innhold",
       validation: (Rule) =>
         Rule.required().error("Må legge til noe innhold på siden"),
     },

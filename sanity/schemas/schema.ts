@@ -27,6 +27,7 @@ export default createSchema({
     SanityModules.CodeSandboxRef,
     SanityModules.CodeSnippet,
     SanityModules.ColorRef,
+    SanityModules.Changelogs,
     SanityModules.DoDont,
     SanityModules.doDont,
     SanityModules.IkonSok,
