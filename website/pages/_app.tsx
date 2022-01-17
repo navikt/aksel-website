@@ -8,6 +8,7 @@ import {
 import LayoutProvider from "../components/layout/LayoutProvider";
 import "../styles/index.css";
 import NotFound from "./404";
+import { hotjar } from "react-hotjar";
 
 function App({
   Component,
@@ -25,6 +26,10 @@ function App({
   useEffect(() => {
     setPageData(pageProps);
   }, [pageProps]);
+
+  useEffect(() => {
+    process.env.NODE_ENV === "production" && hotjar.initialize(148751, 6);
+  }, []);
 
   if (
     Component &&

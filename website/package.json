@@ -70,7 +70,8 @@
     "validator": "^13.7.0",
     "react-live": "^2.3.0",
     "prism-react-renderer": "^1.2.1",
-    "semver": "^7.3.5"
+    "semver": "^7.3.5",
+    "react-hotjar": "^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^16.9.2",
