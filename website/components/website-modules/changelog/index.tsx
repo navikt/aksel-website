@@ -154,11 +154,7 @@ const Changelog = ({ node }: { node: ChangelogListT }) => {
     <div>
       <ScLink open={open} onClick={() => setOpen(!open)} forwardedAs="button">
         Filter{" "}
-        {open ? (
-          <Collapse aria-label="Lukk filter" />
-        ) : (
-          <Expand aria-label="Åpne filter" />
-        )}
+        {open ? <Collapse aria-label="Vis" /> : <Expand aria-label="Lukk" />}
       </ScLink>
       {pairs && open && (
         <ScFilter>
