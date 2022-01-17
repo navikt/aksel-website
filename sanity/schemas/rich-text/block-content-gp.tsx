@@ -138,5 +138,8 @@ export default {
       type: "do_dont",
       icon: () => <SuccessStroke />,
     },
+    {
+      type: "table",
+    },
   ],
 };
