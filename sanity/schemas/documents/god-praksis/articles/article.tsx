@@ -29,6 +29,7 @@ export default {
       name: "body",
       type: "gp_blockContent",
       title: "Sideinnhold",
+      group: "innhold",
       validation: (Rule) => Rule.required().error("Siden må ha noe innhold"),
     },
     /* documentSearchMetadata, */
