@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as Sc from "../../components";
 import { LayoutPicker, PreviewBanner } from "../../components";
 import GodPraksisHeader from "../../components/layout/header/GodPraksisHeader";
@@ -9,6 +9,7 @@ import {
   gpDocumentBySlug,
 } from "../../lib";
 import { ScGrow } from "../designsystem/[...slug]";
+import { hotjar } from "react-hotjar";
 
 const Page = (props: {
   slug?: string;
@@ -16,6 +17,10 @@ const Page = (props: {
   sidebar: any;
   preview: boolean;
 }): JSX.Element => {
+  useEffect(() => {
+    process.env.NODE_ENV === "production" && hotjar.initialize(148751, 6);
+  }, []);
+
   return (
     <>
       {props.preview && <PreviewBanner />}
