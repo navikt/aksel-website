@@ -19,19 +19,19 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
     <S.Table>
       <S.Caption>
         {prop.required && <S.Required>Required</S.Required>}
-        <Tag variant="info">{prop.name}</Tag>
+        <Tag variant="info" size="small">
+          {prop.name}
+        </Tag>
       </S.Caption>
       <S.Tbody>
         <tr>
-          <S.Th className="navds-heading navds-heading--xsmall">
-            Description
-          </S.Th>
-          <S.Td className="navds-body-short">
+          <S.Th className="navds-label navds-label--small">Description</S.Th>
+          <S.Td className="navds-body-short navds-body-short">
             {prop.description ? prop.description : <span>-</span>}
           </S.Td>
         </tr>
         <tr>
-          <S.Th className="navds-heading navds-heading--xsmall">Type</S.Th>
+          <S.Th className="navds-label navds-label--small">Type</S.Th>
           <S.Td className="navds-body-short">
             <pre style={{ margin: 0 }}>
               <TypeCode>{prop.type}</TypeCode>
@@ -39,7 +39,7 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
           </S.Td>
         </tr>
         <tr>
-          <S.Th className="navds-heading navds-heading--xsmall">Default</S.Th>
+          <S.Th className="navds-label navds-label--small">Default</S.Th>
           <S.Td className="navds-body-short">
             {prop.default ? (
               <TypeCode>{prop.default}</TypeCode>
