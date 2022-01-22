@@ -125,7 +125,7 @@ const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
         />
       </Head>
       {props.preview && <Sc.PreviewBanner />}
-      <ScRelative>
+      <ScRelative className="text-blue-400">
         <ScFrontpage>
           <ScLink href="https://old-design-nav.vercel.app/">
             Gå til gammel dokumentasjon
