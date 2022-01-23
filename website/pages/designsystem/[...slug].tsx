@@ -1,5 +1,4 @@
 import React from "react";
-import * as Sc from "../../components";
 import { LayoutPicker, PreviewBanner, SkipLink } from "../../components";
 import DesignsystemFooter from "../../components/layout/footer/DesignsystemFooter";
 import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
