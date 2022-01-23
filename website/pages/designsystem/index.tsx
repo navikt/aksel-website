@@ -191,14 +191,14 @@ Page.getLayout = (page) => {
         Hopp til innhold
       </Sc.SkipLink>
       <DesignsystemHeader />
-      <Sc.SidebarMain>
-        <Sc.MainFooter>
-          <Sc.Main fullwidth tabIndex={-1} id="hovedinnhold" graybg>
-            {page}
-          </Sc.Main>
-          <DesignsystemFooter />
-        </Sc.MainFooter>
-      </Sc.SidebarMain>
+      <main
+        tabIndex={-1}
+        id="hovedinnhold"
+        className="relative min-h-header w-full flex flex-col focus:outline-none"
+      >
+        {page}
+      </main>
+      <DesignsystemFooter />
     </>
   );
 };

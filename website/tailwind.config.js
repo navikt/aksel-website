@@ -15,6 +15,9 @@ module.exports = {
         lg: "768px",
         xl: "1024px",
       },
+      minHeight: {
+        header: "calc(100vh - var(--header-height))",
+      },
       keyframes: {
         fadeInBottom: {
           "0%": { transform: "translateY(2.5rem)", opacity: 0 },
