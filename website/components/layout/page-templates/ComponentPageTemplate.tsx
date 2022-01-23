@@ -20,7 +20,6 @@ import {
 } from "../..";
 import { DsComponentPage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
-import * as S from "./page.styles";
 
 const ScLinks = styled.div`
   display: flex;
@@ -135,8 +134,8 @@ const ComponentPageTemplate = ({
         </>
       </Head>
 
-      <S.MaxWidthContainer>
-        <S.HeadingContainer>
+      <div className="content-box">
+        <div className="pt-8 pb-6">
           <StatusTag status={data.status} />
           <Heading
             size={
@@ -187,9 +186,9 @@ const ComponentPageTemplate = ({
               )}
             </ScLinks>
           </ScDiv>
-        </S.HeadingContainer>
+        </div>
         {data.ingress && <SanityBlockContent isIngress blocks={data.ingress} />}
-      </S.MaxWidthContainer>
+      </div>
       <Tabs
         title={data.heading}
         tabs={[
@@ -211,9 +210,9 @@ const ComponentPageTemplate = ({
             .filter((x) => !!x),
         ]}
       />
-      <S.SanityBlockContainer>
+      <div className="relative max-w-full lg:max-w-7xl flex">
         <TableOfContents changedState={data[value]} />
-        <S.MaxWidthContainer>
+        <div className="content-box">
           {data[value] && (
             <SanityBlockContent withMargin blocks={data[value]} />
           )}
@@ -224,8 +223,8 @@ const ComponentPageTemplate = ({
             />
           )}
           <RelatedNavigation />
-        </S.MaxWidthContainer>
-      </S.SanityBlockContainer>
+        </div>
+      </div>
     </>
   );
 };

@@ -1,23 +1,22 @@
-import { Heading } from "@navikt/ds-react";
+import { Heading, useClientLayoutEffect } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect } from "react";
 import { flattenBlocks } from "sanity-algolia";
 import {
   AmplitudeEvents,
   Feedback,
   LastUpdateTag,
   LayoutContext,
+  PagePropsContext,
+  RelatedNavigation,
   slugger,
   StatusTag,
   TableOfContents,
   useAmplitude,
-  PagePropsContext,
-  RelatedNavigation,
 } from "../..";
 import { DsArticlePage, GpArticlePage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
-import * as S from "./page.styles";
 
 const ActiclePageTemplate = ({
   data,
@@ -26,24 +25,19 @@ const ActiclePageTemplate = ({
   data: GpArticlePage | DsArticlePage;
   title: string;
 }): JSX.Element => {
-  useEffect(() => {
-    slugger.reset();
-  });
-
   const layout = useContext(LayoutContext);
   const { pageProps } = useContext(PagePropsContext);
   const { logAmplitudeEvent } = useAmplitude();
   const { asPath } = useRouter();
-  const visited = useRef([]);
+
+  useClientLayoutEffect(() => {
+    slugger.reset();
+  });
 
   useEffect(() => {
-    !visited.current.includes(asPath) &&
-      logAmplitudeEvent(AmplitudeEvents.sidevisning, {
-        side: asPath,
-      });
-    visited.current = !visited.current.includes(asPath)
-      ? [...visited.current, asPath]
-      : [...visited.current];
+    logAmplitudeEvent(AmplitudeEvents.sidevisning, {
+      side: asPath,
+    });
   }, [asPath]);
 
   if (!data.body || !data.heading || !data.status) {
@@ -63,8 +57,8 @@ const ActiclePageTemplate = ({
           </>
         )}
       </Head>
-      <S.MaxWidthContainer>
-        <S.HeadingContainer>
+      <div className="content-box">
+        <div className="pt-8 pb-6">
           <StatusTag status={data.status} />
           <Heading
             size={
@@ -80,12 +74,12 @@ const ActiclePageTemplate = ({
             {data.heading}
           </Heading>
           <LastUpdateTag date={data.metadata.last_update} />
-        </S.HeadingContainer>
+        </div>
         {data.ingress && <SanityBlockContent isIngress blocks={data.ingress} />}
-      </S.MaxWidthContainer>
-      <S.SanityBlockContainer>
+      </div>
+      <div className="relative max-w-full lg:max-w-7xl flex">
         <TableOfContents changedState={data.body} />
-        <S.MaxWidthContainer>
+        <div className="content-box">
           <SanityBlockContent withMargin blocks={data.body} />
           {!data?.metadata_feedback?.hide_feedback && (
             <Feedback
@@ -94,8 +88,8 @@ const ActiclePageTemplate = ({
             />
           )}
           <RelatedNavigation />
-        </S.MaxWidthContainer>
-      </S.SanityBlockContainer>
+        </div>
+      </div>
     </>
   );
 };

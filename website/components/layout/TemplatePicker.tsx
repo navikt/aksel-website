@@ -66,7 +66,7 @@ const TemplatePicker = ({
 
   if (!Object.keys(templates).includes(data._type)) {
     console.warn(
-      `${data._type} does not have  a valid template to use, please create one.`
+      `${data._type} does not have a valid template to use, please create one.`
     );
 
     return (

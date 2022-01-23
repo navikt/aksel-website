@@ -28,4 +28,10 @@
   .reduced-spacing .navds-typo--spacing {
     @apply mb-2;
   }
+
+  .content-box {
+    max-width: calc(var(--content-max-width) + 6rem);
+    width: 100%;
+    @apply w-full pb-4 px-4 md:px-6 lg:px-12  lg:pb-4 m-0 md:my-0 md:mx-auto lg:mx-0 lg:mr-auto;
+  }
 }

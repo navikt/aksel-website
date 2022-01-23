@@ -8,17 +8,16 @@ import {
   Feedback,
   LastUpdateTag,
   LayoutContext,
+  PagePropsContext,
+  RelatedNavigation,
   slugger,
   StatusTag,
   TableOfContents,
   Tabs,
   useAmplitude,
-  PagePropsContext,
-  RelatedNavigation,
 } from "../..";
 import { DsTabbedArticlePage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
-import * as S from "./page.styles";
 
 const TabbedActiclePageTemplate = ({
   data,
@@ -75,8 +74,8 @@ const TabbedActiclePageTemplate = ({
           </>
         )}
       </Head>
-      <S.MaxWidthContainer>
-        <S.HeadingContainer>
+      <div className="content-box">
+        <div className="pt-8 pb-6">
           <StatusTag status={data.status} />
           <Heading
             size={
@@ -92,9 +91,9 @@ const TabbedActiclePageTemplate = ({
             {data.heading}
           </Heading>
           <LastUpdateTag date={data.metadata.last_update} />
-        </S.HeadingContainer>
+        </div>
         {data.ingress && <SanityBlockContent isIngress blocks={data.ingress} />}
-      </S.MaxWidthContainer>
+      </div>
       {tabs.length > 1 && (
         <Tabs
           title={data.heading}
@@ -117,9 +116,9 @@ const TabbedActiclePageTemplate = ({
           ]}
         />
       )}
-      <S.SanityBlockContainer>
+      <div className="relative max-w-full lg:max-w-7xl flex">
         <TableOfContents changedState={data.tabs[activeTab].body} />
-        <S.MaxWidthContainer>
+        <div className="content-box">
           <SanityBlockContent withMargin blocks={data.tabs[activeTab].body} />
           {!data.tabs[activeTab]?.metadata_feedback?.hide_feedback && (
             <Feedback
@@ -128,8 +127,8 @@ const TabbedActiclePageTemplate = ({
             />
           )}
           <RelatedNavigation />
-        </S.MaxWidthContainer>
-      </S.SanityBlockContainer>
+        </div>
+      </div>
     </>
   );
 };
