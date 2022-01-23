@@ -15,6 +15,15 @@ module.exports = {
         lg: "768px",
         xl: "1024px",
       },
+      keyframes: {
+        fadeInBottom: {
+          "0%": { transform: "translateY(2.5rem)", opacity: 0 },
+          "100%": { transform: "translateY(0)", opacity: 1 },
+        },
+      },
+      animation: {
+        fadeInBottom: "fadeInBottom 0.30s ease-in-out forwards",
+      },
     },
   },
 };

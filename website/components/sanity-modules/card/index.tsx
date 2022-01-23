@@ -7,17 +7,20 @@ import { DsFrontPageCardT, useSanityImage } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import cl from "classnames";
 
+interface CardProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  node: DsFrontPageCardT;
+  tag?: boolean;
+  categoryRef?: any;
+}
+
 const Card = ({
   node,
   tag,
   categoryRef,
   href,
-}: {
-  node: DsFrontPageCardT;
-  tag?: boolean;
-  categoryRef?: any;
-  href?: string;
-}) => {
+  className,
+  ...rest
+}: CardProps) => {
   const { logAmplitudeEvent } = useAmplitude();
   const { pageProps } = useContext(PagePropsContext);
   const [category, setCategory] = useState(categoryRef ?? null);
@@ -66,7 +69,11 @@ const Card = ({
     <a
       onClick={(e) => logNavigation(e)}
       href={href ?? `/${node?.link_ref?.slug}`}
-      className="card aspect-[18/22] hover:-translate-y-1 transition-transform"
+      className={cl(
+        "card aspect-[18/22] hover:-translate-y-1 transition-transform",
+        className
+      )}
+      {...rest}
     >
       {imageProps && (
         <div className="flex justify-center mb-6 shrink-0">

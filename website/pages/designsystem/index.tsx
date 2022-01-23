@@ -163,12 +163,14 @@ const Page = (props: {
           </ScDescriptionWrapper>
           <ScCards>
             {props?.page?.cards &&
-              props?.page?.cards.map((card) => {
+              props?.page?.cards.map((card, i) => {
                 return (
                   <Card
                     key={card._key}
                     node={card as unknown as DsFrontPageCardT}
                     tag={true}
+                    style={{ animationDelay: `${i * 50}ms` }}
+                    className={`animate-fadeInBottom opacity-0`}
                   />
                 );
               })}
