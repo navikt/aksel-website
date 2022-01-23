@@ -1,0 +1,27 @@
+@tailwind components;
+
+@layer components {
+  .card {
+    @apply w-[18rem] active:text-link text-text flex flex-col p-4 pt-8 md:p-8 md:pt-12 rounded bg-canvas-background-light relative shadow-card;
+  }
+
+  .card:hover {
+    box-shadow: 0 0 0 2px var(--navds-semantic-color-link);
+  }
+
+  .card > .navds-heading {
+    @apply underline;
+  }
+
+  .card:hover > .navds-heading {
+    @apply text-link no-underline;
+  }
+
+  .card:focus {
+    @apply outline-none shadow-focus;
+  }
+
+  .card > * {
+    @apply no-underline;
+  }
+}

@@ -2,79 +2,10 @@ import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import NextImage from "next/image";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
-import styled from "styled-components";
 import { AmplitudeEvents, PagePropsContext, useAmplitude } from "../..";
 import { DsFrontPageCardT, useSanityImage } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
-
-const ScCard = styled.a`
-  min-height: 22rem;
-  width: 18rem;
-  text-decoration: none;
-  color: var(--navds-semantic-color-text);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 3rem 2rem 2rem 2rem;
-  border-radius: 4px;
-  background-color: var(--navds-semantic-color-canvas-background-light);
-  box-shadow: var(--navds-shadow-card);
-  position: relative;
-
-  @media (max-width: 564px) {
-    padding: 2rem 1rem 1rem 1rem;
-  }
-
-  :hover {
-    box-shadow: 0 0 0 2px var(--navds-semantic-color-link);
-
-    > .navds-heading {
-      text-decoration: none;
-      color: var(--navds-semantic-color-link);
-    }
-  }
-
-  :focus {
-    outline: none;
-    box-shadow: var(--navds-shadow-focus);
-
-    > * {
-      text-decoration: none;
-    }
-  }
-
-  :active {
-    color: var(--navds-semantic-color-link);
-  }
-
-  h2 {
-    text-decoration: underline;
-  }
-`;
-
-const ScPictogram = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  margin-bottom: 1.5rem;
-  flex-shrink: 0;
-`;
-
-const ScContent = styled(BodyShort)`
-  margin-bottom: 1.5rem;
-
-  &[data-tag="true"] {
-    margin-bottom: 3rem;
-  }
-`;
-
-const ScTag = styled(Detail)`
-  position: absolute;
-  bottom: 1.5rem;
-  color: var(--navds-semantic-color-text-muted);
-  text-transform: uppercase;
-`;
+import cl from "classnames";
 
 const Card = ({
   node,
@@ -132,12 +63,13 @@ const Card = ({
   }
 
   return (
-    <ScCard
+    <a
       onClick={(e) => logNavigation(e)}
       href={href ?? `/${node?.link_ref?.slug}`}
+      className="card aspect-[18/22]"
     >
       {imageProps && (
-        <ScPictogram>
+        <div className="flex justify-center mb-6 shrink-0">
           <NextImage
             {...imageProps}
             alt={category?.picture?.title}
@@ -145,14 +77,23 @@ const Card = ({
             layout="fixed"
             aria-hidden
           />
-        </ScPictogram>
+        </div>
       )}
       <Heading size="medium" spacing level="2">
         {node.title}
       </Heading>
-      <ScContent data-tag={!!tag}>{node.content}</ScContent>
-      {tag && <ScTag size="small">{tagName}</ScTag>}
-    </ScCard>
+      <BodyShort className={cl("mb-6", { "mb-12": !!tag })} data-tag={!!tag}>
+        {node.content}
+      </BodyShort>
+      {tag && (
+        <Detail
+          size="small"
+          className="absolute bottom-6 text-text-muted uppercase"
+        >
+          {tagName}
+        </Detail>
+      )}
+    </a>
   );
 };
 
