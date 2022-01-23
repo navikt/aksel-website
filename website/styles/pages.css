@@ -1,0 +1,23 @@
+.card-grid-flow {
+  place-content: start flex-start;
+  display: grid;
+  grid-template-columns: repeat(4, 18rem);
+}
+
+@media (max-width: 1320px) {
+  .card-grid-flow {
+    grid-template-columns: repeat(3, 18rem);
+  }
+}
+
+@media (max-width: 1020) {
+  .card-grid-flow {
+    grid-template-columns: repeat(2, 18rem);
+  }
+}
+
+@media (max-width: 700) {
+  .card-grid-flow {
+    grid-template-columns: repeat(1, 18rem);
+  }
+}

@@ -7,9 +7,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      spacing: {
+        0: 0,
+      },
       screens: {
-        sm: "564px",
-        md: "768px",
+        md: "564px",
+        lg: "768px",
+        xl: "1024px",
       },
     },
   },
