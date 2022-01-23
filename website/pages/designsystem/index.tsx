@@ -45,56 +45,48 @@ const Page = (props: {
           content="Gjør det enkelt å lage produkter i NAV."
         />
       </Head>
-      {props.preview && <PreviewBanner />}
-
-      <div className="relative flex w-full bg-canvas-background-light">
-        <div className="flex flex-col items-center md:block w-full md:h-[240px] py-12 px-4 md:py-16 md:px-12 max-w-[calc(1440px_-_624px)]">
-          <Heading spacing level="1" size="2xlarge">
-            Designsystemet
-          </Heading>
-          <BodyLong>Gjør det enkelt å lage produkter i NAV</BodyLong>
-        </div>
-        <DsFrontpageIllustration className="h-[240px] w-[624px] shrink-0 hidden xl:block" />
-      </div>
-      <div className="flex flex-col flex-wrap max-w-screen-2xl bg-component-background-alternate">
-        <div className="reduced-spacing py-12 px-4 md:px-12 md:py-6">
-          {props?.page?.body && (
-            <SanityBlockContent blocks={props?.page?.body} />
-          )}
-        </div>
-        <div className="flex flex-wrap gap-6 pt-0 px-4 pb-12 md:px-12 md:pb-16 justify-center md:justify-start">
-          {props?.page?.cards &&
-            props?.page?.cards.map((card, i) => {
-              return (
-                <Card
-                  key={card._key}
-                  node={card as unknown as DsFrontPageCardT}
-                  tag={true}
-                  style={{ animationDelay: `${i * 50}ms` }}
-                  className={`animate-fadeInBottom opacity-0`}
-                />
-              );
-            })}
-        </div>
-      </div>
-      <DsFrontpageFooterIllustration className="w-full h-full flex lg:hidden" />
-    </>
-  );
-};
-
-Page.getLayout = (page) => {
-  return (
-    <>
       <SkipLink href="#hovedinnhold" tab-index={-1}>
         Hopp til innhold
       </SkipLink>
       <DesignsystemHeader />
+      {props.preview && <PreviewBanner />}
+
       <main
         tabIndex={-1}
         id="hovedinnhold"
         className="relative min-h-header w-full flex flex-col focus:outline-none bg-component-background-alternate"
       >
-        {page}
+        <div className="relative flex w-full bg-canvas-background-light">
+          <div className="flex flex-col items-center md:block w-full md:h-[240px] py-12 px-4 md:py-16 md:px-12 max-w-[calc(1440px_-_624px)]">
+            <Heading spacing level="1" size="2xlarge">
+              Designsystemet
+            </Heading>
+            <BodyLong>Gjør det enkelt å lage produkter i NAV</BodyLong>
+          </div>
+          <DsFrontpageIllustration className="h-[240px] w-[624px] shrink-0 hidden xl:block" />
+        </div>
+        <div className="flex flex-col flex-wrap max-w-screen-2xl bg-component-background-alternate">
+          <div className="reduced-spacing py-12 px-4 md:px-12 md:py-6">
+            {props?.page?.body && (
+              <SanityBlockContent blocks={props?.page?.body} />
+            )}
+          </div>
+          <div className="flex flex-wrap gap-6 pt-0 px-4 pb-12 md:px-12 md:pb-16 justify-center md:justify-start">
+            {props?.page?.cards &&
+              props?.page?.cards.map((card, i) => {
+                return (
+                  <Card
+                    key={card._key}
+                    node={card as unknown as DsFrontPageCardT}
+                    tag={true}
+                    style={{ animationDelay: `${i * 50}ms` }}
+                    className={`animate-fadeInBottom opacity-0`}
+                  />
+                );
+              })}
+          </div>
+        </div>
+        <DsFrontpageFooterIllustration className="w-full h-full flex lg:hidden" />
       </main>
       <DesignsystemFooter />
     </>
