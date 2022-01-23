@@ -69,10 +69,7 @@ const Card = ({
     <a
       onClick={(e) => logNavigation(e)}
       href={href ?? `/${node?.link_ref?.slug}`}
-      className={cl(
-        "card aspect-[18/22] hover:-translate-y-1 transition-transform",
-        className
-      )}
+      className={cl("card aspect-[18/22]", className)}
       {...rest}
     >
       {imageProps && (
