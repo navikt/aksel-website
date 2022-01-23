@@ -8,7 +8,6 @@ import {
   GpArticlePage,
   gpDocumentBySlug,
 } from "../../lib";
-import { ScGrow } from "../designsystem/[...slug]";
 import { hotjar } from "react-hotjar";
 
 const Page = (props: {
@@ -40,7 +39,7 @@ Page.getLayout = (page) => {
         <Sc.MainFooter>
           <Sc.Main tabIndex={-1} id="hovedinnhold">
             {page}
-            <ScGrow />
+            <div className="mt-auto" aria-hidden />
           </Sc.Main>
         </Sc.MainFooter>
       </Sc.SidebarMain>

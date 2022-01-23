@@ -1,7 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import * as Sc from "../../components";
-import { LayoutPicker, PreviewBanner } from "../../components";
+import { LayoutPicker, PreviewBanner, SkipLink } from "../../components";
 import DesignsystemFooter from "../../components/layout/footer/DesignsystemFooter";
 import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
 import DesignsystemSidebar from "../../components/layout/sidebar/DesignsystemSidebar";
@@ -15,10 +14,6 @@ import {
   getClient,
   getDsPaths,
 } from "../../lib";
-
-export const ScGrow = styled.div`
-  margin-top: auto;
-`;
 
 const Page = (props: {
   slug?: string;
@@ -37,20 +32,24 @@ const Page = (props: {
 Page.getLayout = (page) => {
   return (
     <>
-      <Sc.SkipLink href="#hovedinnhold" tab-index={-1}>
+      <SkipLink href="#hovedinnhold" tab-index={-1}>
         Hopp til innhold
-      </Sc.SkipLink>
+      </SkipLink>
       <DesignsystemHeader />
-      <Sc.SidebarMain>
+      <div className="flex bg-canvas-background-light">
         <DesignsystemSidebar />
-        <Sc.MainFooter>
-          <Sc.Main tabIndex={-1} id="hovedinnhold">
+        <div className="relative w-full">
+          <main
+            tabIndex={-1}
+            id="hovedinnhold"
+            className="min-h-header w-full lg:max-w-[calc(100vw_-_var(--sidebar-max-width))] relative focus:outline-none"
+          >
             {page}
-            <ScGrow />
-          </Sc.Main>
+            <div className="mt-auto" aria-hidden />
+          </main>
           <DesignsystemFooter />
-        </Sc.MainFooter>
-      </Sc.SidebarMain>
+        </div>
+      </div>
     </>
   );
 };
