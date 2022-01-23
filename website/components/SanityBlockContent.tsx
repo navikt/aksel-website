@@ -179,12 +179,6 @@ const serializers = {
   },
 };
 
-const ScMarginTop = styled.div`
-  :first-child {
-    margin-top: 3rem;
-  }
-`;
-
 export type BlockContextT = {
   size: "medium" | "small";
   isIngress: boolean;
@@ -197,34 +191,21 @@ export const BlockContext = createContext<BlockContextT>({
 
 export const SanityBlockContent = ({
   blocks,
-  withMargin = false,
   size = "medium",
   isIngress = false,
+  ...rest
 }: {
   blocks: any;
-  withMargin?: boolean;
   size?: "medium" | "small";
   isIngress?: boolean;
-}): JSX.Element => {
-  return (
-    <>
-      <BlockContext.Provider value={{ size, isIngress }}>
-        {withMargin ? (
-          <ScMarginTop>
-            <BlockContent
-              blocks={blocks}
-              serializers={serializers}
-              size="small"
-            />
-          </ScMarginTop>
-        ) : (
-          <BlockContent
-            blocks={blocks}
-            serializers={serializers}
-            options={{ size: "small" }}
-          />
-        )}
-      </BlockContext.Provider>
-    </>
-  );
-};
+  className?: string;
+}) => (
+  <BlockContext.Provider value={{ size, isIngress }}>
+    <BlockContent
+      blocks={blocks}
+      serializers={serializers}
+      options={{ size: "small" }}
+      {...rest}
+    />
+  </BlockContext.Provider>
+);

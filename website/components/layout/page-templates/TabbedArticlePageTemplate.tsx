@@ -119,7 +119,10 @@ const TabbedActiclePageTemplate = ({
       <div className="relative max-w-full lg:max-w-7xl flex">
         <TableOfContents changedState={data.tabs[activeTab].body} />
         <div className="content-box">
-          <SanityBlockContent withMargin blocks={data.tabs[activeTab].body} />
+          <SanityBlockContent
+            className="mt-12"
+            blocks={data.tabs[activeTab].body}
+          />
           {!data.tabs[activeTab]?.metadata_feedback?.hide_feedback && (
             <Feedback
               docId={pageProps?.page?._id}
