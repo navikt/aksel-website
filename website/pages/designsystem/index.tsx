@@ -42,7 +42,7 @@ const Page = (props: {
         <meta property="og:title" content="Designsystemet NAV" />
         <meta
           name="description"
-          content="Gjør det enkelt å lage produkter i NAV."
+          content="Desgnsystemet til NAV gjør det enkelt å lage produkter."
         />
       </Head>
       <SkipLink href="#hovedinnhold" tab-index={-1}>
