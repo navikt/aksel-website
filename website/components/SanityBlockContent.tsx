@@ -219,6 +219,7 @@ export const SanityBlockContent = ({
       blocks={blocks}
       serializers={serializers}
       options={{ size: "small" }}
+      renderContainerOnSingleChild
       {...rest}
     />
   </BlockContext.Provider>
