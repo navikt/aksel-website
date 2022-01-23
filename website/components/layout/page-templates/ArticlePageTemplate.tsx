@@ -80,7 +80,7 @@ const ActiclePageTemplate = ({
       <div className="relative max-w-full lg:max-w-7xl flex">
         <TableOfContents changedState={data.body} />
         <div className="content-box">
-          <SanityBlockContent withMargin blocks={data.body} />
+          <SanityBlockContent className="mt-12" blocks={data.body} />
           {!data?.metadata_feedback?.hide_feedback && (
             <Feedback
               docId={pageProps?.page?._id}

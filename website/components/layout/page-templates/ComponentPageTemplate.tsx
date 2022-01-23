@@ -214,7 +214,7 @@ const ComponentPageTemplate = ({
         <TableOfContents changedState={data[value]} />
         <div className="content-box">
           {data[value] && (
-            <SanityBlockContent withMargin blocks={data[value]} />
+            <SanityBlockContent className="mt-12" blocks={data[value]} />
           )}
           {!data?.metadata_feedback?.hide_feedback && (
             <Feedback

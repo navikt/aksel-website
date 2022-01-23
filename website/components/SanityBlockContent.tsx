@@ -35,17 +35,19 @@ export const ScCode = styled.code`
   padding: 2px 0.5rem;
 `;
 
-const ScOl = styled.ol`
-  > li {
-    max-width: calc(var(--text-max-width) - 1em);
-  }
-`;
+const InlineCode = (props: React.HTMLAttributes<HTMLElement>) => (
+  <code
+    className="text-deepblue-500 bg-deepblue-50 rounded-md py-[2px] px-2 text-medium"
+    {...props}
+  />
+);
 
-const ScUl = styled.ul`
-  > li {
-    max-width: calc(var(--text-max-width) - 1em);
-  }
-`;
+const KBD = (props: React.HTMLAttributes<HTMLElement>) => (
+  <code
+    className="text-medium py-0 px-2 min-w-[28px] inline-block my-0 mx-1 text-text border border-solid border-gray-800 rounded-sm"
+    {...props}
+  />
+);
 
 export const ScKbd = styled.code`
   display: inline-block;
@@ -57,6 +59,18 @@ export const ScKbd = styled.code`
   min-width: 28px;
   font-family: var(--font-family-code);
   font-size: 1rem;
+`;
+
+const ScOl = styled.ol`
+  > li {
+    max-width: calc(var(--text-max-width) - 1em);
+  }
+`;
+
+const ScUl = styled.ul`
+  > li {
+    max-width: calc(var(--text-max-width) - 1em);
+  }
 `;
 
 const ScHeading = styled(Heading)`
@@ -158,8 +172,8 @@ const serializers = {
   },
   marks: {
     draft_only: () => null,
-    kbd: (props: any) => <ScKbd>{props.children}</ScKbd>,
-    code: (props: any) => <ScCode>{props.children}</ScCode>,
+    kbd: (props) => <KBD {...props} />,
+    code: (props) => <InlineCode {...props} />,
     link: ({ mark: { blank, href }, children }: { mark: any; children: any }) =>
       blank ? (
         <Link href={href} target="_blank" rel="noreferrer noopener">
