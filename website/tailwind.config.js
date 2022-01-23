@@ -14,6 +14,7 @@ module.exports = {
         md: "564px",
         lg: "768px",
         xl: "1024px",
+        "2xl": "1440px",
       },
       minHeight: {
         header: "calc(100vh - var(--header-height))",

@@ -1,3 +1,5 @@
+@tailwind components;
+
 .card-grid-flow {
   place-content: start flex-start;
   display: grid;
@@ -19,5 +21,11 @@
 @media (max-width: 646px) {
   .card-grid-flow {
     grid-template-columns: repeat(1, 18rem);
+  }
+}
+
+@layer components {
+  .reduced-spacing .navds-typo--spacing {
+    @apply mb-2;
   }
 }

@@ -1,4 +1,4 @@
-export const DsFrontpageIllustration = () => (
+export const DsFrontpageIllustration = ({ ...rest }) => (
   <svg
     width="624"
     height="240"
@@ -8,6 +8,7 @@ export const DsFrontpageIllustration = () => (
     focusable="false"
     aria-hidden
     aria-label="illustrasjon for designsystemet"
+    {...rest}
   >
     <g clipPath="url(#clip0_2835_38953)">
       <circle cx="386.5" cy="144.5" r="95.5" fill="#E6F0FF" />
@@ -47,7 +48,7 @@ export const DsFrontpageIllustration = () => (
   </svg>
 );
 
-export const DsFrontpageFooterIllustration = () => (
+export const DsFrontpageFooterIllustration = ({ ...rest }) => (
   <svg
     viewBox="0 0 624 240"
     fill="none"
@@ -55,6 +56,7 @@ export const DsFrontpageFooterIllustration = () => (
     focusable="false"
     aria-hidden
     aria-label="illustrasjon for designsystemet"
+    {...rest}
   >
     <g clipPath="url(#clip0_2835_38954)">
       <circle cx="386.5" cy="144.5" r="95.5" fill="#E6F0FF" />

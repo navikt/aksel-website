@@ -1,13 +1,13 @@
-import { BodyLong, BodyShort, Heading } from "@navikt/ds-react";
+import { BodyLong, Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import React, { useEffect } from "react";
-import styled from "styled-components";
-import * as Sc from "../../components";
 import {
   AmplitudeEvents,
   Card,
   DsFrontpageFooterIllustration,
   DsFrontpageIllustration,
+  PreviewBanner,
+  SkipLink,
   useAmplitude,
 } from "../../components";
 import DesignsystemFooter from "../../components/layout/footer/DesignsystemFooter";
@@ -21,100 +21,6 @@ import {
   dsNavigationQuery,
   getClient,
 } from "../../lib";
-
-const ScFlex = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  max-width: 1440px;
-  background-color: var(--navds-semantic-color-component-background-alternate);
-`;
-
-const ScFlexReverse = styled.div`
-  position: relative;
-  display: flex;
-  max-width: 1440px;
-`;
-
-const ScTopBg = styled.div`
-  background-color: var(--navds-semantic-color-canvas-background-light);
-  widht: 100%;
-`;
-
-const ScTitle = styled.div`
-  padding: 4rem 3rem;
-
-  @media (max-width: 564px) {
-    padding: 3rem 1rem;
-  }
-
-  background-color: var(--navds-semantic-color-canvas-background-light);
-  height: 240px;
-  width: 100%;
-  flex: 1 1 500px;
-`;
-
-const ScIllustration = styled.div`
-  height: 240px;
-
-  @media (max-width: 1064px) {
-    display: none;
-  }
-`;
-
-const ScFooterIllustration = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-
-  @media (min-width: 769px) {
-    display: none;
-  }
-`;
-
-const ScDescriptionWrapper = styled.div`
-  padding: 2.5rem 3rem;
-
-  @media (max-width: 564px) {
-    padding: 3rem 1rem;
-  }
-
-  > * > *.navds-typo--spacing {
-    margin-bottom: var(--navds-spacing-2);
-  }
-`;
-
-const ScCards = styled.div`
-  padding: 0 3rem 4rem 3rem;
-
-  @media (max-width: 564px) {
-    padding: 0 1rem 3rem 1rem;
-  }
-
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-`;
-
-export const ScHeading = styled(Heading)`
-  position: relative;
-  width: fit-content;
-`;
-
-export const ScBodyShort = styled(BodyShort)`
-  position: absolute;
-  right: 0;
-  top: 0;
-  transform: translateX(120%);
-
-  @media (max-width: 564px) {
-    transform: translateX(100%);
-  }
-`;
-
-const ScBg = styled.div`
-  background-color: var(--navds-semantic-color-component-background-alternate);
-`;
 
 const Page = (props: {
   page: DsFrontpage;
@@ -139,47 +45,39 @@ const Page = (props: {
           content="Gjør det enkelt å lage produkter i NAV."
         />
       </Head>
-      {props.preview && <Sc.PreviewBanner />}
-      <ScBg>
-        <ScTopBg>
-          <ScFlexReverse>
-            <ScTitle>
-              <ScHeading spacing level="1" size="2xlarge">
-                Designsystemet
-                <ScBodyShort>Beta</ScBodyShort>
-              </ScHeading>
-              <BodyLong>Gjør det enkelt å lage produkter i NAV</BodyLong>
-            </ScTitle>
-            <ScIllustration>
-              <DsFrontpageIllustration />
-            </ScIllustration>
-          </ScFlexReverse>
-        </ScTopBg>
-        <ScFlex>
-          <ScDescriptionWrapper>
-            {props?.page?.body && (
-              <SanityBlockContent blocks={props?.page?.body} />
-            )}
-          </ScDescriptionWrapper>
-          <ScCards>
-            {props?.page?.cards &&
-              props?.page?.cards.map((card, i) => {
-                return (
-                  <Card
-                    key={card._key}
-                    node={card as unknown as DsFrontPageCardT}
-                    tag={true}
-                    style={{ animationDelay: `${i * 50}ms` }}
-                    className={`animate-fadeInBottom opacity-0`}
-                  />
-                );
-              })}
-          </ScCards>
-        </ScFlex>
-        <ScFooterIllustration>
-          <DsFrontpageFooterIllustration />
-        </ScFooterIllustration>
-      </ScBg>
+      {props.preview && <PreviewBanner />}
+
+      <div className="relative flex w-full bg-canvas-background-light">
+        <div className="flex flex-col items-center md:block w-full md:h-[240px] py-12 px-4 md:py-16 md:px-12 max-w-[calc(1440px_-_624px)]">
+          <Heading spacing level="1" size="2xlarge">
+            Designsystemet
+          </Heading>
+          <BodyLong>Gjør det enkelt å lage produkter i NAV</BodyLong>
+        </div>
+        <DsFrontpageIllustration className="h-[240px] w-[624px] shrink-0 hidden xl:block" />
+      </div>
+      <div className="flex flex-col flex-wrap max-w-screen-2xl bg-component-background-alternate">
+        <div className="reduced-spacing py-12 px-4 md:px-12 md:py-6">
+          {props?.page?.body && (
+            <SanityBlockContent blocks={props?.page?.body} />
+          )}
+        </div>
+        <div className="flex flex-wrap gap-6 pt-0 px-4 pb-12 md:px-12 md:pb-16 justify-center md:justify-start">
+          {props?.page?.cards &&
+            props?.page?.cards.map((card, i) => {
+              return (
+                <Card
+                  key={card._key}
+                  node={card as unknown as DsFrontPageCardT}
+                  tag={true}
+                  style={{ animationDelay: `${i * 50}ms` }}
+                  className={`animate-fadeInBottom opacity-0`}
+                />
+              );
+            })}
+        </div>
+      </div>
+      <DsFrontpageFooterIllustration className="w-full h-full flex lg:hidden" />
     </>
   );
 };
@@ -187,14 +85,14 @@ const Page = (props: {
 Page.getLayout = (page) => {
   return (
     <>
-      <Sc.SkipLink href="#hovedinnhold" tab-index={-1}>
+      <SkipLink href="#hovedinnhold" tab-index={-1}>
         Hopp til innhold
-      </Sc.SkipLink>
+      </SkipLink>
       <DesignsystemHeader />
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className="relative min-h-header w-full flex flex-col focus:outline-none"
+        className="relative min-h-header w-full flex flex-col focus:outline-none bg-component-background-alternate"
       >
         {page}
       </main>
