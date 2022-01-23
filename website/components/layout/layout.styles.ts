@@ -4,10 +4,6 @@ export const SidebarMain = styled.div`
   display: flex;
   min-height: calc(100vh - var(--header-height));
   background-color: var(--navds-semantic-color-canvas-background-light);
-
-  p {
-    max-width: var(--text-max-width);
-  }
 `;
 
 export const MainFooter = styled.div`

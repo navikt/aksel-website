@@ -10,13 +10,13 @@
   }
 }
 
-@media (max-width: 1020) {
+@media (max-width: 956px) {
   .card-grid-flow {
     grid-template-columns: repeat(2, 18rem);
   }
 }
 
-@media (max-width: 700) {
+@media (max-width: 646px) {
   .card-grid-flow {
     grid-template-columns: repeat(1, 18rem);
   }
