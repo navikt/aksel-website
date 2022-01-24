@@ -85,7 +85,7 @@ export default [
             {
               _type: "span",
               marks: [],
-              text: "Anatomien",
+              text: "Anatomi",
             },
           ],
           markDefs: [],
@@ -112,7 +112,6 @@ export default [
           ],
           markDefs: [
             {
-              _key: "4cd633181e6e_figma_link",
               _type: "link",
               blank: true,
               href: "https://www.figma.com/file/mRu1NJAXPzx3NIdVWD2dg2/Grafikk-til-DS-dokumentasjon?node-id=2378%3A2149",
@@ -129,7 +128,7 @@ export default [
             {
               _type: "span",
               marks: ["draft_only"],
-              text: '↓ Seksjonen under dupliseres så mange ganger du ønsker (fra "Header" til "Relatert side")',
+              text: '↓ Seksjonen under dupliseres så mange ganger du ønsker (fra "Header" til "Relatert side") En seksjon tar for seg enten et prinsipp, en funksjon eller en god praksis for komponenten. F.eks: "Bredde på buttons i samme gruppe"',
             },
           ],
           markDefs: [],
@@ -141,7 +140,7 @@ export default [
             {
               _type: "span",
               marks: [],
-              text: "[Heading - prinsipp, funksjon eller god praksis.]",
+              text: "[Heading (prinsipp, funksjon eller god praksis)]",
             },
           ],
           markDefs: [],
@@ -165,10 +164,26 @@ export default [
             {
               _type: "span",
               marks: ["draft_only"],
-              text: "Vis eksempler med do&don't som illustrerer det du har beskrevet over.",
+              text: "Vis eksempler med do&don't som illustrerer det du har beskrevet over. \nBruk egen Figma-fil til grafikken.",
+            },
+            {
+              _type: "span",
+              marks: [],
+              text: "",
+            },
+            {
+              _type: "span",
+              marks: [],
+              text: "",
             },
           ],
-          markDefs: [],
+          markDefs: [
+            {
+              _type: "link",
+              blank: true,
+              href: "https://www.figma.com/file/mRu1NJAXPzx3NIdVWD2dg2/Grafikk-til-DS-dokumentasjon?node-id=2378%3A2149",
+            },
+          ],
           style: "normal",
         },
         {
@@ -188,6 +203,34 @@ export default [
         },
         {
           _type: "related_pages",
+        },
+        {
+          _type: "block",
+          children: [
+            {
+              _type: "span",
+              marks: [],
+              text: "",
+            },
+          ],
+          markDefs: [],
+          style: "normal",
+        },
+        {
+          _type: "do_dont",
+          blocks: [
+            {
+              _type: "do_dont_block",
+              fullwidth: false,
+              variant: "do",
+            },
+            {
+              _type: "do_dont_block",
+              fullwidth: false,
+              variant: "do",
+            },
+          ],
+          title: "Do/dont",
         },
       ],
       development: [
@@ -342,34 +385,6 @@ export default [
           style: "normal",
         },
       ],
-      heading: "Ny komponentmal",
-      ingress: [
-        {
-          _type: "block",
-          children: [
-            {
-              _type: "span",
-              marks: [],
-              text: "[Skriv hva denne komponenten er. Fakta. Ikke hva den brukes til eller hvordan den brukes, det kommer i Bruk-tabben]",
-            },
-          ],
-          markDefs: [],
-          style: "normal",
-        },
-      ],
-      metadata: {
-        doctype: "article",
-        last_update: "2021-12-08",
-      },
-      metadata_search: {
-        high_priority: false,
-      },
-      slug: {
-        _type: "slug",
-        current: "designsystem/side/ny-komponentmal",
-      },
-      tags: ["core"],
-      title: "Ny komponentmal",
       usage: [
         {
           _type: "block",
@@ -377,7 +392,7 @@ export default [
             {
               _type: "span",
               marks: [],
-              text: "Sandbox",
+              text: "Live demo",
             },
           ],
           markDefs: [],
@@ -413,7 +428,7 @@ export default [
             {
               _type: "span",
               marks: [],
-              text: "Intro",
+              text: "Hvordan bruke [komponentnavn]",
             },
           ],
           markDefs: [],
@@ -424,8 +439,25 @@ export default [
           children: [
             {
               _type: "span",
+              marks: [],
+              text: "[Tekst som beskriver når og hvordan komponenten brukes]",
+            },
+          ],
+          markDefs: [],
+          style: "normal",
+        },
+        {
+          _type: "block",
+          children: [
+            {
+              _type: "span",
               marks: ["draft_only"],
-              text: 'Dette blir komponenten brukt til, og slik fungerer den.\n(grunnen til at denne komponenten eksisterer)\n\n⚠️ Btw, tekst som ligger inne som "utkast" er en god blanding av placeholder og instruksjoner og kan slettes.',
+              text: 'Dette blir komponenten brukt til, og slik fungerer den.\n(grunnen til at denne komponenten eksisterer)f Btw, tekst som ligger inne som "utkast" er en god blanding av placeholder og instruksjoner og kan slettes.',
+            },
+            {
+              _type: "span",
+              marks: [],
+              text: "Søkefelt lar brukerne utforske et nettsted eller en applikasjon ved å bruke nøkkelord eller setninger. Søk kan brukes som den primære måten å utforske innhold på, eller som et filter for å finne fram til innhold.",
             },
           ],
           markDefs: [],
@@ -655,6 +687,18 @@ export default [
           style: "normal",
         },
         {
+          _type: "block",
+          children: [
+            {
+              _type: "span",
+              marks: [],
+              text: "Interaksjon med skjermleser",
+            },
+          ],
+          markDefs: [],
+          style: "h3",
+        },
+        {
           _type: "table",
           header_direction: "row",
           rows: [
@@ -749,18 +793,6 @@ export default [
             {
               _type: "span",
               marks: [],
-              text: "Interaksjon med skjermleser",
-            },
-          ],
-          markDefs: [],
-          style: "h3",
-        },
-        {
-          _type: "block",
-          children: [
-            {
-              _type: "span",
-              marks: [],
               text: "[Beskrivelse]",
             },
           ],
@@ -768,6 +800,34 @@ export default [
           style: "normal",
         },
       ],
+      heading: "Ny komponentmal",
+      ingress: [
+        {
+          _type: "block",
+          children: [
+            {
+              _type: "span",
+              marks: [],
+              text: "[Skriv hva denne komponenten er. Fakta. Ikke hva den brukes til eller hvordan den brukes, det kommer i Bruk-tabben]",
+            },
+          ],
+          markDefs: [],
+          style: "normal",
+        },
+      ],
+      metadata: {
+        doctype: "article",
+        last_update: "2021-12-08",
+      },
+      metadata_search: {
+        high_priority: false,
+      },
+      slug: {
+        _type: "slug",
+        current: "designsystem/side/ny-komponentmal",
+      },
+      tags: ["core"],
+      title: "Ny komponentmal",
     }),
   }),
 ];
