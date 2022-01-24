@@ -58,10 +58,8 @@ const ScDetail = styled(Detail)`
   position: absolute;
   bottom: var(--navds-spacing-6);
   text-transform: uppercase;
-
-  > svg {
-    margin-left: var(--navds-spacing-2);
-  }
+  display: flex;
+  gap: var(--navds-spacing-2);
 `;
 
 const Card = ({ link }: { link: RelatedLinkT }) => {
