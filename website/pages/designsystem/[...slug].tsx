@@ -99,7 +99,7 @@ export const getStaticProps = async ({
 
   page = page?.find((item) => item._id.startsWith(`drafts.`)) || page?.[0];
 
-  const navigation = await getClient(false).fetch(dsNavigationQuery);
+  const navigation = await client.fetch(dsNavigationQuery);
 
   const validPath = await getDsPaths().then((paths) =>
     paths
