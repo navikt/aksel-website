@@ -22,6 +22,7 @@ export const Table = styled.table`
   padding-top: 1.25rem;
   margin-bottom: 0rem;
   border-top: 1px solid var(--navds-semantic-color-divider);
+  border-collapse: inherit;
 
   code,
   * {
