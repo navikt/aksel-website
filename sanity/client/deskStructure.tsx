@@ -14,6 +14,7 @@ import {
   Edit,
   Findout,
   Folder,
+  Task,
 } from "@navikt/ds-icons";
 
 const sanityClient = require("@sanity/client");
@@ -252,6 +253,15 @@ export default () =>
                 .title("Fargekategorier")
                 .icon(() => <Folder />)
                 .child(S.documentTypeList("ds_color_categories")),
+              S.divider(),
+              S.listItem()
+                .title("Komponent-template")
+                .icon(() => <Task />)
+                .child(
+                  S.document()
+                    .schemaType("ds_component_template")
+                    .documentId("ds_component_templateid")
+                ),
             ])
         ),
       S.listItem()
@@ -305,6 +315,7 @@ export default () =>
             "navigation",
             "ds_tabbed_article_page",
             "ds_article_page",
+            "ds_component_template",
             "ds_frontpage",
             "ds_changelog",
             "ds_code_example",

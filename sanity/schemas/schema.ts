@@ -58,6 +58,7 @@ export default createSchema({
     Designsystem.CodeSandboxes,
     Designsystem.ColorCategories,
     Designsystem.ComponentPage,
+    Designsystem.ComponentTemplate,
     Designsystem.Frontpage,
     Designsystem.MainCategories,
     Designsystem.Navigation,
