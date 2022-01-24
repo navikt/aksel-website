@@ -112,6 +112,7 @@ export default [
           ],
           markDefs: [
             {
+              _key: "4cd633181e6e_figma_link",
               _type: "link",
               blank: true,
               href: "https://www.figma.com/file/mRu1NJAXPzx3NIdVWD2dg2/Grafikk-til-DS-dokumentasjon?node-id=2378%3A2149",
