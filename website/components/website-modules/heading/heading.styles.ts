@@ -61,4 +61,7 @@ export const HeadingWrapper = styled.div`
   :not(:first-child) {
     margin-top: var(--navds-spacing-11);
   }
+  + * + .navds-heading {
+    margin-top: 0;
+  }
 `;
