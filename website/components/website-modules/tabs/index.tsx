@@ -109,11 +109,11 @@ export const Tabs = ({
           className="p-0 m-0 max-w-none lg:max-w-[800px] flex items-end mt-2 mx-0 lg:mx-12 gap-1"
           ref={setInnerRef}
         >
-          {tabWRefs.map((tab) => (
+          {tabWRefs.map((tab, i) => (
             <li
-              key={tab.name}
+              key={tab.name + i}
               ref={setLastItemRef}
-              className="list-none flex-1 flex justify-center items-center relative"
+              className="list-none flex-1 max-w-[200px] min-w-fit flex justify-center items-center relative"
             >
               <NextLink href={tab.path} passHref>
                 <a
