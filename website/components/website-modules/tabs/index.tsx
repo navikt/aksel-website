@@ -12,7 +12,7 @@ export const Tabs = ({
 }: {
   tabs: { name: string; path: string; active: boolean }[];
   title: string;
-}): JSX.Element => {
+}) => {
   const router = useRouter();
 
   const [parentRef, setParentRef] = useState<HTMLElement>(null);
