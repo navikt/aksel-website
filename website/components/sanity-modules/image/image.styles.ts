@@ -21,6 +21,7 @@ export const Image = styled.button`
 export const Caption = styled.figcaption`
   margin-top: var(--navds-spacing-2);
   font-style: italic;
+  align-self: center;
 `;
 
 export const TextImage = styled.div<{ placement: "right" | "left" }>`

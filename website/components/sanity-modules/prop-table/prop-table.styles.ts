@@ -9,7 +9,6 @@ export const PropTable = styled.div`
   ul {
     margin: 0;
     padding: 0;
-    padding-left: 1.25rem;
     margin-bottom: 2rem;
   }
 
