@@ -18,6 +18,7 @@ const Wrapper = styled.div`
   display: block;
   padding-bottom: calc(var(--navds-spacing-8) + var(--header-height));
 
+  z-index: 1002;
   @media (max-width: 768px) {
     display: none;
   }

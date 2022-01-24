@@ -160,6 +160,7 @@ module.exports = {
       "focus-inverted": "0 0 0 3px var(--navds-semantic-color-focus-inverted)",
       popover: "0 2px 4px 0 var(--navds-global-color-gray-200)",
       card: "0 1px 3px 0 rgba(38,38,38,0.2),0 2px 1px 0 rgba(38,38,38,0.12),0 1px 1px 0 rgba(38,38,38,0.14)",
+      tabs: "0 2px 5px 0 rgba(0,0,0,0.20)",
     },
     fontWeight: {
       bold: "600",
