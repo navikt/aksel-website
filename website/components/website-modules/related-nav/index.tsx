@@ -88,13 +88,19 @@ const RelatedPagesLink = () => {
       !context.activeHeading ||
       !context.activeHeading.menu ||
       context.activeHeading.title !== "Komponenter"
-    )
-      return null;
+    ) {
+      setLinks({});
+      return;
+    }
 
     const activeIndex = context.activeHeading.menu
       .filter((x) => x._type !== "subheading")
       .findIndex((x) => x.link.slug.current === pageProps?.page?.slug);
-    if (activeIndex === -1) return null;
+
+    if (activeIndex === -1) {
+      setLinks({});
+      return;
+    }
 
     const pages = {
       prev:
