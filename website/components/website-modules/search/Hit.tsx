@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { SearchContext } from ".";
 import { AmplitudeEvents, useAmplitude } from "../..";
+import NextLink from "next/link";
 
 const capitalize = (s) => (s && s[0].toUpperCase() + s.slice(1)) || "";
 
@@ -48,18 +49,19 @@ const Hit = React.forwardRef<HTMLAnchorElement, HitProps>(
 
     return (
       <BodyShort as="dd">
-        <ScHit
-          href={`/${hit.path}`}
-          onClick={(e) => {
-            context.clicked();
-            logNavigation(e);
-          }}
-          {...props}
-          tabIndex={-1}
-          ref={ref}
-        >
-          {`${hit.title}${!isArticle ? ` - ${capitalize(hit.page)}` : ""}`}
-        </ScHit>
+        <NextLink href={`/${hit.path}`} passHref>
+          <ScHit
+            onClick={(e) => {
+              context.clicked();
+              logNavigation(e);
+            }}
+            {...props}
+            tabIndex={-1}
+            ref={ref}
+          >
+            {`${hit.title}${!isArticle ? ` - ${capitalize(hit.page)}` : ""}`}
+          </ScHit>
+        </NextLink>
       </BodyShort>
     );
   }

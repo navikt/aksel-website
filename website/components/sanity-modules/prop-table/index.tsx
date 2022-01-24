@@ -8,6 +8,7 @@ import {
 import { ScCode } from "../../SanityBlockContent";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import * as S from "./prop-table.styles";
+import NextLink from "next/link";
 
 export const TypeCode = styled.code`
   color: var(--navds-global-color-lightblue-800);
@@ -58,9 +59,9 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
         {node.overridable && (
           <li>
             Komponenten er implementert med{" "}
-            <Link href="/designsystem/side/overridablecomponent">
-              OverridableComponent
-            </Link>
+            <NextLink href="/designsystem/side/overridablecomponent" passHref>
+              <Link>OverridableComponent</Link>
+            </NextLink>
           </li>
         )}
         {node.refplacement && (

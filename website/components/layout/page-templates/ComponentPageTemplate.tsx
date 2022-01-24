@@ -2,7 +2,7 @@ import { ExternalLink } from "@navikt/ds-icons";
 import { BodyShort, Heading, Link } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { flattenBlocks } from "sanity-algolia";
 import styled from "styled-components";
 import {
@@ -66,7 +66,6 @@ const ComponentPageTemplate = ({
   const { pageProps } = useContext(PagePropsContext);
   const layout = useContext(LayoutContext);
   const [activeTab, setActiveTab] = useState(0);
-  const visited = useRef([]);
 
   const { logAmplitudeEvent } = useAmplitude();
 
@@ -82,14 +81,9 @@ const ComponentPageTemplate = ({
   });
 
   useEffect(() => {
-    !visited.current.includes(asPath) &&
-      logAmplitudeEvent(AmplitudeEvents.sidevisning, {
-        side: asPath,
-      });
-
-    visited.current = !visited.current.includes(asPath)
-      ? [...visited.current, asPath]
-      : [...visited.current];
+    logAmplitudeEvent(AmplitudeEvents.sidevisning, {
+      side: asPath,
+    });
   }, [asPath]);
 
   /* Defaults back to a tab with content if first does not */

@@ -5,6 +5,7 @@ import ReactTooltip from "react-tooltip";
 import styled from "styled-components";
 import { FigmaIcon, FigmaIconNoSync, OverflowDetector } from "../..";
 import { DsComponentOverview } from "../../../lib";
+import NextLink from "next/link";
 
 const ScComponentOverview = styled.div``;
 const ScHeaderCell = styled(BodyShort)`
@@ -158,7 +159,9 @@ const ComponentOverview = ({
       <Table.Row>
         <Table.HeaderCell>
           {comp.doc_link ? (
-            <Link href={`/${comp.doc_link}`}>{comp.title}</Link>
+            <NextLink href={`/${comp.doc_link}`} passHref>
+              <Link href={`/${comp.doc_link}`}>{comp.title}</Link>
+            </NextLink>
           ) : (
             <BodyShort>{comp.title}</BodyShort>
           )}

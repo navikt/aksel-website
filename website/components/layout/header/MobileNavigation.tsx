@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { LayoutContext, PagePropsContext, ScFadeIn } from "../..";
 import { DsNavigationHeadingT } from "../../../lib";
 import Menu from "../menu/DesignsystemMenu";
+import NextLink from "next/link";
 
 const ScPopover = styled(Popover)`
   border: none;
@@ -223,22 +224,26 @@ const MobileNavigation = () => {
                     (heading: DsNavigationHeadingT) =>
                       useMobileHeader && !context.isTablet ? (
                         <li key={heading._key}>
-                          <ScListItem
+                          <NextLink
                             href={`/${heading.link_ref.slug.current}`}
-                            as="a"
-                            $active={
-                              context
-                                ? context?.activeHeading?.title ===
-                                  heading.title
-                                : false
-                            }
-                            onClick={() => {
-                              setHeading(heading);
-                              setOpenHamb(false);
-                            }}
+                            passHref
                           >
-                            {heading?.title}
-                          </ScListItem>
+                            <ScListItem
+                              as="a"
+                              $active={
+                                context
+                                  ? context?.activeHeading?.title ===
+                                    heading.title
+                                  : false
+                              }
+                              onClick={() => {
+                                setHeading(heading);
+                                setOpenHamb(false);
+                              }}
+                            >
+                              {heading?.title}
+                            </ScListItem>
+                          </NextLink>
                         </li>
                       ) : (
                         <ScListItem

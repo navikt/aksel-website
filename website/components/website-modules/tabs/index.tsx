@@ -4,6 +4,7 @@ import React, { createRef, useContext, useState } from "react";
 import { useEvent, useKey } from "react-use";
 import { LayoutContext, useOverflowTabsX } from "../..";
 import * as S from "./tabs.styles";
+import NextLink from "next/link";
 
 export const Tabs = ({
   tabs,
@@ -107,15 +108,16 @@ export const Tabs = ({
         <S.Ul isTablet={context.isTablet} ref={setInnerRef}>
           {tabWRefs.map((tab) => (
             <li key={tab.name} ref={setLastItemRef}>
-              <S.A
-                className="vk-tab_link"
-                ref={tab.ref}
-                data-selected={tab.active}
-                onClick={() => window && window.scrollTo(0, 0)}
-                href={tab.path}
-              >
-                {tab.name}
-              </S.A>
+              <NextLink href={tab.path} passHref>
+                <S.A
+                  className="vk-tab_link"
+                  ref={tab.ref}
+                  data-selected={tab.active}
+                  onClick={() => window && window.scrollTo(0, 0)}
+                >
+                  {tab.name}
+                </S.A>
+              </NextLink>
             </li>
           ))}
         </S.Ul>

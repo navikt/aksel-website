@@ -1,5 +1,6 @@
 import { BodyLong, Detail, Heading, Ingress, Link } from "@navikt/ds-react";
 import BlockContent from "@sanity/block-content-to-react";
+import NextLink from "next/link";
 import React, { createContext, useContext } from "react";
 import styled from "styled-components";
 import {
@@ -172,22 +173,28 @@ const serializers = {
   },
   marks: {
     draft_only: () => null,
-    kbd: (props) => <KBD {...props} />,
-    code: (props) => <InlineCode {...props} />,
+    kbd: (props) => <KBD>{props.children}</KBD>,
+    code: (props) => <InlineCode>{props.children}</InlineCode>,
     link: ({ mark: { blank, href }, children }: { mark: any; children: any }) =>
       blank ? (
         <Link href={href} target="_blank" rel="noreferrer noopener">
           {children} (åpner lenken i ny fane)
         </Link>
       ) : (
-        <Link href={href}>{children}</Link>
+        <NextLink href={href} passHref>
+          <Link>{children}</Link>
+        </NextLink>
       ),
     internalLink: ({ mark, children }: { mark: any; children: any }) => {
       const { slug = {} } = mark;
       if (!slug || !slug.current) return children;
 
       const href = `/${slug?.current}`;
-      return <Link href={href}>{children}</Link>;
+      return (
+        <NextLink href={href} passHref>
+          <Link>{children}</Link>
+        </NextLink>
+      );
     },
     ...DsIconAnnotation,
   },

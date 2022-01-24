@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { LayoutContext, PagePropsContext } from "../..";
 import { DsNavigationHeadingMenuT } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
+import NextLink from "next/link";
 
 const ScWrapper = styled.div<{ $isTablet: boolean }>`
   width: 100%;
@@ -112,46 +113,46 @@ const RelatedPagesLink = () => {
     setLinks(pages);
   }, [pageProps, context.activeHeading]);
 
-  if (!context.activeHeading) {
+  if (!context.activeHeading || (!links.prev && !links.next)) {
     return null;
   }
 
   return (
     <ScWrapper $isTablet={context.isTablet}>
       {links.prev ? (
-        <ScA
-          href={`/${links.prev.link.slug.current}`}
-          aria-label={`Gå til forrige side ${links.prev.title}`}
-        >
-          <BodyShort as="div" size="small">
-            Forrige
-          </BodyShort>
-          <Heading size="small" as="div">
-            {links.prev.title}
-          </Heading>
-          <ScLeftIcon>
-            <Back aria-hidden />
-          </ScLeftIcon>
-        </ScA>
+        <NextLink href={`/${links.prev.link.slug.current}`} passHref>
+          <ScA aria-label={`Gå til forrige side ${links.prev.title}`}>
+            <BodyShort as="div" size="small">
+              Forrige
+            </BodyShort>
+            <Heading size="small" as="div">
+              {links.prev.title}
+            </Heading>
+            <ScLeftIcon>
+              <Back aria-hidden />
+            </ScLeftIcon>
+          </ScA>
+        </NextLink>
       ) : (
         <ScDummy aria-hidden />
       )}
       {links.next ? (
-        <ScA
-          href={`/${links.next.link.slug.current}`}
-          data-dir="next"
-          aria-label={`Gå til neste side ${links.next.title}`}
-        >
-          <BodyShort as="div" size="small">
-            Neste
-          </BodyShort>
-          <Heading size="small" as="div">
-            {links.next.title}
-          </Heading>
-          <ScRightIcon>
-            <Next aria-hidden />
-          </ScRightIcon>
-        </ScA>
+        <NextLink href={`/${links.next.link.slug.current}`} passHref>
+          <ScA
+            data-dir="next"
+            aria-label={`Gå til neste side ${links.next.title}`}
+          >
+            <BodyShort as="div" size="small">
+              Neste
+            </BodyShort>
+            <Heading size="small" as="div">
+              {links.next.title}
+            </Heading>
+            <ScRightIcon>
+              <Next aria-hidden />
+            </ScRightIcon>
+          </ScA>
+        </NextLink>
       ) : (
         <ScDummy aria-hidden />
       )}

@@ -6,6 +6,7 @@ import { AmplitudeEvents, PagePropsContext, useAmplitude } from "../..";
 import { DsFrontPageCardT, useSanityImage } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import cl from "classnames";
+import NextLink from "next/link";
 
 interface CardProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   node: DsFrontPageCardT;
@@ -66,38 +67,39 @@ const Card = ({
   }
 
   return (
-    <a
-      onClick={(e) => logNavigation(e)}
-      href={href ?? `/${node?.link_ref?.slug}`}
-      className={cl("card aspect-[18/22]", className)}
-      {...rest}
-    >
-      {imageProps && (
-        <div className="flex justify-center mb-6 shrink-0">
-          <NextImage
-            {...imageProps}
-            alt={category?.picture?.title}
-            quality="100"
-            layout="fixed"
-            aria-hidden
-          />
-        </div>
-      )}
-      <Heading size="medium" spacing level="2">
-        {node.title}
-      </Heading>
-      <BodyShort className={cl("mb-6", { "mb-12": !!tag })} data-tag={!!tag}>
-        {node.content}
-      </BodyShort>
-      {tag && (
-        <Detail
-          size="small"
-          className="absolute bottom-6 text-text-muted uppercase"
-        >
-          {tagName}
-        </Detail>
-      )}
-    </a>
+    <NextLink href={href ?? `/${node?.link_ref?.slug}`} passHref>
+      <a
+        onClick={(e) => logNavigation(e)}
+        className={cl("card aspect-[18/22]", className)}
+        {...rest}
+      >
+        {imageProps && (
+          <div className="flex justify-center mb-6 shrink-0">
+            <NextImage
+              {...imageProps}
+              alt={category?.picture?.title}
+              quality="100"
+              layout="fixed"
+              aria-hidden
+            />
+          </div>
+        )}
+        <Heading size="medium" spacing level="2">
+          {node.title}
+        </Heading>
+        <BodyShort className={cl("mb-6", { "mb-12": !!tag })} data-tag={!!tag}>
+          {node.content}
+        </BodyShort>
+        {tag && (
+          <Detail
+            size="small"
+            className="absolute bottom-6 text-text-muted uppercase"
+          >
+            {tagName}
+          </Detail>
+        )}
+      </a>
+    </NextLink>
   );
 };
 

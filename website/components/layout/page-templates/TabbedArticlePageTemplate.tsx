@@ -1,7 +1,7 @@
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect } from "react";
 import { flattenBlocks } from "sanity-algolia";
 import {
   AmplitudeEvents,
@@ -35,16 +35,10 @@ const TabbedActiclePageTemplate = ({
     slugger.reset();
   });
 
-  const visited = useRef([]);
-
   useEffect(() => {
-    !visited.current.includes(asPath) &&
-      logAmplitudeEvent(AmplitudeEvents.sidevisning, {
-        side: asPath,
-      });
-    visited.current = !visited.current.includes(asPath)
-      ? [...visited.current, asPath]
-      : [...visited.current];
+    logAmplitudeEvent(AmplitudeEvents.sidevisning, {
+      side: asPath,
+    });
   }, [asPath]);
 
   if (!data.tabs || !data.heading || !data.status) {

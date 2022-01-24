@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { AmplitudeEvents, useAmplitude } from "../..";
 import { RelatedLinkT, RelatedPages } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
+import NextLink from "next/link";
 
 const ScRelatedPagesCard = styled.div`
   grid-template-columns: repeat(auto-fit, 15rem);
@@ -83,21 +84,23 @@ const Card = ({ link }: { link: RelatedLinkT }) => {
       : link?.category_ref?.title) ?? "RELATERT INNHOLD";
 
   return (
-    <ScCard href={href} onClick={(e) => logNavigation(e)}>
-      <Heading size="xsmall" as="div">
-        {link.title}
-      </Heading>
-      <ScBodyShort size="small">{link.description}</ScBodyShort>
-      <ScDetail>
-        {link.internal ? (
-          tag
-        ) : (
-          <>
-            EKSTERN LINK <ExternalLink aria-label="Ekstern side" />
-          </>
-        )}
-      </ScDetail>
-    </ScCard>
+    <NextLink href={href} passHref>
+      <ScCard onClick={(e) => logNavigation(e)}>
+        <Heading size="xsmall" as="div">
+          {link.title}
+        </Heading>
+        <ScBodyShort size="small">{link.description}</ScBodyShort>
+        <ScDetail>
+          {link.internal ? (
+            tag
+          ) : (
+            <>
+              EKSTERN LINK <ExternalLink aria-label="Ekstern side" />
+            </>
+          )}
+        </ScDetail>
+      </ScCard>
+    </NextLink>
   );
 };
 

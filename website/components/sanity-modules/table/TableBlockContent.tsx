@@ -1,5 +1,6 @@
 import { BodyShort, Detail, Link } from "@navikt/ds-react";
 import BlockContent from "@sanity/block-content-to-react";
+import NextLink from "next/link";
 import React from "react";
 import styled from "styled-components";
 import { DsIconAnnotation, ScCode, ScKbd } from "../../SanityBlockContent";
@@ -45,7 +46,11 @@ const serializers = {
       if (!slug || !slug.current) return children;
 
       const href = `/${slug?.current}`;
-      return <Link href={href}>{children}</Link>;
+      return (
+        <NextLink href={href} passHref>
+          <Link href={href}>{children}</Link>;
+        </NextLink>
+      );
     },
     ...DsIconAnnotation,
   },
