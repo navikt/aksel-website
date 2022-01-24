@@ -50,10 +50,9 @@ const ScLink = styled(Link)<{ open: boolean }>`
   cursor: pointer;
 `;
 
-const ScHr = styled.hr`
-  width: 100%;
-  border-bottom: 1px var(--navds-semantic-color-divider);
-  margin-top: 2.5rem;
+const ScDiv = styled.div`
+  margin: 0.5rem 0 0.5rem 0;
+  padding: 1rem 0;
 `;
 
 const Log = ({ log }: { log: ChangelogT }) => {
@@ -63,7 +62,7 @@ const Log = ({ log }: { log: ChangelogT }) => {
   };
 
   return (
-    <div>
+    <ScDiv>
       {log.change_date && (
         <BodyShort size="small" as="div">
           {`${moment(log.change_date).format("DD. MMM. YY")}`}
@@ -89,8 +88,7 @@ const Log = ({ log }: { log: ChangelogT }) => {
           ))}
       </ScTagWrapper>
       <SanityBlockContent blocks={log.body} />
-      <ScHr />
-    </div>
+    </ScDiv>
   );
 };
 
@@ -208,47 +206,3 @@ const Changelog = ({ node }: { node: ChangelogListT }) => {
 };
 
 export default withErrorBoundary(Changelog, "Changelog");
-
-/* const [open, setOpen] = useState(false);
-
-  const getPrText = (pr) => {
-    const number = pr.split("/").pop();
-    return isNaN(number) ? "PR" : `#${number}`;
-  };
-
-  const logInstance = (log: DsChangelog, prefix?: string) => (
-    <div key={log._id + prefix}>
-      <Heading level="3" size="small" spacing>
-        {log.title}{" "}
-        {log.pull_request && (
-          <Link href={log.pull_request}>{getPrText(log.pull_request)}</Link>
-        )}
-      </Heading>
-      <BodyShort size="small" spacing as="div">
-        {`${moment(log.change_date).format("DD. MMM. YY")}`}
-      </BodyShort>
-      <SanityBlockContent blocks={log.body} />
-    </div>
-  );
-
-  return (
-    <S.Changelog>
-      <div>
-        <LevelTwoHeading>{["Changelog"]}</LevelTwoHeading>
-        <S.ChangelogButton onClick={() => setOpen(true)} variant="tertiary">
-          Vis changelog
-        </S.ChangelogButton>
-      </div>
-      {relevantLogs.map((log, x) => {
-        const c = x > 3 ? null : logInstance(log);
-        return c;
-      })}
-      <Modal open={open} onClose={() => setOpen(false)}>
-        <Modal.Content style={{ minWidth: 340 }}>
-          <Heading level="2" size="medium" spacing>
-            Changelog
-          </Heading>
-          {relevantLogs.map((log) => logInstance(log, "modal"))}
-        </Modal.Content>
-      </Modal>
-    </S.Changelog> */
