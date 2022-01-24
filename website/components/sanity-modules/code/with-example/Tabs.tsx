@@ -15,6 +15,7 @@ export const ScTabs = styled.div`
   justify-content: space-between;
   border: 1px solid var(--navds-semantic-color-divider);
   overflow-x: auto;
+  border-bottom: transparent;
 
   ul,
   li {

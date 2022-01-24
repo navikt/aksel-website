@@ -60,7 +60,7 @@ const ScDiv = styled.div<{
   min-height: 400px;
   height: 100%;
 
-  ${(props) => props.inlineProps && `padding-right: 250px;`}
+  ${(props) => props.inlineProps && `padding-right: 220px;`}
 
   ${(props) =>
     props.fullscreen &&

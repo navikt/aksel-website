@@ -28,7 +28,7 @@ export const ScTabCss = css`
 
 const ScSettingsPanel = styled.div<{ open: boolean; inlinePanel: boolean }>`
   height: 100%;
-  width: 250px;
+  width: 220px;
   max-width: 100%;
 
   background-color: var(--navds-semantic-color-canvas-background-light);

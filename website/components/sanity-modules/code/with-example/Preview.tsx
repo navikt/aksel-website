@@ -37,9 +37,7 @@ const ScDiv = styled.div`
   overflow-x: auto;
   position: relative;
 
-  :only-child {
-    border-top: 1px solid var(--navds-global-color-gray-200);
-  }
+  border-top: 1px solid var(--navds-semantic-color-divider);
 `;
 
 const ScInnerDiv = styled.div<{ bg?: string }>`
