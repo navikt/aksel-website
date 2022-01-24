@@ -212,42 +212,6 @@ export default [
             {
               _type: "span",
               marks: [],
-              text: "Sandbox",
-            },
-          ],
-          markDefs: [],
-          style: "h2",
-        },
-        {
-          _type: "block",
-          children: [
-            {
-              _type: "span",
-              marks: ["draft_only"],
-              text: "Sett inn sandbox",
-            },
-          ],
-          markDefs: [],
-          style: "normal",
-        },
-        {
-          _type: "block",
-          children: [
-            {
-              _type: "span",
-              marks: [],
-              text: "[Beskrivelse til sandbox om det er behov]",
-            },
-          ],
-          markDefs: [],
-          style: "normal",
-        },
-        {
-          _type: "block",
-          children: [
-            {
-              _type: "span",
-              marks: [],
               text: "Installasjon",
             },
           ],
@@ -407,6 +371,42 @@ export default [
       tags: ["core"],
       title: "Ny komponentmal",
       usage: [
+        {
+          _type: "block",
+          children: [
+            {
+              _type: "span",
+              marks: [],
+              text: "Sandbox",
+            },
+          ],
+          markDefs: [],
+          style: "h2",
+        },
+        {
+          _type: "block",
+          children: [
+            {
+              _type: "span",
+              marks: ["draft_only"],
+              text: "Sett inn sandbox",
+            },
+          ],
+          markDefs: [],
+          style: "normal",
+        },
+        {
+          _type: "block",
+          children: [
+            {
+              _type: "span",
+              marks: [],
+              text: "[Beskrivelse til sandbox om det er behov]",
+            },
+          ],
+          markDefs: [],
+          style: "normal",
+        },
         {
           _type: "block",
           children: [
