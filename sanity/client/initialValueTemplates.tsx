@@ -1,7 +1,7 @@
 import T from "@sanity/base/initial-value-template-builder";
 
 export default [
-  ...T.defaults(),
+  ...T.defaults().filter((x) => x.spec.id !== "ds_component_page"),
 
   T.template({
     id: "ds_component_page_template",
