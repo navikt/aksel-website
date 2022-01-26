@@ -2,7 +2,6 @@ import { BodyLong, Detail, Heading, Ingress, Link } from "@navikt/ds-react";
 import BlockContent from "@sanity/block-content-to-react";
 import NextLink from "next/link";
 import React, { createContext, useContext } from "react";
-import styled from "styled-components";
 import {
   Alert,
   CodeExample,
@@ -28,55 +27,19 @@ import {
 import * as Icons from "@navikt/ds-icons";
 import * as Tokens from "@navikt/ds-tokens/dist/tokens";
 
-export const ScCode = styled.code`
-  color: var(--navds-global-color-deepblue-500);
-  background-color: var(--navds-global-color-deepblue-50);
-  border-radius: 6px;
-  font-size: 1rem;
-  padding: 2px 0.5rem;
-`;
-
-const InlineCode = (props: React.HTMLAttributes<HTMLElement>) => (
+export const InlineCode = (props: React.HTMLAttributes<HTMLElement>) => (
   <code
     className="text-deepblue-500 bg-deepblue-50 rounded-md py-[2px] px-2 text-medium"
     {...props}
   />
 );
 
-const KBD = (props: React.HTMLAttributes<HTMLElement>) => (
+export const KBD = (props: React.HTMLAttributes<HTMLElement>) => (
   <code
     className="text-medium py-0 px-2 min-w-[28px] inline-block my-0 mx-1 text-text border border-solid border-gray-800 rounded-sm"
     {...props}
   />
 );
-
-export const ScKbd = styled.code`
-  display: inline-block;
-  margin: 0 var(--navds-spacing-1);
-  color: var(--navds-semantic-color-text);
-  border: 1px solid var(--navds-global-color-gray-800);
-  border-radius: 2px;
-  padding: 0 0.5rem;
-  min-width: 28px;
-  font-family: var(--font-family-code);
-  font-size: 1rem;
-`;
-
-const ScOl = styled.ol`
-  > li {
-    max-width: calc(var(--text-max-width) - 1em);
-  }
-`;
-
-const ScUl = styled.ul`
-  > li {
-    max-width: calc(var(--text-max-width) - 1em);
-  }
-`;
-
-const ScHeading = styled(Heading)`
-  margin-top: var(--navds-spacing-11);
-`;
 
 export const DsIconAnnotation = {
   ds_icon: ({ mark }: { mark: { color?: string; name?: string } }) => {
@@ -96,9 +59,9 @@ const serializers = {
     /* Unique page modules */
     ds_component_overview: ({ node }) => <ComponentOverview node={node} />,
     icon_search: () => <IconSearch />,
+    changelogs_ref: ({ node }) => <Changelog node={node} />,
 
     /* General page modules */
-    changelogs_ref: ({ node }) => <Changelog node={node} />,
     related_pages: ({ node }) => <RelatedPagesCards node={node} />,
     ds_code_sandbox: ({ node }) => <Sandbox node={node} />,
     code_snippet: ({ node }) => <Snippet node={node} />,
@@ -120,56 +83,58 @@ const serializers = {
       const style = node.style;
       if (children && children.length === 1 && children[0] === "") return null;
 
+      const textProps = { children };
+
       switch (style) {
         case "normal":
-          return (
-            <>
-              {context.isIngress ? (
-                <Ingress>{children}</Ingress>
-              ) : (
-                <BodyLong size={context.size} spacing>
-                  {children}
-                </BodyLong>
-              )}
-            </>
-          );
+          if (context.isIngress) {
+            return <Ingress {...textProps} />;
+          }
+          return <BodyLong size={context.size} spacing {...textProps} />;
+
         case "detail":
-          return (
-            <Detail spacing size="small">
-              {children}
-            </Detail>
-          );
-        case "h2": {
-          return <LevelTwoHeading>{children}</LevelTwoHeading>;
-        }
+          return <Detail spacing size="small" {...textProps} />;
+        case "h2":
+          return <LevelTwoHeading {...textProps} />;
         case "h3":
           return (
-            <ScHeading spacing level="3" size="medium">
-              {children}
-            </ScHeading>
+            <Heading
+              className="mt-11"
+              spacing
+              level="3"
+              size="medium"
+              {...textProps}
+            />
           );
         case "heading4":
           return (
-            <ScHeading spacing level="4" size="small">
-              {children}
-            </ScHeading>
+            <Heading
+              className="mt-9"
+              spacing
+              level="4"
+              size="small"
+              {...textProps}
+            />
           );
         case "ingress":
           return <Ingress spacing>{children}</Ingress>;
         default:
-          return (
-            <BodyLong size={context.size} spacing>
-              {children}
-            </BodyLong>
-          );
+          return <BodyLong size={context.size} spacing {...textProps} />;
       }
     },
   },
   list: (props: any) => {
     if (props?.type == "number") {
-      return <ScOl type="1">{props.children}</ScOl>;
+      return <ol type="1">{props.children}</ol>;
     }
-    return <ScUl>{props.children}</ScUl>;
+    return <ul>{props.children}</ul>;
+  },
+  listItem: (props: any) => {
+    return (
+      <li className="max-w-[calc(var(--text-max-width) - 1em)]">
+        {props.children}
+      </li>
+    );
   },
   marks: {
     draft_only: () => null,

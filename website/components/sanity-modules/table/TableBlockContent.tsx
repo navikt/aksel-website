@@ -3,7 +3,7 @@ import BlockContent from "@sanity/block-content-to-react";
 import NextLink from "next/link";
 import React from "react";
 import styled from "styled-components";
-import { DsIconAnnotation, ScCode, ScKbd } from "../../SanityBlockContent";
+import { DsIconAnnotation, InlineCode, KBD } from "../../SanityBlockContent";
 
 const ScWrapper = styled.span`
   svg {
@@ -31,8 +31,8 @@ const serializers = {
     },
   },
   marks: {
-    kbd: (props: any) => <ScKbd>{props.children}</ScKbd>,
-    code: (props: any) => <ScCode>{props.children}</ScCode>,
+    kbd: (props: any) => <KBD>{props.children}</KBD>,
+    code: (props: any) => <InlineCode>{props.children}</InlineCode>,
     link: ({ mark: { blank, href }, children }: { mark: any; children: any }) =>
       blank ? (
         <Link href={href} target="_blank" rel="noreferrer noopener">

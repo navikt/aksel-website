@@ -5,7 +5,7 @@ import {
   PropTable as PropTableT,
   PropTableProp as PropTablePropT,
 } from "../../../lib";
-import { ScCode } from "../../SanityBlockContent";
+import { InlineCode } from "../../SanityBlockContent";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import * as S from "./prop-table.styles";
 import NextLink from "next/link";
@@ -66,12 +66,12 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
         )}
         {node.refplacement && (
           <li>
-            <ScCode>ref</ScCode> er plassert på {node.refplacement}
+            <InlineCode>ref</InlineCode> er plassert på {node.refplacement}
           </li>
         )}
         {node.extends && (
           <li>
-            Props extender <ScCode>{node.extends}</ScCode>
+            Props extender <InlineCode>{node.extends}</InlineCode>
           </li>
         )}
       </BodyLong>
