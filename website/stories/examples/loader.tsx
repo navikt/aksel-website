@@ -1,6 +1,5 @@
 import React from "react";
 import { Loader, Button } from "@navikt/ds-react";
-import styled from "styled-components";
 import { ExampleComponent } from "../../lib";
 import { BgColors } from "../sandbox/types";
 
@@ -63,20 +62,12 @@ export const LoaderTransparent: ExampleComponent = () => (
 
 LoaderTransparent.react = `<Loader size="2xlarge" transparent />`;
 
-const ScFlexGrow = styled.div`
-  display: flex;
-  width: 6rem;
-  > * {
-    flex: 1 1%;
-  }
-`;
-
 export const LoaderMedButton: ExampleComponent = () => (
-  <ScFlexGrow>
-    <Button>
+  <div className="flex w-24">
+    <Button className="flex-1">
       <Loader title="Laster inn nytt innhold..." />
     </Button>
-  </ScFlexGrow>
+  </div>
 );
 
 LoaderMedButton.react = `<Button>

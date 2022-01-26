@@ -2,7 +2,6 @@ import { Star } from "@navikt/ds-icons";
 import { Button, Loader } from "@navikt/ds-react";
 import React from "react";
 import { ExampleComponent } from "../../lib";
-import { ScFlexGrow } from "./styles";
 
 export const ButtonAllVariants: ExampleComponent = () => (
   <>
@@ -137,14 +136,14 @@ Button
 </Button>`;
 
 export const ButtonWithLoader: ExampleComponent = () => (
-  <ScFlexGrow>
+  <div className="stories-sandbox-grow">
     <Button variant="primary" aria-label="laster innhold...">
       <Loader title="laster inn data.." />
     </Button>
     <Button variant="primary" size="small" aria-label="laster innhold...">
       <Loader title="laster inn data.." />
     </Button>
-  </ScFlexGrow>
+  </div>
 );
 
 ButtonWithLoader.react = `<Button variant="primary" aria-label="laster innhold...">

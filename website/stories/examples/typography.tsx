@@ -7,17 +7,11 @@ import {
   Label,
   Ingress,
 } from "@navikt/ds-react";
-import styled from "styled-components";
-import { ScColumn } from "./styles";
 import { ExampleComponent } from "../../lib";
-
-const ScMutedHeading = styled(Heading)`
-  color: var(--navds-semantic-color-text-muted);
-`;
 
 export const TypographyHeading: ExampleComponent = () => {
   return (
-    <ScColumn>
+    <div className="stories-sandbox-column">
       <Heading spacing size="2xlarge" level="1">
         Heading 2xlarge
       </Heading>
@@ -36,7 +30,7 @@ export const TypographyHeading: ExampleComponent = () => {
       <Heading size="xsmall" level="6">
         Heading xsmall
       </Heading>
-    </ScColumn>
+    </div>
   );
 };
 
@@ -61,10 +55,10 @@ Heading xsmall
 
 export const TypographyBodyLong: ExampleComponent = () => {
   return (
-    <ScColumn>
-      <ScMutedHeading size="medium" level="3">
+    <div className="stories-sandbox-column">
+      <Heading size="medium" level="3" className="text-text-muted">
         Medium
-      </ScMutedHeading>
+      </Heading>
       <BodyLong spacing>
         Ullamco ut laboris irure excepteur velit nisi occaecat proident. Amet
         aliquip dolor eu occaecat. Elit sunt occaecat excepteur ea. Quis commodo
@@ -73,9 +67,9 @@ export const TypographyBodyLong: ExampleComponent = () => {
         officia.
       </BodyLong>
 
-      <ScMutedHeading size="medium" level="3">
+      <Heading className="text-text-muted" size="medium" level="3">
         Small
-      </ScMutedHeading>
+      </Heading>
       <BodyLong size="small">
         Ullamco ut laboris irure excepteur velit nisi occaecat proident. Amet
         aliquip dolor eu occaecat. Elit sunt occaecat excepteur ea. Quis commodo
@@ -83,7 +77,7 @@ export const TypographyBodyLong: ExampleComponent = () => {
         cillum. Non in consequat ex esse exercitation cillum Lorem voluptate
         officia.
       </BodyLong>
-    </ScColumn>
+    </div>
   );
 };
 
@@ -107,17 +101,17 @@ TypographyBodyLong.react = `
 
 export const TypographyBodyShort: ExampleComponent = () => {
   return (
-    <ScColumn>
-      <ScMutedHeading size="medium" level="3">
+    <div className="stories-sandbox-column">
+      <Heading className="text-text-muted" size="medium" level="3">
         Medium
-      </ScMutedHeading>
+      </Heading>
       <BodyShort spacing>Ullamco ut laboris irure</BodyShort>
 
-      <ScMutedHeading size="medium" level="3">
+      <Heading className="text-text-muted" size="medium" level="3">
         Small
-      </ScMutedHeading>
+      </Heading>
       <BodyShort size="small">Ullamco ut laboris irure</BodyShort>
-    </ScColumn>
+    </div>
   );
 };
 
@@ -143,17 +137,17 @@ incididunt et non quis magna consequat.
 
 export const TypographyLabel: ExampleComponent = () => {
   return (
-    <ScColumn>
-      <ScMutedHeading size="medium" level="3">
+    <div className="stories-sandbox-column">
+      <Heading className="text-text-muted" size="medium" level="3">
         Medium
-      </ScMutedHeading>
+      </Heading>
       <Label spacing>Ullamco ut laboris irure</Label>
 
-      <ScMutedHeading size="medium" level="3">
+      <Heading className="text-text-muted" size="medium" level="3">
         Small
-      </ScMutedHeading>
+      </Heading>
       <Label size="small">Ullamco ut laboris irure</Label>
-    </ScColumn>
+    </div>
   );
 };
 
@@ -163,17 +157,17 @@ TypographyLabel.react = `
 
 export const TypographyDetail: ExampleComponent = () => {
   return (
-    <ScColumn>
-      <ScMutedHeading size="medium" level="3">
+    <div className="stories-sandbox-column">
+      <Heading className="text-text-muted" size="medium" level="3">
         Medium
-      </ScMutedHeading>
+      </Heading>
       <Detail spacing>Ullamco ut laboris irure</Detail>
 
-      <ScMutedHeading size="medium" level="3">
+      <Heading className="text-text-muted" size="medium" level="3">
         Small
-      </ScMutedHeading>
+      </Heading>
       <Detail size="small">Ullamco ut laboris irure</Detail>
-    </ScColumn>
+    </div>
   );
 };
 

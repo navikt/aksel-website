@@ -1,10 +1,9 @@
 import React from "react";
 import { Accordion } from "@navikt/ds-react";
-import { ScColumn } from "./styles";
 import { ExampleComponent } from "../../lib";
 
 export const AccordionExample: ExampleComponent = () => (
-  <ScColumn>
+  <div className="stories-sandbox-column">
     <Accordion>
       <Accordion.Item>
         <Accordion.Header>Til deg som er mellom 62 og 67 år</Accordion.Header>
@@ -25,7 +24,7 @@ export const AccordionExample: ExampleComponent = () => (
         </Accordion.Content>
       </Accordion.Item>
     </Accordion>
-  </ScColumn>
+  </div>
 );
 AccordionExample.html = "";
 AccordionExample.react = `

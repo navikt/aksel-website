@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Popover, Button, Select } from "@navikt/ds-react";
 import { placements, Placement } from "@popperjs/core";
-import styled from "styled-components";
 import { ExampleComponent } from "../../lib";
 
 export const PopoverExample: ExampleComponent = () => {
@@ -120,20 +119,13 @@ PopoverOffset.react = `
     </Popover>
   </>`;
 
-const Wrapper = styled.div`
-  margin: 3rem 1rem;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
-
 export const PopoverPlacement: ExampleComponent = () => {
   const selectRef = useRef(null);
   const [selectedPlacement, setselectedPlacement] = useState<Placement>("auto");
 
   const [open, setOpen] = useState(false);
   return (
-    <Wrapper>
+    <div className="my-12 mx-4 w-full flex justify-center">
       <Select
         value={selectedPlacement}
         onChange={(e) => {
@@ -157,7 +149,7 @@ export const PopoverPlacement: ExampleComponent = () => {
       >
         <Popover.Content>Innhold her!</Popover.Content>
       </Popover>
-    </Wrapper>
+    </div>
   );
 };
 

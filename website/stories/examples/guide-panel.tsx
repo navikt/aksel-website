@@ -1,6 +1,5 @@
 import React from "react";
 import { GuidePanel } from "@navikt/ds-react";
-import styled from "styled-components";
 import { ExampleComponent } from "../../lib";
 
 export const GuidepanelExample: ExampleComponent = () => (
@@ -35,36 +34,22 @@ enn X måneder siden du søkte, skal du få brev om at saksbehandlingstiden
 er forlenget.
 </GuidePanel>`;
 
-const GreenWrapper = styled.div`
-  --navds-guide-panel-color-border: var(--navds-global-color-green-400);
-  --navds-guide-panel-color-illustration-background: var(
-    --navds-global-color-green-200
-  );
-`;
-
-const PurpleWrapper = styled.div`
-  --navds-guide-panel-color-border: var(--navds-global-color-purple-400);
-  --navds-guide-panel-color-illustration-background: var(
-    --navds-global-color-purple-200
-  );
-`;
-
 export const GuidepanelColors: ExampleComponent = () => (
   <>
-    <GreenWrapper>
+    <div className="stories-sandbox__guidepanel--green">
       <GuidePanel>
         Saksbehandlingstiden varierer fra kommune til kommune. Hvis det går mer
         enn X måneder siden du søkte, skal du få brev om at saksbehandlingstiden
         er forlenget.
       </GuidePanel>
-    </GreenWrapper>
-    <PurpleWrapper>
+    </div>
+    <div className="stories-sandbox__guidepanel--purple">
       <GuidePanel>
         Saksbehandlingstiden varierer fra kommune til kommune. Hvis det går mer
         enn X måneder siden du søkte, skal du få brev om at saksbehandlingstiden
         er forlenget.
       </GuidePanel>
-    </PurpleWrapper>
+    </div>
   </>
 );
 

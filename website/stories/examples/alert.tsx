@@ -1,10 +1,9 @@
 import React from "react";
 import { Alert, BodyLong, Heading, Link } from "@navikt/ds-react";
-import { ScColumn } from "./styles";
 import { ExampleComponent } from "../../lib";
 
 export const AlertAllVariants: ExampleComponent = () => (
-  <ScColumn>
+  <div className="stories-sandbox-column">
     <Alert variant="info">Nå kan du sende inn søknaden.</Alert>
     <Alert variant="success">Du har sendt søknaden.</Alert>
     <Alert variant="warning">
@@ -16,7 +15,7 @@ export const AlertAllVariants: ExampleComponent = () => (
       senere. Du er velkommen til å{" "}
       <Link href="#">følge med på hvordan det går.</Link>
     </Alert>
-  </ScColumn>
+  </div>
 );
 
 AlertAllVariants.react = `
@@ -33,12 +32,12 @@ AlertAllVariants.react = `
     </Alert>`;
 
 export const AlertWithSmall: ExampleComponent = () => (
-  <ScColumn>
+  <div className="stories-sandbox-column">
     <Alert variant="info">Nå kan du sende inn søknaden.</Alert>
     <Alert variant="info" size="small">
       Nå kan du sende inn søknaden.
     </Alert>
-  </ScColumn>
+  </div>
 );
 
 AlertWithSmall.react = `
@@ -46,7 +45,7 @@ AlertWithSmall.react = `
     <Alert variant="info" size="small">Nå kan du sende inn søknaden.</Alert>`;
 
 export const AlertWithHeading: ExampleComponent = () => (
-  <ScColumn>
+  <div className="stories-sandbox-column">
     <Alert variant="info">
       <Heading spacing size="small" level="2">
         Midlertidige regler for arbeidsledige og permitterte
@@ -67,7 +66,7 @@ export const AlertWithHeading: ExampleComponent = () => (
         forlengelsene også for deg frem til og med xx.xx.xxxx.
       </BodyLong>
     </Alert>
-  </ScColumn>
+  </div>
 );
 
 AlertWithHeading.react = `
@@ -93,14 +92,14 @@ AlertWithHeading.react = `
     </Alert>`;
 
 export const AlertInline: ExampleComponent = () => (
-  <ScColumn>
+  <div className="stories-sandbox-column">
     <Alert variant="info" inline>
       Nå kan du sende inn søknaden.
     </Alert>
     <Alert variant="info" inline size="small">
       Nå kan du sende inn søknaden.
     </Alert>
-  </ScColumn>
+  </div>
 );
 
 AlertInline.react = `
@@ -112,14 +111,14 @@ AlertInline.react = `
     </Alert>`;
 
 export const AlertFullwidth: ExampleComponent = () => (
-  <ScColumn>
+  <div className="stories-sandbox-column">
     <Alert variant="info" fullWidth>
       Nå kan du sende inn søknaden.
     </Alert>
     <Alert variant="info" fullWidth size="small">
       Nå kan du sende inn søknaden.
     </Alert>
-  </ScColumn>
+  </div>
 );
 
 AlertFullwidth.react = `

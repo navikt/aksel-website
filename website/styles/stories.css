@@ -1,0 +1,29 @@
+@tailwind components;
+
+.stories-sandbox__guidepanel--purple {
+  --navds-guide-panel-color-border: var(--navds-global-color-purple-400);
+  --navds-guide-panel-color-illustration-background: var(
+    --navds-global-color-purple-200
+  );
+}
+
+.stories-sandbox__guidepanel--green {
+  --navds-guide-panel-color-border: var(--navds-global-color-green-400);
+  --navds-guide-panel-color-illustration-background: var(
+    --navds-global-color-green-200
+  );
+}
+
+@layer components {
+  .stories-sandbox-column {
+    @apply flex flex-col gap-4 w-full;
+  }
+
+  .stories-sandbox-grow {
+    @apply flex items-center gap-4 w-[12rem];
+  }
+
+  .stories-sandbox-grow > * {
+    @apply flex-1;
+  }
+}
