@@ -1,8 +1,8 @@
 import React from "react";
-import { LayoutPicker, PreviewBanner, SkipLink } from "../../components";
-import DesignsystemFooter from "../../components/layout/footer/DesignsystemFooter";
-import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
-import DesignsystemSidebar from "../../components/layout/sidebar/DesignsystemSidebar";
+import { LayoutPicker, PreviewBanner, SkipLink } from "../../../components";
+import DesignsystemFooter from "../../../components/layout/footer/DesignsystemFooter";
+import DesignsystemHeader from "../../../components/layout/header/DesignsystemHeader";
+import DesignsystemSidebar from "../../../components/layout/sidebar/DesignsystemSidebar";
 import {
   DsArticlePage,
   DsComponentPage,
@@ -12,7 +12,7 @@ import {
   DsTabbedArticlePage,
   getClient,
   getDsPaths,
-} from "../../lib";
+} from "../../../lib";
 
 const Page = (props: {
   slug?: string;

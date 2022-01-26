@@ -1,7 +1,7 @@
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
-import { ExampleKeys, Examples } from "../../stories/examples";
+import { ExampleKeys, Examples } from "../../../stories/examples";
 
 const CodePreview = (key: string) => {
   if (!key || !(key in Examples)) {
@@ -33,9 +33,15 @@ const Page = ({ compkey }: { compkey: string }) => {
 export default Page;
 
 export async function getStaticProps({ params: { slug } }) {
+  const joinedSlug = slug.join("/");
+
   return {
     props: {
       compkey: slug,
+      slug: joinedSlug,
+      isDraft: false,
+      validPath: true,
+      preview: false,
     },
   };
 }

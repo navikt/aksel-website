@@ -1,8 +1,8 @@
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
-import { Sandbox } from "../../components";
-import { SandboxKeys, Sandboxes } from "../../stories/sandbox";
+import { Sandbox } from "../../../components";
+import { SandboxKeys, Sandboxes } from "../../../stories/sandbox";
 
 const CodePreview = (key: string) => {
   if (!key || !(key in Sandboxes)) {
@@ -30,19 +30,9 @@ const CodePreview = (key: string) => {
   );
 };
 
-const Page = ({ compkey }: { compkey: string }) => {
-  return CodePreview(compkey);
+const Page = (props: any) => {
+  return CodePreview(props.compkey);
 };
-
-export default Page;
-
-export async function getStaticProps({ params: { slug } }) {
-  return {
-    props: {
-      compkey: slug,
-    },
-  };
-}
 
 export async function getStaticPaths() {
   return {
@@ -54,3 +44,19 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+
+export async function getStaticProps({ params: { slug } }) {
+  const joinedSlug = slug.join("/");
+
+  return {
+    props: {
+      compkey: slug,
+      slug: joinedSlug,
+      isDraft: false,
+      validPath: true,
+      preview: false,
+    },
+  };
+}
+
+export default Page;

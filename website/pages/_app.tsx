@@ -26,13 +26,6 @@ function App({
     setPageData(pageProps);
   }, [pageProps]);
 
-  if (
-    Component &&
-    ["/examples", "/sandboxes"].some((path) => router?.asPath.startsWith(path))
-  ) {
-    return <Component {...pageProps} />;
-  }
-
   const getLayout = Component.getLayout ?? ((page) => page);
 
   const notFound =

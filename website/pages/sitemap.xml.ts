@@ -25,7 +25,7 @@ class Sitemap extends React.Component {
       paths.map((slugs) => slugs.join("/"))
     );
 
-    pages = ["", "designsytem", ...pages];
+    pages = ["", "designsystem", ...pages];
 
     res.setHeader("Content-Type", "application/xml");
     res.write(generateSitemap(pages));
