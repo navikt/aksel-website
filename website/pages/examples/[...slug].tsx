@@ -1,7 +1,6 @@
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
-import styled from "styled-components";
 import { ExampleKeys, Examples } from "../../stories/examples";
 
 const CodePreview = (key: string) => {
@@ -13,22 +12,6 @@ const CodePreview = (key: string) => {
   return <Comp />;
 };
 
-const ExampleWrapper = styled.div`
-  display: flex;
-  padding: 1rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-`;
-
-const InnerWrapper = styled.div`
-  gap: 1rem;
-  flex-wrap: wrap;
-  display: inline-grid;
-  align-items: center;
-`;
-
 const Page = ({ compkey }: { compkey: string }) => {
   return (
     <>
@@ -38,9 +21,11 @@ const Page = ({ compkey }: { compkey: string }) => {
       <Heading level="1" size="medium" className="navds-sr-only">
         {compkey}
       </Heading>
-      <ExampleWrapper>
-        <InnerWrapper>{CodePreview(compkey)}</InnerWrapper>
-      </ExampleWrapper>
+      <div className="flex p-4 flex-col justify-center items-center w-full">
+        <div className="gap-4 flex-wrap inline-grid items-center">
+          {CodePreview(compkey)}
+        </div>
+      </div>
     </>
   );
 };
