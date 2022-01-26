@@ -61,7 +61,7 @@ export const getStaticPaths = async (): Promise<{
     paths: await getDsPaths().then((paths) =>
       paths.map((slug) => ({
         params: {
-          slug: slug.filter((x) => x !== "designsystem"),
+          slug: slug.filter((x) => x !== "designsystem" && x !== "side"),
         },
       }))
     ),
@@ -88,11 +88,11 @@ export const getStaticProps = async ({
   params: { slug: string[] };
   preview?: boolean;
 }): Promise<StaticProps | { notFound: true }> => {
-  const joinedSlug = slug.slice(0, 2).join("/");
+  const joinedSlug = slug.join("/");
 
   const client = getClient(preview);
   let page = await client.fetch(dsDocumentBySlug, {
-    slug: "designsystem/" + joinedSlug,
+    slug: "designsystem/side/" + slug[0],
   });
 
   const isDraft = page.filter((item) => !item._id.startsWith("drafts.")).length;
@@ -103,8 +103,12 @@ export const getStaticProps = async ({
 
   const validPath = await getDsPaths().then((paths) =>
     paths
-      .map((slugs) => slugs.filter((slug) => slug !== "designsystem").join("/"))
-      .includes(slug.filter((x) => x !== "designsystem").join("/"))
+      .map((slugs) =>
+        slugs
+          .filter((slug) => slug !== "designsystem" && slug !== "side")
+          .join("/")
+      )
+      .includes(joinedSlug)
   );
 
   return {

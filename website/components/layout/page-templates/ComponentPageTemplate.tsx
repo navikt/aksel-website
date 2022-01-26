@@ -88,7 +88,7 @@ const ComponentPageTemplate = ({
 
   /* Defaults back to a tab with content if first does not */
   useEffect(() => {
-    let active = Object.keys(tabs).indexOf(query.slug[2] ?? "bruk");
+    let active = Object.keys(tabs).indexOf(query.slug?.[1] ?? "bruk");
 
     active = !data[tabs[Object.keys(tabs)[active]]]
       ? Object.keys(tabs).findIndex((x) => !!data[tabs[x]])
@@ -96,9 +96,7 @@ const ComponentPageTemplate = ({
     setActiveTab(active);
   }, [query.slug]);
 
-  const basePath = `/designsystem/${(query.slug as string[])
-    .slice(0, 2)
-    .join("/")}`;
+  const basePath = `/designsystem/side/${query.slug[0]}`;
 
   const value = Object.values(tabs)?.[activeTab];
   const tabKey = Object.keys(tabs)?.[activeTab];

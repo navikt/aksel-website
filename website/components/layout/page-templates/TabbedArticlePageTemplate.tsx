@@ -44,15 +44,12 @@ const TabbedActiclePageTemplate = ({
   if (!data.tabs || !data.heading || !data.status) {
     return null;
   }
-
-  const basePath = `/designsystem/${(query.slug as string[])
-    .slice(0, 2)
-    .join("/")}`;
+  const basePath = `/designsystem/side/${query.slug[0]}`;
 
   const tabs: string[] = data.tabs.map(
     (tab) => tab.title?.toLowerCase().replace(/\s+/g, "-") || "undefined"
   );
-  const activeTab = query.slug[2] ? tabs.indexOf(query.slug[2]) : 0;
+  const activeTab = query.slug[1] ? tabs.indexOf(query.slug[1]) : 0;
   const tabTitle = data?.tabs?.[activeTab]?.title;
 
   return (
