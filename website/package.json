@@ -21,12 +21,12 @@
     "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
-    "@navikt/ds-css": "^0.12.11-next.0",
+    "@navikt/ds-css": "0.13.0-rc.search.0",
     "@navikt/ds-css-internal": "^0.7",
     "@navikt/ds-icons": "^0.7",
-    "@navikt/ds-react": "^0.14.10-next.0",
+    "@navikt/ds-react": "^0.14.16-rc.search.0",
     "@navikt/ds-react-internal": "^0.9.10-next.0",
-    "@navikt/ds-tokens": "^0.7",
+    "@navikt/ds-tokens": "^0.8",
     "@popperjs/core": "^2.10.2",
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^2.23.0",

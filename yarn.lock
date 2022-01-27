@@ -1230,17 +1230,25 @@
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@navikt/ds-css-internal/-/ds-css-internal-0.7.1.tgz#674fabf444c4a970c0d3631aac621fd46bfdca4c"
 
+"@navikt/ds-css@0.13.0-rc.search.0":
+  version "0.13.0-rc.search.0"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.13.0-rc.search.0.tgz#1e410a9728b9a2571cdc680a49a8f152348fdcbf"
+  integrity sha512-D5ZQcpiW0V7YDtDz9cFrq3jbKzWxJw240n0CgFf9qJJguL1A1VntfD/Oln5j49KFzc8sPPldBSh+EPav/Iexsw==
+
 "@navikt/ds-css@^0.12":
   version "0.12.9"
   resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.12.9.tgz#73a2a10c652d2678c1cdf89f3da6daf891f6cdba"
 
-"@navikt/ds-css@^0.12.11-next.0":
-  version "0.12.11-next.0"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.12.11-next.0.tgz#0d65f7ba56148768d0c611e93becc738eef71e4a"
-
 "@navikt/ds-icons@^0.7", "@navikt/ds-icons@^0.7.2":
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.7.2.tgz#cc3608d5cb0771c9f82bbfea6379b3c19c1ef86a"
+  dependencies:
+    uuid "^8.3.2"
+
+"@navikt/ds-icons@^0.7.3":
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.7.3.tgz#ffe37e32cc5a0b3e640b9db0f95ff4c5f18c4002"
+  integrity sha512-fixTpRhYWB+DGG7LGsnNeIvHuO95uubaAH9YkSW3AsaoNQMaYtIKRCbGzqNcDTvfYiJvGQe++wIZCLAarCZfMA==
   dependencies:
     uuid "^8.3.2"
 
@@ -1283,9 +1291,25 @@
     react-popper "^2.2.5"
     uuid "^8.3.2"
 
-"@navikt/ds-tokens@^0.7":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-tokens/-/ds-tokens-0.7.1.tgz#f671f00dc7a5732e7a3c35b7b488a97fca35ad2a"
+"@navikt/ds-react@^0.14.16-rc.search.0":
+  version "0.14.16-rc.search.0"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.14.16-rc.search.0.tgz#d236bb8143f5e8f48789580e361fbcdbccb4dc0d"
+  integrity sha512-KmZKjtya4IJzU7jtU2psKinbPK/ZJKzpdNTOgrDSVfIsWSAR6mUrPEPUPbL1lBQKfxd/yUBM7gvVp6W2lS+yqA==
+  dependencies:
+    "@material-ui/core" "^4.12.3"
+    "@navikt/ds-icons" "^0.7.3"
+    "@popperjs/core" "^2.10.1"
+    classnames "^2.2.6"
+    react-collapse "^5.1.0"
+    react-merge-refs "^1.1.0"
+    react-modal "3.14.3"
+    react-popper "^2.2.5"
+    uuid "^8.3.2"
+
+"@navikt/ds-tokens@^0.8":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-tokens/-/ds-tokens-0.8.0.tgz#5227374006e10c12210dc664ba56416b2871d2b1"
+  integrity sha512-+c9t4QDVr3zi87wJjtfUs77isgil/LWIZsFYkkAJ/dx8/wcjRlOvQC/xU92QUOKVsE2/gM2IRSECoCx2b4oinA==
 
 "@next/bundle-analyzer@^12.0.7":
   version "12.0.8"
