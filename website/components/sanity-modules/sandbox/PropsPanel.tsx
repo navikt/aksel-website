@@ -20,6 +20,7 @@ const ScSettingsPanel = styled.div<{ open: boolean; inlinePanel: boolean }>`
   right: 0;
   top: 0;
   border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
 
   ${(props) =>
     props.open &&
