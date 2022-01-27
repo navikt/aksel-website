@@ -20,7 +20,7 @@ const CheckboxSandbox: SandboxComponent = (props) => {
 
 CheckboxSandbox.args = {
   props: {
-    size: ["", "medium", "small"],
+    size: ["medium", "small"],
     error: ["", "Gruppe", "Enkel"],
     hideLegend: false,
     hideLabel: false,

@@ -107,7 +107,7 @@ const ButtonSandbox: SandboxComponent = (props, variant) => {
 
 ButtonSandbox.args = {
   props: {
-    size: ["", "medium", "small"],
+    size: ["medium", "small"],
     zebraStripes: false,
   },
   variants: ["", "Selectable"],

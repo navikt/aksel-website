@@ -13,8 +13,8 @@ const SwitchSandbox: SandboxComponent = (props) => {
 
 SwitchSandbox.args = {
   props: {
-    size: ["", "medium", "small"],
-    position: ["", "left", "right"],
+    size: ["medium", "small"],
+    position: ["left", "right"],
     hideLabel: false,
     description: false,
     loading: false,

@@ -32,7 +32,7 @@ const TextareaSandbox: SandboxComponent = (props) => {
 
 TextareaSandbox.args = {
   props: {
-    size: ["", "medium", "small"],
+    size: ["medium", "small"],
     description: false,
     hideLabel: false,
     error: false,

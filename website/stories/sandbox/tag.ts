@@ -11,7 +11,7 @@ const TagSandbox: SandboxComponent = (props) => {
 TagSandbox.args = {
   props: {
     variant: ["info", "success", "warning", "error"],
-    size: ["", "medium", "small"],
+    size: ["medium", "small"],
   },
 };
 

@@ -19,7 +19,7 @@ const TextFieldSandbox: SandboxComponent = (props) => {
 
 TextFieldSandbox.args = {
   props: {
-    size: ["", "medium", "small"],
+    size: ["medium", "small"],
     description: false,
     hideLabel: false,
     error: false,

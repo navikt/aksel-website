@@ -47,7 +47,7 @@ const AlertSandbox: SandboxComponent = (props, variant) => {
 AlertSandbox.args = {
   props: {
     variant: ["success", "info", "warning", "error"],
-    size: ["", "medium", "small"],
+    size: ["medium", "small"],
     fullWidth: false,
     inline: false,
   },

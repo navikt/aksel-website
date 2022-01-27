@@ -22,7 +22,7 @@ const SelectSandbox: SandboxComponent = (props) => {
 
 SelectSandbox.args = {
   props: {
-    size: ["", "medium", "small"],
+    size: ["medium", "small"],
     description: false,
     hideLabel: false,
     error: false,

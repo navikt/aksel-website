@@ -20,7 +20,7 @@ const RadioSandbox: SandboxComponent = (props) => {
 
 RadioSandbox.args = {
   props: {
-    size: ["", "medium", "small"],
+    size: ["medium", "small"],
     description: false,
     hideLegend: false,
     error: false,
