@@ -33,7 +33,7 @@ export default {
         {
           name: "package_versions",
           type: "object",
-          title: "aaa",
+          title: "Pakke og versjon",
           fields: [
             {
               title: "Pakke",
