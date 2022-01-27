@@ -19,8 +19,8 @@ const ButtonSandbox: SandboxComponent = (props) =>
 
 ButtonSandbox.args = {
   props: {
-    variant: ["", "primary", "secondary", "tertiary", "danger"],
-    size: ["", "medium", "small"],
+    variant: ["primary", "secondary", "tertiary", "danger"],
+    size: ["medium", "small"],
     disabled: false,
     loading: false,
     content: ["text", "icon", "text and icon"],
