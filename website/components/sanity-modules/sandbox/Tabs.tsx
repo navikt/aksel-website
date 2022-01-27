@@ -1,4 +1,4 @@
-import { Add, Minus, Refresh, SettingsFilled } from "@navikt/ds-icons";
+import { Add, Minus, SettingsFilled } from "@navikt/ds-icons";
 import { Label } from "@navikt/ds-react";
 import React, { useContext } from "react";
 import styled from "styled-components";
@@ -48,7 +48,7 @@ const ScFlex = styled.div`
   display: flex;
 `;
 
-const Tabs = ({ reset }: { reset: () => void }) => {
+const Tabs = () => {
   const { sandboxState, setSandboxState, bg, setBg } =
     useContext(SandboxContext);
 
@@ -63,10 +63,6 @@ const Tabs = ({ reset }: { reset: () => void }) => {
       <ScLabel>Sandkasse</ScLabel>
       <ScFlex>
         <ColorPicker defaultColor={bg} onChange={(c) => setBg(c)} />
-        <ScTabButton onClick={() => reset()}>
-          <span className="sr-only">Reset sandbox</span>
-          <Refresh aria-hidden aria-label="reset sandkasse visning" />
-        </ScTabButton>
         <ScTabButton
           onClick={() =>
             setSandboxState({

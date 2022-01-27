@@ -3,6 +3,8 @@ import { useKey } from "react-use";
 import styled, { css } from "styled-components";
 import { SandboxContext } from "./Sandbox";
 import PropFilter from "./PropFilter";
+import { Link } from "@navikt/ds-react";
+import { Refresh } from "@navikt/ds-icons";
 
 export const ScTabCss = css`
   background-color: transparent;
@@ -63,18 +65,13 @@ const ScSettingsPanel = styled.div<{ open: boolean; inlinePanel: boolean }>`
     outline: none;
   }
 
-  > * {
-    gap: 1rem;
-    display: flex;
-    flex-direction: column;
-  }
-  > * > .navds-switch ~ .navds-switch {
-    margin-top: -0.5rem;
+  > * > .navds-switch:not(.navds-switch ~ .navds-switch) {
+    margin-top: 1rem;
   }
 `;
 
 const SettingsPanel = () => {
-  const { sandboxState, setSandboxState } = useContext(SandboxContext);
+  const { sandboxState, setSandboxState, reset } = useContext(SandboxContext);
   const panelRef = useRef<HTMLDivElement>(null);
 
   useKey(
@@ -120,6 +117,10 @@ const SettingsPanel = () => {
       tabIndex={-1}
     >
       <PropFilter />
+      <Link as="button" onClick={reset} className="inline-flex mx-auto gap-2">
+        Reset
+        <Refresh aria-hidden aria-label="reset sandkasse visning" />
+      </Link>
     </ScSettingsPanel>
   );
 };

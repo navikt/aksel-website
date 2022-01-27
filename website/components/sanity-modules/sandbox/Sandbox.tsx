@@ -70,6 +70,7 @@ type SandboxContextProps = {
   setSandboxState: React.Dispatch<SandboxStateT>;
   bg: string;
   setBg: React.Dispatch<string>;
+  reset: () => void;
 };
 
 export const SandboxContext = createContext<SandboxContextProps>({
@@ -77,6 +78,7 @@ export const SandboxContext = createContext<SandboxContextProps>({
   setSandboxState: () => null,
   bg: "--navds-semantic-color-canvas-background",
   setBg: () => null,
+  reset: () => null,
 });
 
 interface SandboxStateT {
@@ -160,7 +162,7 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   const Editor = (
     <LiveProvider code={code} scope={scope} noInline={!code?.startsWith("<")}>
       <ScRelativeDiv>
-        <Tabs reset={reset} />
+        <Tabs />
         <PreviewWrapper>
           <LivePreview />
           <LiveError />
@@ -202,6 +204,7 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
             setSandboxState,
             bg: background,
             setBg: setBackground,
+            reset,
           }}
         >
           {sandboxState.fullscreen ? <Fullscreen>{Editor}</Fullscreen> : Editor}
