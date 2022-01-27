@@ -1,7 +1,7 @@
 import { Alert as DsAlert, Heading } from "@navikt/ds-react";
 import React from "react";
 import styled from "styled-components";
-import { ScSectionSmall, slugger } from "../..";
+import { slugger } from "../..";
 import { Alert as AlertT } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 
@@ -25,7 +25,7 @@ const Alert = ({ node }: { node: AlertT }): JSX.Element => {
     slugger.slug(node.heading.toString());
 
   return (
-    <ScSectionSmall>
+    <div className="section--small">
       <ScAlert variant={node.variant} size={node.size}>
         {node.heading && (
           <Heading
@@ -39,7 +39,7 @@ const Alert = ({ node }: { node: AlertT }): JSX.Element => {
         )}
         <SanityBlockContent blocks={node.body} size={node.size} />
       </ScAlert>
-    </ScSectionSmall>
+    </div>
   );
 };
 

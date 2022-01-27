@@ -11,7 +11,6 @@ import React, {
 } from "react";
 import { useClickAway, useEvent, useKey } from "react-use";
 import styled, { css } from "styled-components";
-import { expandKeyframes, fadeInCss } from "../..";
 import Hits from "./Hits";
 
 const searchClient = algoliasearch(
@@ -121,11 +120,9 @@ const ScOpenSearchWrapper = styled.div`
   padding-left: 0.5rem;
   z-index: 1050;
 
-  animation: ${expandKeyframes(false)} 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
   width: 500px;
 
   @media (max-width: 768px) {
-    animation: ${expandKeyframes(true)} 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
     width: 100%;
   }
 `;
@@ -161,7 +158,6 @@ const ScPopover = styled(Popover)`
     0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
   width: calc(100% - 1rem);
   background-color: transparent;
-  ${fadeInCss}
   z-index: 1050;
 `;
 
@@ -244,7 +240,7 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
     <>
       <ScSearch role="search" ref={searchRef} $open={open}>
         {open && (
-          <ScOpenSearchWrapper>
+          <ScOpenSearchWrapper className="animate-expand lg:animate-expandLg">
             <ScSearchIcon>
               <SearchIcon
                 style={{ fontSize: "1.5rem", marginLeft: 3 }}
@@ -282,6 +278,7 @@ const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
               arrow={false}
               placement={"bottom-start"}
               offset={16}
+              className="animate-fadeIn"
             >
               <SearchContext.Provider value={{ clicked: () => setOpen(false) }}>
                 <Hits ref={anchor} hits={result} value={query} />

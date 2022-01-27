@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import React, { useRef, useState } from "react";
 import { useMedia } from "react-use";
 import styled, { css } from "styled-components";
-import { AmplitudeEvents, fadeInCss, NavLogoWhite, useAmplitude } from "../..";
+import { AmplitudeEvents, NavLogoWhite, useAmplitude } from "../..";
 import NextLink from "next/link";
 
 export const ScWrapper = styled.div`
@@ -19,7 +19,6 @@ export const ScWrapper = styled.div`
 `;
 
 const ScPopover = styled(Popover)`
-  ${fadeInCss}
   border-radius: 4px;
   border: none;
   width: 300px;
@@ -205,6 +204,7 @@ const HeadingDropDown = ({ title }: { title: string }) => {
           arrow={false}
           placement={"bottom-start"}
           offset={8}
+          className="animate-fadeIn"
         >
           <ul>
             <li>

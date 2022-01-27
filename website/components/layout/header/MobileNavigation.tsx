@@ -3,7 +3,7 @@ import { Detail, Heading, Popover } from "@navikt/ds-react";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useMedia } from "react-use";
 import styled from "styled-components";
-import { LayoutContext, PagePropsContext, ScFadeIn } from "../..";
+import { LayoutContext, PagePropsContext } from "../..";
 import { DsNavigationHeadingT } from "../../../lib";
 import Menu from "../menu/DesignsystemMenu";
 import NextLink from "next/link";
@@ -209,7 +209,8 @@ const MobileNavigation = () => {
         placement={"bottom-start"}
         offset={8}
       >
-        <ScFadeIn
+        <div
+          className="animate-fadeIn"
           style={{
             margin: 0,
             backgroundColor:
@@ -218,7 +219,7 @@ const MobileNavigation = () => {
         >
           {openHamb && (
             <>
-              <ScFadeIn hidden={!isHeadingMenu}>
+              <div hidden={!isHeadingMenu} className="animate-fadeIn">
                 <ul>
                   {pageProps?.navigation.headings.map(
                     (heading: DsNavigationHeadingT) =>
@@ -267,10 +268,10 @@ const MobileNavigation = () => {
                       )
                   )}
                 </ul>
-              </ScFadeIn>
+              </div>
               {heading && (
-                <ScFadeIn
-                  as="ul"
+                <ul
+                  className="animate-fadeIn"
                   style={{ padding: "0", margin: 0 }}
                   hidden={isHeadingMenu}
                 >
@@ -285,21 +286,19 @@ const MobileNavigation = () => {
                     </ScTopButton>
                     <ScCategory size="small">{heading.title}</ScCategory>
                   </ScTopDiv>
-                  <ScMenuScroll>
-                    <ScFadeIn>
-                      <Menu
-                        inCategory={!isHeadingMenu}
-                        heading={heading}
-                        onClick={() => setOpenHamb(false)}
-                        mobileNavigation
-                      />
-                    </ScFadeIn>
+                  <ScMenuScroll className="animate-fadeIn">
+                    <Menu
+                      inCategory={!isHeadingMenu}
+                      heading={heading}
+                      onClick={() => setOpenHamb(false)}
+                      mobileNavigation
+                    />
                   </ScMenuScroll>
-                </ScFadeIn>
+                </ul>
               )}
             </>
           )}
-        </ScFadeIn>
+        </div>
       </ScPopover>
       <ScOverlay data-visible={openHamb} />
     </>

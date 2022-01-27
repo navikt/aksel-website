@@ -17,7 +17,6 @@ export { default as Sandbox } from "./sanity-modules/sandbox";
 export { default as Spacing } from "./sanity-modules/spacing";
 export { default as Table } from "./sanity-modules/table";
 export { default as Tips } from "./sanity-modules/tips";
-export * from "./styling";
 export { default as Changelog } from "./website-modules/changelog";
 export { default as Feedback } from "./website-modules/feedback";
 export { default as LevelTwoHeading } from "./website-modules/heading";

@@ -1,7 +1,7 @@
 import {
   SandboxComponentArgs,
   SandboxComponentProps,
-} from "../../../stories/sandbox/types";
+} from "../../../../stories/sandbox/types";
 
 export interface EnumT {
   default: string;

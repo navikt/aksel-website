@@ -29,7 +29,7 @@ import {
   getInitialState,
   ParsedArgsT,
   StateT,
-} from "./generateState";
+} from "./settings-panel/generateState";
 import PreviewWrapper from "./PreviewWrapper";
 
 const ScRelativeDiv = styled.div`

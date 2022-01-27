@@ -2,6 +2,13 @@
 @tailwind utilities;
 
 @layer components {
+  .section--small {
+    @apply mb-7;
+  }
+  .section--large {
+    @apply mb-12;
+  }
+
   .card {
     @apply w-[18rem] active:text-link text-text flex flex-col p-4 pt-8 md:p-8 md:pt-12 rounded bg-canvas-background-light relative shadow-card;
   }

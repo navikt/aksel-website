@@ -1,7 +1,7 @@
 import { Settings } from "@navikt/ds-icons";
 import React, { useContext } from "react";
 import ColorPicker from "./ColorPicker";
-import SettingsPanel from "./PropsPanel";
+import SettingsPanel from "./settings-panel/PropsPanel";
 import { SandboxContext } from "./Sandbox";
 import cl from "classnames";
 

@@ -1,7 +1,7 @@
 import { Label, Select, TextField, Switch } from "@navikt/ds-react";
 import React, { useContext } from "react";
-import { SandboxContext } from "./Sandbox";
-import { ScToggle, ScToggleGroup } from "../icon-search/Filter";
+import { SandboxContext } from "../Sandbox";
+import { ScToggle, ScToggleGroup } from "../../icon-search/Filter";
 import { EnumT } from "./generateState";
 
 export const SelectComp = ({

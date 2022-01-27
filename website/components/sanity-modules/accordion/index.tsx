@@ -1,6 +1,5 @@
 import { Accordion as DsAccordion } from "@navikt/ds-react";
 import React from "react";
-import { ScSectionSmall } from "../..";
 import { Accordion as AccordionT } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import { withErrorBoundary } from "../../ErrorBoundary";
@@ -11,7 +10,7 @@ const Accordion = ({ node }: { node: AccordionT }): JSX.Element => {
   }
 
   return (
-    <ScSectionSmall>
+    <div className="section--small">
       <DsAccordion>
         {node.list.map((el) => (
           <DsAccordion.Item key={el._key}>
@@ -22,7 +21,7 @@ const Accordion = ({ node }: { node: AccordionT }): JSX.Element => {
           </DsAccordion.Item>
         ))}
       </DsAccordion>
-    </ScSectionSmall>
+    </div>
   );
 };
 

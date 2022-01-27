@@ -1,6 +1,6 @@
 import { Fieldset } from "@navikt/ds-react";
 import React, { useContext } from "react";
-import { SandboxContext } from "./Sandbox";
+import { SandboxContext } from "../Sandbox";
 import { BooleanComp, SelectComp, StringComp } from "./FormComponents";
 import { EnumT } from "./generateState";
 

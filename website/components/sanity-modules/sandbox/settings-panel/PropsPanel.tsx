@@ -4,7 +4,7 @@ import cl from "classnames";
 import React, { useCallback, useContext, useEffect, useRef } from "react";
 import { useKey } from "react-use";
 import PropFilter from "./PropFilter";
-import { SandboxContext } from "./Sandbox";
+import { SandboxContext } from "../Sandbox";
 
 const SettingsPanel = () => {
   const { sandboxState, setSandboxState, reset } = useContext(SandboxContext);
