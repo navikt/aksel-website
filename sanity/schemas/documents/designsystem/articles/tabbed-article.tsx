@@ -44,8 +44,8 @@ export default {
               validation: (Rule) =>
                 Rule.required().error("Tabben må ha noe innhold"),
             },
-            documentSearchMetadata,
-            documentFeedbackMetadata,
+            { ...documentSearchMetadata, group: null },
+            { ...documentFeedbackMetadata, group: null },
           ],
         },
       ],
