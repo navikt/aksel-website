@@ -1,30 +1,29 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { SandboxComponent } from "./types";
 
-const ButtonSandbox: SandboxComponent = (props, variant) => {
-  const propVariant = props?.variant ? ` variant="${props.variant}"` : "";
-  const propDisabled = props?.disabled ? ` disabled` : "";
-  const propLoading = props?.loading ? ` loading` : "";
-  const propIkon = props?.Ikon ? `<Star />` : "";
-  const propSize = props?.size ? ` size="${props.size}"` : "";
+const jsxArguments = (props, opts) =>
+  Object.entries(opts)
+    .filter(([key]) => props[key])
+    .map(([_, value]) => value)
+    .join(" ");
 
-  const comp = `<Button${propVariant}${propSize}${propLoading}${propDisabled}>${propIkon}${props.Tekst}</Button>`;
-
-  switch (variant) {
-    case "":
-      return comp;
-    default:
-      return comp;
-  }
-};
+const ButtonSandbox: SandboxComponent = (props) =>
+  `<Button ${jsxArguments(props, {
+    variant: `variant="${props.variant}"`,
+    size: `size="${props.size}"`,
+    disabled: "disabled",
+    loading: "loading",
+  })}>${props.content.includes("icon") ? "<Star />" : ""}${
+    props.content.includes("text") ? "Button" : ""
+  }</Button>`;
 
 ButtonSandbox.args = {
   props: {
-    Tekst: "Button",
-    variant: ["primary", "secondary", "tertiary", "danger"],
-    size: ["medium", "small"],
-    loading: false,
+    variant: ["", "primary", "secondary", "tertiary", "danger"],
+    size: ["", "medium", "small"],
     disabled: false,
-    Ikon: false,
+    loading: false,
+    content: ["text", "icon", "text and icon"],
   },
 };
 
