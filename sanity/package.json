@@ -36,8 +36,8 @@
     "react-dom": "^17.0",
     "sanity-codegen": "^0.9.5",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.13",
-    "styled-components": "^5.3.1",
-    "semver": "^7.3.5"
+    "semver": "^7.3.5",
+    "styled-components": "^5.3.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.0.0",

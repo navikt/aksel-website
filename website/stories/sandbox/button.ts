@@ -1,33 +1,29 @@
 import { SandboxComponent } from "./types";
 
-const ButtonSandbox: SandboxComponent = (props, variant) => {
-  const propVariant = props?.variant ? ` variant="${props.variant}"` : "";
-  const propDisabled = props?.disabled ? ` disabled` : "";
-  const propSize = props?.size ? ` size="${props.size}"` : "";
+const jsxArguments = (props, opts) =>
+  Object.entries(opts)
+    .filter(([key]) => props[key])
+    .map(([key, value]) => value)
+    .join(" ");
 
-  const comp = `<Button${propVariant}${propSize}${propDisabled}>Button</Button>`;
-  const compIcon = `<Button${propVariant}${propSize}${propDisabled}><Star /></Button>`;
-  const compLoader = `<Button${propVariant}${propSize}${propDisabled}><Loader title="Laster inn data"/></Button>`;
-
-  switch (variant) {
-    case "":
-      return comp;
-    case "Ikon":
-      return compIcon;
-    case "Loader":
-      return compLoader;
-    default:
-      return comp;
-  }
-};
+const ButtonSandbox: SandboxComponent = (props) =>
+  `<Button ${jsxArguments(props, {
+    variant: `variant="${props.variant}"`,
+    size: `size="${props.size}"`,
+    disabled: "disabled",
+    loading: "loading",
+  })}>${props.content.includes("icon") ? "<Star />" : ""}${
+    props.content.includes("text") ? "Button" : ""
+  }</Button>`;
 
 ButtonSandbox.args = {
   props: {
     variant: ["", "primary", "secondary", "tertiary", "danger"],
     size: ["", "medium", "small"],
     disabled: false,
+    loading: false,
+    content: ["text", "icon", "text and icon"],
   },
-  variants: ["", "Ikon", "Loader"],
 };
 
 export default ButtonSandbox;
