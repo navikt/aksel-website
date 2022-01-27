@@ -30,7 +30,7 @@ import {
   ParsedArgsT,
   StateT,
 } from "./generateState";
-import { PreviewWrapper } from "./StyleWrappers";
+import PreviewWrapper from "./PreviewWrapper";
 
 const ScRelativeDiv = styled.div`
   position: relative;

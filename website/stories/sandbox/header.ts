@@ -86,7 +86,7 @@ const HeaderSandbox: SandboxComponent = (props) => {
 </Dropdown>`
     : "";
 
-  return `<Header className="sandbox-header">
+  return `<Header className="w-full">
     <Header.Title ${props.title === "H-tag" ? `as="h1"` : `href="#"`}>${
     props.title === "H-tag" ? "Sykepenger" : "Hjem"
   }</Header.Title>

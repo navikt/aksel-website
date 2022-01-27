@@ -73,7 +73,6 @@ const CodeTabs = (): JSX.Element => {
     activeTab,
     setActiveTab,
     fullscreenLink,
-    previewBg,
     setPreviewBg,
   } = useContext(CodeContext);
 
@@ -118,10 +117,7 @@ const CodeTabs = (): JSX.Element => {
             <CopyButton content={tabs[activeTab].content.toString()} inTabs />
           )}
           {showPreview && activeTab === -1 && (
-            <ColorPicker
-              defaultColor={previewBg}
-              onChange={(c) => setPreviewBg(c)}
-            />
+            <ColorPicker onChange={(c) => setPreviewBg(c)} />
           )}
           {showPreview && fullscreenLink && activeTab === -1 && (
             <ScLinkButton target="_blank" href={fullscreenLink}>

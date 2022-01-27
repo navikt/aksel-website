@@ -5,7 +5,7 @@ import SettingsPanel from "./PropsPanel";
 import { SandboxContext } from "./Sandbox";
 import cl from "classnames";
 
-export const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
+const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
   const { sandboxState, setSandboxState, bg, setBg } =
     useContext(SandboxContext);
 
@@ -27,11 +27,10 @@ export const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
       <div className="sandbox-preview relative gap-4 p-4 lg:p-8 inline-flex items-center justify-center flex-wrap w-full overflow-x-auto">
         {children}
         <ColorPicker
-          defaultColor={bg}
           onChange={(c) => setBg(c)}
           className={cl(
-            "absolute top-0 p-3 text-xlarge focus:shadow-focus-inset focus:outline-none hover:bg-none",
-            { "right-0": !showSettings, "right-12": showSettings }
+            "absolute top-1 p-3 text-xlarge focus:shadow-focus-inset focus:outline-none hover:bg-none",
+            { "right-1": !showSettings, "right-12": showSettings }
           )}
           style={{
             color: `var(${bg})`,
@@ -41,7 +40,7 @@ export const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
         />
         {showSettings && (
           <button
-            className="absolute top-0 right-0 p-3 text-xlarge focus:shadow-focus-inset focus:outline-none"
+            className="absolute top-1 right-1 p-3 text-xlarge focus:shadow-focus-inset focus:outline-none"
             style={{
               color: `var(${bg})`,
               display: sandboxState.openSettings ? "none" : "inherit",
@@ -63,12 +62,4 @@ export const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export const EditorWrapper = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div className="mt-2 rounded relative">
-      <pre className="sandbox-editor font-code p-4 pr-20 overflow-x-auto rounded max-h-[400px] overflow-y-auto relative bg-canvas-background-inverted m-0">
-        {children}
-      </pre>
-    </div>
-  );
-};
+export default PreviewWrapper;
