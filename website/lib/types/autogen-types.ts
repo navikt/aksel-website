@@ -1475,6 +1475,12 @@ export type ComponentOverview = {
 export type PropTable = {
   _type: "prop_table";
   /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+  /**
    * children-prop required av type React.ReactNode — `boolean`
    *
    *

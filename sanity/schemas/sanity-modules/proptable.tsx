@@ -4,6 +4,12 @@ export default {
   type: "object",
   fields: [
     {
+      title: "Komponent navn",
+      name: "title",
+      type: "string",
+      validation: (Rule) => Rule.required().error("Proptable må ha et tittel"),
+    },
+    {
       title: "children-prop required av type React.ReactNode",
       name: "preset_children",
       type: "boolean",

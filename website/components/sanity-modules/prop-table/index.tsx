@@ -1,4 +1,4 @@
-import { BodyLong, Link, Tag } from "@navikt/ds-react";
+import { BodyLong, Heading, Link, Tag } from "@navikt/ds-react";
 import React from "react";
 import styled from "styled-components";
 import {
@@ -54,55 +54,69 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
   );
 
   return (
-    <S.PropTable>
-      <BodyLong as="ul">
-        {node.overridable && (
-          <li>
-            Komponenten er implementert med{" "}
-            <NextLink href="/designsystem/side/overridablecomponent" passHref>
-              <Link>OverridableComponent</Link>
-            </NextLink>
-          </li>
-        )}
-        {node.refplacement && (
-          <li>
-            <InlineCode>ref</InlineCode> er plassert på {node.refplacement}
-          </li>
-        )}
-        {node.extends && (
-          <li>
-            Props extender <InlineCode>{node.extends}</InlineCode>
-          </li>
-        )}
-      </BodyLong>
-
-      {node.preset_children && (
-        <Table
-          prop={{
-            _type: "prop_table_prop",
-            name: "children",
-            type: "React.ReactNode",
-            required: true,
-          }}
-        />
-      )}
-      {node.preset_classname && (
-        <Table
-          prop={{
-            _type: "prop_table_prop",
-            name: "className",
-            type: "string",
-            required: false,
-            description:
-              "Legger til egne klassenavn på elementet Props ekstender",
-          }}
-        />
+    <details>
+      {node.title ? (
+        <Heading
+          size="small"
+          as="summary"
+          className="p-2 mb-2 focus:shadow-focus focus:outline-none hover:bg-interaction-primary-hover-subtle cursor-pointer"
+        >
+          {node.title}
+        </Heading>
+      ) : (
+        <summary>Props</summary>
       )}
 
-      {node?.props?.map((prop: PropTablePropT) => (
-        <Table key={prop.name} prop={prop} />
-      ))}
-    </S.PropTable>
+      <S.PropTable>
+        <BodyLong as="ul">
+          {node.overridable && (
+            <li>
+              Komponenten er implementert med{" "}
+              <NextLink href="/designsystem/side/overridablecomponent" passHref>
+                <Link>OverridableComponent</Link>
+              </NextLink>
+            </li>
+          )}
+          {node.refplacement && (
+            <li>
+              <InlineCode>ref</InlineCode> er plassert på {node.refplacement}
+            </li>
+          )}
+          {node.extends && (
+            <li>
+              Props extender <InlineCode>{node.extends}</InlineCode>
+            </li>
+          )}
+        </BodyLong>
+
+        {node.preset_children && (
+          <Table
+            prop={{
+              _type: "prop_table_prop",
+              name: "children",
+              type: "React.ReactNode",
+              required: true,
+            }}
+          />
+        )}
+        {node.preset_classname && (
+          <Table
+            prop={{
+              _type: "prop_table_prop",
+              name: "className",
+              type: "string",
+              required: false,
+              description:
+                "Legger til egne klassenavn på elementet Props ekstender",
+            }}
+          />
+        )}
+
+        {node?.props?.map((prop: PropTablePropT) => (
+          <Table key={prop.name} prop={prop} />
+        ))}
+      </S.PropTable>
+    </details>
   );
 };
 
