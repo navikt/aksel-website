@@ -1,8 +1,8 @@
 import { Label, Popover } from "@navikt/ds-react";
 import { useRef, useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { CanvasIcon } from "../..";
-import { ScTabButton } from "./Tabs";
+import cl from "classnames";
 
 const ScContent = styled.div`
   display: flex;
@@ -54,6 +54,25 @@ const ScDot = styled.div<{ $color: string }>`
   }
 `;
 
+const ScTabCss = css`
+  background-color: transparent;
+  border: none;
+  color: var(--navds-semantic-color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ScTabButton = styled.button`
+  ${ScTabCss}
+
+  :hover,
+  :hover:focus {
+    cursor: pointer;
+    color: var(--navds-semantic-color-text);
+  }
+`;
+
 const ColorLabel = ({
   color,
   onClick,
@@ -83,9 +102,15 @@ const ColorLabel = ({
 const ColorPicker = ({
   onChange,
   defaultColor,
+  className,
+  sandbox,
+  ...rest
 }: {
   onChange: (c: string) => void;
   defaultColor?: string;
+  className?: string;
+  sandbox?: boolean;
+  style?: any;
 }) => {
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
@@ -101,11 +126,19 @@ const ColorPicker = ({
 
   return (
     <>
-      <ScTabButton ref={anchorRef} onClick={() => setOpen(!open)}>
+      <ScTabButton
+        ref={anchorRef}
+        onClick={() => setOpen(!open)}
+        className={cl(className, {
+          "hover:bg-interaction-primary-hover-subtle min-w-[50px]": !sandbox,
+        })}
+        {...rest}
+      >
         <span className="navds-sr-only">
           {open ? "Lukk fargevelger" : "Åpne fargevelger"}
         </span>
         <CanvasIcon
+          className={cl({ invert: sandbox })}
           aria-hidden
           aria-label={open ? "Lukk fargevelger" : "Åpne fargevelger"}
         />

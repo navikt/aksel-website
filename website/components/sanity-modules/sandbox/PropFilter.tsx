@@ -39,7 +39,7 @@ const PropFilter = () => {
         </Fieldset>
       )}
       {args.variants && (
-        <Fieldset legend="Forskjellige oppsett" size="small">
+        <Fieldset legend="Forskjellige oppsett" size="small" className="mt-6">
           <SelectComp type="variant" arg={args.variants} name="Variants" />
         </Fieldset>
       )}

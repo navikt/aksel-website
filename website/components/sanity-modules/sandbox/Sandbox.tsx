@@ -24,16 +24,13 @@ import getSandbox from "../../../stories/sandbox";
 import { SandboxComponent } from "../../../stories/sandbox/types";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import CopyButton from "../code/CopyButton";
-import Fullscreen from "./FullScreen";
 import {
   generateState,
   getInitialState,
   ParsedArgsT,
   StateT,
 } from "./generateState";
-import SettingsPanel from "./PropsPanel";
 import { EditorWrapper, PreviewWrapper } from "./StyleWrappers";
-import Tabs from "./Tabs";
 
 const ScRelativeDiv = styled.div`
   position: relative;
@@ -85,7 +82,6 @@ interface SandboxStateT {
   args: ParsedArgsT;
   propsState: StateT;
   openSettings: boolean;
-  fullscreen: boolean;
   inlineSettings: boolean;
 }
 
@@ -102,7 +98,6 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
     args: null,
     propsState: null,
     openSettings: false,
-    fullscreen: false,
     inlineSettings: true,
   });
 
@@ -162,35 +157,36 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   const Editor = (
     <LiveProvider code={code} scope={scope} noInline={!code?.startsWith("<")}>
       <ScRelativeDiv>
-        <Tabs />
         <PreviewWrapper>
           <LivePreview />
           <LiveError />
-          <SettingsPanel />
         </PreviewWrapper>
         <div ref={preFocusCapture} tabIndex={-1} />
-        <EditorWrapper>
-          {reseting ? (
-            <LiveEditor
-              style={{
-                overflowX: "auto",
-                whiteSpace: "pre",
-                backgroundColor: "transparent",
-              }}
-              key="old-editor"
-              theme={theme}
-            />
-          ) : (
-            <LiveEditor
-              key="new-editor"
-              onChange={(v) => setCode(v)}
-              theme={theme}
-              style={{ backgroundColor: "transparent" }}
-              onKeyDown={handleKeyDown}
-            />
-          )}
-          <CopyButton ref={focusCapture} content={code} inTabs={false} />
-        </EditorWrapper>
+
+        <div className="mt-2 rounded relative">
+          <pre className="sandbox-editor font-code p-4 pr-20 overflow-x-auto rounded max-h-[400px] overflow-y-auto relative bg-canvas-background-inverted m-0">
+            {reseting ? (
+              <LiveEditor
+                style={{
+                  overflowX: "auto",
+                  whiteSpace: "pre",
+                  backgroundColor: "transparent",
+                }}
+                key="old-editor"
+                theme={theme}
+              />
+            ) : (
+              <LiveEditor
+                key="new-editor"
+                onChange={(v) => setCode(v)}
+                theme={theme}
+                style={{ backgroundColor: "transparent" }}
+                onKeyDown={handleKeyDown}
+              />
+            )}
+            <CopyButton ref={focusCapture} content={code} inTabs={false} />
+          </pre>
+        </div>
       </ScRelativeDiv>
     </LiveProvider>
   );
@@ -207,7 +203,7 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
             reset,
           }}
         >
-          {sandboxState.fullscreen ? <Fullscreen>{Editor}</Fullscreen> : Editor}
+          {Editor}
         </SandboxContext.Provider>
       ) : null}
     </>

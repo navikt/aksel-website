@@ -1,65 +1,40 @@
 import React, { useCallback, useContext, useEffect, useRef } from "react";
 import { useKey } from "react-use";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { SandboxContext } from "./Sandbox";
 import PropFilter from "./PropFilter";
-import { Link } from "@navikt/ds-react";
-import { Refresh } from "@navikt/ds-icons";
-
-export const ScTabCss = css`
-  background-color: transparent;
-  border: none;
-  color: var(--navds-semantic-color-text-muted);
-  padding: 0.75rem 0.75rem;
-  display: flex;
-  align-items: center;
-  min-width: 50px;
-  justify-content: center;
-
-  :hover {
-    background-color: var(
-      --navds-semantic-color-interaction-primary-hover-subtle
-    );
-  }
-
-  :focus {
-    outline: 2px solid var(--navds-semantic-color-focus);
-    outline-offset: -2px;
-  }
-`;
+import { Heading, Link } from "@navikt/ds-react";
+import { Close, Refresh } from "@navikt/ds-icons";
+import cl from "classnames";
 
 const ScSettingsPanel = styled.div<{ open: boolean; inlinePanel: boolean }>`
-  height: 100%;
   width: 220px;
-  max-width: 100%;
-
+  min-width: 220px;
   background-color: var(--navds-semantic-color-canvas-background-light);
   padding: var(--navds-spacing-4);
   overflow-y: auto;
-  display: flex;
-  gap: 2rem;
+  gap: 1rem;
   flex-direction: column;
-  visibility: hidden;
+  display: none;
   border: 1px solid var(--navds-global-color-gray-200);
-  position: absolute;
   right: 0;
   top: 0;
 
   ${(props) =>
     props.open &&
     `border: none;
-     border-left: 1px solid var(--navds-global-color-gray-200);`}
+     border-left: 1px solid var(--navds-global-color-gray-200);
+     display: flex;
+     position: absolute;
+     `}
   ${(props) =>
-    props.inlinePanel
-      ? `
-     visibility: visible;
+    props.inlinePanel &&
+    `
+     display: flex;
      border: none;
      border-left: 1px solid var(--navds-global-color-gray-200);
-  `
-      : props.open &&
-        `
-      visibility: visible;
-      `}
+     position: relative;
+  `}
 
   :focus {
     outline: none;
@@ -91,8 +66,7 @@ const SettingsPanel = () => {
   const checkParentWidth = useCallback(() => {
     if (!panelRef.current) return;
     const inlineSettings =
-      panelRef.current.parentElement.getBoundingClientRect().width >
-      (sandboxState.inlineSettings ? 600 - 250 : 600);
+      panelRef.current.parentElement.getBoundingClientRect().width > 600;
 
     inlineSettings !== sandboxState.inlineSettings &&
       setSandboxState({
@@ -109,15 +83,43 @@ const SettingsPanel = () => {
     };
   }, [checkParentWidth]);
 
+  const hideProps =
+    !sandboxState.args ||
+    ((!sandboxState.args.props ||
+      Object.keys(sandboxState.args.props).length === 0) &&
+      !sandboxState.args.variants);
+
   return (
     <ScSettingsPanel
       ref={panelRef}
       inlinePanel={sandboxState.inlineSettings && !!sandboxState.args}
       open={sandboxState.openSettings}
       tabIndex={-1}
+      className={cl({ "h-full": !sandboxState.inlineSettings })}
     >
+      <Heading as="div" size="xsmall">
+        Props
+      </Heading>
+      {!hideProps && !sandboxState.inlineSettings && (
+        <button
+          className="absolute top-0 right-0 p-4 text-xlarge focus:shadow-focus-inset focus:outline-none hover:bg-interaction-primary-hover-subtle"
+          onClick={() =>
+            setSandboxState({
+              ...sandboxState,
+              openSettings: !sandboxState.openSettings,
+            })
+          }
+        >
+          <span className="sr-only">Lukk props-panel</span>
+          <Close aria-hidden />
+        </button>
+      )}
       <PropFilter />
-      <Link as="button" onClick={reset} className="inline-flex mx-auto gap-2">
+      <Link
+        as="button"
+        onClick={reset}
+        className="inline-flex mx-auto gap-2 mt-auto"
+      >
         Reset
         <Refresh aria-hidden aria-label="reset sandkasse visning" />
       </Link>

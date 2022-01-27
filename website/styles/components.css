@@ -25,6 +25,16 @@
   .card > * {
     @apply no-underline;
   }
+
+  .sandbox-editor > div {
+    @apply overflow-x-auto text-text-inverted max-w-full;
+    font-family: var(--font-family-code) !important;
+  }
+
+  .sandbox-editor textarea:focus-visible {
+    outline-color: 1px solid
+      var(--navds-semantic-color-component-background-inverted);
+  }
 }
 
 @layer utilities {

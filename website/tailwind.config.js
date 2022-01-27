@@ -16,6 +16,9 @@ module.exports = {
         xl: "1024px",
         "2xl": "1440px",
       },
+      boxShadow: {
+        "focus-inset": "inset var(--navds-shadow-focus)",
+      },
       minHeight: {
         header: "calc(100vh - var(--header-height))",
       },
@@ -27,6 +30,9 @@ module.exports = {
       },
       animation: {
         fadeInBottom: "fadeInBottom 0.30s ease-in-out forwards",
+      },
+      fontFamily: {
+        code: ["Source Code Pro"],
       },
     },
   },
