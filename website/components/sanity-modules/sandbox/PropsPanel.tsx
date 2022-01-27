@@ -1,11 +1,11 @@
+import { Close, Refresh } from "@navikt/ds-icons";
+import { Button, Heading } from "@navikt/ds-react";
+import cl from "classnames";
 import React, { useCallback, useContext, useEffect, useRef } from "react";
 import { useKey } from "react-use";
 import styled from "styled-components";
-import { SandboxContext } from "./Sandbox";
 import PropFilter from "./PropFilter";
-import { Heading, Link } from "@navikt/ds-react";
-import { Close, Refresh } from "@navikt/ds-icons";
-import cl from "classnames";
+import { SandboxContext } from "./Sandbox";
 
 const ScSettingsPanel = styled.div<{ open: boolean; inlinePanel: boolean }>`
   width: 220px;
@@ -19,6 +19,7 @@ const ScSettingsPanel = styled.div<{ open: boolean; inlinePanel: boolean }>`
   border: 1px solid var(--navds-global-color-gray-200);
   right: 0;
   top: 0;
+  border-bottom-right-radius: 0.25rem;
 
   ${(props) =>
     props.open &&
@@ -115,14 +116,15 @@ const SettingsPanel = () => {
         </button>
       )}
       <PropFilter />
-      <Link
-        as="button"
+      <Button
+        variant="tertiary"
         onClick={reset}
-        className="inline-flex mx-auto gap-2 mt-auto"
+        size="small"
+        className="w-fit mx-auto"
       >
         Reset
         <Refresh aria-hidden aria-label="reset sandkasse visning" />
-      </Link>
+      </Button>
     </ScSettingsPanel>
   );
 };

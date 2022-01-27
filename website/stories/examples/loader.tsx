@@ -64,13 +64,12 @@ LoaderTransparent.react = `<Loader size="2xlarge" transparent />`;
 
 export const LoaderMedButton: ExampleComponent = () => (
   <div className="flex w-24">
-    <Button className="flex-1">
-      <Loader title="Laster inn nytt innhold..." />
+    <Button className="flex-1" loading aria-label="last inn innhold">
+      Send inn søknad
     </Button>
   </div>
 );
 
-LoaderMedButton.react = `<Button>
-Laster inn nytt innhold...
-<Loader title="Laster inn nytt innhold..." />
+LoaderMedButton.react = `<Button className="flex-1" loading aria-label="last inn innhold">
+Send inn søknad
 </Button>`;

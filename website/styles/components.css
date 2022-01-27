@@ -35,6 +35,14 @@
     outline-color: 1px solid
       var(--navds-semantic-color-component-background-inverted);
   }
+
+  .sandbox-preview > div:first-child {
+    @apply w-full gap-4 inline-flex items-center justify-center flex-wrap;
+  }
+
+  .sandbox-preview > pre {
+    @apply max-w-full font-code whitespace-pre-wrap;
+  }
 }
 
 @layer utilities {

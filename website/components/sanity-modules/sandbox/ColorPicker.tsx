@@ -1,18 +1,8 @@
-import { Label, Popover } from "@navikt/ds-react";
-import { useRef, useState } from "react";
-import styled, { css } from "styled-components";
-import { CanvasIcon } from "../..";
+import { Popover } from "@navikt/ds-react";
 import cl from "classnames";
-
-const ScContent = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const ScLabel = styled(Label)`
-  padding: 0.5rem 1rem;
-  border-bottom: 1px solid var(--navds-semantic-color-border-muted);
-`;
+import { useRef, useState } from "react";
+import styled from "styled-components";
+import { CanvasIcon } from "../..";
 
 const ScColorLabel = styled.button<{ $active: boolean }>`
   position: relative;
@@ -36,43 +26,6 @@ const ScColorLabel = styled.button<{ $active: boolean }>`
   `}
 `;
 
-const ScDot = styled.div<{ $color: string }>`
-  width: 2rem;
-  height: 2rem;
-  position: relative;
-
-  ::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    background-color: ${(props) => `var(${props.$color})`};
-    border: 1px solid var(--navds-semantic-color-border-muted);
-  }
-`;
-
-const ScTabCss = css`
-  background-color: transparent;
-  border: none;
-  color: var(--navds-semantic-color-text-muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const ScTabButton = styled.button`
-  ${ScTabCss}
-
-  :hover,
-  :hover:focus {
-    cursor: pointer;
-    color: var(--navds-semantic-color-text);
-  }
-`;
-
 const ColorLabel = ({
   color,
   onClick,
@@ -91,10 +44,13 @@ const ColorLabel = ({
     .replaceAll("-", " ");
   return (
     <ScColorLabel
+      style={{ background: `var(${color})` }}
       $active={activeColor === color}
       onClick={() => onClick(color)}
     >
-      {newColor} <ScDot $color={color} />
+      <span className="invert" style={{ color: `var(${color})` }}>
+        {newColor}
+      </span>
     </ScColorLabel>
   );
 };
@@ -121,17 +77,21 @@ const ColorPicker = ({
   const handleClick = (c: string) => {
     setSelectedColor(c);
     setOpen(false);
-    onChange && onChange(c);
+    onChange?.(c);
   };
 
   return (
     <>
-      <ScTabButton
+      <button
         ref={anchorRef}
         onClick={() => setOpen(!open)}
-        className={cl(className, {
-          "hover:bg-interaction-primary-hover-subtle min-w-[50px]": !sandbox,
-        })}
+        className={cl(
+          className,
+          "bg-transparent border-none text-text-muted flex items-center justify-center hover:text-text",
+          {
+            "hover:bg-interaction-primary-hover-subtle min-w-[50px]": !sandbox,
+          }
+        )}
         {...rest}
       >
         <span className="navds-sr-only">
@@ -142,15 +102,15 @@ const ColorPicker = ({
           aria-hidden
           aria-label={open ? "Lukk fargevelger" : "Åpne fargevelger"}
         />
-      </ScTabButton>
+      </button>
       <Popover
         open={open}
         anchorEl={anchorRef.current}
         onClose={() => setOpen(false)}
-        placement="bottom"
+        placement="bottom-start"
+        arrow={false}
       >
-        <ScLabel forwardedAs="div">Bakgrunnsfarge (token)</ScLabel>
-        <ScContent>
+        <div className="flex flex-col">
           <ColorLabel
             activeColor={selectedColor}
             onClick={handleClick}
@@ -161,12 +121,7 @@ const ColorPicker = ({
             onClick={handleClick}
             color={"--navds-semantic-color-canvas-background-light"}
           />
-          <ColorLabel
-            activeColor={selectedColor}
-            onClick={handleClick}
-            color={"--navds-semantic-color-canvas-background-inverted"}
-          />
-        </ScContent>
+        </div>
       </Popover>
     </>
   );

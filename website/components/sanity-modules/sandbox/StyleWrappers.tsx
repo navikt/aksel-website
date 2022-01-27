@@ -1,61 +1,13 @@
 import { Settings } from "@navikt/ds-icons";
 import React, { useContext } from "react";
-import styled from "styled-components";
 import ColorPicker from "./ColorPicker";
 import SettingsPanel from "./PropsPanel";
 import { SandboxContext } from "./Sandbox";
 import cl from "classnames";
 
-const ScDiv = styled.div<{
-  inlineProps: boolean;
-  background?: string;
-}>`
-  display: flex;
-  width: 100%;
-  background-color: ${(props) =>
-    props.background.startsWith("--")
-      ? `var(${props.background})`
-      : `${props.background}`};
-  border: 1px solid var(--navds-global-color-gray-200);
-  position: relative;
-  min-height: 400px;
-  height: 100%;
-`;
-
-const ScInnerDiv = styled.div`
-  gap: 1rem;
-  padding: 2rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-  overflow-x: auto;
-
-  @media (max-width: 768px) {
-    padding: 1rem;
-  }
-
-  > div:first-child {
-    width: 100%;
-    gap: 1rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  > pre {
-    max-width: 100%;
-    font-family: var(--font-family-code);
-    white-space: break-spaces;
-  }
-`;
-
 export const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
   const { sandboxState, setSandboxState, bg, setBg } =
     useContext(SandboxContext);
-  const inlineProps = sandboxState.inlineSettings && !!sandboxState.args;
 
   const hideProps =
     !sandboxState.args ||
@@ -65,9 +17,14 @@ export const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
 
   const showSettings = !hideProps && !sandboxState.inlineSettings;
 
+  const background = bg.startsWith("--") ? `var(${bg})` : `${bg}`;
+
   return (
-    <ScDiv inlineProps={inlineProps} background={bg}>
-      <ScInnerDiv className="relative">
+    <div
+      className="flex w-full border-gray-200 border border-solid relative min-h-[400px] h-full rounded"
+      style={{ backgroundColor: background }}
+    >
+      <div className="sandbox-preview relative gap-4 p-4 lg:p-8 inline-flex items-center justify-center flex-wrap w-full overflow-x-auto">
         {children}
         <ColorPicker
           defaultColor={bg}
@@ -100,9 +57,9 @@ export const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
             <Settings aria-hidden className="invert" />
           </button>
         )}
-      </ScInnerDiv>
+      </div>
       <SettingsPanel />
-    </ScDiv>
+    </div>
   );
 };
 

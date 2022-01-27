@@ -1,5 +1,5 @@
 import { Star } from "@navikt/ds-icons";
-import { Button, Loader } from "@navikt/ds-react";
+import { Button } from "@navikt/ds-react";
 import React from "react";
 import { ExampleComponent } from "../../lib";
 
@@ -137,18 +137,28 @@ Button
 
 export const ButtonWithLoader: ExampleComponent = () => (
   <div className="stories-sandbox-grow">
-    <Button variant="primary" aria-label="laster innhold...">
-      <Loader title="laster inn data.." />
+    <Button variant="primary" aria-label="laster innhold..." loading>
+      Send inn søknad
     </Button>
-    <Button variant="primary" size="small" aria-label="laster innhold...">
-      <Loader title="laster inn data.." />
+    <Button
+      variant="primary"
+      size="small"
+      aria-label="laster innhold..."
+      loading
+    >
+      Send inn søknad
     </Button>
   </div>
 );
 
-ButtonWithLoader.react = `<Button variant="primary" aria-label="laster innhold...">
-<Loader title="laster inn data.." />
+ButtonWithLoader.react = `<Button variant="primary" aria-label="laster innhold..." loading>
+Send inn søknad
 </Button>
-<Button variant="primary" size="small" aria-label="laster innhold...">
-<Loader title="laster inn data.." />
+<Button
+variant="primary"
+size="small"
+aria-label="laster innhold..."
+loading
+>
+Send inn søknad
 </Button>`;

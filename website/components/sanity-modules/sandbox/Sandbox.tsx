@@ -30,7 +30,7 @@ import {
   ParsedArgsT,
   StateT,
 } from "./generateState";
-import { EditorWrapper, PreviewWrapper } from "./StyleWrappers";
+import { PreviewWrapper } from "./StyleWrappers";
 
 const ScRelativeDiv = styled.div`
   position: relative;
@@ -172,6 +172,7 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
                   whiteSpace: "pre",
                   backgroundColor: "transparent",
                 }}
+                className="overflow-x-auto whitespace-pre bg-transparent"
                 key="old-editor"
                 theme={theme}
               />
