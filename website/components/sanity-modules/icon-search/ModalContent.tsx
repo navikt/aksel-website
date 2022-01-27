@@ -1,13 +1,12 @@
 import * as Icons from "@navikt/ds-icons";
 import meta from "@navikt/ds-icons/meta.json";
-import { BodyShort, Detail, Heading } from "@navikt/ds-react";
+import { BodyShort, Button, Detail, Heading } from "@navikt/ds-react";
 import React, { useEffect, useState } from "react";
 import { renderToString } from "react-dom/server";
 import styled, { css } from "styled-components";
 import { isNew } from ".";
 import { AmplitudeEvents, Snippet, useAmplitude } from "../..";
 import { CodeSnippet } from "../../../lib";
-import { ScButton } from "./DownloadButtons";
 import { downloadPng, downloadSvg } from "./downloads";
 
 const ScModalContent = styled.div`
@@ -154,15 +153,17 @@ import ${icon} from "@navikt/ds-icons/svg/${icon}";`,
             Last ned
           </Heading>
           <ScButtonWrapper>
-            <ScButton
+            <Button
+              variant="tertiary"
               onClick={() => {
                 downloadSvg(icon);
                 logDownload(icon, "svg");
               }}
             >
               <Icons.Download aria-label="last ned" /> SVG
-            </ScButton>
-            <ScButton
+            </Button>
+            <Button
+              variant="tertiary"
               onClick={() => {
                 downloadPng(icon);
                 logDownload(icon, "png");
@@ -170,7 +171,7 @@ import ${icon} from "@navikt/ds-icons/svg/${icon}";`,
             >
               <Icons.Download aria-label="last ned" />
               PNG
-            </ScButton>
+            </Button>
           </ScButtonWrapper>
         </div>
       </ScTopWrapper>

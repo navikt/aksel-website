@@ -1,8 +1,8 @@
 {
-  "name": "verktoykassen",
+  "name": "aksel",
   "version": "1.0.0",
   "private": true,
-  "description": "NAVs verktøykasse. God praksis og Designsystem.",
+  "description": "Aksel, NAVs kokkebok for design og produkt-utvikling.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/navikt/verktoykassen.git"
