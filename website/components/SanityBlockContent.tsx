@@ -125,13 +125,17 @@ const serializers = {
   },
   list: (props: any) => {
     if (props?.type == "number") {
-      return <ol type="1">{props.children}</ol>;
+      return (
+        <ol type="1" className="list-decimal">
+          {props.children}
+        </ol>
+      );
     }
-    return <ul>{props.children}</ul>;
+    return <ul className="list-disc">{props.children}</ul>;
   },
   listItem: (props: any) => {
     return (
-      <li className="max-w-[calc(var(--text-max-width) - 1em)]">
+      <li className="max-w-[calc(var(--text-max-width) - 1em)] ml-5">
         {props.children}
       </li>
     );
