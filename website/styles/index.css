@@ -6,3 +6,5 @@
 @import "./pages.css";
 @import "./components.css";
 @import "./stories.css";
+
+@import "@docsearch/css";
