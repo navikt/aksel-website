@@ -55,7 +55,7 @@ const SettingsPanel = () => {
       ref={panelRef}
       tabIndex={-1}
       className={cl(
-        "w-[220px] min-w-[220px] bg-canvas-background-light p-4 overflow-y-auto gap-4 flex-col focus:outline-none border-l border-gray-200",
+        "w-[220px] min-w-[220px] bg-canvas-background-light rounded-r p-4 overflow-y-auto gap-4 flex-col focus:outline-none border-l border-gray-200",
         {
           "h-full": !sandboxState.inlineSettings,
           "flex relative": sandboxState.inlineSettings && !!sandboxState.args,
