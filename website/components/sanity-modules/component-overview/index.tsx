@@ -212,22 +212,24 @@ const ComponentOverview = ({
 
   return (
     <ScComponentOverview>
-      <Label spacing>Tegnforklaring</Label>
+      <Label spacing className="mt-12">
+        Tegnforklaring
+      </Label>
       <ScUl>
         <li>
-          <FigmaIcon /> v#.# ⏤ Figma-versjon av designsystemet
+          <FigmaIcon /> v#.# - Figma-versjon av designsystemet
         </li>
         <li>
-          <FigmaIconNoSync /> ⏤ Kode ikke i synk med Figma
+          <FigmaIconNoSync /> - Kode ikke i synk med Figma
         </li>
         <li>
-          <BetaTag /> ⏤ Finnes som testversjon i Figma v3.0
+          <BetaTag /> - Finnes som testversjon i Figma v3.0
         </li>
         <li>
-          <ErrorIcon /> ⏤ Ikke tilgjengelig
+          <ErrorIcon /> - Ikke tilgjengelig
         </li>
         <li>
-          <SuccessIcon /> ⏤ Lansert 🎉
+          <SuccessIcon /> - Lansert 🎉
         </li>
       </ScUl>
       <OverflowDetector>
