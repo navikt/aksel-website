@@ -108,7 +108,7 @@ const CodePreview = (): JSX.Element => {
   return (
     <>
       {Comp && (
-        <ScDiv>
+        <ScDiv role="presentation">
           <ScInnerDiv bg={previewBg} ref={setWrapperRef}>
             <Comp />
           </ScInnerDiv>

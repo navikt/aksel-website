@@ -21,6 +21,7 @@ const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div
+      role="presentation"
       className="flex w-full border-gray-200 border border-solid relative min-h-[400px] h-full rounded"
       style={{ backgroundColor: background }}
     >
