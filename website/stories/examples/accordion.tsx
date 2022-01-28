@@ -1,6 +1,7 @@
 import React from "react";
 import { Accordion } from "@navikt/ds-react";
 import { ExampleComponent } from "../../lib";
+import { BgColors } from "../sandbox/types";
 
 export const AccordionExample: ExampleComponent = () => (
   <div className="stories-sandbox-column">
@@ -26,6 +27,8 @@ export const AccordionExample: ExampleComponent = () => (
     </Accordion>
   </div>
 );
+
+AccordionExample.bg = BgColors.WHITE;
 AccordionExample.html = "";
 AccordionExample.react = `
 <Accordion>
