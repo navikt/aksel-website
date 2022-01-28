@@ -53,11 +53,13 @@ const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
           En samling ressurser fra ulike fagdisipliner som hjelper oss å skape
           bedre, universelt tilgjengelige og sammenhengende produkter i NAV.
         </Ingress>
-        <DocSearch
-          appId="J64I2SIG7K"
-          indexName="aksel_docsearch"
-          apiKey="92d2ac76eba4eba628a34baa11743fc1"
-        />
+        {props.preview && (
+          <DocSearch
+            appId="J64I2SIG7K"
+            indexName="aksel_docsearch"
+            apiKey="92d2ac76eba4eba628a34baa11743fc1"
+          />
+        )}
       </div>
       <nav className="mt-16 mb-0 mx-auto" aria-label="Portal navigasjon">
         <div className="card-grid-flow gap-6 p-0 list-none">
