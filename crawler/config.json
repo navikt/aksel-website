@@ -1,0 +1,13 @@
+{
+  "index_name": "aksel_docsearch",
+  "start_urls": ["https://design.nav.no/"],
+  "selectors": {
+    "lvl0": { "selector": "h1", "global": true },
+    "lvl1": "h2",
+    "lvl2": "h3",
+    "text": "p,main ol,main ul"
+  },
+  "selectors_exclude": [".sandbox-preview"],
+  "sitemap_urls": ["https://design.nav.no/sitemap.xml"],
+  "js_render": true
+}
