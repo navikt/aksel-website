@@ -32,7 +32,7 @@ ButtonPrimary.react = `<Button variant="primary">Primary button</Button>
   Primary button
 </Button>`;
 
-export const ButtonSecondary: ExampleComponent = () => (
+const ButtonSecondary: ExampleComponent = () => (
   <>
     <Button variant="secondary">Secondary button</Button>
     <Button variant="secondary" size="small">
