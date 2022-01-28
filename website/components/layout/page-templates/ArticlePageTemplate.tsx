@@ -70,6 +70,7 @@ const ActiclePageTemplate = ({
             }
             level="1"
             spacing
+            className="index-lvl1"
           >
             {data.heading}
           </Heading>

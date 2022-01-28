@@ -30,7 +30,7 @@ function DesignsystemSidebar(): JSX.Element {
   if (!context?.activeHeading) return null;
 
   return (
-    <Wrapper>
+    <Wrapper className="index-ignore">
       <Menu heading={context.activeHeading} />
     </Wrapper>
   );

@@ -63,6 +63,7 @@ const LevelTwoHeading = ({
           spacing
           level={2}
           size="large"
+          className="index-lvl2"
         >
           {cleanedChildren}
         </S.TitleWithScrollMargin>

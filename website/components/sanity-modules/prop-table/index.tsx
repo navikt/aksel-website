@@ -54,7 +54,7 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
   );
 
   return (
-    <details>
+    <details className="index-ignore">
       {node.title ? (
         <Heading
           size="small"

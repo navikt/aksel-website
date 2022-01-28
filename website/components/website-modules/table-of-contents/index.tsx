@@ -68,7 +68,7 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
   }
 
   return (
-    <S.Wrapper>
+    <S.Wrapper className="index-ignore">
       <Heading size="small" as="p" id="toc-heading">
         Innhold på siden
       </Heading>

@@ -39,7 +39,7 @@ const ScInner = styled.div`
 
 const FooterWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
-    <ScFooter>
+    <ScFooter className="index-ignore">
       <ScrollTop />
       <ScInner>
         <div>

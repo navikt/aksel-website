@@ -280,7 +280,7 @@ const Feedback = ({
   if (!docId || !docType) return null;
 
   return (
-    <ScFeedback isTablet={context.isTablet}>
+    <ScFeedback isTablet={context.isTablet} className="index-ignore">
       <ScWidthWrapper>
         <Heading size="small" level="2">
           Var denne artikkelen til hjelp?

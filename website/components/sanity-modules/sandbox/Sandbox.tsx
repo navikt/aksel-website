@@ -156,7 +156,7 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
 
   const Editor = (
     <LiveProvider code={code} scope={scope} noInline={!code?.startsWith("<")}>
-      <ScRelativeDiv>
+      <ScRelativeDiv className="index-ignore">
         <PreviewWrapper>
           <LivePreview />
           <LiveError />

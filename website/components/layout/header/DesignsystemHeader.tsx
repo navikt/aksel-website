@@ -14,6 +14,7 @@ import { DsNavigationHeadingT } from "../../../lib";
 import * as S from "./header.styles";
 import MobileNavigation from "./MobileNavigation";
 import PortalNavigation from "./PortalNavigation";
+import cl from "classnames";
 
 const DesignsystemHeader = (): JSX.Element => {
   const { pageProps } = useContext(PagePropsContext);
@@ -55,6 +56,11 @@ const DesignsystemHeader = (): JSX.Element => {
                       : false
                   }
                   onClick={(e) => logNavigation(e)}
+                  className={cl("index-heading", {
+                    "index-heading--active": context
+                      ? context?.activeHeading?.title === heading.title
+                      : false,
+                  })}
                 >
                   {heading.title}
                 </S.Link>

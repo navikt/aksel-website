@@ -118,7 +118,7 @@ const Code = ({ node }: { node: DsCodeExampleT }): JSX.Element => {
         setPreviewBg,
       }}
     >
-      <ScDiv>
+      <ScDiv className="index-ignore">
         {showTabs && <CodeTabs />}
         {showPreview && activeTab === -1 && <CodePreview />}
         {(node.tabs || tabs) &&

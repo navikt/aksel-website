@@ -88,18 +88,32 @@ const serializers = {
       switch (style) {
         case "normal":
           if (context.isIngress) {
-            return <Ingress {...textProps} />;
+            return <Ingress {...textProps} className="index-ingress" />;
           }
-          return <BodyLong size={context.size} spacing {...textProps} />;
+          return (
+            <BodyLong
+              size={context.size}
+              spacing
+              {...textProps}
+              className="index-body"
+            />
+          );
 
         case "detail":
-          return <Detail spacing size="small" {...textProps} />;
+          return (
+            <Detail
+              spacing
+              size="small"
+              {...textProps}
+              className="index-detail"
+            />
+          );
         case "h2":
           return <LevelTwoHeading {...textProps} />;
         case "h3":
           return (
             <Heading
-              className="mt-11"
+              className="mt-11 index-lvl3"
               spacing
               level="3"
               size="medium"
@@ -109,7 +123,7 @@ const serializers = {
         case "heading4":
           return (
             <Heading
-              className="mt-9"
+              className="mt-9 index-lvl4"
               spacing
               level="4"
               size="small"
@@ -117,9 +131,20 @@ const serializers = {
             />
           );
         case "ingress":
-          return <Ingress spacing>{children}</Ingress>;
+          return (
+            <Ingress spacing className="index-ingress">
+              {children}
+            </Ingress>
+          );
         default:
-          return <BodyLong size={context.size} spacing {...textProps} />;
+          return (
+            <BodyLong
+              size={context.size}
+              spacing
+              {...textProps}
+              className="index-body"
+            />
+          );
       }
     },
   },

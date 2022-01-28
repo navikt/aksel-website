@@ -83,7 +83,7 @@ const Card = ({ link }: { link: RelatedLinkT }) => {
 
   return (
     <NextLink href={href} passHref>
-      <ScCard onClick={(e) => logNavigation(e)}>
+      <ScCard onClick={(e) => logNavigation(e)} className="index-ignore">
         <Heading size="xsmall" as="div">
           {link.title}
         </Heading>
