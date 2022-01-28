@@ -7,6 +7,7 @@ import { LayoutContext, PagePropsContext } from "../..";
 import { DsNavigationHeadingT } from "../../../lib";
 import Menu from "../menu/DesignsystemMenu";
 import NextLink from "next/link";
+import cl from "classnames";
 
 const ScPopover = styled(Popover)`
   border: none;
@@ -231,6 +232,12 @@ const MobileNavigation = () => {
                           >
                             <ScListItem
                               as="a"
+                              className={cl({
+                                "heading--active": context
+                                  ? context?.activeHeading?.title ===
+                                    heading.title
+                                  : false,
+                              })}
                               $active={
                                 context
                                   ? context?.activeHeading?.title ===
@@ -284,7 +291,9 @@ const MobileNavigation = () => {
                       <Back aria-hidden aria-label="tilbake til hovedmeny" />
                       Tilbake
                     </ScTopButton>
-                    <ScCategory size="small">{heading.title}</ScCategory>
+                    <ScCategory size="small" className="heading--active">
+                      {heading.title}
+                    </ScCategory>
                   </ScTopDiv>
                   <ScMenuScroll className="animate-fadeIn">
                     <Menu

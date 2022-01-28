@@ -1,24 +1,25 @@
 {
   "index_name": "aksel_docsearch",
-  "start_urls": [
-    "https://design.nav.no/",
-    { "url": "https://design.nav.no/designsystem", "tags": ["designsystem"] }
-  ],
+  "start_urls": ["https://design.nav.no/designsystem/side/button"],
   "selectors": {
-    "lvl0": "header index-heading--active",
-    "lvl1": "main .index-tabs.index-tabs--active",
-    "lvl2": "main .index-lvl1",
-    "lvl3": "main .index-lvl2",
-    "lvl4": "main .index-lvl3",
-    "text": "main .index-body, main .index-ingress"
+    "lvl0": {
+      "selector": ".index-heading span",
+      "global": true
+    },
+    "lvl1": {
+      "selector": ".index-tabs--active",
+      "global": true
+    },
+    "lvl2": "h1.index-lvl1",
+    "lvl3": "h2.index-lvl2",
+    "lvl4": "h3.index-lvl3",
+    "text": "p.index-body, p.index-ingress"
   },
   "selectors_exclude": [".index-ignore"],
   "stop_urls": [
     "https://design.nav.no/designsystem/examples",
     "https://design.nav.no/designsystem/sandboxes"
   ],
-  "scrape_start_urls": false,
   "sitemap_urls": ["https://design.nav.no/sitemap.xml"],
-  "js_render": true,
-  "js_wait": 2
+  "js_render": true
 }
