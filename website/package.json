@@ -14,6 +14,7 @@
     "e2e": "yarn generate:testurls && yarn build && yarn start-server-and-test start http://localhost:3000 cypress",
     "e2e:ci": "yarn generate:testurls && yarn build && yarn start-server-and-test start http://localhost:3000 cypress:ci",
     "lint": "yarn eslint components/* pages/* --ext .jsx --ext .tsx --ext .ts",
+    "check:examples": "npx ts-node --project tsconfig.tsnode.json ./lib/update-documents/check-unused-code",
     "update:examples": "npx ts-node --project tsconfig.tsnode.json ./lib/update-documents/update-code-examples",
     "update:sandboxes": "npx ts-node --project tsconfig.tsnode.json ./lib/update-documents/update-code-sandboxes",
     "update:colors": "npx ts-node --project tsconfig.tsnode.json ./lib/update-documents/update-color-examples",
@@ -90,7 +91,8 @@
     "sanity-codegen": "^0.9.5",
     "start-server-and-test": "^1.14.0",
     "tailwindcss": "^3.0.15",
-    "typescript": "^4.4.3"
+    "typescript": "^4.4.3",
+    "lodash.startcase": "4.4.0"
   },
   "prettier": {}
 }
