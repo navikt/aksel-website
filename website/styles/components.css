@@ -62,4 +62,8 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+
+  .navds-body-long.navds-typo--spacing + .list-margin {
+    @apply -mt-6;
+  }
 }

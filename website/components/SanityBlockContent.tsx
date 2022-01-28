@@ -126,12 +126,12 @@ const serializers = {
   list: (props: any) => {
     if (props?.type == "number") {
       return (
-        <ol type="1" className="list-decimal">
+        <ol type="1" className="list-decimal list-margin">
           {props.children}
         </ol>
       );
     }
-    return <ul className="list-disc">{props.children}</ul>;
+    return <ul className="list-disc list-margin">{props.children}</ul>;
   },
   listItem: (props: any) => {
     return (
