@@ -25,7 +25,6 @@ const ScFilter = styled.div`
   gap: 1rem;
   flex-wrap: wrap;
   margin-bottom: 3rem;
-  max-width: 500px;
 
   > * {
     min-width: 200px;
@@ -39,15 +38,6 @@ const ScFilter = styled.div`
     flex: 1 1 10px;
     max-width: 250px;
   }
-`;
-
-const ScLink = styled(Link)<{ open: boolean }>`
-  background: none;
-  border: none;
-  margin: 0;
-  padding: 0;
-  margin-bottom: ${(props) => (props.open ? "1rem" : "2rem")};
-  cursor: pointer;
 `;
 
 const ScDiv = styled.div`
@@ -154,11 +144,11 @@ const Changelog = ({ node }: { node: ChangelogListT }) => {
           <Heading
             size="small"
             as="summary"
-            className="py-2 mb-2 focus:shadow-focus focus:outline-none hover:bg-interaction-primary-hover-subtle cursor-pointer"
+            className="max-w-lg py-2 mb-2 focus:shadow-focus focus:outline-none hover:bg-interaction-primary-hover-subtle cursor-pointer"
           >
             Filter
           </Heading>
-          <ScFilter>
+          <ScFilter className="max-w-lg">
             <Select
               label="Pakke"
               onChange={(e) =>
