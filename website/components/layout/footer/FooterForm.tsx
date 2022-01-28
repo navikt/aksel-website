@@ -103,7 +103,6 @@ const ScTextarea = styled(Textarea)`
   > * textarea {
     background-color: transparent;
     color: var(--navds-semantic-color-text-inverted);
-    border-width: 2px;
     ${ScStateCss};
   }
 `;
