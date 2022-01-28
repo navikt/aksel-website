@@ -96,7 +96,6 @@ const Changelog = ({ node }: { node: ChangelogListT }) => {
   const [pairs, setPairs] = useState<
     { name: string; version: string }[] | null
   >(null);
-  const [open, setOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [selectedVersion, setSelectedVersion] = useState(null);
 
@@ -150,47 +149,52 @@ const Changelog = ({ node }: { node: ChangelogListT }) => {
 
   return (
     <div>
-      <ScLink open={open} onClick={() => setOpen(!open)} forwardedAs="button">
-        Filter{" "}
-        {open ? <Collapse aria-label="Vis" /> : <Expand aria-label="Lukk" />}
-      </ScLink>
-      {pairs && open && (
-        <ScFilter>
-          <Select
-            label="Pakke"
-            onChange={(e) =>
-              setSelectedPackage(e.target.value ? e.target.value : null)
-            }
+      {pairs && (
+        <details>
+          <Heading
+            size="small"
+            as="summary"
+            className="py-2 mb-2 focus:shadow-focus focus:outline-none hover:bg-interaction-primary-hover-subtle cursor-pointer"
           >
-            <option value={""} />
-            {[...new Set(pairs.map((x) => x.name))].map((name: string, i) => (
-              <option key={name + i} value={name}>
-                {name}
-              </option>
-            ))}
-          </Select>
-          <Select
-            label="Versjon >="
-            disabled={!selectedPackage}
-            onChange={(e) =>
-              setSelectedVersion(e.target.value ? e.target.value : null)
-            }
-          >
-            <option value=""></option>
-            {selectedPackage &&
-              [
-                ...new Set(
-                  pairs
-                    .filter((x) => x.name === selectedPackage)
-                    .map((x) => x.version)
-                ),
-              ].map((version: string, i) => (
-                <option key={version + i} value={version}>
-                  {version}
+            Filter
+          </Heading>
+          <ScFilter>
+            <Select
+              label="Pakke"
+              onChange={(e) =>
+                setSelectedPackage(e.target.value ? e.target.value : null)
+              }
+            >
+              <option value={""} />
+              {[...new Set(pairs.map((x) => x.name))].map((name: string, i) => (
+                <option key={name + i} value={name}>
+                  {name}
                 </option>
               ))}
-          </Select>
-        </ScFilter>
+            </Select>
+            <Select
+              label="Versjon >="
+              disabled={!selectedPackage}
+              onChange={(e) =>
+                setSelectedVersion(e.target.value ? e.target.value : null)
+              }
+            >
+              <option value=""></option>
+              {selectedPackage &&
+                [
+                  ...new Set(
+                    pairs
+                      .filter((x) => x.name === selectedPackage)
+                      .map((x) => x.version)
+                  ),
+                ].map((version: string, i) => (
+                  <option key={version + i} value={version}>
+                    {version}
+                  </option>
+                ))}
+            </Select>
+          </ScFilter>
+        </details>
       )}
       {filteredLogs()
         .sort(
