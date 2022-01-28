@@ -1,4 +1,3 @@
-import { Collapse, Expand } from "@navikt/ds-icons";
 import { BodyShort, Heading, Link, Select, Tag } from "@navikt/ds-react";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
