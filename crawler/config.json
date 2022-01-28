@@ -5,13 +5,14 @@
     { "url": "https://design.nav.no/designsystem", "tags": ["designsystem"] }
   ],
   "selectors": {
-    "lvl0": { "selector": "h1", "global": true },
-    "lvl1": "h2",
-    "lvl2": "h3",
-    "text": "p,main ol,main ul"
+    "lvl0": "header .index-heading.index-heading--active",
+    "lvl1": "main .index-lvl1",
+    "lvl2": "main .index-lvl2",
+    "lvl3": "main .index-lvl3",
+    "text": "main .index-body, main .index-ingress"
   },
   "min_indexed_level": 1,
-  "selectors_exclude": [".sandbox-preview"],
+  "selectors_exclude": [".index-ignore"],
   "stop_urls": [
     "https://design.nav.no/designsystem/examples",
     "https://design.nav.no/designsystem/sandboxes"

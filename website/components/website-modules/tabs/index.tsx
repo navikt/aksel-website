@@ -121,7 +121,9 @@ export const Tabs = ({
                     "vk-tab_link border-b-[3px] rounded-none border-b-transparent text-gray-800",
                     "flex flex-1 justify-center items-center py-2 px-4 h-12 overflow-hidden whitespace-nowrap",
                     "hover:text-text hover:border-b-canvas-background-inverted focus:outline-[3px] focus:outline-offset-[-3px] focus:outline focus:outline-focus",
+                    "index-tabs",
                     {
+                      "index-tabs--active": tab.active,
                       "border-b-canvas-background-inverted text-text font-bold":
                         tab.active,
                     }
