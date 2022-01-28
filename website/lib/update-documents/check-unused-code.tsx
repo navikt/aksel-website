@@ -59,6 +59,9 @@ const main = async () => {
     );
     console.groupEnd();
   }
+  if (!(sandboxes.length && examples.length)) {
+    console.log("Alt er ryddet!");
+  }
   console.groupEnd();
 };
 
