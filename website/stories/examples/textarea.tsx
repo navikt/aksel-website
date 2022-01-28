@@ -2,23 +2,6 @@ import React, { useState } from "react";
 import { Textarea } from "@navikt/ds-react";
 import { ExampleComponent } from "../../lib";
 
-export const TextareaExample: ExampleComponent = () => {
-  const [value, setValue] = useState("");
-  return (
-    <Textarea
-      label="Har du noen tilbakemeldinger?"
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-    />
-  );
-};
-
-TextareaExample.react = `<Textarea
-label="Har du noen tilbakemeldinger?"
-value={value}
-onChange={(e) => setValue(e.target.value)}
-/>`;
-
 export const TextareaSmall: ExampleComponent = () => {
   const [value, setValue] = useState("");
   return (
@@ -93,27 +76,6 @@ TextareaMedError.react = `<Textarea
 label="Har du noen tilbakemeldinger?"
 maxLength={40}
 error="Du må minst skrive 20 tegn i tilbakemeldingen."
-value={value}
-onChange={(e) => setValue(e.target.value)}
-/>`;
-
-export const TextareaMedHideLabel: ExampleComponent = () => {
-  const [value, setValue] = useState("");
-  return (
-    <Textarea
-      label="Har du noen tilbakemeldinger?"
-      maxLength={40}
-      hideLabel
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-    />
-  );
-};
-
-TextareaMedHideLabel.react = `<Textarea
-label="Har du noen tilbakemeldinger?"
-maxLength={40}
-hideLabel
 value={value}
 onChange={(e) => setValue(e.target.value)}
 />`;

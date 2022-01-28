@@ -25,32 +25,6 @@ StepIndicatorDefault.react = `<StepIndicator activeStep={state} onStepChange={(x
 
 StepIndicatorDefault.bg = BgColors.WHITE;
 
-export const StepIndicatorResponsive: ExampleComponent = () => {
-  const [state, setState] = useState(1);
-
-  return (
-    <StepIndicator
-      responsive
-      activeStep={state}
-      onStepChange={(x) => setState(x)}
-    >
-      <StepIndicator.Step>Bruker</StepIndicator.Step>
-      <StepIndicator.Step>Signatur</StepIndicator.Step>
-      <StepIndicator.Step>Levering</StepIndicator.Step>
-      <StepIndicator.Step>Oppsummering</StepIndicator.Step>
-    </StepIndicator>
-  );
-};
-
-StepIndicatorResponsive.react = `<StepIndicator responsive activeStep={state} onStepChange={(x) => setState(x)}>
-<StepIndicator.Step>Bruker</StepIndicator.Step>
-<StepIndicator.Step>Signatur</StepIndicator.Step>
-<StepIndicator.Step>Levering</StepIndicator.Step>
-<StepIndicator.Step>Oppsummering</StepIndicator.Step>
-</StepIndicator>`;
-
-StepIndicatorResponsive.bg = BgColors.WHITE;
-
 export const StepIndicatorHideLabels: ExampleComponent = () => {
   const [state, setState] = useState(1);
 
