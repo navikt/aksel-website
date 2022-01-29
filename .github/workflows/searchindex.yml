@@ -13,3 +13,7 @@ jobs:
       APPLICATION_ID: ${{ secrets.ALGOLIA_ID}}
       API_KEY: ${{ secrets.ALGOLIA_ADMIN }}
       CONFIG: $(cat ./crawler/config.json | jq -r tostring)
+    steps:
+      - name: Algolia Docsearch Action
+        id: algolia
+        uses: adapttive/algolia-docsearch-action@1.1.1
