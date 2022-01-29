@@ -1,308 +1,93 @@
-import { Close, Search as SearchIcon } from "@navikt/ds-icons";
-import { Popover, TextField } from "@navikt/ds-react";
-import { Header } from "@navikt/ds-react-internal";
-import algoliasearch from "algoliasearch/lite";
-import React, {
-  createContext,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { useClickAway, useEvent, useKey } from "react-use";
-import styled, { css } from "styled-components";
-import Hits from "./Hits";
+import React from "react";
+import { createPortal } from "react-dom";
+import { DocSearchModal, useDocSearchKeyboardEvents } from "@docsearch/react";
+import { Search as SearchIcon } from "@navikt/ds-icons";
 
-const searchClient = algoliasearch(
-  "J64I2SIG7K",
-  "92d2ac76eba4eba628a34baa11743fc1"
-);
+function Search() {
+  const searchButtonRef = React.useRef(null);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [initialQuery, setInitialQuery] = React.useState(null);
 
-const index = "vk_designsystemet";
+  const onOpen = React.useCallback(() => {
+    setIsOpen(true);
+  }, [setIsOpen]);
 
-const getCategories = (hits: any[]) => {
-  const categories = {};
-  const order = ["bruk", "design", "utvikling", "tilgjengelighet"];
+  const onClose = React.useCallback(() => {
+    setIsOpen(false);
+  }, [setIsOpen]);
 
-  /* Guess it works?
-   * design -> Buttona
-   * tilgjengelighet -> Buttonaaa
-   */
-  const sorted = hits.sort((a, b) =>
-    `${a.title}${"a".repeat(order.indexOf(a.page) + 1 ?? 1)}`.localeCompare(
-      `${b.title}${"a".repeat(order.indexOf(b.page) + 1 ?? 1)}`
-    )
+  const onInput = React.useCallback(
+    (event) => {
+      setIsOpen(true);
+      setInitialQuery(event.key);
+    },
+    [setIsOpen, setInitialQuery]
   );
 
-  sorted.forEach((hit) => {
-    categories[hit.category] = Object.prototype.hasOwnProperty.call(
-      categories,
-      hit.category
-    )
-      ? [...categories[hit.category], hit]
-          .sort((a, b) => a.title.localeCompare(b.title))
-          .sort((a, b) => b.high_priority - a.high_priority)
-      : [hit];
+  useDocSearchKeyboardEvents({
+    isOpen,
+    onOpen,
+    onClose,
+    onInput,
+    searchButtonRef,
   });
-
-  return categories;
-};
-
-const ScSearch = styled.div<{ $open?: boolean }>`
-  display: flex;
-  margin-left: auto;
-  align-items: center;
-  ${({ $open }) => $open && `width: 100%;`}
-  z-index: 1050;
-`;
-
-const ScButtonCss = css`
-  display: flex;
-  border: none;
-  flex-shrink: 0;
-  width: var(--header-height);
-  height: var(--header-height);
-  justify-content: center;
-  align-items: center;
-`;
-
-const ScSearchButton = styled(Header.Button)`
-  ${ScButtonCss}
-
-  :focus {
-    box-shadow: inset 0 0 0 1px
-        var(--navds-semantic-color-component-background-inverted),
-      inset 0 0 0 3px var(--navds-global-color-blue-200);
-  }
-`;
-
-const ScCloseButton = styled.button`
-  ${ScButtonCss}
-  margin-right: 1rem;
-  width: 48px;
-  height: 48px;
-  border-radius: 0 4px 4px 0;
-  background-color: var(--navds-semantic-color-canvas-background);
-  z-index: -1;
-
-  :hover {
-    box-shadow: inset 0 0 0 1px
-        var(--navds-semantic-color-canvas-background-light),
-      inset 0 0 0 3px var(--navds-semantic-color-focus);
-  }
-
-  :focus {
-    outline: none;
-    box-shadow: inset 0 0 0 2px
-        var(--navds-semantic-color-canvas-background-inverted),
-      0 0 0 3px var(--navds-global-color-blue-200);
-    z-index: 1051;
-  }
-`;
-
-const ScSearchIcon = styled.div`
-  ${ScButtonCss}
-  width: 48px;
-  height: 48px;
-  background-color: transparent;
-  left: 7px;
-  position: absolute;
-  z-index: 1011;
-`;
-
-const ScOpenSearchWrapper = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  margin-left: auto;
-  justify-content: flex-end;
-
-  padding-left: 0.5rem;
-  z-index: 1050;
-
-  width: 500px;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`;
-
-const ScTextField = styled(TextField)`
-  width: 100%;
-  z-index: 0;
-
-  > input {
-    border: none;
-    border-radius: 4px 0 0 4px;
-    height: 48px;
-    font-size: 1.25rem;
-    padding: 0 1rem 0 3rem;
-    background-color: var(--navds-semantic-color-canvas-background);
-  }
-
-  > input:hover {
-    border-color: var(--navds-semantic-color-canvas-background-inverted);
-  }
-
-  > input:focus {
-    box-shadow: inset 0 0 0 2px
-        var(--navds-semantic-color-canvas-background-inverted),
-      0 0 0 3px var(--navds-global-color-blue-200);
-    z-index: 1051;
-  }
-`;
-
-const ScPopover = styled(Popover)`
-  border: none;
-  box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.2),
-    0 2px 1px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.14);
-  width: calc(100% - 1rem);
-  background-color: transparent;
-  z-index: 1050;
-`;
-
-const ScOverlay = styled.div`
-  width: 100vw;
-  height: 100%;
-  background-color: var(--navds-semantic-color-canvas-background-inverted);
-  opacity: 0;
-  position: fixed;
-  top: var(--header-height);
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: opacity 200ms ease-in-out;
-  visibility: hidden;
-  z-index: 1010;
-
-  &[data-visible="true"] {
-    opacity: 0.5;
-    visibility: visible;
-  }
-`;
-
-interface SearchContextProps {
-  clicked: () => void;
-}
-
-export const SearchContext = createContext<SearchContextProps>(null);
-
-const Search = ({ isOpen }: { isOpen?: (state: boolean) => void }) => {
-  const searchIndex = useRef(null);
-  const [open, setOpen] = useState(false);
-  const anchor = useRef(null);
-  const searchRef = useRef(null);
-
-  const [query, setQuery] = useState("");
-  const [result, setResult] = useState<{ [key: string]: any[] }>({});
-
-  /* User clicks outside search elements */
-  useClickAway(searchRef, () => open && setOpen(false));
-
-  /* User presses Esc */
-  const handleEsc = () => (query === "" ? setOpen(false) : setQuery(""));
-  useKey("Escape", handleEsc, {}, [query]);
-
-  /* Focus is changed */
-  const onFocusChange = useCallback(() => {
-    !searchRef.current.contains(document.activeElement) && setOpen(false);
-  }, []);
-  useEvent("focusin", onFocusChange);
-
-  useEffect(() => {
-    searchIndex.current = searchClient.initIndex(index);
-  }, []);
-
-  useEffect(() => {
-    if (!query || query === "") {
-      setResult({});
-      return;
-    }
-
-    searchIndex.current &&
-      searchIndex.current
-        .search(query)
-        .then((res) => setResult(getCategories(res.hits)));
-  }, [query]);
-
-  useEffect(() => {
-    if (open) {
-      anchor.current && anchor.current.focus();
-    } else {
-      setResult({});
-      setQuery("");
-    }
-    isOpen && isOpen(open);
-  }, [open]);
 
   return (
     <>
-      <ScSearch role="search" ref={searchRef} $open={open}>
-        {open && (
-          <ScOpenSearchWrapper className="animate-expand lg:animate-expandLg">
-            <ScSearchIcon>
-              <SearchIcon
-                style={{ fontSize: "1.5rem", marginLeft: 3 }}
-                aria-label="Søk ikon"
-                aria-hidden={true}
-                role="img"
-              />
-            </ScSearchIcon>
-            <ScTextField
-              placeholder="Søk"
-              ref={anchor}
-              hideLabel
-              label="Søk"
-              description="Søk etter sider i designsystemet"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              aria-expanded={Object.keys(result).length > 0 || query !== ""}
-              aria-haspopup="menu"
-              autoComplete="off"
-              aria-autocomplete="list"
-              type="text"
-            />
-            <ScCloseButton onClick={() => setOpen(false)}>
-              <Close
-                style={{ fontSize: "1.5rem" }}
-                role="img"
-                aria-label="Lukk søk"
-              />
-              <span className="navds-sr-only">Lukk Søk</span>
-            </ScCloseButton>
-            <ScPopover
-              onClose={() => null}
-              anchorEl={anchor.current}
-              open={Object.keys(result).length > 0 || query !== ""}
-              arrow={false}
-              placement={"bottom-start"}
-              offset={16}
-              className="animate-fadeIn"
-            >
-              <SearchContext.Provider value={{ clicked: () => setOpen(false) }}>
-                <Hits ref={anchor} hits={result} value={query} />
-              </SearchContext.Provider>
-            </ScPopover>
-          </ScOpenSearchWrapper>
+      <button
+        ref={searchButtonRef}
+        onClick={onOpen}
+        className="z-[1050] text-text-inverted w-[var(--header-height)] shrink-0 flex justify-center items-center ml-auto hover:bg-gray-800"
+      >
+        <SearchIcon className="h-6 w-6 ml-[3px]" aria-label="åpne søk" />
+      </button>
+      {isOpen &&
+        createPortal(
+          <DocSearchModal
+            translations={{
+              searchBox: {
+                resetButtonTitle: "Slett søketekst",
+                resetButtonAriaLabel: "Slett søketekst",
+                cancelButtonText: "avbryt",
+                cancelButtonAriaLabel: "avbryt",
+              },
+              startScreen: {
+                recentSearchesTitle: "Nylige",
+                noRecentSearchesText: "Ingen nylige søk",
+                saveRecentSearchButtonTitle: "Lagre søk",
+                removeRecentSearchButtonTitle: "Fjern søket fra historien",
+                favoriteSearchesTitle: "Favoritter",
+                removeFavoriteSearchButtonTitle: "Fjern søket fra favoritter",
+              },
+              errorScreen: {
+                titleText: "Klarer ikke hente resultater..",
+                helpText: "Det kan hende du ikke er koblet til internett.",
+              },
+              footer: {
+                selectText: "Velg",
+                navigateText: "Naviger",
+                closeText: "lukk",
+                searchByText: "Søk fra",
+              },
+              noResultsScreen: {
+                noResultsText: "Ingen resultater for",
+                suggestedQueryText: "Prøv disse søkene",
+                openIssueText: "Tenker du dette søket bør gi et resultat?",
+                openIssueLinkText: "Send oss en melding, så fikser vi!",
+              },
+            }}
+            appId="J64I2SIG7K"
+            indexName="aksel_docsearch"
+            apiKey="92d2ac76eba4eba628a34baa11743fc1"
+            onClose={onClose}
+            initialScrollY={window.scrollY}
+            initialQuery={initialQuery}
+            placeholder="Søk i dokumentasjon"
+          />,
+          document.body
         )}
-
-        {!open && (
-          <ScSearchButton onClick={() => setOpen(!open)}>
-            <SearchIcon
-              style={{ fontSize: "1.5rem", marginLeft: 3 }}
-              aria-label="Åpne søk"
-              role="img"
-            />
-            <span className="navds-sr-only">Åpne søk</span>
-          </ScSearchButton>
-        )}
-      </ScSearch>
-      <ScOverlay
-        data-visible={Object.keys(result).length > 0 || query !== ""}
-      />
     </>
   );
-};
+}
 
 export default Search;
