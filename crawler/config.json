@@ -1,18 +1,17 @@
 {
   "index_name": "aksel_docsearch",
-  "start_urls": ["https://design.nav.no/designsystem/side/button"],
+  "start_urls": ["https://design.nav.no"],
   "selectors": {
     "lvl0": {
-      "selector": ".navdsi-header__title span",
+      "selector": "h1.index-lvl1",
       "global": true
     },
     "lvl1": {
-      "selector": ".index-tabs--active",
+      "selector": ".navds-sr-only.index-hidden-heading",
       "global": true
     },
-    "lvl2": "h1.index-lvl1",
-    "lvl3": "h2.index-lvl2",
-    "lvl4": "h3.index-lvl3",
+    "lvl2": "h2.index-lvl2,.index-tabs--active",
+    "lvl3": "h3.index-lvl3",
     "text": "p.index-body, p.index-ingress"
   },
   "selectors_exclude": [".index-ignore"],
