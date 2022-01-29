@@ -5,20 +5,18 @@ on:
     # 01.00 & 12.00 every day
     - cron: "00 01,12 * * *"
 
-env:
-  IMAGE: ghcr.io/${{ github.repository }}
-
 jobs:
   searchcrawl:
     name: Crawler nettside for søk-indeksering
     runs-on: ubuntu-latest
-    env:
-      API_KEY: ${{ secrets.ALGOLIA_ADMIN }}
-      APPLICATION_ID: ${{ secrets.ALGOLIA_ID}}
-      CONFIG: $(cat ./crawler/config.json | jq -r tostring)
     steps:
-      - uses: actions/checkout@v2
-      - name: run crawler
-        uses: addnab/docker-run-action@v3
-        with:
-          image: algolia/docsearch-scraper
+      - name: Get the content of config.json as config
+        id: algolia_config
+        run: echo "::set-output name=config::$(cat crawler/config.json | jq -r tostring)"
+
+      - name: Push indices to Algolia
+        uses: signcl/docsearch-scraper-action@master
+        env:
+          APPLICATION_ID: ${{ secrets.ALGOLIA_ID}}
+          API_KEY: ${{ secrets.ALGOLIA_ADMIN }}
+          CONFIG: ${{ steps.algolia_config.outputs.config }}'
