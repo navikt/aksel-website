@@ -4,6 +4,7 @@
   --docsearch-highlight-color: var(--navds-semantic-color-interaction-primary);
   --docsearch-searchbox-shadow: inset 0 0 0 2px
     var(--navds-semantic-color-interaction-primary);
+  --docsearch-container-background: rgba(38, 38, 38, 0.7);
 }
 
 /* .DocSearch-Commands {

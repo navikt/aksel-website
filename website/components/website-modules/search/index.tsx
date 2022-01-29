@@ -65,15 +65,15 @@ function Search() {
               },
               footer: {
                 selectText: "Velg",
-                navigateText: "Naviger",
+                navigateText: "Navigere søk",
                 closeText: "lukk",
                 searchByText: "Søk fra",
               },
               noResultsScreen: {
                 noResultsText: "Ingen resultater for",
                 suggestedQueryText: "Prøv disse søkene",
-                openIssueText: "Tenker du dette søket bør gi et resultat?",
-                openIssueLinkText: "Send oss en melding, så fikser vi!",
+                openIssueText: "Bør søket gi et resultat?",
+                openIssueLinkText: "Send oss en melding, så fikser vi",
               },
             }}
             appId="J64I2SIG7K"
