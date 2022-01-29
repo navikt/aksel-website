@@ -77,7 +77,7 @@ function Search() {
               footer: {
                 selectText: "Velg",
                 navigateText: "Navigere søk",
-                closeText: "lukk",
+                closeText: "Lukk søk",
                 searchByText: "Søk fra",
               },
               noResultsScreen: {
@@ -95,10 +95,6 @@ function Search() {
             initialQuery={initialQuery}
             placeholder="Søk i dokumentasjon"
             transformItems={(i) => sortItems(i)}
-            /* hitComponent={({ hit }) => {
-              console.log(hit);
-              return <div></div>;
-            }} */
           />,
           document.body
         )}

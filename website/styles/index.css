@@ -1,4 +1,4 @@
-@import "./doc-search.css";
+@import "./search/doc-search.css";
 @import "@navikt/ds-css";
 @import "@navikt/ds-css-internal";
 @import "./prismjs.css";
