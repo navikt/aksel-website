@@ -12,18 +12,16 @@ jobs:
   searchcrawl:
     name: Crawler nettside for søk-indeksering
     runs-on: ubuntu-latest
+    env:
+      API_KEY: ${{ secrets.ALGOLIA_ADMIN }}
+      APPLICATION_ID: ${{ secrets.ALGOLIA_ID}}
+      CONFIG: $(cat ./crawler/config.json | jq -r tostring)
     steps:
       - uses: actions/checkout@v2
-      - name: add tokens to .env
-        run: |
-          echo "API_KEY=${{ secrets.ALGOLIA_ADMIN }}" >> crawler/.env
-          echo "APPLICATION_ID=${{ secrets.ALGOLIA_ID}}" >> crawler/.env
-
       - name: run crawler
         uses: addnab/docker-run-action@v3
         with:
           image: algolia/docsearch-scraper
-          options: -env-file=./crawler/.env -e "CONFIG=$(cat ./crawler/config.json | jq -r tostring)"
           run: |
             echo "Running Script"
             /work/run-script
