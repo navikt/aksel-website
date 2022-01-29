@@ -1,6 +1,12 @@
 {
   "index_name": "aksel_docsearch",
-  "start_urls": ["https://design.nav.no"],
+  "start_urls": [
+    "https://design.nav.no",
+    {
+      "url": "https://design.nav.no/designsystem",
+      "tags": ["designsystem", "docs"]
+    }
+  ],
   "selectors": {
     "lvl0": {
       "selector": "h1.index-lvl1",
@@ -9,6 +15,7 @@
     "lvl1": ".index-tabs--active",
     "lvl2": "h2.index-lvl2",
     "lvl3": "h3.index-lvl3",
+    "lvl4": ".index-hidden-heading",
     "text": "p.index-body, p.index-ingress"
   },
   "selectors_exclude": [".index-ignore"],

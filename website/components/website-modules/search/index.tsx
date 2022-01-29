@@ -2,6 +2,7 @@ import React from "react";
 import { createPortal } from "react-dom";
 import { DocSearchModal, useDocSearchKeyboardEvents } from "@docsearch/react";
 import { Search as SearchIcon } from "@navikt/ds-icons";
+import { DocSearchHit } from "@docsearch/react/dist/esm/types";
 
 function Search() {
   const searchButtonRef = React.useRef(null);
@@ -31,6 +32,16 @@ function Search() {
     onInput,
     searchButtonRef,
   });
+
+  const sortItems = (i: DocSearchHit[]): DocSearchHit[] => {
+    const getIndex = (x: string) => {
+      return ["lvl1", "lvl2", "lvl3", "lvl4"].indexOf(x);
+    };
+
+    return i.sort((a, b) => {
+      return getIndex(a.type) - getIndex(b.type);
+    });
+  };
 
   return (
     <>
@@ -83,6 +94,7 @@ function Search() {
             initialScrollY={window.scrollY}
             initialQuery={initialQuery}
             placeholder="Søk i dokumentasjon"
+            transformItems={(i) => sortItems(i)}
             /* hitComponent={({ hit }) => {
               console.log(hit);
               return <div></div>;
