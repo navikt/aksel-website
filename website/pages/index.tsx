@@ -1,16 +1,15 @@
-import { DocSearch } from "@docsearch/react";
 import { BodyShort, Heading, Ingress, Link } from "@navikt/ds-react";
 import Head from "next/head";
 import React, { useEffect } from "react";
-import { PreviewBanner } from "../components";
 import {
   AmplitudeEvents,
   Card,
   NAVLogoDark,
+  PreviewBanner,
   useAmplitude,
 } from "../components";
 import FrontpageFooter from "../components/layout/footer/FrontpageFooter";
-import { getClient, vkFrontpageQuery, VkFrontpage } from "../lib";
+import { getClient, VkFrontpage, vkFrontpageQuery } from "../lib";
 
 const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
   const { logAmplitudeEvent } = useAmplitude();
@@ -53,13 +52,6 @@ const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
           En samling ressurser fra ulike fagdisipliner som hjelper oss å skape
           bedre, universelt tilgjengelige og sammenhengende produkter i NAV.
         </Ingress>
-        {props.preview && (
-          <DocSearch
-            appId="J64I2SIG7K"
-            indexName="aksel_docsearch"
-            apiKey="92d2ac76eba4eba628a34baa11743fc1"
-          />
-        )}
       </div>
       <nav className="mt-16 mb-0 mx-auto" aria-label="Portal navigasjon">
         <div className="card-grid-flow gap-6 p-0 list-none">
