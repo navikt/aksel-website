@@ -1,0 +1,29 @@
+name: Indexing search
+on:
+  workflow_dispatch:
+  schedule:
+    # 01.00 & 12.00 every day
+    - cron: "00 01,12 * * *"
+
+env:
+  IMAGE: ghcr.io/${{ github.repository }}
+
+jobs:
+  searchcrawl:
+    name: Crawler nettside for søk-indeksering
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: add tokens to .env
+        run: |
+          echo "API_KEY=${{ secrets.ALGOLIA_ADMIN }}" >> crawler/.env
+          echo "APPLICATION_ID=${{ secrets.ALGOLIA_ID}}" >> crawler/.env
+
+      - name: run crawler
+        uses: addnab/docker-run-action@v3
+        with:
+          image: algolia/docsearch-scraper
+          options: -it --env-file=crawler/.env -e "CONFIG=$(cat crawler/config.json | jq -r tostring)"
+          run: |
+            echo "Running Script"
+            /work/run-script
