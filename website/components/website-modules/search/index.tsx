@@ -20,7 +20,7 @@ function Search() {
   const onInput = React.useCallback(
     (event) => {
       setIsOpen(true);
-      setInitialQuery(event.key);
+      /* setInitialQuery(event.key); */
     },
     [setIsOpen, setInitialQuery]
   );
@@ -92,7 +92,7 @@ function Search() {
             apiKey="92d2ac76eba4eba628a34baa11743fc1"
             onClose={onClose}
             initialScrollY={window.scrollY}
-            initialQuery={initialQuery}
+            /* initialQuery={initialQuery} */
             placeholder="Søk i dokumentasjon"
             transformItems={(i) => sortItems(i)}
           />,
