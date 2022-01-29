@@ -3,7 +3,7 @@
   "start_urls": ["https://design.nav.no/designsystem/side/button"],
   "selectors": {
     "lvl0": {
-      "selector": ".index-heading span",
+      "selector": ".navdsi-header__title span",
       "global": true
     },
     "lvl1": {

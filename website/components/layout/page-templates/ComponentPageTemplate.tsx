@@ -127,6 +127,11 @@ const ComponentPageTemplate = ({
       </Head>
 
       <div className="content-box">
+        {layout?.activeHeading?.title && (
+          <span className="navds-sr-only index-hidden-heading">
+            {layout?.activeHeading?.title}
+          </span>
+        )}
         <div className="pt-8 pb-6">
           <StatusTag status={data.status} />
           <Heading
