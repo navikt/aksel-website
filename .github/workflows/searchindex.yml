@@ -23,7 +23,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: algolia/docsearch-scraper
-          options: -env-file=crawler/.env -e "CONFIG=$(cat crawler/config.json | jq -r tostring)"
+          options: -env-file=./crawler/.env -e "CONFIG=$(cat ./crawler/config.json | jq -r tostring)"
           run: |
             echo "Running Script"
             /work/run-script
