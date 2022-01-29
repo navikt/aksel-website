@@ -22,5 +22,3 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: algolia/docsearch-scraper
-          run: |
-            echo "Running crawler"
