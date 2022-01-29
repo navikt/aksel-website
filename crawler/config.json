@@ -6,11 +6,8 @@
       "selector": "h1.index-lvl1",
       "global": true
     },
-    "lvl1": {
-      "selector": ".navds-sr-only.index-hidden-heading",
-      "global": true
-    },
-    "lvl2": "h2.index-lvl2,.index-tabs--active",
+    "lvl1": ".index-tabs--active",
+    "lvl2": "h2.index-lvl2",
     "lvl3": "h3.index-lvl3",
     "text": "p.index-body, p.index-ingress"
   },

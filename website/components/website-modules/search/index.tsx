@@ -83,6 +83,10 @@ function Search() {
             initialScrollY={window.scrollY}
             initialQuery={initialQuery}
             placeholder="Søk i dokumentasjon"
+            /* hitComponent={({ hit }) => {
+              console.log(hit);
+              return <div></div>;
+            }} */
           />,
           document.body
         )}
