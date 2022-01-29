@@ -12,8 +12,14 @@ jobs:
     env:
       APPLICATION_ID: ${{ secrets.ALGOLIA_ID}}
       API_KEY: ${{ secrets.ALGOLIA_ADMIN }}
-      CONFIG: cat ./crawler/config.json | jq -r tostring
     steps:
-      - name: Algolia Docsearch Action
-        id: algolia
-        uses: adapttive/algolia-docsearch-action@1.1.1
+      - uses: actions/checkout@v2
+      - name: Get the content of algolia.json as config
+        id: algolia_config
+        run: echo "::set-output name=config::$(cat ./crawler/config.json | jq -r tostring)"
+      - name: Push indices to Algolia
+        uses: signcl/docsearch-scraper-action@master
+        env:
+          APPLICATION_ID: ${{ secrets.ALGOLIA_ID}}
+          API_KEY: ${{ secrets.ALGOLIA_ADMIN }}
+          CONFIG: ${{ steps.algolia_config.outputs.config }
