@@ -5,8 +5,8 @@ import { Search as SearchIcon } from "@navikt/ds-icons";
 import { DocSearchHit } from "@docsearch/react/dist/esm/types";
 
 function Search() {
-  const searchButtonRef = React.useRef(null);
   const [isOpen, setIsOpen] = React.useState(false);
+  const searchButtonRef = React.useRef(null);
 
   const onOpen = React.useCallback(() => {
     setIsOpen(true);
