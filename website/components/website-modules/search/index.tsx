@@ -7,7 +7,6 @@ import { DocSearchHit } from "@docsearch/react/dist/esm/types";
 function Search() {
   const searchButtonRef = React.useRef(null);
   const [isOpen, setIsOpen] = React.useState(false);
-  const [initialQuery, setInitialQuery] = React.useState(null);
 
   const onOpen = React.useCallback(() => {
     setIsOpen(true);
@@ -17,13 +16,9 @@ function Search() {
     setIsOpen(false);
   }, [setIsOpen]);
 
-  const onInput = React.useCallback(
-    (event) => {
-      setIsOpen(true);
-      /* setInitialQuery(event.key); */
-    },
-    [setIsOpen, setInitialQuery]
-  );
+  const onInput = React.useCallback(() => {
+    setIsOpen(true);
+  }, [setIsOpen]);
 
   useDocSearchKeyboardEvents({
     isOpen,
