@@ -28,26 +28,6 @@ export function documentInformation(prefix) {
       },
     },
     {
-      title: "Status",
-      name: "status",
-      type: "string",
-      validation: (Rule) => Rule.required(),
-      initialValue: "published",
-      group: "metadata",
-      options: {
-        list: [
-          {
-            value: "published",
-            title: "Publisert (default)",
-          },
-          { value: "beta", title: "Beta" },
-          { value: "wip", title: "Under arbeid" },
-          { value: "legacy", title: "Utdatert / deprecated" },
-        ],
-        layout: "radio",
-      },
-    },
-    {
       title: "Ingress (valgfritt)",
       name: "ingress",
       type: "array",
