@@ -172,9 +172,6 @@ export const dsDocumentBySlug = `*[slug.current == $slug]
 {
   ...,
   "slug": slug.current,
-  linked_packages[]{
-    "title": @->title
-  },
   ingress[]{
     ...,
     ${deRefs}

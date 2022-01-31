@@ -42,26 +42,14 @@ export default {
       group: "innhold",
     },
     {
-      title: "Relaterte pakker",
-      description: "Kobler komponenten til en eller flere pakker",
-      name: "linked_packages",
-      type: "array",
+      title: "Koblet kodepakke",
+      description: "Kobler komponenten til en pakke",
+      name: "linked_package",
+      type: "reference",
       group: "code-connection",
-      of: [{ type: "reference", to: [{ type: "ds_package" }] }],
+      to: [{ type: "ds_package" }],
       validation: (Rule) =>
-        Rule.required().min(1).error("Siden må være koblet til minst en pakke"),
-    },
-    {
-      title: "Npm-pakke lenke (optional)",
-      name: "npm_link",
-      type: "url",
-      group: "lenker",
-    },
-    {
-      title: "Github-kode lenke (optional)",
-      name: "github_link",
-      type: "url",
-      group: "lenker",
+        Rule.required().min(1).error("Siden må være koblet til en pakke"),
     },
     {
       title: "Figma lenke (optional)",

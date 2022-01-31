@@ -13,17 +13,17 @@ const client = sanityClient({
   apiVersion: "2020-06-19",
   useCdn: false,
 });
-
+/* ,"ds_article_page","ds_tabbed_article_page","gp_article_page" */
 const fetchDocuments = () =>
   client.fetch(
-    `*[_type in ["ds_component_page","ds_article_page","ds_tabbed_article_page","gp_article_page"] && defined(status)] {_id, _rev, status}`
+    `*[_type in ["ds_component_page"] && defined(npm_link)] {_id, _rev, npm_link}`
   );
 
 const buildPatches = (docs) =>
   docs.map((doc) => ({
     id: doc._id,
     patch: {
-      unset: ["status"],
+      unset: ["npm_link"],
       ifRevisionID: doc._rev,
     },
   }));

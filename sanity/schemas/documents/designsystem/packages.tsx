@@ -24,5 +24,10 @@ export default {
         ],
       },
     },
+    {
+      title: "Github-kode",
+      name: "github_link",
+      type: "url",
+    },
   ],
 };
