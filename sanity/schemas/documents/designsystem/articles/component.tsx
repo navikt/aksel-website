@@ -46,7 +46,7 @@ export default {
       description: "Kobler komponenten til en pakke",
       name: "linked_package",
       type: "reference",
-      group: "code-connection",
+      group: "lenker",
       to: [{ type: "ds_package" }],
       validation: (Rule) =>
         Rule.required().error("Siden må være koblet til en pakke"),

@@ -19,10 +19,6 @@ export const groups = [
   },
   {
     name: "lenker",
-    title: "Lenker",
-  },
-  {
-    name: "code-connection",
-    title: "Kode kobling",
+    title: "Linking",
   },
 ];
