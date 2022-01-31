@@ -1,5 +1,14 @@
 @tailwind base;
 
+@layer base {
+  code,
+  pre {
+    --font-family-code: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      "Liberation Mono", "Courier New", monospace;
+    font-family: var(--font-family-code) !important;
+  }
+}
+
 /* Improves rendering of images for chrome on Windows */
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
   img {
@@ -14,10 +23,6 @@
       image-rendering: unset !important;
     }
   }
-}
-
-code {
-  font-family: var(--font-family-code);
 }
 
 /* Max width for all generic text */

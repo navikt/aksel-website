@@ -29,7 +29,7 @@ import * as Tokens from "@navikt/ds-tokens/dist/tokens";
 
 export const InlineCode = (props: React.HTMLAttributes<HTMLElement>) => (
   <code
-    className="text-deepblue-500 bg-deepblue-50 rounded-md py-[2px] px-2 text-medium"
+    className="text-deepblue-500 bg-deepblue-50 rounded-md py-[2px] px-2 text-medium text-mono"
     {...props}
   />
 );

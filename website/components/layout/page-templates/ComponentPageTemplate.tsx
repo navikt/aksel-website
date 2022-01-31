@@ -1,5 +1,5 @@
 import { ExternalLink } from "@navikt/ds-icons";
-import { BodyShort, Heading, Link } from "@navikt/ds-react";
+import { BodyShort, Heading, Link, Tag } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
@@ -13,7 +13,6 @@ import {
   PagePropsContext,
   RelatedNavigation,
   slugger,
-  StatusTag,
   TableOfContents,
   Tabs,
   useAmplitude,
@@ -107,6 +106,11 @@ const ComponentPageTemplate = ({
     });
   }, [asPath]);
 
+  const npmPackage = data.linked_package as unknown as {
+    title: string;
+    github_link?: string;
+  };
+
   return (
     <>
       <Head>
@@ -133,6 +137,15 @@ const ComponentPageTemplate = ({
           </span>
         )}
         <div className="pt-8 pb-6">
+          {npmPackage?.title && (
+            <Tag
+              variant="info"
+              size="small"
+              className="bg-gray-100 border-transparent font-mono"
+            >
+              {npmPackage.title}
+            </Tag>
+          )}
           <Heading
             size={
               layout.isTablet
@@ -151,21 +164,21 @@ const ComponentPageTemplate = ({
             <LastUpdateTag date={data?.metadata?.last_update} />
 
             <ScLinks>
-              {data.npm_link && (
+              {npmPackage?.title && (
                 <Link
                   target="_blank"
                   rel="noreferrer noopener"
-                  href={data.npm_link}
+                  href={`https://yarnpkg.com/package/${npmPackage.title}`}
                 >
-                  NPM
-                  <ExternalLink aria-label="Gå til NPM pakke" />
+                  Yarn
+                  <ExternalLink aria-label="Gå til yarn pakke" />
                 </Link>
               )}
-              {data.github_link && (
+              {npmPackage?.github_link && (
                 <Link
                   target="_blank"
                   rel="noreferrer noopener"
-                  href={data.github_link}
+                  href={npmPackage.github_link}
                 >
                   Github
                   <ExternalLink aria-label="Gå til github-kode" />

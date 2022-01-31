@@ -11,7 +11,6 @@ import {
   PagePropsContext,
   RelatedNavigation,
   slugger,
-  StatusTag,
   TableOfContents,
   Tabs,
   useAmplitude,
