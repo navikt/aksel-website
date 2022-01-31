@@ -15,7 +15,11 @@ export function defaultPreview() {
         const { id, heading, type } = selection;
         return {
           title: heading,
-          subtitle: type.includes("_component_") ? "Komponentside" : "Artikkel",
+          subtitle: type.includes("_component_")
+            ? "Komponentside"
+            : type.includes("_tabbed_")
+            ? "Artikkel m/tabs"
+            : "Artikkel",
           media: id.includes("drafts.") ? (
             <Edit aria-hidden />
           ) : (

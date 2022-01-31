@@ -2,7 +2,6 @@ import {
   documentFeedbackMetadata,
   documentMetadata,
   defaultPreview,
-  documentSearchMetadata,
   documentInformation,
   groups,
 } from "../../templates";
@@ -26,7 +25,6 @@ export default {
       validation: (Rule) =>
         Rule.required().error("Må legge til noe innhold på siden"),
     },
-    documentSearchMetadata,
     documentFeedbackMetadata,
   ],
 };

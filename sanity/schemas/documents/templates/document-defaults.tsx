@@ -4,15 +4,6 @@ import { ingressBlock } from "../../rich-text/block-content-ingress";
 export function documentInformation(prefix) {
   return [
     {
-      title: "Dokument tittel (For søk og visning i Sanity)",
-      description: "Eks Guide: <tekst> eller Prinsipp: <tekst>",
-      name: "title",
-      type: "string",
-      group: "settings",
-      validation: (Rule) =>
-        Rule.required().error("Siden må ha en enkel forklarende tittel"),
-    },
-    {
       title: "Sidetittel",
       name: "heading",
       type: "string",
@@ -35,25 +26,6 @@ export function documentInformation(prefix) {
         slugify: (input) =>
           `${prefix}${input}`.toLowerCase().replace(/\s+/g, "-").slice(0, 70),
       },
-    },
-    {
-      title: "Tags",
-      description:
-        "Tagger siden slik at vi i fremtiden kan forbedre søk og visning.",
-      name: "tags",
-      type: "array",
-      of: [{ type: "string" }],
-      validation: (Rule) =>
-        Rule.required().error("Siden må være koblet til minst en av taggene"),
-      options: {
-        list: [
-          { value: "core", title: "Core" },
-          { value: "nav", title: "Nav.no" },
-          { value: "internal", title: "Intern" },
-        ],
-      },
-      group: "metadata",
-      initialValue: ["core"],
     },
     {
       title: "Status",

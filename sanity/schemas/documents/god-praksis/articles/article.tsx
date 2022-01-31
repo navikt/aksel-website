@@ -4,7 +4,6 @@ import {
   defaultPreview,
   documentMetadata,
   documentFeedbackMetadata,
-  documentSearchMetadata,
   groups,
 } from "../../templates";
 
@@ -24,7 +23,7 @@ export default {
       inputComponent: GodPraksisForklaring,
     },
     documentMetadata("article"),
-    ...documentInformation(prefix).filter((x) => x.name !== "tags"),
+    ...documentInformation(prefix),
     {
       name: "body",
       type: "gp_blockContent",
@@ -32,7 +31,6 @@ export default {
       group: "innhold",
       validation: (Rule) => Rule.required().error("Siden må ha noe innhold"),
     },
-    /* documentSearchMetadata, */
     documentFeedbackMetadata,
   ],
 };

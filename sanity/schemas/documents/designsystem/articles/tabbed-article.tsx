@@ -2,7 +2,6 @@ import {
   documentFeedbackMetadata,
   documentMetadata,
   defaultPreview,
-  documentSearchMetadata,
   documentInformation,
   groups,
 } from "../../templates";
@@ -44,7 +43,6 @@ export default {
               validation: (Rule) =>
                 Rule.required().error("Tabben må ha noe innhold"),
             },
-            { ...documentSearchMetadata, group: null },
             { ...documentFeedbackMetadata, group: null },
           ],
         },

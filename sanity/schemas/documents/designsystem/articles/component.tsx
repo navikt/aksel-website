@@ -2,7 +2,6 @@ import {
   documentFeedbackMetadata,
   documentMetadata,
   defaultPreview,
-  documentSearchMetadata,
   documentInformation,
   groups,
 } from "../../templates";
@@ -70,7 +69,6 @@ export default {
       type: "url",
       group: "lenker",
     },
-    documentSearchMetadata,
     documentFeedbackMetadata,
   ],
 };
