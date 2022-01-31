@@ -15,9 +15,9 @@
     "sanity"
   ],
   "dependencies": {
-    "@navikt/ds-css": "^0.13",
-    "@navikt/ds-icons": "^0.7",
-    "@navikt/ds-react": "^0.14",
+    "@navikt/ds-css": "^0.14",
+    "@navikt/ds-icons": "^0.8",
+    "@navikt/ds-react": "^0.15",
     "@sanity/base": "^2.25.4",
     "@sanity/cli": "^2.25.0",
     "@sanity/code-input": "^2.25.4",
