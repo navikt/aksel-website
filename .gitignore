@@ -76,3 +76,4 @@ website/public/studio/
 out
 */cypress/test-urls.json
 */cypress/videos
+sanity/scripts/renameField.js

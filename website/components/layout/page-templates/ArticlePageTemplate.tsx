@@ -40,7 +40,7 @@ const ActiclePageTemplate = ({
     });
   }, [asPath]);
 
-  if (!data.body || !data.heading || !data.status) {
+  if (!data.body || !data.heading) {
     return null;
   }
 
@@ -59,7 +59,6 @@ const ActiclePageTemplate = ({
       </Head>
       <div className="content-box">
         <div className="pt-8 pb-6">
-          <StatusTag status={data.status} />
           <Heading
             size={
               layout.isTablet

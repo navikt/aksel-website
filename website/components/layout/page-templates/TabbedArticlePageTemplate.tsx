@@ -41,7 +41,7 @@ const TabbedActiclePageTemplate = ({
     });
   }, [asPath]);
 
-  if (!data.tabs || !data.heading || !data.status) {
+  if (!data.tabs || !data.heading) {
     return null;
   }
   const basePath = `/designsystem/side/${query.slug[0]}`;
@@ -67,7 +67,6 @@ const TabbedActiclePageTemplate = ({
       </Head>
       <div className="content-box">
         <div className="pt-8 pb-6">
-          <StatusTag status={data.status} />
           <Heading
             size={
               layout.isTablet

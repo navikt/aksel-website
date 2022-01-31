@@ -133,7 +133,6 @@ const ComponentPageTemplate = ({
           </span>
         )}
         <div className="pt-8 pb-6">
-          <StatusTag status={data.status} />
           <Heading
             size={
               layout.isTablet
