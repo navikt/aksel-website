@@ -49,7 +49,7 @@ export default {
       group: "code-connection",
       to: [{ type: "ds_package" }],
       validation: (Rule) =>
-        Rule.required().min(1).error("Siden må være koblet til en pakke"),
+        Rule.required().error("Siden må være koblet til en pakke"),
     },
     {
       title: "Figma lenke (optional)",
