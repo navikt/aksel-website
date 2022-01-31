@@ -16,14 +16,14 @@ const client = sanityClient({
 
 const fetchDocuments = () =>
   client.fetch(
-    `*[_type in ["ds_component_page","ds_article_page","ds_tabbed_article_page","gp_article_page"] && defined(tags)] {_id, _rev, tags}`
+    `*[_type in ["ds_component_page","ds_article_page","ds_tabbed_article_page","gp_article_page"] && defined(status)] {_id, _rev, status}`
   );
 
 const buildPatches = (docs) =>
   docs.map((doc) => ({
     id: doc._id,
     patch: {
-      unset: ["tags"],
+      unset: ["status"],
       ifRevisionID: doc._rev,
     },
   }));
