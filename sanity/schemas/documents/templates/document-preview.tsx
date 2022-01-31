@@ -1,32 +1,25 @@
 import React from "react";
-import { Tag } from "@navikt/ds-react";
-import { Edit } from "@navikt/ds-icons";
+import { Edit, Task } from "@navikt/ds-icons";
 
 export function defaultPreview() {
   return {
     preview: {
       select: {
-        title: "title",
         heading: "heading",
         status: "status",
         metadata: "metadata",
         id: "_id",
+        type: "_type",
       },
       prepare(selection) {
-        const { title, id, heading } = selection;
+        const { id, heading, type } = selection;
         return {
           title: heading,
-          subtitle: title,
+          subtitle: type.includes("_component_") ? "Komponentside" : "Artikkel",
           media: id.includes("drafts.") ? (
-            <Edit />
+            <Edit aria-hidden />
           ) : (
-            <Tag
-              size="small"
-              variant="success"
-              style={{ color: "black", padding: "0 1px" }}
-            >
-              Live
-            </Tag>
+            <Task aria-hidden />
           ),
         };
       },
