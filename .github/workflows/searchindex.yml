@@ -14,9 +14,9 @@ jobs:
       API_KEY: ${{ secrets.ALGOLIA_ADMIN }}
     steps:
       - uses: actions/checkout@v2
-      - name: Get the content of config.json as config
+      - name: Get the content of crawler.json as config
         id: algolia_config
-        run: echo "::set-output name=config::$(cat ./crawler/config.json | jq -r tostring)"
+        run: echo "::set-output name=config::$(cat ./crawler.json | jq -r tostring)"
       - name: Push indices to Algolia
         uses: signcl/docsearch-scraper-action@master
         env:
