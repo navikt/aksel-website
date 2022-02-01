@@ -907,6 +907,13 @@ export interface DsPackage extends SanityDocument {
   scope?: "core" | "internal" | "navno";
 
   /**
+   * Status — `string`
+   *
+   *
+   */
+  status?: "beta" | "live" | "alpha";
+
+  /**
    * Github-kode — `url`
    *
    *

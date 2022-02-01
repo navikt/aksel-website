@@ -10,6 +10,21 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      title: "Status",
+      name: "status",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+      initialValue: "live",
+      options: {
+        layout: "radio",
+        list: [
+          { value: "beta", title: "Beta" },
+          { value: "live", title: "Live" },
+          { value: "alpha", title: "Alpha" },
+        ],
+      },
+    },
+    {
       title: "Scope",
       name: "scope",
       type: "string",

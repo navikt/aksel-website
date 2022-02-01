@@ -174,7 +174,8 @@ export const dsDocumentBySlug = `*[slug.current == $slug]
   "slug": slug.current,
   linked_package{
     "title": @->title,
-    "github_link": @->github_link
+    "github_link": @->github_link,
+    "status": @->status
   },
   ingress[]{
     ...,

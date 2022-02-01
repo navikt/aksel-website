@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import { flattenBlocks } from "sanity-algolia";
 import styled from "styled-components";
+import cl from "classnames";
 import {
   AmplitudeEvents,
   Feedback,
@@ -109,6 +110,7 @@ const ComponentPageTemplate = ({
   const npmPackage = data.linked_package as unknown as {
     title: string;
     github_link?: string;
+    status: string;
   };
 
   return (
@@ -137,15 +139,31 @@ const ComponentPageTemplate = ({
           </span>
         )}
         <div className="pt-8 pb-6">
-          {npmPackage?.title && (
-            <Tag
-              variant="info"
-              size="small"
-              className="bg-gray-100 border-transparent font-mono"
-            >
-              {npmPackage.title}
-            </Tag>
-          )}
+          <div className="flex gap-2 flex-wrap">
+            {npmPackage?.title && (
+              <Tag
+                variant="info"
+                size="small"
+                className="bg-gray-100 border-transparent font-mono"
+              >
+                {npmPackage.title}
+              </Tag>
+            )}
+            {npmPackage.status && npmPackage.status !== "live" && (
+              <Tag
+                variant="info"
+                size="small"
+                className={cl("capitalize border-none", {
+                  "bg-orange-400 text-text capitalize":
+                    npmPackage.status === "alpha",
+                  "bg-purple-400 text-text-inverted":
+                    npmPackage.status === "beta",
+                })}
+              >
+                {npmPackage.status}
+              </Tag>
+            )}
+          </div>
           <Heading
             size={
               layout.isTablet
