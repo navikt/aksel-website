@@ -70,6 +70,7 @@ export enum AmplitudeEvents {
   "notfound" = "notfound",
   "ankerklikk" = "ankerklikk",
   "ikonklikk" = "ikonklikk",
+  "ikonsok" = "ikonsok",
   "fargeklikk" = "fargeklikk",
   "ikonnedlastning" = "ikonnedlastning",
   "feedbackinteraksjon" = "feedbackinteraksjon",

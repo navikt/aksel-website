@@ -1,6 +1,7 @@
 import { Detail, SearchField } from "@navikt/ds-react";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { AmplitudeEvents, useAmplitude } from "../..";
 
 const ScFilter = styled.div`
   margin-bottom: 2rem;
@@ -80,6 +81,7 @@ const Filter = ({
 }) => {
   const [value, setValue] = useState("");
   const [toggle, setToggle] = useState("outline");
+  const { logAmplitudeEvent } = useAmplitude();
 
   useEffect(() => {
     onFilterChange({
@@ -94,6 +96,14 @@ const Filter = ({
       toggle,
     });
   }, [toggle]);
+
+  useEffect(() => {
+    if (toggle === "outline" && value === "") return;
+    logAmplitudeEvent(AmplitudeEvents.ikonsok, {
+      toggle,
+      value,
+    });
+  }, [toggle, value]);
 
   return (
     <ScFilter>
