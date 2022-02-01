@@ -1,6 +1,6 @@
 import * as Icons from "@navikt/ds-icons";
 import meta from "@navikt/ds-icons/meta.json";
-import { BodyLong, Detail, Heading, Modal } from "@navikt/ds-react";
+import { BodyLong, Detail, Heading, Link, Modal } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
@@ -227,7 +227,6 @@ const IconSearch = () => {
         <Filter onFilterChange={handleFilterChange} />
         <DownloadButtons />
       </ScFlex>
-      {categories.length === 0 && <BodyLong spacing>Ingen treff...</BodyLong>}
       {categories.map((cat) => {
         return (
           <div key={cat.category}>
@@ -262,6 +261,19 @@ const IconSearch = () => {
           </div>
         );
       })}
+      <Heading size="small" as="div" spacing>
+        Fant du ikke ønsket ikon?
+      </Heading>
+      <BodyLong>
+        Send inn forslag til navne-alias eller nye ikoner! Skriv til oss i
+        footeren ⬇ eller bare send oss en melding på{" "}
+        <Link
+          href="https://nav-it.slack.com/archives/C7NE7A8UF"
+          target="_blank"
+        >
+          #designsystem slack.
+        </Link>
+      </BodyLong>
       <Modal open={open} onClose={() => handleClose()}>
         <Modal.Content>
           {selectedIcon && <ModalContent icon={selectedIcon} />}
