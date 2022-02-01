@@ -2,6 +2,7 @@ import { BodyShort, Detail, Table } from "@navikt/ds-react";
 import styled from "styled-components";
 import { DsColor } from "../../../lib";
 import Color from "color";
+import cl from "classnames";
 
 const ScColorRoles = styled.ul`
   padding: 0;
@@ -54,8 +55,8 @@ const WhiteColorBox = styled(ScColorBox)`
 const ScGlobalBlock = styled.button`
   white-space: nowrap;
   vertical-align: top;
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  margin: 0 -1rem;
+  padding: 0;
+  margin: 0;
   background: none;
   border: none;
   appearance: none;
@@ -73,15 +74,34 @@ const ScGlobalBlock = styled.button`
   }
 `;
 
-const ColorBox = ({ prop }: { prop: DsColor }): JSX.Element => {
+const ColorBox = ({
+  prop,
+  first,
+  last,
+}: {
+  prop: DsColor;
+  first?: boolean;
+  last?: boolean;
+}): JSX.Element => {
   const color = Color(prop.color_value);
   const Box = color.luminosity() > 0.8 ? WhiteColorBox : ScColorBox;
   if (prop.color_type === "global") {
     return (
-      <Box background={color.hex()} dark={color.isDark()}>
+      <div
+        style={{ backgroundColor: color.hex() }}
+        className={cl(
+          "border-none h-16 flex flex-col justify-center px-4 min-w-[10rem] w-full",
+          {
+            "text-text": !color.isDark(),
+            "text-text-inverted": color.isDark(),
+            "rounded-b": last,
+            "rounded-t": first,
+          }
+        )}
+      >
         <BodyShort>{prop.title}</BodyShort>
         <Detail size="small">{color.hex()}</Detail>
-      </Box>
+      </div>
     );
   }
   return (
@@ -93,14 +113,18 @@ const ColorBox = ({ prop }: { prop: DsColor }): JSX.Element => {
 
 export const GlobalTableRow = ({
   prop,
+  first,
+  last,
   ...rest
 }: {
   prop: DsColor;
   onClick: (c: any) => void;
+  first?: boolean;
+  last?: boolean;
 }) => {
   return (
-    <ScGlobalBlock {...rest}>
-      <ColorBox prop={prop} />
+    <ScGlobalBlock {...rest} className="first:rounded-t last:rounded-b">
+      <ColorBox prop={prop} first={first} last={last} />
     </ScGlobalBlock>
   );
 };
