@@ -179,7 +179,7 @@ const ComponentPageTemplate = ({
             {data.heading}
           </Heading>
           <ScDiv forwardedAs="div" size="small">
-            <LastUpdateTag date={data?.metadata?.last_update} />
+            <LastUpdateTag date={data._updatedAt} />
 
             <ScLinks>
               {npmPackage?.title && (

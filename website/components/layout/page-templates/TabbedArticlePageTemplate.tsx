@@ -80,7 +80,7 @@ const TabbedActiclePageTemplate = ({
           >
             {data.heading}
           </Heading>
-          <LastUpdateTag date={data.metadata.last_update} />
+          <LastUpdateTag date={data._updatedAt} />
         </div>
         {data.ingress && <SanityBlockContent isIngress blocks={data.ingress} />}
       </div>
