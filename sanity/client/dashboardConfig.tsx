@@ -40,12 +40,5 @@ export default {
     {
       name: "project-users",
     },
-    {
-      name: "document-list",
-      options: {
-        title: "Feedback",
-        query: '*[_type == "feedback" && done != true] | order(_createdAt asc)',
-      },
-    },
   ],
 };
