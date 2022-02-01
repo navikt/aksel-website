@@ -12,7 +12,8 @@ const client = sanityClient({
 /* "ds_article_page","ds_tabbed_article_page","gp_article_page" */
 const fetchDocuments = () =>
   client.fetch(
-    `*[_id match "6d05db97-bed5-4a47-84f4-476bc347313a"]{_id, _updatedAt, _createdAt}`
+    `*[_type in ["ds_component_page","ds_article_page","ds_tabbed_article_page","gp_article_page"]]
+    {_id, _updatedAt, metadata}`
   );
 
 const runDemo = async () => {

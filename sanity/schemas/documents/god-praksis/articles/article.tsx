@@ -22,7 +22,7 @@ export default {
       title: "Innhold",
       inputComponent: GodPraksisForklaring,
     },
-    documentMetadata("article"),
+    ...documentMetadata(),
     ...documentInformation(prefix),
     {
       name: "body",

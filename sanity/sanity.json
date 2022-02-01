@@ -24,8 +24,7 @@
     "@sanity/code-input",
     "@sanity/dashboard",
     "dashboard-widget-document-list",
-    "outdated-documents-widget",
-    "document-in-nav-widget"
+    "outdated-documents-widget"
   ],
   "parts": [
     {

@@ -32,16 +32,16 @@ const OutDatedComponents = ({ type }) => {
     setDocs(
       v
         .filter((x) => {
-          if (!x?.metadata?.last_update) return false;
-          const lastUpdate = moment(x.metadata.last_update);
+          if (!x?._updatedAt) return false;
+          const lastUpdate = moment(x._updatedAt);
           const daysSince = moment().diff(lastUpdate, "days");
           return type === "error"
             ? daysSince > 180
             : daysSince >= 90 && daysSince < 180;
         })
         .sort((a, b) => {
-          const lastUpdateA = moment(a.metadata.last_update);
-          const lastUpdateB = moment(b.metadata.last_update);
+          const lastUpdateA = moment(a._updatedAt);
+          const lastUpdateB = moment(b._updatedAt);
           return lastUpdateA.diff(lastUpdateB, "days");
         })
     );
@@ -103,7 +103,7 @@ const OutDatedComponents = ({ type }) => {
       <List>
         {docs &&
           docs.map((doc) => {
-            const lastUpdate = moment(doc.metadata.last_update);
+            const lastUpdate = moment(doc._updatedAt);
             const daysSince = moment().diff(lastUpdate, "days");
 
             return (

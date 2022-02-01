@@ -35,9 +35,6 @@ export default {
       },
     },
     {
-      name: "document-in-nav-widget",
-    },
-    {
       name: "project-info",
     },
     {

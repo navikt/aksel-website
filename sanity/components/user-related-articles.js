@@ -24,7 +24,7 @@ const RelatedArticles = React.forwardRef((props, ref) => {
 
   const getUserDocs = useCallback(async () => {
     const userDocs = await client
-      .fetch(`*["${props.document._id}" == metadata.contact._ref]`)
+      .fetch(`*["${props.document._id}" == contact._ref]`)
       .catch((e) => console.error(e.message));
     userDocs && setUserDocuments(userDocs);
   }, [props.document]);
@@ -48,14 +48,14 @@ const RelatedArticles = React.forwardRef((props, ref) => {
 
   const outdated = userDocuments.filter((doc) => {
     if (!doc?.metadata?.last_update) return false;
-    const lastUpdate = moment(doc.metadata.last_update);
+    const lastUpdate = moment(doc._updatedAt);
     const daysSince = moment().diff(lastUpdate, "days");
     return daysSince > 180;
   });
 
   const stagnated = userDocuments.filter((doc) => {
     if (!doc?.metadata?.last_update) return false;
-    const lastUpdate = moment(doc.metadata.last_update);
+    const lastUpdate = moment(doc._updatedAt);
     const daysSince = moment().diff(lastUpdate, "days");
     return daysSince > 90 && daysSince <= 180;
   });

@@ -27,22 +27,14 @@ const allNavDocumentIds = teams.map((x) => x?.navigation).filter((x) => x);
 
 /**
  * Defines when a document of a spesific type is set to stagnant or expired
- * @param {"string"} docType
  * @returns [stagnant Date, expired Date]
  */
-function getExpireDates(docType) {
+function getExpireDates() {
   const stagnantDate = new Date();
   const expiredDate = new Date();
-  switch (docType) {
-    case "article":
-      stagnantDate.setDate(stagnantDate.getDate() + 120);
-      expiredDate.setDate(expiredDate.getDate() + 180);
-      return [stagnantDate, expiredDate];
-    default:
-      stagnantDate.setDate(stagnantDate.getDate() + 120);
-      expiredDate.setDate(expiredDate.getDate() + 180);
-      return [stagnantDate, expiredDate];
-  }
+  stagnantDate.setDate(stagnantDate.getDate() + 120);
+  expiredDate.setDate(expiredDate.getDate() + 180);
+  return [stagnantDate, expiredDate];
 }
 
 module.exports = {

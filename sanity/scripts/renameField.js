@@ -16,14 +16,21 @@ const client = sanityClient({
 /* ,"ds_article_page","ds_tabbed_article_page","gp_article_page" */
 const fetchDocuments = () =>
   client.fetch(
-    `*[_type in ["ds_component_page"] && defined(npm_link)] {_id, _rev, npm_link}`
+    `*[_type in ["ds_component_page","ds_article_page","ds_tabbed_article_page","gp_article_page"] && defined(metadata)]
+    {_id, _rev, metadata}`
   );
 
 const buildPatches = (docs) =>
   docs.map((doc) => ({
     id: doc._id,
     patch: {
-      unset: ["npm_link"],
+      set: {
+        contact: doc.metadata.contact,
+        ...(doc?.metadata?.contributors && {
+          contributors: doc.metadata.contributors,
+        }),
+      },
+      unset: ["metadata"],
       ifRevisionID: doc._rev,
     },
   }));

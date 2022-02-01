@@ -15,7 +15,7 @@ export default {
   ...defaultPreview(),
   groups: [...groups],
   fields: [
-    documentMetadata("article"),
+    ...documentMetadata(),
     ...documentInformation(prefix),
     {
       name: "tabs",
