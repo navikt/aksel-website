@@ -3,7 +3,7 @@ import { HelpText } from "@navikt/ds-react";
 import { ExampleComponent } from "../../lib";
 
 export const HelpTextExample: ExampleComponent = () => (
-  <div className="mt-12 mx-4">
+  <div className="py-12 px-4">
     <HelpText title="Hvor kommer dette fra?">
       Informasjonen er hentet fra X sin statistikk fra 2021.
     </HelpText>
