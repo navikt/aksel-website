@@ -13,18 +13,11 @@ export function defaultPreview() {
       },
       prepare(selection) {
         const { id, heading, type } = selection;
+        const prefix = !id.includes("drafts.") ? "" : "";
         return {
           title: heading,
-          subtitle: type.includes("_component_")
-            ? "Komponentside"
-            : type.includes("_tabbed_")
-            ? "Artikkel m/tabs"
-            : "Artikkel",
-          media: id.includes("drafts.") ? (
-            <Edit aria-hidden />
-          ) : (
-            <Task aria-hidden />
-          ),
+          subtitle: `${prefix}`,
+          media: id.includes("drafts.") ? <Edit aria-hidden /> : <Task />,
         };
       },
     },
