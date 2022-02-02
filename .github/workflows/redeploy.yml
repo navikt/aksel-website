@@ -1,4 +1,4 @@
-name: Redeploy image
+name: Redeploy image to prod-gcp
 on:
   workflow_dispatch:
     inputs:
