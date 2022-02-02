@@ -36,7 +36,7 @@ export const InlineCode = (props: React.HTMLAttributes<HTMLElement>) => (
 
 export const KBD = (props: React.HTMLAttributes<HTMLElement>) => (
   <kbd
-    className="text-medium shadow-gray-900/50 shadow-[0_0_0_0.5px,0_1px_0_0] py-1 rounded-sm px-2 min-w-[2rem] items-center inline-block text-center my-0 mx-1 text-text"
+    className="text-medium shadow-gray-900/50 shadow-[0_0_0_0.5px,0_1px_0_0] py-1 rounded-sm px-2 min-w-[2rem] inline-block text-center my-0 mx-1 text-text"
     {...props}
   />
 );
