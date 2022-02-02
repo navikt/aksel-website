@@ -6,6 +6,10 @@ on:
         description: "Docker image tag"
         required: true
         default: ""
+      dry:
+        description: "Dry-run"
+        required: true
+        default: "false"
 
 env:
   IMAGE: ghcr.io/${{ github.repository }}
@@ -33,3 +37,4 @@ jobs:
           RESOURCE: nais/prod/nais.yaml
           CLUSTER: prod-gcp
           IMAGE: ${{ env.DOCKER_TAG }}
+          DRY_RUN: ${{ github.event.inputs.dry }}
