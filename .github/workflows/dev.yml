@@ -1,8 +1,6 @@
 name: Build and deploy to dev-gcp
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 env:
   IMAGE: ghcr.io/${{ github.repository }}
