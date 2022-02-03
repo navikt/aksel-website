@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import { Link, HelpText, Button } from "@navikt/ds-react";
+import { HelpText, Button, Detail } from "@navikt/ds-react";
 import { CopyToClipboard } from "@navikt/ds-react-internal";
 import { ExternalLink, Refresh } from "@navikt/ds-icons";
 
@@ -24,7 +24,7 @@ const StyledWrapper = styled.div`
 const ScTop = styled.div`
   padding: 0.25rem 0.5rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
@@ -44,30 +44,35 @@ export const WebPreviewWrapper = (props: { url: string }) => {
   return (
     <StyledWrapper>
       <ScTop>
-        <HelpText title="Hva er preview?">
-          Preview prøver å vise innhold på den publiserte nettsiden. Dette er en
-          litt skjør prosess som lett brekker, så kan forvente litt bugs og rare
-          feil. Sjekk om du har noen feil i sanity først hvis preview brekker.
-          Hvis disse feilene dukker opp for publisert versjon, ta kontakt med
-          utvikler.
-        </HelpText>
-        <CopyToClipboard
-          size="small"
-          popoverText={"Kopierte lenke"}
-          copyText={props.url}
-        />
-        <Button size="small" onClick={() => reloadIframe()}>
-          <Refresh />
-        </Button>
-        <Button
-          as="a"
-          target="_blank"
-          href={props.url}
-          size="small"
-          aria-label="opens preview in web"
-        >
-          <ExternalLink />
-        </Button>
+        <Detail size="small" style={{ overflowX: "auto" }}>
+          {props.url}
+        </Detail>
+        <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+          <HelpText title="Hva er preview?">
+            Preview prøver å vise innhold på den publiserte nettsiden. Dette er
+            en litt skjør prosess som lett brekker, så kan forvente litt bugs og
+            rare feil. Sjekk om du har noen feil i sanity først hvis preview
+            brekker. Hvis disse feilene dukker opp for publisert versjon, ta
+            kontakt med utvikler.
+          </HelpText>
+          <CopyToClipboard
+            size="small"
+            popoverText={"Kopierte lenke"}
+            copyText={props.url}
+          />
+          <Button size="small" onClick={() => reloadIframe()}>
+            <Refresh />
+          </Button>
+          <Button
+            as="a"
+            target="_blank"
+            href={props.url}
+            size="small"
+            aria-label="opens preview in web"
+          >
+            <ExternalLink />
+          </Button>
+        </div>
       </ScTop>
       <StyledDiv>
         <iframe id="preview-iframe" src={props.url} frameBorder={0} />
