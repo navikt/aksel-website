@@ -52,7 +52,7 @@ const IntroPage = React.forwardRef<HTMLDivElement, ViewProps>((props, ref) => {
         Kom i gang
       </Heading>
       <BodyLong>
-        Star med å legge deg selv til som redaktør under "redaktør/bidrag", da
+        Start med å legge deg selv til som redaktør under "redaktør/bidrag", da
         er det lettere å holde oversikten over artikler du har vært med å
         skrive!
       </BodyLong>
