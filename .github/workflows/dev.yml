@@ -33,7 +33,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Get complete tag
-        run: echo "TAG=$( date +%s )-dev" >> $GITHUB_ENV
+        run: echo "TAG=DEV-$( date +%s )" >> $GITHUB_ENV
       - name: Create docker image tags
         run: echo "DOCKER_TAG=${{ env.IMAGE }}:${{ env.TAG }}" >> $GITHUB_ENV
       - name: Build docker image
@@ -53,6 +53,6 @@ jobs:
         uses: nais/deploy/actions/deploy@master
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          RESOURCE: nais/prod/nais.yaml
+          RESOURCE: nais/dev/nais.yaml
           CLUSTER: dev-gcp
           IMAGE: ${{ env.DOCKER_TAG }}

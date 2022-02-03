@@ -6,8 +6,11 @@ metadata:
   labels:
     team: designsystem
 spec:
-  image: {{image}}
+  image: {{ image }}
   port: 3000
+  ingresses:
+    - "https://design.intern.nav.no"
+    - "https://aksel.dev.nav.no"
   liveness:
     path: /api/isAlive
     initialDelay: 20
@@ -38,8 +41,3 @@ spec:
         - host: cdn.sanity.io
       rules: []
       env:
-# prettier ignore
-{{#each env}}
-    - name: {{@key}}
-      value: "{{this}}"
-{{/each}}
