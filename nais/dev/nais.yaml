@@ -10,7 +10,6 @@ spec:
   port: 3000
   ingresses:
     - "https://design.intern.nav.no"
-    - "https://aksel.dev.nav.no"
   liveness:
     path: /api/isAlive
     initialDelay: 20
