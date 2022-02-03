@@ -1,6 +1,9 @@
-name: Build and deploy to dev-gcp
+name: Deploy NEXT to gcp
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - NEXT
 
 env:
   IMAGE: ghcr.io/${{ github.repository }}
@@ -14,6 +17,8 @@ jobs:
         with:
           node-version: "14"
       - uses: actions/checkout@v2
+        with:
+          ref: "NEXT"
       - name: add tokens to .env
         run: |
           echo "SANITY_WRITE_KEY=${{ secrets.SANITY_FEEDBACK_WRITE_KEY }}" >> website/.env
