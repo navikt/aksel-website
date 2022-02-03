@@ -59,6 +59,6 @@ export default {
     },
   ],
   preview: {
-    prepare: () => ({ title: "Forside verktøykassen" }),
+    prepare: () => ({ title: "Forside Aksel" }),
   },
 };

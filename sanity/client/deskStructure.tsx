@@ -16,6 +16,7 @@ import S from "@sanity/desk-tool/structure-builder";
 import React from "react";
 import { ComponentPageWebPreview } from "../web-previews/ComponentWebPreview";
 import { PageWebPreview } from "../web-previews/PageWebPreview";
+import { createSuperPane } from "sanity-super-pane";
 
 const sanityClient = require("@sanity/client");
 const SanityConfig = require("../sanity.json");
@@ -324,8 +325,12 @@ const items = [
   S.documentTypeListItem("editor")
     .title("Redaktør/Bidrag")
     .icon(() => <People />),
+  S.divider(),
+  S.listItem()
+    .title("Demo - ignorer")
+    .child(createSuperPane("ds_component_page")),
 ];
 
 export default () => {
-  return S.list().title("Verktøykassen").items(items);
+  return S.list().title("Aksel").items(items);
 };
