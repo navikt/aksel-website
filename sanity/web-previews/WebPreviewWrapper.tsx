@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React from "react";
 import { Link, HelpText, Button } from "@navikt/ds-react";
 import { CopyToClipboard } from "@navikt/ds-react-internal";
+import { ExternalLink, Refresh } from "@navikt/ds-icons";
 
 const StyledDiv = styled.div`
   iframe {
@@ -9,28 +10,25 @@ const StyledDiv = styled.div`
     width: 100%;
   }
   height: 100%;
-  margin: 0.5rem;
-  box-shadow: 0 0 1rem #888;
   width: 100%;
 `;
 
 const StyledWrapper = styled.div`
-  margin: 0.5rem;
   height: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: left;
-  gap: 0.5rem;
 `;
 
 const ScTop = styled.div`
-  margin: 0.5rem;
+  padding: 0.25rem 0.5rem;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-end;
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
+  border-bottom: 1px solid var(--card-shadow-outline-color);
 `;
 
 export const WebPreviewWrapper = (props: { url: string }) => {
@@ -57,18 +55,18 @@ export const WebPreviewWrapper = (props: { url: string }) => {
           size="small"
           popoverText={"Kopierte lenke"}
           copyText={props.url}
-        >
-          Kopier lenke for deling
-        </CopyToClipboard>
-        <Link
+        />
+        <Button size="small" onClick={() => reloadIframe()}>
+          <Refresh />
+        </Button>
+        <Button
+          as="a"
           target="_blank"
           href={props.url}
+          size="small"
           aria-label="opens preview in web"
         >
-          Åpne i egen side
-        </Link>
-        <Button size="small" onClick={() => reloadIframe()}>
-          Reload preview
+          <ExternalLink />
         </Button>
       </ScTop>
       <StyledDiv>
