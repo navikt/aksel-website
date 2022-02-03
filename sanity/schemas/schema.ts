@@ -11,6 +11,7 @@ import * as Designsystem from "./documents/designsystem";
 import * as GodPraksis from "./documents/god-praksis";
 import * as SanityModules from "./sanity-modules";
 import * as RichText from "./rich-text";
+import introduction from "./documents/introduction";
 
 export default createSchema({
   name: "default",
@@ -20,6 +21,7 @@ export default createSchema({
     navigation,
     link,
     dropdown,
+    introduction,
 
     SanityModules.Accordion,
     SanityModules.Alert,
