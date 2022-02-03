@@ -19,7 +19,7 @@ export default async function handler(
           return;
         }
 
-        const card = `&name=${data.message}&desc=**Bruker:**\n ${
+        const card = `&name=${data.message}&desc=**Bruker:** %0A ${
           data.user ? data.user : "Ukjent"
         }`;
         const url = `https://api.trello.com/1/cards?idList=619cc5721924df5816bcc45f&idLabels=${labels}&key=${trelloKey}&token=${trelloToken}${card}`;
