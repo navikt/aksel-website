@@ -42,11 +42,11 @@ export default async function handler(
 
         const editUrl = `https://verktoykasse.sanity.studio/desk/__edit__${data.docId}%2Ctype%3D${data.docType}`;
 
-        const card = `&desc=**Side:**\n
-        ${sideUrl + data.url}\n\n
-        **Melding**\n
+        const card = `&desc=**Side:** %0A
+        ${sideUrl + data.url} %0A %0A
+        **Melding** %0A
         ${data.message}
-        \n\n**[Rediger side](${editUrl})**`;
+        %0A %0A **[Rediger side](${editUrl})**`;
         const url = `https://api.trello.com/1/cards?idList=${trelloList}&idLabels=${label}&key=${trelloKey}&token=${trelloToken}${card}`;
 
         const postRes = await fetch(url, {
