@@ -1,6 +1,24 @@
 import React, { useRef, useState } from "react";
 import { Popover, Button, Select } from "@navikt/ds-react";
-import { placements, Placement } from "@popperjs/core";
+
+const placement = [
+  "auto",
+  "auto-start",
+  "auto-end",
+  "top",
+  "bottom",
+  "right",
+  "left",
+  "top-start",
+  "top-end",
+  "bottom-start",
+  "bottom-end",
+  "right-start",
+  "right-end",
+  "left-start",
+  "left-end",
+];
+
 import { ExampleComponent } from "../../lib";
 
 export const PopoverExample: ExampleComponent = () => {
@@ -121,7 +139,7 @@ PopoverOffset.react = `
 
 export const PopoverPlacement: ExampleComponent = () => {
   const selectRef = useRef(null);
-  const [selectedPlacement, setselectedPlacement] = useState<Placement>("auto");
+  const [selectedPlacement, setselectedPlacement] = useState<string>("auto");
 
   const [open, setOpen] = useState(false);
   return (
@@ -129,20 +147,20 @@ export const PopoverPlacement: ExampleComponent = () => {
       <Select
         value={selectedPlacement}
         onChange={(e) => {
-          setselectedPlacement(e.target.value as Placement);
+          setselectedPlacement(e.target.value);
           setOpen(true);
         }}
         ref={selectRef}
         label="Placement"
       >
-        {placements?.map((placement) => (
+        {placement?.map((placement) => (
           <option key={placement} value={placement}>
             {placement}
           </option>
         ))}
       </Select>
       <Popover
-        placement={selectedPlacement}
+        placement={selectedPlacement as any}
         open={open}
         onClose={() => setOpen(false)}
         anchorEl={selectRef.current}
