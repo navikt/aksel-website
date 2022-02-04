@@ -1,4 +1,4 @@
-import { BodyLong, BodyShort, Heading } from "@navikt/ds-react";
+import { BodyLong, BodyShort, Heading, Link } from "@navikt/ds-react";
 import { Stack } from "@sanity/ui";
 import { withDocument } from "part:@sanity/form-builder";
 import React, { HTMLAttributes, useEffect, useState } from "react";
@@ -23,7 +23,7 @@ const IntroPage = React.forwardRef<HTMLDivElement, ViewProps>((props, ref) => {
       <Heading level="2" size="medium" spacing>
         {`${
           user?.name ? `Hei ${user?.name}! ` : ""
-        }Velkommen til Aksel sitt CMS`}
+        }Velkommen til Aksel sitt CMS.`}
       </Heading>
       {user?.roles && (
         <div>
@@ -45,8 +45,13 @@ const IntroPage = React.forwardRef<HTMLDivElement, ViewProps>((props, ref) => {
         Har du ikke de rollene du trenger?
       </Heading>
       <BodyLong>
-        Hør med Ken Aleksander Johansen på slack, eller bare send en melding til
-        oss på #designsystem slack så fikser vi det.
+        Hør med{" "}
+        <Link href="https://nav-it.slack.com/archives/D010WEMSKMF">Ken</Link> på
+        slack, eller bare send en melding til oss på{" "}
+        <Link href="https://nav-it.slack.com/archives/C7NE7A8UF">
+          #designsystem
+        </Link>{" "}
+        slack så fikser vi det.
       </BodyLong>
       <Heading level="3" size="small">
         Kom i gang
@@ -62,7 +67,7 @@ const IntroPage = React.forwardRef<HTMLDivElement, ViewProps>((props, ref) => {
       <BodyLong>
         Akkurat nå er det bare Designsystem-portalen som er oppe å går 100%.
         Dette vil si at man kan skrive og publisere innhold under "God praksis",
-        men innholdet blir ikke lett tilgjengelig på design.nav.no.
+        men innholdet blir ikke lett tilgjengelig på design.nav.no enda.
       </BodyLong>
     </Stack>
   );

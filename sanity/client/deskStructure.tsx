@@ -115,47 +115,9 @@ const items = [
                 .title("Innhold")
                 .items([
                   S.listItem()
-                    .title("Komponent artikler")
+                    .title("Komponent-artikler")
                     .icon(() => <Facilitet />)
-                    .child(
-                      S.list()
-                        .title("Komponentsider")
-                        .items([
-                          S.listItem()
-                            .title("Publisert")
-                            .icon(() => <FileContent />)
-                            .child(
-                              S.documentList()
-                                .title("Publiserte komponentsider")
-                                .filter(
-                                  `_type in ["ds_component_page"] && !(_id in path('drafts.**'))`
-                                )
-                            ),
-                          S.listItem()
-                            .title("Under arbeid")
-                            .icon(() => <Edit />)
-                            .child(
-                              S.documentList()
-                                .title("U-publiserte komponentsider")
-                                .filter(
-                                  `_type == "ds_component_page" && _id in path("drafts.**") &&
-                              (
-                             (_id in path("drafts.**")) &&
-                             (count(*[
-                               _type == "ds_component_page" && !(_id in path("drafts.**"))
-                               && (slug.current == ^.slug.current)
-                             ]) == 0)
-                           )`
-                                )
-                            ),
-                          S.listItem()
-                            .title("Alle komponentsider")
-                            .icon(() => <FileContent />)
-                            .child(S.documentTypeList("ds_component_page")),
-                        ])
-                    ),
-
-                  /*  */
+                    .child(createSuperPane("ds_component_page")),
                   S.listItem()
                     .title("Artikler")
                     .icon(() => <FileContent />)
@@ -232,26 +194,23 @@ const items = [
             .icon(() => <Picture />)
             .id(`frontpage_designsystem`),
           S.divider(),
-          S.listItem()
-            .title("Komponentoversikt")
+          S.documentListItem()
+            .title(`Komponentoversikt`)
+            .schemaType(`ds_component_overview`)
             .icon(() => <Findout />)
-            .child(
-              S.document()
-                .schemaType("ds_component_overview")
-                .documentId("ds_component_overview_id")
-            ),
-          S.listItem()
-            .title("Hovedkategorier")
-            .icon(() => <Folder />)
-            .child(S.documentTypeList("main_categories")),
+            .id(`ds_component_overview_id`),
           S.listItem()
             .title("Changelogs")
             .icon(() => <Historic />)
-            .child(S.documentTypeList("ds_changelog")),
+            .child(createSuperPane("ds_changelog")),
           S.listItem()
             .title("Kodepakker")
             .icon(() => <Ruler />)
             .child(S.documentTypeList("ds_package")),
+          S.listItem()
+            .title("Kategorier")
+            .icon(() => <Folder />)
+            .child(S.documentTypeList("main_categories")),
           S.divider(),
           S.listItem()
             .title("Kodevisning på side")
@@ -261,11 +220,11 @@ const items = [
                 .items([
                   S.listItem()
                     .title("Eksempler")
-                    .icon(() => <span>{`< />`}</span>)
+                    .icon(() => <span>{`<Sa`}</span>)
                     .child(S.documentTypeList("ds_code_example")),
                   S.listItem()
                     .title("Sandboxes")
-                    .icon(() => <span>{`< />`}</span>)
+                    .icon(() => <span>{`<Co />`}</span>)
                     .child(S.documentTypeList("ds_code_sandbox")),
                 ])
             ),
@@ -288,32 +247,8 @@ const items = [
         .title("God Praksis")
         .items([
           S.listItem()
-            .title("Publiserte Artikler")
-            .icon(() => <FileContent />)
-            .child(
-              S.documentList()
-                .title("Publiserte Artikler")
-                .filter(
-                  `_type in ["gp_article_page"] && !(_id in path('drafts.**'))`
-                )
-            ),
-          S.listItem()
-            .title("Artikler under arbeid")
-            .icon(() => <Edit />)
-            .child(
-              S.documentList()
-                .title("Publiserte Artikler")
-                .filter(
-                  `_type == "gp_article_page" && _id in path("drafts.**") &&
-                     (
-                       (_id in path("drafts.**")) &&
-                       (count(*[
-                         _type == "gp_article_page" && !(_id in path("drafts.**"))
-                         && (slug.current == ^.slug.current)
-                       ]) == 0)
-                     )`
-                )
-            ),
+            .title("Artikler")
+            .child(createSuperPane("gp_article_page")),
         ])
     ),
   S.documentListItem()

@@ -46,6 +46,10 @@
     {
       "name": "part:@sanity/base/new-document-structure",
       "path": "./client/newDocumentStructure.tsx"
+    },
+    {
+      "implements": "part:@sanity/base/absolutes",
+      "path": "./client/bundleCheck.tsx"
     }
   ]
 }
