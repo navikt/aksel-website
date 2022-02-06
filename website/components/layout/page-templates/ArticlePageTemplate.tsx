@@ -14,14 +14,14 @@ import {
   TableOfContents,
   useAmplitude,
 } from "../..";
-import { DsArticle, GpArticlePage } from "../../../lib";
+import { DsArticlePage, GpArticlePage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 
 const ActiclePageTemplate = ({
   data,
   title,
 }: {
-  data: GpArticlePage | DsArticle;
+  data: GpArticlePage | DsArticlePage;
   title: string;
 }): JSX.Element => {
   const layout = useContext(LayoutContext);

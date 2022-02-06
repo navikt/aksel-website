@@ -3,12 +3,7 @@ import Error from "next/error";
 import ComponentPageTemplate from "./page-templates/ComponentPageTemplate";
 import ArticleTemplate from "./page-templates/ArticlePageTemplate";
 import TabbedArticleTemplate from "./page-templates/TabbedArticlePageTemplate";
-import {
-  DsArticle,
-  DsComponentPage,
-  DsTabbedArticlePage,
-  GpArticlePage,
-} from "../../lib";
+import { DsArticlePage, DsComponentPage, GpArticlePage } from "../../lib";
 
 type ds_component = {
   ds_component_page: (props: {
@@ -17,27 +12,25 @@ type ds_component = {
   }) => JSX.Element;
 };
 
-type ds_tabbed = {
-  ds_tabbed_article_page: (props: {
-    data: DsTabbedArticlePage;
+type ds_article = {
+  ds_article_page: (props: {
+    data: DsArticlePage;
     title: string;
   }) => JSX.Element;
 };
 
-type ds_article = {
-  ds_article: (props: { data: DsArticle; title: string }) => JSX.Element;
-};
-
 type gp_article = {
-  gp_article_page: (props: { data: DsArticle; title: string }) => JSX.Element;
+  gp_article_page: (props: {
+    data: DsArticlePage;
+    title: string;
+  }) => JSX.Element;
 };
 
-type templateT = ds_component | ds_tabbed | ds_article | gp_article;
+type templateT = ds_component | ds_article | gp_article;
 
 const templates: templateT = {
   ds_component_page: (props) => <ComponentPageTemplate {...props} />,
-  ds_article: (props) => <ArticleTemplate {...props} />,
-  ds_tabbed_article_page: (props) => <TabbedArticleTemplate {...props} />,
+  ds_article_page: (props) => <ArticleTemplate {...props} />,
   gp_article_page: (props) => <ArticleTemplate {...props} />,
 };
 
@@ -45,7 +38,7 @@ const TemplatePicker = ({
   data,
   title,
 }: {
-  data: DsComponentPage | DsTabbedArticlePage | DsArticle | GpArticlePage;
+  data: DsComponentPage | DsArticlePage | GpArticlePage;
   title: string;
 }): JSX.Element => {
   const [mounted, setMounted] = useState(false);

@@ -4,19 +4,18 @@ import DesignsystemFooter from "../../../components/layout/footer/DesignsystemFo
 import DesignsystemHeader from "../../../components/layout/header/DesignsystemHeader";
 import DesignsystemSidebar from "../../../components/layout/sidebar/DesignsystemSidebar";
 import {
-  DsArticle,
+  DsArticlePage,
   DsComponentPage,
   dsDocumentBySlug,
   DsNavigation,
   dsNavigationQuery,
-  DsTabbedArticlePage,
   getClient,
   getDsPaths,
 } from "../../../lib";
 
 const Page = (props: {
   slug?: string;
-  page: DsComponentPage | DsTabbedArticlePage | DsArticle;
+  page: DsComponentPage | DsArticlePage;
   navigation: DsNavigation;
   preview: boolean;
 }): JSX.Element => {
@@ -71,7 +70,7 @@ export const getStaticPaths = async (): Promise<{
 
 interface StaticProps {
   props: {
-    page: DsComponentPage | DsTabbedArticlePage | DsArticle;
+    page: DsComponentPage | DsArticlePage;
     slug: string;
     navigation: DsNavigation;
     isDraft: boolean;

@@ -15,7 +15,6 @@ import {
   Tabs,
   useAmplitude,
 } from "../..";
-import { DsTabbedArticlePage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 
 const TabbedActiclePageTemplate = ({

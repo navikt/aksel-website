@@ -157,7 +157,7 @@ export interface Navigation extends SanityDocument {
  *
  *
  */
-export interface DsArticle extends SanityDocument {
+export interface DsArticlePage extends SanityDocument {
   _type: "ds_article_page";
 
   /**
@@ -707,9 +707,7 @@ export interface DsFrontpage extends SanityDocument {
        *
        *
        */
-      link_ref?: SanityReference<
-        DsComponentPage | DsArticle | DsTabbedArticlePage
-      >;
+      link_ref?: SanityReference<DsComponentPage | DsArticlePage>;
 
       /**
        * Tittel — `string`
@@ -877,9 +875,7 @@ export interface DsComponentOverview extends SanityDocument {
        *
        *
        */
-      doc_link?: SanityReference<
-        DsComponentPage | DsArticle | DsTabbedArticlePage
-      >;
+      doc_link?: SanityReference<DsComponentPage | DsArticlePage>;
     }>
   >;
 }
@@ -919,118 +915,6 @@ export interface DsPackage extends SanityDocument {
    *
    */
   github_link?: string;
-}
-
-/**
- * Artikkel med tabs
- *
- *
- */
-export interface DsTabbedArticlePage extends SanityDocument {
-  _type: "ds_tabbed_article_page";
-
-  /**
-   * Dokument metadata — `object`
-   *
-   *
-   */
-  metadata?: {
-    _type: "metadata";
-    /**
-     * Oppdatering av innhold — `string`
-     *
-     *
-     */
-    last_update?: string;
-
-    /**
-     * Redaktør/kontakt — `reference`
-     *
-     *
-     */
-    contact?: SanityReference<Editor>;
-
-    /**
-     * Bidragsytere — `array`
-     *
-     * Legg til de som har bidratt med denne siden!
-     */
-    contributors?: Array<SanityKeyedReference<Editor>>;
-
-    /**
-     * Dokument type — `string`
-     *
-     *
-     */
-    doctype?: string;
-  };
-
-  /**
-   * Sidetittel — `string`
-   *
-   * Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.
-   */
-  heading?: string;
-
-  /**
-   * url — `slug`
-   *
-   * Strukturen bestemmes ikke av URL-en
-   */
-  slug?: { _type: "slug"; current: string };
-
-  /**
-   * Status — `string`
-   *
-   *
-   */
-  status?: "published" | "beta" | "wip" | "legacy";
-
-  /**
-   * Ingress (valgfritt) — `array`
-   *
-   *
-   */
-  ingress?: Array<SanityKeyed<SanityBlock>>;
-
-  /**
-   * Tabs — `array`
-   *
-   *
-   */
-  tabs?: Array<
-    SanityKeyed<{
-      _type: "tab";
-      /**
-       * Tittel — `string`
-       *
-       * Innhold vil da legges under url/tab-tittel
-       */
-      title?: string;
-
-      /**
-       * Sideinnhold — `blockContent`
-       *
-       *
-       */
-      body?: BlockContent;
-
-      /**
-       * Tilbakemeldinger — `object`
-       *
-       *
-       */
-      metadata_feedback?: {
-        _type: "metadata_feedback";
-        /**
-         * Skjul artikkel feedback modul — `boolean`
-         *
-         * Gjemmer <<Var denne artikkelen til hjelp?>> modulen.
-         */
-        hide_feedback?: boolean;
-      };
-    }>
-  >;
 }
 
 /**
@@ -1165,7 +1049,7 @@ export type NavigationLink = {
    *
    *
    */
-  link_ref?: SanityReference<DsComponentPage | DsArticle | DsTabbedArticlePage>;
+  link_ref?: SanityReference<DsComponentPage | DsArticlePage>;
 };
 
 export type NavigationDropdown = {
@@ -1450,7 +1334,7 @@ export type LinkPanel = {
    *
    */
   internal_link?: SanityReference<
-    DsComponentPage | DsArticle | DsTabbedArticlePage | GpArticlePage
+    DsComponentPage | DsArticlePage | GpArticlePage
   >;
 
   /**
@@ -1612,7 +1496,7 @@ export type RelatedPages = {
        *
        */
       internal_link?: SanityReference<
-        DsComponentPage | DsArticle | DsTabbedArticlePage | GpArticlePage
+        DsComponentPage | DsArticlePage | GpArticlePage
       >;
 
       /**
@@ -1829,7 +1713,7 @@ export type DsNavigationHeading = {
    *
    * Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via headern
    */
-  link_ref?: SanityReference<DsComponentPage | DsArticle | DsTabbedArticlePage>;
+  link_ref?: SanityReference<DsComponentPage | DsArticlePage>;
 
   /**
    * Meny for denne headingen — `array`
@@ -1851,9 +1735,7 @@ export type DsNavigationHeading = {
          *
          *
          */
-        link?: SanityReference<
-          DsComponentPage | DsArticle | DsTabbedArticlePage
-        >;
+        link?: SanityReference<DsComponentPage | DsArticlePage>;
       }>
     | SanityKeyed<{
         _type: "subheading";
@@ -1888,7 +1770,7 @@ export type Documents =
   | VkFrontpage
   | Editor
   | Navigation
-  | DsArticle
+  | DsArticlePage
   | DsChangelog
   | DsCodeExample
   | DsCodeSandbox
@@ -1900,7 +1782,6 @@ export type Documents =
   | DsNavigation
   | DsComponentOverview
   | DsPackage
-  | DsTabbedArticlePage
   | GpFrontpage
   | GpArticlePage;
 
