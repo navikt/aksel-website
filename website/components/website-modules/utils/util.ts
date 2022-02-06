@@ -2,16 +2,14 @@ import { useEffect } from "react";
 
 const environment = process.env.NODE_ENV;
 const test = process.env.NEXT_PUBLIC_TEST;
+
 export const isProduction = (): boolean => {
   if (typeof window !== "undefined") {
     const url =
       window && window.location && window.location.href
         ? window.location.href
         : "";
-    return (
-      environment === "production" &&
-      /verktoykasse-prototype.dev.nav.no/.test(url)
-    );
+    return environment === "production" && /design.nav.no/.test(url);
   } else {
     return false;
   }

@@ -3,7 +3,7 @@ import { createClient } from "next-sanity";
 
 const config = {
   projectId: "hnbe3yhs",
-  dataset: "production",
+  dataset: "migration",
   useCdn: true, // False for fresh data
   apiVersion: "2021-05-31",
 };

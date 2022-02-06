@@ -18,6 +18,12 @@ export default {
     ...documentMetadata(),
     ...documentInformation(prefix),
     {
+      type: "boolean",
+      name: "article_type",
+      title: "Tabs",
+      initialValue: false,
+    },
+    {
       name: "body",
       type: "blockContent",
       title: "Sideinnhold",
