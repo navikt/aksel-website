@@ -153,6 +153,29 @@ export interface Navigation extends SanityDocument {
 }
 
 /**
+ * Velkommen!
+ *
+ *
+ */
+export interface Introduction extends SanityDocument {
+  _type: "introduction";
+
+  /**
+   * Navn — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Intro — `string`
+   *
+   *
+   */
+  view?: string;
+}
+
+/**
  * Artikkel
  *
  *
@@ -161,40 +184,18 @@ export interface DsArticlePage extends SanityDocument {
   _type: "ds_article_page";
 
   /**
-   * Dokument metadata — `object`
+   * Redaktør/kontakt — `reference`
    *
    *
    */
-  metadata?: {
-    _type: "metadata";
-    /**
-     * Oppdatering av innhold — `string`
-     *
-     *
-     */
-    last_update?: string;
+  contact?: SanityReference<Editor>;
 
-    /**
-     * Redaktør/kontakt — `reference`
-     *
-     *
-     */
-    contact?: SanityReference<Editor>;
-
-    /**
-     * Bidragsytere — `array`
-     *
-     * Legg til de som har bidratt med denne siden!
-     */
-    contributors?: Array<SanityKeyedReference<Editor>>;
-
-    /**
-     * Dokument type — `string`
-     *
-     *
-     */
-    doctype?: string;
-  };
+  /**
+   * Bidragsytere — `array`
+   *
+   * Legg til de som har bidratt med denne siden!
+   */
+  contributors?: Array<SanityKeyedReference<Editor>>;
 
   /**
    * Sidetittel — `string`
@@ -211,13 +212,6 @@ export interface DsArticlePage extends SanityDocument {
   slug?: { _type: "slug"; current: string };
 
   /**
-   * Status — `string`
-   *
-   *
-   */
-  status?: "published" | "beta" | "wip" | "legacy";
-
-  /**
    * Ingress (valgfritt) — `array`
    *
    *
@@ -225,11 +219,42 @@ export interface DsArticlePage extends SanityDocument {
   ingress?: Array<SanityKeyed<SanityBlock>>;
 
   /**
+   * Tabs — `boolean`
+   *
+   *
+   */
+  article_type?: boolean;
+
+  /**
    * Sideinnhold — `blockContent`
    *
    *
    */
   body?: BlockContent;
+
+  /**
+   * Tabs — `array`
+   *
+   *
+   */
+  tabs?: Array<
+    SanityKeyed<{
+      _type: "tab";
+      /**
+       * Tittel — `string`
+       *
+       * Innhold vil da legges under url/tab-tittel
+       */
+      title?: string;
+
+      /**
+       * Sideinnhold — `blockContent`
+       *
+       *
+       */
+      body?: BlockContent;
+    }>
+  >;
 
   /**
    * Tilbakemeldinger — `object`
@@ -428,40 +453,18 @@ export interface DsComponentPage extends SanityDocument {
   _type: "ds_component_page";
 
   /**
-   * Dokument metadata — `object`
+   * Redaktør/kontakt — `reference`
    *
    *
    */
-  metadata?: {
-    _type: "metadata";
-    /**
-     * Oppdatering av innhold — `string`
-     *
-     *
-     */
-    last_update?: string;
+  contact?: SanityReference<Editor>;
 
-    /**
-     * Redaktør/kontakt — `reference`
-     *
-     *
-     */
-    contact?: SanityReference<Editor>;
-
-    /**
-     * Bidragsytere — `array`
-     *
-     * Legg til de som har bidratt med denne siden!
-     */
-    contributors?: Array<SanityKeyedReference<Editor>>;
-
-    /**
-     * Dokument type — `string`
-     *
-     *
-     */
-    doctype?: string;
-  };
+  /**
+   * Bidragsytere — `array`
+   *
+   * Legg til de som har bidratt med denne siden!
+   */
+  contributors?: Array<SanityKeyedReference<Editor>>;
 
   /**
    * Sidetittel — `string`
@@ -476,13 +479,6 @@ export interface DsComponentPage extends SanityDocument {
    * Strukturen bestemmes ikke av URL-en
    */
   slug?: { _type: "slug"; current: string };
-
-  /**
-   * Status — `string`
-   *
-   *
-   */
-  status?: "published" | "beta" | "wip" | "legacy";
 
   /**
    * Ingress (valgfritt) — `array`
@@ -558,40 +554,18 @@ export interface DsComponentTemplate extends SanityDocument {
   _type: "ds_component_template";
 
   /**
-   * Dokument metadata — `object`
+   * Redaktør/kontakt — `reference`
    *
    *
    */
-  metadata?: {
-    _type: "metadata";
-    /**
-     * Oppdatering av innhold — `string`
-     *
-     *
-     */
-    last_update?: string;
+  contact?: SanityReference<Editor>;
 
-    /**
-     * Redaktør/kontakt — `reference`
-     *
-     *
-     */
-    contact?: SanityReference<Editor>;
-
-    /**
-     * Bidragsytere — `array`
-     *
-     * Legg til de som har bidratt med denne siden!
-     */
-    contributors?: Array<SanityKeyedReference<Editor>>;
-
-    /**
-     * Dokument type — `string`
-     *
-     *
-     */
-    doctype?: string;
-  };
+  /**
+   * Bidragsytere — `array`
+   *
+   * Legg til de som har bidratt med denne siden!
+   */
+  contributors?: Array<SanityKeyedReference<Editor>>;
 
   /**
    * Sidetittel — `string`
@@ -606,13 +580,6 @@ export interface DsComponentTemplate extends SanityDocument {
    * Strukturen bestemmes ikke av URL-en
    */
   slug?: { _type: "slug"; current: string };
-
-  /**
-   * Status — `string`
-   *
-   *
-   */
-  status?: "published" | "beta" | "wip" | "legacy";
 
   /**
    * Ingress (valgfritt) — `array`
@@ -896,18 +863,18 @@ export interface DsPackage extends SanityDocument {
   title?: string;
 
   /**
-   * Scope — `string`
-   *
-   *
-   */
-  scope?: "core" | "internal" | "navno";
-
-  /**
    * Status — `string`
    *
    *
    */
   status?: "beta" | "live" | "alpha";
+
+  /**
+   * Scope — `string`
+   *
+   *
+   */
+  scope?: "core" | "internal" | "navno";
 
   /**
    * Github-kode — `url`
@@ -949,40 +916,18 @@ export interface GpArticlePage extends SanityDocument {
   visningstekst?: string;
 
   /**
-   * Dokument metadata — `object`
+   * Redaktør/kontakt — `reference`
    *
    *
    */
-  metadata?: {
-    _type: "metadata";
-    /**
-     * Oppdatering av innhold — `string`
-     *
-     *
-     */
-    last_update?: string;
+  contact?: SanityReference<Editor>;
 
-    /**
-     * Redaktør/kontakt — `reference`
-     *
-     *
-     */
-    contact?: SanityReference<Editor>;
-
-    /**
-     * Bidragsytere — `array`
-     *
-     * Legg til de som har bidratt med denne siden!
-     */
-    contributors?: Array<SanityKeyedReference<Editor>>;
-
-    /**
-     * Dokument type — `string`
-     *
-     *
-     */
-    doctype?: string;
-  };
+  /**
+   * Bidragsytere — `array`
+   *
+   * Legg til de som har bidratt med denne siden!
+   */
+  contributors?: Array<SanityKeyedReference<Editor>>;
 
   /**
    * Sidetittel — `string`
@@ -997,13 +942,6 @@ export interface GpArticlePage extends SanityDocument {
    * Strukturen bestemmes ikke av URL-en
    */
   slug?: { _type: "slug"; current: string };
-
-  /**
-   * Status — `string`
-   *
-   *
-   */
-  status?: "published" | "beta" | "wip" | "legacy";
 
   /**
    * Ingress (valgfritt) — `array`
@@ -1770,6 +1708,7 @@ export type Documents =
   | VkFrontpage
   | Editor
   | Navigation
+  | Introduction
   | DsArticlePage
   | DsChangelog
   | DsCodeExample
