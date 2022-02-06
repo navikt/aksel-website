@@ -3,7 +3,7 @@ import sanityClient from "part:@sanity/base/client";
 
 const client = sanityClient.withConfig({
   apiVersion: "2021-08-21",
-  dataset: "staging",
+  dataset: "production",
 });
 
 /**  Script for å rename data-felt
