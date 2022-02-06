@@ -116,47 +116,7 @@ const items = [
                   S.listItem()
                     .title("Artikler")
                     .icon(() => <FileContent />)
-                    .child(
-                      S.list()
-                        .title("Artikler")
-                        .items([
-                          S.listItem()
-                            .title("Publisert")
-                            .icon(() => <FileContent />)
-                            .child(
-                              S.documentList()
-                                .title("Publiserte artikler")
-                                .filter(
-                                  `_type in ["ds_article_page"] && !(_id in path('drafts.**'))`
-                                )
-                            ),
-                          S.listItem()
-                            .title("Under arbeid")
-                            .icon(() => <Edit />)
-                            .child(
-                              S.documentList()
-                                .title("U-publiserte artikler")
-                                .filter(
-                                  `_type in ["ds_article_page"] && _id in path("drafts.**") &&
-                              (
-                             (_id in path("drafts.**")) &&
-                             (count(*[
-                                _type in ["ds_article_page"] && !(_id in path("drafts.**"))
-                               && (slug.current == ^.slug.current)
-                             ]) == 0)
-                           )`
-                                )
-                            ),
-                          S.listItem()
-                            .title("Alle Artikler")
-                            .icon(() => <FileContent />)
-                            .child(
-                              S.documentList()
-                                .title("Artikler")
-                                .filter('_type in ["ds_article_page"]')
-                            ),
-                        ])
-                    ),
+                    .child(createSuperPane("ds_article_page")),
                   S.divider(),
                   S.listItem()
                     .title("Visning av sider i navigasjon")
