@@ -59,7 +59,7 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
         <Heading
           size="small"
           as="summary"
-          className="p-2 mb-2 focus:shadow-focus focus:outline-none hover:bg-interaction-primary-hover-subtle cursor-pointer"
+          className="mb-2 cursor-pointer p-2 hover:bg-interaction-primary-hover-subtle focus:shadow-focus focus:outline-none"
         >
           {node.title}
         </Heading>

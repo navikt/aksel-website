@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 
 const Sandbox = dynamic(() => import("./Sandbox"), {
   loading: () => (
-    <div className="flex w-full bg-gray-50 border border-solid border-gray-200 h-[400px] mb-7" />
+    <div className="mb-7 flex h-[400px] w-full border border-solid border-gray-200 bg-gray-50" />
   ),
   ssr: false,
 });

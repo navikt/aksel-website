@@ -5,8 +5,8 @@ import { SandboxKeys } from "../../../stories/sandbox";
 const Page = () => {
   const [value, setValue] = useState("");
   return (
-    <div className="w-screen flex flex-col justify-center items-center p-8">
-      <div className="w-full, max-w-[700px] flex flex-col gap-6">
+    <div className="flex w-screen flex-col items-center justify-center p-8">
+      <div className="w-full, flex max-w-[700px] flex-col gap-6">
         <Heading level="1" size="medium" spacing>
           Alle sandbox-eksempler ({`${SandboxKeys.length}`})
         </Heading>
@@ -15,13 +15,13 @@ const Page = () => {
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
-        <ul className="list-none m-0 p-0">
+        <ul className="m-0 list-none p-0">
           {SandboxKeys.sort()
             .filter((path) => {
               return value === "" ? true : path.indexOf(value) !== -1;
             })
             .map((path) => (
-              <li key={path} className="list-none m-0 p-0">
+              <li key={path} className="m-0 list-none p-0">
                 <Link href={`/designsystem/sandboxes/${path}`}>{path}</Link>
               </li>
             ))}

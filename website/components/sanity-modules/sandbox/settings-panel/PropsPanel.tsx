@@ -55,14 +55,14 @@ const SettingsPanel = () => {
       ref={panelRef}
       tabIndex={-1}
       className={cl(
-        "w-[220px] min-w-[220px] bg-canvas-background-light rounded-r p-4 overflow-y-auto gap-4 flex-col focus:outline-none border-l border-gray-200",
+        "w-[220px] min-w-[220px] flex-col gap-4 overflow-y-auto rounded-r border-l border-gray-200 bg-canvas-background-light p-4 focus:outline-none",
         {
           "h-full": !sandboxState.inlineSettings,
-          "flex relative": sandboxState.inlineSettings && !!sandboxState.args,
+          "relative flex": sandboxState.inlineSettings && !!sandboxState.args,
           hidden:
             !sandboxState.openSettings &&
             !(sandboxState.inlineSettings && !!sandboxState.args),
-          "flex absolute right-0 top-0":
+          "absolute right-0 top-0 flex":
             sandboxState.openSettings &&
             !(sandboxState.inlineSettings && !!sandboxState.args),
         }
@@ -73,7 +73,7 @@ const SettingsPanel = () => {
       </Heading>
       {!hideProps && !sandboxState.inlineSettings && (
         <button
-          className="absolute top-0 right-0 p-4 text-xlarge focus:shadow-focus-inset focus:outline-none hover:bg-interaction-primary-hover-subtle"
+          className="absolute top-0 right-0 p-4 text-xlarge hover:bg-interaction-primary-hover-subtle focus:shadow-focus-inset focus:outline-none"
           onClick={() =>
             setSandboxState({
               ...sandboxState,
@@ -90,7 +90,7 @@ const SettingsPanel = () => {
         variant="tertiary"
         onClick={reset}
         size="small"
-        className="w-fit mx-auto mt-auto"
+        className="mx-auto mt-auto w-fit"
       >
         Reset
         <Refresh aria-hidden aria-label="reset sandkasse visning" />

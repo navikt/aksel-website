@@ -139,12 +139,12 @@ const ComponentPageTemplate = ({
           </span>
         )}
         <div className="pt-8 pb-6">
-          <div className="flex gap-2 flex-wrap">
+          <div className="flex flex-wrap gap-2">
             {npmPackage?.title && (
               <Tag
                 variant="info"
                 size="small"
-                className="bg-gray-100 border-transparent font-mono"
+                className="border-transparent bg-gray-100 font-mono"
               >
                 {npmPackage.title}
               </Tag>
@@ -153,8 +153,8 @@ const ComponentPageTemplate = ({
               <Tag
                 variant="info"
                 size="small"
-                className={cl("capitalize border-none", {
-                  "bg-orange-400 text-text capitalize":
+                className={cl("border-none capitalize", {
+                  "bg-orange-400 capitalize text-text":
                     npmPackage.status === "alpha",
                   "bg-purple-400 text-text-inverted":
                     npmPackage.status === "beta",
@@ -238,7 +238,7 @@ const ComponentPageTemplate = ({
             .filter((x) => !!x),
         ]}
       />
-      <div className="relative max-w-full lg:max-w-7xl flex">
+      <div className="relative flex max-w-full lg:max-w-7xl">
         <TableOfContents changedState={data[value]} />
         <div className="content-box">
           {data[value] && (

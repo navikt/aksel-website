@@ -54,24 +54,24 @@ const Page = (props: {
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className="relative min-h-header w-full flex flex-col focus:outline-none bg-component-background-alternate"
+        className="relative flex min-h-header w-full flex-col bg-component-background-alternate focus:outline-none"
       >
         <div className="relative flex w-full bg-canvas-background-light">
-          <div className="flex flex-col items-center md:block w-full md:h-[240px] py-12 px-4 md:py-16 md:px-12 max-w-[calc(1440px_-_624px)]">
+          <div className="flex w-full max-w-[calc(1440px_-_624px)] flex-col items-center py-12 px-4 md:block md:h-[240px] md:py-16 md:px-12">
             <Heading spacing level="1" size="2xlarge">
               Designsystemet
             </Heading>
             <BodyLong>Gjør det enkelt å lage produkter i NAV</BodyLong>
           </div>
-          <DsFrontpageIllustration className="h-[240px] w-[624px] shrink-0 hidden xl:block" />
+          <DsFrontpageIllustration className="hidden h-[240px] w-[624px] shrink-0 xl:block" />
         </div>
-        <div className="flex flex-col flex-wrap max-w-screen-2xl bg-component-background-alternate">
+        <div className="flex max-w-screen-2xl flex-col flex-wrap bg-component-background-alternate">
           <div className="reduced-spacing py-12 px-4 md:px-12 md:py-6">
             {props?.page?.body && (
               <SanityBlockContent blocks={props?.page?.body} />
             )}
           </div>
-          <div className="flex flex-wrap gap-6 pt-0 px-4 pb-12 md:px-12 md:pb-16 justify-center md:justify-start">
+          <div className="flex flex-wrap justify-center gap-6 px-4 pt-0 pb-12 md:justify-start md:px-12 md:pb-16">
             {props?.page?.cards &&
               props?.page?.cards.map((card, i) => {
                 return (
@@ -86,7 +86,7 @@ const Page = (props: {
               })}
           </div>
         </div>
-        <DsFrontpageFooterIllustration className="w-full h-full flex lg:hidden" />
+        <DsFrontpageFooterIllustration className="flex h-full w-full lg:hidden" />
       </main>
       <DesignsystemFooter />
     </>

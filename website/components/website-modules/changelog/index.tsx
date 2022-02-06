@@ -143,7 +143,7 @@ const Changelog = ({ node }: { node: ChangelogListT }) => {
           <Heading
             size="small"
             as="summary"
-            className="max-w-lg py-2 mb-2 focus:shadow-focus focus:outline-none hover:bg-interaction-primary-hover-subtle cursor-pointer"
+            className="mb-2 max-w-lg cursor-pointer py-2 hover:bg-interaction-primary-hover-subtle focus:shadow-focus focus:outline-none"
           >
             Filter
           </Heading>

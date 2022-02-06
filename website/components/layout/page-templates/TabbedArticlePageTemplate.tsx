@@ -106,7 +106,7 @@ const TabbedActiclePageTemplate = ({
           ]}
         />
       )}
-      <div className="relative max-w-full lg:max-w-7xl flex">
+      <div className="relative flex max-w-full lg:max-w-7xl">
         <TableOfContents changedState={data.tabs[activeTab].body} />
         <div className="content-box">
           <SanityBlockContent

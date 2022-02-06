@@ -34,17 +34,17 @@ const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
 
       <Link
         href="https://old-design-nav.vercel.app/"
-        className="absolute top-4 md:top-8 md:left-8 text-text flex justify-center w-[calc(100%_-_2rem)] md:block md:w-auto"
+        className="absolute top-4 flex w-[calc(100%_-_2rem)] justify-center text-text md:top-8 md:left-8 md:block md:w-auto"
       >
         Gå til gammel dokumentasjon
       </Link>
-      <div className="mx-auto my-0 flex flex-col justify-center items-center max-w-screen-lg text-center">
-        <div className="flex items-center mb-0 md:mb-12 sub">
+      <div className="mx-auto my-0 flex max-w-screen-lg flex-col items-center justify-center text-center">
+        <div className="sub mb-0 flex items-center md:mb-12">
           <NAVLogoDark className="justify-self-center text-heading-xlarge" />
         </div>
         <Heading spacing level="1" size="2xlarge" className="relative w-fit">
           Verktøykassa
-          <BodyShort className="absolute right-0 top-0 md:-right-2 translate-x-full">
+          <BodyShort className="absolute right-0 top-0 translate-x-full md:-right-2">
             Beta
           </BodyShort>
         </Heading>
@@ -53,8 +53,8 @@ const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
           bedre, universelt tilgjengelige og sammenhengende produkter i NAV.
         </Ingress>
       </div>
-      <nav className="mt-16 mb-0 mx-auto" aria-label="Portal navigasjon">
-        <div className="card-grid-flow gap-6 p-0 list-none">
+      <nav className="mx-auto mt-16 mb-0" aria-label="Portal navigasjon">
+        <div className="card-grid-flow list-none gap-6 p-0">
           {props?.page?.cards &&
             props.page.cards
               .filter((x) => !x.locked)
@@ -82,7 +82,7 @@ const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
               <Heading level="2" size="small" className="mb-8 mt-24">
                 Krever innlogging
               </Heading>
-              <div className="card-grid-flow gap-6 p-0 list-none">
+              <div className="card-grid-flow list-none gap-6 p-0">
                 {props.page.cards
                   .filter((x) => x.locked)
                   .map((card) => (
@@ -112,11 +112,11 @@ const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
 
 Page.getLayout = (page) => {
   return (
-    <div className="flex w-full bg-component-background-alternate flex-col">
+    <div className="flex w-full flex-col bg-component-background-alternate">
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className="min-h-screen w-full flex flex-col relative px-4 pb-8 pt-12 md:py-12"
+        className="relative flex min-h-screen w-full flex-col px-4 pb-8 pt-12 md:py-12"
       >
         {page}
       </main>

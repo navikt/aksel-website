@@ -68,7 +68,7 @@ const DownloadButtons = () => {
           placement="bottom"
         >
           <Heading
-            className="py-2 px-4 border-solid border-b border-border-muted"
+            className="border-b border-solid border-border-muted py-2 px-4"
             size="xsmall"
             level="4"
           >

@@ -163,8 +163,8 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
         </PreviewWrapper>
         <div ref={preFocusCapture} tabIndex={-1} />
 
-        <div className="mt-2 rounded relative">
-          <pre className="sandbox-editor font-code p-4 pr-20 overflow-x-auto rounded max-h-[400px] overflow-y-auto relative bg-canvas-background-inverted m-0">
+        <div className="relative mt-2 rounded">
+          <pre className="sandbox-editor relative m-0 max-h-[400px] overflow-x-auto overflow-y-auto rounded bg-canvas-background-inverted p-4 pr-20 font-code">
             {reseting ? (
               <LiveEditor
                 style={{

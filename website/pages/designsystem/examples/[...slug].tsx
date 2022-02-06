@@ -21,8 +21,8 @@ const Page = ({ compkey }: { compkey: string }) => {
       <Heading level="1" size="medium" className="navds-sr-only">
         {compkey}
       </Heading>
-      <div className="flex p-4 flex-col justify-center items-center w-full">
-        <div className="gap-4 flex-wrap inline-grid items-center">
+      <div className="flex w-full flex-col items-center justify-center p-4">
+        <div className="inline-grid flex-wrap items-center gap-4">
           {CodePreview(compkey)}
         </div>
       </div>

@@ -74,7 +74,7 @@ const Card = ({
         {...rest}
       >
         {imageProps && (
-          <div className="flex justify-center mb-6 shrink-0">
+          <div className="mb-6 flex shrink-0 justify-center">
             <NextImage
               {...imageProps}
               alt={category?.picture?.title}
@@ -93,7 +93,7 @@ const Card = ({
         {tag && (
           <Detail
             size="small"
-            className="absolute bottom-6 text-text-muted uppercase"
+            className="absolute bottom-6 uppercase text-text-muted"
           >
             {tagName}
           </Detail>

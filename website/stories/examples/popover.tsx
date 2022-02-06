@@ -143,7 +143,7 @@ export const PopoverPlacement: ExampleComponent = () => {
 
   const [open, setOpen] = useState(false);
   return (
-    <div className="my-12 mx-4 w-full flex justify-center">
+    <div className="my-12 mx-4 flex w-full justify-center">
       <Select
         value={selectedPlacement}
         onChange={(e) => {

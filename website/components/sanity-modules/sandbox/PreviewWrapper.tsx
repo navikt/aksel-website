@@ -22,15 +22,15 @@ const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <div
       role="presentation"
-      className="flex w-full border-gray-200 border border-solid relative min-h-[400px] h-full rounded"
+      className="relative flex h-full min-h-[400px] w-full rounded border border-solid border-gray-200"
       style={{ backgroundColor: background }}
     >
-      <div className="sandbox-preview relative gap-4 p-4 lg:p-8 inline-flex items-center justify-center flex-wrap w-full overflow-x-auto">
+      <div className="sandbox-preview relative inline-flex w-full flex-wrap items-center justify-center gap-4 overflow-x-auto p-4 lg:p-8">
         {children}
         <ColorPicker
           onChange={(c) => setBg(c)}
           className={cl(
-            "absolute top-1 p-3 text-xlarge focus:shadow-focus-inset focus:outline-none hover:bg-none",
+            "absolute top-1 p-3 text-xlarge hover:bg-none focus:shadow-focus-inset focus:outline-none",
             { "right-1": !showSettings, "right-12": showSettings }
           )}
           style={{

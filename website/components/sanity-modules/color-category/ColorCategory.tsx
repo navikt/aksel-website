@@ -112,7 +112,7 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
     <ScSection>
       {node?.description && <SanityBlockContent blocks={node?.description} />}
       {node.colors[0].color_type === "global" ? (
-        <ScGlobalWrapper className="shadow-[0_0_0_1px] shadow-border-muted rounded w-auto max-w-[calc(var(--text-max-width)-2rem)]">
+        <ScGlobalWrapper className="w-auto max-w-[calc(var(--text-max-width)-2rem)] rounded shadow-[0_0_0_1px] shadow-border-muted">
           {node.colors?.map((color, i) => (
             <GlobalTableRow
               onClick={() => handleSelect(color)}

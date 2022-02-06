@@ -76,7 +76,7 @@ const ActiclePageTemplate = ({
         </div>
         {data.ingress && <SanityBlockContent isIngress blocks={data.ingress} />}
       </div>
-      <div className="relative max-w-full lg:max-w-7xl flex">
+      <div className="relative flex max-w-full lg:max-w-7xl">
         <TableOfContents changedState={data.body} />
         <div className="content-box">
           <SanityBlockContent className="mt-12" blocks={data.body} />

@@ -29,14 +29,14 @@ import * as Tokens from "@navikt/ds-tokens/dist/tokens";
 
 export const InlineCode = (props: React.HTMLAttributes<HTMLElement>) => (
   <code
-    className="text-deepblue-500 bg-deepblue-50 rounded-md py-[2px] px-2 text-medium text-mono"
+    className="text-mono rounded-md bg-deepblue-50 py-[2px] px-2 text-medium text-deepblue-500"
     {...props}
   />
 );
 
 export const KBD = (props: React.HTMLAttributes<HTMLElement>) => (
   <kbd
-    className="text-medium shadow-gray-900/50 shadow-[0_0_0_0.5px,0_1px_0_0] py-1 rounded-sm px-2 min-w-[2rem] inline-block text-center my-0 mx-1 text-text"
+    className="my-0 mx-1 inline-block min-w-[2rem] rounded-sm py-1 px-2 text-center text-medium text-text shadow-[0_0_0_0.5px,0_1px_0_0] shadow-gray-900/50"
     {...props}
   />
 );
@@ -113,7 +113,7 @@ const serializers = {
         case "h3":
           return (
             <Heading
-              className="mt-11 index-lvl3"
+              className="index-lvl3 mt-11"
               spacing
               level="3"
               size="medium"
@@ -123,7 +123,7 @@ const serializers = {
         case "heading4":
           return (
             <Heading
-              className="mt-9 index-lvl4"
+              className="index-lvl4 mt-9"
               spacing
               level="4"
               size="small"
@@ -151,12 +151,12 @@ const serializers = {
   list: (props: any) => {
     if (props?.type == "number") {
       return (
-        <ol type="1" className="list-decimal list-margin">
+        <ol type="1" className="list-margin list-decimal">
           {props.children}
         </ol>
       );
     }
-    return <ul className="list-disc list-margin">{props.children}</ul>;
+    return <ul className="list-margin list-disc">{props.children}</ul>;
   },
   listItem: (props: any) => {
     return (

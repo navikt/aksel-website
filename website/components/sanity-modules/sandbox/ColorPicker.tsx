@@ -17,7 +17,7 @@ const ColorLabel = ({
   return (
     <button
       style={{ background: `var(${color})` }}
-      className="rounded bg-none border-none py-2 px-4 text-left focus:shadow-focus-inset focus:outline-none"
+      className="rounded border-none bg-none py-2 px-4 text-left focus:shadow-focus-inset focus:outline-none"
       onClick={() => onClick(color)}
     >
       <span className="invert" style={{ color: `var(${color})` }}>
@@ -53,9 +53,9 @@ const ColorPicker = ({
         onClick={() => setOpen(!open)}
         className={cl(
           className,
-          "bg-transparent border-none text-text-muted flex items-center justify-center hover:text-text",
+          "flex items-center justify-center border-none bg-transparent text-text-muted hover:text-text",
           {
-            "hover:bg-interaction-primary-hover-subtle min-w-[50px]": !sandbox,
+            "min-w-[50px] hover:bg-interaction-primary-hover-subtle": !sandbox,
           }
         )}
         {...rest}

@@ -101,30 +101,30 @@ export const Tabs = ({
         ref={setParentRef}
         aria-label={`Om ${title}`}
         className={cl(
-          "overflow-x-auto bg-canvas-background-light no-scrollbar px-2 lg:px-0 border-b border-b-divider",
+          "no-scrollbar overflow-x-auto border-b border-b-divider bg-canvas-background-light px-2 lg:px-0",
           { "shadow-tabs": isSticky }
         )}
       >
         <ul
-          className="p-0 m-0 max-w-none lg:max-w-[800px] flex items-end mt-2 mx-0 lg:mx-12 gap-1"
+          className="m-0 mx-0 mt-2 flex max-w-none items-end gap-1 p-0 lg:mx-12 lg:max-w-[800px]"
           ref={setInnerRef}
         >
           {tabWRefs.map((tab, i) => (
             <li
               key={tab.name + i}
               ref={setLastItemRef}
-              className="list-none flex-1 max-w-[200px] min-w-fit flex justify-center items-center relative"
+              className="relative flex min-w-fit max-w-[200px] flex-1 list-none items-center justify-center"
             >
               <NextLink href={tab.path} passHref>
                 <a
                   className={cl(
-                    "vk-tab_link border-b-[3px] rounded-none border-b-transparent text-gray-800",
-                    "flex flex-1 justify-center items-center py-2 px-4 h-12 overflow-hidden whitespace-nowrap",
-                    "hover:text-text hover:border-b-canvas-background-inverted focus:outline-[3px] focus:outline-offset-[-3px] focus:outline focus:outline-focus",
+                    "vk-tab_link rounded-none border-b-[3px] border-b-transparent text-gray-800",
+                    "flex h-12 flex-1 items-center justify-center overflow-hidden whitespace-nowrap py-2 px-4",
+                    "hover:border-b-canvas-background-inverted hover:text-text focus:outline focus:outline-[3px] focus:outline-offset-[-3px] focus:outline-focus",
                     "index-tabs",
                     {
                       "index-tabs--active": tab.active,
-                      "border-b-canvas-background-inverted text-text font-bold":
+                      "border-b-canvas-background-inverted font-bold text-text":
                         tab.active,
                     }
                   )}
@@ -141,7 +141,7 @@ export const Tabs = ({
       </nav>
       {overflowLeft && (
         <button
-          className="absolute left-0 w-12 h-12 top-1/2 -translate-y-1/2 flex items-center justify-center focus:shadow-[0_0_0_2px] focus:shadow-focus bg-gradient-to-r from-white via-white/70"
+          className="absolute left-0 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center bg-gradient-to-r from-white via-white/70 focus:shadow-[0_0_0_2px] focus:shadow-focus"
           aria-hidden="true"
           tabIndex={-1}
           onClick={() => scrollLeft()}
@@ -151,7 +151,7 @@ export const Tabs = ({
       )}
       {overflowRight && (
         <button
-          className="absolute right-0 w-12 h-12 top-1/2 -translate-y-1/2 flex items-center justify-center focus:shadow-[0_0_0_2px] focus:shadow-focus bg-gradient-to-l from-white via-white/70"
+          className="absolute right-0 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center bg-gradient-to-l from-white via-white/70 focus:shadow-[0_0_0_2px] focus:shadow-focus"
           aria-hidden="true"
           tabIndex={-1}
           onClick={() => scrollRight()}

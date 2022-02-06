@@ -90,7 +90,7 @@ const ColorBox = ({
       <div
         style={{ backgroundColor: color.hex() }}
         className={cl(
-          "border-none h-16 flex flex-col justify-center px-4 min-w-[10rem] w-full",
+          "flex h-16 w-full min-w-[10rem] flex-col justify-center border-none px-4",
           {
             "text-text": !color.isDark(),
             "text-text-inverted": color.isDark(),
