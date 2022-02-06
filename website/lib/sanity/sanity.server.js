@@ -4,7 +4,7 @@ import { createClient } from "next-sanity";
 const config = {
   projectId: "hnbe3yhs",
   dataset: "production",
-  useCdn: true, // False for fresh data
+  useCdn: true,
   apiVersion: "2021-05-31",
 };
 
