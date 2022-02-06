@@ -23,7 +23,7 @@ export default {
               title: "Lenke",
               name: "link_ref",
               type: "reference",
-              to: [{ type: "ds_component_page" }, { type: "ds_article" }],
+              to: [{ type: "ds_component_page" }, { type: "ds_article_page" }],
               validation: (Rule) => Rule.required(),
             },
             {

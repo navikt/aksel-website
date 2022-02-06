@@ -10,7 +10,7 @@ const prefix = "designsystem/side/";
 
 export default {
   title: "Artikkel",
-  name: "ds_article",
+  name: "ds_article_page",
   type: "document",
   ...defaultPreview(),
   groups: [...groups],
@@ -29,14 +29,14 @@ export default {
       type: "blockContent",
       title: "Sideinnhold",
       group: "innhold",
-      hidden: ({ document }) => !document?.article_type,
+      hidden: ({ document }) => !!document?.article_type,
     },
     {
       name: "tabs",
       title: "Tabs",
       type: "array",
       group: "innhold",
-      hidden: ({ document }) => !!document?.article_type,
+      hidden: ({ document }) => !document?.article_type,
       of: [
         {
           name: "tab",
