@@ -1,36 +1,28 @@
 /* eslint-disable no-console */
-const SanityConfig = require("../sanity.json");
-const sanityClient = require("@sanity/client");
+import sanityClient from "part:@sanity/base/client";
+
+const client = sanityClient.withConfig({
+  apiVersion: "2021-08-21",
+  dataset: "staging",
+});
+
 /**  Script for å rename data-felt
  * https://www.sanity.io/schemas/rename-a-field-across-documents-5cd6f5f0
  * Husk å kjøre backup med sanity dataset export først!
  * run: sanity exec scripts/renameField.js --with-user-token
  */
 
-const client = sanityClient({
-  projectId: SanityConfig.api.projectId,
-  dataset: SanityConfig.api.dataset,
-  apiVersion: "2020-06-19",
-  useCdn: false,
-});
 /* ,"ds_article_page","ds_tabbed_article_page","gp_article_page" */
 const fetchDocuments = () =>
-  client.fetch(
-    `*[_type in ["ds_component_page","ds_article","gp_article_page"] && defined(metadata)]
-    {_id, _rev, metadata}`
-  );
+  client.fetch(`*[_type in ["ds_article_page" && !defined(article_type)]]`);
 
 const buildPatches = (docs) =>
   docs.map((doc) => ({
     id: doc._id,
     patch: {
       set: {
-        contact: doc.metadata.contact,
-        ...(doc?.metadata?.contributors && {
-          contributors: doc.metadata.contributors,
-        }),
+        article_type: false,
       },
-      unset: ["metadata"],
       ifRevisionID: doc._rev,
     },
   }));
