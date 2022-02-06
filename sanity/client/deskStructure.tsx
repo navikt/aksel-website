@@ -35,12 +35,7 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
         S.view.form(),
         S.view.component(ComponentPageWebPreview).title("Preview"),
       ]);
-    case "ds_article_page":
-      return S.document().views([
-        S.view.form(),
-        S.view.component(PageWebPreview).title("Preview"),
-      ]);
-    case "ds_tabbed_article_page":
+    case "ds_article":
       return S.document().views([
         S.view.form(),
         S.view.component(PageWebPreview).title("Preview"),
@@ -132,7 +127,7 @@ const items = [
                               S.documentList()
                                 .title("Publiserte artikler")
                                 .filter(
-                                  `_type in ["ds_article_page", "ds_tabbed_article_page"] && !(_id in path('drafts.**'))`
+                                  `_type in ["ds_article"] && !(_id in path('drafts.**'))`
                                 )
                             ),
                           S.listItem()
@@ -142,11 +137,11 @@ const items = [
                               S.documentList()
                                 .title("U-publiserte artikler")
                                 .filter(
-                                  `_type in ["ds_article_page", "ds_tabbed_article_page"] && _id in path("drafts.**") &&
+                                  `_type in ["ds_article"] && _id in path("drafts.**") &&
                               (
                              (_id in path("drafts.**")) &&
                              (count(*[
-                                _type in ["ds_article_page", "ds_tabbed_article_page"] && !(_id in path("drafts.**"))
+                                _type in ["ds_article"] && !(_id in path("drafts.**"))
                                && (slug.current == ^.slug.current)
                              ]) == 0)
                            )`
@@ -158,9 +153,7 @@ const items = [
                             .child(
                               S.documentList()
                                 .title("Artikler")
-                                .filter(
-                                  '_type in ["ds_article_page", "ds_tabbed_article_page"]'
-                                )
+                                .filter('_type in ["ds_article"]')
                             ),
                         ])
                     ),
@@ -178,7 +171,7 @@ const items = [
                       S.documentList()
                         .title("Sider ikke i navigasjon")
                         .filter(
-                          `!(_id in [${allIds}]) && !(_id in path('drafts.**')) && _type in ["ds_component_page","ds_article_page","ds_tabbed_article_page"]`
+                          `!(_id in [${allIds}]) && !(_id in path('drafts.**')) && _type in ["ds_component_page","ds_article"]`
                         )
                     ),
                 ]);

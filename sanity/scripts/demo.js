@@ -12,7 +12,7 @@ const client = sanityClient({
 /* "ds_article_page","ds_tabbed_article_page","gp_article_page" */
 const fetchDocuments = () =>
   client.fetch(
-    `*[_type in ["ds_component_page","ds_article_page","ds_tabbed_article_page","gp_article_page"]]
+    `*[_type in ["ds_component_page","ds_article","gp_article_page"]]
     {_id, _updatedAt, metadata}`
   );
 

@@ -10,7 +10,7 @@ const prefix = "designsystem/side/";
 
 export default {
   title: "Artikkel",
-  name: "ds_article_page",
+  name: "ds_article",
   type: "document",
   ...defaultPreview(),
   groups: [...groups],

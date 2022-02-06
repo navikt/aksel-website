@@ -113,11 +113,7 @@ export const link = {
       name: "link_ref",
       type: "reference",
       weak: true,
-      to: [
-        { type: "ds_component_page" },
-        { type: "ds_article_page" },
-        { type: "ds_tabbed_article_page" },
-      ],
+      to: [{ type: "ds_component_page" }, { type: "ds_article" }],
       validation: (Rule) => Rule.required(),
       /* Matches results based on document prefix */
       options: {
