@@ -15,17 +15,18 @@ import {
   Tabs,
   useAmplitude,
 } from "../..";
+import { DsArticlePage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 
 const TabbedActiclePageTemplate = ({
   data,
   title,
 }: {
-  data: DsTabbedArticlePage;
+  data: DsArticlePage;
   title: string;
 }): JSX.Element => {
-  const { query, asPath } = useRouter();
   const layout = useContext(LayoutContext);
+  const { query, asPath } = useRouter();
   const { pageProps } = useContext(PagePropsContext);
   const { logAmplitudeEvent } = useAmplitude();
 
@@ -112,7 +113,7 @@ const TabbedActiclePageTemplate = ({
             className="mt-12"
             blocks={data.tabs[activeTab].body}
           />
-          {!data.tabs[activeTab]?.metadata_feedback?.hide_feedback && (
+          {!data?.metadata_feedback?.hide_feedback && (
             <Feedback
               docId={pageProps?.page?._id}
               docType={pageProps?.page?._type}

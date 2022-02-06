@@ -25,9 +25,9 @@ const ActiclePageTemplate = ({
   title: string;
 }): JSX.Element => {
   const layout = useContext(LayoutContext);
+  const { asPath } = useRouter();
   const { pageProps } = useContext(PagePropsContext);
   const { logAmplitudeEvent } = useAmplitude();
-  const { asPath } = useRouter();
 
   useClientLayoutEffect(() => {
     slugger.reset();

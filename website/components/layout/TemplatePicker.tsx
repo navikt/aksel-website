@@ -30,7 +30,12 @@ type templateT = ds_component | ds_article | gp_article;
 
 const templates: templateT = {
   ds_component_page: (props) => <ComponentPageTemplate {...props} />,
-  ds_article_page: (props) => <ArticleTemplate {...props} />,
+  ds_article_page: (props) =>
+    props.data.article_type ? (
+      <TabbedArticleTemplate {...props} />
+    ) : (
+      <ArticleTemplate {...props} />
+    ),
   gp_article_page: (props) => <ArticleTemplate {...props} />,
 };
 
