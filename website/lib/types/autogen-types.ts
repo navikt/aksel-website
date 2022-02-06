@@ -157,7 +157,7 @@ export interface Navigation extends SanityDocument {
  *
  *
  */
-export interface DsArticlePage extends SanityDocument {
+export interface DsArticle extends SanityDocument {
   _type: "ds_article_page";
 
   /**
@@ -708,7 +708,7 @@ export interface DsFrontpage extends SanityDocument {
        *
        */
       link_ref?: SanityReference<
-        DsComponentPage | DsArticlePage | DsTabbedArticlePage
+        DsComponentPage | DsArticle | DsTabbedArticlePage
       >;
 
       /**
@@ -878,7 +878,7 @@ export interface DsComponentOverview extends SanityDocument {
        *
        */
       doc_link?: SanityReference<
-        DsComponentPage | DsArticlePage | DsTabbedArticlePage
+        DsComponentPage | DsArticle | DsTabbedArticlePage
       >;
     }>
   >;
@@ -1165,9 +1165,7 @@ export type NavigationLink = {
    *
    *
    */
-  link_ref?: SanityReference<
-    DsComponentPage | DsArticlePage | DsTabbedArticlePage
-  >;
+  link_ref?: SanityReference<DsComponentPage | DsArticle | DsTabbedArticlePage>;
 };
 
 export type NavigationDropdown = {
@@ -1452,7 +1450,7 @@ export type LinkPanel = {
    *
    */
   internal_link?: SanityReference<
-    DsComponentPage | DsArticlePage | DsTabbedArticlePage | GpArticlePage
+    DsComponentPage | DsArticle | DsTabbedArticlePage | GpArticlePage
   >;
 
   /**
@@ -1614,7 +1612,7 @@ export type RelatedPages = {
        *
        */
       internal_link?: SanityReference<
-        DsComponentPage | DsArticlePage | DsTabbedArticlePage | GpArticlePage
+        DsComponentPage | DsArticle | DsTabbedArticlePage | GpArticlePage
       >;
 
       /**
@@ -1831,9 +1829,7 @@ export type DsNavigationHeading = {
    *
    * Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via headern
    */
-  link_ref?: SanityReference<
-    DsComponentPage | DsArticlePage | DsTabbedArticlePage
-  >;
+  link_ref?: SanityReference<DsComponentPage | DsArticle | DsTabbedArticlePage>;
 
   /**
    * Meny for denne headingen — `array`
@@ -1856,7 +1852,7 @@ export type DsNavigationHeading = {
          *
          */
         link?: SanityReference<
-          DsComponentPage | DsArticlePage | DsTabbedArticlePage
+          DsComponentPage | DsArticle | DsTabbedArticlePage
         >;
       }>
     | SanityKeyed<{
@@ -1892,7 +1888,7 @@ export type Documents =
   | VkFrontpage
   | Editor
   | Navigation
-  | DsArticlePage
+  | DsArticle
   | DsChangelog
   | DsCodeExample
   | DsCodeSandbox

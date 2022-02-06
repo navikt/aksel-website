@@ -151,7 +151,7 @@ export const gpDocumentBySlug = `*[slug.current == $slug]
   }
 }`;
 
-export const dsDocuments = `*[_type in ["ds_component_page", "ds_article_page", "ds_tabbed_article_page"]]{ _type, 'slug': slug.current, tabs, design, development, accessibility }`;
+export const dsDocuments = `*[_type in ["ds_component_page", "ds_article"]]{ _type, 'slug': slug.current, tabs, design, development, accessibility }`;
 
 export const dsFrontpageQuery = `*[_id == "frontpage_designsystem"]
 {
