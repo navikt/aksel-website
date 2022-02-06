@@ -43,7 +43,11 @@ export const getDsPaths = async (): Promise<string[][]> => {
         });
         defaultPush();
         break;
-      case "ds_tabbed_article_page": {
+      case "ds_article_page": {
+        if (!page?.article_type) {
+          defaultPush();
+          break;
+        }
         if (!page.tabs) break;
         const tabbedArticleTabs = page.tabs
           .map((tab) => {

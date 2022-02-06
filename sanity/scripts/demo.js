@@ -9,7 +9,6 @@ const client = sanityClient({
   useCdn: false,
 });
 
-/* "ds_article_page","ds_tabbed_article_page","gp_article_page" */
 const fetchDocuments = () =>
   client.fetch(
     `*[_type in ["ds_component_page","ds_article","gp_article_page"]]

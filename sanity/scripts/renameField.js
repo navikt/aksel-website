@@ -12,7 +12,6 @@ const client = sanityClient.withConfig({
  * run: sanity exec scripts/renameField.js --with-user-token
  */
 
-/* ,"ds_article_page","ds_tabbed_article_page","gp_article_page" */
 const fetchDocuments = () =>
   client.fetch(`*[_type in ["ds_article_page" && !defined(article_type)]]`);
 
