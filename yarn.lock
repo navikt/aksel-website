@@ -2,24 +2,24 @@
 # yarn lockfile v1
 
 
-"@algolia/autocomplete-core@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-core/-/autocomplete-core-1.5.0.tgz#6c91c9de7748e9c103846828a58dfe92bd4d6689"
-  integrity sha512-E7+VJwcvwMM8vPeaVn7fNUgix8WHV8A1WUeHDi2KHemCaaGc8lvUnP3QnvhMxiDhTe7OpMEv4o2TBUMyDgThaw==
+"@algolia/autocomplete-core@1.5.2":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-core/-/autocomplete-core-1.5.2.tgz#ec0178e07b44fd74a057728ac157291b26cecf37"
+  integrity sha512-DY0bhyczFSS1b/CqJlTE/nQRtnTAHl6IemIkBy0nEWnhDzRDdtdx4p5Uuk3vwAFxwEEgi1WqKwgSSMx6DpNL4A==
   dependencies:
-    "@algolia/autocomplete-shared" "1.5.0"
+    "@algolia/autocomplete-shared" "1.5.2"
 
-"@algolia/autocomplete-preset-algolia@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-preset-algolia/-/autocomplete-preset-algolia-1.5.0.tgz#61671f09c0c77133d9baf1356719f8378c48437a"
-  integrity sha512-iiFxKERGHkvkiupmrFJbvESpP/zv5jSgH714XRiP5LDvUHaYOo4GLAwZCFf2ef/L5tdtPBARvekn6k1Xf33gjA==
+"@algolia/autocomplete-preset-algolia@1.5.2":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-preset-algolia/-/autocomplete-preset-algolia-1.5.2.tgz#36c5638cc6dba6ea46a86e5a0314637ca40a77ca"
+  integrity sha512-3MRYnYQFJyovANzSX2CToS6/5cfVjbLLqFsZTKcvF3abhQzxbqwwaMBlJtt620uBUOeMzhdfasKhCc40+RHiZw==
   dependencies:
-    "@algolia/autocomplete-shared" "1.5.0"
+    "@algolia/autocomplete-shared" "1.5.2"
 
-"@algolia/autocomplete-shared@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-shared/-/autocomplete-shared-1.5.0.tgz#09580bc89408a2ab5f29e312120dad68f58019bd"
-  integrity sha512-bRSkqHHHSwZYbFY3w9hgMyQRm86Wz27bRaGCbNldLfbk0zUjApmE4ajx+ZCVSLqxvcUEjMqZFJzDsder12eKsg==
+"@algolia/autocomplete-shared@1.5.2":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-shared/-/autocomplete-shared-1.5.2.tgz#e157f9ad624ab8fd940ff28bd2094cdf199cdd79"
+  integrity sha512-ylQAYv5H0YKMfHgVWX0j0NmL8XBcAeeeVQUmppnnMtzDbDnca6CzhKj3Q8eF9cHCgcdTDdb5K+3aKyGWA0obug==
 
 "@algolia/cache-browser-local-storage@4.12.1":
   version "4.12.1"
@@ -1249,19 +1249,19 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@docsearch/css@3.0.0-alpha.42":
-  version "3.0.0-alpha.42"
-  resolved "https://registry.yarnpkg.com/@docsearch/css/-/css-3.0.0-alpha.42.tgz#deb6049e999d6ca9451eba4793cb5b6da28c8773"
-  integrity sha512-AGwI2AXUacYhVOHmYnsXoYDJKO6Ued2W+QO80GERbMLhC7GH5tfvtW5REs/s7jSdcU3vzFoxT8iPDBCh/PkrlQ==
+"@docsearch/css@3.0.0-alpha.50":
+  version "3.0.0-alpha.50"
+  resolved "https://registry.yarnpkg.com/@docsearch/css/-/css-3.0.0-alpha.50.tgz#794c6a8d301840a49b55f5b331c7be84b9723643"
+  integrity sha512-QeWFCQOtS9D+Fi20liKsPXF2j/xWKh52e+P2Z1UATIdPMqmH6zoB2lcUz+cgv6PPVgWUtECeR6VSSUm71LT94w==
 
-"@docsearch/react@3.0.0-alpha.42":
-  version "3.0.0-alpha.42"
-  resolved "https://registry.yarnpkg.com/@docsearch/react/-/react-3.0.0-alpha.42.tgz#1d22a2b05779f24d090ff8d7ff2699e4d50dff5c"
-  integrity sha512-1aOslZJDxwUUcm2QRNmlEePUgL8P5fOAeFdOLDMctHQkV2iTja9/rKVbkP8FZbIUnZxuuCCn8ErLrjD/oXWOag==
+"@docsearch/react@3.0.0-alpha.50":
+  version "3.0.0-alpha.50"
+  resolved "https://registry.yarnpkg.com/@docsearch/react/-/react-3.0.0-alpha.50.tgz#a7dc547836c2b221fd3aa8eb87bfb47a579ef141"
+  integrity sha512-oDGV1zZCRYv7MWsh6CyQVthYTRc3b4q+6kKwNYb1/g/Wf/4nJHutpxolFLHdEUDhrJ4Xi8wxwQG+lEwAVBTHPg==
   dependencies:
-    "@algolia/autocomplete-core" "1.5.0"
-    "@algolia/autocomplete-preset-algolia" "1.5.0"
-    "@docsearch/css" "3.0.0-alpha.42"
+    "@algolia/autocomplete-core" "1.5.2"
+    "@algolia/autocomplete-preset-algolia" "1.5.2"
+    "@docsearch/css" "3.0.0-alpha.50"
     algoliasearch "^4.0.0"
 
 "@emotion/hash@^0.8.0":
@@ -1424,47 +1424,47 @@
     prop-types "^15.7.2"
     react-is "^16.8.0 || ^17.0.0"
 
-"@navikt/ds-css-internal@^0.7":
+"@navikt/ds-css-internal@^0.7.1":
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@navikt/ds-css-internal/-/ds-css-internal-0.7.1.tgz#674fabf444c4a970c0d3631aac621fd46bfdca4c"
   integrity sha512-atk2/O8bKx73614zwlWiHZza3vV5i3M5hbfitnAX5awCrRg9y8Hy7Xpu5zEpH0goTw74/AZuTJ50vghtiMC/9w==
 
-"@navikt/ds-css@0.14.1-rc.search.0":
-  version "0.14.1-rc.search.0"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.14.1-rc.search.0.tgz#62b59aaae2ee0d9b19b212ac308bc63ed63035f5"
-  integrity sha512-94QOhpT0HdqQWDXo43LzDTB5RLoZICYsJZbm6NQnXgoPYo2APL1GUSd5rAN/f3aylcC811KB8sgHgSpCNMcf3w==
+"@navikt/ds-css@0.15.1":
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.15.1.tgz#626f845d3aa8db87b00b718efc426cf2b00ef55c"
+  integrity sha512-VFzmfRRXM3wF+oxO8jbYfxw/OTRUzq11RlFJECeq6WR5eimhOoBCbnC+W1Uf8RvE0mvbf22c1pyZKulexAeJyg==
 
 "@navikt/ds-css@^0.14":
   version "0.14.1"
   resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.14.1.tgz#0e3a37b802043106ecdca7ed154b82d7384b0441"
   integrity sha512-mkbrnUcXIfQSCGoydmr3Vo5/1qRlWX9/s50nlKz6GviV+7b75XiG0CL/wf1QIqfmdbYtCMLRqPVoW9TQbfuleA==
 
-"@navikt/ds-icons@^0.8", "@navikt/ds-icons@^0.8.0", "@navikt/ds-icons@^0.8.1":
+"@navikt/ds-icons@^0.8", "@navikt/ds-icons@^0.8.1":
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.8.1.tgz#9ec3e06957661db303518a9b71808e9690ba26a6"
   integrity sha512-Te7r2wE2xZiEBusf0QToyhB2MCigH0y3xqDWnPXpuF4V6AoUSjlsPDpIm9Gu6MK82eJDy0UnJEMXe9ldRPRoxg==
   dependencies:
     uuid "^8.3.2"
 
-"@navikt/ds-react-internal@^0.10.1":
-  version "0.10.3"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react-internal/-/ds-react-internal-0.10.3.tgz#044fa41814d275e98239662223e078e8eab9c2be"
-  integrity sha512-kjOnvHsMOowKS1PpA+ZIw6AoRscXqcafEt7qFmyY146meqYspyk4hrbGZdB3Of5gAA4ySRKZZKuFDX8SzqBdlQ==
+"@navikt/ds-react-internal@^0.11.1":
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react-internal/-/ds-react-internal-0.11.1.tgz#f18f34f27ba0bb3d380253220e31215894ae4b36"
+  integrity sha512-0iZl/Y58Ra5O/TzbaQwOucu3IF9bZlXmmEdutZVANzpgDR+aF7Ql7gAifxcAKveSI+jXqeqNGULX+zD9OnQRxw==
   dependencies:
     "@navikt/ds-icons" "^0.8.1"
-    "@navikt/ds-react" "^0.15.3"
+    "@navikt/ds-react" "^0.16.1"
     "@popperjs/core" "^2.10.1"
     classnames "^2.3.1"
     copy-to-clipboard "^3.3.1"
     react-merge-refs "^1.1.0"
 
-"@navikt/ds-react@0.15.1-rc.search.0":
-  version "0.15.1-rc.search.0"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.15.1-rc.search.0.tgz#f4f9765f7874d70666fc38674f7a9ff5038fa7e6"
-  integrity sha512-SVXY7+whnPfHFnoyDfdzIjv+4pWBL93Ijd1kuvq0zgLcsEf8HGLwRzetu8xOp55AKHZVYPi9oCv4DjN8VB9PlQ==
+"@navikt/ds-react@0.16.1", "@navikt/ds-react@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.16.1.tgz#1a80b294d760036dd06344fd71499059bbdf64bf"
+  integrity sha512-+80MfYVBy0jvC4unRUbuLyHGBKlBTOku0Qu9gDh4bDwiYNKC2SE7cOLkLXvuzjfwA/6DvsuKvRiyuzvVHRCgPg==
   dependencies:
     "@material-ui/core" "^4.12.3"
-    "@navikt/ds-icons" "^0.8.0"
+    "@navikt/ds-icons" "^0.8.1"
     "@popperjs/core" "^2.10.1"
     classnames "^2.2.6"
     react-collapse "^5.1.0"
@@ -1473,7 +1473,7 @@
     react-popper "^2.2.5"
     uuid "^8.3.2"
 
-"@navikt/ds-react@^0.15", "@navikt/ds-react@^0.15.3":
+"@navikt/ds-react@^0.15":
   version "0.15.3"
   resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.15.3.tgz#70e35610ce7ea41359d4a359e84b96435ea1ab64"
   integrity sha512-SZaD6w+kTKPxjRLqib2qWM/VrUvrjURr0oulwungEIx1MJyLm7zcQfuvqXoVNSsBh9vjrr3SW50bmE0Eskvy2Q==
@@ -1488,10 +1488,15 @@
     react-popper "^2.2.5"
     uuid "^8.3.2"
 
-"@navikt/ds-tokens@^0.8":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-tokens/-/ds-tokens-0.8.0.tgz#5227374006e10c12210dc664ba56416b2871d2b1"
-  integrity sha512-+c9t4QDVr3zi87wJjtfUs77isgil/LWIZsFYkkAJ/dx8/wcjRlOvQC/xU92QUOKVsE2/gM2IRSECoCx2b4oinA==
+"@navikt/ds-tailwind@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-tailwind/-/ds-tailwind-0.1.2.tgz#3d7e7f4b889073b12668ab878a61c5051d23fd2e"
+  integrity sha512-yyXG2b/h3/h8rGTxqNK8gJd0itwQ8FAyoIQHZ/++pG54oZSRumEUitsoeKkY9UzIUtvLsc5se2hsdAz4Z8ivTg==
+
+"@navikt/ds-tokens@^0.8.1":
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-tokens/-/ds-tokens-0.8.1.tgz#eb36916346a80cd40e397c2d46c24d527aea54b2"
+  integrity sha512-/s/UOxg7oQd/eYEHskq/Xzm/XYF/iB+fGvjNGKf15Wx2hvK6Vhs5D7l/2SgZnrDNd/jAwOmHveHu0v6Naw9l/A==
 
 "@next/bundle-analyzer@^12.0.7":
   version "12.0.10"

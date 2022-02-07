@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 module.exports = {
-  presets: [require("./ds.config")],
+  presets: [require("@navikt/ds-tailwind")],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",

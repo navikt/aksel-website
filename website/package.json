@@ -22,12 +22,13 @@
     "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
-    "@navikt/ds-css": "0.14.1-rc.search.0",
-    "@navikt/ds-css-internal": "^0.7",
-    "@navikt/ds-icons": "^0.8.0",
-    "@navikt/ds-react": "0.15.1-rc.search.0",
-    "@navikt/ds-react-internal": "^0.10.1",
-    "@navikt/ds-tokens": "^0.8",
+    "@navikt/ds-css": "0.15.1",
+    "@navikt/ds-css-internal": "^0.7.1",
+    "@navikt/ds-icons": "^0.8.1",
+    "@navikt/ds-react": "0.16.1",
+    "@navikt/ds-react-internal": "^0.11.1",
+    "@navikt/ds-tokens": "^0.8.1",
+    "@navikt/ds-tailwind": "^0.1.2",
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^3.0.0",
     "@sanity/image-url": "^1.0.1",
@@ -66,8 +67,8 @@
     "styled-components": "^5.3.1",
     "uuid": "^8.3.2",
     "validator": "^13.7.0",
-    "@docsearch/css": "3.0.0-alpha.42",
-    "@docsearch/react": "3.0.0-alpha.42"
+    "@docsearch/css": "3.0.0-alpha.50",
+    "@docsearch/react": "3.0.0-alpha.50"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.0.7",
