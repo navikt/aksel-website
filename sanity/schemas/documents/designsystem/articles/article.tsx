@@ -20,7 +20,7 @@ export default {
     {
       type: "boolean",
       name: "article_type",
-      title: "Tabs",
+      title: "Bruk Tabs",
       group: "innhold",
       initialValue: false,
     },
@@ -33,7 +33,7 @@ export default {
     },
     {
       name: "tabs",
-      title: "Tabs",
+      title: "Innhold i Tabs",
       type: "array",
       group: "innhold",
       hidden: ({ document }) => !document?.article_type,
