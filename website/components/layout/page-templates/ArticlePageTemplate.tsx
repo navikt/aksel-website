@@ -7,7 +7,6 @@ import {
   AmplitudeEvents,
   Feedback,
   LastUpdateTag,
-  LayoutContext,
   PagePropsContext,
   RelatedNavigation,
   slugger,
@@ -24,7 +23,6 @@ const ActiclePageTemplate = ({
   data: GpArticlePage | DsArticlePage;
   title: string;
 }): JSX.Element => {
-  const layout = useContext(LayoutContext);
   const { asPath } = useRouter();
   const { pageProps } = useContext(PagePropsContext);
   const { logAmplitudeEvent } = useAmplitude();
