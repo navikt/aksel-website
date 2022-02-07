@@ -9,6 +9,10 @@
     @apply mb-12;
   }
 
+  .icon-search__textfield > .navds-text-field__input {
+    @apply pl-11;
+  }
+
   .card {
     @apply relative flex w-[18rem] flex-col rounded bg-canvas-background-light p-4 pt-8 text-text shadow-card active:text-link md:p-8 md:pt-12;
   }

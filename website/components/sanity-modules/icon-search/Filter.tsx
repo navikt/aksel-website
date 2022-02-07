@@ -1,4 +1,5 @@
-import { Detail, SearchField } from "@navikt/ds-react";
+import { Search } from "@navikt/ds-icons";
+import { Detail, TextField } from "@navikt/ds-react";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { AmplitudeEvents, useAmplitude } from "../..";
@@ -107,11 +108,19 @@ const Filter = ({
 
   return (
     <ScFilter>
-      <SearchField
-        value={value}
-        label="Søk i alle NAV-ikoner"
-        onChange={(v) => setValue(v)}
-      />
+      <div className="relative">
+        <Search
+          aria-hidden
+          className="pointer-events-none absolute top-4 left-4 text-large"
+        />
+        <TextField
+          className="icon-search__textfield"
+          label="Søk i alle NAV-ikoner"
+          hideLabel
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+      </div>
       <ScToggleGroup forwardedAs="div" size="small">
         <ScToggle
           className="navds-label navds-label--small"
