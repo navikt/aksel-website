@@ -214,9 +214,6 @@ const items = [
     .title("Redaktør/Bidrag")
     .icon(() => <People />),
   S.divider(),
-  S.listItem()
-    .title("Demo - ignorer")
-    .child(createSuperPane("ds_component_page")),
 ];
 
 export default () => {
