@@ -11,6 +11,7 @@ spec:
   ingresses:
     - "https://design.nav.no"
     - "https://aksel.nav.no"
+    - "https://designsystem.nav.no"
     - "https://design.intern.nav.no"
   liveness:
     path: /api/isAlive
