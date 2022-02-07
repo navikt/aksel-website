@@ -164,18 +164,7 @@ const ComponentPageTemplate = ({
               </Tag>
             )}
           </div>
-          <Heading
-            size={
-              layout.isTablet
-                ? layout.isMobile
-                  ? "large"
-                  : "xlarge"
-                : "2xlarge"
-            }
-            level="1"
-            spacing
-            className="index-lvl1"
-          >
+          <Heading size="xlarge" level="1" spacing className="index-lvl1">
             {data.heading}
           </Heading>
           <ScDiv forwardedAs="div" size="small">

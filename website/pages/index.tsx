@@ -42,7 +42,7 @@ const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
         <div className="sub mb-0 flex items-center md:mb-12">
           <NAVLogoDark className="justify-self-center text-heading-xlarge" />
         </div>
-        <Heading spacing level="1" size="2xlarge" className="relative w-fit">
+        <Heading spacing level="1" size="xlarge" className="relative w-fit">
           Verktøykassa
           <BodyShort className="absolute right-0 top-0 translate-x-full md:-right-2">
             Beta

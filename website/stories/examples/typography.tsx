@@ -12,9 +12,6 @@ import { ExampleComponent } from "../../lib";
 export const TypographyHeading: ExampleComponent = () => {
   return (
     <div className="stories-sandbox-column">
-      <Heading spacing size="2xlarge" level="1">
-        Heading 2xlarge
-      </Heading>
       <Heading spacing size="xlarge" level="2">
         Heading xlarge
       </Heading>
@@ -34,9 +31,7 @@ export const TypographyHeading: ExampleComponent = () => {
   );
 };
 
-TypographyHeading.react = `<Heading spacing size="2xlarge" level="1">
-Heading 2xlarge
-</Heading>
+TypographyHeading.react = `
 <Heading spacing size="xlarge" level="2">
 Heading xlarge
 </Heading>

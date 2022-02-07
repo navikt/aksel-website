@@ -66,18 +66,7 @@ const TabbedActiclePageTemplate = ({
       </Head>
       <div className="content-box">
         <div className="pt-8 pb-6">
-          <Heading
-            size={
-              layout.isTablet
-                ? layout.isMobile
-                  ? "large"
-                  : "xlarge"
-                : "2xlarge"
-            }
-            level="1"
-            spacing
-            className="index-lvl1"
-          >
+          <Heading size="xlarge" level="1" spacing className="index-lvl1">
             {data.heading}
           </Heading>
           <LastUpdateTag date={data._updatedAt} />
