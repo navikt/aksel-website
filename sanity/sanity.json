@@ -33,7 +33,7 @@
     },
     {
       "name": "part:@sanity/desk-tool/structure",
-      "path": "./client/deskStructure.tsx"
+      "path": "./client/desk-structure/deskStructure.tsx"
     },
     {
       "implements": "part:@sanity/dashboard/config",

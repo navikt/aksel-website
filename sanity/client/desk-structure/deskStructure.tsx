@@ -14,12 +14,14 @@ import {
 } from "@navikt/ds-icons";
 import S from "@sanity/desk-tool/structure-builder";
 import React from "react";
-import { ComponentPageWebPreview } from "../web-previews/ComponentWebPreview";
-import { PageWebPreview } from "../web-previews/PageWebPreview";
+import { ComponentPageWebPreview } from "../../web-previews/ComponentWebPreview";
+import { PageWebPreview } from "../../web-previews/PageWebPreview";
 import { createSuperPane } from "sanity-super-pane";
+import { adminPanel } from "./admin";
+import userStore from "part:@sanity/base/user";
 
 const sanityClient = require("@sanity/client");
-const SanityConfig = require("../sanity.json");
+const SanityConfig = require("../../sanity.json");
 
 const client = sanityClient({
   projectId: SanityConfig.api.projectId,
@@ -55,10 +57,10 @@ const items = [
     .icon(() => <Information />)
     .id(`introductionid`),
   S.listItem()
-    .title("Designsystemet")
+    .title("Designsystem-portal")
     .child(
       S.list()
-        .title("Designsystemet")
+        .title("Designsystem")
         .items([
           S.listItem()
             .title("Innhold")
@@ -194,21 +196,17 @@ const items = [
         ])
     ),
   S.listItem()
-    .title("God Praksis")
+    .title("Innhold")
     .child(
       S.list()
-        .title("God Praksis")
+        .title("Innhold")
         .items([
           S.listItem()
             .title("Artikler")
             .child(createSuperPane("gp_article_page")),
         ])
     ),
-  S.documentListItem()
-    .title(`Forside`)
-    .schemaType(`vk_frontpage`)
-    .icon(() => <Picture />)
-    .id(`frontpage_vk_praksis`),
+
   S.divider(),
   S.documentTypeListItem("editor")
     .title("Redaktør/Bidrag")
@@ -217,5 +215,15 @@ const items = [
 ];
 
 export default () => {
-  return S.list().title("Aksel").items(items);
+  return userStore
+    .getCurrentUser()
+    .then((user) => user.roles)
+    .then(async (roles) => {
+      const panels = [];
+      const admin = await adminPanel(roles);
+      admin && panels.push(admin);
+      return S.list()
+        .title("Aksel")
+        .items([...items, ...panels]);
+    });
 };
