@@ -23,8 +23,8 @@ const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
   return (
     <>
       <Head>
-        <title>Verktøykassa</title>
-        <meta property="og:title" content="Verktøykassa - NAV" />
+        <title>Aksel</title>
+        <meta property="og:title" content="Aksel - NAV" />
         <meta
           name="description"
           content="En samling ressurser fra ulike fagdisipliner som hjelper oss å skape bedre, universelt tilgjengelige og sammenhengende produkter i NAV."
@@ -43,7 +43,7 @@ const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
           <NAVLogoDark className="justify-self-center text-heading-xlarge" />
         </div>
         <Heading spacing level="1" size="xlarge" className="relative w-fit">
-          Verktøykassa
+          Aksel
           <BodyShort className="absolute right-0 top-0 translate-x-full md:-right-2">
             Beta
           </BodyShort>

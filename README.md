@@ -1,6 +1,6 @@
-# Verktoykassen BETA
+# Aksel BETA
 
-Nettside for Verktøykassen: Designsystemet og God praksis.
+Nettside for Aksel
 
 ## Kom i gang
 

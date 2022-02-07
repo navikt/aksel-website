@@ -216,7 +216,7 @@ const HeadingDropDown = ({ title }: { title: string }) => {
                   }}
                 >
                   <Back aria-hidden aria-label="Gå til forsiden" />
-                  <Label>Tilbake til Verktøykassa</Label>
+                  <Label>Tilbake til Aksel</Label>
                 </ScIconLink>
               </NextLink>
             </li>

@@ -7,7 +7,7 @@ export const PageWebPreview = (ctx: any) => {
   if (!slug) {
     return <div>Side må ha en url/slug før den kan forhåndsvises...</div>;
   }
-  /* const webUrl = "https://verktoykasse-prototype.dev.nav.no"; */
+
   const webUrl = "https://design.nav.no";
   const previewUrl = `/preview/${slug}`;
   const url =
