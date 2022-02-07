@@ -10,6 +10,7 @@ spec:
   port: 3000
   ingresses:
     - "https://design.nav.no"
+    - "https://aksel.nav.no"
     - "https://design.intern.nav.no"
   liveness:
     path: /api/isAlive

@@ -12,6 +12,11 @@ module.exports = withBundleAnalyzer(
     async redirects() {
       return [
         {
+          source: "localhost:3000",
+          destination: "/designsystem",
+          permanent: true,
+        },
+        {
           source: "/preview/:slug*",
           destination: "/api/preview?slug=:slug*",
           permanent: true,
