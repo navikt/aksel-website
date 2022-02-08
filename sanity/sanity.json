@@ -24,7 +24,8 @@
     "@sanity/code-input",
     "@sanity/dashboard",
     "dashboard-widget-document-list",
-    "outdated-documents-widget"
+    "outdated-documents-widget",
+    "media"
   ],
   "parts": [
     {
@@ -50,6 +51,14 @@
     {
       "implements": "part:@sanity/base/absolutes",
       "path": "./client/bundleCheck.tsx"
+    },
+    {
+      "implements": "part:@sanity/form-builder/input/image/asset-sources",
+      "path": "./client/assetSources.ts"
+    },
+    {
+      "implements": "part:@sanity/form-builder/input/file/asset-sources",
+      "path": "./client/assetSources.ts"
     }
   ]
 }

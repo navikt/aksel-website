@@ -9,7 +9,6 @@ import DownloadButtons from "./DownloadButtons";
 import Filter, { FilterT } from "./Filter";
 import { categorizeIcons, CategoryT, IconMetaT } from "./iconCategories";
 import ModalContent from "./ModalContent";
-import { startCase } from "lodash";
 
 const ScIconSearch = styled.div`
   display: flex;
@@ -236,11 +235,11 @@ const IconSearch = () => {
             </Heading>
             <ScIcons>
               {cat.icons.map((i) => {
-                const T = Icons[i.name.replace("EU", "Eu")];
+                const T = Icons[i.name];
                 return (
                   <ScIcon
                     key={i.created_at}
-                    onClick={() => handleSelect(i.name.replace("EU", "Eu"))}
+                    onClick={() => handleSelect(i.name)}
                     className="vk-icon_button"
                   >
                     {isNew(i.created_at) && <ScNew>Ny!</ScNew>}
