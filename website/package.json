@@ -44,9 +44,7 @@
     "groq": "^2.15.0",
     "js-file-download": "^0.4.12",
     "jszip": "^3.7.1",
-    "lodash.kebabcase": "^4.1.1",
-    "lodash.lowercase": "^4.3.0",
-    "lodash.throttle": "4.1.1",
+    "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "next": "^12.0.9",
     "next-sanity": "^0.4.0",
@@ -91,8 +89,7 @@
     "sanity-codegen": "^0.9.5",
     "start-server-and-test": "^1.14.0",
     "tailwindcss": "^3.0.15",
-    "typescript": "^4.4.3",
-    "lodash.startcase": "4.4.0"
+    "typescript": "^4.4.3"
   },
   "prettier": {}
 }

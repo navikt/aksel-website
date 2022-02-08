@@ -1,4 +1,4 @@
-import kebabCase from "lodash.kebabcase";
+import { kebabCase } from "lodash";
 
 import * as Alert from "./alert";
 import * as Accordion from "./accordion";

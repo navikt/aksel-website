@@ -12,7 +12,7 @@ import TextareaSandbox from "./textarea";
 import TextFieldSandox from "./textfield";
 import CheckboxSandbox from "./checkbox";
 import SwitchSandbox from "./switch";
-import kebabCase from "lodash.kebabcase";
+import { kebabCase } from "lodash";
 import { SandboxComponent } from "./types";
 
 const allSandboxes = {

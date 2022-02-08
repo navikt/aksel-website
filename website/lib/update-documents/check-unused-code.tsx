@@ -1,7 +1,7 @@
 import { noCdnClient } from "..";
 import { ExampleKeys } from "../../stories/examples";
 import { SandboxKeys } from "../../stories/sandbox";
-import startCase from "lodash.startcase";
+import { startCase } from "lodash";
 import dotenv from "dotenv";
 dotenv.config();
 

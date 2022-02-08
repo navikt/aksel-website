@@ -1,5 +1,5 @@
 import { Heading } from "@navikt/ds-react";
-import throttle from "lodash.throttle";
+import { throttle } from "lodash";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { useIsomorphicLayoutEffect } from "react-use";
