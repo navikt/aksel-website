@@ -12,7 +12,7 @@ const docTypes = [
   },
   {
     name: "gp_article_page",
-    title: "Artikkel God-praksis",
+    title: "Artikkel Aksel",
     desc: "Atikkel som legges under god-praksis(wip)",
   },
   {

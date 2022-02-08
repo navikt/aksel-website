@@ -1,3 +1,5 @@
+import { People } from "@navikt/ds-icons";
+import React from "react";
 import userRelatedArticles from "../../components/user-related-articles";
 
 export default {
@@ -25,4 +27,16 @@ export default {
       inputComponent: userRelatedArticles,
     },
   ],
+  preview: {
+    select: {
+      title: "title",
+    },
+    prepare(selection) {
+      const { title } = selection;
+      return {
+        title,
+        media: () => <People />,
+      };
+    },
+  },
 };

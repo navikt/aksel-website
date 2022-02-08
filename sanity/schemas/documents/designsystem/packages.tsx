@@ -1,3 +1,6 @@
+import { Facilitet } from "@navikt/ds-icons";
+import React from "react";
+
 export default {
   name: "ds_package",
   title: "Kodepakke",
@@ -45,4 +48,16 @@ export default {
       type: "url",
     },
   ],
+  preview: {
+    select: {
+      title: "title",
+    },
+    prepare(selection) {
+      const { title } = selection;
+      return {
+        title,
+        media: () => <Facilitet />,
+      };
+    },
+  },
 };
