@@ -3,7 +3,16 @@ import { useNextSanityImage } from "next-sanity-image";
 import { dsDocuments, gpDocuments } from "./queries";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const useSanityImage = (node) => useNextSanityImage(sanityClient, node);
+export const useSanityImage = (node) =>
+  useNextSanityImage(sanityClient, node, {
+    imageBuilder: (imageUrlBuilder, options) => {
+      return imageUrlBuilder
+        .width(Math.min(options.originalImageDimensions.width, 1920))
+        .quality(100)
+        .fit("max")
+        .auto("format");
+    },
+  });
 
 export const getGpPaths = async (): Promise<string[][]> => {
   const documents: any[] | null = await getClient(false).fetch(gpDocuments);
