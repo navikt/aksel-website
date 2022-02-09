@@ -7,9 +7,9 @@ export const useSanityImage = (node) =>
   useNextSanityImage(sanityClient, node, {
     imageBuilder: (imageUrlBuilder, options) => {
       return imageUrlBuilder
-        .width(Math.min(options.originalImageDimensions.width, 1920))
+        .width(Math.min(options.originalImageDimensions.width, 1600))
         .quality(100)
-        .fit("max")
+        .fit("clip")
         .auto("format");
     },
   });

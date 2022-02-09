@@ -43,7 +43,14 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
         </S.Caption>
       )}
       <Lightbox open={open} onClose={() => setOpen(false)}>
-        {open && <NextImage {...imageProps} layout="fill" alt={node.title} />}
+        {open && (
+          <NextImage
+            {...imageProps}
+            quality="100"
+            layout="fill"
+            alt={node.title}
+          />
+        )}
       </Lightbox>
     </S.Figure>
   );
