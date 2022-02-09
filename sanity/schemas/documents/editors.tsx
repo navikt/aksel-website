@@ -1,6 +1,7 @@
 import { People } from "@navikt/ds-icons";
 import React from "react";
 import userRelatedArticles from "../../components/user-related-articles";
+import profilePage from "../../components/profile/profile-page";
 import { isEditorUnique } from "../validateSlug";
 import userStore from "part:@sanity/base/user";
 
@@ -32,7 +33,6 @@ export default {
       title: "Sanity bruker-id",
       name: "user_id",
       type: "slug",
-      description: "Vises bare for deg og admins",
       validation: (Rule) => Rule.required().error("Må ha Id"),
       hidden: ({ currentUser, parent }) => {
         const { id, roles } = currentUser;
@@ -61,10 +61,17 @@ export default {
       },
     },
     {
-      name: "user_related_articles",
+      name: "profile_page",
       type: "string",
-      title: "Relaterte artikler",
-      inputComponent: userRelatedArticles,
+      title: "Profil",
+      inputComponent: profilePage,
+      hidden: ({ currentUser, parent }) => {
+        const { id, roles } = currentUser;
+        return (
+          !roles.find(({ name }) => name === "administrator") &&
+          parent?.user_id?.current !== id
+        );
+      },
     },
   ],
   preview: {
