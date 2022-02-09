@@ -8,6 +8,12 @@ export default {
   title: "Redaktører",
   name: "editor",
   type: "document",
+  validation: (Rule) =>
+    Rule.custom((fields) => {
+      if (!fields?._id?.includes("editor."))
+        return "Ugyldig. Bruker med denne id-en er allerede laget.";
+      return true;
+    }),
   fields: [
     {
       title: "Navn",
@@ -41,6 +47,17 @@ export default {
           const { id } = await userStore.getUser("me");
           return id;
         },
+        slugify: (input) => input,
+      },
+    },
+    {
+      title: "Anonym",
+      description: "Ønsker å bli vist som anonym redaktør/contributor",
+      type: "boolean",
+      name: "anonym",
+      initialValue: true,
+      options: {
+        layout: "checkbox",
       },
     },
     {
