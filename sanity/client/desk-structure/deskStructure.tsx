@@ -196,7 +196,7 @@ const items = [
         ])
     ),
   S.listItem()
-    .title("Innhold")
+    .title("Innhold Aksel")
     .child(
       S.list()
         .title("Innhold")
@@ -208,9 +208,11 @@ const items = [
     ),
 
   S.divider(),
-  S.documentTypeListItem("editor")
-    .title("Redaktør/Bidrag")
-    .icon(() => <People />),
+  S.listItem()
+    .title("Brukere/Redaktører")
+    .icon(() => <People />)
+    .child(createSuperPane("editor")),
+
   S.divider(),
 ];
 

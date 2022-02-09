@@ -1,4 +1,5 @@
 import S from "@sanity/base/structure-builder";
+
 const docTypes = [
   {
     name: "ds_component_page_template",
@@ -20,6 +21,11 @@ const docTypes = [
     title: "Changelog DS",
     desc: "Ny changelog for designsystemet",
   },
+  {
+    name: "newEditor",
+    title: "Bruker/redaktør",
+    desc: "Lager en psuedo-bruker for deg som kan koble artikler til brukeren",
+  },
 ];
 
 export default [
@@ -30,6 +36,5 @@ export default [
       .templateId(doct.name)
       .description(doct?.desc ?? "")
   ),
-
   /* ...S.defaultInitialValueTemplateItems() */
 ];

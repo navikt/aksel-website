@@ -1,4 +1,7 @@
+import React from "react";
+import { People } from "@navikt/ds-icons";
 import T from "@sanity/base/initial-value-template-builder";
+import userStore from "part:@sanity/base/user";
 
 const sanityClient = require("@sanity/client");
 const sanityToken = process.env.SANITY_TOKEN;
@@ -28,6 +31,21 @@ export default [
             return key.startsWith("_") ? { ...old } : { ...old, [key]: val };
           }, {})
         : {};
+    },
+  }),
+  T.template({
+    id: "newEditor",
+    title: "Editor",
+    schemaType: "editor",
+    icon: () => <People />,
+    value: async () => {
+      const { id } = await userStore.getUser("me");
+      return {
+        user_id: {
+          current: id,
+        },
+        _id: `editor.${id}`,
+      };
     },
   }),
 ];

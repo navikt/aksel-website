@@ -13,18 +13,27 @@ const client = sanityClient.withConfig({
  */
 
 const fetchDocuments = () =>
-  client.fetch(`*[_type in ["ds_article_page" && !defined(article_type)]]`);
+  client.fetch(
+    `*[_type in ["ds_article_page", "ds_component_page", "gp_article_page"]]`
+  );
 
 const buildPatches = (docs) =>
-  docs.map((doc) => ({
-    id: doc._id,
-    patch: {
-      set: {
-        article_type: false,
+  docs
+    .filter(
+      (doc) => doc.contact?._ref === "2286ae51-465b-4866-928a-d0790b26b090"
+    )
+    .map((doc) => ({
+      id: doc._id,
+      patch: {
+        set: {
+          contact: {
+            _ref: "editor.pv5AzOXXs",
+            _type: "reference",
+          },
+        },
+        ifRevisionID: doc._rev,
       },
-      ifRevisionID: doc._rev,
-    },
-  }));
+    }));
 
 const createTransaction = (patches) =>
   patches.reduce(
