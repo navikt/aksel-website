@@ -16,8 +16,6 @@ const IntroPage = React.forwardRef<HTMLDivElement, ViewProps>((props, ref) => {
     setUserState();
   }, []);
 
-  console.log(user);
-
   return (
     <Stack ref={ref} space={[3, 1, 2, 4]}>
       <Heading level="2" size="medium" spacing>

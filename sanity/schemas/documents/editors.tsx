@@ -41,6 +41,10 @@ export default {
           parent?.user_id?.current !== id
         );
       },
+      readOnly: ({ currentUser, value }) => {
+        const { roles } = currentUser;
+        return !roles.find(({ name }) => name === "administrator") && !!value;
+      },
       options: {
         isUnique: isEditorUnique,
         source: async () => {

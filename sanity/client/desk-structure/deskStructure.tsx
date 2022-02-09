@@ -19,6 +19,7 @@ import { PageWebPreview } from "../../web-previews/PageWebPreview";
 import { createSuperPane } from "sanity-super-pane";
 import { adminPanel } from "./admin";
 import userStore from "part:@sanity/base/user";
+import { profilePanel } from "./profile";
 
 const sanityClient = require("@sanity/client");
 const SanityConfig = require("../../sanity.json");
@@ -51,11 +52,6 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
 };
 
 const items = [
-  S.documentListItem()
-    .title(`Velkommen`)
-    .schemaType(`introduction`)
-    .icon(() => <Information />)
-    .id(`introductionid`),
   S.listItem()
     .title("Designsystem-portal")
     .child(
@@ -216,16 +212,25 @@ const items = [
   S.divider(),
 ];
 
+const welcome = S.documentListItem()
+  .title(`Velkommen`)
+  .schemaType(`introduction`)
+  .icon(() => <Information />)
+  .id(`introductionid`);
+
 export default () => {
-  return userStore
-    .getCurrentUser()
-    .then((user) => user.roles)
-    .then(async (roles) => {
-      const panels = [];
-      const admin = await adminPanel(roles);
-      admin && panels.push(admin);
-      return S.list()
-        .title("Aksel")
-        .items([...items, ...panels]);
-    });
+  return userStore.getCurrentUser().then(async ({ roles, id }) => {
+    const panels = [];
+    const profiles = [];
+    const admin = await adminPanel(roles);
+    admin && panels.push(admin);
+
+    const profile = await profilePanel(id);
+    const intro = [welcome];
+
+    profile && intro.push(profile);
+    return S.list()
+      .title("Aksel")
+      .items([...intro, S.divider(), ...items, ...panels]);
+  });
 };

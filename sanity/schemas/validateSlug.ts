@@ -40,6 +40,5 @@ export const isEditorUnique = (slug, options) => {
   };
 
   const query = `!defined(*[!(_id in [$draft, $published]) && _type == "editor" && user_id.current == $slug][0]._id)`;
-  console.log(client.fetch(query, params));
   return client.fetch(query, params);
 };
