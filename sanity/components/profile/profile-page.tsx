@@ -27,8 +27,7 @@ type Props = {
 };
 
 const IntroPage = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
-  const { document, type } = props;
-  const [userDocuments, setUserDocuments] = useState([]);
+  const { document } = props;
   const [user, setUser] = useState<any>({});
 
   useEffect(() => {
@@ -40,6 +39,7 @@ const IntroPage = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       Ingen sider her...
     </Detail>
   );
+  if (!document._id) return null;
 
   return (
     <Stack ref={ref} space={[3, 1, 2, 4]}>
@@ -80,7 +80,7 @@ const IntroPage = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       </BodyShort>
       <div style={{ borderTop: "1px solid #bbb" }} />
 
-      <WithReferringDocuments id={document._id.replace("drafts.", "")}>
+      <WithReferringDocuments id={document._id?.replace("drafts.", "")}>
         {({ referringDocuments, isLoading }) => {
           if (isLoading) {
             return <Spinner message="Looking for referring documents…" />;

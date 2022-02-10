@@ -6,18 +6,20 @@ import client from "part:@sanity/base/client";
 import React from "react";
 
 export const profilePanel = async (id) => {
-  const docId = `editor.${id}`;
+  const ids = await client.withConfig({ apiVersion: "2021-05-31" })
+    .fetch(`*[_type == "editor"]{
+      _id,
+      user_id
+    }`);
 
-  const ids = await client
-    .withConfig({ apiVersion: "2021-05-31" })
-    .fetch(`*[_type == "editor"]._id`);
+  const editor = ids.find(({ user_id }) => user_id?.current === id);
 
-  if (ids.find((x) => x === docId)) {
+  if (editor) {
     return S.documentListItem()
       .title(`Min profil`)
       .schemaType(`editor`)
       .icon(() => <Picture />)
-      .id(docId);
+      .id(editor._id);
   } else {
     return null;
   }
