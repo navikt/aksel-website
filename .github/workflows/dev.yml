@@ -61,3 +61,4 @@ jobs:
           RESOURCE: nais/dev/nais.yaml
           CLUSTER: dev-gcp
           IMAGE: ${{ env.DOCKER_TAG }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
