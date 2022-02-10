@@ -34,5 +34,8 @@
 .link:focus {
   border-radius: 2px;
   outline: none;
-  box-shadow: var(--navds-shadow-focus);
+  box-shadow: var(
+    --navds-shadow-focus,
+    var(--navds-shadow-focus, 0 0 0 3px rgba(0, 52, 125, 1))
+  );
 }
