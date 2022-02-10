@@ -24,7 +24,8 @@ export const ButtonCss = css`
   :hover {
     color: var(--navds-semantic-color-text);
     background-color: var(
-      --navds-semantic-color-interaction-primary-hover-subtle
+      --navds-semantic-color-interaction-primary-hover-subtle,
+      rgba(230, 240, 255, 1)
     );
 
     :before {

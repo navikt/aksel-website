@@ -35,7 +35,8 @@
 
 .profileDetails details summary:hover {
   background-color: var(
-    --navds-semantic-color-interaction-primary-hover-subtle
+    --navds-semantic-color-interaction-primary-hover-subtle,
+    rgba(230, 240, 255, 1)
   );
 }
 

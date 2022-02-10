@@ -80,8 +80,8 @@ const IntroPage = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       </BodyShort>
       <div style={{ borderTop: "1px solid #bbb" }} />
 
-      <WithReferringDocuments id={document._id}>
-        {({ referringDocuments, isLoading, ...rest }) => {
+      <WithReferringDocuments id={document._id.replace("drafts.", "")}>
+        {({ referringDocuments, isLoading }) => {
           if (isLoading) {
             return <Spinner message="Looking for referring documents…" />;
           }
