@@ -94,7 +94,7 @@ export default {
     const { id, roles } = currentUser;
     return (
       !roles.find(({ name }) => name === "administrator") &&
-      document?.user_id !== id
+      document?.user_id?.current !== id
     );
   },
 };
