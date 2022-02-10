@@ -39,12 +39,13 @@ export default [
     schemaType: "editor",
     icon: () => <People />,
     value: async () => {
-      const { id } = await userStore.getUser("me");
+      const { id, displayName } = await userStore.getUser("me");
+
       return {
+        title: displayName,
         user_id: {
           current: id,
         },
-        _id: `editor.${id}`,
       };
     },
   }),
