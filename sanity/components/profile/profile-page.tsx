@@ -39,7 +39,12 @@ const IntroPage = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       Ingen sider her...
     </Detail>
   );
-  if (!document._id) return null;
+  if (
+    !document._id ||
+    (document?.user_id?.current !== user.id &&
+      !user?.roles?.find((x) => x.name === "administrator"))
+  )
+    return null;
 
   return (
     <Stack ref={ref} space={[3, 1, 2, 4]}>
