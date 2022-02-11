@@ -30,6 +30,8 @@ jobs:
         run: NEXT_PUBLIC_TEST=true yarn workspace website e2e:ci
       - name: Build application
         run: yarn build:next
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       - name: Update code examples
         run: yarn sanity:codeexamples
       - name: Update colors
