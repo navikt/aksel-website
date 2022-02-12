@@ -8,7 +8,7 @@ import {
   PreviewBanner,
   useAmplitude,
 } from "../components";
-import FrontpageFooter from "../components/layout/footer/FrontpageFooter";
+import Footer from "../components/layout/footer/Footer";
 import { getClient, VkFrontpage, vkFrontpageQuery } from "../lib";
 
 const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
@@ -120,7 +120,7 @@ Page.getLayout = (page) => {
       >
         {page}
       </main>
-      <FrontpageFooter />
+      <Footer />
     </div>
   );
 };

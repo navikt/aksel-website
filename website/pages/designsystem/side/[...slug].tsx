@@ -1,6 +1,6 @@
 import React from "react";
 import { LayoutPicker, PreviewBanner, SkipLink } from "../../../components";
-import DesignsystemFooter from "../../../components/layout/footer/DesignsystemFooter";
+import Footer from "../../../components/layout/footer/Footer";
 import DesignsystemHeader from "../../../components/layout/header/DesignsystemHeader";
 import DesignsystemSidebar from "../../../components/layout/sidebar/DesignsystemSidebar";
 import {
@@ -45,7 +45,7 @@ Page.getLayout = (page) => {
             {page}
             <div className="mt-auto" aria-hidden />
           </main>
-          <DesignsystemFooter />
+          <Footer />
         </div>
       </div>
     </>
