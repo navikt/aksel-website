@@ -1,0 +1,74 @@
+@tailwind components;
+
+.inverted-button {
+  --navds-button-color-secondary-text: var(
+    --navds-semantic-color-text-inverted
+  );
+  --navds-button-color-secondary-text-hover: var(--navds-semantic-color-text);
+  --navds-button-color-secondary-text-active: var(--navds-semantic-color-text);
+  --navds-button-color-secondary-border: var(
+    --navds-semantic-color-component-background-light
+  );
+  --navds-button-color-secondary-border-focus-active-hover: var(
+    --navds-semantic-color-component-background-light
+  );
+  --navds-button-color-secondary-background: var(
+    --navds-semantic-color-component-background-inverted
+  );
+  --navds-button-color-secondary-background-hover: var(
+    --navds-semantic-color-component-background-light
+  );
+  --navds-button-color-secondary-background-active: var(
+    --navds-semantic-color-canvas-background
+  );
+}
+
+.inverted-button:focus {
+  box-shadow: inset 0 0 0 2px
+      var(--navds-semantic-color-component-background-light),
+    0 0 0 1px var(--navds-semantic-color-component-background-inverted),
+    0 0 0 3px var(--navds-global-color-blue-200);
+}
+
+.inverted-button:hover:focus {
+  box-shadow: inset 0 0 0 2px
+      var(--navds-semantic-color-component-background-light),
+    0 0 0 1px var(--navds-semantic-color-component-background-inverted),
+    0 0 0 3px var(--navds-global-color-blue-200);
+}
+
+.inverted-button:active:focus {
+  box-shadow: inset 0 0 0 2px var(--navds-semantic-color-canvas-background),
+    0 0 0 1px var(--navds-semantic-color-component-background-inverted),
+    0 0 0 3px var(--navds-global-color-blue-200);
+}
+
+.inverted-textarea {
+  --navds-textarea-color-shadow-error: var(--navds-global-color-red-300);
+  --navds-textarea-color-border-error: var(--navds-global-color-red-400);
+  --navds-error-message-color-text: var(--navds-global-color-red-300);
+}
+
+.inverted-textfield {
+  --navds-text-field-color-shadow-error: var(--navds-global-color-red-300);
+  --navds-text-field-color-border-error: var(--navds-global-color-red-400);
+  --navds-text-field-color-shadow-error: var(--navds-global-color-red-300);
+  --navds-error-message-color-text: var(--navds-global-color-red-300);
+}
+
+@layer components {
+  .inverted-textarea textarea,
+  .inverted-textfield > input {
+    @apply bg-transparent text-text-inverted;
+  }
+
+  .inverted-textarea textarea:hover,
+  .inverted-textfield > input:hover {
+    @apply border-blue-200;
+  }
+
+  .inverted-textarea textarea:focus,
+  .inverted-textfield > input:focus {
+    @apply shadow-focus-inverted;
+  }
+}
