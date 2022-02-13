@@ -43,7 +43,7 @@ function Search() {
       <button
         ref={searchButtonRef}
         onClick={onOpen}
-        className="z-[1050] ml-auto flex w-[var(--header-height)] shrink-0 items-center justify-center text-text-inverted hover:bg-gray-800"
+        className="z-[1050] ml-auto flex w-[var(--header-height)] shrink-0 items-center justify-center text-text-inverted hover:bg-gray-800 focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)] focus:outline-none"
       >
         <SearchIcon className="ml-[3px] h-6 w-6" aria-label="åpne søk" />
       </button>
@@ -87,7 +87,6 @@ function Search() {
             apiKey="92d2ac76eba4eba628a34baa11743fc1"
             onClose={onClose}
             initialScrollY={window.scrollY}
-            /* initialQuery={initialQuery} */
             placeholder="Søk i dokumentasjon"
             transformItems={(i) => sortItems(i)}
           />,

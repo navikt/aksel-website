@@ -1,11 +1,11 @@
+import { Header } from "@navikt/ds-react-internal";
 import React from "react";
-import * as S from "./header.styles";
-import PortalNavigation from "./PortalNavigation";
+import PortalNavigation from "./menu/PortalNav";
 
 const GodPraksisHeader = (): JSX.Element => (
-  <S.Header>
+  <Header className="z-[1050] h-[var(--header-height)]">
     <PortalNavigation title="God Praksis" />
-  </S.Header>
+  </Header>
 );
 
 export default GodPraksisHeader;

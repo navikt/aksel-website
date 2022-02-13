@@ -6,6 +6,7 @@ import { useIsomorphicLayoutEffect } from "react-use";
 import styled from "styled-components";
 import { AmplitudeEvents, useAmplitude, PagePropsContext } from "../..";
 import { DsNavigationHeadingMenuT, DsNavigationHeadingT } from "../../../lib";
+import cl from "classnames";
 
 const ScNav = styled.nav`
   overflow-y: auto;
@@ -87,11 +88,13 @@ const Menu = ({
   onClick,
   inCategory,
   mobileNavigation,
+  className,
 }: {
   heading?: DsNavigationHeadingT;
   onClick?: () => void;
   inCategory?: boolean;
   mobileNavigation?: boolean;
+  className?: string;
 }): JSX.Element => {
   const { pageProps } = useContext<any>(PagePropsContext);
   const { logAmplitudeEvent } = useAmplitude();
@@ -118,7 +121,11 @@ const Menu = ({
   };
 
   return (
-    <ScNav aria-label={heading.title} data-incategory={inCategory}>
+    <ScNav
+      aria-label={heading.title}
+      data-incategory={inCategory}
+      className={cl(className)}
+    >
       <BodyShort as="ul">
         {sidebarMenu.map((item, x) => {
           if (item._type === "subheading") {

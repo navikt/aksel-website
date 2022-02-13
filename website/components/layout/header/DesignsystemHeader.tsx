@@ -11,10 +11,10 @@ import {
   useAmplitude,
 } from "../..";
 import { DsNavigationHeadingT } from "../../../lib";
-import * as S from "./header.styles";
-import MobileNavigation from "./MobileNavigation";
-import PortalNavigation from "./PortalNavigation";
+import MobileNavigation from "./menu/MobileNav";
+import PortalNavigation from "./menu/PortalNav";
 import cl from "classnames";
+import { Header } from "@navikt/ds-react-internal";
 
 const DesignsystemHeader = (): JSX.Element => {
   const { pageProps } = useContext(PagePropsContext);
@@ -34,8 +34,7 @@ const DesignsystemHeader = (): JSX.Element => {
   const nonMobile = (
     <>
       <PortalNavigation title={"Designsystemet"} />
-
-      <S.Links>
+      <div className="z-[1050] mr-auto flex">
         {pageProps?.navigation?.headings.map(
           (heading: DsNavigationHeadingT) => (
             <NextLink
@@ -46,25 +45,24 @@ const DesignsystemHeader = (): JSX.Element => {
               passHref
               key={heading.title + heading.link_ref}
             >
-              <S.Link
-                data-active={
-                  context
-                    ? context?.activeHeading?.title === heading.title
-                    : false
-                }
+              <a
                 onClick={(e) => logNavigation(e)}
-                className={cl("index-heading", {
-                  "index-heading--active": context
-                    ? context?.activeHeading?.title === heading.title
-                    : false,
-                })}
+                className={cl(
+                  "index-heading flex min-w-[var(--header-height)] cursor-pointer items-center justify-center whitespace-nowrap py-0 px-2 pt-1 focus:outline-none 2xl:px-4",
+                  {
+                    "text-text-inverted focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
+                      !(context?.activeHeading?.title === heading.title),
+                    "index-heading--active bg-white text-text shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900)] hover:bg-canvas-background-light focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_2px_var(--navds-global-color-white)_,inset_0_0_0_4px_var(--navds-global-color-gray-900)]":
+                      context?.activeHeading?.title === heading.title,
+                  }
+                )}
               >
                 {heading.title}
-              </S.Link>
+              </a>
             </NextLink>
           )
         )}
-      </S.Links>
+      </div>
       <Search />
     </>
   );
@@ -78,9 +76,9 @@ const DesignsystemHeader = (): JSX.Element => {
   );
 
   return (
-    <S.Header>
+    <Header className="z-[1050] h-[var(--header-height)]">
       {useMobileHeader || context.isTablet ? mobile : nonMobile}
-    </S.Header>
+    </Header>
   );
 };
 export default DesignsystemHeader;
