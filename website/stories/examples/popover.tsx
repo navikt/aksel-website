@@ -42,22 +42,25 @@ export const PopoverExample: ExampleComponent = () => {
 };
 
 PopoverExample.html = "";
-PopoverExample.react = `
-  <>
-    <Button ref={buttonRef} onClick={() => setOpen(true)}>
-      Åpne popover
-    </Button>
-    <Popover
-      open={open}
-      onClose={() => setOpen(false)}
-      anchorEl={buttonRef.current}
-      placement="auto"
-    >
-      <Popover.Content>
-        Innhold her!
-      </Popover.Content>
-    </Popover>
-  </>`;
+PopoverExample.react = `const PopoverExample = () => {
+  const buttonRef = useRef(null);
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button ref={buttonRef} onClick={() => setOpen(true)}>
+        Åpne popover
+      </Button>
+      <Popover
+        open={open}
+        onClose={() => setOpen(false)}
+        anchorEl={buttonRef.current}
+        placement="auto"
+      >
+        <Popover.Content>Innhold her!</Popover.Content>
+      </Popover>
+    </>
+  );
+};`;
 
 export const PopoverArrow: ExampleComponent = () => {
   const buttonRef = useRef(null);
