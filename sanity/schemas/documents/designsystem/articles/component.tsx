@@ -58,5 +58,26 @@ export default {
       group: "lenker",
     },
     documentFeedbackMetadata,
+    {
+      name: "content_bruk",
+      type: "array",
+      title: "Bruk",
+      group: "beta",
+      of: [
+        { name: "Generisk blokk", type: "generisk_blokk" },
+        { type: "tips", title: "Tips" },
+        { type: "related_pages", title: "Relatert innhold" },
+      ],
+    },
+    {
+      name: "content_kode",
+      type: "array",
+      title: "Kode",
+      group: "beta",
+      of: [
+        { name: "Generisk blokk", type: "generisk_blokk" },
+        { type: "tips", title: "Tips" },
+      ],
+    },
   ],
 };

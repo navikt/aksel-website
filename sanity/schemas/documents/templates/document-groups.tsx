@@ -21,4 +21,8 @@ export const groups = [
     name: "lenker",
     title: "Linking",
   },
+  {
+    name: "beta",
+    title: "Beta",
+  },
 ];
