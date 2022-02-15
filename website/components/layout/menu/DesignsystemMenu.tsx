@@ -2,12 +2,10 @@ import { BodyShort, Detail } from "@navikt/ds-react";
 import cl from "classnames";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
-import React, { createContext, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useIsomorphicLayoutEffect } from "react-use";
 import { AmplitudeEvents, PagePropsContext, useAmplitude } from "../..";
 import { DsNavigationHeadingMenuT, DsNavigationHeadingT } from "../../../lib";
-
-export const MenuContext = createContext(null);
 
 const Menu = ({
   heading,
@@ -31,9 +29,7 @@ const Menu = ({
   );
 
   useIsomorphicLayoutEffect(() => {
-    if (!heading || !heading?.menu) {
-      return;
-    }
+    if (!heading || !heading?.menu) return;
     setSidebarMenu([...heading.menu]);
   }, [heading]);
 
