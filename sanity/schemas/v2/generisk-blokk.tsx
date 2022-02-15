@@ -67,6 +67,7 @@ export default {
         { type: "bilde", title: "Bilde", icon: () => <Picture /> },
         { type: "alert_v2", title: "Alert", icon: () => <Warning /> },
         { type: "kode", title: "Kode" },
+        { type: "powerTable", title: "Tabell" },
       ],
       hidden: ({ parent }) => !parent.title,
       validation: (Rule) =>
