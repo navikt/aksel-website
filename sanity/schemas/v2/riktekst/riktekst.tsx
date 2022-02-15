@@ -1,6 +1,5 @@
-import "@navikt/ds-css?raw";
-import { ExternalLink, Link, Notes } from "@navikt/ds-icons";
-import { BodyLong, Detail, Heading } from "@navikt/ds-react/cjs";
+import { ExternalLink, Link } from "@navikt/ds-icons";
+import { BodyLong, Heading } from "@navikt/ds-react/cjs";
 import { KBD } from "@sanity/ui";
 import React from "react";
 import styled from "styled-components";
@@ -23,7 +22,7 @@ export const ScCode = styled.code`
 
 export const styles = [
   {
-    title: "Normal (18px)",
+    title: "Paragraf",
     value: "normal",
     blockEditor: {
       render: (props) => <BodyLong>{props.children}</BodyLong>,
@@ -136,7 +135,7 @@ export default {
         },
         {
           title: "Tittel H4",
-          value: "heading4",
+          value: "h4",
           blockEditor: {
             render: (props) => (
               <Heading as="span" size="xsmall">

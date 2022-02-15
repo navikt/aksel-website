@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Detail } from "@navikt/ds-react";
+import { LightBulb } from "@navikt/ds-icons";
 
 function toPlainText(blocks = []) {
   return blocks
@@ -42,15 +43,11 @@ export default {
       body: "body",
     },
     prepare(selection) {
-      return { ...selection };
-    },
-    component: (selection) => {
-      return (
-        <ScTips>
-          <ScMuted>Tips</ScMuted>
-          <div>{toPlainText(selection.value.body)}</div>
-        </ScTips>
-      );
+      return {
+        title: toPlainText(selection?.body ?? []) ?? "",
+        subtitle: "Tips",
+        media: () => <LightBulb />,
+      };
     },
   },
 };

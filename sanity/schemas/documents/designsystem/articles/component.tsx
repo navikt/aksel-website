@@ -1,3 +1,5 @@
+import { Hamburger, LightBulb, NewTab } from "@navikt/ds-icons";
+import React from "react";
 import {
   documentFeedbackMetadata,
   documentMetadata,
@@ -64,9 +66,17 @@ export default {
       title: "Bruk",
       group: "beta",
       of: [
-        { name: "Generisk blokk", type: "generisk_blokk" },
-        { type: "tips", title: "Tips" },
-        { type: "related_pages", title: "Relatert innhold" },
+        {
+          name: "Seksjon med h2",
+          type: "generisk_seksjon",
+          icon: () => <span>H2</span>,
+        },
+        { type: "tips", title: "Tips", icon: () => <LightBulb /> },
+        {
+          type: "related_pages",
+          title: "Relatert innhold",
+          icon: () => <NewTab />,
+        },
       ],
     },
     {
@@ -75,8 +85,17 @@ export default {
       title: "Kode",
       group: "beta",
       of: [
-        { name: "Generisk blokk", type: "generisk_blokk" },
-        { type: "tips", title: "Tips" },
+        {
+          name: "Seksjon med h2",
+          type: "generisk_seksjon",
+          icon: () => <span>H2</span>,
+        },
+        { type: "tips", title: "Tips", icon: () => <LightBulb /> },
+        {
+          type: "relatert_innhold",
+          title: "Relatert innhold",
+          icon: () => <NewTab />,
+        },
       ],
     },
   ],

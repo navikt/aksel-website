@@ -1,0 +1,83 @@
+import { Warning } from "@navikt/ds-icons";
+import { Alert } from "@navikt/ds-react";
+import React from "react";
+
+function toPlainText(blocks = []) {
+  return blocks
+    .filter((block) => !(block._type !== "block" || !block.children))
+    .map((block) => {
+      return block.children.map((child) => child.text).join("");
+    })
+    .join("\n");
+}
+
+export default {
+  name: "alert_v2",
+  title: "Alert",
+  type: "object",
+  fields: [
+    {
+      title: "Variant",
+      name: "variant",
+      type: "string",
+      validation: (Rule) => Rule.required().error("Alert må ha en variant"),
+      options: {
+        list: [
+          { value: "success", title: "Suksess" },
+          { value: "info", title: "Info" },
+          { value: "warning", title: "Fare" },
+          { value: "error", title: "Error" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "info",
+    },
+    {
+      title: "Heading (optional)",
+      name: "heading",
+      type: "string",
+    },
+    {
+      title: "Heading nivå",
+      name: "heading_level",
+      type: "string",
+      validation: (Rule) =>
+        Rule.required().error("Alert må ha et heading-nivå"),
+      options: {
+        list: [
+          { value: "h3", title: "H3" },
+          { value: "h4", title: "H4" },
+        ],
+        layout: "radio",
+      },
+      hidden: ({ parent }) => !parent.heading,
+      initialValue: "h3",
+    },
+    {
+      title: "Innhold",
+      name: "body",
+      type: "riktekst_enkel",
+      validation: (Rule) => Rule.required().error("Alert må ha noe innhold"),
+    },
+  ],
+  preview: {
+    select: {
+      variant: "variant",
+      body: "body",
+    },
+    prepare(selection) {
+      return {
+        title: toPlainText(selection?.body),
+        subtitle: `Alert - ${selection.variant}`,
+        media: () => <Warning />,
+      };
+    },
+    /* component: (selection) => {
+      return (
+        <Alert size={selection.value.size} variant={selection.value.variant}>
+          {toPlainText(selection.value.body)}
+        </Alert>
+      );
+    }, */
+  },
+};

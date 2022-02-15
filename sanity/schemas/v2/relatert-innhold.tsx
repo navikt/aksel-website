@@ -1,24 +1,20 @@
-import { NewTab } from "@navikt/ds-icons";
-import React from "react";
 import { allDocumentTypes } from "../../config";
 
 export default {
-  name: "related_pages",
-  title: "Relaterte sider",
+  name: "relatert_innhold",
+  title: "Relatert Innhold",
   type: "object",
   fields: [
     {
-      title: "Sider",
-      name: "links",
+      title: "Lenker til innhold",
+      name: "lenker",
       type: "array",
       validation: (Rule) =>
-        Rule.required()
-          .max(4)
-          .error("Kan ha maks 4 relaterte lenker i samme blokk"),
+        Rule.required().max(4).error("Kan ha maks 4 relaterte lenker"),
       of: [
         {
           title: "Lenke",
-          name: "link",
+          name: "lenke",
           type: "object",
           fields: [
             {
@@ -27,7 +23,7 @@ export default {
               type: "string",
               validation: (Rule) =>
                 Rule.required()
-                  .max(35)
+                  .max(40)
                   .error("Tittelen kan være på maks 35 tegn"),
             },
             {
@@ -41,7 +37,7 @@ export default {
             },
             {
               title: "Intern side i Sanity",
-              name: "internal",
+              name: "intern",
               type: "boolean",
               option: {
                 layout: "checkbox",
@@ -51,16 +47,16 @@ export default {
             },
             {
               title: "Lenke til Intern sanity-side",
-              name: "internal_link",
+              name: "intern_lenke",
               type: "reference",
               to: [...allDocumentTypes.map((x) => ({ type: x }))],
-              hidden: ({ parent }) => !parent?.internal,
+              hidden: ({ parent }) => !parent?.intern,
             },
             {
               title: "Lenke til ekstern side",
-              name: "external_link",
+              name: "ekstern_link",
               type: "url",
-              hidden: ({ parent }) => parent?.internal,
+              hidden: ({ parent }) => parent?.intern,
             },
             {
               title: "Tagging",
@@ -76,20 +72,17 @@ export default {
                     title: "Generisk tag (RELATERT INNHOLD)",
                   },
                   {
-                    value: "main_categories",
-                    title: "Kategorier (Henter tag fra valgt kategori)",
+                    value: "custom",
+                    title: "Custom",
                   },
                 ],
-                layout: "radio",
               },
             },
             {
-              title: "Kategori",
-              name: "category_ref",
-              type: "reference",
-              to: [{ type: "main_categories" }],
-              hidden: ({ parent }) =>
-                parent?.tags !== "main_categories" || !parent?.internal,
+              title: "Tag",
+              name: "tag",
+              type: "string",
+              hidden: ({ parent }) => parent?.tags === "default",
             },
           ],
         },
@@ -101,7 +94,7 @@ export default {
       links: "links",
     },
     prepare(s) {
-      return { title: "Relaterte sider cards" };
+      return { title: "Relatert innhold kort" };
     },
     /*   component: (s) => {
       return (
