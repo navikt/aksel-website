@@ -6,6 +6,8 @@ import Bilde from "./bilde";
 import Alert from "./alert";
 import RelatertInnhold from "./relatert-innhold";
 import Kode from "./kode";
+import introKomponent from "./intro-komponent";
+import liveDemo from "./live-demo";
 
 const v2Blocks = [
   GeneriskBlokk,
@@ -16,6 +18,8 @@ const v2Blocks = [
   Alert,
   Kode,
   RelatertInnhold,
+  introKomponent,
+  liveDemo,
 ];
 
 export default v2Blocks;

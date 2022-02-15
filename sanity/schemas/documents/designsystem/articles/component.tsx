@@ -67,9 +67,17 @@ export default {
       group: "beta",
       of: [
         {
-          name: "Seksjon med h2",
+          name: "generisk_seksjon",
           type: "generisk_seksjon",
           icon: () => <span>H2</span>,
+        },
+        {
+          name: "intro_komponent",
+          type: "intro_komponent",
+        },
+        {
+          name: "live_demo",
+          type: "live_demo",
         },
         { type: "tips", title: "Tips", icon: () => <LightBulb /> },
         {
