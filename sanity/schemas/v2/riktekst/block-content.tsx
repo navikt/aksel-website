@@ -29,13 +29,6 @@ export const styles = [
       render: (props) => <BodyLong>{props.children}</BodyLong>,
     },
   },
-  {
-    title: "Detail (14px)",
-    value: "detail",
-    blockEditor: {
-      render: (props) => <Detail size="small">{props.children}</Detail>,
-    },
-  },
 ];
 
 export const block = {
@@ -131,17 +124,25 @@ export default {
       styles: [
         ...block.styles,
         {
-          title: "Tittel <h3/>",
+          title: "Tittel H3",
           value: "h3",
           blockEditor: {
-            render: (props) => TitleRenderer(props, "small", "3"),
+            render: (props) => (
+              <Heading as="span" size="xsmall">
+                {props.children}
+              </Heading>
+            ),
           },
         },
         {
-          title: "Tittel <h4/>",
+          title: "Tittel H4",
           value: "heading4",
           blockEditor: {
-            render: (props) => TitleRenderer(props, "xsmall", "4"),
+            render: (props) => (
+              <Heading as="span" size="xsmall">
+                {props.children}
+              </Heading>
+            ),
           },
         },
       ],
