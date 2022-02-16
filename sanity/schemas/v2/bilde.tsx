@@ -75,6 +75,10 @@ export default {
       },
     },
   ],
+  validation: (Rule) =>
+    Rule.custom((v) => {
+      return v?.asset ? true : "Må legge til et bilde";
+    }).error(),
   preview: {
     select: {
       alt: "alt",

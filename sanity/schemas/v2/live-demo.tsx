@@ -23,6 +23,13 @@ export default {
       type: "reference",
       to: [{ type: "ds_code_sandbox" }],
       hidden: ({ parent }) => parent?.erstatt,
+      validation: (Rule) =>
+        Rule.custom((v, { parent }) => {
+          if (!parent.erstatt) {
+            return v ? true : "Må velge en sandbox";
+          }
+          return true;
+        }).error(),
     },
     {
       title: "Kode-eksempel",
@@ -30,6 +37,13 @@ export default {
       type: "reference",
       to: [{ type: "ds_code_example" }],
       hidden: ({ parent }) => !parent?.erstatt,
+      validation: (Rule) =>
+        Rule.custom((v, { parent }) => {
+          if (parent.erstatt) {
+            return v ? true : "Må velge et eksempel";
+          }
+          return true;
+        }).error(),
     },
   ],
   preview: {

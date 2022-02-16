@@ -34,7 +34,7 @@ export default {
       name: "contributors",
       type: "array",
       of: [{ type: "reference", to: [{ type: "editor" }] }],
-      group: "metadata",
+      group: "settings",
     },
     ...documentInformation(prefix).filter((x) => x?.name !== "ingress"),
     {
@@ -42,6 +42,8 @@ export default {
       type: "array",
       title: "Bruk",
       group: "innhold",
+      validation: (Rule) =>
+        Rule.required().error("Siden må ha noe innhold for bruk/design-tab"),
       of: [
         {
           name: "generisk_seksjon",
@@ -81,6 +83,8 @@ export default {
       type: "array",
       title: "Kode",
       group: "innhold",
+      validation: (Rule) =>
+        Rule.required().error("Siden må ha noe innhold for kode-tab"),
       of: [
         {
           name: "Seksjon med h2",

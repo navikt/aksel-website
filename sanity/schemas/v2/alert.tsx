@@ -1,5 +1,4 @@
 import { Warning } from "@navikt/ds-icons";
-import { Alert } from "@navikt/ds-react";
 import React from "react";
 
 function toPlainText(blocks = []) {
@@ -72,12 +71,5 @@ export default {
         media: () => <Warning />,
       };
     },
-    /* component: (selection) => {
-      return (
-        <Alert size={selection.value.size} variant={selection.value.variant}>
-          {toPlainText(selection.value.body)}
-        </Alert>
-      );
-    }, */
   },
 };

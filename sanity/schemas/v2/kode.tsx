@@ -19,12 +19,26 @@ export default {
       type: "reference",
       to: [{ type: "ds_code_example" }],
       hidden: ({ parent }) => !parent?.variant,
+      validation: (Rule) =>
+        Rule.custom((v, { parent }) => {
+          if (parent.variant) {
+            return v ? true : "Må velge en kodesnippet";
+          }
+          return true;
+        }).error(),
     },
     {
       name: "code",
       title: "Kode",
       type: "code",
       hidden: ({ parent }) => parent?.variant,
+      validation: (Rule) =>
+        Rule.custom((v, { parent }) => {
+          if (!parent.variant) {
+            return v ? true : "Må skrive noe kode";
+          }
+          return true;
+        }).error(),
       options: {
         languageAlternatives: [
           { value: "js", title: "Javascript" },
@@ -40,8 +54,11 @@ export default {
   preview: {
     select: {
       code: "code",
+      ref: "ref.title",
     },
-    prepare: ({ code }) => ({ code: code.code }),
-    component: (s) => <pre style={{ padding: "0 0.5rem" }}>{s.value.code}</pre>,
+    prepare: ({ code, ref }) => ({
+      title: code ? `${code?.code?.slice(0, 50)}...` : ref ? ref : "Kode",
+      subtitle: code ? "Kode" : ref ? "Predefinert kodesnippet" : "",
+    }),
   },
 };
