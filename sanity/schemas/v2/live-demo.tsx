@@ -1,3 +1,4 @@
+import { Helmet } from "@navikt/ds-icons";
 import React from "react";
 
 export default {
@@ -43,7 +44,7 @@ export default {
         title:
           s.code || s.sandbox ? (s?.erstatt ? s.code : s.sandbox) : "Unknown",
         subtitle: "Live Demo",
-        media: () => <span>Demo</span>,
+        media: () => <Helmet />,
       };
     },
   },

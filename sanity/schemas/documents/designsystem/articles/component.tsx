@@ -1,4 +1,11 @@
-import { Hamburger, LightBulb, NewTab } from "@navikt/ds-icons";
+import {
+  Hamburger,
+  Helmet,
+  Home,
+  LightBulb,
+  NewTab,
+  SignLanguageTwoHands,
+} from "@navikt/ds-icons";
 import React from "react";
 import {
   documentFeedbackMetadata,
@@ -69,7 +76,6 @@ export default {
         {
           name: "generisk_seksjon",
           type: "generisk_seksjon",
-          icon: () => <span>H2</span>,
         },
         {
           name: "intro_komponent",
@@ -78,6 +84,10 @@ export default {
         {
           name: "live_demo",
           type: "live_demo",
+        },
+        {
+          name: "uu_seksjon",
+          type: "uu_seksjon",
         },
         { type: "tips", title: "Tips", icon: () => <LightBulb /> },
         {

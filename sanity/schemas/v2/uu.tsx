@@ -1,99 +1,70 @@
+import { SignLanguageTwoHands } from "@navikt/ds-icons";
+import React from "react";
+
 export default {
-  title: "Do / Dont",
-  name: "uu_",
+  title: "Tilgjengelighet",
+  name: "uu_seksjon",
   type: "object",
   fields: [
     {
-      title: "Tittel (h3)",
+      title: "Tittel (h2)",
       name: "title",
       type: "string",
-      validation: (Rule) => Rule.required().error("Do/dont må ha en tittel"),
+      initialValue: "Tilgjengelighet",
+      readOnly: true,
     },
     {
-      title: "Forklaring (optional)",
-      name: "forklaring",
-      type: "riktekst",
+      title: "Atributter (optional)",
+      name: "atributter",
+      type: "riktekst_enkel",
+    },
+    {
+      title: "Interaksjon med mus (optional)",
+      name: "interaksjon_mus",
+      type: "riktekst_enkel",
+    },
+    {
+      title: "Interaksjon med touch (optional)",
+      name: "interaksjon_touch",
+      type: "riktekst_enkel",
+    },
+    {
+      title: "Interaksjon med tastatur (optional)",
+      description: "Ekstra info som ikke kan forklares med key + action under",
+      name: "interaksjon_tastatur",
+      type: "riktekst_enkel",
     },
     {
       type: "array",
-      name: "blokker",
-      title: "Do / donts",
-      of: [{ type: "do_dont_block" }],
-      validation: (Rule) => Rule.required().max(4),
+      name: "tastatur",
+      title: "Tastatur key + action",
+      of: [
+        {
+          type: "object",
+          name: "keys",
+          fields: [
+            { type: "string", name: "key" },
+            { type: "string", name: "action" },
+          ],
+          validation: (Rule) => Rule.required(),
+          options: {
+            columns: "2",
+          },
+        },
+      ],
+    },
+    {
+      title: "Interaksjon med skjermleser (optional)",
+      name: "interaksjon_skjermleser",
+      type: "riktekst_enkel",
     },
   ],
   preview: {
-    select: {
-      title: "title",
-    },
-    prepare(selection) {
+    prepare() {
       return {
-        title: selection?.title,
-        subtitle: "Do/Dont",
+        title: "Tilgjengelighet",
+        media: () => <SignLanguageTwoHands />,
       };
     },
   },
 };
-
-export const doDont = {
-  title: "DoDont",
-  name: "do_dont_block",
-  type: "object",
-  fields: [
-    {
-      title: "Fullwidth",
-      description: "Tar opp ~ 40% eller 100% av tilgjengelig bredde",
-      name: "fullwidth",
-      type: "boolean",
-      validation: (Rule) => Rule.required(),
-      initialValue: false,
-    },
-    {
-      title: "Bilde",
-      name: "picture",
-      type: "image",
-      validation: (Rule) =>
-        Rule.required().error("Do/dont må ha et bilde lagt til"),
-      options: {
-        hotspot: true,
-      },
-    },
-    {
-      title: "alt tekst for bilde",
-      name: "alt",
-      type: "string",
-      validation: (Rule) => Rule.required().error("Do/dont må ha en alt-tekst"),
-      options: {
-        isHighlighted: true,
-      },
-    },
-    {
-      name: "description",
-      title: "Fritekst",
-      description:
-        "Korte konsise beskrivelser. Bruk fullbredde bilde i dodont med egen tekst for legnre forklaringer",
-      type: "text",
-    },
-    {
-      name: "variant",
-      title: "Variant",
-      type: "string",
-      options: {
-        list: [
-          { title: "Do", value: "do" },
-          { title: "Dont", value: "dont" },
-          { title: "Warning", value: "warning" },
-        ],
-        layout: "radio",
-      },
-      initialValue: "do",
-      validation: (Rule) => Rule.required(),
-    },
-  ],
-};
-
-/*
-
-
-
-*/

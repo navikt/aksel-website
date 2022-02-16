@@ -1,3 +1,4 @@
+import { Home } from "@navikt/ds-icons";
 import React from "react";
 
 export default {
@@ -34,7 +35,7 @@ export default {
     prepare() {
       return {
         title: "Komponent-intro",
-        media: () => <span>intro</span>,
+        media: () => <Home />,
       };
     },
   },

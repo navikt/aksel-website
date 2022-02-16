@@ -1,10 +1,13 @@
 import {
+  Data,
   DirectionSign,
+  Facilitet,
   FileContent,
   LightBulb,
   NewTab,
   Picture,
   Warning,
+  Wrench,
 } from "@navikt/ds-icons";
 import React from "react";
 
@@ -66,8 +69,15 @@ export default {
         { type: "do_dont_v2", title: "Do/Dont", icon: () => <DirectionSign /> },
         { type: "bilde", title: "Bilde", icon: () => <Picture /> },
         { type: "alert_v2", title: "Alert", icon: () => <Warning /> },
-        { type: "kode", title: "Kode" },
-        { type: "powerTable", title: "Tabell" },
+        { type: "kode", title: "Kode", icon: () => <Wrench /> },
+        {
+          title: "Komponent-widget",
+          name: "kode_ref",
+          type: "reference",
+          to: [{ type: "ds_code_example" }],
+          icon: () => <Facilitet />,
+        },
+        { type: "tabell", title: "Tabell", icon: () => <Data /> },
       ],
       hidden: ({ parent }) => !parent.title,
       validation: (Rule) =>
@@ -83,7 +93,7 @@ export default {
       return {
         title,
         subtitle: "Seksjon med h2",
-        media: () => <span>H2</span>,
+        media: () => <FileContent />,
       };
     },
   },
