@@ -14,11 +14,6 @@ export default {
       readOnly: true,
     },
     {
-      title: "Atributter (optional)",
-      name: "atributter",
-      type: "riktekst_enkel",
-    },
-    {
       title: "Interaksjon med mus (optional)",
       name: "interaksjon_mus",
       type: "riktekst_enkel",
