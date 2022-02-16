@@ -193,9 +193,9 @@ const KomponentArtikkelTemplate = ({
         <TableOfContents changedState={data[value]} />
         <div className="content-box">
           content
-          {/* {data[value] && (
+          {data[value] && (
             <SanityBlockContent className="mt-12" blocks={data[value]} />
-          )} */}
+          )}
           {/* {!data?.metadata_feedback?.hide_feedback && (
             <Feedback
               docId={pageProps?.page?._id}
