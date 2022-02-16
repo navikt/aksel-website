@@ -4,8 +4,6 @@ import Footer from "../../../components/layout/footer/Footer";
 import DesignsystemHeader from "../../../components/layout/header/DesignsystemHeader";
 import DesignsystemSidebar from "../../../components/layout/sidebar/DesignsystemSidebar";
 import {
-  DsArticlePage,
-  DsComponentPage,
   dsDocumentBySlug,
   DsNavigation,
   dsNavigationQuery,
