@@ -5,7 +5,7 @@ export const groups = [
     name: "innhold",
     title: "Innhold",
     /* icon: Settings, */
-
+    default: true,
     /* hidden: ({currentUser, value, parent}) => true // optional */
   },
   {
@@ -24,6 +24,5 @@ export const groups = [
   {
     name: "beta",
     title: "Beta",
-    default: true,
   },
 ];
