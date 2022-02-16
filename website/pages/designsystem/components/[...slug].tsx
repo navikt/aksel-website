@@ -11,11 +11,12 @@ import {
   dsNavigationQuery,
   getClient,
   getDsPaths,
+  KomponentArtikkel,
 } from "../../../lib";
 
 const Page = (props: {
   slug?: string;
-  page: DsComponentPage | DsArticlePage;
+  page: KomponentArtikkel;
   navigation: DsNavigation;
   preview: boolean;
 }): JSX.Element => {
@@ -74,7 +75,7 @@ export const getStaticPaths = async (): Promise<{
 
 interface StaticProps {
   props: {
-    page: DsComponentPage | DsArticlePage;
+    page: KomponentArtikkel;
     slug: string;
     navigation: DsNavigation;
     isDraft: boolean;
