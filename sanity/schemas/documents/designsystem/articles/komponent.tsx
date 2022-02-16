@@ -42,8 +42,6 @@ export default {
       type: "array",
       title: "Bruk",
       group: "innhold",
-      validation: (Rule) =>
-        Rule.required().error("Siden må ha noe innhold for bruk/design-tab"),
       of: [
         {
           name: "generisk_seksjon",
@@ -77,6 +75,28 @@ export default {
           icon: () => <NewTab />,
         },
       ],
+      validation: (Rule) =>
+        Rule.custom((v) => {
+          const missing = [];
+          const bricks = [
+            { title: "Intro", type: "intro_komponent" },
+            { title: "Anatomi", type: "anatomi_seksjon" },
+            { title: "Tilgjengelighet", type: "uu_seksjon" },
+            { title: "Live demo", type: "live_demo_seksjon" },
+          ];
+
+          bricks.forEach((x) => {
+            if (!v.some((z) => z._type === x.type)) {
+              missing.push(x);
+            }
+          });
+          if (missing.length !== 0) {
+            return `Mangler disse elementene: ${missing
+              .map((x) => x.title)
+              .join(", ")}`;
+          }
+          return true;
+        }).error(),
     },
     {
       name: "content_kode",
@@ -84,7 +104,25 @@ export default {
       title: "Kode",
       group: "innhold",
       validation: (Rule) =>
-        Rule.required().error("Siden må ha noe innhold for kode-tab"),
+        Rule.custom((v) => {
+          const missing = [];
+          const bricks = [
+            { title: "Installasjon", type: "installasjon_seksjon" },
+            { title: "Props", type: "props_seksjon" },
+          ];
+
+          bricks.forEach((x) => {
+            if (!v.some((z) => z._type === x.type)) {
+              missing.push(x);
+            }
+          });
+          if (missing.length !== 0) {
+            return `Mangler disse elementene: ${missing
+              .map((x) => x.title)
+              .join(", ")}`;
+          }
+          return true;
+        }).error(),
       of: [
         {
           name: "Seksjon med h2",
