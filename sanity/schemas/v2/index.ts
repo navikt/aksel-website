@@ -10,6 +10,7 @@ import introKomponent from "./intro-komponent";
 import liveDemo from "./live-demo";
 import Tabell, { TabellSchema } from "./table";
 import UU from "./uu";
+import Anatomi from "./anatomi";
 
 const v2Blocks = [
   GeneriskBlokk,
@@ -25,6 +26,7 @@ const v2Blocks = [
   Tabell,
   ...TabellSchema,
   UU,
+  Anatomi,
 ];
 
 export default v2Blocks;

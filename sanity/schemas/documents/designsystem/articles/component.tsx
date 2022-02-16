@@ -5,6 +5,7 @@ import {
   Home,
   LightBulb,
   NewTab,
+  Ruler,
   SignLanguageTwoHands,
 } from "@navikt/ds-icons";
 import React from "react";
@@ -81,18 +82,23 @@ export default {
         },
         {
           name: "intro_komponent",
-          type: "intro_komponent",
+          type: "intro_komponent_seksjon",
           icon: () => <Home />,
         },
         {
           name: "live_demo",
-          type: "live_demo",
+          type: "live_demo_seksjon",
           icon: () => <Helmet />,
         },
         {
           name: "uu_seksjon",
           type: "uu_seksjon",
           icon: () => <SignLanguageTwoHands />,
+        },
+        {
+          name: "anatomi",
+          type: "anatomi_seksjon",
+          icon: () => <Ruler />,
         },
         { type: "tips", title: "Tips", icon: () => <LightBulb /> },
         {

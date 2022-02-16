@@ -3,7 +3,7 @@ import React from "react";
 
 export default {
   title: "Live demo",
-  name: "live_demo",
+  name: "live_demo_seksjon",
   type: "object",
   fields: [
     {

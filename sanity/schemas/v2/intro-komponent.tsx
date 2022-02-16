@@ -3,7 +3,7 @@ import React from "react";
 
 export default {
   title: "Komponent intro",
-  name: "intro_komponent",
+  name: "intro_komponent_seksjon",
   type: "object",
   fields: [
     {

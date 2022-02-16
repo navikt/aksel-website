@@ -21,10 +21,20 @@ export default {
       },
     },
     {
+      name: "hide_floating",
+      type: "boolean",
+      hidden: true,
+      readOnly: true,
+      options: {
+        isHighlighted: true,
+      },
+    },
+    {
       name: "floating",
       title: "Bilde med flytende tekst rundt",
       type: "boolean",
       initialValue: false,
+      hidden: ({ parent }) => parent?.hide_floating,
       options: {
         isHighlighted: true,
       },
