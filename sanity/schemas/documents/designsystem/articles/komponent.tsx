@@ -80,9 +80,9 @@ export default {
           const missing = [];
           const bricks = [
             { title: "Intro", type: "intro_komponent" },
-            { title: "Anatomi", type: "anatomi_seksjon" },
+            { title: "Anatomi", type: "anatomi" },
             { title: "Tilgjengelighet", type: "uu_seksjon" },
-            { title: "Live demo", type: "live_demo_seksjon" },
+            { title: "Live demo", type: "live_demo" },
           ];
 
           bricks.forEach((x) => {
