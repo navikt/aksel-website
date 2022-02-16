@@ -33,6 +33,11 @@ const client = sanityClient({
 
 export const getDefaultDocumentNode = ({ schemaType }) => {
   switch (schemaType) {
+    case "komponent_artikkel":
+      return S.document().views([
+        S.view.form(),
+        S.view.component(ComponentPageWebPreview).title("Preview"),
+      ]);
     case "ds_component_page":
       return S.document().views([
         S.view.form(),
@@ -112,6 +117,10 @@ const items = [
                     .icon(() => <Facilitet />)
                     .child(createSuperPane("ds_component_page")),
                   S.listItem()
+                    .title("Komponent-artikler (ny struktur beta)")
+                    .icon(() => <Facilitet />)
+                    .child(createSuperPane("komponent_artikkel")),
+                  S.listItem()
                     .title("Artikler")
                     .icon(() => <FileContent />)
                     .child(createSuperPane("ds_article_page")),
@@ -129,7 +138,7 @@ const items = [
                       S.documentList()
                         .title("Sider ikke i navigasjon")
                         .filter(
-                          `!(_id in [${allIds}]) && !(_id in path('drafts.**')) && _type in ["ds_component_page","ds_article_page"]`
+                          `!(_id in [${allIds}]) && !(_id in path('drafts.**')) && _type in ["ds_component_page","ds_article_page", "komponent_artikkel"]`
                         )
                     ),
                 ]);

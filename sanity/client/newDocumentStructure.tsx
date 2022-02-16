@@ -2,13 +2,13 @@ import S from "@sanity/base/structure-builder";
 
 const docTypes = [
   {
-    name: "ds_component_page_template",
-    title: "Komponentside",
-    desc: "Komponentspesifikk artikkel for designsystemet",
-  },
-  {
     name: "ds_article_page",
     title: "Artikkel Designsystemet",
+    desc: "Atikkel som legges under designsystemet",
+  },
+  {
+    name: "komponent_artikkel_template",
+    title: "BETA: Komponentside (ny struktur)",
     desc: "Atikkel som legges under designsystemet",
   },
   {

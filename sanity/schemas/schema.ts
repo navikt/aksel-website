@@ -68,6 +68,7 @@ export default createSchema({
     Designsystem.Navigation,
     Designsystem.Overview,
     Designsystem.Package,
+    Designsystem.KomponentArtikkel,
 
     GodPraksis.Frontpage,
     GodPraksis.Article,
