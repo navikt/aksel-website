@@ -1,7 +1,6 @@
 import {
   Download,
   FileContent,
-  Hamburger,
   Helmet,
   Home,
   LightBulb,
@@ -12,9 +11,8 @@ import {
 } from "@navikt/ds-icons";
 import React from "react";
 import {
-  documentFeedbackMetadata,
-  documentMetadata,
   defaultPreview,
+  documentFeedbackMetadata,
   documentInformation,
   groups,
 } from "../../templates";

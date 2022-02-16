@@ -27,7 +27,7 @@ export const getGpPaths = async (): Promise<string[][]> => {
 };
 
 export const getDsPaths = async (): Promise<string[][]> => {
-  const documents: any[] | null = await getClient(false).fetch(dsDocuments);
+  const documents: any[] | null = await getClient(true).fetch(dsDocuments);
   const paths = [];
   const componentPageTabs = ["design", "utvikling", "tilgjengelighet"];
 
@@ -46,6 +46,10 @@ export const getDsPaths = async (): Promise<string[][]> => {
     const defaultPush = () => paths.push(slug);
 
     switch (page._type) {
+      case "komponent_artikkel":
+        paths.push([...slug, "kode"]);
+        defaultPush();
+        break;
       case "ds_component_page":
         componentPageTabs.forEach((tab) => {
           page[tabs[tab]] && paths.push([...slug, tab]);
