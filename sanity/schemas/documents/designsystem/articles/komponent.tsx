@@ -68,7 +68,7 @@ export default {
         },
         { type: "tips", title: "Tips", icon: () => <LightBulb /> },
         {
-          type: "related_pages",
+          type: "relatert_innhold",
           title: "Relatert innhold",
           icon: () => <NewTab />,
         },
