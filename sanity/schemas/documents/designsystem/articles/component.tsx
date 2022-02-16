@@ -1,4 +1,5 @@
 import {
+  FileContent,
   Hamburger,
   Helmet,
   Home,
@@ -76,18 +77,22 @@ export default {
         {
           name: "generisk_seksjon",
           type: "generisk_seksjon",
+          icon: () => <FileContent />,
         },
         {
           name: "intro_komponent",
           type: "intro_komponent",
+          icon: () => <Home />,
         },
         {
           name: "live_demo",
           type: "live_demo",
+          icon: () => <Helmet />,
         },
         {
           name: "uu_seksjon",
           type: "uu_seksjon",
+          icon: () => <SignLanguageTwoHands />,
         },
         { type: "tips", title: "Tips", icon: () => <LightBulb /> },
         {
