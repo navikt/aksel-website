@@ -64,7 +64,7 @@ export default {
               name: "tags",
               type: "string",
               initialValue: "default",
-              hidden: ({ parent }) => !parent?.internal,
+              hidden: ({ parent }) => !parent?.intern,
               options: {
                 list: [
                   {
