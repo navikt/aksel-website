@@ -11,6 +11,8 @@ import liveDemo from "./live-demo";
 import Tabell, { TabellSchema } from "./table";
 import UU from "./uu";
 import Anatomi from "./anatomi";
+import Installasjon from "./installasjon";
+import Props from "./props";
 
 const v2Blocks = [
   GeneriskBlokk,
@@ -27,6 +29,8 @@ const v2Blocks = [
   ...TabellSchema,
   UU,
   Anatomi,
+  Installasjon,
+  Props,
 ];
 
 export default v2Blocks;

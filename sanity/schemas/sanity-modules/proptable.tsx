@@ -1,3 +1,6 @@
+import { Scale } from "@navikt/ds-icons";
+import React from "react";
+
 export default {
   name: "prop_table",
   title: "Proptable",
@@ -59,7 +62,14 @@ export default {
     },
   ],
   preview: {
-    prepare: () => ({ title: "Proptable" }),
+    select: {
+      title: "title",
+    },
+    prepare: (s) => ({
+      title: s?.title ? s?.title : "Prop",
+      subtitle: s?.title ? "prop" : "",
+      media: () => <Scale />,
+    }),
   },
 };
 

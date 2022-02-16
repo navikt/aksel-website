@@ -2,7 +2,7 @@ import { Home } from "@navikt/ds-icons";
 import React from "react";
 
 export default {
-  title: "Komponent intro",
+  title: "Intro",
   name: "intro_komponent_seksjon",
   type: "object",
   fields: [

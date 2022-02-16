@@ -1,4 +1,5 @@
 import {
+  Download,
   FileContent,
   Hamburger,
   Helmet,
@@ -6,6 +7,7 @@ import {
   LightBulb,
   NewTab,
   Ruler,
+  Scale,
   SignLanguageTwoHands,
 } from "@navikt/ds-icons";
 import React from "react";
@@ -84,6 +86,16 @@ export default {
           name: "Seksjon med h2",
           type: "generisk_seksjon",
           icon: () => <span>H2</span>,
+        },
+        {
+          type: "installasjon_seksjon",
+          title: "Installasjon",
+          icon: () => <Download />,
+        },
+        {
+          type: "props_seksjon",
+          title: "Props",
+          icon: () => <Scale />,
         },
         { type: "tips", title: "Tips", icon: () => <LightBulb /> },
         {
