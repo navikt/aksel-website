@@ -57,6 +57,11 @@ export default {
           icon: () => <Helmet />,
         },
         {
+          name: "uu_seksjon",
+          type: "uu_seksjon",
+          icon: () => <SignLanguageTwoHands />,
+        },
+        {
           name: "anatomi",
           type: "anatomi_seksjon",
           icon: () => <Ruler />,
@@ -74,6 +79,7 @@ export default {
           const bricks = [
             { title: "Intro", type: "intro_komponent" },
             { title: "Anatomi", type: "anatomi" },
+            { title: "Tilgjengelighet", type: "uu_seksjon" },
             { title: "Live demo", type: "live_demo" },
           ];
 
@@ -101,7 +107,6 @@ export default {
           const bricks = [
             { title: "Installasjon", type: "installasjon_seksjon" },
             { title: "Props", type: "props_seksjon" },
-            { title: "Tilgjengelighet", type: "uu_seksjon" },
           ];
 
           bricks.forEach((x) => {
@@ -126,11 +131,6 @@ export default {
           type: "installasjon_seksjon",
           title: "Installasjon",
           icon: () => <Download />,
-        },
-        {
-          name: "uu_seksjon",
-          type: "uu_seksjon",
-          icon: () => <SignLanguageTwoHands />,
         },
         {
           type: "props_seksjon",
