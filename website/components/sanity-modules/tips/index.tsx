@@ -1,37 +1,21 @@
 import { Detail } from "@navikt/ds-react";
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { LayoutContext } from "../..";
+import React from "react";
 import { Tips as TipsT } from "../../../lib";
-import { SanityBlockContent } from "../../SanityBlockContent";
 import { withErrorBoundary } from "../../ErrorBoundary";
-
-const ScWrapper = styled.div`
-  padding-left: var(--navds-spacing-8);
-  box-shadow: -2px 0 0 0 var(--navds-semantic-color-border);
-  margin: var(--navds-spacing-10) 0;
-
-  &[data-mobile="true"] {
-    padding-left: var(--navds-spacing-4);
-  }
-`;
-
-const ScDetail = styled(Detail)`
-  color: var(--navds-semantic-color-text-muted);
-`;
+import { SanityBlockContent } from "../../SanityBlockContent";
 
 const Tips = ({ node }: { node: TipsT }): JSX.Element => {
-  const layout = useContext(LayoutContext);
-
   if (!node || !node.body) {
     return null;
   }
 
   return (
-    <ScWrapper data-mobile={layout.isMobile}>
-      <ScDetail spacing>TIPS</ScDetail>
-      <SanityBlockContent blocks={node.body} />
-    </ScWrapper>
+    <div className="my-16 max-w-2xl rounded-r border-l-[6px] border-l-gray-500 bg-gray-50 px-4 py-3 shadow-md md:px-8">
+      <Detail className="text-text-muted" spacing>
+        TIPS
+      </Detail>
+      <SanityBlockContent blocks={node.body} noLastMargin />
+    </div>
   );
 };
 

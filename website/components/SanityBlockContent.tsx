@@ -2,6 +2,7 @@ import { BodyLong, Detail, Heading, Ingress, Link } from "@navikt/ds-react";
 import BlockContent from "@sanity/block-content-to-react";
 import NextLink from "next/link";
 import React, { createContext, useContext } from "react";
+import cl from "classnames";
 import {
   Alert,
   CodeExample,
@@ -100,12 +101,15 @@ const serializers = {
           if (context.isIngress) {
             return <Ingress {...textProps} className="index-ingress" />;
           }
+          console.log(context);
           return (
             <BodyLong
               size={context.size}
               spacing
               {...textProps}
-              className="index-body"
+              className={cl("index-body", {
+                "last:mb-0": context.noLastMargin,
+              })}
             />
           );
 
@@ -207,25 +211,29 @@ const serializers = {
 export type BlockContextT = {
   size: "medium" | "small";
   isIngress: boolean;
+  noLastMargin: boolean;
 };
 
 export const BlockContext = createContext<BlockContextT>({
   size: "medium",
   isIngress: false,
+  noLastMargin: false,
 });
 
 export const SanityBlockContent = ({
   blocks,
   size = "medium",
   isIngress = false,
+  noLastMargin = false,
   ...rest
 }: {
   blocks: any;
   size?: "medium" | "small";
   isIngress?: boolean;
   className?: string;
+  noLastMargin?: boolean;
 }) => (
-  <BlockContext.Provider value={{ size, isIngress }}>
+  <BlockContext.Provider value={{ size, isIngress, noLastMargin }}>
     <BlockContent
       blocks={blocks ?? []}
       serializers={serializers}
