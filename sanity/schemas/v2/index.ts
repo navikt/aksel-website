@@ -13,6 +13,7 @@ import UU from "./uu";
 import Anatomi from "./anatomi";
 import Installasjon from "./installasjon";
 import Props from "./props";
+import Accordion from "./accordion";
 
 const v2Blocks = [
   GeneriskBlokk,
@@ -31,6 +32,7 @@ const v2Blocks = [
   Anatomi,
   Installasjon,
   Props,
+  Accordion,
 ];
 
 export default v2Blocks;

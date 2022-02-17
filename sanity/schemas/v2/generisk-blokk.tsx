@@ -1,6 +1,7 @@
 import {
   Data,
   DirectionSign,
+  Expand,
   Facilitet,
   FileContent,
   LightBulb,
@@ -20,6 +21,63 @@ function toPlainText(blocks = []) {
     .join("\n");
 }
 
+export const contentBlocks = (s?: string) => {
+  const blocks = [
+    {
+      type: "object",
+      title: "Riktekst",
+      name: "riktekst_blokk",
+      fields: [
+        {
+          title: "Riktekst",
+          name: "body",
+          type: "riktekst",
+        },
+      ],
+      preview: {
+        select: {
+          text: "body",
+        },
+        prepare(selection) {
+          return {
+            title: toPlainText(selection?.text?.slice?.(0, 1)) ?? "-",
+            subtitle: "Riktekst",
+          };
+        },
+      },
+      icon: () => <FileContent />,
+    },
+    { type: "tips", title: "Tips", icon: () => <LightBulb /> },
+    {
+      type: "relatert_innhold",
+      title: "Relatert innhold",
+      icon: () => <NewTab />,
+    },
+    { type: "do_dont_v2", title: "Do/Dont", icon: () => <DirectionSign /> },
+    { type: "bilde", title: "Bilde", icon: () => <Picture /> },
+    { type: "alert_v2", title: "Alert", icon: () => <Warning /> },
+    { type: "kode", title: "Kode", icon: () => <Wrench /> },
+    {
+      title: "Komponent-widget",
+      name: "kode_ref",
+      type: "reference",
+      to: [{ type: "ds_code_example" }],
+      icon: () => <Facilitet />,
+    },
+    { type: "tabell", title: "Tabell", icon: () => <Data /> },
+    { type: "accordion_v2", title: "Accordion", icon: () => <Expand /> },
+  ];
+
+  switch (s) {
+    case "accordion_v2":
+      return blocks.filter(
+        (x) => !["Accordion", "Komponent-widget"].includes(x.title)
+      );
+    default:
+      return blocks;
+  }
+};
+
 export default {
   title: "Seksjon med h2",
   name: "generisk_seksjon",
@@ -35,50 +93,7 @@ export default {
       type: "array",
       name: "brikker",
       title: "Innhold",
-      of: [
-        {
-          type: "object",
-          title: "Riktekst",
-          name: "riktekst_blokk",
-          fields: [
-            {
-              title: "Riktekst",
-              name: "body",
-              type: "riktekst",
-            },
-          ],
-          preview: {
-            select: {
-              text: "body",
-            },
-            prepare(selection) {
-              return {
-                title: toPlainText(selection?.text?.slice?.(0, 1)) ?? "-",
-                subtitle: "Riktekst",
-              };
-            },
-          },
-          icon: () => <FileContent />,
-        },
-        { type: "tips", title: "Tips", icon: () => <LightBulb /> },
-        {
-          type: "relatert_innhold",
-          title: "Relatert innhold",
-          icon: () => <NewTab />,
-        },
-        { type: "do_dont_v2", title: "Do/Dont", icon: () => <DirectionSign /> },
-        { type: "bilde", title: "Bilde", icon: () => <Picture /> },
-        { type: "alert_v2", title: "Alert", icon: () => <Warning /> },
-        { type: "kode", title: "Kode", icon: () => <Wrench /> },
-        {
-          title: "Komponent-widget",
-          name: "kode_ref",
-          type: "reference",
-          to: [{ type: "ds_code_example" }],
-          icon: () => <Facilitet />,
-        },
-        { type: "tabell", title: "Tabell", icon: () => <Data /> },
-      ],
+      of: contentBlocks(),
       hidden: ({ parent }) => !parent.title,
       validation: (Rule) =>
         Rule.required().error("Seksjon må ha minst en brikke"),
