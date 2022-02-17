@@ -94,7 +94,7 @@ export const getStaticProps = async ({
 
   const client = getClient(preview);
   let page = await client.fetch(dsDocumentBySlug, {
-    slug: "designsystem/components/" + slug[0],
+    slug: "designsystem/komponenter/" + slug[0],
   });
 
   const isDraft = page.filter((item) => !item._id.startsWith("drafts.")).length;
@@ -107,7 +107,7 @@ export const getStaticProps = async ({
     paths
       .map((slugs) =>
         slugs
-          .filter((slug) => slug !== "designsystem" && slug !== "components")
+          .filter((slug) => slug !== "designsystem" && slug !== "komponenter")
           .join("/")
       )
       .includes(joinedSlug)

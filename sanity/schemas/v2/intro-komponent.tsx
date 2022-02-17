@@ -23,9 +23,8 @@ export default {
     {
       type: "array",
       name: "brukes_ikke_til",
-      title: "Brukes ikke til",
+      title: "Brukes ikke til (optional)",
       of: [{ type: "string" }],
-      validation: (Rule) => Rule.required().min(1),
     },
   ],
   preview: {
