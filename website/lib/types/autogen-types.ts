@@ -120,11 +120,25 @@ export interface Editor extends SanityDocument {
   team?: string;
 
   /**
-   * Relaterte artikler — `string`
+   * Sanity bruker-id — `slug`
    *
    *
    */
-  user_related_articles?: string;
+  user_id?: { _type: "user_id"; current: string };
+
+  /**
+   * Anonym — `boolean`
+   *
+   * Ønsker å bli vist som anonym redaktør/contributor
+   */
+  anonym?: boolean;
+
+  /**
+   * Profil — `string`
+   *
+   *
+   */
+  profile_page?: string;
 }
 
 /**
@@ -219,7 +233,7 @@ export interface DsArticlePage extends SanityDocument {
   ingress?: Array<SanityKeyed<SanityBlock>>;
 
   /**
-   * Tabs — `boolean`
+   * Bruk Tabs — `boolean`
    *
    *
    */
@@ -233,7 +247,7 @@ export interface DsArticlePage extends SanityDocument {
   body?: BlockContent;
 
   /**
-   * Tabs — `array`
+   * Innhold i Tabs — `array`
    *
    *
    */
@@ -554,13 +568,6 @@ export interface DsComponentTemplate extends SanityDocument {
   _type: "ds_component_template";
 
   /**
-   * Redaktør/kontakt — `reference`
-   *
-   *
-   */
-  contact?: SanityReference<Editor>;
-
-  /**
    * Bidragsytere — `array`
    *
    * Legg til de som har bidratt med denne siden!
@@ -582,39 +589,32 @@ export interface DsComponentTemplate extends SanityDocument {
   slug?: { _type: "slug"; current: string };
 
   /**
-   * Ingress (valgfritt) — `array`
+   * Bruk — `array`
    *
    *
    */
-  ingress?: Array<SanityKeyed<SanityBlock>>;
+  content_bruk?: Array<
+    | SanityKeyed<GeneriskSeksjon>
+    | SanityKeyed<IntroKomponentSeksjon>
+    | SanityKeyed<LiveDemoSeksjon>
+    | SanityKeyed<UuSeksjon>
+    | SanityKeyed<AnatomiSeksjon>
+    | SanityKeyed<Tips>
+    | SanityKeyed<RelatedPages>
+  >;
 
   /**
-   * Bruk-tab — `blockContent`
+   * Kode — `array`
    *
    *
    */
-  usage?: BlockContent;
-
-  /**
-   * Design-tab — `blockContent`
-   *
-   *
-   */
-  design?: BlockContent;
-
-  /**
-   * Utvikling-tab — `blockContent`
-   *
-   *
-   */
-  development?: BlockContent;
-
-  /**
-   * Tilgjengelighet-tab — `blockContent`
-   *
-   *
-   */
-  accessibility?: BlockContent;
+  content_kode?: Array<
+    | SanityKeyed<GeneriskSeksjon>
+    | SanityKeyed<InstallasjonSeksjon>
+    | SanityKeyed<PropsSeksjon>
+    | SanityKeyed<Tips>
+    | SanityKeyed<RelatertInnhold>
+  >;
 
   /**
    * Koblet kodepakke — `reference`
@@ -674,7 +674,9 @@ export interface DsFrontpage extends SanityDocument {
        *
        *
        */
-      link_ref?: SanityReference<DsComponentPage | DsArticlePage>;
+      link_ref?: SanityReference<
+        DsComponentPage | DsArticlePage | KomponentArtikkel
+      >;
 
       /**
        * Tittel — `string`
@@ -842,7 +844,9 @@ export interface DsComponentOverview extends SanityDocument {
        *
        *
        */
-      doc_link?: SanityReference<DsComponentPage | DsArticlePage>;
+      doc_link?: SanityReference<
+        DsComponentPage | DsArticlePage | KomponentArtikkel
+      >;
     }>
   >;
 }
@@ -882,6 +886,93 @@ export interface DsPackage extends SanityDocument {
    *
    */
   github_link?: string;
+}
+
+/**
+ * Komponentartikkel BETA
+ *
+ *
+ */
+export interface KomponentArtikkel extends SanityDocument {
+  _type: "komponent_artikkel";
+
+  /**
+   * Bidragsytere — `array`
+   *
+   * Legg til de som har bidratt med denne siden!
+   */
+  contributors?: Array<SanityKeyedReference<Editor>>;
+
+  /**
+   * Sidetittel — `string`
+   *
+   * Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.
+   */
+  heading?: string;
+
+  /**
+   * url — `slug`
+   *
+   * Strukturen bestemmes ikke av URL-en
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Bruk — `array`
+   *
+   *
+   */
+  content_bruk?: Array<
+    | SanityKeyed<GeneriskSeksjon>
+    | SanityKeyed<IntroKomponentSeksjon>
+    | SanityKeyed<LiveDemoSeksjon>
+    | SanityKeyed<UuSeksjon>
+    | SanityKeyed<AnatomiSeksjon>
+    | SanityKeyed<Tips>
+    | SanityKeyed<RelatedPages>
+  >;
+
+  /**
+   * Kode — `array`
+   *
+   *
+   */
+  content_kode?: Array<
+    | SanityKeyed<GeneriskSeksjon>
+    | SanityKeyed<InstallasjonSeksjon>
+    | SanityKeyed<PropsSeksjon>
+    | SanityKeyed<Tips>
+    | SanityKeyed<RelatertInnhold>
+  >;
+
+  /**
+   * Koblet kodepakke — `reference`
+   *
+   * Kobler komponenten til en pakke
+   */
+  linked_package?: SanityReference<DsPackage>;
+
+  /**
+   * Figma lenke (optional) — `url`
+   *
+   *
+   */
+  figma_link?: string;
+
+  /**
+   * Tilbakemeldinger — `object`
+   *
+   *
+   */
+  metadata_feedback?: {
+    _type: "metadata_feedback";
+    /**
+     * Skjul artikkel feedback modul — `boolean`
+     *
+     * Gjemmer <<Var denne artikkelen til hjelp?>> modulen.
+     */
+    hide_feedback?: boolean;
+  };
 }
 
 /**
@@ -973,6 +1064,460 @@ export interface GpArticlePage extends SanityDocument {
   };
 }
 
+export type GeneriskSeksjon = {
+  _type: "generisk_seksjon";
+  /**
+   * Tittel (h2) — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Innhold — `array`
+   *
+   *
+   */
+  brikker?: Array<
+    | SanityKeyed<{
+        _type: "riktekst_blokk";
+        /**
+         * Riktekst — `riktekst`
+         *
+         *
+         */
+        body?: Riktekst;
+      }>
+    | SanityKeyed<Tips>
+    | SanityKeyed<RelatertInnhold>
+    | SanityKeyed<DoDontV2>
+    | SanityKeyed<Bilde>
+    | SanityKeyed<AlertV2>
+    | SanityKeyed<Kode>
+    | SanityKeyedReference<DsCodeExample>
+    | SanityKeyed<Tabell>
+  >;
+};
+
+export type Riktekst = Array<SanityKeyed<SanityBlock>>;
+
+export type DoDontV2 = {
+  _type: "do_dont_v2";
+  /**
+   * Tittel (h3) — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Forklaring (optional) — `riktekst`
+   *
+   *
+   */
+  forklaring?: Riktekst;
+
+  /**
+   * Do / donts — `array`
+   *
+   *
+   */
+  blokker?: Array<SanityKeyed<DoDontBlock>>;
+};
+
+export type Bilde = {
+  _type: "bilde";
+  asset: SanityReference<SanityImageAsset>;
+  crop?: SanityImageCrop;
+  hotspot?: SanityImageHotspot;
+
+  /**
+   * Alt-tekst — `string`
+   *
+   * Beskriv bildet for skjermlesere
+   */
+  alt?: string;
+
+  /**
+   * hide_floating — `boolean`
+   *
+   *
+   */
+  hide_floating?: boolean;
+
+  /**
+   * Bilde med flytende tekst rundt — `boolean`
+   *
+   *
+   */
+  floating?: boolean;
+
+  /**
+   * Bilde-tekst — `string`
+   *
+   * Dette vil stå under bildet
+   */
+  caption?: string;
+
+  /**
+   * Plassering av bilde — `string`
+   *
+   *
+   */
+  floating_align?: "venstre" | "hoyre";
+
+  /**
+   * Flytende tekst — `riktekst`
+   *
+   *
+   */
+  floating_text?: Riktekst;
+};
+
+export type RiktekstEnkel = Array<SanityKeyed<SanityBlock>>;
+
+export type AlertV2 = {
+  _type: "alert_v2";
+  /**
+   * Variant — `string`
+   *
+   *
+   */
+  variant?: "success" | "info" | "warning" | "error";
+
+  /**
+   * Heading (optional) — `string`
+   *
+   *
+   */
+  heading?: string;
+
+  /**
+   * Heading nivå — `string`
+   *
+   *
+   */
+  heading_level?: "h3" | "h4";
+
+  /**
+   * Innhold — `riktekst_enkel`
+   *
+   *
+   */
+  body?: RiktekstEnkel;
+};
+
+export type Kode = {
+  _type: "kode";
+  /**
+   * Bruk predefinert kodesnutt? — `boolean`
+   *
+   *
+   */
+  variant?: boolean;
+
+  /**
+   * Predefinert kodesnutt — `reference`
+   *
+   *
+   */
+  ref?: SanityReference<DsCodeExample>;
+
+  /**
+   * Kode — `code`
+   *
+   *
+   */
+  code?: Code;
+};
+
+export type RelatertInnhold = {
+  _type: "relatert_innhold";
+  /**
+   * Lenker til innhold — `array`
+   *
+   *
+   */
+  lenker?: Array<
+    SanityKeyed<{
+      _type: "lenke";
+      /**
+       * Tittel — `string`
+       *
+       *
+       */
+      title?: string;
+
+      /**
+       * Beskrivelse — `string`
+       *
+       *
+       */
+      description?: string;
+
+      /**
+       * Intern side i Sanity — `boolean`
+       *
+       *
+       */
+      intern?: boolean;
+
+      /**
+       * Lenke til Intern sanity-side — `reference`
+       *
+       *
+       */
+      intern_lenke?: SanityReference<
+        DsComponentPage | DsArticlePage | KomponentArtikkel | GpArticlePage
+      >;
+
+      /**
+       * Lenke til ekstern side — `url`
+       *
+       *
+       */
+      ekstern_link?: string;
+
+      /**
+       * Tagging — `string`
+       *
+       * Velg hvordan kortet skal tagges
+       */
+      tags?: "default" | "custom";
+
+      /**
+       * Tag — `string`
+       *
+       *
+       */
+      tag?: string;
+    }>
+  >;
+};
+
+export type IntroKomponentSeksjon = {
+  _type: "intro_komponent_seksjon";
+  /**
+   * Intro/Ingress — `riktekst_enkel`
+   *
+   *
+   */
+  body?: RiktekstEnkel;
+
+  /**
+   * Brukes til — `array`
+   *
+   *
+   */
+  brukes_til?: Array<SanityKeyed<string>>;
+
+  /**
+   * Brukes ikke til — `array`
+   *
+   *
+   */
+  brukes_ikke_til?: Array<SanityKeyed<string>>;
+};
+
+export type LiveDemoSeksjon = {
+  _type: "live_demo_seksjon";
+  /**
+   * Avsnitt (optional) — `riktekst_enkel`
+   *
+   *
+   */
+  body?: RiktekstEnkel;
+
+  /**
+   * Erstatt Sandbox med vanlig kode-eksempel — `boolean`
+   *
+   *
+   */
+  erstatt?: boolean;
+
+  /**
+   * Demo/Sandobox — `reference`
+   *
+   *
+   */
+  sandbox_ref?: SanityReference<DsCodeSandbox>;
+
+  /**
+   * Kode-eksempel — `reference`
+   *
+   *
+   */
+  code_ref?: SanityReference<DsCodeExample>;
+};
+
+export type Tabell = {
+  _type: "tabell";
+  /**
+   * Tittel (optional) — `string`
+   *
+   * Gi tabellen et navn for å lettere finne den
+   */
+  title?: string;
+
+  /**
+   * Tabell — `powerTable`
+   *
+   *
+   */
+  powerTable?: PowerTable;
+};
+
+export type UuSeksjon = {
+  _type: "uu_seksjon";
+  /**
+   * Tittel (h2) — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Atributter (optional) — `riktekst_enkel`
+   *
+   *
+   */
+  atributter?: RiktekstEnkel;
+
+  /**
+   * Interaksjon med mus (optional) — `riktekst_enkel`
+   *
+   *
+   */
+  interaksjon_mus?: RiktekstEnkel;
+
+  /**
+   * Interaksjon med touch (optional) — `riktekst_enkel`
+   *
+   *
+   */
+  interaksjon_touch?: RiktekstEnkel;
+
+  /**
+   * Interaksjon med tastatur (optional) — `riktekst_enkel`
+   *
+   * Ekstra info som ikke kan forklares med key + action under
+   */
+  interaksjon_tastatur?: RiktekstEnkel;
+
+  /**
+   * Tastatur key + action — `array`
+   *
+   *
+   */
+  tastatur?: Array<
+    SanityKeyed<{
+      _type: "keys";
+      /**
+       * key — `string`
+       *
+       *
+       */
+      key?: string;
+
+      /**
+       * action — `string`
+       *
+       *
+       */
+      action?: string;
+    }>
+  >;
+
+  /**
+   * Interaksjon med skjermleser (optional) — `riktekst_enkel`
+   *
+   *
+   */
+  interaksjon_skjermleser?: RiktekstEnkel;
+};
+
+export type AnatomiSeksjon = {
+  _type: "anatomi_seksjon";
+  /**
+   * Tittel (h2) — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Intro (optional) — `riktekst_enkel`
+   *
+   *
+   */
+  intro?: RiktekstEnkel;
+
+  /**
+   * Anatomi-bilde — `bilde`
+   *
+   *
+   */
+  bilde?: Bilde;
+
+  /**
+   * Forklaring — `array`
+   *
+   *
+   */
+  forklaring?: Array<
+    SanityKeyed<{
+      _type: "liste_element";
+      /**
+       * Element — `string`
+       *
+       *
+       */
+      element?: string;
+
+      /**
+       * Beskrivelse (optional) — `riktekst_enkel`
+       *
+       *
+       */
+      beskrivelse?: RiktekstEnkel;
+    }>
+  >;
+};
+
+export type InstallasjonSeksjon = {
+  _type: "installasjon_seksjon";
+  /**
+   * Tittel (h2) — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Installasjon-snippet — `reference`
+   *
+   *
+   */
+  code_ref?: SanityReference<DsCodeExample>;
+};
+
+export type PropsSeksjon = {
+  _type: "props_seksjon";
+  /**
+   * Tittel (h2) — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Elementer — `array`
+   *
+   *
+   */
+  elementer?: Array<SanityKeyed<PropTable>>;
+};
+
 export type NavigationLink = {
   _type: "navigation_link";
   /**
@@ -987,7 +1532,9 @@ export type NavigationLink = {
    *
    *
    */
-  link_ref?: SanityReference<DsComponentPage | DsArticlePage>;
+  link_ref?: SanityReference<
+    DsComponentPage | DsArticlePage | KomponentArtikkel
+  >;
 };
 
 export type NavigationDropdown = {
@@ -1272,7 +1819,7 @@ export type LinkPanel = {
    *
    */
   internal_link?: SanityReference<
-    DsComponentPage | DsArticlePage | GpArticlePage
+    DsComponentPage | DsArticlePage | KomponentArtikkel | GpArticlePage
   >;
 
   /**
@@ -1434,7 +1981,7 @@ export type RelatedPages = {
        *
        */
       internal_link?: SanityReference<
-        DsComponentPage | DsArticlePage | GpArticlePage
+        DsComponentPage | DsArticlePage | KomponentArtikkel | GpArticlePage
       >;
 
       /**
@@ -1651,7 +2198,9 @@ export type DsNavigationHeading = {
    *
    * Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via headern
    */
-  link_ref?: SanityReference<DsComponentPage | DsArticlePage>;
+  link_ref?: SanityReference<
+    DsComponentPage | DsArticlePage | KomponentArtikkel
+  >;
 
   /**
    * Meny for denne headingen — `array`
@@ -1673,7 +2222,9 @@ export type DsNavigationHeading = {
          *
          *
          */
-        link?: SanityReference<DsComponentPage | DsArticlePage>;
+        link?: SanityReference<
+          DsComponentPage | DsArticlePage | KomponentArtikkel
+        >;
       }>
     | SanityKeyed<{
         _type: "subheading";
@@ -1721,6 +2272,7 @@ export type Documents =
   | DsNavigation
   | DsComponentOverview
   | DsPackage
+  | KomponentArtikkel
   | GpFrontpage
   | GpArticlePage;
 
@@ -1730,3 +2282,10 @@ export type Documents =
  * sanity-codegen will let you type this explicity.
  */
 type Code = any;
+
+/**
+ * This interface is a stub. It was referenced in your sanity schema but
+ * the definition was not actually found. Future versions of
+ * sanity-codegen will let you type this explicity.
+ */
+type PowerTable = any;

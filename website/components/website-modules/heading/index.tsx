@@ -5,11 +5,14 @@ import { AmplitudeEvents, slugger, useAmplitude } from "../..";
 import * as S from "./heading.styles";
 import { Link as LinkIcon } from "@navikt/ds-icons";
 import { useRouter } from "next/router";
+import cl from "classnames";
 
 const LevelTwoHeading = ({
   children,
+  hidden,
 }: {
   children: [React.ReactNode | string];
+  hidden?: boolean;
 }): JSX.Element => {
   const anchorRef = useRef(null);
   const [openPopover, setOpenPopover] = useState(false);
@@ -56,7 +59,10 @@ const LevelTwoHeading = ({
 
   return (
     <>
-      <S.HeadingWrapper>
+      {hidden && <div id={slug} className="scroll-m-20" />}
+      <S.HeadingWrapper
+        className={cl({ hidden: hidden, "inline-flex": !hidden })}
+      >
         <S.TitleWithScrollMargin
           tabIndex={-1}
           id={slug}

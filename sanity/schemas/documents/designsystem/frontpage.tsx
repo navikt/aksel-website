@@ -23,7 +23,11 @@ export default {
               title: "Lenke",
               name: "link_ref",
               type: "reference",
-              to: [{ type: "ds_component_page" }, { type: "ds_article_page" }],
+              to: [
+                { type: "ds_component_page" },
+                { type: "ds_article_page" },
+                { type: "komponent_artikkel" },
+              ],
               validation: (Rule) => Rule.required(),
             },
             {

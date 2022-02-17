@@ -25,7 +25,8 @@
     "@sanity/dashboard",
     "dashboard-widget-document-list",
     "outdated-documents-widget",
-    "media"
+    "media",
+    "power-table"
   ],
   "parts": [
     {

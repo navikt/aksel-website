@@ -1,9 +1,22 @@
-import React, { useEffect, useState } from "react";
 import Error from "next/error";
-import ComponentPageTemplate from "./page-templates/ComponentPageTemplate";
+import React, { useEffect, useState } from "react";
+import {
+  DsArticlePage,
+  DsComponentPage,
+  GpArticlePage,
+  KomponentArtikkel,
+} from "../../lib";
 import ArticleTemplate from "./page-templates/ArticlePageTemplate";
+import ComponentPageTemplate from "./page-templates/ComponentPageTemplate";
+import KomponentArtikkelTemplate from "./page-templates/KomponentArtikkel";
 import TabbedArticleTemplate from "./page-templates/TabbedArticlePageTemplate";
-import { DsArticlePage, DsComponentPage, GpArticlePage } from "../../lib";
+
+type komponent_artikkel = {
+  komponent_artikkel: (props: {
+    data: KomponentArtikkel;
+    title: string;
+  }) => JSX.Element;
+};
 
 type ds_component = {
   ds_component_page: (props: {
@@ -26,9 +39,10 @@ type gp_article = {
   }) => JSX.Element;
 };
 
-type templateT = ds_component | ds_article | gp_article;
+type templateT = ds_component | ds_article | gp_article | komponent_artikkel;
 
 const templates: templateT = {
+  komponent_artikkel: (props) => <KomponentArtikkelTemplate {...props} />,
   ds_component_page: (props) => <ComponentPageTemplate {...props} />,
   ds_article_page: (props) =>
     props.data.article_type ? (
@@ -43,7 +57,7 @@ const TemplatePicker = ({
   data,
   title,
 }: {
-  data: DsComponentPage | DsArticlePage | GpArticlePage;
+  data: DsComponentPage | DsArticlePage | GpArticlePage | KomponentArtikkel;
   title: string;
 }): JSX.Element => {
   const [mounted, setMounted] = useState(false);
@@ -64,7 +78,7 @@ const TemplatePicker = ({
     return (
       <Error
         statusCode={404}
-        title={`This page could not be found. Sanity-side mangler template, kontakt utvikler`}
+        title={`Sanity-side mangler template, kontakt utvikler`}
       />
     );
   }

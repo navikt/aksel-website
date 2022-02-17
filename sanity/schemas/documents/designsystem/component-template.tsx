@@ -1,7 +1,7 @@
-import { ComponentPage } from "./index";
+import { KomponentArtikkel } from "./index";
 
 export default {
-  ...ComponentPage,
+  ...KomponentArtikkel,
   title: "Komponentartikkel-template",
   name: "ds_component_template",
 };
