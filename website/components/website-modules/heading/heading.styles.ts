@@ -57,7 +57,6 @@ export const Anchor = styled.button`
 `;
 
 export const HeadingWrapper = styled.div`
-  display: inline-flex;
   :not(:first-child) {
     margin-top: var(--navds-spacing-11);
   }

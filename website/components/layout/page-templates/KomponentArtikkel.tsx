@@ -192,17 +192,16 @@ const KomponentArtikkelTemplate = ({
       <div className="relative flex max-w-full lg:max-w-7xl">
         <TableOfContents changedState={data[value]} />
         <div className="content-box">
-          content
           {data[value] && (
             <SanityBlockContent className="mt-12" blocks={data[value]} />
           )}
-          {/* {!data?.metadata_feedback?.hide_feedback && (
+          {!data?.metadata_feedback?.hide_feedback && (
             <Feedback
               docId={pageProps?.page?._id}
               docType={pageProps?.page?._type}
             />
           )}
-          <RelatedNavigation /> */}
+          <RelatedNavigation />
         </div>
       </div>
     </>

@@ -22,6 +22,8 @@ import {
   Accordion,
   ComponentOverview,
   Changelog,
+  IntroKomponent,
+  RelatertInnhold,
 } from ".";
 
 import * as Icons from "@navikt/ds-icons";
@@ -57,6 +59,8 @@ export const DsIconAnnotation = {
 const serializers = {
   types: {
     /* V2 content structure */
+    intro_komponent: ({ node }) => <IntroKomponent node={node} />,
+    relatert_innhold: ({ node }) => <RelatertInnhold node={node} />,
 
     /* Unique page modules */
     ds_component_overview: ({ node }) => <ComponentOverview node={node} />,
