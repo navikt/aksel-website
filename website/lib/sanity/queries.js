@@ -108,6 +108,39 @@ const changelogs = `_type == "changelogs_ref" =>{
   }
 }`;
 
+const introSeksjon = `_type == "intro_komponent" =>{
+  ...,
+  body[]{
+    ...,
+    ${markDef}
+  }
+}`;
+
+const relatertInnhold = `_type == "relatert_innhold" =>{
+  lenker[]{
+    ...,
+    "intern_lenke": intern_lenke->slug.current,
+  }
+}`;
+
+const anatomiSeksjon = `_type == "anatomi" =>{
+  ...,
+  intro[]{
+    ...,
+    ${markDef}
+  }
+}`;
+
+const liveSeksjon = `_type == "live_demo" =>{
+  ...,
+  body[]{
+    ...,
+    ${markDef}
+  },
+  "sandbox_ref": sandbox_ref->{...},
+  "code_ref": code_ref->{...},
+}`;
+
 const deRefs = `
 ${relatedCards},
 ${linkPanel},
@@ -120,6 +153,10 @@ ${pictureWText},
 ${doDont},
 ${changelogs},
 ${markDef},
+${introSeksjon},
+${relatertInnhold},
+${anatomiSeksjon},
+${liveSeksjon}
 `;
 
 export const allDocuments = `*[]{...,'slug': slug.current }`;
@@ -172,10 +209,18 @@ export const dsDocumentBySlug = `*[slug.current == $slug]
 {
   ...,
   "slug": slug.current,
-  linked_package{
+  linked_package {
     "title": @->title,
     "github_link": @->github_link,
     "status": @->status
+  },
+  content_bruk[]{
+    ...,
+    ${deRefs}
+  },
+  content_kode[]{
+    ...,
+    ${deRefs}
   },
   ingress[]{
     ...,

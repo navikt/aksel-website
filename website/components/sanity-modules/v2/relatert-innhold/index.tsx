@@ -16,18 +16,20 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
 
   const logNavigation = (e) => {
     logAmplitudeEvent(AmplitudeEvents.navigasjon, {
-      kilde: "related-pages-card",
+      kilde: "relatert-innhold",
       fra: asPath,
       til: e.currentTarget.getAttribute("href"),
     });
   };
 
-  const getHref = (x) => (x?.intern ? `/${x.intern_lenke}` : x.ekstern_link);
+  const getHref = (x: any): string =>
+    x?.intern ? `/${x.intern_lenke}` : x.ekstern_link;
 
-  const getTag = (x) => (x.tags === "custom" ? x?.tag : "Relatert Innhold");
+  const getTag = (x: any): string =>
+    x.tags === "custom" ? x?.tag : "Relatert Innhold";
 
   return (
-    <div className=" mt-16 flex flex-wrap gap-6">
+    <div className="my-16 flex flex-wrap gap-6">
       {node.lenker.map((x) => (
         <NextLink key={x._key} href={getHref(x)}>
           <a

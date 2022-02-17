@@ -24,6 +24,8 @@ import {
   Changelog,
   IntroKomponent,
   RelatertInnhold,
+  Anatomi,
+  LiveDemo,
 } from ".";
 
 import * as Icons from "@navikt/ds-icons";
@@ -61,6 +63,8 @@ const serializers = {
     /* V2 content structure */
     intro_komponent: ({ node }) => <IntroKomponent node={node} />,
     relatert_innhold: ({ node }) => <RelatertInnhold node={node} />,
+    anatomi: ({ node }) => <Anatomi node={node} />,
+    live_demo: ({ node }) => <LiveDemo node={node} />,
 
     /* Unique page modules */
     ds_component_overview: ({ node }) => <ComponentOverview node={node} />,
@@ -223,7 +227,7 @@ export const SanityBlockContent = ({
 }) => (
   <BlockContext.Provider value={{ size, isIngress }}>
     <BlockContent
-      blocks={blocks}
+      blocks={blocks ?? []}
       serializers={serializers}
       options={{ size: "small" }}
       renderContainerOnSingleChild
