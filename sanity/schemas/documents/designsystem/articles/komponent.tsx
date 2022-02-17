@@ -17,7 +17,7 @@ import {
   groups,
 } from "../../templates";
 
-const prefix = "designsystem/components/";
+const prefix = "designsystem/komponenter/";
 
 export default {
   title: "Komponentartikkel BETA",
