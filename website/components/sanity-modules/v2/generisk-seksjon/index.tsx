@@ -5,7 +5,7 @@ import { withErrorBoundary } from "../../../ErrorBoundary";
 import { SanityBlockContent } from "../../../SanityBlockContent";
 
 const GeneriskSeksjon = ({ node }: { node: GeneriskSeksjonT }): JSX.Element => {
-  if (!node || !node.title || !(node?.brikker?.length === 0)) {
+  if (!node || !node.title || node?.brikker?.length === 0) {
     return null;
   }
 

@@ -29,6 +29,7 @@ import {
   LiveDemo,
   UuSeksjon,
   GeneriskSeskjon,
+  DoDontv2,
 } from ".";
 
 import * as Icons from "@navikt/ds-icons";
@@ -70,6 +71,8 @@ const serializers = {
     live_demo: ({ node }) => <LiveDemo node={node} />,
     uu_seksjon: ({ node }) => <UuSeksjon node={node} />,
     generisk_seksjon: ({ node }) => <GeneriskSeskjon node={node} />,
+    riktekst_blokk: ({ node }) => <SanityBlockContent blocks={node.body} />,
+    do_dont_v2: ({ node }) => <DoDontv2 node={node} />,
 
     /* Unique page modules */
     ds_component_overview: ({ node }) => <ComponentOverview node={node} />,

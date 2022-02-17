@@ -33,6 +33,7 @@ export { default as Anatomi } from "./sanity-modules/v2/anatomi";
 export { default as LiveDemo } from "./sanity-modules/v2/live-demo";
 export { default as UuSeksjon } from "./sanity-modules/v2/uu";
 export { default as GeneriskSeskjon } from "./sanity-modules/v2/generisk-seksjon";
+export { default as DoDontv2 } from "./sanity-modules/v2/dodont-v2";
 export { Bilde } from "./sanity-modules/v2/bilde";
 export * from "./website-modules/tabs";
 export * from "./website-modules/tags";
