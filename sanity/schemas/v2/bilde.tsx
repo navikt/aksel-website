@@ -41,7 +41,7 @@ export default {
     },
     {
       name: "caption",
-      title: "Bilde-tekst",
+      title: "Bilde-tekst (optional)",
       description: "Dette vil stå under bildet",
       type: "string",
       hidden: ({ parent }) => parent?.floating,

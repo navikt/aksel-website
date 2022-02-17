@@ -31,6 +31,7 @@ export default {
       type: "array",
       name: "forklaring",
       title: "Forklaring",
+      description: "Forklar annoteringen av anatomi-bildet",
       validation: (Rule) =>
         Rule.required().error("Anatomi må ha en forklaring"),
       of: [

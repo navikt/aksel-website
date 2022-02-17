@@ -22,7 +22,7 @@ export const ScCode = styled.code`
 
 export const styles = [
   {
-    title: "Paragraf",
+    title: "Avsnitt",
     value: "normal",
     blockEditor: {
       render: (props) => <BodyLong>{props.children}</BodyLong>,
