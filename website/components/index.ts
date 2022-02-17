@@ -31,6 +31,7 @@ export { default as TableOfContents } from "./website-modules/table-of-contents"
 export { default as RelatertInnhold } from "./sanity-modules/v2/relatert-innhold";
 export { default as Anatomi } from "./sanity-modules/v2/anatomi";
 export { default as LiveDemo } from "./sanity-modules/v2/live-demo";
+export { default as UuSeksjon } from "./sanity-modules/v2/uu";
 export { Bilde } from "./sanity-modules/v2/bilde";
 export * from "./website-modules/tabs";
 export * from "./website-modules/tags";

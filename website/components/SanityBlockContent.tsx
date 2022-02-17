@@ -27,6 +27,7 @@ import {
   RelatertInnhold,
   Anatomi,
   LiveDemo,
+  UuSeksjon,
 } from ".";
 
 import * as Icons from "@navikt/ds-icons";
@@ -66,6 +67,7 @@ const serializers = {
     relatert_innhold: ({ node }) => <RelatertInnhold node={node} />,
     anatomi: ({ node }) => <Anatomi node={node} />,
     live_demo: ({ node }) => <LiveDemo node={node} />,
+    uu_seksjon: ({ node }) => <UuSeksjon node={node} />,
 
     /* Unique page modules */
     ds_component_overview: ({ node }) => <ComponentOverview node={node} />,

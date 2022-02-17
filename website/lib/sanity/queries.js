@@ -141,6 +141,26 @@ const liveSeksjon = `_type == "live_demo" =>{
   "code_ref": code_ref->{...},
 }`;
 
+const uuSeksjon = `_type == "uu_seksjon" =>{
+  ...,
+  interaksjon_skjermleser[]{
+    ...,
+    ${markDef}
+  },
+  interaksjon_mus[]{
+    ...,
+    ${markDef}
+  },
+  interaksjon_touch[]{
+    ...,
+    ${markDef}
+  },
+  interaksjon_tastatur[]{
+    ...,
+    ${markDef}
+  },
+}`;
+
 const deRefs = `
 ${relatedCards},
 ${linkPanel},
@@ -156,7 +176,8 @@ ${markDef},
 ${introSeksjon},
 ${relatertInnhold},
 ${anatomiSeksjon},
-${liveSeksjon}
+${liveSeksjon},
+${uuSeksjon}
 `;
 
 export const allDocuments = `*[]{...,'slug': slug.current }`;

@@ -19,11 +19,12 @@ const Anatomi = ({ node }: { node: AnatomiSeksjon }): JSX.Element => {
       {node?.forklaring && (
         <ul>
           {node.forklaring.map((x) => (
-            <li key={x._key}>
+            <li key={x._key} className="mb-2">
               <Label as="span">{x.element}</Label>
               <SanityBlockContent
                 className="ml-[18px]"
                 blocks={x?.beskrivelse}
+                noLastMargin
               />
             </li>
           ))}
