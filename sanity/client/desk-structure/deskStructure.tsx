@@ -5,6 +5,7 @@ import React from "react";
 import { createSuperPane } from "sanity-super-pane";
 import { ComponentPageWebPreview } from "../../web-previews/ComponentWebPreview";
 import { PageWebPreview } from "../../web-previews/PageWebPreview";
+import { KomponentPreview } from "../../web-previews/KomponentPreview";
 import { adminPanel } from "./admin";
 import { dsPanel } from "./ds";
 import { profilePanel } from "./profile";
@@ -25,6 +26,7 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
       return S.document().views([
         S.view.form(),
         S.view.component(ComponentPageWebPreview).title("Preview"),
+        S.view.component(KomponentPreview).title("Preview-dev"),
       ]);
     case "ds_component_page":
       return S.document().views([
