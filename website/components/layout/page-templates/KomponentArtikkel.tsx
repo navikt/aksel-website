@@ -58,7 +58,7 @@ const KomponentArtikkelTemplate = ({
     setActiveTab(active);
   }, [query.slug]);
 
-  const basePath = `/designsystem/components/${query.slug[0]}`;
+  const basePath = `/designsystem/komponenter/${query.slug[0]}`;
 
   const value = Object.values(tabs)?.[activeTab];
   const tabKey = Object.keys(tabs)?.[activeTab];

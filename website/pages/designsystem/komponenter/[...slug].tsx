@@ -58,11 +58,11 @@ export const getStaticPaths = async (): Promise<{
   return {
     paths: await getDsPaths().then((paths) =>
       paths
-        .filter((x) => x.join("/").startsWith("designsystem/components/"))
+        .filter((x) => x.join("/").startsWith("designsystem/komponenter/"))
         .map((slug) => ({
           params: {
             slug: slug.filter(
-              (x) => x !== "designsystem" && x !== "components"
+              (x) => x !== "designsystem" && x !== "komponenter"
             ),
           },
         }))
