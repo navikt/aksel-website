@@ -14,7 +14,7 @@ const Anatomi = ({ node }: { node: AnatomiSeksjon }): JSX.Element => {
   return (
     <div className="my-16">
       <LevelTwoHeading>{[node.title]}</LevelTwoHeading>
-      <SanityBlockContent blocks={node.forklaring} />
+      <SanityBlockContent blocks={node.intro} />
       <Bilde node={node.bilde} />
       {node?.forklaring && (
         <ul>

@@ -28,6 +28,7 @@ import {
   Anatomi,
   LiveDemo,
   UuSeksjon,
+  GeneriskSeskjon,
 } from ".";
 
 import * as Icons from "@navikt/ds-icons";
@@ -68,6 +69,7 @@ const serializers = {
     anatomi: ({ node }) => <Anatomi node={node} />,
     live_demo: ({ node }) => <LiveDemo node={node} />,
     uu_seksjon: ({ node }) => <UuSeksjon node={node} />,
+    generisk_seksjon: ({ node }) => <GeneriskSeskjon node={node} />,
 
     /* Unique page modules */
     ds_component_overview: ({ node }) => <ComponentOverview node={node} />,
@@ -103,7 +105,7 @@ const serializers = {
           if (context.isIngress) {
             return <Ingress {...textProps} className="index-ingress" />;
           }
-          console.log(context);
+
           return (
             <BodyLong
               size={context.size}

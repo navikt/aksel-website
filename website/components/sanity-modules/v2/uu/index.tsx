@@ -31,12 +31,14 @@ const UuSeksjon = ({ node }: { node: UuSeksjonT }): JSX.Element => {
       {node.tastatur && (
         <Table>
           <Table.Header>
-            <Table.HeaderCell className="font-normal text-text-muted">
-              Kommando
-            </Table.HeaderCell>
-            <Table.HeaderCell className="font-normal text-text-muted">
-              Beskrivelse
-            </Table.HeaderCell>
+            <Table.Row>
+              <Table.HeaderCell className="font-normal text-text-muted">
+                Kommando
+              </Table.HeaderCell>
+              <Table.HeaderCell className="font-normal text-text-muted">
+                Beskrivelse
+              </Table.HeaderCell>
+            </Table.Row>
           </Table.Header>
           <Table.Body>
             {node.tastatur.map((x) => (

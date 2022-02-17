@@ -31,6 +31,7 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
           alt={node.alt}
           quality="100"
           layout="responsive"
+          unoptimized
           sizes={
             width !== undefined
               ? `${Math.round(width)}px`
