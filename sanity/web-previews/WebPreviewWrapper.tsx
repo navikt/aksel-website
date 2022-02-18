@@ -48,7 +48,9 @@ export const WebPreviewWrapper = (props: { url: string; dev?: boolean }) => {
           {props.url}
         </Detail>
         <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
-          <Link href="https://doc.nais.io/device/">Krever NAISDevice</Link>
+          {props.dev && (
+            <Link href="https://doc.nais.io/device/">Krever NAISDevice</Link>
+          )}
           <HelpText title="Hva er preview?">
             Preview prøver å vise innhold på den publiserte nettsiden. Dette er
             en litt skjør prosess som lett brekker, så kan forvente litt bugs og
