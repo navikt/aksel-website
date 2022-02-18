@@ -153,7 +153,7 @@ const KomponentArtikkelTemplate = ({
                   href={npmPackage.github_link}
                   className="flex items-center gap-1 text-text underline hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
                 >
-                  Github
+                  Kode
                   <ExternalLink aria-label="Gå til github-kode" />
                 </a>
               )}

@@ -34,7 +34,7 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
         <NextLink key={x._key} href={getHref(x)}>
           <a
             onClick={(e) => logNavigation(e)}
-            className="group index-ignore relative h-40 w-64 cursor-pointer rounded border-2 border-transparent bg-white p-6 shadow-card hover:border-link focus:border-focus focus:outline-none"
+            className="group index-ignore relative h-40 min-w-[250px] max-w-sm flex-1 cursor-pointer rounded border-2 border-transparent bg-white p-6 shadow-card hover:border-link focus:border-focus focus:outline-none"
           >
             <Heading
               size="xsmall"
