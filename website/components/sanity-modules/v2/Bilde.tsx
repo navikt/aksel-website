@@ -3,10 +3,10 @@ import cl from "classnames";
 import NextImage from "next/image";
 import React, { useState } from "react";
 import { useMeasure } from "react-use";
-import { Lightbox } from "../../..";
-import { Bilde as BildeT, useSanityImage } from "../../../../lib";
-import { withErrorBoundary } from "../../../ErrorBoundary";
-import { SanityBlockContent } from "../../../SanityBlockContent";
+import { Lightbox } from "../..";
+import { Bilde as BildeT, useSanityImage } from "../../../lib";
+import { withErrorBoundary } from "../../ErrorBoundary";
+import { SanityBlockContent } from "../../SanityBlockContent";
 
 const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
   if (!node || !node.asset || (node.floating && !node.floating_text)) {
@@ -38,6 +38,7 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
             layout="responsive"
             sizes="(max-width: 320px)"
             alt={node.alt}
+            unoptimized
           />
         </div>
         <SanityBlockContent blocks={node.floating_text} />

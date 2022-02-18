@@ -161,6 +161,53 @@ const uuSeksjon = `_type == "uu_seksjon" =>{
   },
 }`;
 
+const doDontV2 = `_type == "do_dont_v2" =>{
+  ...,
+  forklaring[]{
+    ${markDef}
+  }
+}`;
+
+const generikBlocks = `
+ _type == "riktekst_blokk" =>{
+    ...,
+    body[]{
+      ...,
+      ${markDef}
+    }
+ },
+ _type == "bilde" =>{
+    ...,
+    floating_text[]{
+      ...,
+      ${markDef}
+    }
+ },
+ _type == "alert_v2" =>{
+    ...,
+    body[]{
+      ...,
+      ${markDef}
+    }
+ },
+ _type == "kode" =>{
+    ...,
+    "ref": ref->{...},
+ },
+ _type == "kode_ref" => @->,
+ ${tips},
+ ${relatertInnhold},
+ ${doDontV2}
+`;
+
+const generiskSeksjon = `_type == "generisk_seksjon" =>{
+  ...,
+  brikker[]{
+    ...,
+    ${generikBlocks}
+  },
+}`;
+
 const deRefs = `
 ${relatedCards},
 ${linkPanel},
@@ -177,7 +224,8 @@ ${introSeksjon},
 ${relatertInnhold},
 ${anatomiSeksjon},
 ${liveSeksjon},
-${uuSeksjon}
+${uuSeksjon},
+${generiskSeksjon}
 `;
 
 export const allDocuments = `*[]{...,'slug': slug.current }`;

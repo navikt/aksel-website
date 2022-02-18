@@ -31,6 +31,8 @@ import {
   GeneriskSeskjon,
   DoDontv2,
   Bilde,
+  Kode,
+  Tabell,
 } from ".";
 
 import * as Icons from "@navikt/ds-icons";
@@ -75,6 +77,9 @@ const serializers = {
     riktekst_blokk: ({ node }) => <SanityBlockContent blocks={node.body} />,
     do_dont_v2: ({ node }) => <DoDontv2 node={node} />,
     bilde: ({ node }) => <Bilde node={node} />,
+    alert_v2: ({ node }) => <Alert node={node} />,
+    kode: ({ node }) => <Kode node={node} />,
+    tabell: ({ node }) => <Tabell node={node} />,
 
     /* Unique page modules */
     ds_component_overview: ({ node }) => <ComponentOverview node={node} />,
@@ -85,6 +90,7 @@ const serializers = {
     related_pages: ({ node }) => <RelatedPagesCards node={node} />,
     ds_code_sandbox: ({ node }) => <Sandbox node={node} />,
     code_snippet: ({ node }) => <Snippet node={node} />,
+    ds_code_example: ({ node }) => <CodeExample node={node} />,
     code_example_ref: ({ node }) => <CodeExample node={node.ref} />,
     color_category_ref: ({ node }) => <ColorCategory node={node.ref} />,
     prop_table: ({ node }) => <PropTable node={node} />,

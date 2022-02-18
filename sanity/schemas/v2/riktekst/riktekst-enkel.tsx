@@ -1,7 +1,7 @@
 import { block } from "./riktekst";
 
 export default {
-  title: "Block Content",
+  title: "Riktekst",
   name: "riktekst_enkel",
   type: "array",
   of: [block],

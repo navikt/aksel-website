@@ -2,9 +2,9 @@ import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { AmplitudeEvents, useAmplitude } from "../../..";
-import { RelatertInnhold as RelatertInnholdT } from "../../../../lib";
-import { withErrorBoundary } from "../../../ErrorBoundary";
+import { AmplitudeEvents, useAmplitude } from "../..";
+import { RelatertInnhold as RelatertInnholdT } from "../../../lib";
+import { withErrorBoundary } from "../../ErrorBoundary";
 
 const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
   const { logAmplitudeEvent } = useAmplitude();

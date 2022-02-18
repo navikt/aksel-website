@@ -45,7 +45,7 @@ export const TabellSchema = tableSchema({
   name: "powerTable",
   cellSchema: {
     type: "object",
-    fields: [{ type: "riktekst_enkel", name: "body" }],
+    fields: [{ type: "riktekst_tabell", name: "body" }],
     preview: {
       select: {
         body: "body",

@@ -1,15 +1,15 @@
 import { BodyShort, Heading } from "@navikt/ds-react";
 import NextImage from "next/image";
 import React, { useState } from "react";
-import { Lightbox } from "../../..";
+import { Lightbox } from "../..";
 import {
   DoDontBlock,
   DoDontV2,
   SanityKeyed,
   useSanityImage,
-} from "../../../../lib";
-import { withErrorBoundary } from "../../../ErrorBoundary";
-import { SanityBlockContent } from "../../../SanityBlockContent";
+} from "../../../lib";
+import { withErrorBoundary } from "../../ErrorBoundary";
+import { SanityBlockContent } from "../../SanityBlockContent";
 import cl from "classnames";
 
 const Element = ({

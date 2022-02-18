@@ -1,9 +1,9 @@
 import { Label } from "@navikt/ds-react";
 import React from "react";
-import { LevelTwoHeading } from "../../..";
-import { IntroKomponentSeksjon } from "../../../../lib";
-import { withErrorBoundary } from "../../../ErrorBoundary";
-import { SanityBlockContent } from "../../../SanityBlockContent";
+import { LevelTwoHeading } from "../..";
+import { IntroKomponentSeksjon } from "../../../lib";
+import { withErrorBoundary } from "../../ErrorBoundary";
+import { SanityBlockContent } from "../../SanityBlockContent";
 
 const Intro = ({ node }: { node: IntroKomponentSeksjon }): JSX.Element => {
   if (!node || !node.body || !node.brukes_til) {

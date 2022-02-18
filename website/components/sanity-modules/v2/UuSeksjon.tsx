@@ -1,9 +1,9 @@
 import { Table } from "@navikt/ds-react";
 import React from "react";
-import { LevelTwoHeading } from "../../..";
-import { UuSeksjon as UuSeksjonT } from "../../../../lib";
-import { withErrorBoundary } from "../../../ErrorBoundary";
-import { KBD, SanityBlockContent } from "../../../SanityBlockContent";
+import { LevelTwoHeading } from "../..";
+import { UuSeksjon as UuSeksjonT } from "../../../lib";
+import { withErrorBoundary } from "../../ErrorBoundary";
+import { KBD, SanityBlockContent } from "../../SanityBlockContent";
 
 const UuSeksjon = ({ node }: { node: UuSeksjonT }): JSX.Element => {
   if (!node || !node.title) {

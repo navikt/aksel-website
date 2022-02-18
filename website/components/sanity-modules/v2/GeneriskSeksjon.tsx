@@ -1,8 +1,8 @@
 import React from "react";
-import { LevelTwoHeading } from "../../..";
-import { GeneriskSeksjon as GeneriskSeksjonT } from "../../../../lib";
-import { withErrorBoundary } from "../../../ErrorBoundary";
-import { SanityBlockContent } from "../../../SanityBlockContent";
+import { LevelTwoHeading } from "../..";
+import { GeneriskSeksjon as GeneriskSeksjonT } from "../../../lib";
+import { withErrorBoundary } from "../../ErrorBoundary";
+import { SanityBlockContent } from "../../SanityBlockContent";
 
 const GeneriskSeksjon = ({ node }: { node: GeneriskSeksjonT }): JSX.Element => {
   if (!node || !node.title || node?.brikker?.length === 0) {

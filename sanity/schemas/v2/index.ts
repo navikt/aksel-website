@@ -1,6 +1,7 @@
 import GeneriskBlokk from "./generisk-blokk";
 import Riktekst from "./riktekst/riktekst";
 import RiktekstEnkel from "./riktekst/riktekst-enkel";
+import RiktekstTabell from "./riktekst/riktekst-tabell";
 import DoDontV2 from "./do-dont";
 import Bilde from "./bilde";
 import Alert from "./alert";
@@ -33,6 +34,7 @@ const v2Blocks = [
   Installasjon,
   Props,
   Accordion,
+  RiktekstTabell,
 ];
 
 export default v2Blocks;
