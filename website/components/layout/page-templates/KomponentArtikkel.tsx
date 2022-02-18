@@ -96,16 +96,14 @@ const KomponentArtikkelTemplate = ({
           </span>
         )}
         <div className="pt-8 pb-6">
-          <div className="flex flex-wrap gap-2">
-            {npmPackage?.title && (
-              <Tag
-                variant="info"
-                size="small"
-                className="border-transparent bg-gray-100 font-mono"
-              >
-                {npmPackage.title}
-              </Tag>
-            )}
+          <div className="flex flex-wrap gap-2"></div>
+          <Heading
+            size="xlarge"
+            level="1"
+            spacing
+            className="index-lvl1 flex flex-wrap items-center gap-4"
+          >
+            {data.heading}
             {npmPackage.status && npmPackage.status !== "live" && (
               <Tag
                 variant="info"
@@ -120,9 +118,15 @@ const KomponentArtikkelTemplate = ({
                 {npmPackage.status}
               </Tag>
             )}
-          </div>
-          <Heading size="xlarge" level="1" spacing className="index-lvl1">
-            {data.heading}
+            {npmPackage?.title && (
+              <Tag
+                variant="info"
+                size="small"
+                className="border-transparent bg-gray-100 font-mono"
+              >
+                {npmPackage.title}
+              </Tag>
+            )}
           </Heading>
           <BodyShort
             as="div"

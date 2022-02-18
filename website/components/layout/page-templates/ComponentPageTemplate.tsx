@@ -1,11 +1,10 @@
 import { ExternalLink } from "@navikt/ds-icons";
-import { BodyShort, Heading, Link, Tag } from "@navikt/ds-react";
+import { BodyShort, Heading, Tag } from "@navikt/ds-react";
+import cl from "classnames";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import { flattenBlocks } from "sanity-algolia";
-import styled from "styled-components";
-import cl from "classnames";
 import {
   AmplitudeEvents,
   Feedback,
@@ -20,40 +19,6 @@ import {
 } from "../..";
 import { DsComponentPage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
-
-const ScLinks = styled.div`
-  display: flex;
-  column-gap: 0.5rem;
-  flex-wrap: wrap;
-
-  right: 0;
-  top: 0;
-
-  a {
-    color: var(--navds-semantic-color-text-muted);
-
-    > * {
-      color: var(--navds-semantic-color-text-muted);
-    }
-
-    :hover:not(:focus) {
-      color: var(--navds-semantic-color-text);
-      > * {
-        color: var(--navds-semantic-color-text);
-      }
-    }
-  }
-`;
-
-const ScDiv = styled(BodyShort)`
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--navds-spacing-2);
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  column-gap: 1.5rem;
-  row-gap: 0.75rem;
-`;
 
 const ComponentPageTemplate = ({
   data,
@@ -139,16 +104,14 @@ const ComponentPageTemplate = ({
           </span>
         )}
         <div className="pt-8 pb-6">
-          <div className="flex flex-wrap gap-2">
-            {npmPackage?.title && (
-              <Tag
-                variant="info"
-                size="small"
-                className="border-transparent bg-gray-100 font-mono"
-              >
-                {npmPackage.title}
-              </Tag>
-            )}
+          <div className="flex flex-wrap gap-2"></div>
+          <Heading
+            size="xlarge"
+            level="1"
+            spacing
+            className="index-lvl1 flex flex-wrap items-center gap-4"
+          >
+            {data.heading}
             {npmPackage.status && npmPackage.status !== "live" && (
               <Tag
                 variant="info"
@@ -163,48 +126,59 @@ const ComponentPageTemplate = ({
                 {npmPackage.status}
               </Tag>
             )}
-          </div>
-          <Heading size="xlarge" level="1" spacing className="index-lvl1">
-            {data.heading}
+            {npmPackage?.title && (
+              <Tag
+                variant="info"
+                size="small"
+                className="border-transparent bg-gray-100 font-mono"
+              >
+                {npmPackage.title}
+              </Tag>
+            )}
           </Heading>
-          <ScDiv forwardedAs="div" size="small">
+          <BodyShort
+            as="div"
+            size="small"
+            className="mb-2 flex flex-wrap items-center justify-start gap-x-6 gap-y-3"
+          >
             <LastUpdateTag date={data._updatedAt} />
-
-            <ScLinks>
+            <div className="flex gap-x-2">
               {npmPackage?.title && (
-                <Link
+                <a
                   target="_blank"
                   rel="noreferrer noopener"
                   href={`https://yarnpkg.com/package/${npmPackage.title}`}
+                  className="flex items-center gap-1 text-text underline hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
                 >
                   Yarn
                   <ExternalLink aria-label="Gå til yarn pakke" />
-                </Link>
+                </a>
               )}
               {npmPackage?.github_link && (
-                <Link
+                <a
                   target="_blank"
                   rel="noreferrer noopener"
                   href={npmPackage.github_link}
+                  className="flex items-center gap-1 text-text underline hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
                 >
                   Github
                   <ExternalLink aria-label="Gå til github-kode" />
-                </Link>
+                </a>
               )}
               {data.figma_link && (
-                <Link
+                <a
                   target="_blank"
                   rel="noreferrer noopener"
                   href={data.figma_link}
+                  className="flex items-center gap-1 text-text underline hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
                 >
                   Figma
                   <ExternalLink aria-label="Åpne i Figma" />
-                </Link>
+                </a>
               )}
-            </ScLinks>
-          </ScDiv>
+            </div>
+          </BodyShort>
         </div>
-        {data.ingress && <SanityBlockContent isIngress blocks={data.ingress} />}
       </div>
       <Tabs
         title={data.heading}
