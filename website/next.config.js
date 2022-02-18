@@ -45,6 +45,7 @@ module.exports = withSentryConfig(
       compiler: {
         styledComponents: true,
       },
+      swcMinify: true,
     })
   ),
   { silent: true }
