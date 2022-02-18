@@ -600,7 +600,7 @@ export interface DsComponentTemplate extends SanityDocument {
     | SanityKeyed<UuSeksjon>
     | SanityKeyed<AnatomiSeksjon>
     | SanityKeyed<Tips>
-    | SanityKeyed<RelatedPages>
+    | SanityKeyed<RelatertInnhold>
   >;
 
   /**
@@ -929,7 +929,7 @@ export interface KomponentArtikkel extends SanityDocument {
     | SanityKeyed<UuSeksjon>
     | SanityKeyed<AnatomiSeksjon>
     | SanityKeyed<Tips>
-    | SanityKeyed<RelatedPages>
+    | SanityKeyed<RelatertInnhold>
   >;
 
   /**
@@ -1096,6 +1096,7 @@ export type GeneriskSeksjon = {
     | SanityKeyed<Kode>
     | SanityKeyedReference<DsCodeExample>
     | SanityKeyed<Tabell>
+    | SanityKeyed<AccordionV2>
   >;
 };
 
@@ -1153,7 +1154,7 @@ export type Bilde = {
   floating?: boolean;
 
   /**
-   * Bilde-tekst — `string`
+   * Bilde-tekst (optional) — `string`
    *
    * Dette vil stå under bildet
    */
@@ -1312,7 +1313,7 @@ export type IntroKomponentSeksjon = {
   brukes_til?: Array<SanityKeyed<string>>;
 
   /**
-   * Brukes ikke til — `array`
+   * Brukes ikke til (optional) — `array`
    *
    *
    */
@@ -1375,13 +1376,6 @@ export type UuSeksjon = {
    *
    */
   title?: string;
-
-  /**
-   * Atributter (optional) — `riktekst_enkel`
-   *
-   *
-   */
-  atributter?: RiktekstEnkel;
 
   /**
    * Interaksjon med mus (optional) — `riktekst_enkel`
@@ -1462,7 +1456,7 @@ export type AnatomiSeksjon = {
   /**
    * Forklaring — `array`
    *
-   *
+   * Forklar annoteringen av anatomi-bildet
    */
   forklaring?: Array<
     SanityKeyed<{
@@ -1517,6 +1511,59 @@ export type PropsSeksjon = {
    */
   elementer?: Array<SanityKeyed<PropTable>>;
 };
+
+export type AccordionV2 = {
+  _type: "accordion_v2";
+  /**
+   * Tittel (optional) — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Accordions — `array`
+   *
+   *
+   */
+  list?: Array<
+    SanityKeyed<{
+      _type: "element";
+      /**
+       * Tittel  — `string`
+       *
+       *
+       */
+      title?: string;
+
+      /**
+       * Innhold — `array`
+       *
+       *
+       */
+      innhold?: Array<
+        | SanityKeyed<{
+            _type: "riktekst_blokk";
+            /**
+             * Riktekst — `riktekst`
+             *
+             *
+             */
+            body?: Riktekst;
+          }>
+        | SanityKeyed<Tips>
+        | SanityKeyed<RelatertInnhold>
+        | SanityKeyed<DoDontV2>
+        | SanityKeyed<Bilde>
+        | SanityKeyed<AlertV2>
+        | SanityKeyed<Kode>
+        | SanityKeyed<Tabell>
+      >;
+    }>
+  >;
+};
+
+export type RiktekstTabell = Array<SanityKeyed<SanityBlock>>;
 
 export type NavigationLink = {
   _type: "navigation_link";
