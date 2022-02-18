@@ -1,7 +1,7 @@
 import { SandboxComponent } from "./types";
 
 const ToggleGroupSandbox: SandboxComponent = (props) => {
-  const label = props?.label ? ` label="Velg periode"` : "";
+  const label = props?.label ? ` label="Inbox"` : "";
   const size = props?.size ? ` size="${props.size}"` : "";
 
   return `const ToggleDemo = () => {
