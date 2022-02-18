@@ -30,6 +30,7 @@ import {
   UuSeksjon,
   GeneriskSeskjon,
   DoDontv2,
+  Bilde,
 } from ".";
 
 import * as Icons from "@navikt/ds-icons";
@@ -73,6 +74,7 @@ const serializers = {
     generisk_seksjon: ({ node }) => <GeneriskSeskjon node={node} />,
     riktekst_blokk: ({ node }) => <SanityBlockContent blocks={node.body} />,
     do_dont_v2: ({ node }) => <DoDontv2 node={node} />,
+    bilde: ({ node }) => <Bilde node={node} />,
 
     /* Unique page modules */
     ds_component_overview: ({ node }) => <ComponentOverview node={node} />,
