@@ -54,7 +54,7 @@ export const Section = styled.section`
 `;
 
 export const FigureBorder = styled.button`
-  box-shadow: 0 0 0 1px var(--navds-semantic-color-divider);
+  box-shadow: 0 0 0 1px var(--navds-semantic-color-divider) inset;
   box-sizing: box-content;
   border-radius: 4px 4px 0 0;
   background: var(--navds-global-color-gray-50);
@@ -68,7 +68,7 @@ export const FigureBorder = styled.button`
 `;
 
 export const Caption = styled.figcaption`
-  border-top: var(--navds-spacing-3) solid;
+  border-top: var(--navds-spacing-2) solid;
   border-color: ${(props) => {
     switch (props["data-variant"]) {
       case "do":

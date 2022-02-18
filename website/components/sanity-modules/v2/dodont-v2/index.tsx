@@ -88,7 +88,6 @@ const Element = ({
 };
 
 const DoDont = ({ node }: { node: DoDontV2 }) => {
-  console.log("here");
   if (!node || !node.title || node?.blokker.length === 0) return null;
 
   return (
