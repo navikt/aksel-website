@@ -10,7 +10,7 @@ import {
 } from "../../../../lib";
 import { withErrorBoundary } from "../../../ErrorBoundary";
 import { SanityBlockContent } from "../../../SanityBlockContent";
-import * as S from "./dodont.styles";
+import cl from "classnames";
 
 const Element = ({
   block,
@@ -21,58 +21,43 @@ const Element = ({
   const [open, setOpen] = useState(false);
 
   return (
-    <S.Figure data-fullwidth={block.fullwidth}>
-      <S.FigureBorder
+    <figure
+      className={cl("flex min-w-[300px] flex-1 flex-col rounded-t", {
+        "basis-full": block?.fullwidth,
+        "max-w-sm": !block?.fullwidth,
+      })}
+    >
+      <button
+        className="rounded-t bg-gray-50 shadow-[0_0_0_1px_var(--navds-semantic-color-divider)] focus:z-[1] focus:shadow-focus focus:outline-none"
         aria-label="Klikk for å åpne bildet i fullskjerm"
         tabIndex={0}
         onClick={() => setOpen(!open)}
       >
         <NextImage
           {...imageProps}
+          className="rounded-t"
           layout="responsive"
           sizes="(max-width: 800px)"
           alt={block.alt}
           quality="100"
         />
-      </S.FigureBorder>
-
-      <S.Caption data-variant={block.variant}>
-        <S.Icon variant={block.variant}>
+      </button>
+      <figcaption
+        data-variant={block.variant}
+        className={cl("border-t-8", {
+          "border-t-feedback-success-icon": block.variant === "do",
+          "border-t-feedback-danger-icon": block.variant === "dont",
+          "border-t-feedback-warning-icon": block.variant === "warning",
+        })}
+      >
+        <div className="mt-3 italic">
           {block.description && (
             <BodyShort size="small" as="span">
               {block.description}
             </BodyShort>
           )}
-        </S.Icon>
-        {/* {block.variant === "do" ? (
-          <S.Icon variant={block.variant}>
-            <SuccessFilled aria-hidden />
-            {block.description && (
-              <BodyShort size="small" as="span">
-                {block.description}
-              </BodyShort>
-            )}
-          </S.Icon>
-        ) : block.variant === "warning" ? (
-          <S.Icon variant={block.variant}>
-            <WarningFilled aria-hidden />
-            {block.description && (
-              <BodyShort size="small" as="span">
-                {block.description}
-              </BodyShort>
-            )}
-          </S.Icon>
-        ) : (
-          <S.Icon variant={block.variant}>
-            <ErrorFilled aria-hidden />
-            {block.description && (
-              <BodyShort size="small" as="span">
-                {block.description}
-              </BodyShort>
-            )}
-          </S.Icon>
-        )} */}
-      </S.Caption>
+        </div>
+      </figcaption>
       <Lightbox open={open} onClose={() => setOpen(false)}>
         {open && (
           <NextImage
@@ -83,7 +68,7 @@ const Element = ({
           />
         )}
       </Lightbox>
-    </S.Figure>
+    </figure>
   );
 };
 
