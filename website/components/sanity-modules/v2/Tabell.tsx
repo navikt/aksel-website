@@ -10,6 +10,8 @@ const TableComponent = ({ node }: { node: TabellT }): JSX.Element => {
     return null;
   }
 
+  console.log(node.powerTable);
+
   return (
     <div className="my-16">
       <OverflowDetector>
@@ -31,7 +33,11 @@ const TableComponent = ({ node }: { node: TabellT }): JSX.Element => {
             {node.powerTable?.rows?.slice?.(1)?.map((row) => (
               <Table.Row key={row?._key}>
                 {row?.cells?.map((cell) => (
-                  <Table.DataCell key={cell?._key}>
+                  <Table.DataCell
+                    key={cell?._key}
+                    rowSpan={cell?.rowSpan}
+                    colSpan={cell?.colSpan}
+                  >
                     <SanityBlockContent
                       blocks={cell?.data?.body}
                       noLastMargin

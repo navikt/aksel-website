@@ -9,7 +9,7 @@ import RelatertInnhold from "./relatert-innhold";
 import Kode from "./kode";
 import introKomponent from "./intro-komponent";
 import liveDemo from "./live-demo";
-import Tabell, { TabellSchema } from "./table";
+import Tabell, { TabellSchema } from "./tabell";
 import UU from "./uu";
 import Anatomi from "./anatomi";
 import Installasjon from "./installasjon";
