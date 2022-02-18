@@ -1,36 +1,28 @@
-import { Label } from "@navikt/ds-react";
+import { Accordion as DsAccordion } from "@navikt/ds-react";
 import React from "react";
-import { LevelTwoHeading, Bilde } from "../..";
-import { AnatomiSeksjon } from "../../../lib";
+import { AccordionV2 } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import { SanityBlockContent } from "../../SanityBlockContent";
 
-const Anatomi = ({ node }: { node: AnatomiSeksjon }): JSX.Element => {
-  if (!node || !node.bilde || !node.title) {
+const Accordion = ({ node }: { node: AccordionV2 }): JSX.Element => {
+  if (!node || node.list.length === 0) {
     return null;
   }
 
   return (
     <div className="my-16">
-      {/* <LevelTwoHeading>{[node.title]}</LevelTwoHeading>
-      <SanityBlockContent blocks={node.intro} />
-      <Bilde node={node.bilde} />
-      {node?.forklaring && (
-        <ul>
-          {node.forklaring.map((x) => (
-            <li key={x._key} className="mb-2">
-              <Label as="span">{x.element}</Label>
-              <SanityBlockContent
-                className="ml-[18px]"
-                blocks={x?.beskrivelse}
-                noLastMargin
-              />
-            </li>
-          ))}
-        </ul>
-      )} */}
+      <DsAccordion>
+        {node.list.map((el) => (
+          <DsAccordion.Item key={el._key}>
+            <DsAccordion.Header>{el.title}</DsAccordion.Header>
+            <DsAccordion.Content>
+              <SanityBlockContent blocks={el.innhold} />
+            </DsAccordion.Content>
+          </DsAccordion.Item>
+        ))}
+      </DsAccordion>
     </div>
   );
 };
 
-export default withErrorBoundary(Anatomi, "Anatomi");
+export default withErrorBoundary(Accordion, "Accordion");

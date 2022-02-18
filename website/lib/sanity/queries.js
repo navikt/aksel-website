@@ -168,7 +168,7 @@ const doDontV2 = `_type == "do_dont_v2" =>{
   }
 }`;
 
-const generikBlocks = `
+const defaultBlock = `
  _type == "riktekst_blokk" =>{
     ...,
     body[]{
@@ -200,11 +200,29 @@ const generikBlocks = `
  ${doDontV2}
 `;
 
+const accordionBlock = `
+  _type == "accordion_v2"=>{
+    ...,
+    list[]{
+      ...,
+      innhold[]{
+        ...,
+        ${defaultBlock}
+      }
+    }
+  }
+`;
+
+const genericBlock = `
+  ${defaultBlock},
+  ${accordionBlock}
+`;
+
 const generiskSeksjon = `_type == "generisk_seksjon" =>{
   ...,
   brikker[]{
     ...,
-    ${generikBlocks}
+    ${genericBlock}
   },
 }`;
 
