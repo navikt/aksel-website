@@ -7,7 +7,8 @@ import { DsIconAnnotation, InlineCode, KBD } from "../../SanityBlockContent";
 
 const ScWrapper = styled.span`
   svg {
-    margin-bottom: -3px;
+    vertical-align: middle;
+    margin: 0 0.25rem 3px 0.25rem;
   }
 `;
 

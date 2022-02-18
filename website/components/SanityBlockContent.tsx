@@ -61,7 +61,9 @@ export const DsIconAnnotation = {
     const Ic = Icons?.[mark.name];
     const tokenColor = mark.color ? Tokens[mark.color] : "currentColor";
 
-    return Ic ? <Ic color={tokenColor} aria-hidden /> : null;
+    return Ic ? (
+      <Ic color={tokenColor} aria-hidden className="inline-block" />
+    ) : null;
   },
 };
 
