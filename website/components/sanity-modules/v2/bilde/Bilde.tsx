@@ -9,11 +9,9 @@ import { withErrorBoundary } from "../../../ErrorBoundary";
 import { SanityBlockContent } from "../../../SanityBlockContent";
 
 const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
-  if (!node || !node.asset) {
+  if (!node || !node.asset || (node.floating && !node.floating_text)) {
     return null;
   }
-
-  console.log(node);
 
   const [open, setOpen] = useState(false);
 
