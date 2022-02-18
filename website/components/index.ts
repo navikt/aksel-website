@@ -37,6 +37,7 @@ export { default as DoDontv2 } from "./sanity-modules/v2/DodontV2";
 export { default as Bilde } from "./sanity-modules/v2/Bilde";
 export { default as Kode } from "./sanity-modules/v2/Kode";
 export { default as Tabell } from "./sanity-modules/v2/Tabell";
+export { default as AccordionV2 } from "./sanity-modules/v2/AccordionV2";
 export * from "./website-modules/tabs";
 export * from "./website-modules/tags";
 export * from "./website-modules/utils";

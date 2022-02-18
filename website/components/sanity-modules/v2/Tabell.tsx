@@ -10,8 +10,6 @@ const TableComponent = ({ node }: { node: TabellT }): JSX.Element => {
     return null;
   }
 
-  console.log(node.powerTable);
-
   return (
     <div className="my-16">
       <OverflowDetector>

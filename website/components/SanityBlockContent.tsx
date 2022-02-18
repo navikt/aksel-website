@@ -33,6 +33,7 @@ import {
   Bilde,
   Kode,
   Tabell,
+  AccordionV2,
 } from ".";
 
 import * as Icons from "@navikt/ds-icons";
@@ -105,6 +106,7 @@ const serializers = {
     link_panel: ({ node }) => <LinkPanel node={node} />,
     spacing: ({ node }) => <Spacing node={node} />,
     table: ({ node }) => <Table node={node} />,
+    accordion_v2: ({ node }) => <AccordionV2 node={node} />,
 
     block: ({ node, children }) => {
       const context: BlockContextT = useContext(BlockContext);
