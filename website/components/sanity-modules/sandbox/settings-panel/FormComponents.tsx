@@ -1,7 +1,6 @@
-import { Label, Select, TextField, Switch } from "@navikt/ds-react";
+import { Select, Switch, TextField, ToggleGroup } from "@navikt/ds-react";
 import React, { useContext } from "react";
 import { SandboxContext } from "../Sandbox";
-import { ScToggle, ScToggleGroup } from "../../icon-search/Filter";
 import { EnumT } from "./generateState";
 
 export const SelectComp = ({
@@ -20,6 +19,9 @@ export const SelectComp = ({
     type === "prop"
       ? propsState.props[name] === opt
       : propsState.variants === opt;
+
+  const findDefault = () =>
+    type === "prop" ? propsState.props[name] : propsState.variants;
 
   const handleToggle = (opt: string) => {
     return isActive(opt) && arg.options.includes("")
@@ -92,27 +94,20 @@ export const SelectComp = ({
         </Select>
       ) : (
         <div>
-          {type !== "variant" && (
-            <Label size="small" spacing>
-              {name}
-            </Label>
-          )}
-          <ScToggleGroup forwardedAs="div" size="small">
+          <ToggleGroup
+            onChange={handleToggle}
+            size="small"
+            defaultValue={findDefault().toString()}
+            label={type !== "variant" ? name : undefined}
+          >
             {arg.options.map((opt, i) =>
               opt ? (
-                <ScToggle
-                  key={opt + i}
-                  className="navds-label navds-label--small"
-                  data-active={isActive(opt)}
-                  aria-pressed={isActive(opt)}
-                  onClick={() => handleToggle(opt)}
-                  aria-label={opt || "Ingen"}
-                >
+                <ToggleGroup.Item key={opt + i} value={opt}>
                   {opt || "Ingen"}
-                </ScToggle>
+                </ToggleGroup.Item>
               ) : null
             )}
-          </ScToggleGroup>
+          </ToggleGroup>
         </div>
       )}
     </>
