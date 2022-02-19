@@ -34,6 +34,8 @@ import {
   Kode,
   Tabell,
   AccordionV2,
+  InstallasjonSeksjon,
+  PropsSeksjon,
 } from ".";
 
 import * as Icons from "@navikt/ds-icons";
@@ -107,6 +109,8 @@ const serializers = {
     spacing: ({ node }) => <Spacing node={node} />,
     table: ({ node }) => <Table node={node} />,
     accordion_v2: ({ node }) => <AccordionV2 node={node} />,
+    installasjon_seksjon: ({ node }) => <InstallasjonSeksjon node={node} />,
+    props_seksjon: ({ node }) => <PropsSeksjon node={node} />,
 
     block: ({ node, children }) => {
       const context: BlockContextT = useContext(BlockContext);

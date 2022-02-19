@@ -168,6 +168,11 @@ const doDontV2 = `_type == "do_dont_v2" =>{
   }
 }`;
 
+const installSeksjon = `_type == "installasjon_seksjon" =>{
+  ...,
+  "code_ref": code_ref->{...},
+}`;
+
 const defaultBlock = `
  _type == "riktekst_blokk" =>{
     ...,
@@ -243,7 +248,8 @@ ${relatertInnhold},
 ${anatomiSeksjon},
 ${liveSeksjon},
 ${uuSeksjon},
-${generiskSeksjon}
+${generiskSeksjon},
+${installSeksjon}
 `;
 
 export const allDocuments = `*[]{...,'slug': slug.current }`;

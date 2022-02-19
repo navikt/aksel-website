@@ -120,4 +120,4 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
   );
 };
 
-export default withErrorBoundary(PropTable, "Proptable komponent");
+export default withErrorBoundary(PropTable, "Proptable");

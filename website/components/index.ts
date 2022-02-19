@@ -38,6 +38,8 @@ export { default as Bilde } from "./sanity-modules/v2/Bilde";
 export { default as Kode } from "./sanity-modules/v2/Kode";
 export { default as Tabell } from "./sanity-modules/v2/Tabell";
 export { default as AccordionV2 } from "./sanity-modules/v2/AccordionV2";
+export { default as InstallasjonSeksjon } from "./sanity-modules/v2/InstallasjonSeksjon";
+export { default as PropsSeksjon } from "./sanity-modules/v2/PropsSeksjon";
 export * from "./website-modules/tabs";
 export * from "./website-modules/tags";
 export * from "./website-modules/utils";
