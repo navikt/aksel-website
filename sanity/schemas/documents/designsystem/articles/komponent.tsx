@@ -123,9 +123,9 @@ export default {
         }).error(),
       of: [
         {
-          name: "Seksjon med h2",
+          name: "generisk_seksjon",
           type: "generisk_seksjon",
-          icon: () => <span>H2</span>,
+          icon: () => <FileContent />,
         },
         {
           type: "installasjon_seksjon",
