@@ -18,7 +18,6 @@ import {
   LiveProvider,
   withLive,
 } from "react-live";
-import styled from "styled-components";
 import { DsCodeSandbox as SandboxT } from "../../../lib";
 import getSandbox from "../../../stories/sandbox";
 import { SandboxComponent } from "../../../stories/sandbox/types";
@@ -31,13 +30,6 @@ import {
   StateT,
 } from "./settings-panel/generateState";
 import PreviewWrapper from "./PreviewWrapper";
-
-const ScRelativeDiv = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: var(--navds-spacing-8);
-`;
 
 const formatCode = (code: string) => {
   try {
@@ -59,7 +51,6 @@ const scope = {
   ...DsReact,
   ...DsReactInternal,
   ...DsIcons,
-  styled,
 };
 
 type SandboxContextProps = {
@@ -156,12 +147,12 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
 
   const Editor = (
     <LiveProvider code={code} scope={scope} noInline={!code?.startsWith("<")}>
-      <ScRelativeDiv className="index-ignore">
+      <div className="index-ignore relative mb-8">
         <PreviewWrapper>
           <LivePreview />
           <LiveError />
         </PreviewWrapper>
-        <div ref={preFocusCapture} tabIndex={-1} />
+        {/* <div ref={preFocusCapture} tabIndex={-1} />
 
         <div className="relative mt-2 rounded">
           <pre className="sandbox-editor relative m-0 max-h-[400px] overflow-x-auto overflow-y-auto rounded bg-canvas-background-inverted p-4 pr-20 font-code">
@@ -187,8 +178,8 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
             )}
             <CopyButton ref={focusCapture} content={code} inTabs={false} />
           </pre>
-        </div>
-      </ScRelativeDiv>
+        </div> */}
+      </div>
     </LiveProvider>
   );
 

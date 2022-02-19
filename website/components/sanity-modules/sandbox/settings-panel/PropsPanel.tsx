@@ -24,26 +24,6 @@ const SettingsPanel = () => {
     sandboxState.openSettings && panelRef?.current?.focus();
   }, [sandboxState?.openSettings]);
 
-  const checkParentWidth = useCallback(() => {
-    if (!panelRef.current) return;
-    const inlineSettings =
-      panelRef.current.parentElement.getBoundingClientRect().width > 600;
-
-    inlineSettings !== sandboxState.inlineSettings &&
-      setSandboxState({
-        ...sandboxState,
-        inlineSettings,
-      });
-  }, [sandboxState.inlineSettings]);
-
-  useEffect(() => {
-    window.addEventListener("resize", checkParentWidth);
-    checkParentWidth();
-    return () => {
-      window.removeEventListener("resize", checkParentWidth);
-    };
-  }, [checkParentWidth]);
-
   const hideProps =
     !sandboxState.args ||
     ((!sandboxState.args.props ||
