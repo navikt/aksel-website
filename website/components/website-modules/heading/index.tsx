@@ -61,12 +61,11 @@ const LevelTwoHeading = ({
     <>
       {hidden && <div id={slug} className="scroll-m-20" />}
       <S.HeadingWrapper
-        className={cl({ hidden: hidden, "inline-flex": !hidden })}
+        className={cl("mb-4", { hidden: hidden, "inline-flex": !hidden })}
       >
         <S.TitleWithScrollMargin
           tabIndex={-1}
           id={slug}
-          spacing
           level={2}
           size="large"
           className="index-lvl2"

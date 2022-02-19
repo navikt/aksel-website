@@ -11,7 +11,7 @@ const TableComponent = ({ node }: { node: TabellT }): JSX.Element => {
   }
 
   return (
-    <div className="my-16">
+    <div className="mb-8">
       <OverflowDetector>
         <Table>
           <Table.Header>

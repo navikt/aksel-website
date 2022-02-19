@@ -22,7 +22,7 @@ const UuSeksjon = ({ node }: { node: UuSeksjonT }): JSX.Element => {
   );
 
   return (
-    <div className="my-16">
+    <div className="mb-16">
       <LevelTwoHeading>{[node.title]}</LevelTwoHeading>
       <SanityBlockContent blocks={node.interaksjon_mus} />
       <SanityBlockContent blocks={node.interaksjon_touch} />

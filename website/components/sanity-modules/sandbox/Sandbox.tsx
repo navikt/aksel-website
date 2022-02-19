@@ -36,7 +36,7 @@ const ScRelativeDiv = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-bottom: var(--navds-spacing-7);
+  margin-bottom: var(--navds-spacing-8);
 `;
 
 const formatCode = (code: string) => {

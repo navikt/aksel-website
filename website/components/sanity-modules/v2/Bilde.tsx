@@ -47,7 +47,7 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
   }
 
   return (
-    <figure className="m-0 mb-7 flex flex-col">
+    <figure className="m-0 mb-8 flex flex-col">
       <button
         ref={ref}
         aria-label="Klikk for å åpne bildet i fullskjerm"

@@ -13,6 +13,10 @@ export type PagePropsContextT = {
   setPageData: React.Dispatch<any>;
 };
 
+export type SectionContextT = {
+  withinSection: boolean;
+};
+
 /* Query changes internal_link type  */
 export interface RelatedLinkT {
   _type: "link";

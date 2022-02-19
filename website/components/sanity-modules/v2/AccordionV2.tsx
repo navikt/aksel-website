@@ -10,7 +10,7 @@ const Accordion = ({ node }: { node: AccordionV2 }): JSX.Element => {
   }
 
   return (
-    <div className="my-16">
+    <div className="mb-8">
       <DsAccordion>
         {node.list.map((el) => (
           <DsAccordion.Item key={el._key}>

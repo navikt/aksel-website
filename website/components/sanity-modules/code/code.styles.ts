@@ -63,7 +63,7 @@ export const PreWrapper = styled.div<{ active: boolean; standalone?: boolean }>`
   position: relative;
   background-color: var(--navds-semantic-color-component-background-inverted);
   display: ${(props) => (props.active ? "block" : "none")};
-  margin-bottom: var(--navds-spacing-7);
+  margin-bottom: var(--navds-spacing-8);
   ${(props) => props.standalone && "border-radius: 6px;"}
 `;
 

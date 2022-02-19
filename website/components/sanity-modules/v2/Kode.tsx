@@ -9,9 +9,17 @@ const Kode = ({ node }: { node: KodeT }): JSX.Element => {
   }
 
   if (node.variant) {
-    return <CodeExample node={node.ref as unknown as DsCodeExample} />;
+    return (
+      <div className="mb-8">
+        <CodeExample node={node.ref as unknown as DsCodeExample} />
+      </div>
+    );
   } else {
-    return <Snippet node={node} />;
+    return (
+      <div className="mb-8">
+        <Snippet node={node} />
+      </div>
+    );
   }
 };
 

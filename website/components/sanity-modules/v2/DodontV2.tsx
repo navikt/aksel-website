@@ -76,8 +76,8 @@ const DoDont = ({ node }: { node: DoDontV2 }) => {
   if (!node || !node.title || node?.blokker.length === 0) return null;
 
   return (
-    <div className="my-16">
-      <Heading level="3" className="index-lvl3 mt-11" size="medium">
+    <div className="mb-8">
+      <Heading level="3" className="index-lvl3" size="medium" spacing>
         {node.title}
       </Heading>
       <SanityBlockContent blocks={node.forklaring} />

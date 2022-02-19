@@ -1,5 +1,5 @@
 import React from "react";
-import { LevelTwoHeading } from "../..";
+import { LevelTwoHeading, SectionContext } from "../..";
 import { GeneriskSeksjon as GeneriskSeksjonT } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import { SanityBlockContent } from "../../SanityBlockContent";
@@ -10,9 +10,11 @@ const GeneriskSeksjon = ({ node }: { node: GeneriskSeksjonT }): JSX.Element => {
   }
 
   return (
-    <div className="my-16">
+    <div className="mb-16">
       <LevelTwoHeading>{[node.title]}</LevelTwoHeading>
-      <SanityBlockContent blocks={node.brikker} />
+      <SectionContext.Provider value={{ withinSection: true }}>
+        <SanityBlockContent blocks={node.brikker} />
+      </SectionContext.Provider>
     </div>
   );
 };

@@ -9,7 +9,7 @@ const PropsSeksjon = ({ node }: { node: PropsSeksjonT }): JSX.Element => {
   }
 
   return (
-    <div className="my-16">
+    <div className="mb-16">
       <LevelTwoHeading>{[node.title]}</LevelTwoHeading>
       {node.elementer.map((prop) => (
         <PropTable node={prop} key={prop?._key} />

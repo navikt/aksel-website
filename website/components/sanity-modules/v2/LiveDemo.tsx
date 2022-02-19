@@ -14,7 +14,7 @@ const LiveDemo = ({ node }: { node: LiveDemoSeksjon }): JSX.Element => {
   }
 
   return (
-    <div className="my-16">
+    <div className="mb-16">
       <LevelTwoHeading>{["Live Demo"]}</LevelTwoHeading>
       <SanityBlockContent blocks={node.body} />
       {node?.erstatt ? (

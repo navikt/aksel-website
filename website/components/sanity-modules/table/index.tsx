@@ -7,7 +7,7 @@ import { withErrorBoundary } from "../../ErrorBoundary";
 import { TableBlockContent } from "./TableBlockContent";
 
 const ScWrapper = styled.div`
-  margin-bottom: var(--navds-spacing-7);
+  margin-bottom: var(--navds-spacing-8);
 `;
 
 const ScHeaderCell = styled(Table.HeaderCell)`

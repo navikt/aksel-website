@@ -150,14 +150,24 @@ const serializers = {
         case "h3":
           return (
             <Heading
-              className="index-lvl3 mt-11"
+              {...textProps}
+              className="index-lvl3"
               spacing
               level="3"
               size="medium"
-              {...textProps}
             />
           );
         case "heading4":
+          return (
+            <Heading
+              className="index-lvl4"
+              spacing
+              level="4"
+              size="small"
+              {...textProps}
+            />
+          );
+        case "h4":
           return (
             <Heading
               className="index-lvl4 mt-9"
@@ -188,12 +198,12 @@ const serializers = {
   list: (props: any) => {
     if (props?.type == "number") {
       return (
-        <ol type="1" className="list-margin list-decimal">
+        <ol type="1" className="list-margin mb-7 list-decimal">
           {props.children}
         </ol>
       );
     }
-    return <ul className="list-margin list-disc">{props.children}</ul>;
+    return <ul className="list-margin mb-7 list-disc">{props.children}</ul>;
   },
   listItem: (props: any) => {
     return (

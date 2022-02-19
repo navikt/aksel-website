@@ -16,7 +16,7 @@ const InstallasjonSeksjon = ({
   }
 
   return (
-    <div className="my-16">
+    <div className="mb-16">
       <LevelTwoHeading>{[node.title]}</LevelTwoHeading>
       <CodeExample node={node.code_ref as unknown as DsCodeExample} />
     </div>
