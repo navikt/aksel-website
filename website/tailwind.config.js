@@ -37,7 +37,7 @@ module.exports = {
           "100%": { transform: "translateY(0)", opacity: 1 },
         },
         fadeInRight: {
-          "0%": { width: "20%", opacity: 0.2 },
+          "0%": { width: "20%", opacity: 0.5 },
           "100%": { width: "100%", opacity: 1 },
         },
         fadeIn: {

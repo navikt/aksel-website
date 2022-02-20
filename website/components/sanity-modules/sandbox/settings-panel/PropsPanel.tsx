@@ -1,5 +1,5 @@
-import { Close, Refresh } from "@navikt/ds-icons";
-import { Button, Heading } from "@navikt/ds-react";
+import { Close } from "@navikt/ds-icons";
+import { Button } from "@navikt/ds-react";
 import cl from "classnames";
 import React, { useContext, useEffect, useRef } from "react";
 import { useKey } from "react-use";
@@ -30,6 +30,9 @@ const SettingsPanel = () => {
 
   useEffect(() => {
     const handleFocus = () => {
+      console.log(
+        panelRef.current && !panelRef.current.contains(document.activeElement)
+      );
       panelRef.current &&
         !panelRef.current.contains(document.activeElement) &&
         setSandboxState((s) => ({
@@ -50,16 +53,13 @@ const SettingsPanel = () => {
       className={cl(
         "flex w-full flex-col items-center gap-4 overflow-y-auto rounded-r-[7px] border-l border-gray-200 bg-canvas-background-light p-4 focus:outline-none",
         "lg:relative lg:max-w-[250px]",
-        "absolute inset-0 animate-fadeInRight",
+        "absolute inset-0 animate-fadeIn",
         {
           hidden: !sandboxState.openSettings || hideProps,
         }
       )}
     >
       <div className="flex h-full flex-col">
-        <Heading as="div" size="xsmall" className="self-start" spacing>
-          Props
-        </Heading>
         <button
           className="absolute top-0 right-0 rounded-tr-[7px] p-4 text-xlarge hover:bg-interaction-primary-hover-subtle focus:shadow-focus-inset focus:outline-none"
           onClick={() =>
@@ -80,7 +80,6 @@ const SettingsPanel = () => {
           className="mx-auto mt-auto w-fit justify-self-end"
         >
           Reset
-          <Refresh aria-hidden aria-label="reset sandkasse visning" />
         </Button>
       </div>
     </div>
