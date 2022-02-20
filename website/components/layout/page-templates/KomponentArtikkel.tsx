@@ -95,7 +95,7 @@ const KomponentArtikkelTemplate = ({
             {layout?.activeHeading?.title}
           </span>
         )}
-        <div className="pt-8 pb-6">
+        <div className="py-8">
           <div className="flex flex-wrap gap-2"></div>
           <Heading
             size="xlarge"
