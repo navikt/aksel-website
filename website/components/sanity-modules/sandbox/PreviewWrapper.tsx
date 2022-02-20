@@ -11,7 +11,11 @@ const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
     <div
       role="presentation"
       className={cl(
-        "relative flex h-full min-h-[300px] w-full rounded-lg border border-solid border-gray-200 bg-[linear-gradient(45deg,_#93a5cf_0%,_#e4efe9_100%)]"
+        "relative flex h-full min-h-[300px] w-full rounded-lg border border-solid border-gray-200",
+        "bg-[radial-gradient(circle_400px_at_center,_#16d9e3_0%,_#30c7ec_47%,_#46aef7_100%)]",
+        "bg-[linear-gradient(135deg,_#f5f7fa_0%,_#c3cfe2_100%)]",
+        "bg-[linear-gradient(135deg,_#fddb92_0%,_#d1fdff_100%)]",
+        "bg-[linear-gradient(135deg,_#89f7fe_0%,_#66a6ff_100%)]"
       )}
       style={{
         backgroundColor: bg ? `var(${bg})` : undefined,
