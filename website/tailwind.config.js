@@ -25,12 +25,12 @@ module.exports = {
       },
       keyframes: {
         shimmerBg: {
-          "0%": { backgroundSize: "400% 400%", backgroundPosition: "0% 50%" },
+          "0%": { backgroundSize: "400% 400%", backgroundPosition: "0% 0%" },
           "50%": {
             backgroundSize: "400% 400%",
-            backgroundPosition: "100% 50%",
+            backgroundPosition: "100% 100%",
           },
-          "100%": { backgroundSize: "400% 400%", backgroundPosition: "0% 50%" },
+          "100%": { backgroundSize: "400% 400%", backgroundPosition: "0% 0%" },
         },
         fadeInBottom: {
           "0%": { transform: "translateY(2.5rem)", opacity: 0 },
