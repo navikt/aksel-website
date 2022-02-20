@@ -1,4 +1,4 @@
-import { Popover } from "@navikt/ds-react";
+import { BodyShort, Heading, Popover } from "@navikt/ds-react";
 import copy from "copy-to-clipboard";
 import React, { useEffect, useRef, useState } from "react";
 import { AmplitudeEvents, slugger, useAmplitude } from "../..";
@@ -60,18 +60,20 @@ const LevelTwoHeading = ({
   return (
     <>
       {hidden && <div id={slug} className="scroll-m-20" />}
-      <S.HeadingWrapper
-        className={cl("mb-4", { hidden: hidden, "inline-flex": !hidden })}
+      <Heading
+        tabIndex={-1}
+        id={slug}
+        level="2"
+        size="large"
+        className={cl(
+          "index-lvl2 mb-4 scroll-mt-20 items-center justify-start focus:outline-none",
+          {
+            hidden: hidden,
+            "inline-flex": !hidden,
+          }
+        )}
       >
-        <S.TitleWithScrollMargin
-          tabIndex={-1}
-          id={slug}
-          level={2}
-          size="large"
-          className="index-lvl2"
-        >
-          {cleanedChildren}
-        </S.TitleWithScrollMargin>
+        {cleanedChildren}
         <S.Anchor
           aria-label={`Kopier lenke til ${cleanedChildren.toString()}`}
           onClick={() => {
@@ -84,22 +86,21 @@ const LevelTwoHeading = ({
             <LinkIcon aria-label="Ankerlenke" />
           </span>
         </S.Anchor>
-      </S.HeadingWrapper>
-
-      <Popover
-        anchorEl={anchorRef.current}
-        open={openPopover}
-        onClose={() => setOpenPopover(false)}
-        placement="auto"
-        arrow={false}
-        offset={8}
-        aria-live="polite"
-        role="alert"
-      >
-        <Popover.Content style={{ padding: "0.25rem" }}>
-          {`Kopierte lenke til ${cleanedChildren.toString()}`}
-        </Popover.Content>
-      </Popover>
+        <Popover
+          anchorEl={anchorRef.current}
+          open={openPopover}
+          onClose={() => setOpenPopover(false)}
+          placement="auto"
+          arrow={false}
+          offset={8}
+        >
+          {openPopover && (
+            <Popover.Content style={{ padding: "0.25rem" }}>
+              <BodyShort size="small">{`Kopierte lenke til ${cleanedChildren.toString()}`}</BodyShort>
+            </Popover.Content>
+          )}
+        </Popover>
+      </Heading>
     </>
   );
 };

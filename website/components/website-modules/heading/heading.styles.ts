@@ -1,16 +1,4 @@
-import { Heading } from "@navikt/ds-react";
 import styled from "styled-components";
-
-export const TitleWithScrollMargin = styled(Heading)`
-  scroll-margin-top: 5rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
-
-  :focus {
-    outline: none;
-  }
-`;
 
 export const Anchor = styled.button`
   background-color: transparent;
@@ -53,14 +41,5 @@ export const Anchor = styled.button`
 
   @media (max-width: 564px) {
     margin: 0;
-  }
-`;
-
-export const HeadingWrapper = styled.div`
-  :not(:first-child) {
-    margin-top: var(--navds-spacing-11);
-  }
-  + * + .navds-heading {
-    margin-top: 0;
   }
 `;
