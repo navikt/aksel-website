@@ -28,6 +28,10 @@ module.exports = {
           "0%": { transform: "translateY(2.5rem)", opacity: 0 },
           "100%": { transform: "translateY(0)", opacity: 1 },
         },
+        fadeInRight: {
+          "0%": { width: "20%", opacity: 0.2 },
+          "100%": { width: "100%", opacity: 1 },
+        },
         fadeIn: {
           "0%": { opacity: 0 },
           "100%": { opacity: 1 },
@@ -55,6 +59,7 @@ module.exports = {
       },
       animation: {
         fadeInBottom: "fadeInBottom 0.30s ease-in-out forwards",
+        fadeInRight: "fadeInRight 0.30s ease-in-out forwards",
         fadeIn: "fadeIn 0.15s cubic-bezier(0.65, 0, 0.35, 1)",
         expand: "expand 0.15s cubic-bezier(0.215, 0.61, 0.355, 1)",
         expandLg: "expandLg 0.15s cubic-bezier(0.215, 0.61, 0.355, 1)",

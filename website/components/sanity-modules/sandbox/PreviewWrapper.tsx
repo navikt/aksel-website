@@ -4,27 +4,28 @@ import { SandboxContext } from "./Sandbox";
 import SettingsPanel from "./settings-panel/PropsPanel";
 
 const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
-  const { sandboxState, setSandboxState, bg, setBg } =
+  const { sandboxState, setSandboxState, setVisibleCode, visibleCode, bg } =
     useContext(SandboxContext);
-
-  const hideProps =
-    !sandboxState.args ||
-    ((!sandboxState.args.props ||
-      Object.keys(sandboxState.args.props).length === 0) &&
-      !sandboxState.args.variants);
-
-  const showSettings = !hideProps;
 
   return (
     <div
       role="presentation"
-      className="relative flex h-full min-h-[300px] w-full rounded-lg border border-solid border-gray-200 bg-[linear-gradient(130deg,_#69b7eb,_#b3dbd3,_#f4d6db);]"
+      className={cl(
+        "relative flex h-full min-h-[300px] w-full rounded-lg border border-solid border-gray-200 bg-[linear-gradient(130deg,_#69b7eb,_#b3dbd3,_#f4d6db)]"
+      )}
+      style={{
+        backgroundColor: bg ? `var(${bg})` : undefined,
+        backgroundImage: bg && "none",
+      }}
     >
-      <div className="sandbox-preview relative inline-flex w-full flex-wrap items-center justify-center gap-4 overflow-x-auto p-4 lg:p-8">
+      <div className="sandbox-preview relative inline-flex w-full flex-wrap items-center justify-center gap-4 overflow-x-auto p-4 pt-8 lg:p-8 lg:pt-12">
         {children}
         <div className="absolute top-3 right-4 flex gap-4">
-          <button className=" rounded bg-gray-800/10 py-1 px-3 text-medium hover:bg-blue-50/50 focus:shadow-focus focus:outline-none">
-            Vis kode
+          <button
+            className=" rounded bg-gray-800/10 py-1 px-3 text-medium hover:bg-blue-50/50 focus:shadow-focus focus:outline-none"
+            onClick={() => setVisibleCode(!visibleCode)}
+          >
+            {visibleCode ? "Skjul kode" : "Vis kode"}
           </button>
           <button
             className={cl(

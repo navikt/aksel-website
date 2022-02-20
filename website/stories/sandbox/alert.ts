@@ -50,8 +50,8 @@ AlertSandbox.args = {
     size: ["medium", "small"],
     fullWidth: false,
     inline: false,
+    ["Med heading"]: false,
   },
-  variants: ["", "Med heading"],
 };
 
 export default AlertSandbox;

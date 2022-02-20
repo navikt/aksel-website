@@ -25,7 +25,6 @@ export interface ParsedPropsT {
 
 export interface ParsedArgsT {
   props: ParsedPropsT;
-  variants: EnumT | null;
   background?: string;
 }
 
@@ -33,7 +32,6 @@ export interface StateT {
   props: {
     [key: string]: string | boolean;
   };
-  variants: string | null;
 }
 
 export const getInitialState = (args: ParsedArgsT): StateT => ({
@@ -43,7 +41,6 @@ export const getInitialState = (args: ParsedArgsT): StateT => ({
         {}
       )
     : null,
-  variants: args?.variants ? args.variants.default : null,
 });
 
 const parseProps = (props: SandboxComponentProps): ParsedPropsT =>
@@ -81,16 +78,12 @@ const parseProps = (props: SandboxComponentProps): ParsedPropsT =>
   }, {});
 
 export const generateState = (args: SandboxComponentArgs): ParsedArgsT => {
-  if (!args || (!args?.props && !args?.variants)) {
+  if (!args || !args?.props) {
     return null;
   }
 
   return {
     ...args,
     props: parseProps(args.props),
-    variants:
-      args.variants && args.variants.length > 1
-        ? { default: args.variants[0], options: args.variants, format: "array" }
-        : null,
   };
 };

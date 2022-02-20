@@ -1,10 +1,9 @@
 import { NewTab } from "@navikt/ds-icons";
 import React, { useContext } from "react";
-import { CodeContext } from "./Example";
-import * as S from "../code.styles";
 import styled from "styled-components";
+import * as S from "../code.styles";
 import CopyButton from "../CopyButton";
-import ColorPicker from "../../sandbox/ColorPicker";
+import { CodeContext } from "./Example";
 
 export const ScTabs = styled.div`
   background-color: var(--navds-semantic-color-canvas-background-light);
@@ -66,15 +65,8 @@ export const ScButton = styled.button`
 `;
 
 const CodeTabs = (): JSX.Element => {
-  const {
-    node,
-    tabs,
-    showPreview,
-    activeTab,
-    setActiveTab,
-    fullscreenLink,
-    setPreviewBg,
-  } = useContext(CodeContext);
+  const { node, tabs, showPreview, activeTab, setActiveTab, fullscreenLink } =
+    useContext(CodeContext);
 
   const exampleName = fullscreenLink.split("/")?.[2]?.split("-")?.join(" ");
 
@@ -115,9 +107,6 @@ const CodeTabs = (): JSX.Element => {
         <ScFlex>
           {activeTab !== -1 && (
             <CopyButton content={tabs[activeTab].content.toString()} inTabs />
-          )}
-          {showPreview && activeTab === -1 && (
-            <ColorPicker onChange={(c) => setPreviewBg(c)} />
           )}
           {showPreview && fullscreenLink && activeTab === -1 && (
             <ScLinkButton target="_blank" href={fullscreenLink}>

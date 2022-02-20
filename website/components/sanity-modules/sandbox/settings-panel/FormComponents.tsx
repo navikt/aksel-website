@@ -15,44 +15,24 @@ export const SelectComp = ({
   const { sandboxState, setSandboxState } = useContext(SandboxContext);
   const { propsState } = sandboxState;
 
-  const isActive = (opt: string) =>
-    type === "prop"
-      ? propsState.props[name] === opt
-      : propsState.variants === opt;
+  const isActive = (opt: string) => propsState.props[name] === opt;
 
-  const findDefault = () =>
-    type === "prop" ? propsState.props[name] : propsState.variants;
+  const findDefault = () => propsState.props[name];
 
   const handleToggle = (opt: string) => {
     return isActive(opt) && arg.options.includes("")
-      ? type === "prop"
-        ? setSandboxState({
-            ...sandboxState,
-            propsState: {
-              ...propsState,
-              props: { ...propsState.props, [name]: "" },
-            },
-          })
-        : setSandboxState({
-            ...sandboxState,
-            propsState: {
-              ...propsState,
-              variants: "",
-            },
-          })
-      : type === "prop"
       ? setSandboxState({
           ...sandboxState,
           propsState: {
             ...propsState,
-            props: { ...propsState.props, [name]: opt },
+            props: { ...propsState.props, [name]: "" },
           },
         })
       : setSandboxState({
           ...sandboxState,
           propsState: {
             ...propsState,
-            variants: opt,
+            props: { ...propsState.props, [name]: opt },
           },
         });
   };
@@ -64,27 +44,15 @@ export const SelectComp = ({
           hideLabel={type === "variant"}
           label={type === "variant" ? "Endre sandbox variant" : name}
           onChange={(e) =>
-            type === "prop"
-              ? setSandboxState({
-                  ...sandboxState,
-                  propsState: {
-                    ...propsState,
-                    props: { ...propsState.props, [name]: e.target.value },
-                  },
-                })
-              : setSandboxState({
-                  ...sandboxState,
-                  propsState: {
-                    ...propsState,
-                    variants: e.target.value,
-                  },
-                })
+            setSandboxState({
+              ...sandboxState,
+              propsState: {
+                ...propsState,
+                props: { ...propsState.props, [name]: e.target.value },
+              },
+            })
           }
-          value={
-            (type === "prop"
-              ? propsState.props[name]
-              : propsState.variants) as string
-          }
+          value={propsState.props[name] as string}
         >
           {arg.options.map((opt, i) => (
             <option key={opt + i} value={opt}>

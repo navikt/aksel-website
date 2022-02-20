@@ -109,8 +109,8 @@ ButtonSandbox.args = {
   props: {
     size: ["medium", "small"],
     zebraStripes: false,
+    Selectable: false,
   },
-  variants: ["", "Selectable"],
   background: BgColors.WHITE,
 };
 

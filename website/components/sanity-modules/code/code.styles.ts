@@ -65,6 +65,8 @@ export const PreWrapper = styled.div<{ active: boolean; standalone?: boolean }>`
   display: ${(props) => (props.active ? "block" : "none")};
   margin-bottom: var(--navds-spacing-8);
   ${(props) => props.standalone && "border-radius: 6px;"}
+  max-height: 300px;
+  overflow-y: auto;
 `;
 
 export const Pre = styled.pre`
