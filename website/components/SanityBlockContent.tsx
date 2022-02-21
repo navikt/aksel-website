@@ -50,8 +50,10 @@ export const InlineCode = (props: React.HTMLAttributes<HTMLElement>) => (
 
 export const KBD = (props: React.HTMLAttributes<HTMLElement>) => (
   <kbd
-    /* className="my-0 mx-1 inline-block min-w-[2rem] rounded-sm py-1 px-2 text-center text-medium text-text shadow-[0_0_0_0.5px,0_1px_0_0] shadow-gray-900/50" */
-    className="my-0 mx-1 inline-block min-w-[2rem] rounded border-2 border-gray-900 py-1 px-2 text-center text-medium text-text shadow-[2px_2px_0_0_var(--navds-global-color-gray-800)]"
+    className={cl(
+      "my-0 mx-1 inline-block min-w-[2rem] rounded border-2 border-gray-900 bg-white py-1 px-2 text-center text-medium text-text shadow-[2px_2px_0_0_var(--navds-global-color-gray-800)]",
+      "hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+    )}
     {...props}
   />
 );
