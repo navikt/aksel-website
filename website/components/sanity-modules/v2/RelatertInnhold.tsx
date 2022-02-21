@@ -1,16 +1,16 @@
+import { ExternalLink } from "@navikt/ds-icons";
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import cl from "classnames";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
-import React, { useContext } from "react";
-import { AmplitudeEvents, SectionContext, useAmplitude } from "../..";
+import React from "react";
+import { AmplitudeEvents, useAmplitude } from "../..";
 import { RelatertInnhold as RelatertInnholdT } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 
 const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
   const { logAmplitudeEvent } = useAmplitude();
   const { asPath } = useRouter();
-  const context = useContext(SectionContext);
 
   if (!node || node?.lenker?.length === 0) {
     return null;
@@ -27,8 +27,7 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
   const getHref = (x: any): string =>
     x?.intern ? `/${x.intern_lenke}` : x.ekstern_link;
 
-  const getTag = (x: any): string =>
-    x.ekstern_link.match(/^(?:https?:)?(?:\/\/)?([^\/\?]+)/)[0];
+  const getTag = (x: any): string => new URL(x.ekstern_link).hostname;
 
   return (
     <div
@@ -55,8 +54,15 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
 
             {x.tags !== "none" ||
               (x.ekstern_domene && (
-                <Detail className="mt-6 uppercase text-text-muted">
-                  {x.ekstern_domene ? getTag(x) : x.tag}
+                <Detail className="mt-6 flex items-center gap-2 uppercase text-text-muted">
+                  {x.ekstern_domene ? (
+                    <>
+                      {getTag(x)}
+                      <ExternalLink aria-hidden className="-mt-[3px]" />
+                    </>
+                  ) : (
+                    x.tag
+                  )}
                 </Detail>
               ))}
           </a>
