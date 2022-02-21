@@ -27,6 +27,7 @@ export default {
                 { type: "ds_component_page" },
                 { type: "ds_article_page" },
                 { type: "komponent_artikkel" },
+                { type: "ds_artikkel" },
               ],
               validation: (Rule) => Rule.required(),
             },

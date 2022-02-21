@@ -60,6 +60,7 @@ export const ds_header_heading = {
         { type: "ds_component_page" },
         { type: "ds_article_page" },
         { type: "komponent_artikkel" },
+        { type: "ds_artikkel" },
       ],
       validation: (Rule) =>
         Rule.required().error("Header lenken må linke til en startside"),
@@ -91,6 +92,7 @@ export const ds_header_heading = {
                 { type: "ds_component_page" },
                 { type: "ds_article_page" },
                 { type: "komponent_artikkel" },
+                { type: "ds_artikkel" },
               ],
               validation: (Rule) =>
                 Rule.required().error("Sidemeny-lenken må lenke til en side"),

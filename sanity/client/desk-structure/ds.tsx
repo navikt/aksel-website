@@ -108,7 +108,7 @@ export const dsPanel = async (roles) => {
                         S.documentList()
                           .title("Sider ikke i navigasjon")
                           .filter(
-                            `!(_id in [${allIds}]) && !(_id in path('drafts.**')) && _type in ["ds_component_page","ds_article_page", "komponent_artikkel"]`
+                            `!(_id in [${allIds}]) && !(_id in path('drafts.**')) && _type in ["ds_component_page","ds_article_page", "komponent_artikkel", "ds_artikkel"]`
                           )
                       ),
                   ]);
