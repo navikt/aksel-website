@@ -7,6 +7,11 @@ const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
   const { sandboxState, setSandboxState, setVisibleCode, visibleCode, bg } =
     useContext(SandboxContext);
 
+  const hideProps =
+    !sandboxState.args ||
+    !sandboxState.args.props ||
+    Object.keys(sandboxState.args.props).length === 0;
+
   return (
     <div
       role="presentation"
@@ -22,7 +27,15 @@ const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
         backgroundImage: bg && "none",
       }}
     >
-      <div className="sandbox-preview relative inline-flex w-full flex-wrap items-center justify-center gap-4 overflow-x-auto p-4 pt-8 lg:p-8 lg:pt-12">
+      <div
+        className={cl(
+          "sandbox-preview relative w-full flex-wrap items-center justify-center gap-4 overflow-x-auto p-4 pt-8 lg:p-8 lg:pt-12",
+          {
+            "hidden lg:inline-flex": sandboxState.openSettings,
+            "inline-flex": !sandboxState.openSettings,
+          }
+        )}
+      >
         {children}
         <div className="absolute top-3 right-4 flex gap-4">
           <button
@@ -34,7 +47,7 @@ const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
           <button
             className={cl(
               "rounded bg-gray-800/10 py-1 px-3 text-medium hover:bg-blue-50/50 focus:shadow-focus focus:outline-none",
-              { hidden: sandboxState.openSettings }
+              { hidden: sandboxState.openSettings || hideProps }
             )}
             onClick={() =>
               setSandboxState({

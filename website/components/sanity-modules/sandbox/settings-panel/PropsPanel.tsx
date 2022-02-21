@@ -28,24 +28,6 @@ const SettingsPanel = () => {
     !sandboxState.args.props ||
     Object.keys(sandboxState.args.props).length === 0;
 
-  useEffect(() => {
-    const handleFocus = () => {
-      console.log(
-        panelRef.current && !panelRef.current.contains(document.activeElement)
-      );
-      panelRef.current &&
-        !panelRef.current.contains(document.activeElement) &&
-        setSandboxState((s) => ({
-          ...s,
-          openSettings: false,
-        }));
-    };
-    document.addEventListener("focusin", handleFocus, true);
-    return () => {
-      document.removeEventListener("focusin", handleFocus, true);
-    };
-  }, []);
-
   return (
     <div
       ref={panelRef}
