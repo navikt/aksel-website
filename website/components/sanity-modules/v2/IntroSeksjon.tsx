@@ -14,7 +14,7 @@ const Intro = ({ node }: { node: IntroKomponentSeksjon }): JSX.Element => {
     <div className="mb-16">
       <LevelTwoHeading hidden>{["Intro"]}</LevelTwoHeading>
       <SanityBlockContent blocks={node.body} />
-      <div className="flex flex-wrap justify-between gap-3">
+      <div className="flex flex-wrap justify-between gap-x-4 gap-y-7">
         <div>
           <Label>Brukes til:</Label>
           <ul className="list-disc">

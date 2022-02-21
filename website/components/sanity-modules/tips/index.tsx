@@ -16,7 +16,7 @@ const Tips = ({ node }: { node: TipsT }): JSX.Element => {
   return (
     <div
       className={cl(
-        "max-w-2xl rounded-r border-l-[6px] border-l-gray-500 bg-gray-50 px-4 py-3 shadow-md md:px-8",
+        "relative-child linear max-w-2xl rounded-r border-l-[6px] border-l-gray-500 bg-gradient-to-l from-gray-100 to-gray-50 px-4 py-4 md:px-8",
         { "my-8": context.withinSection, "my-16": !context.withinSection }
       )}
     >

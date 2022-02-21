@@ -77,7 +77,7 @@ const DoDont = ({ node }: { node: DoDontV2 }) => {
 
   console.log(node);
   return (
-    <div className="mb-8">
+    <div className="relative-parent mb-16">
       <Heading level="3" className="index-lvl3" size="medium" spacing>
         {node.title}
       </Heading>

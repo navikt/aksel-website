@@ -59,17 +59,23 @@ export default {
               hidden: ({ parent }) => parent?.intern,
             },
             {
+              title: "Linker til et eksternt domene",
+              name: "ekstern_domene",
+              type: "boolean",
+              initialValue: false,
+              hidden: ({ parent }) => parent?.intern,
+            },
+            {
               title: "Tagging",
-              description: "Velg hvordan kortet skal tagges",
               name: "tags",
               type: "string",
-              initialValue: "default",
+              initialValue: "none",
               hidden: ({ parent }) => !parent?.intern,
               options: {
                 list: [
                   {
-                    value: "default",
-                    title: "Generisk tag (RELATERT INNHOLD)",
+                    value: "none",
+                    title: "Ingen tag",
                   },
                   {
                     value: "custom",
@@ -82,7 +88,8 @@ export default {
               title: "Tag",
               name: "tag",
               type: "string",
-              hidden: ({ parent }) => parent?.tags === "default",
+              hidden: ({ parent }) =>
+                parent?.tags === "default" || parent.ekstern_domene,
             },
           ],
         },

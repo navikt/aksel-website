@@ -28,20 +28,19 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
     x?.intern ? `/${x.intern_lenke}` : x.ekstern_link;
 
   const getTag = (x: any): string =>
-    x.tags === "custom" ? x?.tag : "Relatert Innhold";
+    x.ekstern_link.match(/^(?:https?:)?(?:\/\/)?([^\/\?]+)/)[0];
 
   return (
     <div
-      className={cl("flex flex-wrap gap-6", {
-        "mb-8": context.withinSection,
-        "mb-16": !context.withinSection,
-      })}
+      className={cl(
+        "relative-child mb-16 grid gap-4 [grid-template-columns:_repeat(auto-fit,_250px)]"
+      )}
     >
       {node.lenker.map((x) => (
         <NextLink key={x._key} href={getHref(x)}>
           <a
             onClick={(e) => logNavigation(e)}
-            className="group index-ignore relative h-40 min-w-[250px] max-w-sm flex-1 cursor-pointer rounded border-2 border-transparent bg-white p-6 shadow-card hover:border-link focus:border-focus focus:outline-none"
+            className="group index-ignore relative min-w-[250px] max-w-sm flex-1 cursor-pointer rounded border-2 border-transparent bg-white p-6 shadow-card hover:border-link focus:border-focus focus:outline-none"
           >
             <Heading
               size="xsmall"
@@ -50,12 +49,16 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
             >
               {x.title}
             </Heading>
-            <BodyShort size="small" className="mb-12">
+            <BodyShort size="small" className="text-text-muted">
               {x.description}
             </BodyShort>
-            <Detail className="absolute bottom-4 flex gap-2 uppercase text-text-muted">
-              {getTag(x)}
-            </Detail>
+
+            {x.tags !== "none" ||
+              (x.ekstern_domene && (
+                <Detail className="mt-6 uppercase text-text-muted">
+                  {x.ekstern_domene ? getTag(x) : x.tag}
+                </Detail>
+              ))}
           </a>
         </NextLink>
       ))}

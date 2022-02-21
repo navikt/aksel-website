@@ -1263,6 +1263,7 @@ export type RelatertInnhold = {
        *
        */
       intern?: boolean;
+      ekstern_domene?: boolean;
 
       /**
        * Lenke til Intern sanity-side — `reference`
@@ -1285,7 +1286,7 @@ export type RelatertInnhold = {
        *
        * Velg hvordan kortet skal tagges
        */
-      tags?: "default" | "custom";
+      tags?: "none" | "custom";
 
       /**
        * Tag — `string`
