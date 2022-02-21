@@ -103,7 +103,7 @@ const LightBox = ({
   useKey(" ", () => onClose(), {}, [onClose]);
 
   return (
-    <ScModal onClose={() => onClose()} open={open}>
+    <ScModal onClose={() => onClose()} open={open} className="animate-fadeIn">
       <ScWrapper onClick={() => onClose()}>
         <ScCloseButton>
           <BodyShort>Lukk</BodyShort>
