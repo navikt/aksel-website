@@ -15,7 +15,7 @@ const LiveDemo = ({ node }: { node: LiveDemoSeksjon }): JSX.Element => {
 
   return (
     <div className="mb-16">
-      <LevelTwoHeading>{["Live Demo"]}</LevelTwoHeading>
+      <LevelTwoHeading>{["Demo"]}</LevelTwoHeading>
       <SanityBlockContent blocks={node.body} />
       {node?.erstatt ? (
         <CodeExample node={node.code_ref as any} />
