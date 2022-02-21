@@ -314,6 +314,7 @@ export interface DsChangelog extends SanityDocument {
    * Eks: https://github.com/navikt/nav-frontend-moduler/pull/1382
    */
   pull_request?: string;
+  change?: "new" | "bug" | "breaking" | "uu" | "fix";
 
   /**
    * Pakker og versioner — `array`

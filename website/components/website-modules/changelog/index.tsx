@@ -50,18 +50,39 @@ const Log = ({ log }: { log: ChangelogT }) => {
     return isNaN(number) ? "PR" : `#${number}`;
   };
 
+  const getChange = (s: string) => {
+    console.log(s);
+    switch (s) {
+      case "breaking":
+        return "💥";
+      case "new":
+        return "✨";
+      case "bug":
+        return "🐞";
+      case "fix":
+        return "🔨";
+      case "uu":
+        return "♿️";
+      default:
+        return "";
+    }
+  };
+
   return (
     <ScDiv>
-      {log.change_date && (
-        <BodyShort size="small" as="div">
-          {`${moment(log.change_date).format("DD. MMM. YY")}`}
-        </BodyShort>
-      )}
+      <BodyShort as="span" className="flex gap-2" size="small">
+        {log.change_date && (
+          <span>{`${moment(log.change_date).format("DD. MMM. YY")}`}</span>
+        )}
+        {log?.pull_request && (
+          <Link href={log.pull_request} className="text-text">
+            {getPrText(log.pull_request)}
+          </Link>
+        )}
+        {log.change && <span>{getChange(log.change)}</span>}
+      </BodyShort>
       <Heading spacing size="small" level="3">
         {`${log.title}  `}
-        {log?.pull_request && (
-          <Link href={log.pull_request}>{getPrText(log.pull_request)}</Link>
-        )}
       </Heading>
       <ScTagWrapper>
         {log.packages.map((p) => (
