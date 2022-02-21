@@ -51,7 +51,6 @@ const Log = ({ log }: { log: ChangelogT }) => {
   };
 
   const getChange = (s: string) => {
-    console.log(s);
     switch (s) {
       case "breaking":
         return "💥";
