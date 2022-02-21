@@ -164,6 +164,7 @@ const uuSeksjon = `_type == "uu_seksjon" =>{
 const doDontV2 = `_type == "do_dont_v2" =>{
   ...,
   forklaring[]{
+    ...,
     ${markDef}
   }
 }`;
