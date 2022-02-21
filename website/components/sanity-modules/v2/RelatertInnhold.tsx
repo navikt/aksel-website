@@ -44,7 +44,7 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
             <Heading
               size="xsmall"
               as="div"
-              className="mb-2 group-hover:text-link group-focus:text-link"
+              className="mb-2 underline group-hover:text-link group-hover:no-underline group-focus:text-link group-focus:no-underline"
             >
               {x.title}
             </Heading>
