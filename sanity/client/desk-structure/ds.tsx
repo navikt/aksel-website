@@ -83,13 +83,17 @@ export const dsPanel = async (roles) => {
                       .icon(() => <Facilitet />)
                       .child(createSuperPane("ds_component_page")),
                     S.listItem()
-                      .title("Komponent-artikler (ny struktur beta)")
+                      .title("Komponent-artikler BETA")
                       .icon(() => <Facilitet />)
                       .child(createSuperPane("komponent_artikkel")),
                     S.listItem()
                       .title("Artikler")
                       .icon(() => <FileContent />)
                       .child(createSuperPane("ds_article_page")),
+                    S.listItem()
+                      .title("Artikler BETA")
+                      .icon(() => <FileContent />)
+                      .child(createSuperPane("ds_artikkel")),
                     S.divider(),
                     S.listItem()
                       .title("Visning av sider i navigasjon")

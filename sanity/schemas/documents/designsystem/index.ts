@@ -1,6 +1,7 @@
 export { default as ArticlePage } from "./articles/article";
 export { default as ComponentPage } from "./articles/component";
 export { default as KomponentArtikkel } from "./articles/komponent";
+export { default as Artikkel } from "./articles/artikkel";
 export { default as ComponentTemplate } from "./component-template";
 export { default as Changelog } from "./changelog";
 export { default as CodeExamples, example } from "./automated/code-example";
