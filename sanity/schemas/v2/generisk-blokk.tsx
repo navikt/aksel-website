@@ -7,6 +7,7 @@ import {
   LightBulb,
   NewTab,
   Picture,
+  Star,
   Warning,
   Wrench,
 } from "@navikt/ds-icons";
@@ -66,6 +67,11 @@ export const contentBlocks = (s?: string) => {
     },
     { type: "tabell", title: "Tabell", icon: () => <Data /> },
     { type: "accordion_v2", title: "Accordion", icon: () => <Expand /> },
+    {
+      type: "spesial_seksjon",
+      title: "Spesial seksjon",
+      icon: () => <Star />,
+    },
   ];
 
   switch (s) {

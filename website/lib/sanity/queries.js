@@ -224,11 +224,46 @@ const genericBlock = `
   ${accordionBlock}
 `;
 
+const spesialSeksjon = `_type == "spesial_seksjon" =>{
+  ...,
+  modul == "endringslogg" =>{
+    "logs": *[_type == 'ds_changelog' && !(_id in path("drafts.**"))]{
+      ...,
+      packages[]{
+        ...,
+        "pack": @.pack->{...}
+      },
+      body[]{
+        ...,
+        ${markDef}
+      },
+    }
+  },
+  modul == "komponentoversikt" =>{
+    "oversikt": *[_id == 'ds_component_overview_id' && !(_id in path("drafts.**"))][0]{
+      ...,
+      components[]{
+        ...,
+        linked_package->{...},
+        "doc_link": doc_link->slug.current
+      }
+    }
+  },
+  modul == "farge_kategori" =>{
+      "farge": farge_ref->{..., description[]{
+        ...,
+        ${markDef}
+      }
+    }
+  }
+}`;
+
 const generiskSeksjon = `_type == "generisk_seksjon" =>{
   ...,
   brikker[]{
     ...,
-    ${genericBlock}
+    ${genericBlock},
+    ${spesialSeksjon}
   },
 }`;
 
@@ -250,7 +285,8 @@ ${anatomiSeksjon},
 ${liveSeksjon},
 ${uuSeksjon},
 ${generiskSeksjon},
-${installSeksjon}
+${installSeksjon},
+${spesialSeksjon}
 `;
 
 export const allDocuments = `*[]{...,'slug': slug.current }`;
@@ -282,7 +318,7 @@ export const gpDocumentBySlug = `*[slug.current == $slug]
   }
 }`;
 
-export const dsDocuments = `*[_type in ["ds_component_page", "ds_article_page", "komponent_artikkel"]]{ _type, 'slug': slug.current, article_type, tabs, design, development, accessibility }`;
+export const dsDocuments = `*[_type in ["ds_component_page", "ds_article_page", "komponent_artikkel", "ds_artikkel"]]{ ..., 'slug': slug.current }`;
 
 export const dsFrontpageQuery = `*[_id == "frontpage_designsystem"]
 {
@@ -346,7 +382,18 @@ export const dsDocumentBySlug = `*[slug.current == $slug]
       ...,
       ${deRefs}
     }
-  }
+  },
+  innhold[]{
+    ...,
+    ${deRefs}
+  },
+  innhold_tabs[]{
+    ...,
+    innhold[]{
+      ...,
+      ${deRefs}
+    }
+  },
 }`;
 
 export const dsNavigationQuery = `

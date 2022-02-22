@@ -15,6 +15,7 @@ import Anatomi from "./anatomi";
 import Installasjon from "./installasjon";
 import Props from "./props";
 import Accordion from "./accordion";
+import SpesialSeksjon from "./spesial-seksjon";
 
 const v2Blocks = [
   GeneriskBlokk,
@@ -35,6 +36,7 @@ const v2Blocks = [
   Props,
   Accordion,
   RiktekstTabell,
+  SpesialSeksjon,
 ];
 
 export default v2Blocks;

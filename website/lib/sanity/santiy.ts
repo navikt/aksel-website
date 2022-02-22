@@ -75,6 +75,25 @@ export const getDsPaths = async (): Promise<string[][]> => {
         defaultPush();
         break;
       }
+      case "ds_artikkel": {
+        if (!page?.artikkel_type) {
+          defaultPush();
+          break;
+        }
+        if (!page.innhold_tabs) break;
+        const tabbedArticleTabs = page.innhold_tabs
+          .map((tab) => {
+            return tab.innhold && tab.title
+              ? tab.title?.toLowerCase().replace(/\s+/g, "-")
+              : null;
+          })
+          .filter((x) => !!x);
+        tabbedArticleTabs.forEach((tab) => {
+          paths.push([...slug, tab]);
+        });
+        defaultPush();
+        break;
+      }
       default:
         defaultPush();
         break;

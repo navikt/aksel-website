@@ -36,6 +36,7 @@ import {
   AccordionV2,
   InstallasjonSeksjon,
   PropsSeksjon,
+  SpesialSeksjon,
 } from ".";
 
 import * as Icons from "@navikt/ds-icons";
@@ -114,6 +115,7 @@ const serializers = {
     accordion_v2: ({ node }) => <AccordionV2 node={node} />,
     installasjon_seksjon: ({ node }) => <InstallasjonSeksjon node={node} />,
     props_seksjon: ({ node }) => <PropsSeksjon node={node} />,
+    spesial_seksjon: ({ node }) => <SpesialSeksjon node={node} />,
 
     block: ({ node, children }) => {
       const context: BlockContextT = useContext(BlockContext);
