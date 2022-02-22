@@ -80,7 +80,7 @@ export default {
     ...documentInformation(prefix).filter((x) => x?.name !== "ingress"),
     {
       type: "boolean",
-      name: "article_type",
+      name: "artikkel_type",
       title: "Bruk Tabs",
       group: "innhold",
       initialValue: false,
@@ -90,7 +90,7 @@ export default {
       type: "array",
       title: "Innhold",
       group: "innhold",
-      hidden: ({ document }) => !!document?.article_type,
+      hidden: ({ document }) => !!document?.artikkel_type,
       validation: (Rule) =>
         Rule.required().min(1).error("Tabben må ha noe innhold"),
       of: [
@@ -113,7 +113,7 @@ export default {
       title: "Innhold i Tabs",
       type: "array",
       group: "innhold",
-      hidden: ({ document }) => !document?.article_type,
+      hidden: ({ document }) => !document?.artikkel_type,
       of: [
         {
           name: "tab",

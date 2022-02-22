@@ -2,11 +2,14 @@ import Error from "next/error";
 import React, { useEffect, useState } from "react";
 import {
   DsArticlePage,
+  DsArtikkel,
   DsComponentPage,
   GpArticlePage,
   KomponentArtikkel,
 } from "../../lib";
 import ArticleTemplate from "./page-templates/ArticlePageTemplate";
+import ArtikkelTemplate from "./page-templates/Artikkel";
+import ArtikkelTabbedTemplate from "./page-templates/ArtikkelTabbed";
 import ComponentPageTemplate from "./page-templates/ComponentPageTemplate";
 import KomponentArtikkelTemplate from "./page-templates/KomponentArtikkel";
 import TabbedArticleTemplate from "./page-templates/TabbedArticlePageTemplate";
@@ -33,7 +36,7 @@ type ds_article = {
 };
 
 type ds_artikkel = {
-  ds_artikkel: (props: { data: DsArticlePage; title: string }) => JSX.Element;
+  ds_artikkel: (props: { data: DsArtikkel; title: string }) => JSX.Element;
 };
 
 type gp_article = {
@@ -43,7 +46,12 @@ type gp_article = {
   }) => JSX.Element;
 };
 
-type templateT = ds_component | ds_article | gp_article | komponent_artikkel;
+type templateT =
+  | ds_component
+  | ds_article
+  | gp_article
+  | komponent_artikkel
+  | ds_artikkel;
 
 const templates: templateT = {
   komponent_artikkel: (props) => <KomponentArtikkelTemplate {...props} />,
@@ -53,6 +61,12 @@ const templates: templateT = {
       <TabbedArticleTemplate {...props} />
     ) : (
       <ArticleTemplate {...props} />
+    ),
+  ds_artikkel: (props) =>
+    props.data.artikkel_type ? (
+      <ArtikkelTabbedTemplate {...props} />
+    ) : (
+      <ArtikkelTemplate {...props} />
     ),
   gp_article_page: (props) => <ArticleTemplate {...props} />,
 };

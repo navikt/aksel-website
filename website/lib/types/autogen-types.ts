@@ -1016,7 +1016,7 @@ export interface DsArtikkel extends SanityDocument {
    *
    *
    */
-  article_type?: boolean;
+  artikkel_type?: boolean;
 
   /**
    * Innhold — `array`
