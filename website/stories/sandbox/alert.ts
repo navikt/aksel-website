@@ -50,7 +50,7 @@ AlertSandbox.args = {
     size: ["medium", "small"],
     fullWidth: false,
     inline: false,
-    Komposisjon: ["", "Med heading"],
+    Komposisjon: ["Uten heading", "Med heading"],
   },
 };
 

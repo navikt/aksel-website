@@ -32,6 +32,10 @@ type ds_article = {
   }) => JSX.Element;
 };
 
+type ds_artikkel = {
+  ds_artikkel: (props: { data: DsArticlePage; title: string }) => JSX.Element;
+};
+
 type gp_article = {
   gp_article_page: (props: {
     data: DsArticlePage;
