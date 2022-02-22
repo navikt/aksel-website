@@ -6,6 +6,7 @@ import { DsCodeExample as DsCodeExampleT } from "../../../../lib";
 import styled from "styled-components";
 
 import dynamic from "next/dynamic";
+import { BgColors } from "../../../../stories/sandbox/types";
 
 const ScSkeleton = styled.div`
   display: flex;
@@ -34,8 +35,8 @@ type ContextProps = {
   setActiveTab: React.Dispatch<React.SetStateAction<number>>;
   fullscreenLink: string;
   setFullscreenLink: React.Dispatch<React.SetStateAction<string>>;
-  previewBg: string;
-  setPreviewBg: React.Dispatch<React.SetStateAction<string>>;
+  previewBg: BgColors;
+  setPreviewBg: React.Dispatch<React.SetStateAction<BgColors>>;
 };
 
 export const CodeContext = createContext<ContextProps>({
@@ -48,7 +49,7 @@ export const CodeContext = createContext<ContextProps>({
   setActiveTab: () => null,
   fullscreenLink: "",
   setFullscreenLink: () => null,
-  previewBg: "--navds-semantic-color-canvas-background",
+  previewBg: null,
   setPreviewBg: () => null,
 });
 
@@ -73,9 +74,7 @@ const Code = ({ node }: { node: DsCodeExampleT }): JSX.Element => {
   );
   const [activeTab, setActiveTab] = useState(-1);
   const [fullscreenLink, setFullscreenLink] = useState("");
-  const [previewBg, setPreviewBg] = useState(
-    "--navds-semantic-color-canvas-background"
-  );
+  const [previewBg, setPreviewBg] = useState(BgColors.GRADIENT);
 
   if (
     (!node.preview && !node?.tabs) ||

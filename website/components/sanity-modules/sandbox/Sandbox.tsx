@@ -20,7 +20,7 @@ import {
 } from "react-live";
 import { DsCodeSandbox as SandboxT } from "../../../lib";
 import getSandbox from "../../../stories/sandbox";
-import { SandboxComponent } from "../../../stories/sandbox/types";
+import { BgColors, SandboxComponent } from "../../../stories/sandbox/types";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import CopyButton from "../code/CopyButton";
 import {
@@ -56,7 +56,7 @@ const scope = {
 type SandboxContextProps = {
   sandboxState: SandboxStateT;
   setSandboxState: React.Dispatch<React.SetStateAction<SandboxStateT>>;
-  bg: string;
+  bg: BgColors;
   setBg: React.Dispatch<React.SetStateAction<string>>;
   reset: () => void;
   visibleCode: boolean;
@@ -103,9 +103,19 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
       const args = generateState(sandboxComp.args);
       const newState = getInitialState(args);
       setSandboxState({ ...sandboxState, args, propsState: newState });
-      setCode(formatCode(sandboxComp(newState.props).trim()));
-      sandboxComp?.args?.background &&
-        setBackground(sandboxComp.args.background);
+
+      const sandboxStory = sandboxComp(newState.props);
+
+      typeof sandboxStory === "string"
+        ? setCode(formatCode(sandboxStory.trim()))
+        : setCode(formatCode(sandboxStory.comp.trim()));
+
+      if (typeof sandboxStory !== "string") {
+        sandboxStory?.bg && setBackground(sandboxStory.bg);
+      } else {
+        sandboxComp?.args?.background &&
+          setBackground(sandboxComp.args.background);
+      }
     }
   }, [sandboxComp]);
 
@@ -116,8 +126,20 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
     });
 
   useEffect(() => {
-    sandboxState.propsState &&
-      setCode(formatCode(sandboxComp(sandboxState.propsState.props).trim()));
+    const updateComp = () => {
+      const sandboxStory = sandboxComp(sandboxState.propsState.props);
+      if (typeof sandboxStory !== "string") {
+        sandboxStory?.bg && setBackground(sandboxStory.bg);
+        setCode(formatCode(sandboxStory.comp.trim()));
+      } else {
+        setCode(formatCode(sandboxStory.trim()));
+        sandboxComp?.args?.background
+          ? setBackground(sandboxComp.args.background)
+          : setBackground(null);
+      }
+    };
+
+    sandboxState.propsState && updateComp();
 
     /* Hack to make editor update */
     setReseting(true);

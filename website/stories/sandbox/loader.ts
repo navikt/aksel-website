@@ -1,4 +1,4 @@
-import { SandboxComponent } from "./types";
+import { BgColors, SandboxComponent } from "./types";
 
 const LoaderSandbox: SandboxComponent = (props) => {
   const propVariant = props?.variant ? ` variant="${props.variant}"` : "";
@@ -6,7 +6,11 @@ const LoaderSandbox: SandboxComponent = (props) => {
   const transparent = props?.transparent ? ` transparent` : "";
   const title = props?.title ? ` title="${props.title}"` : "";
 
-  return `<Loader${propVariant}${size}${transparent}${title} />`;
+  const comp = `<Loader${propVariant}${size}${transparent}${title} />`;
+  if (props?.variant === "inverted") {
+    return { comp, bg: BgColors.INVERTEDGRADIENT };
+  }
+  return comp;
 };
 
 LoaderSandbox.args = {

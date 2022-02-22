@@ -1,7 +1,19 @@
 import cl from "classnames";
 import React, { useContext } from "react";
+
+import { BgColors, getBgColors } from "../../../stories/sandbox/types";
 import { SandboxContext } from "./Sandbox";
 import SettingsPanel from "./settings-panel/PropsPanel";
+
+const buttonStyles = (bg?: BgColors) => {
+  const light = "bg-gray-800/10 hover:bg-gray-800/20 focus:shadow-focus";
+  const dark =
+    "bg-gray-100/10 hover:bg-gray-100/20 focus:shadow-focus-inverted text-text-inverted";
+  if (!bg) return light;
+  if ([BgColors.DEFAULT, BgColors.GRADIENT, BgColors.WHITE].includes(bg)) {
+    return light;
+  } else return dark;
+};
 
 const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
   const { sandboxState, setSandboxState, setVisibleCode, visibleCode, bg } =
@@ -20,10 +32,7 @@ const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
         /* "bg-[linear-gradient(-45deg,_#d8f9ff_20%,_#f9fccc_100%)]" */
         "bg-[linear-gradient(-45deg,_#f1f1f1_0%,_white_100%)]"
       )}
-      style={{
-        backgroundColor: bg ? `var(${bg})` : undefined,
-        backgroundImage: bg && "none",
-      }}
+      style={getBgColors(bg)}
     >
       <div
         className={cl(
@@ -37,14 +46,18 @@ const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
         {children}
         <div className="absolute top-3 right-4 flex gap-4">
           <button
-            className=" rounded bg-gray-800/10 py-1 px-3 text-medium hover:bg-gray-800/20 focus:shadow-focus focus:outline-none"
+            className={cl(
+              buttonStyles(bg),
+              "rounded py-1 px-3 text-medium focus:outline-none"
+            )}
             onClick={() => setVisibleCode(!visibleCode)}
           >
             {visibleCode ? "Skjul kode" : "Vis kode"}
           </button>
           <button
             className={cl(
-              "rounded bg-gray-800/10 py-1 px-3 text-medium hover:bg-gray-800/20 focus:shadow-focus focus:outline-none",
+              buttonStyles(bg),
+              "rounded py-1 px-3 text-medium focus:outline-none",
               { hidden: sandboxState.openSettings || hideProps }
             )}
             onClick={() =>

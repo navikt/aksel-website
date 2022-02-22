@@ -6,6 +6,7 @@ import CodeExample from "./getCodeExample";
 import { useId } from "@navikt/ds-react";
 import styled from "styled-components";
 import React from "react";
+import { getBgColors } from "../../../../stories/sandbox/types";
 
 /**
  *
@@ -40,15 +41,13 @@ const ScDiv = styled.div`
   border-top: 1px solid var(--navds-semantic-color-divider);
 `;
 
-const ScInnerDiv = styled.div<{ bg?: string }>`
+const ScInnerDiv = styled.div`
   gap: 1rem;
   padding: 2rem;
   display: inline-flex;
   align-items: baseline;
   flex-wrap: wrap;
   width: 100%;
-
-  ${(props) => props.bg && `background-color: var(${props.bg});`}
 `;
 
 const CodePreview = (): JSX.Element => {
@@ -105,11 +104,13 @@ const CodePreview = (): JSX.Element => {
 
   const Comp = CodeExample(url);
 
+  const bgt = getBgColors(previewBg);
+
   return (
     <>
       {Comp && (
         <ScDiv role="presentation">
-          <ScInnerDiv bg={previewBg} ref={setWrapperRef}>
+          <ScInnerDiv ref={setWrapperRef} style={bgt}>
             <Comp />
           </ScInnerDiv>
         </ScDiv>

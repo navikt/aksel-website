@@ -4,7 +4,7 @@ const ToggleGroupSandbox: SandboxComponent = (props) => {
   const label = props?.label ? ` label="Inbox"` : "";
   const size = props?.size ? ` size="${props.size}"` : "";
 
-  return `const ToggleDemo = () => {
+  const comp = `const ToggleDemo = () => {
     const [value, setValue] = React.useState("ulest");
 
     return (
@@ -23,6 +23,8 @@ const ToggleGroupSandbox: SandboxComponent = (props) => {
   };
 
   render(<ToggleDemo />)`;
+
+  return comp;
 };
 
 ToggleGroupSandbox.args = {
