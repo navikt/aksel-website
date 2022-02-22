@@ -18,7 +18,7 @@ const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
       className={cl(
         "relative flex h-full min-h-[300px] w-full rounded-lg border border-solid border-gray-800/10 bg-origin-border shadow-md",
         /* "bg-[linear-gradient(-45deg,_#d8f9ff_20%,_#f9fccc_100%)]" */
-        "bg-[linear-gradient(-45deg,_#f1f1f1_20%,_white_100%)]"
+        "bg-[linear-gradient(-45deg,_#f1f1f1_0%,_white_100%)]"
       )}
       style={{
         backgroundColor: bg ? `var(${bg})` : undefined,
