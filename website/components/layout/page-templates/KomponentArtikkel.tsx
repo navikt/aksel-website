@@ -104,7 +104,7 @@ const KomponentArtikkelTemplate = ({
             className="index-lvl1 flex flex-wrap items-center gap-4"
           >
             {data.heading}
-            {npmPackage.status && npmPackage.status !== "live" && (
+            {npmPackage?.status && npmPackage.status !== "live" && (
               <Tag
                 variant="info"
                 size="small"
