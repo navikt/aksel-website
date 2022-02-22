@@ -314,7 +314,6 @@ export interface DsChangelog extends SanityDocument {
    * Eks: https://github.com/navikt/nav-frontend-moduler/pull/1382
    */
   pull_request?: string;
-  change?: "new" | "bug" | "breaking" | "uu" | "fix";
 
   /**
    * Pakker og versioner — `array`
@@ -339,6 +338,13 @@ export interface DsChangelog extends SanityDocument {
       version?: string;
     }>
   >;
+
+  /**
+   * Type endring — `string`
+   *
+   *
+   */
+  change?: "new" | "bug" | "breaking" | "uu" | "fix";
 
   /**
    * Tags — `array`
@@ -676,7 +682,7 @@ export interface DsFrontpage extends SanityDocument {
        *
        */
       link_ref?: SanityReference<
-        DsComponentPage | DsArticlePage | KomponentArtikkel
+        DsComponentPage | DsArticlePage | KomponentArtikkel | DsArtikkel
       >;
 
       /**
@@ -846,7 +852,7 @@ export interface DsComponentOverview extends SanityDocument {
        *
        */
       doc_link?: SanityReference<
-        DsComponentPage | DsArticlePage | KomponentArtikkel
+        DsComponentPage | DsArticlePage | KomponentArtikkel | DsArtikkel
       >;
     }>
   >;
@@ -959,6 +965,117 @@ export interface KomponentArtikkel extends SanityDocument {
    *
    */
   figma_link?: string;
+
+  /**
+   * Tilbakemeldinger — `object`
+   *
+   *
+   */
+  metadata_feedback?: {
+    _type: "metadata_feedback";
+    /**
+     * Skjul artikkel feedback modul — `boolean`
+     *
+     * Gjemmer <<Var denne artikkelen til hjelp?>> modulen.
+     */
+    hide_feedback?: boolean;
+  };
+}
+
+/**
+ * Artikkel BETA
+ *
+ *
+ */
+export interface DsArtikkel extends SanityDocument {
+  _type: "ds_artikkel";
+
+  /**
+   * Bidragsytere — `array`
+   *
+   * Legg til de som har bidratt med denne siden!
+   */
+  contributors?: Array<SanityKeyedReference<Editor>>;
+
+  /**
+   * Sidetittel — `string`
+   *
+   * Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.
+   */
+  heading?: string;
+
+  /**
+   * url — `slug`
+   *
+   * Strukturen bestemmes ikke av URL-en
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Bruk Tabs — `boolean`
+   *
+   *
+   */
+  article_type?: boolean;
+
+  /**
+   * Innhold — `array`
+   *
+   *
+   */
+  innhold?: Array<
+    | SanityKeyed<GeneriskSeksjon>
+    | SanityKeyed<Tips>
+    | SanityKeyed<RelatertInnhold>
+    | SanityKeyed<{
+        _type: "spesial_seksjon";
+        /**
+         * Modul — `string`
+         *
+         *
+         */
+        modul?:
+          | "farge_kategori"
+          | "ikonsok"
+          | "endringslogg"
+          | "komponentoversikt";
+
+        /**
+         * Farge kategori — `reference`
+         *
+         *
+         */
+        farge_ref?: SanityReference<DsColorCategories>;
+      }>
+  >;
+
+  /**
+   * Innhold i Tabs — `array`
+   *
+   *
+   */
+  innhold_tabs?: Array<
+    SanityKeyed<{
+      _type: "tab";
+      /**
+       * Tittel — `string`
+       *
+       * Innhold vil da legges under url/tab-tittel
+       */
+      title?: string;
+
+      /**
+       * Innhold — `array`
+       *
+       *
+       */
+      innhold?: Array<
+        | SanityKeyed<GeneriskSeksjon>
+        | SanityKeyed<Tips>
+        | SanityKeyed<RelatertInnhold>
+      >;
+    }>
+  >;
 
   /**
    * Tilbakemeldinger — `object`
@@ -1263,7 +1380,6 @@ export type RelatertInnhold = {
        *
        */
       intern?: boolean;
-      ekstern_domene?: boolean;
 
       /**
        * Lenke til Intern sanity-side — `reference`
@@ -1271,7 +1387,11 @@ export type RelatertInnhold = {
        *
        */
       intern_lenke?: SanityReference<
-        DsComponentPage | DsArticlePage | KomponentArtikkel | GpArticlePage
+        | DsComponentPage
+        | DsArticlePage
+        | KomponentArtikkel
+        | DsArtikkel
+        | GpArticlePage
       >;
 
       /**
@@ -1282,9 +1402,16 @@ export type RelatertInnhold = {
       ekstern_link?: string;
 
       /**
+       * Linker til et eksternt domene — `boolean`
+       *
+       *
+       */
+      ekstern_domene?: boolean;
+
+      /**
        * Tagging — `string`
        *
-       * Velg hvordan kortet skal tagges
+       *
        */
       tags?: "none" | "custom";
 
@@ -1582,7 +1709,7 @@ export type NavigationLink = {
    *
    */
   link_ref?: SanityReference<
-    DsComponentPage | DsArticlePage | KomponentArtikkel
+    DsComponentPage | DsArticlePage | KomponentArtikkel | DsArtikkel
   >;
 };
 
@@ -1868,7 +1995,11 @@ export type LinkPanel = {
    *
    */
   internal_link?: SanityReference<
-    DsComponentPage | DsArticlePage | KomponentArtikkel | GpArticlePage
+    | DsComponentPage
+    | DsArticlePage
+    | KomponentArtikkel
+    | DsArtikkel
+    | GpArticlePage
   >;
 
   /**
@@ -2030,7 +2161,11 @@ export type RelatedPages = {
        *
        */
       internal_link?: SanityReference<
-        DsComponentPage | DsArticlePage | KomponentArtikkel | GpArticlePage
+        | DsComponentPage
+        | DsArticlePage
+        | KomponentArtikkel
+        | DsArtikkel
+        | GpArticlePage
       >;
 
       /**
@@ -2248,7 +2383,7 @@ export type DsNavigationHeading = {
    * Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via headern
    */
   link_ref?: SanityReference<
-    DsComponentPage | DsArticlePage | KomponentArtikkel
+    DsComponentPage | DsArticlePage | KomponentArtikkel | DsArtikkel
   >;
 
   /**
@@ -2272,7 +2407,7 @@ export type DsNavigationHeading = {
          *
          */
         link?: SanityReference<
-          DsComponentPage | DsArticlePage | KomponentArtikkel
+          DsComponentPage | DsArticlePage | KomponentArtikkel | DsArtikkel
         >;
       }>
     | SanityKeyed<{
@@ -2322,6 +2457,7 @@ export type Documents =
   | DsComponentOverview
   | DsPackage
   | KomponentArtikkel
+  | DsArtikkel
   | GpFrontpage
   | GpArticlePage;
 
