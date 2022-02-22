@@ -24,7 +24,8 @@ export const ButtonCss = css`
   :hover {
     color: var(--navds-semantic-color-text);
     background-color: var(
-      --navds-semantic-color-interaction-primary-hover-subtle
+      --navds-semantic-color-interaction-primary-hover-subtle,
+      rgba(230, 240, 255, 1)
     );
 
     :before {
@@ -62,8 +63,10 @@ export const PreWrapper = styled.div<{ active: boolean; standalone?: boolean }>`
   position: relative;
   background-color: var(--navds-semantic-color-component-background-inverted);
   display: ${(props) => (props.active ? "block" : "none")};
-  margin-bottom: var(--navds-spacing-7);
+  margin-bottom: var(--navds-spacing-8);
   ${(props) => props.standalone && "border-radius: 6px;"}
+  max-height: 300px;
+  overflow-y: auto;
 `;
 
 export const Pre = styled.pre`

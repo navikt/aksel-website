@@ -1,3 +1,5 @@
+import { NewTab } from "@navikt/ds-icons";
+import React from "react";
 import { allDocumentTypes } from "../../config";
 
 export default {
@@ -95,8 +97,22 @@ export default {
     },
   ],
   preview: {
-    prepare() {
-      return { title: "Relaterte sider" };
+    select: {
+      links: "links",
     },
+    prepare(s) {
+      return { title: "Relaterte sider cards" };
+    },
+    /*   component: (s) => {
+      return (
+        <span>
+          <NewTab /> Relaterte sider
+          {s?.links?.map((x) => {
+            console.log(x);
+            return <div>{x?.link?.title}</div>;
+          })}
+        </span>
+      );
+    }, */
   },
 };

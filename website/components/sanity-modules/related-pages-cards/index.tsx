@@ -14,7 +14,7 @@ const ScRelatedPagesCard = styled.div`
   display: grid;
   gap: var(--navds-spacing-6);
   justify-content: flex-start;
-  margin-bottom: var(--navds-spacing-7);
+  margin-bottom: var(--navds-spacing-8);
 `;
 
 const ScCard = styled.a`

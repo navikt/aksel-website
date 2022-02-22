@@ -10,7 +10,7 @@ import {
   SkipLink,
   useAmplitude,
 } from "../../components";
-import DesignsystemFooter from "../../components/layout/footer/DesignsystemFooter";
+import Footer from "../../components/layout/footer/Footer";
 import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
 import { SanityBlockContent } from "../../components/SanityBlockContent";
 import {
@@ -88,7 +88,7 @@ const Page = (props: {
         </div>
         <DsFrontpageFooterIllustration className="flex h-full w-full lg:hidden" />
       </main>
-      <DesignsystemFooter />
+      <Footer />
     </>
   );
 };

@@ -1,22 +1,8 @@
 import { Alert as DsAlert, Heading } from "@navikt/ds-react";
 import React from "react";
-import styled from "styled-components";
 import { slugger } from "../..";
 import { Alert as AlertT } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
-
-const ScAlert = styled(DsAlert)`
-  > * .navds-typo--spacing :last-child {
-    margin: 0;
-  }
-
-  /* Contrast fix */
-  code {
-    color: var(--navds-global-color-red-500);
-    background-color: transparent;
-    padding: 0;
-  }
-`;
 
 const Alert = ({ node }: { node: AlertT }): JSX.Element => {
   const slug =
@@ -25,20 +11,20 @@ const Alert = ({ node }: { node: AlertT }): JSX.Element => {
     slugger.slug(node.heading.toString());
 
   return (
-    <div className="section--small">
-      <ScAlert variant={node.variant} size={node.size}>
+    <div className="section--small relative-child">
+      <DsAlert variant={node.variant} size={node.size}>
         {node.heading && (
           <Heading
             spacing
             size={node.size === "medium" ? "small" : "xsmall"}
             as={node.heading_level}
-            id={slug}
+            id={slug || undefined}
           >
             {node.heading}
           </Heading>
         )}
-        <SanityBlockContent blocks={node.body} size={node.size} />
-      </ScAlert>
+        <SanityBlockContent blocks={node.body} size={node.size} noLastMargin />
+      </DsAlert>
     </div>
   );
 };

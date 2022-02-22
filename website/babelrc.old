@@ -1,0 +1,16 @@
+/*
+ * Styled components server -> client sync issue fix
+ */
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    "macros",
+    [
+      "styled-components",
+      {
+        "ssr": true,
+        "displayName": true
+      }
+    ]
+  ]
+}

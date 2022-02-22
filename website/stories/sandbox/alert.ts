@@ -1,6 +1,6 @@
 import { SandboxComponent } from "./types";
 
-const AlertSandbox: SandboxComponent = (props, variant) => {
+const AlertSandbox: SandboxComponent = (props) => {
   const propVariant = props?.variant ? ` variant="${props.variant}"` : "";
   const size = props?.size ? ` size="${props.size}"` : "";
   const fullwidth = props?.fullWidth ? ` fullWidth` : "";
@@ -34,7 +34,7 @@ const AlertSandbox: SandboxComponent = (props, variant) => {
     ${text}
   </Alert>`;
 
-  switch (variant) {
+  switch (props?.Komposisjon) {
     case "":
       return comp;
     case "Med heading":
@@ -50,8 +50,8 @@ AlertSandbox.args = {
     size: ["medium", "small"],
     fullWidth: false,
     inline: false,
+    Komposisjon: ["", "Med heading"],
   },
-  variants: ["", "Med heading"],
 };
 
 export default AlertSandbox;

@@ -18,7 +18,6 @@ import {
   LiveProvider,
   withLive,
 } from "react-live";
-import styled from "styled-components";
 import { DsCodeSandbox as SandboxT } from "../../../lib";
 import getSandbox from "../../../stories/sandbox";
 import { SandboxComponent } from "../../../stories/sandbox/types";
@@ -31,13 +30,6 @@ import {
   StateT,
 } from "./settings-panel/generateState";
 import PreviewWrapper from "./PreviewWrapper";
-
-const ScRelativeDiv = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: var(--navds-spacing-7);
-`;
 
 const formatCode = (code: string) => {
   try {
@@ -59,46 +51,46 @@ const scope = {
   ...DsReact,
   ...DsReactInternal,
   ...DsIcons,
-  styled,
 };
 
 type SandboxContextProps = {
   sandboxState: SandboxStateT;
-  setSandboxState: React.Dispatch<SandboxStateT>;
+  setSandboxState: React.Dispatch<React.SetStateAction<SandboxStateT>>;
   bg: string;
-  setBg: React.Dispatch<string>;
+  setBg: React.Dispatch<React.SetStateAction<string>>;
   reset: () => void;
+  visibleCode: boolean;
+  setVisibleCode: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const SandboxContext = createContext<SandboxContextProps>({
   sandboxState: null,
   setSandboxState: () => null,
-  bg: "--navds-semantic-color-canvas-background",
+  bg: null,
   setBg: () => null,
   reset: () => null,
+  visibleCode: false,
+  setVisibleCode: () => null,
 });
 
 interface SandboxStateT {
   args: ParsedArgsT;
   propsState: StateT;
   openSettings: boolean;
-  inlineSettings: boolean;
 }
 
 const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
   const [code, setCode] = useState<string>(null);
+  const [visibleCode, setVisibleCode] = useState(false);
   const [reseting, setReseting] = useState(false);
   const preFocusCapture = useRef<HTMLDivElement>(null);
   const focusCapture = useRef<HTMLButtonElement>(null);
-  const [background, setBackground] = useState(
-    "--navds-semantic-color-canvas-background"
-  );
+  const [background, setBackground] = useState(null);
 
   const [sandboxState, setSandboxState] = useState<SandboxStateT>({
     args: null,
     propsState: null,
     openSettings: false,
-    inlineSettings: true,
   });
 
   const sandboxComp: SandboxComponent | null = useMemo(
@@ -111,9 +103,7 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
       const args = generateState(sandboxComp.args);
       const newState = getInitialState(args);
       setSandboxState({ ...sandboxState, args, propsState: newState });
-      setCode(
-        formatCode(sandboxComp(newState.props, newState.variants).trim())
-      );
+      setCode(formatCode(sandboxComp(newState.props).trim()));
       sandboxComp?.args?.background &&
         setBackground(sandboxComp.args.background);
     }
@@ -127,23 +117,12 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
 
   useEffect(() => {
     sandboxState.propsState &&
-      setCode(
-        formatCode(
-          sandboxComp(
-            sandboxState.propsState.props,
-            sandboxState.propsState.variants
-          ).trim()
-        )
-      );
+      setCode(formatCode(sandboxComp(sandboxState.propsState.props).trim()));
 
     /* Hack to make editor update */
     setReseting(true);
     setTimeout(() => setReseting(false), 50);
   }, [sandboxState.propsState]);
-
-  if (!node || !node.title) {
-    return null;
-  }
 
   const handleKeyDown = (event) => {
     if (event.key === "Tab") {
@@ -154,41 +133,48 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
     }
   };
 
+  if (!node || !node.title) {
+    return null;
+  }
+
   const Editor = (
     <LiveProvider code={code} scope={scope} noInline={!code?.startsWith("<")}>
-      <ScRelativeDiv className="index-ignore">
+      <div className="index-ignore relative mb-8">
         <PreviewWrapper>
           <LivePreview />
           <LiveError />
         </PreviewWrapper>
-        <div ref={preFocusCapture} tabIndex={-1} />
-
-        <div className="relative mt-2 rounded">
-          <pre className="sandbox-editor relative m-0 max-h-[400px] overflow-x-auto overflow-y-auto rounded bg-canvas-background-inverted p-4 pr-20 font-code">
-            {reseting ? (
-              <LiveEditor
-                style={{
-                  overflowX: "auto",
-                  whiteSpace: "pre",
-                  backgroundColor: "transparent",
-                }}
-                className="overflow-x-auto whitespace-pre bg-transparent"
-                key="old-editor"
-                theme={theme}
-              />
-            ) : (
-              <LiveEditor
-                key="new-editor"
-                onChange={(v) => setCode(v)}
-                theme={theme}
-                style={{ backgroundColor: "transparent" }}
-                onKeyDown={handleKeyDown}
-              />
-            )}
-            <CopyButton ref={focusCapture} content={code} inTabs={false} />
-          </pre>
-        </div>
-      </ScRelativeDiv>
+        {visibleCode && (
+          <>
+            <div ref={preFocusCapture} tabIndex={-1} />
+            <div className="relative mt-2 animate-fadeIn rounded">
+              <pre className="sandbox-editor relative m-0 max-h-[300px] overflow-x-auto overflow-y-auto rounded-lg bg-canvas-background-inverted p-4 pr-20 font-code">
+                {reseting ? (
+                  <LiveEditor
+                    style={{
+                      overflowX: "auto",
+                      whiteSpace: "pre",
+                      backgroundColor: "transparent",
+                    }}
+                    className="overflow-x-auto whitespace-pre bg-transparent"
+                    key="old-editor"
+                    theme={theme}
+                  />
+                ) : (
+                  <LiveEditor
+                    key="new-editor"
+                    onChange={(v) => setCode(v)}
+                    theme={theme}
+                    style={{ backgroundColor: "transparent" }}
+                    onKeyDown={handleKeyDown}
+                  />
+                )}
+                <CopyButton ref={focusCapture} content={code} inTabs={false} />
+              </pre>
+            </div>
+          </>
+        )}
+      </div>
     </LiveProvider>
   );
 
@@ -201,6 +187,8 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
             setSandboxState,
             bg: background,
             setBg: setBackground,
+            visibleCode,
+            setVisibleCode,
             reset,
           }}
         >

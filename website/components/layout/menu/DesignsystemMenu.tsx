@@ -1,97 +1,24 @@
 import { BodyShort, Detail } from "@navikt/ds-react";
+import cl from "classnames";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
-import React, { createContext, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useIsomorphicLayoutEffect } from "react-use";
-import styled from "styled-components";
-import { AmplitudeEvents, useAmplitude, PagePropsContext } from "../..";
+import { AmplitudeEvents, PagePropsContext, useAmplitude } from "../..";
 import { DsNavigationHeadingMenuT, DsNavigationHeadingT } from "../../../lib";
-
-const ScNav = styled.nav`
-  overflow-y: auto;
-
-  ul,
-  ul > li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-    li:first-child > p {
-      margin-top: 0;
-      padding-top: calc(0.75rem + 2px);
-
-      ::before {
-        background-color: transparent;
-      }
-    }
-  }
-
-  &[data-incategory="true"] {
-    li:first-child > a {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
-  }
-`;
-
-const ScLink = styled.a<{ active?: boolean }>`
-  display: flex;
-  padding: 0.75rem 1rem 0.75rem 2rem;
-  text-decoration: none;
-  color: var(--navds-semantic-color-text-muted);
-
-  ${(props) =>
-    props.active &&
-    `
-    border-left: 6px solid var(--navds-semantic-color-canvas-background-inverted);
-    padding-left: calc(2rem - 6px);
-    background-color: var(--navds-semantic-color-canvas-background);
-    color: var(--navds-semantic-color-text);
-    font-weight: 600;
-  `}
-
-  :focus {
-    outline: none;
-    box-shadow: inset 0 0 0 3px var(--navds-semantic-color-focus);
-  }
-
-  :hover {
-    background-color: var(--navds-semantic-color-canvas-background);
-    color: var(--navds-semantic-color-text);
-  }
-`;
-
-const ScDetail = styled(Detail)`
-  text-transform: uppercase;
-  padding: 1.75rem 1rem calc(0.75rem + 2px) 2rem;
-  margin-top: 24px;
-  color: var(--navds-semantic-color-text);
-  position: relative;
-
-  ::before {
-    content: "";
-    top: 0;
-    left: auto;
-    right: auto;
-    position: absolute;
-    background-color: var(--navds-semantic-color-divider);
-    width: 75%;
-    height: 1px;
-  }
-`;
-
-export const MenuContext = createContext(null);
 
 const Menu = ({
   heading,
   onClick,
   inCategory,
   mobileNavigation,
+  className,
 }: {
   heading?: DsNavigationHeadingT;
   onClick?: () => void;
   inCategory?: boolean;
   mobileNavigation?: boolean;
+  className?: string;
 }): JSX.Element => {
   const { pageProps } = useContext<any>(PagePropsContext);
   const { logAmplitudeEvent } = useAmplitude();
@@ -102,9 +29,7 @@ const Menu = ({
   );
 
   useIsomorphicLayoutEffect(() => {
-    if (!heading || !heading?.menu) {
-      return;
-    }
+    if (!heading || !heading?.menu) return;
     setSidebarMenu([...heading.menu]);
   }, [heading]);
 
@@ -118,38 +43,61 @@ const Menu = ({
   };
 
   return (
-    <ScNav aria-label={heading.title} data-incategory={inCategory}>
+    <nav
+      aria-label={heading.title}
+      className={cl(className, "overflow-x-auto")}
+    >
       <BodyShort as="ul">
         {sidebarMenu.map((item, x) => {
           if (item._type === "subheading") {
             return (
-              <li key={item.title + x}>
-                <ScDetail size="small">{item.title}</ScDetail>
-              </li>
+              <Detail
+                as="li"
+                size="small"
+                key={item.title + x}
+                className="relative mt-6 pt-7 pr-4 pb-[14px] pl-8 uppercase text-text before:absolute before:top-0 before:left-auto before:right-auto before:h-[1px] before:w-9/12 before:bg-divider first:mt-0 first:pt-[14px] first:before:bg-transparent"
+              >
+                {item.title}
+              </Detail>
             );
           }
           return (
-            <li key={item.title + x}>
+            <li
+              key={item.title + x}
+              className={cl(
+                "focus-within:shadow-focus-inset hover:bg-canvas-background",
+                {
+                  "rounded-b": inCategory,
+                  "bg-canvas-background":
+                    pageProps?.page?.slug === item?.link?.slug?.current,
+                }
+              )}
+            >
               <NextLink href={`/${item.link.slug.current}`} passHref>
-                <ScLink
+                <a
                   onClick={(e) => {
                     onClick && onClick();
                     logNavigation(e);
                   }}
-                  active={
-                    pageProps?.page
-                      ? pageProps.page.slug === item.link.slug.current
-                      : false
-                  }
+                  className={cl(
+                    "flex py-3 pr-4 no-underline hover:text-text focus:outline-none",
+                    {
+                      "border-l-[6px] border-l-gray-900 pl-[26px] font-semibold text-text":
+                        pageProps?.page?.slug === item?.link?.slug?.current,
+                      "pl-8 text-text-muted": !(
+                        pageProps?.page?.slug === item?.link?.slug?.current
+                      ),
+                    }
+                  )}
                 >
                   {item.title}
-                </ScLink>
+                </a>
               </NextLink>
             </li>
           );
         })}
       </BodyShort>
-    </ScNav>
+    </nav>
   );
 };
 

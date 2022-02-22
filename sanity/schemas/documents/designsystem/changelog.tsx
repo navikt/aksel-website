@@ -71,6 +71,21 @@ export default {
       ],
     },
     {
+      title: "Type endring",
+      name: "change",
+      type: "string",
+      options: {
+        list: [
+          { value: "new", title: "Nytt" },
+          { value: "bug", title: "Bug" },
+          { value: "breaking", title: "Breaking" },
+          { value: "uu", title: "UU" },
+          { value: "fix", title: "Fix" },
+        ],
+        layout: "radio",
+      },
+    },
+    {
       title: "Tags",
       description: "Eks: Button, Alert, All etc",
       name: "tags",

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import { HelpText, Button, Detail } from "@navikt/ds-react";
+import { HelpText, Button, Detail, Link } from "@navikt/ds-react";
 import { CopyToClipboard } from "@navikt/ds-react-internal";
 import { ExternalLink, Refresh } from "@navikt/ds-icons";
 
@@ -31,7 +31,7 @@ const ScTop = styled.div`
   border-bottom: 1px solid var(--card-shadow-outline-color);
 `;
 
-export const WebPreviewWrapper = (props: { url: string }) => {
+export const WebPreviewWrapper = (props: { url: string; dev?: boolean }) => {
   const reloadIframe = () => {
     const el: HTMLIFrameElement | null =
       document &&
@@ -48,6 +48,9 @@ export const WebPreviewWrapper = (props: { url: string }) => {
           {props.url}
         </Detail>
         <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+          {props.dev && (
+            <Link href="https://doc.nais.io/device/">Krever NAISDevice</Link>
+          )}
           <HelpText title="Hva er preview?">
             Preview prøver å vise innhold på den publiserte nettsiden. Dette er
             en litt skjør prosess som lett brekker, så kan forvente litt bugs og

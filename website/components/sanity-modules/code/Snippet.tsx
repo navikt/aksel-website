@@ -5,7 +5,7 @@ import "prismjs/components/prism-typescript.min";
 import React, { useEffect, useState } from "react";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import * as S from "./code.styles";
-import { CodeSnippet as CodeSnippetT } from "../../../lib";
+import { CodeSnippet as CodeSnippetT, Kode } from "../../../lib";
 import CopyButton from "./CopyButton";
 import styled from "styled-components";
 
@@ -26,7 +26,7 @@ const ScCode = styled.code<{ language: string }>`
 const CodeSnippet = ({
   node: { code },
 }: {
-  node: CodeSnippetT;
+  node: CodeSnippetT | Kode;
 }): JSX.Element => {
   const [highlightedCode, setHighlightedCode] = useState(null);
 

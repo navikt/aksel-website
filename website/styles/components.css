@@ -70,4 +70,8 @@
   .navds-body-long.navds-typo--spacing + .list-margin {
     @apply -mt-6;
   }
+
+  .relative-parent + .relative-child {
+    @apply -mt-8;
+  }
 }

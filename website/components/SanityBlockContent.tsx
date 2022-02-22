@@ -2,6 +2,7 @@ import { BodyLong, Detail, Heading, Ingress, Link } from "@navikt/ds-react";
 import BlockContent from "@sanity/block-content-to-react";
 import NextLink from "next/link";
 import React, { createContext, useContext } from "react";
+import cl from "classnames";
 import {
   Alert,
   CodeExample,
@@ -22,6 +23,19 @@ import {
   Accordion,
   ComponentOverview,
   Changelog,
+  IntroKomponent,
+  RelatertInnhold,
+  Anatomi,
+  LiveDemo,
+  UuSeksjon,
+  GeneriskSeskjon,
+  DoDontv2,
+  Bilde,
+  Kode,
+  Tabell,
+  AccordionV2,
+  InstallasjonSeksjon,
+  PropsSeksjon,
 } from ".";
 
 import * as Icons from "@navikt/ds-icons";
@@ -36,7 +50,10 @@ export const InlineCode = (props: React.HTMLAttributes<HTMLElement>) => (
 
 export const KBD = (props: React.HTMLAttributes<HTMLElement>) => (
   <kbd
-    className="my-0 mx-1 inline-block min-w-[2rem] rounded-sm py-1 px-2 text-center text-medium text-text shadow-[0_0_0_0.5px,0_1px_0_0] shadow-gray-900/50"
+    className={cl(
+      "my-0 mx-1 inline-block min-w-[2rem] rounded border-2 border-gray-900 bg-white py-1 px-2 text-center text-medium text-text shadow-[2px_2px_0_0_var(--navds-global-color-gray-800)]",
+      "hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+    )}
     {...props}
   />
 );
@@ -50,12 +67,28 @@ export const DsIconAnnotation = {
     const Ic = Icons?.[mark.name];
     const tokenColor = mark.color ? Tokens[mark.color] : "currentColor";
 
-    return Ic ? <Ic color={tokenColor} aria-hidden /> : null;
+    return Ic ? (
+      <Ic color={tokenColor} aria-hidden className="inline-block" />
+    ) : null;
   },
 };
 
 const serializers = {
   types: {
+    /* V2 content structure */
+    intro_komponent: ({ node }) => <IntroKomponent node={node} />,
+    relatert_innhold: ({ node }) => <RelatertInnhold node={node} />,
+    anatomi: ({ node }) => <Anatomi node={node} />,
+    live_demo: ({ node }) => <LiveDemo node={node} />,
+    uu_seksjon: ({ node }) => <UuSeksjon node={node} />,
+    generisk_seksjon: ({ node }) => <GeneriskSeskjon node={node} />,
+    riktekst_blokk: ({ node }) => <SanityBlockContent blocks={node.body} />,
+    do_dont_v2: ({ node }) => <DoDontv2 node={node} />,
+    bilde: ({ node }) => <Bilde node={node} />,
+    alert_v2: ({ node }) => <Alert node={node} />,
+    kode: ({ node }) => <Kode node={node} />,
+    tabell: ({ node }) => <Tabell node={node} />,
+
     /* Unique page modules */
     ds_component_overview: ({ node }) => <ComponentOverview node={node} />,
     icon_search: () => <IconSearch />,
@@ -65,6 +98,7 @@ const serializers = {
     related_pages: ({ node }) => <RelatedPagesCards node={node} />,
     ds_code_sandbox: ({ node }) => <Sandbox node={node} />,
     code_snippet: ({ node }) => <Snippet node={node} />,
+    ds_code_example: ({ node }) => <CodeExample node={node} />,
     code_example_ref: ({ node }) => <CodeExample node={node.ref} />,
     color_category_ref: ({ node }) => <ColorCategory node={node.ref} />,
     prop_table: ({ node }) => <PropTable node={node} />,
@@ -77,6 +111,9 @@ const serializers = {
     link_panel: ({ node }) => <LinkPanel node={node} />,
     spacing: ({ node }) => <Spacing node={node} />,
     table: ({ node }) => <Table node={node} />,
+    accordion_v2: ({ node }) => <AccordionV2 node={node} />,
+    installasjon_seksjon: ({ node }) => <InstallasjonSeksjon node={node} />,
+    props_seksjon: ({ node }) => <PropsSeksjon node={node} />,
 
     block: ({ node, children }) => {
       const context: BlockContextT = useContext(BlockContext);
@@ -90,12 +127,15 @@ const serializers = {
           if (context.isIngress) {
             return <Ingress {...textProps} className="index-ingress" />;
           }
+
           return (
             <BodyLong
               size={context.size}
               spacing
               {...textProps}
-              className="index-body"
+              className={cl("index-body", {
+                "last:mb-0": context.noLastMargin,
+              })}
             />
           );
 
@@ -113,14 +153,24 @@ const serializers = {
         case "h3":
           return (
             <Heading
-              className="index-lvl3 mt-11"
+              {...textProps}
+              className="index-lvl3"
               spacing
               level="3"
               size="medium"
-              {...textProps}
             />
           );
         case "heading4":
+          return (
+            <Heading
+              className="index-lvl4"
+              spacing
+              level="4"
+              size="small"
+              {...textProps}
+            />
+          );
+        case "h4":
           return (
             <Heading
               className="index-lvl4 mt-9"
@@ -151,12 +201,12 @@ const serializers = {
   list: (props: any) => {
     if (props?.type == "number") {
       return (
-        <ol type="1" className="list-margin list-decimal">
+        <ol type="1" className="list-margin mb-7 list-decimal">
           {props.children}
         </ol>
       );
     }
-    return <ul className="list-margin list-disc">{props.children}</ul>;
+    return <ul className="list-margin mb-7 list-disc">{props.children}</ul>;
   },
   listItem: (props: any) => {
     return (
@@ -197,27 +247,31 @@ const serializers = {
 export type BlockContextT = {
   size: "medium" | "small";
   isIngress: boolean;
+  noLastMargin: boolean;
 };
 
 export const BlockContext = createContext<BlockContextT>({
   size: "medium",
   isIngress: false,
+  noLastMargin: false,
 });
 
 export const SanityBlockContent = ({
   blocks,
   size = "medium",
   isIngress = false,
+  noLastMargin = false,
   ...rest
 }: {
   blocks: any;
   size?: "medium" | "small";
   isIngress?: boolean;
   className?: string;
+  noLastMargin?: boolean;
 }) => (
-  <BlockContext.Provider value={{ size, isIngress }}>
+  <BlockContext.Provider value={{ size, isIngress, noLastMargin }}>
     <BlockContent
-      blocks={blocks}
+      blocks={blocks ?? []}
       serializers={serializers}
       options={{ size: "small" }}
       renderContainerOnSingleChild

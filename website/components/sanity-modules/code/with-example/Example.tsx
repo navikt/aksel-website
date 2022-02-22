@@ -54,7 +54,7 @@ export const CodeContext = createContext<ContextProps>({
 
 const ScDiv = styled.div`
   width: 100%;
-  margin-bottom: var(--navds-spacing-7);
+  margin-bottom: var(--navds-spacing-9);
   display: flex;
   flex-direction: column;
 `;

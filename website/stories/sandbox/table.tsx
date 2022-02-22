@@ -12,7 +12,7 @@ const data = [
   { name: "Nina Margeaux", country: "France", points: 64 },
 ];
 
-const ButtonSandbox: SandboxComponent = (props, variant) => {
+const ButtonSandbox: SandboxComponent = (props) => {
   const propZebraStripes = props?.zebraStripes ? ` zebraStripes` : "";
   const propSize = props?.size ? ` size="${props.size}"` : "";
 
@@ -38,7 +38,7 @@ const ButtonSandbox: SandboxComponent = (props, variant) => {
                   </Table.Body>
                 </Table>`;
 
-  switch (variant) {
+  switch (props.Komposisjon) {
     case "":
       return comp;
     case "Selectable":
@@ -109,8 +109,8 @@ ButtonSandbox.args = {
   props: {
     size: ["medium", "small"],
     zebraStripes: false,
+    Komposisjon: ["", "Selectable"],
   },
-  variants: ["", "Selectable"],
   background: BgColors.WHITE,
 };
 

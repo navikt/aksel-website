@@ -1,37 +1,30 @@
 import { Detail } from "@navikt/ds-react";
 import React, { useContext } from "react";
-import styled from "styled-components";
-import { LayoutContext } from "../..";
+import { SectionContext } from "../..";
 import { Tips as TipsT } from "../../../lib";
-import { SanityBlockContent } from "../../SanityBlockContent";
 import { withErrorBoundary } from "../../ErrorBoundary";
-
-const ScWrapper = styled.div`
-  padding-left: var(--navds-spacing-8);
-  box-shadow: -2px 0 0 0 var(--navds-semantic-color-border);
-  margin: var(--navds-spacing-10) 0;
-
-  &[data-mobile="true"] {
-    padding-left: var(--navds-spacing-4);
-  }
-`;
-
-const ScDetail = styled(Detail)`
-  color: var(--navds-semantic-color-text-muted);
-`;
+import { SanityBlockContent } from "../../SanityBlockContent";
+import cl from "classnames";
 
 const Tips = ({ node }: { node: TipsT }): JSX.Element => {
-  const layout = useContext(LayoutContext);
+  const context = useContext(SectionContext);
 
   if (!node || !node.body) {
     return null;
   }
 
   return (
-    <ScWrapper data-mobile={layout.isMobile}>
-      <ScDetail spacing>TIPS</ScDetail>
-      <SanityBlockContent blocks={node.body} />
-    </ScWrapper>
+    <div
+      className={cl(
+        "relative-child linear max-w-2xl rounded-r border-l-[6px] border-l-gray-500 bg-gradient-to-l from-gray-100 to-gray-50 px-4 py-4 md:px-8",
+        { "my-8": context.withinSection, "my-16": !context.withinSection }
+      )}
+    >
+      <Detail className="text-text-muted" spacing>
+        TIPS
+      </Detail>
+      <SanityBlockContent blocks={node.body} noLastMargin />
+    </div>
   );
 };
 

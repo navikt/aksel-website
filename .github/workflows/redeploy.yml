@@ -39,3 +39,4 @@ jobs:
           CLUSTER: prod-gcp
           IMAGE: ${{ env.DOCKER_TAG }}
           DRY_RUN: ${{ github.event.inputs.dry }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}

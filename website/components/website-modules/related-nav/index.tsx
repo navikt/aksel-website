@@ -127,7 +127,7 @@ const RelatedPagesLink = () => {
     <ScWrapper $isTablet={context.isTablet}>
       {links.prev ? (
         <NextLink href={`/${links.prev.link.slug.current}`} passHref>
-          <ScA aria-label={`Gå til forrige side ${links.prev.title}`}>
+          <ScA>
             <BodyShort as="div" size="small">
               Forrige
             </BodyShort>
@@ -144,10 +144,7 @@ const RelatedPagesLink = () => {
       )}
       {links.next ? (
         <NextLink href={`/${links.next.link.slug.current}`} passHref>
-          <ScA
-            data-dir="next"
-            aria-label={`Gå til neste side ${links.next.title}`}
-          >
+          <ScA data-dir="next">
             <BodyShort as="div" size="small">
               Neste
             </BodyShort>

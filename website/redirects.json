@@ -13,12 +13,7 @@
     "destitation": "https://old-design-nav.vercel.app/god-praksis"
   },
   "ds-components": {
-    "sources": [
-      "/designsystem/components/:slug*",
-      "/designsystem/components",
-      "/components/:slug*",
-      "/components/"
-    ],
+    "sources": ["/components/:slug*", "/components/"],
     "destitation": "https://design.nav.no/designsystem"
   },
   "ds-accessibility": {

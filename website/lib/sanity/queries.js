@@ -108,6 +108,130 @@ const changelogs = `_type == "changelogs_ref" =>{
   }
 }`;
 
+const introSeksjon = `_type == "intro_komponent" =>{
+  ...,
+  body[]{
+    ...,
+    ${markDef}
+  }
+}`;
+
+const relatertInnhold = `_type == "relatert_innhold" =>{
+  lenker[]{
+    ...,
+    "intern_lenke": intern_lenke->slug.current,
+  }
+}`;
+
+const anatomiSeksjon = `_type == "anatomi" =>{
+  ...,
+  intro[]{
+    ...,
+    ${markDef}
+  }
+}`;
+
+const liveSeksjon = `_type == "live_demo" =>{
+  ...,
+  body[]{
+    ...,
+    ${markDef}
+  },
+  "sandbox_ref": sandbox_ref->{...},
+  "code_ref": code_ref->{...},
+}`;
+
+const uuSeksjon = `_type == "uu_seksjon" =>{
+  ...,
+  interaksjon_skjermleser[]{
+    ...,
+    ${markDef}
+  },
+  interaksjon_mus[]{
+    ...,
+    ${markDef}
+  },
+  interaksjon_touch[]{
+    ...,
+    ${markDef}
+  },
+  interaksjon_tastatur[]{
+    ...,
+    ${markDef}
+  },
+}`;
+
+const doDontV2 = `_type == "do_dont_v2" =>{
+  ...,
+  forklaring[]{
+    ...,
+    ${markDef}
+  }
+}`;
+
+const installSeksjon = `_type == "installasjon_seksjon" =>{
+  ...,
+  "code_ref": code_ref->{...},
+}`;
+
+const defaultBlock = `
+ _type == "riktekst_blokk" =>{
+    ...,
+    body[]{
+      ...,
+      ${markDef}
+    }
+ },
+ _type == "bilde" =>{
+    ...,
+    floating_text[]{
+      ...,
+      ${markDef}
+    }
+ },
+ _type == "alert_v2" =>{
+    ...,
+    body[]{
+      ...,
+      ${markDef}
+    }
+ },
+ _type == "kode" =>{
+    ...,
+    "ref": ref->{...},
+ },
+ _type == "kode_ref" => @->,
+ ${tips},
+ ${relatertInnhold},
+ ${doDontV2}
+`;
+
+const accordionBlock = `
+  _type == "accordion_v2"=>{
+    ...,
+    list[]{
+      ...,
+      innhold[]{
+        ...,
+        ${defaultBlock}
+      }
+    }
+  }
+`;
+
+const genericBlock = `
+  ${defaultBlock},
+  ${accordionBlock}
+`;
+
+const generiskSeksjon = `_type == "generisk_seksjon" =>{
+  ...,
+  brikker[]{
+    ...,
+    ${genericBlock}
+  },
+}`;
+
 const deRefs = `
 ${relatedCards},
 ${linkPanel},
@@ -120,6 +244,13 @@ ${pictureWText},
 ${doDont},
 ${changelogs},
 ${markDef},
+${introSeksjon},
+${relatertInnhold},
+${anatomiSeksjon},
+${liveSeksjon},
+${uuSeksjon},
+${generiskSeksjon},
+${installSeksjon}
 `;
 
 export const allDocuments = `*[]{...,'slug': slug.current }`;
@@ -151,7 +282,7 @@ export const gpDocumentBySlug = `*[slug.current == $slug]
   }
 }`;
 
-export const dsDocuments = `*[_type in ["ds_component_page", "ds_article_page"]]{ _type, 'slug': slug.current, article_type, tabs, design, development, accessibility }`;
+export const dsDocuments = `*[_type in ["ds_component_page", "ds_article_page", "komponent_artikkel"]]{ _type, 'slug': slug.current, article_type, tabs, design, development, accessibility }`;
 
 export const dsFrontpageQuery = `*[_id == "frontpage_designsystem"]
 {
@@ -172,10 +303,18 @@ export const dsDocumentBySlug = `*[slug.current == $slug]
 {
   ...,
   "slug": slug.current,
-  linked_package{
+  linked_package {
     "title": @->title,
     "github_link": @->github_link,
     "status": @->status
+  },
+  content_bruk[]{
+    ...,
+    ${deRefs}
+  },
+  content_kode[]{
+    ...,
+    ${deRefs}
   },
   ingress[]{
     ...,

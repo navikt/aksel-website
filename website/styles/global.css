@@ -7,6 +7,12 @@
       "Liberation Mono", "Courier New", monospace;
     @apply !font-mono;
   }
+
+  .navds-alert code {
+    color: var(--navds-global-color-red-500);
+    background-color: transparent;
+    padding: 0;
+  }
 }
 
 /* Improves rendering of images for chrome on Windows */

@@ -54,27 +54,12 @@ export const ScDraft = styled.span`
 
 export const styles = [
   {
-    title: "Normal (18px)",
+    title: "Avsnitt",
     value: "normal",
     blockEditor: {
       render: (props) => <BodyLong>{props.children}</BodyLong>,
     },
   },
-  {
-    title: "Detail (14px)",
-    value: "detail",
-    blockEditor: {
-      render: (props) => <Detail size="small">{props.children}</Detail>,
-    },
-  },
-  /* Vil være det samme som semibold mark */
-  /* {
-    title: "Label",
-    value: "label",
-    blockEditor: {
-      render: (props) => <Label spacing>{props.children}</Label>,
-    },
-  }, */
 ];
 
 export const block = {

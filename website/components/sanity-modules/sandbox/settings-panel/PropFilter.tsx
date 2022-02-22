@@ -16,7 +16,7 @@ const PropFilter = () => {
   return (
     <>
       {Object.keys(args.props).length > 0 && (
-        <Fieldset legend="Props" size="small" hideLegend>
+        <Fieldset legend="Props" size="small" className="mb-4">
           {Object.keys(sandboxState.propsState.props).map((key) => {
             switch (args.props[key].format) {
               case "array":
@@ -36,11 +36,6 @@ const PropFilter = () => {
                 return null;
             }
           })}
-        </Fieldset>
-      )}
-      {args.variants && (
-        <Fieldset legend="Forskjellige oppsett" size="small" className="mt-6">
-          <SelectComp type="variant" arg={args.variants} name="Variants" />
         </Fieldset>
       )}
     </>

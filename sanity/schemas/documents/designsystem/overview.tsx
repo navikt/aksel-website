@@ -108,7 +108,12 @@ export default {
               title: "Legger til link til dokumentasjonen",
               name: "doc_link",
               type: "reference",
-              to: [{ type: "ds_component_page" }, { type: "ds_article_page" }],
+              to: [
+                { type: "ds_component_page" },
+                { type: "ds_article_page" },
+                { type: "komponent_artikkel" },
+                { type: "ds_artikkel" },
+              ],
             },
           ],
         },

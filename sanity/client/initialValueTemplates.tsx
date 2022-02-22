@@ -18,12 +18,14 @@ const client = sanityClient({
 });
 
 export default [
-  ...T.defaults().filter((x) => x.spec.id !== "ds_component_page"),
+  ...T.defaults().filter(
+    (x) => !["komponent_artikkel", "ds_component_page"].includes(x.spec.id)
+  ),
 
   T.template({
-    id: "ds_component_page_template",
+    id: "komponent_artikkel_template",
     title: "Mal for Komponentsider",
-    schemaType: "ds_component_page",
+    schemaType: "komponent_artikkel",
     value: async () => {
       const doc = await client.fetch(`*[_type == "ds_component_template"][0]`);
       return doc
@@ -39,12 +41,13 @@ export default [
     schemaType: "editor",
     icon: () => <People />,
     value: async () => {
-      const { id } = await userStore.getUser("me");
+      const { id, displayName } = await userStore.getUser("me");
+
       return {
+        title: displayName,
         user_id: {
           current: id,
         },
-        _id: `editor.${id}`,
       };
     },
   }),

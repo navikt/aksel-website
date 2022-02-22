@@ -12,10 +12,12 @@ import * as GodPraksis from "./documents/god-praksis";
 import * as SanityModules from "./sanity-modules";
 import * as RichText from "./rich-text";
 import introduction from "./documents/introduction";
+import v2Blocks from "./v2";
 
 export default createSchema({
   name: "default",
   types: schemaTypes.concat([
+    ...v2Blocks,
     frontpage,
     editors,
     navigation,
@@ -66,6 +68,8 @@ export default createSchema({
     Designsystem.Navigation,
     Designsystem.Overview,
     Designsystem.Package,
+    Designsystem.KomponentArtikkel,
+    Designsystem.Artikkel,
 
     GodPraksis.Frontpage,
     GodPraksis.Article,

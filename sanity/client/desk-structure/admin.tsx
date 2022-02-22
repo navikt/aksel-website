@@ -1,6 +1,5 @@
 import { Picture } from "@navikt/ds-icons";
 import S from "@sanity/desk-tool/structure-builder";
-import userStore from "part:@sanity/base/user";
 
 import React from "react";
 

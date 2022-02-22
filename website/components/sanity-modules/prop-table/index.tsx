@@ -1,56 +1,89 @@
-import { BodyLong, Heading, Link, Tag } from "@navikt/ds-react";
+import {
+  BodyLong,
+  BodyShort,
+  Detail,
+  Heading,
+  Label,
+  Link,
+  Tag,
+} from "@navikt/ds-react";
+import NextLink from "next/link";
 import React from "react";
-import styled from "styled-components";
 import {
   PropTable as PropTableT,
   PropTableProp as PropTablePropT,
 } from "../../../lib";
-import { InlineCode } from "../../SanityBlockContent";
 import { withErrorBoundary } from "../../ErrorBoundary";
-import * as S from "./prop-table.styles";
-import NextLink from "next/link";
-
-export const TypeCode = styled.code`
-  color: var(--navds-global-color-lightblue-800);
-  font-size: 1rem;
-`;
+import { InlineCode } from "../../SanityBlockContent";
 
 const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
   const Table = ({ prop }: { prop: PropTablePropT }) => (
-    <S.Table>
-      <S.Caption>
-        {prop.required && <S.Required>Required</S.Required>}
-        <Tag variant="info" size="small">
+    <table className="mb-0 border-separate border-t border-t-divider pt-5 first-of-type:mt-4 last-of-type:mb-12 last-of-type:border-b last-of-type:border-b-divider">
+      <caption className="m-0 mb-2 flex flex-col text-left">
+        {prop.required && (
+          <Detail className="text-feedback-danger-text">Required</Detail>
+        )}
+        <Tag
+          variant="info"
+          size="small"
+          className="border-none bg-deepblue-50 font-mono text-deepblue-500"
+        >
           {prop.name}
         </Tag>
-      </S.Caption>
-      <S.Tbody>
+      </caption>
+      <tbody className="border-none">
         <tr>
-          <S.Th className="navds-label navds-label--small">Description</S.Th>
-          <S.Td className="navds-body-short navds-body-short">
-            {prop.description ? prop.description : <span>-</span>}
-          </S.Td>
-        </tr>
-        <tr>
-          <S.Th className="navds-label navds-label--small">Type</S.Th>
-          <S.Td className="navds-body-short">
+          <Label
+            as="th"
+            size="small"
+            className="min-w-[100px] pr-4 pb-3 pl-[0.125rem] text-left"
+          >
+            Type
+          </Label>
+          <BodyShort as="td" className="w-full pb-2 pl-1">
             <pre style={{ margin: 0 }}>
-              <TypeCode>{prop.type}</TypeCode>
+              <code className="text-medium text-lightblue-800">
+                {prop.type}
+              </code>
             </pre>
-          </S.Td>
+          </BodyShort>
         </tr>
-        <tr>
-          <S.Th className="navds-label navds-label--small">Default</S.Th>
-          <S.Td className="navds-body-short">
-            {prop.default ? (
-              <TypeCode>{prop.default}</TypeCode>
-            ) : (
-              <span>-</span>
-            )}
-          </S.Td>
-        </tr>
-      </S.Tbody>
-    </S.Table>
+        {prop.description && (
+          <tr>
+            <Label
+              as="th"
+              size="small"
+              className="pr-4 pb-3 pl-[0.125rem] text-left"
+            >
+              Description
+            </Label>
+            <BodyShort as="td" className="w-full pb-2 pl-1">
+              {prop.description}
+            </BodyShort>
+          </tr>
+        )}
+        {prop.default && (
+          <tr>
+            <Label
+              as="th"
+              size="small"
+              className="min-w-[100px] pr-4 pb-3 pl-[0.125rem] text-left"
+            >
+              Default
+            </Label>
+            <BodyShort as="td" className="w-full pb-2 pl-1">
+              {prop.default ? (
+                <code className="text-medium text-lightblue-800">
+                  {prop.default}
+                </code>
+              ) : (
+                <span>-</span>
+              )}
+            </BodyShort>
+          </tr>
+        )}
+      </tbody>
+    </table>
   );
 
   return (
@@ -67,19 +100,14 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
         <summary>Props</summary>
       )}
 
-      <S.PropTable>
-        <BodyLong as="ul">
+      <div className="relative mb-8 mt-4 overflow-x-auto">
+        <BodyLong as="ul" className="mb-8">
           {node.overridable && (
             <li>
               Komponenten er implementert med{" "}
               <NextLink href="/designsystem/side/overridablecomponent" passHref>
                 <Link>OverridableComponent</Link>
               </NextLink>
-            </li>
-          )}
-          {node.refplacement && (
-            <li>
-              <InlineCode>ref</InlineCode> er plassert på {node.refplacement}
             </li>
           )}
           {node.extends && (
@@ -115,9 +143,9 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
         {node?.props?.map((prop: PropTablePropT) => (
           <Table key={prop.name} prop={prop} />
         ))}
-      </S.PropTable>
+      </div>
     </details>
   );
 };
 
-export default withErrorBoundary(PropTable, "Proptable komponent");
+export default withErrorBoundary(PropTable, "Proptable");
