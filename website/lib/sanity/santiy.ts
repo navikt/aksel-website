@@ -19,7 +19,9 @@ export const getGpPaths = async (): Promise<string[][]> => {
 
   const paths = [];
 
-  documents?.forEach((page) => {
+  const nonDrafts = documents.filter((x) => !x._id.startsWith("drafts."));
+
+  nonDrafts?.forEach((page) => {
     page.slug && paths.push(page.slug.split("/"));
   });
 
@@ -37,7 +39,9 @@ export const getDsPaths = async (): Promise<string[][]> => {
     tilgjengelighet: "accessibility",
   };
 
-  documents?.forEach((page) => {
+  const nonDrafts = documents.filter((x) => !x._id.startsWith("drafts."));
+
+  nonDrafts?.forEach((page) => {
     if (!page.slug) {
       return null;
     }
