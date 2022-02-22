@@ -26,13 +26,12 @@ jobs:
           echo "ALGOLIA_ID=${{ secrets.ALGOLIA_ID}}" >> website/.env
           echo "HOOK_SECRET=${{ secrets.SANITY_INDEXING_HOOK }}" >> website/.env
           echo "TRELLO_TOKEN=${{ secrets.TRELLO_TOKEN }}" >> website/.env
+          echo "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}" >> website/.env
 
       - name: Install dependencies
         run: yarn
       - name: Build application
         run: yarn build:next
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       - name: Login to GitHub Container Registry
         uses: docker/login-action@ab80d026d4753220c4243394c07c7d80f9638d06 # Use commit-sha1 instead of tag for security concerns
         with:
@@ -63,4 +62,3 @@ jobs:
           RESOURCE: nais/dev/nais.yaml
           CLUSTER: dev-gcp
           IMAGE: ${{ env.DOCKER_TAG }}
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}

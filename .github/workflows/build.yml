@@ -23,6 +23,7 @@ jobs:
           echo "ALGOLIA_ID=${{ secrets.ALGOLIA_ID}}" >> website/.env
           echo "HOOK_SECRET=${{ secrets.SANITY_INDEXING_HOOK }}" >> website/.env
           echo "TRELLO_TOKEN=${{ secrets.TRELLO_TOKEN }}" >> website/.env
+          echo "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}" >> website/.env
 
       - name: Install dependencies
         run: yarn
@@ -30,8 +31,6 @@ jobs:
         run: NEXT_PUBLIC_TEST=true yarn workspace website e2e:ci
       - name: Build application
         run: yarn build:next
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       - name: Update code examples
         run: yarn sanity:codeexamples
       - name: Update colors
@@ -68,4 +67,3 @@ jobs:
           RESOURCE: nais/prod/nais.yaml
           CLUSTER: prod-gcp
           IMAGE: ${{ env.DOCKER_TAG }}
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
