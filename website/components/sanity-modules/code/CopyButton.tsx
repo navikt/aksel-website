@@ -14,7 +14,7 @@ const ScButton = styled.button<{ inverted: boolean }>`
   ${S.ButtonCss}
   position: absolute;
   top: 4px;
-  right: 8px;
+  right: 4px;
   border-radius: 4px;
   color: var(--navds-semantic-color-text-inverted);
   background-color: var(--navds-semantic-color-component-background-inverted);

@@ -55,7 +55,7 @@ const spesialSeksjon = {
     prepare(s) {
       return {
         title: s.modul,
-        subtitle: "SpesialSeksjon",
+        subtitle: "Spesial seksjon",
         media: () => <Star />,
       };
     },
