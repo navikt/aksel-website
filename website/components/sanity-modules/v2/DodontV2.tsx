@@ -125,7 +125,6 @@ const Element = ({
 const DoDont = ({ node }: { node: DoDontV2 }) => {
   if (!node || !node.title || node?.blokker.length === 0) return null;
 
-  console.log(node);
   return (
     <div className="relative-parent mb-16">
       <Heading level="3" className="index-lvl3" size="medium" spacing>

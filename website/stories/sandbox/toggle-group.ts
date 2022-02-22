@@ -10,15 +10,20 @@ const ToggleGroupSandbox: SandboxComponent = (props) => {
     return (
       <ToggleGroup onChange={setValue} value={value}${size}${label}>
         <ToggleGroup.Item value="ulest">${
-          props.ikoner ? "<Email/>Uleste" : "Uleste"
-        }</ToggleGroup.Item>
+          props?.Komposisjon.includes("Ikon") ? "<Email />" : ""
+        }${
+    props?.Komposisjon.includes("Tekst") ? "Ulest" : ""
+  }</ToggleGroup.Item>
         <ToggleGroup.Item value="lest">${
-          props.ikoner ? "<EmailOpen/>Leste" : "Leste"
-        }</ToggleGroup.Item>
+          props.Komposisjon.includes("Ikon") ? "<EmailOpen />" : ""
+        }${
+    props?.Komposisjon.includes("Tekst") ? "Leste" : ""
+  }</ToggleGroup.Item>
         <ToggleGroup.Item value="sendt">${
-          props.ikoner ? "<Send/>Sendte" : "Sendte"
-        }</ToggleGroup.Item>
-      </ToggleGroup>
+          props.Komposisjon.includes("Ikon") ? "<Send />" : ""
+        }${
+    props.Komposisjon.includes("Tekst") ? "Sendte" : ""
+  }</ToggleGroup.Item></ToggleGroup>
     );
   };
 
@@ -31,7 +36,7 @@ ToggleGroupSandbox.args = {
   props: {
     size: ["medium", "small"],
     label: false,
-    ikoner: false,
+    Komposisjon: ["Tekst", "Ikon + Tekst", "Ikon"],
   },
 };
 
