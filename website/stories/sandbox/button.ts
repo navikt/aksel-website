@@ -13,8 +13,8 @@ const ButtonSandbox: SandboxComponent = (props) =>
     size: `size="${props.size}"`,
     disabled: "disabled",
     loading: "loading",
-  })}>${props.content.includes("icon") ? "<Star />" : ""}${
-    props.content.includes("text") ? "Button" : ""
+  })}>${props.Komposisjon.includes("Ikon") ? "<Star />" : ""}${
+    props.Komposisjon.includes("Tekst") ? "Button" : ""
   }</Button>`;
 
 ButtonSandbox.args = {
@@ -23,7 +23,7 @@ ButtonSandbox.args = {
     size: ["medium", "small"],
     disabled: false,
     loading: false,
-    content: ["text", "icon", "text and icon"],
+    Komposisjon: ["Tekst", "Ikon", "Tekst og Ikon"],
   },
 };
 
