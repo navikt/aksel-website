@@ -35,6 +35,7 @@
     "react": "^17.0",
     "react-dom": "^17.0",
     "sanity-codegen": "^0.9.5",
+    "sanity-plugin-better-slug": "^1.0.0",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.13",
     "sanity-plugin-media": "^1.4.4",
     "sanity-plugin-power-table": "^0.0.14",

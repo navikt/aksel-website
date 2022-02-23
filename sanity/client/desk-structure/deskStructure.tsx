@@ -61,6 +61,9 @@ const items = [
           S.listItem()
             .title("Artikler")
             .child(createSuperPane("gp_article_page")),
+          S.listItem()
+            .title("Artikler BETA")
+            .child(createSuperPane("aksel_artikkel")),
         ])
     ),
 

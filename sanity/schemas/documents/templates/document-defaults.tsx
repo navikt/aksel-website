@@ -1,7 +1,7 @@
 import { validateSlug, isSlugUnique } from "../../validateSlug";
 import { ingressBlock } from "../../rich-text/block-content-ingress";
 
-export function documentInformation(prefix) {
+export function documentInformation(prefix, depth?: number) {
   return [
     {
       title: "Sidetittel",
@@ -18,7 +18,7 @@ export function documentInformation(prefix) {
       name: "slug",
       type: "slug",
       description: "Strukturen bestemmes ikke av URL-en",
-      validation: (Rule) => validateSlug(Rule, prefix, 3),
+      validation: (Rule) => validateSlug(Rule, prefix, depth ?? 3),
       group: "settings",
       options: {
         isUnique: isSlugUnique,

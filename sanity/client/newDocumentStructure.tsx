@@ -2,7 +2,7 @@ import S from "@sanity/base/structure-builder";
 
 const docTypes = [
   {
-    name: "gp_article_page",
+    name: "aksel_artikkel",
     title: "Aksel Artikkel",
     desc: "Atikkel som legges under god-praksis(wip)",
   },

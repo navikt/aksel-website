@@ -9,6 +9,7 @@ import frontpage from "./documents/frontpage";
 
 import * as Designsystem from "./documents/designsystem";
 import * as GodPraksis from "./documents/god-praksis";
+import * as Aksel from "./documents/aksel";
 import * as SanityModules from "./sanity-modules";
 import * as RichText from "./rich-text";
 import introduction from "./documents/introduction";
@@ -71,7 +72,8 @@ export default createSchema({
     Designsystem.KomponentArtikkel,
     Designsystem.Artikkel,
 
-    GodPraksis.Frontpage,
     GodPraksis.Article,
+
+    Aksel.Artikkel,
   ]),
 });

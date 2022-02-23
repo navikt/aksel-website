@@ -1,21 +1,10 @@
-import {
-  Data,
-  DirectionSign,
-  Expand,
-  Facilitet,
-  FileContent,
-  LightBulb,
-  NewTab,
-  Picture,
-  Star,
-  Warning,
-  Wrench,
-} from "@navikt/ds-icons";
+import { FileContent } from "@navikt/ds-icons";
 import React from "react";
+import { contentBlocks } from "./generisk-blokk";
 
 export default {
   title: "Seksjon med h2",
-  name: "generisk_seksjon",
+  name: "generisk_seksjon_artikkel",
   type: "object",
   fields: [
     {

@@ -1,4 +1,5 @@
 import GeneriskBlokk from "./generisk-blokk";
+import GeneriskBlokkArtikkel from "./generisk-blokk-artikkel";
 import Riktekst from "./riktekst/riktekst";
 import RiktekstEnkel from "./riktekst/riktekst-enkel";
 import RiktekstTabell from "./riktekst/riktekst-tabell";
@@ -19,6 +20,7 @@ import SpesialSeksjon from "./spesial-seksjon";
 
 const v2Blocks = [
   GeneriskBlokk,
+  GeneriskBlokkArtikkel,
   Riktekst,
   DoDontV2,
   Bilde,
