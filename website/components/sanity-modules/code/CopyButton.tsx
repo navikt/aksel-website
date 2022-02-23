@@ -127,14 +127,4 @@ const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
   }
 );
 
-/* const CopyButton = ({
-  content,
-  inTabs,
-}: {
-  content: string;
-  inTabs?: boolean;
-}) => {
-
-}; */
-
 export default CopyButton;
