@@ -1,7 +1,7 @@
 import React from "react";
 import * as Sc from "../../components";
 import { LayoutPicker, PreviewBanner } from "../../components";
-import GodPraksisHeader from "../../components/layout/header/GodPraksisHeader";
+import AkselHeader from "../../components/layout/header/AkselHeader";
 import {
   AkselArtikkel,
   akselDocumentBySlug,
@@ -28,15 +28,15 @@ Page.getLayout = (page) => {
       <Sc.SkipLink href="#hovedinnhold" tab-index={-1}>
         Hopp til innhold
       </Sc.SkipLink>
-      <GodPraksisHeader />
-      <Sc.SidebarMain>
-        <Sc.MainFooter>
-          <Sc.Main tabIndex={-1} id="hovedinnhold">
-            {page}
-            <div className="mt-auto" aria-hidden />
-          </Sc.Main>
-        </Sc.MainFooter>
-      </Sc.SidebarMain>
+      <AkselHeader />
+      <main
+        tabIndex={-1}
+        id="hovedinnhold"
+        className="min-h-[calc(100vh - var(--header-height))] relative flex  w-full flex-col items-center bg-canvas-background-light focus:outline-none"
+      >
+        {page}
+        <div className="mt-auto" aria-hidden />
+      </main>
     </>
   );
 };

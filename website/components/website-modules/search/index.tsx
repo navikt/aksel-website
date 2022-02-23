@@ -3,8 +3,9 @@ import { createPortal } from "react-dom";
 import { DocSearchModal, useDocSearchKeyboardEvents } from "@docsearch/react";
 import { Search as SearchIcon } from "@navikt/ds-icons";
 import { DocSearchHit } from "@docsearch/react/dist/esm/types";
+import cl from "classnames";
 
-function Search() {
+function Search({ inverted }: { inverted?: boolean }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const searchButtonRef = React.useRef(null);
 
@@ -43,7 +44,15 @@ function Search() {
       <button
         ref={searchButtonRef}
         onClick={onOpen}
-        className="z-[1050] ml-auto flex w-[var(--header-height)] shrink-0 items-center justify-center text-text-inverted hover:bg-gray-800 focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)] focus:outline-none"
+        className={cl(
+          "z-[1050] ml-auto flex w-[var(--header-height)] shrink-0 items-center justify-center focus:outline-none",
+          {
+            "bg-white text-text hover:bg-gray-100 focus:shadow-focus-inset":
+              inverted,
+            "text-text-inverted hover:bg-gray-800 focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
+              !inverted,
+          }
+        )}
       >
         <SearchIcon className="ml-[3px] h-6 w-6" aria-label="åpne søk" />
       </button>

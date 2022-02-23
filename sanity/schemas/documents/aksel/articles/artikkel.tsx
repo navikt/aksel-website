@@ -10,6 +10,15 @@ import {
   groups,
 } from "../../templates";
 
+function toPlainText(blocks = []) {
+  return blocks
+    .filter((block) => !(block._type !== "block" || !block.children))
+    .map((block) => {
+      return block.children.map((child) => child.text).join("");
+    })
+    .join("\n");
+}
+
 export default {
   title: "Aksel Artikkel",
   name: "aksel_artikkel",
@@ -62,6 +71,30 @@ export default {
         {
           name: "generisk_seksjon",
           type: "generisk_seksjon_artikkel",
+          icon: () => <FileContent />,
+        },
+        {
+          type: "object",
+          title: "Riktekst",
+          name: "riktekst_blokk",
+          fields: [
+            {
+              title: "Riktekst",
+              name: "body",
+              type: "riktekst",
+            },
+          ],
+          preview: {
+            select: {
+              text: "body",
+            },
+            prepare(selection) {
+              return {
+                title: toPlainText(selection?.text?.slice?.(0, 1)) ?? "-",
+                subtitle: "Riktekst",
+              };
+            },
+          },
           icon: () => <FileContent />,
         },
         { type: "tips", title: "Tips", icon: () => <LightBulb /> },

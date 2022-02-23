@@ -11,8 +11,9 @@ import styled, { css } from "styled-components";
 import { LayoutContext, useAmplitude } from "../..";
 import { HelpfulArticleEnum, HelpfulArticleT } from "../../../lib";
 import { AmplitudeEvents } from "../utils";
+import cl from "classnames";
 
-const ScFeedback = styled.div<{ isTablet?: boolean }>`
+const ScFeedback = styled.div`
   width: 100%;
   padding: 2rem 1rem 2rem 3rem;
   display: flex;
@@ -20,8 +21,6 @@ const ScFeedback = styled.div<{ isTablet?: boolean }>`
   align-items: center;
   gap: 1rem;
   background-color: var(--navds-semantic-color-component-background-alternate);
-  margin: ${(props) =>
-    props.isTablet ? "11rem auto 4rem 0" : "11rem auto 4rem 0"};
 
   @media (max-width: 564px) {
     padding: 1rem;
@@ -148,9 +147,11 @@ const ScSendButton = styled(Button)`
 const Feedback = ({
   docId,
   docType,
+  center,
 }: {
   docId?: string;
   docType?: string;
+  center?: boolean;
 }): JSX.Element => {
   const { logAmplitudeEvent } = useAmplitude();
   const { asPath, basePath } = useRouter();
@@ -280,7 +281,12 @@ const Feedback = ({
   if (!docId || !docType) return null;
 
   return (
-    <ScFeedback isTablet={context.isTablet} className="index-ignore">
+    <ScFeedback
+      className={cl("index-ignore max-w-[800px]", {
+        "mt-44 mr-auto mb-16 ml-0": context.isTablet && !center,
+        "mx-auto mt-44 mb-16": center,
+      })}
+    >
       <ScWidthWrapper>
         <Heading size="small" level="2">
           Var denne artikkelen til hjelp?

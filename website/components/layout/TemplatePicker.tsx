@@ -8,6 +8,7 @@ import {
   GpArticlePage,
   KomponentArtikkel,
 } from "../../lib";
+import AkselArtikkelTemplate from "./page-templates/AkselArtikkel";
 import ArticleTemplate from "./page-templates/ArticlePageTemplate";
 import ArtikkelTemplate from "./page-templates/Artikkel";
 import ArtikkelTabbedTemplate from "./page-templates/ArtikkelTabbed";
@@ -78,7 +79,7 @@ const templates: templateT = {
       <ArtikkelTemplate {...props} />
     ),
   gp_article_page: (props) => <ArticleTemplate {...props} />,
-  aksel_artikkel: (props) => <ArtikkelTemplate {...props} />,
+  aksel_artikkel: (props) => <AkselArtikkelTemplate {...props} />,
 };
 
 const TemplatePicker = ({

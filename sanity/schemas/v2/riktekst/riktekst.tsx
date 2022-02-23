@@ -1,4 +1,4 @@
-import { ExternalLink, Link } from "@navikt/ds-icons";
+import { ExternalLink, FileContent, Link } from "@navikt/ds-icons";
 import { BodyLong, Heading } from "@navikt/ds-react/cjs";
 import { KBD } from "@sanity/ui";
 import React from "react";
@@ -147,4 +147,5 @@ export default {
       ],
     },
   ],
+  icon: () => <FileContent />,
 };

@@ -286,7 +286,8 @@ ${liveSeksjon},
 ${uuSeksjon},
 ${generiskSeksjon},
 ${installSeksjon},
-${spesialSeksjon}
+${spesialSeksjon},
+${defaultBlock}
 `;
 
 export const allDocuments = `*[]{...,'slug': slug.current }`;

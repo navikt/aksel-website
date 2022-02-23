@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       spacing: {
         0: 0,
+        header: "4rem",
       },
       screens: {
         md: "564px",
