@@ -1,6 +1,7 @@
 import React from "react";
 import { LinkPanel } from "@navikt/ds-react";
 import { ExampleComponent } from "../../lib";
+import { BgColors } from "../sandbox/types";
 
 export const LinkPanelExample: ExampleComponent = () => (
   <>
@@ -47,6 +48,7 @@ export const LinkPanelUtenBorder: ExampleComponent = () => (
 LinkPanelUtenBorder.react = `<LinkPanel href="#" border={false}>
 <LinkPanel.Title>Arbeidssøker eller permittert</LinkPanel.Title>
 </LinkPanel>`;
+LinkPanelUtenBorder.bg = BgColors.DEFAULT;
 
 export const LinkPanelMedIllustrasjon: ExampleComponent = () => (
   <>
