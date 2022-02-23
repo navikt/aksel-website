@@ -7,44 +7,6 @@ import { useAmplitude } from "../..";
 import { HelpfulArticleEnum, HelpfulArticleT } from "../../../lib";
 import { AmplitudeEvents } from "../utils";
 
-const ScFeedback = styled.div`
-  width: 100%;
-  padding: 2rem 1rem 2rem 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  background-color: var(--navds-semantic-color-component-background-alternate);
-
-  @media (max-width: 564px) {
-    padding: 1rem;
-  }
-`;
-
-const ScWidthWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-  gap: 1rem;
-`;
-
-const ScButtons = styled.div`
-  display: flex;
-  width: 100%;
-  gap: 1.5rem;
-  justify-content: center;
-
-  @media (max-width: 564px) {
-    gap: 0.5rem;
-  }
-
-  > * {
-    flex: 1 1;
-    max-width: 8rem;
-  }
-`;
-
 const ScStateCss = css`
   :hover {
     background-color: var(--navds-global-color-gray-100);
@@ -274,36 +236,43 @@ const Feedback = ({
   if (!docId || !docType) return null;
 
   return (
-    <ScFeedback
-      className={cl("index-ignore max-w-[800px]", {
-        "mt-44 mr-auto mb-16 ml-0 lg:mr-0 lg:ml-0": !center,
-        "mx-auto mt-44 mb-16": center,
-      })}
+    <div
+      className={cl(
+        "index-ignore flex w-full max-w-[800px] items-center justify-center gap-4 bg-component-background-alternate p-4 pb-12 sm:px-8 sm:py-4",
+        {
+          "mt-44 mr-auto mb-16 ml-0 lg:mr-0 lg:ml-0": !center,
+          "mx-auto mt-44 mb-16": center,
+        }
+      )}
     >
-      <ScWidthWrapper>
+      <div className="flex w-full flex-col items-center gap-4">
         <Heading size="small" level="2">
           Var denne artikkelen til hjelp?
         </Heading>
-        <ScButtons>
+        <div className="flex w-full justify-center gap-2 sm:gap-6">
+          {/*  */}
           <ScButton
+            className="max-w-[8rem] flex-1"
             active={activeState === HelpfulArticleEnum.JA}
             onClick={() => setActiveState(HelpfulArticleEnum.JA)}
           >
             <Label>Ja</Label>
           </ScButton>
           <ScButton
+            className="max-w-[8rem] flex-1"
             active={activeState === HelpfulArticleEnum.DELVIS}
             onClick={() => setActiveState(HelpfulArticleEnum.DELVIS)}
           >
             <Label>Delvis</Label>
           </ScButton>
           <ScButton
+            className="max-w-[8rem] flex-1"
             active={activeState === HelpfulArticleEnum.NEI}
             onClick={() => setActiveState(HelpfulArticleEnum.NEI)}
           >
             <Label>Nei</Label>
           </ScButton>
-        </ScButtons>
+        </div>
         <ScButtonLabel
           active={activeState === HelpfulArticleEnum.MISC}
           onClick={() => setActiveState(HelpfulArticleEnum.MISC)}
@@ -331,8 +300,8 @@ const Feedback = ({
         {thanksFeedback && (
           <BodyShort size="small">Takk for tilbakemeldingen!</BodyShort>
         )}
-      </ScWidthWrapper>
-    </ScFeedback>
+      </div>
+    </div>
   );
 };
 
