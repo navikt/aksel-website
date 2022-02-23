@@ -7,9 +7,9 @@ const generateUrls = async () => {
     ["designsystem"],
     ...(await getDsPaths()),
     ...(await getGpPaths()),
+    ...(await getAkselArtikler().then((x) => x.map((y) => y.split("/")))),
   ];
   const parsedUrls = urls.map((u) => `/${u.join("/")}`);
-  parsedUrls.push(...(await getAkselArtikler()));
 
   fs.writeFile(
     "./cypress/test-urls.json",

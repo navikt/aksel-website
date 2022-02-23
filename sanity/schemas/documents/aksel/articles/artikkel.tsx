@@ -1,12 +1,10 @@
-import { FileContent, LightBulb, NewTab, Star } from "@navikt/ds-icons";
-import SlugInput from "sanity-plugin-better-slug";
-import { validateSlug, isSlugUnique } from "../../../validateSlug";
-
+import { FileContent, LightBulb, NewTab } from "@navikt/ds-icons";
 import React from "react";
+import SlugInput from "sanity-plugin-better-slug";
+import { isSlugUnique, validateSlug } from "../../../validateSlug";
 import {
   defaultPreview,
   documentFeedbackMetadata,
-  documentInformation,
   groups,
 } from "../../templates";
 
@@ -29,7 +27,7 @@ export default {
   ...defaultPreview(),
   fields: [
     {
-      title: "Bidragsytere",
+      title: "Redaktører",
       description: "Legg til de som har bidratt med denne siden!",
       name: "contributors",
       type: "array",
