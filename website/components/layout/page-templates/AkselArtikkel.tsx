@@ -48,9 +48,9 @@ const AkselArtikkelTemplate = ({
           </>
         )}
       </Head>
-      <div className="w-full max-w-7xl">
-        <div className="relative flex max-w-full flex-col justify-center">
-          <div className="flex flex-col items-center pt-8 pb-6">
+      <div className="m-0 w-full max-w-[calc(var(--content-max-width)_+_6rem)] px-4 pb-4 md:mx-auto md:my-0 md:px-6 lg:mx-0 lg:px-12 lg:pb-4">
+        <div className="relative flex flex-col justify-center">
+          <div className="flex max-w-[var(--text-max-width)] flex-col items-center pt-8 pb-6">
             <LastUpdateTag date={data._updatedAt} simple />
             <Heading size="xlarge" level="1" spacing className="index-lvl1">
               {data.heading}
@@ -58,7 +58,7 @@ const AkselArtikkelTemplate = ({
           </div>
           {/* <TableOfContents changedState={data.innhold} /> */}
           <SanityBlockContent
-            className="mx-auto mt-12 min-h-[500px]"
+            className="mx-auto mt-12 flex min-h-[500px] w-full flex-col"
             blocks={data.innhold}
           />
           {!data?.metadata_feedback?.hide_feedback && (
