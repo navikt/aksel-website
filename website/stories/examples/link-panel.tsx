@@ -61,9 +61,9 @@ export const LinkPanelMedIllustrasjon: ExampleComponent = () => (
       >
         {Illustration}
         <div>
-          <LinkPanel.Title>Consectetur eu duis aliqua</LinkPanel.Title>
+          <LinkPanel.Title>Arbeidssøker eller permittert</LinkPanel.Title>
           <LinkPanel.Description>
-            Aliqua id aliquip Lorem esse
+            Om jobb, registrering, CV, dagpenger og feriepenger av dagpenger
           </LinkPanel.Description>
         </div>
       </div>
@@ -82,9 +82,9 @@ LinkPanelMedIllustrasjon.react = `<LinkPanel href="#">
 >
   {Illustration}
   <div>
-    <LinkPanel.Title>Consectetur eu duis aliqua</LinkPanel.Title>
+    <LinkPanel.Title>Arbeidssøker eller permittert</LinkPanel.Title>
     <LinkPanel.Description>
-      Aliqua id aliquip Lorem esse
+      Om jobb, registrering, CV, dagpenger og feriepenger av dagpenger
     </LinkPanel.Description>
   </div>
 </div>

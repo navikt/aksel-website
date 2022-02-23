@@ -77,7 +77,14 @@ export const contentBlocks = (s?: string) => {
   switch (s) {
     case "accordion_v2":
       return blocks.filter(
-        (x) => !["Accordion", "Komponent-widget"].includes(x.title)
+        (x) =>
+          !["Accordion", "Komponent-widget", "Spesial seksjon"].includes(
+            x.title
+          )
+      );
+    case "enkel":
+      return blocks.filter(
+        (x) => !["Komponent-widget", "Spesial seksjon"].includes(x.title)
       );
     default:
       return blocks;
