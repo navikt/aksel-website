@@ -1027,26 +1027,7 @@ export interface DsArtikkel extends SanityDocument {
     | SanityKeyed<GeneriskSeksjon>
     | SanityKeyed<Tips>
     | SanityKeyed<RelatertInnhold>
-    | SanityKeyed<{
-        _type: "spesial_seksjon";
-        /**
-         * Modul — `string`
-         *
-         *
-         */
-        modul?:
-          | "farge_kategori"
-          | "ikonsok"
-          | "endringslogg"
-          | "komponentoversikt";
-
-        /**
-         * Farge kategori — `reference`
-         *
-         *
-         */
-        farge_ref?: SanityReference<DsColorCategories>;
-      }>
+    | SanityKeyed<SpesialSeksjon>
   >;
 
   /**
@@ -1091,22 +1072,6 @@ export interface DsArtikkel extends SanityDocument {
      */
     hide_feedback?: boolean;
   };
-}
-
-/**
- * Forside
- *
- *
- */
-export interface GpFrontpage extends SanityDocument {
-  _type: "gp_frontpage";
-
-  /**
-   * Innhold — `string`
-   *
-   *
-   */
-  content?: string;
 }
 
 /**
@@ -1182,6 +1147,62 @@ export interface GpArticlePage extends SanityDocument {
   };
 }
 
+/**
+ * Aksel Artikkel
+ *
+ *
+ */
+export interface AkselArtikkel extends SanityDocument {
+  _type: "aksel_artikkel";
+
+  /**
+   * Bidragsytere — `array`
+   *
+   * Legg til de som har bidratt med denne siden!
+   */
+  contributors?: Array<SanityKeyedReference<Editor>>;
+
+  /**
+   * Sidetittel — `string`
+   *
+   * Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.
+   */
+  heading?: string;
+
+  /**
+   * url — `slug`
+   *
+   * Strukturen bestemmes ikke av URL-en
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Innhold — `array`
+   *
+   *
+   */
+  innhold?: Array<
+    | SanityKeyed<GeneriskSeksjonArtikkel>
+    | SanityKeyed<Tips>
+    | SanityKeyed<RelatertInnhold>
+  >;
+
+  /**
+   * Tilbakemeldinger — `object`
+   *
+   *
+   */
+  metadata_feedback?: {
+    _type: "metadata_feedback";
+    /**
+     * Skjul artikkel feedback modul — `boolean`
+     *
+     * Gjemmer <<Var denne artikkelen til hjelp?>> modulen.
+     */
+    hide_feedback?: boolean;
+  };
+}
+
 export type GeneriskSeksjon = {
   _type: "generisk_seksjon";
   /**
@@ -1213,6 +1234,42 @@ export type GeneriskSeksjon = {
     | SanityKeyed<AlertV2>
     | SanityKeyed<Kode>
     | SanityKeyedReference<DsCodeExample>
+    | SanityKeyed<Tabell>
+    | SanityKeyed<AccordionV2>
+    | SanityKeyed<SpesialSeksjon>
+  >;
+};
+
+export type GeneriskSeksjonArtikkel = {
+  _type: "generisk_seksjon_artikkel";
+  /**
+   * Tittel (h2) — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Innhold — `array`
+   *
+   *
+   */
+  brikker?: Array<
+    | SanityKeyed<{
+        _type: "riktekst_blokk";
+        /**
+         * Riktekst — `riktekst`
+         *
+         *
+         */
+        body?: Riktekst;
+      }>
+    | SanityKeyed<Tips>
+    | SanityKeyed<RelatertInnhold>
+    | SanityKeyed<DoDontV2>
+    | SanityKeyed<Bilde>
+    | SanityKeyed<AlertV2>
+    | SanityKeyed<Kode>
     | SanityKeyed<Tabell>
     | SanityKeyed<AccordionV2>
   >;
@@ -1693,6 +1750,23 @@ export type AccordionV2 = {
 };
 
 export type RiktekstTabell = Array<SanityKeyed<SanityBlock>>;
+
+export type SpesialSeksjon = {
+  _type: "spesial_seksjon";
+  /**
+   * Modul — `string`
+   *
+   *
+   */
+  modul?: "farge_kategori" | "ikonsok" | "endringslogg" | "komponentoversikt";
+
+  /**
+   * Farge kategori — `reference`
+   *
+   *
+   */
+  farge_ref?: SanityReference<DsColorCategories>;
+};
 
 export type NavigationLink = {
   _type: "navigation_link";
@@ -2458,8 +2532,8 @@ export type Documents =
   | DsPackage
   | KomponentArtikkel
   | DsArtikkel
-  | GpFrontpage
-  | GpArticlePage;
+  | GpArticlePage
+  | AkselArtikkel;
 
 /**
  * This interface is a stub. It was referenced in your sanity schema but
