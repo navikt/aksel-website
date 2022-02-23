@@ -1,5 +1,4 @@
 import React from "react";
-import * as Sc from "../../components";
 import { LayoutPicker, PreviewBanner } from "../../components";
 import AkselHeader from "../../components/layout/header/AkselHeader";
 import {
@@ -25,9 +24,9 @@ const Page = (props: {
 Page.getLayout = (page) => {
   return (
     <>
-      <Sc.SkipLink href="#hovedinnhold" tab-index={-1}>
+      <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
         Hopp til innhold
-      </Sc.SkipLink>
+      </a>
       <AkselHeader />
       <main
         tabIndex={-1}

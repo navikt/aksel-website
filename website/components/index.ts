@@ -1,5 +1,4 @@
 export * from "./assets";
-export * from "./layout/layout.styles";
 export { default as LayoutPicker } from "./layout/TemplatePicker";
 export { default as Accordion } from "./sanity-modules/accordion";
 export { default as Alert } from "./sanity-modules/alert";

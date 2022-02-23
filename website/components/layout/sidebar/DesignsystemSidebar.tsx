@@ -1,9 +1,8 @@
-import * as React from "react";
 import { useContext } from "react";
 import { LayoutContext } from "../..";
 import Menu from "../menu/DesignsystemMenu";
 
-function DesignsystemSidebar(): JSX.Element {
+const DesignsystemSidebar = () => {
   const context = useContext(LayoutContext);
 
   if (!context?.activeHeading) return null;
@@ -13,6 +12,6 @@ function DesignsystemSidebar(): JSX.Element {
       <Menu heading={context.activeHeading} />
     </div>
   );
-}
+};
 
 export default DesignsystemSidebar;

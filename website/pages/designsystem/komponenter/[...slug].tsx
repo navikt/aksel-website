@@ -1,5 +1,5 @@
 import React from "react";
-import { LayoutPicker, PreviewBanner, SkipLink } from "../../../components";
+import { LayoutPicker, PreviewBanner } from "../../../components";
 import Footer from "../../../components/layout/footer/Footer";
 import DesignsystemHeader from "../../../components/layout/header/DesignsystemHeader";
 import DesignsystemSidebar from "../../../components/layout/sidebar/DesignsystemSidebar";
@@ -29,9 +29,9 @@ const Page = (props: {
 Page.getLayout = (page) => {
   return (
     <>
-      <SkipLink href="#hovedinnhold" tab-index={-1}>
+      <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
         Hopp til innhold
-      </SkipLink>
+      </a>
       <DesignsystemHeader />
       <div className="flex bg-canvas-background-light">
         <DesignsystemSidebar />

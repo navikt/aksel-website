@@ -7,7 +7,6 @@ import {
   DsFrontpageFooterIllustration,
   DsFrontpageIllustration,
   PreviewBanner,
-  SkipLink,
   useAmplitude,
 } from "../../components";
 import Footer from "../../components/layout/footer/Footer";
@@ -45,9 +44,9 @@ const Page = (props: {
           content="Desgnsystemet til NAV gjør det enkelt å lage produkter."
         />
       </Head>
-      <SkipLink href="#hovedinnhold" tab-index={-1}>
+      <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
         Hopp til innhold
-      </SkipLink>
+      </a>
       <DesignsystemHeader />
       {props.preview && <PreviewBanner />}
 

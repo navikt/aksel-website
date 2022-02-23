@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import * as Sc from "../../components";
+import { hotjar } from "react-hotjar";
 import { LayoutPicker, PreviewBanner } from "../../components";
 import GodPraksisHeader from "../../components/layout/header/GodPraksisHeader";
 import {
@@ -8,7 +8,6 @@ import {
   GpArticlePage,
   gpDocumentBySlug,
 } from "../../lib";
-import { hotjar } from "react-hotjar";
 
 const Page = (props: {
   slug?: string;
@@ -31,18 +30,22 @@ const Page = (props: {
 Page.getLayout = (page) => {
   return (
     <>
-      <Sc.SkipLink href="#hovedinnhold" tab-index={-1}>
+      <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
         Hopp til innhold
-      </Sc.SkipLink>
+      </a>
       <GodPraksisHeader />
-      <Sc.SidebarMain>
-        <Sc.MainFooter>
-          <Sc.Main tabIndex={-1} id="hovedinnhold">
+      <div className="flex bg-canvas-background-light">
+        <div className="relative w-full">
+          <main
+            tabIndex={-1}
+            id="hovedinnhold"
+            className="relative min-h-header w-full focus:outline-none lg:max-w-[calc(100vw_-_var(--sidebar-max-width))]"
+          >
             {page}
             <div className="mt-auto" aria-hidden />
-          </Sc.Main>
-        </Sc.MainFooter>
-      </Sc.SidebarMain>
+          </main>
+        </div>
+      </div>
     </>
   );
 };
