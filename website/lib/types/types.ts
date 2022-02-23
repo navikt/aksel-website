@@ -3,8 +3,6 @@ import { DsChangelog } from "..";
 import { BgColors } from "../../stories/sandbox/types";
 
 export type LayoutContextProps = {
-  isMobile: boolean;
-  isTablet: boolean;
   activeHeading?: DsNavigationHeadingT;
 };
 

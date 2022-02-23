@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import NextLink from "next/link";
 import * as React from "react";
 import { useContext } from "react";
-import { useMedia } from "react-use";
 import {
   AmplitudeEvents,
   LayoutContext,
@@ -19,7 +18,6 @@ import { Header } from "@navikt/ds-react-internal";
 const DesignsystemHeader = (): JSX.Element => {
   const { pageProps } = useContext(PagePropsContext);
   const context = useContext(LayoutContext);
-  const useMobileHeader = useMedia("(max-width: 1023px)", false);
   const { logAmplitudeEvent } = useAmplitude();
   const { asPath } = useRouter();
 
@@ -76,9 +74,14 @@ const DesignsystemHeader = (): JSX.Element => {
   );
 
   return (
-    <Header className="z-[1050] h-[var(--header-height)]">
-      {useMobileHeader || context.isTablet ? mobile : nonMobile}
-    </Header>
+    <>
+      <Header className="z-[1050] h-[var(--header-height)] lg:hidden xl:flex">
+        {nonMobile}
+      </Header>
+      <Header className="z-[1050] h-[var(--header-height)] lg:flex xl:hidden">
+        {mobile}
+      </Header>
+    </>
   );
 };
 export default DesignsystemHeader;

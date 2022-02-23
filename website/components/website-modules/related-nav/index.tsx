@@ -7,7 +7,7 @@ import { DsNavigationHeadingMenuT } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import NextLink from "next/link";
 
-const ScWrapper = styled.div<{ $isTablet: boolean }>`
+const ScWrapper = styled.div`
   width: 100%;
   margin: 0 auto 7rem auto;
   display: flex;
@@ -124,7 +124,7 @@ const RelatedPagesLink = () => {
   }
 
   return (
-    <ScWrapper $isTablet={context.isTablet}>
+    <ScWrapper>
       {links.prev ? (
         <NextLink href={`/${links.prev.link.slug.current}`} passHref>
           <ScA>

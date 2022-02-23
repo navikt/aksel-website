@@ -1,17 +1,11 @@
 import { BodyShort, Button, Heading, Label, Textarea } from "@navikt/ds-react";
+import cl from "classnames";
 import { useRouter } from "next/router";
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components";
-import { LayoutContext, useAmplitude } from "../..";
+import { useAmplitude } from "../..";
 import { HelpfulArticleEnum, HelpfulArticleT } from "../../../lib";
 import { AmplitudeEvents } from "../utils";
-import cl from "classnames";
 
 const ScFeedback = styled.div`
   width: 100%;
@@ -155,7 +149,6 @@ const Feedback = ({
 }): JSX.Element => {
   const { logAmplitudeEvent } = useAmplitude();
   const { asPath, basePath } = useRouter();
-  const context = useContext(LayoutContext);
   const [textValue, setTextValue] = useState("");
   const [activeState, setActiveState] = useState<HelpfulArticleEnum | null>(
     null
@@ -283,7 +276,7 @@ const Feedback = ({
   return (
     <ScFeedback
       className={cl("index-ignore max-w-[800px]", {
-        "mt-44 mr-auto mb-16 ml-0": context.isTablet && !center,
+        "mt-44 mr-auto mb-16 ml-0 lg:mr-0 lg:ml-0": !center,
         "mx-auto mt-44 mb-16": center,
       })}
     >
