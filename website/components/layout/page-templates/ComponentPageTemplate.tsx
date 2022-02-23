@@ -112,6 +112,21 @@ const ComponentPageTemplate = ({
             className="index-lvl1 flex flex-wrap items-center gap-4"
           >
             {data.heading}
+            {npmPackage?.title && (
+              <Tag
+                variant="info"
+                size="small"
+                className="border-transparent bg-gray-100 font-mono"
+              >
+                {npmPackage.title}
+              </Tag>
+            )}
+          </Heading>
+          <BodyShort
+            as="div"
+            size="small"
+            className="mb-4 flex flex-wrap items-center justify-start gap-x-4 gap-y-3"
+          >
             {npmPackage?.status && npmPackage.status !== "live" && (
               <Tag
                 variant="info"
@@ -126,57 +141,46 @@ const ComponentPageTemplate = ({
                 {npmPackage.status}
               </Tag>
             )}
-            {npmPackage?.title && (
-              <Tag
-                variant="info"
-                size="small"
-                className="border-transparent bg-gray-100 font-mono"
-              >
-                {npmPackage.title}
-              </Tag>
-            )}
-          </Heading>
-          <BodyShort
-            as="div"
-            size="small"
-            className="mb-2 flex flex-wrap items-center justify-start gap-x-6 gap-y-3"
-          >
             <LastUpdateTag date={data._updatedAt} />
-            <div className="flex gap-x-2">
-              {npmPackage?.title && (
-                <a
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  href={`https://yarnpkg.com/package/${npmPackage.title}`}
-                  className="flex items-center gap-1 text-text underline hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
-                >
-                  Yarn
-                  <ExternalLink aria-label="Gå til yarn pakke" />
-                </a>
-              )}
-              {npmPackage?.github_link && (
-                <a
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  href={npmPackage.github_link}
-                  className="flex items-center gap-1 text-text underline hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
-                >
-                  Kode
-                  <ExternalLink aria-label="Gå til github-kode" />
-                </a>
-              )}
-              {data.figma_link && (
-                <a
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  href={data.figma_link}
-                  className="flex items-center gap-1 text-text underline hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
-                >
-                  Figma
-                  <ExternalLink aria-label="Åpne i Figma" />
-                </a>
-              )}
-            </div>
+          </BodyShort>
+          <BodyShort
+            as="span"
+            size="small"
+            className="flex gap-4 text-text-muted"
+          >
+            {npmPackage?.title && (
+              <a
+                target="_blank"
+                rel="noreferrer noopener"
+                href={`https://yarnpkg.com/package/${npmPackage.title}`}
+                className="flex items-center gap-1 underline hover:text-text hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
+              >
+                Yarn
+                <ExternalLink aria-label="Gå til yarn pakke" />
+              </a>
+            )}
+            {npmPackage?.github_link && (
+              <a
+                target="_blank"
+                rel="noreferrer noopener"
+                href={npmPackage.github_link}
+                className="flex items-center gap-1 underline hover:text-text hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
+              >
+                Kode
+                <ExternalLink aria-label="Gå til github-kode" />
+              </a>
+            )}
+            {data.figma_link && (
+              <a
+                target="_blank"
+                rel="noreferrer noopener"
+                href={data.figma_link}
+                className="flex items-center gap-1 underline hover:text-text hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
+              >
+                Figma
+                <ExternalLink aria-label="Åpne i Figma" />
+              </a>
+            )}
           </BodyShort>
         </div>
       </div>
