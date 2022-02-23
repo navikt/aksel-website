@@ -40,7 +40,7 @@ const Toggle = ({
           arrow={false}
           placement={"bottom-start"}
           offset={8}
-          className="z-[1100] w-80 max-w-full animate-fadeIn rounded border-none bg-component-background-light shadow-card"
+          className="z-[1100] w-80 max-w-full animate-fadeIn rounded border-none bg-component-background-light shadow-large"
         >
           {menu}
         </Popover>
