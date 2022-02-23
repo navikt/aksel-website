@@ -1,6 +1,6 @@
 import { getClient, sanityClient } from "./sanity.server";
 import { useNextSanityImage } from "next-sanity-image";
-import { dsDocuments, gpDocuments } from "./queries";
+import { akselArtikkelDocuments, dsDocuments, gpDocuments } from "./queries";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useSanityImage = (node) =>
@@ -13,6 +13,21 @@ export const useSanityImage = (node) =>
         .auto("format");
     },
   });
+
+export const getAkselArtikler = async (): Promise<string[]> => {
+  const documents: any[] | null = await getClient(false).fetch(
+    akselArtikkelDocuments
+  );
+  const paths = [];
+
+  const nonDrafts = documents.filter((x) => !x._id.startsWith("drafts."));
+
+  nonDrafts?.forEach((page) => {
+    page.slug && paths.push(page.slug);
+  });
+
+  return paths;
+};
 
 export const getGpPaths = async (): Promise<string[][]> => {
   const documents: any[] | null = await getClient(false).fetch(gpDocuments);

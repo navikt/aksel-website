@@ -1,5 +1,5 @@
 import fs from "fs";
-import { getDsPaths, getGpPaths } from "..";
+import { getAkselArtikler, getDsPaths, getGpPaths } from "..";
 
 const generateUrls = async () => {
   const urls = [
@@ -9,7 +9,8 @@ const generateUrls = async () => {
     ...(await getGpPaths()),
   ];
   const parsedUrls = urls.map((u) => `/${u.join("/")}`);
-  console.log(parsedUrls);
+  parsedUrls.push(...(await getAkselArtikler()));
+
   fs.writeFile(
     "./cypress/test-urls.json",
     JSON.stringify(parsedUrls),

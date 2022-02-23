@@ -1,6 +1,7 @@
 import Error from "next/error";
 import React, { useEffect, useState } from "react";
 import {
+  AkselArtikkel,
   DsArticlePage,
   DsArtikkel,
   DsComponentPage,
@@ -39,6 +40,13 @@ type ds_artikkel = {
   ds_artikkel: (props: { data: DsArtikkel; title: string }) => JSX.Element;
 };
 
+type aksel_artikkel = {
+  aksel_artikkel: (props: {
+    data: AkselArtikkel;
+    title: string;
+  }) => JSX.Element;
+};
+
 type gp_article = {
   gp_article_page: (props: {
     data: DsArticlePage;
@@ -51,7 +59,8 @@ type templateT =
   | ds_article
   | gp_article
   | komponent_artikkel
-  | ds_artikkel;
+  | ds_artikkel
+  | aksel_artikkel;
 
 const templates: templateT = {
   komponent_artikkel: (props) => <KomponentArtikkelTemplate {...props} />,
@@ -69,13 +78,19 @@ const templates: templateT = {
       <ArtikkelTemplate {...props} />
     ),
   gp_article_page: (props) => <ArticleTemplate {...props} />,
+  aksel_artikkel: (props) => <ArtikkelTemplate {...props} />,
 };
 
 const TemplatePicker = ({
   data,
   title,
 }: {
-  data: DsComponentPage | DsArticlePage | GpArticlePage | KomponentArtikkel;
+  data:
+    | DsComponentPage
+    | DsArticlePage
+    | GpArticlePage
+    | KomponentArtikkel
+    | AkselArtikkel;
   title: string;
 }): JSX.Element => {
   const [mounted, setMounted] = useState(false);

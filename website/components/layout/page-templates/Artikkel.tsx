@@ -12,14 +12,14 @@ import {
   TableOfContents,
   useAmplitude,
 } from "../..";
-import { DsArtikkel } from "../../../lib";
+import { AkselArtikkel, DsArtikkel } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 
 const ArtikkelTemplate = ({
   data,
   title,
 }: {
-  data: DsArtikkel;
+  data: DsArtikkel | AkselArtikkel;
   title: string;
 }): JSX.Element => {
   const { asPath } = useRouter();
