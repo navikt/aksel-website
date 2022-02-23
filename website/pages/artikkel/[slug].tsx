@@ -49,7 +49,7 @@ export const getStaticPaths = async (): Promise<{
     paths: await getAkselArtikler().then((paths) =>
       paths.map((slug) => ({
         params: {
-          slug: slug,
+          slug: slug.replace("artikkel/", ""),
         },
       }))
     ),
@@ -77,7 +77,7 @@ export const getStaticProps = async ({
 }): Promise<StaticProps | { notFound: true }> => {
   const client = getClient(preview);
   let page = await client.fetch(akselDocumentBySlug, {
-    slug,
+    slug: `artikkel/${slug}`,
   });
 
   const isDraft = page.filter((item) => !item._id.startsWith("drafts.")).length;
@@ -85,7 +85,7 @@ export const getStaticProps = async ({
   page = page?.find((item) => item._id.startsWith(`drafts.`)) || page?.[0];
 
   const validPath = await getAkselArtikler().then((paths) =>
-    paths.includes(slug)
+    paths.map((x) => x.replace("artikkel/", "")).includes(slug)
   );
 
   return {

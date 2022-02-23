@@ -304,7 +304,7 @@ export const vkFrontpageQuery = `*[_id == "frontpage_vk_praksis"]
 }`;
 
 export const gpDocuments = `*[_type in ["gp_article_page"]]{ _type, 'slug': slug.current, }`;
-export const akselArtikkelDocuments = `*[_type in ["aksel_artikkel"]]{ _type, 'slug': slug.current, }`;
+export const akselArtikkelDocuments = `*[_type in ["aksel_artikkel"]]{ _type, 'slug': slug.current, _id }`;
 
 export const gpDocumentBySlug = `*[slug.current == $slug]
 {

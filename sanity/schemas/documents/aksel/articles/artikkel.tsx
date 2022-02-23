@@ -19,6 +19,8 @@ function toPlainText(blocks = []) {
     .join("\n");
 }
 
+const prefix = "artikkel/";
+
 export default {
   title: "Aksel Artikkel",
   name: "aksel_artikkel",
@@ -49,15 +51,15 @@ export default {
       name: "slug",
       type: "slug",
       description: "Strukturen bestemmes ikke av URL-en",
-      validation: (Rule) => validateSlug(Rule, "", 1),
+      validation: (Rule) => validateSlug(Rule, prefix, 2),
       group: "settings",
       inputComponent: SlugInput,
       options: {
-        basePath: "design.nav.no/artikkel",
+        basePath: "design.nav.no",
         isUnique: isSlugUnique,
         source: "heading",
         slugify: (input) =>
-          `${input}`.toLowerCase().replace(/\s+/g, "-").slice(0, 70),
+          `${prefix}${input}`.toLowerCase().replace(/\s+/g, "-").slice(0, 70),
       },
     },
     {

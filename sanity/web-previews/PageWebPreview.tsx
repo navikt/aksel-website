@@ -9,9 +9,6 @@ export const PageWebPreview = (ctx: any) => {
   }
 
   let previewUrl = `/preview/${slug}`;
-  if (ctx.document.displayed._type === "aksel_artikkel") {
-    previewUrl = `/preview/artikkel/${slug}`;
-  }
 
   const webUrl = "https://design.nav.no";
   const url =
