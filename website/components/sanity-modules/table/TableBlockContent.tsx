@@ -2,15 +2,7 @@ import { BodyShort, Detail, Link } from "@navikt/ds-react";
 import BlockContent from "@sanity/block-content-to-react";
 import NextLink from "next/link";
 import React from "react";
-import styled from "styled-components";
 import { DsIconAnnotation, InlineCode, KBD } from "../../SanityBlockContent";
-
-const ScWrapper = styled.span`
-  svg {
-    vertical-align: middle;
-    margin: 0 0.25rem 3px 0.25rem;
-  }
-`;
 
 const serializers = {
   types: {
@@ -59,8 +51,8 @@ const serializers = {
 
 export const TableBlockContent = ({ blocks }: { blocks: any }): JSX.Element => {
   return (
-    <ScWrapper>
+    <div className="table-icon">
       <BlockContent blocks={blocks} serializers={serializers} />
-    </ScWrapper>
+    </div>
   );
 };

@@ -48,6 +48,11 @@
   .img-wrapper > div {
     position: unset !important;
   }
+
+  .table-icon svg {
+    vertical-align: middle;
+    margin: 0 0.25rem 3px 0.25rem;
+  }
 }
 
 @layer utilities {

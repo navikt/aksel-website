@@ -80,7 +80,7 @@ const LevelTwoHeading = ({
             logAnchor(slug);
           }}
           ref={anchorRef}
-          className="ml-0 flex aspect-square rounded-full p-2 text-xlarge opacity-50 transition-opacity hover:bg-gray-100 hover:opacity-100 focus:opacity-100 focus:shadow-focus focus:outline-none sm:ml-2"
+          className="ml-0 mt-[2px] flex aspect-square self-start rounded-full p-2 text-xlarge opacity-50 transition-opacity hover:bg-gray-100 hover:opacity-100 focus:opacity-100 focus:shadow-focus focus:outline-none sm:ml-2"
         >
           <span>
             <LinkIcon aria-label="Ankerlenke" />

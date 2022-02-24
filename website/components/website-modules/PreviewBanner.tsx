@@ -3,36 +3,17 @@
  */
 import { useRouter } from "next/router";
 import * as React from "react";
-import styled from "styled-components";
-
-const Style = styled.a`
-  background-color: var(--navds-global-color-red-500);
-  color: var(--navds-semantic-color-canvas-background-light);
-  border: none;
-  padding: 1rem;
-  width: 20rem;
-  position: fixed;
-  opacity: 0.8;
-  text-align: center;
-  transform: translate(-6rem, 1.5rem) rotate(-45deg);
-  font-weight: bold;
-  z-index: 9999;
-  top: 0.5rem;
-  left: 0rem;
-  text-decoration: none;
-
-  :hover {
-    background-color: var(--navds-global-color-red-300);
-  }
-`;
 
 function PreviewBanner(): JSX.Element {
   const { asPath } = useRouter();
 
   return (
-    <Style href={`/api/exit-preview?slug=${asPath}`}>
+    <a
+      href={`/api/exit-preview?slug=${asPath}`}
+      className="fixed top-2 left-0 z-[9999] w-80 -translate-x-24 translate-y-6 -rotate-45 bg-red-500 p-4 text-center font-semibold text-text-inverted no-underline opacity-60  hover:opacity-100 focus:opacity-100"
+    >
       <div>EXIT PREVIEW</div>
-    </Style>
+    </a>
   );
 }
 
