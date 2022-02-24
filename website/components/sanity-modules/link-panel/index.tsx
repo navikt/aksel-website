@@ -1,13 +1,8 @@
 import { LinkPanel as DsLinkPanel } from "@navikt/ds-react";
 import React from "react";
-import styled from "styled-components";
 import { slugger } from "../..";
 import { LinkPanel as LinkPanelT } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
-
-const ScPanel = styled(DsLinkPanel)`
-  max-width: 400px;
-`;
 
 const LinkPanel = ({ node }: { node: LinkPanelT }): JSX.Element => {
   if (
@@ -30,14 +25,14 @@ const LinkPanel = ({ node }: { node: LinkPanelT }): JSX.Element => {
     slugger.slug(node.heading.toString());
 
   return (
-    <ScPanel href={link}>
+    <DsLinkPanel className="max-w-md" href={link}>
       <DsLinkPanel.Title as={node.heading_level} id={slug || undefined}>
         {node.heading}
       </DsLinkPanel.Title>
       {node.body && (
         <DsLinkPanel.Description>{node.body}</DsLinkPanel.Description>
       )}
-    </ScPanel>
+    </DsLinkPanel>
   );
 };
 

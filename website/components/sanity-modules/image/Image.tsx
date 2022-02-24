@@ -1,10 +1,10 @@
+import { BodyLong } from "@navikt/ds-react";
 import NextImage from "next/image";
 import React, { useState } from "react";
 import { useMeasure } from "react-use";
 import { Lightbox } from "../..";
 import { useSanityImage, Picture as PictureT } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
-import * as S from "./image.styles";
 
 const Image = ({ node }: { node: PictureT }): JSX.Element => {
   if (!node || !node.asset) {
@@ -18,29 +18,31 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
   const [ref, { width }] = useMeasure();
 
   return (
-    <S.Figure>
-      <S.Image
+    <figure className="m-0 mb-8 flex flex-col">
+      <button
         ref={ref}
         aria-label="Klikk for å åpne bildet i fullskjerm"
         tabIndex={0}
         onClick={() => setOpen(!open)}
+        className="bg-gray-50 p-0 shadow-[0_0_0_1px_var(--navds-semantic-color-divider)] focus:shadow-focus focus:outline-none"
       >
         <NextImage
           {...imageProps}
           alt={node.title}
           quality="100"
           layout="responsive"
+          unoptimized
           sizes={
             width !== undefined
               ? `${Math.round(width)}px`
               : "(max-width: 800px)"
           }
         />
-      </S.Image>
+      </button>
       {node.caption && (
-        <S.Caption className="navds-body-long navds-body-long--small">
+        <BodyLong as="figcaption" className="mt-2 self-center italic">
           {node.caption}
-        </S.Caption>
+        </BodyLong>
       )}
       <Lightbox open={open} onClose={() => setOpen(false)}>
         {open && (
@@ -49,10 +51,11 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
             quality="100"
             layout="fill"
             alt={node.title}
+            unoptimized
           />
         )}
       </Lightbox>
-    </S.Figure>
+    </figure>
   );
 };
 

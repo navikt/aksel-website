@@ -3,87 +3,10 @@ import meta from "@navikt/ds-icons/meta.json";
 import { BodyShort, Button, Detail, Heading } from "@navikt/ds-react";
 import React, { useEffect, useState } from "react";
 import { renderToString } from "react-dom/server";
-import styled, { css } from "styled-components";
 import { isNew } from ".";
 import { AmplitudeEvents, Snippet, useAmplitude } from "../..";
 import { CodeSnippet } from "../../../lib";
 import { downloadPng, downloadSvg } from "./downloads";
-
-const ScModalContent = styled.div`
-  min-width: 300px;
-  max-width: 600px;
-  flex-shrink: 1;
-  display: flex;
-  flex-direction: column;
-`;
-
-const ScMutedBodyShort = styled(BodyShort)`
-  color: var(--navds-semantic-color-text-muted);
-`;
-
-const ScIcons = styled.div`
-  display: flex;
-  margin-top: auto;
-`;
-
-const ScIconCss = css`
-  flex: 1 1;
-
-  /* Helps avoid un-needed scroll */
-  max-height: 180px;
-  min-height: 140px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 6rem;
-`;
-
-const ScIcon = styled.div`
-  ${ScIconCss}
-  background-color: var(--navds-semantic-color-canvas-background-light);
-  color: var(--navds-semantic-color-text);
-`;
-
-const ScIconInverted = styled.div`
-  ${ScIconCss}
-  background-color: var(--navds-semantic-color-canvas-background-inverted);
-  color: var(--navds-semantic-color-text-inverted);
-`;
-
-const ScButtonWrapper = styled.div`
-  display: flex;
-  gap: 1rem;
-
-  margin-bottom: 2rem;
-`;
-
-const ScNew = styled(Detail)`
-  padding: 0.25rem 0.5rem;
-  background-color: var(--navds-semantic-color-feedback-info-background);
-  border-radius: 4px;
-  height: 100%;
-`;
-
-const ScHeading = styled(Heading)`
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-`;
-
-const ScTopWrapper = styled.div`
-  display: inline-flex;
-  justify-content: space-between;
-  margin-right: 4rem;
-  gap: 1rem;
-
-  @media (max-width: 564px) {
-    flex-direction: column;
-  }
-
-  /* > * {
-    flex: 1 1;
-  } */
-`;
 
 const ModalContent = ({ icon }: { icon: string }) => {
   const { logAmplitudeEvent } = useAmplitude();
@@ -132,19 +55,31 @@ import ${icon} from "@navikt/ds-icons/svg/${icon}";`,
   };
 
   return (
-    <ScModalContent>
-      <ScTopWrapper>
+    <div className="flex min-w-[300px] max-w-xl shrink flex-col">
+      <div className="mr-16 inline-flex flex-col justify-between gap-4 md:flex-row">
         <div>
-          <ScHeading spacing level="2" size="medium">
+          <Heading
+            spacing
+            level="2"
+            size="medium"
+            className="flex items-center gap-2"
+          >
             {icon}
-            {isNew(doc?.created_at) && <ScNew forwardedAs="span">Ny!</ScNew>}
-          </ScHeading>
+            {isNew(doc?.created_at) && (
+              <Detail
+                className="h-full rounded bg-feedback-info-background py-1 px-2"
+                as="span"
+              >
+                Ny!
+              </Detail>
+            )}
+          </Heading>
           {doc && (
             <>
-              <ScMutedBodyShort>{doc.pageName}</ScMutedBodyShort>
-              <ScMutedBodyShort spacing>{`${
+              <BodyShort className="text-text-muted">{doc.pageName}</BodyShort>
+              <BodyShort className="text-text-muted" spacing>{`${
                 doc.description && `${doc.description}`
-              }`}</ScMutedBodyShort>
+              }`}</BodyShort>
             </>
           )}
         </div>
@@ -152,7 +87,7 @@ import ${icon} from "@navikt/ds-icons/svg/${icon}";`,
           <Heading spacing level="3" size="medium">
             Last ned
           </Heading>
-          <ScButtonWrapper>
+          <div className="mb-8 flex gap-4">
             <Button
               variant="tertiary"
               onClick={() => {
@@ -172,9 +107,9 @@ import ${icon} from "@navikt/ds-icons/svg/${icon}";`,
               <Icons.Download aria-label="last ned" />
               PNG
             </Button>
-          </ScButtonWrapper>
+          </div>
         </div>
-      </ScTopWrapper>
+      </div>
       <Heading spacing level="3" size="small">
         Import
       </Heading>
@@ -183,15 +118,15 @@ import ${icon} from "@navikt/ds-icons/svg/${icon}";`,
         Svg
       </Heading>
       <Snippet node={svgSnippet} />
-      <ScIcons>
-        <ScIcon>
+      <div className="mt-auto flex">
+        <div className="flex h-36 flex-1 items-center justify-center bg-white text-[6rem] text-text">
           <Icon />
-        </ScIcon>
-        <ScIconInverted>
+        </div>
+        <div className="flex h-36 flex-1 items-center justify-center bg-gray-900 text-[6rem] text-text-inverted">
           <Icon />
-        </ScIconInverted>
-      </ScIcons>
-    </ScModalContent>
+        </div>
+      </div>
+    </div>
   );
 };
 

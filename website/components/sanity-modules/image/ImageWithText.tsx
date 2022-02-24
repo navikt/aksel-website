@@ -1,14 +1,9 @@
 import NextImage from "next/image";
 import React from "react";
-import styled from "styled-components";
 import { PictureText as PictureTextT, useSanityImage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import { withErrorBoundary } from "../../ErrorBoundary";
-import * as S from "./image.styles";
-
-const ScSection = styled.div`
-  display: flow-root;
-`;
+import cl from "classnames";
 
 const Image = ({ node }: { node: PictureTextT }): JSX.Element => {
   if (!node || !node.asset || !node.body) {
@@ -16,21 +11,28 @@ const Image = ({ node }: { node: PictureTextT }): JSX.Element => {
   }
 
   const imageProps = useSanityImage(node);
-
   return (
-    <ScSection>
-      <S.TextImage placement={node.placement ?? "left"}>
+    <div className="flow-root">
+      <div
+        className={cl(
+          "mb-6 w-full max-w-xs bg-gray-50 shadow-[0_0_0_1px_var(--navds-semantic-color-divider)] sm:w-80",
+          {
+            "float-none mb-6 sm:float-left sm:mr-6": node?.placement === "left",
+            "float-none mb-6 sm:float-right sm:ml-6":
+              node?.placement === "right",
+          }
+        )}
+      >
         <NextImage
           {...imageProps}
           layout="responsive"
-          sizes="(max-width: 260px) 100vw, 1000px"
+          sizes="(max-width: 320px)"
           alt={node.title}
+          unoptimized
         />
-      </S.TextImage>
-      <div>
-        <SanityBlockContent blocks={node.body} />
       </div>
-    </ScSection>
+      <SanityBlockContent blocks={node.body} />
+    </div>
   );
 };
 
