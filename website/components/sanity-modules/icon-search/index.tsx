@@ -3,102 +3,11 @@ import meta from "@navikt/ds-icons/meta.json";
 import { BodyLong, Detail, Heading, Link, Modal } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
-import styled from "styled-components";
 import { AmplitudeEvents, useAmplitude } from "../..";
 import DownloadButtons from "./DownloadButtons";
 import Filter, { FilterT } from "./Filter";
 import { categorizeIcons, CategoryT, IconMetaT } from "./iconCategories";
 import ModalContent from "./ModalContent";
-
-const ScIconSearch = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 864px;
-  max-width: 62vw;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`;
-
-const ScIcons = styled.div`
-  grid-template-columns: repeat(auto-fit, 12rem);
-  align-content: start;
-  display: grid;
-  column-gap: 16px;
-  row-gap: 24px;
-  justify-content: flex-start;
-  padding: 2rem 0;
-`;
-
-const ScIcon = styled.button`
-  height: 8rem;
-  width: 12rem;
-  flex-shrink: 1;
-  border-radius: 4px;
-  background: none;
-  border: none;
-  position: relative;
-  cursor: pointer;
-
-  box-shadow: var(--navds-shadow-card);
-
-  svg {
-    transition: font-size 0.2s ease-in-out;
-    font-size: 2rem;
-  }
-
-  :hover {
-    box-shadow: 0 0 0 2px var(--navds-semantic-color-link);
-
-    svg {
-      font-size: 2.4rem;
-    }
-  }
-
-  :focus {
-    outline: none;
-    box-shadow: 0 0 0 3px var(--navds-semantic-color-focus);
-  }
-`;
-
-const ScIconInner = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 1rem;
-  height: 100%;
-  width: 100%;
-
-  svg {
-    font-size: 2rem;
-  }
-`;
-
-const ScNew = styled(Detail)`
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.25rem 0.5rem;
-  font-weight: 400;
-  background-color: var(--navds-semantic-color-feedback-info-background);
-  border-bottom-left-radius: 6px;
-`;
-
-const ScIconTexts = styled.div`
-  text-align: center;
-`;
-
-const ScFlex = styled.div`
-  display: flex;
-  flex-wrap: wrap-reverse;
-  column-gap: 2rem;
-  justify-content: space-between;
-  width: 100%;
-`;
 
 const getName = (name: string) => {
   return name
@@ -222,42 +131,52 @@ const IconSearch = () => {
   const categories: CategoryT[] = categorizeIcons(visibleIcons);
 
   return (
-    <ScIconSearch>
-      <ScFlex>
+    <div className="relative flex w-full max-w-full flex-col lg:w-[816px] lg:max-w-[62vw]">
+      <div className="flex w-full flex-wrap-reverse justify-between gap-x-8 gap-y-4">
         <Filter onFilterChange={handleFilterChange} />
         <DownloadButtons />
-      </ScFlex>
+      </div>
       {categories.map((cat) => {
         return (
           <div key={cat.category}>
             <Heading level="3" size="small">
               {cat.category}
             </Heading>
-            <ScIcons>
+            <div className="grid content-start justify-start gap-x-4 gap-y-6 py-8 [grid-template-columns:repeat(auto-fit,12rem)]">
               {cat.icons.map((i) => {
                 const T = Icons[i.name];
                 return (
-                  <ScIcon
+                  <button
                     key={i.created_at}
                     onClick={() => handleSelect(i.name)}
-                    className="vk-icon_button"
+                    className="group vk-icon_button relative h-32 w-48 shrink rounded shadow-card hover:shadow-[0_0_0_2px_theme(colors.link)] focus:shadow-focus focus:outline-none"
                   >
-                    {isNew(i.created_at) && <ScNew>Ny!</ScNew>}
-                    <ScIconInner>
+                    {isNew(i.created_at) && (
+                      <Detail
+                        size="small"
+                        className="absolute top-0 right-0 rounded-tr rounded-bl-md bg-feedback-info-background py-1 px-2 "
+                      >
+                        Ny!
+                      </Detail>
+                    )}
+                    <div className="flex h-full w-full flex-col items-center justify-end gap-2 p-4">
                       <div>
-                        <T title={i.name} />
+                        <T
+                          title={i.name}
+                          className="mb-2 text-[2rem] transition-all group-hover:text-[2.4rem]"
+                        />
                       </div>
-                      <ScIconTexts>
+                      <div className="text-center">
                         <Detail size="small" className="vk-icon_button-detail">
                           {" "}
                           {getName(i.name)}
                         </Detail>
-                      </ScIconTexts>
-                    </ScIconInner>
-                  </ScIcon>
+                      </div>
+                    </div>
+                  </button>
                 );
               })}
-            </ScIcons>
+            </div>
           </div>
         );
       })}
@@ -279,7 +198,7 @@ const IconSearch = () => {
           {selectedIcon && <ModalContent icon={selectedIcon} />}
         </Modal.Content>
       </Modal>
-    </ScIconSearch>
+    </div>
   );
 };
 export default IconSearch;
