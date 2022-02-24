@@ -1,90 +1,13 @@
 import { SuccessStroke } from "@navikt/ds-icons";
 import { useRef, useState, useEffect } from "react";
-import * as S from "./code.styles";
 import copy from "copy-to-clipboard";
-import styled from "styled-components";
 import React from "react";
+import cl from "classnames";
 
 const copyCode = (content: string) =>
   copy(content, {
     format: "text/plain",
   });
-
-const ScButton = styled.button<{ inverted: boolean }>`
-  ${S.ButtonCss}
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  border-radius: 4px;
-  color: var(--navds-semantic-color-text-inverted);
-  background-color: var(--navds-semantic-color-component-background-inverted);
-  height: 48px;
-  width: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  :hover {
-    background-color: var(--navds-global-color-gray-800);
-    text-decoration: none;
-    color: var(--navds-semantic-color-text-inverted);
-
-    ::before {
-      content: none;
-    }
-  }
-
-  :focus {
-    outline: 2px solid var(--navds-semantic-color-canvas-background-light);
-  }
-
-  > svg {
-    font-size: 1.5rem;
-  }
-
-  ${(props) =>
-    props.inverted &&
-    `
-    color: var(--navds-semantic-color-text);
-    background-color: var(--navds-semantic-color-component-background);
-
-    :hover {
-      /* background-color: var(--navds-semantic-color-interaction-primary-hover-subtle); */
-      background-color: var(--navds-semantic-color-component-background);
-      color: var(--navds-semantic-color-text);
-      text-decoration: underline;
-    }
-
-    :focus {
-      outline: 2px solid var(--navds-semantic-color-focus);
-    }
-  `}
-`;
-
-const ScTabButton = styled.button<{ inverted: boolean }>`
-  ${S.ButtonCss}
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 4rem;
-
-  ::before {
-    content: none;
-  }
-
-  :hover {
-    ::before {
-      content: none;
-    }
-  }
-
-  :active {
-    background-color: var(--navds-global-color-blue-50);
-  }
-  > svg {
-    font-size: 1.5rem;
-  }
-`;
 
 interface CopyButtonProps {
   content: string;
@@ -110,19 +33,30 @@ const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
       setActive(true);
     };
 
-    const Button = inTabs ? ScTabButton : ScButton;
-
     return (
-      <Button
+      <button
         ref={ref}
         aria-live={active ? "polite" : "off"}
         role={active ? "alert" : undefined}
-        className="navds-body-short"
+        className={cl("navds-body-short", {
+          "flex w-16 items-center justify-center hover:bg-blue-50 focus:shadow-[inset_0_0_0_2px_theme(colors.focus)] focus:outline-none":
+            inTabs,
+          "bg-gray-50 text-text hover:bg-gray-100 hover:underline focus:outline-2 focus:outline-focus":
+            !inTabs && inverted,
+          "absolute top-4 right-4 flex h-[48px] w-16 items-center justify-center rounded bg-gray-900 text-text-inverted hover:bg-gray-800 focus:outline-2 focus:outline-focus-inverted":
+            !inTabs && !inverted,
+        })}
         onClick={handleCopy}
-        inverted={inverted}
       >
-        {active ? <SuccessStroke aria-label="Kopierte kodesnutt" /> : "Copy"}
-      </Button>
+        {active ? (
+          <SuccessStroke
+            className="text-[1.5rem]"
+            aria-label="Kopierte kodesnutt"
+          />
+        ) : (
+          "Copy"
+        )}
+      </button>
     );
   }
 );
