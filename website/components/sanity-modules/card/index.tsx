@@ -67,7 +67,7 @@ const Card = ({
   }
 
   return (
-    <div className={cl("card aspect-[18/22]", className)}>
+    <div className={cl("card group aspect-[18/22]", className)}>
       {imageProps && (
         <div className="mb-6 flex shrink-0 justify-center">
           <NextImage
@@ -82,7 +82,7 @@ const Card = ({
       <NextLink href={href ?? `/${node?.link_ref?.slug}`} passHref>
         <a
           onClick={(e) => logNavigation(e)}
-          className="navds-heading--medium navds-heading navds-typo--spacing after:absolute after:inset-0 focus:outline-none"
+          className="navds-heading--medium navds-heading navds-typo--spacing underline after:absolute after:inset-0 focus:outline-none group-hover:no-underline"
           {...rest}
         >
           {node.title}
