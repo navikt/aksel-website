@@ -1,5 +1,6 @@
 import React from "react";
 import { LayoutPicker, PreviewBanner } from "../../components";
+import Footer from "../../components/layout/footer/Footer";
 import AkselHeader from "../../components/layout/header/AkselHeader";
 import {
   AkselArtikkel,
@@ -39,6 +40,7 @@ Page.getLayout = (page) => {
         {page}
         <div className="mt-auto" aria-hidden />
       </main>
+      <Footer />
     </>
   );
 };
