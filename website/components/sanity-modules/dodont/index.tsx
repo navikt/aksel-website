@@ -1,9 +1,9 @@
-import { ErrorFilled, SuccessFilled, WarningFilled } from "@navikt/ds-icons";
+import { SuccessFilled, WarningFilled } from "@navikt/ds-icons";
 import { BodyShort } from "@navikt/ds-react";
+import cl from "classnames";
 import NextImage from "next/image";
 import React, { useState } from "react";
 import { Lightbox } from "../..";
-import cl from "classnames";
 import {
   DoDont as DoDontT,
   DoDontBlock as DoDontBlockT,

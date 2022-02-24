@@ -2,100 +2,30 @@ import { Error, Success } from "@navikt/ds-icons";
 import { BodyShort, Label, Link, Table, Tag, useId } from "@navikt/ds-react";
 import React from "react";
 import ReactTooltip from "react-tooltip";
-import styled from "styled-components";
 import { FigmaIcon, FigmaIconNoSync, OverflowDetector } from "../..";
 import { DsComponentOverview } from "../../../lib";
 import NextLink from "next/link";
 
-const ScComponentOverview = styled.div``;
-const ScHeaderCell = styled(BodyShort)`
-  color: var(--navds-semantic-color-text-muted);
-`;
-
-const ScBodyShortMuted = styled(BodyShort)`
-  color: var(--navds-semantic-color-text-muted);
-  ::first-letter {
-    text-transform: capitalize;
-  }
-`;
-
-const ScSuccess = styled.span`
-  align-items: center;
-  display: flex;
-  > * {
-    font-size: 1.5rem;
-    color: var(--navds-semantic-color-feedback-success-icon);
-  }
-`;
-
-const ScError = styled.span`
-  align-items: center;
-  display: flex;
-  > * {
-    font-size: 1.5rem;
-    color: var(--navds-semantic-color-feedback-danger-icon);
-  }
-`;
-
-const ScPurpleTag = styled(Tag)`
-  background-color: var(--navds-global-color-purple-400);
-  color: var(--navds-semantic-color-text-inverted);
-  border: none;
-`;
-
-const ScDataCellInner = styled.span`
-  display: flex;
-  align-items: center;
-  gap: var(--navds-spacing-2);
-`;
-
-const ScFocusSpan = styled.span`
-  :focus {
-    outline: 2px solid var(--navds-semantic-color-focus);
-  }
-`;
-
-const ScCenterBodyShort = styled(BodyShort)`
-  display: flex;
-  align-items: center;
-
-  :focus {
-    outline: 2px solid var(--navds-semantic-color-focus);
-  }
-`;
-
-const ScUl = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  margin-bottom: var(--navds-spacing-8);
-
-  > li {
-    list-style: none;
-    margin: 0;
-    align-items: center;
-    display: flex;
-    padding: 0.5rem 0;
-    gap: 0.5rem;
-  }
-`;
-
 const SuccessIcon = () => (
-  <ScSuccess>
-    <Success aria-label="lansert" />
-  </ScSuccess>
+  <span className="flex items-center">
+    <Success aria-label="lansert" className="text-2xl text-green-500" />
+  </span>
 );
 
 const ErrorIcon = () => (
-  <ScError>
-    <Error aria-label="ikke laget enda" />
-  </ScError>
+  <span className="flex items-center">
+    <Error aria-label="ikke laget enda" className="text-2xl text-red-500" />
+  </span>
 );
 
 const BetaTag = () => (
-  <ScPurpleTag size="small" variant="info">
+  <Tag
+    size="small"
+    variant="info"
+    className="border-none bg-purple-400 text-text-inverted"
+  >
     Beta
-  </ScPurpleTag>
+  </Tag>
 );
 
 const DesignCell = ({ comp }: { comp: any }) => {
@@ -105,10 +35,13 @@ const DesignCell = ({ comp }: { comp: any }) => {
   return (
     <>
       <SuccessIcon />
-      <ScCenterBodyShort size="small">
+      <BodyShort
+        className="flex items-center focus:outline-2 focus:outline-focus"
+        size="small"
+      >
         <FigmaIcon />
         {comp.figma_version === "new" ? "v3.0" : "v2.5"}
-      </ScCenterBodyShort>
+      </BodyShort>
     </>
   );
 };
@@ -121,7 +54,8 @@ const CodeCell = ({ comp }: { comp: any }) => {
       <SuccessIcon />
       {!comp.figma_sync && (
         <>
-          <ScCenterBodyShort
+          <BodyShort
+            className="flex items-center focus:outline-2 focus:outline-focus"
             tabIndex={0}
             data-tip=""
             data-for={`tooltip-sync-${id}`}
@@ -129,7 +63,7 @@ const CodeCell = ({ comp }: { comp: any }) => {
             aria-label="Kodet komponent er ikke i synk med design i Figma"
           >
             <FigmaIconNoSync />
-          </ScCenterBodyShort>
+          </BodyShort>
           <ReactTooltip
             id={`tooltip-sync-${id}`}
             place="top"
@@ -168,8 +102,12 @@ const ComponentOverview = ({
 
           {comp.linked_package?.scope && (
             <>
-              <ScBodyShortMuted size="small">
-                <ScFocusSpan
+              <BodyShort
+                className="text-text-muted first-letter:capitalize"
+                size="small"
+              >
+                <span
+                  className="focus:outline-2 focus:outline-focus"
                   tabIndex={0}
                   data-tip=""
                   data-for={`${comp.linked_package?.title}-${id}`}
@@ -178,8 +116,8 @@ const ComponentOverview = ({
                   <span className="navds-sr-only">
                     Pakkenavn: {comp.linked_package?.title}
                   </span>
-                </ScFocusSpan>
-              </ScBodyShortMuted>
+                </span>
+              </BodyShort>
               <ReactTooltip
                 id={`${comp.linked_package?.title}-${id}`}
                 place="top"
@@ -192,62 +130,62 @@ const ComponentOverview = ({
           )}
         </Table.HeaderCell>
         <Table.DataCell>
-          <ScDataCellInner>
+          <span className="flex items-center gap-2">
             {comp.in_design ? <DesignCell comp={comp} /> : <ErrorIcon />}
-          </ScDataCellInner>
+          </span>
         </Table.DataCell>
         <Table.DataCell>
-          <ScDataCellInner>
+          <span className="flex items-center gap-2">
             {comp.in_code ? <CodeCell comp={comp} /> : <ErrorIcon />}
-          </ScDataCellInner>
+          </span>
         </Table.DataCell>
         <Table.DataCell>
-          <ScDataCellInner>
+          <span className="flex items-center gap-2">
             {comp.in_doc ? <SuccessIcon /> : <ErrorIcon />}
-          </ScDataCellInner>
+          </span>
         </Table.DataCell>
       </Table.Row>
     );
   };
 
   return (
-    <ScComponentOverview>
+    <div>
       <Label spacing className="mt-12">
         Tegnforklaring
       </Label>
-      <ScUl>
-        <li>
+      <ul className="mb-8 flex flex-col gap-3">
+        <li className="flex items-center gap-2 px-2">
           <FigmaIcon /> v#.# - Figma-versjon av designsystemet
         </li>
-        <li>
+        <li className="flex items-center gap-2 px-2">
           <FigmaIconNoSync /> - Kode ikke i synk med Figma
         </li>
-        <li>
+        <li className="flex items-center gap-2 px-2">
           <BetaTag /> - Finnes som testversjon i Figma v3.0
         </li>
-        <li>
+        <li className="flex items-center gap-2 px-2">
           <ErrorIcon /> - Ikke tilgjengelig
         </li>
-        <li>
+        <li className="flex items-center gap-2 px-2">
           <SuccessIcon /> - Lansert 🎉
         </li>
-      </ScUl>
+      </ul>
       <OverflowDetector>
         <Table>
           <Table.Header>
             <Table.Row>
-              <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
+              <Table.HeaderCell className="text-text-muted">
                 Komponent
-              </ScHeaderCell>
-              <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
+              </Table.HeaderCell>
+              <Table.HeaderCell className="text-text-muted">
                 Design
-              </ScHeaderCell>
-              <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
+              </Table.HeaderCell>
+              <Table.HeaderCell className="text-text-muted">
                 Kode
-              </ScHeaderCell>
-              <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
+              </Table.HeaderCell>
+              <Table.HeaderCell className="text-text-muted">
                 Dok
-              </ScHeaderCell>
+              </Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -259,7 +197,7 @@ const ComponentOverview = ({
           </Table.Body>
         </Table>
       </OverflowDetector>
-    </ScComponentOverview>
+    </div>
   );
 };
 

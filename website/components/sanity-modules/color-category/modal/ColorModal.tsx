@@ -1,40 +1,9 @@
 import { BodyShort, Heading } from "@navikt/ds-react";
-import styled from "styled-components";
+import cl from "classnames";
+import Color from "color";
 import { Snippet } from "../../..";
 import { CodeSnippet, DsColor } from "../../../../lib";
-import Color from "color";
 import ColorFormats from "./ColorFormats";
-
-const ScModalContent = styled.div`
-  min-width: 300px;
-  max-width: 700px;
-  flex-shrink: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
-const ScMuted = styled(BodyShort)`
-  color: var(--navds-semantic-color-text-muted);
-`;
-
-const ScColorTag = styled.div<{
-  bgColor: string;
-  dark: boolean;
-  border: boolean;
-}>`
-  color: ${(props) =>
-    props.dark
-      ? `var(--navds-semantic-color-text-inverted)`
-      : `var(--navds-semantic-color-text)`};
-  box-shadow: ${(props) =>
-    props.border && `0 0 0 1px var(--navds-semantic-color-border-muted);`};
-  background-color: ${(props) => `var(${props.bgColor});`};
-  padding: 1rem 2rem 1rem 0.5rem;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-`;
 
 function capitalize(s: string) {
   return s.charAt(0).toUpperCase() + s.slice(1);
@@ -55,7 +24,7 @@ ${color.full_title.replace("--", "@")};`,
 
 const ColorModal = ({ color }: { color: DsColor }) => {
   return (
-    <ScModalContent>
+    <div className="flex min-w-[300px] max-w-2xl flex-shrink flex-col gap-4">
       <div>
         <Heading spacing size="medium">
           {capitalize(color.title.replaceAll("-", " "))}
@@ -67,18 +36,24 @@ const ColorModal = ({ color }: { color: DsColor }) => {
 
       {color.color_type === "global" && (
         <div>
-          <ScColorTag
-            bgColor={color.full_title}
-            dark={Color(color.color_value).isDark()}
-            border={Color(color.color_value).luminosity() > 0.9}
+          <div
+            className={cl("flex items-center rounded-lg py-4 pr-8 pl-2", {
+              "text-text-inverted": Color(color.color_value).isDark(),
+              "text-text": !Color(color.color_value).isDark(),
+              "shadow:[0_0_0_1px_theme(colors.border-muted)]":
+                Color(color.color_value).luminosity() > 0.9,
+            })}
+            style={{ backgroundColor: `var(${color.full_title})` }}
           >
             <BodyShort>{color.title}</BodyShort>
-          </ScColorTag>
+          </div>
         </div>
       )}
       {color.color_roles && (
         <div>
-          <ScMuted spacing>Roller</ScMuted>
+          <BodyShort className="text-text-muted" spacing>
+            Roller
+          </BodyShort>
           {color?.color_roles.map((role) => (
             <BodyShort key={role}>{role}</BodyShort>
           ))}
@@ -86,14 +61,20 @@ const ColorModal = ({ color }: { color: DsColor }) => {
       )}
       {color.color_type === "semantic" && (
         <div>
-          <ScMuted spacing>Global farge</ScMuted>
-          <ScColorTag
-            bgColor={color.full_title}
-            dark={Color(color.color_value).isDark()}
-            border={Color(color.color_value).luminosity() > 0.9}
+          <BodyShort className="text-text-muted" spacing>
+            Global farge
+          </BodyShort>
+          <div
+            className={cl("flex items-center rounded-lg py-4 pr-8 pl-2", {
+              "text-text-inverted": Color(color.color_value).isDark(),
+              "text-text": !Color(color.color_value).isDark(),
+              "shadow:[0_0_0_1px_theme(colors.border-muted)]":
+                Color(color.color_value).luminosity() > 0.9,
+            })}
+            style={{ backgroundColor: `var(${color.full_title})` }}
           >
             <BodyShort>{color.color_name}</BodyShort>
-          </ScColorTag>
+          </div>
         </div>
       )}
       <div>
@@ -108,7 +89,7 @@ const ColorModal = ({ color }: { color: DsColor }) => {
         </Heading>
         <Snippet node={tokenSnippet(color)} />
       </div>
-    </ScModalContent>
+    </div>
   );
 };
 
