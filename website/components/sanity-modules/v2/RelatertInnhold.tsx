@@ -45,12 +45,12 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
               size="xsmall"
               as="a"
               onClick={(e) => logNavigation(e)}
-              className="mb-2 underline after:absolute after:inset-0 focus:text-link focus:outline-none group-hover:text-link group-hover:no-underline group-focus:no-underline"
+              className="underline after:absolute after:inset-0 focus:text-link focus:outline-none group-hover:text-link group-hover:no-underline group-focus:no-underline"
             >
               {x.title}
             </Heading>
           </NextLink>
-          <BodyShort size="small" className="text-text-muted">
+          <BodyShort size="small" className="mt-2 text-text-muted">
             {x.description}
           </BodyShort>
 
