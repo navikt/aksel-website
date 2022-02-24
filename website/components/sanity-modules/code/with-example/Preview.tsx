@@ -4,7 +4,6 @@ import prettier from "prettier/standalone";
 import babel from "prettier/parser-babel";
 import CodeExample from "./getCodeExample";
 import { useId } from "@navikt/ds-react";
-import styled from "styled-components";
 import React from "react";
 import { getBgColors } from "../../../../stories/sandbox/types";
 
@@ -27,28 +26,6 @@ const formatCode = (code: string, tag: string) => {
     return code;
   }
 };
-
-const ScDiv = styled.div`
-  display: flex;
-  width: 100%;
-  background-color: var(--navds-global-color-gray-50);
-  border: 1px solid var(--navds-global-color-gray-200);
-  border-bottom: 1px solid var(--navds-global-color-gray-200);
-  border-top: none;
-  overflow-x: auto;
-  position: relative;
-
-  border-top: 1px solid var(--navds-semantic-color-divider);
-`;
-
-const ScInnerDiv = styled.div`
-  gap: 1rem;
-  padding: 2rem;
-  display: inline-flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  width: 100%;
-`;
 
 const CodePreview = (): JSX.Element => {
   const { node, setTabs, setFullscreenLink, previewBg, setPreviewBg } =
@@ -109,11 +86,18 @@ const CodePreview = (): JSX.Element => {
   return (
     <>
       {Comp && (
-        <ScDiv role="presentation">
-          <ScInnerDiv ref={setWrapperRef} style={bgt}>
+        <div
+          role="presentation"
+          className="relative flex w-full overflow-x-auto border border-gray-200 bg-gray-50"
+        >
+          <div
+            ref={setWrapperRef}
+            style={bgt}
+            className="inline-flex w-full flex-wrap items-baseline gap-4 p-8"
+          >
             <Comp />
-          </ScInnerDiv>
-        </ScDiv>
+          </div>
+        </div>
       )}
     </>
   );

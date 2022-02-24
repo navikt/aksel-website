@@ -3,9 +3,9 @@ import "prismjs/components/prism-bash.min";
 import "prismjs/components/prism-jsx.min";
 import "prismjs/components/prism-typescript.min";
 import React, { useContext, useEffect, useState } from "react";
-import * as S from "../code.styles";
 import CopyButton from "../CopyButton";
 import { CodeContext } from "./Example";
+import cl from "classnames";
 
 const CodeBlock = ({ index }: { index: number }): JSX.Element => {
   const { tabs, showTabs, activeTab, showPreview } = useContext(CodeContext);
@@ -27,22 +27,30 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
 
   return (
     <>
-      <S.PreWrapper
-        active={activeTab === index}
-        standalone={!showPreview && !showTabs}
+      <div
+        className={cl("relative mb-8 max-h-80 overflow-x-auto bg-gray-900", {
+          block: activeTab === index,
+          hidden: activeTab !== index,
+          "rounded-md": !showPreview && !showTabs,
+        })}
       >
         {!showPreview && !showTabs && (
           <CopyButton content={tabs[index].content.toString()} />
         )}
-        <S.Pre className="language-" data-tabs={showTabs}>
-          <S.Code
-            className="language-"
+        <pre
+          className={cl(
+            "language- m-0 flex min-h-[5rem] items-center overflow-x-auto p-4",
+            { "max-w-full": showTabs }
+          )}
+        >
+          <code
+            className="language- text-medium text-text-inverted"
             dangerouslySetInnerHTML={{
               __html: highlightedCode ?? tabs[index].content,
             }}
           />
-        </S.Pre>
-      </S.PreWrapper>
+        </pre>
+      </div>
     </>
   );
 };

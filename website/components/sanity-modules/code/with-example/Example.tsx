@@ -3,23 +3,14 @@ import { withErrorBoundary } from "../../../ErrorBoundary";
 import CodeBlock from "./Block";
 import CodeTabs from "./Tabs";
 import { DsCodeExample as DsCodeExampleT } from "../../../../lib";
-import styled from "styled-components";
 
 import dynamic from "next/dynamic";
 import { BgColors } from "../../../../stories/sandbox/types";
 
-const ScSkeleton = styled.div`
-  display: flex;
-  width: 100%;
-  background-color: var(--navds-global-color-gray-50);
-  border: 1px solid var(--navds-global-color-gray-200);
-  border-bottom: 1px solid var(--navds-global-color-gray-200);
-  border-top: none;
-  height: 100px;
-`;
-
 const CodePreview = dynamic(() => import("./Preview"), {
-  loading: () => <ScSkeleton />,
+  loading: () => (
+    <div className="flex h-[100px] w-full border border-t-0 border-gray-200 bg-gray-50" />
+  ),
   ssr: false,
 });
 
@@ -52,13 +43,6 @@ export const CodeContext = createContext<ContextProps>({
   previewBg: null,
   setPreviewBg: () => null,
 });
-
-const ScDiv = styled.div`
-  width: 100%;
-  margin-bottom: var(--navds-spacing-9);
-  display: flex;
-  flex-direction: column;
-`;
 
 const Code = ({ node }: { node: DsCodeExampleT }): JSX.Element => {
   const [tabs, setTabs] = useState<TabType[]>(
@@ -117,14 +101,14 @@ const Code = ({ node }: { node: DsCodeExampleT }): JSX.Element => {
         setPreviewBg,
       }}
     >
-      <ScDiv className="index-ignore">
+      <div className="index-ignore mb-9 flex w-full flex-col">
         {showTabs && <CodeTabs />}
         {showPreview && activeTab === -1 && <CodePreview />}
         {(node.tabs || tabs) &&
           tabs.map((tab, i) => (
             <CodeBlock key={tab.content.toString()} index={i} />
           ))}
-      </ScDiv>
+      </div>
     </CodeContext.Provider>
   );
 };
