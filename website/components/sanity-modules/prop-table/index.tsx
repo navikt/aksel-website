@@ -105,7 +105,10 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
           {node.overridable && (
             <li>
               Komponenten er implementert med{" "}
-              <NextLink href="/designsystem/side/overridablecomponent" passHref>
+              <NextLink
+                href="/designsystem/side/overridable-component"
+                passHref
+              >
                 <Link>OverridableComponent</Link>
               </NextLink>
             </li>
