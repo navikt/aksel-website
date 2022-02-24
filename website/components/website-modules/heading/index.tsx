@@ -2,7 +2,6 @@ import { BodyShort, Heading, Popover } from "@navikt/ds-react";
 import copy from "copy-to-clipboard";
 import React, { useEffect, useRef, useState } from "react";
 import { AmplitudeEvents, slugger, useAmplitude } from "../..";
-import * as S from "./heading.styles";
 import { Link as LinkIcon } from "@navikt/ds-icons";
 import { useRouter } from "next/router";
 import cl from "classnames";
@@ -74,18 +73,19 @@ const LevelTwoHeading = ({
         )}
       >
         {cleanedChildren}
-        <S.Anchor
-          aria-label={`Kopier lenke til ${cleanedChildren.toString()}`}
+        <button
+          aria-label={`Kopier permalenke til ${cleanedChildren.toString()}`}
           onClick={() => {
             copyAnchor(slug);
             logAnchor(slug);
           }}
           ref={anchorRef}
+          className="ml-0 flex aspect-square rounded-full p-2 text-xlarge opacity-50 transition-opacity hover:bg-gray-100 hover:opacity-100 focus:opacity-100 focus:shadow-focus focus:outline-none sm:ml-2"
         >
           <span>
             <LinkIcon aria-label="Ankerlenke" />
           </span>
-        </S.Anchor>
+        </button>
         <Popover
           anchorEl={anchorRef.current}
           open={openPopover}
@@ -96,7 +96,7 @@ const LevelTwoHeading = ({
         >
           {openPopover && (
             <Popover.Content style={{ padding: "0.25rem" }}>
-              <BodyShort size="small">{`Kopierte lenke til ${cleanedChildren.toString()}`}</BodyShort>
+              <BodyShort size="small">{`Kopierte permalenke til "${cleanedChildren.toString()}"`}</BodyShort>
             </Popover.Content>
           )}
         </Popover>
