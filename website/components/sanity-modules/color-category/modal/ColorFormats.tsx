@@ -1,6 +1,5 @@
 import { BodyShort } from "@navikt/ds-react";
 import Color from "color";
-import styled from "styled-components";
 import { DsColor } from "../../../../lib";
 import CopyButton from "../../code/CopyButton";
 
@@ -12,63 +11,42 @@ const format = (val: "hex" | "rgb" | "cmyk" | "hsla", color: DsColor) => {
       return Color(color.color_value).rgb().toString();
     case "hsla":
       return Color(color.color_value).hsl().round().toString();
-    /* case "cmyk":
-          return JSON.stringify(Color(color.color_value).cmyk().round().color)
-            .replace("[", "")
-            .replace("]", ""); */
     default:
       return color.color_value;
   }
 };
 
-const ScWrapper = styled.div`
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-`;
-
-const ScBox = styled.div`
-  width: 13rem;
-  height: 6rem;
-  background-color: var(--navds-semantic-color-canvas-background);
-  position: relative;
-`;
-
-const ScCode = styled.code`
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  font-size: 1rem;
-`;
-
-const ScName = styled(BodyShort)`
-  padding: 1rem;
-`;
-
 const ColorFormats = ({ color }: { color: DsColor }) => {
   return (
-    <ScWrapper>
-      <ScBox>
-        <ScName size="small">HEX:</ScName>
+    <div className="flex flex-wrap gap-4">
+      <div className="relative h-24 w-52 bg-canvas-background">
+        <BodyShort className="p-4" size="small">
+          HEX:
+        </BodyShort>
         <CopyButton content={format("hex", color)} inverted />
-        <ScCode>{format("hex", color)}</ScCode>
-      </ScBox>
-      <ScBox>
-        <ScName size="small">RGB:</ScName>
+        <code className="absolute bottom-4 left-4 text-medium">
+          {format("hex", color)}
+        </code>
+      </div>
+      <div className="relative h-24 w-52 bg-canvas-background">
+        <BodyShort className="p-4" size="small">
+          RGB:
+        </BodyShort>
         <CopyButton content={format("rgb", color)} inverted />
-        <ScCode>{format("rgb", color)}</ScCode>
-      </ScBox>
-      <ScBox>
-        <ScName size="small">HSL:</ScName>
+        <code className="absolute bottom-4 left-4 text-medium">
+          {format("rgb", color)}
+        </code>
+      </div>
+      <div className="relative h-24 w-52 bg-canvas-background">
+        <BodyShort className="p-4" size="small">
+          HSL:
+        </BodyShort>
         <CopyButton content={format("hsla", color)} inverted />
-        <ScCode>{format("hsla", color)}</ScCode>
-      </ScBox>
-      {/* <ScBox>
-        <ScName size="small">CMYK:</ScName>
-        <CopyButton content={format("cmyk", color)} inverted />
-        <ScCode>{format("cmyk", color)}</ScCode>
-      </ScBox> */}
-    </ScWrapper>
+        <code className="absolute bottom-4 left-4 text-medium">
+          {format("hsla", color)}
+        </code>
+      </div>
+    </div>
   );
 };
 

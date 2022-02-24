@@ -1,77 +1,7 @@
 import { BodyShort, Detail, Table } from "@navikt/ds-react";
-import styled from "styled-components";
 import { DsColor } from "../../../lib";
 import Color from "color";
 import cl from "classnames";
-
-const ScColorRoles = styled.ul`
-  padding: 0;
-  margin: 0;
-
-  li {
-    list-style-type: none;
-  }
-`;
-
-const ScDataCell = styled(Table.DataCell)`
-  vertical-align: top;
-  min-width: fit-content;
-`;
-
-const ScTableRow = styled(Table.Row)`
-  font-size: 1rem;
-  width: 100%;
-
-  :hover {
-    cursor: pointer;
-  }
-
-  :focus {
-    outline: none;
-    box-shadow: inset var(--navds-shadow-focus);
-    border-color: red;
-    z-index: 1;
-  }
-`;
-
-const ScColorBox = styled.div<{ background: string; dark: boolean }>`
-  background-color: ${(props) => props.background};
-  color: var(--navds-semantic-color-text);
-  color: ${(props) =>
-    props.dark && "var(--navds-semantic-color-text-inverted);"};
-  height: 66px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-radius: 4px;
-  padding: 0 1rem;
-  min-width: 10rem;
-`;
-
-const WhiteColorBox = styled(ScColorBox)`
-  border: 1px solid var(--navds-semantic-color-divider);
-`;
-
-const ScGlobalBlock = styled.button`
-  white-space: nowrap;
-  vertical-align: top;
-  padding: 0;
-  margin: 0;
-  background: none;
-  border: none;
-  appearance: none;
-  text-align: left;
-
-  :hover {
-    background-color: var(--navds-semantic-color-canvas-background);
-  }
-
-  :focus {
-    outline: none;
-    box-shadow: var(--navds-shadow-focus);
-    z-index: 1;
-  }
-`;
 
 const ColorBox = ({
   prop,
@@ -83,7 +13,6 @@ const ColorBox = ({
   last?: boolean;
 }): JSX.Element => {
   const color = Color(prop.color_value);
-  const Box = color.luminosity() > 0.8 ? WhiteColorBox : ScColorBox;
   if (prop.color_type === "global") {
     return (
       <div
@@ -104,9 +33,18 @@ const ColorBox = ({
     );
   }
   return (
-    <Box background={color.hex()} dark={color.isDark()}>
+    <div
+      className={cl(
+        "flex h-[66px] min-w-[10rem] flex-col justify-center rounded px-4",
+        {
+          "border border-divider": color.luminosity() > 0.8,
+          "text-text-inverted": color.isDark(),
+        }
+      )}
+      style={{ background: color.hex() }}
+    >
       {prop.title}
-    </Box>
+    </div>
   );
 };
 
@@ -122,12 +60,12 @@ export const GlobalTableRow = ({
   last?: boolean;
 }) => {
   return (
-    <ScGlobalBlock
+    <button
       {...rest}
-      className="max-w-text first:rounded-t last:rounded-b"
+      className="z-[1] max-w-text whitespace-nowrap text-left align-top first:rounded-t last:rounded-b focus:shadow-focus focus:outline-none"
     >
       <ColorBox prop={prop} first={first} last={last} />
-    </ScGlobalBlock>
+    </button>
   );
 };
 
@@ -139,19 +77,23 @@ export const SemanticTableRow = ({
   onClick: (c: any) => void;
 }) => {
   return (
-    <ScTableRow tabIndex={0} forwardedAs="button" {...rest}>
+    <Table.Row
+      tabIndex={0}
+      {...rest}
+      className="w-full text-medium hover:cursor-pointer focus:z-[1] focus:shadow-focus-inset focus:outline-none"
+    >
       <Table.DataCell>
         <ColorBox prop={prop} />
       </Table.DataCell>
-      <ScDataCell>
+      <Table.DataCell className="min-w-fit align-top">
         {prop.color_roles && (
-          <ScColorRoles>
+          <ul>
             {prop.color_roles.map((role) => (
               <li key={role}>{role}</li>
             ))}
-          </ScColorRoles>
+          </ul>
         )}
-      </ScDataCell>
-    </ScTableRow>
+      </Table.DataCell>
+    </Table.Row>
   );
 };
