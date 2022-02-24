@@ -1,17 +1,7 @@
 import { Search } from "@navikt/ds-icons";
 import { TextField, ToggleGroup } from "@navikt/ds-react";
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import { AmplitudeEvents, useAmplitude } from "../..";
-
-const ScFilter = styled.div`
-  margin-bottom: 2rem;
-  max-width: 400px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
 
 export interface FilterT {
   value: string;
@@ -50,7 +40,7 @@ const Filter = ({
   }, [toggle, value]);
 
   return (
-    <ScFilter>
+    <div className="mb-8 flex w-full max-w-sm flex-col gap-4">
       <div className="relative">
         <Search
           aria-hidden
@@ -69,7 +59,7 @@ const Filter = ({
         <ToggleGroup.Item value="filled">Filled</ToggleGroup.Item>
         <ToggleGroup.Item value="stroke">Stroke</ToggleGroup.Item>
       </ToggleGroup>
-    </ScFilter>
+    </div>
   );
 };
 export default Filter;
