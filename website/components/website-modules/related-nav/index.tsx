@@ -1,78 +1,10 @@
 import { Back, Next } from "@navikt/ds-icons";
 import { BodyShort, Heading } from "@navikt/ds-react";
 import React, { useContext, useEffect, useState } from "react";
-import styled from "styled-components";
 import { LayoutContext, PagePropsContext } from "../..";
 import { DsNavigationHeadingMenuT } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import NextLink from "next/link";
-
-const ScWrapper = styled.div`
-  width: 100%;
-  margin: 0 auto 7rem auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1rem;
-`;
-
-const ScA = styled.a`
-  position: relative;
-  color: var(--navds-semantic-color-text);
-  border: 1px solid var(--navds-semantic-color-border);
-  border-radius: 2px;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: var(--navds-semantic-color-component-background-light);
-  flex: 1 1 300px;
-
-  > svg {
-    flex-shrink: 0;
-  }
-
-  &[data-dir="next"]:only-child {
-    margin-left: auto;
-  }
-
-  :hover {
-    box-shadow: var(--navds-shadow-card);
-    > *:not(:first-child) {
-      text-decoration: underline;
-    }
-
-    > svg {
-    }
-  }
-
-  :focus {
-    outline: none;
-    box-shadow: var(--navds-shadow-focus);
-  }
-`;
-
-const ScLeftIcon = styled.span`
-  position: absolute;
-  left: 0.5rem;
-  height: calc(100% - 2rem);
-  display: flex;
-  align-items: center;
-  font-size: 1.5rem;
-`;
-
-const ScRightIcon = styled(ScLeftIcon)`
-  right: 0.5rem;
-  left: auto;
-`;
-
-const ScDummy = styled.div`
-  display: flex;
-  min-width: 4rem;
-  padding: 1rem 2rem;
-  flex: 1 1 300px;
-`;
 
 const RelatedPagesLink = () => {
   const { pageProps } = useContext<any>(PagePropsContext);
@@ -124,42 +56,48 @@ const RelatedPagesLink = () => {
   }
 
   return (
-    <ScWrapper>
+    <div className="mx-auto mt-0 mb-28 flex w-full flex-wrap justify-between gap-4">
       {links.prev ? (
         <NextLink href={`/${links.prev.link.slug.current}`} passHref>
-          <ScA>
+          <a className="group relative flex flex-1 basis-72 flex-col items-center rounded-sm border border-border bg-white py-4 px-8 text-text no-underline only:ml-auto hover:shadow-card focus:shadow-focus focus:outline-none">
             <BodyShort as="div" size="small">
               Forrige
             </BodyShort>
-            <Heading size="small" as="div">
+            <Heading size="small" as="div" className="group-hover:underline">
               {links.prev.title}
             </Heading>
-            <ScLeftIcon>
-              <Back aria-hidden />
-            </ScLeftIcon>
-          </ScA>
+            <span className="absolute left-2 flex h-[calc(100%_-_2rem)] items-center text-2xl">
+              <Back aria-hidden className="shrink-0" />
+            </span>
+          </a>
         </NextLink>
       ) : (
-        <ScDummy aria-hidden />
+        <span
+          aria-hidden
+          className="flex min-w-header flex-1 basis-72 py-4 px-8"
+        />
       )}
       {links.next ? (
         <NextLink href={`/${links.next.link.slug.current}`} passHref>
-          <ScA data-dir="next">
+          <a className="group relative flex flex-1 basis-72 flex-col items-center rounded-sm border border-border bg-white py-4 px-8 text-text no-underline only:ml-auto hover:shadow-card focus:shadow-focus focus:outline-none">
             <BodyShort as="div" size="small">
               Neste
             </BodyShort>
-            <Heading size="small" as="div">
+            <Heading size="small" as="div" className="group-hover:underline">
               {links.next.title}
             </Heading>
-            <ScRightIcon>
-              <Next aria-hidden />
-            </ScRightIcon>
-          </ScA>
+            <span className="absolute right-2 left-auto flex h-[calc(100%_-_2rem)] items-center text-2xl">
+              <Next aria-hidden className="shrink-0" />
+            </span>
+          </a>
         </NextLink>
       ) : (
-        <ScDummy aria-hidden />
+        <span
+          aria-hidden
+          className="flex min-w-header flex-1 basis-72 py-4 px-8"
+        />
       )}
-    </ScWrapper>
+    </div>
   );
 };
 
