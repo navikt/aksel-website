@@ -2,103 +2,9 @@ import { BodyShort, Button, Heading, Label, Textarea } from "@navikt/ds-react";
 import cl from "classnames";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import styled, { css } from "styled-components";
 import { useAmplitude } from "../..";
 import { HelpfulArticleEnum, HelpfulArticleT } from "../../../lib";
 import { AmplitudeEvents } from "../utils";
-
-const ScStateCss = css`
-  :hover {
-    background-color: var(--navds-global-color-gray-100);
-  }
-
-  :active {
-    background-color: var(--navds-semantic-color-component-background-inverted);
-    color: var(--navds-semantic-color-text-inverted);
-    border-color: var(--navds-semantic-color-component-background-inverted);
-  }
-
-  :focus {
-    outline: none;
-    box-shadow: var(--navds-shadow-focus);
-  }
-
-  :focus:active {
-    box-shadow: 0 0 0 1px white, var(--navds-shadow-focus);
-  }
-`;
-
-const ScButton = styled.button<{ active?: boolean }>`
-  color: var(--navds-semantic-color-text);
-  background-color: var(--navds-semantic-color-component-background-light);
-  border: 2px solid var(--navds-semantic-color-border);
-  border-radius: 2px;
-  min-height: 48px;
-  cursor: pointer;
-
-  ${ScStateCss}
-
-  ${({ active }) =>
-    active &&
-    `
-    background-color: var(--navds-semantic-color-component-background-inverted);
-    color: var(--navds-semantic-color-text-inverted);
-    border-color: var(--navds-semantic-color-component-background-inverted);
-
-    :hover {
-      background-color: var(--navds-semantic-color-component-background-inverted);
-    }
-
-    :focus {
-      outline: none;
-      box-shadow: 0 0 0 1px white, var(--navds-shadow-focus);
-    }
-  `}
-`;
-
-const ScButtonLabel = styled.button<{ active?: boolean }>`
-  border: none;
-  background: none;
-  cursor: pointer;
-  padding: 0.25rem 1rem;
-  border-radius: 2px;
-
-  ${ScStateCss}
-
-  :hover {
-    background-color: var(--navds-global-color-gray-200);
-  }
-
-  ${({ active }) =>
-    active &&
-    `
-    background-color: var(--navds-semantic-color-component-background-inverted);
-    color: var(--navds-semantic-color-text-inverted);
-    border-color: var(--navds-semantic-color-component-background-inverted);
-
-    :hover {
-      background-color: var(--navds-semantic-color-component-background-inverted);
-    }
-
-    :focus {
-      outline: none;
-      box-shadow: 0 0 0 1px white, var(--navds-shadow-focus);
-    }
-  `}
-`;
-
-const ScFormWrapper = styled.form`
-  width: 100%;
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-`;
-
-const ScSendButton = styled(Button)`
-  margin-right: auto;
-`;
 
 const Feedback = ({
   docId,
@@ -250,39 +156,64 @@ const Feedback = ({
           Var denne artikkelen til hjelp?
         </Heading>
         <div className="flex w-full justify-center gap-2 sm:gap-6">
-          {/*  */}
-          <ScButton
-            className="max-w-[8rem] flex-1"
-            active={activeState === HelpfulArticleEnum.JA}
+          <button
+            className={cl(
+              "max-w-[8rem] flex-1 rounded-sm border-2 py-2 focus:border focus:outline-none",
+              {
+                "border-gray-900 bg-gray-900 text-text-inverted  focus:border-white focus:shadow-focus":
+                  activeState === HelpfulArticleEnum.JA,
+                "border-border bg-white hover:bg-gray-50 focus:shadow-focus":
+                  activeState !== HelpfulArticleEnum.JA,
+              }
+            )}
             onClick={() => setActiveState(HelpfulArticleEnum.JA)}
           >
             <Label>Ja</Label>
-          </ScButton>
-          <ScButton
-            className="max-w-[8rem] flex-1"
-            active={activeState === HelpfulArticleEnum.DELVIS}
+          </button>
+          <button
+            className={cl(
+              "max-w-[8rem] flex-1 rounded-sm border-2 py-2 focus:border focus:outline-none",
+              {
+                "border-gray-900 bg-gray-900 text-text-inverted  focus:border-white focus:shadow-focus":
+                  activeState === HelpfulArticleEnum.DELVIS,
+                "border-border bg-white hover:bg-gray-50 focus:shadow-focus":
+                  activeState !== HelpfulArticleEnum.DELVIS,
+              }
+            )}
             onClick={() => setActiveState(HelpfulArticleEnum.DELVIS)}
           >
             <Label>Delvis</Label>
-          </ScButton>
-          <ScButton
-            className="max-w-[8rem] flex-1"
-            active={activeState === HelpfulArticleEnum.NEI}
+          </button>
+          <button
+            className={cl(
+              "max-w-[8rem] flex-1 rounded-sm border-2 py-2 focus:border focus:outline-none",
+              {
+                "border-gray-900 bg-gray-900 text-text-inverted focus:border-white focus:shadow-focus":
+                  activeState === HelpfulArticleEnum.NEI,
+                "border-border bg-white hover:bg-gray-50 focus:shadow-focus":
+                  activeState !== HelpfulArticleEnum.NEI,
+              }
+            )}
             onClick={() => setActiveState(HelpfulArticleEnum.NEI)}
           >
             <Label>Nei</Label>
-          </ScButton>
+          </button>
         </div>
-        <ScButtonLabel
-          active={activeState === HelpfulArticleEnum.MISC}
+        <button
+          className={cl("rounded-sm px-2 py-2 focus:outline-none", {
+            "border-gray-900 bg-gray-900 text-text-inverted focus:border-white focus:shadow-focus":
+              activeState === HelpfulArticleEnum.MISC,
+            "bg-gray-50  hover:bg-gray-200 focus:shadow-focus":
+              activeState !== HelpfulArticleEnum.MISC,
+          })}
           onClick={() => setActiveState(HelpfulArticleEnum.MISC)}
         >
           <Label size="small">
             Jeg vil foreslå forbedringer til artikkelen.
           </Label>
-        </ScButtonLabel>
+        </button>
         {activeState !== null && (
-          <ScFormWrapper>
+          <form className="mt-4 flex w-full max-w-sm flex-col gap-4">
             <Textarea
               ref={textAreaRef}
               error={errorMsg}
@@ -294,8 +225,10 @@ const Feedback = ({
               maxLength={600}
               minRows={3}
             />
-            <ScSendButton onClick={handleSend}>Send inn svar</ScSendButton>
-          </ScFormWrapper>
+            <Button className="mr-auto" onClick={handleSend}>
+              Send inn svar
+            </Button>
+          </form>
         )}
         {thanksFeedback && (
           <BodyShort size="small">Takk for tilbakemeldingen!</BodyShort>

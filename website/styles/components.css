@@ -38,6 +38,16 @@
   .skiplink {
     @apply absolute left-0 z-modal -translate-y-full bg-focus p-4 text-text-inverted no-underline transition-transform focus-within:translate-y-0 focus-within:shadow-[inset_0_0_0_2px_white] focus-within:outline-none;
   }
+
+  .img-wrapper img {
+    object-fit: contain;
+    width: 100% !important;
+    height: unset !important;
+  }
+
+  .img-wrapper > div {
+    position: unset !important;
+  }
 }
 
 @layer utilities {
