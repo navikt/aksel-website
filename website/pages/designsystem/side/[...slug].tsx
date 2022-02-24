@@ -40,7 +40,7 @@ Page.getLayout = (page) => {
           <main
             tabIndex={-1}
             id="hovedinnhold"
-            className="relative min-h-header w-full focus:outline-none lg:max-w-[calc(100vw_-_var(--sidebar-max-width))]"
+            className="relative min-h-screen-header w-full focus:outline-none lg:max-w-screen-sidebar"
           >
             {page}
             <div className="mt-auto" aria-hidden />

@@ -212,7 +212,7 @@ const serializers = {
   },
   listItem: (props: any) => {
     return (
-      <li className="ml-5 max-w-[calc(var(--text-max-width)_-_1em)]">
+      <li className="ml-5 max-w-[calc(theme(spacing.text)_-_1em)]">
         {props.children}
       </li>
     );

@@ -11,6 +11,19 @@ module.exports = {
       spacing: {
         0: 0,
         header: "4rem",
+        sidebar: "240px",
+        text: "600px",
+      },
+      maxWidth: {
+        "screen-sidebar": "calc(100vw - 240px)",
+        "content-w-padding": "800px",
+        text: "600px",
+      },
+      minWidth: {
+        header: "4rem",
+      },
+      minHeight: {
+        "screen-header": "calc(100vh - 4rem)",
       },
       screens: {
         md: "564px",
@@ -20,9 +33,6 @@ module.exports = {
       },
       boxShadow: {
         "focus-inset": "inset var(--navds-shadow-focus)",
-      },
-      minHeight: {
-        header: "calc(100vh - var(--header-height))",
       },
       keyframes: {
         shimmerBg: {

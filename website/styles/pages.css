@@ -30,13 +30,6 @@
   }
 
   .content-box {
-    max-width: calc(var(--content-max-width) + 6rem);
-    width: 100%;
-    @apply m-0 w-full px-4 pb-4 md:my-0  md:mx-auto md:px-6 lg:mx-0 lg:mr-auto lg:px-12 lg:pb-4;
-  }
-
-  .content-box--center {
-    max-width: calc(var(--content-max-width) + 6rem);
-    @apply mx-auto w-full px-4 pb-4 md:my-0 md:px-6 lg:mx-0 lg:px-12 lg:pb-4;
+    @apply m-0 w-full  max-w-content-w-padding px-4 pb-4 md:my-0  md:mx-auto md:px-6 lg:mx-0 lg:mr-auto lg:px-12 lg:pb-4;
   }
 }

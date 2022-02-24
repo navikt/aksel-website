@@ -46,7 +46,7 @@ const DesignsystemHeader = (): JSX.Element => {
               <a
                 onClick={(e) => logNavigation(e)}
                 className={cl(
-                  "index-heading flex min-w-[var(--header-height)] cursor-pointer items-center justify-center whitespace-nowrap py-0 px-2 pt-1 focus:outline-none 2xl:px-4",
+                  "index-heading flex min-w-header cursor-pointer items-center justify-center whitespace-nowrap py-0 px-2 pt-1 focus:outline-none 2xl:px-4",
                   {
                     "text-text-inverted focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
                       !(context?.activeHeading?.title === heading.title),
@@ -75,12 +75,8 @@ const DesignsystemHeader = (): JSX.Element => {
 
   return (
     <>
-      <Header className="z-[1050] hidden h-[var(--header-height)] xl:flex">
-        {nonMobile}
-      </Header>
-      <Header className="z-[1050] flex h-[var(--header-height)] xl:hidden">
-        {mobile}
-      </Header>
+      <Header className="z-[1050] hidden h-header xl:flex">{nonMobile}</Header>
+      <Header className="z-[1050] flex h-header xl:hidden">{mobile}</Header>
     </>
   );
 };

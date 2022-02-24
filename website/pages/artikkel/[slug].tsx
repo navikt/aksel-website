@@ -31,7 +31,7 @@ Page.getLayout = (page) => {
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className="min-h-[calc(100vh - var(--header-height))] relative flex  w-full flex-col items-center bg-canvas-background-light focus:outline-none"
+        className="relative flex min-h-screen-header  w-full flex-col items-center bg-canvas-background-light focus:outline-none"
       >
         {page}
         <div className="mt-auto" aria-hidden />

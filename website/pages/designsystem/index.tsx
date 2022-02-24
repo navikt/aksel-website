@@ -53,7 +53,7 @@ const Page = (props: {
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className="relative flex min-h-header w-full flex-col bg-component-background-alternate focus:outline-none"
+        className="relative flex min-h-screen-header w-full flex-col bg-component-background-alternate focus:outline-none"
       >
         <div className="relative flex w-full bg-canvas-background-light">
           <div className="flex w-full max-w-[calc(1440px_-_624px)] flex-col items-center py-12 px-4 md:block md:h-[240px] md:py-16 md:px-12">

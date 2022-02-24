@@ -38,8 +38,7 @@
   }
 
   .sandbox-editor > div {
-    @apply max-w-full overflow-x-auto text-text-inverted;
-    font-family: var(--font-family-code) !important;
+    @apply max-w-full overflow-x-auto !font-mono text-text-inverted;
   }
 
   .sandbox-editor textarea:focus-visible {

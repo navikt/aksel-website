@@ -58,7 +58,7 @@ export const doDont = {
       name: "description",
       title: "Fritekst",
       description:
-        "Korte konsise beskrivelser. Bruk fullbredde bilde i dodont med egen tekst for legnre forklaringer",
+        "Korte konsise beskrivelser. Bruk fullbredde bilde i dodont med egen tekst for lengre forklaringer",
       type: "text",
     },
     {

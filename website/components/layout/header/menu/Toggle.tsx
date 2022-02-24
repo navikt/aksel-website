@@ -29,7 +29,7 @@ const Toggle = ({
           aria-haspopup="false"
           onClick={() => setOpen(!open)}
           aria-expanded={open}
-          className="navdsi-dropdown__toggle navdsi-header__button min-w-[var(--header-height)] justify-center gap-4 border-none focus:shadow-[inset_0_0_0_1px_var(--navds-semantic-color-component-background-inverted),inset_0_0_0_3px_var(--navds-global-color-blue-200)]"
+          className="navdsi-dropdown__toggle navdsi-header__button min-w-header justify-center gap-4 border-none focus:shadow-[inset_0_0_0_1px_var(--navds-semantic-color-component-background-inverted),inset_0_0_0_3px_var(--navds-global-color-blue-200)]"
         >
           {buttonContent}
         </button>

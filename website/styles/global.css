@@ -3,8 +3,6 @@
 @layer base {
   code,
   pre {
-    --font-family-code: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-      "Liberation Mono", "Courier New", monospace;
     @apply !font-mono;
   }
 
@@ -12,6 +10,10 @@
     color: var(--navds-global-color-red-500);
     background-color: transparent;
     padding: 0;
+  }
+
+  p {
+    @apply max-w-text;
   }
 }
 
@@ -30,9 +32,4 @@
       image-rendering: unset !important;
     }
   }
-}
-
-/* Max width for all generic text */
-p {
-  max-width: var(--text-max-width);
 }

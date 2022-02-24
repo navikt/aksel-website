@@ -45,7 +45,7 @@ function Search({ inverted }: { inverted?: boolean }) {
         ref={searchButtonRef}
         onClick={onOpen}
         className={cl(
-          "z-[1050] ml-auto flex w-[var(--header-height)] shrink-0 items-center justify-center focus:outline-none",
+          "z-[1050] ml-auto flex w-header shrink-0 items-center justify-center focus:outline-none",
           {
             "bg-white text-text hover:bg-gray-100 focus:shadow-focus-inset":
               inverted,

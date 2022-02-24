@@ -48,9 +48,9 @@ const AkselArtikkelTemplate = ({
           </>
         )}
       </Head>
-      <div className="m-0 w-full max-w-[calc(var(--content-max-width)_+_6rem)] px-4 pb-4 md:mx-auto md:my-0 md:px-6 lg:mx-0 lg:px-12 lg:pb-4">
+      <div className="m-0 w-full max-w-content-w-padding px-4 pb-4 md:mx-auto md:my-0 md:px-6 lg:mx-0 lg:px-12 lg:pb-4">
         <div className="relative flex flex-col justify-center">
-          <div className="flex max-w-[var(--text-max-width)] flex-col items-center pt-8 pb-6">
+          <div className="flex max-w-text flex-col items-center pt-8 pb-6">
             <LastUpdateTag date={data._updatedAt} simple />
             <Heading size="xlarge" level="1" spacing className="index-lvl1">
               {data.heading}

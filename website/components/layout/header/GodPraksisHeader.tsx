@@ -3,7 +3,7 @@ import React from "react";
 import PortalNavigation from "./menu/PortalNav";
 
 const GodPraksisHeader = (): JSX.Element => (
-  <Header className="z-[1050] h-[var(--header-height)]">
+  <Header className="z-[1050] h-header">
     <PortalNavigation title="God Praksis" />
   </Header>
 );

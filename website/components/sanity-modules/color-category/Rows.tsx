@@ -61,7 +61,6 @@ const ScGlobalBlock = styled.button`
   border: none;
   appearance: none;
   text-align: left;
-  max-width: var(--text-max-width);
 
   :hover {
     background-color: var(--navds-semantic-color-canvas-background);
@@ -123,7 +122,10 @@ export const GlobalTableRow = ({
   last?: boolean;
 }) => {
   return (
-    <ScGlobalBlock {...rest} className="first:rounded-t last:rounded-b">
+    <ScGlobalBlock
+      {...rest}
+      className="max-w-text first:rounded-t last:rounded-b"
+    >
       <ColorBox prop={prop} first={first} last={last} />
     </ScGlobalBlock>
   );
