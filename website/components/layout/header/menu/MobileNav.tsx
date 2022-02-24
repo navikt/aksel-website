@@ -35,40 +35,44 @@ const MobileNavigation = () => {
     </>
   );
 
-  const headingMenu = (
+  const headingMenu = pageProps?.navigation?.headings && (
     <>
-      <ul className="hidden animate-fadeIn lg:block xl:hidden">
-        {pageProps?.navigation.headings.map((heading: DsNavigationHeadingT) => (
-          <li
-            key={heading._key}
-            className={cl(
-              "first-of-type:rounded-t last-of-type:rounded-b focus-within:shadow-focus-inset hover:bg-canvas-background",
-              {
-                "border-l-[6px] border-l-canvas-background-inverted bg-canvas-background":
-                  context?.activeHeading?.title === heading.title,
-              }
-            )}
-          >
-            <NextLink href={`/${heading.link_ref.slug.current}`} passHref>
-              <a
+      {
+        <ul className="hidden animate-fadeIn lg:block xl:hidden">
+          {pageProps?.navigation.headings.map(
+            (heading: DsNavigationHeadingT) => (
+              <li
+                key={heading._key}
                 className={cl(
-                  "flex min-h-[48px] w-full items-center justify-between bg-none py-3 pr-4 pl-8 text-text no-underline focus:outline-none",
+                  "first-of-type:rounded-t last-of-type:rounded-b focus-within:shadow-focus-inset hover:bg-canvas-background",
                   {
-                    "pl-[26px] font-semibold":
+                    "border-l-[6px] border-l-canvas-background-inverted bg-canvas-background":
                       context?.activeHeading?.title === heading.title,
                   }
                 )}
-                onClick={() => {
-                  setHeading(heading);
-                  setOpen(false);
-                }}
               >
-                {heading?.title}
-              </a>
-            </NextLink>
-          </li>
-        ))}
-      </ul>
+                <NextLink href={`/${heading.link_ref.slug.current}`} passHref>
+                  <a
+                    className={cl(
+                      "flex min-h-[48px] w-full items-center justify-between bg-none py-3 pr-4 pl-8 text-text no-underline focus:outline-none",
+                      {
+                        "pl-[26px] font-semibold":
+                          context?.activeHeading?.title === heading.title,
+                      }
+                    )}
+                    onClick={() => {
+                      setHeading(heading);
+                      setOpen(false);
+                    }}
+                  >
+                    {heading?.title}
+                  </a>
+                </NextLink>
+              </li>
+            )
+          )}
+        </ul>
+      }
       <ul
         className={cl({
           "block animate-fadeIn lg:hidden xl:block": !heading || level === 0,

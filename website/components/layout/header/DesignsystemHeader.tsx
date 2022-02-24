@@ -75,10 +75,10 @@ const DesignsystemHeader = (): JSX.Element => {
 
   return (
     <>
-      <Header className="z-[1050] h-[var(--header-height)] lg:hidden xl:flex">
+      <Header className="z-[1050] hidden h-[var(--header-height)] xl:flex">
         {nonMobile}
       </Header>
-      <Header className="z-[1050] h-[var(--header-height)] lg:flex xl:hidden">
+      <Header className="z-[1050] flex h-[var(--header-height)] xl:hidden">
         {mobile}
       </Header>
     </>
