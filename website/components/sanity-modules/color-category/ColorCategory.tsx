@@ -1,32 +1,13 @@
-import { BodyShort, Modal, Table } from "@navikt/ds-react";
+import { Modal, Table } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
-import styled from "styled-components";
 import { AmplitudeEvents, OverflowDetector, useAmplitude } from "../..";
 import { DsColorCategories } from "../../../lib";
-import { SanityBlockContent } from "../../SanityBlockContent";
 import { withErrorBoundary } from "../../ErrorBoundary";
+import { SanityBlockContent } from "../../SanityBlockContent";
 import ColorModal from "./modal/ColorModal";
 import { GlobalTableRow, SemanticTableRow } from "./Rows";
 import { compare } from "./sort";
-
-const ScHeaderCell = styled(BodyShort)`
-  color: var(--navds-semantic-color-text-muted);
-`;
-
-const ScSection = styled.div`
-  margin-bottom: var(--navds-spacing-8);
-`;
-
-const ScTable = styled(Table)`
-  table-layout: fixed;
-  min-width: 400px;
-`;
-
-const ScGlobalWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
 const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
   const [open, setOpen] = useState(false);
@@ -109,10 +90,10 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
   node.colors.sort(compare);
 
   return (
-    <ScSection>
+    <div className="mb-8">
       {node?.description && <SanityBlockContent blocks={node?.description} />}
       {node.colors[0].color_type === "global" ? (
-        <ScGlobalWrapper className="w-auto max-w-[calc(theme(spacing.text)_-_2rem)] rounded shadow-[0_0_0_1px] shadow-border-muted">
+        <div className="flex w-auto max-w-[calc(theme(spacing.text)_-_2rem)] flex-col rounded shadow-[0_0_0_1px] shadow-border-muted">
           {node.colors?.map((color, i) => (
             <GlobalTableRow
               onClick={() => handleSelect(color)}
@@ -122,19 +103,19 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
               last={i === node.colors.length - 1}
             />
           ))}
-        </ScGlobalWrapper>
+        </div>
       ) : (
         <OverflowDetector>
-          <ScTable>
+          <Table className="min-w-[400px] table-fixed">
             <Table.Header>
               <Table.Row>
-                <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
+                <Table.HeaderCell className="text-text-muted">
                   Token
-                </ScHeaderCell>
+                </Table.HeaderCell>
                 {node.colors[0].color_type === "semantic" && (
-                  <ScHeaderCell size="small" forwardedAs={Table.HeaderCell}>
+                  <Table.HeaderCell className="text-text-muted">
                     Rolle
-                  </ScHeaderCell>
+                  </Table.HeaderCell>
                 )}
               </Table.Row>
             </Table.Header>
@@ -147,7 +128,7 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
                 />
               ))}
             </Table.Body>
-          </ScTable>
+          </Table>
         </OverflowDetector>
       )}
       <Modal open={open} onClose={() => handleClose()}>
@@ -155,7 +136,7 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
           {selectedColor && <ColorModal color={selectedColor} />}
         </Modal.Content>
       </Modal>
-    </ScSection>
+    </div>
   );
 };
 
