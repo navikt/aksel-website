@@ -1,33 +1,9 @@
 import { Table } from "@navikt/ds-react";
 import React from "react";
-import styled from "styled-components";
 import { OverflowDetector } from "../..";
 import { Table as TableT } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import { TableBlockContent } from "./TableBlockContent";
-
-const ScWrapper = styled.div`
-  margin-bottom: var(--navds-spacing-8);
-`;
-
-const ScHeaderCell = styled(Table.HeaderCell)`
-  color: var(--navds-semantic-color-text-muted);
-
-  > span,
-  > * > span {
-    font-size: 1rem;
-  }
-`;
-
-const ScCenter = styled.span`
-  display: flex;
-  justify-content: center;
-`;
-
-const ScRight = styled.span`
-  display: flex;
-  justify-content: flex-end;
-`;
 
 const TableComponent = ({ node }: { node: TableT }): JSX.Element => {
   if (!node || !node.rows || node.rows.length < 2) {
@@ -45,27 +21,27 @@ const TableComponent = ({ node }: { node: TableT }): JSX.Element => {
       case "left":
         return <>{children}</>;
       case "center":
-        return <ScCenter>{children}</ScCenter>;
+        return <span className="flex justify-center">{children}</span>;
       case "right":
-        return <ScRight>{children}</ScRight>;
+        return <span className="flex justify-end">{children}</span>;
       default:
         return <>{children}</>;
     }
   };
 
   return (
-    <ScWrapper>
+    <div className="mb-8">
       <OverflowDetector>
         <Table>
           {node.header_direction === "row" && (
             <Table.Header>
               <Table.Row>
                 {node.rows[0].cells.map((cell) => (
-                  <ScHeaderCell key={cell._key}>
+                  <Table.HeaderCell className="text-text-muted" key={cell._key}>
                     <Alignment align={cell.alignment}>
                       <TableBlockContent blocks={cell.body} />
                     </Alignment>
-                  </ScHeaderCell>
+                  </Table.HeaderCell>
                 ))}
               </Table.Row>
             </Table.Header>
@@ -94,7 +70,7 @@ const TableComponent = ({ node }: { node: TableT }): JSX.Element => {
           </Table.Body>
         </Table>
       </OverflowDetector>
-    </ScWrapper>
+    </div>
   );
 };
 export default withErrorBoundary(TableComponent, "Tabell");
