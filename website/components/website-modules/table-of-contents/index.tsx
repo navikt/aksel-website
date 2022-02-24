@@ -1,9 +1,9 @@
-import { Heading } from "@navikt/ds-react";
+import { BodyShort, Heading, Link } from "@navikt/ds-react";
 import { throttle } from "lodash";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { useIsomorphicLayoutEffect } from "react-use";
-import * as S from "./toc.styles";
+import cl from "classnames";
 
 function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
   const [toc, setToc] = useState<{ heading: string; id: string }[]>([]);
@@ -68,31 +68,58 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
   }
 
   return (
-    <S.Wrapper className="index-ignore">
-      <Heading size="small" as="p" id="toc-heading">
+    <div className="index-ignore sticky right-0 top-20 z-[1] order-1 my-16 hidden h-full w-72 flex-col items-start pl-4 toc:flex">
+      <Heading size="small" as="p" id="toc-heading" className="mb-4">
         Innhold på siden
       </Heading>
-      <S.Div>
+      {/*   position: sticky;
+  right: 0;
+  top: 5rem;
+  margin-top: 1rem;
+  z-index: 1;
+  align-items: start;
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  order: 1;
+
+  width: 100%;
+
+  &:before {
+    content: "";
+    background-color: var(--navds-semantic-color-border-muted);
+    width: 1px;
+    height: calc(100% - 1px);
+    margin-top: 0.5rem;
+    position: absolute;
+    left: -1px;
+  } */}
+      <div className="flex flex-col">
         <nav aria-labelledby="toc-heading">
-          <S.Ul>
+          <ul>
             {toc.map((link) => (
-              <S.Li
-                data-active={link.id === activeId}
+              <BodyShort
+                className={cl("border-l py-2 pl-4", {
+                  "font-semibold shadow-[inset_1px_0_0_0_theme(colors.gray-900),-1px_0_0_0_theme(colors.gray-900)]":
+                    link.id === activeId,
+                })}
                 key={link.id + link.heading}
               >
-                <a
+                <Link
                   href={`#${link.id}`}
                   onClick={() => handleFocus(`${link.id}`)}
-                  className="navds-link navds-body-short navds-body--small"
+                  className={cl(
+                    "overflow-hidden overflow-ellipsis text-text no-underline hover:underline"
+                  )}
                 >
                   {link.heading}
-                </a>
-              </S.Li>
+                </Link>
+              </BodyShort>
             ))}
-          </S.Ul>
+          </ul>
         </nav>
-      </S.Div>
-    </S.Wrapper>
+      </div>
+    </div>
   );
 }
 

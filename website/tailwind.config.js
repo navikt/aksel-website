@@ -30,6 +30,7 @@ module.exports = {
         lg: "768px",
         xl: "1024px",
         "2xl": "1440px",
+        toc: "1224px",
       },
       boxShadow: {
         "focus-inset": "inset var(--navds-shadow-focus)",
