@@ -1,81 +1,6 @@
 import { useState } from "react";
-import styled from "styled-components";
 import { useOverflowX } from "../..";
-
-const ScWrapper = styled.div`
-  position: relative;
-
-  &[data-left="true"] {
-    ::before {
-      content: "";
-      height: 100%;
-      width: 30px;
-      bottom: 0;
-      top: 0;
-      left: 0;
-      position: absolute;
-      background: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.16) 0%,
-        rgba(0, 0, 0, 0.08) 30%,
-        rgba(0, 0, 0, 0) 100%
-      );
-    }
-  }
-
-  &[data-right="true"] {
-    ::after {
-      content: "";
-      height: 100%;
-      width: 30px;
-      bottom: 0;
-      top: 0;
-      right: 0;
-      position: absolute;
-      background: linear-gradient(
-        -90deg,
-        rgba(0, 0, 0, 0.16) 0%,
-        rgba(0, 0, 0, 0.08) 30%,
-        rgba(0, 0, 0, 0) 100%
-      );
-    }
-  }
-
-  @media (max-width: 564px) {
-    margin: 0 -1rem;
-
-    &[data-left="true"] {
-      ::before {
-        background: linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 0.32) 0%,
-          rgba(0, 0, 0, 0.16) 30%,
-          rgba(0, 0, 0, 0) 100%
-        );
-      }
-    }
-
-    &[data-right="true"] {
-      ::after {
-        background: linear-gradient(
-          -90deg,
-          rgba(0, 0, 0, 0.32) 0%,
-          rgba(0, 0, 0, 0.16) 30%,
-          rgba(0, 0, 0, 0) 100%
-        );
-      }
-    }
-  }
-`;
-
-const ScOverflow = styled.div`
-  overflow-x: auto;
-`;
-
-const ScInner = styled.div`
-  display: inline-block;
-  min-width: 100%;
-`;
+import cl from "classnames";
 
 const OverflowDetector = ({ children }: { children: React.ReactNode }) => {
   const [outerRef, setOuterRef] = useState<HTMLDivElement>(null);
@@ -84,11 +9,22 @@ const OverflowDetector = ({ children }: { children: React.ReactNode }) => {
   const [left, right] = useOverflowX(innerRef, outerRef);
 
   return (
-    <ScWrapper data-left={left} data-right={right}>
-      <ScOverflow ref={setOuterRef}>
-        <ScInner ref={setInnerRef}>{children}</ScInner>
-      </ScOverflow>
-    </ScWrapper>
+    <div
+      data-left={left}
+      data-right={right}
+      className={cl("relative -mx-4 md:mx-0", {
+        "before:absolute before:bottom-0 before:left-0 before:top-0 before:h-full before:w-8 before:bg-gradient-to-r before:from-gray-900/25 before:to-transparent":
+          left,
+        "after:absolute after:bottom-0 after:right-0 after:top-0 after:h-full after:w-8 after:bg-gradient-to-l after:from-gray-900/25 after:to-transparent":
+          right,
+      })}
+    >
+      <div ref={setOuterRef} className="overflow-x-auto">
+        <div className="inline-block min-w-full" ref={setInnerRef}>
+          {children}
+        </div>
+      </div>
+    </div>
   );
 };
 
