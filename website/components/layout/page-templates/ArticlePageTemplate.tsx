@@ -13,14 +13,14 @@ import {
   TableOfContents,
   useAmplitude,
 } from "../..";
-import { DsArticlePage, GpArticlePage } from "../../../lib";
+import { DsArticlePage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 
 const ActiclePageTemplate = ({
   data,
   title,
 }: {
-  data: GpArticlePage | DsArticlePage;
+  data: DsArticlePage;
   title: string;
 }): JSX.Element => {
   const { asPath } = useRouter();

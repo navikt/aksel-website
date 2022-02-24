@@ -33,11 +33,6 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
         S.view.form(),
         S.view.component(PageWebPreview).title("Preview"),
       ]);
-    case "gp_article_page":
-      return S.document().views([
-        S.view.form(),
-        S.view.component(PageWebPreview).title("Preview"),
-      ]);
     case "aksel_artikkel":
       return S.document().views([
         S.view.form(),
@@ -55,9 +50,6 @@ const items = [
         .items([
           S.listItem()
             .title("Artikler")
-            .child(createSuperPane("gp_article_page")),
-          S.listItem()
-            .title("Artikler BETA")
             .child(createSuperPane("aksel_artikkel")),
         ])
     ),

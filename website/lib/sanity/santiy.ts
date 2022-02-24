@@ -1,6 +1,6 @@
 import { getClient, sanityClient } from "./sanity.server";
 import { useNextSanityImage } from "next-sanity-image";
-import { akselArtikkelDocuments, dsDocuments, gpDocuments } from "./queries";
+import { akselArtikkelDocuments, dsDocuments } from "./queries";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useSanityImage = (node) =>
@@ -24,20 +24,6 @@ export const getAkselArtikler = async (): Promise<string[]> => {
 
   nonDrafts?.forEach((page) => {
     page.slug && paths.push(page.slug);
-  });
-
-  return paths;
-};
-
-export const getGpPaths = async (): Promise<string[][]> => {
-  const documents: any[] | null = await getClient(false).fetch(gpDocuments);
-
-  const paths = [];
-
-  const nonDrafts = documents.filter((x) => !x._id.startsWith("drafts."));
-
-  nonDrafts?.forEach((page) => {
-    page.slug && paths.push(page.slug.split("/"));
   });
 
   return paths;

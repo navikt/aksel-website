@@ -11,7 +11,7 @@ const client = sanityClient({
 
 /* const fetchDocuments = () =>
   client.fetch(
-    `*[_type in ["ds_component_page","ds_article","gp_article_page"]]
+    `*[_type in ["ds_component_page","ds_article"]]
     {_id, _updatedAt, metadata}`
   ); */
 /* const fetchDocuments = () => client.fetch(`*[_id in path('_.groups.*')]`); */

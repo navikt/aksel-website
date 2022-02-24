@@ -1,12 +1,11 @@
 import fs from "fs";
-import { getAkselArtikler, getDsPaths, getGpPaths } from "..";
+import { getAkselArtikler, getDsPaths } from "..";
 
 const generateUrls = async () => {
   const urls = [
     [""],
     ["designsystem"],
     ...(await getDsPaths()),
-    ...(await getGpPaths()),
     ...(await getAkselArtikler().then((x) => x.map((y) => y.split("/")))),
   ];
   const parsedUrls = urls.map((u) => `/${u.join("/")}`);

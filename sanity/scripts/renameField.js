@@ -13,9 +13,7 @@ const client = sanityClient.withConfig({
  */
 
 const fetchDocuments = () =>
-  client.fetch(
-    `*[_type in ["ds_article_page", "ds_component_page", "gp_article_page"]]`
-  );
+  client.fetch(`*[_type in ["ds_article_page", "ds_component_page"]]`);
 
 const buildPatches = (docs) =>
   docs

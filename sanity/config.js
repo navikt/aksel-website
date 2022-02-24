@@ -13,7 +13,7 @@ const teams = [
   {
     name: "god_praksis",
     prefix: "gp",
-    documents: ["gp_article_page", "aksel_artikkel"],
+    documents: ["aksel_artikkel"],
   },
 ];
 

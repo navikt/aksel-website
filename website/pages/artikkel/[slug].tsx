@@ -13,6 +13,9 @@ const Page = (props: {
   page: AkselArtikkel;
   preview: boolean;
 }): JSX.Element => {
+  /* useEffect(() => {
+    process.env.NODE_ENV === "production" && hotjar.initialize(148751, 6);
+  }, []); */
   return (
     <>
       {props.preview && <PreviewBanner />}

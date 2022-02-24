@@ -8,7 +8,6 @@ import navigation, { dropdown, link } from "./documents/navigation";
 import frontpage from "./documents/frontpage";
 
 import * as Designsystem from "./documents/designsystem";
-import * as GodPraksis from "./documents/god-praksis";
 import * as Aksel from "./documents/aksel";
 import * as SanityModules from "./sanity-modules";
 import * as RichText from "./rich-text";
@@ -52,7 +51,6 @@ export default createSchema({
     RichText.BlockContentAccordion,
     RichText.BlockContentSimple,
     RichText.IconDecorator,
-    RichText.BlockContentGp,
 
     Designsystem.Color,
     Designsystem.ds_header_heading,
@@ -71,8 +69,6 @@ export default createSchema({
     Designsystem.Package,
     Designsystem.KomponentArtikkel,
     Designsystem.Artikkel,
-
-    GodPraksis.Article,
 
     Aksel.Artikkel,
   ]),

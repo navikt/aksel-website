@@ -5,7 +5,6 @@ import {
   DsArticlePage,
   DsArtikkel,
   DsComponentPage,
-  GpArticlePage,
   KomponentArtikkel,
 } from "../../lib";
 import AkselArtikkelTemplate from "./page-templates/AkselArtikkel";
@@ -48,17 +47,9 @@ type aksel_artikkel = {
   }) => JSX.Element;
 };
 
-type gp_article = {
-  gp_article_page: (props: {
-    data: DsArticlePage;
-    title: string;
-  }) => JSX.Element;
-};
-
 type templateT =
   | ds_component
   | ds_article
-  | gp_article
   | komponent_artikkel
   | ds_artikkel
   | aksel_artikkel;
@@ -78,7 +69,6 @@ const templates: templateT = {
     ) : (
       <ArtikkelTemplate {...props} />
     ),
-  gp_article_page: (props) => <ArticleTemplate {...props} />,
   aksel_artikkel: (props) => <AkselArtikkelTemplate {...props} />,
 };
 
@@ -86,12 +76,7 @@ const TemplatePicker = ({
   data,
   title,
 }: {
-  data:
-    | DsComponentPage
-    | DsArticlePage
-    | GpArticlePage
-    | KomponentArtikkel
-    | AkselArtikkel;
+  data: DsComponentPage | DsArticlePage | KomponentArtikkel | AkselArtikkel;
   title: string;
 }): JSX.Element => {
   const [mounted, setMounted] = useState(false);

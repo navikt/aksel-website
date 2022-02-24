@@ -1075,79 +1075,6 @@ export interface DsArtikkel extends SanityDocument {
 }
 
 /**
- * Artikkelside
- *
- *
- */
-export interface GpArticlePage extends SanityDocument {
-  _type: "gp_article_page";
-
-  /**
-   * Innhold — `string`
-   *
-   *
-   */
-  visningstekst?: string;
-
-  /**
-   * Redaktør/kontakt — `reference`
-   *
-   *
-   */
-  contact?: SanityReference<Editor>;
-
-  /**
-   * Bidragsytere — `array`
-   *
-   * Legg til de som har bidratt med denne siden!
-   */
-  contributors?: Array<SanityKeyedReference<Editor>>;
-
-  /**
-   * Sidetittel — `string`
-   *
-   * Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.
-   */
-  heading?: string;
-
-  /**
-   * url — `slug`
-   *
-   * Strukturen bestemmes ikke av URL-en
-   */
-  slug?: { _type: "slug"; current: string };
-
-  /**
-   * Ingress (valgfritt) — `array`
-   *
-   *
-   */
-  ingress?: Array<SanityKeyed<SanityBlock>>;
-
-  /**
-   * Sideinnhold — `gp_blockContent`
-   *
-   *
-   */
-  body?: GpBlockContent;
-
-  /**
-   * Tilbakemeldinger — `object`
-   *
-   *
-   */
-  metadata_feedback?: {
-    _type: "metadata_feedback";
-    /**
-     * Skjul artikkel feedback modul — `boolean`
-     *
-     * Gjemmer <<Var denne artikkelen til hjelp?>> modulen.
-     */
-    hide_feedback?: boolean;
-  };
-}
-
-/**
  * Aksel Artikkel
  *
  *
@@ -1444,11 +1371,7 @@ export type RelatertInnhold = {
        *
        */
       intern_lenke?: SanityReference<
-        | DsComponentPage
-        | DsArticlePage
-        | KomponentArtikkel
-        | DsArtikkel
-        | GpArticlePage
+        DsComponentPage | DsArticlePage | KomponentArtikkel | DsArtikkel
       >;
 
       /**
@@ -2069,11 +1992,7 @@ export type LinkPanel = {
    *
    */
   internal_link?: SanityReference<
-    | DsComponentPage
-    | DsArticlePage
-    | KomponentArtikkel
-    | DsArtikkel
-    | GpArticlePage
+    DsComponentPage | DsArticlePage | KomponentArtikkel | DsArtikkel
   >;
 
   /**
@@ -2235,11 +2154,7 @@ export type RelatedPages = {
        *
        */
       internal_link?: SanityReference<
-        | DsComponentPage
-        | DsArticlePage
-        | KomponentArtikkel
-        | DsArtikkel
-        | GpArticlePage
+        DsComponentPage | DsArticlePage | KomponentArtikkel | DsArtikkel
       >;
 
       /**
@@ -2532,7 +2447,6 @@ export type Documents =
   | DsPackage
   | KomponentArtikkel
   | DsArtikkel
-  | GpArticlePage
   | AkselArtikkel;
 
 /**
