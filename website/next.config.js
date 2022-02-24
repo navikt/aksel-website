@@ -42,9 +42,6 @@ module.exports = withSentryConfig(
       images: {
         domains: ["cdn.sanity.io"],
       },
-      compiler: {
-        styledComponents: true,
-      },
       swcMinify: true,
     })
   ),
