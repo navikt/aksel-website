@@ -2,47 +2,9 @@ import { BodyShort, Heading, Link, Select, Tag } from "@navikt/ds-react";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import Semver from "semver";
-import styled from "styled-components";
 import { ChangelogListT, ChangelogT } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import { SanityBlockContent } from "../../SanityBlockContent";
-
-const ScNeutralTag = styled(Tag)`
-  background-color: var(--navds-semantic-color-canvas-background);
-  border-color: var(--navds-semantic-color-border-muted);
-`;
-
-const ScTagWrapper = styled.div`
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 0.75rem;
-`;
-
-const ScFilter = styled.div`
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 3rem;
-
-  > * {
-    min-width: 200px;
-  }
-
-  > *:first-child {
-    flex: 1 1 100px;
-  }
-
-  > *:last-child {
-    flex: 1 1 10px;
-    max-width: 250px;
-  }
-`;
-
-const ScDiv = styled.div`
-  margin: 0.5rem 0 0.5rem 0;
-  padding: 1rem 0;
-`;
 
 const Log = ({ log }: { log: ChangelogT }) => {
   const getPrText = (pr) => {
@@ -68,7 +30,7 @@ const Log = ({ log }: { log: ChangelogT }) => {
   };
 
   return (
-    <ScDiv>
+    <div className="my-2 mx-0 py-4">
       <BodyShort as="span" className="flex gap-2" size="small">
         {log.change_date && (
           <span>{`${moment(log.change_date).format("DD. MMM. YY")}`}</span>
@@ -83,7 +45,7 @@ const Log = ({ log }: { log: ChangelogT }) => {
       <Heading spacing size="small" level="3">
         {`${log.title}  `}
       </Heading>
-      <ScTagWrapper>
+      <div className="mb-3 flex flex-wrap gap-2">
         {log.packages.map((p) => (
           <Tag size="small" key={p._key} variant="info">
             {`${p?.pack?.title.replace("@navikt/", "")} ${p.version}`}
@@ -91,13 +53,18 @@ const Log = ({ log }: { log: ChangelogT }) => {
         ))}
         {log.tags &&
           log.tags.map((t, x) => (
-            <ScNeutralTag size="small" key={t + x} variant="info">
+            <Tag
+              size="small"
+              key={t + x}
+              variant="info"
+              className="border-border-muted bg-gray-100"
+            >
               {t}
-            </ScNeutralTag>
+            </Tag>
           ))}
-      </ScTagWrapper>
+      </div>
       <SanityBlockContent blocks={log.body} />
-    </ScDiv>
+    </div>
   );
 };
 
@@ -167,8 +134,9 @@ const Changelog = ({ node }: { node: ChangelogListT }) => {
           >
             Filter
           </Heading>
-          <ScFilter className="max-w-lg">
+          <div className="mb-12 flex max-w-lg flex-wrap gap-4">
             <Select
+              className="min-w-[200px] flex-1 basis-28"
               label="Pakke"
               onChange={(e) =>
                 setSelectedPackage(e.target.value ? e.target.value : null)
@@ -182,6 +150,7 @@ const Changelog = ({ node }: { node: ChangelogListT }) => {
               ))}
             </Select>
             <Select
+              className="min-w-[200px] max-w-[250px] flex-1 basis-3"
               label="Versjon >="
               disabled={!selectedPackage}
               onChange={(e) =>
@@ -202,7 +171,7 @@ const Changelog = ({ node }: { node: ChangelogListT }) => {
                   </option>
                 ))}
             </Select>
-          </ScFilter>
+          </div>
         </details>
       )}
       {filteredLogs()
