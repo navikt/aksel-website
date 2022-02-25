@@ -38,8 +38,6 @@ export default {
       title: "Innhold",
       group: "innhold",
       hidden: ({ document }) => !!document?.artikkel_type,
-      validation: (Rule) =>
-        Rule.required().min(1).error("Tabben må ha noe innhold"),
       of: [
         {
           name: "generisk_seksjon",
@@ -84,7 +82,7 @@ export default {
               type: "array",
               title: "Innhold",
               validation: (Rule) =>
-                Rule.required().min(1).error("Tabben må ha noe innhold"),
+                Rule.required().error("Tabben må ha noe innhold"),
               of: [
                 {
                   name: "generisk_seksjon",
