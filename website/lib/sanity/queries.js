@@ -35,17 +35,6 @@ const tips = `_type == "tips" =>{
   }
 }`;
 
-const componentOverview = `_type == "component_overview" =>{
-  ...@.ref->{
-    ...,
-    components[]{
-      ...,
-      linked_package->{...},
-      "doc_link": doc_link->slug.current
-    }
-  }
-}`;
-
 const uniqueModules = `_type == "code_example_ref" =>{
   "ref": @.ref->
 },
@@ -236,7 +225,6 @@ ${relatedCards},
 ${linkPanel},
 ${alert},
 ${tips},
-${componentOverview},
 ${uniqueModules},
 ${pictureWText},
 ${doDont},

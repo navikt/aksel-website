@@ -1859,16 +1859,6 @@ export type LinkPanel = {
   body?: string;
 };
 
-export type ComponentOverview = {
-  _type: "component_overview";
-  /**
-   * Ref til kodeoversikt — `reference`
-   *
-   * Legger til en tabell med komponentoversikt. Skal bare brukes for siden Komponenter oversikt
-   */
-  ref?: SanityReference<DsComponentOverview>;
-};
-
 export type PropTable = {
   _type: "prop_table";
   /**
@@ -2109,7 +2099,6 @@ export type BlockContent = Array<
   | SanityKeyed<CodeSandboxRef>
   | SanityKeyed<CodeExampleRef>
   | SanityKeyed<PropTable>
-  | SanityKeyed<ComponentOverview>
 >;
 
 export type RiktekstEnkel = Array<SanityKeyed<SanityBlock>>;

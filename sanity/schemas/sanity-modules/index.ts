@@ -6,7 +6,6 @@ export { default as DoDont, doDont } from "./do-dont";
 export { default as ImageWithText } from "./image-with-text";
 export { default as Image } from "./image";
 export { default as LinkPanel } from "./link-panel";
-export { default as OverviewRef } from "./overview-ref";
 export { default as PropTable, prop } from "./proptable";
 export { default as RelatedPages } from "./related-pages";
 export { default as Spacing } from "./spacing";

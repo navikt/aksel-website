@@ -223,6 +223,5 @@ export default {
     { type: "code_example_ref", icon: () => <Laptop /> },
     /* { type: "uu_interaction", icon: () => <Braille /> }, */
     { type: "prop_table", icon: () => <List /> },
-    { type: "component_overview" },
   ],
 };

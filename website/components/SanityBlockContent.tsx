@@ -19,7 +19,6 @@ import {
   Table,
   Tips,
   Accordion,
-  ComponentOverview,
   IntroKomponent,
   RelatertInnhold,
   Anatomi,
@@ -86,9 +85,6 @@ const serializers = {
     alert_v2: ({ node }) => <Alert node={node} />,
     kode: ({ node }) => <Kode node={node} />,
     tabell: ({ node }) => <Tabell node={node} />,
-
-    /* Unique page modules */
-    ds_component_overview: ({ node }) => <ComponentOverview node={node} />,
 
     /* General page modules */
     related_pages: ({ node }) => <RelatedPagesCards node={node} />,
