@@ -66,7 +66,6 @@ const uniqueModules = `_type == "code_example_ref" =>{
 },
 _type == "code_sandbox_ref" =>{
   ...@.ref->
-}
 }`;
 
 const pictureWText = `_type == "picture_text" =>{
@@ -300,20 +299,6 @@ export const vkFrontpageQuery = `*[_id == "frontpage_vk_praksis"]
 
 export const akselArtikkelDocuments = `*[_type in ["aksel_artikkel"]]{ _type, _id, 'slug': slug.current }`;
 
-export const gpDocumentBySlug = `*[slug.current == $slug]
-{
-  ...,
-  "slug": slug.current,
-  ingress[]{
-    ...,
-    ${deRefs}
-  },
-  body[]{
-    ...,
-    ${deRefs}
-  }
-}`;
-
 export const akselDocumentBySlug = `*[slug.current == $slug]
 {
   ...,
@@ -358,14 +343,6 @@ export const dsDocumentBySlug = `*[slug.current == $slug]
     ...,
     ${deRefs}
   },
-  ingress[]{
-    ...,
-    ${deRefs}
-  },
-	body[]{
-    ...,
-    ${deRefs}
-  },
 	usage[]{
     ...,
     ${deRefs}
@@ -381,13 +358,6 @@ export const dsDocumentBySlug = `*[slug.current == $slug]
   accessibility[]{
     ...,
     ${deRefs}
-  },
-  tabs[]{
-    ...,
-    body[]{
-      ...,
-      ${deRefs}
-    }
   },
   innhold[]{
     ...,

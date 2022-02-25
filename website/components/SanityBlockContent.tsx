@@ -124,10 +124,6 @@ const serializers = {
 
       switch (style) {
         case "normal":
-          if (context.isIngress) {
-            return <Ingress {...textProps} className="index-ingress" />;
-          }
-
           return (
             <BodyLong
               size={context.size}
@@ -253,30 +249,26 @@ const serializers = {
 
 export type BlockContextT = {
   size: "medium" | "small";
-  isIngress: boolean;
   noLastMargin: boolean;
 };
 
 export const BlockContext = createContext<BlockContextT>({
   size: "medium",
-  isIngress: false,
   noLastMargin: false,
 });
 
 export const SanityBlockContent = ({
   blocks,
   size = "medium",
-  isIngress = false,
   noLastMargin = false,
   ...rest
 }: {
   blocks: any;
   size?: "medium" | "small";
-  isIngress?: boolean;
   className?: string;
   noLastMargin?: boolean;
 }) => (
-  <BlockContext.Provider value={{ size, isIngress, noLastMargin }}>
+  <BlockContext.Provider value={{ size, noLastMargin }}>
     <BlockContent
       blocks={blocks ?? []}
       serializers={serializers}

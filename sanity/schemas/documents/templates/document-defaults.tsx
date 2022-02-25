@@ -1,5 +1,4 @@
 import { validateSlug, isSlugUnique } from "../../validateSlug";
-import { ingressBlock } from "../../rich-text/block-content-ingress";
 
 export function documentInformation(prefix, depth?: number) {
   return [
@@ -26,13 +25,6 @@ export function documentInformation(prefix, depth?: number) {
         slugify: (input) =>
           `${prefix}${input}`.toLowerCase().replace(/\s+/g, "-").slice(0, 70),
       },
-    },
-    {
-      title: "Ingress (valgfritt)",
-      name: "ingress",
-      type: "array",
-      group: "innhold",
-      of: [ingressBlock],
     },
   ];
 }

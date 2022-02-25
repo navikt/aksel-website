@@ -60,7 +60,6 @@
     "react-live": "^2.3.0",
     "react-tooltip": "^4.2.21",
     "react-use": "^17.3.1",
-    "sanity-algolia": "^1.0.2",
     "semver": "^7.3.5",
     "sitemap": "^7.0.0",
     "uuid": "^8.3.2",

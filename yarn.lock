@@ -12367,14 +12367,6 @@ same-origin@^0.1.1:
   resolved "https://registry.yarnpkg.com/same-origin/-/same-origin-0.1.1.tgz#c2287d3192577df517acbbd6d1451a9c3c3914f5"
   integrity sha1-wih9MZJXffUXrLvW0UUanDw5FPU=
 
-sanity-algolia@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/sanity-algolia/-/sanity-algolia-1.0.2.tgz#6da70860bd6783a1a6a694d45ff040587eb26201"
-  integrity sha512-0zf+3KA/o1mtiQI9RD8XZ1DgpWk+NgrRbHhSoz2UnL+/KghYaV0PPxhjmngpVca5SM/1rjs3+8JtIzurLp1eMg==
-  dependencies:
-    "@sanity/client" "^2.0.1"
-    algoliasearch "^4.5.1"
-    stopword "^1.0.3"
 
 sanity-codegen@^0.9.5:
   version "0.9.8"

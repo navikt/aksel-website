@@ -4,7 +4,6 @@ import cl from "classnames";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
-import { flattenBlocks } from "sanity-algolia";
 import {
   AmplitudeEvents,
   Feedback,
@@ -91,9 +90,6 @@ const ComponentPageTemplate = ({
             property="og:title"
             content={`${data.heading} - Designsystemet`}
           />
-          {data.ingress && (
-            <meta name="description" content={flattenBlocks(data.ingress)} />
-          )}
         </>
       </Head>
 
