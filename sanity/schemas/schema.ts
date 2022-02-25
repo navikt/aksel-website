@@ -25,7 +25,6 @@ export default createSchema({
     dropdown,
     introduction,
 
-    SanityModules.Accordion,
     SanityModules.Alert,
     SanityModules.CodeExampleRef,
     SanityModules.CodeSandboxRef,
@@ -48,7 +47,6 @@ export default createSchema({
     SanityModules.Rows,
     SanityModules.Tips,
     RichText.BlockContent,
-    RichText.BlockContentAccordion,
     RichText.BlockContentSimple,
     RichText.IconDecorator,
 

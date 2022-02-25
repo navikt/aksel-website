@@ -204,10 +204,6 @@ export default {
       icon: () => <Warning />,
     },
     {
-      type: "accordion",
-      icon: () => <Expand />,
-    },
-    {
       type: "related_pages",
       icon: () => <ExternalLink />,
     },
