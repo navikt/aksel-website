@@ -223,12 +223,17 @@ const serializers = {
     code: (props) => <InlineCode>{props.children}</InlineCode>,
     link: ({ mark: { blank, href }, children }: { mark: any; children: any }) =>
       blank ? (
-        <Link href={href} target="_blank" rel="noreferrer noopener">
+        <Link
+          href={href}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="break-all"
+        >
           {children} (åpner lenken i ny fane)
         </Link>
       ) : (
         <NextLink href={href} passHref>
-          <Link>{children}</Link>
+          <Link className="break-all">{children}</Link>
         </NextLink>
       ),
     internalLink: ({ mark, children }: { mark: any; children: any }) => {
