@@ -32,7 +32,6 @@ export default createSchema({
     SanityModules.Changelogs,
     SanityModules.DoDont,
     SanityModules.doDont,
-    SanityModules.IkonSok,
     SanityModules.Image,
     SanityModules.ImageWithText,
     SanityModules.LinkPanel,

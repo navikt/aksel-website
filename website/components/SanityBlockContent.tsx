@@ -7,7 +7,6 @@ import {
   Alert,
   CodeExample,
   DoDont,
-  IconSearch,
   Image,
   ImageWithText,
   LevelTwoHeading,
@@ -91,7 +90,6 @@ const serializers = {
 
     /* Unique page modules */
     ds_component_overview: ({ node }) => <ComponentOverview node={node} />,
-    icon_search: () => <IconSearch />,
     changelogs_ref: ({ node }) => <Changelog node={node} />,
 
     /* General page modules */

@@ -1775,16 +1775,6 @@ export type DoDontBlock = {
   variant?: "do" | "dont" | "warning";
 };
 
-export type IconSearch = {
-  _type: "icon_search";
-  /**
-   * Tittel — `string`
-   *
-   *
-   */
-  title?: string;
-};
-
 export type Picture = {
   _type: "picture";
   asset: SanityReference<SanityImageAsset>;
@@ -2131,7 +2121,6 @@ export type BlockContent = Array<
   | SanityKeyed<CodeSandboxRef>
   | SanityKeyed<CodeExampleRef>
   | SanityKeyed<PropTable>
-  | SanityKeyed<IconSearch>
   | SanityKeyed<ChangelogsRef>
   | SanityKeyed<ComponentOverview>
 >;
