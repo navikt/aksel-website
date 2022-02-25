@@ -9,6 +9,40 @@ import {
 
 const prefix = "designsystem/side/";
 
+function toPlainText(blocks = []) {
+  return blocks
+    .filter((block) => !(block._type !== "block" || !block.children))
+    .map((block) => {
+      return block.children.map((child) => child.text).join("");
+    })
+    .join("\n");
+}
+
+const riktekst = {
+  type: "object",
+  title: "Riktekst",
+  name: "riktekst_blokk",
+  fields: [
+    {
+      title: "Riktekst",
+      name: "body",
+      type: "riktekst",
+    },
+  ],
+  preview: {
+    select: {
+      text: "body",
+    },
+    prepare(selection) {
+      return {
+        title: toPlainText(selection?.text?.slice?.(0, 1)) ?? "-",
+        subtitle: "Riktekst",
+      };
+    },
+  },
+  icon: () => <FileContent />,
+};
+
 export default {
   title: "Artikkel BETA",
   name: "ds_artikkel",
@@ -44,6 +78,7 @@ export default {
           type: "generisk_seksjon",
           icon: () => <FileContent />,
         },
+        riktekst,
         { type: "tips", title: "Tips", icon: () => <LightBulb /> },
         {
           type: "relatert_innhold",
@@ -89,6 +124,7 @@ export default {
                   type: "generisk_seksjon",
                   icon: () => <FileContent />,
                 },
+                riktekst,
                 { type: "tips", title: "Tips", icon: () => <LightBulb /> },
                 {
                   type: "relatert_innhold",
