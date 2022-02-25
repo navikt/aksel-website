@@ -1630,33 +1630,6 @@ export type NavigationDropdown = {
   >;
 };
 
-export type Accordion = {
-  _type: "accordion";
-  /**
-   * Accordions — `array`
-   *
-   *
-   */
-  list?: Array<
-    SanityKeyed<{
-      _type: "element";
-      /**
-       * Heading (optional) — `string`
-       *
-       *
-       */
-      heading?: string;
-
-      /**
-       * Innhold — `blockContent_accordion`
-       *
-       *
-       */
-      body?: BlockContentAccordion;
-    }>
-  >;
-};
-
 export type Alert = {
   _type: "alert";
   /**
@@ -2163,15 +2136,6 @@ export type BlockContent = Array<
   | SanityKeyed<ComponentOverview>
 >;
 
-export type BlockContentAccordion = Array<
-  | SanityKeyed<SanityBlock>
-  | SanityKeyed<Tips>
-  | SanityKeyed<CodeSnippet>
-  | SanityKeyed<Alert>
-  | SanityKeyed<RelatedPages>
-  | SanityKeyed<Table>
->;
-
 export type BlockContentSimple = Array<SanityKeyed<SanityBlock>>;
 
 export type GpBlockContent = Array<
@@ -2179,7 +2143,6 @@ export type GpBlockContent = Array<
   | SanityKeyed<Spacing>
   | SanityKeyed<Picture>
   | SanityKeyed<PictureText>
-  | SanityKeyed<Accordion>
   | SanityKeyed<Tips>
   | SanityKeyed<Alert>
   | SanityKeyed<CodeSnippet>
