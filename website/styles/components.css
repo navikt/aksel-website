@@ -32,7 +32,7 @@
   }
 
   .sandbox-preview > pre {
-    @apply max-w-full whitespace-pre-wrap font-code;
+    @apply max-w-full whitespace-pre-wrap font-mono;
   }
 
   .skiplink {

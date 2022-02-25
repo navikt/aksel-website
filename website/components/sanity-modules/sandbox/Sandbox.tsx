@@ -170,7 +170,7 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
           <>
             <div ref={preFocusCapture} tabIndex={-1} />
             <div className="relative mt-2 animate-fadeIn rounded">
-              <pre className="sandbox-editor relative m-0 max-h-[300px] overflow-x-auto overflow-y-auto rounded-lg bg-canvas-background-inverted p-4 pr-20 font-code">
+              <pre className="sandbox-editor relative m-0 max-h-[300px] overflow-x-auto overflow-y-auto rounded-lg bg-canvas-background-inverted p-4 pr-20 font-mono">
                 {reseting ? (
                   <LiveEditor
                     style={{

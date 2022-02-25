@@ -185,10 +185,6 @@ export default {
         },
       ],
     },
-    // Custom types (add components here)
-    {
-      type: "spacing",
-    },
     {
       type: "picture",
     },
@@ -215,9 +211,6 @@ export default {
     {
       type: "do_dont",
       icon: () => <SuccessStroke />,
-    },
-    {
-      type: "table",
     },
     { type: "code_sandbox_ref", icon: () => <Laptop /> },
     { type: "code_example_ref", icon: () => <Laptop /> },

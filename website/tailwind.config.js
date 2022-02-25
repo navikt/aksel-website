@@ -85,9 +85,6 @@ module.exports = {
         expand: "expand 0.15s cubic-bezier(0.215, 0.61, 0.355, 1)",
         expandLg: "expandLg 0.15s cubic-bezier(0.215, 0.61, 0.355, 1)",
       },
-      fontFamily: {
-        code: ["Source Code Pro"],
-      },
     },
   },
 };
