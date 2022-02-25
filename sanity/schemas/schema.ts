@@ -54,7 +54,6 @@ export default createSchema({
 
     Designsystem.Color,
     Designsystem.ds_header_heading,
-    Designsystem.ArticlePage,
     Designsystem.Changelog,
     Designsystem.CodeExamples,
     Designsystem.example,

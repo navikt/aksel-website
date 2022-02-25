@@ -12,8 +12,7 @@ const client = sanityClient.withConfig({
  * run: sanity exec scripts/renameField.js --with-user-token
  */
 
-const fetchDocuments = () =>
-  client.fetch(`*[_type in ["ds_article_page", "ds_component_page"]]`);
+const fetchDocuments = () => client.fetch(`*[_type in [ "ds_component_page"]]`);
 
 const buildPatches = (docs) =>
   docs
