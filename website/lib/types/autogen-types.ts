@@ -1732,16 +1732,6 @@ export type CodeSnippet = {
   code?: Code;
 };
 
-export type ColorCategoryRef = {
-  _type: "color_category_ref";
-  /**
-   * Fargekategori — `reference`
-   *
-   *
-   */
-  ref?: SanityReference<DsColorCategories>;
-};
-
 export type ChangelogsRef = {
   _type: "changelogs_ref";
   /**
@@ -2160,7 +2150,6 @@ export type BlockContent = Array<
   | SanityKeyed<PictureText>
   | SanityKeyed<Tips>
   | SanityKeyed<Alert>
-  | SanityKeyed<Accordion>
   | SanityKeyed<RelatedPages>
   | SanityKeyed<LinkPanel>
   | SanityKeyed<CodeSnippet>
@@ -2168,7 +2157,6 @@ export type BlockContent = Array<
   | SanityKeyed<Table>
   | SanityKeyed<CodeSandboxRef>
   | SanityKeyed<CodeExampleRef>
-  | SanityKeyed<ColorCategoryRef>
   | SanityKeyed<PropTable>
   | SanityKeyed<IconSearch>
   | SanityKeyed<ChangelogsRef>

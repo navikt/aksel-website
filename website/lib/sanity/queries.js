@@ -66,12 +66,7 @@ const uniqueModules = `_type == "code_example_ref" =>{
 },
 _type == "code_sandbox_ref" =>{
   ...@.ref->
-},
-_type == "color_category_ref" => {
-  "ref": @.ref->{..., description[]{
-    ...,
-    ${markDef}
-  }}
+}
 }`;
 
 const pictureWText = `_type == "picture_text" =>{

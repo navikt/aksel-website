@@ -2,7 +2,6 @@ export { default as Alert } from "./alert";
 export { default as CodeExampleRef } from "./code-example-ref";
 export { default as CodeSandboxRef } from "./code-sandbox-ref";
 export { default as CodeSnippet } from "./code-snippet";
-export { default as ColorRef } from "./color-ref";
 export { default as DoDont, doDont } from "./do-dont";
 export { default as IkonSok } from "./ikonsok";
 export { default as Changelogs } from "./changelogs";

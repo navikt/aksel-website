@@ -6,7 +6,6 @@ import cl from "classnames";
 import {
   Alert,
   CodeExample,
-  ColorCategory,
   DoDont,
   IconSearch,
   Image,
@@ -101,7 +100,6 @@ const serializers = {
     code_snippet: ({ node }) => <Snippet node={node} />,
     ds_code_example: ({ node }) => <CodeExample node={node} />,
     code_example_ref: ({ node }) => <CodeExample node={node.ref} />,
-    color_category_ref: ({ node }) => <ColorCategory node={node.ref} />,
     prop_table: ({ node }) => <PropTable node={node} />,
     do_dont: ({ node }) => <DoDont node={node} />,
     picture: ({ node }) => <Image node={node} />,
