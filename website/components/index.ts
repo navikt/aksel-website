@@ -1,6 +1,5 @@
 export * from "./assets";
 export { default as LayoutPicker } from "./layout/TemplatePicker";
-export { default as Accordion } from "./sanity-modules/accordion";
 export { default as Alert } from "./sanity-modules/alert";
 export { default as Card } from "./sanity-modules/card";
 export * from "./sanity-modules/code";
@@ -13,8 +12,6 @@ export { default as LinkPanel } from "./sanity-modules/link-panel";
 export { default as PropTable } from "./sanity-modules/prop-table";
 export { default as RelatedPagesCards } from "./sanity-modules/related-pages-cards";
 export { default as Sandbox } from "./sanity-modules/sandbox";
-export { default as Spacing } from "./sanity-modules/spacing";
-export { default as Table } from "./sanity-modules/table";
 export { default as Tips } from "./sanity-modules/tips";
 export { default as IntroKomponent } from "./sanity-modules/v2/IntroSeksjon";
 export { default as Changelog } from "./website-modules/changelog";

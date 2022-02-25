@@ -2013,40 +2013,6 @@ export type RelatedPages = {
   >;
 };
 
-export type Spacing = {
-  _type: "spacing";
-  /**
-   * Spacing-verdi — `string`
-   *
-   *
-   */
-  space?: "s-4" | "s-8" | "s-12" | "s-16";
-};
-
-export type Table = {
-  _type: "table";
-  /**
-   * Tabell tittel (Brukes bare internt i sanity) — `string`
-   *
-   *
-   */
-  title?: string;
-
-  /**
-   * Tabell headers — `string`
-   *
-   * Definerer hva som regnes som tabell-headers for semantisk visning
-   */
-  header_direction?: "row" | "column";
-
-  /**
-   * Rader — `array`
-   *
-   *
-   */
-  rows?: Array<SanityKeyed<Row>>;
-};
-
 export type Cell = {
   _type: "cell";
   /**
@@ -2086,7 +2052,6 @@ export type Tips = {
 
 export type BlockContent = Array<
   | SanityKeyed<SanityBlock>
-  | SanityKeyed<Spacing>
   | SanityKeyed<Picture>
   | SanityKeyed<PictureText>
   | SanityKeyed<Tips>
@@ -2095,25 +2060,12 @@ export type BlockContent = Array<
   | SanityKeyed<LinkPanel>
   | SanityKeyed<CodeSnippet>
   | SanityKeyed<DoDont>
-  | SanityKeyed<Table>
   | SanityKeyed<CodeSandboxRef>
   | SanityKeyed<CodeExampleRef>
   | SanityKeyed<PropTable>
 >;
 
 export type RiktekstEnkel = Array<SanityKeyed<SanityBlock>>;
-
-export type GpBlockContent = Array<
-  | SanityKeyed<SanityBlock>
-  | SanityKeyed<Spacing>
-  | SanityKeyed<Picture>
-  | SanityKeyed<PictureText>
-  | SanityKeyed<Tips>
-  | SanityKeyed<Alert>
-  | SanityKeyed<CodeSnippet>
-  | SanityKeyed<DoDont>
-  | SanityKeyed<Table>
->;
 
 export type DsColor = {
   _type: "ds_color";

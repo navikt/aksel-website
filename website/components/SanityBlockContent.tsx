@@ -14,11 +14,8 @@ import {
   PropTable,
   Sandbox,
   Snippet,
-  Spacing,
   RelatedPagesCards,
-  Table,
   Tips,
-  Accordion,
   IntroKomponent,
   RelatertInnhold,
   Anatomi,
@@ -85,6 +82,10 @@ const serializers = {
     alert_v2: ({ node }) => <Alert node={node} />,
     kode: ({ node }) => <Kode node={node} />,
     tabell: ({ node }) => <Tabell node={node} />,
+    accordion_v2: ({ node }) => <AccordionV2 node={node} />,
+    installasjon_seksjon: ({ node }) => <InstallasjonSeksjon node={node} />,
+    props_seksjon: ({ node }) => <PropsSeksjon node={node} />,
+    spesial_seksjon: ({ node }) => <SpesialSeksjon node={node} />,
 
     /* General page modules */
     related_pages: ({ node }) => <RelatedPagesCards node={node} />,
@@ -96,16 +97,9 @@ const serializers = {
     do_dont: ({ node }) => <DoDont node={node} />,
     picture: ({ node }) => <Image node={node} />,
     picture_text: ({ node }) => <ImageWithText node={node} />,
-    accordion: ({ node }) => <Accordion node={node} />,
     alert: ({ node }) => <Alert node={node} />,
     tips: ({ node }) => <Tips node={node} />,
     link_panel: ({ node }) => <LinkPanel node={node} />,
-    spacing: ({ node }) => <Spacing node={node} />,
-    table: ({ node }) => <Table node={node} />,
-    accordion_v2: ({ node }) => <AccordionV2 node={node} />,
-    installasjon_seksjon: ({ node }) => <InstallasjonSeksjon node={node} />,
-    props_seksjon: ({ node }) => <PropsSeksjon node={node} />,
-    spesial_seksjon: ({ node }) => <SpesialSeksjon node={node} />,
 
     block: ({ node, children }) => {
       const context: BlockContextT = useContext(BlockContext);
