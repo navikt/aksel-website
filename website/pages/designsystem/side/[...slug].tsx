@@ -4,7 +4,6 @@ import Footer from "../../../components/layout/footer/Footer";
 import DesignsystemHeader from "../../../components/layout/header/DesignsystemHeader";
 import DesignsystemSidebar from "../../../components/layout/sidebar/DesignsystemSidebar";
 import {
-  DsArticlePage,
   DsComponentPage,
   dsDocumentBySlug,
   DsNavigation,
@@ -15,7 +14,7 @@ import {
 
 const Page = (props: {
   slug?: string;
-  page: DsComponentPage | DsArticlePage;
+  page: DsComponentPage;
   navigation: DsNavigation;
   preview: boolean;
 }): JSX.Element => {
@@ -70,7 +69,7 @@ export const getStaticPaths = async (): Promise<{
 
 interface StaticProps {
   props: {
-    page: DsComponentPage | DsArticlePage;
+    page: DsComponentPage;
     slug: string;
     navigation: DsNavigation;
     isDraft: boolean;

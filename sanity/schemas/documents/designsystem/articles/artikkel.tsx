@@ -44,7 +44,7 @@ const riktekst = {
 };
 
 export default {
-  title: "Artikkel BETA",
+  title: "Artikkel",
   name: "ds_artikkel",
   type: "document",
   groups: [...groups],

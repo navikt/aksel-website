@@ -329,7 +329,7 @@ export const akselDocumentBySlug = `*[slug.current == $slug]
   }
 }`;
 
-export const dsDocuments = `*[_type in ["ds_component_page", "ds_article_page", "komponent_artikkel", "ds_artikkel"]]{ ..., 'slug': slug.current }`;
+export const dsDocuments = `*[_type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"]]{ ..., 'slug': slug.current }`;
 
 export const dsFrontpageQuery = `*[_id == "frontpage_designsystem"]
 {

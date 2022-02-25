@@ -2,18 +2,15 @@ import Error from "next/error";
 import React, { useEffect, useState } from "react";
 import {
   AkselArtikkel,
-  DsArticlePage,
   DsArtikkel,
   DsComponentPage,
   KomponentArtikkel,
 } from "../../lib";
 import AkselArtikkelTemplate from "./page-templates/AkselArtikkel";
-import ArticleTemplate from "./page-templates/ArticlePageTemplate";
 import ArtikkelTemplate from "./page-templates/Artikkel";
 import ArtikkelTabbedTemplate from "./page-templates/ArtikkelTabbed";
 import ComponentPageTemplate from "./page-templates/ComponentPageTemplate";
 import KomponentArtikkelTemplate from "./page-templates/KomponentArtikkel";
-import TabbedArticleTemplate from "./page-templates/TabbedArticlePageTemplate";
 
 type komponent_artikkel = {
   komponent_artikkel: (props: {
@@ -25,13 +22,6 @@ type komponent_artikkel = {
 type ds_component = {
   ds_component_page: (props: {
     data: DsComponentPage;
-    title: string;
-  }) => JSX.Element;
-};
-
-type ds_article = {
-  ds_article_page: (props: {
-    data: DsArticlePage;
     title: string;
   }) => JSX.Element;
 };
@@ -49,7 +39,6 @@ type aksel_artikkel = {
 
 type templateT =
   | ds_component
-  | ds_article
   | komponent_artikkel
   | ds_artikkel
   | aksel_artikkel;
@@ -57,12 +46,6 @@ type templateT =
 const templates: templateT = {
   komponent_artikkel: (props) => <KomponentArtikkelTemplate {...props} />,
   ds_component_page: (props) => <ComponentPageTemplate {...props} />,
-  ds_article_page: (props) =>
-    props.data.article_type ? (
-      <TabbedArticleTemplate {...props} />
-    ) : (
-      <ArticleTemplate {...props} />
-    ),
   ds_artikkel: (props) =>
     props.data.artikkel_type ? (
       <ArtikkelTabbedTemplate {...props} />
@@ -76,7 +59,7 @@ const TemplatePicker = ({
   data,
   title,
 }: {
-  data: DsComponentPage | DsArticlePage | KomponentArtikkel | AkselArtikkel;
+  data: DsComponentPage | KomponentArtikkel | AkselArtikkel;
   title: string;
 }): JSX.Element => {
   const [mounted, setMounted] = useState(false);

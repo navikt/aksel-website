@@ -190,103 +190,6 @@ export interface Introduction extends SanityDocument {
 }
 
 /**
- * Artikkel
- *
- *
- */
-export interface DsArticlePage extends SanityDocument {
-  _type: "ds_article_page";
-
-  /**
-   * Redaktør/kontakt — `reference`
-   *
-   *
-   */
-  contact?: SanityReference<Editor>;
-
-  /**
-   * Bidragsytere — `array`
-   *
-   * Legg til de som har bidratt med denne siden!
-   */
-  contributors?: Array<SanityKeyedReference<Editor>>;
-
-  /**
-   * Sidetittel — `string`
-   *
-   * Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.
-   */
-  heading?: string;
-
-  /**
-   * url — `slug`
-   *
-   * Strukturen bestemmes ikke av URL-en
-   */
-  slug?: { _type: "slug"; current: string };
-
-  /**
-   * Ingress (valgfritt) — `array`
-   *
-   *
-   */
-  ingress?: Array<SanityKeyed<SanityBlock>>;
-
-  /**
-   * Bruk Tabs — `boolean`
-   *
-   *
-   */
-  article_type?: boolean;
-
-  /**
-   * Sideinnhold — `blockContent`
-   *
-   *
-   */
-  body?: BlockContent;
-
-  /**
-   * Innhold i Tabs — `array`
-   *
-   *
-   */
-  tabs?: Array<
-    SanityKeyed<{
-      _type: "tab";
-      /**
-       * Tittel — `string`
-       *
-       * Innhold vil da legges under url/tab-tittel
-       */
-      title?: string;
-
-      /**
-       * Sideinnhold — `blockContent`
-       *
-       *
-       */
-      body?: BlockContent;
-    }>
-  >;
-
-  /**
-   * Tilbakemeldinger — `object`
-   *
-   *
-   */
-  metadata_feedback?: {
-    _type: "metadata_feedback";
-    /**
-     * Skjul artikkel feedback modul — `boolean`
-     *
-     * Gjemmer <<Var denne artikkelen til hjelp?>> modulen.
-     */
-    hide_feedback?: boolean;
-  };
-}
-
-/**
  * Changelog
  *
  *
@@ -682,7 +585,7 @@ export interface DsFrontpage extends SanityDocument {
        *
        */
       link_ref?: SanityReference<
-        DsComponentPage | DsArticlePage | KomponentArtikkel | DsArtikkel
+        DsComponentPage | KomponentArtikkel | DsArtikkel
       >;
 
       /**
@@ -852,7 +755,7 @@ export interface DsComponentOverview extends SanityDocument {
        *
        */
       doc_link?: SanityReference<
-        DsComponentPage | DsArticlePage | KomponentArtikkel | DsArtikkel
+        DsComponentPage | KomponentArtikkel | DsArtikkel
       >;
     }>
   >;
@@ -983,7 +886,7 @@ export interface KomponentArtikkel extends SanityDocument {
 }
 
 /**
- * Artikkel BETA
+ * Artikkel
  *
  *
  */
@@ -1371,7 +1274,7 @@ export type RelatertInnhold = {
        *
        */
       intern_lenke?: SanityReference<
-        DsComponentPage | DsArticlePage | KomponentArtikkel | DsArtikkel
+        DsComponentPage | KomponentArtikkel | DsArtikkel
       >;
 
       /**
@@ -1705,9 +1608,7 @@ export type NavigationLink = {
    *
    *
    */
-  link_ref?: SanityReference<
-    DsComponentPage | DsArticlePage | KomponentArtikkel | DsArtikkel
-  >;
+  link_ref?: SanityReference<DsComponentPage | KomponentArtikkel | DsArtikkel>;
 };
 
 export type NavigationDropdown = {
@@ -1992,7 +1893,7 @@ export type LinkPanel = {
    *
    */
   internal_link?: SanityReference<
-    DsComponentPage | DsArticlePage | KomponentArtikkel | DsArtikkel
+    DsComponentPage | KomponentArtikkel | DsArtikkel
   >;
 
   /**
@@ -2154,7 +2055,7 @@ export type RelatedPages = {
        *
        */
       internal_link?: SanityReference<
-        DsComponentPage | DsArticlePage | KomponentArtikkel | DsArtikkel
+        DsComponentPage | KomponentArtikkel | DsArtikkel
       >;
 
       /**
@@ -2371,9 +2272,7 @@ export type DsNavigationHeading = {
    *
    * Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via headern
    */
-  link_ref?: SanityReference<
-    DsComponentPage | DsArticlePage | KomponentArtikkel | DsArtikkel
-  >;
+  link_ref?: SanityReference<DsComponentPage | KomponentArtikkel | DsArtikkel>;
 
   /**
    * Meny for denne headingen — `array`
@@ -2396,7 +2295,7 @@ export type DsNavigationHeading = {
          *
          */
         link?: SanityReference<
-          DsComponentPage | DsArticlePage | KomponentArtikkel | DsArtikkel
+          DsComponentPage | KomponentArtikkel | DsArtikkel
         >;
       }>
     | SanityKeyed<{
@@ -2433,7 +2332,6 @@ export type Documents =
   | Editor
   | Navigation
   | Introduction
-  | DsArticlePage
   | DsChangelog
   | DsCodeExample
   | DsCodeSandbox
