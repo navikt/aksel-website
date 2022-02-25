@@ -12,7 +12,7 @@ export default {
     {
       title: "Beskrivelse",
       name: "description",
-      type: "blockContent_simple",
+      type: "riktekst_enkel",
     },
     {
       type: "array",

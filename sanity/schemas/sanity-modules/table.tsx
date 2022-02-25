@@ -107,7 +107,7 @@ export const Cells = {
     {
       name: "body",
       title: "Innhold",
-      type: "blockContent_simple",
+      type: "riktekst_enkel",
     },
     {
       title: "Plassering av innhold",

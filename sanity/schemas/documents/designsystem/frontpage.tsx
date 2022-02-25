@@ -5,7 +5,7 @@ export default {
   fields: [
     {
       name: "body",
-      type: "blockContent_simple",
+      type: "riktekst_enkel",
       title: "Innhold",
       validation: (Rule) => Rule.required(),
     },

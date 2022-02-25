@@ -18,7 +18,7 @@ export default {
     {
       title: "Innhold",
       name: "body",
-      type: "blockContent_simple",
+      type: "riktekst_enkel",
       validation: (Rule) =>
         Rule.required().error("Tips-modul må ha noe innhold"),
     },

@@ -257,11 +257,11 @@ export interface DsChangelog extends SanityDocument {
   tags?: Array<SanityKeyed<string>>;
 
   /**
-   * Tekst — `blockContent_simple`
+   * Tekst — `RiktekstEnkel`
    *
    * Beskrivelse av endringen
    */
-  body?: BlockContentSimple;
+  body?: RiktekstEnkel;
 }
 
 /**
@@ -354,11 +354,11 @@ export interface DsColorCategories extends SanityDocument {
   title?: string;
 
   /**
-   * Beskrivelse — `blockContent_simple`
+   * Beskrivelse — `riktekst_enkel`
    *
    *
    */
-  description?: BlockContentSimple;
+  description?: RiktekstEnkel;
 
   /**
    * Farger — `array`
@@ -565,11 +565,11 @@ export interface DsFrontpage extends SanityDocument {
   _type: "ds_frontpage";
 
   /**
-   * Innhold — `blockContent_simple`
+   * Innhold — `riktekst_enkel`
    *
    *
    */
-  body?: BlockContentSimple;
+  body?: RiktekstEnkel;
 
   /**
    * Cards — `array`
@@ -1180,8 +1180,6 @@ export type Bilde = {
   floating_text?: Riktekst;
 };
 
-export type RiktekstEnkel = Array<SanityKeyed<SanityBlock>>;
-
 export type AlertV2 = {
   _type: "alert_v2";
   /**
@@ -1661,11 +1659,11 @@ export type Alert = {
   heading_level?: "h2" | "h3" | "h4";
 
   /**
-   * Innhold — `blockContent_simple`
+   * Innhold — `riktekst_enkel`
    *
    *
    */
-  body?: BlockContentSimple;
+  body?: RiktekstEnkel;
 };
 
 export type CodeExampleRef = {
@@ -1817,11 +1815,11 @@ export type PictureText = {
   placement?: "right" | "left";
 
   /**
-   * Innhold — `blockContent_simple`
+   * Innhold — `riktekst_enkel`
    *
    *
    */
-  body?: BlockContentSimple;
+  body?: RiktekstEnkel;
 };
 
 export type LinkPanel = {
@@ -2072,11 +2070,11 @@ export type Table = {
 export type Cell = {
   _type: "cell";
   /**
-   * Innhold — `blockContent_simple`
+   * Innhold — `riktekst_enkel`
    *
    *
    */
-  body?: BlockContentSimple;
+  body?: RiktekstEnkel;
 
   /**
    * Plassering av innhold — `string`
@@ -2099,11 +2097,11 @@ export type Row = {
 export type Tips = {
   _type: "tips";
   /**
-   * Innhold — `blockContent_simple`
+   * Innhold — `riktekst_enkel`
    *
    *
    */
-  body?: BlockContentSimple;
+  body?: RiktekstEnkel;
 };
 
 export type BlockContent = Array<
@@ -2125,7 +2123,7 @@ export type BlockContent = Array<
   | SanityKeyed<ComponentOverview>
 >;
 
-export type BlockContentSimple = Array<SanityKeyed<SanityBlock>>;
+export type RiktekstEnkel = Array<SanityKeyed<SanityBlock>>;
 
 export type GpBlockContent = Array<
   | SanityKeyed<SanityBlock>

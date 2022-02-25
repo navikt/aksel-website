@@ -45,7 +45,6 @@ export default createSchema({
     SanityModules.Rows,
     SanityModules.Tips,
     RichText.BlockContent,
-    RichText.BlockContentSimple,
     RichText.IconDecorator,
 
     Designsystem.Color,

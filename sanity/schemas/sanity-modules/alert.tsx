@@ -72,7 +72,7 @@ export default {
     {
       title: "Innhold",
       name: "body",
-      type: "blockContent_simple",
+      type: "riktekst_enkel",
       validation: (Rule) => Rule.required().error("Alert må ha noe innhold"),
     },
   ],

@@ -99,7 +99,7 @@ export default {
       name: "body",
       title: "Tekst",
       description: "Beskrivelse av endringen",
-      type: "blockContent_simple",
+      type: "riktekst",
       validation: (Rule) =>
         Rule.required().error("Må legge til en liten forklaring"),
     },

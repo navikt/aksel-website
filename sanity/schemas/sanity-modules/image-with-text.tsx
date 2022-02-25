@@ -41,7 +41,7 @@ export default {
     {
       title: "Innhold",
       name: "body",
-      type: "blockContent_simple",
+      type: "riktekst_enkel",
       validation: (Rule) =>
         Rule.required().error(
           "Bilde med tekst må ha noe tekst lagt ved bildet"
