@@ -65,7 +65,7 @@ const LevelTwoHeading = ({
         level="2"
         size="large"
         className={cl(
-          "index-lvl2 mb-4 mt-8 scroll-mt-20 items-center justify-start focus:outline-none",
+          "index-lvl2 mb-4 scroll-mt-20 items-center justify-start focus:outline-none",
           {
             hidden: hidden,
             "inline-flex": !hidden,
