@@ -29,8 +29,8 @@
     "@navikt/ds-icons": "^0.8.4",
     "@navikt/ds-react": "0.16.14",
     "@navikt/ds-react-internal": "^0.11.14",
-    "@navikt/ds-tailwind": "^0.1.4",
-    "@navikt/ds-tokens": "^0.8.2",
+    "@navikt/ds-tailwind": "^0.1.6",
+    "@navikt/ds-tokens": "^0.8.4",
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^3.0.0",
     "@sanity/image-url": "^1.0.1",
@@ -42,7 +42,6 @@
     "color": "^4.0.2",
     "copy-to-clipboard": "^3.3.1",
     "github-slugger": "^1.4.0",
-    "groq": "^2.15.0",
     "js-file-download": "^0.4.12",
     "jszip": "^3.7.1",
     "lodash": "^4.17.21",
@@ -53,7 +52,6 @@
     "prettier": "^2.4.1",
     "prism-react-renderer": "^1.2.1",
     "prismjs": "^1.25.0",
-    "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hotjar": "^4.0.0",
@@ -62,9 +60,8 @@
     "react-use": "^17.3.1",
     "semver": "^7.3.5",
     "sitemap": "^7.0.0",
-    "uuid": "^8.3.2",
     "validator": "^13.7.0",
-    "tailwindcss": "^3.0.15"
+    "tailwindcss": "^3.0.23"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.1.0",
