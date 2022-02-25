@@ -20,7 +20,6 @@ import {
   Tips,
   Accordion,
   ComponentOverview,
-  Changelog,
   IntroKomponent,
   RelatertInnhold,
   Anatomi,
@@ -90,7 +89,6 @@ const serializers = {
 
     /* Unique page modules */
     ds_component_overview: ({ node }) => <ComponentOverview node={node} />,
-    changelogs_ref: ({ node }) => <Changelog node={node} />,
 
     /* General page modules */
     related_pages: ({ node }) => <RelatedPagesCards node={node} />,

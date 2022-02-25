@@ -35,21 +35,6 @@ const tips = `_type == "tips" =>{
   }
 }`;
 
-const accordion = `_type == "accordion" =>{
-  ...,
-  list[]{
-    ...,
-    body[]{
-      ...,
-      ${markDef},
-      ${relatedCards},
-      ${linkPanel},
-      ${alert},
-      ${tips},
-    },
-  }
-}`;
-
 const componentOverview = `_type == "component_overview" =>{
   ...@.ref->{
     ...,
@@ -80,21 +65,6 @@ const doDont = `_type == "do_dont" =>{
   ...,
   blocks[]{
     ...,
-    body[]{
-      ...,
-      ${markDef}
-    },
-  }
-}`;
-
-const changelogs = `_type == "changelogs_ref" =>{
-  ...,
-  "logs": *[_type == 'ds_changelog' && !(_id in path("drafts.**"))]{
-    ...,
-    packages[]{
-      ...,
-      "pack": @.pack->{...}
-    },
     body[]{
       ...,
       ${markDef}
@@ -266,12 +236,10 @@ ${relatedCards},
 ${linkPanel},
 ${alert},
 ${tips},
-${accordion},
 ${componentOverview},
 ${uniqueModules},
 ${pictureWText},
 ${doDont},
-${changelogs},
 ${markDef},
 ${introSeksjon},
 ${relatertInnhold},

@@ -1703,16 +1703,6 @@ export type CodeSnippet = {
   code?: Code;
 };
 
-export type ChangelogsRef = {
-  _type: "changelogs_ref";
-  /**
-   * Tittel — `string`
-   *
-   *
-   */
-  title?: string;
-};
-
 export type DoDont = {
   _type: "do_dont";
   /**
@@ -2119,7 +2109,6 @@ export type BlockContent = Array<
   | SanityKeyed<CodeSandboxRef>
   | SanityKeyed<CodeExampleRef>
   | SanityKeyed<PropTable>
-  | SanityKeyed<ChangelogsRef>
   | SanityKeyed<ComponentOverview>
 >;
 
