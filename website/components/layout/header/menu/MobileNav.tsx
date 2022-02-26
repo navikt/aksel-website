@@ -2,22 +2,21 @@ import { Back, Close, Hamburger, Next } from "@navikt/ds-icons";
 import { Detail, Heading } from "@navikt/ds-react";
 import cl from "classnames";
 import NextLink from "next/link";
-import React, { useContext, useEffect, useState } from "react";
-import { LayoutContext, PagePropsContext } from "../../..";
+import React, { useEffect, useState } from "react";
+import { useDsNavigation } from "../../..";
 import { DsNavigationHeadingT } from "../../../../lib";
 import Menu from "../../menu/DesignsystemMenu";
 import Toggle from "./Toggle";
 
 const MobileNavigation = () => {
-  const context = useContext(LayoutContext);
-  const { pageProps } = useContext<any>(PagePropsContext);
   const [open, setOpen] = useState(false);
-  const [heading, setHeading] = useState(context?.activeHeading);
+  const [nav, activeHeading] = useDsNavigation();
+  const [heading, setHeading] = useState(activeHeading);
   const [level, setLevel] = useState(0);
 
   useEffect(() => {
-    context?.activeHeading && setHeading(context.activeHeading);
-  }, [context?.activeHeading]);
+    activeHeading && setHeading(activeHeading);
+  }, [activeHeading]);
 
   const button = (
     <>
@@ -35,42 +34,40 @@ const MobileNavigation = () => {
     </>
   );
 
-  const headingMenu = pageProps?.navigation?.headings && (
+  const headingMenu = nav?.headings && (
     <>
       {
         <ul className="hidden animate-fadeIn lg:block xl:hidden">
-          {pageProps?.navigation.headings.map(
-            (heading: DsNavigationHeadingT) => (
-              <li
-                key={heading._key}
-                className={cl(
-                  "first-of-type:rounded-t last-of-type:rounded-b focus-within:shadow-focus-inset hover:bg-canvas-background",
-                  {
-                    "border-l-[6px] border-l-canvas-background-inverted bg-canvas-background":
-                      context?.activeHeading?.title === heading.title,
-                  }
-                )}
-              >
-                <NextLink href={`/${heading.link_ref.slug.current}`} passHref>
-                  <a
-                    className={cl(
-                      "flex min-h-[48px] w-full items-center justify-between bg-none py-3 pr-4 pl-8 text-text no-underline focus:outline-none",
-                      {
-                        "pl-[26px] font-semibold":
-                          context?.activeHeading?.title === heading.title,
-                      }
-                    )}
-                    onClick={() => {
-                      setHeading(heading);
-                      setOpen(false);
-                    }}
-                  >
-                    {heading?.title}
-                  </a>
-                </NextLink>
-              </li>
-            )
-          )}
+          {nav.headings.map((heading: DsNavigationHeadingT) => (
+            <li
+              key={heading._key}
+              className={cl(
+                "first-of-type:rounded-t last-of-type:rounded-b focus-within:shadow-focus-inset hover:bg-canvas-background",
+                {
+                  "border-l-[6px] border-l-canvas-background-inverted bg-canvas-background":
+                    activeHeading?.title === heading.title,
+                }
+              )}
+            >
+              <NextLink href={`/${heading.link_ref.slug.current}`} passHref>
+                <a
+                  className={cl(
+                    "flex min-h-[48px] w-full items-center justify-between bg-none py-3 pr-4 pl-8 text-text no-underline focus:outline-none",
+                    {
+                      "pl-[26px] font-semibold":
+                        activeHeading?.title === heading.title,
+                    }
+                  )}
+                  onClick={() => {
+                    setHeading(heading);
+                    setOpen(false);
+                  }}
+                >
+                  {heading?.title}
+                </a>
+              </NextLink>
+            </li>
+          ))}
         </ul>
       }
       <ul
@@ -79,14 +76,14 @@ const MobileNavigation = () => {
           hidden: level === 1,
         })}
       >
-        {pageProps?.navigation.headings.map((heading: DsNavigationHeadingT) => (
+        {nav.headings.map((heading: DsNavigationHeadingT) => (
           <li
             key={heading._key}
             className={cl(
               "first-of-type:rounded-t last-of-type:rounded-b focus-within:shadow-focus-inset hover:bg-canvas-background",
               {
                 "border-l-[6px] border-l-canvas-background-inverted bg-canvas-background":
-                  context?.activeHeading?.title === heading.title,
+                  activeHeading?.title === heading.title,
               }
             )}
           >
@@ -95,7 +92,7 @@ const MobileNavigation = () => {
                 "flex min-h-[48px] w-full items-center justify-between bg-none py-3 pr-4 pl-8 text-text no-underline focus:outline-none",
                 {
                   "pl-[26px] font-semibold":
-                    context?.activeHeading?.title === heading.title,
+                    activeHeading?.title === heading.title,
                 }
               )}
               onClick={() => {
