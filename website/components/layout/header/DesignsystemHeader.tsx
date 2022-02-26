@@ -65,6 +65,9 @@ const DesignsystemHeader = (): JSX.Element => {
 
   return (
     <>
+      <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
+        Hopp til innhold
+      </a>
       <Header className="z-[1050] hidden h-header xl:flex">{nonMobile}</Header>
       <Header className="z-[1050] flex h-header xl:hidden">{mobile}</Header>
     </>

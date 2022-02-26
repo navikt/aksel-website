@@ -28,9 +28,6 @@ const Page = (props: {
 Page.getLayout = (page) => {
   return (
     <>
-      <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
-        Hopp til innhold
-      </a>
       <AkselHeader />
       <main
         tabIndex={-1}

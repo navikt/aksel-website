@@ -5,6 +5,9 @@ import { Search } from "../..";
 
 const AkselHeader = (): JSX.Element => (
   <header className="flex h-header border-b border-b-border-muted">
+    <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
+      Hopp til innhold
+    </a>
     <NextLink href="/" passHref>
       <Heading
         as="a"

@@ -29,9 +29,6 @@ const Page = (props: {
 Page.getLayout = (page) => {
   return (
     <>
-      <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
-        Hopp til innhold
-      </a>
       <DesignsystemHeader />
       <div className="flex bg-canvas-background-light">
         <DesignsystemSidebar />
