@@ -267,19 +267,34 @@ export const akselDocumentBySlug = `*[slug.current == $slug]
 
 export const dsDocuments = `*[_type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"]]{ ..., 'slug': slug.current }`;
 
-export const dsFrontpageQuery = `*[_id == "frontpage_designsystem"]
-{
- ...,
-  body[]{
+const dsNavQuery = `"nav": *[_type == 'ds_navigation'][0] {
+  "headings": headings[]{
     ...,
-    ${deRefs}
-  },
-  cards[]{
-    _type == "card" =>{
+    link_ref->{_id, slug},
+    category_ref->{...},
+    menu[]{
       ...,
-      link_ref->{_id, "slug": slug.current}
+      link->{_id, slug, tags},
     }
   }
+}`;
+
+export const dsFrontpageQuery = `{
+  "page": *[_id == "frontpage_designsystem"]
+  {
+   ...,
+    body[]{
+      ...,
+      ${deRefs}
+    },
+    cards[]{
+      _type == "card" =>{
+        ...,
+        link_ref->{_id, "slug": slug.current}
+      }
+    }
+  },
+  ${dsNavQuery}
 }`;
 
 export const dsSlugQuery = `{
@@ -328,17 +343,7 @@ export const dsSlugQuery = `{
         }
       },
   },
-  "nav": *[_type == 'ds_navigation'][0] {
-    "headings": headings[]{
-      ...,
-      link_ref->{_id, slug},
-      category_ref->{...},
-      menu[]{
-        ...,
-        link->{_id, slug, tags},
-      }
-    }
-  }
+  ${dsNavQuery}
 }`;
 
 export const dsDocumentBySlug = `*[_type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"] && slug.current == $slug]

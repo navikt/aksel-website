@@ -17,7 +17,6 @@ import {
   DsFrontPageCardT,
   dsFrontpageQuery,
   DsNavigation,
-  dsNavigationQuery,
   getClient,
 } from "../../lib";
 
@@ -97,20 +96,14 @@ export const getStaticProps = async ({
 }: {
   preview?: boolean;
 }) => {
-  const client = getClient(preview);
-
-  let page = await client.fetch(dsFrontpageQuery);
-  page = page?.find((item) => item._id.startsWith(`drafts.`)) || page?.[0];
-
-  const navigation = await getClient(false).fetch(dsNavigationQuery);
+  const { page, nav } = await getClient(preview).fetch(dsFrontpageQuery);
+  const doc = page?.[0] ?? null;
 
   return {
     props: {
-      page: page ?? null,
+      page: doc,
       slug: "/designsystem",
-      validPath: true,
-      isDraft: false,
-      navigation,
+      navigation: nav,
       preview,
     },
     revalidate: 10,

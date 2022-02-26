@@ -130,17 +130,13 @@ export const getStaticProps = async ({
 }: {
   preview?: boolean;
 }) => {
-  const client = getClient(preview);
-
-  let page = await client.fetch(vkFrontpageQuery);
-  page = page?.find((item) => item._id.startsWith(`drafts.`)) || page?.[0];
+  const page = await getClient(preview).fetch(vkFrontpageQuery);
+  const doc = page?.[0] ?? null;
 
   return {
     props: {
-      page: page ?? null,
+      page: doc,
       slug: "/",
-      validPath: true,
-      isDraft: false,
       preview,
     },
     revalidate: 10,

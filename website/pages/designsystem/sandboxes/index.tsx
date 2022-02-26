@@ -35,8 +35,6 @@ export async function getStaticProps() {
   return {
     props: {
       slug: "designsystem/sandboxes",
-      isDraft: false,
-      validPath: true,
       preview: false,
     },
   };

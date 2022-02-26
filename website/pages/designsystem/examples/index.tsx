@@ -35,8 +35,6 @@ export async function getStaticProps() {
   return {
     props: {
       slug: "designsystem/examples",
-      isDraft: false,
-      validPath: true,
       preview: false,
     },
   };
