@@ -33,14 +33,10 @@ const Page = ({ compkey }: { compkey: string }) => {
 export default Page;
 
 export async function getStaticProps({ params: { slug } }) {
-  const joinedSlug = slug.join("/");
-
   return {
     props: {
       compkey: slug,
-      slug: joinedSlug,
-      isDraft: false,
-      validPath: true,
+      slug: slug,
       preview: false,
     },
   };
@@ -50,7 +46,7 @@ export async function getStaticPaths() {
   return {
     paths: [
       ...ExampleKeys.map((path) => ({
-        params: { slug: [path] },
+        params: { slug: path },
       })),
     ],
     fallback: false,
