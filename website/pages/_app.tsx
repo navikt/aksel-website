@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   AmplitudeProvider,
   PagePropsContext,
@@ -16,13 +16,7 @@ function App({
   pageProps: any;
   router: any;
 }): JSX.Element {
-  const [pageData, setPageData] = useState(null);
-
   useScrollToHashOnPageLoad();
-
-  useEffect(() => {
-    setPageData(pageProps);
-  }, [pageProps]);
 
   const getLayout = Component.getLayout ?? ((page) => page);
 
@@ -34,7 +28,7 @@ function App({
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
       </Head>
-      <PagePropsContext.Provider value={{ pageProps: pageData }}>
+      <PagePropsContext.Provider value={{ pageProps }}>
         <AmplitudeProvider>
           {getLayout(<Component {...pageProps} />)}
         </AmplitudeProvider>
