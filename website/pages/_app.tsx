@@ -7,7 +7,6 @@ import {
 } from "../components";
 import LayoutProvider from "../components/layout/LayoutProvider";
 import "../styles/index.css";
-import NotFound from "./404";
 
 function App({
   Component,
@@ -28,11 +27,6 @@ function App({
 
   const getLayout = Component.getLayout ?? ((page) => page);
 
-  const notFound =
-    !pageProps?.slug ||
-    (!pageProps.validPath && pageProps.isDraft && !pageProps.preview) ||
-    (!pageProps.validPath && !pageProps.isDraft);
-
   return (
     <>
       <Head>
@@ -44,15 +38,7 @@ function App({
       <PagePropsContext.Provider value={{ pageProps: pageData, setPageData }}>
         <AmplitudeProvider>
           <LayoutProvider>
-            {notFound ? (
-              <NotFound />
-            ) : (
-              getLayout(
-                <>
-                  <Component {...pageProps} />
-                </>
-              )
-            )}
+            {getLayout(<Component {...pageProps} />)}
           </LayoutProvider>
         </AmplitudeProvider>
       </PagePropsContext.Provider>

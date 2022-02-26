@@ -1,6 +1,7 @@
 import { getClient, sanityClient } from "./sanity.server";
 import { useNextSanityImage } from "next-sanity-image";
 import { akselArtikkelDocuments, dsDocuments } from "./queries";
+import { DsArtikkel, DsComponentPage, KomponentArtikkel } from "..";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useSanityImage = (node) =>
@@ -86,4 +87,37 @@ export const getDsPaths = async (): Promise<string[][]> => {
     }
   });
   return paths;
+};
+
+export const validateDsPath = (
+  doc: DsComponentPage | DsArtikkel | KomponentArtikkel,
+  slug: string[]
+) => {
+  if (!doc) return false;
+
+  const tabs = {
+    design: "design",
+    utvikling: "development",
+    tilgjengelighet: "accessibility",
+  };
+
+  const isLvl2 = slug.length === 2;
+
+  if (slug.length === 1) return true;
+  switch (doc._type) {
+    case "ds_artikkel":
+      return (
+        isLvl2 &&
+        doc.innhold_tabs &&
+        doc.innhold_tabs.find(
+          (x) => x.title?.toLowerCase().replace(/\s+/g, "-") === slug[1]
+        )
+      );
+    case "ds_component_page":
+      return isLvl2 && tabs[slug?.[1]] in doc && !!doc[tabs[slug[1]]];
+    case "komponent_artikkel":
+      return slug?.[1] === "kode";
+    default:
+      return false;
+  }
 };

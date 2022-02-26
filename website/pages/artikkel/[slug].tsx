@@ -65,10 +65,9 @@ interface StaticProps {
   props: {
     page: AkselArtikkel;
     slug: string;
-    isDraft: boolean;
-    validPath: boolean;
     preview: boolean;
   };
+  notFound: boolean;
   revalidate: number;
 }
 
@@ -79,27 +78,19 @@ export const getStaticProps = async ({
   params: { slug: string };
   preview?: boolean;
 }): Promise<StaticProps | { notFound: true }> => {
-  const client = getClient(preview);
-  let page = await client.fetch(akselDocumentBySlug, {
+  const page = await getClient(preview).fetch(akselDocumentBySlug, {
     slug: `artikkel/${slug}`,
   });
 
-  const isDraft = page.filter((item) => !item._id.startsWith("drafts.")).length;
-
-  page = page?.find((item) => item._id.startsWith(`drafts.`)) || page?.[0];
-
-  const validPath = await getAkselArtikler().then((paths) =>
-    paths.map((x) => x.replace("artikkel/", "")).includes(slug)
-  );
+  const doc = page?.[0] ?? null;
 
   return {
     props: {
-      page: page ?? null,
+      page: doc,
       slug,
-      isDraft: isDraft === 0,
-      validPath,
       preview,
     },
+    notFound: !doc,
     revalidate: 10,
   };
 };

@@ -282,7 +282,66 @@ export const dsFrontpageQuery = `*[_id == "frontpage_designsystem"]
   }
 }`;
 
-export const dsDocumentBySlug = `*[slug.current == $slug]
+export const dsSlugQuery = `{
+  "page": *[_type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"] && slug.current == $slug]
+    {
+      ...,
+      "slug": slug.current,
+      linked_package {
+        "title": @->title,
+        "github_link": @->github_link,
+        "status": @->status
+      },
+      content_bruk[]{
+        ...,
+        ${deRefs}
+      },
+      content_kode[]{
+        ...,
+        ${deRefs}
+      },
+      usage[]{
+        ...,
+        ${deRefs}
+      },
+      design[]{
+          ...,
+          ${deRefs}
+      },
+      development[]{
+          ...,
+          ${deRefs}
+      },
+      accessibility[]{
+        ...,
+        ${deRefs}
+      },
+      innhold[]{
+        ...,
+        ${deRefs}
+      },
+      innhold_tabs[]{
+        ...,
+        innhold[]{
+          ...,
+          ${deRefs}
+        }
+      },
+  },
+  "nav": *[_type == 'ds_navigation'][0] {
+    "headings": headings[]{
+      ...,
+      link_ref->{_id, slug},
+      category_ref->{...},
+      menu[]{
+        ...,
+        link->{_id, slug, tags},
+      }
+    }
+  }
+}`;
+
+export const dsDocumentBySlug = `*[_type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"] && slug.current == $slug]
 {
   ...,
   "slug": slug.current,

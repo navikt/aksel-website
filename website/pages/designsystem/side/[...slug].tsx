@@ -5,11 +5,11 @@ import DesignsystemHeader from "../../../components/layout/header/DesignsystemHe
 import DesignsystemSidebar from "../../../components/layout/sidebar/DesignsystemSidebar";
 import {
   DsComponentPage,
-  dsDocumentBySlug,
   DsNavigation,
-  dsNavigationQuery,
+  dsSlugQuery,
   getClient,
   getDsPaths,
+  validateDsPath,
 } from "../../../lib";
 
 const Page = (props: {
@@ -72,10 +72,9 @@ interface StaticProps {
     page: DsComponentPage;
     slug: string;
     navigation: DsNavigation;
-    isDraft: boolean;
-    validPath: boolean;
     preview: boolean;
   };
+  notFound: boolean;
   revalidate: number;
 }
 
@@ -86,38 +85,19 @@ export const getStaticProps = async ({
   params: { slug: string[] };
   preview?: boolean;
 }): Promise<StaticProps | { notFound: true }> => {
-  const joinedSlug = slug.join("/");
-
-  const client = getClient(preview);
-  let page = await client.fetch(dsDocumentBySlug, {
+  const { page, nav } = await getClient(preview).fetch(dsSlugQuery, {
     slug: "designsystem/side/" + slug[0],
   });
-
-  const isDraft = page.filter((item) => !item._id.startsWith("drafts.")).length;
-
-  page = page?.find((item) => item._id.startsWith(`drafts.`)) || page?.[0];
-
-  const navigation = await client.fetch(dsNavigationQuery);
-
-  const validPath = await getDsPaths().then((paths) =>
-    paths
-      .map((slugs) =>
-        slugs
-          .filter((slug) => slug !== "designsystem" && slug !== "side")
-          .join("/")
-      )
-      .includes(joinedSlug)
-  );
+  const doc = page?.[0] ?? null;
 
   return {
     props: {
-      page: page ?? null,
-      slug: joinedSlug,
-      navigation,
-      isDraft: isDraft === 0,
-      validPath,
+      page: doc,
+      slug: slug.join("/"),
+      navigation: nav,
       preview,
     },
+    notFound: !(doc && validateDsPath(doc, slug)),
     revalidate: 10,
   };
 };
