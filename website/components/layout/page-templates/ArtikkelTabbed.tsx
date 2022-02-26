@@ -1,12 +1,11 @@
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   AmplitudeEvents,
   Feedback,
   LastUpdateTag,
-  PagePropsContext,
   RelatedNavigation,
   slugger,
   TableOfContents,
@@ -24,7 +23,6 @@ const ArtikkelTabbedTemplate = ({
   title: string;
 }): JSX.Element => {
   const { query, asPath } = useRouter();
-  const { pageProps } = useContext(PagePropsContext);
   const { logAmplitudeEvent } = useAmplitude();
 
   useEffect(() => {
@@ -96,10 +94,7 @@ const ArtikkelTabbedTemplate = ({
             blocks={data.innhold_tabs[activeTab].innhold}
           />
           {!data?.metadata_feedback?.hide_feedback && (
-            <Feedback
-              docId={pageProps?.page?._id}
-              docType={pageProps?.page?._type}
-            />
+            <Feedback docId={data?._id} docType={data?._type} />
           )}
           <RelatedNavigation />
         </div>

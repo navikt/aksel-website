@@ -1,12 +1,11 @@
 import { Heading, useClientLayoutEffect } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   AmplitudeEvents,
   Feedback,
   LastUpdateTag,
-  PagePropsContext,
   RelatedNavigation,
   slugger,
   TableOfContents,
@@ -23,7 +22,6 @@ const ArtikkelTemplate = ({
   title: string;
 }): JSX.Element => {
   const { asPath } = useRouter();
-  const { pageProps } = useContext(PagePropsContext);
   const { logAmplitudeEvent } = useAmplitude();
 
   useClientLayoutEffect(() => {
@@ -63,10 +61,7 @@ const ArtikkelTemplate = ({
         <div className="content-box">
           <SanityBlockContent className="mt-12" blocks={data.innhold} />
           {!data?.metadata_feedback?.hide_feedback && (
-            <Feedback
-              docId={pageProps?.page?._id}
-              docType={pageProps?.page?._type}
-            />
+            <Feedback docId={data?._id} docType={data?._type} />
           )}
           <RelatedNavigation />
         </div>

@@ -3,18 +3,17 @@ import { BodyShort, Heading, Tag } from "@navikt/ds-react";
 import cl from "classnames";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AmplitudeEvents,
   Feedback,
   LastUpdateTag,
-  LayoutContext,
-  PagePropsContext,
   RelatedNavigation,
   slugger,
   TableOfContents,
   Tabs,
   useAmplitude,
+  useDsNavigation,
 } from "../..";
 import { DsComponentPage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
@@ -27,8 +26,8 @@ const ComponentPageTemplate = ({
   title: string;
 }): JSX.Element => {
   const { query, asPath } = useRouter();
-  const { pageProps } = useContext(PagePropsContext);
-  const layout = useContext(LayoutContext);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, activeHeading] = useDsNavigation();
   const [activeTab, setActiveTab] = useState(0);
 
   const { logAmplitudeEvent } = useAmplitude();
@@ -82,9 +81,7 @@ const ComponentPageTemplate = ({
       <Head>
         <>
           <title>
-            {pageProps?.page?.heading
-              ? `${pageProps?.page?.heading} ${tabKey} - ${title}`
-              : title}
+            {data?.heading ? `${data?.heading} ${tabKey} - ${title}` : title}
           </title>
           <meta
             property="og:title"
@@ -94,9 +91,9 @@ const ComponentPageTemplate = ({
       </Head>
 
       <div className="content-box">
-        {layout?.activeHeading?.title && (
+        {activeHeading?.title && (
           <span className="navds-sr-only index-hidden-heading">
-            {layout?.activeHeading?.title}
+            {activeHeading?.title}
           </span>
         )}
         <div className="py-8">
@@ -208,10 +205,7 @@ const ComponentPageTemplate = ({
             <SanityBlockContent className="mt-12" blocks={data[value]} />
           )}
           {!data?.metadata_feedback?.hide_feedback && (
-            <Feedback
-              docId={pageProps?.page?._id}
-              docType={pageProps?.page?._type}
-            />
+            <Feedback docId={data?._id} docType={data?._type} />
           )}
           <RelatedNavigation />
         </div>

@@ -2,10 +2,6 @@ import type { SanityKeyed } from "sanity-codegen";
 import { DsChangelog } from "..";
 import { BgColors } from "../../stories/sandbox/types";
 
-export type LayoutContextProps = {
-  activeHeading?: DsNavigationHeadingT;
-};
-
 export type PagePropsContextT = {
   pageProps: any;
 };

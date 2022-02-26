@@ -3,8 +3,8 @@ import cl from "classnames";
 import NextImage from "next/image";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect, useState } from "react";
-import { AmplitudeEvents, PagePropsContext, useAmplitude } from "../..";
+import React, { useEffect, useState } from "react";
+import { AmplitudeEvents, useAmplitude, useDsNavigation } from "../..";
 import { DsFrontPageCardT, useSanityImage } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 
@@ -23,7 +23,7 @@ const Card = ({
   ...rest
 }: CardProps) => {
   const { logAmplitudeEvent } = useAmplitude();
-  const { pageProps } = useContext(PagePropsContext);
+  const [nav] = useDsNavigation();
   const [category, setCategory] = useState(categoryRef ?? null);
   const imageProps = useSanityImage(category?.picture);
   const { asPath } = useRouter();
@@ -41,8 +41,8 @@ const Card = ({
   }, [categoryRef]);
 
   useEffect(() => {
-    if (!pageProps.navigation || !node || !!categoryRef) return;
-    const index = pageProps?.navigation?.headings.findIndex((heading) => {
+    if (!nav || !node || !!categoryRef) return;
+    const index = nav?.headings.findIndex((heading) => {
       if (heading?.menu) {
         return (
           heading.menu
@@ -57,8 +57,8 @@ const Card = ({
     if (index === -1) {
       return;
     }
-    setCategory(pageProps.navigation.headings[index].category_ref);
-  }, [pageProps, node, categoryRef]);
+    setCategory(nav.headings[index].category_ref);
+  }, [nav, node, categoryRef]);
 
   const tagName = category?.title ?? "";
 

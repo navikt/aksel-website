@@ -1,12 +1,11 @@
 import { Heading, useClientLayoutEffect } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   AmplitudeEvents,
   Feedback,
   LastUpdateTag,
-  PagePropsContext,
   slugger,
   useAmplitude,
 } from "../..";
@@ -21,7 +20,6 @@ const AkselArtikkelTemplate = ({
   title: string;
 }): JSX.Element => {
   const { asPath } = useRouter();
-  const { pageProps } = useContext(PagePropsContext);
   const { logAmplitudeEvent } = useAmplitude();
 
   useClientLayoutEffect(() => {
@@ -62,11 +60,7 @@ const AkselArtikkelTemplate = ({
             blocks={data.innhold}
           />
           {!data?.metadata_feedback?.hide_feedback && (
-            <Feedback
-              center
-              docId={pageProps?.page?._id}
-              docType={pageProps?.page?._type}
-            />
+            <Feedback center docId={data?._id} docType={data?._type} />
           )}
         </div>
       </div>

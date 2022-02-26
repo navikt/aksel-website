@@ -1,14 +1,15 @@
 import { Back, Next } from "@navikt/ds-icons";
 import { BodyShort, Heading } from "@navikt/ds-react";
+import NextLink from "next/link";
 import React, { useContext, useEffect, useState } from "react";
-import { LayoutContext, PagePropsContext } from "../..";
+import { PagePropsContext, useDsNavigation } from "../..";
 import { DsNavigationHeadingMenuT } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
-import NextLink from "next/link";
 
 const RelatedPagesLink = () => {
   const { pageProps } = useContext<any>(PagePropsContext);
-  const context = useContext(LayoutContext);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, activeHeading] = useDsNavigation();
 
   const [links, setLinks] = useState<{
     prev?: DsNavigationHeadingMenuT;
@@ -17,15 +18,15 @@ const RelatedPagesLink = () => {
 
   useEffect(() => {
     if (
-      !context.activeHeading ||
-      !context.activeHeading.menu ||
-      context.activeHeading.title !== "Komponenter"
+      !activeHeading ||
+      !activeHeading?.menu ||
+      activeHeading?.title !== "Komponenter"
     ) {
       setLinks({});
       return;
     }
 
-    const activeIndex = context.activeHeading.menu
+    const activeIndex = activeHeading.menu
       .filter((x) => x._type !== "subheading")
       .findIndex((x) => x.link.slug.current === pageProps?.page?.slug);
 
@@ -38,20 +39,20 @@ const RelatedPagesLink = () => {
       prev:
         activeIndex === 0
           ? undefined
-          : context.activeHeading.menu.filter((x) => x._type !== "subheading")[
+          : activeHeading.menu.filter((x) => x._type !== "subheading")[
               activeIndex - 1
             ],
       next:
-        activeIndex === context.activeHeading.menu.length - 1
+        activeIndex === activeHeading.menu.length - 1
           ? undefined
-          : context.activeHeading.menu.filter((x) => x._type !== "subheading")[
+          : activeHeading.menu.filter((x) => x._type !== "subheading")[
               activeIndex + 1
             ],
     };
     setLinks(pages);
-  }, [pageProps, context.activeHeading]);
+  }, [pageProps, activeHeading]);
 
-  if (!context.activeHeading || (!links.prev && !links.next)) {
+  if (!activeHeading || (!links.prev && !links.next)) {
     return null;
   }
 

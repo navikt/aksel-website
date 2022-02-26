@@ -5,7 +5,6 @@ import {
   PagePropsContext,
   useScrollToHashOnPageLoad,
 } from "../components";
-import LayoutProvider from "../components/layout/LayoutProvider";
 import "../styles/index.css";
 
 function App({
@@ -37,9 +36,7 @@ function App({
       </Head>
       <PagePropsContext.Provider value={{ pageProps: pageData }}>
         <AmplitudeProvider>
-          <LayoutProvider>
-            {getLayout(<Component {...pageProps} />)}
-          </LayoutProvider>
+          {getLayout(<Component {...pageProps} />)}
         </AmplitudeProvider>
       </PagePropsContext.Provider>
     </>
