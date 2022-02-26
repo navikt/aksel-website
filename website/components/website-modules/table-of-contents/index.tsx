@@ -1,10 +1,9 @@
 import { BodyShort, Heading, Link } from "@navikt/ds-react";
+import cl from "classnames";
 import { throttle } from "lodash";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { useIsomorphicLayoutEffect } from "react-use";
-import cl from "classnames";
-import { useRouter } from "next/router";
 
 function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
   const [toc, setToc] = useState<{ heading: string; id: string }[]>([]);
