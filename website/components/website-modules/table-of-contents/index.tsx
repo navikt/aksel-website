@@ -4,6 +4,7 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import { useIsomorphicLayoutEffect } from "react-use";
 import cl from "classnames";
+import { useRouter } from "next/router";
 
 function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
   const [toc, setToc] = useState<{ heading: string; id: string }[]>([]);
@@ -53,8 +54,8 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
 
   useEffect(() => {
     activeId
-      ? window.history.replaceState(null, null, `#${activeId}`)
-      : window.history.replaceState(null, null, " ");
+      ? window.history.replaceState(window.history.state, "", `#${activeId}`)
+      : window.history.replaceState(window.history.state, "", " ");
   }, [activeId]);
 
   const handleFocus = (id: string) => {

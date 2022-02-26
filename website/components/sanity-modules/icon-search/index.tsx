@@ -47,6 +47,7 @@ const IconSearch = () => {
   const setQuery = useCallback((icon: string) => {
     const query = router.query;
     query.icon = icon;
+
     router.replace(
       {
         pathname: router.pathname,
