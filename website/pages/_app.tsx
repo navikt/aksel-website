@@ -35,7 +35,7 @@ function App({
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
       </Head>
-      <PagePropsContext.Provider value={{ pageProps: pageData, setPageData }}>
+      <PagePropsContext.Provider value={{ pageProps: pageData }}>
         <AmplitudeProvider>
           <LayoutProvider>
             {getLayout(<Component {...pageProps} />)}

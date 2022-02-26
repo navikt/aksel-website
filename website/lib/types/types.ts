@@ -8,7 +8,6 @@ export type LayoutContextProps = {
 
 export type PagePropsContextT = {
   pageProps: any;
-  setPageData: React.Dispatch<any>;
 };
 
 export type SectionContextT = {
