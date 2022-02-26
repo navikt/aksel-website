@@ -89,6 +89,7 @@ const Element = ({
           sizes="(max-width: 800px)"
           alt={block.alt}
           quality="100"
+          unoptimized
         />
       </button>
       <div
@@ -115,6 +116,7 @@ const Element = ({
             quality="100"
             layout="fill"
             alt={block.alt}
+            unoptimized
           />
         )}
       </Lightbox>

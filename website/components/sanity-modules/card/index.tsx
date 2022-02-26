@@ -76,6 +76,7 @@ const Card = ({
             quality="100"
             layout="fixed"
             aria-hidden
+            unoptimized
           />
         </div>
       )}
