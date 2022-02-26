@@ -1,4 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
+import { useIsomorphicLayoutEffect } from "react-use";
+import { PagePropsContext } from ".";
+import { DsNavigationHeadingT } from "../../../lib";
 
 export const useOverflowTabsX = (elementRef, parentRef, lastItemRef) => {
   const [overflowLeft, setOverflowLeft] = useState(false);
@@ -77,4 +80,31 @@ export const useOverflowX = (elementRef, parentRef) => {
   }, [checkOverflow]);
 
   return [overflowLeft, overflowRight];
+};
+
+export const useDsNavigation = () => {
+  const { pageProps } = useContext(PagePropsContext);
+  const [activeHeading, setActiveHeading] = useState<
+    DsNavigationHeadingT | undefined
+  >();
+
+  useIsomorphicLayoutEffect(() => {
+    setActiveHeading(
+      pageProps?.navigation?.headings.find((heading) => {
+        if (heading?.menu) {
+          return (
+            heading.menu
+              .filter((x) => x._type !== "subheading")
+              .find(
+                (item) => item.link.slug.current === pageProps?.page?.slug
+              ) ?? heading.link_ref.slug.current === pageProps?.page?.slug
+          );
+        } else {
+          return heading.link_ref.slug.current === pageProps?.page?.slug;
+        }
+      })
+    );
+  }, [pageProps?.page]);
+
+  return [pageProps?.navigation, activeHeading];
 };
