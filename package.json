@@ -2,7 +2,7 @@
   "name": "aksel",
   "version": "1.0.0",
   "private": true,
-  "description": "Aksel, NAVs kokkebok for design og produkt-utvikling.",
+  "description": "Nettside for Aksel",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/navikt/verktoykassen.git"
