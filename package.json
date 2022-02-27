@@ -5,11 +5,11 @@
   "description": "Nettside for Aksel",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/navikt/verktoykassen.git"
+    "url": "git+https://github.com/navikt/aksel-website.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/navikt/verktoykassen/issues"
+    "url": "https://github.com/navikt/aksel-website/issues"
   },
   "scripts": {
     "postinstall": "husky install",
