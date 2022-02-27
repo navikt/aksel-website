@@ -181,15 +181,27 @@ const serializers = {
     },
   },
   list: (props: any) => {
+    const context: BlockContextT = useContext(BlockContext);
     if (props?.type == "number") {
       return (
-        <ol type="1" className="list-margin mb-7 list-decimal last:mb-0">
+        <ol
+          type="1"
+          className={cl("list-margin mb-7 list-decimal", {
+            "last:mb-0": context.noLastMargin,
+          })}
+        >
           {props.children}
         </ol>
       );
     }
     return (
-      <ul className="list-margin mb-7 list-disc last:mb-0">{props.children}</ul>
+      <ul
+        className={cl("list-margin mb-7 list-disc", {
+          "last:mb-0": context.noLastMargin,
+        })}
+      >
+        {props.children}
+      </ul>
     );
   },
   listItem: (props: any) => {
