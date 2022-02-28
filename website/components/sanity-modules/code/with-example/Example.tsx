@@ -58,7 +58,7 @@ const Code = ({ node }: { node: DsCodeExampleT }): JSX.Element => {
   );
   const [activeTab, setActiveTab] = useState(-1);
   const [fullscreenLink, setFullscreenLink] = useState("");
-  const [previewBg, setPreviewBg] = useState(BgColors.GRADIENT);
+  const [previewBg, setPreviewBg] = useState(BgColors.DEFAULT);
 
   if (
     (!node.preview && !node?.tabs) ||
