@@ -20,8 +20,6 @@ export default {
       name: "team_ref",
       type: "reference",
       to: [{ type: "team" }],
-      validation: (Rule) =>
-        Rule.required().error("Må legge til tilhørende team"),
     },
     {
       title: "Sanity bruker-id",
