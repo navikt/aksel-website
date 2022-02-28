@@ -405,3 +405,7 @@ export const dsNavigationQuery = `
   }
 }
 `;
+
+export const akselTemaTags = `*[_type == "aksel_tema" && count(*[references(^._id)]) > 0].tag`;
+
+export const akselDocByTag = `*[_type == "aksel_tema" && tag match $tag]`;

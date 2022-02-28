@@ -39,6 +39,10 @@
     @apply absolute left-0 z-modal -translate-y-full bg-focus p-4 text-text-inverted no-underline focus-within:translate-y-0 focus-within:shadow-[inset_0_0_0_2px_white] focus-within:outline-none;
   }
 
+  .aksel-main {
+    @apply relative flex min-h-screen-header w-full flex-col items-center bg-canvas-background-light focus:outline-none;
+  }
+
   .img-wrapper img {
     object-fit: contain;
     width: 100% !important;

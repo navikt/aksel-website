@@ -1,6 +1,6 @@
 import { getClient, sanityClient } from "./sanity.server";
 import { useNextSanityImage } from "next-sanity-image";
-import { akselArtikkelDocuments, dsDocuments } from "./queries";
+import { akselArtikkelDocuments, akselTemaTags, dsDocuments } from "./queries";
 import { DsArtikkel, DsComponentPage, KomponentArtikkel } from "..";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -31,7 +31,7 @@ export const getAkselArtikler = async (): Promise<string[]> => {
 };
 
 export const getDsPaths = async (): Promise<string[][]> => {
-  const documents: any[] | null = await getClient(true).fetch(dsDocuments);
+  const documents: any[] | null = await getClient(false).fetch(dsDocuments);
   const paths = [];
   const componentPageTabs = ["design", "utvikling", "tilgjengelighet"];
 
@@ -120,4 +120,9 @@ export const validateDsPath = (
     default:
       return false;
   }
+};
+
+export const getAkselTema = async (): Promise<string[]> => {
+  const tags: string[] = await getClient(false).fetch(akselTemaTags);
+  return tags.map((x) => x.toLowerCase());
 };
