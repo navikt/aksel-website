@@ -1,8 +1,8 @@
 @import "./search/doc-search.css";
 @import "@navikt/ds-css";
 @import "@navikt/ds-css-internal";
-@import "./prismjs.css";
 @import "./global.css";
+@import "./prismjs.css";
 @import "./pages.css";
 @import "./components.css";
 @import "./stories.css";

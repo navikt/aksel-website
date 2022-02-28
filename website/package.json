@@ -24,10 +24,10 @@
   "dependencies": {
     "@docsearch/css": "3.0.0",
     "@docsearch/react": "3.0.0",
-    "@navikt/ds-css": "0.15.8",
+    "@navikt/ds-css": "0.15.10",
     "@navikt/ds-css-internal": "^0.7.1",
     "@navikt/ds-icons": "^0.8.4",
-    "@navikt/ds-react": "0.16.14",
+    "@navikt/ds-react": "0.16.17",
     "@navikt/ds-react-internal": "^0.11.14",
     "@navikt/ds-tailwind": "^0.1.6",
     "@navikt/ds-tokens": "^0.8.4",
