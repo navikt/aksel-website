@@ -1,4 +1,4 @@
-import { Information, People } from "@navikt/ds-icons";
+import { CoApplicant, Facilitet, Information, People } from "@navikt/ds-icons";
 import S from "@sanity/desk-tool/structure-builder";
 import userStore from "part:@sanity/base/user";
 import React from "react";
@@ -46,6 +46,10 @@ const items = [
           S.listItem()
             .title("Artikler")
             .child(createSuperPane("aksel_artikkel")),
+          S.listItem()
+            .title("Tema")
+            .icon(() => <Facilitet />)
+            .child(S.documentTypeList("aksel_tema")),
         ])
     ),
 
@@ -54,6 +58,10 @@ const items = [
     .title("Brukere/Redaktører")
     .icon(() => <People />)
     .child(createSuperPane("editor")),
+  S.listItem()
+    .title("Team")
+    .icon(() => <CoApplicant />)
+    .child(S.documentTypeList("team")),
 
   S.divider(),
 ];

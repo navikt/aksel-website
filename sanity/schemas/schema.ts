@@ -6,6 +6,7 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import editors from "./documents/editors";
 import navigation, { dropdown, link } from "./documents/navigation";
 import frontpage from "./documents/frontpage";
+import team from "./documents/team";
 
 import * as Designsystem from "./documents/designsystem";
 import * as Aksel from "./documents/aksel";
@@ -24,6 +25,7 @@ export default createSchema({
     link,
     dropdown,
     introduction,
+    team,
 
     SanityModules.Alert,
     SanityModules.CodeExampleRef,
@@ -59,5 +61,6 @@ export default createSchema({
     Designsystem.Artikkel,
 
     Aksel.Artikkel,
+    Aksel.Tema,
   ]),
 });

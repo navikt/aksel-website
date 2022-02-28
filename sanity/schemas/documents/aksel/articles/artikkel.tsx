@@ -61,6 +61,14 @@ export default {
       },
     },
     {
+      title: "Tema",
+      description: "Legg til de viktigeste temaene",
+      name: "tema",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "aksel_tema" }] }],
+      group: "innhold",
+    },
+    {
       name: "innhold",
       type: "array",
       title: "Innhold",
