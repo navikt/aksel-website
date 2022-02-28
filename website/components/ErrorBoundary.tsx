@@ -2,6 +2,7 @@ import React, { ErrorInfo } from "react";
 
 interface Props {
   boundaryName?: string;
+  children: React.ReactNode;
 }
 
 interface State {
