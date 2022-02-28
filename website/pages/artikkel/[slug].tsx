@@ -29,13 +29,8 @@ Page.getLayout = (page) => {
   return (
     <>
       <AkselHeader />
-      <main
-        tabIndex={-1}
-        id="hovedinnhold"
-        className="relative flex min-h-screen-header  w-full flex-col items-center bg-canvas-background-light focus:outline-none"
-      >
+      <main tabIndex={-1} id="hovedinnhold" className="aksel-main">
         {page}
-        <div className="mt-auto" aria-hidden />
       </main>
       <Footer />
     </>
