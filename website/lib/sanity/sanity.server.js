@@ -15,7 +15,6 @@ export const sanityClient = createClient(config);
 export const previewClient = createClient({
   ...config,
   useCdn: false,
-  ignoreBrowserTokenWarning: true,
   // eslint-disable-next-line no-undef
   token: process.env.SANITY_PREVIEW_TOKEN,
 });
