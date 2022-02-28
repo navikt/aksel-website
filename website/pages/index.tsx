@@ -9,7 +9,8 @@ import {
   useAmplitude,
 } from "../components";
 import Footer from "../components/layout/footer/Footer";
-import { getClient, VkFrontpage, vkFrontpageQuery } from "../lib";
+import { VkFrontpage, vkFrontpageQuery } from "../lib";
+import { getClient } from "../lib/sanity/sanity.server";
 
 const Page = (props: { page: VkFrontpage; preview: boolean }): JSX.Element => {
   const { logAmplitudeEvent } = useAmplitude();

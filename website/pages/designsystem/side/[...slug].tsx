@@ -7,10 +7,10 @@ import {
   DsComponentPage,
   DsNavigation,
   dsSlugQuery,
-  getClient,
   getDsPaths,
   validateDsPath,
 } from "../../../lib";
+import { getClient } from "../../../lib/sanity/sanity.server";
 
 const Page = (props: {
   slug?: string;

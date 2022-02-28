@@ -17,8 +17,8 @@ import {
   DsFrontPageCardT,
   dsFrontpageQuery,
   DsNavigation,
-  getClient,
 } from "../../lib";
+import { getClient } from "../../lib/sanity/sanity.server";
 
 const Page = (props: {
   page: DsFrontpage;

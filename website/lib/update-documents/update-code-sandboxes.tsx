@@ -1,6 +1,6 @@
-import { noCdnClient } from "..";
 import { SandboxKeys } from "../../stories/sandbox";
 import dotenv from "dotenv";
+import { noCdnClient } from "../sanity/sanity.server";
 dotenv.config();
 
 const main = async () => {

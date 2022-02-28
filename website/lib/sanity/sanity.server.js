@@ -16,8 +16,8 @@ export const previewClient = createClient({
   ...config,
   useCdn: false,
   ignoreBrowserTokenWarning: true,
-  token:
-    "skXMkLVwRPUcKEyYa92OfXtwSmDiaFoSPTG23GMisJ3ExGWTOITHBnDjtYfWTUsxhrGswGAdSUGyLDaMr7PrnPfMIeenZOgIjCIPI4x8NRpfNi8KwyzI2fYPLiPxD7vOEFdmvtnGNs64eQUjElnqZkULNMJGQVjjZLHm8QkfKqkX5REdifzk",
+  // eslint-disable-next-line no-undef
+  token: process.env.SANITY_PREVIEW_TOKEN,
 });
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types

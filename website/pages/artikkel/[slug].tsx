@@ -6,8 +6,8 @@ import {
   AkselArtikkel,
   akselDocumentBySlug,
   getAkselArtikler,
-  getClient,
 } from "../../lib";
+import { getClient } from "../../lib/sanity/sanity.server";
 
 const Page = (props: {
   slug?: string;

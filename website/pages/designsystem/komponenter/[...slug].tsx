@@ -6,11 +6,11 @@ import DesignsystemSidebar from "../../../components/layout/sidebar/Designsystem
 import {
   DsNavigation,
   dsSlugQuery,
-  getClient,
   getDsPaths,
   KomponentArtikkel,
   validateDsPath,
 } from "../../../lib";
+import { getClient } from "../../../lib/sanity/sanity.server";
 
 const Page = (props: {
   slug?: string;

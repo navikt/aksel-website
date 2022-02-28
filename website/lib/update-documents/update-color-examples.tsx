@@ -1,7 +1,7 @@
 import css from "css";
 import { readFileSync } from "fs";
-import { noCdnClient } from "..";
 import dotenv from "dotenv";
+import { noCdnClient } from "../sanity/sanity.server";
 
 dotenv.config();
 

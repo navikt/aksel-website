@@ -1,7 +1,8 @@
-import { DsCodeExample, noCdnClient } from "..";
+import { DsCodeExample } from "..";
 import { ExampleKeys } from "../../stories/examples";
 import { lowerCase } from "lodash";
 import dotenv from "dotenv";
+import { noCdnClient } from "../sanity/sanity.server";
 dotenv.config();
 
 const main = async () => {
