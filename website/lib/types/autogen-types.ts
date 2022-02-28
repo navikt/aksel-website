@@ -98,6 +98,22 @@ export interface VkFrontpage extends SanityDocument {
 }
 
 /**
+ * Team
+ *
+ *
+ */
+export interface Team extends SanityDocument {
+  _type: "team";
+
+  /**
+   * Navn — `string`
+   *
+   *
+   */
+  title?: string;
+}
+
+/**
  * Redaktører
  *
  *
@@ -113,11 +129,11 @@ export interface Editor extends SanityDocument {
   title?: string;
 
   /**
-   * Team — `string`
+   * Team — `array`
    *
    *
    */
-  team?: string;
+  teams?: Array<SanityKeyedReference<Team>>;
 
   /**
    * Sanity bruker-id — `slug`
@@ -257,11 +273,11 @@ export interface DsChangelog extends SanityDocument {
   tags?: Array<SanityKeyed<string>>;
 
   /**
-   * Tekst — `RiktekstEnkel`
+   * Tekst — `riktekst`
    *
    * Beskrivelse av endringen
    */
-  body?: RiktekstEnkel;
+  body?: Riktekst;
 }
 
 /**
@@ -403,13 +419,6 @@ export interface DsComponentPage extends SanityDocument {
    * Strukturen bestemmes ikke av URL-en
    */
   slug?: { _type: "slug"; current: string };
-
-  /**
-   * Ingress (valgfritt) — `array`
-   *
-   *
-   */
-  ingress?: Array<SanityKeyed<SanityBlock>>;
 
   /**
    * Bruk-tab — `blockContent`
@@ -928,6 +937,15 @@ export interface DsArtikkel extends SanityDocument {
    */
   innhold?: Array<
     | SanityKeyed<GeneriskSeksjon>
+    | SanityKeyed<{
+        _type: "riktekst_blokk";
+        /**
+         * Riktekst — `riktekst`
+         *
+         *
+         */
+        body?: Riktekst;
+      }>
     | SanityKeyed<Tips>
     | SanityKeyed<RelatertInnhold>
     | SanityKeyed<SpesialSeksjon>
@@ -955,6 +973,15 @@ export interface DsArtikkel extends SanityDocument {
        */
       innhold?: Array<
         | SanityKeyed<GeneriskSeksjon>
+        | SanityKeyed<{
+            _type: "riktekst_blokk";
+            /**
+             * Riktekst — `riktekst`
+             *
+             *
+             */
+            body?: Riktekst;
+          }>
         | SanityKeyed<Tips>
         | SanityKeyed<RelatertInnhold>
       >;
@@ -986,7 +1013,7 @@ export interface AkselArtikkel extends SanityDocument {
   _type: "aksel_artikkel";
 
   /**
-   * Bidragsytere — `array`
+   * Redaktører — `array`
    *
    * Legg til de som har bidratt med denne siden!
    */
@@ -1007,12 +1034,28 @@ export interface AkselArtikkel extends SanityDocument {
   slug?: { _type: "slug"; current: string };
 
   /**
+   * Tema — `array`
+   *
+   * Legg til de viktigeste temaene
+   */
+  tema?: Array<SanityKeyedReference<AkselTema>>;
+
+  /**
    * Innhold — `array`
    *
    *
    */
   innhold?: Array<
     | SanityKeyed<GeneriskSeksjonArtikkel>
+    | SanityKeyed<{
+        _type: "riktekst_blokk";
+        /**
+         * Riktekst — `riktekst`
+         *
+         *
+         */
+        body?: Riktekst;
+      }>
     | SanityKeyed<Tips>
     | SanityKeyed<RelatertInnhold>
   >;
@@ -1031,6 +1074,36 @@ export interface AkselArtikkel extends SanityDocument {
      */
     hide_feedback?: boolean;
   };
+}
+
+/**
+ * Aksel Tema
+ *
+ *
+ */
+export interface AkselTema extends SanityDocument {
+  _type: "aksel_tema";
+
+  /**
+   * Navn — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Tag — `string`
+   *
+   *
+   */
+  tag?: string;
+
+  /**
+   * Beskrivelse — `riktekst`
+   *
+   *
+   */
+  beskrivelse?: Riktekst;
 }
 
 export type GeneriskSeksjon = {
@@ -1180,6 +1253,8 @@ export type Bilde = {
   floating_text?: Riktekst;
 };
 
+export type RiktekstEnkel = Array<SanityKeyed<SanityBlock>>;
+
 export type AlertV2 = {
   _type: "alert_v2";
   /**
@@ -1272,7 +1347,7 @@ export type RelatertInnhold = {
        *
        */
       intern_lenke?: SanityReference<
-        DsComponentPage | KomponentArtikkel | DsArtikkel
+        DsComponentPage | KomponentArtikkel | DsArtikkel | AkselArtikkel
       >;
 
       /**
@@ -1751,7 +1826,7 @@ export type DoDontBlock = {
   /**
    * Fritekst — `text`
    *
-   * Korte konsise beskrivelser. Bruk fullbredde bilde i dodont med egen tekst for legnre forklaringer
+   * Korte konsise beskrivelser. Bruk fullbredde bilde i dodont med egen tekst for lengre forklaringer
    */
   description?: string;
 
@@ -1834,7 +1909,7 @@ export type LinkPanel = {
    *
    */
   internal_link?: SanityReference<
-    DsComponentPage | KomponentArtikkel | DsArtikkel
+    DsComponentPage | KomponentArtikkel | DsArtikkel | AkselArtikkel
   >;
 
   /**
@@ -1986,7 +2061,7 @@ export type RelatedPages = {
        *
        */
       internal_link?: SanityReference<
-        DsComponentPage | KomponentArtikkel | DsArtikkel
+        DsComponentPage | KomponentArtikkel | DsArtikkel | AkselArtikkel
       >;
 
       /**
@@ -2013,33 +2088,6 @@ export type RelatedPages = {
   >;
 };
 
-export type Cell = {
-  _type: "cell";
-  /**
-   * Innhold — `riktekst_enkel`
-   *
-   *
-   */
-  body?: RiktekstEnkel;
-
-  /**
-   * Plassering av innhold — `string`
-   *
-   * Ved ingen valgt er venstre standard
-   */
-  alignment?: "left" | "center" | "right";
-};
-
-export type Row = {
-  _type: "row";
-  /**
-   * cells — `array`
-   *
-   *
-   */
-  cells?: Array<SanityKeyed<Cell>>;
-};
-
 export type Tips = {
   _type: "tips";
   /**
@@ -2064,8 +2112,6 @@ export type BlockContent = Array<
   | SanityKeyed<CodeExampleRef>
   | SanityKeyed<PropTable>
 >;
-
-export type RiktekstEnkel = Array<SanityKeyed<SanityBlock>>;
 
 export type DsColor = {
   _type: "ds_color";
@@ -2197,6 +2243,7 @@ export type CodeExampleExample = {
 
 export type Documents =
   | VkFrontpage
+  | Team
   | Editor
   | Navigation
   | Introduction
@@ -2213,7 +2260,8 @@ export type Documents =
   | DsPackage
   | KomponentArtikkel
   | DsArtikkel
-  | AkselArtikkel;
+  | AkselArtikkel
+  | AkselTema;
 
 /**
  * This interface is a stub. It was referenced in your sanity schema but
