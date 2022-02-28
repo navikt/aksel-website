@@ -16,7 +16,7 @@ const AkselHeader = ({ className }: { className?: string }): JSX.Element => (
         as="a"
         level="1"
         size="xlarge"
-        className="flex h-full items-center px-6 hover:bg-gray-100 focus:shadow-focus-inset focus:outline-none"
+        className="flex h-full items-center px-6 hover:bg-gray-800/10 focus:shadow-focus-inset focus:outline-none"
       >
         Aksel
       </Heading>

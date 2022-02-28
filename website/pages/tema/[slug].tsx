@@ -1,5 +1,6 @@
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
+import NextLink from "next/link";
 import React from "react";
 import { Feedback, PreviewBanner } from "../../components";
 import Footer from "../../components/layout/footer/Footer";
@@ -12,7 +13,6 @@ import {
   getAkselTema,
 } from "../../lib";
 import { getClient } from "../../lib/sanity/sanity.server";
-import NextLink from "next/link";
 
 const Page = ({ preview, page }: PageProps): JSX.Element => {
   console.log(page);
@@ -33,17 +33,26 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
         {page.title}
       </Heading>
       <SanityBlockContent blocks={page.beskrivelse} className="mb-32" />
-      <div className="grid justify-center gap-8 [grid-template-columns:repeat(auto-fit,_20rem)] lg:justify-start">
+
+      <div className="grid grid-cols-1 justify-center gap-8 sm:grid-cols-2 lg:justify-start xl:grid-cols-3">
         {page.artikler.map((x) => (
           <div
             key={x._id}
             className="min-h-32 group relative min-w-[16rem] flex-1 cursor-pointer rounded border-2 border-transparent bg-white px-6 py-8 shadow-card focus-within:shadow-focus hover:border-link"
           >
-            <NextLink href={`/${x.slug}`} passHref>
+            <NextLink
+              href={{
+                pathname: `/${x.slug}`,
+                query: {
+                  tema: page.tag.toLowerCase().trim().replaceAll(" ", ""),
+                },
+              }}
+              passHref
+            >
               <Heading
                 as="a"
                 size="small"
-                className="after:absolute after:inset-0 focus:underline focus:outline-none group-hover:text-link "
+                className="index-lvl2 after:absolute after:inset-0 focus:underline focus:outline-none group-hover:text-link "
               >
                 {x.heading}
               </Heading>

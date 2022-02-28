@@ -47,7 +47,8 @@ function Search({ inverted }: { inverted?: boolean }) {
         className={cl(
           "z-[1050] ml-auto flex w-header shrink-0 items-center justify-center focus:outline-none",
           {
-            " text-text hover:bg-gray-100 focus:shadow-focus-inset": inverted,
+            " text-text hover:bg-gray-800/10 focus:shadow-focus-inset":
+              inverted,
             "text-text-inverted hover:bg-gray-800 focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
               !inverted,
           }
