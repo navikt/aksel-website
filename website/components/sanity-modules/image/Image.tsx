@@ -24,7 +24,7 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
         aria-label="Klikk for å åpne bildet i fullskjerm"
         tabIndex={0}
         onClick={() => setOpen(!open)}
-        className="bg-gray-50 p-0 shadow-[0_0_0_1px_var(--navds-semantic-color-divider)] focus:shadow-focus focus:outline-none"
+        className="rounded bg-gray-50 p-0 shadow-[0_0_0_1px_var(--navds-semantic-color-divider)] focus:shadow-focus focus:outline-none"
       >
         <NextImage
           {...imageProps}
@@ -32,6 +32,7 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
           quality="100"
           layout="responsive"
           unoptimized
+          className="rounded"
           sizes={
             width !== undefined
               ? `${Math.round(width)}px`
