@@ -3,10 +3,10 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 
 /* Schemas */
 /* Documents */
+import team from "./documents/team";
 import editors from "./documents/editors";
 import navigation, { dropdown, link } from "./documents/navigation";
 import frontpage from "./documents/frontpage";
-import team from "./documents/team";
 
 import * as Designsystem from "./documents/designsystem";
 import * as Aksel from "./documents/aksel";
@@ -20,12 +20,12 @@ export default createSchema({
   types: schemaTypes.concat([
     ...v2Blocks,
     frontpage,
+    team,
     editors,
     navigation,
     link,
     dropdown,
     introduction,
-    team,
 
     SanityModules.Alert,
     SanityModules.CodeExampleRef,

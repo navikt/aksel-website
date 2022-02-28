@@ -17,9 +17,9 @@ export default {
     },
     {
       title: "Team",
-      name: "team_ref",
-      type: "reference",
-      to: [{ type: "team" }],
+      name: "teams",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "team" }] }],
     },
     {
       title: "Sanity bruker-id",
