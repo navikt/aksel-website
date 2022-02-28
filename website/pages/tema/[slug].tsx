@@ -12,6 +12,7 @@ import {
   getAkselTema,
 } from "../../lib";
 import { getClient } from "../../lib/sanity/sanity.server";
+import NextLink from "next/link";
 
 const Page = ({ preview, page }: PageProps): JSX.Element => {
   console.log(page);
@@ -27,19 +28,33 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
         level="1"
         size="xlarge"
         spacing
-        className="index-lvl1 flex w-full max-w-text justify-center self-start pt-8 pb-6"
+        className="index-lvl1 self-start pt-8"
       >
         {page.title}
       </Heading>
-      <SanityBlockContent
-        className="mx-auto mt-12 w-full"
-        blocks={page.beskrivelse}
-      />
-
-      {page.artikler.map((x) => (
-        <div key={x._id}>{x.slug}</div>
-      ))}
-      {/* <Feedback center docId={page?._id} docType={page?._type} /> */}
+      <SanityBlockContent blocks={page.beskrivelse} className="mb-32" />
+      <div className="grid justify-center gap-8 [grid-template-columns:repeat(auto-fit,_20rem)] lg:justify-start">
+        {page.artikler.map((x) => (
+          <div
+            key={x._id}
+            className="min-h-32 group relative min-w-[16rem] flex-1 cursor-pointer rounded border-2 border-transparent bg-white px-6 py-8 shadow-card focus-within:shadow-focus hover:border-link"
+          >
+            <NextLink href={`/${x.slug}`} passHref>
+              <Heading
+                as="a"
+                size="small"
+                className="after:absolute after:inset-0 focus:underline focus:outline-none group-hover:text-link "
+              >
+                {x.heading}
+              </Heading>
+            </NextLink>
+            <div className="mt-3">
+              Lorem nisi veniam est elit ut excepteur elit nostrud sit.
+            </div>
+          </div>
+        ))}
+      </div>
+      <Feedback center docId={page?._id} docType={page?._type} />
     </>
   );
 };
@@ -47,9 +62,9 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
 Page.getLayout = (page) => {
   return (
     <>
-      <AkselHeader />
-      <main tabIndex={-1} id="hovedinnhold" className="aksel-main">
-        {page}
+      <AkselHeader className="bg-gray-50" />
+      <main tabIndex={-1} id="hovedinnhold" className="aksel-main bg-gray-50">
+        <div className="aksel-main--start max-w-6xl">{page}</div>
       </main>
       <Footer />
     </>
@@ -73,7 +88,7 @@ export const getStaticPaths = async (): Promise<{
 };
 
 interface AkselTemaPage extends AkselTema {
-  artikler: Partial<AkselArtikkel>[];
+  artikler: Partial<AkselArtikkel & { slug: string; tema: string[] }>[];
 }
 
 interface PageProps {

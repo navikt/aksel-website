@@ -29,8 +29,10 @@ Page.getLayout = (page) => {
   return (
     <>
       <AkselHeader />
-      <main tabIndex={-1} id="hovedinnhold" className="aksel-main">
-        {page}
+      <main tabIndex={-1} id="hovedinnhold" className="aksel-main bg-white">
+        <div className="aksel-main--center  max-w-content-w-padding">
+          {page}
+        </div>
       </main>
       <Footer />
     </>

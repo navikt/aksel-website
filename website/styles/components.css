@@ -40,7 +40,19 @@
   }
 
   .aksel-main {
-    @apply relative flex min-h-screen-header w-full max-w-content-w-padding flex-col items-center bg-canvas-background-light px-4 pb-4 focus:outline-none md:mx-auto md:my-0 md:px-6 lg:px-12 lg:pb-4;
+    @apply m-0 min-h-screen-header w-screen p-0 focus:outline-none;
+  }
+
+  .aksel-main__inner {
+    @apply relative w-full px-4 pb-4 md:mx-auto md:my-0 md:px-6 lg:px-12 lg:pb-4;
+  }
+
+  .aksel-main--center {
+    @apply aksel-main__inner;
+  }
+
+  .aksel-main--start {
+    @apply aksel-main__inner items-start;
   }
 
   .img-wrapper img {

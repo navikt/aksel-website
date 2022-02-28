@@ -2,9 +2,12 @@ import { Heading } from "@navikt/ds-react";
 import NextLink from "next/link";
 import React from "react";
 import { Search } from "../..";
+import cl from "classnames";
 
-const AkselHeader = (): JSX.Element => (
-  <header className="flex h-header border-b border-b-border-muted">
+const AkselHeader = ({ className }: { className?: string }): JSX.Element => (
+  <header
+    className={cl("flex h-header border-b border-b-border-muted", className)}
+  >
     <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
       Hopp til innhold
     </a>

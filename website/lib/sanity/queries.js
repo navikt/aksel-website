@@ -413,6 +413,7 @@ export const akselDocByTag = `*[_type == "aksel_tema" && tag match $tag]{
   "artikler": *[_type=='aksel_artikkel' && references(^._id)]{
     _id,
     heading,
-    "slug": slug.current
+    "slug": slug.current,
+    "tema": tema[]->tag
   }
 }`;
