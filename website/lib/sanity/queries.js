@@ -417,3 +417,5 @@ export const akselDocByTag = `*[_type == "aksel_tema" && tag match $tag]{
     "tema": tema[]->tag
   }
 }`;
+
+export const akselTema = `*[_type == "aksel_tema" && count(*[references(^._id)]) > 0]`;
