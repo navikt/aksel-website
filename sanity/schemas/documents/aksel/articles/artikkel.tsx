@@ -42,7 +42,7 @@ export default {
       description:
         "Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.",
       validation: (Rule) =>
-        Rule.required().error("Siden må ha en kort heading (<h1>)"),
+        Rule.required().max(40).error("Siden må ha en kort heading (<h1>)"),
     },
     {
       title: "url",
@@ -67,6 +67,17 @@ export default {
       type: "array",
       of: [{ type: "reference", to: [{ type: "aksel_tema" }] }],
       group: "innhold",
+    },
+    {
+      title: "Kort Intro/Oppsummering",
+      description: "Brukes i kort og innganger",
+      name: "oppsummering",
+      type: "string",
+      group: "innhold",
+      validation: (Rule) =>
+        Rule.required()
+          .max(50)
+          .error("Artikkelen burde ha en kort oppsummering/intro"),
     },
     {
       name: "innhold",

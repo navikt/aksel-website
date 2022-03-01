@@ -19,7 +19,18 @@ export default {
       type: "string",
       group: "innhold",
       validation: (Rule) =>
-        Rule.required().max(10).error("Temaet må ha en kort Tag"),
+        Rule.required().max(12).error("Temaet må ha en kort Tag"),
+    },
+    {
+      title: "Kort Intro/Oppsummering",
+      description: "Brukes i kort og innganger",
+      name: "oppsummering",
+      type: "string",
+      group: "innhold",
+      validation: (Rule) =>
+        Rule.required()
+          .max(50)
+          .error("Temaet burde ha en kort oppsummering/intro"),
     },
     {
       title: "Beskrivelse",
