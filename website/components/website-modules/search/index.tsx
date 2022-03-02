@@ -4,8 +4,9 @@ import { DocSearchModal, useDocSearchKeyboardEvents } from "@docsearch/react";
 import { Search as SearchIcon } from "@navikt/ds-icons";
 import { DocSearchHit } from "@docsearch/react/dist/esm/types";
 import cl from "classnames";
+import { BodyShort } from "@navikt/ds-react";
 
-function Search({ inverted }: { inverted?: boolean }) {
+function Search({ inverted, full }: { inverted?: boolean; full?: boolean }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const searchButtonRef = React.useRef(null);
 
@@ -41,21 +42,34 @@ function Search({ inverted }: { inverted?: boolean }) {
 
   return (
     <>
-      <button
-        ref={searchButtonRef}
-        onClick={onOpen}
-        className={cl(
-          "z-[1050] ml-auto flex w-header shrink-0 items-center justify-center focus:outline-none",
-          {
-            " text-text hover:bg-gray-800/10 focus:shadow-focus-inset":
-              inverted,
-            "text-text-inverted hover:bg-gray-800 focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
-              !inverted,
-          }
-        )}
-      >
-        <SearchIcon className="ml-[3px] h-6 w-6" aria-label="åpne søk" />
-      </button>
+      {full ? (
+        <BodyShort
+          ref={searchButtonRef}
+          onClick={onOpen}
+          as="button"
+          className="relative w-full max-w-[28rem] rounded border border-border bg-white py-4 pr-4 pl-16 text-left hover:border-link focus:shadow-focus focus:outline-none"
+        >
+          <SearchIcon aria-hidden className="absolute left-6 text-[1.5rem]" />
+          CMD + K / CTRL + K for å søke
+        </BodyShort>
+      ) : (
+        <button
+          ref={searchButtonRef}
+          onClick={onOpen}
+          className={cl(
+            "z-[1050] ml-auto flex w-header shrink-0 items-center justify-center focus:outline-none",
+            {
+              " text-text hover:bg-gray-800/10 focus:shadow-focus-inset":
+                inverted,
+              "text-text-inverted hover:bg-gray-800 focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
+                !inverted,
+            }
+          )}
+        >
+          <SearchIcon className="ml-[3px] h-6 w-6" aria-label="åpne søk" />
+        </button>
+      )}
+
       {isOpen &&
         createPortal(
           <DocSearchModal
