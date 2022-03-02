@@ -3,7 +3,7 @@ import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
-import { Feedback, PreviewBanner } from "../../components";
+import { PreviewBanner } from "../../components";
 import Footer from "../../components/layout/footer/Footer";
 import AkselHeader from "../../components/layout/header/AkselHeader";
 import { SanityBlockContent } from "../../components/SanityBlockContent";

@@ -10,7 +10,6 @@ import { akselTema, AkselTema } from "../../lib";
 import { getClient } from "../../lib/sanity/sanity.server";
 
 const Page = ({ preview, page }: PageProps): JSX.Element => {
-  console.log(page);
   return (
     <>
       {preview && <PreviewBanner />}
