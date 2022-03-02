@@ -16,14 +16,14 @@ export default {
     {
       type: "array",
       name: "brukes_til",
-      title: "Brukes til",
+      title: "Egnet til",
       of: [{ type: "string" }],
       validation: (Rule) => Rule.required().min(1),
     },
     {
       type: "array",
       name: "brukes_ikke_til",
-      title: "Brukes ikke til (optional)",
+      title: "Ugnet til (optional)",
       of: [{ type: "string" }],
     },
   ],
