@@ -16,7 +16,7 @@ const Intro = ({ node }: { node: IntroKomponentSeksjon }): JSX.Element => {
       <SanityBlockContent blocks={node.body} />
       <div className="flex flex-col gap-7">
         <div>
-          <Label>Brukes til:</Label>
+          <Label>Egnet til:</Label>
           <ul className="list-disc">
             {node.brukes_til.map((x) => (
               <li key={x} className="ml-5 list-item">
@@ -26,7 +26,7 @@ const Intro = ({ node }: { node: IntroKomponentSeksjon }): JSX.Element => {
           </ul>
         </div>
         <div>
-          <Label>Brukes ikke til:</Label>
+          <Label>Uegnet til:</Label>
           {node.brukes_ikke_til && (
             <ul className="list-disc">
               {node.brukes_ikke_til.map((x) => (
