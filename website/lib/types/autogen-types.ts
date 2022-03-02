@@ -1098,6 +1098,8 @@ export interface AkselTema extends SanityDocument {
    */
   tag?: string;
 
+  oppsummering?: string;
+
   /**
    * Beskrivelse — `riktekst`
    *

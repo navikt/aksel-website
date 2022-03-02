@@ -23,14 +23,12 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
         level="1"
         size="xlarge"
         spacing
-        className="index-lvl1 self-start pt-8"
+        className="index-lvl1 self-start pt-16"
       >
         Tema
       </Heading>
       <BodyLong className="mb-32">
-        Anim labore laboris et adipisicing consectetur excepteur aliquip minim
-        reprehenderit in ipsum enim. Nostrud exercitation enim enim sit laboris
-        ea. Adipisicing quis qui et fugiat labore ex.
+        Her er oversikten over alle tilgjengelige tema i Aksel
       </BodyLong>
 
       <div className="grid grid-cols-1 justify-center gap-4 sm:grid-cols-2 sm:gap-8 lg:justify-start xl:grid-cols-3">
@@ -54,9 +52,10 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
                 {tema.title}
               </Heading>
             </NextLink>
-            <div className="mt-3">
-              Lorem nisi veniam est elit ut excepteur elit nostrud sit.
-            </div>
+            {tema?.oppsummering && (
+              <div className="mt-3">{tema.oppsummering}</div>
+            )}
+
             <Right className=" absolute right-4 bottom-4 -rotate-45" />
           </div>
         ))}

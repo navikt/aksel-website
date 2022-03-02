@@ -28,7 +28,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
         level="1"
         size="xlarge"
         spacing
-        className="index-lvl1 self-start pt-8"
+        className="index-lvl1 self-start pt-16"
       >
         {page.title}
       </Heading>
@@ -64,7 +64,6 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
           </div>
         ))}
       </div>
-      <Feedback center docId={page?._id} docType={page?._type} />
     </>
   );
 };
