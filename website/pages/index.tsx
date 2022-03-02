@@ -106,7 +106,7 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
                   href={`/tema/${tema.tag
                     .toLowerCase()
                     .trim()
-                    .replaceAll(" ", "")}`}
+                    .replace(" ", "-")}`}
                   passHref
                 >
                   <Heading

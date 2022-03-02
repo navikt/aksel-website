@@ -37,10 +37,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
             className="group relative min-h-[12rem] min-w-[16rem] flex-1 cursor-pointer rounded border-2 border-transparent bg-white px-6 py-8 shadow-small focus-within:shadow-focus hover:border-link"
           >
             <NextLink
-              href={`/tema/${tema.tag
-                .toLowerCase()
-                .trim()
-                .replaceAll(" ", "")}`}
+              href={`/tema/${tema.tag.toLowerCase().trim().replace(" ", "-")}`}
               passHref
             >
               <Heading

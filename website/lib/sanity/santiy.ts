@@ -124,5 +124,5 @@ export const validateDsPath = (
 
 export const getAkselTema = async (): Promise<string[]> => {
   const tags: string[] = await getClient(false).fetch(akselTemaTags);
-  return tags.map((x) => x.toLowerCase());
+  return tags.map((x) => x.toLowerCase().replace(" ", "-"));
 };

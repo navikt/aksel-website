@@ -44,7 +44,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
               href={{
                 pathname: `/${x.slug}`,
                 query: {
-                  tema: page.tag.toLowerCase().trim().replaceAll(" ", ""),
+                  tema: page.tag.toLowerCase().trim().replace(" ", "-"),
                 },
               }}
               passHref
