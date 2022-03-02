@@ -33,7 +33,7 @@ const SettingsPanel = () => {
       ref={panelRef}
       tabIndex={-1}
       className={cl(
-        "flex w-full flex-col items-center gap-4 overflow-y-auto rounded-r-[7px] border-l border-gray-200 bg-canvas-background-light p-4 focus:outline-none",
+        "flex w-full flex-col items-center gap-4 overflow-y-auto rounded-r border-l border-gray-200 bg-canvas-background-light p-4 focus:outline-none",
         "lg:relative lg:max-w-[250px]",
         "absolute inset-0 animate-fadeIn",
         {
@@ -43,7 +43,7 @@ const SettingsPanel = () => {
     >
       <div className="flex h-full flex-col">
         <button
-          className="absolute top-0 right-0 rounded-tr-[7px] p-4 text-xlarge hover:bg-interaction-primary-hover-subtle focus:shadow-focus-inset focus:outline-none"
+          className="absolute top-0 right-0 p-4 text-xlarge hover:bg-interaction-primary-hover-subtle focus:shadow-focus-inset focus:outline-none"
           onClick={() =>
             setSandboxState({
               ...sandboxState,

@@ -28,7 +28,7 @@ const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
     <div
       role="presentation"
       className={cl(
-        "relative flex h-full min-h-[300px] w-full rounded-lg border border-solid border-gray-800/10 bg-origin-border"
+        "relative flex h-full min-h-[300px] w-full rounded border border-solid border-gray-800/10 bg-origin-border"
       )}
       style={getBgColors(bg)}
     >
