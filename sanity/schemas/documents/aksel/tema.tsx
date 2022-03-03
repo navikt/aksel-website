@@ -19,7 +19,7 @@ export default {
       type: "string",
       group: "innhold",
       validation: (Rule) =>
-        Rule.required().max(12).error("Temaet må ha en kort Tag"),
+        Rule.required().max(14).error("Temaet må ha en kort Tag"),
     },
     {
       title: "Kort Intro/Oppsummering",
@@ -29,7 +29,7 @@ export default {
       group: "innhold",
       validation: (Rule) =>
         Rule.required()
-          .max(60)
+          .max(65)
           .error("Temaet burde ha en kort oppsummering/intro"),
     },
     {

@@ -25,9 +25,7 @@ class Sitemap extends React.Component {
       paths.map((slugs) => slugs.join("/"))
     );
 
-    const artikler = await getAkselArtikler().then((x) =>
-      x.map((y) => `artikkel/${y}`)
-    );
+    const artikler = await getAkselArtikler();
 
     pages = ["", "designsystem", ...pages, ...artikler];
 
