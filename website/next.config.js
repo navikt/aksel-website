@@ -92,8 +92,8 @@ const config = () =>
   );
 
 if (process.env.NODE_ENV === "production") {
+  console.log("sentry is enabled");
   module.exports = withSentryConfig(config(), { silent: true });
 } else {
-  console.log("sentry is disabled");
   module.exports = config();
 }
