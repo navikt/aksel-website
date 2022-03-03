@@ -3,6 +3,7 @@ import { Label, Link } from "@navikt/ds-react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import { startCase } from "lodash";
 
 export const ArtikkelBreadcrumbs = () => {
   const router = useRouter();
@@ -18,10 +19,10 @@ export const ArtikkelBreadcrumbs = () => {
       </NextLink>
       <Next />
       <NextLink href={`/tema/${router.query.tema}`} passHref>
-        <Link>{router.query.tema}</Link>
+        <Link>{startCase(router.query.tema as string)}</Link>
       </NextLink>
       <Next />
-      <Label>{(router.query.slug as string).split("-").join(" ")}</Label>
+      <Label>{startCase(router.query.slug as string)}</Label>
     </div>
   );
 };
@@ -36,7 +37,7 @@ export const TemaBreadcrumbs = () => {
     return { breadcrumb: path, href: "/" + linkPath.slice(0, i + 1).join("/") };
   });
 
-  const replaceStrings = (s) => s.replace("tema", "Temaer");
+  const replaceStrings = (s) => startCase(s.replace("tema", "Temaer"));
 
   return (
     <div className="absolute top-0 flex items-center gap-1 pt-3">
