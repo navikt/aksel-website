@@ -2,12 +2,10 @@ import { Next } from "@navikt/ds-icons";
 import { BodyShort, Link } from "@navikt/ds-react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
-import { useContext } from "react";
-import { PagePropsContext } from "../utils";
 
 export const ArtikkelBreadcrumbs = () => {
   const router = useRouter();
-  const { pageProps } = useContext(PagePropsContext);
+
   if (!router.query?.tema) {
     return null;
   }
