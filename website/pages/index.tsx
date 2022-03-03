@@ -35,58 +35,60 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
         />
       </Head>
       {preview && <PreviewBanner />}
-      <div className="flex w-screen max-w-6xl flex-col items-center justify-center pb-16">
+      <div className="forside--padding-x flex w-screen max-w-6xl flex-col items-center justify-center pb-16">
         <Heading level="1" size="xlarge" className="mb-8">
           Produktutvikling i praksis
         </Heading>
-        <div className="mb-8">
-          <BodyShort className="mb-2">
-            “The fast parts learn, the slow parts remember”
-          </BodyShort>
-          <BodyShort size="small" className="text-text-muted">
-            - Stewart Brand
-          </BodyShort>
-        </div>
+
+        <BodyShort className="mb-2">
+          “The fast parts learn, the slow parts remember”
+        </BodyShort>
+        <BodyShort size="small" className="mb-8 text-text-muted">
+          Stewart Brand
+        </BodyShort>
+
         <Search full />
       </div>
-      <div className="flex h-28 w-full items-center justify-center gap-4 bg-gray-200">
-        <NextLink href="/designsystem" passHref>
-          <Label
-            as="a"
-            className="flex items-center gap-3 rounded bg-white px-4 py-2 shadow-card outline-2 hover:underline focus:shadow-focus focus:outline-none"
-          >
-            <SystemFilled className="text-[2rem]" /> Designsystemet
-          </Label>
-        </NextLink>
-        <NextLink href="https://identitet.nav.no" passHref>
-          <Label
-            as="a"
-            className="flex items-center gap-3 rounded bg-white px-4 py-2 shadow-card hover:underline focus:shadow-focus focus:outline-none"
-          >
-            <Office1 className="text-[2rem]" />
-            Identitet
-          </Label>
-        </NextLink>
 
-        <NextLink href="https://sikkerhet.nav.no" passHref>
-          <Label
-            as="a"
-            className={cl(
-              "relative flex items-center gap-3 rounded bg-white px-4 py-2 shadow-card hover:underline focus:shadow-focus focus:outline-none",
-              { "pr-10": true }
-            )}
-          >
-            <Star className="text-[2rem]" />
-            Security playbook
-            <span className="absolute right-0 flex h-full items-center rounded-r bg-gray-500 px-1 text-text-inverted">
-              <Locked />
-            </span>
-          </Label>
-        </NextLink>
+      <div className="forside--padding-x flex w-full justify-center bg-gray-200 py-8">
+        <div className="mx-auto  flex flex-col flex-wrap items-center gap-4 whitespace-nowrap lg:flex-row">
+          <NextLink href="/designsystem" passHref>
+            <Label
+              as="a"
+              className="flex w-full items-center gap-3 rounded bg-white px-4 py-2 shadow-card outline-2 hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
+            >
+              <SystemFilled className="shrink-0 text-[2rem]" /> Designsystemet
+            </Label>
+          </NextLink>
+          <NextLink href="https://identitet.nav.no" passHref>
+            <Label
+              as="a"
+              className="flex w-full items-center gap-3 rounded bg-white px-4 py-2 shadow-card hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
+            >
+              <Office1 className="shrink-0 text-[2rem]" />
+              Identitet
+            </Label>
+          </NextLink>
+
+          <NextLink href="https://sikkerhet.nav.no" passHref>
+            <Label
+              as="a"
+              className={cl(
+                "relative flex w-full items-center gap-3 rounded bg-white py-2 pr-10 pl-4 shadow-card hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
+              )}
+            >
+              <Star className="shrink-0 text-[2rem]" />
+              Security playbook
+              <span className="absolute right-0 flex h-full items-center rounded-r bg-gray-500 px-1 text-text-inverted">
+                <Locked />
+              </span>
+            </Label>
+          </NextLink>
+        </div>
       </div>
       {temaer && (
-        <div className="flex w-full max-w-6xl flex-col gap-6 pt-24">
-          <span className="flex items-end gap-x-12 gap-y-2">
+        <div className="forside--padding-x flex w-full max-w-6xl flex-col gap-6 py-24">
+          <span className="flex flex-col gap-x-12 gap-y-2 sm:flex-row sm:items-end">
             <Heading level="2" size="large">
               Siste temaer
             </Heading>
@@ -138,7 +140,7 @@ Page.getLayout = (page) => {
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className="relative flex min-h-screen w-full flex-col items-center pb-16 pt-16 focus:outline-none md:py-12"
+        className="relative flex min-h-screen w-full flex-col items-center py-16  focus:outline-none md:py-12"
       >
         {page}
       </main>

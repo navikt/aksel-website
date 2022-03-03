@@ -34,7 +34,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
       </Heading>
       <SanityBlockContent blocks={page.beskrivelse} className="mb-32" />
 
-      <div className="grid grid-cols-1 justify-center gap-4 sm:grid-cols-2 sm:gap-8 lg:justify-start xl:grid-cols-3">
+      <div className="grid grid-cols-1 justify-center gap-4 pb-16 sm:grid-cols-2 sm:gap-8 lg:justify-start xl:grid-cols-3">
         {page.artikler.map((x) => (
           <div
             key={x._id}
@@ -72,7 +72,11 @@ Page.getLayout = (page) => {
   return (
     <>
       <AkselHeader className="bg-gray-50" />
-      <main tabIndex={-1} id="hovedinnhold" className="aksel-main bg-gray-50">
+      <main
+        tabIndex={-1}
+        id="hovedinnhold"
+        className="aksel-main bg-gray-50 py-16 md:py-12"
+      >
         <div className="aksel-main--start max-w-6xl">{page}</div>
       </main>
       <Footer />

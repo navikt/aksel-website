@@ -30,6 +30,10 @@
   }
 
   .content-box {
-    @apply m-0 w-full max-w-content-w-padding px-4 pb-4 md:my-0  md:mx-auto md:px-6 lg:mx-0 lg:mr-auto lg:px-12 lg:pb-4;
+    @apply m-0 w-full max-w-content-w-padding px-4 pb-4 md:my-0 md:mx-auto md:px-6 lg:mx-0 lg:mr-auto lg:px-12 lg:pb-4;
+  }
+
+  .forside--padding-x {
+    @apply px-4 md:px-6 lg:px-12;
   }
 }
