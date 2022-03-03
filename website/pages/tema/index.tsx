@@ -1,5 +1,5 @@
 import { Right } from "@navikt/ds-icons";
-import { BodyLong, Heading } from "@navikt/ds-react";
+import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
@@ -14,8 +14,8 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
     <>
       {preview && <PreviewBanner />}
       <Head>
-        <title>Tema - Aksel</title>
-        <meta property="og:title" content="Tema - Aksel" />
+        <title>Temaer - Aksel</title>
+        <meta property="og:title" content="Temaer - Aksel" />
       </Head>
       <TemaBreadcrumbs />
       <Heading
@@ -24,11 +24,11 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
         spacing
         className="index-lvl1 self-start pt-24"
       >
-        Tema
+        Temaer
       </Heading>
-      <BodyLong className="mb-32">
+      {/* <BodyLong className="mb-32">
         Her er oversikten over alle tilgjengelige tema i Aksel
-      </BodyLong>
+      </BodyLong> */}
 
       <div className="grid grid-cols-1 justify-center gap-4 pb-16 sm:grid-cols-2 sm:gap-8 lg:justify-start xl:grid-cols-3">
         {page.map((tema) => (

@@ -14,7 +14,7 @@ export const ArtikkelBreadcrumbs = () => {
 
   return (
     <div className="absolute top-0 flex items-center gap-1 pt-3">
-      <NextLink href="/" passHref>
+      <NextLink href="/tema" passHref>
         <Link>Temaer</Link>
       </NextLink>
       <Next />

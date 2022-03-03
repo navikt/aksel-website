@@ -29,7 +29,7 @@ export default {
       group: "innhold",
       validation: (Rule) =>
         Rule.required()
-          .max(50)
+          .max(60)
           .error("Temaet burde ha en kort oppsummering/intro"),
     },
     {
