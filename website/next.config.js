@@ -8,11 +8,14 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 const { withSentryConfig } = require("@sentry/nextjs");
 
-const SentryUrl =
-  "https://sentry.gc.nav.no/api/113/envelope/?sentry_key=d35bd60e413c489ca0f2fd389b4e6e5e&sentry_version=7";
-
 const ContentSecurityPolicy = `
-default-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' cdn.sanity.io data:; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; report-uri ${SentryUrl}; connect-src 'self' https://amplitude.nav.no ${SentryUrl};
+  default-src 'self' 'unsafe-inline';
+  font-src 'self' data:;
+  img-src 'self' cdn.sanity.io data:;
+  script-src 'self' 'unsafe-eval';
+  style-src 'self' 'unsafe-inline';
+  report-uri https://sentry.gc.nav.no/api/113/envelope/?sentry_key=d35bd60e413c489ca0f2fd389b4e6e5e&sentry_version=7;
+  connect-src 'self' https://amplitude.nav.no https://sentry.gc.nav.no;
 `;
 
 const securityHeaders = [
@@ -22,7 +25,7 @@ const securityHeaders = [
   },
   {
     key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+    value: "camera=(), microphone=(), geolocation=()",
   },
   {
     key: "Strict-Transport-Security",
@@ -38,7 +41,7 @@ const securityHeaders = [
   },
   {
     key: "Content-Security-Policy",
-    value: ContentSecurityPolicy.trim(),
+    value: ContentSecurityPolicy.replace(/\s{2,}/g, " ").trim(),
   },
 ];
 
