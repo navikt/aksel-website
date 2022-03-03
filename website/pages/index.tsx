@@ -140,7 +140,7 @@ Page.getLayout = (page) => {
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className="relative flex min-h-screen w-full flex-col items-center py-16  focus:outline-none md:py-12"
+        className="relative flex min-h-screen w-full flex-col items-center py-12 focus:outline-none md:py-16"
       >
         {page}
       </main>

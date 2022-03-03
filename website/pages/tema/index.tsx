@@ -3,7 +3,7 @@ import { BodyLong, Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
-import { PreviewBanner } from "../../components";
+import { TemaBreadcrumbs, PreviewBanner } from "../../components";
 import Footer from "../../components/layout/footer/Footer";
 import AkselHeader from "../../components/layout/header/AkselHeader";
 import { akselTema, AkselTema } from "../../lib";
@@ -17,7 +17,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
         <title>Tema - Aksel</title>
         <meta property="og:title" content="Tema - Aksel" />
       </Head>
-
+      <TemaBreadcrumbs />
       <Heading
         level="1"
         size="xlarge"
@@ -67,7 +67,7 @@ Page.getLayout = (page) => {
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className="aksel-main bg-gray-50 py-16 md:py-12"
+        className="aksel-main bg-gray-50 pb-12 md:pb-16"
       >
         <div className="aksel-main--start max-w-6xl">{page}</div>
       </main>

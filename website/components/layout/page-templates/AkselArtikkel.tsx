@@ -47,7 +47,7 @@ const AkselArtikkelTemplate = ({
         )}
       </Head>
 
-      <div className="flex w-full max-w-text flex-col items-center self-start pt-8 pb-6">
+      <div className="flex w-full max-w-text flex-col items-center self-start pt-16 pb-6">
         <LastUpdateTag date={data._updatedAt} simple />
         <Heading size="xlarge" level="1" spacing className="index-lvl1">
           {data.heading}

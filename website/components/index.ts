@@ -37,6 +37,10 @@ export { default as AccordionV2 } from "./sanity-modules/v2/AccordionV2";
 export { default as InstallasjonSeksjon } from "./sanity-modules/v2/InstallasjonSeksjon";
 export { default as PropsSeksjon } from "./sanity-modules/v2/PropsSeksjon";
 export { default as SpesialSeksjon } from "./sanity-modules/v2/SpesialSeksjon";
+export {
+  TemaBreadcrumbs,
+  ArtikkelBreadcrumbs,
+} from "./website-modules/breakcrumbs";
 export * from "./website-modules/tabs";
 export * from "./website-modules/tags";
 export * from "./website-modules/utils";

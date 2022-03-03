@@ -1,5 +1,9 @@
 import React from "react";
-import { LayoutPicker, PreviewBanner } from "../../components";
+import {
+  ArtikkelBreadcrumbs,
+  LayoutPicker,
+  PreviewBanner,
+} from "../../components";
 import Footer from "../../components/layout/footer/Footer";
 import AkselHeader from "../../components/layout/header/AkselHeader";
 import {
@@ -20,6 +24,7 @@ const Page = (props: {
   return (
     <>
       {props.preview && <PreviewBanner />}
+      <ArtikkelBreadcrumbs />
       <LayoutPicker title="Aksel" data={props.page} />
     </>
   );
@@ -30,9 +35,7 @@ Page.getLayout = (page) => {
     <>
       <AkselHeader />
       <main tabIndex={-1} id="hovedinnhold" className="aksel-main bg-white">
-        <div className="aksel-main--center  max-w-content-w-padding">
-          {page}
-        </div>
+        <div className="aksel-main--center max-w-content-w-padding">{page}</div>
       </main>
       <Footer />
     </>
