@@ -23,7 +23,12 @@ export function documentInformation(prefix, depth?: number) {
         isUnique: isSlugUnique,
         source: "heading",
         slugify: (input) =>
-          `${prefix}${input}`.toLowerCase().replace(/\s+/g, "-").slice(0, 70),
+          `${prefix}${input}`
+            .toLowerCase()
+            .trim()
+            .slice(0, 70)
+            .trim()
+            .replace(/\s+/g, "-"),
       },
     },
   ];
