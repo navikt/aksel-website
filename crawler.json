@@ -5,17 +5,33 @@
     {
       "url": "https://design.nav.no/designsystem",
       "tags": ["designsystem", "docs"]
+    },
+    {
+      "url": "https://design.nav.no/artikkel",
+      "tags": ["aksel"],
+      "selectors_key": "aksel"
     }
   ],
   "selectors": {
-    "lvl0": {
-      "selector": "h1.index-lvl1",
-      "global": true
+    "default": {
+      "lvl0": {
+        "selector": "h1.index-lvl1",
+        "global": true
+      },
+      "lvl1": ".index-tabs--active",
+      "lvl2": "h2.index-lvl2",
+      "lvl3": "h3.index-lvl3",
+      "text": "p.index-body, p.index-ingress"
     },
-    "lvl1": ".index-tabs--active",
-    "lvl2": "h2.index-lvl2",
-    "lvl3": "h3.index-lvl3",
-    "text": "p.index-body, p.index-ingress"
+    "aksel": {
+      "lvl0": {
+        "selector": "h1.index-lvl1",
+        "global": true
+      },
+      "lvl1": "h2.index-lvl2",
+      "lvl2": "h3.index-lvl3",
+      "text": "p.index-body, p.index-ingress"
+    }
   },
   "selectors_exclude": [".index-ignore"],
   "stop_urls": [
