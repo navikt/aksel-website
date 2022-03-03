@@ -28,7 +28,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
         level="1"
         size="xlarge"
         spacing
-        className="index-lvl1 self-start pt-16"
+        className="index-lvl1 self-start pt-24"
       >
         {page.title}
       </Heading>
