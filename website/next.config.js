@@ -6,7 +6,7 @@ const oldRedirects = require("./redirects.json");
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
-const { withSentryConfig } = require("@sentry/nextjs");
+/* const { withSentryConfig } = require("@sentry/nextjs"); */
 
 const ContentSecurityPolicy = `
   default-src 'self' 'unsafe-inline';
@@ -38,6 +38,10 @@ const securityHeaders = [
   {
     key: "Referrer-Policy",
     value: "origin-when-cross-origin",
+  },
+  {
+    key: "Access-Control-Allow-Origin",
+    value: "*",
   },
   {
     key: "Content-Security-Policy",
@@ -92,8 +96,9 @@ const config = () =>
   );
 
 if (process.env.NODE_ENV === "production") {
-  console.log("sentry is enabled");
-  module.exports = withSentryConfig(config(), { silent: true });
+  /* console.log("sentry is enabled");
+  module.exports = withSentryConfig(config(), { silent: true }); */
+  module.exports = config();
 } else {
   module.exports = config();
 }
