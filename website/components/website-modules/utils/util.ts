@@ -36,3 +36,6 @@ export function useScrollToHashOnPageLoad(): void {
     }
   }, []);
 }
+
+export const getTemaSlug = (s: string) =>
+  s ? s.toLowerCase().trim().replace(/\s+/g, "-") : null;

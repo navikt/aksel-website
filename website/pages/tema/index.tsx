@@ -3,7 +3,7 @@ import { BodyLong, Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
-import { TemaBreadcrumbs, PreviewBanner } from "../../components";
+import { getTemaSlug, PreviewBanner, TemaBreadcrumbs } from "../../components";
 import Footer from "../../components/layout/footer/Footer";
 import AkselHeader from "../../components/layout/header/AkselHeader";
 import { akselTema, AkselTema } from "../../lib";
@@ -36,10 +36,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
             key={tema._id}
             className="group relative min-h-[12rem] min-w-[16rem] flex-1 cursor-pointer rounded border-2 border-transparent bg-white px-6 py-8 shadow-small focus-within:shadow-focus hover:border-link"
           >
-            <NextLink
-              href={`/tema/${tema.tag.toLowerCase().trim().replace(" ", "-")}`}
-              passHref
-            >
+            <NextLink href={`/tema/${getTemaSlug(tema.title)}`} passHref>
               <Heading
                 as="a"
                 size="small"

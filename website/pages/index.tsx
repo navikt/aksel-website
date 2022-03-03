@@ -6,6 +6,7 @@ import NextLink from "next/link";
 import React, { useEffect } from "react";
 import {
   AmplitudeEvents,
+  getTemaSlug,
   PreviewBanner,
   Search,
   useAmplitude,
@@ -104,13 +105,7 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
                 key={tema._id}
                 className="group relative min-h-[12rem] min-w-[16rem] flex-1 cursor-pointer rounded border-2 border-transparent bg-white px-6 py-8 shadow-small focus-within:shadow-focus hover:border-link"
               >
-                <NextLink
-                  href={`/tema/${tema.tag
-                    .toLowerCase()
-                    .trim()
-                    .replace(" ", "-")}`}
-                  passHref
-                >
+                <NextLink href={`/tema/${getTemaSlug(tema.title)}`} passHref>
                   <Heading
                     as="a"
                     size="small"

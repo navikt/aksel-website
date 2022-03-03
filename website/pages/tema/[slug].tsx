@@ -3,13 +3,13 @@ import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
-import { TemaBreadcrumbs, PreviewBanner } from "../../components";
+import { TemaBreadcrumbs, PreviewBanner, getTemaSlug } from "../../components";
 import Footer from "../../components/layout/footer/Footer";
 import AkselHeader from "../../components/layout/header/AkselHeader";
 import { SanityBlockContent } from "../../components/SanityBlockContent";
 import {
   AkselArtikkel,
-  akselDocByTag,
+  akselTemaDocs,
   AkselTema,
   getAkselTema,
 } from "../../lib";
@@ -44,7 +44,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
               href={{
                 pathname: `/${x.slug}`,
                 query: {
-                  tema: page.tag.toLowerCase().trim().replace(" ", "-"),
+                  tema: getTemaSlug(page.title),
                 },
               }}
               passHref
@@ -123,11 +123,9 @@ export const getStaticProps = async ({
   params: { slug: string };
   preview?: boolean;
 }): Promise<StaticProps | { notFound: true }> => {
-  const page = await getClient(preview).fetch(akselDocByTag, {
-    tag: slug,
-  });
+  const temas = await getClient(preview).fetch(akselTemaDocs);
 
-  const doc = page?.[0] ?? null;
+  const doc = temas.find((tema) => getTemaSlug(tema?.title) === slug);
 
   return {
     props: {
