@@ -8,8 +8,11 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 const { withSentryConfig } = require("@sentry/nextjs");
 
+const SentryUrl =
+  "https://sentry.gc.nav.no/api/113/envelope/?sentry_key=d35bd60e413c489ca0f2fd389b4e6e5e&sentry_version=7";
+
 const ContentSecurityPolicy = `
-default-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' cdn.sanity.io data:; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; report-uri https://sentry.gc.nav.no/api/113/security/ https://sentry.gc.nav.no/api/113/envelope/?sentry_key=d35bd60e413c489ca0f2fd389b4e6e5e&sentry_version=7'; connect-src 'self' https://amplitude.nav.no https://sentry.gc.nav.no/api/113/security/ https://sentry.gc.nav.no/api/113/envelope/?sentry_key=d35bd60e413c489ca0f2fd389b4e6e5e&sentry_version=7';
+default-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' cdn.sanity.io data:; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; report-uri ${SentryUrl}; connect-src 'self' https://amplitude.nav.no ${SentryUrl};
 `;
 
 const securityHeaders = [
@@ -39,7 +42,7 @@ const securityHeaders = [
   },
 ];
 
-module.exports = withSentryConfig(
+const config = () =>
   withBundleAnalyzer(
     withTM({
       async headers() {
@@ -83,6 +86,11 @@ module.exports = withSentryConfig(
       },
       swcMinify: true,
     })
-  ),
-  { silent: true }
-);
+  );
+
+if (process.env.NODE_ENV === "production") {
+  module.exports = withSentryConfig(config(), { silent: true });
+} else {
+  console.log("sentry is disabled");
+  module.exports = config();
+}
