@@ -2,6 +2,7 @@ import { Next } from "@navikt/ds-icons";
 import { Label, Link } from "@navikt/ds-react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
+import React from "react";
 
 export const ArtikkelBreadcrumbs = () => {
   const router = useRouter();
@@ -45,14 +46,12 @@ export const TemaBreadcrumbs = () => {
       <Next />
       {crumbs.map((crumb, i) =>
         crumbs.length - 1 !== i ? (
-          <>
+          <React.Fragment key={crumb.breadcrumb + i + "link"}>
             <NextLink href={crumb.href} passHref>
-              <Link key={crumb.breadcrumb + i + "link"}>
-                {replaceStrings(crumb.breadcrumb)}
-              </Link>
+              <Link>{replaceStrings(crumb.breadcrumb)}</Link>
             </NextLink>
             <Next />
-          </>
+          </React.Fragment>
         ) : (
           <Label key={crumb.breadcrumb + i}>
             {replaceStrings(crumb.breadcrumb)}
