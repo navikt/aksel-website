@@ -8,9 +8,54 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 const { withSentryConfig } = require("@sentry/nextjs");
 
-module.exports = withSentryConfig(
+const ContentSecurityPolicy = `
+  default-src 'self' 'unsafe-inline';
+  font-src 'self' data:;
+  img-src 'self' cdn.sanity.io data:;
+  script-src 'self' 'unsafe-eval';
+  style-src 'self' 'unsafe-inline';
+  report-uri https://sentry.gc.nav.no/api/113/envelope/?sentry_key=d35bd60e413c489ca0f2fd389b4e6e5e&sentry_version=7;
+  connect-src 'self' https://amplitude.nav.no https://sentry.gc.nav.no;
+`;
+
+const securityHeaders = [
+  {
+    key: "X-Frame-Options",
+    value: "SAMEORIGIN",
+  },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=()",
+  },
+  {
+    key: "Strict-Transport-Security",
+    value: "max-age=63072000; includeSubDomains; preload",
+  },
+  {
+    key: "X-Content-Type-Options",
+    value: "nosniff",
+  },
+  {
+    key: "Referrer-Policy",
+    value: "origin-when-cross-origin",
+  },
+  {
+    key: "Content-Security-Policy",
+    value: ContentSecurityPolicy.replace(/\s{2,}/g, " ").trim(),
+  },
+];
+
+const config = () =>
   withBundleAnalyzer(
     withTM({
+      async headers() {
+        return [
+          {
+            source: "/:path*",
+            headers: securityHeaders,
+          },
+        ];
+      },
       async redirects() {
         return [
           {
@@ -44,6 +89,11 @@ module.exports = withSentryConfig(
       },
       swcMinify: true,
     })
-  ),
-  { silent: true }
-);
+  );
+
+if (process.env.NODE_ENV === "production") {
+  console.log("sentry is enabled");
+  module.exports = withSentryConfig(config(), { silent: true });
+} else {
+  module.exports = config();
+}
