@@ -1,7 +1,7 @@
 /* https://github.com/navikt/sosialhjelp-veiviser-ny/blob/291bdd743fc73ecb86f6de701abfa3c0bc64f7f6/pages/sitemap.xml.ts */
 
 import React from "react";
-import { getDsPaths } from "../lib";
+import { getAkselArtikler, getDsPaths } from "../lib";
 
 const generateSitemap = (pages: string[]): string =>
   `<?xml version="1.0" encoding="UTF-8"?>
@@ -25,7 +25,11 @@ class Sitemap extends React.Component {
       paths.map((slugs) => slugs.join("/"))
     );
 
-    pages = ["", "designsystem", ...pages];
+    const artikler = await getAkselArtikler().then((x) =>
+      x.map((y) => `artikkel/${y}`)
+    );
+
+    pages = ["", "designsystem", ...pages, ...artikler];
 
     res.setHeader("Content-Type", "application/xml");
     res.write(generateSitemap(pages));
