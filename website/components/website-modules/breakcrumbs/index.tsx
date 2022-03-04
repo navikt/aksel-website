@@ -30,6 +30,8 @@ export const ArtikkelBreadcrumbs = () => {
 export const TemaBreadcrumbs = () => {
   const router = useRouter();
 
+  console.log(router);
+
   const linkPath = router.asPath.split("/");
   linkPath.shift();
 
@@ -55,7 +57,7 @@ export const TemaBreadcrumbs = () => {
           </React.Fragment>
         ) : (
           <Label key={crumb.breadcrumb + i}>
-            {replaceStrings(crumb.breadcrumb)}
+            {replaceStrings(decodeURI(crumb.breadcrumb))}
           </Label>
         )
       )}
