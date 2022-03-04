@@ -13,6 +13,7 @@ import TextFieldSandox from "./textfield";
 import CheckboxSandbox from "./checkbox";
 import SwitchSandbox from "./switch";
 import ToggleGroupSandbox from "./toggle-group";
+import SearchSandbox from "./search";
 import { kebabCase } from "lodash";
 import { SandboxComponent } from "./types";
 
@@ -32,6 +33,7 @@ const allSandboxes = {
   TextFieldSandox,
   SwitchSandbox,
   ToggleGroupSandbox,
+  SearchSandbox,
 };
 
 export const Sandboxes = Object.keys(allSandboxes).reduce((prev, y) => {

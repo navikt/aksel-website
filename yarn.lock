@@ -1587,10 +1587,10 @@
   resolved "https://registry.yarnpkg.com/@navikt/ds-css-internal/-/ds-css-internal-0.7.1.tgz#674fabf444c4a970c0d3631aac621fd46bfdca4c"
   integrity sha512-atk2/O8bKx73614zwlWiHZza3vV5i3M5hbfitnAX5awCrRg9y8Hy7Xpu5zEpH0goTw74/AZuTJ50vghtiMC/9w==
 
-"@navikt/ds-css@0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.16.0.tgz#682ae283a1d026b1381cacf6f6be0bf067e69690"
-  integrity sha512-+/DhQiclpTxphzFSAjivSfWhz4Bol9aw9K0z9swm7Hfx8wqNoTfqmUKADtdF6EMiAZGyBe/KH0iDZVAhEmBCXA==
+"@navikt/ds-css@0.16.1":
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.16.1.tgz#663e25828810394b44151cdcb543b0c4af6ce0f3"
+  integrity sha512-yJTb9cx54Ha/k+j+A9lJTh0rQPIFlco3asiBY6DjIWUFOvZGN2h2P6iOgey3oQ/+4vudgWaJ0pgM2aVgRoaJHw==
 
 "@navikt/ds-css@^0.14":
   version "0.14.2"

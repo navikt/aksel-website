@@ -72,3 +72,7 @@
     @apply shadow-focus-inverted;
   }
 }
+
+a {
+  color: inherit;
+}

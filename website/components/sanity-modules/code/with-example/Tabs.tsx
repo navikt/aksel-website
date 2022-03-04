@@ -20,7 +20,7 @@ const CodeTabs = (): JSX.Element => {
               <button
                 role="tab"
                 className={cl(
-                  "flex items-center p-3 transition-all hover:bg-blue-50 hover:text-text hover:shadow-[0_-3px_0_0_theme(colors.gray-900)_inset] focus:text-text focus:shadow-[inset_0_0_0_2px_theme(colors.focus)] focus:outline-none",
+                  "flex min-h-[50px] items-center p-3 transition-all hover:bg-blue-50 hover:text-text hover:shadow-[0_-3px_0_0_theme(colors.gray-900)_inset] focus:text-text focus:shadow-[inset_0_0_0_2px_theme(colors.focus)] focus:outline-none",
                   {
                     "text-text shadow-[0_-3px_0_0_theme(colors.gray-900)_inset]":
                       activeTab === -1,
@@ -39,7 +39,7 @@ const CodeTabs = (): JSX.Element => {
               <button
                 role="tab"
                 className={cl(
-                  "flex items-center p-3 hover:bg-blue-50 hover:text-text hover:shadow-[0_-3px_0_0_theme(colors.gray-900)_inset] focus:text-text focus:shadow-[inset_0_0_0_2px_theme(colors.focus)] focus:outline-none",
+                  "flex min-h-[50px] items-center p-3 hover:bg-blue-50 hover:text-text hover:shadow-[0_-3px_0_0_theme(colors.gray-900)_inset] focus:text-text focus:shadow-[inset_0_0_0_2px_theme(colors.focus)] focus:outline-none",
                   {
                     "text-text shadow-[0_-3px_0_0_theme(colors.gray-900)_inset]":
                       i === activeTab,
