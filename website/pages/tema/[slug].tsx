@@ -60,7 +60,10 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
             <div className="mt-3">
               Lorem nisi veniam est elit ut excepteur elit nostrud sit.
             </div>
-            <Right className=" absolute right-4 bottom-4 -rotate-45" />
+            <Right
+              className="absolute right-4 bottom-4 -rotate-45"
+              aria-hidden
+            />
           </div>
         ))}
       </div>

@@ -13,11 +13,11 @@ export const ArtikkelBreadcrumbs = () => {
   }
 
   return (
-    <div className="absolute top-0 flex items-center gap-1 pt-3">
+    <div className="absolute top-0 flex flex-wrap items-center gap-1 pt-3">
       <NextLink href={`/tema/${router.query.tema}`} passHref>
         <Link>{startCase(router.query.tema as string)}</Link>
       </NextLink>
-      <Next />
+      <Next aria-hidden className="shrink-0" />
       <Label>{startCase(router.query.slug as string)}</Label>
     </div>
   );
@@ -36,13 +36,13 @@ export const TemaBreadcrumbs = () => {
   const replaceStrings = (s) => startCase(s.replace("tema", "Temaer"));
 
   return (
-    <div className="absolute top-0 flex items-center gap-1 pt-3">
+    <div className="absolute top-0 flex flex-wrap items-center gap-1 pt-3">
       {crumbs.length === 1 && (
         <>
           <NextLink href="/" passHref>
             <Link>Hjem</Link>
           </NextLink>
-          <Next />
+          <Next aria-hidden className="shrink-0" />
         </>
       )}
       {crumbs.map((crumb, i) =>
@@ -51,7 +51,7 @@ export const TemaBreadcrumbs = () => {
             <NextLink href={crumb.href} passHref>
               <Link>{replaceStrings(crumb.breadcrumb)}</Link>
             </NextLink>
-            <Next />
+            <Next aria-hidden className="shrink-0" />
           </React.Fragment>
         ) : (
           <Label key={crumb.breadcrumb + i}>

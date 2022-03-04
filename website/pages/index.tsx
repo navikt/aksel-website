@@ -58,7 +58,8 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
               as="a"
               className="flex w-full items-center gap-3 rounded bg-white px-4 py-2 shadow-card outline-2 hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
             >
-              <SystemFilled className="shrink-0 text-[2rem]" /> Designsystemet
+              <SystemFilled className="shrink-0 text-[2rem]" aria-hidden />
+              Designsystemet
             </Label>
           </NextLink>
           <NextLink href="https://identitet.nav.no" passHref>
@@ -66,7 +67,7 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
               as="a"
               className="flex w-full items-center gap-3 rounded bg-white px-4 py-2 shadow-card hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
             >
-              <Office1 className="shrink-0 text-[2rem]" />
+              <Office1 className="shrink-0 text-[2rem]" aria-hidden />
               Identitet
             </Label>
           </NextLink>
@@ -78,10 +79,10 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
                 "relative flex w-full items-center gap-3 rounded bg-white py-2 pr-10 pl-4 shadow-card hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
               )}
             >
-              <Star className="shrink-0 text-[2rem]" />
+              <Star className="shrink-0 text-[2rem]" aria-hidden />
               Security playbook
               <span className="absolute right-0 flex h-full items-center rounded-r bg-gray-500 px-1 text-text-inverted">
-                <Locked />
+                <Locked title="Side ligger bak innlogging" />
               </span>
             </Label>
           </NextLink>
@@ -118,7 +119,10 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
                   <div className="mt-3">{tema.oppsummering}</div>
                 )}
 
-                <Right className=" absolute right-4 bottom-4 -rotate-45" />
+                <Right
+                  className=" absolute right-4 bottom-4 -rotate-45"
+                  aria-hidden
+                />
               </div>
             ))}
           </div>
