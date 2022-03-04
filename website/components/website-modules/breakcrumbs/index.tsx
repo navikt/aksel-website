@@ -14,10 +14,6 @@ export const ArtikkelBreadcrumbs = () => {
 
   return (
     <div className="absolute top-0 flex items-center gap-1 pt-3">
-      <NextLink href="/tema" passHref>
-        <Link>Temaer</Link>
-      </NextLink>
-      <Next />
       <NextLink href={`/tema/${router.query.tema}`} passHref>
         <Link>{startCase(router.query.tema as string)}</Link>
       </NextLink>
@@ -30,8 +26,6 @@ export const ArtikkelBreadcrumbs = () => {
 export const TemaBreadcrumbs = () => {
   const router = useRouter();
 
-  console.log(router);
-
   const linkPath = router.asPath.split("/");
   linkPath.shift();
 
@@ -43,10 +37,14 @@ export const TemaBreadcrumbs = () => {
 
   return (
     <div className="absolute top-0 flex items-center gap-1 pt-3">
-      <NextLink href="/" passHref>
-        <Link>Hjem</Link>
-      </NextLink>
-      <Next />
+      {crumbs.length === 1 && (
+        <>
+          <NextLink href="/" passHref>
+            <Link>Hjem</Link>
+          </NextLink>
+          <Next />
+        </>
+      )}
       {crumbs.map((crumb, i) =>
         crumbs.length - 1 !== i ? (
           <React.Fragment key={crumb.breadcrumb + i + "link"}>
