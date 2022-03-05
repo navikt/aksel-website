@@ -48,9 +48,9 @@ const formatCode = (code: string) => {
 };
 
 const scope = {
+  ...DsIcons,
   ...DsReact,
   ...DsReactInternal,
-  ...DsIcons,
 };
 
 type SandboxContextProps = {
