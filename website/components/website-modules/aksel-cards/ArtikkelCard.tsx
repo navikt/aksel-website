@@ -38,9 +38,6 @@ export const ArtikkelCard = ({
         {oppsummering && (
           <BodyShort className="mt-1 text-text-muted">{oppsummering}</BodyShort>
         )}
-        <BodyShort className="mt-1 text-text-muted">
-          Velit nisi voluptate deserunt eu irure
-        </BodyShort>
       </div>
     </div>
   );

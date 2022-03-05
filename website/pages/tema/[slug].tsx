@@ -30,7 +30,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
       <Heading level="1" size="xlarge" spacing className="index-lvl1">
         {page.title}
       </Heading>
-      <SanityBlockContent blocks={page.beskrivelse} />
+      <SanityBlockContent blocks={page.beskrivelse} noLastMargin />
 
       <div className="aksel-card-grid-col-2 pt-20">
         {page.artikler.map((x) => (
