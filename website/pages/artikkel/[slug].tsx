@@ -32,13 +32,17 @@ const Page = (props: {
 
 Page.getLayout = (page) => {
   return (
-    <>
-      <AkselHeader />
-      <main tabIndex={-1} id="hovedinnhold" className="aksel-main bg-white">
-        <div className="aksel-main--center max-w-content-w-padding">{page}</div>
+    <div className="bg-gray-50">
+      <AkselHeader className="bg-gray-50" />
+      <main
+        tabIndex={-1}
+        id="hovedinnhold"
+        className="aksel-main--center w-full max-w-6xl py-16 md:py-20"
+      >
+        {page}
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

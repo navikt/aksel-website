@@ -128,12 +128,12 @@ const DoDont = ({ node }: { node: DoDontV2 }) => {
   if (!node || !node.title || node?.blokker.length === 0) return null;
 
   return (
-    <div className="relative-parent mb-16">
+    <div className="relative-parent mb-16 last:mb-0">
       <Heading level="3" className="index-lvl3" size="medium" spacing>
         {node.title}
       </Heading>
       <SanityBlockContent blocks={node.forklaring} />
-      <div className="mb-8 flex flex-wrap justify-between gap-8">
+      <div className="last flex flex-wrap justify-between gap-8">
         {node.blokker.map((x) => (
           <Element key={x._key} block={x} />
         ))}
