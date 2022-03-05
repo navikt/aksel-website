@@ -37,7 +37,7 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
         />
       </Head>
       {preview && <PreviewBanner />}
-      <div className="forside--padding-x flex flex-col items-center justify-center pb-24">
+      <div className="aksel-layout-x flex flex-col items-center justify-center pb-24">
         <Heading level="1" size="xlarge" spacing>
           Produktutvikling i praksis
         </Heading>
@@ -51,8 +51,8 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
         <Search full />
       </div>
 
-      <div className="forside--padding-x flex w-full justify-center bg-gray-200 py-8">
-        <div className="mx-auto flex flex-col items-center gap-4 whitespace-nowrap sm:flex-row">
+      <div className="flex w-full justify-center bg-gray-200 py-8">
+        <div className="aksel-layout-x mx-auto flex flex-col items-center gap-4 whitespace-nowrap sm:flex-row">
           <NextLink href="/designsystem" passHref>
             <Label
               as="a"
@@ -89,7 +89,7 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
         </div>
       </div>
       {temaer && (
-        <div className="forside--padding-x flex w-full max-w-6xl flex-col gap-8 py-24">
+        <div className="aksel-layout-x flex w-full max-w-7xl flex-col gap-8 py-24">
           <Heading level="2" size="xlarge">
             Siste temaer
           </Heading>
@@ -101,7 +101,7 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
           </div>
         </div>
       )}
-      <div className="forside--padding-x">
+      <div className="aksel-layout-x">
         <div className="flex max-w-2xl flex-col items-center justify-between gap-4 rounded-2xl bg-gray-800 py-6 px-7 text-text-inverted sm:py-12 sm:pl-14 md:flex-row md:gap-0 md:pl-7">
           <div className="max-w-[350px]">
             <Heading size="large" level="2" spacing>
