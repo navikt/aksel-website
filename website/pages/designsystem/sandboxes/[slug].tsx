@@ -25,7 +25,7 @@ const CodePreview = (key: string) => {
       <Heading level="1" size="medium" className="navds-sr-only">
         {key}
       </Heading>
-      <Sandbox node={node} />;
+      <Sandbox node={node} />
     </>
   );
 };
