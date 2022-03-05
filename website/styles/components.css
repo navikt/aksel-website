@@ -44,7 +44,7 @@
   }
 
   .aksel-main__inner {
-    @apply relative w-full px-4 pb-4 md:mx-auto md:my-0 md:px-6 lg:px-12 lg:pb-4;
+    @apply relative min-h-screen-header w-full px-4 pb-4 focus:outline-none md:mx-auto md:my-0 md:px-6 lg:px-12 lg:pb-4;
   }
 
   .aksel-main--center {
@@ -53,6 +53,10 @@
 
   .aksel-main--start {
     @apply aksel-main__inner items-start;
+  }
+
+  .aksel-card-grid {
+    @apply grid grid-cols-1 justify-center gap-4 sm:grid-cols-2 sm:gap-6 lg:justify-start xl:grid-cols-3;
   }
 
   .img-wrapper img {

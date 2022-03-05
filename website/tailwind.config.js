@@ -17,6 +17,7 @@ module.exports = {
       maxWidth: {
         "screen-sidebar": "calc(100vw - 240px)",
         "content-w-padding": "896px",
+        "aksel-max-w": "1440px",
         text: "600px",
       },
       minWidth: ({ theme }) => ({

@@ -94,7 +94,7 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
             Siste temaer
           </Heading>
 
-          <div className="grid grid-cols-1 justify-center gap-4 sm:grid-cols-2 sm:gap-6 lg:justify-start xl:grid-cols-3">
+          <div className="aksel-card-grid">
             {temaer.map((tema) => (
               <TemaCard {...tema} key={tema._id} />
             ))}
@@ -127,7 +127,7 @@ Page.getLayout = (page) => {
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className="relative flex min-h-screen w-full flex-col items-center py-16 focus:outline-none md:py-24"
+        className="relative flex min-h-screen-header w-full flex-col items-center py-16 focus:outline-none md:py-24"
       >
         {page}
       </main>

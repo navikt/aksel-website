@@ -1,9 +1,7 @@
-import { Right } from "@navikt/ds-icons";
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
-import NextLink from "next/link";
 import React from "react";
-import { getTemaSlug, PreviewBanner, TemaBreadcrumbs } from "../../components";
+import { PreviewBanner, TemaBreadcrumbs, TemaCard } from "../../components";
 import Footer from "../../components/layout/footer/Footer";
 import AkselHeader from "../../components/layout/header/AkselHeader";
 import { akselTema, AkselTema } from "../../lib";
@@ -22,38 +20,14 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
         level="1"
         size="xlarge"
         spacing
-        className="index-lvl1 self-start pt-24"
+        className="index-lvl1 self-start"
       >
         Temaer
       </Heading>
-      {/* <BodyLong className="mb-32">
-        Her er oversikten over alle tilgjengelige tema i Aksel
-      </BodyLong> */}
 
-      <div className="grid grid-cols-1 justify-center gap-4 pb-16 sm:grid-cols-2 sm:gap-8 lg:justify-start xl:grid-cols-3">
+      <div className="aksel-card-grid">
         {page.map((tema) => (
-          <div
-            key={tema._id}
-            className="group relative min-h-[12rem] min-w-[16rem] flex-1 cursor-pointer rounded border-2 border-transparent bg-white px-6 py-8 shadow-small focus-within:shadow-focus hover:border-link"
-          >
-            <NextLink href={`/tema/${getTemaSlug(tema.title)}`} passHref>
-              <Heading
-                as="a"
-                size="small"
-                className="index-lvl2 after:absolute after:inset-0 focus:underline focus:outline-none group-hover:text-link "
-              >
-                {tema.title}
-              </Heading>
-            </NextLink>
-            {tema?.oppsummering && (
-              <div className="mt-3">{tema.oppsummering}</div>
-            )}
-
-            <Right
-              className=" absolute right-4 bottom-4 -rotate-45"
-              aria-hidden
-            />
-          </div>
+          <TemaCard {...tema} key={tema._id} />
         ))}
       </div>
     </>
@@ -62,17 +36,17 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
 
 Page.getLayout = (page) => {
   return (
-    <>
+    <div className="bg-gray-50">
       <AkselHeader className="bg-gray-50" />
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className="aksel-main bg-gray-50 pb-12 md:pb-16"
+        className="aksel-main--start w-full max-w-5xl py-16 md:py-20"
       >
-        <div className="aksel-main--start max-w-6xl">{page}</div>
+        {page}
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

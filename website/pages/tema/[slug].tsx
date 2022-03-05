@@ -24,17 +24,12 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
         <meta property="og:title" content={`${page.title} - Aksel`} />
       </Head>
       <TemaBreadcrumbs />
-      <Heading
-        level="1"
-        size="xlarge"
-        spacing
-        className="index-lvl1 self-start pt-24"
-      >
+      <Heading level="1" size="xlarge" spacing className="index-lvl1">
         {page.title}
       </Heading>
-      <SanityBlockContent blocks={page.beskrivelse} className="mb-32" />
+      <SanityBlockContent blocks={page.beskrivelse} />
 
-      <div className="grid grid-cols-1 justify-center gap-4 pb-16 sm:grid-cols-2 sm:gap-8 lg:justify-start xl:grid-cols-3">
+      <div className="aksel-card-grid pt-20">
         {page.artikler.map((x) => (
           <div
             key={x._id}
@@ -73,17 +68,17 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
 
 Page.getLayout = (page) => {
   return (
-    <>
+    <div className="bg-gray-50">
       <AkselHeader className="bg-gray-50" />
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className="aksel-main bg-gray-50 pb-12 md:pb-16"
+        className="aksel-main--start w-full max-w-5xl py-16 md:py-20"
       >
-        <div className="aksel-main--start max-w-6xl">{page}</div>
+        {page}
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

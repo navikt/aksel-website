@@ -78,7 +78,7 @@ const FooterForm = () => {
           {/* <li>5. etg. bygg A</li> */}
           <li>
             <Link
-              className="text-text-inverted focus:bg-blue-200 focus:text-text focus:shadow-blue-200 focus:shadow-focus"
+              className="text-text-inverted focus:bg-blue-200 focus:text-text focus:shadow-focus focus:shadow-blue-200"
               href="https://nav-it.slack.com/archives/C7NE7A8UF"
             >
               Designsystemet på Slack
@@ -110,7 +110,7 @@ const FooterForm = () => {
                   !isEmpty(e.target.value, { ignore_whitespace: true }) &&
                   setContentError({ ...contentError, content: "" });
               }}
-              minRows={3}
+              minRows={2}
             />
             <TextField
               className="inverted-textfield"
