@@ -1,4 +1,4 @@
-import { Locked, Office1, Right, Star, System } from "@navikt/ds-icons";
+import { Locked, Office1, Star, System } from "@navikt/ds-icons";
 import { BodyLong, BodyShort, Heading, Label } from "@navikt/ds-react";
 import cl from "classnames";
 import Head from "next/head";
@@ -6,9 +6,9 @@ import NextLink from "next/link";
 import React, { useEffect } from "react";
 import {
   AmplitudeEvents,
-  getTemaSlug,
   PreviewBanner,
   Search,
+  TemaCard,
   useAmplitude,
 } from "../components";
 import { PointingFingerIllustrasjon } from "../components/assets/PointingFinger";
@@ -94,30 +94,9 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
             Siste temaer
           </Heading>
 
-          <div className="grid grid-cols-1 justify-center gap-4 sm:grid-cols-2 sm:gap-8 lg:justify-start xl:grid-cols-3">
+          <div className="grid grid-cols-1 justify-center gap-4 sm:grid-cols-2 sm:gap-6 lg:justify-start xl:grid-cols-3">
             {temaer.map((tema) => (
-              <div
-                key={tema._id}
-                className="group relative min-h-[12rem] min-w-[16rem] flex-1 cursor-pointer rounded border-2 border-transparent bg-white px-6 py-8 shadow-small focus-within:shadow-focus hover:border-link"
-              >
-                <NextLink href={`/tema/${getTemaSlug(tema.title)}`} passHref>
-                  <Heading
-                    as="a"
-                    size="small"
-                    className="index-lvl2 after:absolute after:inset-0 focus:underline focus:outline-none group-hover:text-link "
-                  >
-                    {tema.title}
-                  </Heading>
-                </NextLink>
-                {tema?.oppsummering && (
-                  <div className="mt-3">{tema.oppsummering}</div>
-                )}
-
-                <Right
-                  className=" absolute right-4 bottom-4 -rotate-45"
-                  aria-hidden
-                />
-              </div>
+              <TemaCard {...tema} key={tema._id} />
             ))}
           </div>
         </div>

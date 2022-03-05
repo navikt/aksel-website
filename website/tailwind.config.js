@@ -19,12 +19,14 @@ module.exports = {
         "content-w-padding": "896px",
         text: "600px",
       },
-      minWidth: {
+      minWidth: ({ theme }) => ({
         header: "4rem",
-      },
-      minHeight: {
+        ...theme("spacing"),
+      }),
+      minHeight: ({ theme }) => ({
         "screen-header": "calc(100vh - 4rem)",
-      },
+        ...theme("spacing"),
+      }),
       screens: {
         md: "564px",
         lg: "768px",
