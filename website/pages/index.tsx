@@ -1,12 +1,5 @@
-import {
-  Locked,
-  Office1,
-  Right,
-  Star,
-  System,
-  SystemFilled,
-} from "@navikt/ds-icons";
-import { BodyShort, Heading, Label, Link } from "@navikt/ds-react";
+import { Locked, Office1, Right, Star, System } from "@navikt/ds-icons";
+import { BodyLong, BodyShort, Heading, Label } from "@navikt/ds-react";
 import cl from "classnames";
 import Head from "next/head";
 import NextLink from "next/link";
@@ -18,6 +11,7 @@ import {
   Search,
   useAmplitude,
 } from "../components";
+import { PointingFingerIllustrasjon } from "../components/assets/PointingFinger";
 import Footer from "../components/layout/footer/Footer";
 import AkselHeader from "../components/layout/header/AkselHeader";
 import { AkselTema, akselTema } from "../lib";
@@ -95,17 +89,11 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
         </div>
       </div>
       {temaer && (
-        <div className="forside--padding-x flex w-full max-w-6xl flex-col gap-6 py-24">
-          <span className="flex flex-col gap-x-12 gap-y-2 sm:flex-row sm:items-end">
-            <Heading level="2" size="large">
-              Siste temaer
-            </Heading>
-            <NextLink href="/tema" passHref>
-              <Link className="svg-color-reset text-text">
-                Utforsk alle temaene <Right />
-              </Link>
-            </NextLink>
-          </span>
+        <div className="forside--padding-x flex w-full max-w-6xl flex-col gap-8 py-24">
+          <Heading level="2" size="xlarge">
+            Siste temaer
+          </Heading>
+
           <div className="grid grid-cols-1 justify-center gap-4 sm:grid-cols-2 sm:gap-8 lg:justify-start xl:grid-cols-3">
             {temaer.map((tema) => (
               <div
@@ -134,6 +122,21 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
           </div>
         </div>
       )}
+      <div className="forside--padding-x">
+        <div className="flex max-w-2xl flex-col items-center justify-between gap-4 rounded-2xl bg-gray-800 py-6 px-7 text-text-inverted sm:py-12 sm:pl-14 md:flex-row md:gap-0 md:pl-7">
+          <div className="max-w-[350px]">
+            <Heading size="large" level="2" spacing>
+              Redaksjonen trenger deg!
+            </Heading>
+            <BodyLong>
+              Vi trenger hjelp til å skrive innhold til Aksel. Har du ideer,
+              mulighet til å skrive eller lurer på noe angående innhold? Ta
+              kontakt med oss på Slack.
+            </BodyLong>
+          </div>
+          <PointingFingerIllustrasjon className="mr-0 ml-5 flex-shrink-0 sm:ml-10 lg:mr-14" />
+        </div>
+      </div>
     </>
   );
 };
