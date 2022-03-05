@@ -1,9 +1,9 @@
-import { Next } from "@navikt/ds-icons";
-import { Label, Link } from "@navikt/ds-react";
+import { Back } from "@navikt/ds-icons";
+import { Link } from "@navikt/ds-react";
+import { startCase } from "lodash";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { startCase } from "lodash";
 
 export const ArtikkelBreadcrumbs = () => {
   const router = useRouter();
@@ -13,52 +13,26 @@ export const ArtikkelBreadcrumbs = () => {
   }
 
   return (
-    <div className="absolute top-0 flex flex-wrap items-center gap-1 pt-3">
-      <NextLink href={`/tema/${router.query.tema}`} passHref>
-        <Link>{startCase(router.query.tema as string)}</Link>
-      </NextLink>
-      <Next aria-hidden className="shrink-0" />
-      <Label>{startCase(router.query.slug as string)}</Label>
-    </div>
+    <NextLink href={`/tema/${router.query.tema}`} passHref>
+      <Link className="group absolute top-3 flex flex-wrap items-center gap-1 pr-2">
+        <Back
+          aria-hidden
+          className="shrink-0 transition-transform group-hover:-translate-x-1"
+        />
+        Tilbake til {startCase(router.query.tema as string)}
+      </Link>
+    </NextLink>
   );
 };
 
-export const TemaBreadcrumbs = () => {
-  const router = useRouter();
-
-  const linkPath = router.asPath.split("/");
-  linkPath.shift();
-
-  const crumbs = linkPath.map((path, i) => {
-    return { breadcrumb: path, href: "/" + linkPath.slice(0, i + 1).join("/") };
-  });
-
-  const replaceStrings = (s) => startCase(s.replace("tema", "Temaer"));
-
-  return (
-    <div className="absolute top-0 flex flex-wrap items-center gap-1 pt-3">
-      {crumbs.length === 1 && (
-        <>
-          <NextLink href="/" passHref>
-            <Link>Hjem</Link>
-          </NextLink>
-          <Next aria-hidden className="shrink-0" />
-        </>
-      )}
-      {crumbs.map((crumb, i) =>
-        crumbs.length - 1 !== i ? (
-          <React.Fragment key={crumb.breadcrumb + i + "link"}>
-            <NextLink href={crumb.href} passHref>
-              <Link>{replaceStrings(crumb.breadcrumb)}</Link>
-            </NextLink>
-            <Next aria-hidden className="shrink-0" />
-          </React.Fragment>
-        ) : (
-          <Label key={crumb.breadcrumb + i}>
-            {replaceStrings(decodeURI(crumb.breadcrumb))}
-          </Label>
-        )
-      )}
-    </div>
-  );
-};
+export const TemaBreadcrumbs = () => (
+  <NextLink href="/" passHref>
+    <Link className="group absolute top-3 flex flex-wrap items-center gap-1 pr-2">
+      <Back
+        aria-hidden
+        className="shrink-0 transition-transform group-hover:-translate-x-1"
+      />
+      Tilbake til forsiden
+    </Link>
+  </NextLink>
+);

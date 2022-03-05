@@ -1040,6 +1040,7 @@ export interface AkselArtikkel extends SanityDocument {
    */
   tema?: Array<SanityKeyedReference<AkselTema>>;
 
+  oppsummering?: string;
   /**
    * Innhold — `array`
    *

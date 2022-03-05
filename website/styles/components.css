@@ -59,6 +59,10 @@
     @apply grid grid-cols-1 justify-center gap-4 sm:grid-cols-2 sm:gap-6 lg:justify-start xl:grid-cols-3;
   }
 
+  .aksel-card-grid-col-2 {
+    @apply grid grid-cols-1 justify-center gap-4 sm:gap-x-8 sm:gap-y-6 lg:grid-cols-2 lg:justify-start;
+  }
+
   .img-wrapper img {
     object-fit: contain;
     width: 100% !important;

@@ -14,7 +14,7 @@ export const LongArrowRight = (props: any) => (
       fillRule="evenodd"
       clipRule="evenodd"
       d="M0.333344 11L44.6283 11L37.3333 18.5455L38.7079 20L48.3333 10L38.7079 0L37.3333 1.45455L44.6283 9L0.333344 9L0.333344 11Z"
-      fill="#B0B0B0"
+      fill="currentColor"
     />
   </svg>
 );

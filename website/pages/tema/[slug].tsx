@@ -1,16 +1,19 @@
-import { Right } from "@navikt/ds-icons";
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
-import NextLink from "next/link";
 import React from "react";
-import { TemaBreadcrumbs, PreviewBanner, getTemaSlug } from "../../components";
+import {
+  ArtikkelCard,
+  getTemaSlug,
+  PreviewBanner,
+  TemaBreadcrumbs,
+} from "../../components";
 import Footer from "../../components/layout/footer/Footer";
 import AkselHeader from "../../components/layout/header/AkselHeader";
 import { SanityBlockContent } from "../../components/SanityBlockContent";
 import {
   AkselArtikkel,
-  akselTemaDocs,
   AkselTema,
+  akselTemaDocs,
   getAkselTema,
 } from "../../lib";
 import { getClient } from "../../lib/sanity/sanity.server";
@@ -29,37 +32,9 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
       </Heading>
       <SanityBlockContent blocks={page.beskrivelse} />
 
-      <div className="aksel-card-grid pt-20">
+      <div className="aksel-card-grid-col-2 pt-20">
         {page.artikler.map((x) => (
-          <div
-            key={x._id}
-            className="group relative min-h-[12rem] min-w-[16rem] flex-1 cursor-pointer rounded border-2 border-transparent bg-white px-6 py-8 shadow-small focus-within:shadow-focus hover:border-link"
-          >
-            <NextLink
-              href={{
-                pathname: `/${x.slug}`,
-                query: {
-                  tema: getTemaSlug(page.title),
-                },
-              }}
-              passHref
-            >
-              <Heading
-                as="a"
-                size="small"
-                className="index-lvl2 after:absolute after:inset-0 focus:underline focus:outline-none group-hover:text-link "
-              >
-                {x.heading}
-              </Heading>
-            </NextLink>
-            <div className="mt-3">
-              Lorem nisi veniam est elit ut excepteur elit nostrud sit.
-            </div>
-            <Right
-              className="absolute right-4 bottom-4 -rotate-45"
-              aria-hidden
-            />
-          </div>
+          <ArtikkelCard {...x} source={page.title} key={x._id} />
         ))}
       </div>
     </>
@@ -98,7 +73,7 @@ export const getStaticPaths = async (): Promise<{
   };
 };
 
-interface AkselTemaPage extends AkselTema {
+export interface AkselTemaPage extends AkselTema {
   artikler: Partial<AkselArtikkel & { slug: string; tema: string[] }>[];
 }
 
