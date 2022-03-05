@@ -1,4 +1,11 @@
-import { Locked, Office1, Right, Star, SystemFilled } from "@navikt/ds-icons";
+import {
+  Locked,
+  Office1,
+  Right,
+  Star,
+  System,
+  SystemFilled,
+} from "@navikt/ds-icons";
 import { BodyShort, Heading, Label, Link } from "@navikt/ds-react";
 import cl from "classnames";
 import Head from "next/head";
@@ -36,8 +43,8 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
         />
       </Head>
       {preview && <PreviewBanner />}
-      <div className="forside--padding-x flex w-screen max-w-6xl flex-col items-center justify-center pb-16">
-        <Heading level="1" size="xlarge" className="mb-8">
+      <div className="forside--padding-x flex flex-col items-center justify-center pb-24">
+        <Heading level="1" size="xlarge" spacing>
           Produktutvikling i praksis
         </Heading>
 
@@ -47,27 +54,26 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
         <BodyShort size="small" className="mb-8 text-text-muted">
           Stewart Brand
         </BodyShort>
-
         <Search full />
       </div>
 
       <div className="forside--padding-x flex w-full justify-center bg-gray-200 py-8">
-        <div className="mx-auto  flex flex-col flex-wrap items-center gap-4 whitespace-nowrap lg:flex-row">
+        <div className="mx-auto flex flex-col items-center gap-4 whitespace-nowrap sm:flex-row">
           <NextLink href="/designsystem" passHref>
             <Label
               as="a"
-              className="flex w-full items-center gap-3 rounded bg-white px-4 py-2 shadow-card outline-2 hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
+              className="flex w-full items-center gap-3 rounded bg-white px-4 py-3 shadow-card outline-2 hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
             >
-              <SystemFilled className="shrink-0 text-[2rem]" aria-hidden />
+              <System className="shrink-0 text-[1.5rem]" aria-hidden />
               Designsystemet
             </Label>
           </NextLink>
           <NextLink href="https://identitet.nav.no" passHref>
             <Label
               as="a"
-              className="flex w-full items-center gap-3 rounded bg-white px-4 py-2 shadow-card hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
+              className="flex w-full items-center gap-3 rounded bg-white px-4 py-3 shadow-card hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
             >
-              <Office1 className="shrink-0 text-[2rem]" aria-hidden />
+              <Office1 className="shrink-0 text-[1.5rem]" aria-hidden />
               Identitet
             </Label>
           </NextLink>
@@ -76,10 +82,10 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
             <Label
               as="a"
               className={cl(
-                "relative flex w-full items-center gap-3 rounded bg-white py-2 pr-10 pl-4 shadow-card hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
+                "relative flex w-full items-center gap-3 rounded bg-white py-3 pr-10 pl-4 shadow-card hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
               )}
             >
-              <Star className="shrink-0 text-[2rem]" aria-hidden />
+              <Star className="shrink-0 text-[1.5rem]" aria-hidden />
               Security playbook
               <span className="absolute right-0 flex h-full items-center rounded-r bg-gray-500 px-1 text-text-inverted">
                 <Locked title="Side ligger bak innlogging" />
@@ -134,12 +140,12 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
 
 Page.getLayout = (page) => {
   return (
-    <div className="w-full bg-component-background-alternate">
+    <div className="bg-gray-50">
       <AkselHeader />
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className="relative flex min-h-screen w-full flex-col items-center py-12 focus:outline-none md:py-16"
+        className="relative flex min-h-screen w-full flex-col items-center py-16 focus:outline-none md:py-24"
       >
         {page}
       </main>

@@ -42,5 +42,6 @@ export {
   ArtikkelBreadcrumbs,
 } from "./website-modules/breakcrumbs";
 export * from "./website-modules/tabs";
+export * from "./website-modules/aksel-cards";
 export * from "./website-modules/tags";
 export * from "./website-modules/utils";

@@ -49,7 +49,10 @@ function Search({ inverted, full }: { inverted?: boolean; full?: boolean }) {
           as="button"
           className="relative w-full max-w-[28rem] rounded border border-border bg-white py-4 pr-4 pl-16 text-left hover:border-link focus:shadow-focus focus:outline-none"
         >
-          <SearchIcon aria-hidden className="absolute left-6 text-[1.5rem]" />
+          <SearchIcon
+            aria-hidden
+            className="absolute left-6 top-1/2 -translate-y-1/2 text-[1.5rem]"
+          />
           CMD + K / CTRL + K for å søke
         </BodyShort>
       ) : (
