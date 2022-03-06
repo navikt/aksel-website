@@ -415,11 +415,16 @@ export const akselTemaNames = `*[_type == "aksel_tema" && count(*[references(^._
 
 export const akselTemaDocs = `*[_type == "aksel_tema" && count(*[references(^._id)]) > 0]{
   ...,
-  "artikler": *[_type=='aksel_artikkel' && references(^._id) && !(_id in path("drafts.**"))]{
+  "artikler": *[_type=='aksel_artikkel' && references(^._id) && !(_id in path("drafts.**"))] | order(_createdAt desc){
     _id,
     heading,
+    _createdAt,
     "slug": slug.current,
-    "tema": tema[]->tag
+    "tema": tema[]->tag,
+    contributors[]->{
+      anonym == false =>{title},
+      anonym != false =>{"anonym": true},
+    }
   }
 }`;
 

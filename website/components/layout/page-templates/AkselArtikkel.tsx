@@ -14,7 +14,6 @@ import {
   AmplitudeEvents,
   Avatar,
   Feedback,
-  LastUpdateTag,
   slugger,
   useAmplitude,
 } from "../..";
@@ -112,13 +111,13 @@ const AkselArtikkelTemplate = ({
                   {author}
                 </Label>
                 <Detail size="small" className="text-text-muted">
-                  {moment(data._updatedAt).format("DD. MMM. YY")}
+                  {moment(data._createdAt).format("DD. MMM. YY")}
                 </Detail>
               </div>
             </>
           ) : (
             <BodyShort size="small" className="text-text-muted">
-              {moment(data._updatedAt).format("DD. MMM. YY")}
+              {moment(data._createdAt).format("DD. MMM. YY")}
             </BodyShort>
           )}
         </div>

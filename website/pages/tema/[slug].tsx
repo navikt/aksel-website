@@ -33,9 +33,17 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
       <SanityBlockContent blocks={page.beskrivelse} noLastMargin />
 
       <div className="aksel-card-grid-col-2 pt-20">
-        {page.artikler.map((x) => (
-          <ArtikkelCard {...x} source={page.title} key={x._id} />
-        ))}
+        {page.artikler.map((x) => {
+          const author = x?.contributors?.[0]?.title;
+          return (
+            <ArtikkelCard
+              {...x}
+              author={author}
+              source={page.title}
+              key={x._id}
+            />
+          );
+        })}
       </div>
     </>
   );
@@ -74,7 +82,13 @@ export const getStaticPaths = async (): Promise<{
 };
 
 export interface AkselTemaPage extends AkselTema {
-  artikler: Partial<AkselArtikkel & { slug: string; tema: string[] }>[];
+  artikler: Partial<
+    AkselArtikkel & {
+      slug: string;
+      tema: string[];
+      contributors?: { title?: string }[];
+    }
+  >[];
 }
 
 interface PageProps {
