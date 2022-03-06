@@ -16,6 +16,17 @@ export const useSanityImage = (node) =>
     },
   });
 
+export const useSanitybannerImage = (node) =>
+  useNextSanityImage(sanityClient, node, {
+    imageBuilder: (imageUrlBuilder, options) => {
+      return imageUrlBuilder
+        .width(Math.min(options.originalImageDimensions.width, 1152))
+        .quality(100)
+        .fit("fill")
+        .auto("format");
+    },
+  });
+
 export const getAkselArtikler = async (): Promise<string[]> => {
   const documents: any[] | null = await getClient(false).fetch(
     akselArtikkelDocuments
