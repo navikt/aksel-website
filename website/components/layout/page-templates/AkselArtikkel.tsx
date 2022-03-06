@@ -2,14 +2,17 @@ import {
   BodyShort,
   Detail,
   Heading,
+  Label,
   useClientLayoutEffect,
 } from "@navikt/ds-react";
+import moment from "moment";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import {
   AmplitudeEvents,
+  Avatar,
   Feedback,
   LastUpdateTag,
   slugger,
@@ -52,6 +55,8 @@ const AkselArtikkelTemplate = ({
   }
   console.log(data);
 
+  const author = (data?.contributors?.[0] as any)?.title;
+
   return (
     <>
       <Head>
@@ -78,7 +83,7 @@ const AkselArtikkelTemplate = ({
       )}
 
       <div className="relative z-[2] mx-auto flex max-w-3xl flex-col rounded-2xl bg-gray-50 py-8 lg:p-8">
-        <div className="mb-5 flex flex-wrap items-center gap-1">
+        <div className="mb-4 flex flex-wrap items-center gap-1">
           <BodyShort size="small" className="text-text-muted">
             {ttr} min lesing -
           </BodyShort>
@@ -96,8 +101,27 @@ const AkselArtikkelTemplate = ({
         <Heading size="xlarge" level="1" spacing className="index-lvl1">
           {data.heading}
         </Heading>
-        {/* <LastUpdateTag date={data._updatedAt} simple /> */}
 
+        <div className="flex gap-2">
+          {author ? (
+            <>
+              <Avatar name={author} />
+              <div>
+                av{" "}
+                <Label size="small" as="span">
+                  {author}
+                </Label>
+                <Detail size="small" className="text-text-muted">
+                  {moment(data._updatedAt).format("DD. MMM. YY")}
+                </Detail>
+              </div>
+            </>
+          ) : (
+            <BodyShort size="small" className="text-text-muted">
+              {moment(data._updatedAt).format("DD. MMM. YY")}
+            </BodyShort>
+          )}
+        </div>
         <SanityBlockContent
           className="mt-12 flex min-h-[500px] w-full flex-col"
           blocks={data.innhold}

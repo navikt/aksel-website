@@ -13,7 +13,26 @@ export { default as PropTable } from "./sanity-modules/prop-table";
 export { default as RelatedPagesCards } from "./sanity-modules/related-pages-cards";
 export { default as Sandbox } from "./sanity-modules/sandbox";
 export { default as Tips } from "./sanity-modules/tips";
+export { default as AccordionV2 } from "./sanity-modules/v2/AccordionV2";
+export { default as Anatomi } from "./sanity-modules/v2/AnatomiSeksjon";
+export { default as Bilde } from "./sanity-modules/v2/Bilde";
+export { default as DoDontv2 } from "./sanity-modules/v2/DodontV2";
+export { default as GeneriskSeskjon } from "./sanity-modules/v2/GeneriskSeksjon";
+export { default as InstallasjonSeksjon } from "./sanity-modules/v2/InstallasjonSeksjon";
 export { default as IntroKomponent } from "./sanity-modules/v2/IntroSeksjon";
+export { default as Kode } from "./sanity-modules/v2/Kode";
+export { default as LiveDemo } from "./sanity-modules/v2/LiveDemo";
+export { default as PropsSeksjon } from "./sanity-modules/v2/PropsSeksjon";
+export { default as RelatertInnhold } from "./sanity-modules/v2/RelatertInnhold";
+export { default as SpesialSeksjon } from "./sanity-modules/v2/SpesialSeksjon";
+export { default as Tabell } from "./sanity-modules/v2/Tabell";
+export { default as UuSeksjon } from "./sanity-modules/v2/UuSeksjon";
+export * from "./website-modules/aksel-cards";
+export { default as Avatar } from "./website-modules/avatar";
+export {
+  ArtikkelBreadcrumbs,
+  TemaBreadcrumbs,
+} from "./website-modules/breakcrumbs";
 export { default as Changelog } from "./website-modules/changelog";
 export { default as Feedback } from "./website-modules/feedback";
 export { default as LevelTwoHeading } from "./website-modules/heading";
@@ -24,24 +43,6 @@ export { default as RelatedNavigation } from "./website-modules/related-nav";
 export { default as ScrollTop } from "./website-modules/scroll-top";
 export { default as Search } from "./website-modules/search";
 export { default as TableOfContents } from "./website-modules/table-of-contents";
-export { default as RelatertInnhold } from "./sanity-modules/v2/RelatertInnhold";
-export { default as Anatomi } from "./sanity-modules/v2/AnatomiSeksjon";
-export { default as LiveDemo } from "./sanity-modules/v2/LiveDemo";
-export { default as UuSeksjon } from "./sanity-modules/v2/UuSeksjon";
-export { default as GeneriskSeskjon } from "./sanity-modules/v2/GeneriskSeksjon";
-export { default as DoDontv2 } from "./sanity-modules/v2/DodontV2";
-export { default as Bilde } from "./sanity-modules/v2/Bilde";
-export { default as Kode } from "./sanity-modules/v2/Kode";
-export { default as Tabell } from "./sanity-modules/v2/Tabell";
-export { default as AccordionV2 } from "./sanity-modules/v2/AccordionV2";
-export { default as InstallasjonSeksjon } from "./sanity-modules/v2/InstallasjonSeksjon";
-export { default as PropsSeksjon } from "./sanity-modules/v2/PropsSeksjon";
-export { default as SpesialSeksjon } from "./sanity-modules/v2/SpesialSeksjon";
-export {
-  TemaBreadcrumbs,
-  ArtikkelBreadcrumbs,
-} from "./website-modules/breakcrumbs";
 export * from "./website-modules/tabs";
-export * from "./website-modules/aksel-cards";
 export * from "./website-modules/tags";
 export * from "./website-modules/utils";

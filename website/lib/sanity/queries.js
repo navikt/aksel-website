@@ -263,7 +263,11 @@ export const akselDocumentBySlug = `*[slug.current == $slug] | order(_updatedAt 
     ...,
     ${deRefs}
   },
-  tema[]->{title}
+  tema[]->{title},
+  contributors[]->{
+    anonym == false =>{title},
+    anonym != false =>{"anonym": true},
+  }
 }`;
 
 export const dsDocuments = `*[_type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"]]{ ..., 'slug': slug.current }`;
@@ -411,7 +415,7 @@ export const akselTemaNames = `*[_type == "aksel_tema" && count(*[references(^._
 
 export const akselTemaDocs = `*[_type == "aksel_tema" && count(*[references(^._id)]) > 0]{
   ...,
-  "artikler": *[_type=='aksel_artikkel' && references(^._id)]{
+  "artikler": *[_type=='aksel_artikkel' && references(^._id) && !(_id in path("drafts.**"))]{
     _id,
     heading,
     "slug": slug.current,
