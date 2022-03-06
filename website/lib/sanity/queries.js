@@ -255,7 +255,7 @@ export const vkFrontpageQuery = `*[_id == "frontpage_vk_praksis"]
 
 export const akselArtikkelDocuments = `*[_type in ["aksel_artikkel"]]{ _type, _id, 'slug': slug.current }`;
 
-export const akselDocumentBySlug = `*[slug.current == $slug]
+export const akselDocumentBySlug = `*[slug.current == $slug] | order(_updatedAt desc)
 {
   ...,
   "slug": slug.current,
@@ -298,7 +298,7 @@ export const dsFrontpageQuery = `{
 }`;
 
 export const dsSlugQuery = `{
-  "page": *[_type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"] && slug.current == $slug]
+  "page": *[_type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"] && slug.current == $slug] | order(_updatedAt desc)
     {
       ...,
       "slug": slug.current,
@@ -346,7 +346,7 @@ export const dsSlugQuery = `{
   ${dsNavQuery}
 }`;
 
-export const dsDocumentBySlug = `*[_type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"] && slug.current == $slug]
+export const dsDocumentBySlug = `*[_type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"] && slug.current == $slug] | order(_updatedAt desc)
 {
   ...,
   "slug": slug.current,
