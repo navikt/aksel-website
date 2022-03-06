@@ -27,7 +27,8 @@
     "outdated-documents-widget",
     "media",
     "power-table",
-    "better-slug"
+    "better-slug",
+    "asset-source-unsplash"
   ],
   "parts": [
     {

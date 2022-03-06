@@ -91,6 +91,7 @@ const config = () =>
       },
       images: {
         domains: ["cdn.sanity.io"],
+        dangerouslyAllowSVG: true,
       },
       swcMinify: true,
     })

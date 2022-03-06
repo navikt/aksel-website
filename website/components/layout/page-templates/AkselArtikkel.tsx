@@ -36,6 +36,7 @@ const AkselArtikkelTemplate = ({
   if (!data.innhold || !data.heading) {
     return null;
   }
+  console.log(data);
 
   return (
     <>
@@ -54,7 +55,7 @@ const AkselArtikkelTemplate = ({
           layout="fill"
         /> */}
       </div>
-      <div className="mx-auto flex max-w-3xl flex-col rounded-2xl bg-gray-50 p-8">
+      <div className="z-[2] mx-auto flex max-w-3xl flex-col rounded-2xl bg-gray-50 p-8">
         <Heading size="xlarge" level="1" spacing className="index-lvl1 ">
           {data.heading}
         </Heading>

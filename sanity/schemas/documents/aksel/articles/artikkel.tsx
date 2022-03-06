@@ -143,7 +143,7 @@ export default {
           options: {
             list: [
               { title: "Standard", value: "standard" },
-              { title: "Egne farger", value: "gradient" },
+              /* { title: "Egne farger", value: "gradient" }, */
               { title: "Bilde", value: "bilde" },
             ],
             layout: "radio",
