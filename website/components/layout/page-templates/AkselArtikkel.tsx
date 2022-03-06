@@ -1,5 +1,6 @@
 import { Heading, useClientLayoutEffect } from "@navikt/ds-react";
 import Head from "next/head";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import {
@@ -46,7 +47,13 @@ const AkselArtikkelTemplate = ({
           </>
         )}
       </Head>
-      <div className="-mb-40 h-80 w-full rounded-2xl bg-gradient-to-br from-[#DD5E89] to-[#F7BB97]" />
+      <div className="-mb-40 h-80 w-full rounded-2xl bg-gradient-to-br from-[#DD5E89] to-[#F7BB97]">
+        {/* <Image
+          src="https://cdn.sanity.io/images/hnbe3yhs/production/bbdf63cb06410989610da41742591f61d45fe4f5-800x248.svg?w=800&q=100&fit=clip&auto=format"
+          objectFit="contain"
+          layout="fill"
+        /> */}
+      </div>
       <div className="mx-auto flex max-w-3xl flex-col rounded-2xl bg-gray-50 p-8">
         <Heading size="xlarge" level="1" spacing className="index-lvl1 ">
           {data.heading}

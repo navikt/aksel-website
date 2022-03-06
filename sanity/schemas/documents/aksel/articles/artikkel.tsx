@@ -129,6 +129,47 @@ export default {
         },
       ],
     },
+    {
+      type: "object",
+      name: "banner",
+      title: "Banner",
+      group: "banner",
+      fields: [
+        {
+          title: "Variant",
+          name: "variant",
+          type: "string",
+          initialValue: "standard",
+          options: {
+            list: [
+              { title: "Standard", value: "standard" },
+              { title: "Egne farger", value: "gradient" },
+              { title: "Bilde", value: "bilde" },
+            ],
+            layout: "radio",
+          },
+        },
+        {
+          title: "Banner-bilde",
+          name: "banner_img",
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+          hidden: ({ parent }) => parent?.variant !== "bilde",
+          fields: [
+            {
+              name: "alt",
+              type: "string",
+              title: "Alt-tekst",
+              options: {
+                isHighlighted: true,
+              },
+            },
+          ],
+        },
+      ],
+    },
     documentFeedbackMetadata,
   ],
 };

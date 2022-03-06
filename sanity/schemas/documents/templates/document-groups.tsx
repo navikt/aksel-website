@@ -25,4 +25,8 @@ export const groups = [
     name: "beta",
     title: "Beta",
   },
+  {
+    name: "banner",
+    title: "Banner",
+  },
 ];
