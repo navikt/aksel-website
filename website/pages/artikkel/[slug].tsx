@@ -82,7 +82,7 @@ export const getStaticProps = async ({
   const page = await getClient(preview).fetch(akselDocumentBySlug, {
     slug: `artikkel/${slug}`,
   });
-  console.log(page);
+
   const doc = page?.[0] ?? null;
 
   return {

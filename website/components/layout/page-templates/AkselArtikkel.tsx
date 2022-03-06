@@ -10,7 +10,7 @@ import {
   slugger,
   useAmplitude,
 } from "../..";
-import { AkselArtikkel } from "../../../lib";
+import { AkselArtikkel, useSanityBannerImage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 
 const AkselArtikkelTemplate = ({
@@ -33,6 +33,8 @@ const AkselArtikkelTemplate = ({
     });
   }, [asPath]);
 
+  const imageProps = useSanityBannerImage(data?.banner?.banner_img);
+
   if (!data.innhold || !data.heading) {
     return null;
   }
@@ -48,14 +50,22 @@ const AkselArtikkelTemplate = ({
           </>
         )}
       </Head>
-      <div className="-mb-40 h-80 w-full rounded-2xl bg-gradient-to-br from-[#DD5E89] to-[#F7BB97]">
-        {/* <Image
-          src="https://cdn.sanity.io/images/hnbe3yhs/production/bbdf63cb06410989610da41742591f61d45fe4f5-800x248.svg?w=800&q=100&fit=clip&auto=format"
-          objectFit="contain"
-          layout="fill"
-        /> */}
-      </div>
-      <div className="z-[2] mx-auto flex max-w-3xl flex-col rounded-2xl bg-gray-50 p-8">
+      {data?.banner?.variant === "bilde" && data.banner.banner_img ? (
+        <div className="relative h-60 w-full  sm:h-96 xl:-mb-40">
+          <Image
+            {...imageProps}
+            alt={data?.banner?.banner_img?.alt}
+            quality="100"
+            layout="fill"
+            objectFit="cover"
+            className="rounded-2xl"
+          />
+        </div>
+      ) : (
+        <div className="-mb-40 h-80 w-full rounded-2xl bg-gradient-to-br from-[#DD5E89] to-[#F7BB97]" />
+      )}
+
+      <div className="relative z-[2] mx-auto flex max-w-3xl flex-col rounded-2xl bg-gray-50 p-8">
         <Heading size="xlarge" level="1" spacing className="index-lvl1 ">
           {data.heading}
         </Heading>

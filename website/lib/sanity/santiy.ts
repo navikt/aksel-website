@@ -16,7 +16,7 @@ export const useSanityImage = (node) =>
     },
   });
 
-export const useSanitybannerImage = (node) =>
+export const useSanityBannerImage = (node) =>
   useNextSanityImage(sanityClient, node, {
     imageBuilder: (imageUrlBuilder, options) => {
       return imageUrlBuilder
