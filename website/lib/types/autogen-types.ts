@@ -1040,7 +1040,13 @@ export interface AkselArtikkel extends SanityDocument {
    */
   tema?: Array<SanityKeyedReference<AkselTema>>;
 
+  /**
+   * Kort Intro/Oppsummering — `string`
+   *
+   * Brukes i kort og innganger
+   */
   oppsummering?: string;
+
   /**
    * Innhold — `array`
    *
@@ -1060,6 +1066,40 @@ export interface AkselArtikkel extends SanityDocument {
     | SanityKeyed<Tips>
     | SanityKeyed<RelatertInnhold>
   >;
+
+  /**
+   * Banner — `object`
+   *
+   *
+   */
+  banner?: {
+    _type: "banner";
+    /**
+     * Variant — `string`
+     *
+     *
+     */
+    variant?: "standard" | "bilde";
+
+    /**
+     * Banner-bilde — `image`
+     *
+     *
+     */
+    banner_img?: {
+      _type: "image";
+      asset: SanityReference<SanityImageAsset>;
+      crop?: SanityImageCrop;
+      hotspot?: SanityImageHotspot;
+
+      /**
+       * Alt-tekst — `string`
+       *
+       *
+       */
+      alt?: string;
+    };
+  };
 
   /**
    * Tilbakemeldinger — `object`
@@ -1099,6 +1139,11 @@ export interface AkselTema extends SanityDocument {
    */
   tag?: string;
 
+  /**
+   * Kort Intro/Oppsummering — `string`
+   *
+   * Brukes i kort og innganger
+   */
   oppsummering?: string;
 
   /**
@@ -1394,14 +1439,14 @@ export type IntroKomponentSeksjon = {
   body?: RiktekstEnkel;
 
   /**
-   * Brukes til — `array`
+   * Egnet til — `array`
    *
    *
    */
   brukes_til?: Array<SanityKeyed<string>>;
 
   /**
-   * Brukes ikke til (optional) — `array`
+   * Ugnet til (optional) — `array`
    *
    *
    */
