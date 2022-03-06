@@ -262,7 +262,8 @@ export const akselDocumentBySlug = `*[slug.current == $slug] | order(_updatedAt 
   innhold[]{
     ...,
     ${deRefs}
-  }
+  },
+  tema[]->{title}
 }`;
 
 export const dsDocuments = `*[_type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"]]{ ..., 'slug': slug.current }`;
