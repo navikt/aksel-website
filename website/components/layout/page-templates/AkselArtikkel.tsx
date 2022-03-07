@@ -43,7 +43,7 @@ const AkselArtikkelTemplate = ({
     });
   }, [asPath]);
 
-  const imageProps = useSanityBannerImage(data?.banner?.banner_img);
+  const imageProps: any = useSanityBannerImage(data?.banner?.banner_img);
 
   useEffect(() => {
     const wpm = 225;
@@ -80,12 +80,15 @@ const AkselArtikkelTemplate = ({
           {data?.banner?.variant === "bilde" && data.banner.banner_img ? (
             <div className="relative -mb-40 h-80 w-full lg:h-96">
               <Image
-                {...imageProps}
+                src={imageProps.src}
+                loader={imageProps.loader}
                 alt={data?.banner?.banner_img?.alt}
-                quality="100"
+                quality="75"
                 layout="fill"
                 objectFit="cover"
                 className="lg:rounded-2xl"
+                priority
+                unoptimized
               />
             </div>
           ) : (

@@ -10,10 +10,10 @@ import { PagePropsContext } from "../../website-modules/utils";
 const Tips = ({ node }: { node: TipsT }): JSX.Element => {
   const context = useContext(SectionContext);
   const { pageProps } = useContext(PagePropsContext);
+
   if (!node || !node.body) {
     return null;
   }
-  console.log(pageProps);
 
   return (
     <div
