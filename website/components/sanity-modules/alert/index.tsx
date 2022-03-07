@@ -11,7 +11,7 @@ const Alert = ({ node }: { node: AlertT }): JSX.Element => {
     slugger.slug(node.heading.toString());
 
   return (
-    <div className="section--small relative-child">
+    <div className="section--small relative-child max-w-2xl">
       <DsAlert variant={node.variant} size={node.size}>
         {node.heading && (
           <Heading
