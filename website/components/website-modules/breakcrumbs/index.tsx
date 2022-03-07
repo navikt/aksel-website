@@ -14,7 +14,7 @@ export const ArtikkelBreadcrumbs = () => {
 
   return (
     <NextLink href={`/tema/${router.query.tema}`} passHref>
-      <Link className="group absolute top-3 flex flex-wrap items-center gap-1 pr-2">
+      <Link className="group absolute top-3 flex w-full flex-wrap items-center gap-1 px-4 pr-2 sm:px-6">
         <Back
           aria-hidden
           className="shrink-0 transition-transform group-hover:-translate-x-1"

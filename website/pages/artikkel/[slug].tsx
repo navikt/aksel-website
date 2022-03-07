@@ -25,13 +25,13 @@ const Page = (props: {
   return (
     <>
       {props.preview && <PreviewBanner />}
-      <ArtikkelBreadcrumbs />
+
       <LayoutPicker title="Aksel" data={props.page} />
     </>
   );
 };
 
-Page.getLayout = (page) => {
+/* Page.getLayout = (page) => {
   return (
     <div className="bg-gray-50">
       <AkselHeader className="bg-gray-50" />
@@ -45,7 +45,7 @@ Page.getLayout = (page) => {
       <Footer />
     </div>
   );
-};
+}; */
 
 export const getStaticPaths = async (): Promise<{
   fallback: string;
