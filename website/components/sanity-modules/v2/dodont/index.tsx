@@ -70,7 +70,7 @@ const Element = ({
 
   return (
     <figure
-      className={cl("flex min-w-[300px] flex-1 flex-col rounded-t", {
+      className={cl("flex flex-1 flex-col rounded-t sm:min-w-[300px]", {
         "basis-full": block?.fullwidth,
         "max-w-sm": !block?.fullwidth,
       })}
