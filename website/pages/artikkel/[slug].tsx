@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  ArtikkelBreadcrumbs,
-  LayoutPicker,
-  PreviewBanner,
-} from "../../components";
-import Footer from "../../components/layout/footer/Footer";
-import AkselHeader from "../../components/layout/header/AkselHeader";
+import { LayoutPicker, PreviewBanner } from "../../components";
 import {
   AkselArtikkel,
   akselDocumentBySlug,
