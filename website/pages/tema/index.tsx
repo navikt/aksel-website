@@ -67,7 +67,7 @@ export const getStaticProps = async ({
 }: {
   preview?: boolean;
 }): Promise<StaticProps | { notFound: true }> => {
-  const page = await getClient(preview).fetch(akselTema);
+  const page = await getClient(true).fetch(akselTema);
 
   const doc = page ?? null;
 

@@ -263,10 +263,13 @@ export const akselDocumentBySlug = `*[slug.current == $slug] | order(_updatedAt 
     ...,
     ${deRefs}
   },
-  tema[]->{title},
+  tema[]->{title}
+}`;
+
+export const akselEditorById = `*[_id == $id][0]
+{
   contributors[]->{
-    anonym == false =>{title},
-    anonym != false =>{"anonym": true},
+    title
   }
 }`;
 
@@ -421,9 +424,9 @@ export const akselTemaDocs = `*[_type == "aksel_tema" && count(*[references(^._i
     _createdAt,
     "slug": slug.current,
     "tema": tema[]->tag,
+    oppsummering,
     contributors[]->{
-      anonym == false =>{title},
-      anonym != false =>{"anonym": true},
+      title
     }
   }
 }`;

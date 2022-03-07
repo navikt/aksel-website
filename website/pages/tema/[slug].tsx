@@ -31,8 +31,10 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
         {page.title}
       </Heading>
       <SanityBlockContent blocks={page.beskrivelse} noLastMargin />
-
-      <div className="aksel-card-grid-col-2 pt-20">
+      <Heading level="2" size="xlarge" className="pt-20" spacing>
+        Artikler
+      </Heading>
+      <div className="aksel-card-grid-col-2 ">
         {page.artikler.map((x) => {
           const author = x?.contributors?.[0]?.title;
           return (
@@ -110,7 +112,7 @@ export const getStaticProps = async ({
   params: { slug: string };
   preview?: boolean;
 }): Promise<StaticProps | { notFound: true }> => {
-  const temas = await getClient(preview).fetch(akselTemaDocs);
+  const temas = await getClient(true).fetch(akselTemaDocs);
 
   const doc = temas.find((tema) => getTemaSlug(tema?.title) === slug);
 

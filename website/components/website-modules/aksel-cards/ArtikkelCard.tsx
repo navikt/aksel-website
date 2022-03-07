@@ -41,22 +41,31 @@ export const ArtikkelCard = ({
           </Heading>
         </NextLink>
         {oppsummering && (
-          <BodyShort className="mt-1 text-text-muted">{oppsummering}</BodyShort>
+          <BodyShort className="mt-1 mb-4 text-text-muted">
+            {oppsummering}
+          </BodyShort>
         )}
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex flex-col items-start gap-[2px] sm:flex-row sm:items-center sm:gap-2">
         {author ? (
           <>
-            <Avatar name={author} small />
-            <BodyShort size="small" as="span">
-              av <strong>{author}</strong>
-            </BodyShort>
-            <Detail size="small" className="text-text-muted">
+            <span className="flex items-center gap-2">
+              <Avatar name={author} small />
+              <BodyShort size="small" as="span">
+                av <strong>{author}</strong>
+              </BodyShort>
+            </span>
+            <Detail
+              size="small"
+              className="ml-1 flex h-6 text-text-muted sm:ml-0"
+            >
               {moment(_createdAt).format("DD. MMM. YY")}
             </Detail>
           </>
         ) : (
-          <span>aaa</span>
+          <Detail size="small" className="text-text-muted">
+            {moment(_createdAt).format("DD. MMM. YY")}
+          </Detail>
         )}
       </div>
     </div>

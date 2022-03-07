@@ -9,6 +9,7 @@ import AkselHeader from "../../components/layout/header/AkselHeader";
 import {
   AkselArtikkel,
   akselDocumentBySlug,
+  akselEditorById,
   getAkselArtikler,
 } from "../../lib";
 import { getClient } from "../../lib/sanity/sanity.server";
@@ -85,9 +86,15 @@ export const getStaticProps = async ({
 
   const doc = page?.[0] ?? null;
 
+  const editors = doc
+    ? await getClient(true).fetch(akselEditorById, {
+        id: doc._id,
+      })
+    : [];
+
   return {
     props: {
-      page: doc,
+      page: { ...doc, ...editors },
       slug,
       preview,
     },

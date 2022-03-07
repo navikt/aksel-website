@@ -52,7 +52,7 @@ const AkselArtikkelTemplate = ({
   if (!data.innhold || !data.heading) {
     return null;
   }
-  console.log(data);
+  /* console.log(data); */
 
   const author = (data?.contributors?.[0] as any)?.title;
 
