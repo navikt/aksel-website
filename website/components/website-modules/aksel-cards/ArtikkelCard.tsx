@@ -46,21 +46,20 @@ export const ArtikkelCard = ({
           </BodyShort>
         )}
       </div>
-      <div className="flex flex-col items-start gap-[2px] sm:flex-row sm:items-center sm:gap-2">
+      <div className="flex flex-row items-start items-center gap-[2px] sm:gap-2">
         {author ? (
           <>
-            <span className="flex items-center gap-2">
-              <Avatar name={author} small />
-              <BodyShort size="small" as="span">
-                av <strong>{author}</strong>
-              </BodyShort>
-            </span>
-            <Detail
-              size="small"
-              className="ml-1 flex h-6 text-text-muted sm:ml-0"
-            >
-              {moment(_createdAt).format("DD. MMM. YY")}
-            </Detail>
+            <Avatar name={author} small />
+            <BodyShort size="small" as="span">
+              av <strong>{author}</strong>
+              <Detail
+                as="span"
+                size="small"
+                className="ml-2 hidden text-text-muted sm:inline-block"
+              >
+                {moment(_createdAt).format("DD. MMM. YY")}
+              </Detail>
+            </BodyShort>
           </>
         ) : (
           <Detail size="small" className="text-text-muted">
@@ -68,6 +67,13 @@ export const ArtikkelCard = ({
           </Detail>
         )}
       </div>
+      <Detail
+        as="span"
+        size="small"
+        className="ml-1 inline-block text-text-muted sm:hidden"
+      >
+        {moment(_createdAt).format("DD. MMM. YY")}
+      </Detail>
     </div>
   );
 };
