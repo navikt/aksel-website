@@ -3,15 +3,16 @@ import { BodyShort, Heading } from "@navikt/ds-react";
 import cl from "classnames";
 import NextImage from "next/image";
 import React, { useState } from "react";
-import { Lightbox } from "../..";
+import { Lightbox } from "../../..";
 import {
   DoDontBlock,
   DoDontV2,
   SanityKeyed,
   useSanityImage,
-} from "../../../lib";
-import { withErrorBoundary } from "../../ErrorBoundary";
-import { SanityBlockContent } from "../../SanityBlockContent";
+} from "../../../../lib";
+import { withErrorBoundary } from "../../../ErrorBoundary";
+import { SanityBlockContent } from "../../../SanityBlockContent";
+import style from "./index.module.css";
 
 const GetIcon = (s: string) => {
   switch (s) {
@@ -138,7 +139,12 @@ const DoDont = ({ node }: { node: DoDontV2 }) => {
         {node.title}
       </Heading>
       <SanityBlockContent blocks={node.forklaring} />
-      <div className="last flex flex-wrap justify-between gap-8">
+      <div
+        className={cl(
+          style.doDont,
+          "last flex flex-wrap justify-between gap-8"
+        )}
+      >
         {node.blokker.map((x) => (
           <Element key={x._key} block={x} />
         ))}

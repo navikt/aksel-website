@@ -92,10 +92,10 @@ const AkselArtikkelTemplate = ({
               />
             </div>
           ) : (
-            <div className="-mb-40 h-80 w-full rounded-2xl bg-gradient-to-br from-[#DD5E89] to-[#F7BB97]" />
+            <div className="-mb-40 h-80 w-full bg-gradient-to-br from-[#DD5E89] to-[#F7BB97] lg:rounded-2xl" />
           )}
-          <div className="mx-auto flex max-w-[calc(100%_-_2.5rem)] justify-center">
-            <div className="relative mx-6 flex w-full max-w-3xl flex-col rounded-2xl bg-gray-50 py-8 sm:px-0">
+          <div className="mx-auto flex w-full max-w-[calc(100%_-_2.5rem)] justify-center">
+            <div className="relative flex w-full max-w-3xl flex-col rounded-2xl bg-gray-50 py-8 sm:px-0 md:mx-6">
               <div className="px-4 md:mx-6 lg:mx-12 lg:px-9">
                 <div className="mb-4 flex flex-wrap items-center justify-center gap-1 lg:justify-start">
                   <BodyShort size="small" className="text-text-muted">

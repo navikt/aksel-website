@@ -4,9 +4,10 @@ import cl from "classnames";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { AmplitudeEvents, useAmplitude } from "../..";
-import { RelatertInnhold as RelatertInnholdT } from "../../../lib";
-import { withErrorBoundary } from "../../ErrorBoundary";
+import { AmplitudeEvents, useAmplitude } from "../../..";
+import { RelatertInnhold as RelatertInnholdT } from "../../../../lib";
+import { withErrorBoundary } from "../../../ErrorBoundary";
+import style from "./index.module.css";
 
 const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
   const { logAmplitudeEvent } = useAmplitude();
@@ -32,13 +33,14 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
   return (
     <div
       className={cl(
+        style.relatedCard,
         "relative-child mb-16 grid gap-4 [grid-template-columns:_repeat(auto-fit,_250px)]"
       )}
     >
       {node.lenker.map((x) => (
         <div
           key={x._key}
-          className="group index-ignore relative min-w-[250px] max-w-sm flex-1 cursor-pointer rounded border-2 border-transparent bg-white p-6 shadow-card focus-within:border-focus focus-within:outline-none hover:border-link"
+          className="index-ignore group relative min-w-[250px] max-w-sm flex-1 cursor-pointer rounded border-2 border-transparent bg-white p-6 shadow-card focus-within:border-focus focus-within:outline-none hover:border-link"
         >
           <NextLink href={getHref(x)} passHref>
             <Heading
