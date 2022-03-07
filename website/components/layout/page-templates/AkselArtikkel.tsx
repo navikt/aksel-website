@@ -22,6 +22,8 @@ import { AkselArtikkel, useSanityBannerImage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
+import NextLink from "next/link";
+import { getTemaSlug } from "../../website-modules/utils";
 
 const AkselArtikkelTemplate = ({
   data,
@@ -97,19 +99,24 @@ const AkselArtikkelTemplate = ({
           <div className="mx-auto flex w-full max-w-[calc(100%_-_2.5rem)] justify-center">
             <div className="relative flex w-full max-w-3xl flex-col rounded-2xl bg-gray-50 py-8 sm:px-0 md:mx-6">
               <div className="px-4 md:mx-6 lg:mx-12 lg:px-9">
-                <div className="mb-4 flex flex-wrap items-center justify-center gap-1 lg:justify-start">
+                <div className="index-ignore mb-4 flex flex-wrap items-center justify-center gap-1 lg:justify-start">
                   <BodyShort size="small" className="text-text-muted">
                     {ttr} min lesing -
                   </BodyShort>
                   {data.tema.map(({ title }: any) => (
-                    <Detail
-                      size="small"
-                      as="span"
+                    <NextLink
                       key={title}
-                      className="rounded bg-purple-100 py-[2px] px-[6px] text-purple-500"
+                      href={`/tema/${getTemaSlug(title)}`}
+                      passHref
                     >
-                      {title}
-                    </Detail>
+                      <Detail
+                        size="small"
+                        as="a"
+                        className="rounded bg-purple-100 py-[2px] px-[6px] text-purple-500 focus:outline-focus"
+                      >
+                        {title}
+                      </Detail>
+                    </NextLink>
                   ))}
                 </div>
                 <Heading
@@ -121,7 +128,7 @@ const AkselArtikkelTemplate = ({
                   {data.heading}
                 </Heading>
 
-                <div className="flex justify-center gap-2 lg:justify-start">
+                <div className="index-ignore flex justify-center gap-2 lg:justify-start">
                   {author ? (
                     <>
                       <Avatar name={author} />
