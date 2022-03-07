@@ -69,8 +69,8 @@ const AkselArtikkelTemplate = ({
           </>
         )}
       </Head>
-      <div className="bg-gray-50">
-        <AkselHeader className="bg-gray-50" />
+      <div className="aksel-artikkel">
+        <AkselHeader />
         <main
           tabIndex={-1}
           id="hovedinnhold"
@@ -142,7 +142,7 @@ const AkselArtikkelTemplate = ({
               </div>
             </div>
             <SanityBlockContent
-              className="aksel-content mt-12 flex min-h-[500px] w-full flex-col items-center px-0 sm:px-8 lg:px-0"
+              className="aksel-artikkel__blocks mt-12 min-h-[500px] px-0 sm:px-8 lg:px-0"
               blocks={data.innhold}
             />
             {!data?.metadata_feedback?.hide_feedback && (

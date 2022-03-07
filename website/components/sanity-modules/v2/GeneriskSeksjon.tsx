@@ -10,7 +10,7 @@ const GeneriskSeksjon = ({ node }: { node: GeneriskSeksjonT }): JSX.Element => {
   }
 
   return (
-    <div className="mb-16">
+    <div className="aksel-artikkel__child mb-16">
       <LevelTwoHeading>{[node.title]}</LevelTwoHeading>
       <SectionContext.Provider value={{ withinSection: true }}>
         <SanityBlockContent blocks={node.brikker} />

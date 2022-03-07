@@ -3,6 +3,7 @@
 @import "@navikt/ds-css";
 @import "@navikt/ds-css-internal";
 @import "./prismjs.css";
+@import "./layout.css";
 @import "./pages.css";
 @import "./components.css";
 @import "./stories.css";

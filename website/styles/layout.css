@@ -1,0 +1,18 @@
+@tailwind components;
+
+@layer components {
+  .aksel-flex-col {
+    @apply flex w-full flex-col items-center;
+  }
+
+  .aksel-artikkel {
+    @apply bg-gray-50;
+  }
+  .aksel-artikkel .aksel-artikkel__blocks,
+  .aksel-artikkel .aksel-artikkel__blocks .aksel-artikkel__child {
+    @apply aksel-flex-col;
+  }
+  .aksel-artikkel .aksel-artikkel__blocks .aksel-artikkel__child > * {
+    @apply w-full;
+  }
+}
