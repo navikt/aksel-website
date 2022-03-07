@@ -36,4 +36,7 @@
   .aksel-layout-x {
     @apply max-w-aksel-max-w px-4 md:px-6 lg:px-12;
   }
+  .aksel-content > * {
+    @apply flex w-full flex-col items-center;
+  }
 }

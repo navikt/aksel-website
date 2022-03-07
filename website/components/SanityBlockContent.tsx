@@ -136,7 +136,7 @@ const serializers = {
           return (
             <Heading
               {...textProps}
-              className="index-lvl3"
+              className="index-lvl3 max-w-text"
               spacing
               level="3"
               size="medium"
@@ -145,7 +145,7 @@ const serializers = {
         case "heading4":
           return (
             <Heading
-              className="index-lvl4"
+              className="index-lvl4 max-w-text"
               spacing
               level="4"
               size="small"
@@ -155,7 +155,7 @@ const serializers = {
         case "h4":
           return (
             <Heading
-              className="index-lvl4 mt-9"
+              className="index-lvl4 mt-9 max-w-text"
               spacing
               level="4"
               size="small"
@@ -164,7 +164,7 @@ const serializers = {
           );
         case "ingress":
           return (
-            <Ingress spacing className="index-ingress">
+            <Ingress spacing className="index-ingress max-w-text">
               {children}
             </Ingress>
           );
@@ -174,7 +174,7 @@ const serializers = {
               size={context.size}
               spacing
               {...textProps}
-              className="index-body"
+              className="index-body max-w-text"
             />
           );
       }
@@ -186,7 +186,7 @@ const serializers = {
       return (
         <ol
           type="1"
-          className={cl("list-margin mb-7 list-decimal", {
+          className={cl("list-margin mb-7 max-w-text list-decimal", {
             "last:mb-0": context.noLastMargin,
           })}
         >
@@ -196,7 +196,7 @@ const serializers = {
     }
     return (
       <ul
-        className={cl("list-margin mb-7 list-disc", {
+        className={cl("list-margin mb-7 max-w-text list-disc", {
           "last:mb-0": context.noLastMargin,
         })}
       >
