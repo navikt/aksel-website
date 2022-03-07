@@ -1,6 +1,5 @@
 import { Back } from "@navikt/ds-icons";
 import { Link } from "@navikt/ds-react";
-import { startCase } from "lodash";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -20,7 +19,10 @@ export const ArtikkelBreadcrumbs = () => {
             aria-hidden
             className="shrink-0 transition-transform group-hover:-translate-x-1"
           />
-          Tilbake til {startCase(router.query.tema as string)}
+          Tilbake til{" "}
+          {(router.query.tema as string).replace(/(^\w|\s\w)/g, (m) =>
+            m.toUpperCase()
+          )}
         </Link>
       </NextLink>
     </span>
