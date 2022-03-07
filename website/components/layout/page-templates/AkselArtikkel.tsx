@@ -140,7 +140,7 @@ const AkselArtikkelTemplate = ({
               </div>
             </div>
             <SanityBlockContent
-              className="mt-12 flex min-h-[500px] w-full flex-col px-0 sm:px-8 lg:px-0"
+              className="mt-12 flex min-h-[500px] w-full flex-col items-center px-0 sm:px-8 lg:px-0"
               blocks={data.innhold}
             />
             {!data?.metadata_feedback?.hide_feedback && (
