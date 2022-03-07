@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from "react";
 import copy from "copy-to-clipboard";
 import React from "react";
 import cl from "classnames";
+import style from "./index.module.css";
 
 const copyCode = (content: string) =>
   copy(content, {
@@ -38,7 +39,7 @@ const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
         ref={ref}
         aria-live={active ? "polite" : "off"}
         role={active ? "alert" : undefined}
-        className={cl("navds-body-short", {
+        className={cl(style.copybutton, "navds-body-short", {
           "flex w-16 items-center justify-center hover:bg-blue-50 focus:shadow-[inset_0_0_0_2px_theme(colors.focus)] focus:outline-none":
             inTabs,
           "bg-gray-50 text-text hover:bg-gray-100 hover:underline focus:outline-2 focus:outline-focus":

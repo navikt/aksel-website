@@ -35,7 +35,7 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
         >
           <NextImage
             {...imageProps}
-            className="rounded"
+            className="rounded-2xl"
             layout="responsive"
             sizes="(max-width: 320px)"
             alt={node.alt}
@@ -54,7 +54,7 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
         aria-label="Klikk for å åpne bildet i fullskjerm"
         tabIndex={0}
         onClick={() => setOpen(!open)}
-        className="bg-gray-50 p-0 shadow-[0_0_0_1px_var(--navds-semantic-color-divider)] focus:shadow-focus focus:outline-none"
+        className="rounded-2xl bg-gray-50 p-0 shadow-[0_0_0_1px_var(--navds-semantic-color-divider)] focus:shadow-focus focus:outline-none"
       >
         <NextImage
           {...imageProps}
