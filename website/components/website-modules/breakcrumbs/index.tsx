@@ -13,15 +13,17 @@ export const ArtikkelBreadcrumbs = () => {
   }
 
   return (
-    <NextLink href={`/tema/${router.query.tema}`} passHref>
-      <Link className="group absolute top-3 flex w-full flex-wrap items-center gap-1 px-4 pr-2 sm:px-6">
-        <Back
-          aria-hidden
-          className="shrink-0 transition-transform group-hover:-translate-x-1"
-        />
-        Tilbake til {startCase(router.query.tema as string)}
-      </Link>
-    </NextLink>
+    <span className="item-start absolute top-3 w-full px-4 sm:px-6">
+      <NextLink href={`/tema/${router.query.tema}`} passHref>
+        <Link className="group flex w-fit items-center justify-start gap-1">
+          <Back
+            aria-hidden
+            className="shrink-0 transition-transform group-hover:-translate-x-1"
+          />
+          Tilbake til {startCase(router.query.tema as string)}
+        </Link>
+      </NextLink>
+    </span>
   );
 };
 
