@@ -16,12 +16,12 @@ const Avatar = ({ name, small }: { name: string; small?: boolean }) => {
     <div
       className={cl("aspect-square rounded-full bg-gray-300", {
         "h-6": small,
-        "h-12": !small,
+        "h-12 text-[1.25rem]": !small,
       })}
     >
       <Component
         as="span"
-        className="mt-[1px] flex h-full items-center justify-center text-[1.25rem]"
+        className="mt-[1px] flex h-full items-center justify-center"
       >
         {nameToInitials(name)}
       </Component>
