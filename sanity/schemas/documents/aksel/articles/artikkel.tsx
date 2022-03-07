@@ -82,7 +82,9 @@ export default {
       validation: (Rule) =>
         Rule.required()
           .max(65)
-          .error("Artikkelen burde ha en kort oppsummering/intro"),
+          .error(
+            "Artikkelen burde ha en kort oppsummering/intro på max 65 tegn"
+          ),
     },
     {
       name: "innhold",

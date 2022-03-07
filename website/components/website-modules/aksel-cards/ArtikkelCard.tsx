@@ -4,6 +4,7 @@ import NextLink from "next/link";
 import { getTemaSlug } from "../..";
 import { AkselArtikkel } from "../../../lib";
 import Avatar from "../avatar";
+import cl from "classnames";
 
 export const ArtikkelCard = ({
   slug,
@@ -21,7 +22,7 @@ export const ArtikkelCard = ({
   }
 >) => {
   return (
-    <div className="group relative flex min-h-24 min-w-[16rem] max-w-xl flex-1 cursor-pointer flex-col justify-between gap-2 rounded-lg border-2 border-transparent bg-white px-6 py-4 shadow-small transition-all focus-within:shadow-focus hover:scale-105 hover:shadow-medium active:border-link">
+    <div className="group relative flex min-h-24 min-w-[16rem] max-w-xl flex-1 cursor-pointer flex-col justify-between  rounded-lg border-2 border-transparent bg-white px-6 py-4 shadow-small transition-all focus-within:shadow-focus hover:scale-105 hover:shadow-medium active:border-link">
       <div>
         <NextLink
           href={{
@@ -46,7 +47,11 @@ export const ArtikkelCard = ({
           </BodyShort>
         )}
       </div>
-      <div className="flex flex-row items-start items-center gap-[2px] sm:gap-2">
+      <div
+        className={cl("flex flex-row items-center gap-2", {
+          "mt-4": !oppsummering,
+        })}
+      >
         {author ? (
           <>
             <Avatar name={author} small />
@@ -70,7 +75,7 @@ export const ArtikkelCard = ({
       <Detail
         as="span"
         size="small"
-        className="ml-1 inline-block text-text-muted sm:hidden"
+        className="ml-1 mt-1 inline-block text-text-muted sm:hidden"
       >
         {moment(_createdAt).format("DD. MMM. YY")}
       </Detail>

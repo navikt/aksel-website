@@ -19,7 +19,9 @@ export default {
       type: "string",
       group: "innhold",
       validation: (Rule) =>
-        Rule.required().max(14).error("Temaet må ha en kort Tag"),
+        Rule.required()
+          .max(14)
+          .error("Temaet må ha en kort Tag på max 14 tegn"),
     },
     {
       title: "Kort Intro/Oppsummering",
@@ -30,7 +32,7 @@ export default {
       validation: (Rule) =>
         Rule.required()
           .max(65)
-          .error("Temaet burde ha en kort oppsummering/intro"),
+          .error("Temaet burde ha en kort oppsummering/intro på max 65tegn"),
     },
     {
       title: "Beskrivelse",

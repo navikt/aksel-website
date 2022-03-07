@@ -13,15 +13,19 @@ const nameToInitials = (fullName) => {
 const Avatar = ({ name, small }: { name: string; small?: boolean }) => {
   const Component = small ? Detail : BodyShort;
   return (
-    <Component
-      as="div"
-      className={cl(
-        "flex aspect-square items-center justify-center rounded-full bg-gray-300",
-        { "h-6": small, "h-12": !small }
-      )}
+    <div
+      className={cl("aspect-square rounded-full bg-gray-300", {
+        "h-6": small,
+        "h-12": !small,
+      })}
     >
-      {nameToInitials(name)}
-    </Component>
+      <Component
+        as="span"
+        className="mt-[1px] flex h-full items-center justify-center text-[1.25rem]"
+      >
+        {nameToInitials(name)}
+      </Component>
+    </div>
   );
 };
 
