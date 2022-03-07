@@ -1,15 +1,14 @@
 import { Detail } from "@navikt/ds-react";
+import cl from "classnames";
 import React, { useContext } from "react";
 import { SectionContext } from "../..";
 import { Tips as TipsT } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import { SanityBlockContent } from "../../SanityBlockContent";
-import cl from "classnames";
-import { PagePropsContext } from "../../website-modules/utils";
+import style from "./tips.module.css";
 
 const Tips = ({ node }: { node: TipsT }): JSX.Element => {
   const context = useContext(SectionContext);
-  const { pageProps } = useContext(PagePropsContext);
 
   if (!node || !node.body) {
     return null;
@@ -18,13 +17,11 @@ const Tips = ({ node }: { node: TipsT }): JSX.Element => {
   return (
     <div
       className={cl(
+        style.tips,
         "relative-child linear max-w-2xl rounded-r border-l-[6px] border-l-gray-500 px-4 py-4 shadow-small md:px-8",
         {
           "my-8": context.withinSection,
           "my-16": !context.withinSection,
-          "bg-white": pageProps?.page?._type === "aksel_artikkel",
-          "bg-gradient-to-l from-gray-100 to-gray-50":
-            pageProps?.page?._type !== "aksel_artikkel",
         }
       )}
     >
