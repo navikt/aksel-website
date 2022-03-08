@@ -3,6 +3,7 @@ import { Link } from "@navikt/ds-react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import { logNav } from "../..";
 
 export const ArtikkelBreadcrumbs = () => {
   const router = useRouter();
@@ -17,7 +18,16 @@ export const ArtikkelBreadcrumbs = () => {
       className="item-start absolute top-3 w-full px-4 sm:px-6"
     >
       <NextLink href={`/tema/${router.query.tema}`} passHref>
-        <Link className="group flex w-fit items-center justify-start gap-1">
+        <Link
+          className="group flex w-fit items-center justify-start gap-1"
+          onClick={(e) =>
+            logNav(
+              "breadcrumbs",
+              window.location.pathname,
+              e.currentTarget.getAttribute("href")
+            )
+          }
+        >
           <Back
             aria-hidden
             className="shrink-0 transition-transform group-hover:-translate-x-1"
@@ -35,7 +45,16 @@ export const ArtikkelBreadcrumbs = () => {
 export const TemaBreadcrumbs = () => (
   <nav aria-label="Til forside">
     <NextLink href="/" passHref>
-      <Link className="group absolute top-3 flex flex-wrap items-center gap-1 pr-2">
+      <Link
+        className="group absolute top-3 flex flex-wrap items-center gap-1 pr-2"
+        onClick={(e) =>
+          logNav(
+            "breadcrumbs",
+            window.location.pathname,
+            e.currentTarget.getAttribute("href")
+          )
+        }
+      >
         <Back
           aria-hidden
           className="shrink-0 transition-transform group-hover:-translate-x-1"
