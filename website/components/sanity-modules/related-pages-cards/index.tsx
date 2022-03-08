@@ -1,24 +1,12 @@
 import { ExternalLink } from "@navikt/ds-icons";
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
-import { useRouter } from "next/router";
+import NextLink from "next/link";
 import React, { useMemo } from "react";
-import { AmplitudeEvents, useAmplitude } from "../..";
+import { logNav } from "../..";
 import { RelatedLinkT, RelatedPages } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
-import NextLink from "next/link";
 
 const Card = ({ link }: { link: RelatedLinkT }) => {
-  const { logAmplitudeEvent } = useAmplitude();
-
-  const { asPath } = useRouter();
-
-  const logNavigation = (e) => {
-    logAmplitudeEvent(AmplitudeEvents.navigasjon, {
-      kilde: "related-pages-card",
-      fra: asPath,
-      til: e.currentTarget.getAttribute("href"),
-    });
-  };
   const href = link.internal ? `/${link.internal_link}` : link.external_link;
 
   const tag =
@@ -27,12 +15,18 @@ const Card = ({ link }: { link: RelatedLinkT }) => {
       : link?.category_ref?.title) ?? null;
 
   return (
-    <div className="group index-ignore relative min-w-[250px] max-w-sm flex-1 cursor-pointer rounded border-2 border-transparent bg-white p-6 shadow-card focus-within:border-focus focus-within:outline-none hover:border-link">
+    <div className="index-ignore group relative min-w-[250px] max-w-sm flex-1 cursor-pointer rounded border-2 border-transparent bg-white p-6 shadow-card focus-within:border-focus focus-within:outline-none hover:border-link">
       <NextLink href={href} passHref>
         <Heading
           size="xsmall"
           as="a"
-          onClick={(e) => logNavigation(e)}
+          onClick={(e) =>
+            logNav(
+              "related-pages-card",
+              window.location.pathname,
+              e.currentTarget.getAttribute("href")
+            )
+          }
           className="underline after:absolute after:inset-0 focus:text-link focus:outline-none group-hover:text-link group-hover:no-underline group-focus:no-underline"
         >
           {link.title}

@@ -3,7 +3,7 @@ import { BodyShort, Heading, Popover } from "@navikt/ds-react";
 import cl from "classnames";
 import copy from "copy-to-clipboard";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { AmplitudeEvents, slugger, useAmplitude } from "../..";
+import { AmplitudeEvents, logAmplitudeEvent, slugger } from "../..";
 
 const LevelTwoHeading = ({
   children,
@@ -14,7 +14,7 @@ const LevelTwoHeading = ({
 }): JSX.Element => {
   const anchorRef = useRef(null);
   const [openPopover, setOpenPopover] = useState(false);
-  const { logAmplitudeEvent } = useAmplitude();
+
   const [slug, setSlug] = useState<null | string>(null);
   const timeoutRef = useRef<NodeJS.Timeout>();
 

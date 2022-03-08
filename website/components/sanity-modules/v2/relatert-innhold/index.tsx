@@ -2,28 +2,16 @@ import { ExternalLink } from "@navikt/ds-icons";
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import cl from "classnames";
 import NextLink from "next/link";
-import { useRouter } from "next/router";
 import React from "react";
-import { AmplitudeEvents, useAmplitude } from "../../..";
+import { logNav } from "../../..";
 import { RelatertInnhold as RelatertInnholdT } from "../../../../lib";
 import { withErrorBoundary } from "../../../ErrorBoundary";
 import style from "./index.module.css";
 
 const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
-  const { logAmplitudeEvent } = useAmplitude();
-  const { asPath } = useRouter();
-
   if (!node || node?.lenker?.length === 0) {
     return null;
   }
-
-  const logNavigation = (e) => {
-    logAmplitudeEvent(AmplitudeEvents.navigasjon, {
-      kilde: "relatert-innhold",
-      fra: asPath,
-      til: e.currentTarget.getAttribute("href"),
-    });
-  };
 
   const getHref = (x: any): string =>
     x?.intern ? `/${x.intern_lenke}` : x.ekstern_link;
@@ -46,7 +34,13 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
             <Heading
               size="xsmall"
               as="a"
-              onClick={(e) => logNavigation(e)}
+              onClick={(e) =>
+                logNav(
+                  "relatert-innhold",
+                  window.location.pathname,
+                  e.currentTarget.getAttribute("href")
+                )
+              }
               className="underline after:absolute after:inset-0 focus:text-link focus:outline-none group-hover:text-link group-hover:no-underline group-focus:no-underline"
             >
               {x.title}

@@ -1,7 +1,7 @@
 import { Search } from "@navikt/ds-icons";
 import { TextField, ToggleGroup } from "@navikt/ds-react";
 import React, { useEffect, useState } from "react";
-import { AmplitudeEvents, useAmplitude } from "../..";
+import { AmplitudeEvents, logAmplitudeEvent } from "../..";
 
 export interface FilterT {
   value: string;
@@ -15,7 +15,6 @@ const Filter = ({
 }) => {
   const [value, setValue] = useState("");
   const [toggle, setToggle] = useState("outline");
-  const { logAmplitudeEvent } = useAmplitude();
 
   useEffect(() => {
     onFilterChange({

@@ -3,7 +3,7 @@ import meta from "@navikt/ds-icons/meta.json";
 import { BodyLong, Detail, Heading, Link, Modal } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
-import { AmplitudeEvents, useAmplitude } from "../..";
+import { AmplitudeEvents, logAmplitudeEvent } from "../..";
 import DownloadButtons from "./DownloadButtons";
 import Filter, { FilterT } from "./Filter";
 import { categorizeIcons, CategoryT, IconMetaT } from "./iconCategories";
@@ -42,7 +42,6 @@ const IconSearch = () => {
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
   const router = useRouter();
   const [visibleIcons, setVisibleIcons] = useState<IconMetaT[]>([]);
-  const { logAmplitudeEvent } = useAmplitude();
 
   const setQuery = useCallback((icon: string) => {
     const query = router.query;
@@ -150,7 +149,7 @@ const IconSearch = () => {
                   <button
                     key={i.created_at}
                     onClick={() => handleSelect(i.name)}
-                    className="group vk-icon_button relative h-32 w-48 shrink rounded shadow-card hover:shadow-[0_0_0_2px_theme(colors.link)] focus:shadow-focus focus:outline-none"
+                    className="vk-icon_button group relative h-32 w-48 shrink rounded shadow-card hover:shadow-[0_0_0_2px_theme(colors.link)] focus:shadow-focus focus:outline-none"
                   >
                     {isNew(i.created_at) && (
                       <Detail

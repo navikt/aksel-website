@@ -1,7 +1,7 @@
 import { Modal, Table } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
-import { AmplitudeEvents, OverflowDetector, useAmplitude } from "../..";
+import { AmplitudeEvents, logAmplitudeEvent, OverflowDetector } from "../..";
 import { DsColorCategories } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import { SanityBlockContent } from "../../SanityBlockContent";
@@ -13,7 +13,6 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
   const [open, setOpen] = useState(false);
   const [selectedColor, setSelectedColor] = useState<any>(null);
   const router = useRouter();
-  const { logAmplitudeEvent } = useAmplitude();
 
   const setQuery = useCallback((color: string) => {
     const query = router.query;

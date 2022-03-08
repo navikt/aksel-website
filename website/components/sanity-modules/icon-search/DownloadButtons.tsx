@@ -1,14 +1,13 @@
 import { Download } from "@navikt/ds-icons";
 import { Button, Heading, Popover } from "@navikt/ds-react";
 import React, { useRef, useState } from "react";
-import { AmplitudeEvents, useAmplitude } from "../..";
+import { AmplitudeEvents, logAmplitudeEvent } from "../..";
 import { downloadAllSvg, downloadPngInSize } from "./downloads";
 
 const DownloadButtons = () => {
   const [isDownloadingSvg, setIsDownloadingSvg] = useState(false);
   const [isDownloadingPng, setIsDownloadingPng] = useState(false);
   const [openPopover, setOpenPopover] = useState(false);
-  const { logAmplitudeEvent } = useAmplitude();
 
   const buttonRef = useRef(null);
 

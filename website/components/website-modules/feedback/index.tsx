@@ -2,9 +2,8 @@ import { BodyShort, Button, Heading, Label, Textarea } from "@navikt/ds-react";
 import cl from "classnames";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useAmplitude } from "../..";
 import { HelpfulArticleEnum, HelpfulArticleT } from "../../../lib";
-import { AmplitudeEvents } from "../utils";
+import { AmplitudeEvents, logAmplitudeEvent } from "../utils";
 
 const Feedback = ({
   docId,
@@ -15,7 +14,6 @@ const Feedback = ({
   docType?: string;
   center?: boolean;
 }): JSX.Element => {
-  const { logAmplitudeEvent } = useAmplitude();
   const { asPath, basePath } = useRouter();
   const [textValue, setTextValue] = useState("");
   const [activeState, setActiveState] = useState<HelpfulArticleEnum | null>(
