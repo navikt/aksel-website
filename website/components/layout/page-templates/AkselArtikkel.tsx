@@ -17,6 +17,16 @@ import { getTemaSlug } from "../../website-modules/utils";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
 
+const getGradient = (s: string) => {
+  let hash = 0;
+  for (let i = 0; i < s.length; i++) {
+    hash = s.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  const h = hash % 360;
+  return `linear-gradient(-45deg, hsl(${h}, 30%, 80%) 0%, hsl(${h}, 30%, 90%) 100%)`;
+};
+
 const AkselArtikkelTemplate = ({
   data,
   title,
@@ -77,7 +87,10 @@ const AkselArtikkelTemplate = ({
               />
             </div>
           ) : (
-            <div className="-mb-40 h-80 w-full bg-gradient-to-br from-[#DD5E89] to-[#F7BB97] lg:rounded-2xl" />
+            <div
+              className="-mb-40 h-80 w-full lg:rounded-2xl"
+              style={{ background: getGradient(data.heading) }}
+            />
           )}
           <div className="mx-auto flex w-full max-w-[calc(100%_-_2.5rem)] justify-center">
             <div className="relative flex w-full max-w-3xl flex-col rounded-2xl bg-gray-50 py-8 sm:px-0 md:mx-6">
