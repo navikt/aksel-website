@@ -14,16 +14,6 @@ export default {
       validation: (Rule) => Rule.required().error("Temaet må ha et navn"),
     },
     {
-      title: "Tag",
-      name: "tag",
-      type: "string",
-      group: "innhold",
-      validation: (Rule) =>
-        Rule.required()
-          .max(14)
-          .error("Temaet må ha en kort Tag på max 14 tegn"),
-    },
-    {
       title: "Kort Intro/Oppsummering",
       description: "Brukes i kort og innganger",
       name: "oppsummering",

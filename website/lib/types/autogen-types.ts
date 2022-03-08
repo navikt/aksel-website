@@ -1133,13 +1133,6 @@ export interface AkselTema extends SanityDocument {
   title?: string;
 
   /**
-   * Tag — `string`
-   *
-   *
-   */
-  tag?: string;
-
-  /**
    * Kort Intro/Oppsummering — `string`
    *
    * Brukes i kort og innganger
