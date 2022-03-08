@@ -1,18 +1,26 @@
 import fs from "fs";
-import { getAkselArtikler, getDsPaths } from "..";
+import { getAkselArtikler, getAkselTema, getDsPaths } from "..";
 
 const generateUrls = async () => {
-  const urls = [
-    [""],
-    ["designsystem"],
-    ...(await getDsPaths()),
-    ...(await getAkselArtikler().then((x) => x.map((y) => y.split("/")))),
+  let pages = await getDsPaths().then((paths) =>
+    paths.map((slugs) => slugs.join("/"))
+  );
+
+  const artikler = await getAkselArtikler();
+  const temaer = await getAkselTema();
+
+  pages = [
+    "",
+    "designsystem",
+    "tema",
+    ...pages,
+    ...artikler,
+    ...temaer.map((x) => `tema/${x}`),
   ];
-  const parsedUrls = urls.map((u) => `/${u.join("/")}`);
 
   fs.writeFile(
     "./cypress/test-urls.json",
-    JSON.stringify(parsedUrls),
+    JSON.stringify(pages.map((x) => `/${x}`)),
     (err) => {
       if (err) {
         console.error(err);
