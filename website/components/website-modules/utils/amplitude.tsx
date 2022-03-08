@@ -29,7 +29,6 @@ export const logNav = (kilde: string, fra: string, til: string) => {
 };
 
 export function logAmplitudeEvent(eventName: string, data?: any): Promise<any> {
-  console.log(eventName);
   return new Promise(function (resolve: any) {
     const eventData = data ? { ...data } : {};
     if (amplitude && !(isDevelopment() || isTest())) {
