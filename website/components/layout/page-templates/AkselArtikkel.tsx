@@ -26,7 +26,7 @@ const getGradient = (s: string) => {
   const h = hash % 360;
   const h2 = h + (5 % 360);
 
-  return `linear-gradient(-45deg, hsl(${h}, 80%, 80%) 0%, hsl(${h2}, 70%, 70%) 100%)`;
+  return `linear-gradient(-45deg, hsl(${h2}, 70%, 70%) 0%, hsl(${h}, 80%, 80%) 100%)`;
 };
 
 const AkselArtikkelTemplate = ({
@@ -79,7 +79,10 @@ const AkselArtikkelTemplate = ({
               <Image
                 src={imageProps.src}
                 loader={imageProps.loader}
-                alt={data?.banner?.banner_img?.alt}
+                alt={
+                  data?.banner?.banner_img?.alt ??
+                  "Presentasjonsbilde for artikkel"
+                }
                 quality="75"
                 layout="fill"
                 objectFit="cover"
