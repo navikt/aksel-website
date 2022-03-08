@@ -4,7 +4,7 @@ import cl from "classnames";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
-import { PreviewBanner, Search, TemaCard } from "../components";
+import { logNav, PreviewBanner, Search, TemaCard } from "../components";
 import { PointingFingerIllustrasjon } from "../components/assets/PointingFinger";
 import Footer from "../components/layout/footer/Footer";
 import AkselHeader from "../components/layout/header/AkselHeader";
@@ -12,6 +12,13 @@ import { AkselTema, akselTema } from "../lib";
 import { getClient } from "../lib/sanity/sanity.server";
 
 const Page = ({ preview, temaer }: PageProps): JSX.Element => {
+  const logPortalCard = (e) =>
+    logNav(
+      "portal-kort",
+      window.location.pathname,
+      e.currentTarget.getAttribute("href")
+    );
+
   return (
     <>
       <Head>
@@ -46,6 +53,7 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
             <Label
               as="a"
               className="flex w-full items-center gap-3 rounded bg-white px-4 py-3 shadow-small outline-2 hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
+              onClick={(e) => logPortalCard(e)}
             >
               <System className="shrink-0 text-[1.5rem]" aria-hidden />
               Designsystemet
@@ -55,6 +63,7 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
             <Label
               as="a"
               className="flex w-full items-center gap-3 rounded bg-white px-4 py-3 shadow-small hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
+              onClick={(e) => logPortalCard(e)}
             >
               <Office1 className="shrink-0 text-[1.5rem]" aria-hidden />
               Identitet
@@ -67,6 +76,7 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
               className={cl(
                 "relative flex w-full items-center gap-3 rounded bg-white py-3 pr-10 pl-4 shadow-small hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
               )}
+              onClick={(e) => logPortalCard(e)}
             >
               <Star className="shrink-0 text-[1.5rem]" aria-hidden />
               Security playbook
