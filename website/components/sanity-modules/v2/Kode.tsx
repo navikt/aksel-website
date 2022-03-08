@@ -10,13 +10,13 @@ const Kode = ({ node }: { node: KodeT }): JSX.Element => {
 
   if (node.variant) {
     return (
-      <div className="mb-8">
+      <div>
         <CodeExample node={node.ref as unknown as DsCodeExample} />
       </div>
     );
   } else {
     return (
-      <div className="mb-8">
+      <div>
         <Snippet node={node} />
       </div>
     );

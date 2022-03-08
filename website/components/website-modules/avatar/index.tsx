@@ -13,11 +13,11 @@ const nameToInitials = (fullName) => {
 const getBgColor = (s: string) => {
   let hash = 0;
   for (let i = 0; i < s.length; i++) {
-    hash = s.charCodeAt(i) + ((hash << 5) - hash);
+    hash = s.charCodeAt(i) + ((hash << 10) - hash);
   }
 
   const h = hash % 360;
-  return "hsl(" + h + ", 40%, 85%)";
+  return "hsl(" + h + ", 50%, 87%)";
 };
 
 const Avatar = ({ name, small }: { name: string; small?: boolean }) => {

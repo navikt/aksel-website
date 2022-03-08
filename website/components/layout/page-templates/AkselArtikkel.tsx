@@ -24,7 +24,9 @@ const getGradient = (s: string) => {
   }
 
   const h = hash % 360;
-  return `linear-gradient(-45deg, hsl(${h}, 30%, 80%) 0%, hsl(${h}, 30%, 90%) 100%)`;
+  const h2 = h + (5 % 360);
+
+  return `linear-gradient(-45deg, hsl(${h}, 80%, 80%) 0%, hsl(${h2}, 70%, 70%) 100%)`;
 };
 
 const AkselArtikkelTemplate = ({

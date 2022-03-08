@@ -26,6 +26,11 @@ pre[class*="language-"] {
   hyphens: none;
 }
 
+.aksel-artikkel code[class*="language-"],
+.aksel-artikkel pre[class*="language-"] {
+  max-width: 100%;
+}
+
 /* Code blocks */
 pre[class*="language-"] {
   overflow: auto;
