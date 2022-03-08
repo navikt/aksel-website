@@ -3,23 +3,27 @@ import cl from "classnames";
 import { throttle } from "lodash";
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { useIsomorphicLayoutEffect } from "react-use";
 
 function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
   const [toc, setToc] = useState<{ heading: string; id: string }[]>([]);
 
   const [activeId, setActiveId] = useState(null);
 
-  useIsomorphicLayoutEffect(() => {
-    const main = document.getElementsByTagName("main")?.[0];
-    const tags = main?.getElementsByTagName("h2");
-    if (!tags) return;
-    const toc = [];
-    for (const item of tags) {
-      item.id &&
-        toc.push({ heading: item.textContent, id: decodeURI(item.id) });
-    }
-    setToc([...toc]);
+  useEffect(() => {
+    const time = setTimeout(() => {
+      const main = document.getElementsByTagName("main")?.[0];
+      const tags = main?.getElementsByTagName("h2");
+      if (!tags) return;
+      const toc = [];
+      for (const item of tags) {
+        console.log(item.id);
+        item.id &&
+          toc.push({ heading: item.textContent, id: decodeURI(item.id) });
+      }
+      setToc([...toc]);
+    }, 150);
+
+    return () => clearTimeout(time);
   }, [changedState]);
 
   useEffect(() => {
@@ -72,28 +76,6 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
       <Heading size="small" as="p" id="toc-heading" className="mb-4">
         Innhold på siden
       </Heading>
-      {/*   position: sticky;
-  right: 0;
-  top: 5rem;
-  margin-top: 1rem;
-  z-index: 1;
-  align-items: start;
-  display: flex;
-  flex-direction: column;
-  padding-left: 1rem;
-  order: 1;
-
-  width: 100%;
-
-  &:before {
-    content: "";
-    background-color: var(--navds-semantic-color-border-muted);
-    width: 1px;
-    height: calc(100% - 1px);
-    margin-top: 0.5rem;
-    position: absolute;
-    left: -1px;
-  } */}
       <div className="flex flex-col">
         <nav aria-labelledby="toc-heading">
           <ul>

@@ -1,10 +1,9 @@
-import { BodyShort, Heading, Popover } from "@navikt/ds-react";
-import copy from "copy-to-clipboard";
-import React, { useEffect, useRef, useState } from "react";
-import { AmplitudeEvents, slugger, useAmplitude } from "../..";
 import { Link as LinkIcon } from "@navikt/ds-icons";
-import { useRouter } from "next/router";
+import { BodyShort, Heading, Popover } from "@navikt/ds-react";
 import cl from "classnames";
+import copy from "copy-to-clipboard";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { AmplitudeEvents, slugger, useAmplitude } from "../..";
 
 const LevelTwoHeading = ({
   children,
@@ -16,8 +15,7 @@ const LevelTwoHeading = ({
   const anchorRef = useRef(null);
   const [openPopover, setOpenPopover] = useState(false);
   const { logAmplitudeEvent } = useAmplitude();
-  const { asPath } = useRouter();
-
+  const [slug, setSlug] = useState<null | string>(null);
   const timeoutRef = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
@@ -29,7 +27,7 @@ const LevelTwoHeading = ({
 
   const logAnchor = (anchor) => {
     logAmplitudeEvent(AmplitudeEvents.ankerklikk, {
-      side: asPath,
+      side: decodeURI(window.location.href),
       anker: anchor,
     });
   };
@@ -38,15 +36,18 @@ const LevelTwoHeading = ({
     return null;
   }
 
-  const cleanedChildren = children
-    .filter((x) => typeof x === "string")
-    .filter((x) => !!x);
+  const cleanedChildren = useMemo(
+    () => children.filter((x) => typeof x === "string").filter((x) => !!x),
+    [children]
+  );
 
-  const slug = slugger.slug(cleanedChildren.toString());
+  useEffect(() => {
+    setSlug(slugger.slug(cleanedChildren.toString()));
+  }, [cleanedChildren]);
 
   const copyAnchor = (id: string): void => {
     setOpenPopover(true);
-    const anchor = window.location.href.split("#")[0];
+    const anchor = decodeURI(window.location.href).split("#")[0];
     copy(`${anchor}#${id}`, {
       format: "text/plain",
     });
@@ -60,32 +61,34 @@ const LevelTwoHeading = ({
     <>
       {hidden && <div id={slug} className="scroll-m-20" />}
       <Heading
+        ref={anchorRef}
         tabIndex={-1}
         id={slug}
         level="2"
         size="large"
         className={cl(
-          "index-lvl2 mb-4 max-w-text scroll-mt-20 items-center justify-start focus:outline-none",
+          "index-lvl2 group mb-4 max-w-text scroll-mt-20 hover:underline focus:outline-none",
           {
             hidden: hidden,
             "inline-flex": !hidden,
           }
         )}
       >
-        {cleanedChildren}
-        <button
-          aria-label={`Kopier permalenke til ${cleanedChildren.toString()}`}
+        <a
+          className="group flex items-center gap-2 focus:underline focus:outline-none"
+          href={`#${slug}`}
+          aria-label={`Permalenke til ${cleanedChildren.toString()}`}
           onClick={() => {
             copyAnchor(slug);
             logAnchor(slug);
           }}
-          ref={anchorRef}
-          className="ml-0 mt-[2px] flex aspect-square self-start rounded-full p-2 text-xlarge opacity-50 transition-opacity hover:bg-gray-100 hover:opacity-100 focus:opacity-100 focus:shadow-focus focus:outline-none sm:ml-2"
         >
-          <span>
-            <LinkIcon aria-label="Ankerlenke" />
-          </span>
-        </button>
+          {cleanedChildren}{" "}
+          <LinkIcon
+            aria-hidden
+            className="invisible flex-shrink-0 text-[1.25rem] text-text-muted group-hover:visible group-focus:visible"
+          />
+        </a>
         <Popover
           anchorEl={anchorRef.current}
           open={openPopover}
