@@ -25,7 +25,7 @@ function App({
     const t = (e) => logPageView(e);
     initAmplitude();
     router.events.on("routeChangeComplete", t);
-    window.onload = () => logPageView(window.location.pathname);
+    window.onload = () => logPageView(window.location.pathname, true);
     return () => {
       router.events.off("routeChangeComplete", t);
     };

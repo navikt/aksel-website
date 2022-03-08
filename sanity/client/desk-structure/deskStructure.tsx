@@ -7,6 +7,7 @@ import { ComponentPageWebPreview } from "../../web-previews/ComponentWebPreview"
 import { KomponentPreview } from "../../web-previews/KomponentPreview";
 import { PageWebPreview } from "../../web-previews/PageWebPreview";
 import { adminPanel } from "./admin";
+import { akselInnhold } from "./aksel";
 import { dsPanel } from "./ds";
 import { profilePanel } from "./profile";
 
@@ -38,23 +39,6 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
 
 const items = [
   S.listItem()
-    .title("Innhold Aksel")
-    .child(
-      S.list()
-        .title("Innhold")
-        .items([
-          S.listItem()
-            .title("Artikler")
-            .child(createSuperPane("aksel_artikkel")),
-          S.listItem()
-            .title("Tema")
-            .icon(() => <Facilitet />)
-            .child(S.documentTypeList("aksel_tema")),
-        ])
-    ),
-
-  S.divider(),
-  S.listItem()
     .title("Brukere/Redaktører")
     .icon(() => <People />)
     .child(createSuperPane("editor")),
@@ -79,6 +63,7 @@ export default () => {
 
     const profile = await profilePanel(id);
     const ds = await dsPanel(roles);
+    const aksel = await akselInnhold();
     const intro = [welcome];
 
     profile && intro.push(profile);
@@ -88,6 +73,7 @@ export default () => {
     if (ds) {
       struct = [ds, ...struct];
     }
+    struct = [aksel, ...struct];
     if (admin) {
       struct = [...struct, admin];
     }

@@ -16,8 +16,6 @@ import React from "react";
 import { createSuperPane } from "sanity-super-pane";
 
 export const dsPanel = async (roles) => {
-  console.log(roles);
-
   const role = roles.some(({ name }) => "aksel-editor" === name);
 
   if (role) {
