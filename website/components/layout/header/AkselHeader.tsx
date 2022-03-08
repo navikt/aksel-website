@@ -4,7 +4,13 @@ import React from "react";
 import { logNav, Search } from "../..";
 import cl from "classnames";
 
-const AkselHeader = ({ className }: { className?: string }): JSX.Element => (
+const AkselHeader = ({
+  className,
+  frontPage,
+}: {
+  className?: string;
+  frontPage?: boolean;
+}): JSX.Element => (
   <header
     className={cl(
       "flex justify-center border-b border-b-border-muted",
@@ -12,9 +18,11 @@ const AkselHeader = ({ className }: { className?: string }): JSX.Element => (
     )}
   >
     <div className="flex h-header w-full max-w-aksel-max-w justify-between">
-      <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
-        Hopp til innhold
-      </a>
+      {!frontPage && (
+        <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
+          Hopp til innhold
+        </a>
+      )}
       <NextLink href="/" passHref>
         <Heading
           as="a"
@@ -32,7 +40,7 @@ const AkselHeader = ({ className }: { className?: string }): JSX.Element => (
           Aksel
         </Heading>
       </NextLink>
-      <Search inverted />
+      {!frontPage && <Search inverted />}
     </div>
   </header>
 );

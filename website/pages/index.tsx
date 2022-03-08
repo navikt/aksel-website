@@ -8,16 +8,22 @@ import { logNav, PreviewBanner, Search, TemaCard } from "../components";
 import { PointingFingerIllustrasjon } from "../components/assets/PointingFinger";
 import Footer from "../components/layout/footer/Footer";
 import AkselHeader from "../components/layout/header/AkselHeader";
-import { AkselTema, akselTema } from "../lib";
+import { akselQuotes, AkselTema, akselTema } from "../lib";
 import { getClient } from "../lib/sanity/sanity.server";
 
-const Page = ({ preview, temaer }: PageProps): JSX.Element => {
+const Page = ({ preview, temaer, quotes }: PageProps): JSX.Element => {
   const logPortalCard = (e) =>
     logNav(
       "portal-kort",
       window.location.pathname,
       e.currentTarget.getAttribute("href")
     );
+
+  const getQuote = () =>
+    quotes.quotes &&
+    quotes.quotes[new Date().getMinutes() % quotes.quotes.length];
+
+  const quote = getQuote();
 
   return (
     <>
@@ -35,12 +41,15 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
           Produktutvikling i praksis
         </Heading>
 
-        <BodyShort className="mb-2">
-          “The fast parts learn, the slow parts remember”
-        </BodyShort>
-        <BodyShort size="small" className="mb-8 text-text-muted">
-          Stewart Brand
-        </BodyShort>
+        {quote && (
+          <>
+            <BodyShort className="mb-2">“{quote.title}”</BodyShort>
+            <BodyShort size="small" className="mb-8 text-text-muted">
+              {quote.kilde}
+            </BodyShort>
+          </>
+        )}
+
         <Search full />
       </div>
 
@@ -92,7 +101,7 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
       </div>
       {temaer && (
         <div className="aksel-layout-x flex w-full max-w-7xl flex-col gap-8 py-24">
-          <Heading level="2" size="xlarge">
+          <Heading level="2" size="large">
             Siste temaer
           </Heading>
 
@@ -129,7 +138,7 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
 Page.getLayout = (page) => {
   return (
     <div className="bg-gray-50">
-      <AkselHeader />
+      <AkselHeader frontPage />
       <main
         tabIndex={-1}
         id="hovedinnhold"
@@ -144,6 +153,7 @@ Page.getLayout = (page) => {
 
 interface PageProps {
   temaer: AkselTema[];
+  quotes: { quotes: { kilde: string; title: string }[] };
   slug: string;
   preview: boolean;
 }
@@ -159,10 +169,12 @@ export const getStaticProps = async ({
   preview?: boolean;
 }): Promise<StaticProps> => {
   const temaer = await getClient(preview).fetch(akselTema);
+  const quotes = await getClient(false).fetch(akselQuotes);
 
   return {
     props: {
       temaer,
+      quotes,
       slug: "/",
       preview,
     },
