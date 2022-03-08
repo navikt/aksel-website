@@ -13,9 +13,10 @@ export const initAmplitude = () => {
   }
 };
 
-export const logPageView = (s: string) => {
+export const logPageView = (s: string, firstLoad?: boolean) => {
   logAmplitudeEvent(AmplitudeEvents.sidevisning, {
     side: s,
+    firstLoad: !!firstLoad,
   });
 };
 

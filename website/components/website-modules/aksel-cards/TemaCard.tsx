@@ -1,6 +1,6 @@
 import { BodyShort, Heading } from "@navikt/ds-react";
 import NextLink from "next/link";
-import { getTemaSlug, LongArrowRight } from "../..";
+import { getTemaSlug, logNav, LongArrowRight } from "../..";
 import { AkselTema } from "../../../lib";
 
 export const TemaCard = ({ title, oppsummering }: AkselTema) => {
@@ -11,6 +11,13 @@ export const TemaCard = ({ title, oppsummering }: AkselTema) => {
           as="a"
           size="medium"
           className="index-lvl2 after:absolute after:inset-0 focus:underline focus:outline-none active:text-link group-hover:underline"
+          onClick={(e) =>
+            logNav(
+              "temakort",
+              window.location.pathname,
+              e.currentTarget.getAttribute("href")
+            )
+          }
         >
           {title}
         </Heading>

@@ -1,7 +1,7 @@
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import moment from "moment";
 import NextLink from "next/link";
-import { getTemaSlug } from "../..";
+import { getTemaSlug, logNav } from "../..";
 import { AkselArtikkel } from "../../../lib";
 import Avatar from "../avatar";
 import cl from "classnames";
@@ -37,6 +37,13 @@ export const ArtikkelCard = ({
             as="a"
             size="medium"
             className="index-lvl2 after:absolute after:inset-0 focus:underline focus:outline-none active:text-link group-hover:underline"
+            onClick={(e) =>
+              logNav(
+                "artikkel-kort",
+                window.location.pathname,
+                e.currentTarget.getAttribute("href")
+              )
+            }
           >
             {heading}
           </Heading>
