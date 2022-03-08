@@ -1,8 +1,7 @@
 import amplitude from "amplitude-js";
-import React, { createContext, useContext, useEffect } from "react";
-import { isDevelopment, isTest, PagePropsContext } from ".";
+import { isDevelopment, isTest } from ".";
 
-const initAmplitude = () => {
+export const initAmplitude = () => {
   if (amplitude) {
     amplitude.getInstance().init("default", "", {
       apiEndpoint: "amplitude.nav.no/collect-auto",
@@ -14,46 +13,27 @@ const initAmplitude = () => {
   }
 };
 
-function logAmplitudeEvent(eventName: string, data?: any): Promise<any> {
+export const logPageView = (s: string) => {
+  logAmplitudeEvent(AmplitudeEvents.sidevisning, {
+    side: s,
+  });
+};
+
+export const logNav = (kilde: string, fra: string, til: string) => {
+  logAmplitudeEvent(AmplitudeEvents.navigasjon, {
+    kilde,
+    fra,
+    til,
+  });
+};
+
+export function logAmplitudeEvent(eventName: string, data?: any): Promise<any> {
   return new Promise(function (resolve: any) {
     const eventData = data ? { ...data } : {};
-    if (amplitude) {
+    if (amplitude && !(isDevelopment() || isTest())) {
       amplitude.getInstance().logEvent(eventName, eventData, resolve);
     }
   });
-}
-
-const AmplitudeContext = createContext(null);
-
-export function AmplitudeProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}): JSX.Element {
-  useEffect(() => {
-    initAmplitude();
-  }, []);
-
-  return (
-    <AmplitudeContext.Provider value={{ logAmplitudeEvent }}>
-      {children}
-    </AmplitudeContext.Provider>
-  );
-}
-
-export function useAmplitude(): any {
-  const context = useContext(AmplitudeContext);
-  const { pageProps } = useContext(PagePropsContext);
-
-  if (pageProps?.preview || isDevelopment() || isTest()) {
-    return { logAmplitudeEvent: () => undefined };
-  }
-
-  if (context === undefined) {
-    throw new Error("useAmplitude må brukes under en AmplitudeProvider");
-  }
-
-  return context;
 }
 
 export enum AmplitudeEvents {

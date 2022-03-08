@@ -1,25 +1,14 @@
 import { Header } from "@navikt/ds-react-internal";
 import cl from "classnames";
 import NextLink from "next/link";
-import { useRouter } from "next/router";
 import * as React from "react";
-import { AmplitudeEvents, Search, useAmplitude, useDsNavigation } from "../..";
+import { logNav, Search, useDsNavigation } from "../..";
 import { DsNavigationHeadingT } from "../../../lib";
 import MobileNavigation from "./menu/MobileNav";
 import PortalNavigation from "./menu/PortalNav";
 
 const DesignsystemHeader = (): JSX.Element => {
   const [nav, activeHeading] = useDsNavigation();
-  const { logAmplitudeEvent } = useAmplitude();
-  const { asPath } = useRouter();
-
-  const logNavigation = (e) => {
-    logAmplitudeEvent(AmplitudeEvents.navigasjon, {
-      kilde: "header",
-      fra: asPath,
-      til: e.currentTarget.getAttribute("href"),
-    });
-  };
 
   const nonMobile = (
     <>
@@ -35,7 +24,13 @@ const DesignsystemHeader = (): JSX.Element => {
             key={heading.title + heading.link_ref}
           >
             <a
-              onClick={(e) => logNavigation(e)}
+              onClick={(e) =>
+                logNav(
+                  "header",
+                  window.location.pathname,
+                  e.currentTarget.getAttribute("href")
+                )
+              }
               className={cl(
                 "index-heading flex min-w-header cursor-pointer items-center justify-center whitespace-nowrap py-0 px-2 pt-1 focus:outline-none 2xl:px-4",
                 {

@@ -3,14 +3,12 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import {
-  AmplitudeEvents,
   Feedback,
   LastUpdateTag,
   RelatedNavigation,
   slugger,
   TableOfContents,
   Tabs,
-  useAmplitude,
 } from "../..";
 import { DsArtikkel } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
@@ -23,17 +21,10 @@ const ArtikkelTabbedTemplate = ({
   title: string;
 }): JSX.Element => {
   const { query, asPath } = useRouter();
-  const { logAmplitudeEvent } = useAmplitude();
 
   useEffect(() => {
     slugger.reset();
   });
-
-  useEffect(() => {
-    logAmplitudeEvent(AmplitudeEvents.sidevisning, {
-      side: asPath,
-    });
-  }, [asPath]);
 
   if (!data.innhold_tabs || !data.heading) {
     return null;

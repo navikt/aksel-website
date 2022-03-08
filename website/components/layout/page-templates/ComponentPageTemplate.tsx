@@ -5,14 +5,12 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import {
-  AmplitudeEvents,
   Feedback,
   LastUpdateTag,
   RelatedNavigation,
   slugger,
   TableOfContents,
   Tabs,
-  useAmplitude,
   useDsNavigation,
 } from "../..";
 import { DsComponentPage } from "../../../lib";
@@ -30,8 +28,6 @@ const ComponentPageTemplate = ({
   const [_, activeHeading] = useDsNavigation();
   const [activeTab, setActiveTab] = useState(0);
 
-  const { logAmplitudeEvent } = useAmplitude();
-
   const tabs = {
     bruk: "usage",
     design: "design",
@@ -42,12 +38,6 @@ const ComponentPageTemplate = ({
   useEffect(() => {
     slugger.reset();
   });
-
-  useEffect(() => {
-    logAmplitudeEvent(AmplitudeEvents.sidevisning, {
-      side: asPath,
-    });
-  }, [asPath]);
 
   /* Defaults back to a tab with content if first does not */
   useEffect(() => {
@@ -63,12 +53,6 @@ const ComponentPageTemplate = ({
 
   const value = Object.values(tabs)?.[activeTab];
   const tabKey = Object.keys(tabs)?.[activeTab];
-
-  useEffect(() => {
-    logAmplitudeEvent(AmplitudeEvents.sidevisning, {
-      side: asPath,
-    });
-  }, [asPath]);
 
   const npmPackage = data.linked_package as unknown as {
     title: string;

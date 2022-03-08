@@ -2,9 +2,8 @@ import { BodyShort, Detail } from "@navikt/ds-react";
 import cl from "classnames";
 import NextImage from "next/image";
 import NextLink from "next/link";
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { AmplitudeEvents, useAmplitude, useDsNavigation } from "../..";
+import { logNav, useDsNavigation } from "../..";
 import { DsFrontPageCardT, useSanityImage } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 
@@ -22,19 +21,9 @@ const Card = ({
   className,
   ...rest
 }: CardProps) => {
-  const { logAmplitudeEvent } = useAmplitude();
   const [nav] = useDsNavigation();
   const [category, setCategory] = useState(categoryRef ?? null);
   const imageProps = useSanityImage(category?.picture);
-  const { asPath } = useRouter();
-
-  const logNavigation = (e) => {
-    logAmplitudeEvent(AmplitudeEvents.navigasjon, {
-      kilde: "card",
-      fra: asPath,
-      til: e.currentTarget.getAttribute("href"),
-    });
-  };
 
   useEffect(() => {
     setCategory(categoryRef);
@@ -83,7 +72,13 @@ const Card = ({
       )}
       <NextLink href={href ?? `/${node?.link_ref?.slug}`} passHref>
         <a
-          onClick={(e) => logNavigation(e)}
+          onClick={(e) =>
+            logNav(
+              "card",
+              window.location.pathname,
+              e.currentTarget.getAttribute("href")
+            )
+          }
           className="navds-heading--medium navds-heading navds-typo--spacing underline after:absolute after:inset-0 focus:outline-none group-hover:no-underline"
           {...rest}
         >

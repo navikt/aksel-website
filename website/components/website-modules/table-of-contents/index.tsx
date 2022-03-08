@@ -16,7 +16,6 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
       if (!tags) return;
       const toc = [];
       for (const item of tags) {
-        console.log(item.id);
         item.id &&
           toc.push({ heading: item.textContent, id: decodeURI(item.id) });
       }

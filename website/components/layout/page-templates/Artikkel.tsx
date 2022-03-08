@@ -1,15 +1,12 @@
 import { Heading, useClientLayoutEffect } from "@navikt/ds-react";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React from "react";
 import {
-  AmplitudeEvents,
   Feedback,
   LastUpdateTag,
   RelatedNavigation,
   slugger,
   TableOfContents,
-  useAmplitude,
 } from "../..";
 import { DsArtikkel } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
@@ -21,18 +18,9 @@ const ArtikkelTemplate = ({
   data: DsArtikkel;
   title: string;
 }): JSX.Element => {
-  const { asPath } = useRouter();
-  const { logAmplitudeEvent } = useAmplitude();
-
   useClientLayoutEffect(() => {
     slugger.reset();
   });
-
-  useEffect(() => {
-    logAmplitudeEvent(AmplitudeEvents.sidevisning, {
-      side: asPath,
-    });
-  }, [asPath]);
 
   if (!data.innhold || !data.heading) {
     return null;

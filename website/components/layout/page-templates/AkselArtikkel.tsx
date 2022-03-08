@@ -8,22 +8,14 @@ import {
 import moment from "moment";
 import Head from "next/head";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
-import {
-  AmplitudeEvents,
-  ArtikkelBreadcrumbs,
-  Avatar,
-  Feedback,
-  slugger,
-  useAmplitude,
-} from "../..";
+import { ArtikkelBreadcrumbs, Avatar, Feedback, slugger } from "../..";
 import { AkselArtikkel, useSanityBannerImage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
+import { getTemaSlug } from "../../website-modules/utils";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
-import NextLink from "next/link";
-import { getTemaSlug } from "../../website-modules/utils";
 
 const AkselArtikkelTemplate = ({
   data,
@@ -32,18 +24,10 @@ const AkselArtikkelTemplate = ({
   data: AkselArtikkel;
   title: string;
 }): JSX.Element => {
-  const { asPath } = useRouter();
-  const { logAmplitudeEvent } = useAmplitude();
   const [ttr, setTtr] = useState<number | null>(null);
   useClientLayoutEffect(() => {
     slugger.reset();
   });
-
-  useEffect(() => {
-    logAmplitudeEvent(AmplitudeEvents.sidevisning, {
-      side: asPath,
-    });
-  }, [asPath]);
 
   const imageProps: any = useSanityBannerImage(data?.banner?.banner_img);
 

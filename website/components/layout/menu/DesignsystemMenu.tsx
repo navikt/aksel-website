@@ -1,29 +1,24 @@
 import { BodyShort, Detail } from "@navikt/ds-react";
 import cl from "classnames";
 import NextLink from "next/link";
-import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 import { useIsomorphicLayoutEffect } from "react-use";
-import { AmplitudeEvents, PagePropsContext, useAmplitude } from "../..";
+import { logNav, PagePropsContext } from "../..";
 import { DsNavigationHeadingMenuT, DsNavigationHeadingT } from "../../../lib";
 
 const Menu = ({
   heading,
   onClick,
   inCategory,
-  mobileNavigation,
   className,
 }: {
   heading?: DsNavigationHeadingT;
   onClick?: () => void;
   inCategory?: boolean;
-  mobileNavigation?: boolean;
   className?: string;
 }): JSX.Element => {
   const { pageProps } = useContext<any>(PagePropsContext);
-  const { logAmplitudeEvent } = useAmplitude();
 
-  const { asPath } = useRouter();
   const [sidebarMenu, setSidebarMenu] = useState<DsNavigationHeadingMenuT[]>(
     []
   );
@@ -32,15 +27,6 @@ const Menu = ({
     if (!heading || !heading?.menu) return;
     setSidebarMenu([...heading.menu]);
   }, [heading]);
-
-  const logNavigation = (e) => {
-    logAmplitudeEvent(AmplitudeEvents.navigasjon, {
-      kilde: "meny",
-      fra: asPath,
-      til: e.currentTarget.getAttribute("href"),
-      mobilnavigasjon: mobileNavigation,
-    });
-  };
 
   return (
     <nav
@@ -77,7 +63,11 @@ const Menu = ({
                 <a
                   onClick={(e) => {
                     onClick && onClick();
-                    logNavigation(e);
+                    logNav(
+                      "meny",
+                      window.location.pathname,
+                      e.currentTarget.getAttribute("href")
+                    );
                   }}
                   className={cl(
                     "flex py-3 pr-4 no-underline hover:text-text focus:outline-none",

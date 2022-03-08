@@ -132,7 +132,6 @@ const MobileNavigation = () => {
             inCategory={level === 0}
             heading={heading}
             onClick={() => setOpen(false)}
-            mobileNavigation
             className="mt-0 max-h-[512px] animate-fadeIn overflow-y-auto"
           />
         </div>

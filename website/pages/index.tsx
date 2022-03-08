@@ -3,14 +3,8 @@ import { BodyLong, BodyShort, Heading, Label } from "@navikt/ds-react";
 import cl from "classnames";
 import Head from "next/head";
 import NextLink from "next/link";
-import React, { useEffect } from "react";
-import {
-  AmplitudeEvents,
-  PreviewBanner,
-  Search,
-  TemaCard,
-  useAmplitude,
-} from "../components";
+import React from "react";
+import { PreviewBanner, Search, TemaCard } from "../components";
 import { PointingFingerIllustrasjon } from "../components/assets/PointingFinger";
 import Footer from "../components/layout/footer/Footer";
 import AkselHeader from "../components/layout/header/AkselHeader";
@@ -18,14 +12,6 @@ import { AkselTema, akselTema } from "../lib";
 import { getClient } from "../lib/sanity/sanity.server";
 
 const Page = ({ preview, temaer }: PageProps): JSX.Element => {
-  const { logAmplitudeEvent } = useAmplitude();
-
-  useEffect(() => {
-    logAmplitudeEvent(AmplitudeEvents.sidevisning, {
-      side: "/",
-    });
-  }, []);
-
   return (
     <>
       <Head>
@@ -85,7 +71,10 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
               <Star className="shrink-0 text-[1.5rem]" aria-hidden />
               Security playbook
               <span className="absolute right-0 flex h-full items-center rounded-r bg-gray-500 px-1 text-text-inverted">
-                <Locked title="Side ligger bak innlogging" />
+                <span className="navds-sr-only">
+                  Siden ligger bak innlogging
+                </span>
+                <Locked aria-hidden />
               </span>
             </Label>
           </NextLink>

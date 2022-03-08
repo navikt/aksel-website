@@ -1,13 +1,11 @@
 import { BodyLong, Heading } from "@navikt/ds-react";
 import Head from "next/head";
-import React, { useEffect } from "react";
+import React from "react";
 import {
-  AmplitudeEvents,
   Card,
   DsFrontpageFooterIllustration,
   DsFrontpageIllustration,
   PreviewBanner,
-  useAmplitude,
 } from "../../components";
 import Footer from "../../components/layout/footer/Footer";
 import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
@@ -25,14 +23,6 @@ const Page = (props: {
   navigation: DsNavigation;
   preview: boolean;
 }): JSX.Element => {
-  const { logAmplitudeEvent } = useAmplitude();
-
-  useEffect(() => {
-    logAmplitudeEvent(AmplitudeEvents.sidevisning, {
-      side: "/designsystem",
-    });
-  }, []);
-
   return (
     <>
       <Head>

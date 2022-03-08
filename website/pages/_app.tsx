@@ -1,7 +1,8 @@
 import Head from "next/head";
-import React from "react";
+import React, { useEffect } from "react";
 import {
-  AmplitudeProvider,
+  initAmplitude,
+  logPageView,
   PagePropsContext,
   useScrollToHashOnPageLoad,
 } from "../components";
@@ -20,6 +21,16 @@ function App({
 
   const getLayout = Component.getLayout ?? ((page) => page);
 
+  useEffect(() => {
+    const t = (e) => logPageView(e);
+    initAmplitude();
+    router.events.on("routeChangeComplete", t);
+    window.onload = () => logPageView(window.location.pathname);
+    return () => {
+      router.events.off("routeChangeComplete", t);
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -29,9 +40,7 @@ function App({
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
       </Head>
       <PagePropsContext.Provider value={{ pageProps }}>
-        <AmplitudeProvider>
-          {getLayout(<Component {...pageProps} />)}
-        </AmplitudeProvider>
+        {getLayout(<Component {...pageProps} />)}
       </PagePropsContext.Provider>
     </>
   );

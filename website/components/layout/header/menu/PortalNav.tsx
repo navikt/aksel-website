@@ -4,20 +4,20 @@ import cl from "classnames";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { AmplitudeEvents, NavLogoWhite, useAmplitude } from "../../..";
+import { logNav, NavLogoWhite } from "../../..";
 import Toggle from "./Toggle";
 
 const HeadingDropDown = ({ title }: { title: string }) => {
   const [open, setOpen] = useState(false);
-  const { logAmplitudeEvent } = useAmplitude();
+
   const { asPath } = useRouter();
 
   const logNavigation = (e) => {
-    logAmplitudeEvent(AmplitudeEvents.navigasjon, {
-      kilde: "portalnavigasjon",
-      fra: asPath,
-      til: e.currentTarget.getAttribute("href"),
-    });
+    logNav(
+      "portalnavigasjon",
+      window.location.pathname,
+      e.currentTarget.getAttribute("href")
+    );
   };
 
   const Button = (
