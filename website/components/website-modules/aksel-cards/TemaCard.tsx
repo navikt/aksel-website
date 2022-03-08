@@ -5,7 +5,7 @@ import { AkselTema } from "../../../lib";
 
 export const TemaCard = ({ title, oppsummering }: AkselTema) => {
   return (
-    <div className="group relative min-h-36 min-w-[16rem] flex-1 cursor-pointer rounded-lg border-2 border-transparent bg-white px-6 py-4 shadow-small transition-all focus-within:shadow-focus hover:scale-105 hover:shadow-medium active:border-link sm:min-h-44">
+    <div className="group relative min-h-36 min-w-[16rem] flex-1 cursor-pointer rounded-lg border-2 border-transparent bg-white px-6 py-4 shadow-small transition-all focus-within:shadow-focus hover:scale-[1.02] hover:shadow-medium active:border-link sm:min-h-44">
       <NextLink href={`/tema/${getTemaSlug(title)}`} passHref>
         <Heading
           as="a"
