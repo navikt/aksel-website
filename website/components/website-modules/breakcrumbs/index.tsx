@@ -12,7 +12,10 @@ export const ArtikkelBreadcrumbs = () => {
   }
 
   return (
-    <span className="item-start absolute top-3 w-full px-4 sm:px-6">
+    <nav
+      aria-label="Til forrige tema"
+      className="item-start absolute top-3 w-full px-4 sm:px-6"
+    >
       <NextLink href={`/tema/${router.query.tema}`} passHref>
         <Link className="group flex w-fit items-center justify-start gap-1">
           <Back
@@ -25,18 +28,20 @@ export const ArtikkelBreadcrumbs = () => {
           )}
         </Link>
       </NextLink>
-    </span>
+    </nav>
   );
 };
 
 export const TemaBreadcrumbs = () => (
-  <NextLink href="/" passHref>
-    <Link className="group absolute top-3 flex flex-wrap items-center gap-1 pr-2">
-      <Back
-        aria-hidden
-        className="shrink-0 transition-transform group-hover:-translate-x-1"
-      />
-      Tilbake til forsiden
-    </Link>
-  </NextLink>
+  <nav aria-label="Til forside">
+    <NextLink href="/" passHref>
+      <Link className="group absolute top-3 flex flex-wrap items-center gap-1 pr-2">
+        <Back
+          aria-hidden
+          className="shrink-0 transition-transform group-hover:-translate-x-1"
+        />
+        Tilbake til forsiden
+      </Link>
+    </NextLink>
+  </nav>
 );

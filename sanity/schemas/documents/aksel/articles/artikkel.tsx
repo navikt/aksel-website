@@ -28,7 +28,7 @@ export default {
   fields: [
     {
       title: "Redaktører",
-      description: "Legg til de som har bidratt med denne siden!",
+      description: "Øverste redaktør vil vises med navn på artikkel",
       name: "contributors",
       type: "array",
       of: [{ type: "reference", to: [{ type: "editor" }] }],

@@ -52,11 +52,14 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
       </div>
 
       <div className="flex w-full justify-center bg-gray-200 py-8">
-        <div className="aksel-layout-x mx-auto flex flex-col items-center gap-4 whitespace-nowrap sm:flex-row">
+        <nav
+          aria-label="Portaler til NAV-sider"
+          className="aksel-layout-x mx-auto flex flex-col items-center gap-4 whitespace-nowrap sm:flex-row"
+        >
           <NextLink href="/designsystem" passHref>
             <Label
               as="a"
-              className="flex w-full items-center gap-3 rounded bg-white px-4 py-3 shadow-card outline-2 hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
+              className="flex w-full items-center gap-3 rounded bg-white px-4 py-3 shadow-small outline-2 hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
             >
               <System className="shrink-0 text-[1.5rem]" aria-hidden />
               Designsystemet
@@ -65,7 +68,7 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
           <NextLink href="https://identitet.nav.no" passHref>
             <Label
               as="a"
-              className="flex w-full items-center gap-3 rounded bg-white px-4 py-3 shadow-card hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
+              className="flex w-full items-center gap-3 rounded bg-white px-4 py-3 shadow-small hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
             >
               <Office1 className="shrink-0 text-[1.5rem]" aria-hidden />
               Identitet
@@ -76,7 +79,7 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
             <Label
               as="a"
               className={cl(
-                "relative flex w-full items-center gap-3 rounded bg-white py-3 pr-10 pl-4 shadow-card hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
+                "relative flex w-full items-center gap-3 rounded bg-white py-3 pr-10 pl-4 shadow-small hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
               )}
             >
               <Star className="shrink-0 text-[1.5rem]" aria-hidden />
@@ -86,7 +89,7 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
               </span>
             </Label>
           </NextLink>
-        </div>
+        </nav>
       </div>
       {temaer && (
         <div className="aksel-layout-x flex w-full max-w-7xl flex-col gap-8 py-24">
@@ -94,11 +97,11 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
             Siste temaer
           </Heading>
 
-          <div className="aksel-card-grid">
+          <nav aria-label="Temasider" className="aksel-card-grid">
             {temaer.map((tema) => (
               <TemaCard {...tema} key={tema._id} />
             ))}
-          </div>
+          </nav>
         </div>
       )}
       <div className="aksel-layout-x">
@@ -113,7 +116,11 @@ const Page = ({ preview, temaer }: PageProps): JSX.Element => {
               kontakt med oss på Slack.
             </BodyLong>
           </div>
-          <PointingFingerIllustrasjon className="mr-0 ml-5 flex-shrink-0 sm:ml-10 lg:mr-14" />
+          <PointingFingerIllustrasjon
+            aria-hidden
+            aria-label="Finger som peker mot deg"
+            className="mr-0 ml-5 flex-shrink-0 sm:ml-10 lg:mr-14"
+          />
         </div>
       </div>
     </>

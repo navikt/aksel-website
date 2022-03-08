@@ -77,7 +77,6 @@ const LevelTwoHeading = ({
         <a
           className="group flex items-center gap-2 focus:underline focus:outline-none"
           href={`#${slug}`}
-          aria-label={`Permalenke til ${cleanedChildren.toString()}`}
           onClick={() => {
             copyAnchor(slug);
             logAnchor(slug);

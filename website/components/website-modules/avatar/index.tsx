@@ -21,7 +21,7 @@ const Avatar = ({ name, small }: { name: string; small?: boolean }) => {
     >
       <Component
         as="span"
-        className="mt-[1px] flex h-full items-center justify-center"
+        className="mt-[1px] flex h-full items-center justify-center font-regular"
       >
         {nameToInitials(name)}
       </Component>

@@ -14,6 +14,10 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
       <Head>
         <title>Temaer - Aksel</title>
         <meta property="og:title" content="Temaer - Aksel" />
+        <meta
+          name="description"
+          content="Oversikt over alle tilgjengelige tema"
+        />
       </Head>
       <TemaBreadcrumbs />
       <Heading

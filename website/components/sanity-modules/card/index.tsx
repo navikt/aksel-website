@@ -77,6 +77,7 @@ const Card = ({
             layout="fixed"
             aria-hidden
             unoptimized
+            priority
           />
         </div>
       )}

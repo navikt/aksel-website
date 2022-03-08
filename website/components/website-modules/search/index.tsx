@@ -69,7 +69,8 @@ function Search({ inverted, full }: { inverted?: boolean; full?: boolean }) {
             }
           )}
         >
-          <SearchIcon className="ml-[3px] h-6 w-6" aria-label="åpne søk" />
+          <span className="navds-sr-only">Åpne søk</span>
+          <SearchIcon className="ml-[3px] h-6 w-6" aria-hidden />
         </button>
       )}
 

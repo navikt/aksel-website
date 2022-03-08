@@ -20,7 +20,11 @@ export const TemaCard = ({ title, oppsummering }: AkselTema) => {
           {oppsummering}
         </BodyShort>
       )}
-      <LongArrowRight className="absolute bottom-4 right-6 text-gray-400 transition-all [clip-path:_polygon(45%_0,_100%_0,_100%_100%,_45%_100%)] group-focus-within:[clip-path:_polygon(25%_0,_100%_0,_100%_100%,_25%_100%)] group-hover:[clip-path:_polygon(0%_0,_100%_0,_100%_100%,_0%_100%)] group-active:text-link sm:bottom-6" />
+      <LongArrowRight
+        aria-hidden
+        aria-label={`Gå til temasiden for ${{ title }}`}
+        className="absolute bottom-4 right-6 text-gray-400 transition-all [clip-path:_polygon(45%_0,_100%_0,_100%_100%,_45%_100%)] group-focus-within:[clip-path:_polygon(25%_0,_100%_0,_100%_100%,_25%_100%)] group-hover:[clip-path:_polygon(0%_0,_100%_0,_100%_100%,_0%_100%)] group-active:text-link sm:bottom-6"
+      />
     </div>
   );
 };

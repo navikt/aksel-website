@@ -56,7 +56,7 @@ export const ArtikkelCard = ({
           <>
             <Avatar name={author} small />
             <BodyShort size="small" as="span">
-              av <strong>{author}</strong>
+              av <span className="font-semibold">{author}</span>
               <Detail
                 as="span"
                 size="small"
