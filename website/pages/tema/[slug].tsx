@@ -31,7 +31,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
         {page.title}
       </Heading>
       <SanityBlockContent blocks={page.beskrivelse} noLastMargin />
-      <Heading level="2" size="xlarge" className="pt-20" spacing>
+      <Heading level="2" size="large" className="pt-20" spacing>
         Artikler
       </Heading>
       <div className="aksel-card-grid-col-2 ">
