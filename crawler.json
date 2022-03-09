@@ -1,6 +1,17 @@
 {
   "index_name": "aksel_docsearch",
-
+  "start_urls": [
+    "https://design.nav.no",
+    {
+      "url": "https://design.nav.no/designsystem",
+      "tags": ["designsystem", "docs"]
+    },
+    {
+      "url": "https://design.nav.no/artikkel/",
+      "tags": ["aksel"],
+      "selectors_key": "aksel"
+    }
+  ],
   "selectors": {
     "default": {
       "lvl0": {
@@ -30,7 +41,6 @@
     "https://design.nav.no/god-praksis",
     "https://old-design-nav.vercel.app"
   ],
-  "sitemap_urls": ["https://design.nav.no/api/sitemap"],
-  "sitemap_alternate_links": true,
+  "sitemap_urls": ["https://design.nav.no/sitemap.xml"],
   "js_render": true
 }
