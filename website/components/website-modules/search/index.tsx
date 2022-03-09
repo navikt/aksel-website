@@ -1,10 +1,10 @@
+import { DocSearchModal, useDocSearchKeyboardEvents } from "@docsearch/react";
+import { DocSearchHit } from "@docsearch/react/dist/esm/types";
+import { Search as SearchIcon } from "@navikt/ds-icons";
+import { BodyShort } from "@navikt/ds-react";
+import cl from "classnames";
 import React from "react";
 import { createPortal } from "react-dom";
-import { DocSearchModal, useDocSearchKeyboardEvents } from "@docsearch/react";
-import { Search as SearchIcon } from "@navikt/ds-icons";
-import { DocSearchHit } from "@docsearch/react/dist/esm/types";
-import cl from "classnames";
-import { BodyShort } from "@navikt/ds-react";
 
 function Search({ inverted, full }: { inverted?: boolean; full?: boolean }) {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -115,7 +115,6 @@ function Search({ inverted, full }: { inverted?: boolean; full?: boolean }) {
             onClose={onClose}
             initialScrollY={window.scrollY}
             placeholder="Søk i dokumentasjon"
-            transformItems={(i) => sortItems(i)}
           />,
           document.body
         )}

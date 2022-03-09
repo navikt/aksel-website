@@ -5,17 +5,13 @@ import { getAkselArtikler, getAkselTema, getDsPaths } from "../lib";
 
 const generateSitemap = (pages: string[]): string =>
   `<?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-        ${pages
-          .map((slug) => {
-            return `
-                    <url>
-                        <loc>${`https://design.nav.no/${slug}`}</loc>
-                    </url>
-                `;
-          })
-          .join("")}
-    </urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  ${pages
+    .map((slug) => {
+      return `<url><loc>${`https://design.nav.no/${slug}`}</loc></url>`;
+    })
+    .join("")}
+</urlset>
     `;
 
 class Sitemap extends React.Component {
