@@ -30,14 +30,21 @@ function Search({ inverted, full }: { inverted?: boolean; full?: boolean }) {
     searchButtonRef,
   });
 
-  const sortItems = (i: DocSearchHit[]): DocSearchHit[] => {
-    const getIndex = (x: string) => {
-      return ["lvl1", "lvl2", "lvl3", "lvl4"].indexOf(x);
-    };
+  const cleanUrl = (url: string) => {
+    const newUrl = new URL(url);
+    newUrl.search = "";
+    return newUrl.toString();
+  };
 
-    return i.sort((a, b) => {
-      return getIndex(a.type) - getIndex(b.type);
-    });
+  const sortItems = (i: DocSearchHit[]): DocSearchHit[] => {
+    const cleaned = i.map((x) => ({ ...x, url: cleanUrl(x.url) }));
+
+    const uniqueHits = Array.from(new Set(cleaned.map((a) => a.url))).map(
+      (url) => {
+        return cleaned.find((a) => a.url === url);
+      }
+    );
+    return uniqueHits;
   };
 
   return (
@@ -77,6 +84,7 @@ function Search({ inverted, full }: { inverted?: boolean; full?: boolean }) {
       {isOpen &&
         createPortal(
           <DocSearchModal
+            transformItems={sortItems}
             translations={{
               searchBox: {
                 resetButtonTitle: "Slett søketekst",
@@ -115,6 +123,7 @@ function Search({ inverted, full }: { inverted?: boolean; full?: boolean }) {
             onClose={onClose}
             initialScrollY={window.scrollY}
             placeholder="Søk i dokumentasjon"
+            searchParameters={{ typoTolerance: false }}
           />,
           document.body
         )}
