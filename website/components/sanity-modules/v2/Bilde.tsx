@@ -24,7 +24,7 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
       <div className="flow-root">
         <div
           className={cl(
-            "mb-6 w-full max-w-xs rounded bg-gray-50 shadow-[0_0_0_1px_var(--navds-semantic-color-divider)] sm:w-80",
+            "mb-6 w-full max-w-xs rounded-2xl bg-gray-50 shadow-[0_0_0_1px_var(--navds-semantic-color-divider)] sm:w-80",
             {
               "float-none mb-6 sm:float-left sm:mr-6":
                 node?.floating_align === "venstre",

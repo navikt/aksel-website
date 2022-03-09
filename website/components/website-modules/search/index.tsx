@@ -44,6 +44,7 @@ function Search({ inverted, full }: { inverted?: boolean; full?: boolean }) {
         return cleaned.find((a) => a.url === url);
       }
     );
+    console.log(uniqueHits);
     return uniqueHits;
   };
 
