@@ -23,7 +23,7 @@ export default {
     {
       type: "array",
       name: "brukes_ikke_til",
-      title: "Ugnet til (optional)",
+      title: "Uegnet til (optional)",
       of: [{ type: "string" }],
     },
   ],

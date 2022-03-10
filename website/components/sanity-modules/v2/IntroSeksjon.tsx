@@ -25,18 +25,20 @@ const Intro = ({ node }: { node: IntroKomponentSeksjon }): JSX.Element => {
             ))}
           </ul>
         </div>
-        <div>
-          <Label>Uegnet til:</Label>
-          {node.brukes_ikke_til && (
-            <ul className="list-disc">
-              {node.brukes_ikke_til.map((x) => (
-                <li key={x} className="ml-5 list-item">
-                  {x}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+        {node.brukes_ikke_til && (
+          <div>
+            <Label>Uegnet til:</Label>
+            {node.brukes_ikke_til && (
+              <ul className="list-disc">
+                {node.brukes_ikke_til.map((x) => (
+                  <li key={x} className="ml-5 list-item">
+                    {x}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
