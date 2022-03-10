@@ -51,13 +51,13 @@ const Page = ({ preview, temaer, quotes }: PageProps): JSX.Element => {
             <BodyShort lang="en" className="mb-2 text-center sm:text-left">
               “{quote.title}”
             </BodyShort>
-            <BodyShort lang="en" size="small" className="mb-8 text-text-muted">
+            <BodyShort lang="en" size="small" className="text-text-muted">
               {quote.kilde}
             </BodyShort>
           </>
         )}
 
-        <Search full />
+        {/* <Search full /> */}
       </div>
 
       <div className="flex w-full justify-center bg-gray-200 py-8">
@@ -132,7 +132,7 @@ const Page = ({ preview, temaer, quotes }: PageProps): JSX.Element => {
 Page.getLayout = (page) => {
   return (
     <div className="bg-gray-50">
-      <AkselHeader frontPage />
+      <AkselHeader />
       <main
         tabIndex={-1}
         id="hovedinnhold"
