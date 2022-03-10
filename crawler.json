@@ -1,7 +1,7 @@
 {
   "index_name": "aksel_docsearch",
   "start_urls": [
-    "https://design.nav.no",
+    "https://design.nav.no/",
     {
       "url": "https://design.nav.no/designsystem",
       "tags": ["designsystem", "docs"]

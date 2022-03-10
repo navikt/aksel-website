@@ -112,9 +112,9 @@ const Page = ({ preview, temaer, quotes }: PageProps): JSX.Element => {
           </nav>
         </div>
       )}
-      <div className="aksel-layout-x">
-        <div className="flex max-w-2xl flex-col items-center justify-between gap-4 rounded-2xl bg-gray-800 py-6 px-7 text-text-inverted sm:py-12 sm:pl-14 md:flex-row md:gap-0 md:pl-7">
-          <div className="max-w-[350px]">
+      <div className="aksel-layout-x flex w-full justify-center">
+        <div className="flex w-full max-w-2xl flex-col items-center justify-between gap-4 rounded-2xl bg-gray-800 py-6 px-7 text-text-inverted sm:py-12 sm:pl-14 md:flex-row md:gap-0 md:pl-7">
+          <div className="">
             <Heading size="large" level="2" spacing>
               Redaksjonen trenger deg!
             </Heading>
@@ -124,11 +124,6 @@ const Page = ({ preview, temaer, quotes }: PageProps): JSX.Element => {
               kontakt med oss på Slack.
             </BodyLong>
           </div>
-          <PointingFingerIllustrasjon
-            aria-hidden
-            aria-label="Finger som peker mot deg"
-            className="mr-0 ml-5 flex-shrink-0 sm:ml-10 lg:mr-14"
-          />
         </div>
       </div>
     </>
