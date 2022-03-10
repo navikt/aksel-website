@@ -10,7 +10,7 @@ const SearchSandbox: SandboxComponent = (props) => {
     return `<Search
     label="Søk alle NAV sine sider"
     ${size}${variant}${hideLabel}${clearButton}
-  ><Search.Button>Søk</Search.Button></Search>`;
+  ><Search.Button onClick={(e) => console.log(e)}/></Search>`;
   }
   return `
   <Search
