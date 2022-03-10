@@ -1,4 +1,4 @@
-import { Table } from "@navikt/ds-react";
+import { Heading, Table } from "@navikt/ds-react";
 import React from "react";
 import { LevelTwoHeading } from "../..";
 import { UuSeksjon as UuSeksjonT } from "../../../lib";
@@ -24,11 +24,27 @@ const UuSeksjon = ({ node }: { node: UuSeksjonT }): JSX.Element => {
   return (
     <div className="mb-16">
       <LevelTwoHeading>{[node.title]}</LevelTwoHeading>
+      {node?.interaksjon_mus && (
+        <Heading level="3" size="medium">
+          Interasksjon Mus
+        </Heading>
+      )}
       <SanityBlockContent blocks={node.interaksjon_mus} />
+      {node?.interaksjon_touch && (
+        <Heading level="3" size="medium">
+          Interasksjon Touch
+        </Heading>
+      )}
       <SanityBlockContent blocks={node.interaksjon_touch} />
+      {node?.interaksjon_tastatur ||
+        (node?.tastatur && (
+          <Heading level="3" size="medium">
+            Interasksjon Tastatur
+          </Heading>
+        ))}
       <SanityBlockContent blocks={node.interaksjon_tastatur} />
 
-      {node.tastatur && (
+      {node?.tastatur && (
         <Table>
           <Table.Header>
             <Table.Row>
@@ -49,6 +65,11 @@ const UuSeksjon = ({ node }: { node: UuSeksjonT }): JSX.Element => {
             ))}
           </Table.Body>
         </Table>
+      )}
+      {node?.interaksjon_skjermleser && (
+        <Heading level="3" size="medium">
+          Interasksjon Skjermleser
+        </Heading>
       )}
       <SanityBlockContent blocks={node.interaksjon_skjermleser} />
     </div>
