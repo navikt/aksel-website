@@ -36,14 +36,21 @@ const Page = ({ preview, temaer, quotes }: PageProps): JSX.Element => {
         />
       </Head>
       {preview && <PreviewBanner />}
-      <div className="aksel-layout-x flex flex-col items-center justify-center pb-24">
-        <Heading level="1" size="xlarge" spacing>
+      <div className="aksel-layout-x flex w-full flex-col items-center justify-center pb-24">
+        <Heading
+          level="1"
+          size="xlarge"
+          spacing
+          className="text-center sm:text-left"
+        >
           Produktutvikling i praksis
         </Heading>
 
         {quote && (
           <>
-            <BodyShort className="mb-2">“{quote.title}”</BodyShort>
+            <BodyShort className="mb-2 text-center sm:text-left">
+              “{quote.title}”
+            </BodyShort>
             <BodyShort size="small" className="mb-8 text-text-muted">
               {quote.kilde}
             </BodyShort>
@@ -82,19 +89,11 @@ const Page = ({ preview, temaer, quotes }: PageProps): JSX.Element => {
           <NextLink href="https://sikkerhet.nav.no" passHref>
             <Label
               as="a"
-              className={cl(
-                "relative flex w-full items-center gap-3 rounded bg-white py-3 pr-10 pl-4 shadow-small hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
-              )}
+              className="flex w-full items-center gap-3 rounded bg-white px-4 py-3 shadow-small hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
               onClick={(e) => logPortalCard(e)}
             >
               <Star className="shrink-0 text-[1.5rem]" aria-hidden />
               Security playbook
-              <span className="absolute right-0 flex h-full items-center rounded-r bg-gray-500 px-1 text-text-inverted">
-                <span className="navds-sr-only">
-                  Siden ligger bak innlogging
-                </span>
-                <Locked aria-hidden />
-              </span>
             </Label>
           </NextLink>
         </nav>

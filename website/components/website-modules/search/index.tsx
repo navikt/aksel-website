@@ -61,7 +61,8 @@ function Search({ inverted, full }: { inverted?: boolean; full?: boolean }) {
             aria-hidden
             className="absolute left-6 top-1/2 -translate-y-1/2 text-[1.5rem] transition-all group-hover:rotate-6 group-hover:scale-[1.15]"
           />
-          CMD + K / CTRL + K for å søke
+          <span aria-hidden>CMD + K / CTRL + K for å søke</span>
+          <span className="sr-only">Åpne søkemodal, shortcut ctrl + k</span>
         </BodyShort>
       ) : (
         <button
