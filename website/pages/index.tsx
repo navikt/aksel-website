@@ -48,10 +48,10 @@ const Page = ({ preview, temaer, quotes }: PageProps): JSX.Element => {
 
         {quote && (
           <>
-            <BodyShort className="mb-2 text-center sm:text-left">
+            <BodyShort lang="en" className="mb-2 text-center sm:text-left">
               “{quote.title}”
             </BodyShort>
-            <BodyShort size="small" className="mb-8 text-text-muted">
+            <BodyShort lang="en" size="small" className="mb-8 text-text-muted">
               {quote.kilde}
             </BodyShort>
           </>
