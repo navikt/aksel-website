@@ -35,7 +35,7 @@ export const ArtikkelCard = ({
     return (
       <ul className="flex">
         {names.map((x) => (
-          <li key={x} className="-ml-3  first:ml-0 last:-mr-[1px]">
+          <li key={x} className="-ml-3 first:ml-0 last:-mr-[1px]">
             <Avatar name={x} small className="border border-white" />
           </li>
         ))}
@@ -46,16 +46,16 @@ export const ArtikkelCard = ({
   return (
     <div className="group relative flex min-h-24 min-w-[16rem] max-w-xl flex-1 cursor-pointer flex-col justify-between  rounded-lg border-2 border-transparent bg-white px-6 py-4 shadow-small transition-all focus-within:shadow-focus hover:scale-[1.02] hover:shadow-medium active:border-link">
       <div>
-        <NextLink
-          href={{
-            pathname: `/${slug}`,
-            query: {
-              tema: getTemaSlug(source),
-            },
-          }}
-          passHref
-        >
-          <Heading size="medium" level="3">
+        <Heading size="medium" level="3">
+          <NextLink
+            href={{
+              pathname: `/${slug}`,
+              query: {
+                tema: getTemaSlug(source),
+              },
+            }}
+            passHref
+          >
             <a
               className="index-lvl2 after:absolute after:inset-0 focus:underline focus:outline-none active:text-link group-hover:underline"
               onClick={(e) =>
@@ -68,8 +68,8 @@ export const ArtikkelCard = ({
             >
               {heading}
             </a>
-          </Heading>
-        </NextLink>
+          </NextLink>
+        </Heading>
         {oppsummering && (
           <BodyShort className="mt-1 mb-4 text-text-muted">
             {oppsummering}

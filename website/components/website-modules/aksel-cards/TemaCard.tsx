@@ -6,8 +6,8 @@ import { AkselTema } from "../../../lib";
 export const TemaCard = ({ title, oppsummering }: AkselTema) => {
   return (
     <div className="group relative min-h-36 min-w-[16rem] flex-1 cursor-pointer rounded-lg border-2 border-transparent bg-white px-6 py-4 shadow-small transition-all focus-within:shadow-focus hover:scale-[1.02] hover:shadow-medium active:border-link sm:min-h-44">
-      <NextLink href={`/tema/${getTemaSlug(title)}`} passHref>
-        <Heading size="medium" level="3">
+      <Heading size="medium" level="3">
+        <NextLink href={`/tema/${getTemaSlug(title)}`} passHref>
           <a
             className="index-lvl2 after:absolute after:inset-0 focus:underline focus:outline-none active:text-link group-hover:underline"
             onClick={(e) =>
@@ -20,8 +20,8 @@ export const TemaCard = ({ title, oppsummering }: AkselTema) => {
           >
             {title}
           </a>
-        </Heading>
-      </NextLink>
+        </NextLink>
+      </Heading>
       {oppsummering && (
         <BodyShort className="mt-3 mb-6 text-text-muted">
           {oppsummering}
