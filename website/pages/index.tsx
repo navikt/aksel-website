@@ -46,7 +46,7 @@ const Page = ({ preview, temaer, tekster }: PageProps): JSX.Element => {
         </Heading>
         <SanityBlockContent
           blocks={tekster.beskrivelse}
-          className="text-center"
+          /* className="text-center" */
         />
         {/* {quote && (
           <>

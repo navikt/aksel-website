@@ -2,7 +2,6 @@ import {
   BodyShort,
   Detail,
   Heading,
-  Label,
   useClientLayoutEffect,
 } from "@navikt/ds-react";
 import moment from "moment";
@@ -54,7 +53,7 @@ const AkselArtikkelTemplate = ({
     return null;
   }
 
-  const author = (data?.contributors?.[0] as any)?.title;
+  const authors = (data?.contributors as any).map((x) => x?.title);
 
   return (
     <>
@@ -128,32 +127,30 @@ const AkselArtikkelTemplate = ({
                 >
                   {data.heading}
                 </Heading>
-
-                <div className="index-ignore flex justify-center gap-2 lg:justify-start">
-                  {author ? (
-                    <>
-                      <Avatar name={author} />
-                      <div>
-                        av{" "}
-                        <Label size="small" as="span">
-                          {author}
-                        </Label>
-                        <Detail size="small" className="text-text-muted">
-                          {moment(data._createdAt).format("DD. MMM. YY")}
-                        </Detail>
-                      </div>
-                    </>
-                  ) : (
-                    <BodyShort size="small" className="text-text-muted">
-                      {moment(data._createdAt).format("DD. MMM. YY")}
-                    </BodyShort>
-                  )}
-                </div>
+                <BodyShort size="small" className="text-text-muted">
+                  {moment(data._createdAt).format("DD. MMM. YY")}
+                </BodyShort>
               </div>
               <SanityBlockContent
                 className="aksel-artikkel__blocks mt-12 min-h-[500px] px-0 sm:px-8 lg:px-0"
                 blocks={data.innhold}
               />
+              <div className="flex justify-center">
+                <div className="w-full max-w-text border-t border-t-gray-900/20 pt-6">
+                  <Heading level="2" size="xsmall" spacing>
+                    Bidrat til artikkelen
+                  </Heading>
+                  <ul className="flex flex-wrap gap-x-6 gap-y-4">
+                    {authors &&
+                      authors.map((x) => (
+                        <li key={x} className="flex items-center gap-2">
+                          <Avatar name={x} />
+                          <BodyShort>{x}</BodyShort>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              </div>
               {!data?.metadata_feedback?.hide_feedback && (
                 <Feedback center docId={data?._id} docType={data?._type} />
               )}

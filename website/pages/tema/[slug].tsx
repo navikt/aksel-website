@@ -36,11 +36,11 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
       </Heading>
       <div className="aksel-card-grid-col-2 ">
         {page.artikler.map((x) => {
-          const author = x?.contributors?.[0]?.title;
+          const authors = x?.contributors;
           return (
             <ArtikkelCard
               {...x}
-              author={author}
+              authors={authors}
               source={page.title}
               key={x._id}
             />

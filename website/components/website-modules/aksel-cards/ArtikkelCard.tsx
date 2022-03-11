@@ -6,21 +6,43 @@ import { AkselArtikkel } from "../../../lib";
 import Avatar from "../avatar";
 import cl from "classnames";
 
+const abbrName = (s: string) =>
+  s
+    .split(" ")
+    .map((val, index, arr) =>
+      index !== 0 && index !== arr.length - 1 ? val.charAt(0) + "." : val
+    )
+    .join(" ");
+
 export const ArtikkelCard = ({
   slug,
   source,
   heading,
   oppsummering,
-  author,
+  authors,
   _createdAt,
 }: Partial<
   AkselArtikkel & {
     slug: string;
     tema: string[];
     source: string;
-    author?: string;
+    authors?: any[];
   }
 >) => {
+  const names = authors.map((x) => x?.title);
+
+  const avatars = () => {
+    return (
+      <ul className="flex">
+        {names.map((x) => (
+          <li key={x} className="-ml-3  first:ml-0 last:-mr-[1px]">
+            <Avatar name={x} small className="border border-white" />
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
   return (
     <div className="group relative flex min-h-24 min-w-[16rem] max-w-xl flex-1 cursor-pointer flex-col justify-between  rounded-lg border-2 border-transparent bg-white px-6 py-4 shadow-small transition-all focus-within:shadow-focus hover:scale-[1.02] hover:shadow-medium active:border-link">
       <div>
@@ -59,11 +81,11 @@ export const ArtikkelCard = ({
           "mt-4": !oppsummering,
         })}
       >
-        {author ? (
+        {authors ? (
           <>
-            <Avatar name={author} small />
+            {avatars()}
             <BodyShort size="small" as="span">
-              av <span className="font-semibold">{author}</span>
+              av <span className="font-semibold">{abbrName(names.at(-1))}</span>
               <Detail
                 as="span"
                 size="small"

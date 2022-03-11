@@ -20,18 +20,27 @@ const getBgColor = (s: string) => {
   return "hsl(" + h + ", 50%, 87%)";
 };
 
-const Avatar = ({ name, small }: { name: string; small?: boolean }) => {
+const Avatar = ({
+  className,
+  name,
+  small,
+}: {
+  className?: string;
+  name: string;
+  small?: boolean;
+}) => {
   const Component = small ? Detail : BodyShort;
   return (
     <div
-      className={cl("aspect-square rounded-full", {
+      className={cl(className, "aspect-square rounded-full", {
         "h-6": small,
-        "h-12 text-[1.25rem]": !small,
+        "h-8 text-[1.25rem]": !small,
       })}
       style={{ background: getBgColor(name) }}
     >
       <Component
         as="span"
+        size="small"
         className="flex h-full items-center justify-center font-regular"
       >
         {nameToInitials(name)}
