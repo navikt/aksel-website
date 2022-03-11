@@ -220,9 +220,7 @@ const Feedback = ({
             <Textarea
               ref={textAreaRef}
               error={errorMsg}
-              label="Skriv inn feedbacken du ønsker å gi."
-              hideLabel
-              placeholder={getPlaceholder()}
+              label={getPlaceholder()}
               value={textValue}
               onChange={(e) => setTextValue(e.target.value)}
               maxLength={600}
