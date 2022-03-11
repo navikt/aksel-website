@@ -88,7 +88,10 @@ export const ArtikkelCard = ({
           <>
             {avatars()}
             <BodyShort size="small" as="span">
-              av <span className="font-semibold">{abbrName(names.at(-1))}</span>
+              av{" "}
+              <span className="font-semibold">
+                {abbrName(names[names.length - 1])}
+              </span>
               <Detail
                 as="span"
                 size="small"
