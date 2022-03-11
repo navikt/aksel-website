@@ -7,19 +7,19 @@ export const TemaCard = ({ title, oppsummering }: AkselTema) => {
   return (
     <div className="group relative min-h-36 min-w-[16rem] flex-1 cursor-pointer rounded-lg border-2 border-transparent bg-white px-6 py-4 shadow-small transition-all focus-within:shadow-focus hover:scale-[1.02] hover:shadow-medium active:border-link sm:min-h-44">
       <NextLink href={`/tema/${getTemaSlug(title)}`} passHref>
-        <Heading
-          as="a"
-          size="medium"
-          className="index-lvl2 after:absolute after:inset-0 focus:underline focus:outline-none active:text-link group-hover:underline"
-          onClick={(e) =>
-            logNav(
-              "temakort",
-              window.location.pathname,
-              e.currentTarget.getAttribute("href")
-            )
-          }
-        >
-          {title}
+        <Heading size="medium" level="3">
+          <a
+            className="index-lvl2 after:absolute after:inset-0 focus:underline focus:outline-none active:text-link group-hover:underline"
+            onClick={(e) =>
+              logNav(
+                "temakort",
+                window.location.pathname,
+                e.currentTarget.getAttribute("href")
+              )
+            }
+          >
+            {title}
+          </a>
         </Heading>
       </NextLink>
       {oppsummering && (

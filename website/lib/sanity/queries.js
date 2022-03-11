@@ -242,15 +242,13 @@ ${defaultBlock}
 
 export const allDocuments = `*[]{...,'slug': slug.current }`;
 
-export const vkFrontpageQuery = `*[_id == "frontpage_vk_praksis"]
+export const akselForsideQuery = `*[_id == "frontpage_vk_praksis"][0]
 {
  ...,
-  cards[]{
-    _type == "card" =>{
-      ...,
-      category_ref->{...}
-    }
-  }
+ beskrivelse[]{
+  ...,
+  ${deRefs}
+},
 }`;
 
 export const akselArtikkelDocuments = `*[_type in ["aksel_artikkel"]]{ _type, _id, 'slug': slug.current }`;

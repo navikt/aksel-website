@@ -33,19 +33,19 @@ export const ArtikkelCard = ({
           }}
           passHref
         >
-          <Heading
-            as="a"
-            size="medium"
-            className="index-lvl2 after:absolute after:inset-0 focus:underline focus:outline-none active:text-link group-hover:underline"
-            onClick={(e) =>
-              logNav(
-                "artikkel-kort",
-                window.location.pathname,
-                e.currentTarget.getAttribute("href")
-              )
-            }
-          >
-            {heading}
+          <Heading size="medium" level="3">
+            <a
+              className="index-lvl2 after:absolute after:inset-0 focus:underline focus:outline-none active:text-link group-hover:underline"
+              onClick={(e) =>
+                logNav(
+                  "artikkel-kort",
+                  window.location.pathname,
+                  e.currentTarget.getAttribute("href")
+                )
+              }
+            >
+              {heading}
+            </a>
           </Heading>
         </NextLink>
         {oppsummering && (

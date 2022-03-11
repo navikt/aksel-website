@@ -1,17 +1,16 @@
-import { Locked, Office1, Star, System } from "@navikt/ds-icons";
+import { Office1, Star, System } from "@navikt/ds-icons";
 import { BodyLong, BodyShort, Heading, Label } from "@navikt/ds-react";
-import cl from "classnames";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
-import { logNav, PreviewBanner, Search, TemaCard } from "../components";
-import { PointingFingerIllustrasjon } from "../components/assets/PointingFinger";
+import { logNav, PreviewBanner, TemaCard } from "../components";
 import Footer from "../components/layout/footer/Footer";
 import AkselHeader from "../components/layout/header/AkselHeader";
-import { akselQuotes, AkselTema, akselTema } from "../lib";
+import { SanityBlockContent } from "../components/SanityBlockContent";
+import { akselForsideQuery, AkselTema, akselTema, Riktekst } from "../lib";
 import { getClient } from "../lib/sanity/sanity.server";
 
-const Page = ({ preview, temaer, quotes }: PageProps): JSX.Element => {
+const Page = ({ preview, temaer, tekster }: PageProps): JSX.Element => {
   const logPortalCard = (e) =>
     logNav(
       "portal-kort",
@@ -19,11 +18,11 @@ const Page = ({ preview, temaer, quotes }: PageProps): JSX.Element => {
       e.currentTarget.getAttribute("href")
     );
 
-  const getQuote = () =>
+  /* const getQuote = () =>
     quotes.quotes &&
     quotes.quotes[new Date().getMinutes() % quotes.quotes.length];
 
-  const quote = getQuote();
+  const quote = getQuote(); */
 
   return (
     <>
@@ -43,10 +42,10 @@ const Page = ({ preview, temaer, quotes }: PageProps): JSX.Element => {
           spacing
           className="text-center sm:text-left"
         >
-          Produktutvikling i praksis
+          {tekster.title}
         </Heading>
-
-        {quote && (
+        <SanityBlockContent blocks={tekster.beskrivelse} />
+        {/* {quote && (
           <>
             <BodyShort lang="en" className="mb-2 text-center sm:text-left">
               “{quote.title}”
@@ -55,7 +54,7 @@ const Page = ({ preview, temaer, quotes }: PageProps): JSX.Element => {
               {quote.kilde}
             </BodyShort>
           </>
-        )}
+        )} */}
 
         {/* <Search full /> */}
       </div>
@@ -147,7 +146,7 @@ Page.getLayout = (page) => {
 
 interface PageProps {
   temaer: AkselTema[];
-  quotes: { quotes: { kilde: string; title: string }[] };
+  tekster: { title?: string; beskrivelse?: Riktekst };
   slug: string;
   preview: boolean;
 }
@@ -163,12 +162,12 @@ export const getStaticProps = async ({
   preview?: boolean;
 }): Promise<StaticProps> => {
   const temaer = await getClient(preview).fetch(akselTema);
-  const quotes = await getClient(false).fetch(akselQuotes);
+  const tekster = await getClient(preview).fetch(akselForsideQuery);
 
   return {
     props: {
       temaer,
-      quotes,
+      tekster,
       slug: "/",
       preview,
     },
