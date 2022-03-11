@@ -1,12 +1,124 @@
 import { DocSearchModal, useDocSearchKeyboardEvents } from "@docsearch/react";
 import { DocSearchHit } from "@docsearch/react/dist/esm/types";
-import { Search as SearchIcon } from "@navikt/ds-icons";
-import { BodyShort } from "@navikt/ds-react";
+import { Close, Search as SearchIcon } from "@navikt/ds-icons";
+import { BodyShort, Button, Search as DsSearch } from "@navikt/ds-react";
 import cl from "classnames";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import Modal from "react-modal";
+import algoliasearch from "algoliasearch/lite";
+import style from "./index.module.css";
 
-function Search({ inverted, full }: { inverted?: boolean; full?: boolean }) {
+const searchClient = algoliasearch(
+  "J64I2SIG7K",
+  "92d2ac76eba4eba628a34baa11743fc1"
+);
+
+const index = "aksel_docsearch";
+
+const Search = ({ inverted }: { inverted?: boolean }) => {
+  const [open, setOpen] = useState(true);
+  const [query, setQuery] = useState("");
+  const [result, setResult] = useState<any>({});
+  const searchIndex = useRef(null);
+
+  useEffect(() => {
+    Modal.setAppElement("#__next");
+    searchIndex.current = searchClient.initIndex(index);
+  }, []);
+
+  useEffect(() => {
+    if (!query || query === "") {
+      setResult({});
+      return;
+    }
+
+    searchIndex.current &&
+      searchIndex.current
+        .search(query, { typoTolerance: false, hitsPerPage: 200 })
+        .then((res) => setResult(res));
+  }, [query]);
+
+  console.log(result);
+  return (
+    <>
+      <button
+        onClick={() => setOpen(true)}
+        className={cl(
+          "ml-auto flex w-header shrink-0 items-center justify-center focus:outline-none",
+          {
+            " text-text hover:bg-gray-800/10 focus:shadow-focus-inset":
+              inverted,
+            "text-text-inverted hover:bg-gray-800 focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
+              !inverted,
+          }
+        )}
+      >
+        <span className="navds-sr-only">Åpne søk</span>
+        <SearchIcon className="ml-[3px] h-6 w-6" aria-hidden />
+      </button>
+      <Modal
+        className="flex h-full w-full justify-center overflow-x-auto bg-gray-50 focus:outline-none"
+        isOpen={open}
+        onRequestClose={() => setOpen(false)}
+      >
+        <div className="relative flex w-full max-w-6xl justify-center py-36 px-4 sm:px-6 lg:px-12">
+          <Button
+            onClick={() => setOpen(false)}
+            variant="tertiary"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-12 lg:right-12"
+          >
+            Lukk
+          </Button>
+          <div className="w-full max-w-5xl">
+            <div className={cl(style.wrapper)} role="search">
+              <DsSearch
+                label="Søk i alle sider på nettsiden"
+                value={query}
+                onChange={(e) => setQuery(e)}
+              />
+            </div>
+            {result?.hits?.map((x, y) => (
+              <li key={y}>{x.url}</li>
+            ))}
+          </div>
+        </div>
+      </Modal>
+    </>
+  );
+};
+
+const HitComp = ({
+  hit,
+  children,
+}: {
+  hit: DocSearchHit;
+  children: React.ReactNode;
+}) => {
+  /* hit.hierarchy.lvl0 && console.log(hit); */
+  return (
+    <div className="ais-result">
+      {hit.hierarchy.lvl0 && (
+        <div className="ais-lvl0">
+          <a href="{{{url}}}">
+            <h4>{hit?.hierarchy?.lvl0}</h4>
+          </a>
+        </div>
+      )}
+
+      {/* <div class="ais-lvl1 breadcrumbs">
+      {{#hierarchy.lvl1}} {{{_highlightResult.hierarchy.lvl1.value}}} {{/hierarchy.lvl1}} {{#hierarchy.lvl2}} > {{{_highlightResult.hierarchy.lvl2.value}}} {{/hierarchy.lvl2}} {{#hierarchy.lvl3}} > {{{_highlightResult.hierarchy.lvl3.value}}} {{/hierarchy.lvl3}}
+      {{#hierarchy.lvl4}} > {{{_highlightResult.hierarchy.lvl4.value}}} {{/hierarchy.lvl4}}
+    </div>
+
+    <div class="ais-content">
+      {{{#content}}} {{{_highlightResult.content.value}}} {{{/content}}}
+    </div> */}
+    </div>
+  );
+};
+
+function SearchOLD({ inverted, full }: { inverted?: boolean; full?: boolean }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const searchButtonRef = React.useRef(null);
 
@@ -44,8 +156,8 @@ function Search({ inverted, full }: { inverted?: boolean; full?: boolean }) {
         return cleaned.find((a) => a.url === url);
       }
     );
-    console.log(uniqueHits);
-    return uniqueHits;
+
+    return [uniqueHits[0]];
   };
 
   return (
@@ -124,7 +236,8 @@ function Search({ inverted, full }: { inverted?: boolean; full?: boolean }) {
             onClose={onClose}
             initialScrollY={window.scrollY}
             placeholder="Søk i dokumentasjon"
-            searchParameters={{ typoTolerance: false }}
+            searchParameters={{ typoTolerance: false, distinct: true }}
+            /* hitComponent={HitComp} */
           />,
           document.body
         )}

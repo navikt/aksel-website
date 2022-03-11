@@ -16,3 +16,7 @@
 .DocSearch-Container {
   z-index: 2000;
 }
+
+.DocSearch-Hit-source {
+  display: none;
+}

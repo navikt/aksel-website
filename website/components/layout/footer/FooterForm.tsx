@@ -123,11 +123,9 @@ const FooterForm = () => {
               }}
             />
           </Fieldset>
-          {hasWritten && (
-            <Button variant="secondary" className="inverted-button">
-              Send melding
-            </Button>
-          )}
+          <Button variant="secondary" className="inverted-button">
+            Send melding
+          </Button>
         </form>
       )}
     </div>

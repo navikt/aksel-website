@@ -24,11 +24,11 @@
   "dependencies": {
     "@docsearch/css": "3.0.0",
     "@docsearch/react": "3.0.0",
-    "@navikt/ds-css": "0.16.1",
+    "@navikt/ds-css": "0.16.2",
     "@navikt/ds-css-internal": "^0.7.1",
     "@navikt/ds-icons": "^0.8.4",
-    "@navikt/ds-react": "0.17.0",
-    "@navikt/ds-react-internal": "0.12.0",
+    "@navikt/ds-react": "0.17.3",
+    "@navikt/ds-react-internal": "0.12.3",
     "@navikt/ds-tailwind": "^0.1.6",
     "@navikt/ds-tokens": "^0.8.4",
     "@sanity/block-content-to-react": "^3.0.0",
@@ -61,12 +61,15 @@
     "semver": "^7.3.5",
     "sitemap": "^7.0.0",
     "validator": "^13.7.0",
-    "tailwindcss": "^3.0.23"
+    "tailwindcss": "^3.0.23",
+    "algoliasearch": "4.12.2",
+    "react-modal": "3.14.4"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.1.0",
     "@types/node": "^17",
     "@types/react": "^17.0.21",
+    "@types/react-modal": "3.13.1",
     "@typescript-eslint/eslint-plugin": "^5.12",
     "@typescript-eslint/parser": "^5.12",
     "autoprefixer": "^10.4.2",

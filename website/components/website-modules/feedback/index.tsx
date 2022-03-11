@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { HelpfulArticleEnum, HelpfulArticleT } from "../../../lib";
 import { AmplitudeEvents, logAmplitudeEvent } from "../utils";
+import style from "./index.module.css";
 
 const Feedback = ({
   docId,
@@ -198,12 +199,16 @@ const Feedback = ({
           </button>
         </div>
         <button
-          className={cl("rounded-sm px-2 py-2 focus:outline-none", {
-            "border-gray-900 bg-gray-900 text-text-inverted focus:border-white focus:shadow-focus":
-              activeState === HelpfulArticleEnum.MISC,
-            "bg-gray-50  hover:bg-gray-200 focus:shadow-focus":
-              activeState !== HelpfulArticleEnum.MISC,
-          })}
+          className={cl(
+            style.feedbackForbedringer,
+            "rounded-sm px-2 py-2 focus:outline-none",
+            {
+              "border-gray-900 bg-gray-900 text-text-inverted focus:border-white focus:shadow-focus":
+                activeState === HelpfulArticleEnum.MISC,
+              "bg-gray-50  hover:bg-gray-200 focus:shadow-focus":
+                activeState !== HelpfulArticleEnum.MISC,
+            }
+          )}
           onClick={() => setActiveState(HelpfulArticleEnum.MISC)}
         >
           <Label size="small">

@@ -1403,9 +1403,10 @@
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@navikt/ds-css-internal/-/ds-css-internal-0.7.1.tgz#674fabf444c4a970c0d3631aac621fd46bfdca4c"
 
-"@navikt/ds-css@0.16.1":
-  version "0.16.1"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.16.1.tgz#663e25828810394b44151cdcb543b0c4af6ce0f3"
+"@navikt/ds-css@0.16.2":
+  version "0.16.2"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.16.2.tgz#018793ac74d56063dc28cb29c840cb3f7ddfd3bd"
+  integrity sha512-tH0MopEVnzuGLNm9zE9dfoKSxsok+Y2d1UqeYLynU2vZTtR0dY1SDFsGRz7dDJ03ZZ4dp5dnOck5gQVkgckPsQ==
 
 "@navikt/ds-css@^0.14":
   version "0.14.2"
@@ -1417,20 +1418,22 @@
   dependencies:
     uuid "^8.3.2"
 
-"@navikt/ds-react-internal@0.12.0":
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react-internal/-/ds-react-internal-0.12.0.tgz#3c42b4c61c3caa2a99148b2abd1623bbe5940b02"
+"@navikt/ds-react-internal@0.12.3":
+  version "0.12.3"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react-internal/-/ds-react-internal-0.12.3.tgz#53f08e94ff4e866239496bb9a14dab373697beb8"
+  integrity sha512-tfSYq1xcE0x2FlRDfb9Cudjmi+ze3Q1JxJ+5YRNGbfLEVX6/G0xuy+NMm/bjwoCIXogfJc+7WklJbf7hD/115A==
   dependencies:
     "@navikt/ds-icons" "^0.8.4"
-    "@navikt/ds-react" "^0.17.0"
+    "@navikt/ds-react" "^0.17.3"
     "@popperjs/core" "^2.10.1"
     classnames "^2.3.1"
     copy-to-clipboard "^3.3.1"
     react-merge-refs "^1.1.0"
 
-"@navikt/ds-react@0.17.0", "@navikt/ds-react@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.17.0.tgz#47b06e0a44f7a7f6f56d5fc15de3123115d1c9b5"
+"@navikt/ds-react@0.17.3", "@navikt/ds-react@^0.17.3":
+  version "0.17.3"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.17.3.tgz#0c3dc94e91c05763d825534594f5629422a92d2a"
+  integrity sha512-ZFAzyqB3+t1zSoz4WamV0FjzOd1LNwSNbqbLH92PbWEskbFOBd1Yj7fb6CT8eFfFWSmkSgklOje1Ji+uU5VH8w==
   dependencies:
     "@material-ui/core" "^4.12.3"
     "@navikt/ds-icons" "^0.8.4"
@@ -2921,6 +2924,13 @@
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/@types/raf/-/raf-3.4.0.tgz#2b72cbd55405e071f1c4d29992638e022b20acc2"
 
+"@types/react-modal@3.13.1":
+  version "3.13.1"
+  resolved "https://registry.yarnpkg.com/@types/react-modal/-/react-modal-3.13.1.tgz#5b9845c205fccc85d9a77966b6e16dc70a60825a"
+  integrity sha512-iY/gPvTDIy6Z+37l+ibmrY+GTV4KQTHcCyR5FIytm182RQS69G5ps4PH2FxtC7bAQ2QRHXMevsBgck7IQruHNg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-transition-group@^4.2.0":
   version "4.4.4"
   resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-4.4.4.tgz#acd4cceaa2be6b757db61ed7b432e103242d163e"
@@ -3168,7 +3178,7 @@ ajv@^6.1.0, ajv@^6.10.0, ajv@^6.12.3, ajv@^6.12.4:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-algoliasearch@^4.0.0:
+algoliasearch@4.12.2, algoliasearch@^4.0.0:
   version "4.12.2"
   resolved "https://registry.yarnpkg.com/algoliasearch/-/algoliasearch-4.12.2.tgz#d7672a15b8fd1b261d9ae193535b68bcb189cfd2"
   dependencies:
@@ -10056,6 +10066,16 @@ react-merge-refs@^1.1.0:
 react-modal@3.14.3:
   version "3.14.3"
   resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-3.14.3.tgz#7eb7c5ec85523e5843e2d4737cc17fc3f6aeb1c0"
+  dependencies:
+    exenv "^1.2.0"
+    prop-types "^15.7.2"
+    react-lifecycles-compat "^3.0.0"
+    warning "^4.0.3"
+
+react-modal@3.14.4:
+  version "3.14.4"
+  resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-3.14.4.tgz#2ca7e8e9a180955e5c9508c228b73167c1e6f6a3"
+  integrity sha512-8surmulejafYCH9wfUmFyj4UfbSJwjcgbS9gf3oOItu4Hwd6ivJyVBETI0yHRhpJKCLZMUtnhzk76wXTsNL6Qg==
   dependencies:
     exenv "^1.2.0"
     prop-types "^15.7.2"
