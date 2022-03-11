@@ -3,10 +3,11 @@ import cl from "classnames";
 import NextImage from "next/image";
 import React, { useState } from "react";
 import { useMeasure } from "react-use";
-import { Lightbox } from "../..";
-import { Bilde as BildeT, useSanityImage } from "../../../lib";
-import { withErrorBoundary } from "../../ErrorBoundary";
-import { SanityBlockContent } from "../../SanityBlockContent";
+import { Lightbox } from "../../..";
+import { Bilde as BildeT, useSanityImage } from "../../../../lib";
+import { withErrorBoundary } from "../../../ErrorBoundary";
+import { SanityBlockContent } from "../../../SanityBlockContent";
+import style from "./index.module.css";
 
 const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
   if (!node || !node.asset || (node.floating && !node.floating_text)) {
@@ -24,7 +25,7 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
       <div className="flow-root">
         <div
           className={cl(
-            "mb-6 w-full max-w-xs rounded-2xl bg-gray-50 shadow-[0_0_0_1px_var(--navds-semantic-color-divider)] sm:w-80",
+            "mb-6 w-full max-w-xs rounded bg-gray-50 shadow-[0_0_0_1px_var(--navds-semantic-color-divider)] sm:w-80",
             {
               "float-none mb-6 sm:float-left sm:mr-6":
                 node?.floating_align === "venstre",
@@ -35,7 +36,7 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
         >
           <NextImage
             {...imageProps}
-            className="rounded-2xl"
+            className="rounded"
             layout="responsive"
             sizes="(max-width: 320px)"
             alt={node.alt}
@@ -54,7 +55,10 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
         aria-label="Klikk for å åpne bildet i fullskjerm"
         tabIndex={0}
         onClick={() => setOpen(!open)}
-        className="rounded-2xl bg-gray-50 p-0 shadow-[0_0_0_1px_var(--navds-semantic-color-divider)] focus:shadow-focus focus:outline-none"
+        className={cl(
+          style.bilde,
+          "bg-gray-50 p-0 shadow-[0_0_0_1px_var(--navds-semantic-color-divider)] focus:shadow-focus focus:outline-none"
+        )}
       >
         <NextImage
           {...imageProps}
@@ -62,7 +66,7 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
           quality="100"
           layout="responsive"
           unoptimized
-          className="rounded-2xl"
+          className={cl(style.bilde)}
           sizes={
             width !== undefined
               ? `${Math.round(width)}px`

@@ -1,0 +1,7 @@
+.bilde {
+  @apply rounded;
+}
+
+:global(.aksel-artikkel) .bilde {
+  @apply rounded-2xl;
+}
