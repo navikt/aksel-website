@@ -1,6 +1,6 @@
 import { DocSearchModal, useDocSearchKeyboardEvents } from "@docsearch/react";
 import { DocSearchHit } from "@docsearch/react/dist/esm/types";
-import { Close, Search as SearchIcon } from "@navikt/ds-icons";
+import { Search as SearchIcon } from "@navikt/ds-icons";
 import { BodyShort, Button, Search as DsSearch } from "@navikt/ds-react";
 import cl from "classnames";
 import React, { useEffect, useRef, useState } from "react";
@@ -16,7 +16,7 @@ const searchClient = algoliasearch(
 
 const index = "aksel_docsearch";
 
-const Search = ({ inverted }: { inverted?: boolean }) => {
+const SearchNew = ({ inverted }: { inverted?: boolean }) => {
   const [open, setOpen] = useState(true);
   const [query, setQuery] = useState("");
   const [result, setResult] = useState<any>({});
@@ -118,7 +118,7 @@ const HitComp = ({
   );
 };
 
-function SearchOLD({ inverted, full }: { inverted?: boolean; full?: boolean }) {
+function Search({ inverted, full }: { inverted?: boolean; full?: boolean }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const searchButtonRef = React.useRef(null);
 
