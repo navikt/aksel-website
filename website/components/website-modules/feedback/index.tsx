@@ -125,11 +125,11 @@ const Feedback = ({
   const getPlaceholder = () => {
     switch (activeState) {
       case HelpfulArticleEnum.JA:
-        return "Så bra! Er det noe du vil trekke frem? (valgfritt)";
+        return "Er det noe du vil trekke frem? (valgfritt)";
       case HelpfulArticleEnum.DELVIS:
-        return "Hm.. Hva er det som mangler?";
+        return "Hva er det som mangler?";
       case HelpfulArticleEnum.NEI:
-        return "Kjipt! Hva er det du ikke liker?";
+        return "Hva er det du ikke liker?";
       case HelpfulArticleEnum.MISC:
         return "Hva kan forbedres?";
       default:
