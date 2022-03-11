@@ -63,9 +63,11 @@ const IntroPage = React.forwardRef<HTMLDivElement, ViewProps>((props, ref) => {
         Innhold
       </Heading>
       <BodyLong>
-        Akkurat nå er det bare Designsystem-portalen som er oppe å går 100%.
-        Dette vil si at man kan skrive og publisere innhold under "God praksis",
-        men innholdet blir ikke lett tilgjengelig på design.nav.no enda.
+        Begynn med å lage en ny artikkel under "Innhold Aksel". Legg til Tema
+        denne siden omhandler, da blir artikkelen automatisk lagt under det
+        temaet på nettsiden. Når siden er klar for publisering kan du trykke
+        "Publiser". Da blir siden automatisk tigjengelig på nett etter en liten
+        stund.
       </BodyLong>
     </Stack>
   );

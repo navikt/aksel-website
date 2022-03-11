@@ -44,7 +44,10 @@ const Page = ({ preview, temaer, tekster }: PageProps): JSX.Element => {
         >
           {tekster.title}
         </Heading>
-        <SanityBlockContent blocks={tekster.beskrivelse} />
+        <SanityBlockContent
+          blocks={tekster.beskrivelse}
+          className="text-center"
+        />
         {/* {quote && (
           <>
             <BodyShort lang="en" className="mb-2 text-center sm:text-left">
