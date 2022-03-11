@@ -29,7 +29,7 @@ export const ArtikkelCard = ({
     authors?: any[];
   }
 >) => {
-  const names = authors.map((x) => x?.title);
+  const names = authors?.map((x) => x?.title);
 
   const avatars = () => {
     if (names.length === 1) {
@@ -84,7 +84,7 @@ export const ArtikkelCard = ({
           "mt-4": !oppsummering,
         })}
       >
-        {authors ? (
+        {authors && authors?.length !== 0 ? (
           <>
             {avatars()}
             <BodyShort size="small" as="span">

@@ -128,7 +128,7 @@ const AkselArtikkelTemplate = ({
                   {data.heading}
                 </Heading>
                 <BodyShort size="small" className="text-text-muted">
-                  {moment(data._createdAt).format("DD. MMM. YY")}
+                  Publisert {moment(data._createdAt).format("DD. MMM. YY")}
                 </BodyShort>
               </div>
               <SanityBlockContent
@@ -137,20 +137,32 @@ const AkselArtikkelTemplate = ({
               />
               <div className="flex justify-center">
                 <div className="w-full max-w-text border-t border-t-gray-900/20 pt-6">
-                  <Heading level="2" size="xsmall" spacing>
-                    Bidrat til artikkelen
-                  </Heading>
-                  <ul className="flex flex-wrap gap-x-6 gap-y-4">
-                    {authors &&
-                      authors.map((x) => (
-                        <li key={x} className="flex items-center gap-2">
-                          <Avatar name={x} />
-                          <BodyShort>{x}</BodyShort>
-                        </li>
-                      ))}
-                  </ul>
+                  <BodyShort
+                    as="span"
+                    size="small"
+                    className="flex pb-8 text-text-muted"
+                  >
+                    Sist oppdatert{" "}
+                    {moment(data._updatedAt).format("DD. MMM. YY")}
+                  </BodyShort>
+                  {authors && authors.length > 0 && (
+                    <>
+                      <Heading level="2" size="xsmall" spacing>
+                        Bidratt til artikkelen
+                      </Heading>
+                      <ul className="flex flex-wrap gap-x-6 gap-y-4">
+                        {authors.map((x) => (
+                          <li key={x} className="flex items-center gap-2">
+                            <Avatar name={x} />
+                            <BodyShort>{x}</BodyShort>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
                 </div>
               </div>
+
               {!data?.metadata_feedback?.hide_feedback && (
                 <Feedback center docId={data?._id} docType={data?._type} />
               )}
