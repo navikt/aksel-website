@@ -32,6 +32,9 @@ export const ArtikkelCard = ({
   const names = authors.map((x) => x?.title);
 
   const avatars = () => {
+    if (names.length === 1) {
+      return <Avatar name={names[0]} small className="border border-white" />;
+    }
     return (
       <ul className="flex">
         {names.map((x) => (

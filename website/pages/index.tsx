@@ -40,7 +40,7 @@ const Page = ({ preview, temaer, tekster }: PageProps): JSX.Element => {
           level="1"
           size="xlarge"
           spacing
-          className="text-center sm:text-left"
+          className="w-full max-w-text sm:text-left"
         >
           {tekster.title}
         </Heading>
