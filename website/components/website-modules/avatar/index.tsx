@@ -1,4 +1,3 @@
-import { BodyShort, Detail } from "@navikt/ds-react";
 import cl from "classnames";
 
 const nameToInitials = (fullName) => {
@@ -29,22 +28,17 @@ const Avatar = ({
   name: string;
   small?: boolean;
 }) => {
-  const Component = small ? Detail : BodyShort;
   return (
     <div
       className={cl(className, "aspect-square rounded-full", {
-        "h-6": small,
-        "h-8 text-[1.25rem]": !small,
+        "h-6 text-[0.75rem] font-semibold": small,
+        "h-8 text-[1.125rem]": !small,
       })}
       style={{ background: getBgColor(name) }}
     >
-      <Component
-        as="span"
-        size="small"
-        className="flex h-full items-center justify-center font-regular"
-      >
+      <span className="flex h-full items-center justify-center">
         {nameToInitials(name)}
-      </Component>
+      </span>
     </div>
   );
 };
