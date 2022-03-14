@@ -1,117 +1,211 @@
 import { BgColors, SandboxComponent } from "./types";
 
-const data = [
-  { name: "Donald Smith", country: "USA", points: 38 },
-  { name: "Preben Aalborg", country: "Denmark", points: 11 },
-  { name: "Per Hansen", country: "Norway", points: 15 },
-  {
-    name: "Christina Salikova",
-    country: "Czech Republic",
-    points: 38,
-  },
-  { name: "Nina Margeaux", country: "France", points: 64 },
-];
+const TableSandbox: SandboxComponent = ({
+  size,
+  zebraStripes,
+  selectable,
+  sortable,
+  pagination,
+}) => {
+  const propZebraStripes = zebraStripes ? ` zebraStripes` : "";
+  const propSize = size ? ` size="${size}"` : "";
 
-const ButtonSandbox: SandboxComponent = (props) => {
-  const propZebraStripes = props?.zebraStripes ? ` zebraStripes` : "";
-  const propSize = props?.size ? ` size="${props.size}"` : "";
+  return `
+  const TableDemo = () => {
+    ${
+      selectable
+        ? `const [selectedRows, setSelectedRows] = React.useState([]);
+  
+    const toggleSelectedRow = (value) =>
+        setSelectedRows((list) =>
+          list.includes(value)
+            ? list.filter((id) => id !== value)
+            : [...list, value]
+        );`
+        : ""
+    }
 
-  const comp = `<Table${propZebraStripes}${propSize}>
-                  <Table.Header>
-                    <Table.Row>
-                      <Table.HeaderCell scope="col">Name</Table.HeaderCell>
-                      <Table.HeaderCell scope="col">Country</Table.HeaderCell>
-                      <Table.HeaderCell scope="col">Points</Table.HeaderCell>
-                    </Table.Row>
-                  </Table.Header>
-                  <Table.Body>
-                  ${data
-                    .map(
-                      ({ name, country, points }) =>
-                        `<Table.Row>
-                          <Table.HeaderCell scope="row">${name}</Table.HeaderCell>
-                          <Table.DataCell>${country}</Table.DataCell>
-                          <Table.DataCell>${points}</Table.DataCell>
-                        </Table.Row>`
-                    )
-                    .join("")}
-                  </Table.Body>
-                </Table>`;
+    ${sortable ? `const [sort, setSort] = React.useState();` : ""}
 
-  switch (props.Komposisjon) {
-    case "":
-      return comp;
-    case "Selectable":
-      return `
-      const SelectableTable = () => {
-        const [selectedRows, toggleSelectedRow] = useToggleList([]);
+  return (
+    <Table${propZebraStripes}${propSize} ${
+    sortable
+      ? `sort={sort}
+        onSortChange={(sortKey) =>
+          setSort(sort && sortKey === sort.orderBy && sort.direction === "descending"
+            ? undefined
+            : {
+              orderBy: sortKey,
+              direction: 
+                sort &&sortKey === sort.orderBy && sort.direction === "ascending" 
+                  ? "descending" 
+                  : "ascending",
+            })
+        }`
+      : ""
+  }>
+      <Table.Header>
+        <Table.Row>
+        ${
+          selectable
+            ? `<Table.DataCell>
+                <Checkbox
+                  ${propSize}
+                  checked={selectedRows.length === data.length}
+                  indeterminate={selectedRows.length && selectedRows.length !== data.length}
+                  onChange={(e) =>
+                    selectedRows.length
+                      ? setSelectedRows([])
+                      : setSelectedRows(data.map(({fnr}) => fnr))
+                  }
+                  hideLabel
+                >
+                  {" "}
+                </Checkbox>
+              </Table.DataCell>`
+            : ""
+        }
+          ${
+            sortable
+              ? `<Table.ColumnHeader sortKey="name" sortable>
+                  Navn
+                </Table.ColumnHeader>`
+              : '<Table.HeaderCell scope="col">Navn</Table.HeaderCell>'
+          }
+          <Table.HeaderCell scope="col">Fødseslnr.</Table.HeaderCell>
+          ${
+            sortable
+              ? `<Table.ColumnHeader sortKey="start" sortable>
+                  Start
+                </Table.ColumnHeader>`
+              : '<Table.HeaderCell scope="col">Start</Table.HeaderCell>'
+          }
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+      {data
+        ${
+          sortable
+            ? `.slice()
+            .sort((a, b) => {
+              if (sort) {
+                const comparator = (a, b, orderBy) => {
+                  if (b[orderBy] < a[orderBy] || b[orderBy] === undefined) {
+                    return -1;
+                  }
+                  if (b[orderBy] > a[orderBy]) {
+                    return 1;
+                  }
+                  return 0;
+                };
 
-        return (
-          <Table${propZebraStripes}${propSize}>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell scope="col">Selected</Table.HeaderCell>
-                <Table.HeaderCell scope="col">Name</Table.HeaderCell>
-                <Table.HeaderCell scope="col">Country</Table.HeaderCell>
-                <Table.HeaderCell scope="col">Points</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-            ${data
-              .map(
-                ({ name, country, points }, i) =>
-                  `<Table.Row selected={selectedRows.includes("${i}")}>
-                    <Table.DataCell>
+                return sort.direction === "ascending"
+                  ? comparator(b, a, sort.orderBy)
+                  : comparator(a, b, sort.orderBy);
+              }
+              return 1;
+            })`
+            : ""
+        }
+        .map(
+          ({ name, fnr, start }) =>
+            <Table.Row key={fnr} ${
+              selectable ? "selected={selectedRows.includes(fnr)}" : ""
+            }>
+              ${
+                selectable
+                  ? `<Table.DataCell>
                       <Checkbox
                         ${propSize}
                         hideLabel
-                        checked={selectedRows.includes("${i}")}
-                        onChange={() => toggleSelectedRow("${i}")}
-                        aria-labelledby="id${i}"
+                        checked={selectedRows.includes(fnr)}
+                        onChange={() => toggleSelectedRow(fnr)}
+                        aria-labelledby="id{fnr}"
                       >
                         {" "}
                       </Checkbox>
                     </Table.DataCell>
                     <Table.HeaderCell scope="row">
-                      <span id="id${i}">${name}</span>
-                    </Table.HeaderCell>
-                    <Table.DataCell>${country}</Table.DataCell>
-                    <Table.DataCell>${points}</Table.DataCell>
-                  </Table.Row>`
-              )
-              .join("")}
-            </Table.Body>
-          </Table>
-        );
-      }
+                      <span id="id{fnr}">{name}</span>
+                    </Table.HeaderCell>`
+                  : `<Table.HeaderCell scope="row">{name}</Table.HeaderCell>`
+              }
+              <Table.DataCell>{fnr.substring(0, 6)} {fnr.substring(6)}</Table.DataCell>
+              <Table.DataCell>{format(new Date(start), "dd.MM.yyyy")}</Table.DataCell>
+            </Table.Row>
+        )}
+      </Table.Body>
+    </Table>
+  );
+}
 
-      render(<SelectableTable />)
-      const useToggleList = (initialState) => {
-        const [list, setList] = React.useState(initialState);
+render(<TableDemo />);
 
-        return [
-          list,
-          (value) =>
-            setList((list) =>
-              list.includes(value)
-                ? list.filter((id) => id !== value)
-                : [...list, value]
-            ),
-        ];
-      };
-      `;
-    default:
-      return comp;
-  }
+
+const data = [
+  {
+    name: "Jakobsen, Markus",
+    fnr: "03129265463",
+    start: "2021-04-28T19:12:14.358Z",
+  },
+  {
+    name: "Halvorsen, Mari",
+    fnr: "16063634134",
+    start: "2022-01-29T09:51:19.833Z",
+  },
+  {
+    name: "Christiansen, Mathias",
+    fnr: "18124441438",
+    start: "2021-06-04T20:57:29.159Z",
+  },
+  {
+    name: "Fredriksen, Leah",
+    fnr: "24089080180",
+    start: "2021-08-31T15:47:36.293Z",
+  },
+  {
+    name: "Evensen, Jonas",
+    fnr: "18106248460",
+    start: "2021-07-17T11:13:26.116Z",
+  },
+  {
+    name: "Strand, Thomas",
+    fnr: "11123693157",
+    start: "2021-08-14T14:15:44.597Z",
+  },
+  {
+    name: "Eriksen, Sofie",
+    fnr: "07067878435",
+    start: "2021-12-20T15:55:02.613Z",
+  },
+  {
+    name: "Jørgensen, Erik",
+    fnr: "02099681196",
+    start: "2021-09-05T11:33:19.361Z",
+  },
+  {
+    name: "Carlsen, Sondre",
+    fnr: "23096491197",
+    start: "2022-01-25T16:10:47.223Z",
+  },
+  {
+    name: "Berge, Martine",
+    fnr: "11090293151",
+    start: "2022-01-09T11:15:50.833Z",
+  },
+];
+`;
 };
 
-ButtonSandbox.args = {
+TableSandbox.args = {
   props: {
     size: ["medium", "small"],
     zebraStripes: false,
-    Komposisjon: ["", "Selectable"],
+    selectable: false,
+    sortable: false,
+    pagination: false,
   },
   background: BgColors.WHITE,
 };
 
-export default ButtonSandbox;
+export default TableSandbox;

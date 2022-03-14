@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+import { nb } from "date-fns/locale";
 import * as DsIcons from "@navikt/ds-icons";
 import * as DsReact from "@navikt/ds-react";
 import * as DsReactInternal from "@navikt/ds-react-internal";
@@ -48,6 +50,7 @@ const formatCode = (code: string) => {
 };
 
 const scope = {
+  format: (date, f) => format(date, f, { locale: nb }),
   ...DsIcons,
   ...DsReact,
   ...DsReactInternal,

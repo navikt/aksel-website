@@ -1407,11 +1407,12 @@
   version "0.16.2"
   resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.16.2.tgz#018793ac74d56063dc28cb29c840cb3f7ddfd3bd"
 
-"@navikt/ds-css@^0.14":
-  version "0.14.2"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.14.2.tgz#43a90ba179de177f3ee183b7a15fd5dfaa2ab49f"
+"@navikt/ds-css@^0.16":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.16.4.tgz#2905461c4551a9a5d64c02c2752a32534d02a893"
+  integrity sha512-z34y77lwL1FjYmjexCkkfYH6rIjEHMG8jK36xprIbbAmyES7kv2v5OH4Dxjb0Iv6ZZbOKDKKX+kDz2ocp4P2Ag==
 
-"@navikt/ds-icons@^0.8", "@navikt/ds-icons@^0.8.1", "@navikt/ds-icons@^0.8.4":
+"@navikt/ds-icons@^0.8", "@navikt/ds-icons@^0.8.4":
   version "0.8.4"
   resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.8.4.tgz#82ba73cbc5704132ec2dd6e6faace3a2b9d6abff"
   dependencies:
@@ -1443,13 +1444,15 @@
     react-popper "^2.2.5"
     uuid "^8.3.2"
 
-"@navikt/ds-react@^0.15":
-  version "0.15.3"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.15.3.tgz#70e35610ce7ea41359d4a359e84b96435ea1ab64"
+"@navikt/ds-react@^0.17":
+  version "0.17.4"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.17.4.tgz#09c12cf85a669feddffb5f42d9a272ddea26d0b2"
+  integrity sha512-9DFS8R/bv9L/Z+9kZCVJZu4rHgxlVlFQyTVlucqedD6d8vpE1CyJU6vNkjwm1dteSFAm0YMoCGKJlcSQxdzjNw==
   dependencies:
     "@material-ui/core" "^4.12.3"
-    "@navikt/ds-icons" "^0.8.1"
+    "@navikt/ds-icons" "^0.8.4"
     "@popperjs/core" "^2.10.1"
+    "@radix-ui/react-toggle-group" "0.1.5"
     classnames "^2.2.6"
     react-collapse "^5.1.0"
     react-merge-refs "^1.1.0"
@@ -5113,7 +5116,7 @@ date-fns@2.16.1:
   version "2.16.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.16.1.tgz#05775792c3f3331da812af253e1a935851d3834b"
 
-date-fns@^2.16.1:
+date-fns@^2.16.1, date-fns@^2.28.0:
   version "2.28.0"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.28.0.tgz#9570d656f5fc13143e50c975a3b6bbeb46cd08b2"
 
