@@ -14,6 +14,7 @@ import CheckboxSandbox from "./checkbox";
 import SwitchSandbox from "./switch";
 import ToggleGroupSandbox from "./toggle-group";
 import SearchSandbox from "./search";
+import PaginationSandbox from "./pagination";
 import { kebabCase } from "lodash";
 import { SandboxComponent } from "./types";
 
@@ -34,6 +35,7 @@ const allSandboxes = {
   SwitchSandbox,
   ToggleGroupSandbox,
   SearchSandbox,
+  PaginationSandbox,
 };
 
 export const Sandboxes = Object.keys(allSandboxes).reduce((prev, y) => {
