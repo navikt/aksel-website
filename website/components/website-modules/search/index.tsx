@@ -2,11 +2,11 @@ import { DocSearchModal, useDocSearchKeyboardEvents } from "@docsearch/react";
 import { DocSearchHit } from "@docsearch/react/dist/esm/types";
 import { Search as SearchIcon } from "@navikt/ds-icons";
 import { BodyShort, Button, Search as DsSearch } from "@navikt/ds-react";
+import algoliasearch from "algoliasearch/lite";
 import cl from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Modal from "react-modal";
-import algoliasearch from "algoliasearch/lite";
 import style from "./index.module.css";
 
 const searchClient = algoliasearch(
