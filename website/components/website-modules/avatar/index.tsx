@@ -23,16 +23,19 @@ const Avatar = ({
   className,
   name,
   small,
+  large,
 }: {
   className?: string;
   name: string;
   small?: boolean;
+  large?: boolean;
 }) => {
   return (
     <div
       className={cl(className, "aspect-square rounded-full", {
+        "h-12 text-[1.25rem]": large,
         "h-6 text-[0.75rem] font-semibold": small,
-        "h-8 text-[1.125rem]": !small,
+        "h-8 text-[1.125rem]": !small && !large,
       })}
       style={{ background: getBgColor(name) }}
     >

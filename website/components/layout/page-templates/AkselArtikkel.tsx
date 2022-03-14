@@ -2,6 +2,7 @@ import {
   BodyShort,
   Detail,
   Heading,
+  Label,
   useClientLayoutEffect,
 } from "@navikt/ds-react";
 import moment from "moment";
@@ -127,9 +128,32 @@ const AkselArtikkelTemplate = ({
                 >
                   {data.heading}
                 </Heading>
-                <BodyShort size="small" className="text-text-muted">
-                  Publisert {moment(data._createdAt).format("DD. MMM. YY")}
-                </BodyShort>
+                <div className="index-ignore flex justify-center gap-2 lg:justify-start">
+                  {authors && authors.length > 0 ? (
+                    <>
+                      <Avatar name={authors[0]} large />
+                      <div className="flex flex-col">
+                        <span>
+                          av{" "}
+                          <Label size="small" as="span">
+                            {authors[0]}
+                          </Label>
+                        </span>
+                        <Detail
+                          as="span"
+                          size="small"
+                          className="text-text-muted"
+                        >
+                          {moment(data._createdAt).format("DD. MMM. YY")}
+                        </Detail>
+                      </div>
+                    </>
+                  ) : (
+                    <BodyShort size="small" className="text-text-muted">
+                      {moment(data._createdAt).format("DD. MMM. YY")}
+                    </BodyShort>
+                  )}
+                </div>
               </div>
               <SanityBlockContent
                 className="aksel-artikkel__blocks mt-12 min-h-[500px] px-0 sm:px-8 lg:px-0"
