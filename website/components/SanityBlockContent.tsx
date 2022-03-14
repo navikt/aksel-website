@@ -223,7 +223,7 @@ const serializers = {
           rel="noreferrer noopener"
           className="break-all"
         >
-          {children} (åpner lenken i ny fane)
+          {children} <Icons.ExternalLink title="åpner lenken i ny fane" />
         </Link>
       ) : (
         <NextLink href={href} passHref>
