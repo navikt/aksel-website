@@ -24,10 +24,16 @@ const TableSandbox: SandboxComponent = ({
         );`
         : ""
     }
-
     ${sortable ? `const [sort, setSort] = React.useState();` : ""}
+    ${
+      pagination
+        ? `const [page, setPage] = React.useState(1);
+            const rowsPerPage = 4;`
+        : ""
+    }
 
   return (
+    <div className="w-full flex flex-col gap-4">
     <Table${propZebraStripes}${propSize} ${
     sortable
       ? `sort={sort}
@@ -107,6 +113,11 @@ const TableSandbox: SandboxComponent = ({
             })`
             : ""
         }
+        ${
+          pagination
+            ? `.slice((page - 1) * rowsPerPage, page * rowsPerPage)`
+            : ""
+        }
         .map(
           ({ name, fnr, start }) =>
             <Table.Row key={fnr} ${
@@ -136,6 +147,16 @@ const TableSandbox: SandboxComponent = ({
         )}
       </Table.Body>
     </Table>
+    ${
+      pagination
+        ? `<Pagination
+            page={page}
+            onPageChange={setPage}
+            count={Math.ceil(data.length / rowsPerPage)}
+          />`
+        : ""
+    }
+    </div>
   );
 }
 
