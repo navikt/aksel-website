@@ -76,7 +76,10 @@ const serializers = {
     live_demo: ({ node }) => <LiveDemo node={node} />,
     uu_seksjon: ({ node }) => <UuSeksjon node={node} />,
     generisk_seksjon: ({ node }) => <GeneriskSeskjon node={node} />,
-    riktekst_blokk: ({ node }) => <SanityBlockContent blocks={node.body} />,
+    riktekst_blokk: ({ node }) => {
+      console.log("TT");
+      return <SanityBlockContent blocks={node.body} />;
+    },
     do_dont_v2: ({ node }) => <DoDontv2 node={node} />,
     bilde: ({ node }) => <Bilde node={node} />,
     alert_v2: ({ node }) => <Alert node={node} />,
@@ -186,7 +189,7 @@ const serializers = {
       return (
         <ol
           type="1"
-          className={cl("list-margin mb-7 max-w-text list-decimal", {
+          className={cl("aksel-list list-margin mb-7 max-w-text list-decimal", {
             "last:mb-0": context.noLastMargin,
           })}
         >
@@ -196,7 +199,7 @@ const serializers = {
     }
     return (
       <ul
-        className={cl("list-margin mb-7 max-w-text list-disc", {
+        className={cl("aksel-list list-margin mb-7 max-w-text list-disc", {
           "last:mb-0": context.noLastMargin,
         })}
       >
@@ -221,13 +224,13 @@ const serializers = {
           href={href}
           target="_blank"
           rel="noreferrer noopener"
-          className="break-all"
+          className="break-normal"
         >
           {children} <Icons.ExternalLink title="åpner lenken i ny fane" />
         </Link>
       ) : (
         <NextLink href={href} passHref>
-          <Link className="break-all">{children}</Link>
+          <Link className="break-normal">{children}</Link>
         </NextLink>
       ),
     internalLink: ({ mark, children }: { mark: any; children: any }) => {
@@ -271,7 +274,6 @@ export const SanityBlockContent = ({
       blocks={blocks ?? []}
       serializers={serializers}
       options={{ size: "small" }}
-      renderContainerOnSingleChild
       className="aksel-artikkel__child"
       {...rest}
     />

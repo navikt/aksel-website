@@ -16,7 +16,18 @@
     @apply w-full;
   }
 
-  .aksel-artikkel__child > .navds-typo--spacing:last-child {
-    margin-bottom: 0;
+  .aksel-artikkel
+    .aksel-artikkel__child.mb-16
+    > :last-child.navds-typo--spacing,
+  .aksel-artikkel
+    .aksel-artikkel__child.mb-16
+    > .aksel-artikkel__child
+    > :last-child.navds-typo--spacing,
+  .aksel-artikkel .aksel-artikkel__child.mb-16 > :last-child.aksel-list,
+  .aksel-artikkel
+    .aksel-artikkel__child.mb-16
+    > .aksel-artikkel__child
+    > :last-child.aksel-list {
+    @apply mb-0;
   }
 }
