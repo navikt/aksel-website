@@ -26,22 +26,21 @@ const UuSeksjon = ({ node }: { node: UuSeksjonT }): JSX.Element => {
       <LevelTwoHeading>{[node.title]}</LevelTwoHeading>
       {node?.interaksjon_mus && (
         <Heading level="3" size="medium">
-          Interasksjon Mus
+          Interaksjon Mus
         </Heading>
       )}
       <SanityBlockContent blocks={node.interaksjon_mus} />
       {node?.interaksjon_touch && (
         <Heading level="3" size="medium">
-          Interasksjon Touch
+          Interaksjon Touch
         </Heading>
       )}
       <SanityBlockContent blocks={node.interaksjon_touch} />
-      {node?.interaksjon_tastatur ||
-        (node?.tastatur && (
-          <Heading level="3" size="medium">
-            Interasksjon Tastatur
-          </Heading>
-        ))}
+      {(node?.interaksjon_tastatur || node?.tastatur) && (
+        <Heading level="3" size="medium">
+          Interaksjon Tastatur
+        </Heading>
+      )}
       <SanityBlockContent blocks={node.interaksjon_tastatur} />
 
       {node?.tastatur && (
@@ -68,7 +67,7 @@ const UuSeksjon = ({ node }: { node: UuSeksjonT }): JSX.Element => {
       )}
       {node?.interaksjon_skjermleser && (
         <Heading level="3" size="medium">
-          Interasksjon Skjermleser
+          Interaksjon Skjermleser
         </Heading>
       )}
       <SanityBlockContent blocks={node.interaksjon_skjermleser} />
