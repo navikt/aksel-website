@@ -27,7 +27,7 @@ const Intro = ({ node }: { node: IntroKomponentSeksjon }): JSX.Element => {
         </div>
         {node?.brukes_ikke_til && (
           <div>
-            <Label className="mb-2">Når man bør vurdere noe annet:</Label>
+            <Label className="mb-2">Når bør man vurdere noe annet:</Label>
             <ul className="list-disc">
               {node.brukes_ikke_til.map((x) => (
                 <li key={x} className="ml-5 list-item">
