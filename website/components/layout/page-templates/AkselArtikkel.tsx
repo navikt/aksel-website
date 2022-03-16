@@ -56,6 +56,8 @@ const AkselArtikkelTemplate = ({
 
   const authors = (data?.contributors as any).map((x) => x?.title);
 
+  const hasTema = data.tema && data.tema.length > 0;
+
   return (
     <>
       <Head>
@@ -102,23 +104,24 @@ const AkselArtikkelTemplate = ({
               <div className="px-4 md:mx-6 lg:mx-12 lg:px-9">
                 <div className="index-ignore mb-4 flex flex-wrap items-center justify-center gap-1 lg:justify-start">
                   <BodyShort size="small" className="text-text-muted">
-                    {ttr} min lesing -
+                    {ttr} min lesing {hasTema && "-"}
                   </BodyShort>
-                  {data.tema.map(({ title }: any) => (
-                    <NextLink
-                      key={title}
-                      href={`/tema/${getTemaSlug(title)}`}
-                      passHref
-                    >
-                      <Detail
-                        size="small"
-                        as="a"
-                        className="rounded bg-purple-100 py-[2px] px-[6px] text-purple-500 focus:outline-focus"
+                  {hasTema &&
+                    data.tema.map(({ title }: any) => (
+                      <NextLink
+                        key={title}
+                        href={`/tema/${getTemaSlug(title)}`}
+                        passHref
                       >
-                        {title}
-                      </Detail>
-                    </NextLink>
-                  ))}
+                        <Detail
+                          size="small"
+                          as="a"
+                          className="rounded bg-purple-100 py-[2px] px-[6px] text-purple-500 focus:outline-focus"
+                        >
+                          {title}
+                        </Detail>
+                      </NextLink>
+                    ))}
                 </div>
                 <Heading
                   size="xlarge"

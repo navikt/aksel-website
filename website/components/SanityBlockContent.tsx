@@ -76,10 +76,7 @@ const serializers = {
     live_demo: ({ node }) => <LiveDemo node={node} />,
     uu_seksjon: ({ node }) => <UuSeksjon node={node} />,
     generisk_seksjon: ({ node }) => <GeneriskSeskjon node={node} />,
-    riktekst_blokk: ({ node }) => {
-      console.log("TT");
-      return <SanityBlockContent blocks={node.body} />;
-    },
+    riktekst_blokk: ({ node }) => <SanityBlockContent blocks={node.body} />,
     do_dont_v2: ({ node }) => <DoDontv2 node={node} />,
     bilde: ({ node }) => <Bilde node={node} />,
     alert_v2: ({ node }) => <Alert node={node} />,
