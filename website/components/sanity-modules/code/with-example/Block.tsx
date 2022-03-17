@@ -28,7 +28,7 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
   return (
     <>
       <div
-        className={cl("relative mb-8 max-h-80 overflow-x-auto bg-gray-900", {
+        className={cl("relative max-h-80 overflow-x-auto bg-gray-900", {
           block: activeTab === index,
           hidden: activeTab !== index,
           "rounded-md": !showPreview && !showTabs,

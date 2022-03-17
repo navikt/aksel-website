@@ -3,7 +3,7 @@ import { withErrorBoundary } from "../../../ErrorBoundary";
 import CodeBlock from "./Block";
 import CodeTabs from "./Tabs";
 import { DsCodeExample as DsCodeExampleT } from "../../../../lib";
-
+import cl from "classnames";
 import dynamic from "next/dynamic";
 import { BgColors } from "../../../../stories/sandbox/types";
 
@@ -44,7 +44,13 @@ export const CodeContext = createContext<ContextProps>({
   setPreviewBg: () => null,
 });
 
-const Code = ({ node }: { node: DsCodeExampleT }): JSX.Element => {
+const Code = ({
+  node,
+  className,
+}: {
+  node: DsCodeExampleT;
+  className?: string;
+}): JSX.Element => {
   const [tabs, setTabs] = useState<TabType[]>(
     node?.infercode
       ? [
@@ -101,7 +107,7 @@ const Code = ({ node }: { node: DsCodeExampleT }): JSX.Element => {
         setPreviewBg,
       }}
     >
-      <div className="index-ignore mb-9 flex w-full flex-col">
+      <div className={cl("index-ignore mb-9 flex w-full flex-col", className)}>
         {showTabs && <CodeTabs />}
         {showPreview && activeTab === -1 && <CodePreview />}
         {(node.tabs || tabs) &&

@@ -10,8 +10,10 @@ import CopyButton from "./CopyButton";
 
 const CodeSnippet = ({
   node: { code },
+  className,
 }: {
   node: CodeSnippetT | Kode;
+  className?: string;
 }): JSX.Element => {
   const [highlightedCode, setHighlightedCode] = useState(null);
 
@@ -31,7 +33,12 @@ const CodeSnippet = ({
 
   return (
     <>
-      <div className="relative mb-8 block max-h-80 overflow-x-auto rounded-md bg-gray-900">
+      <div
+        className={cl(
+          className,
+          "relative mb-8 block max-h-80 overflow-x-auto rounded-md bg-gray-900"
+        )}
+      >
         <CopyButton content={code.code} />
         <pre className="language- m-0 flex min-h-[5rem] items-center overflow-x-auto p-4">
           <code
