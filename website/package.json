@@ -50,7 +50,7 @@
     "next": "^12.1.0",
     "next-sanity": "^0.5.1",
     "next-sanity-image": "^3.2.1",
-    "prettier": "^2.4.1",
+    "prettier": "2.4.1",
     "prism-react-renderer": "^1.2.1",
     "prismjs": "^1.27.0",
     "react": "^17.0.2",
