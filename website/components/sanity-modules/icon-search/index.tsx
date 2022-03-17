@@ -30,8 +30,6 @@ export const getTag = (name: string) => {
       return "Filled";
     case name.endsWith("Outline"):
       return "Outline";
-    case name.endsWith("Stroke"):
-      return "Stroke";
     default:
       return "Outline";
   }
@@ -139,10 +137,10 @@ const IconSearch = () => {
       {categories.map((cat) => {
         return (
           <div key={cat.category}>
-            <Heading level="3" size="small">
+            <Heading level="3" size="small" spacing>
               {cat.category}
             </Heading>
-            <div className="grid content-start justify-start gap-x-4 gap-y-6 py-8 [grid-template-columns:repeat(auto-fit,12rem)]">
+            <div className="grid content-start justify-start gap-x-4 gap-y-6 pb-8 [grid-template-columns:repeat(auto-fit,12rem)]">
               {cat.icons.map((i) => {
                 const T = Icons[i.name];
                 return (

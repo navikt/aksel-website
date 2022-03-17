@@ -56,7 +56,6 @@ const Filter = ({
       <ToggleGroup onChange={setToggle} size="small" defaultValue="outline">
         <ToggleGroup.Item value="outline">Outline</ToggleGroup.Item>
         <ToggleGroup.Item value="filled">Filled</ToggleGroup.Item>
-        <ToggleGroup.Item value="stroke">Stroke</ToggleGroup.Item>
       </ToggleGroup>
     </div>
   );
