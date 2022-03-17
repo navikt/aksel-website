@@ -23,7 +23,7 @@ export default {
     {
       type: "array",
       name: "brukes_ikke_til",
-      title: "Uegnet til (optional)",
+      title: "Når bør man vurdere noe annet (optional)",
       of: [{ type: "string" }],
     },
   ],
