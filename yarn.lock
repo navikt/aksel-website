@@ -1690,7 +1690,12 @@
   resolved "https://registry.yarnpkg.com/@navikt/ds-css-internal/-/ds-css-internal-0.7.1.tgz#674fabf444c4a970c0d3631aac621fd46bfdca4c"
   integrity sha512-atk2/O8bKx73614zwlWiHZza3vV5i3M5hbfitnAX5awCrRg9y8Hy7Xpu5zEpH0goTw74/AZuTJ50vghtiMC/9w==
 
-"@navikt/ds-css@0.16.5", "@navikt/ds-css@^0.16":
+"@navikt/ds-css@0.16.6":
+  version "0.16.6"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.16.6.tgz#284aff0581967486721d508c1fdfb3125e115caa"
+  integrity sha512-GgXarn7K2hAM27/pRYIPNj7iF2rOUNcC8+Ru6rIEJApUJaMzfKegNtHgoBLX61BSN+c2Kon2tp6R5i4ttG4KMQ==
+
+"@navikt/ds-css@^0.16":
   version "0.16.5"
   resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.16.5.tgz#2d3773f1e9102ab62cba4f0905fa802de07808c0"
   integrity sha512-JCAvi91YvQsdjG87FbBQqonR36Zc/KHMR6YOkljJ+Dy3MCAKvOnPV8Q+ap3O8xbtd5zOAwHXBuEuWnaQHdMfWg==
@@ -1702,19 +1707,35 @@
   dependencies:
     uuid "^8.3.2"
 
-"@navikt/ds-react-internal@0.12.8":
-  version "0.12.8"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react-internal/-/ds-react-internal-0.12.8.tgz#0c707be015f44d6a05ebdaf11a63ff601c2bb308"
-  integrity sha512-b90J5VAKjjjr85K8K2YrDy/YH2DZ6ZIEHnii9gJf4Huy897nIuuuncJ90VnZBD4Pa9N9zmapHOX3xyr6XNrIUw==
+"@navikt/ds-react-internal@0.12.9":
+  version "0.12.9"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react-internal/-/ds-react-internal-0.12.9.tgz#666ccc026e14cae89aaa60da4b81ba42464f6b1f"
+  integrity sha512-lTAmSLPaMT+Z/LLa5fyiMQ6ESZC6+D4RFhuRzXl3R024K4tUhVQS8y0BKNRnmXX/1pHnhtbSRClQWtVopHTItw==
   dependencies:
     "@navikt/ds-icons" "^0.8.6"
-    "@navikt/ds-react" "^0.17.8"
+    "@navikt/ds-react" "^0.17.9"
     "@popperjs/core" "^2.10.1"
     classnames "^2.3.1"
     copy-to-clipboard "^3.3.1"
     react-merge-refs "^1.1.0"
 
-"@navikt/ds-react@0.17.8", "@navikt/ds-react@^0.17", "@navikt/ds-react@^0.17.8":
+"@navikt/ds-react@0.17.9", "@navikt/ds-react@^0.17.9":
+  version "0.17.9"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.17.9.tgz#b672b119d52fef8f63a44f93b103e90e3b72c1a4"
+  integrity sha512-SH7lAuEbkEpBPALpuWq7QTlEqbwhRNYyfGIT77u4R4FSGDDQmnshk4sFK7rTqUpVQLNDeVJdYlBlNzSHvVn6BQ==
+  dependencies:
+    "@material-ui/core" "^4.12.3"
+    "@navikt/ds-icons" "^0.8.6"
+    "@popperjs/core" "^2.10.1"
+    "@radix-ui/react-toggle-group" "0.1.5"
+    classnames "^2.2.6"
+    react-collapse "^5.1.0"
+    react-merge-refs "^1.1.0"
+    react-modal "3.14.3"
+    react-popper "^2.2.5"
+    uuid "^8.3.2"
+
+"@navikt/ds-react@^0.17":
   version "0.17.8"
   resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.17.8.tgz#8147f9accf7f170bee3683e9dbc6d20a4d1b2977"
   integrity sha512-9RkDdbg/CG14lgtcjlXQeoAIPgQI4oME1UEdUybSNKH6jwY87nZFQpmKGtGkn44GQKRbKK7GJLVF2jgzk6hIHQ==
