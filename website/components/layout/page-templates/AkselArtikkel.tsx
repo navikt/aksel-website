@@ -85,6 +85,7 @@ const AkselArtikkelTemplate = ({
                   data?.banner?.banner_img?.alt ??
                   "Presentasjonsbilde for artikkel"
                 }
+                sizes="1024px"
                 quality="75"
                 layout="fill"
                 objectFit="cover"

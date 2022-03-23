@@ -28,7 +28,6 @@ const Image = ({ node }: { node: PictureTextT }): JSX.Element => {
           layout="responsive"
           sizes="(max-width: 320px)"
           alt={node.title}
-          unoptimized
         />
       </div>
       <SanityBlockContent blocks={node.body} />

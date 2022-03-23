@@ -83,7 +83,6 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
           sizes="(max-width: 800px)"
           alt={block.alt}
           quality="100"
-          unoptimized
         />
       </button>
       <div
@@ -110,7 +109,6 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
             quality="100"
             layout="fill"
             alt={block.alt}
-            unoptimized
           />
         )}
       </Lightbox>
