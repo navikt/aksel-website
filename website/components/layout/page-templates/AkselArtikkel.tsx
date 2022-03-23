@@ -73,7 +73,7 @@ const AkselArtikkelTemplate = ({
         <main
           tabIndex={-1}
           id="hovedinnhold"
-          className="relative mx-auto flex min-h-screen-header w-full max-w-6xl flex-col items-center py-16 pb-4 focus:outline-none md:my-0 md:py-20 lg:pb-4 xl:px-6"
+          className="relative mx-auto flex min-h-screen-header w-full max-w-5xl flex-col items-center py-16 pb-4 focus:outline-none md:my-0 md:py-20 lg:pb-4"
         >
           <ArtikkelBreadcrumbs />
           {data?.banner?.variant === "bilde" && data.banner.banner_img ? (
