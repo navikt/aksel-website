@@ -74,6 +74,16 @@ export default {
         isHighlighted: true,
       },
     },
+    {
+      name: "small",
+      title: "Bildet tar bare ~halve bredden",
+      type: "boolean",
+      initialValue: false,
+      hidden: ({ parent }) => parent?.floating,
+      options: {
+        isHighlighted: true,
+      },
+    },
   ],
   validation: (Rule) =>
     Rule.custom((v) => {

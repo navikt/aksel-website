@@ -89,7 +89,7 @@ export default {
               name: "tag",
               type: "string",
               hidden: ({ parent }) =>
-                parent?.tags === "default" || parent.ekstern_domene,
+                parent?.tags === "none" || parent.ekstern_domene,
             },
           ],
         },
