@@ -45,56 +45,18 @@ export interface VkFrontpage extends SanityDocument {
   _type: "vk_frontpage";
 
   /**
-   * Cards — `array`
+   * Tittel — `string`
    *
    *
    */
-  cards?: Array<
-    SanityKeyed<{
-      _type: "card";
-      /**
-       * Kategori — `reference`
-       *
-       *
-       */
-      category_ref?: SanityReference<MainCategories>;
+  title?: string;
 
-      /**
-       * Lenke url — `url`
-       *
-       *
-       */
-      link?: string;
-
-      /**
-       * Side under design.nav.no — `boolean`
-       *
-       *
-       */
-      internal?: boolean;
-
-      /**
-       * Krever innlogging for tilgang — `boolean`
-       *
-       *
-       */
-      locked?: boolean;
-
-      /**
-       * Tittel — `string`
-       *
-       *
-       */
-      title?: string;
-
-      /**
-       * Innhold — `string`
-       *
-       *
-       */
-      content?: string;
-    }>
-  >;
+  /**
+   * Beskrivelse — `riktekst`
+   *
+   *
+   */
+  beskrivelse?: Riktekst;
 }
 
 /**
@@ -1015,7 +977,7 @@ export interface AkselArtikkel extends SanityDocument {
   /**
    * Redaktører — `array`
    *
-   * Legg til de som har bidratt med denne siden!
+   * Øverste redaktør vil vises med navn på artikkel
    */
   contributors?: Array<SanityKeyedReference<Editor>>;
 
@@ -1145,6 +1107,39 @@ export interface AkselTema extends SanityDocument {
    *
    */
   beskrivelse?: Riktekst;
+}
+
+/**
+ * Quotes
+ *
+ *
+ */
+export interface Quotes extends SanityDocument {
+  _type: "quotes";
+
+  /**
+   * Quotes — `array`
+   *
+   *
+   */
+  quotes?: Array<
+    SanityKeyed<{
+      _type: "list";
+      /**
+       * Quote — `string`
+       *
+       *
+       */
+      title?: string;
+
+      /**
+       * Kilde — `string`
+       *
+       *
+       */
+      kilde?: string;
+    }>
+  >;
 }
 
 export type GeneriskSeksjon = {
@@ -1292,6 +1287,13 @@ export type Bilde = {
    *
    */
   floating_text?: Riktekst;
+
+  /**
+   * Bildet tar bare ~halve bredden — `boolean`
+   *
+   *
+   */
+  small?: boolean;
 };
 
 export type RiktekstEnkel = Array<SanityKeyed<SanityBlock>>;
@@ -1439,7 +1441,7 @@ export type IntroKomponentSeksjon = {
   brukes_til?: Array<SanityKeyed<string>>;
 
   /**
-   * Ugnet til (optional) — `array`
+   * Når bør man vurdere noe annet (optional) — `array`
    *
    *
    */
@@ -2302,7 +2304,8 @@ export type Documents =
   | KomponentArtikkel
   | DsArtikkel
   | AkselArtikkel
-  | AkselTema;
+  | AkselTema
+  | Quotes;
 
 /**
  * This interface is a stub. It was referenced in your sanity schema but
