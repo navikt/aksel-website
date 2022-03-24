@@ -100,7 +100,7 @@ const AkselArtikkelTemplate = ({
             />
           )}
           <div className="mx-auto flex w-full max-w-[calc(100%_-_2.5rem)] justify-center">
-            <div className="relative flex w-full max-w-3xl flex-col rounded-2xl bg-gray-50 py-8 sm:px-0 md:mx-6">
+            <div className="relative flex w-full max-w-[800px] flex-col rounded-2xl bg-gray-50 py-8 sm:px-0 md:mx-6">
               <div className="px-4 md:mx-6 lg:mx-12 lg:px-9">
                 <div className="index-ignore mb-4 flex flex-wrap items-center justify-center gap-1 lg:justify-start">
                   <BodyShort size="small" className="text-text-muted">
