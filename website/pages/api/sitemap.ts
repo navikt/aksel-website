@@ -20,6 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       "",
       "designsystem",
       "tema",
+      "blogg",
       ...pages,
       ...artikler,
       ...temaer.map((x) => `tema/${x}`),

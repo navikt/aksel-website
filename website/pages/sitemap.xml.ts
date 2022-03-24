@@ -28,6 +28,7 @@ class Sitemap extends React.Component {
       "",
       "designsystem",
       "tema",
+      "blogg",
       ...pages,
       ...artikler,
       ...temaer.map((x) => `tema/${x}`),
