@@ -7,6 +7,12 @@ import AkselHeader from "../../components/layout/header/AkselHeader";
 import { akselTema, AkselTema } from "../../lib";
 import { getClient } from "../../lib/sanity/sanity.server";
 
+interface PageProps {
+  page: AkselTema[];
+  slug: string;
+  preview: boolean;
+}
+
 const Page = ({ preview, page }: PageProps): JSX.Element => {
   return (
     <>
@@ -19,58 +25,40 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
           content="Oversikt over alle tilgjengelige tema"
         />
       </Head>
-      <TemaBreadcrumbs />
-      <Heading
-        level="1"
-        size="xlarge"
-        spacing
-        className="index-lvl1 self-start"
-      >
-        Temaer
-      </Heading>
+      <div className="bg-gray-50">
+        <AkselHeader className="bg-gray-50" />
+        <main
+          tabIndex={-1}
+          id="hovedinnhold"
+          className="aksel-main--start w-full max-w-5xl py-16 md:py-20"
+        >
+          <TemaBreadcrumbs />
+          <Heading
+            level="1"
+            size="xlarge"
+            spacing
+            className="index-lvl1 self-start"
+          >
+            Temaer
+          </Heading>
 
-      <div className="aksel-card-grid">
-        {page.map((tema) => (
-          <TemaCard {...tema} key={tema._id} />
-        ))}
+          <div className="aksel-card-grid">
+            {page.map((tema) => (
+              <TemaCard {...tema} key={tema._id} />
+            ))}
+          </div>
+        </main>
+        <Footer />
       </div>
     </>
   );
 };
 
-Page.getLayout = (page) => {
-  return (
-    <div className="bg-gray-50">
-      <AkselHeader className="bg-gray-50" />
-      <main
-        tabIndex={-1}
-        id="hovedinnhold"
-        className="aksel-main--start w-full max-w-5xl py-16 md:py-20"
-      >
-        {page}
-      </main>
-      <Footer />
-    </div>
-  );
-};
-
-interface PageProps {
-  page: AkselTema[];
-  slug: string;
-  preview: boolean;
-}
-
-interface StaticProps {
-  props: PageProps;
-  notFound: boolean;
-  revalidate: number;
-}
-
 export const getStaticProps = async ({
   preview = false,
 }: {
   preview?: boolean;
-}): Promise<StaticProps | { notFound: true }> => {
+}) => {
   const page = await getClient(true).fetch(akselTema);
 
   const doc = page ?? null;
