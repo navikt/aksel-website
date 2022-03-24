@@ -1707,22 +1707,22 @@
   dependencies:
     uuid "^8.3.2"
 
-"@navikt/ds-react-internal@0.12.13":
-  version "0.12.13"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react-internal/-/ds-react-internal-0.12.13.tgz#0164e270ec6004eefbe369b2e713c8ca7d56851b"
-  integrity sha512-3qJyQ1MW1dzUCfpEFTPACtCGauLvfllV/5qp1rngHIaT6YxiOOt5/yitfuptLTMS49DMPcqwAwDmgvYVm7g8Tw==
+"@navikt/ds-react-internal@0.12.14":
+  version "0.12.14"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react-internal/-/ds-react-internal-0.12.14.tgz#7741d5326bf86f7a4fb19f3c2fad008e7c1cee07"
+  integrity sha512-5qPQ4kNUU+LrQs6WUqiwDSqH7x0rAB5CGPFDfoJh+ld6r4KFGDXaJSHTTe+9BR9U4MSvF2MH5L0gWWm87XcHSQ==
   dependencies:
     "@navikt/ds-icons" "^0.8.6"
-    "@navikt/ds-react" "^0.17.13"
+    "@navikt/ds-react" "^0.17.14"
     "@popperjs/core" "^2.10.1"
     classnames "^2.3.1"
     copy-to-clipboard "^3.3.1"
     react-merge-refs "^1.1.0"
 
-"@navikt/ds-react@0.17.13", "@navikt/ds-react@^0.17.13":
-  version "0.17.13"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.17.13.tgz#882a7ed65f3aa25a4aa30fb76e2b4663b822460f"
-  integrity sha512-RI0doEW5GobJFc90UWooLjAkw328phFl/GwAMC/X6mcghM7QJMGoPGD/DtE6O5005fkhysfnJWCd8k699UqGpw==
+"@navikt/ds-react@0.17.14", "@navikt/ds-react@^0.17.14":
+  version "0.17.14"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.17.14.tgz#7a6e35226057d042da9707bd0759458c678ad783"
+  integrity sha512-v7lTuZPKc3k+dVTxQb+aBlFEmBzPRd08RDrM+diZSCrZkcVcQOsfi09y336Vd1zahoJYirdxfUmDrcSrXclnyQ==
   dependencies:
     "@material-ui/core" "^4.12.3"
     "@navikt/ds-icons" "^0.8.6"
