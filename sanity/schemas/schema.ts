@@ -61,6 +61,7 @@ export default createSchema({
     Designsystem.Artikkel,
 
     Aksel.Artikkel,
+    Aksel.Blogg,
     Aksel.Tema,
     Aksel.Quotes,
   ]),

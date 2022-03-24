@@ -17,11 +17,11 @@ function toPlainText(blocks = []) {
     .join("\n");
 }
 
-const prefix = "artikkel/";
+const prefix = "blogg/";
 
 export default {
-  title: "Aksel Artikkel",
-  name: "aksel_artikkel",
+  title: "Blogg",
+  name: "aksel_blogg",
   type: "document",
   groups: [...groups],
   ...defaultPreview(),
@@ -63,14 +63,6 @@ export default {
             .trim()
             .replace(/\s+/g, "-"),
       },
-    },
-    {
-      title: "Tema",
-      description: "Legg til de viktigeste temaene",
-      name: "tema",
-      type: "array",
-      of: [{ type: "reference", to: [{ type: "aksel_tema" }] }],
-      group: "innhold",
     },
     {
       title: "Kort Intro/Oppsummering",

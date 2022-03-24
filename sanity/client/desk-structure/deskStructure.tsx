@@ -34,6 +34,11 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
         S.view.form(),
         S.view.component(PageWebPreview).title("Preview"),
       ]);
+    case "aksel_blogg":
+      return S.document().views([
+        S.view.form(),
+        S.view.component(PageWebPreview).title("Preview"),
+      ]);
   }
 };
 
