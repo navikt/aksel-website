@@ -70,10 +70,13 @@ const Element = ({
 
   return (
     <figure
-      className={cl("flex flex-1 flex-col rounded-t sm:min-w-[300px]", {
-        "basis-full": block?.fullwidth,
-        "max-w-sm": !block?.fullwidth,
-      })}
+      className={cl(
+        "flex min-w-full flex-1 flex-col rounded-t sm:min-w-[384px]",
+        {
+          "basis-full": block?.fullwidth,
+          "max-w-sm": !block?.fullwidth,
+        }
+      )}
     >
       <button
         className={cl(
