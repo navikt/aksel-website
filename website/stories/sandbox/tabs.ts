@@ -34,8 +34,10 @@ const TabsSandbox: SandboxComponent = (props) => {
   const hasIcon = props?.Komposisjon?.includes("Ikon");
   const hasLabel = props?.Komposisjon?.includes("Label");
 
-  return `<Tabs defaultValue="logg"${size}${selectionFollowsFocus} onChange={console.log} className="w-full">
-  <Tabs.List${loop} className="pl-8">
+  return `<Tabs defaultValue="logg"${size}${selectionFollowsFocus} onChange={console.log} className="w-full ${
+    props.overflow ? (!hasLabel ? "max-w-[200px]" : "max-w-sm") : ""
+  }">
+  <Tabs.List${loop} className="${props.overflow ? "" : "pl-8"}">
     <Tabs.Tab value="logg"${iconPosition} ${hasLabel ? `label="Logg"` : ""}
     ${hasIcon ? `icon={<Historic title="historielogg" />}` : ""}
      />
@@ -47,8 +49,35 @@ const TabsSandbox: SandboxComponent = (props) => {
     <Tabs.Tab value="sendt"${iconPosition} ${
     hasIcon ? `icon={<Send title="sendt" />}` : ""
   } ${hasLabel ? `label="Sendt"` : ""} />
+  ${
+    props.overflow
+      ? `<Tabs.Tab value="dialog"${iconPosition} ${
+          hasIcon ? `icon={<Dialog title="dialog" />}` : ""
+        } ${
+          hasLabel ? `label="Dialog"` : ""
+        } /><Tabs.Tab value="notater"${iconPosition} ${
+          hasIcon ? `icon={<Notes title="notater" />}` : ""
+        } ${hasLabel ? `label="Notater"` : ""} />`
+      : ""
+  }
     </Tabs.List>
     ${Panel}
+    ${
+      props.overflow
+        ? `<Tabs.Panel
+    value="dialog"
+    className="w-full h-24 p-8 bg-gray-50"
+    >
+    TabPanel for Dialoger-tab
+    </Tabs.Panel>
+    <Tabs.Panel
+    value="notater"
+    className="w-full h-24 p-8 bg-gray-50"
+    >
+    TabPanel for Notater-tab
+    </Tabs.Panel>`
+        : ""
+    }
 </Tabs>
   `;
 };
@@ -59,6 +88,7 @@ TabsSandbox.args = {
     selectionFollowsFocus: false,
     loop: false,
     iconPosition: ["left", "top"],
+    overflow: false,
     Komposisjon: ["Label og Ikon", "Label", "Ikon"],
   },
   background: BgColors.WHITE,
