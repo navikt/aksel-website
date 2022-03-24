@@ -20,7 +20,7 @@ export const useSanityBannerImage = (node) =>
   useNextSanityImage(sanityClient, node, {
     imageBuilder: (imageUrlBuilder, options) => {
       return imageUrlBuilder
-        .width(Math.min(options.originalImageDimensions.width, 1152))
+        .width(Math.min(options.originalImageDimensions.width, 1024))
         .quality(75)
         .fit("fill")
         .auto("format");
