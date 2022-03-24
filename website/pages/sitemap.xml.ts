@@ -1,7 +1,7 @@
 /* https://github.com/navikt/sosialhjelp-veiviser-ny/blob/291bdd743fc73ecb86f6de701abfa3c0bc64f7f6/pages/sitemap.xml.ts */
 
 import React from "react";
-import { getAkselDocuments, getAkselTema, getDsPaths } from "../lib";
+import { getAllPages } from "../lib";
 
 const generateSitemap = (pages: string[]): string =>
   `<?xml version="1.0" encoding="UTF-8"?>
@@ -16,23 +16,7 @@ const generateSitemap = (pages: string[]): string =>
 
 class Sitemap extends React.Component {
   static getInitialProps = async ({ res }) => {
-    // List of posts
-    let pages = await getDsPaths().then((paths) =>
-      paths.map((slugs) => slugs.join("/"))
-    );
-
-    const artikler = await getAkselDocuments("all");
-    const temaer = await getAkselTema();
-
-    pages = [
-      "",
-      "designsystem",
-      "tema",
-      "blogg",
-      ...pages,
-      ...artikler,
-      ...temaer.map((x) => `tema/${x}`),
-    ];
+    const pages = await getAllPages();
 
     res.setHeader("Content-Type", "application/xml");
     res.write(generateSitemap(pages));

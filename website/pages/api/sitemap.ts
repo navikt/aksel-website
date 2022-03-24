@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { SitemapStream, streamToPromise } from "sitemap";
-import { getAkselDocuments, getAkselTema, getDsPaths } from "../../lib";
+import { getAllPages } from "../../lib";
 
 /* https://linguinecode.com/post/add-robots-txt-file-sitemaps-nextjs */
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -9,22 +9,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       hostname: `https://${req.headers.host}`,
     });
 
-    // List of posts
-    let pages = await getDsPaths().then((paths) =>
-      paths.map((slugs) => slugs.join("/"))
-    );
-    const artikler = await getAkselDocuments("all");
-    const temaer = await getAkselTema();
-
-    pages = [
-      "",
-      "designsystem",
-      "tema",
-      "blogg",
-      ...pages,
-      ...artikler,
-      ...temaer.map((x) => `tema/${x}`),
-    ];
+    const pages = await getAllPages();
 
     // Create each URL row
     pages.forEach((post) => {

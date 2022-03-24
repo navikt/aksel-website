@@ -27,6 +27,25 @@ export const useSanityBannerImage = (node) =>
     },
   });
 
+export const getAllPages = async () => {
+  const pages = await getDsPaths().then((paths) =>
+    paths.map((slugs) => slugs.join("/"))
+  );
+
+  const artikler = await getAkselDocuments("all");
+  const temaer = await getAkselTema();
+
+  return [
+    "",
+    "designsystem",
+    "tema",
+    "blogg",
+    ...pages,
+    ...artikler,
+    ...temaer.map((x) => `tema/${x}`),
+  ];
+};
+
 export const getAkselDocuments = async (
   source: "aksel_artikkel" | "aksel_blogg" | "all"
 ): Promise<string[]> => {

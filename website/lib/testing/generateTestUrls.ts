@@ -1,23 +1,8 @@
 import fs from "fs";
-import { getAkselDocuments, getAkselTema, getDsPaths } from "..";
+import { getAllPages } from "..";
 
 const generateUrls = async () => {
-  let pages = await getDsPaths().then((paths) =>
-    paths.map((slugs) => slugs.join("/"))
-  );
-
-  const artikler = await getAkselDocuments("all");
-  const temaer = await getAkselTema();
-
-  pages = [
-    "",
-    "designsystem",
-    "tema",
-    "blogg",
-    ...pages,
-    ...artikler,
-    ...temaer.map((x) => `tema/${x}`),
-  ];
+  const pages = await getAllPages();
 
   fs.writeFile(
     "./cypress/test-urls.json",
