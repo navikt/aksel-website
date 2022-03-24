@@ -92,8 +92,6 @@ const config = () =>
       images: {
         domains: ["cdn.sanity.io"],
         dangerouslyAllowSVG: true,
-        deviceSizes: [384, 768, 800, 1920],
-        imageSizes: [96, 128, 256],
       },
       swcMinify: true,
     })

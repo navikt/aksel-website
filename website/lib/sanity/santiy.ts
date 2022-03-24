@@ -9,8 +9,8 @@ export const useSanityImage = (node) =>
   useNextSanityImage(sanityClient, node, {
     imageBuilder: (imageUrlBuilder, options) => {
       return imageUrlBuilder
-        .width(options.width ?? undefined)
-        .quality(75)
+        .width(Math.min(options.originalImageDimensions.width, 1600))
+        .quality(100)
         .fit("clip")
         .auto("format");
     },
@@ -18,8 +18,12 @@ export const useSanityImage = (node) =>
 
 export const useSanityBannerImage = (node) =>
   useNextSanityImage(sanityClient, node, {
-    imageBuilder: (imageUrlBuilder) => {
-      return imageUrlBuilder.width(1024).quality(75).fit("fill").auto("format");
+    imageBuilder: (imageUrlBuilder, options) => {
+      return imageUrlBuilder
+        .width(Math.min(options.originalImageDimensions.width, 1152))
+        .quality(75)
+        .fit("fill")
+        .auto("format");
     },
   });
 

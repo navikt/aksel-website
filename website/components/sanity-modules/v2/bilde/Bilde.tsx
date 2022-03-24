@@ -2,6 +2,7 @@ import { BodyLong } from "@navikt/ds-react";
 import cl from "classnames";
 import NextImage from "next/image";
 import React, { useState } from "react";
+import { useMeasure } from "react-use";
 import { Lightbox } from "../../..";
 import { Bilde as BildeT, useSanityImage } from "../../../../lib";
 import { withErrorBoundary } from "../../../ErrorBoundary";
@@ -16,6 +17,8 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
   const [open, setOpen] = useState(false);
 
   const imageProps = useSanityImage(node);
+
+  const [ref, { width }] = useMeasure();
 
   if (node.floating) {
     return (
@@ -37,6 +40,7 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
             layout="responsive"
             sizes="(max-width: 320px)"
             alt={node.alt}
+            unoptimized
           />
         </div>
         <SanityBlockContent blocks={node.floating_text} />
@@ -45,12 +49,9 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
   }
 
   return (
-    <figure
-      className={cl("m-0 mb-8 flex flex-col", {
-        "sm:max-w-[384px]": node?.small,
-      })}
-    >
+    <figure className="m-0 mb-8 flex flex-col">
       <button
+        ref={ref}
         aria-label="Klikk for å åpne bildet i fullskjerm"
         tabIndex={0}
         onClick={() => setOpen(!open)}
@@ -62,9 +63,15 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
         <NextImage
           {...imageProps}
           alt={node.alt}
-          quality="75"
+          quality="100"
           layout="responsive"
+          unoptimized
           className={cl(style.bilde)}
+          sizes={
+            width !== undefined
+              ? `${Math.round(width)}px`
+              : "(max-width: 800px)"
+          }
         />
       </button>
       {node.caption && (
@@ -79,6 +86,7 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
             quality="100"
             layout="fill"
             alt={node.alt}
+            unoptimized
           />
         )}
       </Lightbox>

@@ -1,6 +1,7 @@
 import { BodyLong } from "@navikt/ds-react";
 import NextImage from "next/image";
 import React, { useState } from "react";
+import { useMeasure } from "react-use";
 import { Lightbox } from "../..";
 import { useSanityImage, Picture as PictureT } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
@@ -14,9 +15,12 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
 
   const imageProps = useSanityImage(node);
 
+  const [ref, { width }] = useMeasure();
+
   return (
     <figure className="m-0 mb-8 flex flex-col">
       <button
+        ref={ref}
         aria-label="Klikk for å åpne bildet i fullskjerm"
         tabIndex={0}
         onClick={() => setOpen(!open)}
@@ -25,10 +29,15 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
         <NextImage
           {...imageProps}
           alt={node.title}
-          quality="75"
+          quality="100"
           layout="responsive"
+          unoptimized
           className="rounded"
-          sizes="800px"
+          sizes={
+            width !== undefined
+              ? `${Math.round(width)}px`
+              : "(max-width: 800px)"
+          }
         />
       </button>
       {node.caption && (
@@ -43,6 +52,7 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
             quality="100"
             layout="fill"
             alt={node.title}
+            unoptimized
           />
         )}
       </Lightbox>
