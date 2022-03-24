@@ -2,7 +2,7 @@ import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import moment from "moment";
 import NextLink from "next/link";
 import { getTemaSlug, logNav } from "../..";
-import { AkselArtikkel } from "../../../lib";
+import { AkselArtikkel, AkselBlogg } from "../../../lib";
 import Avatar from "../avatar";
 import cl from "classnames";
 
@@ -22,7 +22,7 @@ export const ArtikkelCard = ({
   authors,
   _createdAt,
 }: Partial<
-  AkselArtikkel & {
+  (AkselArtikkel | AkselBlogg) & {
     slug: string;
     tema: string[];
     source: string;

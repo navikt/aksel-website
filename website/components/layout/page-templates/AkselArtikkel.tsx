@@ -11,7 +11,7 @@ import Image from "next/image";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
 import { ArtikkelBreadcrumbs, Avatar, Feedback, slugger } from "../..";
-import { AkselArtikkel, useSanityBannerImage } from "../../../lib";
+import { AkselArtikkel, AkselBlogg, useSanityBannerImage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import { getTemaSlug } from "../../website-modules/utils";
 import Footer from "../footer/Footer";
@@ -33,7 +33,7 @@ const AkselArtikkelTemplate = ({
   data,
   title,
 }: {
-  data: AkselArtikkel;
+  data: AkselArtikkel | AkselBlogg;
   title: string;
 }): JSX.Element => {
   const [ttr, setTtr] = useState<number | null>(null);
@@ -54,9 +54,9 @@ const AkselArtikkelTemplate = ({
     return null;
   }
 
-  const authors = (data?.contributors as any).map((x) => x?.title);
+  const authors = (data?.contributors as any)?.map((x) => x?.title);
 
-  const hasTema = data.tema && data.tema.length > 0;
+  const hasTema = "tema" in data && data.tema && data?.tema.length > 0;
 
   return (
     <>

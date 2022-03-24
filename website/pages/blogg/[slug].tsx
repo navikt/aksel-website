@@ -1,8 +1,8 @@
 import React from "react";
 import { LayoutPicker, PreviewBanner } from "../../components";
 import {
-  AkselArtikkel,
-  akselDocumentBySlug,
+  AkselBlogg,
+  akselBloggBySlug,
   akselEditorById,
   getAkselDocuments,
 } from "../../lib";
@@ -10,16 +10,12 @@ import { getClient } from "../../lib/sanity/sanity.server";
 
 const Page = (props: {
   slug?: string;
-  page: AkselArtikkel;
+  page: AkselBlogg;
   preview: boolean;
 }): JSX.Element => {
-  /* useEffect(() => {
-    process.env.NODE_ENV === "production" && hotjar.initialize(148751, 6);
-  }, []); */
   return (
     <>
       {props.preview && <PreviewBanner />}
-
       <LayoutPicker title="Aksel" data={props.page} />
     </>
   );
@@ -30,7 +26,7 @@ export const getStaticPaths = async (): Promise<{
   paths: { params: { slug: string } }[];
 }> => {
   return {
-    paths: await getAkselDocuments("aksel_artikkel").then((paths) =>
+    paths: await getAkselDocuments("aksel_blogg").then((paths) =>
       paths.map((slug) => ({
         params: {
           slug: slug.replace("artikkel/", ""),
@@ -43,7 +39,7 @@ export const getStaticPaths = async (): Promise<{
 
 interface StaticProps {
   props: {
-    page: AkselArtikkel;
+    page: AkselBlogg;
     slug: string;
     preview: boolean;
   };
@@ -58,8 +54,8 @@ export const getStaticProps = async ({
   params: { slug: string };
   preview?: boolean;
 }): Promise<StaticProps | { notFound: true }> => {
-  const page = await getClient(preview).fetch(akselDocumentBySlug, {
-    slug: `artikkel/${slug}`,
+  const page = await getClient(preview).fetch(akselBloggBySlug, {
+    slug: `blogg/${slug}`,
   });
 
   const doc = page?.[0] ?? null;

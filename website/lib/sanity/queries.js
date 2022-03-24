@@ -251,7 +251,7 @@ export const akselForsideQuery = `*[_id == "frontpage_vk_praksis"][0]
 },
 }`;
 
-export const akselArtikkelDocuments = `*[_type in ["aksel_artikkel"]]{ _type, _id, 'slug': slug.current }`;
+export const akselDocumentsByType = `*[_type in $types]{ _type, _id, 'slug': slug.current }`;
 
 export const akselDocumentBySlug = `*[slug.current == $slug] | order(_updatedAt desc)
 {
@@ -431,3 +431,21 @@ export const akselTemaDocs = `*[_type == "aksel_tema" && count(*[references(^._i
 
 export const akselTema = `*[_type == "aksel_tema" && count(*[references(^._id)]) > 0]`;
 export const akselQuotes = `*[_id == "aksel_quotelist"][0]`;
+
+export const akselBloggPosts = `*[_type == "aksel_blogg"] | order(_createdAt desc){
+  ...,
+  "slug": slug.current,
+  contributors[]->{
+    title
+  }
+}`;
+
+export const akselBloggBySlug = `*[slug.current == $slug] | order(_updatedAt desc)
+{
+  ...,
+  "slug": slug.current,
+  innhold[]{
+    ...,
+    ${deRefs}
+  },
+}`;

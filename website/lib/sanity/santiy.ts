@@ -1,6 +1,6 @@
 import { getClient, sanityClient } from "./sanity.server";
 import { useNextSanityImage } from "next-sanity-image";
-import { akselArtikkelDocuments, akselTemaNames, dsDocuments } from "./queries";
+import { akselDocumentsByType, akselTemaNames, dsDocuments } from "./queries";
 import { DsArtikkel, DsComponentPage, KomponentArtikkel } from "..";
 import { getTemaSlug } from "../../components/website-modules/utils/util";
 
@@ -27,9 +27,19 @@ export const useSanityBannerImage = (node) =>
     },
   });
 
-export const getAkselArtikler = async (): Promise<string[]> => {
+export const getAkselDocuments = async (
+  source: "aksel_artikkel" | "aksel_blogg" | "all"
+): Promise<string[]> => {
+  if (!source) return [];
+
   const documents: any[] | null = await getClient(false).fetch(
-    akselArtikkelDocuments
+    akselDocumentsByType,
+    {
+      types:
+        source === "all"
+          ? `["aksel_artikkel", "aksel_blogg"]`
+          : `["${source}"]`,
+    }
   );
   const paths = [];
 

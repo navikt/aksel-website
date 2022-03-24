@@ -2,6 +2,7 @@ import Error from "next/error";
 import React, { useEffect, useState } from "react";
 import {
   AkselArtikkel,
+  AkselBlogg,
   DsArtikkel,
   DsComponentPage,
   KomponentArtikkel,
@@ -37,11 +38,16 @@ type aksel_artikkel = {
   }) => JSX.Element;
 };
 
+type aksel_blogg = {
+  aksel_blogg: (props: { data: AkselBlogg; title: string }) => JSX.Element;
+};
+
 type templateT =
   | ds_component
   | komponent_artikkel
   | ds_artikkel
-  | aksel_artikkel;
+  | aksel_artikkel
+  | aksel_blogg;
 
 const templates: templateT = {
   komponent_artikkel: (props) => <KomponentArtikkelTemplate {...props} />,
@@ -53,13 +59,14 @@ const templates: templateT = {
       <ArtikkelTemplate {...props} />
     ),
   aksel_artikkel: (props) => <AkselArtikkelTemplate {...props} />,
+  aksel_blogg: (props) => <AkselArtikkelTemplate {...props} />,
 };
 
 const TemplatePicker = ({
   data,
   title,
 }: {
-  data: DsComponentPage | KomponentArtikkel | AkselArtikkel;
+  data: DsComponentPage | KomponentArtikkel | AkselArtikkel | AkselBlogg;
   title: string;
 }): JSX.Element => {
   const [mounted, setMounted] = useState(false);

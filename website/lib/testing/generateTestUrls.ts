@@ -1,12 +1,12 @@
 import fs from "fs";
-import { getAkselArtikler, getAkselTema, getDsPaths } from "..";
+import { getAkselDocuments, getAkselTema, getDsPaths } from "..";
 
 const generateUrls = async () => {
   let pages = await getDsPaths().then((paths) =>
     paths.map((slugs) => slugs.join("/"))
   );
 
-  const artikler = await getAkselArtikler();
+  const artikler = await getAkselDocuments("all");
   const temaer = await getAkselTema();
 
   pages = [
