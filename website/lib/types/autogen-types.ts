@@ -991,7 +991,7 @@ export interface AkselArtikkel extends SanityDocument {
   /**
    * url — `slug`
    *
-   * Strukturen bestemmes ikke av URL-en
+   *
    */
   slug?: { _type: "slug"; current: string };
 
@@ -1001,6 +1001,112 @@ export interface AkselArtikkel extends SanityDocument {
    * Legg til de viktigeste temaene
    */
   tema?: Array<SanityKeyedReference<AkselTema>>;
+
+  /**
+   * Kort Intro/Oppsummering — `string`
+   *
+   * Brukes i kort og innganger
+   */
+  oppsummering?: string;
+
+  /**
+   * Innhold — `array`
+   *
+   *
+   */
+  innhold?: Array<
+    | SanityKeyed<GeneriskSeksjonArtikkel>
+    | SanityKeyed<{
+        _type: "riktekst_blokk";
+        /**
+         * Riktekst — `riktekst`
+         *
+         *
+         */
+        body?: Riktekst;
+      }>
+    | SanityKeyed<Tips>
+    | SanityKeyed<RelatertInnhold>
+  >;
+
+  /**
+   * Banner — `object`
+   *
+   *
+   */
+  banner?: {
+    _type: "banner";
+    /**
+     * Variant — `string`
+     *
+     *
+     */
+    variant?: "standard" | "bilde";
+
+    /**
+     * Banner-bilde — `image`
+     *
+     *
+     */
+    banner_img?: {
+      _type: "image";
+      asset: SanityReference<SanityImageAsset>;
+      crop?: SanityImageCrop;
+      hotspot?: SanityImageHotspot;
+
+      /**
+       * Alt-tekst — `string`
+       *
+       *
+       */
+      alt?: string;
+    };
+  };
+
+  /**
+   * Tilbakemeldinger — `object`
+   *
+   *
+   */
+  metadata_feedback?: {
+    _type: "metadata_feedback";
+    /**
+     * Skjul artikkel feedback modul — `boolean`
+     *
+     * Gjemmer <<Var denne artikkelen til hjelp?>> modulen.
+     */
+    hide_feedback?: boolean;
+  };
+}
+
+/**
+ * Blogg
+ *
+ *
+ */
+export interface AkselBlogg extends SanityDocument {
+  _type: "aksel_blogg";
+
+  /**
+   * Redaktører — `array`
+   *
+   * Øverste redaktør vil vises med navn på artikkel
+   */
+  contributors?: Array<SanityKeyedReference<Editor>>;
+
+  /**
+   * Sidetittel — `string`
+   *
+   * Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.
+   */
+  heading?: string;
+
+  /**
+   * url — `slug`
+   *
+   *
+   */
+  slug?: { _type: "slug"; current: string };
 
   /**
    * Kort Intro/Oppsummering — `string`
@@ -2304,6 +2410,7 @@ export type Documents =
   | KomponentArtikkel
   | DsArtikkel
   | AkselArtikkel
+  | AkselBlogg
   | AkselTema
   | Quotes;
 
