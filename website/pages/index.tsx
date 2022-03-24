@@ -3,14 +3,21 @@ import { BodyLong, Heading, Label } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
-import { logNav, PreviewBanner, TemaCard } from "../components";
+import { ArtikkelCard, logNav, PreviewBanner, TemaCard } from "../components";
 import Footer from "../components/layout/footer/Footer";
 import AkselHeader from "../components/layout/header/AkselHeader";
 import { SanityBlockContent } from "../components/SanityBlockContent";
-import { akselForsideQuery, AkselTema, akselTema, Riktekst } from "../lib";
+import {
+  AkselBlogg,
+  akselBloggPosts,
+  akselForsideQuery,
+  AkselTema,
+  akselTema,
+  Riktekst,
+} from "../lib";
 import { getClient } from "../lib/sanity/sanity.server";
 
-const Page = ({ preview, temaer, tekster }: PageProps): JSX.Element => {
+const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
   const logPortalCard = (e) =>
     logNav(
       "portal-kort",
@@ -113,6 +120,19 @@ const Page = ({ preview, temaer, tekster }: PageProps): JSX.Element => {
           </nav>
         </div>
       )}
+      {bloggs && bloggs.length > 0 && (
+        <div className="aksel-layout-x flex w-full max-w-7xl flex-col gap-8 pb-24">
+          <Heading level="2" size="large">
+            Siste bloggposts
+          </Heading>
+
+          <nav aria-label="Temasider" className="aksel-card-grid">
+            {bloggs.map((blogg) => (
+              <ArtikkelCard {...blogg} key={blogg._id} />
+            ))}
+          </nav>
+        </div>
+      )}
       <div className="aksel-layout-x flex w-full justify-center">
         <div className="flex w-full max-w-2xl flex-col items-center justify-between gap-4 rounded-2xl bg-gray-800 py-6 px-7 text-text-inverted sm:py-12 sm:pl-14 md:flex-row md:gap-0 md:pl-7">
           <div className="">
@@ -149,6 +169,9 @@ Page.getLayout = (page) => {
 
 interface PageProps {
   temaer: AkselTema[];
+  bloggs: Partial<
+    AkselBlogg & { slug: string; contributors?: { title?: string }[] }
+  >[];
   tekster: { title?: string; beskrivelse?: Riktekst };
   slug: string;
   preview: boolean;
@@ -165,11 +188,13 @@ export const getStaticProps = async ({
   preview?: boolean;
 }): Promise<StaticProps> => {
   const temaer = await getClient(preview).fetch(akselTema);
+  const bloggs = await getClient(preview).fetch(akselBloggPosts);
   const tekster = await getClient(preview).fetch(akselForsideQuery);
 
   return {
     props: {
       temaer,
+      bloggs,
       tekster,
       slug: "/",
       preview,
