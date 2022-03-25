@@ -22,15 +22,8 @@ function App({
   const getLayout = Component.getLayout ?? ((page) => page);
 
   useEffect(() => {
-    /* if (window.location.host === "design.nav.no") {
+    if (window.location.host === "design.nav.no") {
       window.location.replace(`http://aksel.nav.no${window.location.pathname}`);
-      return;
-    } */
-
-    if (window.location.host === "verktoykasse.dev.nav.no") {
-      window.location.replace(
-        `http://aksel.dev.nav.no${window.location.pathname}`
-      );
       return;
     }
 
