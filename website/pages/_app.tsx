@@ -22,6 +22,7 @@ function App({
   const getLayout = Component.getLayout ?? ((page) => page);
 
   useEffect(() => {
+    console.log(window.location);
     const t = (e) => logPageView(e);
     initAmplitude();
     router.events.on("routeChangeComplete", t);
