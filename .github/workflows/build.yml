@@ -25,6 +25,7 @@ jobs:
           echo "TRELLO_TOKEN=${{ secrets.TRELLO_TOKEN }}" >> website/.env
           echo "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}" >> website/.env
           echo "SANITY_PREVIEW_TOKEN=${{ secrets.SANITY_PREVIEW_TOKEN }}" >> website/.env
+          echo "SANITY_PRIVATE_NO_DRAFTS=${{ secrets.SANITY_PRIVATE_NO_DRAFTS }}" >> website/.env
 
       - name: Install dependencies
         run: yarn

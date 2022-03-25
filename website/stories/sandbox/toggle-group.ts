@@ -15,7 +15,7 @@ const ToggleGroupSandbox: SandboxComponent = (props) => {
     props?.Komposisjon.includes("Tekst") ? "Ulest" : ""
   }</ToggleGroup.Item>
         <ToggleGroup.Item value="lest">${
-          props.Komposisjon.includes("Ikon") ? "<EmailOpen />" : ""
+          props.Komposisjon.includes("Ikon") ? "<EmailOpened />" : ""
         }${
     props?.Komposisjon.includes("Tekst") ? "Leste" : ""
   }</ToggleGroup.Item>

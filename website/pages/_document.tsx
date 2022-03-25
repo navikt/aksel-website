@@ -10,6 +10,7 @@ export default function Document() {
           href="https://fonts.gstatic.com"
           crossOrigin=""
         />
+        <meta name="theme-color" content="#00243A" />
       </Head>
       <body>
         <Main />
