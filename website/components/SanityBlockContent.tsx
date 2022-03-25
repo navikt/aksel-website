@@ -45,7 +45,7 @@ export const InlineCode = (props: React.HTMLAttributes<HTMLElement>) => (
 export const KBD = (props: React.HTMLAttributes<HTMLElement>) => (
   <kbd
     className={cl(
-      "text-md my-0 mx-1 inline-block min-w-[2rem] rounded border border-gray-900 bg-white px-2 text-sm text-text "
+      "text-md my-0 mx-1 inline-block min-w-[2rem] rounded bg-white px-2 text-medium text-text shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900)]"
     )}
     {...props}
   />
