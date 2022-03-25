@@ -14,7 +14,7 @@
   },
   "ds-components": {
     "sources": ["/components/:slug*", "/components/"],
-    "destitation": "https://design.nav.no/designsystem"
+    "destitation": "https://aksel.nav.no/designsystem"
   },
   "ds-accessibility": {
     "sources": [
@@ -23,7 +23,7 @@
       "/accessibility/:slug*",
       "/accessibility/"
     ],
-    "destitation": "https://design.nav.no/designsystem"
+    "destitation": "https://aksel.nav.no/designsystem"
   },
   "ds-patterns": {
     "sources": [
@@ -32,7 +32,7 @@
       "/patterns/:slug*",
       "/patterns/"
     ],
-    "destitation": "https://design.nav.no/designsystem"
+    "destitation": "https://aksel.nav.no/designsystem"
   },
   "ds-resources": {
     "sources": [
@@ -41,6 +41,6 @@
       "/resources/:slug*",
       "/resources/"
     ],
-    "destitation": "https://design.nav.no/designsystem"
+    "destitation": "https://aksel.nav.no/designsystem"
   }
 }

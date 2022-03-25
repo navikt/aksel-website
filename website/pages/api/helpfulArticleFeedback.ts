@@ -17,7 +17,7 @@ export default async function handler(
         }
 
         const data: HelpfulArticleT = JSON.parse(req.body);
-        const sideUrl = "https://design.nav.no";
+        const sideUrl = "https://aksel.nav.no";
 
         /* Var denne artikkelen til hjelp? */
         const trelloList = "61d44fc3995604743a83f5cb";

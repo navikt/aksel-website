@@ -1,13 +1,13 @@
 {
   "index_name": "aksel_docsearch",
   "start_urls": [
-    "https://design.nav.no/",
+    "https://aksel.nav.no/",
     {
-      "url": "https://design.nav.no/designsystem",
+      "url": "https://aksel.nav.no/designsystem",
       "tags": ["designsystem", "docs"]
     },
     {
-      "url": "https://design.nav.no/artikkel/",
+      "url": "https://aksel.nav.no/artikkel/",
       "tags": ["aksel"],
       "selectors_key": "aksel"
     }
@@ -35,12 +35,12 @@
   },
   "selectors_exclude": [".index-ignore"],
   "stop_urls": [
-    "https://design.nav.no/designsystem/examples",
-    "https://design.nav.no/designsystem/sandboxes",
-    "https://design.nav.no/preview",
-    "https://design.nav.no/god-praksis",
+    "https://aksel.nav.no/designsystem/examples",
+    "https://aksel.nav.no/designsystem/sandboxes",
+    "https://aksel.nav.no/preview",
+    "https://aksel.nav.no/god-praksis",
     "https://old-design-nav.vercel.app"
   ],
-  "sitemap_urls": ["https://design.nav.no/sitemap.xml"],
+  "sitemap_urls": ["https://aksel.nav.no/sitemap.xml"],
   "js_render": true
 }

@@ -10,7 +10,7 @@ export const PageWebPreview = (ctx: any) => {
 
   let previewUrl = `/preview/${slug}`;
 
-  const webUrl = "https://design.nav.no";
+  const webUrl = "https://aksel.nav.no";
   const url =
     process.env.NODE_ENV === "production"
       ? webUrl + previewUrl

@@ -8,7 +8,7 @@ export const ComponentPageWebPreview = (ctx: any) => {
     return <div>Side må ha en url/slug før den kan forhåndsvises...</div>;
   }
 
-  const webUrl = "https://design.nav.no";
+  const webUrl = "https://aksel.nav.no";
   const previewUrl = `/preview/${slug}`;
   const url =
     process.env.NODE_ENV === "production"

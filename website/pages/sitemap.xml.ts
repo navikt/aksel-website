@@ -8,7 +8,7 @@ const generateSitemap = (pages: string[]): string =>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${pages
     .map((slug) => {
-      return `<url><loc>${`https://design.nav.no/${slug}`}</loc></url>`;
+      return `<url><loc>${`https://aksel.nav.no/${slug}`}</loc></url>`;
     })
     .join("")}
 </urlset>

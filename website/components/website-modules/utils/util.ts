@@ -9,7 +9,7 @@ export const isProduction = (): boolean => {
       window && window.location && window.location.href
         ? window.location.href
         : "";
-    return environment === "production" && /design.nav.no/.test(url);
+    return environment === "production" && /aksel.nav.no/.test(url);
   } else {
     return false;
   }

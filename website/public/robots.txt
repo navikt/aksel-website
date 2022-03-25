@@ -1,4 +1,4 @@
-Sitemap: https://design.nav.no/api/sitemap
+Sitemap: https://aksel.nav.no/api/sitemap
 
 User-agent: *
 Allow: /*

@@ -52,7 +52,7 @@ export default {
       group: "settings",
       inputComponent: SlugInput,
       options: {
-        basePath: "design.nav.no",
+        basePath: "aksel.nav.no",
         isUnique: isSlugUnique,
         source: "heading",
         slugify: (input) =>
