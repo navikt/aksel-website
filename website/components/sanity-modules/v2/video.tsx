@@ -14,11 +14,9 @@ const Video = ({
     caption?: string;
   };
 }): JSX.Element => {
-  if (!node || (!node.webm && !node.fallback)) {
+  if (!node || (!node.webm && !node.fallback) || !node.alt) {
     return null;
   }
-
-  console.log(node);
 
   return (
     <figure className={cl("m-0 mb-8 flex flex-col gap-2")}>
@@ -29,12 +27,12 @@ const Video = ({
           type={`video/${node.fallback.extension}`}
         />
       </video>
-      {node.caption && (
+      {node?.caption && (
         <BodyLong as="figcaption" className="self-center italic">
           {node.caption}
         </BodyLong>
       )}
-      {node.transkripsjon && (
+      {node?.transkripsjon && (
         <ReadMore header="Les video transkripsjon" className="ml-[2px]">
           {node.transkripsjon}
         </ReadMore>
