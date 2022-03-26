@@ -1,6 +1,6 @@
 import { BodyLong, ReadMore } from "@navikt/ds-react";
 import cl from "classnames";
-import React from "react";
+import React, { useState } from "react";
 import { withErrorBoundary } from "../../ErrorBoundary";
 
 const Video = ({
@@ -14,6 +14,7 @@ const Video = ({
     caption?: string;
   };
 }): JSX.Element => {
+  const [open, setOpen] = useState(false);
   if (!node || (!node.webm && !node.fallback) || !node.alt) {
     return null;
   }
@@ -45,9 +46,11 @@ const Video = ({
       )}
       {node?.transkripsjon && (
         <ReadMore
-          header="Les video transkripsjon"
+          header={`${open ? "Lukk" : "Åpne"} video transkripsjon`}
           className="ml-[2px]"
           renderContentWhenClosed
+          open={open}
+          onClick={() => setOpen((x) => !x)}
         >
           <span id={node.alt + "transkript"}>{node.transkripsjon}</span>
         </ReadMore>
