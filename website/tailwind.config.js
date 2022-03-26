@@ -37,6 +37,7 @@ module.exports = {
       },
       boxShadow: {
         "focus-inset": "inset var(--navds-shadow-focus)",
+        "focus-gap": "0 0 0 1px white, var(--navds-shadow-focus)",
       },
       keyframes: {
         shimmerBg: {

@@ -18,9 +18,20 @@ const Video = ({
     return null;
   }
 
+  /* https://www.w3.org/WAI/PF/HTML/wiki/Media_Alt_Technologies#1:_Use_.40aria-label_for_the_text_description_of_player */
   return (
     <figure className={cl("m-0 mb-8 flex flex-col gap-2")}>
-      <video title={node.alt} playsInline controls loop>
+      <video
+        className="focus:shadow-focus-gap focus:outline-none"
+        title={node.alt}
+        playsInline
+        controls
+        loop
+        aria-describedby={
+          node.transkripsjon ? node.alt + "transkript" : undefined
+        }
+        aria-label="Trykk space for å starte/pause video"
+      >
         <source src={node.webm.url} type={`video/${node.webm.extension}`} />
         <source
           src={node.fallback.url}
@@ -33,8 +44,12 @@ const Video = ({
         </BodyLong>
       )}
       {node?.transkripsjon && (
-        <ReadMore header="Les video transkripsjon" className="ml-[2px]">
-          {node.transkripsjon}
+        <ReadMore
+          header="Les video transkripsjon"
+          className="ml-[2px]"
+          renderContentWhenClosed
+        >
+          <span id={node.alt + "transkript"}>{node.transkripsjon}</span>
         </ReadMore>
       )}
     </figure>
