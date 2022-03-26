@@ -17,6 +17,7 @@ import Installasjon from "./installasjon";
 import Props from "./props";
 import Accordion from "./accordion";
 import SpesialSeksjon from "./spesial-seksjon";
+import Video from "./video";
 
 const v2Blocks = [
   GeneriskBlokk,
@@ -39,6 +40,7 @@ const v2Blocks = [
   Accordion,
   RiktekstTabell,
   SpesialSeksjon,
+  Video,
 ];
 
 export default v2Blocks;

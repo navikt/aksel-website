@@ -21,6 +21,7 @@ export { default as GeneriskSeskjon } from "./sanity-modules/v2/GeneriskSeksjon"
 export { default as InstallasjonSeksjon } from "./sanity-modules/v2/InstallasjonSeksjon";
 export { default as IntroKomponent } from "./sanity-modules/v2/IntroSeksjon";
 export { default as Kode } from "./sanity-modules/v2/Kode";
+export { default as Video } from "./sanity-modules/v2/video";
 export { default as LiveDemo } from "./sanity-modules/v2/LiveDemo";
 export { default as PropsSeksjon } from "./sanity-modules/v2/PropsSeksjon";
 export { default as RelatertInnhold } from "./sanity-modules/v2/relatert-innhold";

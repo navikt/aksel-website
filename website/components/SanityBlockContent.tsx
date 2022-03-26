@@ -30,6 +30,7 @@ import {
   InstallasjonSeksjon,
   PropsSeksjon,
   SpesialSeksjon,
+  Video,
 } from ".";
 
 import * as Icons from "@navikt/ds-icons";
@@ -85,6 +86,7 @@ const serializers = {
     installasjon_seksjon: ({ node }) => <InstallasjonSeksjon node={node} />,
     props_seksjon: ({ node }) => <PropsSeksjon node={node} />,
     spesial_seksjon: ({ node }) => <SpesialSeksjon node={node} />,
+    video: ({ node }) => <Video node={node} />,
 
     /* General page modules */
     related_pages: ({ node }) => <RelatedPagesCards node={node} />,

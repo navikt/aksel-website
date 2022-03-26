@@ -142,6 +142,17 @@ const defaultBlock = `
       ${markDef}
     }
  },
+ _type == "video" =>{
+    ...,
+    "webm": {
+      "url": webm.asset->url,
+      "extension": webm.asset->extension
+    },
+    "fallback": {
+      "url": fallback.asset->url,
+      "extension": fallback.asset->extension
+    }
+ },
  _type == "alert_v2" =>{
     ...,
     body[]{

@@ -8,6 +8,7 @@ import {
   NewTab,
   Picture,
   Star,
+  VideoRoom,
   Warning,
   Wrench,
 } from "@navikt/ds-icons";
@@ -56,6 +57,11 @@ export const contentBlocks = (s?: string) => {
     },
     { type: "do_dont_v2", title: "Do/Dont", icon: () => <DirectionSign /> },
     { type: "bilde", title: "Bilde", icon: () => <Picture /> },
+    {
+      type: "video",
+      title: "Video",
+      icon: () => <VideoRoom />,
+    },
     { type: "alert_v2", title: "Alert", icon: () => <Warning /> },
     { type: "kode", title: "Kode", icon: () => <Wrench /> },
     {
