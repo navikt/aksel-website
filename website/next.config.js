@@ -65,6 +65,11 @@ const config = () =>
       async redirects() {
         return [
           {
+            source: "/studio",
+            destination: "https://verktoykasse.sanity.studio",
+            permanent: true,
+          },
+          {
             source: "/preview/:slug*",
             destination: "/api/preview?slug=:slug*",
             permanent: true,
