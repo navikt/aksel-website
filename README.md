@@ -42,6 +42,7 @@ Blir brukt flere keys i .env under `./website`, men ingen av dem trengs for å t
 - TRELLO_TOKEN: Sender feedback til et egent trello-board. Ikke nødvendig lokalt hvis man ikke vil teste feedback-modulen.
 - SENTRY_AUTH_TOKEN: Gir appen tilgang til Sentry-logging (er for tiden disabled, så ikke nødvendig lokalt)
 - SANITY_PREVIEW_TOKEN: Gir appen tilgang til å lese draft innhold fra sanity i "preview"-mode
+- SANITY_PRIVATE_NO_DRAFTS: Gir appen tilgang til å lese innhold fra Sanity da datasettet er privat
 
 ### Søk
 
