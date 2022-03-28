@@ -17,7 +17,7 @@ const LastUpdated = ({
       as="span"
       className={cl("flex items-center gap-1", { "text-text-muted": simple })}
     >
-      {!simple && <Calender />}
+      {!simple && <Calender title="sist oppdatert" />}
       {`Oppdatert ${moment(date).format("DD. MMM. YY")}`}
     </BodyShort>
   );
