@@ -14,7 +14,7 @@ export const groups = [
   },
   {
     name: "settings",
-    title: "Instillinger",
+    title: "Innstillinger",
     icon: Settings,
   },
   {
