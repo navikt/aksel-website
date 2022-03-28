@@ -156,7 +156,7 @@ const serializers = {
         case "h4":
           return (
             <Heading
-              className="index-lvl4 mt-9 max-w-text"
+              className="index-lvl4 max-w-text"
               spacing
               level="4"
               size="small"
