@@ -36,16 +36,6 @@ export default {
       },
     },
     {
-      title: "Anonym",
-      description: "Ønsker å bli vist som anonym redaktør/contributor",
-      type: "boolean",
-      name: "anonym",
-      initialValue: true,
-      options: {
-        layout: "checkbox",
-      },
-    },
-    {
       name: "profile_page",
       type: "string",
       title: "Profil",
