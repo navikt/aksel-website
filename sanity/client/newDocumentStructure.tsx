@@ -4,12 +4,15 @@ const docTypes = [
   {
     name: "aksel_artikkel",
     title: "Aksel Artikkel",
-    desc: "Atikkel som legges under god-praksis(wip)",
   },
   {
     name: "newEditor",
     title: "Bruker/redaktør",
     desc: "Lager en psuedo-bruker for deg som kan koble artikler til brukeren",
+  },
+  {
+    name: "aksel_blogg",
+    title: "Bloggpost",
   },
   {
     name: "ds_artikkel",
