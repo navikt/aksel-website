@@ -8,7 +8,7 @@ const teams = [
   {
     name: "god_praksis",
     prefix: "gp",
-    documents: ["aksel_artikkel"],
+    documents: ["aksel_artikkel", "aksel_blogg"],
   },
 ];
 
