@@ -106,7 +106,7 @@ export const Tabs = ({
         )}
       >
         <ul
-          className="m-0 mx-0 mt-2 flex max-w-none items-end gap-1 p-0 lg:mx-12 lg:max-w-[800px]"
+          className="m-0 mx-0 mt-2 flex max-w-none items-end gap-1 p-0 lg:mx-12"
           ref={setInnerRef}
         >
           {tabWRefs.map((tab, i) => (

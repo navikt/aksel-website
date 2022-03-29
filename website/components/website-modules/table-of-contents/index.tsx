@@ -81,7 +81,7 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
             {toc.map((link) => (
               <BodyShort
                 as="li"
-                className={cl("border-l py-2 pl-4", {
+                className={cl("border-l border-l-divider py-2 pl-4", {
                   "font-semibold shadow-[inset_1px_0_0_0_theme(colors.gray-900),-1px_0_0_0_theme(colors.gray-900)]":
                     link.id === activeId,
                 })}
