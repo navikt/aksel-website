@@ -30,18 +30,20 @@ Page.getLayout = (page) => {
   return (
     <>
       <DesignsystemHeader />
-      <div className="flex bg-canvas-background-light">
-        <DesignsystemSidebar />
-        <div className="relative w-full">
-          <main
-            tabIndex={-1}
-            id="hovedinnhold"
-            className="relative min-h-screen-header w-full focus:outline-none lg:max-w-screen-sidebar"
-          >
-            {page}
-            <div className="mt-auto" aria-hidden />
-          </main>
-          <Footer />
+      <div className="flex w-full justify-center bg-canvas-background-light">
+        <div className="flex w-full max-w-aksel-max-w">
+          <DesignsystemSidebar />
+          <div className="relative w-full">
+            <main
+              tabIndex={-1}
+              id="hovedinnhold"
+              className="relative min-h-screen-header w-full focus:outline-none lg:max-w-screen-sidebar"
+            >
+              {page}
+              <div className="mt-auto" aria-hidden />
+            </main>
+            <Footer />
+          </div>
         </div>
       </div>
     </>
