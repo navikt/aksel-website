@@ -91,7 +91,7 @@
   }
 
   .navds-body-long.navds-typo--spacing + .list-margin {
-    @apply -mt-6;
+    @apply -mt-4;
   }
 
   .relative-parent + .relative-child {
