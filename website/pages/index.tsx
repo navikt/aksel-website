@@ -133,7 +133,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
 
               <nav aria-label="Temasider" className="aksel-card-grid">
                 {bloggs.map((blogg) => (
-                  <ArtikkelCard {...blogg} key={blogg._id} />
+                  <ArtikkelCard {...blogg} key={blogg._id} source="blogg" />
                 ))}
               </nav>
             </div>

@@ -31,7 +31,6 @@ export const ArtikkelBreadcrumbs = () => {
             aria-hidden
             className="shrink-0 transition-transform group-hover:-translate-x-1"
           />
-          Tilbake til{" "}
           {(router.query.tema as string).replace(/(^\w|\s\w)/g, (m) =>
             m.toUpperCase()
           )}
@@ -58,7 +57,7 @@ export const TemaBreadcrumbs = () => (
           aria-hidden
           className="shrink-0 transition-transform group-hover:-translate-x-1"
         />
-        Tilbake til forsiden
+        Forsiden
       </a>
     </NextLink>
   </nav>
