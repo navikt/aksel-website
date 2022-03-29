@@ -1,5 +1,5 @@
 import { useDsNavigation } from "../..";
-import Menu from "../menu/DesignsystemMenu";
+import Menu from "../menu/DsMenu";
 
 const DesignsystemSidebar = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

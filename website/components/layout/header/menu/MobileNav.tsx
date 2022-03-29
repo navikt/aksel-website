@@ -5,7 +5,7 @@ import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
 import { useDsNavigation } from "../../..";
 import { DsNavigationHeadingT } from "../../../../lib";
-import Menu from "../../menu/DesignsystemMenu";
+import Menu from "../../menu/DsMobileMenu";
 import Toggle from "./Toggle";
 
 const MobileNavigation = () => {
