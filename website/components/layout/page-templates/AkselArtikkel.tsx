@@ -116,7 +116,7 @@ const AkselArtikkelTemplate = ({
                         <Detail
                           size="small"
                           as="a"
-                          className="rounded bg-purple-100 py-[2px] px-[6px] text-purple-500 focus:outline-focus"
+                          className="index-lvl5 rounded bg-purple-100 py-[2px] px-[6px] text-purple-500 focus:outline-focus"
                         >
                           {title}
                         </Detail>
@@ -145,14 +145,17 @@ const AkselArtikkelTemplate = ({
                         <Detail
                           as="span"
                           size="small"
-                          className="text-text-muted"
+                          className="index-lvl6 text-text-muted"
                         >
                           {moment(data._createdAt).format("DD. MMM. YY")}
                         </Detail>
                       </div>
                     </>
                   ) : (
-                    <BodyShort size="small" className="text-text-muted">
+                    <BodyShort
+                      size="small"
+                      className="index-lvl6 text-text-muted"
+                    >
                       {moment(data._createdAt).format("DD. MMM. YY")}
                     </BodyShort>
                   )}
