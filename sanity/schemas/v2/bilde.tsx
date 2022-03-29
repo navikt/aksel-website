@@ -32,6 +32,8 @@ export default {
     {
       name: "floating",
       title: "Bilde med flytende tekst rundt",
+      description:
+        "Dette feltet fungerer ikke lengre, bruk et vanlig bilde uten flytende tekst",
       type: "boolean",
       initialValue: false,
       hidden: ({ parent }) => parent?.hide_floating,
