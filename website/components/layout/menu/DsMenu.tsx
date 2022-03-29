@@ -44,7 +44,7 @@ const Menu = ({
             <li
               key={item.title + x}
               className={cl(
-                "relative before:absolute before:left-0 before:z-[-1] before:transition-all focus-within:shadow-focus-inset",
+                "relative before:absolute before:left-0 before:z-[-1] before:transition-colors focus-within:shadow-focus-inset",
                 {
                   "before:top-1/2 before:h-6 before:-translate-y-1/2 before:border-l-8  before:border-l-deepblue-300":
                     pageProps?.page?.slug === item?.link?.slug?.current,
