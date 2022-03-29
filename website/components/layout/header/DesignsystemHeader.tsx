@@ -36,7 +36,7 @@ const DesignsystemHeader = (): JSX.Element => {
                 {
                   "text-text-inverted focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
                     !(activeHeading?.title === heading.title),
-                  "index-heading--active bg-white text-text shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900)] hover:bg-canvas-background-light focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_2px_var(--navds-global-color-white)_,inset_0_0_0_4px_var(--navds-global-color-gray-900)]":
+                  "index-heading--active bg-white text-text  hover:bg-canvas-background-light focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_2px_var(--navds-global-color-white)_,inset_0_0_0_4px_var(--navds-global-color-gray-900)]":
                     activeHeading?.title === heading.title,
                 }
               )}

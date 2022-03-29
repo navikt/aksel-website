@@ -1,4 +1,4 @@
-import { BodyShort, Detail, Label } from "@navikt/ds-react";
+import { BodyShort, Label } from "@navikt/ds-react";
 import cl from "classnames";
 import NextLink from "next/link";
 import React, { useContext, useState } from "react";
@@ -44,11 +44,11 @@ const Menu = ({
             <li
               key={item.title + x}
               className={cl(
-                "relative before:absolute before:left-0 before:z-[-1] focus-within:shadow-focus-inset",
+                "relative before:absolute before:left-0 before:z-[-1] before:transition-all focus-within:shadow-focus-inset",
                 {
                   "before:top-1/2 before:h-6 before:-translate-y-1/2 before:border-l-8  before:border-l-deepblue-300":
                     pageProps?.page?.slug === item?.link?.slug?.current,
-                  "before:h-full before:border-l  before:border-l-gray-200":
+                  "before:h-full before:border-l  before:border-l-gray-200 hover:before:border-l-gray-500":
                     pageProps?.page?.slug !== item?.link?.slug?.current,
                 }
               )}
@@ -64,7 +64,7 @@ const Menu = ({
                     );
                   }}
                   className={cl(
-                    "relative flex py-3 no-underline hover:text-text focus:outline-none",
+                    "relative flex py-3 no-underline hover:text-deepblue-800 focus:outline-none",
                     {
                       "pl-6  font-semibold text-deepblue-800":
                         pageProps?.page?.slug === item?.link?.slug?.current,
