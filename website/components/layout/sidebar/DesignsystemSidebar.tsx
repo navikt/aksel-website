@@ -8,10 +8,10 @@ const DesignsystemSidebar = () => {
   if (!activeHeading) return null;
 
   return (
-    <div className="index-ignore sticky top-0 z-[1002] hidden h-screen w-sidebar shrink-0 self-start overflow-y-auto bg-white py-8 pl-8 pr-6 lg:block">
+    <div className="index-ignore  z-[1002] hidden  w-sidebar shrink-0 self-start  bg-white py-8 pl-6 pr-2 lg:block">
       <Menu heading={activeHeading} />
     </div>
   );
 };
-
+/* h-screen overflow-y-auto sticky top-0 */
 export default DesignsystemSidebar;

@@ -25,6 +25,7 @@ export interface RelatedLinkT {
 export type DsNavigationHeadingMenuT = {
   title: string;
   _type: "subheading" | "item";
+  _key: string;
   link: { _id: string; slug: { current: string }; tags?: string[] };
 };
 
