@@ -117,7 +117,10 @@ const Dropdown = ({
         <span className="flex h-6 w-6 items-center justify-center rounded group-hover:bg-gray-200 group-focus:shadow-focus">
           <Expand
             className="text-base"
-            title={!open ? `åpne ${heading.title}` : `lukk ${heading.title}`}
+            aria-hidden
+            aria-label={
+              !open ? `åpne ${heading.title}` : `lukk ${heading.title}`
+            }
           />
         </span>
       </button>
