@@ -3,6 +3,7 @@ import NextLink from "next/link";
 import React from "react";
 import { logNav, Search } from "../..";
 import cl from "classnames";
+import AkselLogo from "../../assets/AkselLogo";
 
 const AkselHeader = ({
   className,
@@ -24,11 +25,8 @@ const AkselHeader = ({
         </a>
       )}
       <NextLink href="/" passHref>
-        <Heading
-          as="a"
-          level="1"
-          size="xlarge"
-          className="flex h-full items-center px-6 hover:bg-gray-800/10 focus:shadow-focus-inset focus:outline-none"
+        <a
+          className="flex h-full items-center gap-2 px-4 hover:bg-gray-800/10 focus:shadow-focus-inset focus:outline-none"
           onClick={(e) =>
             logNav(
               "header",
@@ -37,8 +35,9 @@ const AkselHeader = ({
             )
           }
         >
-          Aksel
-        </Heading>
+          <AkselLogo className="h-10 w-10 text-deepblue-800" />
+          <span className="text-2xl">Aksel</span>
+        </a>
       </NextLink>
       {!frontPage && <Search inverted />}
     </div>
