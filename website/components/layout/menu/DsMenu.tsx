@@ -111,7 +111,7 @@ const Dropdown = ({
         className="group z-10 flex w-full cursor-pointer items-center justify-between px-2 text-text-muted hover:text-deepblue-800 focus:outline-none"
         aria-expanded={open}
       >
-        <Label size="small" className="mt-6 py-2 first:mt-0">
+        <Label size="small" className="mt-6 py-3 first:mt-0">
           {heading.title}
         </Label>
         <span className="flex h-6 w-6 items-center justify-center rounded group-hover:bg-gray-200 group-focus:shadow-focus">
