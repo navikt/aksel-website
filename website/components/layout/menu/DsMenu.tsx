@@ -22,11 +22,11 @@ const NavItem = ({
     <li
       className={cl(
         style.item,
-        "peer relative before:absolute before:left-0 before:z-[-1] before:transition-colors focus-within:shadow-focus-inset",
+        "peer relative before:absolute before:left-0 before:z-[-1] focus-within:shadow-focus-inset",
         {
           "before:top-1/2 before:h-6 before:-translate-y-1/2 before:border-l-[8px] before:border-l-deepblue-300":
             pageProps?.page?.slug === item?.link?.slug?.current,
-          "before:h-full before:border-l  before:border-l-gray-200 hover:before:border-l-gray-500":
+          "before:h-full before:border-l before:border-l-gray-200 before:transition-colors hover:before:border-l-gray-500":
             pageProps?.page?.slug !== item?.link?.slug?.current && inDropdown,
           "px-2": inDropdown,
           "px-0": !inDropdown,
