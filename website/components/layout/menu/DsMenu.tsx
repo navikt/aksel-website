@@ -8,39 +8,17 @@ import { logNav, PagePropsContext } from "../..";
 import { DsNavigationHeadingMenuT, DsNavigationHeadingT } from "../../../lib";
 import style from "./index.module.css";
 
-const Menu = ({
-  heading,
+const NavItem = ({
   onClick,
+  item,
+  inDropdown = false,
 }: {
-  heading?: DsNavigationHeadingT;
+  item: DsNavigationHeadingMenuT;
+  inDropdown?: boolean;
   onClick?: () => void;
-}): JSX.Element => {
+}) => {
   const { pageProps } = useContext<any>(PagePropsContext);
-
-  const groups = () => {
-    if (!heading.menu || heading.menu.length === 0) return;
-
-    const list = [];
-    let last = 0;
-    heading.menu.forEach((x, y) => {
-      if (x._type === "subheading") {
-        list.push(heading.menu.slice(last, y));
-        last = y;
-      } else if (y === heading.menu.length - 1) {
-        list.push(heading.menu.slice(last, heading.menu.length));
-      }
-    });
-
-    return list;
-  };
-
-  const NavItem = ({
-    item,
-    inDropdown = false,
-  }: {
-    item: DsNavigationHeadingMenuT;
-    inDropdown?: boolean;
-  }) => (
+  return (
     <li
       className={cl(
         style.item,
@@ -84,46 +62,97 @@ const Menu = ({
       </NextLink>
     </li>
   );
+};
 
-  const Dropdown = ({ items }: { items: DsNavigationHeadingMenuT[] }) => {
-    const [heading, ...rest] = items;
-    const [open, setOpen] = useState(false);
+const Dropdown = ({
+  items,
+  onClick,
+}: {
+  items: DsNavigationHeadingMenuT[];
+  onClick?: () => void;
+}) => {
+  const [heading, ...rest] = items;
+  const [open, setOpen] = useState(false);
+  const { pageProps } = useContext<any>(PagePropsContext);
 
-    useIsomorphicLayoutEffect(() => {
-      if (items.find((x) => x?.link?.slug?.current === pageProps?.page?.slug)) {
-        setOpen(true);
-      }
-    }, []);
+  useIsomorphicLayoutEffect(() => {
+    const storage = localStorage.getItem("dssidebar");
 
-    return (
-      <li
-        key={heading.title}
-        data-open={open}
-        className={cl(style.dropdown, "w-full")}
+    if (
+      items.find((x) => x?.link?.slug?.current === pageProps?.page?.slug) ||
+      (storage && JSON.parse(storage)?.[heading.title])
+    ) {
+      setOpen(true);
+    }
+  }, []);
+
+  const handleOpen = () => {
+    const openState = localStorage.getItem("dssidebar");
+    let list;
+    if (openState) {
+      list = open
+        ? { ...JSON.parse(openState) }
+        : { ...JSON.parse(openState), [heading.title]: !open };
+    } else {
+      list = open ? {} : { [heading.title]: !open };
+    }
+    setOpen(!open);
+    localStorage.setItem("dssidebar", JSON.stringify(list));
+  };
+
+  return (
+    <li
+      key={heading.title}
+      data-open={open}
+      className={cl(style.dropdown, "w-full")}
+    >
+      <button
+        onClick={handleOpen}
+        className="group z-10 flex w-full cursor-pointer items-center justify-between px-2 text-text-muted hover:text-deepblue-800 focus:outline-none"
+        aria-expanded={open}
       >
-        <button
-          onClick={() => setOpen(!open)}
-          className="group z-10 flex w-full cursor-pointer items-center justify-between px-2 text-text-muted hover:text-deepblue-800 focus:outline-none"
-          aria-expanded={open}
-        >
-          <Label size="small" className="mt-6 py-2 first:mt-0">
-            {heading.title}
-          </Label>
-          <span className="flex h-6 w-6 items-center justify-center rounded group-hover:bg-gray-200 group-focus:shadow-focus">
-            <Expand
-              className="text-base"
-              title={!open ? `åpne ${heading.title}` : `lukk ${heading.title}`}
-            />
-          </span>
-        </button>
+        <Label size="small" className="mt-6 py-2 first:mt-0">
+          {heading.title}
+        </Label>
+        <span className="flex h-6 w-6 items-center justify-center rounded group-hover:bg-gray-200 group-focus:shadow-focus">
+          <Expand
+            className="text-base"
+            title={!open ? `åpne ${heading.title}` : `lukk ${heading.title}`}
+          />
+        </span>
+      </button>
 
-        <ul hidden={!open} className="px-2">
-          {rest.map((z) => (
-            <NavItem item={z} key={z._key} inDropdown />
-          ))}
-        </ul>
-      </li>
-    );
+      <ul hidden={!open} className="px-2">
+        {rest.map((z) => (
+          <NavItem item={z} key={z._key} inDropdown onClick={onClick} />
+        ))}
+      </ul>
+    </li>
+  );
+};
+
+const Menu = ({
+  heading,
+  onClick,
+}: {
+  heading?: DsNavigationHeadingT;
+  onClick?: () => void;
+}): JSX.Element => {
+  const groups = () => {
+    if (!heading.menu || heading.menu.length === 0) return;
+
+    const list = [];
+    let last = 0;
+    heading.menu.forEach((x, y) => {
+      if (x._type === "subheading") {
+        list.push(heading.menu.slice(last, y));
+        last = y;
+      } else if (y === heading.menu.length - 1) {
+        list.push(heading.menu.slice(last, heading.menu.length));
+      }
+    });
+
+    return list;
   };
 
   const lists = useMemo(() => {
@@ -134,9 +163,11 @@ const Menu = ({
           ? menulist.map((x: DsNavigationHeadingMenuT[], y) => {
               return x[0]._type === "item" ? (
                 // eslint-disable-next-line react/prop-types
-                x.map((item) => <NavItem item={item} key={item._key} />)
+                x.map((item) => (
+                  <NavItem onClick={onClick} item={item} key={item._key} />
+                ))
               ) : (
-                <Dropdown items={x} key={y} />
+                <Dropdown items={x} key={y} onClick={onClick} />
               );
             })
           : null}
