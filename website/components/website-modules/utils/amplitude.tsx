@@ -28,10 +28,13 @@ export const logNav = (kilde: string, fra: string, til: string) => {
   });
 };
 
+const isPreview = () => !!document.getElementById("exit-preview-id");
+
 export function logAmplitudeEvent(eventName: string, data?: any): Promise<any> {
   return new Promise(function (resolve: any) {
     const eventData = data ? { ...data } : {};
-    if (amplitude && !(isDevelopment() || isTest())) {
+    if (amplitude && !(isDevelopment() || isTest() || isPreview())) {
+      console.log("log");
       amplitude.getInstance().logEvent(eventName, eventData, resolve);
     }
   });
