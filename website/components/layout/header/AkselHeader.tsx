@@ -1,4 +1,3 @@
-import { Heading } from "@navikt/ds-react";
 import NextLink from "next/link";
 import React from "react";
 import { logNav, Search } from "../..";

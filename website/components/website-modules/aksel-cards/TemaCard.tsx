@@ -5,7 +5,7 @@ import { AkselTema } from "../../../lib";
 
 export const TemaCard = ({ title, oppsummering }: AkselTema) => {
   return (
-    <div className="group relative min-h-36 min-w-[16rem] flex-1 cursor-pointer rounded-lg border-2 border-transparent bg-white px-6 py-4 shadow-small transition-all focus-within:shadow-focus hover:scale-[1.02] hover:shadow-medium active:border-link sm:min-h-44">
+    <div className="group relative grid min-h-36 min-w-[16rem] flex-1 cursor-pointer rounded-r-lg border-transparent bg-white px-8 py-6 shadow-small transition-all focus-within:shadow-focus hover:scale-[1.02] hover:shadow-medium active:border-link sm:min-h-44">
       <Heading size="medium" level="3">
         <NextLink href={`/tema/${getTemaSlug(title)}`} passHref>
           <a
@@ -23,15 +23,17 @@ export const TemaCard = ({ title, oppsummering }: AkselTema) => {
         </NextLink>
       </Heading>
       {oppsummering && (
-        <BodyShort className="mt-3 mb-6 text-text-muted">
+        <BodyShort className="mt-2 mb-8 text-text-muted">
           {oppsummering}
         </BodyShort>
       )}
-      <LongArrowRight
-        aria-hidden
-        aria-label={`Gå til temasiden for ${{ title }}`}
-        className="absolute bottom-4 right-6 text-gray-400 transition-all [clip-path:_polygon(45%_0,_100%_0,_100%_100%,_45%_100%)] group-focus-within:[clip-path:_polygon(25%_0,_100%_0,_100%_100%,_25%_100%)] group-hover:[clip-path:_polygon(0%_0,_100%_0,_100%_100%,_0%_100%)] group-active:text-link sm:bottom-6"
-      />
+      <div className="grid gap-3 place-self-start">
+        <div className="-mx-[1px] h-1 rounded-full bg-deepblue-200"></div>
+        <p className="text-base uppercase tracking-wide text-text-muted">
+          7 artikler
+        </p>
+      </div>
+      <div className="absolute inset-y-0 left-0 w-[6px] bg-deepblue-300"></div>
     </div>
   );
 };
