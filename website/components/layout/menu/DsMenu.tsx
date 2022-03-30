@@ -1,3 +1,4 @@
+import { Expand } from "@navikt/ds-icons";
 import { BodyShort, Label } from "@navikt/ds-react";
 import cl from "classnames";
 import NextLink from "next/link";
@@ -30,14 +31,18 @@ const Menu = ({
         {sidebarMenu.map((item, x) => {
           if (item._type === "subheading") {
             return (
-              <Label
-                as="li"
-                size="small"
-                key={item.title + x}
-                className="mt-6 py-2 text-text-muted first:mt-0"
-              >
-                {item.title}
-              </Label>
+              <button className="group z-10 flex w-full cursor-pointer items-center justify-between pr-[3px] text-text-muted hover:text-deepblue-800 focus:outline-none">
+                <Label
+                  size="small"
+                  key={item.title + x}
+                  className="mt-6 py-2  first:mt-0 "
+                >
+                  {item.title}
+                </Label>
+                <span className="flex  h-6 w-6  items-center justify-center rounded group-hover:bg-gray-200 group-focus:shadow-focus">
+                  <Expand className="text-base" />
+                </span>
+              </button>
             );
           }
           return (
@@ -46,7 +51,7 @@ const Menu = ({
               className={cl(
                 "relative before:absolute before:left-0 before:z-[-1] before:transition-colors focus-within:shadow-focus-inset",
                 {
-                  "before:top-1/2 before:h-6 before:-translate-y-1/2 before:border-l-[4px]  before:border-l-deepblue-300":
+                  "before:top-1/2 before:h-6 before:-translate-y-1/2 before:border-l-[8px]  before:border-l-deepblue-300":
                     pageProps?.page?.slug === item?.link?.slug?.current,
                   "before:h-full before:border-l  before:border-l-gray-200 hover:before:border-l-gray-500":
                     pageProps?.page?.slug !== item?.link?.slug?.current,
