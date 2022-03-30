@@ -14,11 +14,6 @@ const relatedCards = `_type == "related_pages" =>{
   }
 }`;
 
-const linkPanel = `_type == "link_panel" =>{
-  ...,
-  internal_link-> {_id, slug}
-}`;
-
 const alert = `_type == "alert" =>{
   ...,
   body[]{
@@ -233,7 +228,6 @@ const generiskSeksjon = `_type == "generisk_seksjon" =>{
 
 const deRefs = `
 ${relatedCards},
-${linkPanel},
 ${alert},
 ${tips},
 ${uniqueModules},

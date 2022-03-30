@@ -46,7 +46,7 @@ const Menu = ({
               className={cl(
                 "relative before:absolute before:left-0 before:z-[-1] before:transition-colors focus-within:shadow-focus-inset",
                 {
-                  "before:top-1/2 before:h-6 before:-translate-y-1/2 before:border-l-8  before:border-l-deepblue-300":
+                  "before:top-1/2 before:h-6 before:-translate-y-1/2 before:border-l-[4px]  before:border-l-deepblue-300":
                     pageProps?.page?.slug === item?.link?.slug?.current,
                   "before:h-full before:border-l  before:border-l-gray-200 hover:before:border-l-gray-500":
                     pageProps?.page?.slug !== item?.link?.slug?.current,
@@ -66,7 +66,7 @@ const Menu = ({
                   className={cl(
                     "relative flex py-3 no-underline hover:text-deepblue-800 focus:outline-none",
                     {
-                      "pl-6  font-semibold text-deepblue-800":
+                      "pl-4  font-semibold text-deepblue-800":
                         pageProps?.page?.slug === item?.link?.slug?.current,
                       "pl-4 text-text-muted": !(
                         pageProps?.page?.slug === item?.link?.slug?.current

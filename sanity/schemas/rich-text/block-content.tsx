@@ -203,10 +203,6 @@ export default {
       type: "related_pages",
       icon: () => <ExternalLink />,
     },
-    {
-      type: "link_panel",
-      icon: () => <ExternalLink />,
-    },
     { type: "code_snippet", icon: () => <span>{`< />`}</span> },
     {
       type: "do_dont",

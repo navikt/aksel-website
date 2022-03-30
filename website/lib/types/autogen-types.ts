@@ -2036,53 +2036,6 @@ export type PictureText = {
   body?: RiktekstEnkel;
 };
 
-export type LinkPanel = {
-  _type: "link_panel";
-  /**
-   * Ekstern side — `boolean`
-   *
-   *
-   */
-  external?: boolean;
-
-  /**
-   * Lenke til ekstern side — `url`
-   *
-   *
-   */
-  external_link?: string;
-
-  /**
-   * Lenke til Intern sanity-side — `reference`
-   *
-   *
-   */
-  internal_link?: SanityReference<
-    DsComponentPage | KomponentArtikkel | DsArtikkel | AkselArtikkel
-  >;
-
-  /**
-   * Tittel — `string`
-   *
-   *
-   */
-  heading?: string;
-
-  /**
-   * Heading nivå — `string`
-   *
-   *
-   */
-  heading_level?: "h2" | "h3" | "h4";
-
-  /**
-   * Innhold (optional) — `text`
-   *
-   *
-   */
-  body?: string;
-};
-
 export type PropTable = {
   _type: "prop_table";
   /**
@@ -2254,7 +2207,6 @@ export type BlockContent = Array<
   | SanityKeyed<Tips>
   | SanityKeyed<Alert>
   | SanityKeyed<RelatedPages>
-  | SanityKeyed<LinkPanel>
   | SanityKeyed<CodeSnippet>
   | SanityKeyed<DoDont>
   | SanityKeyed<CodeSandboxRef>

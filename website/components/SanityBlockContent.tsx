@@ -10,7 +10,6 @@ import {
   Image,
   ImageWithText,
   LevelTwoHeading,
-  LinkPanel,
   PropTable,
   Sandbox,
   Snippet,
@@ -100,7 +99,6 @@ const serializers = {
     picture_text: ({ node }) => <ImageWithText node={node} />,
     alert: ({ node }) => <Alert node={node} />,
     tips: ({ node }) => <Tips node={node} />,
-    link_panel: ({ node }) => <LinkPanel node={node} />,
 
     block: ({ node, children }) => {
       const context: BlockContextT = useContext(BlockContext);

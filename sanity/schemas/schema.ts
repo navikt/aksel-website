@@ -35,7 +35,6 @@ export default createSchema({
     SanityModules.doDont,
     SanityModules.Image,
     SanityModules.ImageWithText,
-    SanityModules.LinkPanel,
     SanityModules.PropTable,
     SanityModules.prop,
     SanityModules.RelatedPages,
