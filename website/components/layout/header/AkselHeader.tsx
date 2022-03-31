@@ -11,13 +11,8 @@ const AkselHeader = ({
   className?: string;
   frontPage?: boolean;
 }): JSX.Element => (
-  <header
-    className={cl(
-      "flex justify-center border-b border-b-border-muted",
-      className
-    )}
-  >
-    <div className="flex h-header w-full max-w-aksel-max-w justify-between">
+  <header className={cl("flex justify-center", className)}>
+    <div className="flex w-full max-w-aksel-max-w justify-between">
       {!frontPage && (
         <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
           Hopp til innhold
@@ -25,7 +20,7 @@ const AkselHeader = ({
       )}
       <NextLink href="/" passHref>
         <a
-          className="flex h-full items-center gap-2 px-4 hover:bg-gray-800/10 focus:shadow-focus-inset focus:outline-none"
+          className="flex h-full items-center gap-2 px-4 py-3 hover:bg-gray-800/10 focus:shadow-focus-inset focus:outline-none"
           onClick={(e) =>
             logNav(
               "header",
