@@ -1,10 +1,45 @@
-@import "./search/doc-search.css";
-@import "./global.css";
-@import "@navikt/ds-css";
-@import "@navikt/ds-css-internal";
-@import "./prismjs.css";
-@import "./layout.css";
-@import "./pages.css";
-@import "./components.css";
-@import "./stories.css";
-@import "./overrides.css";
+@tailwind base;
+
+@layer base {
+  @import "./global.css";
+  @import "@navikt/ds-css";
+  @import "@navikt/ds-css-internal";
+}
+
+@tailwind components;
+
+@layer components {
+  @import "./prismjs.css";
+  @import "./layout.css";
+  @import "./pages.css";
+  @import "./components.css";
+  @import "./stories.css";
+  @import "./overrides.css";
+  @import "./search/doc-search.css";
+}
+
+@tailwind utilities;
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .navds-body-long.navds-typo--spacing + .list-margin {
+    @apply -mt-4;
+  }
+
+  .relative-parent + .relative-child {
+    @apply -mt-8;
+  }
+
+  .svg-color-reset.navds-link svg {
+    color: inherit;
+  }
+}

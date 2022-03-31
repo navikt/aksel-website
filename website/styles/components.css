@@ -1,104 +1,75 @@
-@tailwind components;
-@tailwind utilities;
-
-@layer components {
-  .section--small {
-    @apply mb-7;
-  }
-
-  .section--large {
-    @apply mb-12;
-  }
-
-  .icon-search__textfield > .navds-text-field__input {
-    @apply pl-11;
-  }
-
-  .card {
-    @apply relative flex w-[18rem] flex-col rounded bg-canvas-background-light p-4 pt-8 text-text shadow-card focus-within:shadow-focus focus-within:outline-none hover:shadow-[0_0_0_2px_var(--navds-semantic-color-link)] active:text-link md:p-8 md:pt-12;
-  }
-
-  .sandbox-editor > div {
-    @apply max-w-full overflow-x-auto !font-mono text-text-inverted;
-  }
-
-  .sandbox-editor textarea:focus-visible {
-    outline-color: 1px solid
-      var(--navds-semantic-color-component-background-inverted);
-  }
-
-  .sandbox-preview > div:first-child {
-    @apply inline-flex w-full flex-wrap items-center justify-center gap-4;
-  }
-
-  .sandbox-preview > pre {
-    @apply max-w-full whitespace-pre-wrap font-mono;
-  }
-
-  .skiplink {
-    @apply absolute left-0 z-modal -translate-y-full bg-focus p-4 text-text-inverted no-underline focus-within:translate-y-0 focus-within:shadow-[inset_0_0_0_2px_white] focus-within:outline-none;
-  }
-
-  .aksel-main {
-    @apply m-0 min-h-screen-header w-screen p-0 focus:outline-none;
-  }
-
-  .aksel-main__inner {
-    @apply relative min-h-screen-header w-full px-4 pb-4 focus:outline-none md:mx-auto md:my-0 md:px-6 lg:px-12 lg:pb-4;
-  }
-
-  .aksel-main--center {
-    @apply aksel-main__inner;
-  }
-
-  .aksel-main--start {
-    @apply aksel-main__inner items-start;
-  }
-
-  .aksel-card-grid {
-    @apply grid grid-cols-1 justify-center gap-4 sm:grid-cols-2 sm:gap-6 lg:justify-start xl:grid-cols-3;
-  }
-
-  .aksel-card-grid-col-2 {
-    @apply grid grid-cols-1 justify-center gap-4 sm:gap-x-8 sm:gap-y-6 lg:grid-cols-2 lg:justify-start;
-  }
-
-  .img-wrapper img {
-    object-fit: contain;
-    width: 100% !important;
-    height: unset !important;
-  }
-
-  .img-wrapper > div {
-    position: unset !important;
-  }
-
-  .table-icon svg {
-    vertical-align: middle;
-    margin: 0 0.25rem 3px 0.25rem;
-  }
+.section--small {
+  @apply mb-7;
 }
 
-@layer utilities {
-  /* Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
+.section--large {
+  @apply mb-12;
+}
 
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
+.icon-search__textfield > .navds-text-field__input {
+  @apply pl-11;
+}
 
-  .navds-body-long.navds-typo--spacing + .list-margin {
-    @apply -mt-4;
-  }
+.card {
+  @apply relative flex w-[18rem] flex-col rounded bg-canvas-background-light p-4 pt-8 text-text shadow-card focus-within:shadow-focus focus-within:outline-none hover:shadow-[0_0_0_2px_var(--navds-semantic-color-link)] active:text-link md:p-8 md:pt-12;
+}
 
-  .relative-parent + .relative-child {
-    @apply -mt-8;
-  }
+.sandbox-editor > div {
+  @apply max-w-full overflow-x-auto !font-mono text-text-inverted;
+}
 
-  .svg-color-reset.navds-link svg {
-    color: inherit;
-  }
+.sandbox-editor textarea:focus-visible {
+  outline-color: 1px solid
+    var(--navds-semantic-color-component-background-inverted);
+}
+
+.sandbox-preview > div:first-child {
+  @apply inline-flex w-full flex-wrap items-center justify-center gap-4;
+}
+
+.sandbox-preview > pre {
+  @apply max-w-full whitespace-pre-wrap font-mono;
+}
+
+.skiplink {
+  @apply absolute left-0 z-modal -translate-y-full bg-focus p-4 text-text-inverted no-underline focus-within:translate-y-0 focus-within:shadow-[inset_0_0_0_2px_white] focus-within:outline-none;
+}
+
+.aksel-main {
+  @apply m-0 min-h-screen-header w-screen p-0 focus:outline-none;
+}
+
+.aksel-main__inner {
+  @apply relative min-h-screen-header w-full px-4 pb-4 focus:outline-none md:mx-auto md:my-0 md:px-6 lg:px-12 lg:pb-4;
+}
+
+.aksel-main--center {
+  @apply aksel-main__inner;
+}
+
+.aksel-main--start {
+  @apply aksel-main__inner items-start;
+}
+
+.aksel-card-grid {
+  @apply grid grid-cols-1 justify-center gap-4 sm:grid-cols-2 sm:gap-6 lg:justify-start xl:grid-cols-3;
+}
+
+.aksel-card-grid-col-2 {
+  @apply grid grid-cols-1 justify-center gap-4 sm:gap-x-8 sm:gap-y-6 lg:grid-cols-2 lg:justify-start;
+}
+
+.img-wrapper img {
+  object-fit: contain;
+  width: 100% !important;
+  height: unset !important;
+}
+
+.img-wrapper > div {
+  position: unset !important;
+}
+
+.table-icon svg {
+  vertical-align: middle;
+  margin: 0 0.25rem 3px 0.25rem;
 }

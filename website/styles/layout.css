@@ -1,33 +1,27 @@
-@tailwind components;
+.aksel-flex-col {
+  @apply flex w-full flex-col items-center;
+}
 
-@layer components {
-  .aksel-flex-col {
-    @apply flex w-full flex-col items-center;
-  }
+.aksel-artikkel {
+  @apply bg-gray-50;
+}
+.aksel-artikkel .aksel-artikkel__blocks,
+.aksel-artikkel .aksel-artikkel__blocks .aksel-artikkel__child {
+  @apply aksel-flex-col;
+}
+.aksel-artikkel .aksel-artikkel__blocks .aksel-artikkel__child > * {
+  @apply w-full;
+}
 
-  .aksel-artikkel {
-    @apply bg-gray-50;
-  }
-  .aksel-artikkel .aksel-artikkel__blocks,
-  .aksel-artikkel .aksel-artikkel__blocks .aksel-artikkel__child {
-    @apply aksel-flex-col;
-  }
-  .aksel-artikkel .aksel-artikkel__blocks .aksel-artikkel__child > * {
-    @apply w-full;
-  }
-
-  .aksel-artikkel
-    .aksel-artikkel__child.mb-16
-    > :last-child.navds-typo--spacing,
-  .aksel-artikkel
-    .aksel-artikkel__child.mb-16
-    > .aksel-artikkel__child
-    > :last-child.navds-typo--spacing,
-  .aksel-artikkel .aksel-artikkel__child.mb-16 > :last-child.aksel-list,
-  .aksel-artikkel
-    .aksel-artikkel__child.mb-16
-    > .aksel-artikkel__child
-    > :last-child.aksel-list {
-    @apply mb-0;
-  }
+.aksel-artikkel .aksel-artikkel__child.mb-16 > :last-child.navds-typo--spacing,
+.aksel-artikkel
+  .aksel-artikkel__child.mb-16
+  > .aksel-artikkel__child
+  > :last-child.navds-typo--spacing,
+.aksel-artikkel .aksel-artikkel__child.mb-16 > :last-child.aksel-list,
+.aksel-artikkel
+  .aksel-artikkel__child.mb-16
+  > .aksel-artikkel__child
+  > :last-child.aksel-list {
+  @apply mb-0;
 }
