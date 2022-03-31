@@ -434,7 +434,11 @@ export const akselTemaDocs = `*[_type == "aksel_tema" && count(*[references(^._i
   }
 }`;
 
-export const akselTema = `*[_type == "aksel_tema" && count(*[references(^._id)]) > 0]`;
+export const akselTema = `*[_type == "aksel_tema" && count(*[references(^._id)]) > 0]{
+  ...,
+  "refcount": count(*[references(^._id)]
+}`;
+
 export const akselQuotes = `*[_id == "aksel_quotelist"][0]`;
 
 export const akselBloggPosts = `*[_type == "aksel_blogg"] | order(_createdAt desc){

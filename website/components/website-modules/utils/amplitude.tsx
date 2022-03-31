@@ -34,7 +34,6 @@ export function logAmplitudeEvent(eventName: string, data?: any): Promise<any> {
   return new Promise(function (resolve: any) {
     const eventData = data ? { ...data } : {};
     if (amplitude && !(isDevelopment() || isTest() || isPreview())) {
-      console.log("log");
       amplitude.getInstance().logEvent(eventName, eventData, resolve);
     }
   });
