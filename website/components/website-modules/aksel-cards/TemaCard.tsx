@@ -5,7 +5,7 @@ import { AkselTema } from "../../../lib";
 
 export const TemaCard = ({ title, oppsummering }: AkselTema) => {
   return (
-    <div className="group relative grid min-h-36 min-w-[16rem] flex-1 cursor-pointer rounded-r-lg border-transparent bg-white px-8 py-6 shadow-small transition-all focus-within:shadow-focus hover:scale-[1.02] hover:shadow-medium active:border-link sm:min-h-44">
+    <div className="group relative grid min-h-36 min-w-[16rem] flex-1 cursor-pointer rounded-r border-transparent bg-white px-8 py-6 shadow-small transition-all focus-within:shadow-focus hover:scale-[1.02] hover:shadow-medium active:border-link sm:min-h-44">
       <Heading size="medium" level="3">
         <NextLink href={`/tema/${getTemaSlug(title)}`} passHref>
           <a
@@ -27,7 +27,7 @@ export const TemaCard = ({ title, oppsummering }: AkselTema) => {
           {oppsummering}
         </BodyShort>
       )}
-      <div className="grid gap-3 place-self-start">
+      <div className="-mb-1 grid gap-2 place-self-start">
         <div className="-mx-[1px] h-1 rounded-full bg-deepblue-200"></div>
         <p className="text-base uppercase tracking-wide text-text-muted">
           7 artikler
