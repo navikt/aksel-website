@@ -16,6 +16,7 @@ import ToggleGroupSandbox from "./toggle-group";
 import SearchSandbox from "./search";
 import PaginationSandbox from "./pagination";
 import TabsSandbox from "./tabs";
+import TooltipSandbox from "./tooltip";
 import { kebabCase } from "lodash";
 import { SandboxComponent } from "./types";
 
@@ -38,6 +39,7 @@ const allSandboxes = {
   SearchSandbox,
   PaginationSandbox,
   TabsSandbox,
+  TooltipSandbox,
 };
 
 export const Sandboxes = Object.keys(allSandboxes).reduce((prev, y) => {
