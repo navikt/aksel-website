@@ -112,8 +112,8 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
           </div>
 
           {temaer && temaer.length > 0 && (
-            <div className="aksel-layout-x flex w-full max-w-7xl flex-col gap-8 py-24">
-              <Heading level="2" size="large">
+            <div className="aksel-layout-x flex w-full flex-col gap-6 py-24">
+              <Heading level="2" size="small">
                 Siste temaer
               </Heading>
 
@@ -126,8 +126,8 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
           )}
 
           {bloggs && bloggs.length > 0 && (
-            <div className="aksel-layout-x flex w-full max-w-7xl flex-col gap-8 pb-24">
-              <Heading level="2" size="large">
+            <div className="aksel-layout-x flex w-full flex-col gap-6 pb-24">
+              <Heading level="2" size="small">
                 Siste bloggposts
               </Heading>
 
