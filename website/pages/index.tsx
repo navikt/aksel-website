@@ -146,8 +146,12 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
   );
 };
 
+export interface AkselTemaT extends AkselTema {
+  refCount: number;
+}
+
 interface PageProps {
-  temaer: AkselTema[];
+  temaer: AkselTemaT[];
   bloggs: Partial<
     AkselBlogg & { slug: string; contributors?: { title?: string }[] }
   >[];

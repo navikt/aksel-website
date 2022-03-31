@@ -1,9 +1,9 @@
 import { BodyShort, Heading } from "@navikt/ds-react";
 import NextLink from "next/link";
-import { getTemaSlug, logNav, LongArrowRight } from "../..";
-import { AkselTema } from "../../../lib";
+import { getTemaSlug, logNav } from "../..";
+import { AkselTemaT } from "../../../pages";
 
-export const TemaCard = ({ title, oppsummering }: AkselTema) => {
+export const TemaCard = ({ title, oppsummering, refCount }: AkselTemaT) => {
   return (
     <div className="group relative grid min-h-36 min-w-[16rem] flex-1 cursor-pointer rounded-r border-transparent bg-white px-8 py-6 shadow-small transition-all focus-within:shadow-focus hover:scale-[1.02] hover:shadow-medium active:border-link sm:min-h-44">
       <Heading size="medium" level="3">
@@ -29,9 +29,11 @@ export const TemaCard = ({ title, oppsummering }: AkselTema) => {
       )}
       <div className="-mb-1 grid gap-2 place-self-start">
         <div className="-mx-[1px] h-1 rounded-full bg-deepblue-200"></div>
-        <p className="text-base uppercase tracking-wide text-text-muted">
-          7 artikler
-        </p>
+        {refCount && (
+          <p className="text-base uppercase tracking-wide text-text-muted">
+            {refCount} artikler
+          </p>
+        )}
       </div>
       <div className="absolute inset-y-0 left-0 w-[6px] bg-deepblue-300"></div>
     </div>
