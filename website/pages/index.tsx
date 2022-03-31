@@ -146,8 +146,12 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
   );
 };
 
+export interface AkselTemaT extends AkselTema {
+  refCount: number;
+}
+
 interface PageProps {
-  temaer: AkselTema[];
+  temaer: AkselTemaT[];
   bloggs: Partial<
     AkselBlogg & { slug: string; contributors?: { title?: string }[] }
   >[];
@@ -167,7 +171,6 @@ export const getStaticProps = async ({
   const bloggs = await client.fetch(akselBloggPosts);
   const tekster = await client.fetch(akselForsideQuery);
 
-  console.log(temaer);
   return {
     props: {
       temaer,

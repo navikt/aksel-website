@@ -436,7 +436,7 @@ export const akselTemaDocs = `*[_type == "aksel_tema" && count(*[references(^._i
 
 export const akselTema = `*[_type == "aksel_tema" && count(*[references(^._id)]) > 0]{
   ...,
-  "refcount": count(*[references(^._id)]
+  "refCount": count(*[references(^._id) && !(_id in path("drafts.**"))])
 }`;
 
 export const akselQuotes = `*[_id == "aksel_quotelist"][0]`;
