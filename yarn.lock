@@ -2091,16 +2091,16 @@
     prop-types "^15.6.0"
     rxjs "^6.5.3"
 
-"@sanity/desk-tool@^2.29.3":
-  version "2.29.3"
-  resolved "https://registry.npmjs.org/@sanity/desk-tool/-/desk-tool-2.29.3.tgz#4bc49537274cc8f3843931283881e17d2f114687"
+"@sanity/desk-tool@^2.29.4":
+  version "2.29.4"
+  resolved "https://registry.npmjs.org/@sanity/desk-tool/-/desk-tool-2.29.4.tgz#4c97d479ab9e30369dd7dc0da9b9aa67e7033406"
   dependencies:
     "@reach/auto-id" "^0.13.2"
     "@sanity/client" "^3.2.0"
     "@sanity/data-aspects" "2.29.3"
     "@sanity/diff" "2.29.3"
     "@sanity/field" "2.29.3"
-    "@sanity/form-builder" "2.29.3"
+    "@sanity/form-builder" "2.29.4"
     "@sanity/generate-help-url" "^3.0.0"
     "@sanity/icons" "^1.2.1"
     "@sanity/react-hooks" "2.29.3"
@@ -2168,9 +2168,9 @@
     lodash "^4.17.15"
     sanity-diff-patch "^1.0.9"
 
-"@sanity/form-builder@2.29.3":
-  version "2.29.3"
-  resolved "https://registry.yarnpkg.com/@sanity/form-builder/-/form-builder-2.29.3.tgz#3347b70c3eebd8d785150822f4adaa34675285df"
+"@sanity/form-builder@2.29.4":
+  version "2.29.4"
+  resolved "https://registry.npmjs.org/@sanity/form-builder/-/form-builder-2.29.4.tgz#1e440bda871e14da531a4d5672af4745a6f29e04"
   dependencies:
     "@reach/auto-id" "^0.13.2"
     "@sanity/base" "2.29.3"
@@ -2183,7 +2183,7 @@
     "@sanity/imagetool" "2.29.3"
     "@sanity/initial-value-templates" "2.29.3"
     "@sanity/mutator" "2.29.3"
-    "@sanity/portable-text-editor" "2.29.3"
+    "@sanity/portable-text-editor" "2.29.4"
     "@sanity/schema" "2.29.3"
     "@sanity/types" "2.29.3"
     "@sanity/ui" "^0.37.2"
@@ -2311,9 +2311,9 @@
     css-modules-require-hook "4.1.0"
     interop-require "^1.0.0"
 
-"@sanity/portable-text-editor@2.29.3":
-  version "2.29.3"
-  resolved "https://registry.yarnpkg.com/@sanity/portable-text-editor/-/portable-text-editor-2.29.3.tgz#10961c72b1afbd58edcfdaf40a3254c7e2756d95"
+"@sanity/portable-text-editor@2.29.4":
+  version "2.29.4"
+  resolved "https://registry.npmjs.org/@sanity/portable-text-editor/-/portable-text-editor-2.29.4.tgz#a337b905da9b8de0898c56c9b3d0d86defa2e11e"
   dependencies:
     "@sanity/block-tools" "2.29.3"
     "@sanity/schema" "2.29.3"
