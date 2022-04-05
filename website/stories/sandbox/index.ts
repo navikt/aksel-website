@@ -17,6 +17,7 @@ import SearchSandbox from "./search";
 import PaginationSandbox from "./pagination";
 import TabsSandbox from "./tabs";
 import TooltipSandbox from "./tooltip";
+import ErrorSummarySandbox from "./error-summary";
 import { kebabCase } from "lodash";
 import { SandboxComponent } from "./types";
 
@@ -40,6 +41,7 @@ const allSandboxes = {
   PaginationSandbox,
   TabsSandbox,
   TooltipSandbox,
+  ErrorSummarySandbox,
 };
 
 export const Sandboxes = Object.keys(allSandboxes).reduce((prev, y) => {
