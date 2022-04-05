@@ -34,7 +34,7 @@ const HeadingDropDown = ({ title }: { title: string }) => {
   );
 
   const menu = (
-    <ul className="rounded">
+    <ul className="rounded text-text">
       <li>
         <NextLink href="/" passHref>
           <a
