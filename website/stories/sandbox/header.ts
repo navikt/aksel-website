@@ -92,7 +92,7 @@ const HeaderSandbox: SandboxComponent = (props) => {
   }</Header.Title>
   ${
     props.search
-      ? `<form className="self-center pl-5" onSubmit={(e) => {e.preventDefault();console.log("Search!");}}><Search size="small" variant="secondary" placeholder="Søk" /></form>`
+      ? `<form className="self-center px-5" onSubmit={(e) => {e.preventDefault();console.log("Search!");}}><Search size="small" variant="secondary" placeholder="Søk" /></form>`
       : ""
   }
     ${system}${user}
