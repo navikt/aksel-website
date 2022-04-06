@@ -11,12 +11,15 @@ export const ArtikkelBreadcrumbs = () => {
     return null;
   }
 
+  const href =
+    router.query.tema === "blogg" ? "/blogg" : `/tema/${router.query.tema}`;
+
   return (
     <nav
       aria-label="Til forrige tema"
       className="item-start absolute top-3 w-full px-4 sm:px-6"
     >
-      <NextLink href={`/tema/${router.query.tema}`} passHref>
+      <NextLink href={href} passHref>
         <a
           className="group flex w-fit items-center justify-start gap-1 pr-1 text-text-muted underline focus:bg-blue-800 focus:text-text-inverted focus:shadow-[0_0_0_2px_theme(colors.blue-800)] focus:outline-none"
           onClick={(e) =>
