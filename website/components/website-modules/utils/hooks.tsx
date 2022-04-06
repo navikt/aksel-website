@@ -89,13 +89,13 @@ export const useDsNavigation = () => {
         if (heading?.menu) {
           return (
             heading.menu
-              .filter((x) => x._type !== "subheading")
+              .filter((x) => x?._type !== "subheading")
               .find(
-                (item) => item.link.slug.current === pageProps?.page?.slug
-              ) ?? heading.link_ref.slug.current === pageProps?.page?.slug
+                (item) => item?.link?.slug?.current === pageProps?.page?.slug
+              ) ?? heading?.link_ref?.slug?.current === pageProps?.page?.slug
           );
         } else {
-          return heading.link_ref.slug.current === pageProps?.page?.slug;
+          return heading?.link_ref.slug?.current === pageProps?.page?.slug;
         }
       }),
     [pageProps]
