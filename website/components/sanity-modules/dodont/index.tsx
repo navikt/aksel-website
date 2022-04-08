@@ -94,7 +94,7 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
         })}
       />
       <figcaption data-variant={block.variant}>
-        <div className="mt-3 italic">
+        <div className="mt-3">
           {block.description && (
             <BodyShort size="small" as="span" className="inline-flex gap-2">
               {GetIcon(block.variant)}

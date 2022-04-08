@@ -40,7 +40,7 @@ const Video = ({
         />
       </video>
       {node?.caption && (
-        <BodyLong as="figcaption" className="self-center italic">
+        <BodyLong as="figcaption" className="self-center">
           {node.caption}
         </BodyLong>
       )}
