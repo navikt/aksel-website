@@ -84,7 +84,7 @@ export const ArtikkelCard = ({
           "mt-4": !oppsummering,
         })}
       >
-        {authors && authors?.length !== 0 ? (
+        {authors && authors?.length !== 0 && (
           <>
             {avatars()}
             <BodyShort size="small" as="span">
@@ -101,10 +101,6 @@ export const ArtikkelCard = ({
               </Detail>
             </BodyShort>
           </>
-        ) : (
-          <Detail size="small" className="text-text-muted">
-            {moment(_createdAt).format("DD. MMM. YY")}
-          </Detail>
         )}
       </div>
       <Detail
