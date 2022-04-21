@@ -104,7 +104,7 @@ const Element = ({
         })}
       />
       <figcaption data-variant={block.variant}>
-        <div className="mt-3 italic">
+        <div className="mt-3">
           {block.description && (
             <BodyShort size="small" as="span" className="inline-flex gap-2">
               {GetIcon(block.variant)}
@@ -129,7 +129,7 @@ const Element = ({
 };
 
 const DoDont = ({ node }: { node: DoDontV2 }) => {
-  if (!node || !node.title || node?.blokker.length === 0) return null;
+  if (!node || !node.title) return null;
 
   return (
     <div className="relative-parent aksel-artikkel__child mb-16 last:mb-0">
@@ -142,16 +142,18 @@ const DoDont = ({ node }: { node: DoDontV2 }) => {
         {node.title}
       </Heading>
       <SanityBlockContent blocks={node.forklaring} />
-      <div
-        className={cl(
-          style.doDont,
-          "last flex flex-wrap justify-between gap-8"
-        )}
-      >
-        {node.blokker.map((x) => (
-          <Element key={x._key} block={x} />
-        ))}
-      </div>
+      {node?.blokker?.length > 0 && (
+        <div
+          className={cl(
+            style.doDont,
+            "last flex flex-wrap justify-between gap-8"
+          )}
+        >
+          {node.blokker.map((x) => (
+            <Element key={x._key} block={x} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

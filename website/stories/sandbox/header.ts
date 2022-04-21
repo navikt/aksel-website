@@ -87,9 +87,14 @@ const HeaderSandbox: SandboxComponent = (props) => {
     : "";
 
   return `<Header className="w-full">
-    <Header.Title ${props.title === "H-tag" ? `as="h1"` : `href="#"`}>${
+  <Header.Title ${props.title === "H-tag" ? `as="h1"` : `href="#"`}>${
     props.title === "H-tag" ? "Sykepenger" : "Hjem"
   }</Header.Title>
+  ${
+    props.search
+      ? `<form className="self-center px-5" onSubmit={(e) => {e.preventDefault();console.log("Search!");}}><Search size="small" variant="simple" placeholder="Søk" /></form>`
+      : ""
+  }
     ${system}${user}
   </Header>`;
 };
@@ -99,6 +104,7 @@ HeaderSandbox.args = {
     title: ["H-tag", "Lenke"],
     user: ["", "Med description", "Meny", "Initialer"],
     "system-meny": false,
+    search: false,
   },
 };
 

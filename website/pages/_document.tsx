@@ -12,7 +12,7 @@ export default function Document() {
         />
         <meta name="theme-color" content="#00243A" />
       </Head>
-      <body>
+      <body data-theme="light">
         <Main />
         <NextScript />
       </body>

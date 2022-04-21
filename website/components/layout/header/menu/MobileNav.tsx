@@ -37,7 +37,7 @@ const MobileNavigation = () => {
   const headingMenu = nav?.headings && (
     <>
       {
-        <ul className="hidden animate-fadeIn lg:block xl:hidden">
+        <ul className="hidden animate-fadeIn text-text lg:block xl:hidden">
           {nav.headings.map((heading: DsNavigationHeadingT) => (
             <li
               key={heading._key}
@@ -112,7 +112,9 @@ const MobileNavigation = () => {
   const menu = (
     <>
       {heading && (
-        <div className={cl("animate-fadeIn", { hidden: level === 0 })}>
+        <div
+          className={cl("animate-fadeIn text-text", { hidden: level === 0 })}
+        >
           <Heading
             onClick={() => setLevel(0)}
             as="button"

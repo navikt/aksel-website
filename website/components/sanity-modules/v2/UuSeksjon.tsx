@@ -55,7 +55,7 @@ const UuSeksjon = ({ node }: { node: UuSeksjonT }): JSX.Element => {
       <SanityBlockContent blocks={node.interaksjon_tastatur} />
 
       {node?.tastatur && (
-        <Table>
+        <Table className="mb-7">
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell className="font-normal text-text-muted">

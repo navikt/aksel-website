@@ -6,6 +6,7 @@ const TableSandbox: SandboxComponent = ({
   selectable,
   sortable,
   pagination,
+  expandableRows,
 }) => {
   const propZebraStripes = zebraStripes ? ` zebraStripes` : "";
   const propSize = size ? ` size="${size}"` : "";
@@ -71,6 +72,7 @@ const TableSandbox: SandboxComponent = ({
               </Table.DataCell>`
             : ""
         }
+        ${expandableRows && !selectable ? `<Table.HeaderCell />` : ""}
           ${
             sortable
               ? `<Table.ColumnHeader sortKey="name" sortable>
@@ -86,6 +88,7 @@ const TableSandbox: SandboxComponent = ({
                 </Table.ColumnHeader>`
               : '<Table.HeaderCell scope="col">Start</Table.HeaderCell>'
           }
+          ${expandableRows && selectable ? `<Table.HeaderCell />` : ""}
         </Table.Row>
       </Table.Header>
       <Table.Body>
@@ -120,9 +123,15 @@ const TableSandbox: SandboxComponent = ({
         }
         .map(
           ({ name, fnr, start }) =>
-            <Table.Row key={fnr} ${
-              selectable ? "selected={selectedRows.includes(fnr)}" : ""
-            }>
+            <Table.${
+              expandableRows
+                ? `ExpandableRow content="Innhold i ekspanderbar rad" ${
+                    selectable ? `togglePlacement="right"` : ""
+                  }`
+                : "Row"
+            } key={fnr} ${
+    selectable ? "selected={selectedRows.includes(fnr)}" : ""
+  }>
               ${
                 selectable
                   ? `<Table.DataCell>
@@ -143,7 +152,7 @@ const TableSandbox: SandboxComponent = ({
               }
               <Table.DataCell>{fnr.substring(0, 6)} {fnr.substring(6)}</Table.DataCell>
               <Table.DataCell>{format(new Date(start), "dd.MM.yyyy")}</Table.DataCell>
-            </Table.Row>
+            </Table.${expandableRows ? "ExpandableRow" : "Row"}>
         )}
       </Table.Body>
     </Table>
@@ -225,6 +234,7 @@ TableSandbox.args = {
     selectable: false,
     sortable: false,
     pagination: false,
+    expandableRows: false,
   },
   background: BgColors.WHITE,
 };

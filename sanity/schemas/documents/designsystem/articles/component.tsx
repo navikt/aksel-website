@@ -22,6 +22,7 @@ const prefix = "designsystem/side/";
 export default {
   title: "Komponentartikkel",
   name: "ds_component_page",
+  __experimental_actions: [/*'create',*/ "update", "delete", "publish"],
   type: "document",
   groups: [...groups],
   ...defaultPreview(),

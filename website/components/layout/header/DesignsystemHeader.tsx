@@ -69,7 +69,10 @@ const DesignsystemHeader = (): JSX.Element => {
         <div className="hidden h-header w-full max-w-aksel-max-w xl:flex">
           {nonMobile}
         </div>
-        <div className="flex h-header w-full max-w-aksel-max-w xl:hidden">
+        <div
+          className="flex h-header w-full max-w-aksel-max-w xl:hidden"
+          data-theme="light"
+        >
           {mobile}
         </div>
       </Header>

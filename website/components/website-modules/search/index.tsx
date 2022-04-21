@@ -1,22 +1,22 @@
 import { DocSearchModal, useDocSearchKeyboardEvents } from "@docsearch/react";
 import { DocSearchHit } from "@docsearch/react/dist/esm/types";
 import { Search as SearchIcon } from "@navikt/ds-icons";
-import { BodyShort, Button, Search as DsSearch } from "@navikt/ds-react";
-import algoliasearch from "algoliasearch/lite";
+import { BodyShort /* , Button, Search as DsSearch */ } from "@navikt/ds-react";
+/* import algoliasearch from "algoliasearch/lite"; */
 import cl from "classnames";
-import React, { useEffect, useRef, useState } from "react";
+import React /* , { useEffect, useRef, useState } */ from "react";
 import { createPortal } from "react-dom";
-import Modal from "react-modal";
-import style from "./index.module.css";
+/* import Modal from "react-modal";
+import style from "./index.module.css"; */
 
-const searchClient = algoliasearch(
+/* const searchClient = algoliasearch(
   "J64I2SIG7K",
   "92d2ac76eba4eba628a34baa11743fc1"
 );
 
-const index = "aksel_docsearch";
+const index = "aksel_docsearch"; */
 
-const SearchNew = ({ inverted }: { inverted?: boolean }) => {
+/* const SearchNew = ({ inverted }: { inverted?: boolean }) => {
   const [open, setOpen] = useState(true);
   const [query, setQuery] = useState("");
   const [result, setResult] = useState<any>({});
@@ -86,16 +86,16 @@ const SearchNew = ({ inverted }: { inverted?: boolean }) => {
       </Modal>
     </>
   );
-};
+}; */
 
-const HitComp = ({
+/* const HitComp = ({
   hit,
   children,
 }: {
   hit: DocSearchHit;
   children: React.ReactNode;
 }) => {
-  /* hit.hierarchy.lvl0 && console.log(hit); */
+  hit.hierarchy.lvl0 && console.log(hit);
   return (
     <div className="ais-result">
       {hit.hierarchy.lvl0 && (
@@ -106,17 +106,17 @@ const HitComp = ({
         </div>
       )}
 
-      {/* <div class="ais-lvl1 breadcrumbs">
+      <div class="ais-lvl1 breadcrumbs">
       {{#hierarchy.lvl1}} {{{_highlightResult.hierarchy.lvl1.value}}} {{/hierarchy.lvl1}} {{#hierarchy.lvl2}} > {{{_highlightResult.hierarchy.lvl2.value}}} {{/hierarchy.lvl2}} {{#hierarchy.lvl3}} > {{{_highlightResult.hierarchy.lvl3.value}}} {{/hierarchy.lvl3}}
       {{#hierarchy.lvl4}} > {{{_highlightResult.hierarchy.lvl4.value}}} {{/hierarchy.lvl4}}
     </div>
 
     <div class="ais-content">
       {{{#content}}} {{{_highlightResult.content.value}}} {{{/content}}}
-    </div> */}
+    </div>
     </div>
   );
-};
+}; */
 
 function Search({ inverted, full }: { inverted?: boolean; full?: boolean }) {
   const [isOpen, setIsOpen] = React.useState(false);

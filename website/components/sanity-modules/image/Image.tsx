@@ -41,7 +41,7 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
         />
       </button>
       {node.caption && (
-        <BodyLong as="figcaption" className="mt-2 self-center italic">
+        <BodyLong as="figcaption" className="mt-2 self-center">
           {node.caption}
         </BodyLong>
       )}
