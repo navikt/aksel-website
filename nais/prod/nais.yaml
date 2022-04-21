@@ -43,3 +43,10 @@ spec:
         - host: cdn.sanity.io
       rules: []
       env:
+  azure:
+    application:
+      enabled: true
+      autoLogin: false
+      allowAllUsers: true
+    sidecar:
+      enabled: true
