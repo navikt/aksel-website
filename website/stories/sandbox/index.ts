@@ -1,3 +1,4 @@
+import AccordionSandbox from "./accordion";
 import AlertSandbox from "./alert";
 import ButtonSandbox from "./button";
 import PlainSandbox from "./plain";
@@ -23,6 +24,7 @@ import { kebabCase } from "lodash";
 import { SandboxComponent } from "./types";
 
 const allSandboxes = {
+  AccordionSandbox,
   AlertSandbox,
   ButtonSandbox,
   HeaderSandbox,
