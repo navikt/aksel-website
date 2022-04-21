@@ -24,13 +24,15 @@ const DesignsystemHeader = (): JSX.Element => {
             key={heading.title + heading.link_ref}
           >
             <a
-              onClick={(e) =>
+              onClick={(e) => {
                 logNav(
                   "header",
                   window.location.pathname,
                   e.currentTarget.getAttribute("href")
-                )
-              }
+                );
+                !(activeHeading?.title === heading.title) &&
+                  localStorage.removeItem("dssidebar");
+              }}
               className={cl(
                 "index-heading flex min-w-header cursor-pointer items-center justify-center whitespace-nowrap py-0 px-2 pt-1 focus:outline-none 2xl:px-4",
                 {
@@ -64,10 +66,16 @@ const DesignsystemHeader = (): JSX.Element => {
         Hopp til innhold
       </a>
       <Header className="z-[1050] justify-center">
-        <div className="hidden h-header w-full max-w-aksel-max-w xl:flex">
+        <div
+          className="hidden h-header w-full max-w-aksel-max-w xl:flex"
+          data-theme="light"
+        >
           {nonMobile}
         </div>
-        <div className="flex h-header w-full max-w-aksel-max-w xl:hidden">
+        <div
+          className="flex h-header w-full max-w-aksel-max-w xl:hidden"
+          data-theme="light"
+        >
           {mobile}
         </div>
       </Header>

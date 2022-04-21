@@ -1,20 +1,20 @@
-@tailwind base;
+html {
+  /* Remove horizontal jump caused by scrollbar presens on long or short pages */
+  overflow-y: scroll;
+}
+code,
+pre {
+  @apply !font-mono;
+}
 
-@layer base {
-  code,
-  pre {
-    @apply !font-mono;
-  }
+.navds-alert code {
+  color: var(--navds-global-color-red-500);
+  background-color: transparent;
+  padding: 0;
+}
 
-  .navds-alert code {
-    color: var(--navds-global-color-red-500);
-    background-color: transparent;
-    padding: 0;
-  }
-
-  p {
-    @apply max-w-text;
-  }
+p {
+  @apply max-w-text;
 }
 
 /* Improves rendering of images for chrome on Windows */

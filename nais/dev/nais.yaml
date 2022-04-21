@@ -45,5 +45,6 @@ spec:
     application:
       enabled: true
       autoLogin: false
+      allowAllUsers: true
     sidecar:
       enabled: true

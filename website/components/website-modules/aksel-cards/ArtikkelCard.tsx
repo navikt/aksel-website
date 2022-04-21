@@ -47,7 +47,7 @@ export const ArtikkelCard = ({
   };
 
   return (
-    <div className="group relative flex min-h-24 min-w-[16rem] max-w-xl flex-1 cursor-pointer flex-col justify-between  rounded-lg border-2 border-transparent bg-white px-6 py-4 shadow-small transition-all focus-within:shadow-focus hover:scale-[1.02] hover:shadow-medium active:border-link">
+    <div className="group relative flex min-h-24 min-w-[16rem] max-w-xl flex-1 cursor-pointer flex-col justify-between rounded border-2 border-transparent bg-white px-6 py-4 shadow-small transition-all focus-within:shadow-focus hover:scale-[1.02] hover:shadow-medium active:border-link">
       <div>
         <Heading size="medium" level="3">
           <NextLink
@@ -106,7 +106,7 @@ export const ArtikkelCard = ({
       <Detail
         as="span"
         size="small"
-        className="ml-1 mt-1 inline-block text-text-muted sm:hidden"
+        className="mt-1 ml-1 inline-block text-text-muted sm:hidden"
       >
         {moment(_createdAt).format("DD. MMM. YY")}
       </Detail>

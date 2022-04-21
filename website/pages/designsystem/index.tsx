@@ -33,9 +33,6 @@ const Page = (props: {
           content="Desgnsystemet til NAV gjør det enkelt å lage produkter."
         />
       </Head>
-      <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
-        Hopp til innhold
-      </a>
       <DesignsystemHeader />
       {props.preview && <PreviewBanner />}
 

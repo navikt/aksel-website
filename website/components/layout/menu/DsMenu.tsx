@@ -1,92 +1,186 @@
-import { BodyShort, Detail } from "@navikt/ds-react";
+import { Expand } from "@navikt/ds-icons";
+import { Label } from "@navikt/ds-react";
 import cl from "classnames";
 import NextLink from "next/link";
-import React, { useContext, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { useIsomorphicLayoutEffect } from "react-use";
 import { logNav, PagePropsContext } from "../..";
 import { DsNavigationHeadingMenuT, DsNavigationHeadingT } from "../../../lib";
+import style from "./index.module.css";
+
+const NavItem = ({
+  onClick,
+  item,
+  inDropdown = false,
+}: {
+  item: DsNavigationHeadingMenuT;
+  inDropdown?: boolean;
+  onClick?: () => void;
+}) => {
+  const { pageProps } = useContext<any>(PagePropsContext);
+  return (
+    <li
+      className={cl(
+        style.item,
+        "peer relative before:absolute before:left-0 before:z-[-1] focus-within:shadow-focus-inset",
+        {
+          "before:top-1/2 before:h-6 before:-translate-y-1/2 before:border-l-[8px] before:border-l-deepblue-300":
+            pageProps?.page?.slug === item?.link?.slug?.current,
+          "before:h-full before:border-l before:border-l-gray-200 before:transition-colors hover:before:border-l-gray-500":
+            pageProps?.page?.slug !== item?.link?.slug?.current && inDropdown,
+          "px-2": inDropdown,
+          "px-0": !inDropdown,
+        }
+      )}
+    >
+      <NextLink href={`/${item.link.slug.current}`} passHref>
+        <a
+          onClick={(e) => {
+            onClick && onClick();
+            logNav(
+              "meny",
+              window.location.pathname,
+              e.currentTarget.getAttribute("href")
+            );
+          }}
+          className={cl(
+            "relative flex px-2 py-3 no-underline hover:text-deepblue-800 focus:outline-none",
+            {
+              "font-semibold text-deepblue-800":
+                pageProps?.page?.slug === item?.link?.slug?.current,
+              "text-text-muted": !(
+                pageProps?.page?.slug === item?.link?.slug?.current
+              ),
+              "pl-4":
+                !inDropdown &&
+                pageProps?.page?.slug === item?.link?.slug?.current,
+            }
+          )}
+        >
+          {item.title}
+        </a>
+      </NextLink>
+    </li>
+  );
+};
+
+const Dropdown = ({
+  items,
+  onClick,
+}: {
+  items: DsNavigationHeadingMenuT[];
+  onClick?: () => void;
+}) => {
+  const [heading, ...rest] = items;
+  const [open, setOpen] = useState(false);
+  const { pageProps } = useContext<any>(PagePropsContext);
+
+  useIsomorphicLayoutEffect(() => {
+    const storage = localStorage.getItem("dssidebar");
+
+    if (
+      items.find((x) => x?.link?.slug?.current === pageProps?.page?.slug) ||
+      (storage && JSON.parse(storage)?.[heading.title])
+    ) {
+      setOpen(true);
+    }
+  }, []);
+
+  const handleOpen = () => {
+    const openState = localStorage.getItem("dssidebar");
+    let list;
+    if (openState) {
+      list = open
+        ? { ...JSON.parse(openState) }
+        : { ...JSON.parse(openState), [heading.title]: !open };
+    } else {
+      list = open ? {} : { [heading.title]: !open };
+    }
+    setOpen(!open);
+    localStorage.setItem("dssidebar", JSON.stringify(list));
+  };
+
+  return (
+    <li
+      key={heading.title}
+      data-open={open}
+      className={cl(style.dropdown, "w-full")}
+    >
+      <button
+        onClick={handleOpen}
+        className="group z-10 flex w-full cursor-pointer items-center justify-between px-2 text-text-muted hover:text-deepblue-800 focus:outline-none"
+        aria-expanded={open}
+      >
+        <Label size="small" className="mt-6 py-3 first:mt-0">
+          {heading.title}
+        </Label>
+        <span className="flex h-6 w-6 items-center justify-center rounded group-hover:bg-gray-200 group-focus:shadow-focus">
+          <Expand
+            className="text-base"
+            aria-hidden
+            aria-label={
+              !open ? `åpne ${heading.title}` : `lukk ${heading.title}`
+            }
+          />
+        </span>
+      </button>
+
+      <ul hidden={!open} className="px-2">
+        {rest.map((z) => (
+          <NavItem item={z} key={z._key} inDropdown onClick={onClick} />
+        ))}
+      </ul>
+    </li>
+  );
+};
 
 const Menu = ({
   heading,
   onClick,
-  inCategory,
-  className,
 }: {
   heading?: DsNavigationHeadingT;
   onClick?: () => void;
-  inCategory?: boolean;
-  className?: string;
 }): JSX.Element => {
-  const { pageProps } = useContext<any>(PagePropsContext);
+  const groups = () => {
+    if (!heading.menu || heading.menu.length === 0) return;
 
-  const [sidebarMenu, setSidebarMenu] = useState<DsNavigationHeadingMenuT[]>(
-    []
-  );
+    const list = [];
+    let last = 0;
+    heading.menu.forEach((x, y) => {
+      if (x._type === "subheading") {
+        list.push(heading.menu.slice(last, y));
+        last = y;
+      } else if (y === heading.menu.length - 1) {
+        list.push(heading.menu.slice(last, heading.menu.length));
+      }
+    });
 
-  useIsomorphicLayoutEffect(() => {
-    if (!heading || !heading?.menu) return;
-    setSidebarMenu([...heading.menu]);
-  }, [heading]);
+    return list;
+  };
+
+  const lists = useMemo(() => {
+    const menulist = groups();
+    return (
+      <ul>
+        {menulist
+          ? menulist.map((x: DsNavigationHeadingMenuT[], y) => {
+              return x[0]._type === "item" ? (
+                // eslint-disable-next-line react/prop-types
+                x.map((item) => (
+                  <NavItem onClick={onClick} item={item} key={item._key} />
+                ))
+              ) : (
+                <Dropdown items={x} key={y} onClick={onClick} />
+              );
+            })
+          : null}
+      </ul>
+    );
+  }, [heading.menu]);
 
   return (
-    <nav
-      aria-label={heading.title}
-      className={cl(className, "overflow-x-auto")}
-    >
-      <BodyShort as="ul">
-        {sidebarMenu.map((item, x) => {
-          if (item._type === "subheading") {
-            return (
-              <Detail
-                as="li"
-                size="small"
-                key={item.title + x}
-                className="relative mt-6 pt-7 pr-4 pb-[14px] pl-8 uppercase text-text before:absolute before:top-0 before:left-auto before:right-auto before:h-[1px] before:w-9/12 before:bg-divider first:mt-0 first:pt-[14px] first:before:bg-transparent"
-              >
-                {item.title}
-              </Detail>
-            );
-          }
-          return (
-            <li
-              key={item.title + x}
-              className={cl(
-                "focus-within:shadow-focus-inset hover:bg-canvas-background",
-                {
-                  "rounded-b": inCategory,
-                  "bg-canvas-background":
-                    pageProps?.page?.slug === item?.link?.slug?.current,
-                }
-              )}
-            >
-              <NextLink href={`/${item.link.slug.current}`} passHref>
-                <a
-                  onClick={(e) => {
-                    onClick && onClick();
-                    logNav(
-                      "meny",
-                      window.location.pathname,
-                      e.currentTarget.getAttribute("href")
-                    );
-                  }}
-                  className={cl(
-                    "flex py-3 pr-4 no-underline hover:text-text focus:outline-none",
-                    {
-                      "border-l-[6px] border-l-gray-900 pl-[26px] font-semibold text-text":
-                        pageProps?.page?.slug === item?.link?.slug?.current,
-                      "pl-8 text-text-muted": !(
-                        pageProps?.page?.slug === item?.link?.slug?.current
-                      ),
-                    }
-                  )}
-                >
-                  {item.title}
-                </a>
-              </NextLink>
-            </li>
-          );
-        })}
-      </BodyShort>
+    <nav aria-label={heading.title} className={cl("overflow-x-auto")}>
+      {lists}
     </nav>
   );
 };

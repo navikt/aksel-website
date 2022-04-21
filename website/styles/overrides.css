@@ -1,5 +1,3 @@
-@tailwind components;
-
 .inverted-button {
   --navds-button-color-secondary-text: var(
     --navds-semantic-color-text-inverted
@@ -56,23 +54,17 @@
   --navds-error-message-color-text: var(--navds-global-color-red-300);
 }
 
-@layer components {
-  .inverted-textarea textarea,
-  .inverted-textfield > input {
-    @apply bg-transparent text-text-inverted;
-  }
-
-  .inverted-textarea textarea:hover,
-  .inverted-textfield > input:hover {
-    @apply border-blue-200;
-  }
-
-  .inverted-textarea textarea:focus,
-  .inverted-textfield > input:focus {
-    @apply shadow-focus-inverted;
-  }
+.inverted-textarea textarea,
+.inverted-textfield > input {
+  @apply bg-transparent text-text-inverted;
 }
 
-a {
-  color: inherit;
+.inverted-textarea textarea:hover,
+.inverted-textfield > input:hover {
+  @apply border-blue-200;
+}
+
+.inverted-textarea textarea:focus,
+.inverted-textfield > input:focus {
+  @apply shadow-focus-inverted;
 }

@@ -30,7 +30,7 @@ Page.getLayout = (page) => {
   return (
     <>
       <DesignsystemHeader />
-      <div className="flex w-full justify-center bg-canvas-background-light">
+      <div className="flex w-full flex-col items-center bg-canvas-background-light">
         <div className="flex w-full max-w-aksel-max-w">
           <DesignsystemSidebar />
           <div className="relative w-full">
@@ -42,9 +42,9 @@ Page.getLayout = (page) => {
               {page}
               <div className="mt-auto" aria-hidden />
             </main>
-            <Footer />
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );

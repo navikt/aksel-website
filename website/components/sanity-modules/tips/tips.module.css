@@ -1,11 +1,7 @@
-@tailwind components;
+.tips {
+  @apply bg-gradient-to-l from-gray-100 to-gray-50;
+}
 
-@layer components {
-  .tips {
-    @apply bg-gradient-to-l from-gray-100 to-gray-50;
-  }
-
-  :global(.aksel-artikkel) .tips {
-    @apply from-white to-white;
-  }
+:global(.aksel-artikkel) .tips {
+  @apply from-white to-white;
 }

@@ -1,14 +1,15 @@
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
+import { AkselTemaT } from "..";
 import { PreviewBanner, TemaBreadcrumbs, TemaCard } from "../../components";
 import Footer from "../../components/layout/footer/Footer";
 import AkselHeader from "../../components/layout/header/AkselHeader";
-import { akselTema, AkselTema } from "../../lib";
+import { akselTema } from "../../lib";
 import { getClient } from "../../lib/sanity/sanity.server";
 
 interface PageProps {
-  page: AkselTema[];
+  page: AkselTemaT[];
   slug: string;
   preview: boolean;
 }

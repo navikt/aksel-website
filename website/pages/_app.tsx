@@ -26,7 +26,7 @@ function App({
       window.location.replace(`http://aksel.nav.no${window.location.pathname}`);
       return;
     }
-
+    localStorage.removeItem("dssidebar");
     const t = (e) => logPageView(e);
     initAmplitude();
     router.events.on("routeChangeComplete", t);
