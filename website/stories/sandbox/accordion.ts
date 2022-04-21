@@ -1,7 +1,7 @@
 import { SandboxComponent } from "./types";
 
 const AccordionSandbox: SandboxComponent = () => {
-  return `<Accordion>
+  return `<Accordion className="w-full">
   <Accordion.Item>
     <Accordion.Header>
       Til deg som er mellom 62 og 67 år
