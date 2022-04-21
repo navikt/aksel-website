@@ -47,3 +47,4 @@ spec:
       autoLogin: false
     sidecar:
       enabled: true
+      allowAllUsers: true
