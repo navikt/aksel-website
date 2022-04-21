@@ -66,7 +66,10 @@ const DesignsystemHeader = (): JSX.Element => {
         Hopp til innhold
       </a>
       <Header className="z-[1050] justify-center">
-        <div className="hidden h-header w-full max-w-aksel-max-w xl:flex">
+        <div
+          className="hidden h-header w-full max-w-aksel-max-w xl:flex"
+          data-theme="light"
+        >
           {nonMobile}
         </div>
         <div
