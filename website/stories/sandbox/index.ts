@@ -21,6 +21,7 @@ import TooltipSandbox from "./tooltip";
 import ErrorSummarySandbox from "./error-summary";
 import DropdownSandbox from "./dropdown";
 import DetailsSandbox from "./details";
+import HelptextSandbox from "./helptext";
 import { kebabCase } from "lodash";
 import { SandboxComponent } from "./types";
 
@@ -48,6 +49,7 @@ const allSandboxes = {
   ErrorSummarySandbox,
   DropdownSandbox,
   DetailsSandbox,
+  HelptextSandbox,
 };
 
 export const Sandboxes = Object.keys(allSandboxes).reduce((prev, y) => {
