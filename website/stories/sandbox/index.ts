@@ -4,6 +4,7 @@ import ButtonSandbox from "./button";
 import PlainSandbox from "./plain";
 import HeaderSandbox from "./header";
 import TableSandbox from "./table";
+import TableExpanAllSandbox from "./table-expand-all";
 import LoaderSandbox from "./loader";
 import TagSandbox from "./tag";
 import PanelSandbox from "./panel";
@@ -33,6 +34,7 @@ const allSandboxes = {
   PlainSandbox,
   TagSandbox,
   TableSandbox,
+  TableExpanAllSandbox,
   CheckboxSandbox,
   LoaderSandbox,
   PanelSandbox,
