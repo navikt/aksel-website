@@ -1,6 +1,7 @@
-# Aksel BETA
-
-Nettside for Aksel
+<h1 align="center">
+    <img src="https://user-images.githubusercontent.com/26967723/164701858-e8237611-1285-4c68-b9e3-e047499b94cf.svg" />
+    <br/>Aksel
+</h1>
 
 ## Kom i gang
 
