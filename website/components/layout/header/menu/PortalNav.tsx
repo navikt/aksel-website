@@ -5,6 +5,7 @@ import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { logNav, NavLogoWhite } from "../../..";
+import AkselLogo from "../../../assets/AkselLogo";
 import Toggle from "./Toggle";
 
 const HeadingDropDown = ({ title }: { title: string }) => {
@@ -22,7 +23,8 @@ const HeadingDropDown = ({ title }: { title: string }) => {
 
   const Button = (
     <>
-      <NavLogoWhite focusable={false} className="hidden md:block" />
+      {/* <NavLogoWhite focusable={false} className="hidden md:block" /> */}
+      <AkselLogo focusable={false} className="hidden h-10 w-10 md:block" />
       <span className="mt-1 flex items-center gap-2 text-text-inverted">
         {title}
         <Expand
