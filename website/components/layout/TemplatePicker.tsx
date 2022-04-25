@@ -1,5 +1,5 @@
 import Error from "next/error";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   AkselArtikkel,
   AkselBlogg,
@@ -69,19 +69,9 @@ const TemplatePicker = ({
   data: DsComponentPage | KomponentArtikkel | AkselArtikkel | AkselBlogg;
   title: string;
 }): JSX.Element => {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted || !data) {
-    return null;
-  }
-
-  if (!Object.keys(templates).includes(data._type)) {
+  if (!Object.keys(templates).includes(data?._type)) {
     console.warn(
-      `${data._type} does not have a valid template to use, please create one.`
+      `${data?._type} does not have a valid template to use, please create one.`
     );
 
     return (
@@ -92,7 +82,7 @@ const TemplatePicker = ({
     );
   }
 
-  const Template = templates[data._type];
+  const Template = templates[data?._type];
 
   return <Template data={data} title={title} />;
 };

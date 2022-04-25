@@ -61,17 +61,12 @@ const AkselArtikkelTemplate = ({
   return (
     <>
       <Head>
-        {data.heading && (
-          <>
-            <title>{`${data.heading} - ${title}`}</title>
-            <meta property="og:title" content={`${data.heading} - ${title}`} />
-            <meta property="og:type" content="article" />
-            {imageProps?.src && (
-              <meta property="og:image" content={imageProps.src} />
-            )}
-          </>
-        )}
+        <title>{`${data?.heading} - ${title}`}</title>
+        <meta property="og:title" content={`${data?.heading} - ${title}`} />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content={imageProps?.src} />
       </Head>
+
       <div className="aksel-artikkel">
         <AkselHeader />
         <main
