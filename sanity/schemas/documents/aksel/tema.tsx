@@ -30,5 +30,59 @@ export default {
       type: "riktekst",
       group: "innhold",
     },
+    {
+      title: "Seksjonering (optional)",
+      description: "Del inn artiklene i flere seksjoner",
+      name: "seksjoner",
+      type: "array",
+      group: "innhold",
+      of: [
+        {
+          type: "object",
+          title: "Seksjon",
+          name: "seksjon",
+          fields: [
+            {
+              type: "string",
+              name: "title",
+              title: "Tittel",
+              validation: (Rule) =>
+                Rule.required().error("Seksjonen må ha et navn"),
+            },
+            {
+              title: "Beskrivelse",
+              name: "beskrivelse",
+              type: "riktekst",
+            },
+            {
+              name: "sider",
+              type: "array",
+              title: "Sider",
+              of: [
+                {
+                  type: "reference",
+                  name: "ref",
+                  title: "Side",
+                  validation: (Rule) =>
+                    Rule.required().error("Seksjonen må ha minst en referanse"),
+                  to: [{ type: "aksel_artikkel" }],
+                  options: {
+                    filter: ({ document }) => {
+                      console.log(document._id.replace("drafts.", ""));
+                      return {
+                        filter: "references($refId)",
+                        params: {
+                          refId: document._id.replace("drafts.", ""),
+                        },
+                      };
+                    },
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
   ],
 };
