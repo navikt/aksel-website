@@ -22,7 +22,7 @@ const Seksjon = (nested = false) => {
     {
       title: "Intro (optional)",
       name: "intro",
-      type: "riktekst_enkel",
+      type: "riktekst",
     },
     {
       title: "Anatomi-bilde",
@@ -50,7 +50,7 @@ const Seksjon = (nested = false) => {
               name: "element",
               type: "string",
               validation: (Rule) =>
-                Rule.required().error("Anatimi må forklare bildet"),
+                Rule.required().error("Anatomi må forklare bildet"),
             },
             {
               title: "Beskrivelse (optional)",

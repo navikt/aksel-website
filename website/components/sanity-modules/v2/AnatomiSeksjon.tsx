@@ -4,6 +4,7 @@ import { LevelTwoHeading, Bilde } from "../..";
 import { AnatomiSeksjon } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import { SanityBlockContent } from "../../SanityBlockContent";
+import cl from "classnames";
 
 const Anatomi = ({ node }: { node: AnatomiSeksjon }): JSX.Element => {
   if (!node || !node.bilde || !node.title) {
@@ -11,8 +12,8 @@ const Anatomi = ({ node }: { node: AnatomiSeksjon }): JSX.Element => {
   }
 
   return (
-    <div className="mb-16">
-      <LevelTwoHeading>{[node.title]}</LevelTwoHeading>
+    <div className={cl({ "mb-16": !node?.nested, "my-7": node?.nested })}>
+      {!node?.nested && <LevelTwoHeading>{[node.title]}</LevelTwoHeading>}
       <SanityBlockContent blocks={node.intro} />
       <Bilde node={node.bilde} />
       {node?.forklaring && (
@@ -29,6 +30,7 @@ const Anatomi = ({ node }: { node: AnatomiSeksjon }): JSX.Element => {
           ))}
         </ul>
       )}
+      {node.extra && node.extra.map((x, y) => <Anatomi key={y} node={x} />)}
     </div>
   );
 };
