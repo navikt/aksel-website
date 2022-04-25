@@ -31,7 +31,7 @@ export default {
       group: "innhold",
     },
     {
-      title: "Seksjonering (optional)",
+      title: "Seksjonering (optional) (Ikke i prod enda)",
       description: "Del inn artiklene i flere seksjoner",
       name: "seksjoner",
       type: "array",
