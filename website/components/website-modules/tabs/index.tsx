@@ -4,7 +4,7 @@ import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React, { createRef, useState } from "react";
 import { useEvent, useKey } from "react-use";
-import { useOverflowTabsX } from "../..";
+import { logNav, useOverflowTabsX } from "../..";
 
 export const Tabs = ({
   tabs,
@@ -130,7 +130,14 @@ export const Tabs = ({
                   )}
                   ref={tab.ref}
                   data-selected={tab.active}
-                  onClick={() => window && window.scrollTo(0, 0)}
+                  onClick={(e) => {
+                    window && window.scrollTo(0, 0);
+                    logNav(
+                      "tabs",
+                      window.location.pathname,
+                      e.currentTarget.getAttribute("href")
+                    );
+                  }}
                 >
                   {tab.name}
                 </a>

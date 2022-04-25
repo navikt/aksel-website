@@ -1,91 +1,41 @@
-import { Back, Expand } from "@navikt/ds-icons";
-import { BodyShort, Label } from "@navikt/ds-react";
-import cl from "classnames";
 import NextLink from "next/link";
-import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { logNav, NavLogoWhite } from "../../..";
-import Toggle from "./Toggle";
+import React from "react";
+import { logNav } from "../../..";
+import AkselLogo from "../../../assets/AkselLogo";
 
-const HeadingDropDown = ({ title }: { title: string }) => {
-  const [open, setOpen] = useState(false);
-
-  const { asPath } = useRouter();
-
-  const logNavigation = (e) => {
-    logNav(
-      "portalnavigasjon",
-      window.location.pathname,
-      e.currentTarget.getAttribute("href")
-    );
-  };
-
-  const Button = (
-    <>
-      <NavLogoWhite focusable={false} className="hidden md:block" />
-      <span className="mt-1 flex items-center gap-2 text-text-inverted">
-        {title}
-        <Expand
-          className="text-medium"
-          aria-label={`${open ? "Lukk" : "Åpne"} portal navigasjon`}
-        />
-      </span>
-    </>
-  );
-
-  const menu = (
-    <ul className="rounded text-text">
-      <li>
-        <NextLink href="/" passHref>
-          <a
-            className="flex items-center gap-2 rounded-t px-2 py-3 hover:bg-gray-50 hover:underline focus:shadow-focus-inset focus:outline-none"
-            onClick={(e) => {
-              setOpen(false);
-              logNavigation(e);
-            }}
-          >
-            <Back
-              className="text-medium"
-              aria-hidden
-              aria-label="Gå til forsiden"
-            />
-            <Label>Tilbake til Aksel</Label>
-          </a>
-        </NextLink>
-      </li>
-      <li className=" border-t border-border">
-        <NextLink href="/designsystem" passHref>
-          <a
-            className={cl(
-              "flex flex-col items-start rounded-b pt-3 pr-4 pb-2 pl-8 hover:bg-gray-100 focus:shadow-focus-inset focus:outline-none",
-              {
-                "border-l-[6px] border-canvas-background-inverted bg-canvas-background pl-[26px]":
-                  asPath.startsWith(`/designsystem`),
-              }
-            )}
-            onClick={(e) => {
-              setOpen(false);
-              logNavigation(e);
-            }}
-          >
-            <BodyShort className="font-semibold">Designsystemet</BodyShort>
-            <BodyShort size="small">
-              Informasjon omhandlende designsystemet
-            </BodyShort>
-          </a>
-        </NextLink>
-      </li>
-    </ul>
-  );
-
+const PortalNav = ({ title }: { title: string }) => {
   return (
-    <Toggle
-      buttonContent={Button}
-      menu={menu}
-      open={open}
-      setOpen={(v) => setOpen(v)}
-    />
+    <div className="z-[1050] mr-0 flex h-full justify-center text-text-inverted md:mr-8">
+      <NextLink href="/" passHref>
+        <a
+          onClick={(e) =>
+            logNav(
+              "portalnavigasjon",
+              window.location.pathname,
+              e.currentTarget.getAttribute("href")
+            )
+          }
+          className="navdsi-header__button hidden min-w-header  items-center justify-center border-none focus:shadow-[inset_0_0_0_1px_var(--navds-semantic-color-component-background-inverted),inset_0_0_0_3px_var(--navds-global-color-blue-200)] focus:outline-none md:flex"
+        >
+          <AkselLogo focusable={false} className=" h-10 w-10 " />
+        </a>
+      </NextLink>
+      <NextLink href="/designsystem" passHref>
+        <a
+          onClick={(e) =>
+            logNav(
+              "portalnavigasjon",
+              window.location.pathname,
+              e.currentTarget.getAttribute("href")
+            )
+          }
+          className="navdsi-header__button flex min-w-header items-center justify-center border-none focus:shadow-[inset_0_0_0_1px_var(--navds-semantic-color-component-background-inverted),inset_0_0_0_3px_var(--navds-global-color-blue-200)] focus:outline-none"
+        >
+          {title}
+        </a>
+      </NextLink>
+    </div>
   );
 };
 
-export default HeadingDropDown;
+export default PortalNav;
