@@ -41,8 +41,13 @@ function App({
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:url" content={router.asPath.split("?")[0]} />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
+        <link
+          rel="shortcut icon"
+          href="/favicon.svg"
+          sizes="any"
+          type="image/svg+xml"
+        />
       </Head>
       <PagePropsContext.Provider value={{ pageProps }}>
         {getLayout(<Component {...pageProps} />)}
