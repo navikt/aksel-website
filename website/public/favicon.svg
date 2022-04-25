@@ -14,10 +14,10 @@
     }
     @media (prefers-color-scheme: dark) {
       path[data-path="1"] {
-        fill: #ffc166;
+        fill: #003453;
       }
       path[data-path="2"] {
-        fill: #003453;
+        fill: #ffc166;
       }
     }
   </style>
