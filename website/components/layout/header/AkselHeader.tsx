@@ -29,7 +29,7 @@ const AkselHeader = ({
             )
           }
         >
-          <AkselLogo className="h-10 w-10 text-deepblue-800" />
+          <AkselLogo className="h-10 w-10 text-deepblue-800" aria-hidden />
           <span className="text-2xl">Aksel</span>
         </a>
       </NextLink>

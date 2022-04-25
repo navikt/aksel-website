@@ -17,7 +17,11 @@ const PortalNav = ({ title }: { title: string }) => {
           }
           className="navdsi-header__button hidden min-w-header  items-center justify-center border-none focus:shadow-[inset_0_0_0_1px_var(--navds-semantic-color-component-background-inverted),inset_0_0_0_3px_var(--navds-global-color-blue-200)] focus:outline-none md:flex"
         >
-          <AkselLogo focusable={false} className=" h-10 w-10 " />
+          <AkselLogo
+            focusable={false}
+            className=" h-10 w-10 "
+            aria-label="Forside"
+          />
         </a>
       </NextLink>
       <NextLink href="/designsystem" passHref>
