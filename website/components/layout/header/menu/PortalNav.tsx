@@ -4,7 +4,7 @@ import cl from "classnames";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { logNav, NavLogoWhite } from "../../..";
+import { logNav } from "../../..";
 import AkselLogo from "../../../assets/AkselLogo";
 import Toggle from "./Toggle";
 

@@ -58,6 +58,7 @@ const AkselArtikkelTemplate = ({
 
   const hasTema = "tema" in data && data.tema && data?.tema.length > 0;
 
+  console.log(data);
   return (
     <>
       <Head>
@@ -65,6 +66,7 @@ const AkselArtikkelTemplate = ({
           <>
             <title>{`${data.heading} - ${title}`}</title>
             <meta property="og:title" content={`${data.heading} - ${title}`} />
+            <meta property="og:type" content="article" />
           </>
         )}
       </Head>
