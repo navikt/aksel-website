@@ -105,13 +105,6 @@ export interface Editor extends SanityDocument {
   user_id?: { _type: "user_id"; current: string };
 
   /**
-   * Anonym — `boolean`
-   *
-   * Ønsker å bli vist som anonym redaktør/contributor
-   */
-  anonym?: boolean;
-
-  /**
    * Profil — `string`
    *
    *
@@ -1213,6 +1206,37 @@ export interface AkselTema extends SanityDocument {
    *
    */
   beskrivelse?: Riktekst;
+
+  /**
+   * Seksjonering (optional) — `array`
+   *
+   * Del inn artiklene i flere seksjoner
+   */
+  seksjoner?: Array<
+    SanityKeyed<{
+      _type: "seksjon";
+      /**
+       * Tittel — `string`
+       *
+       *
+       */
+      title?: string;
+
+      /**
+       * Beskrivelse — `riktekst`
+       *
+       *
+       */
+      beskrivelse?: Riktekst;
+
+      /**
+       * Sider — `array`
+       *
+       *
+       */
+      sider?: Array<SanityKeyedReference<AkselArtikkel>>;
+    }>
+  >;
 }
 
 /**
@@ -1276,6 +1300,7 @@ export type GeneriskSeksjon = {
     | SanityKeyed<RelatertInnhold>
     | SanityKeyed<DoDontV2>
     | SanityKeyed<Bilde>
+    | SanityKeyed<Video>
     | SanityKeyed<AlertV2>
     | SanityKeyed<Kode>
     | SanityKeyedReference<DsCodeExample>
@@ -1313,6 +1338,7 @@ export type GeneriskSeksjonArtikkel = {
     | SanityKeyed<RelatertInnhold>
     | SanityKeyed<DoDontV2>
     | SanityKeyed<Bilde>
+    | SanityKeyed<Video>
     | SanityKeyed<AlertV2>
     | SanityKeyed<Kode>
     | SanityKeyed<Tabell>
@@ -1369,7 +1395,7 @@ export type Bilde = {
   /**
    * Bilde med flytende tekst rundt — `boolean`
    *
-   *
+   * Dette feltet fungerer ikke lengre, bruk et vanlig bilde uten flytende tekst
    */
   floating?: boolean;
 
@@ -1496,7 +1522,11 @@ export type RelatertInnhold = {
        *
        */
       intern_lenke?: SanityReference<
-        DsComponentPage | KomponentArtikkel | DsArtikkel | AkselArtikkel
+        | DsComponentPage
+        | KomponentArtikkel
+        | DsArtikkel
+        | AkselArtikkel
+        | AkselBlogg
       >;
 
       /**
@@ -1667,6 +1697,13 @@ export type UuSeksjon = {
 export type AnatomiSeksjon = {
   _type: "anatomi_seksjon";
   /**
+   * Nested — `boolean`
+   *
+   *
+   */
+  nested?: boolean;
+
+  /**
    * Tittel (h2) — `string`
    *
    *
@@ -1708,6 +1745,68 @@ export type AnatomiSeksjon = {
        *
        */
       beskrivelse?: RiktekstEnkel;
+    }>
+  >;
+
+  /**
+   * Ekstra anatomi-paneler (optional) — `array`
+   *
+   * Kan legge til flere anatomi-paneler under samme Anatomi-heading
+   */
+  extra?: Array<
+    SanityKeyed<{
+      _type: "anatomi_seksjon";
+      /**
+       * Nested — `boolean`
+       *
+       *
+       */
+      nested?: boolean;
+
+      /**
+       * Tittel (h2) — `string`
+       *
+       *
+       */
+      title?: string;
+
+      /**
+       * Intro (optional) — `riktekst_enkel`
+       *
+       *
+       */
+      intro?: RiktekstEnkel;
+
+      /**
+       * Anatomi-bilde — `bilde`
+       *
+       *
+       */
+      bilde?: Bilde;
+
+      /**
+       * Forklaring — `array`
+       *
+       * Forklar annoteringen av anatomi-bildet
+       */
+      forklaring?: Array<
+        SanityKeyed<{
+          _type: "liste_element";
+          /**
+           * Element — `string`
+           *
+           *
+           */
+          element?: string;
+
+          /**
+           * Beskrivelse (optional) — `riktekst_enkel`
+           *
+           *
+           */
+          beskrivelse?: RiktekstEnkel;
+        }>
+      >;
     }>
   >;
 };
@@ -1789,6 +1888,7 @@ export type AccordionV2 = {
         | SanityKeyed<RelatertInnhold>
         | SanityKeyed<DoDontV2>
         | SanityKeyed<Bilde>
+        | SanityKeyed<Video>
         | SanityKeyed<AlertV2>
         | SanityKeyed<Kode>
         | SanityKeyed<Tabell>
@@ -1814,6 +1914,44 @@ export type SpesialSeksjon = {
    *
    */
   farge_ref?: SanityReference<DsColorCategories>;
+};
+
+export type Video = {
+  _type: "video";
+  /**
+   * Video i WebM format — `file`
+   *
+   * Vi anbefaler å bruke Webm formatet om mulig!
+   */
+  webm?: { _type: "file"; asset: SanityReference<any> };
+
+  /**
+   * Video i Mp4 format (fallback) — `file`
+   *
+   *
+   */
+  fallback?: { _type: "file"; asset: SanityReference<any> };
+
+  /**
+   * Alt tekst for skjermlesere — `string`
+   *
+   *
+   */
+  alt?: string;
+
+  /**
+   * Videotekst — `string`
+   *
+   * Kort beskrivelse som vises rett under videon
+   */
+  caption?: string;
+
+  /**
+   * Transkripsjon — `text`
+   *
+   * Hvis videoen inneholder lyd, anbelfaler vi å skrive en transkripsjon som kan leses under videoen.
+   */
+  transkripsjon?: string;
 };
 
 export type NavigationLink = {
@@ -2163,7 +2301,11 @@ export type RelatedPages = {
        *
        */
       internal_link?: SanityReference<
-        DsComponentPage | KomponentArtikkel | DsArtikkel | AkselArtikkel
+        | DsComponentPage
+        | KomponentArtikkel
+        | DsArtikkel
+        | AkselArtikkel
+        | AkselBlogg
       >;
 
       /**
