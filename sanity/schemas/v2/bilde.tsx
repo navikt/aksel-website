@@ -81,7 +81,7 @@ export default {
       title: "Bildet tar bare ~halve bredden",
       type: "boolean",
       initialValue: false,
-      hidden: ({ parent }) => parent?.floating,
+      hidden: ({ parent }) => parent?.floating || parent?.hide_floating,
       options: {
         isHighlighted: true,
       },

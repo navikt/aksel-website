@@ -1,17 +1,23 @@
 import { Ruler, SignLanguageTwoHands } from "@navikt/ds-icons";
 import React from "react";
 
-export default {
-  title: "Anatomi",
-  name: "anatomi_seksjon",
-  type: "object",
-  fields: [
+const Seksjon = (nested = false) => {
+  const fields: any[] = [
+    {
+      title: "Nested",
+      name: "nested",
+      type: "boolean",
+      initialValue: nested,
+      readOnly: true,
+      hidden: true,
+    },
     {
       title: "Tittel (h2)",
       name: "title",
       type: "string",
       initialValue: "Anatomi",
       readOnly: true,
+      hidden: nested,
     },
     {
       title: "Intro (optional)",
@@ -55,13 +61,34 @@ export default {
         },
       ],
     },
-  ],
-  preview: {
-    prepare() {
-      return {
-        title: "Anatomi",
-        media: () => <Ruler />,
-      };
+  ];
+
+  !nested &&
+    fields.push({
+      type: "array",
+      name: "extra",
+      title: "Ekstra anatomi-paneler (optional)",
+      description:
+        "Kan legge til flere anatomi-paneler under samme Anatomi-heading",
+      of: [Seksjon(true)],
+    });
+
+  return {
+    title: "Anatomi",
+    name: "anatomi_seksjon",
+    type: "object",
+    fields,
+    preview: {
+      prepare() {
+        return {
+          title: "Anatomi",
+          media: () => <Ruler />,
+        };
+      },
     },
-  },
+  };
 };
+
+const Anatomi = Seksjon();
+
+export default Anatomi;
