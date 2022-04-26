@@ -1,0 +1,21 @@
+/* Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.navds-body-long.navds-typo--spacing + .list-margin {
+  @apply -mt-4;
+}
+
+.relative-parent + .relative-child {
+  @apply -mt-8;
+}
+
+.svg-color-reset.navds-link svg {
+  color: inherit;
+}
