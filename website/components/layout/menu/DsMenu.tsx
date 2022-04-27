@@ -1,5 +1,5 @@
 import { Expand } from "@navikt/ds-icons";
-import { BodyShort, Detail, Label } from "@navikt/ds-react";
+import { BodyShort, Detail } from "@navikt/ds-react";
 import cl from "classnames";
 import NextLink from "next/link";
 import React, { useContext, useMemo, useState } from "react";
@@ -127,7 +127,7 @@ const Dropdown = ({
         </Detail>
       </button>
 
-      <ul hidden={!open} className="px-2">
+      <ul hidden={!open} className="animate-fadeIn px-2">
         {rest.map((z) => (
           <NavItem item={z} key={z._key} inDropdown onClick={onClick} />
         ))}
