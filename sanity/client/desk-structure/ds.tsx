@@ -137,10 +137,10 @@ export const dsPanel = async (roles) => {
               .child(S.documentTypeList("main_categories")),
             S.divider(),
             S.listItem()
-              .title("Kodevisning på side")
+              .title("Autogenerert data")
               .child(
                 S.list()
-                  .title("Kodevisning på side")
+                  .title("Autogenerert data")
                   .items([
                     S.listItem()
                       .title("Eksempler")
@@ -150,12 +150,16 @@ export const dsPanel = async (roles) => {
                       .title("Sandboxes")
                       .icon(() => <span>{`<Co />`}</span>)
                       .child(S.documentTypeList("ds_code_sandbox")),
+                    S.listItem()
+                      .title("Fargekategorier")
+                      .icon(() => <Folder />)
+                      .child(S.documentTypeList("ds_color_categories")),
+                    S.listItem()
+                      .title("Props")
+                      .icon(() => <Folder />)
+                      .child(S.documentTypeList("ds_props")),
                   ])
               ),
-            S.listItem()
-              .title("Fargekategorier")
-              .icon(() => <Folder />)
-              .child(S.documentTypeList("ds_color_categories")),
             S.divider(),
             S.documentListItem()
               .title(`Komponent-template`)

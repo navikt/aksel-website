@@ -195,57 +195,22 @@ const updateColors = async () => {
   // first let's fetch the current state from sanity,
   // we'll use it to reuse non-generated content like
   // category descriptions and color roles in semantic colors
-  const query = `*[_type == "ds_color_categories"]`;
-  const remoteColors = await noCdnClient(token).fetch(query);
+  /* const query = `*[_type == "ds_color_categories"]`;
+  const remoteColors = await noCdnClient(token).fetch(query); */
 
   // this is our transactional client, it won't push anything until we say .commit() later
   const transactionClient = noCdnClient(token).transaction();
 
   for (const key of colorMap.keys()) {
-    const localCategory = colorMap.get(key);
-
-    // fetch the remote color if it exists
-    const remoteCategory = remoteColors.find(
-      (c) => c._id.replace("_autogen_color_example", "") === key
-    );
-
-    // these'll be undefined if the color doesn't exist and that's fine,
-    // but we'll reuse the description from remote if it exists!
-    const description = remoteCategory?.description;
-
-    const colorList = localCategory.map((c) => {
-      const remoteColor = remoteCategory?.colors.find(
-        (f) => c.full_title === f.full_title
-      );
-      // we'll shape our final color list with some values from remote,
-      // as to not overwrite it!
-      return {
-        color_roles: remoteColor?.color_roles,
-        color_index: remoteColor?.color_index,
-        ...c,
-      };
-    });
-
-    // sort so that we'll get gray-50 before gray-100, etc.
-    // possibly unnecessary with color_index being used to sort on the frontend. :shrug:
-    colorList.sort((a, b) =>
-      a.title.localeCompare(b.title, undefined, {
-        numeric: true,
-        sensitivity: "base",
-      })
-    );
-
     transactionClient.createOrReplace({
-      _id: `${key}_autogen_color_example`,
+      _id: `${key}_autogen_props`,
       _type: "ds_color_categories",
-      title: key,
-      description: description,
-      colors: colorList,
     });
   }
+
   await transactionClient
     .commit()
-    .then(() => console.log(`Updated color categories`))
+    .then(() => console.log(`Updated props`))
     .catch((e) => console.error(e.message));
 };
 

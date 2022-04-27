@@ -9,21 +9,25 @@ export default {
       title: "Tittel",
       name: "title",
       type: "string",
+      readOnly: true,
     },
     {
       title: "Displayname",
       name: "displayname",
       type: "string",
+      readOnly: true,
     },
     {
       title: "Filepath",
       name: "filepath",
       type: "string",
+      readOnly: true,
     },
     {
       title: "props",
       name: "proplist",
       type: "array",
+      readOnly: true,
       of: [
         {
           title: "Prop",
@@ -38,11 +42,6 @@ export default {
             {
               title: "DefaultValue",
               name: "defaultValue",
-              type: "string",
-            },
-            {
-              title: "Name",
-              name: "name",
               type: "string",
             },
             {
