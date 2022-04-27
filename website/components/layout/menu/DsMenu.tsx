@@ -127,7 +127,7 @@ const Dropdown = ({
         </Detail>
       </button>
 
-      <ul hidden={!open} className="animate-fadeIn px-2">
+      <ul hidden={!open} className="px-2">
         {rest.map((z) => (
           <NavItem item={z} key={z._key} inDropdown onClick={onClick} />
         ))}
