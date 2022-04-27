@@ -4588,7 +4588,7 @@
   },
   {
     "filePath": "src/step-indicator/Step.tsx",
-    "displayName": "StepComponent",
+    "displayName": "StepIndicatorStepComponent",
     "props": {
       "children": {
         "defaultValue": null,
@@ -9161,53 +9161,5 @@
         }
       }
     }
-  },
-  {
-    "filePath": "src/form/stories/live-examples.tsx",
-    "displayName": "ConfirmationPanelExample",
-    "props": {
-      "size": {
-        "defaultValue": {
-          "value": "medium"
-        },
-        "description": "",
-        "name": "size",
-        "declarations": [
-          {
-            "fileName": "src/form/stories/live-examples.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "\"medium\" | \"small\""
-        }
-      },
-      "error": {
-        "defaultValue": null,
-        "description": "",
-        "name": "error",
-        "declarations": [
-          {
-            "fileName": "src/form/stories/live-examples.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string"
-        }
-      }
-    }
-  },
-  {
-    "filePath": "src/step-indicator/stories/Example.tsx",
-    "displayName": "Example",
-    "props": {}
-  },
-  {
-    "filePath": "src/stepper/stories/Example.tsx",
-    "displayName": "Example",
-    "props": {}
   }
 ]

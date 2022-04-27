@@ -1,0 +1,1154 @@
+[
+  {
+    "filePath": "src/copy-to-clipboard/CopyToClipboard.tsx",
+    "displayName": "CopyToClipboard",
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Button text",
+        "name": "children",
+        "parent": {
+          "fileName": "src/copy-to-clipboard/CopyToClipboard.tsx",
+          "name": "CopyToClipboardProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/copy-to-clipboard/CopyToClipboard.tsx",
+            "name": "CopyToClipboardProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "copyText": {
+        "defaultValue": null,
+        "description": "Text to be copied to clipboard",
+        "name": "copyText",
+        "parent": {
+          "fileName": "src/copy-to-clipboard/CopyToClipboard.tsx",
+          "name": "CopyToClipboardProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/copy-to-clipboard/CopyToClipboard.tsx",
+            "name": "CopyToClipboardProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "popoverText": {
+        "defaultValue": null,
+        "description": "Description of text. Example: \"Kopierte personnummer til clipboard\"",
+        "name": "popoverText",
+        "parent": {
+          "fileName": "src/copy-to-clipboard/CopyToClipboard.tsx",
+          "name": "CopyToClipboardProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/copy-to-clipboard/CopyToClipboard.tsx",
+            "name": "CopyToClipboardProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "popoverPlacement": {
+        "defaultValue": {
+          "value": "right"
+        },
+        "description": "Allows extending popover properties like \"placement\"",
+        "name": "popoverPlacement",
+        "parent": {
+          "fileName": "src/copy-to-clipboard/CopyToClipboard.tsx",
+          "name": "CopyToClipboardProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/copy-to-clipboard/CopyToClipboard.tsx",
+            "name": "CopyToClipboardProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Placement"
+        }
+      },
+      "title": {
+        "defaultValue": {
+          "value": "children ? undefined : `Kopier ${copyText}`"
+        },
+        "description": "Copy button title attribute",
+        "name": "title",
+        "parent": {
+          "fileName": "src/copy-to-clipboard/CopyToClipboard.tsx",
+          "name": "CopyToClipboardProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/copy-to-clipboard/CopyToClipboard.tsx",
+            "name": "CopyToClipboardProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "variant": {
+        "defaultValue": {
+          "value": "\"primary\""
+        },
+        "description": "Changes design and interaction-visuals",
+        "name": "variant",
+        "parent": {
+          "fileName": "@navikt/core/react/esm/button/Button.d.ts",
+          "name": "ButtonProps"
+        },
+        "declarations": [
+          {
+            "fileName": "@navikt/core/react/esm/button/Button.d.ts",
+            "name": "ButtonProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"primary\" | \"secondary\" | \"tertiary\" | \"danger\""
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "medium"
+        },
+        "description": "Changes padding, height and font-size",
+        "name": "size",
+        "parent": {
+          "fileName": "@navikt/core/react/esm/button/Button.d.ts",
+          "name": "ButtonProps"
+        },
+        "declarations": [
+          {
+            "fileName": "@navikt/core/react/esm/button/Button.d.ts",
+            "name": "ButtonProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"medium\" | \"small\" | \"xsmall\""
+        }
+      },
+      "disabled": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Prevent the user from interacting with the button: it cannot be pressed or focused.\n@note Avoid using if possible for accessibility purposes",
+        "name": "disabled",
+        "parent": {
+          "fileName": "@navikt/core/react/esm/button/Button.d.ts",
+          "name": "ButtonProps"
+        },
+        "declarations": [
+          {
+            "fileName": "@navikt/core/react/esm/button/Button.d.ts",
+            "name": "ButtonProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "loading": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Replaces button content with a Loader component, keeps width",
+        "name": "loading",
+        "parent": {
+          "fileName": "@navikt/core/react/esm/button/Button.d.ts",
+          "name": "ButtonProps"
+        },
+        "declarations": [
+          {
+            "fileName": "@navikt/core/react/esm/button/Button.d.ts",
+            "name": "ButtonProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<HTMLButtonElement>"
+        }
+      }
+    }
+  },
+  {
+    "filePath": "src/divider/Divider.tsx",
+    "displayName": "Divider",
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<HTMLHRElement>"
+        }
+      }
+    }
+  },
+  {
+    "filePath": "src/dropdown/Dropdown.tsx",
+    "displayName": "Dropdown",
+    "props": {}
+  },
+  {
+    "filePath": "src/dropdown/Toggle.tsx",
+    "displayName": "Toggle",
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Button content",
+        "name": "children",
+        "parent": {
+          "fileName": "src/dropdown/Toggle.tsx",
+          "name": "ToggleProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/dropdown/Toggle.tsx",
+            "name": "ToggleProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<HTMLButtonElement>"
+        }
+      }
+    }
+  },
+  {
+    "filePath": "src/header/Header.tsx",
+    "displayName": "Header",
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Header content",
+        "name": "children",
+        "parent": {
+          "fileName": "src/header/Header.tsx",
+          "name": "HeaderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/header/Header.tsx",
+            "name": "HeaderProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<HTMLElement>"
+        }
+      }
+    }
+  },
+  {
+    "filePath": "src/header/HeaderButton.tsx",
+    "displayName": "HeaderButton",
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Application Button",
+        "name": "children",
+        "parent": {
+          "fileName": "src/header/HeaderButton.tsx",
+          "name": "HeaderButtonProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/header/HeaderButton.tsx",
+            "name": "HeaderButtonProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<HTMLButtonElement>"
+        }
+      }
+    }
+  },
+  {
+    "filePath": "src/header/HeaderTitle.tsx",
+    "displayName": "HeaderTitle",
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Application title",
+        "name": "children",
+        "parent": {
+          "fileName": "src/header/HeaderTitle.tsx",
+          "name": "HeaderTitleProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/header/HeaderTitle.tsx",
+            "name": "HeaderTitleProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<HTMLAnchorElement>"
+        }
+      }
+    }
+  },
+  {
+    "filePath": "src/header/HeaderUser.tsx",
+    "displayName": "HeaderUser",
+    "props": {
+      "name": {
+        "defaultValue": null,
+        "description": "User name",
+        "name": "name",
+        "parent": {
+          "fileName": "src/header/HeaderUser.tsx",
+          "name": "HeaderUserProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/header/HeaderUser.tsx",
+            "name": "HeaderUserProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "description": {
+        "defaultValue": null,
+        "description": "User description",
+        "name": "description",
+        "parent": {
+          "fileName": "src/header/HeaderUser.tsx",
+          "name": "HeaderUserProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/header/HeaderUser.tsx",
+            "name": "HeaderUserProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<HTMLDivElement>"
+        }
+      }
+    }
+  },
+  {
+    "filePath": "src/header/HeaderUserButton.tsx",
+    "displayName": "HeaderUserButton",
+    "props": {
+      "name": {
+        "defaultValue": null,
+        "description": "User name",
+        "name": "name",
+        "parent": {
+          "fileName": "src/header/HeaderUserButton.tsx",
+          "name": "HeaderUserButtonProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/header/HeaderUserButton.tsx",
+            "name": "HeaderUserButtonProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "description": {
+        "defaultValue": null,
+        "description": "User description",
+        "name": "description",
+        "parent": {
+          "fileName": "src/header/HeaderUserButton.tsx",
+          "name": "HeaderUserButtonProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/header/HeaderUserButton.tsx",
+            "name": "HeaderUserButtonProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<HTMLButtonElement>"
+        }
+      }
+    }
+  },
+  {
+    "filePath": "src/dropdown/Menu/index.tsx",
+    "displayName": "Menu",
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Dropdown content",
+        "name": "children",
+        "parent": {
+          "fileName": "src/dropdown/Menu/index.tsx",
+          "name": "MenuProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/dropdown/Menu/index.tsx",
+            "name": "MenuProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "onClose": {
+        "defaultValue": null,
+        "description": "onClose callback",
+        "name": "onClose",
+        "parent": {
+          "fileName": "src/dropdown/Menu/index.tsx",
+          "name": "MenuProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/dropdown/Menu/index.tsx",
+            "name": "MenuProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => void)"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<HTMLDivElement>"
+        }
+      }
+    }
+  },
+  {
+    "filePath": "src/dropdown/Menu/GroupedList/Heading.tsx",
+    "displayName": "GroupedHeading",
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Heading",
+        "name": "children",
+        "parent": {
+          "fileName": "src/dropdown/Menu/GroupedList/Heading.tsx",
+          "name": "GroupedHeadingProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/dropdown/Menu/GroupedList/Heading.tsx",
+            "name": "GroupedHeadingProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<HTMLElement>"
+        }
+      }
+    }
+  },
+  {
+    "filePath": "src/dropdown/Menu/GroupedList/Heading.tsx",
+    "displayName": "Heading",
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Heading",
+        "name": "children",
+        "parent": {
+          "fileName": "src/dropdown/Menu/GroupedList/Heading.tsx",
+          "name": "GroupedHeadingProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/dropdown/Menu/GroupedList/Heading.tsx",
+            "name": "GroupedHeadingProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<HTMLElement>"
+        }
+      }
+    }
+  },
+  {
+    "filePath": "src/dropdown/Menu/GroupedList/Item.tsx",
+    "displayName": "GroupedItem",
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Menu item content",
+        "name": "children",
+        "parent": {
+          "fileName": "src/dropdown/Menu/GroupedList/Item.tsx",
+          "name": "GroupedItemProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/dropdown/Menu/GroupedList/Item.tsx",
+            "name": "GroupedItemProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<HTMLButtonElement>"
+        }
+      }
+    }
+  },
+  {
+    "filePath": "src/dropdown/Menu/GroupedList/index.tsx",
+    "displayName": "DescriptionList",
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Menu list content",
+        "name": "children",
+        "parent": {
+          "fileName": "src/dropdown/Menu/GroupedList/index.tsx",
+          "name": "GroupedListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/dropdown/Menu/GroupedList/index.tsx",
+            "name": "GroupedListProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<HTMLDListElement>"
+        }
+      }
+    }
+  },
+  {
+    "filePath": "src/dropdown/Menu/List/Item.tsx",
+    "displayName": "ListItem",
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Menu item content",
+        "name": "children",
+        "parent": {
+          "fileName": "src/dropdown/Menu/List/Item.tsx",
+          "name": "ListItemProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/dropdown/Menu/List/Item.tsx",
+            "name": "ListItemProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<HTMLButtonElement>"
+        }
+      }
+    }
+  },
+  {
+    "filePath": "src/dropdown/Menu/List/index.tsx",
+    "displayName": "List",
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Menu list content",
+        "name": "children",
+        "parent": {
+          "fileName": "src/dropdown/Menu/List/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "src/dropdown/Menu/List/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "parent": {
+          "fileName": "nfm/node_modules/@types/react/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "nfm/node_modules/@types/react/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<HTMLUListElement>"
+        }
+      }
+    }
+  }
+]

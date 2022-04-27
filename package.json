@@ -23,6 +23,7 @@
     "sanity:codeexamples": "yarn workspace website update:examples",
     "sanity:unused": "yarn workspace website check:examples",
     "sanity:colors": "yarn workspace website update:colors",
+    "sanity:props": "yarn workspace website update:props",
     "lint": "yarn workspace website lint"
   },
   "workspaces": [
