@@ -46,7 +46,7 @@ const NavItem = ({
             );
           }}
           className={cl(
-            "relative flex px-2 py-1 no-underline hover:text-deepblue-800 focus:outline-none",
+            "relative flex px-2 py-[6px] no-underline hover:text-deepblue-800 focus:outline-none",
             {
               "font-semibold text-deepblue-800":
                 pageProps?.page?.slug === item?.link?.slug?.current,
