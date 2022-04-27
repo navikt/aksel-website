@@ -39,6 +39,8 @@ jobs:
         run: yarn sanity:colors
       - name: Update sandboxes
         run: yarn sanity:sandboxes
+      - name: Update props
+        run: yarn sanity:props
       - name: Login to GitHub Container Registry
         uses: docker/login-action@ab80d026d4753220c4243394c07c7d80f9638d06 # Use commit-sha1 instead of tag for security concerns
         with:
