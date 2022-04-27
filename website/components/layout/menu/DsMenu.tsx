@@ -1,5 +1,5 @@
 import { Expand } from "@navikt/ds-icons";
-import { BodyShort, Label } from "@navikt/ds-react";
+import { BodyShort, Detail, Label } from "@navikt/ds-react";
 import cl from "classnames";
 import NextLink from "next/link";
 import React, { useContext, useMemo, useState } from "react";
@@ -22,20 +22,21 @@ const NavItem = ({
     <li
       className={cl(
         style.item,
-        "peer relative before:absolute before:left-0 before:z-[-1] focus-within:shadow-focus-inset",
+        "peer relative rounded-sm before:absolute before:left-0 before:z-[-1] focus-within:shadow-focus",
         {
           "before:top-1/2 before:h-6 before:-translate-y-1/2 before:border-l-[8px] before:border-l-deepblue-300":
             pageProps?.page?.slug === item?.link?.slug?.current,
-          "before:h-full before:border-l before:border-l-gray-200 before:transition-colors hover:before:border-l-gray-500":
+          "before:h-full before:border-l before:border-l-gray-200 hover:before:border-l-2 hover:before:border-l-gray-500":
             pageProps?.page?.slug !== item?.link?.slug?.current && inDropdown,
           "px-2": inDropdown,
-          "px-0": !inDropdown,
+          "mr-2 px-0": !inDropdown,
         }
       )}
     >
       <NextLink href={`/${item.link.slug.current}`} passHref>
         <BodyShort
           as="a"
+          size="small"
           onClick={(e) => {
             onClick && onClick();
             logNav(
@@ -45,7 +46,7 @@ const NavItem = ({
             );
           }}
           className={cl(
-            "relative flex px-2 py-3 no-underline hover:text-deepblue-800 focus:outline-none",
+            "relative flex px-2 py-1 no-underline hover:text-deepblue-800 focus:outline-none",
             {
               "font-semibold text-deepblue-800":
                 pageProps?.page?.slug === item?.link?.slug?.current,
@@ -73,7 +74,7 @@ const Dropdown = ({
   onClick?: () => void;
 }) => {
   const [heading, ...rest] = items;
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const { pageProps } = useContext<any>(PagePropsContext);
 
   useIsomorphicLayoutEffect(() => {
@@ -109,21 +110,21 @@ const Dropdown = ({
     >
       <button
         onClick={handleOpen}
-        className="group z-10 flex min-h-10 w-full cursor-pointer items-center justify-between px-2 text-text-muted hover:text-deepblue-800 focus:outline-none"
+        className="group z-10 flex min-h-8 w-full cursor-pointer items-center justify-between pr-2 text-text-muted hover:text-deepblue-800 focus:outline-none"
         aria-expanded={open}
       >
-        <Label size="small" className="mt-6 first:mt-0">
+        <Detail className="mt-6 flex w-full items-center justify-between rounded-sm pl-2 first:mt-0 group-hover:bg-[rgba(0,0,0,0.06)] group-focus:shadow-focus group-active:bg-[rgba(0,0,0,0.10)]">
           {heading.title}
-        </Label>
-        <span className="flex h-6 w-6 items-center justify-center rounded group-hover:bg-gray-200 group-focus:shadow-focus">
-          <Expand
-            className="text-base"
-            aria-hidden
-            aria-label={
-              !open ? `åpne ${heading.title}` : `lukk ${heading.title}`
-            }
-          />
-        </span>
+          <span className="flex h-6 w-6 items-center justify-center rounded">
+            <Expand
+              className={cl("text-base", { "rotate-180": open })}
+              aria-hidden
+              aria-label={
+                !open ? `åpne ${heading.title}` : `lukk ${heading.title}`
+              }
+            />
+          </span>
+        </Detail>
       </button>
 
       <ul hidden={!open} className="px-2">
@@ -162,7 +163,7 @@ const Menu = ({
   const lists = useMemo(() => {
     const menulist = groups();
     return (
-      <ul>
+      <ul className="py-4 pl-6">
         {menulist
           ? menulist.map((x: DsNavigationHeadingMenuT[], y) => {
               return x[0]._type === "item" ? (
