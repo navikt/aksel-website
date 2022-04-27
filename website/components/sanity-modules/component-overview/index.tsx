@@ -1,7 +1,6 @@
 import { Error, Success } from "@navikt/ds-icons";
-import { BodyShort, Label, Link, Table, Tag, useId } from "@navikt/ds-react";
+import { BodyShort, Label, Link, Table, Tag, Tooltip } from "@navikt/ds-react";
 import React from "react";
-import ReactTooltip from "react-tooltip";
 import { FigmaIcon, FigmaIconNoSync, OverflowDetector } from "../..";
 import { DsComponentOverview } from "../../../lib";
 import NextLink from "next/link";
@@ -46,32 +45,22 @@ const DesignCell = ({ comp }: { comp: any }) => {
   );
 };
 
-// TODO: Replace react-tooltip with ds-react tooltip when possible
 const CodeCell = ({ comp }: { comp: any }) => {
-  const id = useId();
   return (
     <>
       <SuccessIcon />
       {!comp.figma_sync && (
         <>
-          <BodyShort
-            className="flex items-center focus:outline-2 focus:outline-focus"
-            tabIndex={0}
-            data-tip=""
-            data-for={`tooltip-sync-${id}`}
-            size="small"
-            aria-label="Kodet komponent er ikke i synk med design i Figma"
-          >
-            <FigmaIconNoSync />
-          </BodyShort>
-          <ReactTooltip
-            id={`tooltip-sync-${id}`}
-            place="top"
-            type="dark"
-            effect="solid"
-          >
-            Kodet komponent er ikke i synk med design i Figma
-          </ReactTooltip>
+          <Tooltip content="Kodet komponent er ikke i synk med design i Figma">
+            <BodyShort
+              className="flex items-center focus:outline-2 focus:outline-focus"
+              tabIndex={0}
+              size="small"
+              aria-label="Kodet komponent er ikke i synk med design i Figma"
+            >
+              <FigmaIconNoSync />
+            </BodyShort>
+          </Tooltip>
         </>
       )}
     </>
@@ -88,7 +77,6 @@ const ComponentOverview = ({
   }
 
   const TableRow = ({ comp }: { comp: any }) => {
-    const id = useId();
     return (
       <Table.Row>
         <Table.HeaderCell>
@@ -103,29 +91,24 @@ const ComponentOverview = ({
           {comp.linked_package?.scope && (
             <>
               <BodyShort
-                className="text-text-muted first-letter:capitalize"
+                className="text-left text-text-muted first-letter:capitalize"
                 size="small"
               >
-                <span
-                  className="focus:outline-2 focus:outline-focus"
-                  tabIndex={0}
-                  data-tip=""
-                  data-for={`${comp.linked_package?.title}-${id}`}
+                <Tooltip
+                  content={comp.linked_package?.title}
+                  placement="bottom"
                 >
-                  {comp.linked_package?.scope}
-                  <span className="navds-sr-only">
-                    Pakkenavn: {comp.linked_package?.title}
+                  <span
+                    className="focus:outline-2 focus:outline-focus"
+                    tabIndex={0}
+                  >
+                    {comp.linked_package?.scope}
+                    <span className="navds-sr-only">
+                      Pakkenavn: {comp.linked_package?.title}
+                    </span>
                   </span>
-                </span>
+                </Tooltip>
               </BodyShort>
-              <ReactTooltip
-                id={`${comp.linked_package?.title}-${id}`}
-                place="top"
-                type="dark"
-                effect="solid"
-              >
-                {comp.linked_package?.title}
-              </ReactTooltip>
             </>
           )}
         </Table.HeaderCell>
