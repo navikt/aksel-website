@@ -340,6 +340,88 @@ export interface DsColorCategories extends SanityDocument {
 }
 
 /**
+ * Autogenerert Propdata
+ *
+ *
+ */
+export interface DsProps extends SanityDocument {
+  _type: "ds_props";
+
+  /**
+   * Tittel — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Displayname — `string`
+   *
+   *
+   */
+  displayname?: string;
+
+  /**
+   * Filepath — `string`
+   *
+   *
+   */
+  filepath?: string;
+
+  /**
+   * props — `array`
+   *
+   *
+   */
+  proplist?: Array<
+    SanityKeyed<{
+      _type: "prop";
+      /**
+       * Name — `string`
+       *
+       *
+       */
+      name?: string;
+
+      /**
+       * DefaultValue — `string`
+       *
+       *
+       */
+      defaultValue?: string;
+
+      /**
+       * Description — `string`
+       *
+       *
+       */
+      description?: string;
+
+      /**
+       * Required — `boolean`
+       *
+       *
+       */
+      required?: boolean;
+
+      /**
+       * Type — `string`
+       *
+       *
+       */
+      type?: string;
+
+      /**
+       * isRef — `boolean`
+       *
+       *
+       */
+      ref?: boolean;
+    }>
+  >;
+}
+
+/**
  * Komponentartikkel
  *
  *
@@ -1208,7 +1290,7 @@ export interface AkselTema extends SanityDocument {
   beskrivelse?: Riktekst;
 
   /**
-   * Seksjonering (optional) — `array`
+   * Seksjonering (optional) (Ikke i prod enda) — `array`
    *
    * Del inn artiklene i flere seksjoner
    */
@@ -1711,11 +1793,11 @@ export type AnatomiSeksjon = {
   title?: string;
 
   /**
-   * Intro (optional) — `riktekst_enkel`
+   * Intro (optional) — `riktekst`
    *
    *
    */
-  intro?: RiktekstEnkel;
+  intro?: Riktekst;
 
   /**
    * Anatomi-bilde — `bilde`
@@ -1771,11 +1853,11 @@ export type AnatomiSeksjon = {
       title?: string;
 
       /**
-       * Intro (optional) — `riktekst_enkel`
+       * Intro (optional) — `riktekst`
        *
        *
        */
-      intro?: RiktekstEnkel;
+      intro?: Riktekst;
 
       /**
        * Anatomi-bilde — `bilde`
@@ -2494,6 +2576,7 @@ export type Documents =
   | DsCodeExample
   | DsCodeSandbox
   | DsColorCategories
+  | DsProps
   | DsComponentPage
   | DsComponentTemplate
   | DsFrontpage
