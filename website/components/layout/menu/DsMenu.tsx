@@ -28,7 +28,7 @@ const NavItem = ({
             pageProps?.page?.slug === item?.link?.slug?.current,
           "before:h-full before:border-l before:border-l-gray-200 hover:before:border-l-2 hover:before:border-l-gray-500":
             pageProps?.page?.slug !== item?.link?.slug?.current && inDropdown,
-          "px-2": inDropdown,
+          "pl-2": inDropdown,
           "mr-2 px-0": !inDropdown,
         }
       )}
