@@ -68,8 +68,7 @@ const Page = (props: {
                       key={card._key}
                       node={card as unknown as DsFrontPageCardT}
                       tag={true}
-                      style={{ animationDelay: `${i * 50}ms` }}
-                      className={`animate-fadeInBottom opacity-0`}
+                      style={{ animationDelay: `${i * 25}ms` }}
                     />
                   );
                 })}
