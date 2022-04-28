@@ -18,8 +18,6 @@ export default {
       name: "elementer",
       type: "array",
       of: [{ type: "prop_table" }],
-      validation: (Rule) =>
-        Rule.required().error("Må ha props for minst et element"),
     },
     {
       title: "Props",
