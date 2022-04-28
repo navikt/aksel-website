@@ -34,7 +34,7 @@ const DesignsystemHeader = (): JSX.Element => {
                   localStorage.removeItem("dssidebar");
               }}
               className={cl(
-                "index-heading flex min-w-header cursor-pointer items-center justify-center whitespace-nowrap py-0 px-2 pt-1 focus:outline-none 2xl:px-4",
+                "index-heading flex min-w-header cursor-pointer items-center justify-center whitespace-nowrap py-0 px-2 focus:outline-none 2xl:px-4",
                 {
                   "text-text-inverted focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
                     !(activeHeading?.title === heading.title),
