@@ -29,9 +29,10 @@ const propList = (src: any, name: string): DsProps[] =>
       title: prop.displayName,
       displayname: prop.displayName,
       filepath: prop.filePath,
-      proplist: Object.values(prop.props as unknown).map((val) => {
+      proplist: Object.values(prop.props as unknown).map((val, y) => {
         return {
           _type: "prop",
+          _key: val.name + y,
           name: val.name,
           defaultValue: val.defaultValue?.value ?? null,
           description: val.description,
