@@ -36,7 +36,6 @@ export default createSchema({
     SanityModules.Image,
     SanityModules.ImageWithText,
     SanityModules.PropTable,
-    SanityModules.prop,
     SanityModules.RelatedPages,
     SanityModules.Tips,
     RichText.BlockContent,

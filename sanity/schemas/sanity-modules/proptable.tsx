@@ -38,7 +38,7 @@ export default {
         },
       ],
     },
-    {
+    /* {
       title: "Komponent navn",
       name: "title",
       type: "string",
@@ -91,62 +91,6 @@ export default {
       name: "extends",
       type: "string",
       initialValue: "HtmlDivElement",
-    },
+    }, */
   ],
-  preview: {
-    select: {
-      title: "title",
-    },
-    prepare: (s) => ({
-      title: s?.title ? s?.title : "Prop",
-      subtitle: s?.title ? "prop" : "",
-      media: () => <Scale />,
-    }),
-  },
-};
-
-export const prop = {
-  name: "prop_table_prop",
-  title: "Prop",
-  type: "object",
-  fields: [
-    {
-      title: "Name",
-      name: "name",
-      type: "string",
-      validation: (Rule) => Rule.required().error("Proptable må ha et navn"),
-    },
-    {
-      title: "Type",
-      name: "type",
-      type: "string",
-      validation: (Rule) => Rule.required().error("Proptable må ha en type"),
-    },
-    {
-      title: "Beskrivelse (optional)",
-      name: "description",
-      type: "string",
-    },
-    {
-      title: "Default (optional)",
-      name: "default",
-      type: "string",
-    },
-    {
-      title: "Required",
-      name: "required",
-      type: "boolean",
-      validation: (Rule) =>
-        Rule.required().error("proptable må ha togglet Required on/off"),
-    },
-  ],
-  initialValue: () => ({
-    required: false,
-  }),
-  preview: {
-    select: {
-      name: "name",
-    },
-    prepare: ({ name }) => ({ title: name }),
-  },
 };
