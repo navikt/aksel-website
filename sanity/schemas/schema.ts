@@ -62,6 +62,5 @@ export default createSchema({
     Aksel.Artikkel,
     Aksel.Blogg,
     Aksel.Tema,
-    Aksel.Quotes,
   ]),
 });

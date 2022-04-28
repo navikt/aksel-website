@@ -40,36 +40,28 @@ export const akselInnhold = async () => {
           S.listItem().title("Blogg").child(S.documentTypeList("aksel_blogg")),
           S.divider(),
           S.listItem()
-            .title("Visninger")
-            .child(
-              S.list()
-                .title("Visninger (viser nettsidevisning)")
-                .items([
-                  S.listItem()
-                    .title("Temavisning")
-                    .child(() =>
-                      documentStore.listenQuery(query).pipe(
-                        map((tema: any) => {
-                          return S.list()
-                            .title("Visning Temaer")
-                            .items([
-                              ...tema.map((tag) => {
-                                return S.listItem()
-                                  .title(tag.title)
-                                  .child(
-                                    S.documentList()
-                                      .title(tag.title)
-                                      .filter(
-                                        `_type == 'aksel_artikkel' && $tag in tema[]->title`
-                                      )
-                                      .params({ tag: tag.title })
-                                  );
-                              }),
-                            ]);
-                        })
-                      )
-                    ),
-                ])
+            .title("Temavisning")
+            .child(() =>
+              documentStore.listenQuery(query).pipe(
+                map((tema: any) => {
+                  return S.list()
+                    .title("Visning Temaer")
+                    .items([
+                      ...tema.map((tag) => {
+                        return S.listItem()
+                          .title(tag.title)
+                          .child(
+                            S.documentList()
+                              .title(tag.title)
+                              .filter(
+                                `_type == 'aksel_artikkel' && $tag in tema[]->title`
+                              )
+                              .params({ tag: tag.title })
+                          );
+                      }),
+                    ]);
+                })
+              )
             ),
 
           S.divider(),

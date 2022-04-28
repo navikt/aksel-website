@@ -16,9 +16,5 @@ export const adminPanel = async (roles) =>
             .schemaType(`vk_frontpage`)
             .icon(() => <Picture />)
             .id(`frontpage_vk_praksis`),
-          S.documentListItem()
-            .title(`Quotes`)
-            .schemaType(`quotes`)
-            .id(`aksel_quotelist`),
         ])
     );

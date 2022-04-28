@@ -29,38 +29,41 @@ export const dsPanel = async (roles) => {
           .title("Designsystem")
           .items([
             S.listItem()
-              .title("Innhold")
+              .title("Komponentsider (ny)")
+              .icon(() => <Facilitet />)
+              .child(createSuperPane("komponent_artikkel")),
+            S.listItem()
+              .title("Komponentsider (gamle)")
+              .icon(() => <Facilitet />)
+              .child(createSuperPane("ds_component_page")),
+            S.listItem()
+              .title("Artikler")
+              .icon(() => <FileContent />)
+              .child(createSuperPane("ds_artikkel")),
+            S.divider(),
+            S.documentListItem()
+              .title(`Navigasjon`)
+              .schemaType(`ds_navigation`)
+              .icon(() => <Place />)
+              .id(`ds_navigationid`),
+
+            S.listItem()
+              .title("Publiserte sider ikke i navigasjon")
               .child(async (): Promise<any> => {
                 const doc = await client.fetch(
                   `*[_id == 'ds_navigationid'][0]{
-                  headings[]{
-                    title,
-                    menu
-                  }
-                }`
+                          headings[]{
+                            title,
+                            menu
+                          }
+                        }`
                 );
                 if (!doc.headings) {
                   return [];
                 }
 
-                let menuItems = [];
                 let allIds = "";
                 try {
-                  menuItems = doc.headings.map((heading) => {
-                    const ids = heading.menu
-                      .filter((item) => item._type === "item")
-                      .map((item) => item.link._ref);
-                    return S.listItem()
-                      .title(heading.title)
-                      .child(
-                        S.documentList()
-                          .title(heading.title)
-                          .filter(
-                            `_id in [${ids.map((x) => `"${x}"`).join(",")}]`
-                          )
-                      );
-                  });
-
                   allIds = doc.headings
                     .map((heading) =>
                       heading.menu
@@ -74,45 +77,12 @@ export const dsPanel = async (roles) => {
                   console.log(e);
                 }
 
-                return S.list()
-                  .title("Innhold")
-                  .items([
-                    S.listItem()
-                      .title("Komponent-artikler")
-                      .icon(() => <Facilitet />)
-                      .child(createSuperPane("ds_component_page")),
-                    S.listItem()
-                      .title("Komponent-artikler BETA")
-                      .icon(() => <Facilitet />)
-                      .child(createSuperPane("komponent_artikkel")),
-                    S.listItem()
-                      .title("Artikler")
-                      .icon(() => <FileContent />)
-                      .child(createSuperPane("ds_artikkel")),
-                    S.divider(),
-                    S.listItem()
-                      .title("Visning av sider i navigasjon")
-                      .child(
-                        S.list()
-                          .title("Visning av sider i navigasjon")
-                          .items(menuItems)
-                      ),
-                    S.listItem()
-                      .title("Publiserte sider ikke i navigasjon")
-                      .child(
-                        S.documentList()
-                          .title("Sider ikke i navigasjon")
-                          .filter(
-                            `!(_id in [${allIds}]) && !(_id in path('drafts.**')) && _type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"]`
-                          )
-                      ),
-                  ]);
+                return S.documentList()
+                  .title("Sider ikke i navigasjon")
+                  .filter(
+                    `!(_id in [${allIds}]) && !(_id in path('drafts.**')) && _type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"]`
+                  );
               }),
-            S.documentListItem()
-              .title(`Navigasjon`)
-              .schemaType(`ds_navigation`)
-              .icon(() => <Place />)
-              .id(`ds_navigationid`),
             S.documentListItem()
               .title(`Forside`)
               .schemaType(`ds_frontpage`)

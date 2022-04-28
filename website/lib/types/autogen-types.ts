@@ -1321,39 +1321,6 @@ export interface AkselTema extends SanityDocument {
   >;
 }
 
-/**
- * Quotes
- *
- *
- */
-export interface Quotes extends SanityDocument {
-  _type: "quotes";
-
-  /**
-   * Quotes — `array`
-   *
-   *
-   */
-  quotes?: Array<
-    SanityKeyed<{
-      _type: "list";
-      /**
-       * Quote — `string`
-       *
-       *
-       */
-      title?: string;
-
-      /**
-       * Kilde — `string`
-       *
-       *
-       */
-      kilde?: string;
-    }>
-  >;
-}
-
 export type GeneriskSeksjon = {
   _type: "generisk_seksjon";
   /**
@@ -2619,8 +2586,7 @@ export type Documents =
   | DsArtikkel
   | AkselArtikkel
   | AkselBlogg
-  | AkselTema
-  | Quotes;
+  | AkselTema;
 
 /**
  * This interface is a stub. It was referenced in your sanity schema but
