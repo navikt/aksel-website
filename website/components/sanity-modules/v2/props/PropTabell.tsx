@@ -122,7 +122,7 @@ const PropTable = ({ komponent }: { komponent: PropT }): JSX.Element => {
           <Table key={prop.name} prop={prop} />
         ))}
         <Detail className="-mt-6 text-text-muted">
-          * Props er autogenerert fra kode, så avik kan forekomme. Ta kontakt
+          * Props er autogenerert fra kode, så avvik kan forekomme. Ta kontakt
           hvis noe ikke stemmer!
         </Detail>
       </div>
