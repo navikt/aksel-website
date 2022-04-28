@@ -55,19 +55,11 @@ const IntroPage = React.forwardRef<HTMLDivElement, ViewProps>((props, ref) => {
         Kom i gang
       </Heading>
       <BodyLong>
-        Start med å legge deg selv til som redaktør under "redaktør/bidrag", da
-        er det lettere å holde oversikten over artikler du har vært med å
-        skrive!
-      </BodyLong>
-      <Heading level="3" size="small">
-        Innhold
-      </Heading>
-      <BodyLong>
-        Begynn med å lage en ny artikkel under "Innhold Aksel". Legg til Tema
-        denne siden omhandler, da blir artikkelen automatisk lagt under det
-        temaet på nettsiden. Når siden er klar for publisering kan du trykke
-        "Publiser". Da blir siden automatisk tigjengelig på nett etter en liten
-        stund.
+        VI har laget en{" "}
+        <Link href="https://aksel.nav.no/blogg/starte-som-redaktor?tema=blogg">
+          artikkel
+        </Link>{" "}
+        som viser hvordan du kommer i gang som redaktør i Aksel
       </BodyLong>
     </Stack>
   );

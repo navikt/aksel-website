@@ -43,8 +43,9 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
 };
 
 const items = [
+  S.divider(),
   S.listItem()
-    .title("Brukere/Redaktører")
+    .title("Redaktører")
     .icon(() => <People />)
     .child(createSuperPane("editor")),
   S.listItem()

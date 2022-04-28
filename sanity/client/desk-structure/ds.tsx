@@ -22,7 +22,8 @@ export const dsPanel = async (roles) => {
     return null;
   } else {
     return S.listItem()
-      .title("Designsystem-portal")
+      .title("Designsystem")
+      .icon(() => <Facilitet />)
       .child(
         S.list()
           .title("Designsystem")
