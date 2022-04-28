@@ -22,14 +22,14 @@ export const dsPanel = async (roles) => {
     return null;
   } else {
     return S.listItem()
-      .title("Designsystem")
+      .title("Designsystemet")
       .icon(() => <Facilitet />)
       .child(
         S.list()
           .title("Designsystem")
           .items([
             S.listItem()
-              .title("Komponentsider (ny)")
+              .title("Komponentsider (nye)")
               .icon(() => <Facilitet />)
               .child(createSuperPane("komponent_artikkel")),
             S.listItem()
