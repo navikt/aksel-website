@@ -1925,6 +1925,37 @@ export type PropsSeksjon = {
    *
    */
   elementer?: Array<SanityKeyed<PropTable>>;
+
+  /**
+   * Props — `array`
+   *
+   *
+   */
+  komponents?: Array<
+    SanityKeyed<{
+      _type: "komponent";
+      /**
+       * Komponent navn — `string`
+       *
+       * Slik man ville brukt den, eks Accordion.Item
+       */
+      title?: string;
+
+      /**
+       * Bruker komponenten OverridableComponent API-et — `boolean`
+       *
+       *
+       */
+      overridable?: boolean;
+
+      /**
+       * Komponent referanse — `reference`
+       *
+       *
+       */
+      propref?: SanityReference<DsProps>;
+    }>
+  >;
 };
 
 export type AccordionV2 = {
