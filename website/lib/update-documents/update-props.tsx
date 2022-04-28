@@ -1,16 +1,10 @@
-import { readFileSync } from "fs";
 import dotenv from "dotenv";
 import { noCdnClient } from "../sanity/sanity.server";
 import { DsProps } from "../types/autogen-types";
+import CoreDocs from "@navikt/ds-react/_docs.json";
+import InternalDocs from "@navikt/ds-react-internal/_docs.json";
 
 dotenv.config();
-
-const docs_core = JSON.parse(
-  readFileSync(__dirname + "/_docs-core.json", "utf8")
-);
-const docs_internal = JSON.parse(
-  readFileSync(__dirname + "/_docs-internal.json", "utf8")
-);
 
 const ids = [];
 
@@ -50,10 +44,10 @@ const updateProps = async () => {
   // this is our transactional client, it won't push anything until we say .commit() later
   const transactionClient = noCdnClient(token).transaction();
 
-  propList(docs_core, "core").forEach((x) =>
+  propList(CoreDocs, "core").forEach((x) =>
     transactionClient.createOrReplace(x)
   );
-  propList(docs_internal, "internal").forEach((x) =>
+  propList(InternalDocs, "internal").forEach((x) =>
     transactionClient.createOrReplace(x)
   );
 
