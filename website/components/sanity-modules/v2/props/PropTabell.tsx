@@ -20,7 +20,7 @@ export type PropT = {
 };
 
 const Table = ({ prop }: { prop: any }) => (
-  <table className="mb-0 border-separate border-t border-t-divider pt-5 first-of-type:mt-4 last-of-type:mb-12 last-of-type:border-b last-of-type:border-b-divider">
+  <table className="mb-0 border-separate border-t border-t-divider pt-5 first-of-type:pt-0 last-of-type:mb-12 last-of-type:border-b last-of-type:border-b-divider">
     <caption className="m-0 mb-2 flex flex-col text-left">
       {prop.required && (
         <Detail className="text-feedback-danger-text">Required</Detail>
