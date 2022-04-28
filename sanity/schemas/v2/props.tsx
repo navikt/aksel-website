@@ -21,6 +21,38 @@ export default {
       validation: (Rule) =>
         Rule.required().error("Må ha props for minst et element"),
     },
+    {
+      title: "Props",
+      type: "array",
+      name: "komponents",
+      of: [
+        {
+          title: "Komponent",
+          type: "object",
+          name: "komponent",
+          fields: [
+            {
+              title: "Komponent navn",
+              description: "Slik man ville brukt den, eks Accordion.Item",
+              type: "string",
+              name: "title",
+            },
+            {
+              title: "Bruker komponenten OverridableComponent API-et",
+              type: "boolean",
+              name: "overridable",
+              initialValue: false,
+            },
+            {
+              name: "propref",
+              title: "Komponent referanse",
+              type: "reference",
+              to: [{ type: "ds_props" }],
+            },
+          ],
+        },
+      ],
+    },
   ],
   preview: {
     prepare() {

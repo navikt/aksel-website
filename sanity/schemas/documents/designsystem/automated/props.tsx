@@ -69,4 +69,19 @@ export default {
       ],
     },
   ],
+  preview: {
+    select: {
+      title: "title",
+      filepath: "filepath",
+      id: "_id",
+    },
+    prepare(selection) {
+      const { title, filepath, id } = selection;
+      const str = id.includes("core") ? "ds-react" : "ds-internal";
+      return {
+        title,
+        subtitle: `${str}: ${filepath}`,
+      };
+    },
+  },
 };
