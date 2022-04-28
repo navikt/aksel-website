@@ -14,12 +14,6 @@ export default {
       readOnly: true,
     },
     {
-      title: "Elementer",
-      name: "elementer",
-      type: "array",
-      of: [{ type: "prop_table" }],
-    },
-    {
       title: "Props",
       type: "array",
       name: "komponenter",

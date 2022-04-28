@@ -9,14 +9,12 @@ import {
 } from "@navikt/ds-react";
 import NextLink from "next/link";
 import React from "react";
-import {
-  PropTable as PropTableT,
-  PropTableProp as PropTablePropT,
-} from "../../../lib";
+import { PropTableProp as PropTablePropT } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import { InlineCode } from "../../SanityBlockContent";
+import PropTableV2 from "../v2/props/PropTabell";
 
-const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
+const PropTable = ({ node }: { node: any }): JSX.Element => {
   const Table = ({ prop }: { prop: PropTablePropT }) => (
     <table className="mb-0 border-separate border-t border-t-divider pt-5 first-of-type:mt-4 last-of-type:mb-12 last-of-type:border-b last-of-type:border-b-divider">
       <caption className="m-0 mb-2 flex flex-col text-left">
@@ -85,6 +83,16 @@ const PropTable = ({ node }: { node: PropTableT }): JSX.Element => {
       </tbody>
     </table>
   );
+
+  if (node?.komponenter?.length > 0) {
+    return (
+      <>
+        {node.komponenter.map((prop) => (
+          <PropTableV2 komponent={prop as unknown as any} key={prop?._key} />
+        ))}
+      </>
+    );
+  }
 
   return (
     <details className="index-ignore">

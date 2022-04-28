@@ -45,7 +45,7 @@ const Table = ({ prop }: { prop: any }) => (
         <BodyShort as="td" className="w-full pb-2 pl-1">
           <pre style={{ margin: 0 }}>
             <code className="text-medium text-lightblue-800">
-              {prop.type ?? ""}
+              {prop.type ?? "-"}
             </code>
           </pre>
         </BodyShort>
@@ -60,7 +60,7 @@ const Table = ({ prop }: { prop: any }) => (
             Description
           </Label>
           <BodyShort as="td" className="w-full pb-2 pl-1">
-            {prop.description ?? ""}
+            {prop.description ?? "-"}
           </BodyShort>
         </tr>
       )}
