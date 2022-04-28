@@ -1714,10 +1714,15 @@
   resolved "https://registry.yarnpkg.com/@navikt/ds-css-internal/-/ds-css-internal-0.7.3.tgz#06ea2722e95c226eb5e562116054477613f71f4e"
   integrity sha512-mCjEWAwNW4fqmA+SMG3hmRZW49imxx8wIv+0yfQIpk9fnhutEqB2cnJmXvgYY4XVZaPeWFLeZcGAwouuSGBqXQ==
 
-"@navikt/ds-css@^0.16", "@navikt/ds-css@^0.16.21":
+"@navikt/ds-css@^0.16":
   version "0.16.21"
   resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.16.21.tgz#b793f900f3148a048180423052480c04be239e68"
   integrity sha512-kV9fLtnZoOIectWGZFg/aLzgp4gRi2sBjgq5VzoprNQlzSOnSxwR0QVLClpmjJe+oKZYUc5RndqDc0QAMawqkA==
+
+"@navikt/ds-css@^0.17.0":
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.17.0.tgz#49fbc36fd11d01bc5e9bd4a59e8387e903ac3002"
+  integrity sha512-dT28NGB0toDer5KsSnIib+ACP2n/AG11vFbwI9gTTuZNo6pP2VRP2WbiXUB7mUO7BJcleMXl7ALkILwv5q0aVw==
 
 "@navikt/ds-icons@^0.8", "@navikt/ds-icons@^0.8.11":
   version "0.8.11"
@@ -1726,13 +1731,13 @@
   dependencies:
     uuid "^8.3.2"
 
-"@navikt/ds-react-internal@^0.13.1":
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react-internal/-/ds-react-internal-0.13.1.tgz#a99af1c3085c61b74a07e853fdd03bdff1a296b4"
-  integrity sha512-xU7QJVOo+QXThtQXHYo7rrE7UK6gaq02moQJHheKfVEcL1qOicQwp5ZQD2LSawKiVYuHmzM/YoPECpbI70oFGw==
+"@navikt/ds-react-internal@^0.13.2":
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react-internal/-/ds-react-internal-0.13.2.tgz#2aa2b9ffd5bbfe3b68d5dd047748b0a1a8f9aa5c"
+  integrity sha512-BdjEhtvS/BuomHd/Mh3h6jGPrVSPp4Jid+djSaS5nNGhhbpICZjTUqD+No2QH85kAXafsvV2q3Iv/IWbSXGkvQ==
   dependencies:
     "@navikt/ds-icons" "^0.8.11"
-    "@navikt/ds-react" "^0.18.1"
+    "@navikt/ds-react" "^0.18.2"
     "@popperjs/core" "^2.10.1"
     classnames "^2.3.1"
     copy-to-clipboard "^3.3.1"
@@ -1756,10 +1761,10 @@
     react-popper "^2.2.5"
     uuid "^8.3.2"
 
-"@navikt/ds-react@^0.18.1":
-  version "0.18.1"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.18.1.tgz#a0dc959afa54cf5816a572e30a7f4f590f809419"
-  integrity sha512-l7H+pZy2sewW8axjUi+qTutcHkArCTxl10tC7lHYe/bQFHClUcjjr30ddnprJcBvwrPv0v03ILIygWtvdAM4ZQ==
+"@navikt/ds-react@^0.18.2":
+  version "0.18.2"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.18.2.tgz#23e20b2b93df2fd2600a6565f019a0fc44ae22d2"
+  integrity sha512-31b8cf5NWTebgqXucjXa+/iAyqnlN4P99sW0QRA1JOXDCkrByeVDrZeSNwFNK4J/IXpYlq6pvWGwWDtFQFVWbQ==
   dependencies:
     "@floating-ui/react-dom" "0.6.0"
     "@material-ui/core" "^4.12.3"
@@ -1774,15 +1779,15 @@
     react-popper "^2.2.5"
     uuid "^8.3.2"
 
-"@navikt/ds-tailwind@^0.1.10":
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-tailwind/-/ds-tailwind-0.1.10.tgz#a4f6657e6853aee344e4cbe03188349e08735f59"
-  integrity sha512-VGYO5ASXDQg9r/8MfVfF5KnXbENYQhJSONdhI6pv+8y7gT0DamEqNbDh/vT5mi1gW2qCU2wBPhF2cc0F5vNSrg==
+"@navikt/ds-tailwind@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-tailwind/-/ds-tailwind-0.2.0.tgz#7e20882c7ffc67ff496c7322b6991cca4455c66b"
+  integrity sha512-6h44OKDeT1hhm4SYCdI3thWZ+zFGhH9D43llYOGuZNtx36kHj+ytn9n/8N8LqjRNnISF1nVWltQnwPysmuilxg==
 
-"@navikt/ds-tokens@^0.8.8":
-  version "0.8.8"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-tokens/-/ds-tokens-0.8.8.tgz#1e16bf4c011c2dcfabe14121db8df36f2553dd5e"
-  integrity sha512-ke9dfCTjCLs2PJyLj4XjIpo/DW42sd4gkXzeKJ9npuQebh1egL3QruvZ/djp67lUjSFNFQ84LrHT1rcQvfVH9Q==
+"@navikt/ds-tokens@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-tokens/-/ds-tokens-0.9.0.tgz#7ad2d02094be24a8c37f2b0e63fa187bb0e76c5d"
+  integrity sha512-cifz5ox6B2lqW2SxiIGgK8X3+zLJn4GIQ/nGYIY7905sxbHMgaBzIHkCGiDnmSnoGcsbOX2HoM0+tH7jDPKyTA==
 
 "@next/bundle-analyzer@^12.1.0":
   version "12.1.5"
@@ -12004,14 +12009,6 @@ react-textarea-autosize@^8.3.2:
     use-composed-ref "^1.0.0"
     use-latest "^1.0.0"
 
-react-tooltip@^4.2.21:
-  version "4.2.21"
-  resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-4.2.21.tgz#840123ed86cf33d50ddde8ec8813b2960bfded7f"
-  integrity sha512-zSLprMymBDowknr0KVDiJ05IjZn9mQhhg4PRsqln0OZtURAJ1snt1xi5daZfagsh6vfsziZrc9pErPTDY1ACig==
-  dependencies:
-    prop-types "^15.7.2"
-    uuid "^7.0.3"
-
 react-transition-group@^4.3.0, react-transition-group@^4.4.0:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.2.tgz#8b59a56f09ced7b55cbd53c36768b922890d5470"
@@ -14317,11 +14314,6 @@ uuid@^3.1.0, uuid@^3.3.2:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
-
-uuid@^7.0.3:
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
-  integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
 
 uuid@^8.0.0, uuid@^8.3.2:
   version "8.3.2"
