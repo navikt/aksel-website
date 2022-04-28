@@ -5,6 +5,7 @@ export { default as ComponentTemplate } from "./component-template";
 export { default as Changelog } from "./changelog";
 export { default as CodeExamples, example } from "./automated/code-example";
 export { default as CodeSandboxes } from "./automated/sandbox";
+export { default as Props } from "./automated/props";
 export {
   Color,
   default as ColorCategories,

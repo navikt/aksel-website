@@ -14,12 +14,36 @@ export default {
       readOnly: true,
     },
     {
-      title: "Elementer",
-      name: "elementer",
+      title: "Props",
       type: "array",
-      of: [{ type: "prop_table" }],
-      validation: (Rule) =>
-        Rule.required().error("Må ha props for minst et element"),
+      name: "komponenter",
+      of: [
+        {
+          title: "Komponent",
+          type: "object",
+          name: "komponent",
+          fields: [
+            {
+              title: "Komponent navn",
+              description: "Slik man ville brukt den, eks Accordion.Item",
+              type: "string",
+              name: "title",
+            },
+            {
+              title: "Bruker komponenten OverridableComponent API-et",
+              type: "boolean",
+              name: "overridable",
+              initialValue: false,
+            },
+            {
+              name: "propref",
+              title: "Komponent referanse",
+              type: "reference",
+              to: [{ type: "ds_props" }],
+            },
+          ],
+        },
+      ],
     },
   ],
   preview: {
