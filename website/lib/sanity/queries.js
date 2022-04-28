@@ -226,6 +226,14 @@ const generiskSeksjon = `_type == "generisk_seksjon" =>{
   },
 }`;
 
+const propsSeksjon = `_type == "props_seksjon" =>{
+  ...,
+  komponenter[]{
+    ...,
+    "propref": propref->{...}
+  },
+}`;
+
 const deRefs = `
 ${relatedCards},
 ${alert},
@@ -239,6 +247,7 @@ ${relatertInnhold},
 ${anatomiSeksjon},
 ${liveSeksjon},
 ${uuSeksjon},
+${propsSeksjon},
 ${generiskSeksjon},
 ${installSeksjon},
 ${spesialSeksjon},

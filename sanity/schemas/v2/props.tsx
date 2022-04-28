@@ -24,7 +24,7 @@ export default {
     {
       title: "Props",
       type: "array",
-      name: "komponents",
+      name: "komponenter",
       of: [
         {
           title: "Komponent",

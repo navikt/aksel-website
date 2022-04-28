@@ -1931,7 +1931,7 @@ export type PropsSeksjon = {
    *
    *
    */
-  komponents?: Array<
+  komponenter?: Array<
     SanityKeyed<{
       _type: "komponent";
       /**

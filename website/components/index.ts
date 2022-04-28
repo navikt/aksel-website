@@ -22,7 +22,7 @@ export { default as IntroKomponent } from "./sanity-modules/v2/IntroSeksjon";
 export { default as Kode } from "./sanity-modules/v2/Kode";
 export { default as Video } from "./sanity-modules/v2/video";
 export { default as LiveDemo } from "./sanity-modules/v2/LiveDemo";
-export { default as PropsSeksjon } from "./sanity-modules/v2/PropsSeksjon";
+export { default as PropsSeksjon } from "./sanity-modules/v2/props/PropsSeksjon";
 export { default as RelatertInnhold } from "./sanity-modules/v2/relatert-innhold";
 export { default as SpesialSeksjon } from "./sanity-modules/v2/SpesialSeksjon";
 export { default as Tabell } from "./sanity-modules/v2/Tabell";
