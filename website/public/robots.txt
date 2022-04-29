@@ -1,8 +1,7 @@
-Sitemap: https://aksel.nav.no/api/sitemap
-
-
 User-agent: *
 Allow: /*
+
+Sitemap: https://aksel.nav.no/api/sitemap
 
 Disallow: /designsystem/sandboxes/*
 Disallow: /designsystem/examples/*
