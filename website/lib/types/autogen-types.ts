@@ -845,7 +845,7 @@ export interface DsPackage extends SanityDocument {
 }
 
 /**
- * Komponentartikkel BETA
+ * Komponentartikkel (Ny)
  *
  *
  */

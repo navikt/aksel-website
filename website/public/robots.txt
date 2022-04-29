@@ -1,10 +1,23 @@
 Sitemap: https://aksel.nav.no/api/sitemap
 
+
 User-agent: *
 Allow: /*
 
-Disallow: /api/*
-Disallow: /examples/*
+Disallow: /designsystem/sandboxes/*
+Disallow: /designsystem/examples/*
 
-# Gjemmer god-praksis for nå
-Disallow: /god-praksis/*
+# Next.JS Crawl Budget Performance Updates
+# Block files ending in .json, _buildManifest.js, _middlewareManifest.js, _ssgManifest.js, and any other JS files
+# The asterisks allows any file name
+# The dollar sign ensures it only matches the end of an URL and not a oddly formatted url (e.g. /locations.json.html)
+
+Disallow: /*.json$
+
+Disallow: /*_buildManifest.js$
+
+Disallow: /*_middlewareManifest.js$
+
+Disallow: /*_ssgManifest.js$
+
+Disallow: /*.js$

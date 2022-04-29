@@ -20,7 +20,7 @@ import {
 const prefix = "designsystem/komponenter/";
 
 export default {
-  title: "Komponentartikkel BETA",
+  title: "Komponentartikkel (ny)",
   name: "komponent_artikkel",
   type: "document",
   groups: [...groups],
