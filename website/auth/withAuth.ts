@@ -1,5 +1,6 @@
 import { errors, jwtVerify } from "jose";
 import { GetServerSidePropsContext } from "next";
+import getConfig from "next/config";
 import { Azure } from "./azure";
 /* import { GetServerSidePropsPrefetchResult } from "../shared/types"; */
 /* import { getEnv, isDevOrDemo } from "../utils/env"; */
@@ -22,6 +23,8 @@ export interface Jwk {
   x5t: string;
   "x5t#S256": string;
 }
+
+const { serverRuntimeConfig } = getConfig();
 
 /**
  * Used to authenticate Next.JS pages. Assumes application is behind
@@ -60,12 +63,15 @@ export function withAuthenticatedPage(
             }; */
     }
 
+    return handler({
+      ...context,
+      params: {
+        token: bearerToken ?? "",
+        well: serverRuntimeConfig.azureAppWellKnownUrl,
+      },
+    });
     try {
       await validerAccessToken(bearerToken);
-      return handler({
-        ...context,
-        params: { token: bearerToken ?? "", validated: "yes" },
-      });
     } catch (error) {
       return handler({
         ...context,
