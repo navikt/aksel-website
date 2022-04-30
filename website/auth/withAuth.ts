@@ -1,30 +1,27 @@
-import {
-  GetServerSidePropsContext,
-  /* NextApiRequest,
-  NextApiResponse, */
-} from "next";
+import { errors } from "jose";
+import { jwtVerify } from "jose/dist/types/jwt/verify";
+import { GetServerSidePropsContext } from "next";
+import { Azure } from "./azure";
 /* import { GetServerSidePropsPrefetchResult } from "../shared/types"; */
 /* import { getEnv, isDevOrDemo } from "../utils/env"; */
 
 type PageHandler = (context: GetServerSidePropsContext) => Promise<any>;
 
-export interface TokenPayload {
-  sub: string;
-  iss: string;
-  client_amr: string;
-  pid: string;
-  token_type: string;
-  client_id: string;
-  acr: string;
-  scope: string;
-  exp: string;
-  iat: string;
-  client_orgno: string;
-  jti: string;
-  consumer: {
-    authority: string;
-    ID: string;
-  };
+export interface Jwk {
+  use: string;
+  kty: string;
+  kid: string;
+  n: string;
+  e: string;
+  d: string;
+  p: string;
+  q: string;
+  dp: string;
+  dq: string;
+  qi: string;
+  x5c: string[];
+  x5t: string;
+  "x5t#S256": string;
 }
 
 /**
@@ -44,12 +41,12 @@ export function withAuthenticatedPage(
     } */
 
     const request = context.req;
+
     if (request == null) {
       throw new Error("Context is missing request. This should not happen");
     }
 
-    const bearerToken: string | null | undefined =
-      request.headers["authorization"];
+    const bearerToken = getBearerToken(request);
 
     if (!bearerToken) {
       console.log("No bearer token");
@@ -64,6 +61,48 @@ export function withAuthenticatedPage(
             }; */
     }
 
-    return handler({ ...context, params: { token: bearerToken ?? "" } });
+    try {
+      await validerAccessToken(bearerToken);
+      return handler({
+        ...context,
+        params: { token: bearerToken ?? "", validated: "yes" },
+      });
+    } catch (error) {
+      return handler({
+        ...context,
+        params: {
+          token: bearerToken ?? "",
+          validated: "no",
+          error: JSON.stringify(error),
+        },
+      });
+    }
   };
 }
+
+export function getBearerToken(req) {
+  return req.headers?.authorization?.substring("Bearer ".length);
+}
+
+export const validerAccessToken = (accessToken: string): Promise<void> => {
+  const options = {
+    algorithms: ["RS256"],
+    audience: Azure.clientId,
+    issuer: Azure.issuer,
+  };
+  return jwtVerify(accessToken, JSON.parse(Azure.appJwk), options)
+    .then(() => Promise.resolve())
+    .catch((error) => {
+      let feilmelding: string;
+      if (error instanceof errors.JWTExpired) {
+        feilmelding = "Token har utløpt";
+      } else if (error instanceof errors.JWTInvalid) {
+        feilmelding = "Payload i tokenet må være gyldig JSON!";
+      } else if (error instanceof errors.JWTClaimValidationFailed) {
+        feilmelding = `Token mottatt har ugyldig claim ${error.claim}`;
+      } else {
+        feilmelding = "Tokenet er ikke gyldig";
+      }
+      return Promise.reject(new Error(feilmelding));
+    });
+};
