@@ -1,5 +1,4 @@
-import { errors } from "jose";
-import { jwtVerify } from "jose/dist/types/jwt/verify";
+import { errors, jwtVerify } from "jose";
 import { GetServerSidePropsContext } from "next";
 import { Azure } from "./azure";
 /* import { GetServerSidePropsPrefetchResult } from "../shared/types"; */
