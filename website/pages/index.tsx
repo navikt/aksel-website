@@ -3,6 +3,7 @@ import { BodyLong, Heading, Label } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
+import { withAuthenticatedPage } from "../auth/withAuth";
 import { ArtikkelCard, logNav, PreviewBanner, TemaCard } from "../components";
 import Footer from "../components/layout/footer/Footer";
 import AkselHeader from "../components/layout/header/AkselHeader";
@@ -34,13 +35,21 @@ const RedaksjonsKort = () => (
   </div>
 );
 
-const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
+const Page = ({
+  preview,
+  temaer,
+  tekster,
+  bloggs,
+  ...rest
+}: PageProps): JSX.Element => {
   const logPortalCard = (e) =>
     logNav(
       "portal-kort",
       window.location.pathname,
       e.currentTarget.getAttribute("href")
     );
+
+  console.log(rest);
 
   return (
     <>
@@ -160,7 +169,7 @@ interface PageProps {
   preview: boolean;
 }
 
-export const getStaticProps = async ({
+/* export const getStaticProps = async ({
   preview = false,
 }: {
   preview?: boolean;
@@ -181,6 +190,27 @@ export const getStaticProps = async ({
     },
     revalidate: 30,
   };
-};
+}; */
+
+export const getServerSideProps = withAuthenticatedPage(
+  async (context): Promise<any> => {
+    const client = getClient(!!context?.preview);
+
+    const temaer = await client.fetch(akselTema);
+    const bloggs = await client.fetch(akselBloggPosts);
+    const tekster = await client.fetch(akselForsideQuery);
+
+    return {
+      props: {
+        temaer,
+        bloggs,
+        tekster,
+        testdata: context?.params,
+        slug: "/",
+        preview: !!context?.preview,
+      },
+    };
+  }
+);
 
 export default Page;
