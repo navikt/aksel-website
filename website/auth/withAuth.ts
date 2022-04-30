@@ -68,7 +68,7 @@ export function withAuthenticatedPage(
       ...context,
       params: {
         token: bearerToken ?? "",
-        valid: `${await tokenIsValid(bearerToken)}`,
+        valid: JSON.stringify(await tokenIsValid(bearerToken)),
       },
     });
     /* try {
