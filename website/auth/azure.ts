@@ -1,4 +1,4 @@
-export const envVars = {
+/* export const envVars = {
   azureAppClientId: "AZURE_APP_CLIENT_ID",
   azureOpenidConfigTokenEndpoint: "AZURE_OPENID_CONFIG_TOKEN_ENDPOINT",
   azureAppClientSecret: "AZURE_APP_CLIENT_SECRET",
@@ -20,3 +20,6 @@ export const Azure = {
   jwkUri: getEnvVar(envVars.jwkUri),
   appJwk: getEnvVar(envVars.appJwk),
 };
+ */
+
+export const dummy = "";

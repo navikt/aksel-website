@@ -1,7 +1,7 @@
 import { errors, jwtVerify } from "jose";
 import { GetServerSidePropsContext } from "next";
 import getConfig from "next/config";
-import { Azure } from "./azure";
+/* import { Azure } from "./azure"; */
 /* import { GetServerSidePropsPrefetchResult } from "../shared/types"; */
 /* import { getEnv, isDevOrDemo } from "../utils/env"; */
 
@@ -70,7 +70,7 @@ export function withAuthenticatedPage(
         well: serverRuntimeConfig.azureAppWellKnownUrl,
       },
     });
-    try {
+    /* try {
       await validerAccessToken(bearerToken);
     } catch (error) {
       return handler({
@@ -81,7 +81,7 @@ export function withAuthenticatedPage(
           error: JSON.stringify(error),
         },
       });
-    }
+    } */
   };
 }
 
@@ -89,7 +89,7 @@ export function getBearerToken(req) {
   return req.headers?.authorization?.substring("Bearer ".length);
 }
 
-export const validerAccessToken = (accessToken: string): Promise<void> => {
+/* export const validerAccessToken = (accessToken: string): Promise<void> => {
   const options = {
     algorithms: ["RS256"],
     audience: Azure.clientId,
@@ -111,3 +111,4 @@ export const validerAccessToken = (accessToken: string): Promise<void> => {
       return Promise.reject(new Error(feilmelding));
     });
 };
+ */
