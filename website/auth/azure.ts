@@ -1,25 +1,38 @@
-/* export const envVars = {
-  azureAppClientId: "AZURE_APP_CLIENT_ID",
-  azureOpenidConfigTokenEndpoint: "AZURE_OPENID_CONFIG_TOKEN_ENDPOINT",
-  azureAppClientSecret: "AZURE_APP_CLIENT_SECRET",
-  azureOpenidConfigIssuer: "AZURE_OPENID_CONFIG_ISSUER",
-  jwkUri: "AZURE_OPENID_CONFIG_JWKS_URI",
-  appJwk: "AZURE_APP_JWK",
+import { jwtVerify } from "jose";
+import getConfig from "next/config";
+import { Client, Issuer } from "openid-client";
+
+const { serverRuntimeConfig } = getConfig();
+
+const discoveryUrl = serverRuntimeConfig.azureAppWellKnownUrl;
+const clientId = serverRuntimeConfig.azureAppClientId;
+const appJWK = serverRuntimeConfig.azureAppJWK;
+
+let azureAdIssuer: Issuer<Client>;
+
+export const discoverAzureAdIssuer = async () => {
+  if (discoveryUrl) {
+    azureAdIssuer = await Issuer.discover(discoveryUrl);
+  } else {
+    throw Error(
+      `serverRuntimeConfig.azureAppWellKnownUrl "AZURE_APP_WELL_KNOWN_URL" må være definert`
+    );
+  }
 };
 
-const getEnvVar = (name: string) => {
-  if (!process.env[name]) throw new Error(`Missing required variable ${name}`);
-  return process.env[name];
-};
+export const tokenIsValid = async (token: string) => {
+  try {
+    if (!azureAdIssuer) {
+      await discoverAzureAdIssuer();
+    }
 
-export const Azure = {
-  clientId: getEnvVar(envVars.azureAppClientId),
-  tokenEndpoint: getEnvVar(envVars.azureOpenidConfigTokenEndpoint),
-  clientSecret: getEnvVar(envVars.azureAppClientSecret),
-  issuer: getEnvVar(envVars.azureOpenidConfigIssuer),
-  jwkUri: getEnvVar(envVars.jwkUri),
-  appJwk: getEnvVar(envVars.appJwk),
-};
- */
+    const verification = await jwtVerify(token, appJWK, {
+      audience: clientId,
+      issuer: azureAdIssuer.metadata.issuer,
+    });
 
-export const dummy = "";
+    return !!verification.payload;
+  } catch (e) {
+    return false;
+  }
+};

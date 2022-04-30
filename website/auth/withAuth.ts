@@ -1,6 +1,7 @@
 import { errors, jwtVerify } from "jose";
 import { GetServerSidePropsContext } from "next";
 import getConfig from "next/config";
+import { tokenIsValid } from "./azure";
 /* import { Azure } from "./azure"; */
 /* import { GetServerSidePropsPrefetchResult } from "../shared/types"; */
 /* import { getEnv, isDevOrDemo } from "../utils/env"; */
@@ -67,7 +68,7 @@ export function withAuthenticatedPage(
       ...context,
       params: {
         token: bearerToken ?? "",
-        well: serverRuntimeConfig.azureAppWellKnownUrl,
+        valid: `${await tokenIsValid(bearerToken)}`,
       },
     });
     /* try {
