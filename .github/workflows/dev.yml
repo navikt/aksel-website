@@ -29,6 +29,12 @@ jobs:
           echo "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}" >> website/.env
           echo "SANITY_PREVIEW_TOKEN=${{ secrets.SANITY_PREVIEW_TOKEN }}" >> website/.env
           echo "SANITY_PRIVATE_NO_DRAFTS=${{ secrets.SANITY_PRIVATE_NO_DRAFTS }}" >> website/.env
+          echo AZURE_APP_CLIENT_ID=notfound
+          echo AZURE_OPENID_CONFIG_TOKEN_ENDPOINT=https://fakedings.dev-gcp.nais.io/fake/aad?NAVIdent=A123456&aud=testbruker-aksel
+          echo AZURE_APP_CLIENT_SECRET=secret
+          echo AZURE_OPENID_CONFIG_ISSUER=https://fakedings.dev-gcp.nais.io/fake
+          echo AZURE_OPENID_CONFIG_JWKS_URI=https://fakedings.dev-gcp.nais.io/fake/jwks
+          echo AZURE_APP_JWK=https://fakedings.dev-gcp.nais.io/fake/jwk
 
       - name: Install dependencies
         run: yarn
