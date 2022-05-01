@@ -68,7 +68,7 @@ export function withAuthenticatedPage(
           token: bearerToken ?? "",
           valid: "true",
           clientId,
-          appJWK: JSON.stringify(await importJWK(JSON.parse(appJWK), "RS256")),
+          appJWK: JSON.stringify(JSON.parse(appJWK)),
           issuer,
         },
       });
@@ -79,7 +79,7 @@ export function withAuthenticatedPage(
           token: bearerToken ?? "",
           valid: "false",
           clientId,
-          appJWK: JSON.stringify(await importJWK(JSON.parse(appJWK), "RS256")),
+          appJWK: JSON.stringify(JSON.parse(appJWK)),
           issuer,
           error: e.message,
         },
