@@ -1,4 +1,4 @@
-import { errors, jwtVerify } from "jose";
+import { errors, importJWK, jwtVerify } from "jose";
 import { GetServerSidePropsContext } from "next";
 import getConfig from "next/config";
 import { tokenIsValid } from "./azure";
@@ -68,7 +68,7 @@ export function withAuthenticatedPage(
           token: bearerToken ?? "",
           valid: "true",
           clientId,
-          appJWK: JSON.parse(appJWK),
+          appJWK: JSON.stringify(await importJWK(JSON.parse(appJWK), "RS256")),
           issuer,
         },
       });
@@ -79,7 +79,7 @@ export function withAuthenticatedPage(
           token: bearerToken ?? "",
           valid: "false",
           clientId,
-          appJWK: JSON.parse(appJWK),
+          appJWK: JSON.stringify(await importJWK(JSON.parse(appJWK), "RS256")),
           issuer,
           error: e.message,
         },
