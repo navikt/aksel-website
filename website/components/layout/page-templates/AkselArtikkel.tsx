@@ -1,5 +1,7 @@
 import {
+  BodyLong,
   BodyShort,
+  Button,
   Detail,
   Heading,
   Label,
@@ -9,11 +11,11 @@ import moment from "moment";
 import Head from "next/head";
 import Image from "next/image";
 import NextLink from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ArtikkelBreadcrumbs, Avatar, Feedback, slugger } from "../..";
 import { AkselArtikkel, AkselBlogg, useSanityBannerImage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
-import { getTemaSlug } from "../../website-modules/utils";
+import { getTemaSlug, PagePropsContext } from "../../website-modules/utils";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
 
@@ -29,6 +31,20 @@ const getGradient = (s: string) => {
   return `linear-gradient(-45deg, hsl(${h2}, 70%, 70%) 0%, hsl(${h}, 80%, 80%) 100%)`;
 };
 
+const LoginSection = ({ slug }: { slug: string }) => {
+  return (
+    <div className="aksel-artikkel__blocks mt-12 min-h-[500px] px-0 sm:px-8 lg:px-0">
+      <BodyLong spacing>
+        Dette innholdet er bare tilgjengelig for NAV-ansatte. g inn for å se
+        innholdet
+      </BodyLong>
+      <Button as="a" href={`/oauth2/login?redirect=/${slug}`}>
+        Logg inn
+      </Button>
+    </div>
+  );
+};
+
 const AkselArtikkelTemplate = ({
   data,
   title,
@@ -36,6 +52,7 @@ const AkselArtikkelTemplate = ({
   data: AkselArtikkel | AkselBlogg;
   title: string;
 }): JSX.Element => {
+  const { pageProps } = useContext(PagePropsContext);
   const [ttr, setTtr] = useState<number | null>(null);
   useClientLayoutEffect(() => {
     slugger.reset();
@@ -161,6 +178,9 @@ const AkselArtikkelTemplate = ({
                   )}
                 </div>
               </div>
+              {data.innhold.length === 0 && !pageProps.validated && (
+                <LoginSection slug={data.slug} />
+              )}
               <SanityBlockContent
                 className="aksel-artikkel__blocks mt-12 min-h-[500px] px-0 sm:px-8 lg:px-0"
                 blocks={data.innhold}

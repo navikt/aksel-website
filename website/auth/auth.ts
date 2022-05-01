@@ -1,4 +1,5 @@
 import { GetServerSidePropsContext } from "next";
+import { isDevelopment } from "../components";
 import { tokenIsValid } from "./azure";
 
 export function getBearerToken(req) {
@@ -10,9 +11,9 @@ export function getBearerToken(req) {
  * Wonderwall (https://doc.nais.io/security/auth/idporten/sidecar/).
  */
 export const isValidated = async (context: GetServerSidePropsContext) => {
-  /* if (isDevOrDemo) {
-     true
-    } */
+  if (isDevelopment()) {
+    return false;
+  }
 
   const request = context.req;
 
