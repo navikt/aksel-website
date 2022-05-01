@@ -1,4 +1,4 @@
-import { jwtVerify } from "jose";
+import { errors, jwtVerify } from "jose";
 import getConfig from "next/config";
 /* import { Client, Issuer } from "openid-client"; */
 
@@ -21,20 +21,24 @@ const issuer = serverRuntimeConfig.azureAppIssuer;
   }
 }; */
 
-export const tokenIsValid = async (token: string) => {
-  try {
-    /* if (!azureAdIssuer) {
-      await discoverAzureAdIssuer();
-    } */
-
-    const verification = await jwtVerify(token, appJWK, {
-      algorithms: ["RS256"],
-      audience: clientId,
-      issuer,
+export const tokenIsValid = (accessToken: string): Promise<void> => {
+  return jwtVerify(accessToken, JSON.parse(appJWK), {
+    algorithms: ["RS256"],
+    audience: clientId,
+    issuer,
+  })
+    .then(() => Promise.resolve())
+    .catch((error) => {
+      let feilmelding: string;
+      if (error instanceof errors.JWTExpired) {
+        feilmelding = "Token har utløpt";
+      } else if (error instanceof errors.JWTInvalid) {
+        feilmelding = "Payload i tokenet må være gyldig JSON!";
+      } else if (error instanceof errors.JWTClaimValidationFailed) {
+        feilmelding = `Token mottatt har ugyldig claim ${error.claim}`;
+      } else {
+        feilmelding = "Tokenet er ikke gyldig";
+      }
+      return Promise.reject(new Error(feilmelding));
     });
-
-    return !!verification.payload;
-  } catch (e) {
-    return e;
-  }
 };

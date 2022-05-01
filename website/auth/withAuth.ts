@@ -54,62 +54,39 @@ export function withAuthenticatedPage(
     if (!bearerToken) {
       console.log("No bearer token");
       return handler({ ...context, params: { token: bearerToken ?? "" } });
-      /* return {
-                redirect: {
-                    destination: `/oauth2/login?redirect=${getEnv('NEXT_PUBLIC_BASE_PATH')}${
-                        context.resolvedUrl ?? ''
-                    }`,
-                    permanent: false,
-                },
-            }; */
     }
 
-    return handler({
-      ...context,
-      params: {
-        token: bearerToken ?? "",
-        valid: JSON.stringify(await tokenIsValid(bearerToken)),
-      },
-    });
-    /* try {
-      await validerAccessToken(bearerToken);
-    } catch (error) {
+    const clientId = serverRuntimeConfig.azureAppClientId;
+    const appJWK = serverRuntimeConfig.azureAppJWK;
+    const issuer = serverRuntimeConfig.azureAppIssuer;
+
+    try {
+      await tokenIsValid(bearerToken);
       return handler({
         ...context,
         params: {
           token: bearerToken ?? "",
-          validated: "no",
-          error: JSON.stringify(error),
+          valid: "true",
+          clientId,
+          appJWK: JSON.parse(appJWK),
+          issuer,
         },
       });
-    } */
+    } catch (e) {
+      return handler({
+        ...context,
+        params: {
+          token: bearerToken ?? "",
+          valid: "false",
+          clientId,
+          appJWK: JSON.parse(appJWK),
+          issuer,
+        },
+      });
+    }
   };
 }
 
 export function getBearerToken(req) {
   return req.headers?.authorization?.substring("Bearer ".length);
 }
-
-/* export const validerAccessToken = (accessToken: string): Promise<void> => {
-  const options = {
-    algorithms: ["RS256"],
-    audience: Azure.clientId,
-    issuer: Azure.issuer,
-  };
-  return jwtVerify(accessToken, JSON.parse(Azure.appJwk), options)
-    .then(() => Promise.resolve())
-    .catch((error) => {
-      let feilmelding: string;
-      if (error instanceof errors.JWTExpired) {
-        feilmelding = "Token har utløpt";
-      } else if (error instanceof errors.JWTInvalid) {
-        feilmelding = "Payload i tokenet må være gyldig JSON!";
-      } else if (error instanceof errors.JWTClaimValidationFailed) {
-        feilmelding = `Token mottatt har ugyldig claim ${error.claim}`;
-      } else {
-        feilmelding = "Tokenet er ikke gyldig";
-      }
-      return Promise.reject(new Error(feilmelding));
-    });
-};
- */
