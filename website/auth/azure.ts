@@ -1,7 +1,6 @@
-import { errors, jwtVerify } from "jose";
+import { errors, jwtVerify, importJWK } from "jose";
 import getConfig from "next/config";
 /* import { Client, Issuer } from "openid-client"; */
-
 const { serverRuntimeConfig } = getConfig();
 
 /* const discoveryUrl = serverRuntimeConfig.azureAppWellKnownUrl; */
@@ -23,7 +22,7 @@ const issuer = serverRuntimeConfig.azureAppIssuer;
 
 export const tokenIsValid = async (accessToken: string): Promise<void> => {
   try {
-    await jwtVerify(accessToken, JSON.parse(appJWK), {
+    await jwtVerify(accessToken, await importJWK(JSON.parse(appJWK), "RS256"), {
       audience: clientId,
       issuer: issuer,
     });
