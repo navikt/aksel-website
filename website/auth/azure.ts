@@ -1,12 +1,19 @@
-import { errors, jwtVerify, importJWK } from "jose";
+import { errors, jwtVerify, importJWK, createRemoteJWKSet } from "jose";
+import {
+  FlattenedJWSInput,
+  GetKeyFunction,
+  JWSHeaderParameters,
+} from "jose/dist/types/types";
 import getConfig from "next/config";
 /* import { Client, Issuer } from "openid-client"; */
 const { serverRuntimeConfig } = getConfig();
 
 /* const discoveryUrl = serverRuntimeConfig.azureAppWellKnownUrl; */
+
 const clientId = serverRuntimeConfig.azureAppClientId;
-const appJWK = serverRuntimeConfig.azureAppJWK;
+/* const appJWK = serverRuntimeConfig.azureAppJWK; */
 const issuer = serverRuntimeConfig.azureAppIssuer;
+const jwksUri = serverRuntimeConfig.azureJwksUri;
 
 /* let azureAdIssuer: Issuer<Client>; */
 
@@ -20,12 +27,22 @@ const issuer = serverRuntimeConfig.azureAppIssuer;
   }
 }; */
 
+let remoteJWKSet: GetKeyFunction<JWSHeaderParameters, FlattenedJWSInput>;
+
+export const opprettRemoteJWKSet = () => {
+  const jwksUrl = new URL(jwksUri);
+  remoteJWKSet = createRemoteJWKSet(jwksUrl);
+};
+
 export const tokenIsValid = async (accessToken: string): Promise<void> => {
   try {
-    await jwtVerify(accessToken, await importJWK(JSON.parse(appJWK), "RS256"), {
+    if (!remoteJWKSet) opprettRemoteJWKSet();
+
+    await jwtVerify(accessToken, remoteJWKSet, {
       audience: clientId,
       issuer: issuer,
     });
+
     return Promise.resolve();
   } catch (error) {
     let feilmelding: string;

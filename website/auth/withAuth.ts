@@ -59,6 +59,7 @@ export function withAuthenticatedPage(
     const clientId = serverRuntimeConfig.azureAppClientId;
     const appJWK = serverRuntimeConfig.azureAppJWK;
     const issuer = serverRuntimeConfig.azureAppIssuer;
+    const jwksUri = serverRuntimeConfig.azureJwksUri;
 
     try {
       await tokenIsValid(bearerToken);
@@ -69,6 +70,7 @@ export function withAuthenticatedPage(
           valid: "true",
           clientId,
           appJWK: JSON.stringify(JSON.parse(appJWK)),
+          jwksUri: jwksUri,
           issuer,
         },
       });
@@ -80,6 +82,7 @@ export function withAuthenticatedPage(
           valid: "false",
           clientId,
           appJWK: JSON.stringify(JSON.parse(appJWK)),
+          jwksUri: jwksUri,
           issuer,
           error: e.message,
         },
