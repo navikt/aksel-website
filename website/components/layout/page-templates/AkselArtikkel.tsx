@@ -45,7 +45,8 @@ const AkselArtikkelTemplate = ({
 
   useEffect(() => {
     const wpm = 225;
-    const text = document.getElementById("hovedinnhold").innerText;
+    const text = document.getElementById("hovedinnhold")?.innerText;
+    if (!text) return;
     const words = text.trim().split(/\s+/).length;
     setTtr(Math.ceil(words / wpm));
   }, [data?.innhold]);

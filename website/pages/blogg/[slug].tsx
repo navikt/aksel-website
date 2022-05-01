@@ -1,11 +1,8 @@
+import { GetServerSideProps } from "next/types";
 import React from "react";
+import { isValidated } from "../../auth/auth";
 import { LayoutPicker, PreviewBanner } from "../../components";
-import {
-  AkselBlogg,
-  akselBloggBySlug,
-  akselEditorById,
-  getAkselDocuments,
-} from "../../lib";
+import { AkselBlogg, akselBloggBySlug, akselEditorById } from "../../lib";
 import { getClient } from "../../lib/sanity/sanity.server";
 
 const Page = (props: {
@@ -13,6 +10,7 @@ const Page = (props: {
   page: AkselBlogg;
   preview: boolean;
 }): JSX.Element => {
+  console.log(props);
   return (
     <>
       {props.preview && <PreviewBanner />}
@@ -21,41 +19,24 @@ const Page = (props: {
   );
 };
 
-export const getStaticPaths = async (): Promise<{
-  fallback: string;
-  paths: { params: { slug: string } }[];
-}> => {
-  return {
-    paths: await getAkselDocuments("aksel_blogg").then((paths) =>
-      paths.map((slug) => ({
-        params: {
-          slug: slug.replace("artikkel/", ""),
-        },
-      }))
-    ),
-    fallback: "blocking",
-  };
-};
-
 interface StaticProps {
   props: {
     page: AkselBlogg;
     slug: string;
     preview: boolean;
+    vailidated: boolean;
   };
   notFound: boolean;
-  revalidate: number;
 }
 
-export const getStaticProps = async ({
-  params: { slug },
-  preview = false,
-}: {
-  params: { slug: string };
-  preview?: boolean;
-}): Promise<StaticProps | { notFound: true }> => {
-  const page = await getClient(preview).fetch(akselBloggBySlug, {
-    slug: `blogg/${slug}`,
+export const getServerSideProps: GetServerSideProps = async (
+  context
+): Promise<StaticProps | { notFound: true }> => {
+  const isValidUser = await isValidated(context);
+
+  const page = await getClient(context.preview).fetch(akselBloggBySlug, {
+    slug: `blogg/${context.params.slug}`,
+    valid: `${isValidUser}`,
   });
 
   const doc = page?.[0] ?? null;
@@ -69,11 +50,11 @@ export const getStaticProps = async ({
   return {
     props: {
       page: { ...doc, ...editors },
-      slug,
-      preview,
+      slug: context.params.slug as string,
+      preview: context.preview ?? null,
+      vailidated: isValidUser,
     },
     notFound: !doc,
-    revalidate: 10,
   };
 };
 

@@ -473,4 +473,11 @@ export const akselBloggBySlug = `*[slug.current == $slug] | order(_updatedAt des
     ...,
     ${deRefs}
   },
+  "innhold": select(
+    $valid == "true" => innhold[]{
+      ...,
+      ${deRefs}
+    },
+    $valid != "true" => []
+  )
 }`;
