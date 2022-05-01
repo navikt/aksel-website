@@ -179,7 +179,7 @@ const AkselArtikkelTemplate = ({
                 </div>
               </div>
               {data.innhold.length === 0 && !pageProps.validated && (
-                <LoginSection slug={data.slug} />
+                <LoginSection slug={data.slug as unknown as string} />
               )}
               <SanityBlockContent
                 className="aksel-artikkel__blocks mt-12 min-h-[500px] px-0 sm:px-8 lg:px-0"
