@@ -3,6 +3,7 @@ import {
   FlattenedJWSInput,
   GetKeyFunction,
   JWSHeaderParameters,
+  JWTPayload,
 } from "jose/dist/types/types";
 import getConfig from "next/config";
 const { serverRuntimeConfig } = getConfig();
@@ -18,16 +19,18 @@ export const opprettRemoteJWKSet = () => {
   remoteJWKSet = createRemoteJWKSet(jwksUrl);
 };
 
-export const tokenIsValid = async (accessToken: string): Promise<void> => {
+export const tokenIsValid = async (
+  accessToken: string
+): Promise<JWTPayload> => {
   try {
     if (!remoteJWKSet) opprettRemoteJWKSet();
 
-    await jwtVerify(accessToken, remoteJWKSet, {
+    const { payload } = await jwtVerify(accessToken, remoteJWKSet, {
       audience: clientId,
       issuer: issuer,
     });
 
-    return Promise.resolve();
+    return Promise.resolve(payload);
   } catch (error) {
     let feilmelding: string;
     if (error instanceof errors.JWTExpired) {

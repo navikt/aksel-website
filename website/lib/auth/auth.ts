@@ -1,5 +1,5 @@
-import { GetServerSidePropsContext } from "next";
-import { isDevelopment } from "../components";
+import { GetServerSidePropsContext, NextApiRequest } from "next";
+import { isDevelopment } from "../../components";
 import { tokenIsValid } from "./azure";
 
 export function getBearerToken(req) {
@@ -34,5 +34,30 @@ export const isValidated = async (context: GetServerSidePropsContext) => {
   } catch (e) {
     console.log(e);
     return false;
+  }
+};
+
+export const isValidatedApi = async (req: NextApiRequest) => {
+  /* if (isDevelopment()) {
+    return null;
+  } */
+
+  if (req == null) {
+    throw new Error("Context is missing request. This should not happen");
+  }
+
+  const bearerToken = getBearerToken(req);
+
+  if (!bearerToken) {
+    console.log("No bearer token");
+    return null;
+  }
+
+  try {
+    const payload = await tokenIsValid(bearerToken);
+    return payload;
+  } catch (e) {
+    console.log(e);
+    return null;
   }
 };

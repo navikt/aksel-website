@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next/types";
 import React from "react";
-import { isValidated } from "../../auth/auth";
+import { isValidated } from "../../lib/auth/auth";
 import { LayoutPicker, PreviewBanner } from "../../components";
 import { AkselBlogg, akselBloggBySlug, akselEditorById } from "../../lib";
 import { getClient } from "../../lib/sanity/sanity.server";
@@ -10,7 +10,6 @@ const Page = (props: {
   page: AkselBlogg;
   preview: boolean;
 }): JSX.Element => {
-  console.log(props);
   return (
     <>
       {props.preview && <PreviewBanner />}

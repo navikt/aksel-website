@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React, { useEffect } from "react";
 import {
+  AuthProvider,
   initAmplitude,
   logPageView,
   PagePropsContext,
@@ -49,9 +50,11 @@ function App({
           type="image/svg+xml"
         />
       </Head>
-      <PagePropsContext.Provider value={{ pageProps }}>
-        {getLayout(<Component {...pageProps} />)}
-      </PagePropsContext.Provider>
+      <AuthProvider>
+        <PagePropsContext.Provider value={{ pageProps }}>
+          {getLayout(<Component {...pageProps} />)}
+        </PagePropsContext.Provider>
+      </AuthProvider>
     </>
   );
 }
