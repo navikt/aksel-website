@@ -15,6 +15,8 @@ export const AuthProvider = (props: any) => {
     AuthenticationStatus.NOT_FETCHED
   );
 
+  const [user, setUser] = useState<{ name: string; mail: string }>(null);
+
   const login = () => {
     return null;
   };
@@ -32,14 +34,18 @@ export const AuthProvider = (props: any) => {
         console.log(json);
         if (json?.status === 200) {
           setAuthStatus(AuthenticationStatus.IS_AUTHENTICATED);
+          setUser({ name: json?.name, mail: json?.mail });
         } else if (json?.status === 401) {
           setAuthStatus(AuthenticationStatus.NOT_AUTHENTICATED);
+          setUser(null);
         } else {
           setAuthStatus(AuthenticationStatus.FAILURE);
+          setUser(null);
         }
       })
       .catch(() => {
         setAuthStatus(AuthenticationStatus.FAILURE);
+        setUser(null);
       });
   };
 
@@ -50,7 +56,7 @@ export const AuthProvider = (props: any) => {
   return (
     <AuthenticationContext.Provider
       {...props}
-      value={{ user: {}, status: authStatus, login, logout }}
+      value={{ user, status: authStatus, login, logout }}
     />
   );
 };
