@@ -21,24 +21,25 @@ const issuer = serverRuntimeConfig.azureAppIssuer;
   }
 }; */
 
-export const tokenIsValid = (accessToken: string): Promise<void> => {
-  return jwtVerify(accessToken, JSON.parse(appJWK), {
-    algorithms: ["RS256"],
-    audience: clientId,
-    issuer,
-  })
-    .then(() => Promise.resolve())
-    .catch((error) => {
-      let feilmelding: string;
-      if (error instanceof errors.JWTExpired) {
-        feilmelding = "Token har utløpt";
-      } else if (error instanceof errors.JWTInvalid) {
-        feilmelding = "Payload i tokenet må være gyldig JSON!";
-      } else if (error instanceof errors.JWTClaimValidationFailed) {
-        feilmelding = `Token mottatt har ugyldig claim ${error.claim}`;
-      } else {
-        feilmelding = "Tokenet er ikke gyldig";
-      }
-      return Promise.reject(new Error(feilmelding));
+export const tokenIsValid = async (accessToken: string): Promise<void> => {
+  try {
+    await jwtVerify(accessToken, JSON.parse(appJWK), {
+      algorithms: ["RS256"],
+      audience: clientId,
+      issuer,
     });
+    return await Promise.resolve();
+  } catch (error) {
+    let feilmelding: string;
+    if (error instanceof errors.JWTExpired) {
+      feilmelding = "Token har utløpt";
+    } else if (error instanceof errors.JWTInvalid) {
+      feilmelding = "Payload i tokenet må være gyldig JSON!";
+    } else if (error instanceof errors.JWTClaimValidationFailed) {
+      feilmelding = `Token mottatt har ugyldig claim ${error.claim}`;
+    } else {
+      feilmelding = "Tokenet er ikke gyldig";
+    }
+    return await Promise.reject(new Error(feilmelding));
+  }
 };

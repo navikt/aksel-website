@@ -81,6 +81,7 @@ export function withAuthenticatedPage(
           clientId,
           appJWK: JSON.parse(appJWK),
           issuer,
+          error: e.message,
         },
       });
     }
