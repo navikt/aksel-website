@@ -24,11 +24,10 @@ const issuer = serverRuntimeConfig.azureAppIssuer;
 export const tokenIsValid = async (accessToken: string): Promise<void> => {
   try {
     await jwtVerify(accessToken, JSON.parse(appJWK), {
-      algorithms: ["RS256"],
       audience: clientId,
-      issuer,
+      issuer: issuer,
     });
-    return await Promise.resolve();
+    return Promise.resolve();
   } catch (error) {
     let feilmelding: string;
     if (error instanceof errors.JWTExpired) {
@@ -38,8 +37,11 @@ export const tokenIsValid = async (accessToken: string): Promise<void> => {
     } else if (error instanceof errors.JWTClaimValidationFailed) {
       feilmelding = `Token mottatt har ugyldig claim ${error.claim}`;
     } else {
-      feilmelding = "Tokenet er ikke gyldig";
+      feilmelding = JSON.stringify({
+        code: error?.code ?? "",
+        message: error?.message ?? "",
+      });
     }
-    return await Promise.reject(new Error(feilmelding));
+    return Promise.reject(new Error(feilmelding));
   }
 };
