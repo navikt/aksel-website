@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 type AuthContextProps = {
   status:
@@ -23,17 +24,21 @@ export const AuthenticationStatus = {
 };
 
 export const AuthProvider = (props: any) => {
+  const router = useRouter();
+
   const [state, setState] = useState<{
     status: string;
     user?: { name: string; mail: string };
   }>({ status: AuthenticationStatus.NOT_FETCHED });
 
   const login = () => {
-    window.location.href = `${window.location.origin}/oauth2/login?redirect=${window.location.pathname}${window.location.search}`;
+    router.push(
+      `${window.location.origin}/oauth2/login?redirect=${window.location.pathname}${window.location.search}`
+    );
   };
 
   const logout = () => {
-    window.location.href = `${window.location.origin}/oauth2/logout`;
+    router.push(`${window.location.origin}/oauth2/logout`);
   };
 
   const fetchIsAuthenticated = () => {
