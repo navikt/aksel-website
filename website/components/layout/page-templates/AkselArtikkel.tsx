@@ -1,3 +1,10 @@
+import { AkselArtikkel, AkselBlogg, useSanityBannerImage } from "@/lib";
+import { SanityBlockContent } from "@/sanity-block";
+import {
+  AuthenticationContext,
+  AuthenticationStatus,
+  getTemaSlug,
+} from "@/utils";
 import {
   BodyLong,
   BodyShort,
@@ -13,13 +20,6 @@ import Image from "next/image";
 import NextLink from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import { ArtikkelBreadcrumbs, Avatar, Feedback, slugger } from "../..";
-import { AkselArtikkel, AkselBlogg, useSanityBannerImage } from "../../../lib";
-import { SanityBlockContent } from "../../SanityBlockContent";
-import {
-  AuthenticationContext,
-  AuthenticationStatus,
-  getTemaSlug,
-} from "../../website-modules/utils";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
 

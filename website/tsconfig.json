@@ -15,7 +15,15 @@
     "jsx": "preserve",
     "noImplicitAny": false,
     "incremental": true,
-    "types": ["cypress", "node"]
+    "types": ["cypress", "node"],
+    "baseUrl": ".",
+    "paths": {
+      "@/components": ["components/index.ts"],
+      "@/lib": ["lib/index.ts"],
+      "@/pages/*": ["pages/*"],
+      "@/sanity-block": ["components/SanityBlockContent.tsx"],
+      "@/utils": ["components/website-modules/utils/index.ts"]
+    }
   },
   "ts-node": {
     "compilerOptions": {
