@@ -5,7 +5,10 @@ import NextLink from "next/link";
 import React, { useContext, useState /* , { useContext } */ } from "react";
 import { logNav, Search } from "../..";
 import AkselLogo from "../../assets/AkselLogo";
-import { AuthenticationContext } from "../../website-modules/utils";
+import {
+  AuthenticationContext,
+  AuthenticationStatus,
+} from "../../website-modules/utils";
 import Toggle from "./menu/Toggle";
 
 const AkselHeader = ({
@@ -58,30 +61,38 @@ const AkselHeader = ({
           </a>
         </NextLink>
         <span className="flex">
-          <Toggle
-            inverted
-            open={openProfile}
-            setOpen={setOpenProfile}
-            buttonContent={button}
-            menu={
-              <div className="pt-4">
-                <dl>
-                  <Heading as="dt" size="xsmall" className="mx-4 mb-2">
-                    Bruker
-                  </Heading>
-                  <BodyShort className="mx-4">{context?.user?.name}</BodyShort>
-                  <BodyShort className="mx-4">{context?.user?.mail}</BodyShort>
-                </dl>
-                <hr className="mt-2 border-divider" />
-                <button
-                  className="flex h-full w-full rounded-b px-4 py-4 text-link hover:bg-interaction-primary-hover-subtle focus:shadow-[inset_0_0_0_2px_var(--navds-global-color-blue-800)] focus:outline-none"
-                  onClick={() => context.logout()}
-                >
-                  Logg ut
-                </button>
-              </div>
-            }
-          />
+          {context.status === AuthenticationStatus.IS_AUTHENTICATED && (
+            <Toggle
+              isHamburger
+              inverted
+              open={openProfile}
+              setOpen={setOpenProfile}
+              buttonContent={button}
+              menu={
+                <div className="pt-4">
+                  <dl>
+                    <Heading as="dt" size="xsmall" className="mx-4 mb-2">
+                      Bruker
+                    </Heading>
+                    <BodyShort className="mx-4">
+                      {context?.user?.name}
+                    </BodyShort>
+                    <BodyShort className="mx-4">
+                      {context?.user?.mail}
+                    </BodyShort>
+                  </dl>
+                  <hr className="mt-2 border-divider" />
+                  <button
+                    className="flex h-full w-full rounded-b px-4 py-4 text-link hover:bg-interaction-primary-hover-subtle focus:shadow-[inset_0_0_0_2px_var(--navds-global-color-blue-800)] focus:outline-none"
+                    onClick={() => context.logout()}
+                  >
+                    Logg ut
+                  </button>
+                </div>
+              }
+            />
+          )}
+
           {!frontPage && <Search inverted />}
         </span>
       </div>
