@@ -38,7 +38,9 @@ const LoginSection = ({ onClick }: { onClick: () => void }) => {
         <Locked aria-label="Innholdet er bak innlogging" className="h-8 w-8" />
       </div>
       <div className="flex w-full flex-col items-center justify-evenly gap-4 rounded-lg border border-border-muted bg-gray-50 bg-center px-8 pb-6 pt-12">
-        <Label>Dette innholdet er bare tilgjengelig for NAV-ansatte.</Label>
+        <Heading level="2" size="xsmall">
+          Dette innholdet er bare tilgjengelig for NAV-ansatte.
+        </Heading>
         <Button onClick={onClick}>Logg inn</Button>
       </div>
     </div>
