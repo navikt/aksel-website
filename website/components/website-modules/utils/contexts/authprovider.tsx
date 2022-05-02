@@ -41,12 +41,14 @@ export const AuthProvider = (props: any) => {
   };
 
   const logout = () => {
-    const curLocation = `${router.asPath}`;
-    router.push(`${window.location.origin}/oauth2/logout/frontchannel`);
-    const timeout = window.setTimeout(() => {
-      router.push(curLocation);
-    }, 200);
-    return () => window.clearTimeout(timeout);
+    fetch("/oauth2/logout/frontchannel", {
+      headers: {
+        "Cache-Control": "no-cache, no-store",
+        Pragma: "no-cache",
+      },
+    })
+      .then(() => router.reload())
+      .catch(() => router.reload());
   };
 
   const fetchIsAuthenticated = () => {
@@ -77,7 +79,6 @@ export const AuthProvider = (props: any) => {
 
   useEffect(() => {
     fetchIsAuthenticated();
-    console.log(router);
   }, []);
 
   /* useEffect(() => {
