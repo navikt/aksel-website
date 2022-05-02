@@ -74,21 +74,25 @@ export const AuthProvider = (props: any) => {
     fetchIsAuthenticated();
   }, []);
 
-  useEffect(() => {
+  /* useEffect(() => {
     console.log({ state: pageProps });
     if (pageProps?.validUser === undefined) return;
     if (!pageProps?.validUser) {
       setState({ status: AuthenticationStatus.NOT_AUTHENTICATED });
       console.log("Should run if validuser is false");
     }
-  }, [pageProps?.validUser]);
+  }, [pageProps?.validUser]); */
+
+  const value =
+    pageProps?.validUser !== undefined && !pageProps?.validUser
+      ? { status: AuthenticationStatus.NOT_AUTHENTICATED }
+      : { user: state?.user, status: state.status };
 
   return (
     <AuthenticationContext.Provider
       {...props}
       value={{
-        user: state?.user,
-        status: state.status,
+        ...value,
         /* user: { name: "Normann, Ola", mail: "123" },
         status: "IS_AUTHENTICATED", */
         login,
