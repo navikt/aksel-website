@@ -41,7 +41,12 @@ export const AuthProvider = (props: any) => {
   };
 
   const logout = () => {
-    router.push(`${window.location.origin}/oauth2/logout`);
+    const curLocation = `${router.asPath}`;
+    router.push(`${window.location.origin}/oauth2/logout/frontchannel`);
+    const timeout = window.setTimeout(() => {
+      router.push(curLocation);
+    }, 200);
+    return () => window.clearTimeout(timeout);
   };
 
   const fetchIsAuthenticated = () => {
@@ -72,6 +77,7 @@ export const AuthProvider = (props: any) => {
 
   useEffect(() => {
     fetchIsAuthenticated();
+    console.log(router);
   }, []);
 
   /* useEffect(() => {
@@ -83,16 +89,12 @@ export const AuthProvider = (props: any) => {
     }
   }, [pageProps?.validUser]); */
 
-  const value =
-    pageProps?.validUser !== undefined && !pageProps?.validUser
-      ? { status: AuthenticationStatus.NOT_AUTHENTICATED }
-      : { user: state?.user, status: state.status };
-
   return (
     <AuthenticationContext.Provider
       {...props}
       value={{
-        ...value,
+        user: state?.user,
+        status: state.status,
         /* user: { name: "Normann, Ola", mail: "123" },
         status: "IS_AUTHENTICATED", */
         login,
