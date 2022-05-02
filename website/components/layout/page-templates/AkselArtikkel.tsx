@@ -5,8 +5,8 @@ import {
   AuthenticationStatus,
   getTemaSlug,
 } from "@/utils";
+import { Locked } from "@navikt/ds-icons";
 import {
-  BodyLong,
   BodyShort,
   Button,
   Detail,
@@ -37,12 +37,14 @@ const getGradient = (s: string) => {
 
 const LoginSection = ({ onClick }: { onClick: () => void }) => {
   return (
-    <div className="aksel-artikkel__blocks mt-12 min-h-[500px] px-0 sm:px-8 lg:px-0">
-      <BodyLong spacing>
-        Dette innholdet er bare tilgjengelig for NAV-ansatte. Logg inn for å se
-        innholdet
-      </BodyLong>
-      <Button onClick={onClick}>Logg inn</Button>
+    <div className="aksel-artikkel__blocks mt-12 min-h-[500px] px-0 sm:p-8">
+      <div className=" relative -mb-8 flex min-h-16 w-16  items-center justify-center rounded-full border-border-muted bg-gray-200">
+        <Locked aria-label="Innholdet er bak innlogging" className="h-8 w-8" />
+      </div>
+      <div className="flex w-full flex-col items-center justify-evenly gap-4 rounded-lg border border-border-muted bg-gray-50 bg-center p-8 pt-12">
+        <Label>Dette innholdet er bare tilgjengelig for NAV-ansatte.</Label>
+        <Button onClick={onClick}>Logg inn</Button>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { isValidatedApi } from "../../lib/auth/auth";
+import { isValidatedApi } from "@/lib";
 
 export default async (
   req: NextApiRequest,
