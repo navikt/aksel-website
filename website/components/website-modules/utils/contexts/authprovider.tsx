@@ -80,24 +80,12 @@ export const AuthProvider = (props: any) => {
     fetchIsAuthenticated();
   }, []);
 
-  const update = useCallback(() => {
-    console.log("updated");
-  }, []);
-
   useEffect(() => {
     if (pageProps?.validUser === undefined) return;
-    if (
-      pageProps?.validUser &&
-      state.status !== AuthenticationStatus.IS_AUTHENTICATED
-    ) {
-      update();
-    } else if (
-      !pageProps?.validUser &&
-      state.status === AuthenticationStatus.IS_AUTHENTICATED
-    ) {
-      update();
+    if (!pageProps?.validUser) {
+      setState({ status: AuthenticationStatus.NOT_AUTHENTICATED });
     }
-  }, [pageProps?.validUser, state]);
+  }, [pageProps?.validUser]);
 
   return (
     <AuthenticationContext.Provider
