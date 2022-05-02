@@ -1,21 +1,15 @@
-import { Heading } from "@navikt/ds-react";
-import Head from "next/head";
-import React from "react";
 import {
   ArtikkelCard,
   getTemaSlug,
   PreviewBanner,
   TemaBreadcrumbs,
-} from "../../components";
-import Footer from "../../components/layout/footer/Footer";
-import AkselHeader from "../../components/layout/header/AkselHeader";
-import { SanityBlockContent } from "../../components/SanityBlockContent";
-import {
-  AkselArtikkel,
-  AkselTema,
-  akselTemaDocs,
-  getAkselTema,
-} from "../../lib";
+} from "@/components";
+import { AkselHeader, Footer } from "@/layout";
+import { AkselArtikkel, AkselTema, akselTemaDocs, getAkselTema } from "@/lib";
+import { SanityBlockContent } from "@/sanity-block";
+import { Heading } from "@navikt/ds-react";
+import Head from "next/head";
+import React from "react";
 import { getClient } from "../../lib/sanity/sanity.server";
 
 export interface AkselTemaPage extends AkselTema {
