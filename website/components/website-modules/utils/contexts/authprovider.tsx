@@ -1,6 +1,19 @@
 import { createContext, useEffect, useState } from "react";
 
-export const AuthenticationContext = createContext({});
+type AuthContextProps = {
+  status:
+    | "NO_FETCHED"
+    | "IS_NOT_AUTHENTICATED"
+    | "IS_AUTHENTICATED"
+    | "FAILURE";
+  login: () => void;
+  logout: () => void;
+  user?: { name: string; mail: string };
+};
+
+export const AuthenticationContext = createContext<AuthContextProps | null>(
+  null
+);
 
 export const AuthenticationStatus = {
   NOT_FETCHED: "NO_FETCHED",
@@ -16,13 +29,14 @@ export const AuthProvider = (props: any) => {
   }>({ status: AuthenticationStatus.NOT_FETCHED });
 
   const login = () => {
-    window.location.href = `https://aksel.nav.no/oauth2/login?redirect=${window.location.pathname}`;
+    window.location.href = `${window.location.origin}/oauth2/login?redirect=${window.location.pathname}${window.location.search}`;
   };
 
   const logout = () => {
-    window.location.href = `https://aksel.nav.no/oauth2/logout/frontchannel`;
+    window.location.href = `${window.location.origin}/oauth2/logout/frontchannel`;
   };
 
+  console.log(window.location);
   const fetchIsAuthenticated = () => {
     fetch(`/api/auth`)
       .then(async (response) => {

@@ -15,7 +15,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { ArtikkelBreadcrumbs, Avatar, Feedback, slugger } from "../..";
 import { AkselArtikkel, AkselBlogg, useSanityBannerImage } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
-import { getTemaSlug, PagePropsContext } from "../../website-modules/utils";
+import {
+  AuthenticationContext,
+  AuthenticationStatus,
+  getTemaSlug,
+  PagePropsContext,
+} from "../../website-modules/utils";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
 
@@ -31,16 +36,14 @@ const getGradient = (s: string) => {
   return `linear-gradient(-45deg, hsl(${h2}, 70%, 70%) 0%, hsl(${h}, 80%, 80%) 100%)`;
 };
 
-const LoginSection = ({ slug }: { slug: string }) => {
+const LoginSection = ({ onClick }: { onClick: () => void }) => {
   return (
     <div className="aksel-artikkel__blocks mt-12 min-h-[500px] px-0 sm:px-8 lg:px-0">
       <BodyLong spacing>
         Dette innholdet er bare tilgjengelig for NAV-ansatte. g inn for å se
         innholdet
       </BodyLong>
-      <Button as="a" href={`/oauth2/login?redirect=/${slug}`}>
-        Logg inn
-      </Button>
+      <Button onClick={onClick}>Logg inn</Button>
     </div>
   );
 };
@@ -52,7 +55,8 @@ const AkselArtikkelTemplate = ({
   data: AkselArtikkel | AkselBlogg;
   title: string;
 }): JSX.Element => {
-  const { pageProps } = useContext(PagePropsContext);
+  const authContext = useContext(AuthenticationContext);
+
   const [ttr, setTtr] = useState<number | null>(null);
   useClientLayoutEffect(() => {
     slugger.reset();
@@ -178,8 +182,9 @@ const AkselArtikkelTemplate = ({
                   )}
                 </div>
               </div>
-              {data.innhold.length === 0 && !pageProps.validated && (
-                <LoginSection slug={data.slug as unknown as string} />
+              {authContext?.status !==
+                AuthenticationStatus.IS_AUTHENTICATED && (
+                <LoginSection onClick={() => authContext.login()} />
               )}
               <SanityBlockContent
                 className="aksel-artikkel__blocks mt-12 min-h-[500px] px-0 sm:px-8 lg:px-0"

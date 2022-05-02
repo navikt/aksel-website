@@ -1,9 +1,9 @@
 import NextLink from "next/link";
-import React, { useContext } from "react";
+import React /* , { useContext } */ from "react";
 import { logNav, Search } from "../..";
 import cl from "classnames";
 import AkselLogo from "../../assets/AkselLogo";
-import { AuthenticationContext } from "../../website-modules/utils";
+/* import { AuthenticationContext } from "../../website-modules/utils"; */
 
 const AkselHeader = ({
   className,
@@ -12,8 +12,8 @@ const AkselHeader = ({
   className?: string;
   frontPage?: boolean;
 }): JSX.Element => {
-  const context = useContext(AuthenticationContext);
-  console.log(context);
+  /* const context = useContext(AuthenticationContext);
+  console.log(context); */
 
   return (
     <header className={cl("flex justify-center", className)}>
