@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Error from "next/error";
-import { AmplitudeEvents, logAmplitudeEvent } from "../components";
+import { AmplitudeEvents, logAmplitudeEvent } from "@/components";
 
 function Page() {
   useEffect(() => {

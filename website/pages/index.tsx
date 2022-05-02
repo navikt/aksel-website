@@ -1,12 +1,5 @@
-import { Office1, Star, System } from "@navikt/ds-icons";
-import { BodyLong, Heading, Label } from "@navikt/ds-react";
-import Head from "next/head";
-import NextLink from "next/link";
-import React from "react";
-import { ArtikkelCard, logNav, PreviewBanner, TemaCard } from "../components";
-import Footer from "../components/layout/footer/Footer";
-import AkselHeader from "../components/layout/header/AkselHeader";
-import { SanityBlockContent } from "../components/SanityBlockContent";
+import { ArtikkelCard, logNav, PreviewBanner, TemaCard } from "@/components";
+import { AkselHeader, Footer } from "@/layout";
 import {
   AkselBlogg,
   akselBloggPosts,
@@ -14,13 +7,19 @@ import {
   AkselTema,
   akselTema,
   Riktekst,
-} from "../lib";
+} from "@/lib";
+import { SanityBlockContent } from "@/sanity-block";
+import { Office1, Star, System } from "@navikt/ds-icons";
+import { BodyLong, Heading, Label } from "@navikt/ds-react";
+import Head from "next/head";
+import NextLink from "next/link";
+import React from "react";
 import { getClient } from "../lib/sanity/sanity.server";
 
 const RedaksjonsKort = () => (
   <div className="aksel-layout-x flex w-full justify-center">
     <div className="flex w-full max-w-2xl flex-col items-center justify-between gap-4 rounded-2xl bg-gray-800 py-6 px-7 text-text-inverted sm:py-12 sm:pl-14 md:flex-row md:gap-0 md:pl-7">
-      <div className="">
+      <div>
         <Heading size="large" level="2" spacing>
           Redaksjonen trenger deg!
         </Heading>

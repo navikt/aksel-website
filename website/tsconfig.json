@@ -22,7 +22,8 @@
       "@/lib": ["lib/index.ts"],
       "@/pages/*": ["pages/*"],
       "@/sanity-block": ["components/SanityBlockContent.tsx"],
-      "@/utils": ["components/website-modules/utils/index.ts"]
+      "@/utils": ["components/website-modules/utils/index.ts"],
+      "@/layout": ["components/layout/index.ts"]
     }
   },
   "ts-node": {

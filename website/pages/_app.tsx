@@ -6,7 +6,7 @@ import {
   logPageView,
   PagePropsContext,
   useScrollToHashOnPageLoad,
-} from "../components";
+} from "@/components";
 import "../styles/index.css";
 
 function App({
