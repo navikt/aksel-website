@@ -4,42 +4,48 @@ export const AuthenticationContext = createContext({});
 
 export const AuthenticationStatus = {
   NOT_FETCHED: "NO_FETCHED",
-  IS_FETCHING: "IS_FETCHING",
   NOT_AUTHENTICATED: "IS_NOT_AUTHENTICATED",
   IS_AUTHENTICATED: "IS_AUTHENTICATED",
   FAILURE: "FAILURE",
 };
 
 export const AuthProvider = (props: any) => {
-  const [authStatus, setAuthStatus] = useState(
-    AuthenticationStatus.NOT_FETCHED
-  );
+  const [state, setState] = useState<{
+    status: string;
+    user?: { name: string; mail: string };
+  }>({ status: AuthenticationStatus.NOT_FETCHED });
 
   const login = () => {
-    return null;
+    window.location.href = `https://aksel.nav.no/oauth2/login?redirect=${window.location.pathname}`;
   };
 
   const logout = () => {
-    return null;
+    window.location.href = `https://aksel.nav.no/oauth2/logout/frontchannel`;
   };
 
   const fetchIsAuthenticated = () => {
-    setAuthStatus(AuthenticationStatus.IS_FETCHING);
-
     fetch(`/api/auth`)
       .then(async (response) => {
         const json = await response.json();
-        console.log(json);
         if (json?.status === 200) {
-          setAuthStatus(AuthenticationStatus.IS_AUTHENTICATED);
+          setState({
+            status: AuthenticationStatus.IS_AUTHENTICATED,
+            user: { name: json?.name, mail: json?.mail },
+          });
         } else if (json?.status === 401) {
-          setAuthStatus(AuthenticationStatus.NOT_AUTHENTICATED);
+          setState({
+            status: AuthenticationStatus.NOT_AUTHENTICATED,
+          });
         } else {
-          setAuthStatus(AuthenticationStatus.FAILURE);
+          setState({
+            status: AuthenticationStatus.FAILURE,
+          });
         }
       })
       .catch(() => {
-        setAuthStatus(AuthenticationStatus.FAILURE);
+        setState({
+          status: AuthenticationStatus.FAILURE,
+        });
       });
   };
 
@@ -50,7 +56,7 @@ export const AuthProvider = (props: any) => {
   return (
     <AuthenticationContext.Provider
       {...props}
-      value={{ user: {}, status: authStatus, login, logout }}
+      value={{ user: state?.user, status: state.status, login, logout }}
     />
   );
 };

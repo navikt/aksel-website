@@ -38,9 +38,9 @@ export const isValidated = async (context: GetServerSidePropsContext) => {
 };
 
 export const isValidatedApi = async (req: NextApiRequest) => {
-  /* if (isDevelopment()) {
+  if (isDevelopment()) {
     return null;
-  } */
+  }
 
   if (req == null) {
     throw new Error("Context is missing request. This should not happen");
