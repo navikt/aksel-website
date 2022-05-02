@@ -70,10 +70,7 @@ export const AuthProvider = (props: any) => {
     <AuthenticationContext.Provider
       {...props}
       value={{
-        user: state?.user ?? {
-          name: "Johansen, Ken Aleksander",
-          mail: "test@nav.no",
-        },
+        user: state?.user,
         status: state.status,
         login,
         logout,
