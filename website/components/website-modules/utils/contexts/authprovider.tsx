@@ -91,7 +91,10 @@ export const AuthProvider = (props: any) => {
       state.status !== AuthenticationStatus.IS_AUTHENTICATED
     ) {
       update();
-    } else if (!pageProps?.validUser && AuthenticationStatus.IS_AUTHENTICATED) {
+    } else if (
+      !pageProps?.validUser &&
+      state.status === AuthenticationStatus.IS_AUTHENTICATED
+    ) {
       update();
     }
   }, [pageProps?.validUser, state]);
