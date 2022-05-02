@@ -36,7 +36,6 @@ export const AuthProvider = (props: any) => {
     window.location.href = `${window.location.origin}/oauth2/logout/frontchannel`;
   };
 
-  console.log(window.location);
   const fetchIsAuthenticated = () => {
     fetch(`/api/auth`)
       .then(async (response) => {
@@ -70,7 +69,15 @@ export const AuthProvider = (props: any) => {
   return (
     <AuthenticationContext.Provider
       {...props}
-      value={{ user: state?.user, status: state.status, login, logout }}
+      value={{
+        user: state?.user ?? {
+          name: "Johansen, Ken Aleksander",
+          mail: "test@nav.no",
+        },
+        status: state.status,
+        login,
+        logout,
+      }}
     />
   );
 };

@@ -19,7 +19,6 @@ import {
   AuthenticationContext,
   AuthenticationStatus,
   getTemaSlug,
-  PagePropsContext,
 } from "../../website-modules/utils";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
