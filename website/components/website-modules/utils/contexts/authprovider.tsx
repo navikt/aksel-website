@@ -33,7 +33,7 @@ export const AuthProvider = (props: any) => {
   };
 
   const logout = () => {
-    window.location.href = `${window.location.origin}/oauth2/logout/frontchannel`;
+    window.location.href = `${window.location.origin}/oauth2/logout`;
   };
 
   const fetchIsAuthenticated = () => {
@@ -70,8 +70,10 @@ export const AuthProvider = (props: any) => {
     <AuthenticationContext.Provider
       {...props}
       value={{
-        user: state?.user,
-        status: state.status,
+        /* user: state?.user,
+        status: state.status, */
+        user: { name: "ken", mail: "123" },
+        status: "IS_AUTHENTICATED",
         login,
         logout,
       }}
