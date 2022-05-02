@@ -16,18 +16,17 @@ export const AuthProvider = (props: any) => {
   }>({ status: AuthenticationStatus.NOT_FETCHED });
 
   const login = () => {
-    return null;
+    window.location.href = `https://aksel.nav.no/oauth2/login?redirect=${window.location.pathname}`;
   };
 
   const logout = () => {
-    return null;
+    window.location.href = `https://aksel.nav.no/oauth2/logout/frontchannel`;
   };
 
   const fetchIsAuthenticated = () => {
     fetch(`/api/auth`)
       .then(async (response) => {
         const json = await response.json();
-        console.log(json);
         if (json?.status === 200) {
           setState({
             status: AuthenticationStatus.IS_AUTHENTICATED,
