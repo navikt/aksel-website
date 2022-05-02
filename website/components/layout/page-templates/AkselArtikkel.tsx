@@ -39,7 +39,7 @@ const LoginSection = ({ onClick }: { onClick: () => void }) => {
   return (
     <div className="aksel-artikkel__blocks mt-12 min-h-[500px] px-0 sm:px-8 lg:px-0">
       <BodyLong spacing>
-        Dette innholdet er bare tilgjengelig for NAV-ansatte. g inn for å se
+        Dette innholdet er bare tilgjengelig for NAV-ansatte. Logg inn for å se
         innholdet
       </BodyLong>
       <Button onClick={onClick}>Logg inn</Button>
