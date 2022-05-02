@@ -1,15 +1,13 @@
-import React from "react";
-import { LayoutPicker, PreviewBanner } from "../../../components";
-import Footer from "../../../components/layout/footer/Footer";
-import DesignsystemHeader from "../../../components/layout/header/DesignsystemHeader";
-import DesignsystemSidebar from "../../../components/layout/sidebar/DesignsystemSidebar";
+import { LayoutPicker, PreviewBanner } from "@/components";
+import { DsHeader, DsSidebar, Footer } from "@/layout";
 import {
   DsNavigation,
   dsSlugQuery,
   getDsPaths,
   KomponentArtikkel,
   validateDsPath,
-} from "../../../lib";
+} from "@/lib";
+import React from "react";
 import { getClient } from "../../../lib/sanity/sanity.server";
 
 const Page = (props: {
@@ -29,10 +27,10 @@ const Page = (props: {
 Page.getLayout = (page) => {
   return (
     <>
-      <DesignsystemHeader />
+      <DsHeader />
       <div className="flex w-full justify-center bg-canvas-background-light">
         <div className="flex w-full max-w-aksel-max-w">
-          <DesignsystemSidebar />
+          <DsSidebar />
           <div className="relative w-full">
             <main
               tabIndex={-1}

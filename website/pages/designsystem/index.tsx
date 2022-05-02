@@ -1,21 +1,20 @@
-import { BodyLong, Heading } from "@navikt/ds-react";
-import Head from "next/head";
-import React from "react";
 import {
   Card,
   DsFrontpageFooterIllustration,
   DsFrontpageIllustration,
   PreviewBanner,
-} from "../../components";
-import Footer from "../../components/layout/footer/Footer";
-import DesignsystemHeader from "../../components/layout/header/DesignsystemHeader";
-import { SanityBlockContent } from "../../components/SanityBlockContent";
+} from "@/components";
+import { DsHeader, Footer } from "@/layout";
 import {
   DsFrontpage,
   DsFrontPageCardT,
   dsFrontpageQuery,
   DsNavigation,
-} from "../../lib";
+} from "@/lib";
+import { SanityBlockContent } from "@/sanity-block";
+import { BodyLong, Heading } from "@navikt/ds-react";
+import Head from "next/head";
+import React from "react";
 import { getClient } from "../../lib/sanity/sanity.server";
 
 const Page = (props: {
@@ -33,7 +32,7 @@ const Page = (props: {
           content="Desgnsystemet til NAV gjør det enkelt å lage produkter."
         />
       </Head>
-      <DesignsystemHeader />
+      <DsHeader />
       {props.preview && <PreviewBanner />}
 
       <main
