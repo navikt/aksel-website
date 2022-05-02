@@ -50,11 +50,9 @@ function App({
           type="image/svg+xml"
         />
       </Head>
-      <AuthProvider>
-        <PagePropsContext.Provider value={{ pageProps }}>
-          {getLayout(<Component {...pageProps} />)}
-        </PagePropsContext.Provider>
-      </AuthProvider>
+      <PagePropsContext.Provider value={{ pageProps }}>
+        <AuthProvider>{getLayout(<Component {...pageProps} />)}</AuthProvider>
+      </PagePropsContext.Provider>
     </>
   );
 }

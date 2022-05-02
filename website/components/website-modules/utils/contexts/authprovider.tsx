@@ -1,5 +1,12 @@
-import { createContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { PagePropsContext } from ".";
 
 type AuthContextProps = {
   status:
@@ -25,6 +32,8 @@ export const AuthenticationStatus = {
 
 export const AuthProvider = (props: any) => {
   const router = useRouter();
+
+  const { pageProps } = useContext(PagePropsContext);
 
   const [state, setState] = useState<{
     status: string;
@@ -70,6 +79,22 @@ export const AuthProvider = (props: any) => {
   useEffect(() => {
     fetchIsAuthenticated();
   }, []);
+
+  const update = useCallback(() => {
+    console.log("updated");
+  }, []);
+
+  useEffect(() => {
+    if (pageProps?.validUser === undefined) return;
+    if (
+      pageProps?.validUser &&
+      state.status !== AuthenticationStatus.IS_AUTHENTICATED
+    ) {
+      update();
+    } else if (!pageProps?.validUser && AuthenticationStatus.IS_AUTHENTICATED) {
+      update();
+    }
+  }, [pageProps?.validUser, state]);
 
   return (
     <AuthenticationContext.Provider

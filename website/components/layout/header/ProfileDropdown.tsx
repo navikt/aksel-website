@@ -1,6 +1,6 @@
 import { Close, People } from "@navikt/ds-icons";
-import { Heading, BodyShort } from "@navikt/ds-react";
-import { useState, useContext } from "react";
+import { BodyShort, Heading } from "@navikt/ds-react";
+import { useContext, useState } from "react";
 import {
   AuthenticationContext,
   AuthenticationStatus,
