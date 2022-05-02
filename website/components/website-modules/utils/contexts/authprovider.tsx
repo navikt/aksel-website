@@ -75,9 +75,11 @@ export const AuthProvider = (props: any) => {
   }, []);
 
   useEffect(() => {
+    console.log({ state: pageProps });
     if (pageProps?.validUser === undefined) return;
     if (!pageProps?.validUser) {
       setState({ status: AuthenticationStatus.NOT_AUTHENTICATED });
+      console.log("Should run if validuser is false");
     }
   }, [pageProps?.validUser]);
 

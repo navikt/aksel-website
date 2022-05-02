@@ -47,7 +47,7 @@
     "js-file-download": "^0.4.12",
     "jszip": "^3.7.1",
     "lodash": "^4.17.21",
-    "moment": "^2.29.1",
+    "moment": "^2.29.3",
     "next": "^12.1.0",
     "next-sanity": "^0.5.1",
     "next-sanity-image": "^3.2.1",
