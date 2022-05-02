@@ -23,6 +23,7 @@ interface StaticProps {
     page: AkselBlogg;
     slug: string;
     preview: boolean;
+    validUser: boolean;
   };
   notFound: boolean;
 }
@@ -50,6 +51,7 @@ export const getServerSideProps: GetServerSideProps = async (
       page: { ...doc, ...editors },
       slug: context.params.slug as string,
       preview: context.preview ?? null,
+      validUser: isValidUser,
     },
     notFound: !doc,
   };
