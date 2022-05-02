@@ -185,10 +185,12 @@ const AkselArtikkelTemplate = ({
                 AuthenticationStatus.IS_AUTHENTICATED && (
                 <LoginSection onClick={() => authContext.login()} />
               )}
-              <SanityBlockContent
-                className="aksel-artikkel__blocks mt-12 min-h-[500px] px-0 sm:px-8 lg:px-0"
-                blocks={data.innhold}
-              />
+              {data.innhold.length > 0 && (
+                <SanityBlockContent
+                  className="aksel-artikkel__blocks mt-12 min-h-[500px] px-0 sm:px-8 lg:px-0"
+                  blocks={data.innhold}
+                />
+              )}
               <div className="flex justify-center">
                 <div className="w-full max-w-text border-t border-t-gray-900/20 pt-6">
                   <BodyShort
