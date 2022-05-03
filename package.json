@@ -24,6 +24,7 @@
     "sanity:unused": "yarn workspace website check:examples",
     "sanity:colors": "yarn workspace website update:colors",
     "sanity:props": "yarn workspace website update:props",
+    "sanity:tokens": "yarn workspace website update:tokens",
     "lint": "yarn workspace website lint"
   },
   "workspaces": [

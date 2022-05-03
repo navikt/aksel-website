@@ -19,6 +19,7 @@
     "update:sandboxes": "npx ts-node --project tsconfig.tsnode.json ./lib/update-documents/update-code-sandboxes",
     "update:colors": "npx ts-node --project tsconfig.tsnode.json ./lib/update-documents/update-color-examples",
     "update:props": "npx ts-node --project tsconfig.tsnode.json ./lib/update-documents/update-props",
+    "update:tokens": "npx ts-node --project tsconfig.tsnode.json ./lib/update-documents/update-color-tokens",
     "generate:testurls": "npx ts-node --project tsconfig.tsnode.json ./lib/testing/generateTestUrls",
     "analyze": "cross-env ANALYZE=true next build"
   },
