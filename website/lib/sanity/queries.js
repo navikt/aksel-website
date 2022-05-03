@@ -469,10 +469,6 @@ export const akselBloggBySlug = `*[slug.current == $slug] | order(_updatedAt des
 {
   ...,
   "slug": slug.current,
-  innhold[]{
-    ...,
-    ${deRefs}
-  },
   "innhold": select(
     $valid == "true" => innhold[]{
       ...,

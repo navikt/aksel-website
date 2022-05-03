@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
-import { createContext, useContext, useEffect, useState } from "react";
-import { PagePropsContext } from ".";
+import { createContext, useEffect, useState } from "react";
 
 type AuthContextProps = {
   status:
@@ -26,8 +25,6 @@ export const AuthenticationStatus = {
 
 export const AuthProvider = (props: any) => {
   const router = useRouter();
-
-  const { pageProps } = useContext(PagePropsContext);
 
   const [state, setState] = useState<{
     status: string;
