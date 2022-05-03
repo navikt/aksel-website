@@ -115,11 +115,11 @@ export const dsPanel = async (roles) => {
                   .items([
                     S.listItem()
                       .title("Eksempler")
-                      .icon(() => <span>{`<Sa`}</span>)
+                      .icon(() => <span>{`SA`}</span>)
                       .child(S.documentTypeList("ds_code_example")),
                     S.listItem()
                       .title("Sandboxes")
-                      .icon(() => <span>{`<Co />`}</span>)
+                      .icon(() => <span>{`EXA`}</span>)
                       .child(S.documentTypeList("ds_code_sandbox")),
                     S.listItem()
                       .title("Fargekategorier")
