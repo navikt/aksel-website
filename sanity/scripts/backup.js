@@ -24,7 +24,7 @@ const main = async () => {
     dataset: "production",
 
     // Path to write tar.gz-archive file to, or `-` for stdout
-    outputPath: `backup-${new Date.now()}.tar.gz`,
+    outputPath: `backup-${new Date().now()}.tar.gz`,
 
     // Whether or not to export assets. Note that this operation is currently slightly lossy;
     // metadata stored on the asset document itself (original filename, for instance) might be lost
