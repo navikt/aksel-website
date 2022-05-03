@@ -19,9 +19,17 @@ const root = parsed.stylesheet.rules.find((r) =>
   r.selectors?.includes(":root")
 );
 
+const getGlobalToken = (value: string): string | null => {
+  const parsedValue = value.replace("var(", "").replace(")", "");
+  return (
+    root.declarations.find((x) => x.property === parsedValue).value ?? null
+  );
+};
+
 const tokens: TokenEntryT[] = root.declarations.map((d) => ({
-  title: d.property.replace("navds-", ""),
+  title: d.property.replace("--navds-", ""),
   color: d.value,
+  raw: d.value.startsWith("var(") ? getGlobalToken(d.value) : null,
 }));
 
 const updateTokens = async () => {
