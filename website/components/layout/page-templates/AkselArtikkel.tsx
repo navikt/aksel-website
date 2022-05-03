@@ -201,7 +201,7 @@ const AkselArtikkelTemplate = ({
                     Sist oppdatert{" "}
                     {moment(data._updatedAt).format("DD. MMM. YY")}
                   </BodyShort>
-                  {authors && authors.length > 0 && (
+                  {authors && authors.length > 1 && (
                     <>
                       <Heading level="2" size="xsmall" spacing>
                         Bidratt til artikkelen
