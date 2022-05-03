@@ -54,6 +54,7 @@ spec:
   gcp:
     buckets:
       - name: aksel-website-prod
+        retentionPeriodDays: 30
         lifecycleCondition:
           age: 7
           numNewerVersions: 3
