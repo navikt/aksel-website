@@ -41,6 +41,6 @@
     "https://aksel.nav.no/god-praksis",
     "https://old-design-nav.vercel.app"
   ],
-  "sitemap_urls": ["https://aksel.nav.no/sitemap.xml"],
+  "sitemap_urls": ["https://aksel.nav.no/api/sitemap"],
   "js_render": true
 }
