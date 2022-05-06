@@ -1719,10 +1719,10 @@
   resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.16.21.tgz#b793f900f3148a048180423052480c04be239e68"
   integrity sha512-kV9fLtnZoOIectWGZFg/aLzgp4gRi2sBjgq5VzoprNQlzSOnSxwR0QVLClpmjJe+oKZYUc5RndqDc0QAMawqkA==
 
-"@navikt/ds-css@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.17.0.tgz#49fbc36fd11d01bc5e9bd4a59e8387e903ac3002"
-  integrity sha512-dT28NGB0toDer5KsSnIib+ACP2n/AG11vFbwI9gTTuZNo6pP2VRP2WbiXUB7mUO7BJcleMXl7ALkILwv5q0aVw==
+"@navikt/ds-css@^0.17.1":
+  version "0.17.1"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.17.1.tgz#edaade6b3c027d233662f95709d8cd522d458433"
+  integrity sha512-GEr8jvkmKXja0cYIJYdyt7K/aE6FSlmb9VUNsl6BBlSNiSIsM7RO/lzRiF5QJOSHBJmdcY0cPqeaIUsAoyyUkg==
 
 "@navikt/ds-icons@^0.8", "@navikt/ds-icons@^0.8.11":
   version "0.8.11"
@@ -1779,10 +1779,10 @@
     react-popper "^2.2.5"
     uuid "^8.3.2"
 
-"@navikt/ds-tailwind@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-tailwind/-/ds-tailwind-0.2.0.tgz#7e20882c7ffc67ff496c7322b6991cca4455c66b"
-  integrity sha512-6h44OKDeT1hhm4SYCdI3thWZ+zFGhH9D43llYOGuZNtx36kHj+ytn9n/8N8LqjRNnISF1nVWltQnwPysmuilxg==
+"@navikt/ds-tailwind@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-tailwind/-/ds-tailwind-0.2.1.tgz#80a762f6627ca0c5c5fda555616f841cf3197f90"
+  integrity sha512-x8gZkv2GatazEaaBiSKIr7zkvzHCCtv/uOseTcG1v+YQSa8SPqt//XsfKOEKuOJt34c1WEaHy3Y8242TFe5U2w==
 
 "@navikt/ds-tokens@^0.9.0":
   version "0.9.0"
@@ -9700,7 +9700,7 @@ moment@2.29.1:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
 
-moment@^2.19.1, moment@^2.29.1:
+moment@^2.19.1, moment@^2.29.3:
   version "2.29.3"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.3.tgz#edd47411c322413999f7a5940d526de183c031f3"
   integrity sha512-c6YRvhEo//6T2Jz/vVtYzqBzwvPT95JBQ+smCytzf7c50oMZRsR/a4w88aD34I+/QVSfnoAnSBFPJHItlOMJVw==
