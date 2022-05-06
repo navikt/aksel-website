@@ -156,7 +156,9 @@ const AkselArtikkelTemplate = ({
                       <Avatar name={authors[0]} large />
                       <div className="flex flex-col">
                         <span>
-                          av{" "}
+                          <BodyShort size="small" as="span">
+                            av{" "}
+                          </BodyShort>
                           <Label size="small" as="span">
                             {authors[0]}
                           </Label>

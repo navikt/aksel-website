@@ -6,7 +6,7 @@ metadata:
   labels:
     team: designsystem
 spec:
-  image: {{ image }}
+  image: { { image } }
   port: 3000
   ingresses:
     - "https://design.nav.no"
@@ -15,13 +15,13 @@ spec:
     - "https://design.intern.nav.no"
   liveness:
     path: /api/isAlive
-    initialDelay: 10
+    initialDelay: 20
     timeout: 1
     periodSeconds: 5
     failureThreshold: 10
   readiness:
     path: /api/isAlive
-    initialDelay: 10
+    initialDelay: 20
     timeout: 1
   replicas:
     min: 1
@@ -43,6 +43,14 @@ spec:
         - host: cdn.sanity.io
       rules: []
       env:
+  azure:
+    application:
+      enabled: true
+      autoLogin: false
+      allowAllUsers: true
+      tenant: nav.no
+    sidecar:
+      enabled: true
   gcp:
     buckets:
       - name: aksel-website-prod

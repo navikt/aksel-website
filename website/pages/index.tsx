@@ -137,6 +137,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
               </nav>
             </div>
           )}
+
           <RedaksjonsKort />
         </main>
         <Footer />

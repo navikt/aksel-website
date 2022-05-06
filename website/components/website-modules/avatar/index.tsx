@@ -16,7 +16,10 @@ const getBgColor = (s: string) => {
   }
 
   const h = hash % 360;
-  return "hsl(" + h + ", 50%, 87%)";
+  return {
+    light: "hsl(" + h + ", 50%, 87%)",
+    dark: "hsl(" + h + ", 50%, 80%)",
+  };
 };
 
 const Avatar = ({
@@ -33,11 +36,19 @@ const Avatar = ({
   return (
     <div
       className={cl(className, "aspect-square rounded-full", {
-        "h-12 text-[1.25rem]": large,
+        "h-11 text-[1.25rem]": large,
         "h-6 text-[0.75rem] font-semibold": small,
         "h-8 text-[1.125rem]": !small && !large,
       })}
-      style={{ background: getBgColor(name) }}
+      style={{
+        background: getBgColor(name).light,
+        opacity: 0.8,
+        backgroundImage: `repeating-radial-gradient( circle at 0 0, transparent 0, ${
+          getBgColor(name).light
+        } 38px ), repeating-linear-gradient( ${getBgColor(name).dark}, ${
+          getBgColor(name).dark
+        } )`,
+      }}
     >
       <span className="flex h-full items-center justify-center">
         {nameToInitials(name)}
