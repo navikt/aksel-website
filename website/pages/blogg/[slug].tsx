@@ -34,7 +34,7 @@ export const getServerSideProps: GetServerSideProps = async (
 
   const page = await getClient(context.preview).fetch(akselBloggBySlug, {
     slug: `blogg/${context.params.slug}`,
-    valid: true /* `${isValidUser}` */,
+    valid: "true" /* `${isValidUser}` */,
   });
 
   const doc = page?.[0] ?? null;

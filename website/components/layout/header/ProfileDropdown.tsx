@@ -1,4 +1,4 @@
-import { Close, People } from "@navikt/ds-icons";
+/* import { Close, People } from "@navikt/ds-icons";
 import { BodyShort, Heading } from "@navikt/ds-react";
 import { useContext, useState } from "react";
 import {
@@ -6,8 +6,8 @@ import {
   AuthenticationStatus,
 } from "../../website-modules/utils";
 import Toggle from "./menu/Toggle";
-
-const ProfileDropdown = ({
+ */
+/* const ProfileDropdown = ({
   designsystem = false,
 }: {
   designsystem?: boolean;
@@ -62,6 +62,8 @@ const ProfileDropdown = ({
       }
     />
   );
-};
+}; */
+
+const ProfileDropdown = () => null;
 
 export default ProfileDropdown;
