@@ -12,7 +12,6 @@ import {
 } from "../../../../lib";
 import { withErrorBoundary } from "../../../ErrorBoundary";
 import { SanityBlockContent } from "../../../SanityBlockContent";
-import style from "./index.module.css";
 
 const GetIcon = (s: string) => {
   switch (s) {
@@ -143,12 +142,7 @@ const DoDont = ({ node }: { node: DoDontV2 }) => {
       </Heading>
       <SanityBlockContent blocks={node.forklaring} />
       {node?.blokker?.length > 0 && (
-        <div
-          className={cl(
-            style.doDont,
-            "last flex flex-wrap justify-between gap-8"
-          )}
-        >
+        <div className="last flex flex-wrap justify-between gap-8">
           {node.blokker.map((x) => (
             <Element key={x._key} block={x} />
           ))}

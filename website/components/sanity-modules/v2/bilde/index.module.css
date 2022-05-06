@@ -3,5 +3,9 @@
 }
 
 :global(.aksel-artikkel) .bilde {
-  @apply rounded-2xl;
+  @apply rounded-lg;
+}
+
+:global(.aksel-artikkel) .figure {
+  @apply mx-auto;
 }

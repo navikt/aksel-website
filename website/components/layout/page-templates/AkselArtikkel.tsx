@@ -119,8 +119,8 @@ const AkselArtikkelTemplate = ({
             />
           )}
           <div className="mx-auto flex w-full max-w-[calc(100%_-_2.5rem)] justify-center">
-            <div className="relative flex w-full max-w-[800px] flex-col rounded-2xl bg-gray-50 py-8 sm:px-0 md:mx-6">
-              <div className="px-4 md:mx-6 lg:mx-12 lg:px-9">
+            <div className="relative flex w-full max-w-[800px] flex-col items-center rounded-2xl bg-gray-50 py-8 sm:px-0 md:mx-6">
+              <div className="w-full max-w-text px-4 md:mx-6 lg:mx-12 lg:px-0">
                 <div className="index-ignore mb-4 flex flex-wrap items-center justify-center gap-1 lg:justify-start">
                   <BodyShort size="small" className="text-text-muted">
                     {ttr} min lesing {hasTema && "-"}
@@ -185,11 +185,11 @@ const AkselArtikkelTemplate = ({
               )} */}
               {data.innhold.length > 0 && (
                 <SanityBlockContent
-                  className="aksel-artikkel__blocks mt-12 min-h-[500px] px-0 sm:px-8 lg:px-0"
+                  className="aksel-artikkel__blocks mt-12 min-h-[500px] max-w-text px-0 sm:px-8 lg:px-0 "
                   blocks={data.innhold}
                 />
               )}
-              <div className="flex justify-center">
+              <div className="flex w-full justify-center">
                 <div className="w-full max-w-text border-t border-t-gray-900/20 pt-6">
                   <BodyShort
                     as="span"

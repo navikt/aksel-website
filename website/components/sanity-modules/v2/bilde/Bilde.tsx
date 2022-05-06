@@ -47,7 +47,7 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
   return (
     <>
       <figure
-        className={cl("m-0 mb-8 flex flex-col", {
+        className={cl("m-0 mb-8 flex flex-col", style.figure, {
           "sm:max-w-[384px]": node?.small,
         })}
       >
