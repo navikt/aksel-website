@@ -1,5 +1,5 @@
 import fs from "fs";
-import { getAllPages } from "..";
+import { getAllPages } from "../sanity/santiy";
 
 const generateUrls = async () => {
   const pages = await getAllPages();

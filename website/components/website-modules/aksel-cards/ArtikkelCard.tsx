@@ -1,10 +1,11 @@
+import { getTemaSlug } from "@/lib";
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
+import cl from "classnames";
 import moment from "moment";
 import NextLink from "next/link";
-import { getTemaSlug, logNav } from "../..";
+import { logNav } from "../..";
 import { AkselArtikkel, AkselBlogg } from "../../../lib";
 import Avatar from "../avatar";
-import cl from "classnames";
 
 const abbrName = (s: string) =>
   s

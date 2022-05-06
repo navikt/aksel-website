@@ -15,10 +15,6 @@ export const isProduction = (): boolean => {
   }
 };
 
-export function isDevelopment(): boolean {
-  return environment === "development";
-}
-
 export function isTest(): boolean {
   return test === "true";
 }
@@ -36,6 +32,3 @@ export function useScrollToHashOnPageLoad(): void {
     }
   }, []);
 }
-
-export const getTemaSlug = (s: string) =>
-  s ? s.toLowerCase().trim().replace(/\s+/g, "-") : null;

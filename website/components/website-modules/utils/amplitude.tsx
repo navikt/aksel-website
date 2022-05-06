@@ -1,5 +1,6 @@
 import amplitude from "amplitude-js";
-import { isDevelopment, isTest } from ".";
+import { isTest } from ".";
+import { isDevelopment } from "@/lib";
 
 export const initAmplitude = () => {
   if (amplitude) {

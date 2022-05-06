@@ -1,6 +1,7 @@
 import { BodyShort, Heading } from "@navikt/ds-react";
 import NextLink from "next/link";
-import { getTemaSlug, logNav } from "../..";
+import { logNav } from "../..";
+import { getTemaSlug } from "@/lib";
 import { AkselTemaT } from "../../../pages";
 
 export const TemaCard = ({ title, oppsummering, refCount }: AkselTemaT) => {

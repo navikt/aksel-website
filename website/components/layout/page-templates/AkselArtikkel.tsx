@@ -1,6 +1,10 @@
-import { AkselArtikkel, AkselBlogg, useSanityBannerImage } from "@/lib";
+import {
+  AkselArtikkel,
+  AkselBlogg,
+  getTemaSlug,
+  useSanityBannerImage,
+} from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
-import { getTemaSlug } from "@/utils";
 import {
   BodyShort,
   Detail,

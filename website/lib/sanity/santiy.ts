@@ -2,7 +2,9 @@ import { getClient, sanityClient } from "./sanity.server";
 import { useNextSanityImage } from "next-sanity-image";
 import { akselDocumentsByType, akselTemaNames, dsDocuments } from "./queries";
 import { DsArtikkel, DsComponentPage, KomponentArtikkel } from "..";
-import { getTemaSlug } from "../../components/website-modules/utils/util";
+
+export const getTemaSlug = (s: string) =>
+  s ? s.toLowerCase().trim().replace(/\s+/g, "-") : null;
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useSanityImage = (node) =>

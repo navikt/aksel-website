@@ -1,5 +1,5 @@
 import { GetServerSidePropsContext, NextApiRequest } from "next";
-import { isDevelopment } from "../../components";
+import { isDevelopment } from "..";
 import { tokenIsValid } from "./azure";
 
 export function getBearerToken(req) {

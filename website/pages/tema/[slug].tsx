@@ -1,11 +1,12 @@
-import {
-  ArtikkelCard,
-  getTemaSlug,
-  PreviewBanner,
-  TemaBreadcrumbs,
-} from "@/components";
+import { ArtikkelCard, PreviewBanner, TemaBreadcrumbs } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
-import { AkselArtikkel, AkselTema, akselTemaDocs, getAkselTema } from "@/lib";
+import {
+  AkselArtikkel,
+  AkselTema,
+  akselTemaDocs,
+  getAkselTema,
+  getTemaSlug,
+} from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
