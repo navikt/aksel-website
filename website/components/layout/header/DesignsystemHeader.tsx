@@ -6,7 +6,7 @@ import { logNav, Search, useDsNavigation } from "../..";
 import { DsNavigationHeadingT } from "../../../lib";
 import MobileNavigation from "./menu/MobileNav";
 import PortalNavigation from "./menu/PortalNav";
-import ProfileDropdown from "./ProfileDropdown";
+/* import ProfileDropdown from "./ProfileDropdown"; */
 
 const DesignsystemHeader = (): JSX.Element => {
   const [nav, activeHeading] = useDsNavigation();
@@ -50,7 +50,7 @@ const DesignsystemHeader = (): JSX.Element => {
         ))}
       </div>
       <div className="ml-auto flex">
-        <ProfileDropdown designsystem />
+        {/* <ProfileDropdown designsystem /> */}
         <Search />
       </div>
     </>
@@ -60,7 +60,7 @@ const DesignsystemHeader = (): JSX.Element => {
     <>
       <PortalNavigation title={"Designsystemet"} />
       <div className="ml-auto flex">
-        <ProfileDropdown designsystem />
+        {/* <ProfileDropdown designsystem /> */}
         <Search />
         <MobileNavigation />
       </div>

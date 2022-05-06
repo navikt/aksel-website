@@ -1,10 +1,8 @@
 import { AkselArtikkel, AkselBlogg, useSanityBannerImage } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
-import { AuthenticationContext, getTemaSlug, PagePropsContext } from "@/utils";
-import { Locked } from "@navikt/ds-icons";
+import { getTemaSlug } from "@/utils";
 import {
   BodyShort,
-  Button,
   Detail,
   Heading,
   Label,
@@ -14,7 +12,7 @@ import moment from "moment";
 import Head from "next/head";
 import Image from "next/image";
 import NextLink from "next/link";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ArtikkelBreadcrumbs, Avatar, Feedback, slugger } from "../..";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
@@ -31,7 +29,7 @@ const getGradient = (s: string) => {
   return `linear-gradient(-45deg, hsl(${h2}, 70%, 70%) 0%, hsl(${h}, 80%, 80%) 100%)`;
 };
 
-const LoginSection = ({ onClick }: { onClick: () => void }) => {
+/* const LoginSection = ({ onClick }: { onClick: () => void }) => {
   return (
     <div className="aksel-artikkel__blocks mt-12 min-h-[500px] px-0 sm:p-8">
       <div className=" relative -mb-8 flex min-h-16 w-16  items-center justify-center rounded-full border-border-muted bg-gray-200">
@@ -45,7 +43,7 @@ const LoginSection = ({ onClick }: { onClick: () => void }) => {
       </div>
     </div>
   );
-};
+}; */
 
 const AkselArtikkelTemplate = ({
   data,
@@ -54,8 +52,8 @@ const AkselArtikkelTemplate = ({
   data: AkselArtikkel | AkselBlogg;
   title: string;
 }): JSX.Element => {
-  const { pageProps } = useContext(PagePropsContext);
-  const authContext = useContext(AuthenticationContext);
+  /* const { pageProps } = useContext(PagePropsContext);
+  const authContext = useContext(AuthenticationContext); */
 
   const [ttr, setTtr] = useState<number | null>(null);
   useClientLayoutEffect(() => {
@@ -182,9 +180,9 @@ const AkselArtikkelTemplate = ({
                   )}
                 </div>
               </div>
-              {pageProps?.validUser !== undefined && !pageProps.validUser && (
+              {/* {pageProps?.validUser !== undefined && !pageProps.validUser && (
                 <LoginSection onClick={() => authContext.login()} />
-              )}
+              )} */}
               {data.innhold.length > 0 && (
                 <SanityBlockContent
                   className="aksel-artikkel__blocks mt-12 min-h-[500px] px-0 sm:px-8 lg:px-0"

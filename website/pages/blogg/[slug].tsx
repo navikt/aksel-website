@@ -1,10 +1,5 @@
 import { LayoutPicker, PreviewBanner } from "@/components";
-import {
-  AkselBlogg,
-  akselBloggBySlug,
-  akselEditorById,
-  isValidated,
-} from "@/lib";
+import { AkselBlogg, akselBloggBySlug, akselEditorById } from "@/lib";
 import { GetServerSideProps } from "next/types";
 import React from "react";
 import { getClient } from "../../lib/sanity/sanity.server";
@@ -27,7 +22,7 @@ interface StaticProps {
     page: AkselBlogg;
     slug: string;
     preview: boolean;
-    validUser: boolean;
+    validUser?: boolean;
   };
   notFound: boolean;
 }
@@ -35,11 +30,11 @@ interface StaticProps {
 export const getServerSideProps: GetServerSideProps = async (
   context
 ): Promise<StaticProps | { notFound: true }> => {
-  const isValidUser = await isValidated(context);
+  /* const isValidUser = await isValidated(context); */
 
   const page = await getClient(context.preview).fetch(akselBloggBySlug, {
     slug: `blogg/${context.params.slug}`,
-    valid: `${isValidUser}`,
+    valid: true /* `${isValidUser}` */,
   });
 
   const doc = page?.[0] ?? null;
@@ -55,7 +50,7 @@ export const getServerSideProps: GetServerSideProps = async (
       page: { ...doc, ...editors },
       slug: context.params.slug as string,
       preview: context.preview ?? null,
-      validUser: isValidUser,
+      /* validUser: isValidUser, */
     },
     notFound: !doc,
   };

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React, { useEffect } from "react";
 import {
-  AuthProvider,
+  /*   AuthProvider, */
   initAmplitude,
   logPageView,
   PagePropsContext,
@@ -51,7 +51,8 @@ function App({
         />
       </Head>
       <PagePropsContext.Provider value={{ pageProps }}>
-        <AuthProvider>{getLayout(<Component {...pageProps} />)}</AuthProvider>
+        {/* <AuthProvider></AuthProvider> */}
+        {getLayout(<Component {...pageProps} />)}
       </PagePropsContext.Provider>
     </>
   );
