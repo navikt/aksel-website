@@ -46,23 +46,27 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
               {x.title}
             </Heading>
           </NextLink>
-          <BodyShort size="small" className="mt-2 text-text-muted">
+          <BodyShort
+            size="small"
+            className={cl("mt-2 text-text-muted", {
+              "pb-7": x.tags !== "none" || x.ekstern_domene,
+            })}
+          >
             {x.description}
           </BodyShort>
 
-          {x.tags !== "none" ||
-            (x.ekstern_domene && (
-              <Detail className="mt-6 flex items-center gap-2 uppercase text-text-muted">
-                {x.ekstern_domene ? (
-                  <>
-                    {getTag(x)}
-                    <ExternalLink aria-hidden className="-mt-[3px]" />
-                  </>
-                ) : (
-                  x.tag
-                )}
-              </Detail>
-            ))}
+          {(x.tags !== "none" || x.ekstern_domene) && (
+            <Detail className="absolute bottom-6 mt-6 flex items-center gap-2 self-end uppercase text-text-muted">
+              {x.ekstern_domene ? (
+                <>
+                  {getTag(x)}
+                  <ExternalLink aria-hidden className="-mt-[3px]" />
+                </>
+              ) : (
+                x.tag
+              )}
+            </Detail>
+          )}
         </div>
       ))}
     </div>
