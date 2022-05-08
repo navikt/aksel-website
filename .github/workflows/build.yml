@@ -27,14 +27,7 @@ jobs:
           echo "SANITY_PREVIEW_TOKEN=${{ secrets.SANITY_PREVIEW_TOKEN }}" >> website/.env
           echo "SANITY_PRIVATE_NO_DRAFTS=${{ secrets.SANITY_PRIVATE_NO_DRAFTS }}" >> website/.env
 
-      - name: Node-modules cache
-        uses: actions/cache@v2
-        id: node-cache
-        with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install deps
-        if: steps.node-cache.outputs.cache-hit != 'true'
         run: yarn install
       - name: Run tests
         run: NEXT_PUBLIC_TEST=true yarn workspace website e2e:ci
