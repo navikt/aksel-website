@@ -1,11 +1,14 @@
-import { editorField, groups, toPlainText } from "@/lib";
+import {
+  defaultDocPreview,
+  editorField,
+  groups,
+  hidePageFeedback,
+  sanitySlug,
+  titleField,
+  toPlainText,
+} from "@/lib";
 import { FileContent, LightBulb, NewTab, Star } from "@navikt/ds-icons";
 import React from "react";
-import {
-  defaultPreview,
-  documentFeedbackMetadata,
-  documentInformation,
-} from "../../templates";
 
 const prefix = "designsystem/side/";
 
@@ -39,10 +42,11 @@ export default {
   name: "ds_artikkel",
   type: "document",
   groups,
-  ...defaultPreview(),
+  defaultDocPreview,
   fields: [
     editorField,
-    ...documentInformation(prefix).filter((x) => x?.name !== "ingress"),
+    titleField,
+    sanitySlug(prefix, 3),
     {
       type: "boolean",
       name: "artikkel_type",
@@ -121,7 +125,6 @@ export default {
         },
       ],
     },
-
-    documentFeedbackMetadata,
+    hidePageFeedback,
   ],
 };

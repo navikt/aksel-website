@@ -1,9 +1,10 @@
-import { editorField, groups } from "@/lib";
 import {
-  defaultPreview,
-  documentFeedbackMetadata,
-  documentInformation,
-} from "../../templates";
+  defaultDocPreview,
+  editorField,
+  groups,
+  sanitySlug,
+  titleField,
+} from "@/lib";
 
 const prefix = "designsystem/side/";
 
@@ -13,10 +14,11 @@ export default {
   __experimental_actions: [/*'create',*/ "update", "delete", "publish"],
   type: "document",
   groups,
-  ...defaultPreview(),
+  defaultDocPreview,
   fields: [
     editorField,
-    ...documentInformation(prefix),
+    titleField,
+    sanitySlug(prefix, 3),
     {
       name: "usage",
       type: "blockContent",
@@ -57,6 +59,5 @@ export default {
       type: "url",
       group: "lenker",
     },
-    documentFeedbackMetadata,
   ],
 };

@@ -1,4 +1,10 @@
-import { editorField, groups } from "@/lib";
+import {
+  defaultDocPreview,
+  editorField,
+  groups,
+  sanitySlug,
+  titleField,
+} from "@/lib";
 import {
   Download,
   FileContent,
@@ -11,11 +17,6 @@ import {
   SignLanguageTwoHands,
 } from "@navikt/ds-icons";
 import React from "react";
-import {
-  defaultPreview,
-  documentFeedbackMetadata,
-  documentInformation,
-} from "../../templates";
 
 const prefix = "designsystem/komponenter/";
 
@@ -24,10 +25,11 @@ export default {
   name: "komponent_artikkel",
   type: "document",
   groups,
-  ...defaultPreview(),
+  defaultDocPreview,
   fields: [
     editorField,
-    ...documentInformation(prefix).filter((x) => x?.name !== "ingress"),
+    titleField,
+    sanitySlug(prefix, 3),
     {
       name: "content_bruk",
       type: "array",
@@ -154,6 +156,5 @@ export default {
       type: "url",
       group: "lenker",
     },
-    documentFeedbackMetadata,
   ],
 };

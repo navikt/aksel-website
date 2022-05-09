@@ -1,5 +1,6 @@
 import {
   bannerField,
+  defaultDocPreview,
   editorField,
   groups,
   innholdField,
@@ -7,7 +8,6 @@ import {
   sanitySlug,
   titleField,
 } from "@/lib";
-import { defaultPreview, documentFeedbackMetadata } from "../../templates";
 
 const prefix = "artikkel/";
 
@@ -16,7 +16,7 @@ export default {
   name: "aksel_artikkel",
   type: "document",
   groups,
-  ...defaultPreview(),
+  defaultDocPreview,
   fields: [
     editorField,
     titleField,
@@ -32,6 +32,5 @@ export default {
     introField,
     innholdField,
     bannerField,
-    documentFeedbackMetadata,
   ],
 };

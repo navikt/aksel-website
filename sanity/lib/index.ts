@@ -1,4 +1,5 @@
 export * from "./fields";
+export * from "./preview";
 import { Settings } from "@navikt/ds-icons";
 import sanityClient from "part:@sanity/base/client";
 
