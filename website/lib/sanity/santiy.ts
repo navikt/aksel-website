@@ -49,7 +49,7 @@ export const getAllPages = async () => {
 };
 
 export const getAkselDocuments = async (
-  source: "aksel_artikkel" | "aksel_blogg" | "all"
+  source: "aksel_artikkel" | "aksel_blogg" | "aksel_prinsipp" | "all"
 ): Promise<string[]> => {
   if (!source) return [];
 
@@ -58,7 +58,7 @@ export const getAkselDocuments = async (
     {
       types:
         source === "all"
-          ? `["aksel_artikkel", "aksel_blogg"]`
+          ? `["aksel_artikkel", "aksel_blogg", "aksel_prinsipp"]`
           : `["${source}"]`,
     }
   );

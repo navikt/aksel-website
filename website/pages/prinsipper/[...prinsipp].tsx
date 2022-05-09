@@ -1,5 +1,10 @@
 import { LayoutPicker, PreviewBanner } from "@/components";
-import { akselEditorById, akselPrinsippBySlug, SanityT } from "@/lib";
+import {
+  akselEditorById,
+  akselPrinsippBySlug,
+  getAkselDocuments,
+  SanityT,
+} from "@/lib";
 import React from "react";
 import { getClient } from "../../lib/sanity/sanity.server";
 
@@ -18,16 +23,18 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
   );
 };
 
-export const getStaticPaths = async () => {
+export const getStaticPaths = async (): Promise<{
+  fallback: string;
+  paths: { params: { prinsipp: string[] } }[];
+}> => {
   return {
-    paths: [
-      { prinsipp: "brukeropplevelse", side: "test" },
-      { prinsipp: "brukeropplevelse2", side: "3" },
-    ].map((slug) => ({
-      params: {
-        prinsipp: [slug.prinsipp, slug.side],
-      },
-    })),
+    paths: await getAkselDocuments("aksel_prinsipp").then((paths) =>
+      paths.map((slug) => ({
+        params: {
+          prinsipp: slug.replace("prinsipper/", "").split("/"),
+        },
+      }))
+    ),
     fallback: "blocking",
   };
 };

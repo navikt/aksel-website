@@ -1,11 +1,11 @@
 import React from "react";
-import { LayoutPicker, PreviewBanner } from "../../components";
+import { LayoutPicker, PreviewBanner } from "@/components";
 import {
   AkselArtikkel,
   akselDocumentBySlug,
   akselEditorById,
   getAkselDocuments,
-} from "../../lib";
+} from "@/lib";
 import { getClient } from "../../lib/sanity/sanity.server";
 
 const Page = (props: {
