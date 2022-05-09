@@ -1,10 +1,10 @@
-import { groups } from "../templates";
+import { groups } from "@/lib";
 
 export default {
   title: "Aksel Tema",
   name: "aksel_tema",
   type: "document",
-  groups: [...groups],
+  groups,
   fields: [
     {
       title: "Navn",

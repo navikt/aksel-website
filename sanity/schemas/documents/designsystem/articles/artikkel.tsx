@@ -1,11 +1,10 @@
-import { editorField, toPlainText } from "@/lib";
+import { editorField, groups, toPlainText } from "@/lib";
 import { FileContent, LightBulb, NewTab, Star } from "@navikt/ds-icons";
 import React from "react";
 import {
   defaultPreview,
   documentFeedbackMetadata,
   documentInformation,
-  groups,
 } from "../../templates";
 
 const prefix = "designsystem/side/";
@@ -39,7 +38,7 @@ export default {
   title: "Artikkel",
   name: "ds_artikkel",
   type: "document",
-  groups: [...groups],
+  groups,
   ...defaultPreview(),
   fields: [
     editorField,

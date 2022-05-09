@@ -1,4 +1,4 @@
-import { editorField } from "@/lib";
+import { editorField, groups } from "@/lib";
 import {
   Download,
   FileContent,
@@ -15,7 +15,6 @@ import {
   defaultPreview,
   documentFeedbackMetadata,
   documentInformation,
-  groups,
 } from "../../templates";
 
 const prefix = "designsystem/komponenter/";
@@ -24,7 +23,7 @@ export default {
   title: "Komponentartikkel (ny)",
   name: "komponent_artikkel",
   type: "document",
-  groups: [...groups],
+  groups,
   ...defaultPreview(),
   fields: [
     editorField,

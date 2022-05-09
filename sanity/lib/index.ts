@@ -1,3 +1,5 @@
+export * from "./fields";
+import { Settings } from "@navikt/ds-icons";
 import sanityClient from "part:@sanity/base/client";
 
 const client = sanityClient.withConfig({ apiVersion: "2020-06-19" });
@@ -10,15 +12,6 @@ export function toPlainText(blocks = []) {
     })
     .join("\n");
 }
-
-export const editorField = {
-  title: "Redaktører",
-  description: "Legg til alle som har bidratt med denne siden!",
-  name: "contributors",
-  type: "array",
-  of: [{ type: "reference", to: [{ type: "editor" }] }],
-  group: "settings",
-};
 
 export const sanitySlug = (prefix: string, depth: number) => ({
   title: "url",
@@ -82,3 +75,32 @@ export const isEditorUnique = (slug, options) => {
   const query = `!defined(*[!(_id in [$draft, $published]) && _type == "editor" && user_id.current == $slug][0]._id)`;
   return client.fetch(query, params);
 };
+
+export const groups = [
+  {
+    name: "innhold",
+    title: "Innhold",
+    default: true,
+  },
+  {
+    name: "metadata",
+    title: "Metadata",
+  },
+  {
+    name: "settings",
+    title: "Innstillinger",
+    icon: Settings,
+  },
+  {
+    name: "lenker",
+    title: "Linking",
+  },
+  {
+    name: "beta",
+    title: "Beta",
+  },
+  {
+    name: "banner",
+    title: "Banner",
+  },
+];

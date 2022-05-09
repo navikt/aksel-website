@@ -1,9 +1,8 @@
-import { editorField } from "@/lib";
+import { editorField, groups } from "@/lib";
 import {
   defaultPreview,
   documentFeedbackMetadata,
   documentInformation,
-  groups,
 } from "../../templates";
 
 const prefix = "designsystem/side/";
@@ -13,7 +12,7 @@ export default {
   name: "ds_component_page",
   __experimental_actions: [/*'create',*/ "update", "delete", "publish"],
   type: "document",
-  groups: [...groups],
+  groups,
   ...defaultPreview(),
   fields: [
     editorField,
