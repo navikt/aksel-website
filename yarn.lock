@@ -1731,13 +1731,20 @@
   dependencies:
     uuid "^8.3.2"
 
-"@navikt/ds-react-internal@^0.13.2":
-  version "0.13.2"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react-internal/-/ds-react-internal-0.13.2.tgz#2aa2b9ffd5bbfe3b68d5dd047748b0a1a8f9aa5c"
-  integrity sha512-BdjEhtvS/BuomHd/Mh3h6jGPrVSPp4Jid+djSaS5nNGhhbpICZjTUqD+No2QH85kAXafsvV2q3Iv/IWbSXGkvQ==
+"@navikt/ds-icons@^0.8.12":
+  version "0.8.12"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.8.12.tgz#de50a9d1230214e47c970be8344cd1f3cca491e3"
+  integrity sha512-RcLrUOiJpdhiVKhpfV7NpciLU91CLCa5X/Vcze1o2q29iWrLU1tsp441IXLeHVc+4ESr65+KUb9WjAKuKXaCAw==
   dependencies:
-    "@navikt/ds-icons" "^0.8.11"
-    "@navikt/ds-react" "^0.18.2"
+    uuid "^8.3.2"
+
+"@navikt/ds-react-internal@^0.13.6":
+  version "0.13.6"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react-internal/-/ds-react-internal-0.13.6.tgz#211a5b4a80c0c8383ee366a57795a3818c0d6c3c"
+  integrity sha512-gJMrLACV2aI4NbZdc5MbbTA2rikQvMatG+IxdQK97zkk6LIhJgWDhxnVaBAJXLJpZi4Iqv2ARpX/6k6qq9oxZg==
+  dependencies:
+    "@navikt/ds-icons" "^0.8.12"
+    "@navikt/ds-react" "^0.18.6"
     "@popperjs/core" "^2.10.1"
     classnames "^2.3.1"
     copy-to-clipboard "^3.3.1"
@@ -1761,14 +1768,14 @@
     react-popper "^2.2.5"
     uuid "^8.3.2"
 
-"@navikt/ds-react@^0.18.2":
-  version "0.18.2"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.18.2.tgz#23e20b2b93df2fd2600a6565f019a0fc44ae22d2"
-  integrity sha512-31b8cf5NWTebgqXucjXa+/iAyqnlN4P99sW0QRA1JOXDCkrByeVDrZeSNwFNK4J/IXpYlq6pvWGwWDtFQFVWbQ==
+"@navikt/ds-react@^0.18.6":
+  version "0.18.6"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.18.6.tgz#8598a46afc6e80ce338c1453d43d112331230d38"
+  integrity sha512-VfPdiB9ozDAN8XPF/ZLOLIFa8CkfSvnveFycHaQb7dvCCgf5Mvqbdp7KYq43210HsHk0fhB7p+dJmKcVgPb6lw==
   dependencies:
     "@floating-ui/react-dom" "0.6.0"
     "@material-ui/core" "^4.12.3"
-    "@navikt/ds-icons" "^0.8.11"
+    "@navikt/ds-icons" "^0.8.12"
     "@popperjs/core" "^2.10.1"
     "@radix-ui/react-tabs" "0.1.5"
     "@radix-ui/react-toggle-group" "0.1.5"
