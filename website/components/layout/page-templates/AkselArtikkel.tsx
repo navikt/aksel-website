@@ -12,12 +12,11 @@ import {
   Label,
   useClientLayoutEffect,
 } from "@navikt/ds-react";
-import moment from "moment";
 import Head from "next/head";
 import Image from "next/image";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
-import { ArtikkelBreadcrumbs, Avatar, Feedback, slugger } from "../..";
+import { ArtikkelBreadcrumbs, Avatar, dateStr, Feedback, slugger } from "../..";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
 
@@ -172,7 +171,7 @@ const AkselArtikkelTemplate = ({
                           size="small"
                           className="index-lvl6 text-text-muted"
                         >
-                          {moment(data._createdAt).format("DD. MMM. YY")}
+                          {dateStr(data._createdAt)}
                         </Detail>
                       </div>
                     </>
@@ -181,7 +180,7 @@ const AkselArtikkelTemplate = ({
                       size="small"
                       className="index-lvl6 text-text-muted"
                     >
-                      {moment(data._createdAt).format("DD. MMM. YY")}
+                      {dateStr(data._createdAt)}
                     </BodyShort>
                   )}
                 </div>
@@ -202,8 +201,7 @@ const AkselArtikkelTemplate = ({
                     size="small"
                     className="flex pb-8 text-text-muted"
                   >
-                    Sist oppdatert{" "}
-                    {moment(data._updatedAt).format("DD. MMM. YY")}
+                    Sist oppdatert {dateStr(data._updatedAt)}
                   </BodyShort>
                   {authors && authors.length > 1 && (
                     <>

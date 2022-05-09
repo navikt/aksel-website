@@ -1,5 +1,5 @@
+import { dateStr } from "@/utils";
 import { BodyShort, Heading, Link, Select, Tag } from "@navikt/ds-react";
-import moment from "moment";
 import React, { useEffect, useState } from "react";
 import Semver from "semver";
 import { ChangelogListT, ChangelogT } from "../../../lib";
@@ -32,9 +32,7 @@ const Log = ({ log }: { log: ChangelogT }) => {
   return (
     <div className="my-2 mx-0 py-4">
       <BodyShort as="span" className="flex gap-2" size="small">
-        {log.change_date && (
-          <span>{`${moment(log.change_date).format("DD. MMM. YY")}`}</span>
-        )}
+        {log.change_date && <span>{`${dateStr(log.change_date)}`}</span>}
         {log?.pull_request && (
           <Link href={log.pull_request} className="text-text">
             {getPrText(log.pull_request)}

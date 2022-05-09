@@ -1,9 +1,8 @@
 import { getTemaSlug } from "@/lib";
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import cl from "classnames";
-import moment from "moment";
 import NextLink from "next/link";
-import { logNav } from "../..";
+import { dateStr, logNav } from "../..";
 import { AkselArtikkel, AkselBlogg } from "../../../lib";
 import Avatar from "../avatar";
 
@@ -98,7 +97,7 @@ export const ArtikkelCard = ({
                 size="small"
                 className="ml-2 hidden text-text-muted sm:inline-block"
               >
-                {moment(_createdAt).format("DD. MMM. YY")}
+                {dateStr(_createdAt)}
               </Detail>
             </BodyShort>
           </>
@@ -109,7 +108,7 @@ export const ArtikkelCard = ({
         size="small"
         className="mt-1 ml-1 inline-block text-text-muted sm:hidden"
       >
-        {moment(_createdAt).format("DD. MMM. YY")}
+        {dateStr(_createdAt)}
       </Detail>
     </div>
   );

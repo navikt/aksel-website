@@ -1,8 +1,8 @@
-import moment from "moment";
-import * as React from "react";
-import { BodyShort } from "@navikt/ds-react";
+import { dateStr } from "@/utils";
 import { Calender } from "@navikt/ds-icons";
+import { BodyShort } from "@navikt/ds-react";
 import cl from "classnames";
+import * as React from "react";
 
 const LastUpdated = ({
   date,
@@ -18,7 +18,7 @@ const LastUpdated = ({
       className={cl("flex items-center gap-1", { "text-text-muted": simple })}
     >
       {!simple && <Calender title="sist oppdatert" />}
-      {`Oppdatert ${moment(date).format("DD. MMM. YY")}`}
+      {`Oppdatert ${dateStr(date)}`}
     </BodyShort>
   );
 };
