@@ -1,3 +1,4 @@
+import { toPlainText } from "@/lib";
 import { FileContent, LightBulb, NewTab, Star } from "@navikt/ds-icons";
 import React from "react";
 import {
@@ -8,15 +9,6 @@ import {
 } from "../../templates";
 
 const prefix = "designsystem/side/";
-
-function toPlainText(blocks = []) {
-  return blocks
-    .filter((block) => !(block._type !== "block" || !block.children))
-    .map((block) => {
-      return block.children.map((child) => child.text).join("");
-    })
-    .join("\n");
-}
 
 const riktekst = {
   type: "object",

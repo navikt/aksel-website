@@ -1,3 +1,4 @@
+import { toPlainText } from "@/lib";
 import { FileContent, LightBulb, NewTab } from "@navikt/ds-icons";
 import React from "react";
 import SlugInput from "sanity-plugin-better-slug";
@@ -7,15 +8,6 @@ import {
   documentFeedbackMetadata,
   groups,
 } from "../../templates";
-
-function toPlainText(blocks = []) {
-  return blocks
-    .filter((block) => !(block._type !== "block" || !block.children))
-    .map((block) => {
-      return block.children.map((child) => child.text).join("");
-    })
-    .join("\n");
-}
 
 const prefix = "blogg/";
 

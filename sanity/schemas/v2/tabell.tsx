@@ -1,14 +1,5 @@
+import { toPlainText } from "@/lib";
 import tableSchema from "part:power-table/schema";
-import React from "react";
-
-function toPlainText(blocks = []) {
-  return blocks
-    .filter((block) => !(block._type !== "block" || !block.children))
-    .map((block) => {
-      return block.children.map((child) => child.text).join("");
-    })
-    .join("\n");
-}
 
 const Tabell = {
   type: "object",
