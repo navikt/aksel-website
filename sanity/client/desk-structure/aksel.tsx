@@ -38,6 +38,9 @@ export const akselInnhold = async () => {
             .title("Artikler")
             .child(createSuperPane("aksel_artikkel")),
           S.listItem().title("Blogg").child(S.documentTypeList("aksel_blogg")),
+          S.listItem()
+            .title("Prinsippsider")
+            .child(S.documentTypeList("aksel_prinsipp")),
           S.divider(),
           S.listItem()
             .title("Artikler etter tema")

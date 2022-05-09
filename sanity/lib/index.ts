@@ -14,7 +14,7 @@ export function toPlainText(blocks = []) {
     .join("\n");
 }
 
-export const sanitySlug = (prefix: string, depth: number) => ({
+export const sanitySlug = (prefix: string, depth: number, source?: string) => ({
   title: "url",
   name: "slug",
   type: "slug",
@@ -22,7 +22,7 @@ export const sanitySlug = (prefix: string, depth: number) => ({
   group: "settings",
   options: {
     isUnique: isSlugUnique,
-    source: "heading",
+    source: source ?? "heading",
     slugify: (input) =>
       `${prefix}${input}`
         .toLowerCase()
