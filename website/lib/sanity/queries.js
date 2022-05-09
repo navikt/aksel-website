@@ -276,6 +276,16 @@ export const akselForsideQuery = `*[_id == "frontpage_vk_praksis"][0]
 
 export const akselDocumentsByType = `*[_type in $types]{ _type, _id, 'slug': slug.current }`;
 
+export const akselPrinsippBySlug = `*[slug.current == $slug] | order(_updatedAt desc)
+{
+  ...,
+  "slug": slug.current,
+  innhold[]{
+    ...,
+    ${deRefs}
+  },
+}`;
+
 export const akselDocumentBySlug = `*[slug.current == $slug] | order(_updatedAt desc)
 {
   ...,
