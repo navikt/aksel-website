@@ -40,7 +40,7 @@ export const akselInnhold = async () => {
           S.listItem().title("Blogg").child(S.documentTypeList("aksel_blogg")),
           S.divider(),
           S.listItem()
-            .title("Temavisning")
+            .title("Artikler etter tema")
             .child(() =>
               documentStore.listenQuery(query).pipe(
                 map((tema: any) => {
@@ -66,7 +66,7 @@ export const akselInnhold = async () => {
 
           S.divider(),
           S.listItem()
-            .title("Tema")
+            .title("Temasider")
             .icon(() => <Facilitet />)
             .child(S.documentTypeList("aksel_tema")),
         ])
