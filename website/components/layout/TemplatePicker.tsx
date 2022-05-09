@@ -6,7 +6,7 @@ import {
   DsArtikkel,
   DsComponentPage,
   KomponentArtikkel,
-} from "../../lib";
+} from "@/lib";
 import AkselArtikkelTemplate from "./page-templates/AkselArtikkel";
 import ArtikkelTemplate from "./page-templates/Artikkel";
 import ArtikkelTabbedTemplate from "./page-templates/ArtikkelTabbed";

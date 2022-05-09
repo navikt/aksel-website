@@ -8,7 +8,8 @@
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
-    "backup": "node scripts/backup.js"
+    "backup": "node scripts/backup.js",
+    "typegen": "sanity exec typegen.ts"
   },
   "main": "package.json",
   "keywords": [
@@ -33,7 +34,7 @@
     "moment": "2.29.1",
     "react": "^17.0",
     "react-dom": "^17.0",
-    "sanity-codegen": "^0.9.5",
+    "sanity-codegen": "1.0.0-alpha.26",
     "sanity-plugin-asset-source-unsplash": "^0.1.5",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.13",
     "sanity-plugin-media": "^1.4.4",
@@ -45,7 +46,9 @@
   "devDependencies": {
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
-    "@babel/preset-typescript": "^7.0.0"
+    "@babel/preset-typescript": "^7.0.0",
+    "babel-plugin-mock-imports": "1.2.0",
+    "@sanity-codegen/schema-codegen": "1.0.0-alpha.13"
   },
   "repository": {
     "type": "git",

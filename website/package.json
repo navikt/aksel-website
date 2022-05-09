@@ -84,6 +84,7 @@
     "eslint-plugin-react": "^7.29",
     "next-transpile-modules": "^9.0.0",
     "postcss": "^8.4.5",
+    "@sanity-codegen/types": "1.0.0-alpha.13",
     "sanity-codegen": "^0.9.8",
     "start-server-and-test": "^1.14.0",
     "typescript": "^4.5",
