@@ -9,6 +9,9 @@ import {
   prinsipper,
   titleField,
 } from "@/lib";
+import sanityClient from "part:@sanity/base/client";
+
+const client = sanityClient.withConfig({ apiVersion: "2020-06-19" });
 
 const prefix = "prinsipp/";
 
@@ -98,7 +101,27 @@ export default {
           type: "boolean",
           initialValue: false,
           validation: (Rule) =>
-            Rule.required().error("Prinsippsider må ha valgt et prinsipp"),
+            Rule.required().custom(async (_, { document, parent }) => {
+              const id = document._id.replace(/^drafts\./, "");
+              const params = {
+                draft: `drafts.${id}`,
+                published: id,
+                hoved: parent?.hovedside,
+                prinsipp: parent?.prinsippvalg,
+              };
+
+              const query = `*[!(_id in [$draft, $published]) && _type == "aksel_prinsipp" && prinsipp.prinsippvalg == $prinsipp && prinsipp.hovedside == true][0]{heading,_id}`;
+              const res = await client.fetch(query, params);
+
+              if (parent?.hovedside && !!res?._id) {
+                return `Kan bare ha en hovedside for hvert prinsipp. Hovedsiden er nå: ${
+                  res?.heading ?? "Siden har ikke en heading"
+                }`;
+              } else if (!parent?.hovedside && !res?._id) {
+                return `Hvert prinsipp må ha minst en hovedside. Velg en hovedside før du fortsetter`;
+              }
+              return true;
+            }),
         },
       ],
     },
