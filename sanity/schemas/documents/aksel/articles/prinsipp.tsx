@@ -1,8 +1,7 @@
-import { toPlainText } from "@/lib";
+import { sanitySlug, toPlainText } from "@/lib";
 import { FileContent, LightBulb, NewTab } from "@navikt/ds-icons";
 import React from "react";
 import SlugInput from "sanity-plugin-better-slug";
-import { isSlugUnique, validateSlug } from "../../../validateSlug";
 import {
   defaultPreview,
   documentFeedbackMetadata,
@@ -12,8 +11,8 @@ import {
 const prefix = "artikkel/";
 
 export default {
-  title: "Aksel Artikkel",
-  name: "aksel_artikkel",
+  title: "Aksel Prinsipp",
+  name: "aksel_prinsipp",
   type: "document",
   groups: [...groups],
   ...defaultPreview(),
@@ -36,26 +35,7 @@ export default {
       validation: (Rule) =>
         Rule.required().max(60).error("Siden må ha en kort heading (<h1>)"),
     },
-    {
-      title: "url",
-      name: "slug",
-      type: "slug",
-      validation: (Rule) => validateSlug(Rule, prefix, 2),
-      group: "settings",
-      inputComponent: SlugInput,
-      options: {
-        basePath: "aksel.nav.no",
-        isUnique: isSlugUnique,
-        source: "heading",
-        slugify: (input) =>
-          `${prefix}${input}`
-            .toLowerCase()
-            .trim()
-            .slice(0, 70)
-            .trim()
-            .replace(/\s+/g, "-"),
-      },
-    },
+    sanitySlug(prefix, 2),
     {
       title: "Tema",
       description: "Legg til de viktigeste temaene",

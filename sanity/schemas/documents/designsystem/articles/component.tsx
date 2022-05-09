@@ -1,19 +1,8 @@
 import {
-  FileContent,
-  Hamburger,
-  Helmet,
-  Home,
-  LightBulb,
-  NewTab,
-  Ruler,
-  SignLanguageTwoHands,
-} from "@navikt/ds-icons";
-import React from "react";
-import {
-  documentFeedbackMetadata,
-  documentMetadata,
   defaultPreview,
+  documentFeedbackMetadata,
   documentInformation,
+  documentMetadata,
   groups,
 } from "../../templates";
 
