@@ -191,7 +191,7 @@ const AkselArtikkelTemplate = ({
               )} */}
               {data.innhold.length > 0 && (
                 <SanityBlockContent
-                  className="aksel-artikkel__blocks mt-12 min-h-[500px] max-w-text px-0 sm:px-8 lg:px-0 "
+                  className="aksel-artikkel__blocks mt-12 min-h-[500px] w-full max-w-text px-0 sm:px-8 lg:px-0 "
                   blocks={data.innhold}
                 />
               )}

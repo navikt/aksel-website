@@ -47,7 +47,7 @@ const AkselPrinsippTemplate = ({
   return (
     <>
       <Head>
-        <title>{`${data?.heading} - ${title}`}</title>
+        <title>{`${data?.heading} - Prinsipp - ${title}`}</title>
         <meta property="og:title" content={`${data?.heading} - ${title}`} />
         <meta property="og:type" content="article" />
         <meta property="og:image" content={imageProps?.src} />
@@ -132,12 +132,9 @@ const AkselPrinsippTemplate = ({
                   )}
                 </div>
               </div>
-              {/* {pageProps?.validUser !== undefined && !pageProps.validUser && (
-                <LoginSection onClick={() => authContext.login()} />
-              )} */}
               {data.innhold.length > 0 && (
                 <SanityBlockContent
-                  className="aksel-artikkel__blocks mt-12 min-h-[500px] max-w-text px-0 sm:px-8 lg:px-0 "
+                  className="aksel-artikkel__blocks mt-12 min-h-[500px] w-full max-w-text px-0 sm:px-8 lg:px-0 "
                   blocks={data.innhold}
                 />
               )}
