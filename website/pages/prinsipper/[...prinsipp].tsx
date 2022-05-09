@@ -1,10 +1,5 @@
-import { PreviewBanner } from "@/components";
-import {
-  akselEditorById,
-  akselPrinsippBySlug,
-  getAkselTema,
-  SanityT,
-} from "@/lib";
+import { LayoutPicker, PreviewBanner } from "@/components";
+import { akselEditorById, akselPrinsippBySlug, SanityT } from "@/lib";
 import React from "react";
 import { getClient } from "../../lib/sanity/sanity.server";
 
@@ -15,12 +10,10 @@ interface PageProps {
 }
 
 const Page = ({ preview, page }: PageProps): JSX.Element => {
-  console.log(page);
   return (
     <>
       {preview && <PreviewBanner />}
-
-      {/* <LayoutPicker title="Aksel" data={page} /> */}
+      <LayoutPicker title="Aksel" data={page} />
     </>
   );
 };
@@ -40,15 +33,16 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({
-  params: { prinsipp, side },
+  params: { prinsipp },
   preview = false,
 }: {
-  params: { prinsipp: string; side: string };
+  params: { prinsipp: string[] };
   preview?: boolean;
 }) => {
-  console.log({ prinsipp, side });
+  if (prinsipp.length > 2) return { notFound: true };
+
   const page = await getClient(preview).fetch(akselPrinsippBySlug, {
-    slug: `prinsipp/${prinsipp}/${side}`,
+    slug: `prinsipper/${prinsipp.join("/")}`,
   });
 
   const doc = page?.[0] ?? null;

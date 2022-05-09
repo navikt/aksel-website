@@ -13,7 +13,7 @@ import sanityClient from "part:@sanity/base/client";
 
 const client = sanityClient.withConfig({ apiVersion: "2020-06-19" });
 
-const prefix = "prinsipp/";
+const prefix = "prinsipper/";
 
 export default {
   title: "Aksel Prinsipp",

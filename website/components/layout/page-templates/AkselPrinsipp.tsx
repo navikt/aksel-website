@@ -1,9 +1,4 @@
-import {
-  AkselArtikkel,
-  AkselBlogg,
-  getTemaSlug,
-  useSanityBannerImage,
-} from "@/lib";
+import { SanityT, useSanityBannerImage } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import {
   BodyShort,
@@ -15,50 +10,19 @@ import {
 import moment from "moment";
 import Head from "next/head";
 import Image from "next/image";
-import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
 import { ArtikkelBreadcrumbs, Avatar, Feedback, slugger } from "../..";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
+import { getGradient } from "./AkselArtikkel";
 
-export const getGradient = (s: string) => {
-  let hash = 0;
-  for (let i = 0; i < s.length; i++) {
-    hash = s.charCodeAt(i) + ((hash << 5) - hash);
-  }
-
-  const h = hash % 360;
-  const h2 = h + (5 % 360);
-
-  return `linear-gradient(-45deg, hsl(${h2}, 70%, 70%) 0%, hsl(${h}, 80%, 80%) 100%)`;
-};
-
-/* const LoginSection = ({ onClick }: { onClick: () => void }) => {
-  return (
-    <div className="aksel-artikkel__blocks mt-12 min-h-[500px] px-0 sm:p-8">
-      <div className=" relative -mb-8 flex min-h-16 w-16  items-center justify-center rounded-full border-border-muted bg-gray-200">
-        <Locked aria-label="Innholdet er bak innlogging" className="h-8 w-8" />
-      </div>
-      <div className="flex w-full flex-col items-center justify-evenly gap-4 rounded-lg border border-border-muted bg-gray-50 bg-center px-8 pb-6 pt-12">
-        <Heading level="2" size="xsmall">
-          Dette innholdet er bare tilgjengelig for NAV-ansatte.
-        </Heading>
-        <Button onClick={onClick}>Logg inn</Button>
-      </div>
-    </div>
-  );
-}; */
-
-const AkselArtikkelTemplate = ({
+const AkselPrinsippTemplate = ({
   data,
   title,
 }: {
-  data: AkselArtikkel | AkselBlogg;
+  data: SanityT.Schema.aksel_prinsipp;
   title: string;
 }): JSX.Element => {
-  /* const { pageProps } = useContext(PagePropsContext);
-  const authContext = useContext(AuthenticationContext); */
-
   const [ttr, setTtr] = useState<number | null>(null);
   useClientLayoutEffect(() => {
     slugger.reset();
@@ -79,8 +43,6 @@ const AkselArtikkelTemplate = ({
   }
 
   const authors = (data?.contributors as any)?.map((x) => x?.title);
-
-  const hasTema = "tema" in data && data.tema && data?.tema.length > 0;
 
   return (
     <>
@@ -127,24 +89,8 @@ const AkselArtikkelTemplate = ({
               <div className="w-full max-w-text px-4 md:mx-6 lg:mx-12 lg:px-0">
                 <div className="index-ignore mb-4 flex flex-wrap items-center justify-center gap-1 lg:justify-start">
                   <BodyShort size="small" className="text-text-muted">
-                    {ttr} min lesing {hasTema && "-"}
+                    {ttr} min lesing
                   </BodyShort>
-                  {hasTema &&
-                    data.tema.map(({ title }: any) => (
-                      <NextLink
-                        key={title}
-                        href={`/tema/${getTemaSlug(title)}`}
-                        passHref
-                      >
-                        <Detail
-                          size="small"
-                          as="a"
-                          className="index-lvl5 rounded bg-purple-100 py-[2px] px-[6px] text-purple-500 focus:outline-focus"
-                        >
-                          {title}
-                        </Detail>
-                      </NextLink>
-                    ))}
                 </div>
                 <Heading
                   size="xlarge"
@@ -222,10 +168,7 @@ const AkselArtikkelTemplate = ({
                   )}
                 </div>
               </div>
-
-              {!data?.metadata_feedback?.hide_feedback && (
-                <Feedback center docId={data?._id} docType={data?._type} />
-              )}
+              <Feedback center docId={data?._id} docType={data?._type} />
             </div>
           </div>
         </main>
@@ -235,4 +178,4 @@ const AkselArtikkelTemplate = ({
   );
 };
 
-export default AkselArtikkelTemplate;
+export default AkselPrinsippTemplate;

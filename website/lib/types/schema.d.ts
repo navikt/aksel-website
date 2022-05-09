@@ -1,6 +1,6 @@
 /// <reference types="@sanity-codegen/types" />
 
-declare namespace Sanity {
+declare namespace SanityT {
   namespace Schema {
     /**
      * Forside
@@ -2536,4 +2536,4 @@ Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via
   }
 }
 
-export default Sanity;
+export default SanityT;

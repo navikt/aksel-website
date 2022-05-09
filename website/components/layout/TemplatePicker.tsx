@@ -6,12 +6,14 @@ import {
   DsArtikkel,
   DsComponentPage,
   KomponentArtikkel,
+  SanityT,
 } from "@/lib";
 import AkselArtikkelTemplate from "./page-templates/AkselArtikkel";
 import ArtikkelTemplate from "./page-templates/Artikkel";
 import ArtikkelTabbedTemplate from "./page-templates/ArtikkelTabbed";
 import ComponentPageTemplate from "./page-templates/ComponentPageTemplate";
 import KomponentArtikkelTemplate from "./page-templates/KomponentArtikkel";
+import AkselPrinsippTemplate from "./page-templates/AkselPrinsipp";
 
 type komponent_artikkel = {
   komponent_artikkel: (props: {
@@ -42,12 +44,20 @@ type aksel_blogg = {
   aksel_blogg: (props: { data: AkselBlogg; title: string }) => JSX.Element;
 };
 
+type aksel_prinsipp = {
+  aksel_prinsipp: (props: {
+    data: SanityT.Schema.aksel_prinsipp;
+    title: string;
+  }) => JSX.Element;
+};
+
 type templateT =
   | ds_component
   | komponent_artikkel
   | ds_artikkel
   | aksel_artikkel
-  | aksel_blogg;
+  | aksel_blogg
+  | aksel_prinsipp;
 
 const templates: templateT = {
   komponent_artikkel: (props) => <KomponentArtikkelTemplate {...props} />,
@@ -60,13 +70,19 @@ const templates: templateT = {
     ),
   aksel_artikkel: (props) => <AkselArtikkelTemplate {...props} />,
   aksel_blogg: (props) => <AkselArtikkelTemplate {...props} />,
+  aksel_prinsipp: (props) => <AkselPrinsippTemplate {...props} />,
 };
 
 const TemplatePicker = ({
   data,
   title,
 }: {
-  data: DsComponentPage | KomponentArtikkel | AkselArtikkel | AkselBlogg;
+  data:
+    | DsComponentPage
+    | KomponentArtikkel
+    | AkselArtikkel
+    | AkselBlogg
+    | SanityT.Schema.aksel_prinsipp;
   title: string;
 }): JSX.Element => {
   if (!Object.keys(templates).includes(data?._type)) {
