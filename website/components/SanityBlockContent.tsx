@@ -31,9 +31,8 @@ import {
   SpesialSeksjon,
   Video,
 } from ".";
-
-import * as Icons from "@navikt/ds-icons";
-import * as Tokens from "@navikt/ds-tokens/dist/tokens";
+import { ExternalLink } from "@navikt/ds-icons";
+import DsIconAnnotation from "./sanity-modules/v2/IconAnnotation";
 
 export const InlineCode = (props: React.HTMLAttributes<HTMLElement>) => (
   <code
@@ -50,21 +49,6 @@ export const KBD = (props: React.HTMLAttributes<HTMLElement>) => (
     {...props}
   />
 );
-
-export const DsIconAnnotation = {
-  ds_icon: ({ mark }: { mark: { color?: string; name?: string } }) => {
-    if (!mark.name) {
-      return null;
-    }
-
-    const Ic = Icons?.[mark.name];
-    const tokenColor = mark.color ? Tokens[mark.color] : "currentColor";
-
-    return Ic ? (
-      <Ic color={tokenColor} aria-hidden className="inline-block" />
-    ) : null;
-  },
-};
 
 const serializers = {
   types: {
@@ -222,7 +206,7 @@ const serializers = {
           rel="noreferrer noopener"
           className="break-normal"
         >
-          {children} <Icons.ExternalLink title="åpner lenken i ny fane" />
+          {children} <ExternalLink title="åpner lenken i ny fane" />
         </Link>
       ) : (
         <NextLink href={href} passHref>

@@ -6,7 +6,6 @@ export * from "./sanity-modules/code";
 export * from "./sanity-modules/color-category";
 export { default as ComponentOverview } from "./sanity-modules/component-overview";
 export { default as DoDont } from "./sanity-modules/dodont";
-export { default as IconSearch } from "./sanity-modules/icon-search";
 export * from "./sanity-modules/image";
 export { default as PropTable } from "./sanity-modules/prop-table";
 export { default as RelatedPagesCards } from "./sanity-modules/related-pages-cards";

@@ -3,8 +3,8 @@ import meta from "@navikt/ds-icons/meta.json";
 import { BodyShort, Button, Detail, Heading } from "@navikt/ds-react";
 import React, { useEffect, useState } from "react";
 import { renderToString } from "react-dom/server";
-import { isNew } from ".";
-import { AmplitudeEvents, logAmplitudeEvent, Snippet } from "../..";
+
+import { AmplitudeEvents, isNew, logAmplitudeEvent, Snippet } from "../..";
 import { CodeSnippet } from "../../../lib";
 import { downloadPng, downloadSvg } from "./downloads";
 
