@@ -1,4 +1,4 @@
-import { toPlainText } from "@/lib";
+import { editorField, toPlainText } from "@/lib";
 import { FileContent, LightBulb, NewTab, Star } from "@navikt/ds-icons";
 import React from "react";
 import {
@@ -42,14 +42,7 @@ export default {
   groups: [...groups],
   ...defaultPreview(),
   fields: [
-    {
-      title: "Bidragsytere",
-      description: "Legg til de som har bidratt med denne siden!",
-      name: "contributors",
-      type: "array",
-      of: [{ type: "reference", to: [{ type: "editor" }] }],
-      group: "settings",
-    },
+    editorField,
     ...documentInformation(prefix).filter((x) => x?.name !== "ingress"),
     {
       type: "boolean",

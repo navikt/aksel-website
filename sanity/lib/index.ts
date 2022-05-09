@@ -11,6 +11,15 @@ export function toPlainText(blocks = []) {
     .join("\n");
 }
 
+export const editorField = {
+  title: "Redaktører",
+  description: "Legg til alle som har bidratt med denne siden!",
+  name: "contributors",
+  type: "array",
+  of: [{ type: "reference", to: [{ type: "editor" }] }],
+  group: "settings",
+};
+
 export const sanitySlug = (prefix: string, depth: number) => ({
   title: "url",
   name: "slug",

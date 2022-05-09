@@ -1,3 +1,4 @@
+import { editorField } from "@/lib";
 import {
   Download,
   FileContent,
@@ -26,14 +27,7 @@ export default {
   groups: [...groups],
   ...defaultPreview(),
   fields: [
-    {
-      title: "Bidragsytere",
-      description: "Legg til de som har bidratt med denne siden!",
-      name: "contributors",
-      type: "array",
-      of: [{ type: "reference", to: [{ type: "editor" }] }],
-      group: "settings",
-    },
+    editorField,
     ...documentInformation(prefix).filter((x) => x?.name !== "ingress"),
     {
       name: "content_bruk",

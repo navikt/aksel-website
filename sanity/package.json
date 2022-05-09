@@ -35,7 +35,6 @@
     "react-dom": "^17.0",
     "sanity-codegen": "^0.9.5",
     "sanity-plugin-asset-source-unsplash": "^0.1.5",
-    "sanity-plugin-better-slug": "^1.0.0",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.13",
     "sanity-plugin-media": "^1.4.4",
     "sanity-plugin-power-table": "^0.0.14",
@@ -46,8 +45,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
-    "@babel/preset-typescript": "^7.0.0",
-    "react-is": "^17.0.2"
+    "@babel/preset-typescript": "^7.0.0"
   },
   "repository": {
     "type": "git",

@@ -1,8 +1,8 @@
+import { editorField } from "@/lib";
 import {
   defaultPreview,
   documentFeedbackMetadata,
   documentInformation,
-  documentMetadata,
   groups,
 } from "../../templates";
 
@@ -16,7 +16,7 @@ export default {
   groups: [...groups],
   ...defaultPreview(),
   fields: [
-    ...documentMetadata(),
+    editorField,
     ...documentInformation(prefix),
     {
       name: "usage",

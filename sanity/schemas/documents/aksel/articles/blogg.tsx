@@ -1,4 +1,4 @@
-import { sanitySlug, toPlainText } from "@/lib";
+import { editorField, sanitySlug, toPlainText } from "@/lib";
 import { FileContent, LightBulb, NewTab } from "@navikt/ds-icons";
 import React from "react";
 import {
@@ -16,14 +16,7 @@ export default {
   groups: [...groups],
   ...defaultPreview(),
   fields: [
-    {
-      title: "Redaktører",
-      description: "Øverste redaktør vil vises med navn på artikkel",
-      name: "contributors",
-      type: "array",
-      of: [{ type: "reference", to: [{ type: "editor" }] }],
-      group: "settings",
-    },
+    editorField,
     {
       title: "Sidetittel",
       name: "heading",
