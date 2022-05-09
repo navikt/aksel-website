@@ -1,4 +1,4 @@
-import { Expand, Link, Bookmark } from "@navikt/ds-icons";
+import { Expand, Link } from "@navikt/ds-icons";
 import React from "react";
 const config = require("../../config");
 

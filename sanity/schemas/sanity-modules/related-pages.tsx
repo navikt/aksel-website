@@ -1,5 +1,3 @@
-import { NewTab } from "@navikt/ds-icons";
-import React from "react";
 import { allDocumentTypes } from "../../config";
 
 export default {
