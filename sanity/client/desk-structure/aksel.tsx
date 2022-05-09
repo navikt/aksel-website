@@ -1,3 +1,4 @@
+import { prinsipper } from "@/lib";
 import { Facilitet } from "@navikt/ds-icons";
 import S from "@sanity/desk-tool/structure-builder";
 import documentStore from "part:@sanity/base/datastore/document";
@@ -39,8 +40,28 @@ export const akselInnhold = async () => {
             .child(createSuperPane("aksel_artikkel")),
           S.listItem().title("Blogg").child(S.documentTypeList("aksel_blogg")),
           S.listItem()
-            .title("Prinsippsider")
-            .child(S.documentTypeList("aksel_prinsipp")),
+            .title("Prinsipper")
+            .child(
+              S.list()
+                .title("Prinsipper")
+                .items([
+                  S.listItem()
+                    .title("Alle artikler")
+                    .child(S.documentTypeList("aksel_prinsipp")),
+                  ...prinsipper.map(({ value, title }) =>
+                    S.listItem()
+                      .title(title)
+                      .child(
+                        S.documentList()
+                          .title(title)
+                          .filter(
+                            `_type == 'aksel_prinsipp' && $value == prinsipp.prinsippvalg`
+                          )
+                          .params({ value })
+                      )
+                  ),
+                ])
+            ),
           S.divider(),
           S.listItem()
             .title("Artikler etter tema")

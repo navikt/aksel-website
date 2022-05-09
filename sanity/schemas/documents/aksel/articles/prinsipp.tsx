@@ -6,6 +6,7 @@ import {
   innholdField,
   introField,
   isSlugUnique,
+  prinsipper,
   titleField,
 } from "@/lib";
 
@@ -85,7 +86,7 @@ export default {
           name: "prinsippvalg",
           type: "string",
           options: {
-            list: [{ title: "Brukeropplevelse", value: "brukeropplevelse" }],
+            list: prinsipper,
             layout: "radio",
           },
           validation: (Rule) =>

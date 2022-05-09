@@ -5,6 +5,10 @@ import sanityClient from "part:@sanity/base/client";
 
 const client = sanityClient.withConfig({ apiVersion: "2020-06-19" });
 
+export const prinsipper = [
+  { title: "Brukeropplevelse", value: "brukeropplevelse" },
+];
+
 export function toPlainText(blocks = []) {
   return blocks
     .filter((block) => !(block._type !== "block" || !block.children))
