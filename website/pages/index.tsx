@@ -154,7 +154,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
 
           {hasPrinsipp1 && (
             <div className="mb-24 flex w-full justify-center bg-gray-200 py-16">
-              <div className="aksel-layout-x flex w-full max-w-3xl flex-col  justify-center">
+              <div className="flex w-full flex-col justify-center  px-4">
                 <Heading
                   level="1"
                   size="large"
