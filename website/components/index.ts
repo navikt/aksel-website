@@ -25,6 +25,7 @@ export { default as PropsSeksjon } from "./sanity-modules/v2/props/PropsSeksjon"
 export { default as RelatertInnhold } from "./sanity-modules/v2/relatert-innhold";
 export { default as SpesialSeksjon } from "./sanity-modules/v2/SpesialSeksjon";
 export { default as Tabell } from "./sanity-modules/v2/Tabell";
+export { default as TokensSeksjon } from "./sanity-modules/v2/Tokens";
 export { default as UuSeksjon } from "./sanity-modules/v2/UuSeksjon";
 export * from "./website-modules/aksel-cards";
 export { default as Avatar } from "./website-modules/avatar";

@@ -30,6 +30,7 @@ import {
   PropsSeksjon,
   SpesialSeksjon,
   Video,
+  TokensSeksjon,
 } from ".";
 import { ExternalLink } from "@navikt/ds-icons";
 import DsIconAnnotation from "./sanity-modules/v2/IconAnnotation";
@@ -70,6 +71,7 @@ const serializers = {
     props_seksjon: ({ node }) => <PropsSeksjon node={node} />,
     spesial_seksjon: ({ node }) => <SpesialSeksjon node={node} />,
     video: ({ node }) => <Video node={node} />,
+    tokens: ({ node }) => <TokensSeksjon node={node} />,
 
     /* General page modules */
     related_pages: ({ node }) => <RelatedPagesCards node={node} />,

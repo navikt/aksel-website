@@ -1,6 +1,6 @@
 /// <reference types="@sanity-codegen/types" />
 
-declare namespace SanityT {
+declare namespace Sanity {
   namespace Schema {
     /**
      * Forside
@@ -256,6 +256,16 @@ Prøver å hente React og HTML kode automatisk fra storybook
        * Faktisk verdi - `String`
        */
       raw?: string;
+
+      /**
+       * Parent - `String`
+       */
+      parent?: string;
+
+      /**
+       * Beskrivelse - `String`
+       */
+      beskrivelse?: string;
 
       /**
        * Autogenerert - `Boolean`
@@ -1104,6 +1114,7 @@ Brukes i kort og innganger
         | Sanity.KeyedReference<ds_code_example>
         | Sanity.Keyed<tabell>
         | Sanity.Keyed<accordion_v2>
+        | Sanity.Keyed<tokens>
         | Sanity.Keyed<spesial_seksjon>
       >;
     };
@@ -1137,6 +1148,7 @@ Brukes i kort og innganger
         | Sanity.Keyed<kode>
         | Sanity.Keyed<tabell>
         | Sanity.Keyed<accordion_v2>
+        | Sanity.Keyed<tokens>
       >;
     };
 
@@ -1285,6 +1297,7 @@ Dette vil stå under bildet
             | ds_artikkel
             | aksel_artikkel
             | aksel_blogg
+            | aksel_prinsipp
           >;
 
           /**
@@ -1599,6 +1612,7 @@ Slik man ville brukt den, eks Accordion.Item
             | Sanity.Keyed<alert_v2>
             | Sanity.Keyed<kode>
             | Sanity.Keyed<tabell>
+            | Sanity.Keyed<tokens>
           >;
         }>
       >;
@@ -1658,6 +1672,20 @@ Kort beskrivelse som vises rett under videon
 Hvis videoen inneholder lyd, anbelfaler vi å skrive en transkripsjon som kan leses under videoen.
        */
       transkripsjon?: string;
+    };
+
+    type tokens = {
+      _type: "tokens";
+
+      /**
+       * Tittel/beskrivelse - `String`
+       */
+      title?: string;
+
+      /**
+       * Tokens - `Array`
+       */
+      Tokens?: Array<Sanity.KeyedReference<ds_tokens>>;
     };
 
     type navigation_link = {
@@ -1908,6 +1936,7 @@ Slik man ville brukt den, eks Accordion.Item
             | ds_artikkel
             | aksel_artikkel
             | aksel_blogg
+            | aksel_prinsipp
           >;
 
           /**
@@ -2536,4 +2565,4 @@ Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via
   }
 }
 
-export default SanityT;
+export default Sanity;

@@ -22,8 +22,6 @@ const ArtikkelTemplate = ({
     slugger.reset();
   });
 
-  console.log(data.innhold[4].brikker[13]);
-
   if (!data.innhold || !data.heading) {
     return null;
   }

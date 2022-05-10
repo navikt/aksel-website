@@ -10,7 +10,7 @@ export default {
     },
     {
       title: "Tokens",
-      name: "Tokens",
+      name: "tokenlist",
       type: "array",
       of: [{ type: "reference", to: [{ type: "ds_tokens" }] }],
     },

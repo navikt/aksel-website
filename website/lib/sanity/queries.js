@@ -161,7 +161,7 @@ const defaultBlock = `
  },
  _type == "tokens" =>{
     ...,
-    Tokens[]->
+    tokenlist[]->
  },
  _type == "kode_ref" => @->,
  ${tips},
