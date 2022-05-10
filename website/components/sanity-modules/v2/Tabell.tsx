@@ -18,11 +18,7 @@ const TableComponent = ({ node }: { node: TabellT }): JSX.Element => {
           <Table.Row>
             {node.powerTable?.rows[0].cells?.map((cell) => (
               <Table.HeaderCell key={cell?._key} className="text-text-muted">
-                <SanityBlockContent
-                  blocks={cell?.data?.body}
-                  noLastMargin
-                  size="small"
-                />
+                <SanityBlockContent blocks={cell?.data?.body} noLastMargin />
               </Table.HeaderCell>
             ))}
           </Table.Row>

@@ -6,37 +6,60 @@ import cl from "classnames";
 
 const Token = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
   switch (true) {
-    case token.title.startsWith("semantic-color"):
+    case token.title.startsWith("semantic-color"): {
       return (
         <Table.ExpandableRow
+          togglePlacement="right"
           content={
             <div className="flex flex-col gap-2">
               <div>
-                <Label>Parent:</Label>
-                <div>{`${token.parent}`}</div>
+                <Label className="mb-1">Parent token:</Label>
+                <code className="text-medium">{`${token.parent}`}</code>
               </div>
               <div>
-                <Label>Fargeverdi:</Label>
-                <div>{`${token.raw}`}</div>
+                <Label className="mb-1">Fargeverdier</Label>
+                <ul>
+                  <li>
+                    {`RGB: `}
+                    <code className="text-medium">{`${Color(
+                      token.raw
+                    ).rgb()}`}</code>
+                  </li>
+                  <li>
+                    {`HEX: `}
+                    <code className="text-medium">{`${Color(
+                      token.raw
+                    ).hex()}`}</code>
+                  </li>
+                </ul>
               </div>
             </div>
           }
         >
-          <Table.DataCell className="py-2">
-            <Label>{token.beskrivelse}</Label>
-            <BodyShort className="text-text-muted">{`--navds-${token.title}`}</BodyShort>
+          <Table.DataCell className="w-full py-2">
+            <BodyShort className="mb-1">{token.beskrivelse}</BodyShort>
+            <code className="text-medium">{`--navds-${token.title} / `}</code>
+            <code className="text-medium">{`${Color(token.raw).hex()}`}</code>
           </Table.DataCell>
           <Table.DataCell className="px-2 py-2">
             <div
-              className={cl("h-12 w-full rounded-full py-4", {
-                "border border-border-muted":
-                  Color(token.raw).luminosity() > 0.9,
-              })}
+              className={cl(
+                "flex h-16 w-16 items-center justify-center rounded-full py-4",
+                {
+                  "border border-border-muted":
+                    Color(token.raw).luminosity() > 0.9,
+                }
+              )}
               style={{ background: token.color }}
-            />
+            >
+              <span className="navds-sr-only">
+                Fargevisning for {token.title}
+              </span>
+            </div>
           </Table.DataCell>
         </Table.ExpandableRow>
       );
+    }
     default: {
       return (
         <Table.Row>
@@ -56,17 +79,23 @@ const TokenBlock = ({
 }: {
   node: { tokenlist: SanityT.Schema.ds_tokens[] };
 }) => {
-  if (!tokenlist || tokenlist.length === 0) return null;
+  if (!tokenlist || tokenlist.length === 0) {
+    return null;
+  }
 
   return (
     <div className="mb-8 flex flex-col">
       <Table>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Mer info</Table.HeaderCell>
-            <Table.HeaderCell scope="col">Bruk</Table.HeaderCell>
-            <Table.HeaderCell scope="col" className="text-right">
+            <Table.HeaderCell scope="col" className="text-text-muted">
+              Bruk
+            </Table.HeaderCell>
+            <Table.HeaderCell scope="col" className="text-text-muted">
               Token
+            </Table.HeaderCell>
+            <Table.HeaderCell className="text-text-muted">
+              Info
             </Table.HeaderCell>
           </Table.Row>
         </Table.Header>
@@ -77,7 +106,8 @@ const TokenBlock = ({
         </Table.Body>
         <style jsx global>
           {`
-            .token-row {
+            .navds-table__expanded-row-content {
+              padding: var(--navds-spacing-4) var(--navds-spacing-3);
             }
           `}
         </style>
