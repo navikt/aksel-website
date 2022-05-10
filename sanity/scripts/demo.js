@@ -6,20 +6,19 @@ const client = sanityClient({
   projectId: SanityConfig.api.projectId,
   dataset: SanityConfig.api.dataset,
   apiVersion: "2021-03-25",
-  useCdn: false,
 });
 
-/* const fetchDocuments = () =>
-  client.fetch(
-    `*[_type in ["ds_component_page","ds_article"]]
-    {_id, _updatedAt, metadata}`
-  ); */
 /* const fetchDocuments = () => client.fetch(`*[_id in path('_.groups.*')]`); */
 /* .then((res) => userStore.getUsers(res))
-    .then((users) => users.filter((user) => user.isCurrentUser)); */
+.then((users) => users.filter((user) => user.isCurrentUser)); */
+
+/* const fetchDocument = async () =>
+  client.fetch(`*[_id == "drafts.bc1fd317-02bd-4c5b-bf93-703816aeb0c7"]`); */
 
 const runDemo = async () => {
-  await client.create({}).then(() => console.log("ok"));
+  const res = await client.fetch(`*[_type == "aksel_artikkel"]`);
+  console.log(res.length);
+  /* await client.create({}).then(() => console.log("ok")); */
 };
 
 runDemo().catch((err) => {
