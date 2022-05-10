@@ -15,5 +15,37 @@ export default {
       type: "riktekst",
       validation: (Rule) => Rule.required(),
     },
+    {
+      title: "Brukeropplevelse",
+      name: "prinsipp_1",
+      type: "object",
+      fields: [
+        {
+          title: "Vis på forside",
+          name: "vis",
+          type: "boolean",
+          validation: (Rule) => Rule.required(),
+        },
+        {
+          title: "Beskrivelse",
+          name: "beskrivelse",
+          type: "riktekst",
+          validation: (Rule) => Rule.required(),
+        },
+        {
+          title: "Hovedside",
+          name: "hovedside",
+          type: "reference",
+          to: [{ type: "aksel_prinsipp" }],
+        },
+        {
+          title: "Undersider",
+          description: "Rekkefølge bestemmer rekkefølgen på forsiden!",
+          name: "undersider",
+          type: "array",
+          of: [{ type: "reference", to: [{ type: "aksel_prinsipp" }] }],
+        },
+      ],
+    },
   ],
 };

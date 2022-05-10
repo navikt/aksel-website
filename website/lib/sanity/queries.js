@@ -269,13 +269,19 @@ ${defaultBlock}
 
 export const allDocuments = `*[]{...,'slug': slug.current }`;
 
-export const akselForsideQuery = `*[_id == "frontpage_vk_praksis"][0]
+export const akselForsideQuery = `*[_type == "vk_frontpage"][0]
 {
  ...,
  beskrivelse[]{
   ...,
   ${deRefs}
 },
+  prinsipp_1 {
+    ...,
+    hovedside->{slug, heading},
+    undersider[]->{slug, heading}
+  },
+
 }`;
 
 export const akselDocumentsByType = `*[_type in $types]{ _type, _id, 'slug': slug.current }`;

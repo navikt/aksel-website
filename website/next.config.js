@@ -78,6 +78,11 @@ const config = () =>
             permanent: true,
           },
           {
+            source: "/prinsipper",
+            destination: "/",
+            permanent: false,
+          },
+          {
             source: "/preview/:slug*",
             destination: "/api/preview?slug=:slug*",
             permanent: true,
