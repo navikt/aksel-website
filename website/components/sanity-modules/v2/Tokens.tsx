@@ -3,6 +3,7 @@ import { BodyShort, Label, Table } from "@navikt/ds-react";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import Color from "color";
 import cl from "classnames";
+import CodeSnippet from "../code/Snippet";
 
 const Token = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
   switch (true) {
@@ -11,35 +12,45 @@ const Token = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
         <Table.ExpandableRow
           togglePlacement="right"
           content={
-            <div className="flex flex-col gap-2">
-              <div>
-                <Label className="mb-1">Parent token:</Label>
-                <code className="text-medium">{`${token.parent}`}</code>
-              </div>
-              <div>
-                <Label className="mb-1">Fargeverdier</Label>
-                <ul>
-                  <li>
-                    {`RGB: `}
-                    <code className="text-medium">{`${Color(
+            <div className="flex flex-col">
+              <CodeSnippet
+                style={{ marginBottom: "1rem" }}
+                node={{
+                  _type: "kode",
+                  code: {
+                    code: `var(--navds-${token.title});`,
+                    language: "css",
+                  },
+                }}
+              />
+              <CodeSnippet
+                style={{ marginBottom: "1rem" }}
+                node={{
+                  _type: "kode",
+                  code: {
+                    code: `// Parent-token:\nvar(${token.parent});`,
+                    language: "css",
+                  },
+                }}
+              />
+              <CodeSnippet
+                style={{ marginBottom: "1rem" }}
+                node={{
+                  _type: "kode",
+                  code: {
+                    code: `HEX: ${Color(token.raw).hex()}\nRGB: ${Color(
                       token.raw
-                    ).rgb()}`}</code>
-                  </li>
-                  <li>
-                    {`HEX: `}
-                    <code className="text-medium">{`${Color(
-                      token.raw
-                    ).hex()}`}</code>
-                  </li>
-                </ul>
-              </div>
+                    ).rgb()}`,
+                    language: "css",
+                  },
+                }}
+              />
             </div>
           }
         >
           <Table.DataCell className="w-full py-2">
             <BodyShort className="mb-1">{token.beskrivelse}</BodyShort>
-            <code className="text-medium">{`--navds-${token.title} / `}</code>
-            <code className="text-medium">{`${Color(token.raw).hex()}`}</code>
+            <code className="text-medium">{`--navds-${token.title}`}</code>
           </Table.DataCell>
           <Table.DataCell className="px-2 py-2">
             <div
