@@ -10,13 +10,18 @@ export const defaultDocPreview = {
       id: "_id",
       type: "_type",
       tema: "tema.0.title",
+      prinsipp: "prinsipp",
     },
     prepare(selection) {
-      const { id, heading, type, tema } = selection;
-      console.log(tema);
+      const { id, heading, type, tema, prinsipp } = selection;
+      console.log(prinsipp);
       return {
         title: heading,
-        subtitle: !!tema
+        subtitle: !!prinsipp
+          ? !!prinsipp?.hovedside
+            ? "Hovedside"
+            : "Artikkel"
+          : !!tema
           ? `${tema}`
           : type.includes("_component_")
           ? "Komponentside"
