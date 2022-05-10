@@ -1,8 +1,8 @@
 import { SanityT } from "@/lib";
-import { BodyShort, Label, Table } from "@navikt/ds-react";
-import { withErrorBoundary } from "../../ErrorBoundary";
-import Color from "color";
+import { BodyShort, Table } from "@navikt/ds-react";
 import cl from "classnames";
+import Color from "color";
+import { withErrorBoundary } from "../../ErrorBoundary";
 import CodeSnippet from "../code/Snippet";
 
 const Token = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
