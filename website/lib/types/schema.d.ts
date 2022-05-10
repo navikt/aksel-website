@@ -1,6 +1,6 @@
 /// <reference types="@sanity-codegen/types" />
 
-declare namespace Sanity {
+declare namespace SanityT {
   namespace Schema {
     /**
      * Forside
@@ -1685,7 +1685,7 @@ Hvis videoen inneholder lyd, anbelfaler vi å skrive en transkripsjon som kan le
       /**
        * Tokens - `Array`
        */
-      Tokens?: Array<Sanity.KeyedReference<ds_tokens>>;
+      tokenlist?: Array<Sanity.KeyedReference<ds_tokens>>;
     };
 
     type navigation_link = {
@@ -2565,4 +2565,4 @@ Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via
   }
 }
 
-export default Sanity;
+export default SanityT;
