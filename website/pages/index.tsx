@@ -41,6 +41,13 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
       e.currentTarget.getAttribute("href")
     );
 
+  const hasPrinsipp1 =
+    tekster?.prinsipp_1 &&
+    tekster?.prinsipp_1?.hovedside &&
+    tekster?.prinsipp_1?.vis &&
+    tekster?.prinsipp_1?.undersider.length ===
+      tekster?.prinsipp_1.undersider.filter((x) => !!x).length;
+
   return (
     <>
       <Head>
@@ -133,7 +140,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
 
           {temaer && temaer.length > 0 && (
             <div className="aksel-layout-x flex w-full flex-col gap-6 py-24">
-              <Heading level="2" size="small">
+              <Heading level="2" size="medium">
                 Temaer
               </Heading>
 
@@ -144,55 +151,59 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
               </nav>
             </div>
           )}
-          <div className="mb-24 flex w-full justify-center bg-gray-200 py-16">
-            <div className="aksel-layout-x flex w-full max-w-3xl flex-col  justify-center">
-              <Heading
-                level="1"
-                size="large"
-                spacing
-                className="w-full max-w-text sm:text-left"
-              >
-                Prinsipper for brukeropplevelse
-              </Heading>
-              <SanityBlockContent blocks={tekster.prinsipp_1.beskrivelse} />
-              <div className="flex flex-wrap gap-4">
-                {tekster.prinsipp_1.undersider &&
-                  tekster.prinsipp_1.undersider
-                    .filter((x) => !!x)
-                    .map((x) => (
-                      <NextLink
-                        key={x.heading}
-                        href={x?.slug?.current}
-                        passHref
-                      >
-                        <Label
-                          as="a"
-                          className="flex items-center justify-center gap-2 rounded bg-white px-6 py-3 pr-3 shadow-small hover:underline focus:shadow-focus focus:outline-none "
+
+          {hasPrinsipp1 && (
+            <div className="mb-24 flex w-full justify-center bg-gray-200 py-16">
+              <div className="aksel-layout-x flex w-full max-w-3xl flex-col  justify-center">
+                <Heading
+                  level="1"
+                  size="large"
+                  spacing
+                  className="w-full max-w-text sm:text-left"
+                >
+                  Prinsipper for brukeropplevelse
+                </Heading>
+                <SanityBlockContent blocks={tekster.prinsipp_1.beskrivelse} />
+                <div className="flex flex-wrap gap-4">
+                  {tekster.prinsipp_1.undersider &&
+                    tekster.prinsipp_1.undersider
+                      .filter((x) => !!x)
+                      .map((x) => (
+                        <NextLink
+                          key={x.heading}
+                          href={x?.slug?.current}
+                          passHref
                         >
-                          {x?.heading}
-                          <Next className="h-6 w-6" />
-                        </Label>
-                      </NextLink>
-                    ))}
+                          <Label
+                            as="a"
+                            className="flex items-center justify-center gap-2 rounded bg-white px-6 py-3 pr-3 shadow-small hover:underline focus:shadow-focus focus:outline-none "
+                          >
+                            {x?.heading}
+                            <Next className="h-6 w-6" />
+                          </Label>
+                        </NextLink>
+                      ))}
+                </div>
+                <NextLink
+                  href={tekster.prinsipp_1?.hovedside?.slug?.current ?? "#"}
+                  passHref
+                >
+                  <Link className="svg-color-reset mt-6 flex items-center justify-center gap-1 self-start text-text">
+                    Oversikt over alle prinsippene
+                    <Next
+                      className="h-4 w-4 text-text"
+                      aria-hidden
+                      aria-label="Gå til siden"
+                    />
+                  </Link>
+                </NextLink>
               </div>
-              <NextLink
-                href={tekster.prinsipp_1?.hovedside?.slug?.current ?? "#"}
-                passHref
-              >
-                <Link className="svg-color-reset mt-6 flex items-center justify-center gap-1 self-start text-text">
-                  Oversikt over alle prinsippene
-                  <Next
-                    className="h-4 w-4 text-text"
-                    aria-hidden
-                    aria-label="Gå til siden"
-                  />
-                </Link>
-              </NextLink>
             </div>
-          </div>
+          )}
+
           {bloggs && bloggs.length > 0 && (
             <div className="aksel-layout-x flex w-full flex-col gap-6 pb-24">
-              <Heading level="2" size="small">
+              <Heading level="2" size="medium">
                 Blogg
               </Heading>
 
