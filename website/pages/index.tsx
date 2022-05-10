@@ -256,7 +256,6 @@ export const getStaticProps = async ({
   const temaer = await client.fetch(akselTema);
   const bloggs = await client.fetch(akselBloggPosts);
   const tekster = await client.fetch(akselForsideQuery);
-  console.log(tekster);
 
   return {
     props: {
