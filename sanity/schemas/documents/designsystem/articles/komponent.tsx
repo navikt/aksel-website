@@ -25,7 +25,7 @@ export default {
   name: "komponent_artikkel",
   type: "document",
   groups,
-  defaultDocPreview,
+  ...defaultDocPreview,
   fields: [
     editorField,
     titleField,

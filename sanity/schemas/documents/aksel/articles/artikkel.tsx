@@ -16,7 +16,7 @@ export default {
   name: "aksel_artikkel",
   type: "document",
   groups,
-  defaultDocPreview,
+  ...defaultDocPreview,
   fields: [
     editorField,
     titleField,

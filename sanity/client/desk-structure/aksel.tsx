@@ -7,6 +7,7 @@ import { map } from "rxjs/operators";
 import { createSuperPane } from "sanity-super-pane";
 
 const query = `*[_type == "aksel_tema" && count(*[references(^._id)]) > 0]`;
+const temaQuery = `*[_type == "aksel_tema" && count(*[references(^._id)]) > 0]`;
 
 const AkselLogo = () => (
   <svg
@@ -37,7 +38,38 @@ export const akselInnhold = async () => {
         .items([
           S.listItem()
             .title("Artikler")
-            .child(createSuperPane("aksel_artikkel")),
+            .child(() =>
+              documentStore.listenQuery(temaQuery).pipe(
+                map((tema: any) => {
+                  return S.list()
+                    .title("Artikler")
+                    .items([
+                      S.listItem()
+                        .title("Alle artikler")
+                        .child(S.documentTypeList("aksel_artikkel")),
+                      S.listItem()
+                        .title("Uten tema")
+                        .child(
+                          S.documentTypeList("aksel_artikkel").filter(
+                            `_type == "aksel_artikkel" && !defined(tema)`
+                          )
+                        ),
+                      ...tema.map((tag) => {
+                        return S.listItem()
+                          .title(tag.title)
+                          .child(
+                            S.documentList()
+                              .title(tag.title)
+                              .filter(
+                                `_type == 'aksel_artikkel' && $tag in tema[]->title`
+                              )
+                              .params({ tag: tag.title })
+                          );
+                      }),
+                    ]);
+                })
+              )
+            ),
           S.listItem().title("Blogg").child(S.documentTypeList("aksel_blogg")),
           S.listItem()
             .title("Prinsipper")
@@ -62,32 +94,6 @@ export const akselInnhold = async () => {
                   ),
                 ])
             ),
-          S.divider(),
-          S.listItem()
-            .title("Artikler etter tema")
-            .child(() =>
-              documentStore.listenQuery(query).pipe(
-                map((tema: any) => {
-                  return S.list()
-                    .title("Visning Temaer")
-                    .items([
-                      ...tema.map((tag) => {
-                        return S.listItem()
-                          .title(tag.title)
-                          .child(
-                            S.documentList()
-                              .title(tag.title)
-                              .filter(
-                                `_type == 'aksel_artikkel' && $tag in tema[]->title`
-                              )
-                              .params({ tag: tag.title })
-                          );
-                      }),
-                    ]);
-                })
-              )
-            ),
-
           S.divider(),
           S.listItem()
             .title("Temasider")

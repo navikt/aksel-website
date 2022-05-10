@@ -42,7 +42,7 @@ export default {
   name: "ds_artikkel",
   type: "document",
   groups,
-  defaultDocPreview,
+  ...defaultDocPreview,
   fields: [
     editorField,
     titleField,

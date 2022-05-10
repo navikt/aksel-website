@@ -20,7 +20,7 @@ export default {
   name: "aksel_prinsipp",
   type: "document",
   groups,
-  defaultDocPreview,
+  ...defaultDocPreview,
   fields: [
     editorField,
     titleField,

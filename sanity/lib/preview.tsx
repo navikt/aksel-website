@@ -9,12 +9,16 @@ export const defaultDocPreview = {
       metadata: "metadata",
       id: "_id",
       type: "_type",
+      tema: "tema.0.title",
     },
     prepare(selection) {
-      const { id, heading, type } = selection;
+      const { id, heading, type, tema } = selection;
+      console.log(tema);
       return {
         title: heading,
-        subtitle: type.includes("_component_")
+        subtitle: !!tema
+          ? `${tema}`
+          : type.includes("_component_")
           ? "Komponentside"
           : type.includes("_tabbed_")
           ? "Artikkel m/tabs"

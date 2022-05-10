@@ -16,7 +16,7 @@ export default {
   name: "aksel_blogg",
   type: "document",
   groups,
-  defaultDocPreview,
+  ...defaultDocPreview,
   fields: [
     editorField,
     titleField,

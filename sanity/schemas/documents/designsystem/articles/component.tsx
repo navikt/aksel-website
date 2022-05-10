@@ -14,7 +14,7 @@ export default {
   __experimental_actions: [/*'create',*/ "update", "delete", "publish"],
   type: "document",
   groups,
-  defaultDocPreview,
+  ...defaultDocPreview,
   fields: [
     editorField,
     titleField,
