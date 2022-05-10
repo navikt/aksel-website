@@ -9,8 +9,8 @@ import {
   Riktekst,
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
-import { Office1, Star, System } from "@navikt/ds-icons";
-import { BodyLong, Heading, Label } from "@navikt/ds-react";
+import { Locked, Office1, Star, System, Task } from "@navikt/ds-icons";
+import { BodyLong, Heading, Label, Tooltip } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
@@ -107,6 +107,24 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                   Security playbook
                 </Label>
               </NextLink>
+
+              <Tooltip content="Siden er bak innlogging">
+                <Label
+                  as="a"
+                  href="https://etterlevelse.intern.nav.no/"
+                  className="relative flex w-full items-center gap-3 rounded bg-white px-4 py-3 pr-10 shadow-small hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
+                  onClick={(e) => logPortalCard(e)}
+                >
+                  <Task className="shrink-0 text-[1.5rem]" aria-hidden />
+                  Etterlevelse
+                  <span className="absolute right-0 flex h-full items-center justify-center rounded-r bg-gray-500 px-1">
+                    <Locked
+                      aria-label="Siden er bak innlogging"
+                      className="text-white"
+                    />
+                  </span>
+                </Label>
+              </Tooltip>
             </nav>
           </div>
 

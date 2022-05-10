@@ -1,5 +1,6 @@
 import { toPlainText } from "@/lib";
 import {
+  Bookmark,
   Data,
   DirectionSign,
   Expand,
@@ -65,6 +66,7 @@ export const contentBlocks = (s?: string) => {
     },
     { type: "tabell", title: "Tabell", icon: () => <Data /> },
     { type: "accordion_v2", title: "Accordion", icon: () => <Expand /> },
+    { type: "tokens", title: "Tokens", icon: () => <Bookmark /> },
     {
       type: "spesial_seksjon",
       title: "Spesial seksjon",
