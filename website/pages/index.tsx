@@ -108,7 +108,10 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                 </Label>
               </NextLink>
 
-              <Tooltip content="Siden er bak innlogging">
+              <Tooltip
+                content="Siden er bak innlogging for NAV ansatte"
+                placement="right"
+              >
                 <Label
                   as="a"
                   href="https://etterlevelse.intern.nav.no/"
@@ -119,7 +122,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                   Etterlevelse
                   <span className="absolute right-0 flex h-full items-center justify-center rounded-r bg-gray-500 px-1">
                     <Locked
-                      aria-label="Siden er bak innlogging"
+                      aria-label="Siden er bak innlogging for NAV ansatte"
                       className="text-white"
                     />
                   </span>
