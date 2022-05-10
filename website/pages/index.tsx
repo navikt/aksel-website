@@ -81,7 +81,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
           <div className="flex w-full justify-center bg-gray-200 py-8">
             <nav
               aria-label="Portaler til NAV-sider"
-              className="aksel-layout-x mx-auto flex flex-col items-center gap-4 whitespace-nowrap lg:flex-row"
+              className="mx-auto flex flex-col gap-4 whitespace-nowrap xl:flex-row"
             >
               <NextLink href="/designsystem" passHref>
                 <Label
@@ -154,7 +154,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
 
           {hasPrinsipp1 && (
             <div className="mb-24 flex w-full justify-center bg-gray-200 py-16">
-              <div className="flex w-full flex-col justify-center  px-4">
+              <div className="aksel-layout-x flex w-full max-w-3xl flex-col  justify-center">
                 <Heading
                   level="1"
                   size="large"
