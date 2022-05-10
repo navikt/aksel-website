@@ -74,7 +74,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
           <div className="flex w-full justify-center bg-gray-200 py-8">
             <nav
               aria-label="Portaler til NAV-sider"
-              className="aksel-layout-x mx-auto flex flex-col items-center gap-4 whitespace-nowrap sm:flex-row"
+              className="aksel-layout-x mx-auto flex flex-col items-center gap-4 whitespace-nowrap lg:flex-row"
             >
               <NextLink href="/designsystem" passHref>
                 <Label
