@@ -159,6 +159,10 @@ const defaultBlock = `
     ...,
     "ref": ref->{...},
  },
+ _type == "tokens" =>{
+    ...,
+    Tokens[]->
+ },
  _type == "kode_ref" => @->,
  ${tips},
  ${relatertInnhold},
