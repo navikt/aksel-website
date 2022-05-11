@@ -103,7 +103,7 @@ const TokenBlocks = ({
   }
 
   return (
-    <div className="mb-8 flex flex-wrap gap-x-6 gap-y-4">
+    <div className="mb-8 flex flex-wrap gap-4">
       {tokenlist.map((tok, i) => (
         <TokenBlock key={tok.title + i} token={tok} />
       ))}
