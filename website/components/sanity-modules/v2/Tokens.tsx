@@ -3,6 +3,7 @@ import { Detail, Heading, Label } from "@navikt/ds-react";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import Color from "color";
 import cl from "classnames";
+import { capitalize } from "@/utils";
 
 const FontSizeBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
   return (
@@ -17,7 +18,7 @@ const FontSizeBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
       </div>
       <div>
         <Label size="small" className="mt-1 break-words">
-          {token.title.replace("font-size-", "")}
+          {capitalize(token.title.replace("font-size-", ""))}
         </Label>
         <Detail size="small">{`${
           Number(token.color.replace("rem", "")) * 16
@@ -68,7 +69,7 @@ const SemanticColorBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
         })}
       >
         <Label size="small" className="mt-2 break-words">
-          {token.title.replace("semantic-color-", "")}
+          {capitalize(token.title.replace("semantic-color-", ""))}
         </Label>
         <Detail size="small" className="mt-1">
           {Color(token.raw).hex().toString()}
