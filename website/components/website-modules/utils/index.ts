@@ -19,3 +19,7 @@ export const isNew = (date: string) => {
   const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
   return diffDays <= 90;
 };
+
+export function capitalize(s: string) {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}

@@ -1,14 +1,15 @@
-import { Heading } from "@navikt/ds-react";
+import { Heading, Tabs } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import {
+  capitalize,
   Feedback,
   LastUpdateTag,
+  logNav,
   RelatedNavigation,
   slugger,
   TableOfContents,
-  Tabs,
 } from "../..";
 import { DsArtikkel } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
@@ -20,7 +21,7 @@ const ArtikkelTabbedTemplate = ({
   data: DsArtikkel;
   title: string;
 }): JSX.Element => {
-  const { query, asPath } = useRouter();
+  const { query, push } = useRouter();
 
   useEffect(() => {
     slugger.reset();
@@ -57,39 +58,48 @@ const ArtikkelTabbedTemplate = ({
       </div>
       {tabs.length > 1 && (
         <Tabs
-          title={data.heading}
-          tabs={[
-            ...tabs
-              .map((tab, i) =>
-                data.innhold_tabs[i]
-                  ? {
-                      name: data.innhold_tabs[i].title,
-                      path: `${basePath}/${tab}`,
-                      active:
-                        activeTab === i
-                          ? activeTab === i
-                          : `${basePath}/${tab}` ===
-                            new URL(asPath, "http://example.com").pathname,
-                    }
-                  : null
-              )
-              .filter((x) => !!x),
-          ]}
-        />
+          className="sticky top-0 z-[1001]"
+          value={data.innhold_tabs[activeTab]?.title
+            .toLowerCase()
+            .replace(/\s+/g, "-")}
+          onChange={(x) => {
+            push(`${basePath}/${x}`, undefined, { shallow: true });
+            logNav("tabs", window.location.pathname, `${basePath}/${x}`);
+          }}
+        >
+          <Tabs.List className="mx-0 px-2 lg:mx-12 lg:px-0">
+            {data.innhold_tabs.map((x) => (
+              <Tabs.Tab
+                as="button"
+                key={x.title}
+                value={x.title?.toLowerCase().replace(/\s+/g, "-")}
+                label={capitalize(x.title)}
+              />
+            ))}
+          </Tabs.List>
+          {data.innhold_tabs.map((x) => (
+            <Tabs.Panel
+              className="tabpanel relative max-w-full lg:max-w-7xl"
+              key={x.title}
+              value={x.title?.toLowerCase().replace(/\s+/g, "-")}
+            >
+              <TableOfContents changedState={x.innhold} />
+              <div className="content-box">
+                <SanityBlockContent className="mt-12" blocks={x.innhold} />
+                {!data?.metadata_feedback?.hide_feedback && (
+                  <Feedback docId={data?._id} docType={data?._type} />
+                )}
+                <RelatedNavigation />
+              </div>
+            </Tabs.Panel>
+          ))}
+        </Tabs>
       )}
-      <div className="relative flex max-w-full lg:max-w-7xl">
-        <TableOfContents changedState={data.innhold_tabs[activeTab].innhold} />
-        <div className="content-box">
-          <SanityBlockContent
-            className="mt-12"
-            blocks={data.innhold_tabs[activeTab].innhold}
-          />
-          {!data?.metadata_feedback?.hide_feedback && (
-            <Feedback docId={data?._id} docType={data?._type} />
-          )}
-          <RelatedNavigation />
-        </div>
-      </div>
+      <style jsx global>{`
+        .tabpanel[data-state="active"] {
+          display: flex;
+        }
+      `}</style>
     </>
   );
 };
