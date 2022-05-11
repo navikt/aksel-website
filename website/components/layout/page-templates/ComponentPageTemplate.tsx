@@ -24,7 +24,7 @@ const ComponentPageTemplate = ({
   data: DsComponentPage;
   title: string;
 }): JSX.Element => {
-  const { query, asPath, push } = useRouter();
+  const { query, push } = useRouter();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, activeHeading] = useDsNavigation();
   const [activeTab, setActiveTab] = useState(0);
@@ -182,7 +182,7 @@ const ComponentPageTemplate = ({
             ))}
         </Tabs.List>
         {Object.entries(tabs)
-          .filter(([_, val]) => !!data[val])
+          .filter(([, val]) => !!data[val])
           .map(([key, val]) => (
             <Tabs.Panel
               className="relative flex max-w-full lg:max-w-7xl"
