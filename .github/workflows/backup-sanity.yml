@@ -1,4 +1,4 @@
-name: Sanity backup
+name: Backup dataset to gcp
 on:
   workflow_dispatch:
   schedule:
