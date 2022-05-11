@@ -20,7 +20,7 @@ const FontSizeBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
           {token.title.replace("font-size-", "")}
         </Label>
         <Detail size="small">{`${
-          token.color.replace("rem", "") * 16
+          Number(token.color.replace("rem", "")) * 16
         }px`}</Detail>
       </div>
     </div>
@@ -64,7 +64,7 @@ const SemanticColorBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
       <div
         className={cl({
           "w-32": !isText,
-          "px-2": Color(token.raw).luminosity() <= 0.9,
+          "px-2": Color(token.raw).luminosity() <= 0.9 && isText,
         })}
       >
         <Label size="small" className="mt-2 break-words">
