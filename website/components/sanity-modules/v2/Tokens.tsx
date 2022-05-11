@@ -1,13 +1,89 @@
 import { SanityT } from "@/lib";
-import { BodyShort, Table } from "@navikt/ds-react";
-import cl from "classnames";
-import Color from "color";
+import { Detail, Heading, Label } from "@navikt/ds-react";
 import { withErrorBoundary } from "../../ErrorBoundary";
-import CodeSnippet from "../code/Snippet";
+import Color from "color";
+import cl from "classnames";
 
-const Token = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
+const FontSizeBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
+  return (
+    <div className="flex w-full flex-col justify-end">
+      <div
+        style={{
+          fontSize: token.color,
+        }}
+        className="truncate"
+      >
+        The quick brown fox jumps over the lazy dog
+      </div>
+      <div>
+        <Label size="small" className="mt-1 break-words">
+          {token.title.replace("font-size-", "")}
+        </Label>
+        <Detail size="small">{`${
+          token.color.replace("rem", "") * 16
+        }px`}</Detail>
+      </div>
+    </div>
+  );
+};
+
+const SemanticColorBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
+  const text = token.title.replace("semantic-color-", "");
+  const isText =
+    text.startsWith("text") ||
+    text.startsWith("link") ||
+    text.endsWith("-text");
+
+  return (
+    <div>
+      {!isText && (
+        <div
+          style={{ background: token.raw }}
+          className="relative h-32 w-32 min-w-32 rounded border border-gray-900/20"
+        ></div>
+      )}
+      {isText && (
+        <div
+          style={{
+            color: token.raw,
+            background:
+              Color(token.raw).luminosity() > 0.9
+                ? "rgba(64,64,64,1)"
+                : "transparent",
+          }}
+          className="rounded px-2"
+        >
+          <Heading as="span" size="xlarge" className="text-5xl">
+            A
+          </Heading>
+          <Heading as="span" size="xlarge" className="text-4xl">
+            a
+          </Heading>
+        </div>
+      )}
+      <div
+        className={cl({
+          "w-32": !isText,
+          "px-2": Color(token.raw).luminosity() <= 0.9,
+        })}
+      >
+        <Label size="small" className="mt-2 break-words">
+          {token.title.replace("semantic-color-", "")}
+        </Label>
+        <Detail size="small" className="mt-1">
+          {Color(token.raw).hex().toString()}
+        </Detail>
+      </div>
+    </div>
+  );
+};
+
+const TokenBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
   if (token.title.startsWith("semantic-color")) {
-    return <div style={{ background: token.raw }} className="h-24 w-24"></div>;
+    return <SemanticColorBlock token={token} />;
+  }
+  if (token.title.startsWith("font-size")) {
+    return <FontSizeBlock token={token} />;
   }
   return (
     <div>
@@ -17,7 +93,7 @@ const Token = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
   );
 };
 
-const TokenBlock = ({
+const TokenBlocks = ({
   node: { tokenlist },
 }: {
   node: { tokenlist: SanityT.Schema.ds_tokens[] };
@@ -27,12 +103,12 @@ const TokenBlock = ({
   }
 
   return (
-    <div className="mb-8 flex gap-4">
+    <div className="mb-8 flex flex-wrap gap-x-6 gap-y-4">
       {tokenlist.map((tok, i) => (
-        <Token key={tok.title + i} token={tok} />
+        <TokenBlock key={tok.title + i} token={tok} />
       ))}
     </div>
   );
 };
 
-export default withErrorBoundary(TokenBlock, "Tokens");
+export default withErrorBoundary(TokenBlocks, "Tokens");
