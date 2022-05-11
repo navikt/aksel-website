@@ -1,16 +1,17 @@
 import { ExternalLink } from "@navikt/ds-icons";
-import { BodyShort, Heading, Tag } from "@navikt/ds-react";
+import { BodyShort, Heading, Tabs, Tag } from "@navikt/ds-react";
 import cl from "classnames";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import {
+  capitalize,
   Feedback,
   LastUpdateTag,
+  logNav,
   RelatedNavigation,
   slugger,
   TableOfContents,
-  Tabs,
   useDsNavigation,
 } from "../..";
 import { DsComponentPage } from "../../../lib";
@@ -23,7 +24,7 @@ const ComponentPageTemplate = ({
   data: DsComponentPage;
   title: string;
 }): JSX.Element => {
-  const { query, asPath } = useRouter();
+  const { query, asPath, push } = useRouter();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, activeHeading] = useDsNavigation();
   const [activeTab, setActiveTab] = useState(0);
@@ -51,7 +52,6 @@ const ComponentPageTemplate = ({
 
   const basePath = `/designsystem/side/${query.slug[0]}`;
 
-  const value = Object.values(tabs)?.[activeTab];
   const tabKey = Object.keys(tabs)?.[activeTab];
 
   const npmPackage = data.linked_package as unknown as {
@@ -162,38 +162,51 @@ const ComponentPageTemplate = ({
         </div>
       </div>
       <Tabs
-        title={data.heading}
-        tabs={[
-          ...Object.entries(tabs)
-            .map(([key, value], i) => {
-              const [first, ...rest] = key;
-              return data[value]
-                ? {
-                    name: first.toUpperCase() + rest.join(""),
-                    path: `${basePath}${key === "bruk" ? "" : "/" + key}`,
-                    active:
-                      activeTab === i
-                        ? activeTab === i
-                        : `${basePath}${key === "bruk" ? "" : "/" + key}` ===
-                          new URL(asPath, "http://example.com").pathname,
-                  }
-                : null;
-            })
-            .filter((x) => !!x),
-        ]}
-      />
-      <div className="relative flex max-w-full lg:max-w-7xl">
-        <TableOfContents changedState={data[value]} />
-        <div className="content-box">
-          {data[value] && (
-            <SanityBlockContent className="mt-12" blocks={data[value]} />
-          )}
-          {!data?.metadata_feedback?.hide_feedback && (
-            <Feedback docId={data?._id} docType={data?._type} />
-          )}
-          <RelatedNavigation />
-        </div>
-      </div>
+        className="sticky top-0 z-[1001]"
+        value={tabKey}
+        onChange={(x) => {
+          push(`${basePath}/${x}`, undefined, { shallow: true });
+          logNav("tabs", window.location.pathname, `${basePath}/${x}`);
+        }}
+      >
+        <Tabs.List className="mx-0 px-2 lg:mx-12 lg:px-0">
+          {Object.entries(tabs)
+            .filter(([, val]) => !!data[val])
+            .map(([key]) => (
+              <Tabs.Tab
+                as="button"
+                key={key}
+                value={key}
+                label={capitalize(key)}
+              />
+            ))}
+        </Tabs.List>
+        {Object.entries(tabs)
+          .filter(([_, val]) => !!data[val])
+          .map(([key, val]) => (
+            <Tabs.Panel
+              className="relative flex max-w-full lg:max-w-7xl"
+              key={key + val}
+              value={key}
+            >
+              <TableOfContents changedState={data[val]} />
+              <div className="content-box">
+                {data[val] && (
+                  <SanityBlockContent className="mt-12" blocks={data[val]} />
+                )}
+                {!data?.metadata_feedback?.hide_feedback && (
+                  <Feedback docId={data?._id} docType={data?._type} />
+                )}
+                <RelatedNavigation />
+              </div>
+            </Tabs.Panel>
+          ))}
+      </Tabs>
+      <style jsx global>{`
+        .tabpanel[data-state="active"] {
+          display: flex;
+        }
+      `}</style>
     </>
   );
 };
