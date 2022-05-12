@@ -17,6 +17,32 @@ declare namespace SanityT {
        * Beskrivelse - `RegistryReference`
        */
       beskrivelse?: riktekst;
+
+      /**
+       * Brukeropplevelse - `Object`
+       */
+      prinsipp_1?: {
+        /**
+         * Vis på forside - `Boolean`
+         */
+        vis?: boolean;
+
+        /**
+         * Beskrivelse - `RegistryReference`
+         */
+        beskrivelse?: riktekst;
+
+        /**
+         * Hovedside - `Reference`
+         */
+        hovedside?: Sanity.Reference<aksel_prinsipp>;
+
+        /**
+       * Undersider - `Array`
+Rekkefølge bestemmer rekkefølgen på forsiden!
+       */
+        undersider?: Array<Sanity.KeyedReference<aksel_prinsipp>>;
+      };
     }
 
     /**
@@ -1220,6 +1246,10 @@ Dette vil stå under bildet
 
     type riktekst_enkel = Array<Sanity.Keyed<Sanity.Block>>;
 
+    type riktekst_bilde = Array<
+      Sanity.Keyed<Sanity.Block> | Sanity.Keyed<bilde>
+    >;
+
     type alert_v2 = {
       _type: "alert_v2";
 
@@ -1388,6 +1418,11 @@ Gi tabellen et navn for å lettere finne den
        * Tittel (h2) - `String`
        */
       title?: string;
+
+      /**
+       * Generisk innhold - `RegistryReference`
+       */
+      innhold?: riktekst_bilde;
 
       /**
        * Interaksjon med mus (optional) - `RegistryReference`

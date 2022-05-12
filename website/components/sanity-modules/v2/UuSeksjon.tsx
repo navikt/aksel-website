@@ -1,10 +1,10 @@
 import { Heading, Table } from "@navikt/ds-react";
 import React from "react";
 import { LevelTwoHeading } from "../..";
-import { UuSeksjon as UuSeksjonT } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import cl from "classnames";
+import { SanityT } from "@/lib";
 
 const KBD = (props: React.HTMLAttributes<HTMLElement>) => (
   <kbd
@@ -16,7 +16,11 @@ const KBD = (props: React.HTMLAttributes<HTMLElement>) => (
   />
 );
 
-const UuSeksjon = ({ node }: { node: UuSeksjonT }): JSX.Element => {
+const UuSeksjon = ({
+  node,
+}: {
+  node: SanityT.Schema.uu_seksjon;
+}): JSX.Element => {
   if (!node || !node.title) {
     return null;
   }
@@ -35,6 +39,7 @@ const UuSeksjon = ({ node }: { node: UuSeksjonT }): JSX.Element => {
   return (
     <div className="mb-16">
       <LevelTwoHeading>{[node.title]}</LevelTwoHeading>
+      {node?.innhold && <SanityBlockContent blocks={node.innhold} />}
       {node?.interaksjon_mus && (
         <Heading level="3" size="medium">
           Interaksjon Mus

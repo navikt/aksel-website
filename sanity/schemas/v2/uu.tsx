@@ -21,18 +21,18 @@ export default {
     {
       title: "Interaksjon med mus (optional)",
       name: "interaksjon_mus",
-      type: "riktekst_enkel",
+      type: "riktekst_bilde_enkel",
     },
     {
       title: "Interaksjon med touch (optional)",
       name: "interaksjon_touch",
-      type: "riktekst_enkel",
+      type: "riktekst_bilde_enkel",
     },
     {
       title: "Interaksjon med tastatur (optional)",
       description: "Ekstra info som ikke kan forklares med key + action under",
       name: "interaksjon_tastatur",
-      type: "riktekst_enkel",
+      type: "riktekst_bilde_enkel",
     },
     {
       type: "array",
@@ -56,7 +56,7 @@ export default {
     {
       title: "Interaksjon med skjermleser (optional)",
       name: "interaksjon_skjermleser",
-      type: "riktekst_enkel",
+      type: "riktekst_bilde_enkel",
     },
   ],
   preview: {
