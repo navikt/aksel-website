@@ -10,7 +10,6 @@ import {
   Image,
   ImageWithText,
   LevelTwoHeading,
-  PropTable,
   Sandbox,
   Snippet,
   RelatedPagesCards,
@@ -31,6 +30,7 @@ import {
   SpesialSeksjon,
   Video,
   TokensSeksjon,
+  PropTable,
 } from ".";
 import { ExternalLink } from "@navikt/ds-icons";
 import DsIconAnnotation from "./sanity-modules/v2/IconAnnotation";
@@ -79,7 +79,14 @@ const serializers = {
     code_snippet: ({ node }) => <Snippet node={node} />,
     ds_code_example: ({ node }) => <CodeExample node={node} />,
     code_example_ref: ({ node }) => <CodeExample node={node.ref} />,
-    prop_table: ({ node }) => <PropTable node={node} />,
+    prop_table: ({ node }) =>
+      node?.komponenter?.length > 0 ? (
+        <>
+          {node.komponenter.map((prop) => (
+            <PropTable komponent={prop as unknown as any} key={prop?._key} />
+          ))}
+        </>
+      ) : null,
     do_dont: ({ node }) => <DoDont node={node} />,
     picture: ({ node }) => <Image node={node} />,
     picture_text: ({ node }) => <ImageWithText node={node} />,
