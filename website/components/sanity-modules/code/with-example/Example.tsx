@@ -9,7 +9,7 @@ import { BgColors } from "../../../../stories/sandbox/types";
 
 const CodePreview = dynamic(() => import("./Preview"), {
   loading: () => (
-    <div className="flex h-[100px] w-full border border-t-0 border-gray-200 bg-gray-50" />
+    <div className="flex min-h-48 w-full border border-t-0 border-gray-200 bg-gray-50" />
   ),
   ssr: false,
 });
