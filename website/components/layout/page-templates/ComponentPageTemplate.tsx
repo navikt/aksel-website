@@ -52,7 +52,6 @@ const ComponentPageTemplate = ({
     status: string;
   };
 
-  console.log(activeTab);
   return (
     <>
       <Head>
