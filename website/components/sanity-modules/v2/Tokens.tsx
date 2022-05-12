@@ -72,8 +72,9 @@ const SemanticColorBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
           {capitalize(token.title.replace("semantic-color-", ""))}
         </Label>
         <Detail size="small" className="mt-1">
-          {Color(token.raw).hex().toString()}
+          {token.parent.replace("--navds-global-color-", "")}
         </Detail>
+        <Detail size="small">{Color(token.raw).hex().toString()}</Detail>
       </div>
     </div>
   );
