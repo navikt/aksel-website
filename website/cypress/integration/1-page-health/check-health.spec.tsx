@@ -8,6 +8,7 @@ describe("Testing health for all pages", () => {
       cy.visit(url);
       cy.wait(100);
       cy.get(".vk-errorboundary").should("not.exist");
+      cy.get(".should-not-be-found").should("not.exist");
       cy.get("#vk-notFoundId").should("not.exist");
     });
   });

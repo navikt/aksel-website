@@ -42,7 +42,6 @@ const Feedback = ({
 
   const logFeedback = useCallback(
     (completed: boolean) => {
-      !hasLoggedFeedback && activeState && console.log("logFeedback");
       !hasLoggedFeedback &&
         activeState &&
         logAmplitudeEvent(AmplitudeEvents.feedbackinteraksjon, {

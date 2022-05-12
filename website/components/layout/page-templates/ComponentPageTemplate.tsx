@@ -52,16 +52,6 @@ const ComponentPageTemplate = ({
     status: string;
   };
 
-  console.log({
-    opt: Object.entries(tabs)
-      .filter(([, val]) => !!data[val])
-      .map(([key]) => key),
-    key: tabKey,
-    panels: Object.entries(tabs)
-      .filter(([, val]) => !!data[val])
-      .map(([key]) => key),
-  });
-
   return (
     <>
       <Head>
