@@ -20,7 +20,7 @@ const FooterForm = () => {
   const [sent, setSent] = useState(false);
   const [hasWritten, setHasWritten] = useState(false);
 
-  const { asPath } = useRouter();
+  const { asPath, basePath } = useRouter();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,6 +50,7 @@ const FooterForm = () => {
       body: JSON.stringify({
         message: contactForm.content,
         user: contactForm.mail,
+        url: `${basePath}${asPath}`,
       }),
     });
 

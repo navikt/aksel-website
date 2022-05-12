@@ -64,6 +64,7 @@ export type HelpfulArticleT = {
 export type DsFeddbackMsgT = {
   message: string;
   user?: string;
+  url: string;
 };
 
 export interface ExampleComponent extends React.FC {
