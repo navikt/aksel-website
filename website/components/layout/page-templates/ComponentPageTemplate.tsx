@@ -52,6 +52,16 @@ const ComponentPageTemplate = ({
     status: string;
   };
 
+  console.log({
+    opt: Object.entries(tabs)
+      .filter(([, val]) => !!data[val])
+      .map(([key]) => key),
+    key: tabKey,
+    panels: Object.entries(tabs)
+      .filter(([, val]) => !!data[val])
+      .map(([key]) => key),
+  });
+
   return (
     <>
       <Head>
@@ -178,7 +188,7 @@ const ComponentPageTemplate = ({
           .filter(([, val]) => !!data[val])
           .map(([key, val]) => (
             <Tabs.Panel
-              className="relative flex max-w-full lg:max-w-7xl"
+              className="tabpanel relative max-w-full lg:max-w-7xl"
               key={key + val}
               value={key}
             >

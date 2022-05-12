@@ -95,6 +95,7 @@ const LevelTwoHeading = ({
           placement="bottom-start"
           arrow={false}
           offset={8}
+          className="shadow-md"
         >
           {openPopover && (
             <Popover.Content style={{ padding: "0.25rem" }}>
