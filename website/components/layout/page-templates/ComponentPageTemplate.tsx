@@ -165,8 +165,9 @@ const ComponentPageTemplate = ({
         className="sticky top-0 z-[1001]"
         value={tabKey}
         onChange={(x) => {
-          push(`${basePath}/${x}`, undefined, { shallow: true });
-          logNav("tabs", window.location.pathname, `${basePath}/${x}`);
+          const url = x === "bruk" ? basePath : `${basePath}/${x}`;
+          push(url, undefined, { shallow: true });
+          logNav("tabs", window.location.pathname, url);
         }}
       >
         <Tabs.List className="mx-0 px-2 lg:mx-12 lg:px-0">
