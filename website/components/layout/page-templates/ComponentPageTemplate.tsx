@@ -3,7 +3,7 @@ import { BodyShort, Heading, Tabs, Tag } from "@navikt/ds-react";
 import cl from "classnames";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   capitalize,
   Feedback,
@@ -27,7 +27,6 @@ const ComponentPageTemplate = ({
   const { query, push } = useRouter();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, activeHeading] = useDsNavigation();
-  const [activeTab, setActiveTab] = useState(0);
 
   const tabs = {
     bruk: "usage",
@@ -41,14 +40,7 @@ const ComponentPageTemplate = ({
   });
 
   /* Defaults back to a tab with content if first does not */
-  useEffect(() => {
-    let active = Object.keys(tabs).indexOf(query.slug?.[1] ?? "bruk");
-
-    active = !data[tabs[Object.keys(tabs)[active]]]
-      ? Object.keys(tabs).findIndex((x) => !!data[tabs[x]])
-      : active;
-    setActiveTab(active);
-  }, [query.slug]);
+  const activeTab = Object.keys(tabs).indexOf(query.slug?.[1] ?? "bruk");
 
   const basePath = `/designsystem/side/${query.slug[0]}`;
 
@@ -60,6 +52,7 @@ const ComponentPageTemplate = ({
     status: string;
   };
 
+  console.log(activeTab);
   return (
     <>
       <Head>
