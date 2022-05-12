@@ -36,7 +36,8 @@ export default {
         "Dette feltet fungerer ikke lengre, bruk et vanlig bilde uten flytende tekst",
       type: "boolean",
       initialValue: false,
-      hidden: ({ parent }) => parent?.hide_floating,
+      hidden: true,
+      readOnly: true,
       options: {
         isHighlighted: true,
       },
@@ -71,7 +72,8 @@ export default {
       name: "floating_text",
       title: "Flytende tekst",
       type: "riktekst",
-      hidden: ({ parent }) => !parent?.floating,
+      hidden: true,
+      readOnly: true,
       options: {
         isHighlighted: true,
       },

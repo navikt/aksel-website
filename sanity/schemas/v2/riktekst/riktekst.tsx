@@ -113,6 +113,32 @@ export const block = {
   },
 };
 
+export const headingStyles = [
+  ...block.styles,
+  {
+    title: "Tittel H3",
+    value: "h3",
+    blockEditor: {
+      render: (props) => (
+        <Heading as="span" size="xsmall">
+          {props.children}
+        </Heading>
+      ),
+    },
+  },
+  {
+    title: "Tittel H4",
+    value: "h4",
+    blockEditor: {
+      render: (props) => (
+        <Heading as="span" size="xsmall">
+          {props.children}
+        </Heading>
+      ),
+    },
+  },
+];
+
 export default {
   title: "Riktekst",
   name: "riktekst",
@@ -120,31 +146,7 @@ export default {
   of: [
     {
       ...block,
-      styles: [
-        ...block.styles,
-        {
-          title: "Tittel H3",
-          value: "h3",
-          blockEditor: {
-            render: (props) => (
-              <Heading as="span" size="xsmall">
-                {props.children}
-              </Heading>
-            ),
-          },
-        },
-        {
-          title: "Tittel H4",
-          value: "h4",
-          blockEditor: {
-            render: (props) => (
-              <Heading as="span" size="xsmall">
-                {props.children}
-              </Heading>
-            ),
-          },
-        },
-      ],
+      styles: [...headingStyles],
     },
   ],
   icon: () => <FileContent />,

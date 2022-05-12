@@ -3,6 +3,7 @@ import GeneriskBlokkArtikkel from "./generisk-blokk-artikkel";
 import Riktekst from "./riktekst/riktekst";
 import RiktekstEnkel from "./riktekst/riktekst-enkel";
 import RiktekstTabell from "./riktekst/riktekst-tabell";
+import RiktekstBilde from "./riktekst/riktekst-bilde";
 import DoDontV2 from "./do-dont";
 import Bilde from "./bilde";
 import Alert from "./alert";
@@ -27,6 +28,7 @@ const v2Blocks = [
   DoDontV2,
   Bilde,
   RiktekstEnkel,
+  RiktekstBilde,
   Alert,
   Kode,
   RelatertInnhold,

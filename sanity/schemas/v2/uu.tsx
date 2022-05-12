@@ -14,6 +14,11 @@ export default {
       readOnly: true,
     },
     {
+      title: "Generisk innhold",
+      name: "innhold",
+      type: "riktekst_bilde",
+    },
+    {
       title: "Interaksjon med mus (optional)",
       name: "interaksjon_mus",
       type: "riktekst_enkel",
