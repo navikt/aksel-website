@@ -1,23 +1,39 @@
 import { SanityT } from "@/lib";
-import { Detail, Heading, Label } from "@navikt/ds-react";
+import { BodyShort, Detail, Heading, Label } from "@navikt/ds-react";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import Color from "color";
 import cl from "classnames";
 import { capitalize } from "@/utils";
 
-const ShadowBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
-  console.log(token);
+const RadiusBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
   return (
     <div className="flex w-full gap-6">
       <div
-        style={{ boxShadow: token.token }}
+        style={{ borderRadius: token.token }}
+        className="relative h-20 w-20 min-w-20 rounded border border-border-muted"
+      ></div>
+      <div className="w-32">
+        <Label size="small" spacing className="mt-1 break-words">
+          {capitalize(token.title.replace("font-size-", ""))}
+        </Label>
+        <BodyShort size="small">{token.token}</BodyShort>
+      </div>
+    </div>
+  );
+};
+
+const ShadowBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
+  return (
+    <div className="flex w-full gap-6">
+      <div
+        style={{ boxShadow: token.raw ?? token.token }}
         className="relative h-24 w-24 min-w-24 rounded"
       ></div>
       <div>
         <Label size="small" spacing className="mt-1 break-words">
           {capitalize(token.title.replace("font-size-", ""))}
         </Label>
-        <Detail size="small">{token.token}</Detail>
+        <BodyShort size="small">{token.raw ?? token.token}</BodyShort>
       </div>
     </div>
   );
@@ -107,6 +123,9 @@ const TokenBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
   }
   if (token.title.startsWith("shadow")) {
     return <ShadowBlock token={token} />;
+  }
+  if (token.title.startsWith("border-radius")) {
+    return <RadiusBlock token={token} />;
   }
   return (
     <div>
