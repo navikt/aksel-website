@@ -17,7 +17,8 @@ const Tips = ({ node }: { node: TipsT }): JSX.Element => {
   return (
     <div
       className={cl(
-        "tips relative-child linear max-w-2xl rounded-r border-l-[6px] border-l-gray-500 px-4 py-4 shadow-small md:px-8",
+        style.tips,
+        "relative-child linear max-w-2xl rounded-r border-l-[6px] border-l-gray-500 px-4 py-4 shadow-small md:px-8",
         {
           "my-8": context.withinSection,
           "my-16": !context.withinSection,
@@ -28,15 +29,6 @@ const Tips = ({ node }: { node: TipsT }): JSX.Element => {
         TIPS
       </Detail>
       <SanityBlockContent blocks={node.body} noLastMargin />
-      <style jsx global>{`
-        .tips {
-          @apply bg-gradient-to-l from-gray-100 to-gray-50;
-        }
-
-        .aksel-artikkel .tips {
-          @apply from-white to-white;
-        }
-      `}</style>
     </div>
   );
 };
