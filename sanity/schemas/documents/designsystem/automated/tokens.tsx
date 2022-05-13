@@ -12,7 +12,7 @@ export default {
     },
     {
       title: "Verdi",
-      name: "color",
+      name: "token",
       type: "string",
       validation: (Rule) => Rule.required(),
       readOnly: true,

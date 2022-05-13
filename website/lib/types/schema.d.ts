@@ -276,7 +276,7 @@ Prøver å hente React og HTML kode automatisk fra storybook
       /**
        * Verdi - `String`
        */
-      color?: string;
+      token?: string;
 
       /**
        * Faktisk verdi - `String`

@@ -10,14 +10,14 @@ const ShadowBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
   return (
     <div className="flex w-full gap-6">
       <div
-        style={{ boxShadow: token.color }}
+        style={{ boxShadow: token.token }}
         className="relative h-24 w-24 min-w-24 rounded"
       ></div>
       <div>
         <Label size="small" spacing className="mt-1 break-words">
           {capitalize(token.title.replace("font-size-", ""))}
         </Label>
-        <Detail size="small">{token.color}</Detail>
+        <Detail size="small">{token.token}</Detail>
       </div>
     </div>
   );
@@ -28,7 +28,7 @@ const FontSizeBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
     <div className="flex w-full flex-col justify-end">
       <div
         style={{
-          fontSize: token.color,
+          fontSize: token.token,
         }}
         className="truncate"
       >
@@ -39,7 +39,7 @@ const FontSizeBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
           {capitalize(token.title.replace("font-size-", ""))}
         </Label>
         <Detail size="small">{`${
-          Number(token.color.replace("rem", "")) * 16
+          Number(token.token.replace("rem", "")) * 16
         }px`}</Detail>
       </div>
     </div>
