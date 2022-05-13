@@ -1,13 +1,14 @@
+import { SanityT } from "@/lib";
+import { SanityBlockContent } from "@/sanity-block";
+import { SectionContext } from "@/utils";
+import { LightBulb } from "@navikt/ds-icons";
 import { Detail } from "@navikt/ds-react";
 import cl from "classnames";
 import React, { useContext } from "react";
-import { SectionContext } from "../..";
-import { Tips as TipsT } from "../../../lib";
-import { withErrorBoundary } from "../../ErrorBoundary";
-import { SanityBlockContent } from "../../SanityBlockContent";
+import { withErrorBoundary } from "../../../ErrorBoundary";
 import style from "./tips.module.css";
 
-const Tips = ({ node }: { node: TipsT }): JSX.Element => {
+const Tips = ({ node }: { node: SanityT.Schema.tips }): JSX.Element => {
   const context = useContext(SectionContext);
 
   if (!node || !node.body) {
@@ -25,8 +26,8 @@ const Tips = ({ node }: { node: TipsT }): JSX.Element => {
         }
       )}
     >
-      <Detail className="text-text-muted" spacing>
-        TIPS
+      <Detail className="flex items-center gap-1 text-text-muted" spacing>
+        <LightBulb className="text-large" aria-label="tips" aria-hidden /> TIPS
       </Detail>
       <SanityBlockContent blocks={node.body} noLastMargin />
     </div>
