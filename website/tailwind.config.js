@@ -38,6 +38,7 @@ module.exports = {
         toc: "1224px",
       },
       boxShadow: {
+        "focus-inverted-inset": "inset var(--navds-shadow-focus-inverted)",
         "focus-inset": "inset var(--navds-shadow-focus)",
         "focus-gap": "0 0 0 1px white, var(--navds-shadow-focus)",
         header: "inset 0 -1px 0 rgb(180, 180, 180, 0.1)",

@@ -17,14 +17,17 @@ const AkselHeader = ({ frontPage }: { frontPage?: boolean }): JSX.Element => {
       )}
     >
       <div className="xs:w-[90%] mx-auto flex max-w-aksel justify-between">
-        {!frontPage && (
-          <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
-            Hopp til innhold
-          </a>
-        )}
+        <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
+          Hopp til innhold
+        </a>
+
         <NextLink href="/" passHref>
           <a
-            className="block px-4 py-3 hover:bg-gray-800/10 focus:shadow-focus-inset focus:outline-none xl:-ml-4"
+            className={cl("block px-4 py-3 focus:outline-none xl:-ml-4", {
+              "hover:bg-gray-100/10 focus:shadow-focus-inverted-inset":
+                frontPage,
+              "hover:bg-gray-800/10 focus:shadow-focus-inset": !frontPage,
+            })}
             onClick={(e) =>
               logNav(
                 "header",
