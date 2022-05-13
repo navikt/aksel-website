@@ -19,7 +19,7 @@ const PortalNav = ({ title }: { title: string }) => {
         >
           <AkselLogo
             focusable={false}
-            className=" h-10 w-10 "
+            className="h-7 w-7 "
             aria-label="Forside"
           />
         </a>

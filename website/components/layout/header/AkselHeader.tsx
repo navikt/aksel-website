@@ -12,7 +12,7 @@ const AkselHeader = ({ frontPage }: { frontPage?: boolean }): JSX.Element => {
         "group sticky top-0 z-20 w-full shadow-header backdrop-blur transition-colors duration-200 ease-out",
         {
           "bg-deepblue-900 text-white hover:bg-deepblue-800": frontPage,
-          "bg-gray-50/80 hover:bg-gray-100/80": !frontPage,
+          "bg-gray-50/80 text-deepblue-800 hover:bg-gray-100/80": !frontPage,
         }
       )}
     >
@@ -33,13 +33,13 @@ const AkselHeader = ({ frontPage }: { frontPage?: boolean }): JSX.Element => {
               )
             }
           >
-            <AkselLogo className="h-7 w-7 text-deepblue-800" aria-hidden />
+            <AkselLogo className="h-7 w-7" aria-hidden />
             <span className="sr-only">Aksel</span>
           </a>
         </NextLink>
         <span className="flex">
           <ProfileDropdown />
-          {!frontPage && <Search inverted />}
+          <Search variant={frontPage ? "aksel-inverted" : "aksel"} />
         </span>
       </div>
     </header>

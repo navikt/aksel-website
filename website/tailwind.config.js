@@ -10,7 +10,7 @@ module.exports = {
     extend: {
       spacing: {
         0: 0,
-        header: "4rem",
+        header: "3.5rem",
         sidebar: "240px",
         text: "600px",
       },
@@ -23,11 +23,11 @@ module.exports = {
         prose: "75ch",
       },
       minWidth: ({ theme }) => ({
-        header: "4rem",
+        header: "3.5rem",
         ...theme("spacing"),
       }),
       minHeight: ({ theme }) => ({
-        "screen-header": "calc(100vh - 4rem)",
+        "screen-header": "calc(100vh - 3.5rem)",
         ...theme("spacing"),
       }),
       screens: {
