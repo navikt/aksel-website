@@ -10,6 +10,7 @@ import {
   Detail,
   Heading,
   Label,
+  Link,
   useClientLayoutEffect,
 } from "@navikt/ds-react";
 import Head from "next/head";
@@ -92,8 +93,39 @@ const AkselArtikkelTemplate = ({
 
       <div className="aksel-artikkel">
         <AkselHeader />
-
-        <Footer />
+        <main
+          tabIndex={-1}
+          id="hovedinnhold"
+          className="bg-gray-50 pt-[8vw] pb-16 md:pb-32"
+        >
+          <div className="px-4">
+            <div className="xs:w-[90%] mx-auto max-w-prose">
+              <div>
+                {hasTema &&
+                  data.tema.map(({ title }: any, y) => (
+                    <>
+                      {y !== 0 && `, `}
+                      <NextLink
+                        key={title}
+                        href={`/tema/${getTemaSlug(title)}`}
+                        passHref
+                      >
+                        <Label
+                          size="small"
+                          as="a"
+                          className="index-lvl5 uppercase text-text hover:underline focus:underline focus:outline-none"
+                        >
+                          {title}
+                        </Label>
+                      </NextLink>
+                    </>
+                  ))}
+              </div>
+            </div>
+          </div>
+          <div className="mt-12"></div>
+        </main>
+        {/* <Footer /> */}
       </div>
     </>
   );

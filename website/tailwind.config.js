@@ -19,6 +19,7 @@ module.exports = {
         "content-w-padding": "896px",
         "aksel-max-w": "1440px",
         text: "600px",
+        prose: "75ch",
       },
       minWidth: ({ theme }) => ({
         header: "4rem",

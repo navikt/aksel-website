@@ -80,6 +80,7 @@ const mockArtikkel = {
     { title: "Henrik Henriksen" },
   ],
   heading: "Demo tittel",
+  tema: [{ title: "Måling" }, { title: "Metode" }, { title: "Analyse" }],
   innhold: [
     {
       _key: "8ffd58df064c",
