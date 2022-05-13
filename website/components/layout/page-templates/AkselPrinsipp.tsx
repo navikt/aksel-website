@@ -13,7 +13,7 @@ import React, { useEffect, useState } from "react";
 import { ArtikkelBreadcrumbs, Avatar, dateStr, Feedback, slugger } from "../..";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
-import { getGradient } from "./AkselArtikkel";
+import { getGradient } from "@/utils";
 
 const AkselPrinsippTemplate = ({
   data,

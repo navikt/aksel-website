@@ -17,6 +17,10 @@ p {
   @apply max-w-text;
 }
 
+.aksel-artikkel p {
+  @apply max-w-none;
+}
+
 a {
   color: inherit;
   text-decoration: inherit;

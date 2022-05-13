@@ -16,7 +16,7 @@ const AkselHeader = ({ frontPage }: { frontPage?: boolean }): JSX.Element => {
         }
       )}
     >
-      <div className="xs:w-[90%] mx-auto flex max-w-screen-lg justify-between">
+      <div className="xs:w-[90%] mx-auto flex max-w-aksel justify-between">
         {!frontPage && (
           <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
             Hopp til innhold

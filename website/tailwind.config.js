@@ -17,7 +17,8 @@ module.exports = {
       maxWidth: {
         "screen-sidebar": "calc(100vw - 240px)",
         "content-w-padding": "896px",
-        "aksel-max-w": "1440px",
+        "aksel-max-w": "1280px",
+        aksel: "1280px",
         text: "600px",
         prose: "75ch",
       },
@@ -30,10 +31,10 @@ module.exports = {
         ...theme("spacing"),
       }),
       screens: {
-        /* md: "564px",
+        md: "564px",
         lg: "768px",
         xl: "1024px",
-        "2xl": "1440px", */
+        "2xl": "1440px",
         toc: "1224px",
       },
       boxShadow: {

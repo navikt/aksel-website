@@ -1,78 +1,28 @@
-import {
-  AkselArtikkel,
-  AkselBlogg,
-  getTemaSlug,
-  useSanityBannerImage,
-} from "@/lib";
+import { getTemaSlug, SanityT } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import {
-  BodyShort,
   Detail,
   Heading,
   Label,
-  Link,
   useClientLayoutEffect,
 } from "@navikt/ds-react";
 import Head from "next/head";
-import Image from "next/image";
 import NextLink from "next/link";
-import React, { useEffect, useState } from "react";
-import { ArtikkelBreadcrumbs, Avatar, dateStr, Feedback, slugger } from "../..";
+import React from "react";
+import { dateStr, Feedback, slugger } from "../..";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
-
-export const getGradient = (s: string) => {
-  let hash = 0;
-  for (let i = 0; i < s.length; i++) {
-    hash = s.charCodeAt(i) + ((hash << 5) - hash);
-  }
-
-  const h = hash % 360;
-  const h2 = h + (5 % 360);
-
-  return `linear-gradient(-45deg, hsl(${h2}, 70%, 70%) 0%, hsl(${h}, 80%, 80%) 100%)`;
-};
-
-/* const LoginSection = ({ onClick }: { onClick: () => void }) => {
-  return (
-    <div className="aksel-artikkel__blocks mt-12 min-h-[500px] px-0 sm:p-8">
-      <div className=" relative -mb-8 flex min-h-16 w-16  items-center justify-center rounded-full border-border-muted bg-gray-200">
-        <Locked aria-label="Innholdet er bak innlogging" className="h-8 w-8" />
-      </div>
-      <div className="flex w-full flex-col items-center justify-evenly gap-4 rounded-lg border border-border-muted bg-gray-50 bg-center px-8 pb-6 pt-12">
-        <Heading level="2" size="xsmall">
-          Dette innholdet er bare tilgjengelig for NAV-ansatte.
-        </Heading>
-        <Button onClick={onClick}>Logg inn</Button>
-      </div>
-    </div>
-  );
-}; */
 
 const AkselArtikkelTemplate = ({
   data,
   title,
 }: {
-  data: AkselArtikkel | AkselBlogg;
+  data: SanityT.Schema.aksel_artikkel | SanityT.Schema.aksel_blogg;
   title: string;
 }): JSX.Element => {
-  /* const { pageProps } = useContext(PagePropsContext);
-  const authContext = useContext(AuthenticationContext); */
-
-  const [ttr, setTtr] = useState<number | null>(null);
   useClientLayoutEffect(() => {
     slugger.reset();
   });
-
-  const imageProps: any = useSanityBannerImage(data?.banner?.banner_img);
-
-  useEffect(() => {
-    const wpm = 225;
-    const text = document.getElementById("hovedinnhold")?.innerText;
-    if (!text) return;
-    const words = text.trim().split(/\s+/).length;
-    setTtr(Math.ceil(words / wpm));
-  }, [data?.innhold]);
 
   if (!data.innhold || !data.heading) {
     return null;
@@ -88,45 +38,63 @@ const AkselArtikkelTemplate = ({
         <title>{`${data?.heading} - ${title}`}</title>
         <meta property="og:title" content={`${data?.heading} - ${title}`} />
         <meta property="og:type" content="article" />
-        <meta property="og:image" content={imageProps?.src} />
       </Head>
 
-      <div className="aksel-artikkel">
-        <AkselHeader />
-        <main
-          tabIndex={-1}
-          id="hovedinnhold"
-          className="bg-gray-50 pt-[8vw] pb-16 md:pb-32"
-        >
-          <div className="px-4">
-            <div className="xs:w-[90%] mx-auto max-w-prose">
-              <div>
-                {hasTema &&
-                  data.tema.map(({ title }: any, y) => (
-                    <>
-                      {y !== 0 && `, `}
-                      <NextLink
-                        key={title}
-                        href={`/tema/${getTemaSlug(title)}`}
-                        passHref
+      <AkselHeader />
+      <main
+        tabIndex={-1}
+        id="hovedinnhold"
+        className="aksel-artikkel bg-gray-50 pt-[8vw] pb-16 md:pb-32"
+      >
+        <div className="px-4">
+          <div className="xs:w-[90%] mx-auto max-w-prose">
+            <div>
+              {hasTema &&
+                data.tema.map(({ title }: any, y) => (
+                  <>
+                    {y !== 0 && `, `}
+                    <NextLink
+                      key={title}
+                      href={`/tema/${getTemaSlug(title)}`}
+                      passHref
+                    >
+                      <Label
+                        size="small"
+                        as="a"
+                        className="index-lvl5 uppercase text-text hover:underline focus:underline focus:outline-none"
                       >
-                        <Label
-                          size="small"
-                          as="a"
-                          className="index-lvl5 uppercase text-text hover:underline focus:underline focus:outline-none"
-                        >
-                          {title}
-                        </Label>
-                      </NextLink>
-                    </>
-                  ))}
-              </div>
+                        {title}
+                      </Label>
+                    </NextLink>
+                  </>
+                ))}
+            </div>
+            <Heading level="1" size="xlarge" className="index-lvl1 mt-1">
+              {data.heading}
+            </Heading>
+            <div className="mt-6">
+              <Detail as="address" className="not-italic">
+                {authors?.[0] ?? ""}
+              </Detail>
+              <Detail as="span">{dateStr(data._createdAt)}</Detail>
             </div>
           </div>
-          <div className="mt-12"></div>
-        </main>
-        {/* <Footer /> */}
-      </div>
+        </div>
+        <div className="mt-12">
+          <div className="mt-8 px-4">
+            <SanityBlockContent
+              className="xs:w-[90%] markdown mx-auto max-w-prose"
+              blocks={data?.innhold ?? []}
+            />
+          </div>
+        </div>
+        <div className="mt-16 px-4">
+          <div className="xs:w-[90%] mx-auto max-w-prose border-t border-gray-300 pt-8">
+            <Feedback akselFeedback docId={data?._id} docType={data?._type} />
+          </div>
+        </div>
+      </main>
+      <Footer />
     </>
   );
 };
