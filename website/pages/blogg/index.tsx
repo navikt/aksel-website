@@ -16,7 +16,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
         <meta property="og:title" content={`Blogg - Aksel`} />
       </Head>
       <TemaBreadcrumbs />
-      <Heading level="1" size="xlarge" spacing className="index-lvl1">
+      <Heading level="1" size="xlarge" spacing className="algolia-index-lvl1">
         Blogg
       </Heading>
       {/* <SanityBlockContent blocks={page.beskrivelse} noLastMargin /> */}

@@ -86,7 +86,7 @@ const AkselPrinsippTemplate = ({
           <div className="mx-auto flex w-full max-w-[calc(100%_-_2.5rem)] justify-center">
             <div className="relative flex w-full max-w-[800px] flex-col items-center rounded-2xl bg-gray-50 py-8 sm:px-0 md:mx-6">
               <div className="w-full max-w-text px-4 md:mx-6 lg:mx-12 lg:px-0">
-                <div className="index-ignore mb-4 flex flex-wrap items-center justify-center gap-1 lg:justify-start">
+                <div className="algolia-ignore-index mb-4 flex flex-wrap items-center justify-center gap-1 lg:justify-start">
                   <BodyShort size="small" className="text-text-muted">
                     {ttr} min lesing
                   </BodyShort>
@@ -95,11 +95,11 @@ const AkselPrinsippTemplate = ({
                   size="xlarge"
                   level="1"
                   spacing
-                  className="index-lvl1 text-center lg:text-left"
+                  className="algolia-index-lvl1 text-center lg:text-left"
                 >
                   {data.heading}
                 </Heading>
-                <div className="index-ignore flex justify-center gap-2 lg:justify-start">
+                <div className="algolia-ignore-index flex justify-center gap-2 lg:justify-start">
                   {authors && authors.length > 0 ? (
                     <>
                       <Avatar name={authors[0]} large />
@@ -115,7 +115,7 @@ const AkselPrinsippTemplate = ({
                         <Detail
                           as="span"
                           size="small"
-                          className="index-lvl6 text-text-muted"
+                          className="algolia-index-lvl6 text-text-muted"
                         >
                           {dateStr(data._createdAt)}
                         </Detail>
@@ -124,7 +124,7 @@ const AkselPrinsippTemplate = ({
                   ) : (
                     <BodyShort
                       size="small"
-                      className="index-lvl6 text-text-muted"
+                      className="algolia-index-lvl6 text-text-muted"
                     >
                       {dateStr(data._createdAt)}
                     </BodyShort>

@@ -61,7 +61,7 @@ const AkselArtikkelTemplate = ({
                       <Label
                         size="small"
                         as="a"
-                        className="index-lvl5 uppercase text-text hover:underline focus:underline focus:outline-none"
+                        className="algolia-index-lvl5 uppercase text-text hover:underline focus:underline focus:outline-none"
                       >
                         {title}
                       </Label>
@@ -69,7 +69,11 @@ const AkselArtikkelTemplate = ({
                   </>
                 ))}
             </div>
-            <Heading level="1" size="xlarge" className="index-lvl1 mt-1">
+            <Heading
+              level="1"
+              size="xlarge"
+              className="algolia-index-lvl1 mt-1"
+            >
               {data.heading}
             </Heading>
             <div className="mt-6">

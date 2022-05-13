@@ -134,7 +134,7 @@ const DoDont = ({ node }: { node: DoDontV2 }) => {
     <div className="relative-parent aksel-artikkel__child mb-16 last:mb-0">
       <Heading
         level="3"
-        className="index-lvl3 max-w-text"
+        className="algolia-index-lvl3 max-w-text"
         size="medium"
         spacing
       >

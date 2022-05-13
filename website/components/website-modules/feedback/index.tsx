@@ -143,7 +143,7 @@ const Feedback = ({
   const classes = akselFeedback
     ? ""
     : cl(
-        "index-ignore flex w-full max-w-[800px] items-center justify-center gap-4 bg-component-background-alternate p-4 pb-12 sm:px-8 sm:py-4",
+        "algolia-ignore-index flex w-full max-w-[800px] items-center justify-center gap-4 bg-component-background-alternate p-4 pb-12 sm:px-8 sm:py-4",
         {
           "mt-44 mr-auto mb-16 ml-0 lg:mr-0 lg:ml-0": !center,
           "mx-auto mt-44 mb-16": center,

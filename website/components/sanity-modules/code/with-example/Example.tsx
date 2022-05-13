@@ -107,7 +107,12 @@ const Code = ({
         setPreviewBg,
       }}
     >
-      <div className={cl("index-ignore mb-9 flex w-full flex-col", className)}>
+      <div
+        className={cl(
+          "algolia-ignore-index mb-9 flex w-full flex-col",
+          className
+        )}
+      >
         {showTabs && <CodeTabs />}
         {showPreview && activeTab === -1 && <CodePreview />}
         {(node.tabs || tabs) &&

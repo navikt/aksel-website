@@ -10,7 +10,7 @@ export const TemaCard = ({ title, oppsummering, refCount }: AkselTemaT) => {
       <Heading size="medium" level="3">
         <NextLink href={`/tema/${getTemaSlug(title)}`} passHref>
           <a
-            className="index-lvl2 after:absolute after:inset-0 focus:underline focus:outline-none active:text-link group-hover:underline"
+            className="algolia-index-lvl2 after:absolute after:inset-0 focus:underline focus:outline-none active:text-link group-hover:underline"
             onClick={(e) =>
               logNav(
                 "temakort",

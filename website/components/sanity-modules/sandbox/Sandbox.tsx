@@ -164,7 +164,7 @@ const Sandbox = ({ node }: { node: SandboxT }): JSX.Element => {
 
   const Editor = (
     <LiveProvider code={code} scope={scope} noInline={!code?.startsWith("<")}>
-      <div className="index-ignore relative mb-8">
+      <div className="algolia-ignore-index relative mb-8">
         <PreviewWrapper>
           <LivePreview />
           <LiveError />

@@ -99,7 +99,7 @@ const serializers = {
               size={context.size}
               spacing
               {...textProps}
-              className={cl("index-body", {
+              className={cl("algolia-index-body", {
                 "last:mb-0": context.noLastMargin,
               })}
             />
@@ -111,7 +111,7 @@ const serializers = {
               spacing
               size="small"
               {...textProps}
-              className="index-detail"
+              className="algolia-index-detail"
             />
           );
         case "h2":
@@ -120,7 +120,7 @@ const serializers = {
           return (
             <Heading
               {...textProps}
-              className="index-lvl3 max-w-text"
+              className="algolia-index-lvl3 max-w-text"
               spacing
               level="3"
               size="medium"
@@ -129,7 +129,7 @@ const serializers = {
         case "heading4":
           return (
             <Heading
-              className="index-lvl4 max-w-text"
+              className="algolia-index-lvl4 max-w-text"
               spacing
               level="4"
               size="small"
@@ -139,7 +139,7 @@ const serializers = {
         case "h4":
           return (
             <Heading
-              className="index-lvl4 max-w-text"
+              className="algolia-index-lvl4 max-w-text"
               spacing
               level="4"
               size="small"
@@ -148,7 +148,7 @@ const serializers = {
           );
         case "ingress":
           return (
-            <Ingress spacing className="index-ingress max-w-text">
+            <Ingress spacing className="algolia-index-ingress max-w-text">
               {children}
             </Ingress>
           );
@@ -158,7 +158,7 @@ const serializers = {
               size={context.size}
               spacing
               {...textProps}
-              className="index-body max-w-text"
+              className="algolia-index-body max-w-text"
             />
           );
       }

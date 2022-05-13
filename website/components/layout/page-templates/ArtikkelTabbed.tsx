@@ -50,7 +50,12 @@ const ArtikkelTabbedTemplate = ({
       </Head>
       <div className="content-box">
         <div className="pt-8 pb-6">
-          <Heading size="xlarge" level="1" spacing className="index-lvl1">
+          <Heading
+            size="xlarge"
+            level="1"
+            spacing
+            className="algolia-index-lvl1"
+          >
             {data.heading}
           </Heading>
           <LastUpdateTag date={data._updatedAt} />

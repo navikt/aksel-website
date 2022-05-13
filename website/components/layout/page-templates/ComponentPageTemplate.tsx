@@ -68,7 +68,7 @@ const ComponentPageTemplate = ({
 
       <div className="content-box">
         {activeHeading?.title && (
-          <span className="navds-sr-only index-hidden-heading">
+          <span className="navds-sr-only algolia-index-hidden-heading">
             {activeHeading?.title}
           </span>
         )}
@@ -78,7 +78,7 @@ const ComponentPageTemplate = ({
             size="xlarge"
             level="1"
             spacing
-            className="index-lvl1 flex flex-wrap items-center gap-4"
+            className="algolia-index-lvl1 flex flex-wrap items-center gap-4"
           >
             {data.heading}
             {npmPackage?.title && (

@@ -72,7 +72,7 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
   /* return null; */
 
   return (
-    <div className="index-ignore sticky right-0 top-20 z-[1] order-1 my-16 hidden h-full w-72 flex-col items-start pl-4 toc:flex">
+    <div className="algolia-ignore-index sticky right-0 top-20 z-[1] order-1 my-16 hidden h-full w-72 flex-col items-start pl-4 toc:flex">
       <Heading size="small" as="p" id="toc-heading" className="mb-4">
         Innhold på siden
       </Heading>

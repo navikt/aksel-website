@@ -37,7 +37,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
             level="1"
             size="xlarge"
             spacing
-            className="index-lvl1 self-start"
+            className="algolia-index-lvl1 self-start"
           >
             Temaer
           </Heading>

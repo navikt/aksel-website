@@ -35,11 +35,11 @@ const DesignsystemHeader = (): JSX.Element => {
                   localStorage.removeItem("dssidebar");
               }}
               className={cl(
-                "index-heading flex min-w-header cursor-pointer items-center justify-center whitespace-nowrap py-0 px-2 focus:outline-none 2xl:px-4",
+                "algolia-index-heading flex min-w-header cursor-pointer items-center justify-center whitespace-nowrap py-0 px-2 focus:outline-none 2xl:px-4",
                 {
                   "text-text-inverted focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
                     !(activeHeading?.title === heading.title),
-                  "index-heading--active bg-white text-text  hover:bg-canvas-background-light focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_2px_var(--navds-global-color-white)_,inset_0_0_0_4px_var(--navds-global-color-gray-900)]":
+                  "algolia-index-heading--active bg-white text-text  hover:bg-canvas-background-light focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_2px_var(--navds-global-color-white)_,inset_0_0_0_4px_var(--navds-global-color-gray-900)]":
                     activeHeading?.title === heading.title,
                 }
               )}

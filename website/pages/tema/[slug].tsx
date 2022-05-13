@@ -45,7 +45,12 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
           className="aksel-main--start w-full max-w-5xl py-16 md:py-20"
         >
           <TemaBreadcrumbs />
-          <Heading level="1" size="xlarge" spacing className="index-lvl1">
+          <Heading
+            level="1"
+            size="xlarge"
+            spacing
+            className="algolia-index-lvl1"
+          >
             {page.title}
           </Heading>
           <SanityBlockContent blocks={page.beskrivelse} noLastMargin />

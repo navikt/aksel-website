@@ -60,7 +60,7 @@ export const ArtikkelCard = ({
             passHref
           >
             <a
-              className="index-lvl2 after:absolute after:inset-0 focus:underline focus:outline-none active:text-link group-hover:underline"
+              className="algolia-index-lvl2 after:absolute after:inset-0 focus:underline focus:outline-none active:text-link group-hover:underline"
               onClick={(e) =>
                 logNav(
                   "artikkel-kort",
