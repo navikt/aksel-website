@@ -1,4 +1,3 @@
-import { ExternalLink } from "@navikt/ds-icons";
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import cl from "classnames";
 import NextLink from "next/link";
