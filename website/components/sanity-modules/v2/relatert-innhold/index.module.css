@@ -1,9 +1,0 @@
-:global(.aksel-artikkel) .relatedCard {
-  justify-content: flex-start;
-  width: 100%;
-  grid-template-columns: repeat(auto-fit, 240px);
-}
-
-:global(.aksel-artikkel) .relatedCard > div {
-  min-width: 230px;
-}

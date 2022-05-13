@@ -5,7 +5,6 @@ import React from "react";
 import { logNav } from "../../..";
 import { RelatertInnhold as RelatertInnholdT } from "../../../../lib";
 import { withErrorBoundary } from "../../../ErrorBoundary";
-import style from "./index.module.css";
 
 const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
   if (!node || node?.lenker?.length === 0) {
@@ -19,11 +18,20 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
 
   return (
     <div
-      className={cl(
-        style.relatedCard,
-        "relative-child mb-16 grid gap-4 [grid-template-columns:_repeat(auto-fit,_250px)]"
-      )}
+      className={cl("relatedCard", "relative-child mb-16 flex flex-wrap gap-4")}
     >
+      <style jsx global>
+        {`
+          .aksel-artikkel .relatedCard {
+            justify-content: flex-start;
+            width: 100%;
+          }
+
+          .aksel-artikkel .relatedCard > div {
+            min-width: 200px;
+          }
+        `}
+      </style>
       {node.lenker.map((x) => (
         <div
           key={x._key}
