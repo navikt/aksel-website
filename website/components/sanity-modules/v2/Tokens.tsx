@@ -5,6 +5,24 @@ import Color from "color";
 import cl from "classnames";
 import { capitalize } from "@/utils";
 
+const ShadowBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
+  console.log(token);
+  return (
+    <div className="flex w-full gap-6">
+      <div
+        style={{ boxShadow: token.color }}
+        className="relative h-24 w-24 min-w-24 rounded"
+      ></div>
+      <div>
+        <Label size="small" spacing className="mt-1 break-words">
+          {capitalize(token.title.replace("font-size-", ""))}
+        </Label>
+        <Detail size="small">{token.color}</Detail>
+      </div>
+    </div>
+  );
+};
+
 const FontSizeBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
   return (
     <div className="flex w-full flex-col justify-end">
@@ -86,6 +104,9 @@ const TokenBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
   }
   if (token.title.startsWith("font-size")) {
     return <FontSizeBlock token={token} />;
+  }
+  if (token.title.startsWith("shadow")) {
+    return <ShadowBlock token={token} />;
   }
   return (
     <div>

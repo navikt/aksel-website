@@ -7,7 +7,7 @@ dotenv.config();
 
 type TokenEntryT = {
   title: string;
-  color: string;
+  token: string;
 };
 
 const cssData = readFileSync(
@@ -20,14 +20,27 @@ const root = parsed.stylesheet.rules.find((r) =>
 );
 
 const getGlobalToken = (value: string): string => {
-  const parsedValue = value.replace("var(", "").replace(")", "");
-  return root.declarations.find((x) => x.property === parsedValue).value ?? "";
+  const varToken = value.match(/var\((.*)\)/)[1];
+  if (!varToken) return value;
+
+  let rawToken = "";
+
+  const parentToken = root.declarations.find(
+    (x) => x.property === varToken
+  ).value;
+  if (parentToken.includes("var(")) {
+    rawToken = getGlobalToken(parentToken);
+  } else {
+    rawToken = parentToken;
+  }
+
+  return value.replace(/var\((.*)\)/, rawToken);
 };
 
 const tokens: TokenEntryT[] = root.declarations.map((d) => ({
   title: d.property.replace("--navds-", ""),
-  color: d.value,
-  ...(d.value.startsWith("var(") && { raw: getGlobalToken(d.value) }),
+  token: d.value,
+  ...(d.value.includes("var(") && { raw: getGlobalToken(d.value) }),
   ...(d.value.startsWith("var(") && {
     parent: d.value.replace("var(", "").replace(")", "").replace(";", ""),
   }),
