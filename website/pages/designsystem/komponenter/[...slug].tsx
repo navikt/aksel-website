@@ -29,7 +29,7 @@ Page.getLayout = (page) => {
     <>
       <DsHeader />
       <div className="flex w-full justify-center bg-canvas-background-light">
-        <div className="flex w-full max-w-aksel-max-w">
+        <div className="flex w-full max-w-screen-2xl">
           <DsSidebar />
           <div className="relative w-full">
             <main

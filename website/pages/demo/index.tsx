@@ -87,6 +87,19 @@ const mockArtikkel = {
       _type: "generisk_seksjon",
       brikker: [
         {
+          _key: "c4741f800813",
+          _type: "bilde",
+          alt: "Anim magna proident consectetur amet excepteur cillum est dolor excepteur in occaecat.",
+          asset: {
+            _ref: "image-24d4d2462d3f24dae3b8e0f48a63af3eafdfea39-2330x1110-webp",
+            _type: "reference",
+          },
+          floating: false,
+          floating_align: "hoyre",
+          floating_text: null,
+          small: false,
+        },
+        {
           _key: "b4e80834b656",
           _type: "riktekst_blokk",
           body: [

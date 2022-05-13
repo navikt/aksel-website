@@ -42,7 +42,7 @@ const Page = (props: {
       >
         <div className="flex min-h-screen-header w-full flex-col items-center">
           <div className="relative flex w-full justify-center bg-canvas-background-light">
-            <div className="flex w-full max-w-aksel-max-w">
+            <div className="flex w-full max-w-screen-2xl">
               <div className="flex w-full max-w-[calc(1440px_-_624px)] flex-col items-center py-12 px-4 md:block md:h-[240px] md:py-16 md:px-12">
                 <Heading spacing level="1" size="xlarge">
                   Designsystemet
