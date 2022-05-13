@@ -3,21 +3,28 @@ import React from "react";
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const AkselLogo = (props): JSX.Element => (
   <svg
-    width="192px"
-    height="192px"
-    viewBox="0 0 192 192"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
     focusable="false"
     aria-hidden="true"
+    viewBox="0 0 28 28"
+    width="28"
+    height="28"
+    fill="none"
     {...props}
-    strokeLinecap="round"
-    strokeWidth="10"
-    stroke="currentColor"
   >
-    <path d="m41.63 150.3 47.39-47.38" />
-    <path d="M40.92 80.3 77.7 43.53c4.25-4.24 9.9-4.24 14.15 0l56.56 56.57c4.25 4.25 4.25 9.9 0 14.14l-36.77 36.77" />
-    <path d="m40.92 80.3 38.19-38.18c3.53-3.54 6.72-3.18 13.79-3.18h48.79s0 0 0 0c6.36 0 11.31 4.95 11.31 11.31 0 0 0 0 0 0v48.8c0 7.06.35 10.24-3.18 13.78l-38.19 38.18" />
+    <path
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="m3 9 5.268-5.268A2.5 2.5 0 0 1 10.036 3H22.5A2.5 2.5 0 0 1 25 5.5v12.465a2.5 2.5 0 0 1-.732 1.767L19 25"
+    ></path>
+    <path
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="m3 9 5.232-5.232a2.5 2.5 0 0 1 3.536 0l12.464 12.464a2.5 2.5 0 0 1 0 3.536L19 25m-7-9-9 9"
+    ></path>
   </svg>
 );
 

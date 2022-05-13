@@ -92,7 +92,17 @@ const AkselArtikkelTemplate = ({
 
       <div className="aksel-artikkel">
         <AkselHeader />
-        <main
+
+        <Footer />
+      </div>
+    </>
+  );
+};
+
+export default AkselArtikkelTemplate;
+
+/*
+<main
           tabIndex={-1}
           id="hovedinnhold"
           className="relative mx-auto flex min-h-screen-header w-full max-w-5xl flex-col items-center py-16 pb-4 focus:outline-none md:my-0 md:py-20 lg:pb-4"
@@ -185,9 +195,7 @@ const AkselArtikkelTemplate = ({
                   )}
                 </div>
               </div>
-              {/* {pageProps?.validUser !== undefined && !pageProps.validUser && (
-                <LoginSection onClick={() => authContext.login()} />
-              )} */}
+              }
               {data.innhold.length > 0 && (
                 <SanityBlockContent
                   className="aksel-artikkel__blocks mt-12 min-h-[500px] w-full max-w-text px-0 sm:px-8 lg:px-0 "
@@ -227,10 +235,4 @@ const AkselArtikkelTemplate = ({
             </div>
           </div>
         </main>
-        <Footer />
-      </div>
-    </>
-  );
-};
-
-export default AkselArtikkelTemplate;
+*/
