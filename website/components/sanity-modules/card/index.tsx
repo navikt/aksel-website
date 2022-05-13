@@ -1,10 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 import { BodyShort, Detail } from "@navikt/ds-react";
 import cl from "classnames";
-import NextImage from "next/image";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
 import { logNav, useDsNavigation } from "../..";
-import { DsFrontPageCardT, useSanityImage } from "../../../lib";
+import { DsFrontPageCardT, urlFor } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 
 interface CardProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
@@ -23,7 +23,6 @@ const Card = ({
 }: CardProps) => {
   const [nav] = useDsNavigation();
   const [category, setCategory] = useState(categoryRef ?? null);
-  const imageProps = useSanityImage(category?.picture);
 
   useEffect(() => {
     setCategory(categoryRef);
@@ -57,19 +56,14 @@ const Card = ({
 
   return (
     <div className={cl("card group aspect-[18/22]", className)}>
-      {imageProps && (
-        <div className="mb-6 flex shrink-0 justify-center">
-          <NextImage
-            {...imageProps}
-            alt={category?.picture?.title}
-            quality="100"
-            layout="fixed"
-            aria-hidden
-            unoptimized
-            priority
-          />
-        </div>
-      )}
+      <div className="mb-6 flex shrink-0 justify-center">
+        <img
+          aria-hidden
+          alt={category?.picture?.title}
+          loading="eager"
+          src={urlFor(category?.picture).auto("format").url()}
+        />
+      </div>
       <NextLink href={href ?? `/${node?.link_ref?.slug}`} passHref>
         <a
           onClick={(e) =>

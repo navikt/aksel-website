@@ -1,9 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 import { BodyLong } from "@navikt/ds-react";
-import NextImage from "next/image";
 import React, { useState } from "react";
-import { useMeasure } from "react-use";
 import { Lightbox } from "../..";
-import { useSanityImage, Picture as PictureT } from "../../../lib";
+import { Picture as PictureT, urlFor } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 
 const Image = ({ node }: { node: PictureT }): JSX.Element => {
@@ -13,31 +12,20 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
 
   const [open, setOpen] = useState(false);
 
-  const imageProps = useSanityImage(node);
-
-  const [ref, { width }] = useMeasure();
-
   return (
     <figure className="m-0 mb-8 flex flex-col">
       <button
-        ref={ref}
         aria-label="Klikk for å åpne bildet i fullskjerm"
         tabIndex={0}
         onClick={() => setOpen(!open)}
         className="rounded bg-gray-50 p-0 shadow-[0_0_0_1px_var(--navds-semantic-color-divider)] focus:shadow-focus focus:outline-none"
       >
-        <NextImage
-          {...imageProps}
-          alt={node.title}
-          quality="100"
-          layout="responsive"
-          unoptimized
+        <img
           className="rounded"
-          sizes={
-            width !== undefined
-              ? `${Math.round(width)}px`
-              : "(max-width: 800px)"
-          }
+          alt={node.title}
+          loading="lazy"
+          decoding="async"
+          src={urlFor(node).auto("format").url()}
         />
       </button>
       {node.caption && (
@@ -47,12 +35,12 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
       )}
       <Lightbox open={open} onClose={() => setOpen(false)}>
         {open && (
-          <NextImage
-            {...imageProps}
-            quality="100"
-            layout="fill"
+          <img
+            className="rounded"
             alt={node.title}
-            unoptimized
+            loading="lazy"
+            decoding="async"
+            src={urlFor(node).auto("format").url()}
           />
         )}
       </Lightbox>

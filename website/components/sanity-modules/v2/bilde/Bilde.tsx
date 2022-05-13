@@ -1,12 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import { BodyLong } from "@navikt/ds-react";
 import cl from "classnames";
-import NextImage from "next/image";
 import React, { useContext, useState } from "react";
 import { Lightbox } from "../../..";
-import { Bilde as BildeT, urlFor, useSanityImage } from "../../../../lib";
+import { Bilde as BildeT, urlFor } from "../../../../lib";
 import { withErrorBoundary } from "../../../ErrorBoundary";
-import { BlockContext, SanityBlockContent } from "../../../SanityBlockContent";
+import { BlockContext } from "../../../SanityBlockContent";
 import style from "./index.module.css";
 
 const AkselBilde = ({ node }: { node: BildeT }) => {
@@ -45,8 +44,6 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
 
   const [open, setOpen] = useState(false);
 
-  const imageProps = useSanityImage(node);
-
   return (
     <>
       <figure
@@ -63,13 +60,12 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
             "bg-gray-50 p-0 shadow-[0_0_0_1px_var(--navds-semantic-color-divider)] focus:shadow-focus focus:outline-none"
           )}
         >
-          <NextImage
-            {...imageProps}
+          <img
             alt={node.alt}
-            quality="75"
-            layout="responsive"
+            loading="lazy"
+            decoding="async"
+            src={urlFor(node).auto("format").url()}
             className={cl(style.bilde)}
-            unoptimized
           />
         </button>
         {node.caption && (
@@ -79,19 +75,15 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
         )}
         <Lightbox open={open} onClose={() => setOpen(false)}>
           {open && (
-            <NextImage
-              {...imageProps}
-              quality="100"
-              layout="fill"
+            <img
               alt={node.alt}
-              unoptimized
+              loading="lazy"
+              decoding="async"
+              src={urlFor(node).auto("format").url()}
             />
           )}
         </Lightbox>
       </figure>
-      {node?.floating_text && (
-        <SanityBlockContent blocks={node.floating_text} />
-      )}
     </>
   );
 };

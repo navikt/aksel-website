@@ -53,7 +53,7 @@ const Page = (props: {
             </div>
           </div>
 
-          <div className="flex w-full max-w-aksel-max-w flex-col flex-wrap bg-component-background-alternate">
+          <div className="flex w-full max-w-screen-2xl flex-col flex-wrap bg-component-background-alternate">
             <div className="reduced-spacing py-12 px-4 md:px-12 md:py-6">
               {props?.page?.body && (
                 <SanityBlockContent blocks={props?.page?.body} />

@@ -23,7 +23,7 @@ const LightBox = ({
       closeButton={false}
       onClose={() => onClose()}
       open={open}
-      className="relative my-0 -mx-4 h-5/6 w-[calc(100%_+_2rem)] animate-fadeIn rounded-none bg-transparent focus:shadow-none"
+      className="relative aspect-video h-5/6 rounded-none bg-transparent focus:shadow-none"
     >
       <button
         onClick={() => onClose()}
@@ -36,7 +36,7 @@ const LightBox = ({
         onClick={() => onClose()}
         className="relative flex h-full w-full justify-center border-t-[64px] border-b-[64px] bg-gray-50"
       >
-        <div className="img-wrapper">{children}</div>
+        {children}
       </div>
     </Modal>
   );

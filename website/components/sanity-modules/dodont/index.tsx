@@ -1,13 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 import { SuccessFilled, WarningFilled } from "@navikt/ds-icons";
 import { BodyShort } from "@navikt/ds-react";
 import cl from "classnames";
-import NextImage from "next/image";
 import React, { useState } from "react";
 import { Lightbox } from "../..";
 import {
   DoDont as DoDontT,
   DoDontBlock as DoDontBlockT,
-  useSanityImage,
+  urlFor,
 } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 
@@ -58,7 +58,6 @@ const GetIcon = (s: string) => {
 };
 
 const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
-  const imageProps = useSanityImage(block.picture);
   const [open, setOpen] = useState(false);
 
   return (
@@ -76,14 +75,12 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
         tabIndex={0}
         onClick={() => setOpen(!open)}
       >
-        <NextImage
-          {...imageProps}
+        <img
           className="rounded-t"
-          layout="responsive"
-          sizes="(max-width: 800px)"
           alt={block.alt}
-          quality="100"
-          unoptimized
+          loading="lazy"
+          decoding="async"
+          src={urlFor(block.picture).auto("format").url()}
         />
       </button>
       <div
@@ -105,12 +102,11 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
       </figcaption>
       <Lightbox open={open} onClose={() => setOpen(false)}>
         {open && (
-          <NextImage
-            {...imageProps}
-            quality="100"
-            layout="fill"
+          <img
             alt={block.alt}
-            unoptimized
+            loading="lazy"
+            decoding="async"
+            src={urlFor(block.picture).auto("format").url()}
           />
         )}
       </Lightbox>
