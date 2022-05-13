@@ -44,7 +44,7 @@ const AkselArtikkelTemplate = ({
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className="aksel-artikkel bg-gray-50 pt-[8vw] pb-16 md:pb-32"
+        className="aksel-artikkel bg-gray-50 pt-[8vw] pb-16 focus:outline-none md:pb-32"
       >
         <div className="px-4">
           <div className="xs:w-[90%] mx-auto max-w-prose">
@@ -85,6 +85,7 @@ const AkselArtikkelTemplate = ({
             <SanityBlockContent
               className="xs:w-[90%] markdown mx-auto max-w-prose"
               blocks={data?.innhold ?? []}
+              variant="aksel"
             />
           </div>
         </div>

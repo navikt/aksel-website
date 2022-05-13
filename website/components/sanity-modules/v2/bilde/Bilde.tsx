@@ -1,48 +1,51 @@
+/* eslint-disable @next/next/no-img-element */
 import { BodyLong } from "@navikt/ds-react";
 import cl from "classnames";
 import NextImage from "next/image";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Lightbox } from "../../..";
-import { Bilde as BildeT, useSanityImage } from "../../../../lib";
+import { Bilde as BildeT, urlFor, useSanityImage } from "../../../../lib";
 import { withErrorBoundary } from "../../../ErrorBoundary";
-import { SanityBlockContent } from "../../../SanityBlockContent";
+import { BlockContext, SanityBlockContent } from "../../../SanityBlockContent";
 import style from "./index.module.css";
 
+const AkselBilde = ({ node }: { node: BildeT }) => {
+  return (
+    <figure
+      className={cl("mx-auto mb-8 rounded-lg", {
+        "sm:max-w-[384px]": node?.small,
+      })}
+    >
+      <img
+        alt={node.alt}
+        loading="lazy"
+        decoding="async"
+        src={urlFor(node).auto("format").url()}
+        className="bg-orange-100"
+      />
+      {node.caption && (
+        <BodyLong as="figcaption" className="mt-2 text-center">
+          {node.caption}
+        </BodyLong>
+      )}
+    </figure>
+  );
+};
+
 const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
-  if (!node || !node.asset || (node.floating && !node.floating_text)) {
+  const context = useContext(BlockContext);
+
+  if (!node || !node.asset) {
     return null;
+  }
+
+  if (context.variant === "aksel") {
+    return <AkselBilde node={node} />;
   }
 
   const [open, setOpen] = useState(false);
 
   const imageProps = useSanityImage(node);
-
-  /* if (node.floating) {
-    return (
-      <div className="flow-root">
-        <div
-          className={cl(
-            "mb-6 w-full max-w-xs rounded bg-gray-50 shadow-[0_0_0_1px_var(--navds-semantic-color-divider)] sm:w-80",
-            {
-              "float-none mb-6 sm:float-left sm:mr-6":
-                node?.floating_align === "venstre",
-              "float-none mb-6 sm:float-right sm:ml-6":
-                node?.floating_align === "hoyre",
-            }
-          )}
-        >
-          <NextImage
-            {...imageProps}
-            className="rounded"
-            layout="responsive"
-            sizes="(max-width: 320px)"
-            alt={node.alt}
-          />
-        </div>
-        <SanityBlockContent blocks={node.floating_text} />
-      </div>
-    );
-  } */
 
   return (
     <>

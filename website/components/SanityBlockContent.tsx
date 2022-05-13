@@ -36,19 +36,11 @@ import { ExternalLink } from "@navikt/ds-icons";
 import DsIconAnnotation from "./sanity-modules/v2/IconAnnotation";
 
 export const InlineCode = (props: React.HTMLAttributes<HTMLElement>) => (
-  <code
-    className="text-mono rounded-md bg-deepblue-50 py-[2px] px-2 text-medium text-deepblue-500"
-    {...props}
-  />
+  <code className="inline-code" {...props} />
 );
 
 export const KBD = (props: React.HTMLAttributes<HTMLElement>) => (
-  <kbd
-    className={cl(
-      "text-md my-0 mx-1 inline-block min-w-[2rem] rounded bg-white px-2 text-medium text-text shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900)]"
-    )}
-    {...props}
-  />
+  <kbd className="inline-kbd" {...props} />
 );
 
 const serializers = {
@@ -240,32 +232,46 @@ const serializers = {
 export type BlockContextT = {
   size: "medium" | "small";
   noLastMargin: boolean;
+  variant: "ds" | "aksel";
 };
 
 export const BlockContext = createContext<BlockContextT>({
   size: "medium",
   noLastMargin: false,
+  variant: "ds",
 });
 
 export const SanityBlockContent = ({
   blocks,
   size = "medium",
   noLastMargin = false,
+  variant,
   ...rest
 }: {
   blocks: any;
   size?: "medium" | "small";
   className?: string;
   noLastMargin?: boolean;
-}) => (
-  <BlockContext.Provider value={{ size, noLastMargin }}>
-    <BlockContent
-      blocks={blocks ?? []}
-      serializers={serializers}
-      options={{ size: "small" }}
-      className="aksel-artikkel__child"
-      renderContainerOnSingleChild
-      {...rest}
-    />
-  </BlockContext.Provider>
-);
+  variant?: "ds" | "aksel";
+}) => {
+  const context = useContext(BlockContext);
+
+  return (
+    <BlockContext.Provider
+      value={{
+        size,
+        noLastMargin,
+        variant: variant ?? context?.variant ?? "ds",
+      }}
+    >
+      <BlockContent
+        blocks={blocks ?? []}
+        serializers={serializers}
+        options={{ size: "small" }}
+        className="aksel-artikkel__child"
+        renderContainerOnSingleChild
+        {...rest}
+      />
+    </BlockContext.Provider>
+  );
+};

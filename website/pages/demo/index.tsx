@@ -4,7 +4,7 @@ import { isDevelopment } from "@/lib";
 import { useState } from "react";
 
 const Page = () => {
-  const [version, setVersion] = useState<"aksel" | "ds">("ds");
+  const [version, setVersion] = useState<"aksel" | "ds">("aksel");
 
   if (version === "aksel") {
     return (
@@ -87,7 +87,7 @@ const mockArtikkel = {
       _type: "generisk_seksjon",
       brikker: [
         {
-          _key: "c4741f800813",
+          _key: "ec7c3c48a651",
           _type: "bilde",
           alt: "Anim magna proident consectetur amet excepteur cillum est dolor excepteur in occaecat.",
           asset: {
