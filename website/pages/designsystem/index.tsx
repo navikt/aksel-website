@@ -96,7 +96,7 @@ export const getStaticProps = async ({
       navigation: nav,
       preview,
     },
-    revalidate: 10,
+    revalidate: 60,
   };
 };
 

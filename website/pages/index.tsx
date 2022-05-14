@@ -265,7 +265,7 @@ export const getStaticProps = async ({
       slug: "/",
       preview,
     },
-    revalidate: 30,
+    revalidate: 60,
   };
 };
 

@@ -66,7 +66,7 @@ export const getStaticProps = async ({
       preview,
     },
     notFound: !doc,
-    revalidate: 10,
+    revalidate: 60,
   };
 };
 

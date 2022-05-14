@@ -99,7 +99,7 @@ export const getStaticProps = async ({
       preview,
     },
     notFound: !(doc && validateDsPath(doc, slug)),
-    revalidate: 10,
+    revalidate: 60,
   };
 };
 

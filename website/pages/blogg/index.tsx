@@ -87,7 +87,7 @@ export const getStaticProps = async ({
       preview,
     },
     notFound: !temas,
-    revalidate: 10,
+    revalidate: 60,
   };
 };
 
