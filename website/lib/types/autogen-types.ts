@@ -1,3 +1,5 @@
+/* Utdaterte typer. Nye typer i schema.d.ts */
+
 import type {
   SanityReference,
   SanityKeyedReference,
