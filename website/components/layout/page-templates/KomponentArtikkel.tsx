@@ -9,7 +9,6 @@ import {
   Feedback,
   LastUpdateTag,
   logNav,
-  RelatedNavigation,
   slugger,
   TableOfContents,
   useDsNavigation,
@@ -183,7 +182,6 @@ const KomponentArtikkelTemplate = ({
                 {!data?.metadata_feedback?.hide_feedback && (
                   <Feedback docId={data?._id} docType={data?._type} />
                 )}
-                <RelatedNavigation />
               </div>
             </Tabs.Panel>
           ))}

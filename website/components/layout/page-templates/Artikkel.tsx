@@ -1,13 +1,7 @@
 import { Heading, useClientLayoutEffect } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
-import {
-  Feedback,
-  LastUpdateTag,
-  RelatedNavigation,
-  slugger,
-  TableOfContents,
-} from "../..";
+import { Feedback, LastUpdateTag, slugger, TableOfContents } from "../..";
 import { DsArtikkel } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 
@@ -56,7 +50,6 @@ const ArtikkelTemplate = ({
           {!data?.metadata_feedback?.hide_feedback && (
             <Feedback docId={data?._id} docType={data?._type} />
           )}
-          <RelatedNavigation />
         </div>
       </div>
     </>
