@@ -80,7 +80,9 @@ const AkselArtikkelTemplate = ({
               <Detail as="address" className="not-italic">
                 {authors?.[0] ?? ""}
               </Detail>
-              <Detail as="span">{dateStr(data._createdAt)}</Detail>
+              <Detail as="span" className="text-text-muted">
+                {dateStr(data._createdAt)}
+              </Detail>
             </div>
           </div>
         </div>
