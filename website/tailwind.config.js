@@ -30,6 +30,8 @@ module.exports = {
         "screen-header": "calc(100vh - 3.5rem)",
         ...theme("spacing"),
       }),
+
+      /* Flytt ut fra extend og refactor bruk av screen */
       screens: {
         md: "564px",
         lg: "768px",

@@ -61,17 +61,17 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
       </Head>
       {preview && <PreviewBanner />}
       <div className="bg-gray-50">
-        <AkselHeader />
+        <AkselHeader frontPage />
 
         <main tabIndex={-1} id="hovedinnhold">
-          <div className="bg-slate-900 from-slate-900 via-sky-900/50 to-sky-700 relative bg-gradient-to-b px-4 py-16 text-white">
-            <div className="xs:w-[90%] mx-auto max-w-screen-lg">
+          <div className="relative bg-gray-900 bg-gradient-to-b from-gray-900 via-deepblue-900/50 to-deepblue-700 px-4 py-16 text-white">
+            <div className="xs:w-[90%] mx-auto max-w-aksel">
               <div className="gap-6 lg:grid lg:grid-cols-3">
                 <div className="pr-6 lg:col-span-2">
                   <h1 className="text-3xl font-semibold leading-tight tracking-tight md:text-5xl md:leading-tight">
                     NAVs digitale verktøykasse for&nbsp;produktutvikling
                   </h1>
-                  <div className="text-sky-100/95 mt-6 max-w-prose leading-normal">
+                  <div className="mt-6 max-w-prose leading-normal text-deepblue-100/95">
                     <p>Velkommen til Aksel!</p>
                     <p className="mt-6">
                       Dette er begynnelsen på NAVs digitale verktøykasse for
@@ -93,7 +93,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                       className="xs:w-auto group flex items-center gap-2"
                       href="#"
                     >
-                      <div className="bg-sky-500/20 group-hover:text-sky-900 grid aspect-square w-12 place-items-center rounded-full group-hover:bg-white">
+                      <div className="grid aspect-square w-12 place-items-center rounded-full bg-deepblue-500/20 group-hover:bg-white group-hover:text-deepblue-900">
                         <svg
                           className="h-7 w-7"
                           width="48"
@@ -113,7 +113,9 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                         <h3 className="font-semibold leading-tight group-hover:underline">
                           Designsystem
                         </h3>
-                        <p className="text-sky-100/95 text-sm">Åpen for alle</p>
+                        <p className="text-sm text-deepblue-100/95">
+                          Åpen for alle
+                        </p>
                       </div>
                     </a>
                   </div>
@@ -122,7 +124,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
             </div>
           </div>
           {/* Temaseksjon */}
-          <section className="bg-sky-50 relative px-4 pt-12 pb-16">
+          <section className="relative bg-deepblue-50 px-4 pt-12 pb-16">
             {/* Separator */}
             <svg
               className="absolute inset-x-0 top-0 w-full"
@@ -132,10 +134,10 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
             >
               <polygon
                 points="0,0 100,0 0,12"
-                className="fill-sky-700"
+                className="fill-deepblue-700"
               ></polygon>
             </svg>
-            <div className="xs:w-[90%] relative z-10 mx-auto -mt-16 max-w-screen-lg">
+            <div className="xs:w-[90%] relative z-10 mx-auto -mt-16 max-w-aksel">
               <h2 className="text-base font-semibold uppercase tracking-widest text-white">
                 Temaer
               </h2>
@@ -147,7 +149,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                 >
                   <div
                     aria-hidden="true"
-                    className="bg-sky-600/20 absolute inset-y-0 left-0 w-3 group-hover:bg-orange-300"
+                    className="absolute inset-y-0 left-0 w-3 bg-deepblue-600/20 group-hover:bg-orange-300"
                   ></div>
                   <div className="grid h-full justify-items-start gap-2 px-6 py-4 lg:px-8 lg:pt-10 lg:pb-8">
                     <h3 className="mb-4 text-2xl font-semibold lg:mb-12 lg:text-3xl">
@@ -160,7 +162,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                 </a>
               </div>
               <a
-                className="hover:text-sky-700 mt-6 inline-block text-blue-600 underline hover:no-underline"
+                className="mt-6 inline-block text-text underline hover:text-deepblue-700 hover:no-underline"
                 href="#"
               >
                 Utforsk alle temaer
@@ -169,8 +171,8 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
           </section>
 
           {/* Prinsipper */}
-          <section className="bg-sky-50 hidden px-4 pt-0 pb-16 lg:pt-12">
-            <div className="xs:w-[90%] relative z-10 mx-auto max-w-screen-lg">
+          <section className="hidden bg-deepblue-50 px-4 pt-0 pb-16 lg:pt-12">
+            <div className="xs:w-[90%] relative z-10 mx-auto max-w-aksel">
               <div className="grid gap-x-8 sm:grid-flow-col-dense">
                 <div className="sm:col-start-2 md:row-span-3 lg:-mt-20 lg:-mb-12">
                   <img
@@ -196,7 +198,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                 <div className="col-span-2 col-start-1 md:col-span-1">
                   <div className="mt-8 flex flex-wrap gap-2 lg:max-w-4xl lg:gap-3">
                     <a
-                      className="hover:bg-slate-800 flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:text-white hover:shadow-md sm:w-auto"
+                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
                       href="#"
                     >
                       <span className="font-semibold">
@@ -220,7 +222,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                       </svg>{" "}
                     </a>
                     <a
-                      className="hover:bg-slate-800 flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:text-white hover:shadow-md sm:w-auto"
+                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
                       href="#"
                     >
                       <span className="font-semibold">
@@ -244,7 +246,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                       </svg>{" "}
                     </a>
                     <a
-                      className="hover:bg-slate-800 flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:text-white hover:shadow-md sm:w-auto"
+                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
                       href="#"
                     >
                       <span className="font-semibold">
@@ -268,7 +270,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                       </svg>{" "}
                     </a>
                     <a
-                      className="hover:bg-slate-800 flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:text-white hover:shadow-md sm:w-auto"
+                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
                       href="#"
                     >
                       <span className="font-semibold">Jeg blir inkludert</span>
@@ -291,7 +293,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                     </a>
                   </div>
                   <a
-                    className="hover:text-sky-700 mt-6 inline-block text-blue-600 underline hover:no-underline"
+                    className="mt-6 inline-block text-text underline hover:text-deepblue-700 hover:no-underline"
                     href="#"
                   >
                     Utforsk alle prinsippene
@@ -310,15 +312,15 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
             >
               <polygon
                 points="0,0 100,0 0,12"
-                className="fill-sky-50"
+                className="fill-deepblue-50"
               ></polygon>
             </svg>
 
-            <div className="xs:w-[90%] relative z-10 mx-auto max-w-screen-lg">
+            <div className="xs:w-[90%] relative z-10 mx-auto max-w-aksel">
               <div className="gap-12 md:grid md:grid-cols-3 md:items-start">
                 {/* Redaksjons-kort */}
                 <div className="grid overflow-hidden rounded-lg shadow md:sticky md:top-24">
-                  <div className="bg-sky-900 px-6 py-6 text-white">
+                  <div className="bg-deepblue-900 px-6 py-6 text-white">
                     <h2 className="text-2xl font-semibold">
                       Aksel trenger deg!
                     </h2>
@@ -329,7 +331,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                     </p>
                   </div>
                   <a
-                    className="bg-sky-200 hover:bg-sky-300 group flex items-center justify-between px-6 py-4 leading-snug transition ease-out hover:underline"
+                    className="group flex items-center justify-between bg-deepblue-200 px-6 py-4 leading-snug transition ease-out hover:bg-deepblue-300 hover:underline"
                     href="#"
                   >
                     <span>
@@ -343,24 +345,24 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                   <h2 className="text-base font-semibold uppercase tracking-widest">
                     Blogg
                   </h2>
-                  <div className="divide-slate-200 mt-1 divide-y">
+                  <div className="mt-1 divide-y divide-gray-200">
                     {/* Blogg-kort */}
                     <div className="grid grid-flow-row-dense grid-cols-[1fr_auto] items-start gap-x-8 py-8">
                       <time
-                        className="xs:col-span-1 text-slate-600 col-span-2 text-sm uppercase tracking-wide"
+                        className="xs:col-span-1 col-span-2 text-sm uppercase tracking-wide text-gray-600"
                         dateTime="11. Mai 2022"
                       >
                         11. Mai 2022
                       </time>
-                      <h3 className="text-slate-800 xs:col-span-1 col-span-2 col-start-1 text-3xl font-semibold">
+                      <h3 className="xs:col-span-1 col-span-2 col-start-1 text-3xl font-semibold text-gray-800">
                         <a
-                          className="text-sky-700 hover:text-sky-600 hover:underline"
+                          className="text-deepblue-700 hover:text-deepblue-600 hover:underline"
                           href="/article"
                         >
                           Lage gode skjemaer
                         </a>
                       </h3>
-                      <p className="text-slate-800 col-start-1 mt-1">
+                      <p className="col-start-1 mt-1 text-gray-800">
                         Kort introduksjon av bloggposten. Lorem ipsum dolor sit
                         amet consectetur, adipisicing elit. Ducimus quisquam
                         quae excepturi, culpa pariatur.
@@ -375,7 +377,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                     </div>
                   </div>
                   <a
-                    className="hover:text-sky-700 mt-6 inline-block text-blue-600 underline hover:no-underline"
+                    className="mt-6 inline-block text-text underline hover:text-deepblue-700 hover:no-underline"
                     href="#"
                   >
                     Flere bloggposter
