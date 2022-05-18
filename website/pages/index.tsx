@@ -44,7 +44,7 @@ const Portaler = () => {
       <NextLink href="/designsystem">
         <a
           onClick={(e) => logPortalCard(e)}
-          className="group flex items-center gap-2"
+          className="group flex items-center gap-2 focus:shadow-focus-inverted focus:outline-none"
         >
           <div className="grid aspect-square w-12 shrink-0 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
             <svg
@@ -75,7 +75,7 @@ const Portaler = () => {
       <NextLink href="https://identitet.nav.no/">
         <a
           onClick={(e) => logPortalCard(e)}
-          className="group flex items-center gap-2"
+          className="group flex items-center gap-2 focus:shadow-focus-inverted focus:outline-none"
         >
           <div className="grid aspect-square w-12 shrink-0 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
             <svg
@@ -106,7 +106,7 @@ const Portaler = () => {
       <NextLink href="https://etterlevelse.intern.nav.no/">
         <a
           onClick={(e) => logPortalCard(e)}
-          className="group flex items-center gap-2"
+          className="group flex items-center gap-2 focus:shadow-focus-inverted focus:outline-none"
         >
           <div className="grid aspect-square w-12 shrink-0 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
             <svg
@@ -137,7 +137,7 @@ const Portaler = () => {
       <NextLink href="/designsystem">
         <a
           onClick={(e) => logPortalCard(e)}
-          className="group flex items-center gap-2"
+          className="group flex items-center gap-2 focus:shadow-focus-inverted focus:outline-none"
         >
           <div className="grid aspect-square w-12 shrink-0 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
             <svg
@@ -421,8 +421,8 @@ const Page = ({ preview, temaer, bloggs }: PageProps): JSX.Element => {
             <div className="relative z-10 mx-auto max-w-aksel xs:w-[90%]">
               <div className="gap-6 2xl:grid 2xl:grid-cols-3 2xl:items-start">
                 {/* Redaksjons-kort */}
-                <div className="mx-auto grid max-w-lg overflow-hidden rounded-lg shadow 2xl:sticky 2xl:top-24">
-                  <div className="bg-deepblue-700 px-6 py-6 text-white">
+                <div className="mx-auto grid max-w-lg  rounded-lg shadow 2xl:sticky 2xl:top-24">
+                  <div className="rounded-t-lg bg-deepblue-700 px-6 py-6 text-white">
                     <Heading size="medium" level="2">
                       Aksel trenger deg!
                     </Heading>
@@ -433,7 +433,7 @@ const Page = ({ preview, temaer, bloggs }: PageProps): JSX.Element => {
                     </BodyLong>
                   </div>
                   <a
-                    className="group flex items-center justify-between bg-deepblue-300/60 px-6 py-4 leading-snug transition ease-out hover:bg-deepblue-200 hover:underline"
+                    className="group flex items-center justify-between rounded-b-lg bg-deepblue-300/60 px-6 py-4 leading-snug hover:bg-deepblue-200 hover:underline focus:rounded-lg focus:shadow-focus focus:outline-none"
                     href="https://nav-it.slack.com/archives/C0370ADS0HX"
                     target="_blank"
                     rel="noreferrer"
@@ -475,7 +475,7 @@ const Page = ({ preview, temaer, bloggs }: PageProps): JSX.Element => {
                             className="col-span-2 col-start-1 text-gray-800 xs:col-span-1"
                           >
                             <NextLink href={`/${blog.slug}`} passHref>
-                              <a
+                              <Link
                                 onClick={(e) =>
                                   logNav(
                                     "blog-kort-forside",
@@ -483,10 +483,10 @@ const Page = ({ preview, temaer, bloggs }: PageProps): JSX.Element => {
                                     e.currentTarget.getAttribute("href")
                                   )
                                 }
-                                className="text-deepblue-700 hover:text-deepblue-600 hover:underline"
+                                className="text-deepblue-700 no-underline hover:underline"
                               >
                                 {blog.heading}
-                              </a>
+                              </Link>
                             </NextLink>
                           </Heading>
                           <BodyLong className="col-start-1 mt-1 text-gray-800">

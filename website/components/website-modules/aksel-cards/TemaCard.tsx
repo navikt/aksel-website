@@ -8,7 +8,7 @@ export const TemaCard = ({ title, refCount }: AkselTemaT) => {
   return (
     <NextLink href={`/tema/${getTemaSlug(title)}`} passHref>
       <a
-        className="group relative rounded-r-md bg-white shadow hover:bg-orange-100 sm:shadow-md"
+        className="group relative rounded-r-md bg-white shadow hover:bg-orange-100 focus:shadow-focus focus:outline-none sm:shadow-md"
         onClick={(e) =>
           logNav(
             "temakort",
