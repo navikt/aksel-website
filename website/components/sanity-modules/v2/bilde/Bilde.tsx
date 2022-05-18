@@ -20,7 +20,7 @@ const AkselBilde = ({ node }: { node: BildeT }) => {
         loading="lazy"
         decoding="async"
         src={urlFor(node).auto("format").url()}
-        className="bg-orange-100"
+        className="bg-gray-50"
       />
       {node.caption && (
         <BodyLong as="figcaption" className="mt-2 text-center">

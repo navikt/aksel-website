@@ -131,7 +131,7 @@ const DoDont = ({ node }: { node: DoDontV2 }) => {
       >
         {node.title}
       </Heading>
-      <SanityBlockContent blocks={node.forklaring} />
+      <SanityBlockContent blocks={node.forklaring} className="mb-7" />
       {node?.blokker?.length > 0 && (
         <div className="last flex flex-wrap justify-between gap-8">
           {node.blokker.map((x) => (

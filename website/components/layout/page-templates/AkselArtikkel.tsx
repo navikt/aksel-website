@@ -89,7 +89,7 @@ const AkselArtikkelTemplate = ({
         <div className="mt-12">
           <div className="mt-8 px-4">
             <SanityBlockContent
-              className="xs:w-[90%] markdown mx-auto max-w-prose"
+              className="xs:w-[90%] mx-auto max-w-prose"
               blocks={data?.innhold ?? []}
               variant="aksel"
             />

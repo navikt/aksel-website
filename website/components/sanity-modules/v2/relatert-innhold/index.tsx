@@ -18,24 +18,16 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
 
   return (
     <div
-      className={cl("relatedCard", "relative-child mb-16 flex flex-wrap gap-4")}
+      className={cl(
+        "relatedCard",
+        "relative-child mb-16 gap-4",
+        "grid w-full md:grid-cols-2"
+      )}
     >
-      <style jsx global>
-        {`
-          .aksel-artikkel .relatedCard {
-            justify-content: flex-start;
-            width: 100%;
-          }
-
-          .aksel-artikkel .relatedCard > div {
-            min-width: 200px;
-          }
-        `}
-      </style>
       {node.lenker.map((x) => (
         <div
           key={x._key}
-          className="algolia-ignore-index group relative min-w-[250px] max-w-sm flex-1 cursor-pointer rounded border-2 border-transparent bg-white p-6 shadow-card focus-within:border-focus focus-within:outline-none hover:border-link"
+          className="algolia-ignore-index group relative cursor-pointer rounded border-2 border-transparent bg-white p-6 shadow-card focus-within:border-focus focus-within:outline-none hover:border-link"
         >
           <NextLink href={getHref(x)} passHref>
             <Heading
