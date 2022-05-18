@@ -1,5 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import { ArtikkelCard, logNav, PreviewBanner, TemaCard } from "@/components";
+import {
+  ArtikkelCard,
+  dateStr,
+  logNav,
+  PreviewBanner,
+  TemaCard,
+} from "@/components";
 import { AkselHeader, Footer } from "@/layout";
 import {
   AkselBlogg,
@@ -7,6 +13,7 @@ import {
   akselForsideQuery,
   AkselTema,
   akselTema,
+  getTemaSlug,
   Riktekst,
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
@@ -163,12 +170,12 @@ const Portaler = () => {
 };
 
 const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
-  const hasPrinsipp1 =
+  /* const hasPrinsipp1 =
     tekster?.prinsipp_1 &&
     tekster?.prinsipp_1?.hovedside &&
     tekster?.prinsipp_1?.vis &&
     tekster?.prinsipp_1?.undersider.length ===
-      tekster?.prinsipp_1.undersider.filter((x) => !!x).length;
+      tekster?.prinsipp_1.undersider.filter((x) => !!x).length; */
 
   return (
     <>
@@ -435,52 +442,73 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                   </a>
                 </div>
                 {/* Blogg */}
-                <div className="order-1 mt-16 xs:col-span-2 xs:mt-44">
-                  <Heading
-                    level="2"
-                    size="xsmall"
-                    className="uppercase tracking-widest"
-                  >
-                    Bloggen
-                  </Heading>
-                  <div className="mt-1 divide-y divide-gray-200">
-                    {/* Blogg-kort */}
-                    <div className="grid grid-flow-row-dense grid-cols-[1fr_auto] items-start gap-x-8 py-8">
-                      <time
-                        className="col-span-2 text-sm uppercase tracking-wide text-gray-600 xs:col-span-1"
-                        dateTime="11. Mai 2022"
-                      >
-                        11. Mai 2022
-                      </time>
-                      <h3 className="col-span-2 col-start-1 text-3xl font-semibold text-gray-800 xs:col-span-1">
-                        <a
-                          className="text-deepblue-700 hover:text-deepblue-600 hover:underline"
-                          href="/article"
+                {bloggs && bloggs.length > 0 && (
+                  <div className="order-1 mt-16 xs:col-span-2 xs:mt-44">
+                    <Heading
+                      level="2"
+                      size="xsmall"
+                      className="uppercase tracking-widest"
+                    >
+                      Bloggen
+                    </Heading>
+                    <div className="mt-1 divide-y divide-gray-200">
+                      {/* Blogg-kort */}
+                      {bloggs.map((blog) => (
+                        <div
+                          key={blog._id}
+                          className="grid grid-flow-row-dense grid-cols-[1fr_auto] items-start gap-x-8 py-8"
                         >
-                          Lage gode skjemaer
-                        </a>
-                      </h3>
-                      <p className="col-start-1 mt-1 text-gray-800">
-                        Kort introduksjon av bloggposten. Lorem ipsum dolor sit
-                        amet consectetur, adipisicing elit. Ducimus quisquam
-                        quae excepturi, culpa pariatur.
-                      </p>
-                      <div className="col-start-2 row-span-3 row-start-3 xs:row-start-1">
-                        <img
+                          <Detail
+                            as="time"
+                            size="small"
+                            className="col-span-2 uppercase tracking-wide text-text-muted xs:col-span-1"
+                            dateTime={dateStr(blog._createdAt)}
+                          >
+                            {dateStr(blog._createdAt)}
+                          </Detail>
+                          <Heading
+                            level="3"
+                            size="large"
+                            className="col-span-2 col-start-1 text-gray-800 xs:col-span-1"
+                          >
+                            <NextLink href={`/${blog.slug}`} passHref>
+                              <a
+                                onClick={(e) =>
+                                  logNav(
+                                    "blog-kort-forside",
+                                    window.location.pathname,
+                                    e.currentTarget.getAttribute("href")
+                                  )
+                                }
+                                className="text-deepblue-700 hover:text-deepblue-600 hover:underline"
+                              >
+                                {blog.heading}
+                              </a>
+                            </NextLink>
+                          </Heading>
+                          <BodyLong className="col-start-1 mt-1 text-gray-800">
+                            {blog.oppsummering}
+                          </BodyLong>
+                          <div className="col-start-2 row-span-3 row-start-3 xs:row-start-1">
+                            {/* <img
                           className="mt-3 aspect-square w-24 bg-gray-200 sm:mt-0 sm:w-32"
                           src=""
                           alt=""
-                        />
-                      </div>
+                        /> */}
+                          </div>
+                        </div>
+                      ))}
                     </div>
+                    <NextLink href="/blogg" passHref>
+                      <a
+                        className="mt-6 inline-block text-text underline hover:text-deepblue-700 hover:no-underline"
+                        href="#"
+                      >
+                        Flere bloggposter
+                      </a>
+                    </NextLink>
                   </div>
-                  <a
-                    className="mt-6 inline-block text-text underline hover:text-deepblue-700 hover:no-underline"
-                    href="#"
-                  >
-                    Flere bloggposter
-                  </a>
-                </div>
+                )}
               </div>
             </div>
           </section>
