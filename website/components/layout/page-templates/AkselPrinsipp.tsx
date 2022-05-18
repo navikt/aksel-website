@@ -57,11 +57,11 @@ const AkselPrinsippTemplate = ({
         <main
           tabIndex={-1}
           id="hovedinnhold"
-          className="relative mx-auto flex min-h-screen-header w-full max-w-5xl flex-col items-center py-16 pb-4 focus:outline-none lg:pb-4 xs:my-0 xs:py-20"
+          className="relative mx-auto flex min-h-screen-header w-full max-w-5xl flex-col items-center py-16 pb-4 focus:outline-none xs:my-0 xs:py-20 md:pb-4"
         >
           <ArtikkelBreadcrumbs />
           {data?.banner?.variant === "bilde" && data.banner.banner_img ? (
-            <div className="relative -mb-40 h-80 w-full lg:h-96">
+            <div className="relative -mb-40 h-80 w-full md:h-96">
               <Image
                 src={imageProps.src}
                 loader={imageProps.loader}
@@ -72,21 +72,21 @@ const AkselPrinsippTemplate = ({
                 quality="75"
                 layout="fill"
                 objectFit="cover"
-                className="lg:rounded-2xl"
+                className="md:rounded-2xl"
                 priority
                 unoptimized
               />
             </div>
           ) : (
             <div
-              className="-mb-40 h-80 w-full lg:rounded-2xl"
+              className="-mb-40 h-80 w-full md:rounded-2xl"
               style={{ background: getGradient(data.heading) }}
             />
           )}
           <div className="mx-auto flex w-full max-w-[calc(100%_-_2.5rem)] justify-center">
-            <div className="relative flex w-full max-w-[800px] flex-col items-center rounded-2xl bg-gray-50 py-8 sm:px-0 xs:mx-6">
-              <div className="w-full max-w-text px-4 lg:mx-12 lg:px-0 xs:mx-6">
-                <div className="algolia-ignore-index mb-4 flex flex-wrap items-center justify-center gap-1 lg:justify-start">
+            <div className="relative flex w-full max-w-[800px] flex-col items-center rounded-2xl bg-gray-50 py-8 xs:mx-6 sm:px-0">
+              <div className="w-full max-w-text px-4 xs:mx-6 md:mx-12 md:px-0">
+                <div className="algolia-ignore-index mb-4 flex flex-wrap items-center justify-center gap-1 md:justify-start">
                   <BodyShort size="small" className="text-text-muted">
                     {ttr} min lesing
                   </BodyShort>
@@ -95,11 +95,11 @@ const AkselPrinsippTemplate = ({
                   size="xlarge"
                   level="1"
                   spacing
-                  className="algolia-index-lvl1 text-center lg:text-left"
+                  className="algolia-index-lvl1 text-center md:text-left"
                 >
                   {data.heading}
                 </Heading>
-                <div className="algolia-ignore-index flex justify-center gap-2 lg:justify-start">
+                <div className="algolia-ignore-index flex justify-center gap-2 md:justify-start">
                   {authors && authors.length > 0 ? (
                     <>
                       <Avatar name={authors[0]} large />
@@ -133,7 +133,7 @@ const AkselPrinsippTemplate = ({
               </div>
               {data.innhold.length > 0 && (
                 <SanityBlockContent
-                  className="aksel-artikkel__blocks mt-12 min-h-[500px] w-full max-w-text px-0 sm:px-8 lg:px-0 "
+                  className="aksel-artikkel__blocks mt-12 min-h-[500px] w-full max-w-text px-0 sm:px-8 md:px-0 "
                   blocks={data.innhold}
                 />
               )}

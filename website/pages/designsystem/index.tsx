@@ -49,7 +49,7 @@ const Page = (props: {
                 </Heading>
                 <BodyLong>Gjør det enkelt å lage produkter i NAV</BodyLong>
               </div>
-              <DsFrontpageIllustration className="hidden h-[240px] w-[624px] shrink-0 xl:block" />
+              <DsFrontpageIllustration className="hidden h-[240px] w-[624px] shrink-0 lg:block" />
             </div>
           </div>
 
@@ -73,7 +73,7 @@ const Page = (props: {
                 })}
             </div>
           </div>
-          <DsFrontpageFooterIllustration className="flex h-full w-full lg:hidden" />
+          <DsFrontpageFooterIllustration className="flex h-full w-full md:hidden" />
         </div>
       </main>
       <Footer />

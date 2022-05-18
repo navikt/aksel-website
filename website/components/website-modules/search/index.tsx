@@ -62,11 +62,11 @@ const index = "aksel_docsearch"; */
         isOpen={open}
         onRequestClose={() => setOpen(false)}
       >
-        <div className="relative flex w-full max-w-6xl justify-center py-36 px-4 sm:px-6 lg:px-12">
+        <div className="relative flex w-full max-w-6xl justify-center py-36 px-4 sm:px-6 md:px-12">
           <Button
             onClick={() => setOpen(false)}
             variant="tertiary"
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-12 lg:right-12"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-12 md:right-12"
           >
             Lukk
           </Button>

@@ -19,7 +19,7 @@ import { getClient } from "../lib/sanity/sanity.server";
 
 const RedaksjonsKort = () => (
   <div className="aksel-layout-x flex w-full justify-center">
-    <div className="flex w-full max-w-2xl flex-col items-center justify-between gap-4 rounded-2xl bg-gray-800 py-6 px-7 text-text-inverted sm:py-12 sm:pl-14 xs:flex-row xs:gap-0 xs:pl-7">
+    <div className="flex w-full max-w-2xl flex-col items-center justify-between gap-4 rounded-2xl bg-gray-800 py-6 px-7 text-text-inverted xs:flex-row xs:gap-0 xs:pl-7 sm:py-12 sm:pl-14">
       <div>
         <Heading size="large" level="2" spacing>
           Redaksjonen trenger deg!
@@ -66,8 +66,8 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
         <main tabIndex={-1} id="hovedinnhold">
           <div className="relative bg-gray-900 bg-gradient-to-b from-gray-900 via-deepblue-900/50 to-deepblue-700 px-4 py-16 text-white">
             <div className="mx-auto max-w-aksel xs:w-[90%]">
-              <div className="gap-6 lg:grid lg:grid-cols-3">
-                <div className="pr-6 lg:col-span-2">
+              <div className="gap-6 md:grid md:grid-cols-3">
+                <div className="pr-6 md:col-span-2">
                   <h1 className="text-3xl font-semibold leading-tight tracking-tight xs:text-5xl xs:leading-tight">
                     NAVs digitale verktøykasse for&nbsp;produktutvikling
                   </h1>
@@ -84,11 +84,11 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                     </p>
                   </div>
                 </div>
-                <div className="mt-12 lg:mt-4">
+                <div className="mt-12 md:mt-4">
                   <h2 className="text-base font-semibold uppercase tracking-widest text-white">
                     Portaler
                   </h2>
-                  <div className="mt-3 grid grid-flow-row justify-items-start gap-4 sm:grid-cols-2 lg:grid-cols-1 xs:grid-cols-3">
+                  <div className="mt-3 grid grid-flow-row justify-items-start gap-4 xs:grid-cols-3 sm:grid-cols-2 md:grid-cols-1">
                     <a
                       className="group flex items-center gap-2 xs:w-auto"
                       href="#"
@@ -141,7 +141,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
               <h2 className="text-base font-semibold uppercase tracking-widest text-white">
                 Temaer
               </h2>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xs:gap-6">
+              <div className="mt-4 grid gap-3 xs:gap-6 sm:grid-cols-2 md:grid-cols-3">
                 {/* Temakort */}
                 <a
                   className="group relative rounded-r-md bg-white shadow hover:bg-orange-100 sm:shadow-md"
@@ -151,8 +151,8 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                     aria-hidden="true"
                     className="absolute inset-y-0 left-0 w-3 bg-deepblue-600/20 group-hover:bg-orange-300"
                   ></div>
-                  <div className="grid h-full justify-items-start gap-2 px-6 py-4 lg:px-8 lg:pt-10 lg:pb-8">
-                    <h3 className="mb-4 text-2xl font-semibold lg:mb-12 lg:text-3xl">
+                  <div className="grid h-full justify-items-start gap-2 px-6 py-4 md:px-8 md:pt-10 md:pb-8">
+                    <h3 className="mb-4 text-2xl font-semibold md:mb-12 md:text-3xl">
                       Design
                     </h3>
                     <div className="mt-auto border-t-4 border-blue-200 pt-2 text-sm uppercase opacity-80 group-hover:border-orange-300">
@@ -171,12 +171,12 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
           </section>
 
           {/* Prinsipper */}
-          <section className="hidden bg-deepblue-50 px-4 pt-0 pb-16 lg:pt-12">
+          <section className="hidden bg-deepblue-50 px-4 pt-0 pb-16 md:pt-12">
             <div className="relative z-10 mx-auto max-w-aksel xs:w-[90%]">
               <div className="grid gap-x-8 sm:grid-flow-col-dense">
-                <div className="sm:col-start-2 lg:-mt-20 lg:-mb-12 xs:row-span-3">
+                <div className="xs:row-span-3 sm:col-start-2 md:-mt-20 md:-mb-12">
                   <img
-                    className="mx-auto w-56 max-w-xs sm:w-full xs:mx-auto xs:max-w-md"
+                    className="mx-auto w-56 max-w-xs xs:mx-auto xs:max-w-md sm:w-full"
                     src="/static/images/prinsipper.webp"
                     width="800"
                     alt=""
@@ -196,7 +196,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                   </div>
                 </div>
                 <div className="col-span-2 col-start-1 xs:col-span-1">
-                  <div className="mt-8 flex flex-wrap gap-2 lg:max-w-4xl lg:gap-3">
+                  <div className="mt-8 flex flex-wrap gap-2 md:max-w-4xl md:gap-3">
                     <a
                       className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
                       href="#"

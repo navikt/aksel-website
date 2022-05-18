@@ -121,7 +121,7 @@ const IconSearch = () => {
   const categories: CategoryT[] = categorizeIcons(visibleIcons);
 
   return (
-    <div className="relative flex w-full max-w-full flex-col lg:w-[816px] lg:max-w-[62vw]">
+    <div className="relative flex w-full max-w-full flex-col md:w-[816px] md:max-w-[62vw]">
       <div className="flex w-full flex-wrap-reverse justify-between gap-x-8 gap-y-4">
         <Filter onFilterChange={handleFilterChange} />
         <DownloadButtons />

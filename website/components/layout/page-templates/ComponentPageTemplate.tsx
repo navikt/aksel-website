@@ -161,7 +161,7 @@ const ComponentPageTemplate = ({
           logNav("tabs", window.location.pathname, url);
         }}
       >
-        <Tabs.List className="mx-0 px-2 lg:mx-12 lg:px-0">
+        <Tabs.List className="mx-0 px-2 md:mx-12 md:px-0">
           {Object.entries(tabs)
             .filter(([, val]) => !!data[val])
             .map(([key]) => (
@@ -177,7 +177,7 @@ const ComponentPageTemplate = ({
           .filter(([, val]) => !!data[val])
           .map(([key, val]) => (
             <Tabs.Panel
-              className="tabpanel relative max-w-full lg:max-w-7xl"
+              className="tabpanel relative max-w-full md:max-w-7xl"
               key={key + val}
               value={key}
             >

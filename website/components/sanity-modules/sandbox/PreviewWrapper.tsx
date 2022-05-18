@@ -34,9 +34,9 @@ const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
     >
       <div
         className={cl(
-          "sandbox-preview relative w-full flex-wrap items-center justify-center gap-4 overflow-x-auto p-4 pt-8 lg:p-8 lg:pt-12",
+          "sandbox-preview relative w-full flex-wrap items-center justify-center gap-4 overflow-x-auto p-4 pt-8 md:p-8 md:pt-12",
           {
-            "hidden lg:inline-flex": sandboxState.openSettings,
+            "hidden md:inline-flex": sandboxState.openSettings,
             "inline-flex": !sandboxState.openSettings,
           }
         )}

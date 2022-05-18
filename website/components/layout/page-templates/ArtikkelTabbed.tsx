@@ -71,7 +71,7 @@ const ArtikkelTabbedTemplate = ({
             logNav("tabs", window.location.pathname, `${basePath}/${x}`);
           }}
         >
-          <Tabs.List className="mx-0 px-2 lg:mx-12 lg:px-0">
+          <Tabs.List className="mx-0 px-2 md:mx-12 md:px-0">
             {data.innhold_tabs.map((x) => (
               <Tabs.Tab
                 as="button"
@@ -83,7 +83,7 @@ const ArtikkelTabbedTemplate = ({
           </Tabs.List>
           {data.innhold_tabs.map((x) => (
             <Tabs.Panel
-              className="tabpanel relative max-w-full lg:max-w-7xl"
+              className="tabpanel relative max-w-full md:max-w-7xl"
               key={x.title}
               value={x.title?.toLowerCase().replace(/\s+/g, "-")}
             >

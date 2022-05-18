@@ -34,7 +34,7 @@ const SettingsPanel = () => {
       tabIndex={-1}
       className={cl(
         "flex w-full flex-col items-center gap-4 overflow-y-auto rounded-r border-l border-gray-200 bg-canvas-background-light p-4 focus:outline-none",
-        "lg:relative lg:max-w-[250px]",
+        "md:relative md:max-w-[250px]",
         "absolute inset-0 animate-fadeIn",
         {
           hidden: !sandboxState.openSettings || hideProps,

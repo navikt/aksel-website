@@ -10,9 +10,10 @@ module.exports = {
     /* Flytt ut fra extend og refactor bruk av screen */
     screens: {
       xs: "564px",
-      sm: "768px",
-      lg: "768px",
-      xl: "1024px",
+      sm: "648px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
       "2xl": "1440px",
       toc: "1224px",
     },

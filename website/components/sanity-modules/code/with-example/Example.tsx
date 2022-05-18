@@ -5,7 +5,6 @@ import CodeTabs from "./Tabs";
 import { DsCodeExample as DsCodeExampleT } from "../../../../lib";
 import cl from "classnames";
 import dynamic from "next/dynamic";
-import { BgColors } from "../../../../stories/sandbox/types";
 
 const CodePreview = dynamic(() => import("./Preview"), {
   loading: () => (

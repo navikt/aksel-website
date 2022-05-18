@@ -43,7 +43,7 @@ const ArtikkelTemplate = ({
           <LastUpdateTag date={data._updatedAt} />
         </div>
       </div>
-      <div className="relative flex max-w-full lg:max-w-7xl">
+      <div className="relative flex max-w-full md:max-w-7xl">
         <TableOfContents changedState={data.innhold} />
         <div className="content-box">
           <SanityBlockContent className="mt-12" blocks={data.innhold} />

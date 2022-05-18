@@ -48,7 +48,7 @@ const Feedback = ({
         activeState &&
         logAmplitudeEvent(AmplitudeEvents.feedbackinteraksjon, {
           fra: asPath,
-          valg: activeState,
+          vamd: activeState,
           completed,
         });
     },
@@ -145,7 +145,7 @@ const Feedback = ({
     : cl(
         "algolia-ignore-index flex w-full max-w-[800px] items-center justify-center gap-4 bg-component-background-alternate p-4 pb-12 sm:px-8 sm:py-4",
         {
-          "mt-44 mr-auto mb-16 ml-0 lg:mr-0 lg:ml-0": !center,
+          "mt-44 mr-auto mb-16 ml-0 md:mr-0 md:ml-0": !center,
           "mx-auto mt-44 mb-16": center,
         }
       );
