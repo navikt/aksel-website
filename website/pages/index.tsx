@@ -256,15 +256,17 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                 </Heading>
                 <div className="mt-4 grid gap-3 xs:gap-6 sm:grid-cols-2 md:grid-cols-3">
                   {/* Temakort */}
-                  {temaer.map((tema) => (
+                  {temaer.slice(0, 7).map((tema) => (
                     <TemaCard {...tema} key={tema._id} />
                   ))}
                 </div>
-                <NextLink href="/tema">
-                  <a className="mt-6 inline-block text-text underline hover:text-deepblue-700 hover:no-underline">
-                    Utforsk alle temaer
-                  </a>
-                </NextLink>
+                {temaer.length > 6 && (
+                  <NextLink href="/tema">
+                    <a className="mt-6 inline-block text-text underline hover:text-deepblue-700 hover:no-underline">
+                      Utforsk alle temaer
+                    </a>
+                  </NextLink>
+                )}
               </div>
             </section>
           )}
@@ -419,7 +421,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
               <div className="gap-12 xs:grid xs:grid-cols-3 xs:items-start">
                 {/* Redaksjons-kort */}
                 <div className="grid overflow-hidden rounded-lg shadow xs:sticky xs:top-24">
-                  <div className="bg-deepblue-900 px-6 py-6 text-white">
+                  <div className="bg-deepblue-700 px-6 py-6 text-white">
                     <Heading size="medium" level="2">
                       Aksel trenger deg!
                     </Heading>
@@ -430,7 +432,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                     </BodyLong>
                   </div>
                   <a
-                    className="group flex items-center justify-between bg-deepblue-200 px-6 py-4 leading-snug transition ease-out hover:bg-deepblue-300 hover:underline"
+                    className="group flex items-center justify-between bg-deepblue-300/60 px-6 py-4 leading-snug transition ease-out hover:bg-deepblue-200 hover:underline"
                     href="https://nav-it.slack.com/archives/C0370ADS0HX"
                     target="_blank"
                     rel="noreferrer"
@@ -453,7 +455,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                     </Heading>
                     <div className="mt-1 divide-y divide-gray-200">
                       {/* Blogg-kort */}
-                      {bloggs.map((blog) => (
+                      {bloggs.slice(0, 7).map((blog) => (
                         <div
                           key={blog._id}
                           className="grid grid-flow-row-dense grid-cols-[1fr_auto] items-start gap-x-8 py-8"
@@ -499,14 +501,16 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                         </div>
                       ))}
                     </div>
-                    <NextLink href="/blogg" passHref>
-                      <a
-                        className="mt-6 inline-block text-text underline hover:text-deepblue-700 hover:no-underline"
-                        href="#"
-                      >
-                        Flere bloggposter
-                      </a>
-                    </NextLink>
+                    {bloggs?.length > 6 && (
+                      <NextLink href="/blogg" passHref>
+                        <a
+                          className="mt-6 inline-block text-text underline hover:text-deepblue-700 hover:no-underline"
+                          href="#"
+                        >
+                          Flere bloggposter
+                        </a>
+                      </NextLink>
+                    )}
                   </div>
                 )}
               </div>
@@ -548,7 +552,7 @@ export const getStaticProps = async ({
 }: {
   preview?: boolean;
 }) => {
-  const client = getClient(true);
+  const client = getClient(preview);
 
   const temaer = await client.fetch(akselTema);
   const bloggs = await client.fetch(akselBloggPosts);
