@@ -64,24 +64,27 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
         <AkselHeader frontPage />
 
         <main tabIndex={-1} id="hovedinnhold">
-          <div className="relative bg-gray-900 bg-gradient-to-b from-gray-900 via-deepblue-900/50 to-deepblue-700 px-4 py-16 text-white">
+          <div className="relative bg-deepblue-900 bg-gradient-to-b from-deepblue-900 via-deepblue-900/50 to-deepblue-700 px-4 py-16 text-white">
             <div className="mx-auto max-w-aksel xs:w-[90%]">
               <div className="gap-6 md:grid md:grid-cols-3">
-                <div className="pr-6 md:col-span-2">
-                  <h1 className="text-3xl font-semibold leading-tight tracking-tight xs:text-5xl xs:leading-tight">
+                <div className="max-w-prose pr-6 md:col-span-2">
+                  {/* <h1 className="m-0 text-3xl font-semibold leading-tight tracking-tight xs:text-5xl xs:leading-tight">
                     NAVs digitale verktøykasse for&nbsp;produktutvikling
-                  </h1>
-                  <div className="mt-6 max-w-prose leading-normal text-deepblue-100/95">
-                    <p>Velkommen til Aksel!</p>
-                    <p className="mt-6">
+                  </h1> */}
+                  <Heading level="1" size="xlarge">
+                    NAVs digitale verktøykasse for&nbsp;produktutvikling
+                  </Heading>
+                  <div className="mt-6 text-deepblue-100/95">
+                    <BodyLong spacing>Velkommen til Aksel!</BodyLong>
+                    <BodyLong spacing>
                       Dette er begynnelsen på NAVs digitale verktøykasse for
                       produktutvikling. Vi har trua på å jobbe åpent med
                       nettsiden, derfor er noen biter litt uferdige.
-                    </p>
-                    <p className="mt-6">
+                    </BodyLong>
+                    <BodyLong>
                       Om du vil gi oss tilbakemelding kan du bruke
                       skjema&nbsp;i&nbsp;footer&nbsp;👇
-                    </p>
+                    </BodyLong>
                   </div>
                 </div>
                 <div className="mt-12 md:mt-4">
@@ -124,7 +127,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
             </div>
           </div>
           {/* Temaseksjon */}
-          <section className="relative bg-deepblue-50 px-4 pt-12 pb-16">
+          <section className="relative bg-deepblue-50 px-4 pt-20 pb-16">
             {/* Separator */}
             <svg
               className="absolute inset-x-0 top-0 w-full"
