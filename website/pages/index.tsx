@@ -44,9 +44,9 @@ const Portaler = () => {
       <NextLink href="/designsystem">
         <a
           onClick={(e) => logPortalCard(e)}
-          className="group flex items-center gap-2 xs:w-auto"
+          className="group flex items-center gap-2"
         >
-          <div className="grid aspect-square w-12 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
+          <div className="grid aspect-square w-12 shrink-0 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
             <svg
               className="h-7 w-7"
               width="48"
@@ -75,9 +75,9 @@ const Portaler = () => {
       <NextLink href="https://identitet.nav.no/">
         <a
           onClick={(e) => logPortalCard(e)}
-          className="group flex items-center gap-2 xs:w-auto"
+          className="group flex items-center gap-2"
         >
-          <div className="grid aspect-square w-12 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
+          <div className="grid aspect-square w-12 shrink-0 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
             <svg
               className="h-7 w-7"
               width="48"
@@ -106,9 +106,9 @@ const Portaler = () => {
       <NextLink href="https://etterlevelse.intern.nav.no/">
         <a
           onClick={(e) => logPortalCard(e)}
-          className="group flex items-center gap-2 xs:w-auto"
+          className="group flex items-center gap-2"
         >
-          <div className="grid aspect-square w-12 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
+          <div className="grid aspect-square w-12 shrink-0 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
             <svg
               className="h-7 w-7"
               width="48"
@@ -137,9 +137,9 @@ const Portaler = () => {
       <NextLink href="/designsystem">
         <a
           onClick={(e) => logPortalCard(e)}
-          className="group flex items-center gap-2 xs:w-auto"
+          className="group flex items-center gap-2"
         >
-          <div className="grid aspect-square w-12 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
+          <div className="grid aspect-square w-12 shrink-0 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
             <svg
               className="h-7 w-7"
               width="48"
@@ -169,7 +169,7 @@ const Portaler = () => {
   );
 };
 
-const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
+const Page = ({ preview, temaer, bloggs }: PageProps): JSX.Element => {
   /* const hasPrinsipp1 =
     tekster?.prinsipp_1 &&
     tekster?.prinsipp_1?.hovedside &&
@@ -192,10 +192,10 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
         <AkselHeader frontPage />
 
         <main tabIndex={-1} id="hovedinnhold">
-          <div className="relative bg-deepblue-900 bg-gradient-to-b from-deepblue-900 via-deepblue-900/50 to-deepblue-700 px-4 py-16 text-white">
+          <div className="relative bg-deepblue-900 bg-gradient-to-b from-deepblue-900 via-deepblue-900/50 to-deepblue-700 px-4 pt-16 pb-24 text-white">
             <div className="mx-auto max-w-aksel xs:w-[90%]">
-              <div className="gap-6 md:grid md:grid-cols-3">
-                <div className="max-w-prose pr-6 md:col-span-2">
+              <div className="gap-6 lg:grid lg:grid-cols-3">
+                <div className="max-w-prose pr-6 lg:col-span-2">
                   {/* <h1 className="m-0 text-3xl font-semibold leading-tight tracking-tight xs:text-5xl xs:leading-tight">
                     NAVs digitale verktøykasse for&nbsp;produktutvikling
                   </h1> */}
@@ -223,7 +223,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                   >
                     Portaler
                   </Heading>
-                  <div className="mt-3 grid grid-flow-row justify-items-start gap-4 xs:grid-cols-3 sm:grid-cols-2 md:grid-cols-1">
+                  <div className="mt-3 grid grid-flow-row justify-items-start gap-4 sm:w-fit sm:grid-cols-2 lg:grid-cols-1">
                     <Portaler />
                   </div>
                 </div>
@@ -233,7 +233,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
 
           {/* Temaseksjon */}
           {temaer && temaer.length > 0 && (
-            <section className="relative bg-deepblue-50 px-4 pt-20 pb-16">
+            <section className="relative bg-deepblue-50 px-4 pt-16 pb-24">
               {/* Separator */}
               <svg
                 className="absolute inset-x-0 top-0 w-full"
@@ -246,7 +246,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                   className="fill-deepblue-700"
                 ></polygon>
               </svg>
-              <div className="relative z-10 mx-auto -mt-16 max-w-aksel xs:w-[90%]">
+              <div className="relative z-10 mx-auto -mt-20 max-w-aksel xs:w-[90%]">
                 <Heading
                   level="2"
                   size="medium"
@@ -254,7 +254,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                 >
                   Temaer
                 </Heading>
-                <div className="mt-4 grid gap-3 xs:gap-6 sm:grid-cols-2 md:grid-cols-3">
+                <div className="mt-4 grid gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
                   {/* Temakort */}
                   {temaer.slice(0, 7).map((tema) => (
                     <TemaCard {...tema} key={tema._id} />
@@ -403,6 +403,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
               </div>
             </div>
           </section>
+
           <section className="relative bg-white px-4 pb-24">
             {/* Separator */}
             <svg
@@ -418,9 +419,9 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
             </svg>
 
             <div className="relative z-10 mx-auto max-w-aksel xs:w-[90%]">
-              <div className="gap-12 xs:grid xs:grid-cols-3 xs:items-start">
+              <div className="gap-6 2xl:grid 2xl:grid-cols-3 2xl:items-start">
                 {/* Redaksjons-kort */}
-                <div className="grid overflow-hidden rounded-lg shadow xs:sticky xs:top-24">
+                <div className="mx-auto grid max-w-lg overflow-hidden rounded-lg shadow 2xl:sticky 2xl:top-24">
                   <div className="bg-deepblue-700 px-6 py-6 text-white">
                     <Heading size="medium" level="2">
                       Aksel trenger deg!
@@ -445,7 +446,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                 </div>
                 {/* Blogg */}
                 {bloggs && bloggs.length > 0 && (
-                  <div className="order-1 mt-16 xs:col-span-2 xs:mt-44">
+                  <div className="order-1 mt-16 xl:pl-12 2xl:col-span-2 2xl:mt-44">
                     <Heading
                       level="2"
                       size="xsmall"
