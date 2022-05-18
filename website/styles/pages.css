@@ -27,11 +27,11 @@
 }
 
 .content-box {
-  @apply m-0 w-full max-w-content-w-padding px-4 pb-4 lg:mx-0 lg:mr-auto lg:px-12 lg:pb-4 xs:my-0 xs:mx-auto xs:px-6;
+  @apply w-full max-w-content-w-padding px-4 pb-4 xs:mx-auto xs:px-6 lg:mx-0 lg:mr-auto lg:px-12;
 }
 
 .aksel-layout-x {
-  @apply max-w-aksel px-4 lg:px-12 xs:px-6;
+  @apply max-w-aksel px-4 xs:px-6 lg:px-12;
 }
 
 /* .aksel-content > .aksel-center-content {

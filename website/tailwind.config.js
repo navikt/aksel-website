@@ -7,6 +7,15 @@ module.exports = {
     "./stories/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    /* Flytt ut fra extend og refactor bruk av screen */
+    screens: {
+      xs: "564px",
+      sm: "768px",
+      lg: "768px",
+      xl: "1024px",
+      "2xl": "1440px",
+      toc: "1224px",
+    },
     extend: {
       spacing: {
         0: 0,
@@ -30,14 +39,6 @@ module.exports = {
         ...theme("spacing"),
       }),
 
-      /* Flytt ut fra extend og refactor bruk av screen */
-      screens: {
-        xs: "564px",
-        lg: "768px",
-        xl: "1024px",
-        "2xl": "1440px",
-        toc: "1224px",
-      },
       boxShadow: {
         "focus-inverted-inset": "inset var(--navds-shadow-focus-inverted)",
         "focus-inset": "inset var(--navds-shadow-focus)",
