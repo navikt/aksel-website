@@ -31,7 +31,7 @@
 }
 
 .aksel-layout-x {
-  @apply max-w-aksel-max-w px-4 md:px-6 lg:px-12;
+  @apply max-w-aksel px-4 md:px-6 lg:px-12;
 }
 
 /* .aksel-content > .aksel-center-content {

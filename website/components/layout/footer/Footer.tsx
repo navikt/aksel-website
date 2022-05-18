@@ -5,7 +5,7 @@ import FooterForm from "./FooterForm";
 const Footer = () => {
   return (
     <footer className="algolia-ignore-index flex w-full justify-center bg-canvas-background-inverted text-text-inverted">
-      <div className="relative w-full max-w-aksel-max-w p-6 lg:p-12">
+      <div className="relative w-full max-w-aksel p-6 lg:p-12">
         <ScrollTop />
         <div className="flex max-w-7xl flex-wrap justify-between gap-x-8 gap-y-12">
           <div className="max-w-lg flex-auto">
