@@ -3,8 +3,13 @@ import { BodyShort, Heading } from "@navikt/ds-react";
 import NextLink from "next/link";
 import { logNav } from "../..";
 import { AkselTemaT } from "../../../pages";
+import cl from "classnames";
 
-export const TemaCard = ({ title, refCount }: AkselTemaT) => {
+export const TemaCard = ({
+  title,
+  refCount,
+  compact = false,
+}: AkselTemaT & { compact?: boolean }) => {
   return (
     <NextLink href={`/tema/${getTemaSlug(title)}`} passHref>
       <a
@@ -21,8 +26,19 @@ export const TemaCard = ({ title, refCount }: AkselTemaT) => {
           aria-hidden="true"
           className="absolute inset-y-0 left-0 w-3 bg-deepblue-600/20 group-hover:bg-orange-300"
         />
-        <div className="grid h-full justify-items-start gap-2 px-6 py-4 md:px-8 md:pt-10 md:pb-8">
-          <Heading level="3" size="large" className="mb-4 md:mb-12">
+        <div
+          className={cl({
+            "grid h-full justify-items-start gap-2 px-6 py-4 md:px-8 md:pt-10 md:pb-8":
+              !compact,
+            "grid h-full justify-items-start gap-2 px-6 py-4 lg:px-8 lg:pt-8 lg:pb-6":
+              compact,
+          })}
+        >
+          <Heading
+            level="3"
+            size={compact ? "medium" : "large"}
+            className={cl("mb-4", { "md:mb-12": !compact })}
+          >
             {title}
           </Heading>
           {refCount && (

@@ -27,25 +27,24 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
       </Head>
       <div className="bg-gray-50">
         <AkselHeader variant="tema" />
-        <main
-          tabIndex={-1}
-          id="hovedinnhold"
-          className="aksel-main--start w-full max-w-5xl py-16 xs:py-20"
-        >
-          <TemaBreadcrumbs />
-          <Heading
-            level="1"
-            size="xlarge"
-            spacing
-            className="algolia-index-lvl1 self-start"
-          >
-            Temaer
-          </Heading>
+        <main tabIndex={-1} id="hovedinnhold" className="focus:outline-none">
+          <div className="relative min-h-screen-header bg-gray-100 px-4 pt-8 pb-24 md:pt-12">
+            <div className="mx-auto max-w-aksel xs:w-[90%]">
+              <Heading
+                level="1"
+                size="xlarge"
+                spacing
+                className="algolia-index-lvl1"
+              >
+                Alle tema
+              </Heading>
 
-          <div className="aksel-card-grid">
-            {page.map((tema) => (
-              <TemaCard {...tema} key={tema._id} />
-            ))}
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
+                {page.map((tema) => (
+                  <TemaCard compact {...tema} key={tema._id} />
+                ))}
+              </div>
+            </div>
           </div>
         </main>
         <Footer />
