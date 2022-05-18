@@ -249,7 +249,7 @@ const Page = ({ preview, temaer, bloggs }: PageProps): JSX.Element => {
               <div className="relative z-10 mx-auto -mt-20 max-w-aksel xs:w-[90%]">
                 <Heading
                   level="2"
-                  size="medium"
+                  size="small"
                   className="uppercase text-text-inverted"
                 >
                   Temaer
