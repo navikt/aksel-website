@@ -16,7 +16,7 @@ function Page() {
       id="vk-notFoundId"
       className="flex h-screen w-screen items-center justify-center gap-8"
     >
-      <AkselLogo width="10rem" />
+      <AkselLogo width="10rem" height="10rem" />
       <div>
         <Heading spacing level="1" size="large">
           404 - Fant ikke siden
