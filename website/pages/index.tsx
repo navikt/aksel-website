@@ -11,7 +11,14 @@ import {
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { Locked, Next, Office1, Star, System, Task } from "@navikt/ds-icons";
-import { BodyLong, Heading, Label, Link, Tooltip } from "@navikt/ds-react";
+import {
+  BodyLong,
+  Detail,
+  Heading,
+  Label,
+  Link,
+  Tooltip,
+} from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
@@ -88,90 +95,89 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                   </div>
                 </div>
                 <div className="mt-12 md:mt-4">
-                  <h2 className="text-base font-semibold uppercase tracking-widest text-white">
+                  <Heading
+                    level="2"
+                    size="xsmall"
+                    className="uppercase tracking-widest text-white"
+                  >
                     Portaler
-                  </h2>
+                  </Heading>
                   <div className="mt-3 grid grid-flow-row justify-items-start gap-4 xs:grid-cols-3 sm:grid-cols-2 md:grid-cols-1">
-                    <a
-                      className="group flex items-center gap-2 xs:w-auto"
-                      href="#"
-                    >
-                      <div className="grid aspect-square w-12 place-items-center rounded-full bg-deepblue-500/20 group-hover:bg-white group-hover:text-deepblue-900">
-                        <svg
-                          className="h-7 w-7"
-                          width="48"
-                          height="48"
-                          viewBox="0 0 48 48"
-                          fill="none"
-                          focusable="false"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fill="currentColor"
-                            d="M6 42v-7.8l9.7-9.7-8.95-9a3.03 3.03 0 0 1-.9-2.1 3.03 3.03 0 0 1 .9-2.1l4.5-4.55a3.03 3.03 0 0 1 2.1-.9 3.07 3.07 0 0 1 2.15.9l9 9 9.85-9.85c.17-.17.33-.28.5-.33.17-.04.35-.07.55-.07.2 0 .38.03.55.08.17.04.33.15.5.32l5.65 5.65c.17.17.28.33.33.5.05.17.07.35.07.55 0 .2-.02.38-.07.55a1.2 1.2 0 0 1-.33.5l-9.85 9.85 9 9a3.07 3.07 0 0 1 .9 2.15 3.03 3.03 0 0 1-.9 2.1l-4.5 4.45a3.03 3.03 0 0 1-2.1.9 3.03 3.03 0 0 1-2.1-.9l-9-8.95L13.8 42H6Zm11.85-19.65 4.5-4.5-3.65-3.65-2.4 2.4-2.1-2.1 2.4-2.4-3.2-3.2-4.5 4.5 8.95 8.95Zm16.7 16.75 4.5-4.5-3.2-3.2-2.4 2.4-2.1-2.1 2.4-2.4-3.65-3.65-4.5 4.5 8.95 8.95ZM9 39h3.5l20.75-20.75-3.5-3.5L9 35.5V39Zm26.35-22.85 3.5-3.5-3.5-3.5-3.5 3.5 3.5 3.5Z"
-                          ></path>
-                        </svg>
-                      </div>
-                      <div className="">
-                        <h3 className="font-semibold leading-tight group-hover:underline">
-                          Designsystem
-                        </h3>
-                        <p className="text-sm text-deepblue-100/95">
-                          Åpen for alle
-                        </p>
-                      </div>
-                    </a>
+                    <NextLink href="/designsystem">
+                      <a className="group flex items-center gap-2 xs:w-auto">
+                        <div className="grid aspect-square w-12 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
+                          <svg
+                            className="h-7 w-7"
+                            width="48"
+                            height="48"
+                            viewBox="0 0 48 48"
+                            fill="none"
+                            focusable="false"
+                            aria-hidden="true"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M6 42v-7.8l9.7-9.7-8.95-9a3.03 3.03 0 0 1-.9-2.1 3.03 3.03 0 0 1 .9-2.1l4.5-4.55a3.03 3.03 0 0 1 2.1-.9 3.07 3.07 0 0 1 2.15.9l9 9 9.85-9.85c.17-.17.33-.28.5-.33.17-.04.35-.07.55-.07.2 0 .38.03.55.08.17.04.33.15.5.32l5.65 5.65c.17.17.28.33.33.5.05.17.07.35.07.55 0 .2-.02.38-.07.55a1.2 1.2 0 0 1-.33.5l-9.85 9.85 9 9a3.07 3.07 0 0 1 .9 2.15 3.03 3.03 0 0 1-.9 2.1l-4.5 4.45a3.03 3.03 0 0 1-2.1.9 3.03 3.03 0 0 1-2.1-.9l-9-8.95L13.8 42H6Zm11.85-19.65 4.5-4.5-3.65-3.65-2.4 2.4-2.1-2.1 2.4-2.4-3.2-3.2-4.5 4.5 8.95 8.95Zm16.7 16.75 4.5-4.5-3.2-3.2-2.4 2.4-2.1-2.1 2.4-2.4-3.65-3.65-4.5 4.5 8.95 8.95ZM9 39h3.5l20.75-20.75-3.5-3.5L9 35.5V39Zm26.35-22.85 3.5-3.5-3.5-3.5-3.5 3.5 3.5 3.5Z"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div className="">
+                          <Heading
+                            level="3"
+                            size="small"
+                            className="group-hover:underline"
+                          >
+                            Designsystem
+                          </Heading>
+                          <Detail className="text-deepblue-100/95">
+                            Åpen for alle
+                          </Detail>
+                        </div>
+                      </a>
+                    </NextLink>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
           {/* Temaseksjon */}
-          <section className="relative bg-deepblue-50 px-4 pt-20 pb-16">
-            {/* Separator */}
-            <svg
-              className="absolute inset-x-0 top-0 w-full"
-              viewBox="0 0 100 12"
-              focusable="false"
-              aria-hidden="true"
-            >
-              <polygon
-                points="0,0 100,0 0,12"
-                className="fill-deepblue-700"
-              ></polygon>
-            </svg>
-            <div className="relative z-10 mx-auto -mt-16 max-w-aksel xs:w-[90%]">
-              <h2 className="text-base font-semibold uppercase tracking-widest text-white">
-                Temaer
-              </h2>
-              <div className="mt-4 grid gap-3 xs:gap-6 sm:grid-cols-2 md:grid-cols-3">
-                {/* Temakort */}
-                <a
-                  className="group relative rounded-r-md bg-white shadow hover:bg-orange-100 sm:shadow-md"
-                  href="/topic"
-                >
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-y-0 left-0 w-3 bg-deepblue-600/20 group-hover:bg-orange-300"
-                  ></div>
-                  <div className="grid h-full justify-items-start gap-2 px-6 py-4 md:px-8 md:pt-10 md:pb-8">
-                    <h3 className="mb-4 text-2xl font-semibold md:mb-12 md:text-3xl">
-                      Design
-                    </h3>
-                    <div className="mt-auto border-t-4 border-blue-200 pt-2 text-sm uppercase opacity-80 group-hover:border-orange-300">
-                      X artikler
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <a
-                className="mt-6 inline-block text-text underline hover:text-deepblue-700 hover:no-underline"
-                href="#"
+          {temaer && temaer.length > 0 && (
+            <section className="relative bg-deepblue-50 px-4 pt-20 pb-16">
+              {/* Separator */}
+              <svg
+                className="absolute inset-x-0 top-0 w-full"
+                viewBox="0 0 100 12"
+                focusable="false"
+                aria-hidden="true"
               >
-                Utforsk alle temaer
-              </a>
-            </div>
-          </section>
+                <polygon
+                  points="0,0 100,0 0,12"
+                  className="fill-deepblue-700"
+                ></polygon>
+              </svg>
+              <div className="relative z-10 mx-auto -mt-16 max-w-aksel xs:w-[90%]">
+                <Heading
+                  level="2"
+                  size="medium"
+                  className="uppercase text-text-inverted"
+                >
+                  Temaer
+                </Heading>
+                <div className="mt-4 grid gap-3 xs:gap-6 sm:grid-cols-2 md:grid-cols-3">
+                  {/* Temakort */}
+                  {temaer.map((tema) => (
+                    <TemaCard {...tema} key={tema._id} />
+                  ))}
+                </div>
+                <NextLink href="/tema">
+                  <a className="mt-6 inline-block text-text underline hover:text-deepblue-700 hover:no-underline">
+                    Utforsk alle temaer
+                  </a>
+                </NextLink>
+              </div>
+            </section>
+          )}
 
           {/* Prinsipper */}
           <section className="hidden bg-deepblue-50 px-4 pt-0 pb-16 md:pt-12">

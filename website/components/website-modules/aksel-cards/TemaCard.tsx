@@ -1,42 +1,40 @@
+import { getTemaSlug } from "@/lib";
 import { BodyShort, Heading } from "@navikt/ds-react";
 import NextLink from "next/link";
 import { logNav } from "../..";
-import { getTemaSlug } from "@/lib";
 import { AkselTemaT } from "../../../pages";
 
-export const TemaCard = ({ title, oppsummering, refCount }: AkselTemaT) => {
+export const TemaCard = ({ title, refCount }: AkselTemaT) => {
   return (
-    <div className="group relative grid min-h-36 min-w-[16rem] flex-1 cursor-pointer rounded-r border-transparent bg-white px-8 py-6 shadow-small transition-all focus-within:shadow-focus hover:scale-[1.02] hover:shadow-medium active:border-link sm:min-h-44">
-      <Heading size="medium" level="3">
-        <NextLink href={`/tema/${getTemaSlug(title)}`} passHref>
-          <a
-            className="algolia-index-lvl2 after:absolute after:inset-0 focus:underline focus:outline-none active:text-link group-hover:underline"
-            onClick={(e) =>
-              logNav(
-                "temakort",
-                window.location.pathname,
-                e.currentTarget.getAttribute("href")
-              )
-            }
-          >
+    <NextLink href={`/tema/${getTemaSlug(title)}`} passHref>
+      <a
+        className="group relative rounded-r-md bg-white shadow hover:bg-orange-100 sm:shadow-md"
+        onClick={(e) =>
+          logNav(
+            "temakort",
+            window.location.pathname,
+            e.currentTarget.getAttribute("href")
+          )
+        }
+      >
+        <div
+          aria-hidden="true"
+          className="absolute inset-y-0 left-0 w-3 bg-deepblue-600/20 group-hover:bg-orange-300"
+        />
+        <div className="grid h-full justify-items-start gap-2 px-6 py-4 md:px-8 md:pt-10 md:pb-8">
+          <Heading level="3" size="large" className="mb-4 md:mb-12">
             {title}
-          </a>
-        </NextLink>
-      </Heading>
-      {oppsummering && (
-        <BodyShort className="mt-2 mb-8 text-text-muted">
-          {oppsummering}
-        </BodyShort>
-      )}
-      <div className="-mb-1 grid gap-2 place-self-start">
-        <div className="-mx-[1px] h-1 rounded-full bg-deepblue-200"></div>
-        {refCount && (
-          <p className="text-base uppercase tracking-wide text-text-muted">
-            {refCount} artikler
-          </p>
-        )}
-      </div>
-      <div className="absolute inset-y-0 left-0 w-[6px] bg-deepblue-300"></div>
-    </div>
+          </Heading>
+          {refCount && (
+            <BodyShort
+              size="small"
+              className="mt-auto border-t-4 border-deepblue-600/20 pt-2 uppercase opacity-80 group-hover:border-orange-300"
+            >
+              {refCount} artikler
+            </BodyShort>
+          )}
+        </div>
+      </a>
+    </NextLink>
   );
 };
