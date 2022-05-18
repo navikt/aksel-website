@@ -40,7 +40,7 @@ const AkselArtikkelTemplate = ({
         <meta property="og:type" content="article" />
       </Head>
 
-      <AkselHeader />
+      <AkselHeader variant="artikkel" />
       <main
         tabIndex={-1}
         id="hovedinnhold"

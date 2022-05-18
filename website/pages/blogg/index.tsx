@@ -46,7 +46,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
 Page.getLayout = (page) => {
   return (
     <div className="bg-gray-50">
-      <AkselHeader className="bg-gray-50" />
+      <AkselHeader variant="tema" />
       <main
         tabIndex={-1}
         id="hovedinnhold"

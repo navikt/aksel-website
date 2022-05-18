@@ -189,7 +189,7 @@ const Page = ({ preview, temaer, bloggs }: PageProps): JSX.Element => {
       </Head>
       {preview && <PreviewBanner />}
       <div className="bg-gray-50">
-        <AkselHeader frontPage />
+        <AkselHeader variant="forside" />
 
         <main tabIndex={-1} id="hovedinnhold">
           <div className="relative bg-deepblue-900 bg-gradient-to-b from-deepblue-900 via-deepblue-900/50 to-deepblue-700 px-4 pt-16 pb-24 text-white">

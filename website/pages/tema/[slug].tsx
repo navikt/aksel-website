@@ -38,7 +38,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
       </Head>
       {preview && <PreviewBanner />}
       <div className="bg-gray-50">
-        <AkselHeader className="bg-gray-50" />
+        <AkselHeader variant="artikkel" />
         <main
           tabIndex={-1}
           id="hovedinnhold"

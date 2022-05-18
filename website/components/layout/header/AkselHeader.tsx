@@ -5,14 +5,21 @@ import { logNav, Search } from "../..";
 import AkselLogo from "../../assets/AkselLogo";
 import ProfileDropdown from "./ProfileDropdown";
 
-const AkselHeader = ({ frontPage }: { frontPage?: boolean }): JSX.Element => {
+const AkselHeader = ({
+  variant,
+}: {
+  variant?: "forside" | "tema" | "artikkel";
+}): JSX.Element => {
   return (
     <header
       className={cl(
         "group sticky top-0 z-20 w-full shadow-header backdrop-blur transition-colors duration-200 ease-out",
         {
-          "bg-deepblue-900 text-white hover:bg-deepblue-800": frontPage,
-          "bg-gray-50/80 text-deepblue-800 hover:bg-gray-100/80": !frontPage,
+          "bg-deepblue-900 text-white hover:bg-deepblue-900":
+            variant === "forside",
+          "bg-gray-50/80 text-deepblue-800 hover:bg-gray-100/80":
+            variant === "artikkel",
+          "bg-white text-deepblue-800 hover:bg-gray-200": variant === "tema",
         }
       )}
     >
@@ -23,10 +30,11 @@ const AkselHeader = ({ frontPage }: { frontPage?: boolean }): JSX.Element => {
 
         <NextLink href="/" passHref>
           <a
-            className={cl("block px-4 py-3 focus:outline-none lg:-ml-4", {
+            className={cl("flex gap-3 px-4 py-3 focus:outline-none", {
               "hover:bg-gray-100/10 focus:shadow-focus-inverted-inset":
-                frontPage,
-              "hover:bg-gray-800/10 focus:shadow-focus-inset": !frontPage,
+                variant === "forside",
+              "hover:bg-gray-900/10 focus:shadow-focus-inset":
+                variant === "artikkel" || variant === "tema",
             })}
             onClick={(e) =>
               logNav(
@@ -37,12 +45,14 @@ const AkselHeader = ({ frontPage }: { frontPage?: boolean }): JSX.Element => {
             }
           >
             <AkselLogo className="h-7 w-7" aria-hidden />
-            <span className="sr-only">Aksel</span>
+            <span className="text-2xl">Aksel</span>
           </a>
         </NextLink>
         <span className="flex">
           <ProfileDropdown />
-          <Search variant={frontPage ? "aksel-inverted" : "aksel"} />
+          <Search
+            variant={variant === "forside" ? "aksel-inverted" : "aksel"}
+          />
         </span>
       </div>
     </header>

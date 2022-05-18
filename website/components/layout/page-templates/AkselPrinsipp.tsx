@@ -53,7 +53,7 @@ const AkselPrinsippTemplate = ({
       </Head>
 
       <div className="aksel-artikkel">
-        <AkselHeader />
+        <AkselHeader variant="artikkel" />
         <main
           tabIndex={-1}
           id="hovedinnhold"
