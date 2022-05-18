@@ -1,4 +1,4 @@
-import { ArtikkelCard, PreviewBanner, TemaBreadcrumbs } from "@/components";
+import { ArtikkelCard, PreviewBanner } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
 import {
   AkselArtikkel,
@@ -10,6 +10,7 @@ import {
 import { SanityBlockContent } from "@/sanity-block";
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
+import NextLink from "next/link";
 import React from "react";
 import { getClient } from "../../lib/sanity/sanity.server";
 
@@ -38,37 +39,40 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
       </Head>
       {preview && <PreviewBanner />}
       <div className="bg-gray-50">
-        <AkselHeader variant="artikkel" />
-        <main
-          tabIndex={-1}
-          id="hovedinnhold"
-          className="aksel-main--start w-full max-w-5xl py-16 xs:py-20"
-        >
-          <TemaBreadcrumbs />
-          <Heading
-            level="1"
-            size="xlarge"
-            spacing
-            className="algolia-index-lvl1"
-          >
-            {page.title}
-          </Heading>
-          <SanityBlockContent blocks={page.beskrivelse} noLastMargin />
-          <Heading level="2" size="large" className="pt-20" spacing>
-            Artikler
-          </Heading>
-          <div className="aksel-card-grid-col-2 ">
-            {page.artikler.map((x) => {
-              const authors = x?.contributors;
-              return (
-                <ArtikkelCard
-                  {...x}
-                  authors={authors}
-                  source={page.title}
-                  key={x._id}
-                />
-              );
-            })}
+        <AkselHeader variant="tema" />
+        <main tabIndex={-1} id="hovedinnhold" className="focus:outline-none">
+          <div className="relative bg-white px-4 pt-12 pb-8 md:pb-10">
+            <div className="mx-auto max-w-aksel xs:w-[90%]">
+              <NextLink href="/tema" passHref>
+                <a className="font-semibold uppercase tracking-widest md:text-base">
+                  Tema
+                </a>
+              </NextLink>
+              <Heading level="1" size="xlarge" className="algolia-index-lvl1">
+                {page.title}
+              </Heading>
+              <div className="mt-3 max-w-prose">
+                <SanityBlockContent blocks={page.beskrivelse} noLastMargin />
+              </div>
+            </div>
+          </div>
+
+          <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-12">
+            <div className="mx-auto max-w-aksel xs:w-[90%]">
+              <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 md:gap-6">
+                {page.artikler.map((x) => {
+                  const authors = x?.contributors;
+                  return (
+                    <ArtikkelCard
+                      {...x}
+                      authors={authors}
+                      source={page.title}
+                      key={x._id}
+                    />
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </main>
         <Footer />

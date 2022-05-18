@@ -1,4 +1,4 @@
-import { PreviewBanner, TemaBreadcrumbs, TemaCard } from "@/components";
+import { PreviewBanner, TemaCard } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
 import { akselTema } from "@/lib";
 import { Heading } from "@navikt/ds-react";

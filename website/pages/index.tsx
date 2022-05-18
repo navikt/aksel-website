@@ -196,9 +196,6 @@ const Page = ({ preview, temaer, bloggs }: PageProps): JSX.Element => {
             <div className="mx-auto max-w-aksel xs:w-[90%]">
               <div className="gap-6 lg:grid lg:grid-cols-3">
                 <div className="max-w-prose pr-6 lg:col-span-2">
-                  {/* <h1 className="m-0 text-3xl font-semibold leading-tight tracking-tight xs:text-5xl xs:leading-tight">
-                    NAVs digitale verktøykasse for&nbsp;produktutvikling
-                  </h1> */}
                   <Heading level="1" size="xlarge">
                     NAVs digitale verktøykasse for&nbsp;produktutvikling
                   </Heading>
@@ -208,10 +205,6 @@ const Page = ({ preview, temaer, bloggs }: PageProps): JSX.Element => {
                       Dette er begynnelsen på NAVs digitale verktøykasse for
                       produktutvikling. Vi har trua på å jobbe åpent med
                       nettsiden, derfor er noen biter litt uferdige.
-                    </BodyLong>
-                    <BodyLong>
-                      Om du vil gi oss tilbakemelding kan du bruke
-                      skjema&nbsp;i&nbsp;footer&nbsp;👇
                     </BodyLong>
                   </div>
                 </div>
