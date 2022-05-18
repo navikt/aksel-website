@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import { withErrorBoundary } from "../../../ErrorBoundary";
 import CodeBlock from "./Block";
 import CodeTabs from "./Tabs";
-import { DsCodeExample as DsCodeExampleT } from "../../../../lib";
+import { BgColors, DsCodeExample as DsCodeExampleT } from "@/lib";
 import cl from "classnames";
 import dynamic from "next/dynamic";
 

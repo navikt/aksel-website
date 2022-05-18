@@ -1,8 +1,9 @@
-import { format } from "date-fns";
-import { nb } from "date-fns/locale";
+import { BgColors } from "@/lib";
 import * as DsIcons from "@navikt/ds-icons";
 import * as DsReact from "@navikt/ds-react";
 import * as DsReactInternal from "@navikt/ds-react-internal";
+import { format } from "date-fns";
+import { nb } from "date-fns/locale";
 import babel from "prettier/parser-babel";
 import prettier from "prettier/standalone";
 import theme from "prism-react-renderer/themes/dracula";
@@ -22,16 +23,16 @@ import {
 } from "react-live";
 import { DsCodeSandbox as SandboxT } from "../../../lib";
 import getSandbox from "../../../stories/sandbox";
-import { BgColors, SandboxComponent } from "../../../stories/sandbox/types";
+import { SandboxComponent } from "../../../stories/sandbox/types";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import CopyButton from "../code/CopyButton";
+import PreviewWrapper from "./PreviewWrapper";
 import {
   generateState,
   getInitialState,
   ParsedArgsT,
   StateT,
 } from "./settings-panel/generateState";
-import PreviewWrapper from "./PreviewWrapper";
 
 const formatCode = (code: string) => {
   try {

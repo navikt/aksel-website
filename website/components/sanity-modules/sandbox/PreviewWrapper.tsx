@@ -1,7 +1,8 @@
 import cl from "classnames";
 import React, { useContext } from "react";
 
-import { BgColors, getBgColors } from "../../../stories/sandbox/types";
+import { getBgColors } from "../../../stories/sandbox/types";
+import { BgColors } from "@/lib";
 import { SandboxContext } from "./Sandbox";
 import SettingsPanel from "./settings-panel/PropsPanel";
 
