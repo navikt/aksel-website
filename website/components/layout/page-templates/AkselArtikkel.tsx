@@ -44,10 +44,10 @@ const AkselArtikkelTemplate = ({
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className="aksel-artikkel bg-gray-50 pt-[8vw] pb-16 focus:outline-none md:pb-32"
+        className="aksel-artikkel bg-gray-50 pt-[8vw] pb-16 focus:outline-none xs:pb-32"
       >
         <div className="px-4">
-          <div className="xs:w-[90%] mx-auto max-w-prose">
+          <div className="mx-auto max-w-prose xs:w-[90%]">
             <div>
               {hasTema &&
                 data.tema.map(({ title }: any, y) => (
@@ -89,14 +89,14 @@ const AkselArtikkelTemplate = ({
         <div className="mt-12">
           <div className="mt-8 px-4">
             <SanityBlockContent
-              className="xs:w-[90%] mx-auto max-w-prose"
+              className="mx-auto max-w-prose xs:w-[90%]"
               blocks={data?.innhold ?? []}
               variant="aksel"
             />
           </div>
         </div>
         <div className="mt-16 px-4">
-          <div className="xs:w-[90%] mx-auto max-w-prose border-t border-gray-300 pt-8">
+          <div className="mx-auto max-w-prose border-t border-gray-300 pt-8 xs:w-[90%]">
             <Feedback akselFeedback docId={data?._id} docType={data?._type} />
           </div>
         </div>

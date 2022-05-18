@@ -23,7 +23,7 @@ const Toggle = ({
     <>
       <div
         className={cl("z-[1050] mr-0 flex h-full justify-center", {
-          "md:mr-8": !isHamburger,
+          "xs:mr-8": !isHamburger,
         })}
       >
         <button

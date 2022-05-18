@@ -21,7 +21,7 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
       className={cl(
         "relatedCard",
         "relative-child mb-16 gap-4",
-        "grid w-full md:grid-cols-2"
+        "grid w-full xs:grid-cols-2"
       )}
     >
       {node.lenker.map((x) => (

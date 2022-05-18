@@ -5,7 +5,7 @@ import AkselLogo from "../../../assets/AkselLogo";
 
 const PortalNav = ({ title }: { title: string }) => {
   return (
-    <div className="z-[1050] mr-0 flex h-full justify-center text-text-inverted md:mr-8">
+    <div className="z-[1050] mr-0 flex h-full justify-center text-text-inverted xs:mr-8">
       <NextLink href="/" passHref>
         <a
           onClick={(e) =>
@@ -15,7 +15,7 @@ const PortalNav = ({ title }: { title: string }) => {
               e.currentTarget.getAttribute("href")
             )
           }
-          className="navdsi-header__button hidden min-w-header  items-center justify-center border-none focus:shadow-[inset_0_0_0_1px_var(--navds-semantic-color-component-background-inverted),inset_0_0_0_3px_var(--navds-global-color-blue-200)] focus:outline-none md:flex"
+          className="navdsi-header__button hidden min-w-header  items-center justify-center border-none focus:shadow-[inset_0_0_0_1px_var(--navds-semantic-color-component-background-inverted),inset_0_0_0_3px_var(--navds-global-color-blue-200)] focus:outline-none xs:flex"
         >
           <AkselLogo
             focusable={false}

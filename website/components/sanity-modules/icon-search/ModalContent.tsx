@@ -54,7 +54,7 @@ import ${icon} from "@navikt/ds-icons/svg/${icon}";`,
 
   return (
     <div className="flex min-w-[300px] max-w-xl shrink flex-col">
-      <div className="mr-16 inline-flex flex-col justify-between gap-4 md:flex-row">
+      <div className="mr-16 inline-flex flex-col justify-between gap-4 xs:flex-row">
         <div>
           <Heading
             spacing

@@ -11,7 +11,7 @@
 }
 
 .card {
-  @apply relative flex w-[18rem] flex-col rounded bg-canvas-background-light p-4 pt-8 text-text shadow-card focus-within:shadow-focus focus-within:outline-none hover:shadow-[0_0_0_2px_var(--navds-semantic-color-link)] active:text-link md:p-8 md:pt-12;
+  @apply relative flex w-[18rem] flex-col rounded bg-canvas-background-light p-4 pt-8 text-text shadow-card focus-within:shadow-focus focus-within:outline-none hover:shadow-[0_0_0_2px_var(--navds-semantic-color-link)] active:text-link xs:p-8 xs:pt-12;
 }
 
 .sandbox-editor > div {
@@ -40,7 +40,7 @@
 }
 
 .aksel-main__inner {
-  @apply relative min-h-screen-header w-full px-4 pb-4 focus:outline-none md:mx-auto md:my-0 md:px-6 lg:px-12 lg:pb-4;
+  @apply relative min-h-screen-header w-full px-4 pb-4 focus:outline-none lg:px-12 lg:pb-4 xs:mx-auto xs:my-0 xs:px-6;
 }
 
 .aksel-main--center {

@@ -30,7 +30,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
         <main
           tabIndex={-1}
           id="hovedinnhold"
-          className="aksel-main--start w-full max-w-5xl py-16 md:py-20"
+          className="aksel-main--start w-full max-w-5xl py-16 xs:py-20"
         >
           <TemaBreadcrumbs />
           <Heading

@@ -32,7 +32,7 @@ module.exports = {
 
       /* Flytt ut fra extend og refactor bruk av screen */
       screens: {
-        md: "564px",
+        xs: "564px",
         lg: "768px",
         xl: "1024px",
         "2xl": "1440px",

@@ -19,7 +19,7 @@ const Tips = ({ node }: { node: SanityT.Schema.tips }): JSX.Element => {
     <div
       className={cl(
         style.tips,
-        "relative-child linear max-w-2xl rounded-r border-l-[6px] border-l-gray-500 px-4 py-4 shadow-small md:px-8",
+        "relative-child linear max-w-2xl rounded-r border-l-[6px] border-l-gray-500 px-4 py-4 shadow-small xs:px-8",
         {
           "my-8": context.withinSection,
           "my-16": !context.withinSection,

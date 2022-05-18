@@ -19,7 +19,7 @@ import { getClient } from "../lib/sanity/sanity.server";
 
 const RedaksjonsKort = () => (
   <div className="aksel-layout-x flex w-full justify-center">
-    <div className="flex w-full max-w-2xl flex-col items-center justify-between gap-4 rounded-2xl bg-gray-800 py-6 px-7 text-text-inverted sm:py-12 sm:pl-14 md:flex-row md:gap-0 md:pl-7">
+    <div className="flex w-full max-w-2xl flex-col items-center justify-between gap-4 rounded-2xl bg-gray-800 py-6 px-7 text-text-inverted sm:py-12 sm:pl-14 xs:flex-row xs:gap-0 xs:pl-7">
       <div>
         <Heading size="large" level="2" spacing>
           Redaksjonen trenger deg!
@@ -65,10 +65,10 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
 
         <main tabIndex={-1} id="hovedinnhold">
           <div className="relative bg-gray-900 bg-gradient-to-b from-gray-900 via-deepblue-900/50 to-deepblue-700 px-4 py-16 text-white">
-            <div className="xs:w-[90%] mx-auto max-w-aksel">
+            <div className="mx-auto max-w-aksel xs:w-[90%]">
               <div className="gap-6 lg:grid lg:grid-cols-3">
                 <div className="pr-6 lg:col-span-2">
-                  <h1 className="text-3xl font-semibold leading-tight tracking-tight md:text-5xl md:leading-tight">
+                  <h1 className="text-3xl font-semibold leading-tight tracking-tight xs:text-5xl xs:leading-tight">
                     NAVs digitale verktøykasse for&nbsp;produktutvikling
                   </h1>
                   <div className="mt-6 max-w-prose leading-normal text-deepblue-100/95">
@@ -88,9 +88,9 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                   <h2 className="text-base font-semibold uppercase tracking-widest text-white">
                     Portaler
                   </h2>
-                  <div className="mt-3 grid grid-flow-row justify-items-start gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-1">
+                  <div className="mt-3 grid grid-flow-row justify-items-start gap-4 sm:grid-cols-2 lg:grid-cols-1 xs:grid-cols-3">
                     <a
-                      className="xs:w-auto group flex items-center gap-2"
+                      className="group flex items-center gap-2 xs:w-auto"
                       href="#"
                     >
                       <div className="grid aspect-square w-12 place-items-center rounded-full bg-deepblue-500/20 group-hover:bg-white group-hover:text-deepblue-900">
@@ -137,11 +137,11 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                 className="fill-deepblue-700"
               ></polygon>
             </svg>
-            <div className="xs:w-[90%] relative z-10 mx-auto -mt-16 max-w-aksel">
+            <div className="relative z-10 mx-auto -mt-16 max-w-aksel xs:w-[90%]">
               <h2 className="text-base font-semibold uppercase tracking-widest text-white">
                 Temaer
               </h2>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xs:gap-6">
                 {/* Temakort */}
                 <a
                   className="group relative rounded-r-md bg-white shadow hover:bg-orange-100 sm:shadow-md"
@@ -172,11 +172,11 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
 
           {/* Prinsipper */}
           <section className="hidden bg-deepblue-50 px-4 pt-0 pb-16 lg:pt-12">
-            <div className="xs:w-[90%] relative z-10 mx-auto max-w-aksel">
+            <div className="relative z-10 mx-auto max-w-aksel xs:w-[90%]">
               <div className="grid gap-x-8 sm:grid-flow-col-dense">
-                <div className="sm:col-start-2 md:row-span-3 lg:-mt-20 lg:-mb-12">
+                <div className="sm:col-start-2 lg:-mt-20 lg:-mb-12 xs:row-span-3">
                   <img
-                    className="mx-auto w-56 max-w-xs sm:w-full md:mx-auto md:max-w-md"
+                    className="mx-auto w-56 max-w-xs sm:w-full xs:mx-auto xs:max-w-md"
                     src="/static/images/prinsipper.webp"
                     width="800"
                     alt=""
@@ -184,7 +184,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                 </div>
                 <div className="col-span-2 col-start-1 self-end sm:col-span-1">
                   <div className="max-w-prose">
-                    <h2 className="mt-4 text-2xl font-semibold tracking-tight md:mt-auto md:text-4xl">
+                    <h2 className="mt-4 text-2xl font-semibold tracking-tight xs:mt-auto xs:text-4xl">
                       Prinsipper for brukeropplevelse
                     </h2>
                     <p className="mt-3 text-lg">
@@ -195,7 +195,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                     </p>
                   </div>
                 </div>
-                <div className="col-span-2 col-start-1 md:col-span-1">
+                <div className="col-span-2 col-start-1 xs:col-span-1">
                   <div className="mt-8 flex flex-wrap gap-2 lg:max-w-4xl lg:gap-3">
                     <a
                       className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
@@ -316,10 +316,10 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
               ></polygon>
             </svg>
 
-            <div className="xs:w-[90%] relative z-10 mx-auto max-w-aksel">
-              <div className="gap-12 md:grid md:grid-cols-3 md:items-start">
+            <div className="relative z-10 mx-auto max-w-aksel xs:w-[90%]">
+              <div className="gap-12 xs:grid xs:grid-cols-3 xs:items-start">
                 {/* Redaksjons-kort */}
-                <div className="grid overflow-hidden rounded-lg shadow md:sticky md:top-24">
+                <div className="grid overflow-hidden rounded-lg shadow xs:sticky xs:top-24">
                   <div className="bg-deepblue-900 px-6 py-6 text-white">
                     <h2 className="text-2xl font-semibold">
                       Aksel trenger deg!
@@ -341,7 +341,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                   </a>
                 </div>
                 {/* Blogg */}
-                <div className="order-1 mt-16 md:col-span-2 md:mt-44">
+                <div className="order-1 mt-16 xs:col-span-2 xs:mt-44">
                   <h2 className="text-base font-semibold uppercase tracking-widest">
                     Blogg
                   </h2>
@@ -349,12 +349,12 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                     {/* Blogg-kort */}
                     <div className="grid grid-flow-row-dense grid-cols-[1fr_auto] items-start gap-x-8 py-8">
                       <time
-                        className="xs:col-span-1 col-span-2 text-sm uppercase tracking-wide text-gray-600"
+                        className="col-span-2 text-sm uppercase tracking-wide text-gray-600 xs:col-span-1"
                         dateTime="11. Mai 2022"
                       >
                         11. Mai 2022
                       </time>
-                      <h3 className="xs:col-span-1 col-span-2 col-start-1 text-3xl font-semibold text-gray-800">
+                      <h3 className="col-span-2 col-start-1 text-3xl font-semibold text-gray-800 xs:col-span-1">
                         <a
                           className="text-deepblue-700 hover:text-deepblue-600 hover:underline"
                           href="/article"
@@ -367,7 +367,7 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
                         amet consectetur, adipisicing elit. Ducimus quisquam
                         quae excepturi, culpa pariatur.
                       </p>
-                      <div className="xs:row-start-1 col-start-2 row-span-3 row-start-3">
+                      <div className="col-start-2 row-span-3 row-start-3 xs:row-start-1">
                         <img
                           className="mt-3 aspect-square w-24 bg-gray-200 sm:mt-0 sm:w-32"
                           src=""
