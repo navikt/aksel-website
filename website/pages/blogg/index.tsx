@@ -1,10 +1,9 @@
-import { BodyLong, Heading } from "@navikt/ds-react";
+import { BloggCard, PreviewBanner } from "@/components";
+import { AkselHeader, Footer } from "@/layout";
+import { AkselBlogg, akselBloggPosts } from "@/lib";
+import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
-import { ArtikkelCard, PreviewBanner, TemaBreadcrumbs } from "../../components";
-import Footer from "../../components/layout/footer/Footer";
-import AkselHeader from "../../components/layout/header/AkselHeader";
-import { AkselBlogg, akselBloggPosts } from "../../lib";
 import { getClient } from "../../lib/sanity/sanity.server";
 
 const Page = ({ preview, page }: PageProps): JSX.Element => {
@@ -15,47 +14,31 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
         <title>{`Blogg - Aksel`}</title>
         <meta property="og:title" content={`Blogg - Aksel`} />
       </Head>
-      <TemaBreadcrumbs />
-      <Heading level="1" size="xlarge" spacing className="algolia-index-lvl1">
-        Blogg
-      </Heading>
-      {/* <SanityBlockContent blocks={page.beskrivelse} noLastMargin /> */}
-      <Heading level="2" size="large" className="pt-20" spacing>
-        Siste bloggposts
-      </Heading>
-      <div className="aksel-card-grid-col-2 ">
-        {page.map((x) => {
-          const authors = x?.contributors;
-          return (
-            <ArtikkelCard
-              {...x}
-              authors={authors}
-              source={"blogg"}
-              key={x._id}
-            />
-          );
-        })}
-      </div>
-      {page.length === 0 && (
-        <BodyLong>Fant ingen publiserte bloggposts...</BodyLong>
-      )}
-    </>
-  );
-};
+      <div className="bg-gray-50">
+        <AkselHeader variant="tema" />
+        <main tabIndex={-1} id="hovedinnhold" className="focus:outline-none">
+          <div className="relative min-h-screen-header bg-gray-100 px-4 pt-8 pb-24 md:pt-12">
+            <div className="mx-auto w-fit max-w-aksel xs:w-[90%]">
+              <Heading
+                level="1"
+                size="xlarge"
+                spacing
+                className="algolia-index-lvl1"
+              >
+                Alle blogger
+              </Heading>
 
-Page.getLayout = (page) => {
-  return (
-    <div className="bg-gray-50">
-      <AkselHeader variant="tema" />
-      <main
-        tabIndex={-1}
-        id="hovedinnhold"
-        className="aksel-main--start w-full max-w-5xl py-16 xs:py-20"
-      >
-        {page}
-      </main>
-      <Footer />
-    </div>
+              <div className="mt-4 grid gap-2">
+                {page.map((blog) => (
+                  <BloggCard key={blog._id} blog={blog} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 };
 

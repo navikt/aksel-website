@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import {
   ArtikkelCard,
+  BloggCard,
   dateStr,
   logNav,
   PreviewBanner,
@@ -450,49 +451,7 @@ const Page = ({ preview, temaer, bloggs }: PageProps): JSX.Element => {
                     <div className="mt-1 divide-y divide-gray-200">
                       {/* Blogg-kort */}
                       {bloggs.slice(0, 7).map((blog) => (
-                        <div
-                          key={blog._id}
-                          className="grid grid-flow-row-dense grid-cols-[1fr_auto] items-start gap-x-8 py-8"
-                        >
-                          <Detail
-                            as="time"
-                            size="small"
-                            className="col-span-2 uppercase tracking-wide text-text-muted xs:col-span-1"
-                            dateTime={dateStr(blog._createdAt)}
-                          >
-                            {dateStr(blog._createdAt)}
-                          </Detail>
-                          <Heading
-                            level="3"
-                            size="large"
-                            className="col-span-2 col-start-1 text-gray-800 xs:col-span-1"
-                          >
-                            <NextLink href={`/${blog.slug}`} passHref>
-                              <Link
-                                onClick={(e) =>
-                                  logNav(
-                                    "blog-kort-forside",
-                                    window.location.pathname,
-                                    e.currentTarget.getAttribute("href")
-                                  )
-                                }
-                                className="text-deepblue-700 no-underline hover:underline"
-                              >
-                                {blog.heading}
-                              </Link>
-                            </NextLink>
-                          </Heading>
-                          <BodyLong className="col-start-1 mt-1 text-gray-800">
-                            {blog.oppsummering}
-                          </BodyLong>
-                          <div className="col-start-2 row-span-3 row-start-3 xs:row-start-1">
-                            {/* <img
-                          className="mt-3 aspect-square w-24 bg-gray-200 sm:mt-0 sm:w-32"
-                          src=""
-                          alt=""
-                        /> */}
-                          </div>
-                        </div>
+                        <BloggCard key={blog._id} blog={blog} />
                       ))}
                     </div>
                     {bloggs?.length > 6 && (
