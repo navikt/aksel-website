@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { ArtikkelCard, logNav, PreviewBanner, TemaCard } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
 import {
@@ -61,162 +62,330 @@ const Page = ({ preview, temaer, tekster, bloggs }: PageProps): JSX.Element => {
       {preview && <PreviewBanner />}
       <div className="bg-gray-50">
         <AkselHeader />
-        <main
-          tabIndex={-1}
-          id="hovedinnhold"
-          className="relative flex min-h-screen-header w-full flex-col items-center py-16 focus:outline-none md:py-24"
-        >
-          <div className="aksel-layout-x flex w-full flex-col items-center justify-center pb-24">
-            <Heading
-              level="1"
-              size="xlarge"
-              spacing
-              className="w-full max-w-text sm:text-left"
-            >
-              {tekster.title}
-            </Heading>
-            <SanityBlockContent blocks={tekster.beskrivelse} />
-          </div>
 
-          <div className="flex w-full justify-center bg-gray-200 py-8">
-            <nav
-              aria-label="Portaler til NAV-sider"
-              className="mx-auto flex flex-col gap-4 whitespace-nowrap xl:flex-row"
-            >
-              <NextLink href="/designsystem" passHref>
-                <Label
-                  as="a"
-                  className="flex w-full items-center gap-3 rounded bg-white px-4 py-3 shadow-small outline-2 hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
-                  onClick={(e) => logPortalCard(e)}
-                >
-                  <System className="shrink-0 text-[1.5rem]" aria-hidden />
-                  Designsystemet
-                </Label>
-              </NextLink>
-              <NextLink href="https://identitet.nav.no" passHref>
-                <Label
-                  as="a"
-                  className="flex w-full items-center gap-3 rounded bg-white px-4 py-3 shadow-small hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
-                  onClick={(e) => logPortalCard(e)}
-                >
-                  <Office1 className="shrink-0 text-[1.5rem]" aria-hidden />
-                  Identitet
-                </Label>
-              </NextLink>
-
-              <NextLink href="https://sikkerhet.nav.no" passHref>
-                <Label
-                  as="a"
-                  className="flex w-full items-center gap-3 rounded bg-white px-4 py-3 shadow-small hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
-                  onClick={(e) => logPortalCard(e)}
-                >
-                  <Star className="shrink-0 text-[1.5rem]" aria-hidden />
-                  Security playbook
-                </Label>
-              </NextLink>
-
-              <Tooltip
-                content="Siden er bak innlogging for NAV ansatte"
-                placement="right"
-              >
-                <Label
-                  as="a"
-                  href="https://etterlevelse.intern.nav.no/"
-                  className="relative flex w-full items-center gap-3 rounded bg-white px-4 py-3 pr-10 shadow-small hover:underline focus:shadow-focus focus:outline-none lg:w-auto"
-                  onClick={(e) => logPortalCard(e)}
-                >
-                  <Task className="shrink-0 text-[1.5rem]" aria-hidden />
-                  Etterlevelse
-                  <span className="absolute right-0 flex h-full items-center justify-center rounded-r bg-gray-500 px-1">
-                    <Locked
-                      aria-label="Siden er bak innlogging for NAV ansatte"
-                      className="text-white"
-                    />
-                  </span>
-                </Label>
-              </Tooltip>
-            </nav>
-          </div>
-
-          {temaer && temaer.length > 0 && (
-            <div className="aksel-layout-x flex w-full flex-col gap-6 py-24">
-              <Heading level="2" size="medium">
-                Temaer
-              </Heading>
-
-              <nav aria-label="Temasider" className="aksel-card-grid">
-                {temaer.map((tema) => (
-                  <TemaCard {...tema} key={tema._id} />
-                ))}
-              </nav>
-            </div>
-          )}
-
-          {hasPrinsipp1 && (
-            <div className="mb-24 flex w-full justify-center bg-gray-200 py-16">
-              <div className="aksel-layout-x flex w-full max-w-3xl flex-col  justify-center">
-                <Heading
-                  level="1"
-                  size="large"
-                  spacing
-                  className="w-full max-w-text sm:text-left"
-                >
-                  Prinsipper for brukeropplevelse
-                </Heading>
-                <SanityBlockContent blocks={tekster.prinsipp_1.beskrivelse} />
-                <div className="flex flex-wrap gap-4">
-                  {tekster.prinsipp_1.undersider &&
-                    tekster.prinsipp_1.undersider
-                      .filter((x) => !!x)
-                      .map((x) => (
-                        <NextLink
-                          key={x.heading}
-                          href={x?.slug?.current}
-                          passHref
-                        >
-                          <Label
-                            as="a"
-                            className="flex items-center justify-center gap-2 rounded bg-white px-6 py-3 pr-3 shadow-small hover:underline focus:shadow-focus focus:outline-none "
-                          >
-                            {x?.heading}
-                            <Next className="h-6 w-6" />
-                          </Label>
-                        </NextLink>
-                      ))}
+        <main tabIndex={-1} id="hovedinnhold">
+          <div className="bg-slate-900 from-slate-900 via-sky-900/50 to-sky-700 relative bg-gradient-to-b px-4 py-16 text-white">
+            <div className="xs:w-[90%] mx-auto max-w-screen-lg">
+              <div className="gap-6 lg:grid lg:grid-cols-3">
+                <div className="pr-6 lg:col-span-2">
+                  <h1 className="text-3xl font-semibold leading-tight tracking-tight md:text-5xl md:leading-tight">
+                    NAVs digitale verktøykasse for&nbsp;produktutvikling
+                  </h1>
+                  <div className="text-sky-100/95 mt-6 max-w-prose leading-normal">
+                    <p>Velkommen til Aksel!</p>
+                    <p className="mt-6">
+                      Dette er begynnelsen på NAVs digitale verktøykasse for
+                      produktutvikling. Vi har trua på å jobbe åpent med
+                      nettsiden, derfor er noen biter litt uferdige.
+                    </p>
+                    <p className="mt-6">
+                      Om du vil gi oss tilbakemelding kan du bruke
+                      skjema&nbsp;i&nbsp;footer&nbsp;👇
+                    </p>
+                  </div>
                 </div>
-                <NextLink
-                  href={tekster.prinsipp_1?.hovedside?.slug?.current ?? "#"}
-                  passHref
-                >
-                  <Link className="svg-color-reset mt-6 flex items-center justify-center gap-1 self-start text-text">
-                    Oversikt over alle prinsippene
-                    <Next
-                      className="h-4 w-4 text-text"
-                      aria-hidden
-                      aria-label="Gå til siden"
-                    />
-                  </Link>
-                </NextLink>
+                <div className="mt-12 lg:mt-4">
+                  <h2 className="text-base font-semibold uppercase tracking-widest text-white">
+                    Portaler
+                  </h2>
+                  <div className="mt-3 grid grid-flow-row justify-items-start gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-1">
+                    <a
+                      className="xs:w-auto group flex items-center gap-2"
+                      href="#"
+                    >
+                      <div className="bg-sky-500/20 group-hover:text-sky-900 grid aspect-square w-12 place-items-center rounded-full group-hover:bg-white">
+                        <svg
+                          className="h-7 w-7"
+                          width="48"
+                          height="48"
+                          viewBox="0 0 48 48"
+                          fill="none"
+                          focusable="false"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M6 42v-7.8l9.7-9.7-8.95-9a3.03 3.03 0 0 1-.9-2.1 3.03 3.03 0 0 1 .9-2.1l4.5-4.55a3.03 3.03 0 0 1 2.1-.9 3.07 3.07 0 0 1 2.15.9l9 9 9.85-9.85c.17-.17.33-.28.5-.33.17-.04.35-.07.55-.07.2 0 .38.03.55.08.17.04.33.15.5.32l5.65 5.65c.17.17.28.33.33.5.05.17.07.35.07.55 0 .2-.02.38-.07.55a1.2 1.2 0 0 1-.33.5l-9.85 9.85 9 9a3.07 3.07 0 0 1 .9 2.15 3.03 3.03 0 0 1-.9 2.1l-4.5 4.45a3.03 3.03 0 0 1-2.1.9 3.03 3.03 0 0 1-2.1-.9l-9-8.95L13.8 42H6Zm11.85-19.65 4.5-4.5-3.65-3.65-2.4 2.4-2.1-2.1 2.4-2.4-3.2-3.2-4.5 4.5 8.95 8.95Zm16.7 16.75 4.5-4.5-3.2-3.2-2.4 2.4-2.1-2.1 2.4-2.4-3.65-3.65-4.5 4.5 8.95 8.95ZM9 39h3.5l20.75-20.75-3.5-3.5L9 35.5V39Zm26.35-22.85 3.5-3.5-3.5-3.5-3.5 3.5 3.5 3.5Z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <div className="">
+                        <h3 className="font-semibold leading-tight group-hover:underline">
+                          Designsystem
+                        </h3>
+                        <p className="text-sky-100/95 text-sm">Åpen for alle</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
-          )}
-
-          {bloggs && bloggs.length > 0 && (
-            <div className="aksel-layout-x flex w-full flex-col gap-6 pb-24">
-              <Heading level="2" size="medium">
-                Blogg
-              </Heading>
-
-              <nav aria-label="Temasider" className="aksel-card-grid">
-                {bloggs.map((blogg) => (
-                  <ArtikkelCard {...blogg} key={blogg._id} source="blogg" />
-                ))}
-              </nav>
+          </div>
+          {/* Temaseksjon */}
+          <section className="bg-sky-50 relative px-4 pt-12 pb-16">
+            {/* Separator */}
+            <svg
+              className="absolute inset-x-0 top-0 w-full"
+              viewBox="0 0 100 12"
+              focusable="false"
+              aria-hidden="true"
+            >
+              <polygon
+                points="0,0 100,0 0,12"
+                className="fill-sky-700"
+              ></polygon>
+            </svg>
+            <div className="xs:w-[90%] relative z-10 mx-auto -mt-16 max-w-screen-lg">
+              <h2 className="text-base font-semibold uppercase tracking-widest text-white">
+                Temaer
+              </h2>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
+                {/* Temakort */}
+                <a
+                  className="group relative rounded-r-md bg-white shadow hover:bg-orange-100 sm:shadow-md"
+                  href="/topic"
+                >
+                  <div
+                    aria-hidden="true"
+                    className="bg-sky-600/20 absolute inset-y-0 left-0 w-3 group-hover:bg-orange-300"
+                  ></div>
+                  <div className="grid h-full justify-items-start gap-2 px-6 py-4 lg:px-8 lg:pt-10 lg:pb-8">
+                    <h3 className="mb-4 text-2xl font-semibold lg:mb-12 lg:text-3xl">
+                      Design
+                    </h3>
+                    <div className="mt-auto border-t-4 border-blue-200 pt-2 text-sm uppercase opacity-80 group-hover:border-orange-300">
+                      X artikler
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <a
+                className="hover:text-sky-700 mt-6 inline-block text-blue-600 underline hover:no-underline"
+                href="#"
+              >
+                Utforsk alle temaer
+              </a>
             </div>
-          )}
+          </section>
 
-          <RedaksjonsKort />
+          {/* Prinsipper */}
+          <section className="bg-sky-50 hidden px-4 pt-0 pb-16 lg:pt-12">
+            <div className="xs:w-[90%] relative z-10 mx-auto max-w-screen-lg">
+              <div className="grid gap-x-8 sm:grid-flow-col-dense">
+                <div className="sm:col-start-2 md:row-span-3 lg:-mt-20 lg:-mb-12">
+                  <img
+                    className="mx-auto w-56 max-w-xs sm:w-full md:mx-auto md:max-w-md"
+                    src="/static/images/prinsipper.webp"
+                    width="800"
+                    alt=""
+                  />
+                </div>
+                <div className="col-span-2 col-start-1 self-end sm:col-span-1">
+                  <div className="max-w-prose">
+                    <h2 className="mt-4 text-2xl font-semibold tracking-tight md:mt-auto md:text-4xl">
+                      Prinsipper for brukeropplevelse
+                    </h2>
+                    <p className="mt-3 text-lg">
+                      NAV skal ivareta sine målgrupper og brukere. Det er
+                      sentralt i vårt formål. Vi har derfor utarbeidet 9
+                      prinsipper som skal tydeliggjøre forholdet mellom vår
+                      visjon, våre verdier, vårt ansvar og hvordan vi når ut.
+                    </p>
+                  </div>
+                </div>
+                <div className="col-span-2 col-start-1 md:col-span-1">
+                  <div className="mt-8 flex flex-wrap gap-2 lg:max-w-4xl lg:gap-3">
+                    <a
+                      className="hover:bg-slate-800 flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:text-white hover:shadow-md sm:w-auto"
+                      href="#"
+                    >
+                      <span className="font-semibold">
+                        Jeg får tillit og muligheter
+                      </span>
+                      <svg
+                        className="-mr-1 sm:hidden"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        focusable="false"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M9 6, l6 6 -6 6"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        ></path>
+                      </svg>{" "}
+                    </a>
+                    <a
+                      className="hover:bg-slate-800 flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:text-white hover:shadow-md sm:w-auto"
+                      href="#"
+                    >
+                      <span className="font-semibold">
+                        NAV er min støttespiller
+                      </span>
+                      <svg
+                        className="-mr-1 sm:hidden"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        focusable="false"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M9 6, l6 6 -6 6"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        ></path>
+                      </svg>{" "}
+                    </a>
+                    <a
+                      className="hover:bg-slate-800 flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:text-white hover:shadow-md sm:w-auto"
+                      href="#"
+                    >
+                      <span className="font-semibold">
+                        Jeg blir møtt på min situasjon og mine behov
+                      </span>
+                      <svg
+                        className="-mr-1 sm:hidden"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        focusable="false"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M9 6, l6 6 -6 6"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        ></path>
+                      </svg>{" "}
+                    </a>
+                    <a
+                      className="hover:bg-slate-800 flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:text-white hover:shadow-md sm:w-auto"
+                      href="#"
+                    >
+                      <span className="font-semibold">Jeg blir inkludert</span>
+                      <svg
+                        className="-mr-1 sm:hidden"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        focusable="false"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M9 6, l6 6 -6 6"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        ></path>
+                      </svg>
+                    </a>
+                  </div>
+                  <a
+                    className="hover:text-sky-700 mt-6 inline-block text-blue-600 underline hover:no-underline"
+                    href="#"
+                  >
+                    Utforsk alle prinsippene
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section className="relative bg-white px-4 pb-24">
+            {/* Separator */}
+            <svg
+              className="absolute inset-x-0 top-0 w-full"
+              viewBox="0 0 100 12"
+              focusable="false"
+              aria-hidden="true"
+            >
+              <polygon
+                points="0,0 100,0 0,12"
+                className="fill-sky-50"
+              ></polygon>
+            </svg>
+
+            <div className="xs:w-[90%] relative z-10 mx-auto max-w-screen-lg">
+              <div className="gap-12 md:grid md:grid-cols-3 md:items-start">
+                {/* Redaksjons-kort */}
+                <div className="grid overflow-hidden rounded-lg shadow md:sticky md:top-24">
+                  <div className="bg-sky-900 px-6 py-6 text-white">
+                    <h2 className="text-2xl font-semibold">
+                      Aksel trenger deg!
+                    </h2>
+                    <p className="mt-1 max-w-prose">
+                      Vi trenger hjelp med å lage innhold til Aksel. Har du
+                      ideer, mulighet til å skrive eller lurer på noe om
+                      produktutvikling?
+                    </p>
+                  </div>
+                  <a
+                    className="bg-sky-200 hover:bg-sky-300 group flex items-center justify-between px-6 py-4 leading-snug transition ease-out hover:underline"
+                    href="#"
+                  >
+                    <span>
+                      Ta kontakt med{" "}
+                      <strong className="font-semibold">#aksel</strong> på Slack
+                    </span>
+                  </a>
+                </div>
+                {/* Blogg */}
+                <div className="order-1 mt-16 md:col-span-2 md:mt-44">
+                  <h2 className="text-base font-semibold uppercase tracking-widest">
+                    Blogg
+                  </h2>
+                  <div className="divide-slate-200 mt-1 divide-y">
+                    {/* Blogg-kort */}
+                    <div className="grid grid-flow-row-dense grid-cols-[1fr_auto] items-start gap-x-8 py-8">
+                      <time
+                        className="xs:col-span-1 text-slate-600 col-span-2 text-sm uppercase tracking-wide"
+                        dateTime="11. Mai 2022"
+                      >
+                        11. Mai 2022
+                      </time>
+                      <h3 className="text-slate-800 xs:col-span-1 col-span-2 col-start-1 text-3xl font-semibold">
+                        <a
+                          className="text-sky-700 hover:text-sky-600 hover:underline"
+                          href="/article"
+                        >
+                          Lage gode skjemaer
+                        </a>
+                      </h3>
+                      <p className="text-slate-800 col-start-1 mt-1">
+                        Kort introduksjon av bloggposten. Lorem ipsum dolor sit
+                        amet consectetur, adipisicing elit. Ducimus quisquam
+                        quae excepturi, culpa pariatur.
+                      </p>
+                      <div className="xs:row-start-1 col-start-2 row-span-3 row-start-3">
+                        <img
+                          className="mt-3 aspect-square w-24 bg-gray-200 sm:mt-0 sm:w-32"
+                          src=""
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <a
+                    className="hover:text-sky-700 mt-6 inline-block text-blue-600 underline hover:no-underline"
+                    href="#"
+                  >
+                    Flere bloggposter
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
         </main>
+
         <Footer />
       </div>
     </>
