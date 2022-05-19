@@ -35,9 +35,13 @@ export const ArtikkelCard = ({
             e.currentTarget.getAttribute("href")
           )
         }
-        className="rounded bg-white px-4 py-4 shadow focus:shadow-focus focus:outline-none md:py-5 md:px-6"
+        className="group rounded bg-white px-4 py-4 shadow hover:ring-2 hover:ring-blue-500 focus:shadow-focus focus:outline-none md:py-5 md:px-6"
       >
-        <Heading level="2" size="medium" className="hidden md:block">
+        <Heading
+          level="2"
+          size="medium"
+          className="hidden group-hover:underline md:block"
+        >
           {heading}
         </Heading>
         <Heading level="2" size="small" className="block md:hidden">

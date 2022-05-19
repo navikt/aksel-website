@@ -8,7 +8,7 @@ import {
   getTemaSlug,
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
-import { Heading } from "@navikt/ds-react";
+import { Heading, Link } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
@@ -48,9 +48,9 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
           <div className="relative bg-white px-4 pt-12 pb-8 md:pb-10">
             <div className="mx-auto max-w-aksel xs:w-[90%]">
               <NextLink href="/tema" passHref>
-                <a className="font-semibold uppercase tracking-widest md:text-base">
+                <Link className="font-semibold uppercase tracking-widest text-text md:text-base">
                   Tema
-                </a>
+                </Link>
               </NextLink>
               <Heading level="1" size="xlarge" className="algolia-index-lvl1">
                 {page.title}

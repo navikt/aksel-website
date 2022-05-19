@@ -16,7 +16,11 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
       </Head>
       <div className="bg-gray-50">
         <AkselHeader variant="tema" />
-        <main tabIndex={-1} id="hovedinnhold" className="focus:outline-none">
+        <main
+          tabIndex={-1}
+          id="hovedinnhold"
+          className="min-h-[80vh] bg-gray-100 focus:outline-none"
+        >
           <div className="relative bg-white px-4 pt-8 pb-8 md:pt-12">
             <div className="mx-auto w-fit max-w-2xl xs:w-[90%]">
               <Heading
@@ -29,7 +33,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
               </Heading>
             </div>
           </div>
-          <div className="relative min-h-[80vh] bg-gray-100 px-4 pt-8 pb-24">
+          <div className="relative px-4 pt-8 pb-24">
             <div className="mx-auto w-fit max-w-2xl xs:w-[90%]">
               <div className="mt-4 grid gap-2 divide-y divide-gray-300">
                 {page.map((blog) => (

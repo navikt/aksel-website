@@ -1,9 +1,10 @@
 import { getTemaSlug, SanityT } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import {
-  Detail,
+  BodyShort,
   Heading,
-  Label,
+  Ingress,
+  Link,
   useClientLayoutEffect,
 } from "@navikt/ds-react";
 import Head from "next/head";
@@ -58,13 +59,9 @@ const AkselArtikkelTemplate = ({
                       href={`/tema/${getTemaSlug(title)}`}
                       passHref
                     >
-                      <Label
-                        size="small"
-                        as="a"
-                        className="algolia-index-lvl5 uppercase text-text hover:underline focus:underline focus:outline-none"
-                      >
+                      <Link className="algolia-index-lvl5 text-base font-semibold uppercase text-text">
                         {title}
-                      </Label>
+                      </Link>
                     </NextLink>
                   </>
                 ))}
@@ -76,13 +73,16 @@ const AkselArtikkelTemplate = ({
             >
               {data.heading}
             </Heading>
+            {data.oppsummering && (
+              <Ingress className="mt-4">{data.oppsummering}</Ingress>
+            )}
             <div className="mt-6">
-              <Detail as="address" className="not-italic">
+              <BodyShort size="small" as="address" className="not-italic">
                 {authors?.[0] ?? ""}
-              </Detail>
-              <Detail as="span" className="text-text-muted">
+              </BodyShort>
+              <BodyShort size="small" as="span" className="text-text-muted">
                 {dateStr(data._createdAt)}
-              </Detail>
+              </BodyShort>
             </div>
           </div>
         </div>
