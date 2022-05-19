@@ -62,7 +62,7 @@ const ArtikkelTabbedTemplate = ({
       </div>
       {tabs.length > 1 && (
         <Tabs
-          className="sticky top-0 z-[1001]"
+          className="top-0 z-[1001]"
           value={data.innhold_tabs[activeTab]?.title
             .toLowerCase()
             .replace(/\s+/g, "-")}

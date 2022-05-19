@@ -153,7 +153,7 @@ const ComponentPageTemplate = ({
         </div>
       </div>
       <Tabs
-        className="sticky top-0 z-[1001]"
+        className="top-0 z-[1001]"
         value={tabKey}
         onChange={(x) => {
           const url = x === "bruk" ? basePath : `${basePath}/${x}`;
