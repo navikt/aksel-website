@@ -1,12 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import {
-  ArtikkelCard,
-  BloggCard,
-  dateStr,
-  logNav,
-  PreviewBanner,
-  TemaCard,
-} from "@/components";
+import { BloggCard, logNav, PreviewBanner, TemaCard } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
 import {
   AkselBlogg,
@@ -14,19 +7,10 @@ import {
   akselForsideQuery,
   AkselTema,
   akselTema,
-  getTemaSlug,
   Riktekst,
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
-import { Locked, Next, Office1, Star, System, Task } from "@navikt/ds-icons";
-import {
-  BodyLong,
-  Detail,
-  Heading,
-  Label,
-  Link,
-  Tooltip,
-} from "@navikt/ds-react";
+import { BodyLong, Detail, Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
@@ -269,7 +253,7 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
                 >
                   Temaer
                 </Heading>
-                <div className="mt-4 grid gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div className="mt-4 grid gap-3 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
                   {/* Temakort */}
                   {temaer.slice(0, 7).map((tema) => (
                     <TemaCard {...tema} key={tema._id} />
@@ -455,7 +439,7 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
                   >
                     <span>
                       Ta kontakt med{" "}
-                      <strong className="font-semibold">#aksel</strong> på Slack
+                      <span className="font-semibold">#aksel</span> på Slack
                     </span>
                   </a>
                 </div>
