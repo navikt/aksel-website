@@ -1,7 +1,7 @@
 import React from "react";
 import { Table } from "@navikt/ds-react";
 import { ExampleComponent } from "../../lib";
-import { BgColors } from "../sandbox/types";
+import { BgColors } from "@/lib";
 
 export const TableExample: ExampleComponent = () => {
   return (
