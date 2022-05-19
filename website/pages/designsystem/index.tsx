@@ -54,14 +54,14 @@ const Page = (props: {
           </div>
 
           <div className="flex w-full max-w-screen-2xl flex-col flex-wrap bg-component-background-alternate">
-            <div className="reduced-spacing py-12 px-4 xs:px-12 xs:py-6">
+            <div className="reduced-spacing mx-auto w-[90%] py-12 xs:w-full xs:px-12 xs:py-6">
               {props?.page?.body && (
                 <SanityBlockContent blocks={props?.page?.body} />
               )}
             </div>
             <div className="flex flex-wrap justify-center gap-6 px-4 pt-0 pb-12 xs:justify-start xs:px-12 xs:pb-16">
               {props?.page?.cards &&
-                props?.page?.cards.map((card, i) => {
+                props?.page?.cards.map((card) => {
                   return (
                     <Card
                       key={card._key}
