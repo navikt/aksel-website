@@ -995,7 +995,13 @@ Brukes i kort og innganger
       beskrivelse?: riktekst;
 
       /**
-       * Seksjonering (optional) (Ikke i prod enda) - `Array`
+       * Bruk seksjonsinndeling - `Boolean`
+Vil ikke vise artikler som ikke er lagt til i seksjoner hvis valgt!
+       */
+      bruk_seksjoner?: boolean;
+
+      /**
+       * Seksjonering - `Array`
 Del inn artiklene i flere seksjoner
        */
       seksjoner?: Array<
@@ -1250,6 +1256,10 @@ Dette vil stå under bildet
       Sanity.Keyed<Sanity.Block> | Sanity.Keyed<bilde>
     >;
 
+    type riktekst_bilde_enkel = Array<
+      Sanity.Keyed<Sanity.Block> | Sanity.Keyed<bilde>
+    >;
+
     type alert_v2 = {
       _type: "alert_v2";
 
@@ -1427,18 +1437,18 @@ Gi tabellen et navn for å lettere finne den
       /**
        * Interaksjon med mus (optional) - `RegistryReference`
        */
-      interaksjon_mus?: riktekst_enkel;
+      interaksjon_mus?: riktekst_bilde_enkel;
 
       /**
        * Interaksjon med touch (optional) - `RegistryReference`
        */
-      interaksjon_touch?: riktekst_enkel;
+      interaksjon_touch?: riktekst_bilde_enkel;
 
       /**
        * Interaksjon med tastatur (optional) - `RegistryReference`
 Ekstra info som ikke kan forklares med key + action under
        */
-      interaksjon_tastatur?: riktekst_enkel;
+      interaksjon_tastatur?: riktekst_bilde_enkel;
 
       /**
        * Tastatur key + action - `Array`
@@ -1462,7 +1472,7 @@ Ekstra info som ikke kan forklares med key + action under
       /**
        * Interaksjon med skjermleser (optional) - `RegistryReference`
        */
-      interaksjon_skjermleser?: riktekst_enkel;
+      interaksjon_skjermleser?: riktekst_bilde_enkel;
     };
 
     type anatomi_seksjon = {

@@ -65,7 +65,7 @@ export const getStaticProps = async ({
 }: {
   preview?: boolean;
 }) => {
-  const page = await getClient(true).fetch(akselTema);
+  const page = await getClient(preview).fetch(akselTema);
 
   const doc = page ?? null;
 

@@ -14,7 +14,6 @@ export const ArtikkelCard = ({
     slug: string;
     tema: string[];
     source: string;
-    authors?: any[];
   }
 >) => {
   return (

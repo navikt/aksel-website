@@ -2,10 +2,10 @@ import { ArtikkelCard, PreviewBanner } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
 import {
   AkselArtikkel,
-  AkselTema,
   akselTemaDocs,
   getAkselTema,
   getTemaSlug,
+  SanityT,
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { Heading, Link } from "@navikt/ds-react";
@@ -14,14 +14,16 @@ import NextLink from "next/link";
 import React from "react";
 import { getClient } from "../../lib/sanity/sanity.server";
 
-export interface AkselTemaPage extends AkselTema {
-  artikler: Partial<
-    AkselArtikkel & {
-      slug: string;
-      tema: string[];
-      contributors?: { title?: string }[];
-    }
-  >[];
+type ArtiklerT = Partial<
+  AkselArtikkel & {
+    slug: string;
+    tema: string[];
+    contributors?: { title?: string }[];
+  }
+>;
+
+export interface AkselTemaPage extends SanityT.Schema.aksel_tema {
+  artikler: ArtiklerT[];
 }
 
 interface PageProps {
@@ -61,23 +63,50 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
             </div>
           </div>
 
-          <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-12">
-            <div className="mx-auto max-w-aksel xs:w-[90%]">
-              <div className="grid gap-3 sm:grid-cols-2 md:gap-6">
-                {page.artikler.map((x) => {
-                  const authors = x?.contributors;
-                  return (
-                    <ArtikkelCard
-                      {...x}
-                      authors={authors}
-                      source={page.title}
-                      key={x._id}
-                    />
-                  );
-                })}
+          {!page?.bruk_seksjoner || page?.seksjoner?.length === 0 ? (
+            <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-12">
+              <div className="mx-auto max-w-aksel xs:w-[90%]">
+                <div className="grid gap-3 sm:grid-cols-2 md:gap-6">
+                  {page.artikler.map((x) => (
+                    <ArtikkelCard {...x} source={page.title} key={x._id} />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <>
+              <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-12">
+                <div className="mx-auto grid max-w-aksel gap-16 xs:w-[90%]">
+                  {page.seksjoner.map((seksjon) => (
+                    <div key={seksjon._key}>
+                      <Heading level="2" size="medium">
+                        {seksjon.title}
+                      </Heading>
+                      {seksjon.beskrivelse && (
+                        <div className="mt-3 mb-6 max-w-prose">
+                          <SanityBlockContent
+                            blocks={seksjon.beskrivelse}
+                            noLastMargin
+                          />
+                        </div>
+                      )}
+                      <div className="grid gap-3 sm:grid-cols-2 md:gap-6">
+                        {(seksjon.sider as unknown as ArtiklerT[]).map(
+                          (x: ArtiklerT) => (
+                            <ArtikkelCard
+                              {...x}
+                              source={x.heading}
+                              key={x._id}
+                            />
+                          )
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
         </main>
         <Footer variant="aksel" />
       </div>
@@ -105,7 +134,7 @@ export const getStaticProps = async ({
   params: { slug: string };
   preview?: boolean;
 }) => {
-  const temas = await getClient(true).fetch(akselTemaDocs);
+  const temas = await getClient(preview).fetch(akselTemaDocs);
 
   const doc = temas.find((tema) => getTemaSlug(tema?.title) === slug);
 
