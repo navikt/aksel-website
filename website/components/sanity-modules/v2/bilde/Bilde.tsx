@@ -49,6 +49,7 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
               loading="lazy"
               decoding="async"
               src={urlFor(node).auto("format").url()}
+              className="object-contain"
             />
           )}
         </Lightbox>

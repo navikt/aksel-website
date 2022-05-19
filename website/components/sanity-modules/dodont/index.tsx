@@ -107,6 +107,7 @@ const Element = ({ block }: { block: DoDontBlockT }): JSX.Element => {
             loading="lazy"
             decoding="async"
             src={urlFor(block.picture).auto("format").url()}
+            className="object-contain"
           />
         )}
       </Lightbox>

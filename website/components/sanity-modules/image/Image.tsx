@@ -36,7 +36,7 @@ const Image = ({ node }: { node: PictureT }): JSX.Element => {
       <Lightbox open={open} onClose={() => setOpen(false)}>
         {open && (
           <img
-            className="rounded"
+            className="rounded object-contain"
             alt={node.title}
             loading="lazy"
             decoding="async"
