@@ -59,7 +59,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
 
           <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-12">
             <div className="mx-auto max-w-aksel xs:w-[90%]">
-              <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 md:gap-6">
+              <div className="grid gap-3 sm:grid-cols-2 md:gap-6">
                 {page.artikler.map((x) => {
                   const authors = x?.contributors;
                   return (
