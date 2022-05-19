@@ -67,7 +67,6 @@ const Page = (props: {
                       key={card._key}
                       node={card as unknown as DsFrontPageCardT}
                       tag={true}
-                      style={{ animationDelay: `${i * 25}ms` }}
                     />
                   );
                 })}

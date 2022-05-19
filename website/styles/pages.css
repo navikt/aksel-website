@@ -1,27 +1,3 @@
-.card-grid-flow {
-  place-content: start flex-start;
-  display: grid;
-  grid-template-columns: repeat(4, 18rem);
-}
-
-@media (max-width: 1320px) {
-  .card-grid-flow {
-    grid-template-columns: repeat(3, 18rem);
-  }
-}
-
-@media (max-width: 956px) {
-  .card-grid-flow {
-    grid-template-columns: repeat(2, 18rem);
-  }
-}
-
-@media (max-width: 646px) {
-  .card-grid-flow {
-    grid-template-columns: repeat(1, 18rem);
-  }
-}
-
 .reduced-spacing .navds-typo--spacing {
   @apply mb-2;
 }

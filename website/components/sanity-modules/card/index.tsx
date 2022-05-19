@@ -55,8 +55,13 @@ const Card = ({
   }
 
   return (
-    <div className={cl("card group aspect-[18/22]", className)}>
-      <div className="mb-6 flex shrink-0 justify-center">
+    <div
+      className={cl(
+        "group relative flex aspect-[21/22] w-[18rem] flex-col rounded bg-white p-6 pt-8 text-text shadow-card focus-within:shadow-focus focus-within:outline-none hover:ring-2 hover:ring-blue-500 active:text-link lg:aspect-[18/22] lg:p-8 lg:pt-12",
+        className
+      )}
+    >
+      <div className="mb-6 flex shrink-0 justify-center lg:w-full">
         <img
           aria-hidden
           alt={category?.picture?.title}
@@ -79,7 +84,10 @@ const Card = ({
           {node.title}
         </a>
       </NextLink>
-      <BodyShort className={cl("mb-6", { "mb-12": !!tag })} data-tag={!!tag}>
+      <BodyShort
+        className={cl("mb-2 lg:mb-6", { "mb-8 lg:mb-12": !!tag })}
+        data-tag={!!tag}
+      >
         {node.content}
       </BodyShort>
       {tag && (
