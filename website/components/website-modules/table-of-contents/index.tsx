@@ -66,7 +66,7 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
     element && element?.scrollIntoView();
   };
 
-  if (toc.length === 0) {
+  if (toc.length < 3) {
     return null;
   }
 
