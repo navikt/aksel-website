@@ -40,7 +40,11 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
       {preview && <PreviewBanner />}
       <div className="bg-gray-50">
         <AkselHeader variant="tema" />
-        <main tabIndex={-1} id="hovedinnhold" className="focus:outline-none">
+        <main
+          tabIndex={-1}
+          id="hovedinnhold"
+          className="min-h-[80vh] bg-gray-100 focus:outline-none"
+        >
           <div className="relative bg-white px-4 pt-12 pb-8 md:pb-10">
             <div className="mx-auto max-w-aksel xs:w-[90%]">
               <NextLink href="/tema" passHref>
