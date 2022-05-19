@@ -194,7 +194,7 @@ const Portaler = () => {
   );
 };
 
-const Page = ({ preview, temaer, bloggs }: PageProps): JSX.Element => {
+const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
   /* const hasPrinsipp1 =
     tekster?.prinsipp_1 &&
     tekster?.prinsipp_1?.hovedside &&
@@ -222,15 +222,10 @@ const Page = ({ preview, temaer, bloggs }: PageProps): JSX.Element => {
               <div className="gap-6 lg:grid lg:grid-cols-3">
                 <div className="max-w-prose pr-6 lg:col-span-2">
                   <Heading level="1" size="xlarge">
-                    NAVs digitale verktøykasse for&nbsp;produktutvikling
+                    {tekster.title}
                   </Heading>
                   <div className="mt-6 text-deepblue-100/95">
-                    <BodyLong spacing>Velkommen til Aksel!</BodyLong>
-                    <BodyLong spacing>
-                      Dette er begynnelsen på NAVs digitale verktøykasse for
-                      produktutvikling. Vi har trua på å jobbe åpent med
-                      nettsiden, derfor er noen biter litt uferdige.
-                    </BodyLong>
+                    <SanityBlockContent blocks={tekster.beskrivelse} />
                   </div>
                 </div>
                 <div className="mt-12 md:mt-4">
