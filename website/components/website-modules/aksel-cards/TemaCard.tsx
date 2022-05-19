@@ -13,8 +13,7 @@ export const TemaCard = ({
   return (
     <NextLink href={`/tema/${getTemaSlug(title)}`} passHref>
       <a
-        className="group relative rounded-r-md bg-orange-100 shadow hover:bg-white focus:shadow-focus focus:outline-none sm:shadow-md"
-        /* className="group relative rounded-r-md bg-white shadow hover:bg-orange-100 focus:shadow-focus focus:outline-none sm:shadow-md" */
+        className="group relative rounded-r-md bg-orange-100 shadow transition-colors ease-in-out hover:bg-white focus:shadow-focus focus:outline-none sm:shadow-md"
         onClick={(e) =>
           logNav(
             "temakort",
@@ -28,17 +27,17 @@ export const TemaCard = ({
           className="absolute inset-y-0 left-0 w-3 bg-orange-300 group-hover:bg-deepblue-600/20"
         />
         <div
-          className={cl({
-            "grid h-full justify-items-start gap-2 px-6 py-4 md:px-8 md:pt-10 md:pb-8":
-              !compact,
-            "grid h-full justify-items-start gap-2 px-6 py-4 lg:px-8 lg:pt-8 lg:pb-6":
-              compact,
+          className={cl("grid h-full justify-items-start gap-2 px-6 ", {
+            "py-6 xl:px-8 xl:pt-10 xl:pb-6": !compact,
+            "py-4 lg:px-8 lg:pt-8 lg:pb-6": compact,
           })}
         >
           <Heading
             level="3"
-            size={compact ? "medium" : "large"}
-            className={cl("mb-4", { "md:mb-12": !compact })}
+            size="medium"
+            className={cl("mb-4 text-2xl xl:text-3xl", {
+              "xl:mb-12": !compact,
+            })}
           >
             {title}
           </Heading>

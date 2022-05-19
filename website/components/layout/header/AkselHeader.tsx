@@ -15,7 +15,7 @@ const AkselHeader = ({
       className={cl(
         "group sticky top-0 z-20 w-full shadow-header backdrop-blur transition-colors duration-200 ease-out",
         {
-          "bg-deepblue-900 text-white hover:bg-deepblue-900":
+          "bg-deepblue-900/90 text-white hover:bg-deepblue-900":
             variant === "forside",
           "bg-gray-50/80 text-deepblue-800 hover:bg-gray-100/80":
             variant === "artikkel",

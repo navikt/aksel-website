@@ -101,6 +101,43 @@ const Portaler = () => {
         </NextLink>
       </li>
       <li>
+        <NextLink href="https://sikkerhet.nav.no/">
+          <a
+            onClick={(e) => logPortalCard(e)}
+            className="group flex items-center gap-2 focus:shadow-focus-inverted focus:outline-none"
+          >
+            <div className="grid aspect-square w-12 shrink-0 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
+              <svg
+                className="h-7 w-7"
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="none"
+                focusable="false"
+                aria-hidden="true"
+              >
+                <path
+                  fill="currentColor"
+                  d="M24 44Q17 42.25 12.5 35.875Q8 29.5 8 21.9V10L24 4L40 10V21.9Q40 29.5 35.5 35.875Q31 42.25 24 44ZM24 40.9Q29.3 39.15 32.775 34.475Q36.25 29.8 36.85 24H24V7.25L11 12.1V21.9Q11 22.5 11.025 22.925Q11.05 23.35 11.15 24H24Z"
+                ></path>
+              </svg>
+            </div>
+            <div className="">
+              <Heading
+                level="3"
+                size="xsmall"
+                className="group-hover:underline"
+              >
+                Security Champions Playbook
+              </Heading>
+              <Detail size="small" className="text-deepblue-100/95">
+                Åpen for alle
+              </Detail>
+            </div>
+          </a>
+        </NextLink>
+      </li>
+      <li>
         <NextLink href="https://etterlevelse.intern.nav.no/">
           <a
             onClick={(e) => logPortalCard(e)}
@@ -137,43 +174,6 @@ const Portaler = () => {
           </a>
         </NextLink>
       </li>
-      <li>
-        <NextLink href="/designsystem">
-          <a
-            onClick={(e) => logPortalCard(e)}
-            className="group flex items-center gap-2 focus:shadow-focus-inverted focus:outline-none"
-          >
-            <div className="grid aspect-square w-12 shrink-0 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
-              <svg
-                className="h-7 w-7"
-                width="48"
-                height="48"
-                viewBox="0 0 48 48"
-                fill="none"
-                focusable="false"
-                aria-hidden="true"
-              >
-                <path
-                  fill="currentColor"
-                  d="M24 44Q17 42.25 12.5 35.875Q8 29.5 8 21.9V10L24 4L40 10V21.9Q40 29.5 35.5 35.875Q31 42.25 24 44ZM24 40.9Q29.3 39.15 32.775 34.475Q36.25 29.8 36.85 24H24V7.25L11 12.1V21.9Q11 22.5 11.025 22.925Q11.05 23.35 11.15 24H24Z"
-                ></path>
-              </svg>
-            </div>
-            <div className="">
-              <Heading
-                level="3"
-                size="xsmall"
-                className="group-hover:underline"
-              >
-                Security Champions Playbook
-              </Heading>
-              <Detail size="small" className="text-deepblue-100/95">
-                Kun for ansatte
-              </Detail>
-            </div>
-          </a>
-        </NextLink>
-      </li>
     </>
   );
 };
@@ -197,10 +197,10 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
         />
       </Head>
       {preview && <PreviewBanner />}
-      <div className="bg-gray-50">
+      <div className="bg-deepblue-900">
         <AkselHeader variant="forside" />
 
-        <main tabIndex={-1} id="hovedinnhold">
+        <main tabIndex={-1} id="hovedinnhold" className="focus:outline-none">
           <div className="relative bg-deepblue-900 bg-gradient-to-b from-deepblue-900 via-deepblue-900/50 to-deepblue-700 px-4 pt-16 pb-24 text-white">
             <div className="mx-auto max-w-aksel xs:w-[90%]">
               <div className="gap-6 lg:grid lg:grid-cols-3">
@@ -253,7 +253,7 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
                 >
                   Temaer
                 </Heading>
-                <div className="mt-4 grid gap-3 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
+                <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3">
                   {/* Temakort */}
                   {temaer.slice(0, 7).map((tema) => (
                     <TemaCard {...tema} key={tema._id} />

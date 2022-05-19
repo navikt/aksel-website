@@ -1,14 +1,9 @@
 import { SanityT } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
-import {
-  BodyShort,
-  Heading,
-  Ingress,
-  useClientLayoutEffect,
-} from "@navikt/ds-react";
+import { BodyShort, Heading, Ingress } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
-import { dateStr, Feedback, slugger } from "../..";
+import { dateStr, Feedback } from "../..";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
 
@@ -19,10 +14,6 @@ const AkselPrinsippTemplate = ({
   data: SanityT.Schema.aksel_prinsipp;
   title: string;
 }): JSX.Element => {
-  useClientLayoutEffect(() => {
-    slugger.reset();
-  });
-
   if (!data.innhold || !data.heading) {
     return null;
   }

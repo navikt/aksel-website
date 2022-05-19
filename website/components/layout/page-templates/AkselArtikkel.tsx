@@ -1,16 +1,10 @@
 import { getTemaSlug, SanityT } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
-import {
-  BodyShort,
-  Heading,
-  Ingress,
-  Link,
-  useClientLayoutEffect,
-} from "@navikt/ds-react";
+import { BodyShort, Heading, Ingress, Link } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
-import { dateStr, Feedback, slugger } from "../..";
+import { dateStr, Feedback } from "../..";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
 
@@ -21,10 +15,6 @@ const AkselArtikkelTemplate = ({
   data: SanityT.Schema.aksel_artikkel | SanityT.Schema.aksel_blogg;
   title: string;
 }): JSX.Element => {
-  useClientLayoutEffect(() => {
-    slugger.reset();
-  });
-
   if (!data.innhold || !data.heading) {
     return null;
   }
