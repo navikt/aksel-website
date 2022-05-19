@@ -101,7 +101,7 @@ const AkselArtikkelTemplate = ({
           </div>
         </div>
       </main>
-      <Footer />
+      <Footer variant="aksel" />
     </>
   );
 };

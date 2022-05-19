@@ -42,7 +42,7 @@ Page.getLayout = (page) => {
             </main>
           </div>
         </div>
-        <Footer />
+        <Footer variant="ds" />
       </div>
     </>
   );

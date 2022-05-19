@@ -80,7 +80,7 @@ const AkselPrinsippTemplate = ({
           </div>
         </div>
       </main>
-      <Footer />
+      <Footer variant="aksel" />
     </>
   );
 };

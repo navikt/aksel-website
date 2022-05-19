@@ -76,7 +76,7 @@ const Page = (props: {
           <DsFrontpageFooterIllustration className="flex h-full w-full md:hidden" />
         </div>
       </main>
-      <Footer />
+      <Footer variant="ds" />
     </>
   );
 };

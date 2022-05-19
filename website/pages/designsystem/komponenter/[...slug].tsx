@@ -40,7 +40,7 @@ Page.getLayout = (page) => {
               {page}
               <div className="mt-auto" aria-hidden />
             </main>
-            <Footer />
+            <Footer variant="ds" />
           </div>
         </div>
       </div>

@@ -476,7 +476,7 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
           </section>
         </main>
 
-        <Footer />
+        <Footer variant="aksel" />
       </div>
     </>
   );

@@ -45,7 +45,7 @@ const Page = () => {
             </main>
           </div>
         </div>
-        <Footer />
+        <Footer variant="ds" />
       </div>
     </>
   );

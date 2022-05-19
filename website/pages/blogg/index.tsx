@@ -43,7 +43,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
             </div>
           </div>
         </main>
-        <Footer />
+        <Footer variant="aksel" />
       </div>
     </>
   );

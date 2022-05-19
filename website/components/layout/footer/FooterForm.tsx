@@ -1,7 +1,6 @@
 import {
   BodyLong,
   BodyShort,
-  Button,
   Fieldset,
   Label,
   Link,
@@ -124,9 +123,9 @@ const FooterForm = () => {
               }}
             />
           </Fieldset>
-          <Button variant="secondary" className="inverted-button">
-            Send melding
-          </Button>
+          <button className="inline-flex min-h-12 items-center rounded-sm border-2 border-white bg-transparent px-3 py-2 text-center hover:bg-white hover:text-text focus:shadow-focus-inverted focus:outline-none active:border-gray-100 active:bg-gray-100 active:text-text">
+            <BodyShort as="span">Send melding</BodyShort>
+          </button>
         </form>
       )}
     </div>
