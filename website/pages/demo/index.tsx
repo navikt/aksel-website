@@ -164,6 +164,7 @@ const mockArtikkel = {
         {
           _key: "4bf26f2fdc09",
           _type: "tips",
+          eksperiment: false,
           body: [
             {
               _key: "f98151c13341",
@@ -176,6 +177,59 @@ const mockArtikkel = {
                   text: "Anim magna proident consectetur amet excepteur cillum est dolor excepteur in occaecat.",
                 },
               ],
+              markDefs: [],
+              style: "normal",
+            },
+          ],
+        },
+        {
+          _key: "4bf26f2fdc09",
+          _type: "tips",
+          eksperiment: true,
+          body: [
+            {
+              _key: "9c8adb7bbd1f",
+              _type: "block",
+              children: [
+                {
+                  _key: "a21d147633b4",
+                  _type: "span",
+                  marks: [],
+                  text: "Det er et par ting vi lurer på:",
+                },
+              ],
+              markDefs: [],
+              style: "normal",
+            },
+            {
+              _key: "06b9f72e59ab",
+              _type: "block",
+              children: [
+                {
+                  _key: "a20363819185",
+                  _type: "span",
+                  marks: [],
+                  text: 'Gir navnet "Read more" mening for denne komponenten?',
+                },
+              ],
+              level: 1,
+              listItem: "bullet",
+              markDefs: [],
+              style: "normal",
+            },
+            {
+              _key: "62404f267bcd",
+              _type: "block",
+              children: [
+                {
+                  _key: "17b65ebc6456",
+                  _type: "span",
+                  marks: [],
+                  text: "Vi tester med gjennomsiktig gråfarge på hover state. Funker det der du bruker denne komponenten?",
+                },
+              ],
+              level: 1,
+              listItem: "bullet",
               markDefs: [],
               style: "normal",
             },

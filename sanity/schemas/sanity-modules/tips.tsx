@@ -4,9 +4,16 @@ import React from "react";
 
 export default {
   name: "tips",
-  title: "Tips",
+  title: "Tips/Feedback",
   type: "object",
   fields: [
+    {
+      title: "Feedback",
+      description: "Endrer modul-variant",
+      name: "eksperiment",
+      type: "boolean",
+      initialValue: false,
+    },
     {
       title: "Innhold",
       name: "body",
@@ -18,11 +25,12 @@ export default {
   preview: {
     select: {
       body: "body",
+      eksperiment: "eksperiment",
     },
     prepare(selection) {
       return {
         title: toPlainText(selection?.body ?? []) ?? "",
-        subtitle: "Tips",
+        subtitle: selection.eksperiment ? "Feedback (tips)" : "Tips",
         media: () => <LightBulb />,
       };
     },

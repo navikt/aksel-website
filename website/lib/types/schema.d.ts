@@ -1931,6 +1931,7 @@ Velg hvordan kortet skal tagges
 
     type tips = {
       _type: "tips";
+      eksperiment?: boolean;
 
       /**
        * Innhold - `RegistryReference`

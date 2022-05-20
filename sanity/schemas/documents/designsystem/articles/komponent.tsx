@@ -61,7 +61,7 @@ export default {
           type: "anatomi_seksjon",
           icon: () => <Ruler />,
         },
-        { type: "tips", title: "Tips", icon: () => <LightBulb /> },
+        { type: "tips", title: "Tips/Feedback", icon: () => <LightBulb /> },
         {
           type: "relatert_innhold",
           title: "Relatert innhold",
@@ -132,7 +132,7 @@ export default {
           title: "Props",
           icon: () => <Scale />,
         },
-        { type: "tips", title: "Tips", icon: () => <LightBulb /> },
+        { type: "tips", title: "Tips/Feedback", icon: () => <LightBulb /> },
         {
           type: "relatert_innhold",
           title: "Relatert innhold",

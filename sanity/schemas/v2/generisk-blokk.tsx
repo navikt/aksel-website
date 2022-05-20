@@ -42,7 +42,7 @@ export const contentBlocks = (s?: string) => {
       },
       icon: () => <FileContent />,
     },
-    { type: "tips", title: "Tips", icon: () => <LightBulb /> },
+    { type: "tips", title: "Tips/Feedback", icon: () => <LightBulb /> },
     {
       type: "relatert_innhold",
       title: "Relatert innhold",
