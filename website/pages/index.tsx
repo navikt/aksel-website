@@ -274,16 +274,16 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
           {/* Prinsipper */}
           <section className=" bg-deepblue-50 px-4 pt-0 pb-32 md:pt-12">
             <div className="relative z-10 mx-auto max-w-aksel xs:w-[90%]">
-              <div className="grid gap-x-8 sm:grid-flow-col-dense">
-                <div className="xs:row-span-3 sm:col-start-2 md:-mt-20 md:-mb-12">
+              <div className="grid gap-x-8 md:grid-flow-col-dense">
+                <div className="xs:row-span-3 md:col-start-2 md:-mt-20 md:-mb-12">
                   <img
-                    className="mx-auto w-56 max-w-xs xs:mx-auto xs:max-w-md sm:w-full"
+                    className="mx-auto w-56 max-w-xs xs:mx-auto xs:max-w-md md:w-full"
                     src="/images/prinsipper.webp"
                     width="800"
                     alt=""
                   />
                 </div>
-                <div className="col-span-2 col-start-1 self-end sm:col-span-1">
+                <div className="col-span-2 col-start-1 self-end md:col-span-1">
                   <div className="max-w-prose">
                     <h2 className="mt-4 text-2xl font-semibold tracking-tight xs:mt-auto xs:text-4xl">
                       Prinsipper for brukeropplevelse
@@ -296,10 +296,10 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
                     </p>
                   </div>
                 </div>
-                <div className="col-span-2 col-start-1 xs:col-span-1">
+                <div className="col-span-2 col-start-1 lg:col-span-1">
                   <div className="mt-8 flex flex-wrap gap-2 md:max-w-4xl md:gap-3">
                     <a
-                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
+                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-md transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md md:w-auto"
                       href="#"
                     >
                       <span className="font-semibold">
@@ -307,12 +307,12 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
                       </span>
                       <Next
                         aria-hidden
-                        className="-mr-1 sm:hidden"
+                        className="-mr-1 md:hidden"
                         aria-label="gå til side"
                       />{" "}
                     </a>
                     <a
-                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
+                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-md transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md md:w-auto"
                       href="#"
                     >
                       <span className="font-semibold">
@@ -320,12 +320,12 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
                       </span>
                       <Next
                         aria-hidden
-                        className="-mr-1 sm:hidden"
+                        className="-mr-1 md:hidden"
                         aria-label="gå til side"
                       />{" "}
                     </a>
                     <a
-                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
+                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-md transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md md:w-auto"
                       href="#"
                     >
                       <span className="font-semibold">
@@ -333,18 +333,18 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
                       </span>
                       <Next
                         aria-hidden
-                        className="-mr-1 sm:hidden"
+                        className="-mr-1 md:hidden"
                         aria-label="gå til side"
                       />{" "}
                     </a>
                     <a
-                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
+                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-md transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md md:w-auto"
                       href="#"
                     >
                       <span className="font-semibold">Jeg blir inkludert</span>
                       <Next
                         aria-hidden
-                        className="-mr-1 sm:hidden"
+                        className="-mr-1 md:hidden"
                         aria-label="gå til side"
                       />
                     </a>

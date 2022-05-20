@@ -74,13 +74,23 @@ const FooterForm = () => {
     <div className="flex max-w-xl flex-col gap-8">
       <div>
         <Label spacing>Hvordan komme i kontakt?</Label>
-        <BodyShort as="div">
-          <Link
-            className="text-text-inverted focus:bg-blue-200 focus:text-text focus:shadow-focus focus:shadow-blue-200"
-            href="https://nav-it.slack.com/archives/C7NE7A8UF"
-          >
-            Designsystemet på Slack
-          </Link>
+        <BodyShort as="ul">
+          <li>
+            <Link
+              className="text-text-inverted focus:bg-blue-200 focus:text-text focus:shadow-focus focus:shadow-blue-200"
+              href="https://nav-it.slack.com/archives/C0370ADS0HX"
+            >
+              Aksel på Slack
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="text-text-inverted focus:bg-blue-200 focus:text-text focus:shadow-focus focus:shadow-blue-200"
+              href="https://nav-it.slack.com/archives/C7NE7A8UF"
+            >
+              Designsystemet på Slack
+            </Link>
+          </li>
         </BodyShort>
       </div>
       {sent ? (
