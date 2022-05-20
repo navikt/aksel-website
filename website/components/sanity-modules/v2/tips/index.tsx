@@ -57,8 +57,8 @@ const Tips = ({ node }: { node: SanityT.Schema.tips }): JSX.Element => {
           onClick={() => {
             const el = document.getElementById("feedback-forbedringer-button");
             if (el) {
-              el.focus();
-              el.click();
+              el?.focus?.();
+              el?.click?.();
             }
           }}
         >
