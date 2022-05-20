@@ -10,6 +10,7 @@ import {
   Riktekst,
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
+import { Next } from "@navikt/ds-icons";
 import { BodyLong, Detail, Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
@@ -271,13 +272,13 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
           )}
 
           {/* Prinsipper */}
-          <section className="hidden bg-deepblue-50 px-4 pt-0 pb-16 md:pt-12">
+          <section className=" bg-deepblue-50 px-4 pt-0 pb-32 md:pt-12">
             <div className="relative z-10 mx-auto max-w-aksel xs:w-[90%]">
               <div className="grid gap-x-8 sm:grid-flow-col-dense">
                 <div className="xs:row-span-3 sm:col-start-2 md:-mt-20 md:-mb-12">
                   <img
                     className="mx-auto w-56 max-w-xs xs:mx-auto xs:max-w-md sm:w-full"
-                    src="/static/images/prinsipper.webp"
+                    src="/images/prinsipper.webp"
                     width="800"
                     alt=""
                   />
@@ -304,22 +305,11 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
                       <span className="font-semibold">
                         Jeg får tillit og muligheter
                       </span>
-                      <svg
+                      <Next
+                        aria-hidden
                         className="-mr-1 sm:hidden"
-                        viewBox="0 0 24 24"
-                        width="24"
-                        height="24"
-                        fill="none"
-                        focusable="false"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M9 6, l6 6 -6 6"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                        ></path>
-                      </svg>{" "}
+                        aria-label="gå til side"
+                      />{" "}
                     </a>
                     <a
                       className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
@@ -328,22 +318,11 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
                       <span className="font-semibold">
                         NAV er min støttespiller
                       </span>
-                      <svg
+                      <Next
+                        aria-hidden
                         className="-mr-1 sm:hidden"
-                        viewBox="0 0 24 24"
-                        width="24"
-                        height="24"
-                        fill="none"
-                        focusable="false"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M9 6, l6 6 -6 6"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                        ></path>
-                      </svg>{" "}
+                        aria-label="gå til side"
+                      />{" "}
                     </a>
                     <a
                       className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
@@ -352,44 +331,22 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
                       <span className="font-semibold">
                         Jeg blir møtt på min situasjon og mine behov
                       </span>
-                      <svg
+                      <Next
+                        aria-hidden
                         className="-mr-1 sm:hidden"
-                        viewBox="0 0 24 24"
-                        width="24"
-                        height="24"
-                        fill="none"
-                        focusable="false"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M9 6, l6 6 -6 6"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                        ></path>
-                      </svg>{" "}
+                        aria-label="gå til side"
+                      />{" "}
                     </a>
                     <a
                       className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-sm transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
                       href="#"
                     >
                       <span className="font-semibold">Jeg blir inkludert</span>
-                      <svg
+                      <Next
+                        aria-hidden
                         className="-mr-1 sm:hidden"
-                        viewBox="0 0 24 24"
-                        width="24"
-                        height="24"
-                        fill="none"
-                        focusable="false"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M9 6, l6 6 -6 6"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                        ></path>
-                      </svg>
+                        aria-label="gå til side"
+                      />
                     </a>
                   </div>
                   <a
