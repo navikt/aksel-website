@@ -1740,13 +1740,15 @@
     react-popper "^2.2.5"
     uuid "^8.3.2"
 
-"@navikt/ds-tailwind@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-tailwind/-/ds-tailwind-0.2.1.tgz#80a762f6627ca0c5c5fda555616f841cf3197f90"
+"@navikt/ds-tailwind@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-tailwind/-/ds-tailwind-0.2.2.tgz#e56c49f97eb4fc9f32416ee7b547aa3a1bd20537"
+  integrity sha512-inAHGcUulVHLor/iTGxO4zPA5HydF5O68pBg3nwvKpWNawKgUJODWb3TSyQxqMsM0nUcF3JmVleQWytPOJc/3g==
 
-"@navikt/ds-tokens@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-tokens/-/ds-tokens-0.9.0.tgz#7ad2d02094be24a8c37f2b0e63fa187bb0e76c5d"
+"@navikt/ds-tokens@^0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-tokens/-/ds-tokens-0.9.1.tgz#74dd29cc7708f22c1c3933682e2ab385490129e3"
+  integrity sha512-iNZcW4vCY3oErpLgsZPylzQZrQZ7kyHcMRtb/d9fm2msC5MlEa7KUFaJeMFxwrHuaFYaDBh2BZsreeBwGtaohg==
 
 "@next/bundle-analyzer@^12.1.0":
   version "12.1.5"
@@ -2599,13 +2601,13 @@
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/@sanity/icons/-/icons-1.2.8.tgz#7d899a83104cb13c434a02f1e73e981148980c63"
 
+"@sanity/image-url@1.0.1", "@sanity/image-url@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@sanity/image-url/-/image-url-1.0.1.tgz#960d649b2f4396da0adb31cf94503c929495cea0"
+
 "@sanity/image-url@^0.140.15", "@sanity/image-url@^0.140.22":
   version "0.140.22"
   resolved "https://registry.yarnpkg.com/@sanity/image-url/-/image-url-0.140.22.tgz#7a65f56bb751f7b1c5dfacfadd34ee10fc4f0fde"
-
-"@sanity/image-url@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@sanity/image-url/-/image-url-1.0.1.tgz#960d649b2f4396da0adb31cf94503c929495cea0"
 
 "@sanity/imagetool@2.29.8":
   version "2.29.8"

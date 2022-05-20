@@ -36,19 +36,11 @@ import { ExternalLink } from "@navikt/ds-icons";
 import DsIconAnnotation from "./sanity-modules/v2/IconAnnotation";
 
 export const InlineCode = (props: React.HTMLAttributes<HTMLElement>) => (
-  <code
-    className="text-mono rounded-md bg-deepblue-50 py-[2px] px-2 text-medium text-deepblue-500"
-    {...props}
-  />
+  <code className="inline-code" {...props} />
 );
 
 export const KBD = (props: React.HTMLAttributes<HTMLElement>) => (
-  <kbd
-    className={cl(
-      "text-md my-0 mx-1 inline-block min-w-[2rem] rounded bg-white px-2 text-medium text-text shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900)]"
-    )}
-    {...props}
-  />
+  <kbd className="inline-kbd" {...props} />
 );
 
 const serializers = {
@@ -107,7 +99,7 @@ const serializers = {
               size={context.size}
               spacing
               {...textProps}
-              className={cl("index-body", {
+              className={cl("algolia-index-body", {
                 "last:mb-0": context.noLastMargin,
               })}
             />
@@ -119,7 +111,7 @@ const serializers = {
               spacing
               size="small"
               {...textProps}
-              className="index-detail"
+              className="algolia-index-detail"
             />
           );
         case "h2":
@@ -128,7 +120,7 @@ const serializers = {
           return (
             <Heading
               {...textProps}
-              className="index-lvl3 max-w-text"
+              className="algolia-index-lvl3 max-w-text"
               spacing
               level="3"
               size="medium"
@@ -137,7 +129,7 @@ const serializers = {
         case "heading4":
           return (
             <Heading
-              className="index-lvl4 max-w-text"
+              className="algolia-index-lvl4 max-w-text"
               spacing
               level="4"
               size="small"
@@ -147,7 +139,7 @@ const serializers = {
         case "h4":
           return (
             <Heading
-              className="index-lvl4 max-w-text"
+              className="algolia-index-lvl4 max-w-text"
               spacing
               level="4"
               size="small"
@@ -156,7 +148,7 @@ const serializers = {
           );
         case "ingress":
           return (
-            <Ingress spacing className="index-ingress max-w-text">
+            <Ingress spacing className="algolia-index-ingress max-w-text">
               {children}
             </Ingress>
           );
@@ -166,7 +158,7 @@ const serializers = {
               size={context.size}
               spacing
               {...textProps}
-              className="index-body max-w-text"
+              className="algolia-index-body max-w-text"
             />
           );
       }
@@ -240,32 +232,46 @@ const serializers = {
 export type BlockContextT = {
   size: "medium" | "small";
   noLastMargin: boolean;
+  variant: "ds" | "aksel";
 };
 
 export const BlockContext = createContext<BlockContextT>({
   size: "medium",
   noLastMargin: false,
+  variant: "ds",
 });
 
 export const SanityBlockContent = ({
   blocks,
   size = "medium",
   noLastMargin = false,
+  variant,
   ...rest
 }: {
   blocks: any;
   size?: "medium" | "small";
   className?: string;
   noLastMargin?: boolean;
-}) => (
-  <BlockContext.Provider value={{ size, noLastMargin }}>
-    <BlockContent
-      blocks={blocks ?? []}
-      serializers={serializers}
-      options={{ size: "small" }}
-      className="aksel-artikkel__child"
-      renderContainerOnSingleChild
-      {...rest}
-    />
-  </BlockContext.Provider>
-);
+  variant?: "ds" | "aksel";
+}) => {
+  const context = useContext(BlockContext);
+
+  return (
+    <BlockContext.Provider
+      value={{
+        size,
+        noLastMargin,
+        variant: variant ?? context?.variant ?? "ds",
+      }}
+    >
+      <BlockContent
+        blocks={blocks ?? []}
+        serializers={serializers}
+        options={{ size: "small" }}
+        className="aksel-artikkel__child"
+        renderContainerOnSingleChild
+        {...rest}
+      />
+    </BlockContext.Provider>
+  );
+};

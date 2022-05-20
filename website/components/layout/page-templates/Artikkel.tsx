@@ -1,13 +1,7 @@
 import { Heading, useClientLayoutEffect } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
-import {
-  Feedback,
-  LastUpdateTag,
-  RelatedNavigation,
-  slugger,
-  TableOfContents,
-} from "../..";
+import { Feedback, LastUpdateTag, slugger, TableOfContents } from "../..";
 import { DsArtikkel } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 
@@ -38,20 +32,24 @@ const ArtikkelTemplate = ({
       </Head>
       <div className="content-box">
         <div className="pt-8 pb-6">
-          <Heading size="xlarge" level="1" spacing className="index-lvl1">
+          <Heading
+            size="xlarge"
+            level="1"
+            spacing
+            className="algolia-index-lvl1"
+          >
             {data.heading}
           </Heading>
           <LastUpdateTag date={data._updatedAt} />
         </div>
       </div>
-      <div className="relative flex max-w-full lg:max-w-7xl">
+      <div className="relative flex max-w-full md:max-w-7xl">
         <TableOfContents changedState={data.innhold} />
         <div className="content-box">
           <SanityBlockContent className="mt-12" blocks={data.innhold} />
           {!data?.metadata_feedback?.hide_feedback && (
             <Feedback docId={data?._id} docType={data?._type} />
           )}
-          <RelatedNavigation />
         </div>
       </div>
     </>

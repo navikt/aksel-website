@@ -7,37 +7,44 @@ module.exports = {
     "./stories/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    /* Flytt ut fra extend og refactor bruk av screen */
+    screens: {
+      xs: "564px",
+      sm: "648px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1440px",
+      toc: "1224px",
+    },
     extend: {
       spacing: {
         0: 0,
-        header: "4rem",
+        header: "3.5rem",
         sidebar: "240px",
         text: "600px",
       },
       maxWidth: {
         "screen-sidebar": "calc(100vw - 240px)",
         "content-w-padding": "896px",
-        "aksel-max-w": "1440px",
+        aksel: "1280px",
         text: "600px",
+        prose: "75ch",
       },
       minWidth: ({ theme }) => ({
-        header: "4rem",
+        header: "3.5rem",
         ...theme("spacing"),
       }),
       minHeight: ({ theme }) => ({
-        "screen-header": "calc(100vh - 4rem)",
+        "screen-header": "calc(100vh - 3.5rem)",
         ...theme("spacing"),
       }),
-      screens: {
-        md: "564px",
-        lg: "768px",
-        xl: "1024px",
-        "2xl": "1440px",
-        toc: "1224px",
-      },
+
       boxShadow: {
+        "focus-inverted-inset": "inset var(--navds-shadow-focus-inverted)",
         "focus-inset": "inset var(--navds-shadow-focus)",
         "focus-gap": "0 0 0 1px white, var(--navds-shadow-focus)",
+        header: "inset 0 -1px 0 rgb(180, 180, 180, 0.1)",
       },
       keyframes: {
         shimmerBg: {

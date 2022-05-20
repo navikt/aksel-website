@@ -31,7 +31,7 @@
     "@sanity/export": "^2.29.3",
     "@sanity/production-preview": "^2.29.3",
     "@sanity/vision": "^2.30.0",
-    "moment": "2.29.1",
+    "moment": "2.29.3",
     "react": "^17.0",
     "react-dom": "^17.0",
     "sanity-codegen": "1.0.0-alpha.26",

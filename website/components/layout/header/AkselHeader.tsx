@@ -6,23 +6,36 @@ import AkselLogo from "../../assets/AkselLogo";
 import ProfileDropdown from "./ProfileDropdown";
 
 const AkselHeader = ({
-  className,
-  frontPage,
+  variant,
 }: {
-  className?: string;
-  frontPage?: boolean;
+  variant?: "forside" | "tema" | "artikkel";
 }): JSX.Element => {
   return (
-    <header className={cl("z-[1050] flex justify-center ", className)}>
-      <div className="flex w-full max-w-aksel-max-w justify-between">
-        {!frontPage && (
-          <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
-            Hopp til innhold
-          </a>
-        )}
+    <header
+      className={cl(
+        "group sticky top-0 z-20 w-full shadow-header backdrop-blur transition-colors duration-200 ease-out",
+        {
+          "bg-deepblue-900/90 text-white hover:bg-deepblue-900":
+            variant === "forside",
+          "bg-gray-50/80 text-deepblue-800 hover:bg-gray-100/80":
+            variant === "artikkel",
+          "bg-white text-deepblue-800 hover:bg-gray-200": variant === "tema",
+        }
+      )}
+    >
+      <div className="mx-auto flex max-w-aksel justify-between xs:w-[90%]">
+        <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
+          Hopp til innhold
+        </a>
+
         <NextLink href="/" passHref>
           <a
-            className="flex h-full items-center gap-2 px-4 py-3 hover:bg-gray-800/10 focus:shadow-focus-inset focus:outline-none"
+            className={cl("flex gap-3 px-4 py-3 focus:outline-none", {
+              "hover:bg-gray-100/10 focus:shadow-focus-inverted-inset":
+                variant === "forside",
+              "hover:bg-gray-900/10 focus:shadow-focus-inset":
+                variant === "artikkel" || variant === "tema",
+            })}
             onClick={(e) =>
               logNav(
                 "header",
@@ -31,13 +44,15 @@ const AkselHeader = ({
               )
             }
           >
-            <AkselLogo className="h-10 w-10 text-deepblue-800" aria-hidden />
+            <AkselLogo className="h-7 w-7" aria-hidden />
             <span className="text-2xl">Aksel</span>
           </a>
         </NextLink>
         <span className="flex">
           <ProfileDropdown />
-          {!frontPage && <Search inverted />}
+          <Search
+            variant={variant === "forside" ? "aksel-inverted" : "aksel"}
+          />
         </span>
       </div>
     </header>

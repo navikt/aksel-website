@@ -1,7 +1,6 @@
 import React from "react";
 import { LinkPanel } from "@navikt/ds-react";
-import { ExampleComponent } from "../../lib";
-import { BgColors } from "../sandbox/types";
+import { ExampleComponent, BgColors } from "@/lib";
 
 export const LinkPanelExample: ExampleComponent = () => (
   <>

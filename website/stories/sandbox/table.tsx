@@ -1,4 +1,5 @@
-import { BgColors, SandboxComponent } from "./types";
+import { BgColors } from "@/lib";
+import { SandboxComponent } from "./types";
 
 const TableSandbox: SandboxComponent = ({
   size,
@@ -16,7 +17,7 @@ const TableSandbox: SandboxComponent = ({
     ${
       selectable
         ? `const [selectedRows, setSelectedRows] = React.useState([]);
-  
+
     const toggleSelectedRow = (value) =>
         setSelectedRows((list) =>
           list.includes(value)
@@ -43,9 +44,9 @@ const TableSandbox: SandboxComponent = ({
             ? undefined
             : {
               orderBy: sortKey,
-              direction: 
-                sort &&sortKey === sort.orderBy && sort.direction === "ascending" 
-                  ? "descending" 
+              direction:
+                sort &&sortKey === sort.orderBy && sort.direction === "ascending"
+                  ? "descending"
                   : "ascending",
             })
         }`

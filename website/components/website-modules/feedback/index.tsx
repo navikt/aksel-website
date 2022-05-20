@@ -9,10 +9,12 @@ const Feedback = ({
   docId,
   docType,
   center,
+  akselFeedback = false,
 }: {
   docId?: string;
   docType?: string;
   center?: boolean;
+  akselFeedback?: boolean;
 }): JSX.Element => {
   const { asPath, basePath } = useRouter();
   const [textValue, setTextValue] = useState("");
@@ -46,7 +48,7 @@ const Feedback = ({
         activeState &&
         logAmplitudeEvent(AmplitudeEvents.feedbackinteraksjon, {
           fra: asPath,
-          valg: activeState,
+          vamd: activeState,
           completed,
         });
     },
@@ -138,16 +140,18 @@ const Feedback = ({
 
   if (!docId || !docType) return null;
 
-  return (
-    <div
-      className={cl(
-        "index-ignore flex w-full max-w-[800px] items-center justify-center gap-4 bg-component-background-alternate p-4 pb-12 sm:px-8 sm:py-4",
+  const classes = akselFeedback
+    ? ""
+    : cl(
+        "algolia-ignore-index flex w-full max-w-[800px] items-center justify-center gap-4 bg-component-background-alternate p-4 pb-12 sm:px-8 sm:py-4",
         {
-          "mt-44 mr-auto mb-16 ml-0 lg:mr-0 lg:ml-0": !center,
+          "mt-44 mr-auto mb-16 ml-0 md:mr-0 md:ml-0": !center,
           "mx-auto mt-44 mb-16": center,
         }
-      )}
-    >
+      );
+
+  return (
+    <div className={classes}>
       <div className="flex w-full flex-col items-center gap-4">
         <Heading size="small" level="2">
           Var denne artikkelen til hjelp?

@@ -2,10 +2,9 @@ import React, { createContext, useEffect, useState } from "react";
 import { withErrorBoundary } from "../../../ErrorBoundary";
 import CodeBlock from "./Block";
 import CodeTabs from "./Tabs";
-import { DsCodeExample as DsCodeExampleT } from "../../../../lib";
+import { BgColors, DsCodeExample as DsCodeExampleT } from "@/lib";
 import cl from "classnames";
 import dynamic from "next/dynamic";
-import { BgColors } from "../../../../stories/sandbox/types";
 
 const CodePreview = dynamic(() => import("./Preview"), {
   loading: () => (
@@ -107,7 +106,12 @@ const Code = ({
         setPreviewBg,
       }}
     >
-      <div className={cl("index-ignore mb-9 flex w-full flex-col", className)}>
+      <div
+        className={cl(
+          "algolia-ignore-index mb-9 flex w-full flex-col",
+          className
+        )}
+      >
         {showTabs && <CodeTabs />}
         {showPreview && activeTab === -1 && <CodePreview />}
         {(node.tabs || tabs) &&

@@ -31,11 +31,22 @@ export default {
       group: "innhold",
     },
     {
-      title: "Seksjonering (optional) (Ikke i prod enda)",
-      description: "Del inn artiklene i flere seksjoner",
+      title: "Bruk seksjonsinndeling",
+      description:
+        "Vil ikke vise artikler som ikke er lagt til i seksjoner hvis valgt!",
+      name: "bruk_seksjoner",
+      type: "boolean",
+      group: "innhold",
+      initialValue: false,
+    },
+    {
+      title: "Seksjonering",
+      description:
+        "Del inn artiklene i flere seksjoner (vises ikke i preview før publisering desverre)",
       name: "seksjoner",
       type: "array",
       group: "innhold",
+      hidden: ({ parent }) => !parent?.bruk_seksjoner,
       of: [
         {
           type: "object",

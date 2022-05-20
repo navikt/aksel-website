@@ -36,6 +36,7 @@ export default {
           title: "Hovedside",
           name: "hovedside",
           type: "reference",
+          weak: true,
           to: [{ type: "aksel_prinsipp" }],
         },
         {
@@ -43,7 +44,9 @@ export default {
           description: "Rekkefølge bestemmer rekkefølgen på forsiden!",
           name: "undersider",
           type: "array",
-          of: [{ type: "reference", to: [{ type: "aksel_prinsipp" }] }],
+          of: [
+            { type: "reference", weak: true, to: [{ type: "aksel_prinsipp" }] },
+          ],
         },
       ],
     },

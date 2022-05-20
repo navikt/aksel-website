@@ -2,6 +2,13 @@ import { getClient, sanityClient } from "./sanity.server";
 import { useNextSanityImage } from "next-sanity-image";
 import { akselDocumentsByType, akselTemaNames, dsDocuments } from "./queries";
 import { DsArtikkel, DsComponentPage, KomponentArtikkel } from "..";
+import imageUrlBuilder from "@sanity/image-url";
+
+const imageBuilder = imageUrlBuilder(sanityClient);
+
+export function urlFor(source: any) {
+  return imageBuilder.image(source);
+}
 
 export const getTemaSlug = (s: string) =>
   s ? s.toLowerCase().trim().replace(/\s+/g, "-") : null;

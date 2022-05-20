@@ -8,7 +8,7 @@ const DesignsystemSidebar = () => {
   if (!activeHeading) return null;
 
   return (
-    <div className="index-ignore z-[1002] hidden w-sidebar shrink-0 self-start  bg-white py-4 pr-2 lg:block">
+    <div className="algolia-ignore-index z-[1002] hidden w-sidebar shrink-0 self-start  bg-white py-4 pr-2 md:block">
       <Menu heading={activeHeading} />
     </div>
   );

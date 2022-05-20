@@ -1,7 +1,6 @@
 import {
   BodyLong,
   BodyShort,
-  Button,
   Fieldset,
   Label,
   Link,
@@ -75,13 +74,23 @@ const FooterForm = () => {
     <div className="flex max-w-xl flex-col gap-8">
       <div>
         <Label spacing>Hvordan komme i kontakt?</Label>
-        <BodyShort as="div">
-          <Link
-            className="text-text-inverted focus:bg-blue-200 focus:text-text focus:shadow-focus focus:shadow-blue-200"
-            href="https://nav-it.slack.com/archives/C7NE7A8UF"
-          >
-            Designsystemet på Slack
-          </Link>
+        <BodyShort as="ul">
+          <li>
+            <Link
+              className="text-text-inverted focus:bg-blue-200 focus:text-text focus:shadow-focus focus:shadow-blue-200"
+              href="https://nav-it.slack.com/archives/C0370ADS0HX"
+            >
+              Aksel på Slack
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="text-text-inverted focus:bg-blue-200 focus:text-text focus:shadow-focus focus:shadow-blue-200"
+              href="https://nav-it.slack.com/archives/C7NE7A8UF"
+            >
+              Designsystemet på Slack
+            </Link>
+          </li>
         </BodyShort>
       </div>
       {sent ? (
@@ -124,9 +133,9 @@ const FooterForm = () => {
               }}
             />
           </Fieldset>
-          <Button variant="secondary" className="inverted-button">
-            Send melding
-          </Button>
+          <button className="inline-flex min-h-12 items-center rounded-sm border-2 border-white bg-transparent px-3 py-2 text-center hover:bg-white hover:text-text focus:shadow-focus-inverted focus:outline-none active:border-gray-100 active:bg-gray-100 active:text-text">
+            <BodyShort as="span">Send melding</BodyShort>
+          </button>
         </form>
       )}
     </div>

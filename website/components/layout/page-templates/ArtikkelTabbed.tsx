@@ -7,7 +7,6 @@ import {
   Feedback,
   LastUpdateTag,
   logNav,
-  RelatedNavigation,
   slugger,
   TableOfContents,
 } from "../..";
@@ -50,7 +49,12 @@ const ArtikkelTabbedTemplate = ({
       </Head>
       <div className="content-box">
         <div className="pt-8 pb-6">
-          <Heading size="xlarge" level="1" spacing className="index-lvl1">
+          <Heading
+            size="xlarge"
+            level="1"
+            spacing
+            className="algolia-index-lvl1"
+          >
             {data.heading}
           </Heading>
           <LastUpdateTag date={data._updatedAt} />
@@ -58,7 +62,7 @@ const ArtikkelTabbedTemplate = ({
       </div>
       {tabs.length > 1 && (
         <Tabs
-          className="sticky top-0 z-[1001]"
+          className="top-0 z-[1001]"
           value={data.innhold_tabs[activeTab]?.title
             .toLowerCase()
             .replace(/\s+/g, "-")}
@@ -67,7 +71,7 @@ const ArtikkelTabbedTemplate = ({
             logNav("tabs", window.location.pathname, `${basePath}/${x}`);
           }}
         >
-          <Tabs.List className="mx-0 px-2 lg:mx-12 lg:px-0">
+          <Tabs.List className="mx-0 px-2 md:mx-12 md:px-0">
             {data.innhold_tabs.map((x) => (
               <Tabs.Tab
                 as="button"
@@ -79,7 +83,7 @@ const ArtikkelTabbedTemplate = ({
           </Tabs.List>
           {data.innhold_tabs.map((x) => (
             <Tabs.Panel
-              className="tabpanel relative max-w-full lg:max-w-7xl"
+              className="tabpanel relative max-w-full md:max-w-7xl"
               key={x.title}
               value={x.title?.toLowerCase().replace(/\s+/g, "-")}
             >
@@ -89,7 +93,6 @@ const ArtikkelTabbedTemplate = ({
                 {!data?.metadata_feedback?.hide_feedback && (
                   <Feedback docId={data?._id} docType={data?._type} />
                 )}
-                <RelatedNavigation />
               </div>
             </Tabs.Panel>
           ))}

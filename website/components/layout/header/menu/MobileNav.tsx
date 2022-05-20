@@ -37,7 +37,7 @@ const MobileNavigation = () => {
   const headingMenu = nav?.headings && (
     <>
       {
-        <ul className="hidden animate-fadeIn text-text lg:block xl:hidden">
+        <ul className="hidden animate-fadeIn text-text md:block lg:hidden">
           {nav.headings.map((heading: DsNavigationHeadingT) => (
             <li
               key={heading._key}
@@ -72,7 +72,7 @@ const MobileNavigation = () => {
       }
       <ul
         className={cl({
-          "block animate-fadeIn lg:hidden xl:block": !heading || level === 0,
+          "block animate-fadeIn md:hidden lg:block": !heading || level === 0,
           hidden: level === 1,
         })}
       >

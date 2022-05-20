@@ -1,15 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 import { SuccessFilled, WarningFilled } from "@navikt/ds-icons";
 import { BodyShort, Heading } from "@navikt/ds-react";
 import cl from "classnames";
-import NextImage from "next/image";
 import React, { useState } from "react";
 import { Lightbox } from "../../..";
-import {
-  DoDontBlock,
-  DoDontV2,
-  SanityKeyed,
-  useSanityImage,
-} from "../../../../lib";
+import { DoDontBlock, DoDontV2, SanityKeyed, urlFor } from "../../../../lib";
 import { withErrorBoundary } from "../../../ErrorBoundary";
 import { SanityBlockContent } from "../../../SanityBlockContent";
 
@@ -64,7 +59,6 @@ const Element = ({
 }: {
   block: SanityKeyed<DoDontBlock>;
 }): JSX.Element => {
-  const imageProps = useSanityImage(block.picture);
   const [open, setOpen] = useState(false);
 
   return (
@@ -85,14 +79,12 @@ const Element = ({
         tabIndex={0}
         onClick={() => setOpen(!open)}
       >
-        <NextImage
-          {...imageProps}
+        <img
           className="rounded-t"
-          layout="responsive"
-          sizes="(max-width: 800px)"
           alt={block.alt}
-          quality="100"
-          unoptimized
+          loading="lazy"
+          decoding="async"
+          src={urlFor(block.picture).auto("format").url()}
         />
       </button>
       <div
@@ -114,12 +106,12 @@ const Element = ({
       </figcaption>
       <Lightbox open={open} onClose={() => setOpen(false)}>
         {open && (
-          <NextImage
-            {...imageProps}
-            quality="100"
-            layout="fill"
+          <img
             alt={block.alt}
-            unoptimized
+            loading="lazy"
+            decoding="async"
+            src={urlFor(block.picture).auto("format").url()}
+            className="object-contain"
           />
         )}
       </Lightbox>
@@ -134,13 +126,13 @@ const DoDont = ({ node }: { node: DoDontV2 }) => {
     <div className="relative-parent aksel-artikkel__child mb-16 last:mb-0">
       <Heading
         level="3"
-        className="index-lvl3 max-w-text"
+        className="algolia-index-lvl3 max-w-text"
         size="medium"
         spacing
       >
         {node.title}
       </Heading>
-      <SanityBlockContent blocks={node.forklaring} />
+      <SanityBlockContent blocks={node.forklaring} className="mb-7" />
       {node?.blokker?.length > 0 && (
         <div className="last flex flex-wrap justify-between gap-8">
           {node.blokker.map((x) => (

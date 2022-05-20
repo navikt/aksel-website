@@ -9,7 +9,6 @@ import {
   Feedback,
   LastUpdateTag,
   logNav,
-  RelatedNavigation,
   slugger,
   TableOfContents,
   useDsNavigation,
@@ -61,7 +60,7 @@ const KomponentArtikkelTemplate = ({
 
       <div className="content-box">
         {activeHeading?.title && (
-          <span className="navds-sr-only index-hidden-heading">
+          <span className="navds-sr-only algolia-index-hidden-heading">
             {activeHeading?.title}
           </span>
         )}
@@ -71,7 +70,7 @@ const KomponentArtikkelTemplate = ({
             size="xlarge"
             level="1"
             spacing
-            className="index-lvl1 flex flex-wrap items-center gap-4"
+            className="algolia-index-lvl1 flex flex-wrap items-center gap-4"
           >
             {data.heading}
             {npmPackage?.title && (
@@ -147,7 +146,7 @@ const KomponentArtikkelTemplate = ({
         </div>
       </div>
       <Tabs
-        className="sticky top-0 z-[1001]"
+        className="top-0 z-[1001]"
         value={tabKey}
         onChange={(x) => {
           const url = x === "bruk" ? basePath : `${basePath}/${x}`;
@@ -155,7 +154,7 @@ const KomponentArtikkelTemplate = ({
           logNav("tabs", window.location.pathname, url);
         }}
       >
-        <Tabs.List className="mx-0 px-2 lg:mx-12 lg:px-0">
+        <Tabs.List className="mx-0 px-2 md:mx-12 md:px-0">
           {Object.entries(tabs)
             .filter(([, val]) => !!data[val])
             .map(([key]) => (
@@ -171,7 +170,7 @@ const KomponentArtikkelTemplate = ({
           .filter(([, val]) => !!data[val])
           .map(([key, val]) => (
             <Tabs.Panel
-              className="tabpanel relative max-w-full lg:max-w-7xl"
+              className="tabpanel relative max-w-full md:max-w-7xl"
               key={key + val}
               value={key}
             >
@@ -183,7 +182,6 @@ const KomponentArtikkelTemplate = ({
                 {!data?.metadata_feedback?.hide_feedback && (
                   <Feedback docId={data?._id} docType={data?._type} />
                 )}
-                <RelatedNavigation />
               </div>
             </Tabs.Panel>
           ))}

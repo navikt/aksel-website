@@ -67,7 +67,7 @@ const LevelTwoHeading = ({
         level="2"
         size="large"
         className={cl(
-          "index-lvl2 group mb-4 max-w-text scroll-mt-20 hover:underline focus:outline-none",
+          "algolia-index-lvl2 group mb-4 max-w-text scroll-mt-20 hover:underline focus:outline-none",
           {
             hidden: hidden,
             "inline-flex": !hidden,

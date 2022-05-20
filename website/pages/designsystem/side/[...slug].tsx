@@ -29,20 +29,20 @@ Page.getLayout = (page) => {
     <>
       <DsHeader />
       <div className="flex w-full flex-col items-center bg-canvas-background-light">
-        <div className="flex w-full max-w-aksel-max-w">
+        <div className="flex w-full max-w-screen-2xl">
           <DsSidebar />
           <div className="relative w-full">
             <main
               tabIndex={-1}
               id="hovedinnhold"
-              className="relative min-h-screen-header w-full focus:outline-none lg:max-w-screen-sidebar"
+              className="relative min-h-screen-header w-full focus:outline-none md:max-w-screen-sidebar"
             >
               {page}
               <div className="mt-auto" aria-hidden />
             </main>
           </div>
         </div>
-        <Footer />
+        <Footer variant="ds" />
       </div>
     </>
   );
@@ -95,7 +95,7 @@ export const getStaticProps = async ({
       preview,
     },
     notFound: !(doc && validateDsPath(doc, slug)),
-    revalidate: 10,
+    revalidate: 60,
   };
 };
 

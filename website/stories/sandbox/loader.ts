@@ -1,4 +1,5 @@
-import { BgColors, SandboxComponent } from "./types";
+import { SandboxComponent } from "./types";
+import { BgColors } from "@/lib";
 
 const LoaderSandbox: SandboxComponent = (props) => {
   const propVariant = props?.variant ? ` variant="${props.variant}"` : "";

@@ -90,7 +90,7 @@ const Table = ({ prop }: { prop: any }) => (
 
 const PropTable = ({ komponent }: { komponent: PropT }): JSX.Element => {
   return (
-    <details className="index-ignore">
+    <details className="algolia-ignore-index">
       {komponent.title ? (
         <Heading
           size="small"

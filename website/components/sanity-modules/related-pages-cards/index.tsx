@@ -15,7 +15,7 @@ const Card = ({ link }: { link: RelatedLinkT }) => {
       : link?.category_ref?.title) ?? null;
 
   return (
-    <div className="index-ignore group relative min-w-[250px] max-w-sm flex-1 cursor-pointer rounded border-2 border-transparent bg-white p-6 shadow-card focus-within:border-focus focus-within:outline-none hover:border-link">
+    <div className="algolia-ignore-index group relative min-w-[250px] max-w-sm flex-1 cursor-pointer rounded border-2 border-transparent bg-white p-6 shadow-card focus-within:border-focus focus-within:outline-none hover:border-link">
       <NextLink href={href} passHref>
         <Heading
           size="xsmall"

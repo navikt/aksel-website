@@ -42,41 +42,40 @@ const Page = (props: {
       >
         <div className="flex min-h-screen-header w-full flex-col items-center">
           <div className="relative flex w-full justify-center bg-canvas-background-light">
-            <div className="flex w-full max-w-aksel-max-w">
-              <div className="flex w-full max-w-[calc(1440px_-_624px)] flex-col items-center py-12 px-4 md:block md:h-[240px] md:py-16 md:px-12">
+            <div className="flex w-full max-w-screen-2xl">
+              <div className="flex w-full max-w-[calc(1440px_-_624px)] flex-col items-center py-12 px-4 xs:block xs:h-[240px] xs:py-16 xs:px-12">
                 <Heading spacing level="1" size="xlarge">
                   Designsystemet
                 </Heading>
                 <BodyLong>Gjør det enkelt å lage produkter i NAV</BodyLong>
               </div>
-              <DsFrontpageIllustration className="hidden h-[240px] w-[624px] shrink-0 xl:block" />
+              <DsFrontpageIllustration className="hidden h-[240px] w-[624px] shrink-0 lg:block" />
             </div>
           </div>
 
-          <div className="flex w-full max-w-aksel-max-w flex-col flex-wrap bg-component-background-alternate">
-            <div className="reduced-spacing py-12 px-4 md:px-12 md:py-6">
+          <div className="flex w-full max-w-screen-2xl flex-col flex-wrap bg-component-background-alternate">
+            <div className="reduced-spacing mx-auto w-[90%] py-12 xs:w-full xs:px-12 xs:py-6">
               {props?.page?.body && (
                 <SanityBlockContent blocks={props?.page?.body} />
               )}
             </div>
-            <div className="flex flex-wrap justify-center gap-6 px-4 pt-0 pb-12 md:justify-start md:px-12 md:pb-16">
+            <div className="flex flex-wrap justify-center gap-6 px-4 pt-0 pb-12 xs:justify-start xs:px-12 xs:pb-16">
               {props?.page?.cards &&
-                props?.page?.cards.map((card, i) => {
+                props?.page?.cards.map((card) => {
                   return (
                     <Card
                       key={card._key}
                       node={card as unknown as DsFrontPageCardT}
                       tag={true}
-                      style={{ animationDelay: `${i * 25}ms` }}
                     />
                   );
                 })}
             </div>
           </div>
-          <DsFrontpageFooterIllustration className="flex h-full w-full lg:hidden" />
+          <DsFrontpageFooterIllustration className="flex h-full w-full md:hidden" />
         </div>
       </main>
-      <Footer />
+      <Footer variant="ds" />
     </>
   );
 };
@@ -96,7 +95,7 @@ export const getStaticProps = async ({
       navigation: nav,
       preview,
     },
-    revalidate: 10,
+    revalidate: 60,
   };
 };
 

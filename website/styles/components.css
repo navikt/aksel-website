@@ -10,10 +10,6 @@
   @apply pl-11;
 }
 
-.card {
-  @apply relative flex w-[18rem] flex-col rounded bg-canvas-background-light p-4 pt-8 text-text shadow-card focus-within:shadow-focus focus-within:outline-none hover:shadow-[0_0_0_2px_var(--navds-semantic-color-link)] active:text-link md:p-8 md:pt-12;
-}
-
 .sandbox-editor > div {
   @apply max-w-full overflow-x-auto !font-mono text-text-inverted;
 }
@@ -40,7 +36,7 @@
 }
 
 .aksel-main__inner {
-  @apply relative min-h-screen-header w-full px-4 pb-4 focus:outline-none md:mx-auto md:my-0 md:px-6 lg:px-12 lg:pb-4;
+  @apply relative min-h-screen-header w-full px-4 pb-4 focus:outline-none xs:mx-auto xs:my-0 xs:px-6 md:px-12 md:pb-4;
 }
 
 .aksel-main--center {
@@ -52,24 +48,34 @@
 }
 
 .aksel-card-grid {
-  @apply grid grid-cols-1 justify-center gap-4 sm:grid-cols-2 sm:gap-6 lg:justify-start xl:grid-cols-3;
+  @apply grid grid-cols-1 justify-center gap-4 sm:grid-cols-2 sm:gap-6 md:justify-start lg:grid-cols-3;
 }
 
 .aksel-card-grid-col-2 {
-  @apply grid grid-cols-1 justify-center gap-4 sm:gap-x-8 sm:gap-y-6 lg:grid-cols-2 lg:justify-start;
-}
-
-.img-wrapper img {
-  object-fit: contain;
-  width: 100% !important;
-  height: unset !important;
-}
-
-.img-wrapper > div {
-  position: unset !important;
+  @apply grid grid-cols-1 justify-center gap-4 sm:gap-x-8 sm:gap-y-6 md:grid-cols-2 md:justify-start;
 }
 
 .table-icon svg {
   vertical-align: middle;
   margin: 0 0.25rem 3px 0.25rem;
+}
+
+.inline-code {
+  white-space: nowrap;
+  border-radius: 0.25rem;
+  background-color: rgb(226 232 240);
+  padding: 0.125rem 0.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.inline-kbd {
+  white-space: nowrap;
+  border-radius: 0.25rem;
+  background-color: rgb(255, 255, 255);
+  padding: 0.125rem 0.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  box-shadow: 0 0 0 1px rgb(38, 38, 38);
+  @apply text-text;
 }
