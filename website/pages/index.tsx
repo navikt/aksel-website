@@ -180,12 +180,12 @@ const Portaler = () => {
 };
 
 const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
-  /* const hasPrinsipp1 =
+  const hasPrinsipp1 =
     tekster?.prinsipp_1 &&
     tekster?.prinsipp_1?.hovedside &&
     tekster?.prinsipp_1?.vis &&
     tekster?.prinsipp_1?.undersider.length ===
-      tekster?.prinsipp_1.undersider.filter((x) => !!x).length; */
+      tekster?.prinsipp_1.undersider.filter((x) => !!x).length;
 
   return (
     <>
@@ -272,90 +272,55 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
           )}
 
           {/* Prinsipper */}
-          <section className="bg-deepblue-50 px-4 pt-0 pb-20 lg:pt-12">
-            <div className="relative z-10 mx-auto max-w-screen-lg xs:w-[90%]">
-              <div className="md:grid md:grid-flow-row-dense md:gap-x-8">
-                <div className="md:order-1 md:col-start-2 md:row-span-2 md:-mb-8 lg:-mt-12">
-                  <img
-                    className="mx-auto max-w-xs sm:w-full md:mx-auto md:max-w-md"
-                    src="/images/prinsipper.webp"
-                    width="800"
-                    alt=""
-                  />
-                </div>
-                <div className="self-end">
-                  <div className="max-w-prose">
-                    <h2 className="mt-4 text-2xl font-semibold tracking-tight md:mt-auto md:text-4xl">
-                      Prinsipper for brukeropplevelse
-                    </h2>
-                    <p className="mt-3 text-lg">
-                      NAV skal ivareta sine målgrupper og brukere. Det er
-                      sentralt i vårt formål. Vi har derfor utarbeidet 9
-                      prinsipper som skal tydeliggjøre forholdet mellom vår
-                      visjon, våre verdier, vårt ansvar og hvordan vi når ut.
-                    </p>
+          {hasPrinsipp1 && (
+            <section className="bg-deepblue-50 px-4 pt-0 pb-32 lg:pt-12">
+              <div className="relative z-10 mx-auto max-w-aksel xs:w-[90%]">
+                <div className="lg:grid lg:grid-flow-row-dense lg:gap-x-8">
+                  <div className="lg:order-1 lg:col-start-2 lg:row-start-1 lg:-mb-8 lg:-mt-12">
+                    <img
+                      className="mx-auto max-w-xs sm:w-full lg:mx-auto lg:max-w-md"
+                      src="/images/prinsipper.webp"
+                      width="800"
+                      alt=""
+                    />
                   </div>
-                </div>
-                <div className="md:col-start-1 md:row-start-2">
-                  <div className="mt-8 flex flex-wrap gap-2 lg:max-w-4xl lg:gap-3">
-                    <a
-                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
-                      href="#"
-                    >
-                      <span className="font-semibold">
-                        Jeg får tillit og muligheter
-                      </span>{" "}
-                      <Next
-                        className="-mr-1 sm:hidden"
-                        aria-hidden
-                        aria-label="Gå til siden"
-                      />{" "}
-                    </a>
-                    <a
-                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
-                      href="#"
-                    >
-                      <span className="font-semibold">
-                        NAV er min støttespiller
-                      </span>{" "}
-                      <Next
-                        className="-mr-1 sm:hidden"
-                        aria-hidden
-                        aria-label="Gå til neste side"
-                      />{" "}
-                    </a>
-                    <a
-                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
-                      href="#"
-                    >
-                      <span className="font-semibold">
-                        Jeg blir møtt på min situasjon og mine behov
-                      </span>{" "}
-                      <Next
-                        className="-mr-1 sm:hidden"
-                        aria-hidden
-                        aria-label="Gå til neste side"
-                      />{" "}
-                    </a>
-                    <a
-                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
-                      href="#"
-                    >
-                      <span className="font-semibold">Jeg blir inkludert</span>{" "}
-                      <Next
-                        className="-mr-1 sm:hidden"
-                        aria-hidden
-                        aria-label="Gå til neste side"
+                  <div className="self-end">
+                    <div className="max-w-prose">
+                      <h2 className="mt-4 text-2xl font-semibold tracking-tight lg:mt-auto lg:text-4xl">
+                        Prinsipper for brukeropplevelse
+                      </h2>
+                      <SanityBlockContent
+                        className="mt-3"
+                        blocks={tekster.prinsipp_1?.beskrivelse}
                       />
-                    </a>
+                    </div>
+
+                    <div className="mt-8 flex flex-wrap gap-2 lg:max-w-4xl lg:gap-3">
+                      {tekster.prinsipp_1.undersider.map((x) => (
+                        <NextLink
+                          href={x.slug.current}
+                          passHref
+                          key={x.slug.current}
+                        >
+                          <a className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow transition ease-out hover:bg-deepblue-200/60 hover:shadow-md sm:w-auto">
+                            <span className="font-semibold">{x.heading}</span>{" "}
+                            <Next
+                              className="-mr-1 sm:hidden"
+                              aria-hidden
+                              aria-label="Gå til siden"
+                            />{" "}
+                          </a>
+                        </NextLink>
+                      ))}
+                    </div>
+                    <Link className="mt-6 inline-block text-gray-800" href="#">
+                      Utforsk alle prinsippene
+                    </Link>
                   </div>
-                  <Link className="mt-6 inline-block text-gray-800" href="#">
-                    Utforsk alle prinsippene
-                  </Link>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          )}
 
           <section className="relative bg-white px-4 pb-24">
             {/* Separator */}
