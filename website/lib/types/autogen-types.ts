@@ -1107,40 +1107,6 @@ export interface AkselArtikkel extends SanityDocument {
   >;
 
   /**
-   * Banner — `object`
-   *
-   *
-   */
-  banner?: {
-    _type: "banner";
-    /**
-     * Variant — `string`
-     *
-     *
-     */
-    variant?: "standard" | "bilde";
-
-    /**
-     * Banner-bilde — `image`
-     *
-     *
-     */
-    banner_img?: {
-      _type: "image";
-      asset: SanityReference<SanityImageAsset>;
-      crop?: SanityImageCrop;
-      hotspot?: SanityImageHotspot;
-
-      /**
-       * Alt-tekst — `string`
-       *
-       *
-       */
-      alt?: string;
-    };
-  };
-
-  /**
    * Tilbakemeldinger — `object`
    *
    *
@@ -1211,40 +1177,6 @@ export interface AkselBlogg extends SanityDocument {
     | SanityKeyed<Tips>
     | SanityKeyed<RelatertInnhold>
   >;
-
-  /**
-   * Banner — `object`
-   *
-   *
-   */
-  banner?: {
-    _type: "banner";
-    /**
-     * Variant — `string`
-     *
-     *
-     */
-    variant?: "standard" | "bilde";
-
-    /**
-     * Banner-bilde — `image`
-     *
-     *
-     */
-    banner_img?: {
-      _type: "image";
-      asset: SanityReference<SanityImageAsset>;
-      crop?: SanityImageCrop;
-      hotspot?: SanityImageHotspot;
-
-      /**
-       * Alt-tekst — `string`
-       *
-       *
-       */
-      alt?: string;
-    };
-  };
 
   /**
    * Tilbakemeldinger — `object`

@@ -1,5 +1,4 @@
 import {
-  bannerField,
   defaultDocPreview,
   editorField,
   groups,
@@ -31,6 +30,5 @@ export default {
     },
     introField,
     innholdField,
-    bannerField,
   ],
 };

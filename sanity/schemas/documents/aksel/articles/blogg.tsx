@@ -1,5 +1,4 @@
 import {
-  bannerField,
   defaultDocPreview,
   editorField,
   groups,
@@ -23,6 +22,5 @@ export default {
     sanitySlug(prefix, 2),
     introField,
     innholdField,
-    bannerField,
   ],
 };

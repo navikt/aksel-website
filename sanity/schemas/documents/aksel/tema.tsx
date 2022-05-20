@@ -78,12 +78,15 @@ export default {
                     Rule.required().error("Seksjonen må ha minst en referanse"),
                   to: [{ type: "aksel_artikkel" }],
                   options: {
-                    filter: ({ document }) => {
-                      console.log(document._id.replace("drafts.", ""));
+                    filter: ({ document, parent }) => {
+                      const selected = parent
+                        .filter((x) => !!x._ref)
+                        .map((x) => x._ref);
                       return {
-                        filter: "references($refId)",
+                        filter: "references($refId) && !(_id in $docIds)",
                         params: {
                           refId: document._id.replace("drafts.", ""),
+                          docIds: selected,
                         },
                       };
                     },

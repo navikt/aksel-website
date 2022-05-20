@@ -872,30 +872,6 @@ Brukes i kort og innganger
         | Sanity.Keyed<tips>
         | Sanity.Keyed<relatert_innhold>
       >;
-
-      /**
-       * Banner - `Object`
-       */
-      banner?: {
-        /**
-         * Variant - `String`
-         */
-        variant?: "standard" | "bilde";
-
-        /**
-         * Banner-bilde - `Image`
-         */
-        banner_img?: {
-          asset: Sanity.Asset;
-          crop?: Sanity.ImageCrop;
-          hotspot?: Sanity.ImageHotspot;
-
-          /**
-           * Alt-tekst - `String`
-           */
-          alt?: string;
-        };
-      };
     }
 
     /**
@@ -946,30 +922,6 @@ Brukes i kort og innganger
         | Sanity.Keyed<tips>
         | Sanity.Keyed<relatert_innhold>
       >;
-
-      /**
-       * Banner - `Object`
-       */
-      banner?: {
-        /**
-         * Variant - `String`
-         */
-        variant?: "standard" | "bilde";
-
-        /**
-         * Banner-bilde - `Image`
-         */
-        banner_img?: {
-          asset: Sanity.Asset;
-          crop?: Sanity.ImageCrop;
-          hotspot?: Sanity.ImageHotspot;
-
-          /**
-           * Alt-tekst - `String`
-           */
-          alt?: string;
-        };
-      };
     }
 
     /**
@@ -990,7 +942,6 @@ Brukes i kort og innganger
       oppsummering?: string;
 
       /**
-       * Beskrivelse - `RegistryReference`
        */
       beskrivelse?: riktekst;
 
@@ -1090,30 +1041,6 @@ Brukes i kort og innganger
         | Sanity.Keyed<tips>
         | Sanity.Keyed<relatert_innhold>
       >;
-
-      /**
-       * Banner - `Object`
-       */
-      banner?: {
-        /**
-         * Variant - `String`
-         */
-        variant?: "standard" | "bilde";
-
-        /**
-         * Banner-bilde - `Image`
-         */
-        banner_img?: {
-          asset: Sanity.Asset;
-          crop?: Sanity.ImageCrop;
-          hotspot?: Sanity.ImageHotspot;
-
-          /**
-           * Alt-tekst - `String`
-           */
-          alt?: string;
-        };
-      };
     }
 
     type generisk_seksjon = {
@@ -1156,7 +1083,6 @@ Brukes i kort og innganger
 
       /**
        * Tittel (h2) - `String`
-       */
       title?: string;
 
       /**
