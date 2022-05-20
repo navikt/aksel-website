@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StepIndicator } from "@navikt/ds-react";
 import { ExampleComponent } from "../../lib";
-import { BgColors } from "@/lib";
+import { BgColors } from "lib/types/types";
 
 export const StepIndicatorDefault: ExampleComponent = () => {
   const [state, setState] = useState(1);

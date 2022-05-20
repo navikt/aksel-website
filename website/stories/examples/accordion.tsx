@@ -1,6 +1,6 @@
 import React from "react";
 import { Accordion } from "@navikt/ds-react";
-import { BgColors, ExampleComponent } from "@/lib";
+import { BgColors, ExampleComponent } from "lib/types/types";
 
 export const AccordionExample: ExampleComponent = () => (
   <div className="stories-sandbox-column">

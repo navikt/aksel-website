@@ -1,4 +1,4 @@
-import { BgColors } from "@/lib";
+import { BgColors } from "lib/types/types";
 
 export const getBgColors = (bg?: BgColors) => {
   if (!bg)

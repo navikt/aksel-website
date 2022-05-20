@@ -1,5 +1,5 @@
 import { SandboxComponent } from "./types";
-import { BgColors } from "@/lib";
+import { BgColors } from "lib/types/types";
 
 const TableExpandAllSandbox: SandboxComponent = () => {
   return `

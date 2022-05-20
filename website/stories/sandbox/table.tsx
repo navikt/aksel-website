@@ -1,4 +1,4 @@
-import { BgColors } from "@/lib";
+import { BgColors } from "lib/types/types";
 import { SandboxComponent } from "./types";
 
 const TableSandbox: SandboxComponent = ({
