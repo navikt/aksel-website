@@ -11,7 +11,7 @@ import {
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { Next } from "@navikt/ds-icons";
-import { BodyLong, Detail, Heading } from "@navikt/ds-react";
+import { BodyLong, Detail, Heading, Link } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
@@ -272,20 +272,20 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
           )}
 
           {/* Prinsipper */}
-          <section className=" bg-deepblue-50 px-4 pt-0 pb-32 md:pt-12">
-            <div className="relative z-10 mx-auto max-w-aksel xs:w-[90%]">
-              <div className="grid gap-x-8 md:grid-flow-col-dense">
-                <div className="xs:row-span-3 md:col-start-2 md:-mt-20 md:-mb-12">
+          <section className="bg-deepblue-50 px-4 pt-0 pb-20 lg:pt-12">
+            <div className="relative z-10 mx-auto max-w-screen-lg xs:w-[90%]">
+              <div className="md:grid md:grid-flow-row-dense md:gap-x-8">
+                <div className="md:order-1 md:col-start-2 md:row-span-2 md:-mb-8 lg:-mt-12">
                   <img
-                    className="mx-auto w-56 max-w-xs xs:mx-auto xs:max-w-md md:w-full"
+                    className="mx-auto max-w-xs sm:w-full md:mx-auto md:max-w-md"
                     src="/images/prinsipper.webp"
                     width="800"
                     alt=""
                   />
                 </div>
-                <div className="col-span-2 col-start-1 self-end md:col-span-1">
+                <div className="self-end">
                   <div className="max-w-prose">
-                    <h2 className="mt-4 text-2xl font-semibold tracking-tight xs:mt-auto xs:text-4xl">
+                    <h2 className="mt-4 text-2xl font-semibold tracking-tight md:mt-auto md:text-4xl">
                       Prinsipper for brukeropplevelse
                     </h2>
                     <p className="mt-3 text-lg">
@@ -296,65 +296,62 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
                     </p>
                   </div>
                 </div>
-                <div className="col-span-2 col-start-1 lg:col-span-1">
-                  <div className="mt-8 flex flex-wrap gap-2 md:max-w-4xl md:gap-3">
+                <div className="md:col-start-1 md:row-start-2">
+                  <div className="mt-8 flex flex-wrap gap-2 lg:max-w-4xl lg:gap-3">
                     <a
-                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-md transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md md:w-auto"
+                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
                       href="#"
                     >
                       <span className="font-semibold">
                         Jeg får tillit og muligheter
-                      </span>
+                      </span>{" "}
                       <Next
+                        className="-mr-1 sm:hidden"
                         aria-hidden
-                        className="-mr-1 md:hidden"
-                        aria-label="gå til side"
+                        aria-label="Gå til siden"
                       />{" "}
                     </a>
                     <a
-                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-md transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md md:w-auto"
+                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
                       href="#"
                     >
                       <span className="font-semibold">
                         NAV er min støttespiller
-                      </span>
+                      </span>{" "}
                       <Next
+                        className="-mr-1 sm:hidden"
                         aria-hidden
-                        className="-mr-1 md:hidden"
-                        aria-label="gå til side"
+                        aria-label="Gå til neste side"
                       />{" "}
                     </a>
                     <a
-                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-md transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md md:w-auto"
+                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
                       href="#"
                     >
                       <span className="font-semibold">
                         Jeg blir møtt på min situasjon og mine behov
-                      </span>
+                      </span>{" "}
                       <Next
+                        className="-mr-1 sm:hidden"
                         aria-hidden
-                        className="-mr-1 md:hidden"
-                        aria-label="gå til side"
+                        aria-label="Gå til neste side"
                       />{" "}
                     </a>
                     <a
-                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow-md transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md md:w-auto"
+                      className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow transition ease-out hover:bg-gray-800 hover:text-white hover:shadow-md sm:w-auto"
                       href="#"
                     >
-                      <span className="font-semibold">Jeg blir inkludert</span>
+                      <span className="font-semibold">Jeg blir inkludert</span>{" "}
                       <Next
+                        className="-mr-1 sm:hidden"
                         aria-hidden
-                        className="-mr-1 md:hidden"
-                        aria-label="gå til side"
+                        aria-label="Gå til neste side"
                       />
                     </a>
                   </div>
-                  <a
-                    className="mt-6 inline-block text-text underline hover:text-deepblue-700 hover:no-underline"
-                    href="#"
-                  >
+                  <Link className="mt-6 inline-block text-gray-800" href="#">
                     Utforsk alle prinsippene
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
