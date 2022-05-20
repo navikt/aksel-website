@@ -1,7 +1,7 @@
 import React from "react";
 import { Loader, Button } from "@navikt/ds-react";
 import { ExampleComponent } from "../../lib";
-import { BgColors } from "lib/types/types";
+import { BgColors } from "../../lib/types/types";
 
 export const LoaderInverted: ExampleComponent = () => (
   <>
