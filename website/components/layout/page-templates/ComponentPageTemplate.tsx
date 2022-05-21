@@ -13,7 +13,7 @@ import {
   TableOfContents,
   useDsNavigation,
 } from "../..";
-import { DsComponentPage } from "../../../lib";
+import { DsComponentPage } from "@/lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 
 const ComponentPageTemplate = ({

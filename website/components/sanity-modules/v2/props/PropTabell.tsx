@@ -9,8 +9,8 @@ import {
 } from "@navikt/ds-react";
 import NextLink from "next/link";
 import React from "react";
-import { DsProps } from "../../../../lib";
-import { withErrorBoundary } from "../../../ErrorBoundary";
+import { DsProps } from "@/lib";
+import { withErrorBoundary } from "@/error-boundary";
 
 export type PropT = {
   _type: "komponent";

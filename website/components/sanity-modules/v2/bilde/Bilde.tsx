@@ -3,8 +3,8 @@ import { BodyLong } from "@navikt/ds-react";
 import cl from "classnames";
 import React, { useState } from "react";
 import { Lightbox } from "../../..";
-import { Bilde as BildeT, urlFor } from "../../../../lib";
-import { withErrorBoundary } from "../../../ErrorBoundary";
+import { Bilde as BildeT, urlFor } from "@/lib";
+import { withErrorBoundary } from "@/error-boundary";
 import style from "./index.module.css";
 
 const Bilde = ({ node }: { node: BildeT }): JSX.Element => {

@@ -13,7 +13,7 @@ import {
   TableOfContents,
   useDsNavigation,
 } from "../..";
-import { KomponentArtikkel as DsKomponentArtikkel } from "../../../lib";
+import { KomponentArtikkel as DsKomponentArtikkel } from "@/lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 
 const KomponentArtikkelTemplate = ({

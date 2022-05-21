@@ -1,7 +1,7 @@
 import React from "react";
 import { LevelTwoHeading, SectionContext } from "../..";
-import { GeneriskSeksjon as GeneriskSeksjonT } from "../../../lib";
-import { withErrorBoundary } from "../../ErrorBoundary";
+import { GeneriskSeksjon as GeneriskSeksjonT } from "@/lib";
+import { withErrorBoundary } from "@/error-boundary";
 import { SanityBlockContent } from "../../SanityBlockContent";
 
 const GeneriskSeksjon = ({ node }: { node: GeneriskSeksjonT }): JSX.Element => {

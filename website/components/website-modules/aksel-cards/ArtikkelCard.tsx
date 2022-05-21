@@ -2,7 +2,7 @@ import { getTemaSlug } from "@/lib";
 import { BodyShort, Heading } from "@navikt/ds-react";
 import NextLink from "next/link";
 import { logNav } from "../..";
-import { AkselArtikkel, AkselBlogg } from "../../../lib";
+import { AkselArtikkel, AkselBlogg } from "@/lib";
 
 export const ArtikkelCard = ({
   slug,

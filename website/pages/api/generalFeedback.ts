@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { DsFeddbackMsgT } from "../../lib";
+import { DsFeddbackMsgT } from "@/lib";
 
 export default async function handler(
   req: NextApiRequest,

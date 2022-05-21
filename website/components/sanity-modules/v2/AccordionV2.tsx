@@ -1,7 +1,7 @@
 import { Accordion as DsAccordion } from "@navikt/ds-react";
 import React from "react";
-import { AccordionV2 } from "../../../lib";
-import { withErrorBoundary } from "../../ErrorBoundary";
+import { AccordionV2 } from "@/lib";
+import { withErrorBoundary } from "@/error-boundary";
 import { SanityBlockContent } from "../../SanityBlockContent";
 
 const Accordion = ({ node }: { node: AccordionV2 }): JSX.Element => {

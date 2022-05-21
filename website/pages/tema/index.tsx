@@ -5,7 +5,7 @@ import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
 import { AkselTemaT } from "..";
-import { getClient } from "../../lib/sanity/sanity.server";
+import { getClient } from "@/sanity-client";
 
 interface PageProps {
   page: AkselTemaT[];

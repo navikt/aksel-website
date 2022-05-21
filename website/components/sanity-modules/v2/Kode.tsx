@@ -1,7 +1,7 @@
 import React from "react";
 import { CodeExample, Snippet } from "../..";
-import { DsCodeExample, Kode as KodeT } from "../../../lib";
-import { withErrorBoundary } from "../../ErrorBoundary";
+import { DsCodeExample, Kode as KodeT } from "@/lib";
+import { withErrorBoundary } from "@/error-boundary";
 
 const Kode = ({ node }: { node: KodeT }): JSX.Element => {
   if (!node || (!node.variant && !node.code) || (node.variant && !node.ref)) {

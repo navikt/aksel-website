@@ -4,8 +4,8 @@ import cl from "classnames";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
 import { logNav, useDsNavigation } from "../..";
-import { DsFrontPageCardT, urlFor } from "../../../lib";
-import { withErrorBoundary } from "../../ErrorBoundary";
+import { DsFrontPageCardT, urlFor } from "@/lib";
+import { withErrorBoundary } from "@/error-boundary";
 
 interface CardProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   node: DsFrontPageCardT;

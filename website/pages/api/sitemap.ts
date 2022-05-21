@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { SitemapStream, streamToPromise } from "sitemap";
-import { getAllPages } from "../../lib";
+import { getAllPages } from "@/lib";
 
 /* https://linguinecode.com/post/add-robots-txt-file-sitemaps-nextjs */
 export default async (req: NextApiRequest, res: NextApiResponse) => {

@@ -4,7 +4,7 @@ import NextLink from "next/link";
 import React, { useContext, useState } from "react";
 import { useIsomorphicLayoutEffect } from "react-use";
 import { logNav, PagePropsContext } from "../..";
-import { DsNavigationHeadingMenuT, DsNavigationHeadingT } from "../../../lib";
+import { DsNavigationHeadingMenuT, DsNavigationHeadingT } from "@/lib";
 
 const Menu = ({
   heading,

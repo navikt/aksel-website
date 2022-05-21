@@ -1,8 +1,8 @@
 import { Label } from "@navikt/ds-react";
 import React from "react";
 import { LevelTwoHeading, Bilde } from "../..";
-import { AnatomiSeksjon } from "../../../lib";
-import { withErrorBoundary } from "../../ErrorBoundary";
+import { AnatomiSeksjon } from "@/lib";
+import { withErrorBoundary } from "@/error-boundary";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import cl from "classnames";
 

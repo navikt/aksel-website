@@ -2,7 +2,7 @@ import { BodyShort, Button, Heading, Label, Textarea } from "@navikt/ds-react";
 import cl from "classnames";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { HelpfulArticleEnum, HelpfulArticleT } from "../../../lib";
+import { HelpfulArticleEnum, HelpfulArticleT } from "@/lib";
 import { AmplitudeEvents, logAmplitudeEvent } from "../utils";
 
 const Feedback = ({

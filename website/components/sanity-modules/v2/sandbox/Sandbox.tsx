@@ -24,7 +24,7 @@ import {
 import { DsCodeSandbox as SandboxT } from "@/lib";
 import getSandbox from "../../../../stories/sandbox";
 import { SandboxComponent } from "../../../../stories/sandbox/types";
-import { withErrorBoundary } from "../../../ErrorBoundary";
+import { withErrorBoundary } from "@/error-boundary";
 import CopyButton from "../code/CopyButton";
 import PreviewWrapper from "./PreviewWrapper";
 import {

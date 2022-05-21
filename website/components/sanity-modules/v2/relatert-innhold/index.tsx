@@ -3,8 +3,8 @@ import cl from "classnames";
 import NextLink from "next/link";
 import React from "react";
 import { logNav } from "../../..";
-import { RelatertInnhold as RelatertInnholdT } from "../../../../lib";
-import { withErrorBoundary } from "../../../ErrorBoundary";
+import { RelatertInnhold as RelatertInnholdT } from "@/lib";
+import { withErrorBoundary } from "@/error-boundary";
 
 const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
   if (!node || node?.lenker?.length === 0) {

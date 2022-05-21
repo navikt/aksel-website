@@ -4,7 +4,7 @@ import { AkselBlogg, akselBloggPosts } from "@/lib";
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
-import { getClient } from "../../lib/sanity/sanity.server";
+import { getClient } from "@/sanity-client";
 
 const Page = ({ preview, page }: PageProps): JSX.Element => {
   return (

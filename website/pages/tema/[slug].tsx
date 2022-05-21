@@ -12,7 +12,7 @@ import { Heading, Link } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
-import { getClient } from "../../lib/sanity/sanity.server";
+import { getClient } from "@/sanity-client";
 
 type ArtiklerT = Partial<
   AkselArtikkel & {

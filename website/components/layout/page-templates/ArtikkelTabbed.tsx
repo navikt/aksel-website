@@ -10,7 +10,7 @@ import {
   slugger,
   TableOfContents,
 } from "../..";
-import { DsArtikkel } from "../../../lib";
+import { DsArtikkel } from "@/lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 
 const ArtikkelTabbedTemplate = ({

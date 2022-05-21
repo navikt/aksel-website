@@ -3,7 +3,7 @@ import { BodyLong } from "@navikt/ds-react";
 import React, { useState } from "react";
 import { Lightbox } from "../../../..";
 import { Picture as PictureT, urlFor } from "@/lib";
-import { withErrorBoundary } from "../../../../ErrorBoundary";
+import { withErrorBoundary } from "@/error-boundary";
 
 const Image = ({ node }: { node: PictureT }): JSX.Element => {
   if (!node || !node.asset) {

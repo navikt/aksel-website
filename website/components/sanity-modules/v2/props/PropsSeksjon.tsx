@@ -1,7 +1,7 @@
 import React from "react";
 import { LevelTwoHeading } from "../../..";
-import { PropsSeksjon as PropsSeksjonT } from "../../../../lib";
-import { withErrorBoundary } from "../../../ErrorBoundary";
+import { PropsSeksjon as PropsSeksjonT } from "@/lib";
+import { withErrorBoundary } from "@/error-boundary";
 import PropTableV2, { PropT } from "./PropTabell";
 
 const PropsSeksjon = ({ node }: { node: PropsSeksjonT }): JSX.Element => {

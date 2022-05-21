@@ -1,7 +1,7 @@
 import React from "react";
 import Changelog from "../v2/changelog";
 import { SanityKeyed } from "@/lib";
-import { withErrorBoundary } from "../../ErrorBoundary";
+import { withErrorBoundary } from "@/error-boundary";
 import ComponentOverview from "../v2/component-overview";
 import IconSearch from "../v2/icon-search";
 import { ColorCategory } from "../v2/color-category";

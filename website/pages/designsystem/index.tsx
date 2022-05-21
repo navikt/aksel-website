@@ -15,7 +15,7 @@ import { SanityBlockContent } from "@/sanity-block";
 import { BodyLong, Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
-import { getClient } from "../../lib/sanity/sanity.server";
+import { getClient } from "@/sanity-client";
 
 const Page = (props: {
   page: DsFrontpage;

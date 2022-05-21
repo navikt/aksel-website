@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { HelpfulArticleT, HelpfulArticleEnum } from "../../lib";
+import { HelpfulArticleT, HelpfulArticleEnum } from "@/lib";
 
 export default async function handler(
   req: NextApiRequest,

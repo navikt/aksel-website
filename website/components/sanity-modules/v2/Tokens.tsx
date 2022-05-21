@@ -1,6 +1,6 @@
 import { SanityT } from "@/lib";
 import { BodyShort, Detail, Heading, Label } from "@navikt/ds-react";
-import { withErrorBoundary } from "../../ErrorBoundary";
+import { withErrorBoundary } from "@/error-boundary";
 import Color from "color";
 import cl from "classnames";
 import { capitalize } from "@/utils";

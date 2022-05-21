@@ -8,7 +8,7 @@ import {
   validateDsPath,
 } from "@/lib";
 import React from "react";
-import { getClient } from "../../../lib/sanity/sanity.server";
+import { getClient } from "@/sanity-client";
 
 const Page = (props: {
   slug?: string;

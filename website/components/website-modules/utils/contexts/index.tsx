@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { PagePropsContextT, SectionContextT } from "../../../../lib";
+import { PagePropsContextT, SectionContextT } from "@/lib";
 
 export const PagePropsContext = createContext<PagePropsContextT>(null);
 

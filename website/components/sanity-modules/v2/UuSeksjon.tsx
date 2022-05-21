@@ -1,7 +1,7 @@
 import { Heading, Table } from "@navikt/ds-react";
 import React from "react";
 import { LevelTwoHeading } from "../..";
-import { withErrorBoundary } from "../../ErrorBoundary";
+import { withErrorBoundary } from "@/error-boundary";
 import { SanityBlockContent } from "../../SanityBlockContent";
 import cl from "classnames";
 import { SanityT } from "@/lib";

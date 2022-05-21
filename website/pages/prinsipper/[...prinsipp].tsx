@@ -6,7 +6,7 @@ import {
   SanityT,
 } from "@/lib";
 import React from "react";
-import { getClient } from "../../lib/sanity/sanity.server";
+import { getClient } from "@/sanity-client";
 
 interface PageProps {
   page: SanityT.Schema.aksel_prinsipp;

@@ -5,7 +5,7 @@ import "prismjs/components/prism-jsx.min";
 import "prismjs/components/prism-typescript.min";
 import React, { useEffect, useState } from "react";
 import { CodeSnippet as CodeSnippetT, Kode } from "@/lib";
-import { withErrorBoundary } from "../../../ErrorBoundary";
+import { withErrorBoundary } from "@/error-boundary";
 import CopyButton from "./CopyButton";
 
 const CodeSnippet = ({

@@ -3,7 +3,7 @@ import cl from "classnames";
 import NextLink from "next/link";
 import * as React from "react";
 import { logNav, Search, useDsNavigation } from "../..";
-import { DsNavigationHeadingT } from "../../../lib";
+import { DsNavigationHeadingT } from "@/lib";
 import MobileNavigation from "./menu/MobileNav";
 import PortalNavigation from "./menu/PortalNav";
 /* import ProfileDropdown from "./ProfileDropdown"; */

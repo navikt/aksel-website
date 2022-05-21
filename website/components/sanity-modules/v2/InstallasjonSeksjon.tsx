@@ -3,8 +3,8 @@ import { CodeExample, LevelTwoHeading } from "../..";
 import {
   DsCodeExample,
   InstallasjonSeksjon as InstallasjonSeksjonT,
-} from "../../../lib";
-import { withErrorBoundary } from "../../ErrorBoundary";
+} from "@/lib";
+import { withErrorBoundary } from "@/error-boundary";
 
 const InstallasjonSeksjon = ({
   node,

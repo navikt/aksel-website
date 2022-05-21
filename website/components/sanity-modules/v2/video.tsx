@@ -1,7 +1,7 @@
 import { BodyLong, ReadMore } from "@navikt/ds-react";
 import cl from "classnames";
 import React, { useState } from "react";
-import { withErrorBoundary } from "../../ErrorBoundary";
+import { withErrorBoundary } from "@/error-boundary";
 
 const Video = ({
   node,

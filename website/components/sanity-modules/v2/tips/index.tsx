@@ -5,7 +5,7 @@ import { Edit, LightBulb } from "@navikt/ds-icons";
 import { Detail, Link } from "@navikt/ds-react";
 import cl from "classnames";
 import React, { useContext } from "react";
-import { withErrorBoundary } from "../../../ErrorBoundary";
+import { withErrorBoundary } from "@/error-boundary";
 import style from "./tips.module.css";
 
 const Tips = ({ node }: { node: SanityT.Schema.tips }): JSX.Element => {

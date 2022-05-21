@@ -5,7 +5,7 @@ import NextLink from "next/link";
 import React, { useContext, useMemo, useState } from "react";
 import { useIsomorphicLayoutEffect } from "react-use";
 import { logNav, PagePropsContext } from "../..";
-import { DsNavigationHeadingMenuT, DsNavigationHeadingT } from "../../../lib";
+import { DsNavigationHeadingMenuT, DsNavigationHeadingT } from "@/lib";
 import style from "./index.module.css";
 
 const NavItem = ({
