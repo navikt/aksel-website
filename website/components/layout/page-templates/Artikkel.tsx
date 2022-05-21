@@ -3,7 +3,7 @@ import Head from "next/head";
 import React from "react";
 import { dateStr, Feedback, slugger, TableOfContents } from "../..";
 import { DsArtikkel } from "@/lib";
-import { SanityBlockContent } from "../../SanityBlockContent";
+import { SanityBlockContent } from "@/sanity-block";
 
 const ArtikkelTemplate = ({
   data,

@@ -2,7 +2,7 @@ import React from "react";
 import { LevelTwoHeading, SectionContext } from "../..";
 import { GeneriskSeksjon as GeneriskSeksjonT } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
-import { SanityBlockContent } from "../../SanityBlockContent";
+import { SanityBlockContent } from "@/sanity-block";
 
 const GeneriskSeksjon = ({ node }: { node: GeneriskSeksjonT }): JSX.Element => {
   if (!node || !node.title || node?.brikker?.length === 0) {

@@ -2,7 +2,7 @@ import React from "react";
 import { CodeExample, LevelTwoHeading, Sandbox } from "../..";
 import { LiveDemoSeksjon } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
-import { SanityBlockContent } from "../../SanityBlockContent";
+import { SanityBlockContent } from "@/sanity-block";
 
 const LiveDemo = ({ node }: { node: LiveDemoSeksjon }): JSX.Element => {
   if (

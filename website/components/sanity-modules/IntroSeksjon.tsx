@@ -3,7 +3,7 @@ import React from "react";
 import { LevelTwoHeading } from "../..";
 import { IntroKomponentSeksjon } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
-import { SanityBlockContent } from "../../SanityBlockContent";
+import { SanityBlockContent } from "@/sanity-block";
 
 const Intro = ({ node }: { node: IntroKomponentSeksjon }): JSX.Element => {
   if (!node || !node.body || !node.brukes_til) {

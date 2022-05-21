@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { Lightbox } from "../../..";
 import { DoDontBlock, DoDontV2, SanityKeyed, urlFor } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
-import { SanityBlockContent } from "../../../SanityBlockContent";
+import { SanityBlockContent } from "@/sanity-block";
 
 const GetIcon = (s: string) => {
   switch (s) {

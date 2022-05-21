@@ -11,7 +11,7 @@ import {
   TableOfContents,
 } from "../..";
 import { DsArtikkel } from "@/lib";
-import { SanityBlockContent } from "../../SanityBlockContent";
+import { SanityBlockContent } from "@/sanity-block";
 
 const ArtikkelTabbedTemplate = ({
   data,

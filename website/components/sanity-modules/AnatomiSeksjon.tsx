@@ -3,7 +3,7 @@ import React from "react";
 import { LevelTwoHeading, Bilde } from "../..";
 import { AnatomiSeksjon } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
-import { SanityBlockContent } from "../../SanityBlockContent";
+import { SanityBlockContent } from "@/sanity-block";
 import cl from "classnames";
 
 const Anatomi = ({ node }: { node: AnatomiSeksjon }): JSX.Element => {

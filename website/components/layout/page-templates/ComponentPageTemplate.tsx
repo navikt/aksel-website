@@ -14,7 +14,7 @@ import {
   useDsNavigation,
 } from "../..";
 import { DsComponentPage } from "@/lib";
-import { SanityBlockContent } from "../../SanityBlockContent";
+import { SanityBlockContent } from "@/sanity-block";
 
 const ComponentPageTemplate = ({
   data,

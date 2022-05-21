@@ -2,7 +2,7 @@ import { Alert as DsAlert, Heading } from "@navikt/ds-react";
 import React from "react";
 import { slugger } from "../..";
 import { Alert as AlertT } from "@/lib";
-import { SanityBlockContent } from "../../SanityBlockContent";
+import { SanityBlockContent } from "@/sanity-block";
 
 const Alert = ({ node }: { node: AlertT }): JSX.Element => {
   const slug =

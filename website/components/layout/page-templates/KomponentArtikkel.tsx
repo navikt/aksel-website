@@ -14,7 +14,7 @@ import {
   useDsNavigation,
 } from "../..";
 import { KomponentArtikkel as DsKomponentArtikkel } from "@/lib";
-import { SanityBlockContent } from "../../SanityBlockContent";
+import { SanityBlockContent } from "@/sanity-block";
 
 const KomponentArtikkelTemplate = ({
   data,
