@@ -1,12 +1,11 @@
-import Head from "next/head";
-import React, { useEffect } from "react";
 import {
-  /*   AuthProvider, */
   initAmplitude,
   logPageView,
   PagePropsContext,
   useScrollToHashOnPageLoad,
 } from "@/components";
+import Head from "next/head";
+import React, { useEffect } from "react";
 import "../styles/index.css";
 
 function App({
