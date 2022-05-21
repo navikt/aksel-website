@@ -3,11 +3,32 @@
     <br/>Aksel
 </h1>
 
+## Innhold
+
+Repoet inneholder all kode for cms og nettside til [Aksel.nav.no](Aksel.nav.no)
+
+### /Website
+
+[Nextjs](https://nextjs.org/) applikasjon som henter data fra et [sanity-datasett](https://www.sanity.io/).
+
+Siden leverer akkurat nå to løsninger:
+
+- Innhold på topnivå i Aksel, eks artikler, prinsipper og blogger
+- Designsystem-dokumentasjon under https://aksel.nav.no/designsystem
+
+Begge løsningene gjenbruker for det meste de samme modulene under website/components, med litt diverse styling-justeringer mellom dem.
+
+### /sanity
+
+[sanity.io](https://www.sanity.io/) studioet sin kode er forvaltet her. Det publiserte studioet finner man på [Aksel.nav.no/studio](Aksel.nav.no/studio).
+
+`production`-datasettet er privat da løsningen etterhvert skal tilby innloggede sider, så man må ha riktige tilganger for å kunne lese/jobbe med dataen der. `schemas` for datasettet finnes under `sanity/schemas`, mens de fleste tilpassninger av selve studioet finnes under `sanity/client`
+
 ## Kom i gang
 
 ### Bidrag
 
-Branch `main` blir pusher rett til prod og da aksel.nav.no. For å utvikle nye features brukes branch `NEXT` som
+Branch `main` blir pusher rett til prod å da aksel.nav.no. For å utvikle nye features brukes branch `NEXT` som
 ved push publiseres til devmiljø aksel.dev.nav.no (krever naisdevice).
 
 ### Nettside (localhost:3000)
@@ -22,9 +43,16 @@ Eks:
 
 `/preview/designsystem/side/button´
 
+NOTE: Sanity-datasettet er privat, noe som betyr du må ha disse tokene for å få data lokalt
+
+```
+SANITY_PREVIEW_TOKEN
+SANITY_PRIVATE_NO_DRAFTS
+```
+
 ### Sanity (localhost:3333)
 
-> Note: Må være developer i https://verktoykasse.sanity.studio, Ta kontakt med Ken Aleksander Johansen nevnt under "Henvendelser" om det trengs.
+> Note: Må være developer i https://verktoykasse.sanity.studio, Ta kontakt med Ken A. Johansen nevnt under "Henvendelser" om det trengs.
 
 Starter opp sanity-studioet lokalt. Husk at alle endringer i datasettet lokalt også gjøres i prod. Bytt derfor til `development`-dataset hvis man vil teste destruktive handlinger.
 
@@ -47,12 +75,18 @@ Blir brukt flere keys i .env under `./website`, men ingen av dem trengs for å t
 
 ### Søk
 
-Søk-index blir generert av algolia-scraper. Kjøres daglig i en github-action, men kan kjøres lokalt også med docker.
+Søk-index blir generert av [algolia-scraper](https://github.com/algolia/docsearch-scraper). Kjøres daglig i en github-action, men kan kjøres lokalt også med docker.
 
 ```
 docker run -it --env-file=.env -e "CONFIG=$(cat crawler.json | jq -r tostring)" algolia/docsearch-scraper
 ```
 
+## Backups
+
+Kjøres daglige backups av hele sanity-datasettet til GCP-bucket under `designsystem-prod`
+
 ## Henvendelser
 
-Tar gjerne imot issues, men spørsmål og kontakt kan rettes til Ken Aleksander Johansen på slack eller mail: `ken.aleksander.johansen@nav.no`
+Tar gjerne imot issues! Spørsmål og kontakt ang kode kan rettes til Ken A. Johansen på slack eller mail: `ken.aleksander.johansen@nav.no`.
+
+Aksel har også en egen slack-kanal #Aksel der vi tar imot henvendelser!
