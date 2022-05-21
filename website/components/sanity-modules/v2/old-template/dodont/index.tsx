@@ -3,13 +3,9 @@ import { SuccessFilled, WarningFilled } from "@navikt/ds-icons";
 import { BodyShort } from "@navikt/ds-react";
 import cl from "classnames";
 import React, { useState } from "react";
-import { Lightbox } from "../..";
-import {
-  DoDont as DoDontT,
-  DoDontBlock as DoDontBlockT,
-  urlFor,
-} from "../../../lib";
-import { withErrorBoundary } from "../../ErrorBoundary";
+import { Lightbox } from "../../../..";
+import { DoDont as DoDontT, DoDontBlock as DoDontBlockT, urlFor } from "@/lib";
+import { withErrorBoundary } from "../../../../ErrorBoundary";
 
 const GetIcon = (s: string) => {
   switch (s) {
