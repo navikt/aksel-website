@@ -4,8 +4,8 @@ import { BodyShort, Button, Detail, Heading } from "@navikt/ds-react";
 import React, { useEffect, useState } from "react";
 import { renderToString } from "react-dom/server";
 
-import { AmplitudeEvents, isNew, logAmplitudeEvent, Snippet } from "../..";
-import { CodeSnippet } from "../../../lib";
+import { AmplitudeEvents, isNew, logAmplitudeEvent, Snippet } from "../../..";
+import { CodeSnippet } from "@/lib";
 import { downloadPng, downloadSvg } from "./downloads";
 
 const ModalContent = ({ icon }: { icon: string }) => {

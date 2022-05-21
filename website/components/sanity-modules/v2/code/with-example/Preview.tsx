@@ -5,7 +5,7 @@ import babel from "prettier/parser-babel";
 import CodeExample from "./getCodeExample";
 import { useId } from "@navikt/ds-react";
 import React from "react";
-import { getBgColors } from "../../../../stories/sandbox/types";
+import { getBgColors } from "../../../../../stories/sandbox/types";
 
 /**
  *

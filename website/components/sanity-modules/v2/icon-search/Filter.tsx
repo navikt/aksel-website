@@ -1,7 +1,7 @@
 import { Search } from "@navikt/ds-icons";
 import { TextField, ToggleGroup } from "@navikt/ds-react";
 import React, { useEffect, useState } from "react";
-import { AmplitudeEvents, logAmplitudeEvent } from "../..";
+import { AmplitudeEvents, logAmplitudeEvent } from "../../..";
 
 export interface FilterT {
   value: string;

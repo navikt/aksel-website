@@ -1,5 +1,5 @@
 import { BodyShort, Detail, Table } from "@navikt/ds-react";
-import { DsColor } from "../../../lib";
+import { DsColor } from "@/lib";
 import Color from "color";
 import cl from "classnames";
 

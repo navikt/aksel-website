@@ -3,7 +3,7 @@ import meta from "@navikt/ds-icons/meta.json";
 import { BodyLong, Detail, Heading, Link, Modal } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
-import { AmplitudeEvents, isNew, logAmplitudeEvent } from "../..";
+import { AmplitudeEvents, isNew, logAmplitudeEvent } from "../../..";
 import DownloadButtons from "./DownloadButtons";
 import Filter, { FilterT } from "./Filter";
 import { categorizeIcons, CategoryT, IconMetaT } from "./iconCategories";

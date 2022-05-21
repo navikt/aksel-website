@@ -21,10 +21,10 @@ import {
   LiveProvider,
   withLive,
 } from "react-live";
-import { DsCodeSandbox as SandboxT } from "../../../lib";
-import getSandbox from "../../../stories/sandbox";
-import { SandboxComponent } from "../../../stories/sandbox/types";
-import { withErrorBoundary } from "../../ErrorBoundary";
+import { DsCodeSandbox as SandboxT } from "@/lib";
+import getSandbox from "../../../../stories/sandbox";
+import { SandboxComponent } from "../../../../stories/sandbox/types";
+import { withErrorBoundary } from "../../../ErrorBoundary";
 import CopyButton from "../code/CopyButton";
 import PreviewWrapper from "./PreviewWrapper";
 import {

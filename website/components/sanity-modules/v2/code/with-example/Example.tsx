@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import { withErrorBoundary } from "../../../ErrorBoundary";
+import { withErrorBoundary } from "../../../../ErrorBoundary";
 import CodeBlock from "./Block";
 import CodeTabs from "./Tabs";
 import { BgColors, DsCodeExample as DsCodeExampleT } from "@/lib";

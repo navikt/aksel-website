@@ -1,5 +1,5 @@
-import { Examples } from "../../../../stories/examples";
-import { ExampleComponent } from "../../../../lib";
+import { Examples } from "../../../../../stories/examples";
+import { ExampleComponent } from "@/lib";
 
 const getCodeExample = (url: string) => {
   if (!url || !(url in Examples)) {

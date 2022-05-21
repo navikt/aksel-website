@@ -1,9 +1,10 @@
 import React from "react";
-import { Changelog, ColorCategory } from "../..";
+import { Changelog } from "../..";
 import { SanityKeyed } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
-import ComponentOverview from "../component-overview";
-import IconSearch from "../icon-search";
+import ComponentOverview from "../v2/component-overview";
+import IconSearch from "../v2/icon-search";
+import { ColorCategory } from "../v2/color-category";
 
 type SpesialT = SanityKeyed<{
   _type: "spesial_seksjon";

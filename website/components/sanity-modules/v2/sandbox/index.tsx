@@ -1,5 +1,5 @@
-import { DsCodeSandbox as SandboxT } from "../../../lib";
-import { withErrorBoundary } from "../../ErrorBoundary";
+import { DsCodeSandbox as SandboxT } from "@/lib";
+import { withErrorBoundary } from "../../../ErrorBoundary";
 
 import dynamic from "next/dynamic";
 

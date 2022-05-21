@@ -1,7 +1,7 @@
 import { Download } from "@navikt/ds-icons";
 import { Button, Heading, Popover } from "@navikt/ds-react";
 import React, { useRef, useState } from "react";
-import { AmplitudeEvents, logAmplitudeEvent } from "../..";
+import { AmplitudeEvents, logAmplitudeEvent } from "../../..";
 import { downloadAllSvg, downloadPngInSize } from "./downloads";
 
 const DownloadButtons = () => {

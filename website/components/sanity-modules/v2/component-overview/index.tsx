@@ -2,8 +2,8 @@ import { Error, Success } from "@navikt/ds-icons";
 import { BodyShort, Label, Link, Table, Tag, Tooltip } from "@navikt/ds-react";
 import NextLink from "next/link";
 import React from "react";
-import { FigmaIcon, FigmaIconNoSync } from "../..";
-import { DsComponentOverview } from "../../../lib";
+import { FigmaIcon, FigmaIconNoSync } from "../../..";
+import { DsComponentOverview } from "@/lib";
 
 const SuccessIcon = () => (
   <span className="flex items-center">

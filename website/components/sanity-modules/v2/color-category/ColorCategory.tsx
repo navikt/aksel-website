@@ -1,10 +1,10 @@
 import { Modal, Table } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
-import { AmplitudeEvents, logAmplitudeEvent } from "../..";
-import { DsColorCategories } from "../../../lib";
-import { withErrorBoundary } from "../../ErrorBoundary";
-import { SanityBlockContent } from "../../SanityBlockContent";
+import { AmplitudeEvents, logAmplitudeEvent } from "../../..";
+import { DsColorCategories } from "@/lib";
+import { withErrorBoundary } from "../../../ErrorBoundary";
+import { SanityBlockContent } from "@/sanity-block";
 import ColorModal from "./modal/ColorModal";
 import { GlobalTableRow, SemanticTableRow } from "./Rows";
 import { compare } from "./sort";

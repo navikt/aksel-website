@@ -1,8 +1,8 @@
 import { BodyShort, Heading } from "@navikt/ds-react";
 import cl from "classnames";
 import Color from "color";
-import { Snippet } from "../../..";
-import { CodeSnippet, DsColor } from "../../../../lib";
+import { Snippet } from "../../code";
+import { CodeSnippet, DsColor } from "@/lib";
 import ColorFormats from "./ColorFormats";
 
 function capitalize(s: string) {
