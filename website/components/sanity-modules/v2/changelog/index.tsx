@@ -2,9 +2,9 @@ import { dateStr } from "@/utils";
 import { BodyShort, Heading, Link, Select, Tag } from "@navikt/ds-react";
 import React, { useEffect, useState } from "react";
 import Semver from "semver";
-import { ChangelogListT, ChangelogT } from "../../../lib";
-import { withErrorBoundary } from "../../ErrorBoundary";
-import { SanityBlockContent } from "../../SanityBlockContent";
+import { ChangelogListT, ChangelogT } from "@/lib";
+import { withErrorBoundary } from "../../../ErrorBoundary";
+import { SanityBlockContent } from "@/sanity-block";
 
 const Log = ({ log }: { log: ChangelogT }) => {
   const getPrText = (pr) => {
