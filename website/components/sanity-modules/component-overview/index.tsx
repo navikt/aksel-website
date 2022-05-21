@@ -1,9 +1,9 @@
 import { Error, Success } from "@navikt/ds-icons";
 import { BodyShort, Label, Link, Table, Tag, Tooltip } from "@navikt/ds-react";
-import React from "react";
-import { FigmaIcon, FigmaIconNoSync, OverflowDetector } from "../..";
-import { DsComponentOverview } from "../../../lib";
 import NextLink from "next/link";
+import React from "react";
+import { FigmaIcon, FigmaIconNoSync } from "../..";
+import { DsComponentOverview } from "../../../lib";
 
 const SuccessIcon = () => (
   <span className="flex items-center">
@@ -153,7 +153,7 @@ const ComponentOverview = ({
           <SuccessIcon /> - Lansert 🎉
         </li>
       </ul>
-      <OverflowDetector>
+      <div className="overflow-x-auto">
         <Table>
           <Table.Header>
             <Table.Row>
@@ -179,7 +179,7 @@ const ComponentOverview = ({
               ))}
           </Table.Body>
         </Table>
-      </OverflowDetector>
+      </div>
     </div>
   );
 };

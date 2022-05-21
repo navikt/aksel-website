@@ -1,7 +1,7 @@
 import { Modal, Table } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
-import { AmplitudeEvents, logAmplitudeEvent, OverflowDetector } from "../..";
+import { AmplitudeEvents, logAmplitudeEvent } from "../..";
 import { DsColorCategories } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import { SanityBlockContent } from "../../SanityBlockContent";
@@ -104,7 +104,7 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
           ))}
         </div>
       ) : (
-        <OverflowDetector>
+        <div className="overflow-x-auto">
           <Table className="min-w-[400px] table-fixed">
             <Table.Header>
               <Table.Row>
@@ -128,7 +128,7 @@ const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
               ))}
             </Table.Body>
           </Table>
-        </OverflowDetector>
+        </div>
       )}
       <Modal open={open} onClose={() => handleClose()}>
         <Modal.Content>

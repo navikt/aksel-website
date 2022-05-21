@@ -1,6 +1,5 @@
 import { Table } from "@navikt/ds-react";
 import React from "react";
-/* import { OverflowDetector } from "../.."; */
 import { Tabell as TabellT } from "../../../lib";
 import { withErrorBoundary } from "../../ErrorBoundary";
 import { SanityBlockContent } from "../../SanityBlockContent";
@@ -12,7 +11,6 @@ const TableComponent = ({ node }: { node: TabellT }): JSX.Element => {
 
   return (
     <div className="mb-8 overflow-x-auto">
-      {/* <OverflowDetector> */}
       <Table>
         <Table.Header>
           <Table.Row>
@@ -39,7 +37,6 @@ const TableComponent = ({ node }: { node: TabellT }): JSX.Element => {
           ))}
         </Table.Body>
       </Table>
-      {/* </OverflowDetector> */}
     </div>
   );
 };

@@ -35,7 +35,6 @@ export { default as Changelog } from "./website-modules/changelog";
 export { default as Feedback } from "./website-modules/feedback";
 export { default as LevelTwoHeading } from "./website-modules/heading";
 export { default as Lightbox } from "./website-modules/lightbox";
-export { default as OverflowDetector } from "./website-modules/overflow-detector";
 export { default as PreviewBanner } from "./website-modules/PreviewBanner";
 export { default as ScrollTop } from "./website-modules/scroll-top";
 export { default as Search } from "./website-modules/search";
