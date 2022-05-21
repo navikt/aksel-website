@@ -10,6 +10,11 @@
       "url": "https://aksel.nav.no/artikkel/",
       "tags": ["aksel"],
       "selectors_key": "aksel"
+    },
+    {
+      "url": "https://aksel.nav.no/blogg/",
+      "tags": ["aksel"],
+      "selectors_key": "aksel"
     }
   ],
   "selectors": {
