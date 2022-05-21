@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { BodyLong } from "@navikt/ds-react";
 import React, { useState } from "react";
-import { Lightbox } from "../../../..";
+import { Lightbox } from "@/components";
 import { Picture as PictureT, urlFor } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
 

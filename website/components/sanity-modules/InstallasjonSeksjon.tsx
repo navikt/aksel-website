@@ -1,5 +1,5 @@
 import React from "react";
-import { CodeExample, LevelTwoHeading } from "../..";
+import { CodeExample, LevelTwoHeading } from "@/components";
 import {
   DsCodeExample,
   InstallasjonSeksjon as InstallasjonSeksjonT,

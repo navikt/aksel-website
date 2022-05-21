@@ -1,5 +1,5 @@
 import React from "react";
-import { CodeExample, Snippet } from "../..";
+import { CodeExample, Snippet } from "@/components";
 import { DsCodeExample, Kode as KodeT } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
 

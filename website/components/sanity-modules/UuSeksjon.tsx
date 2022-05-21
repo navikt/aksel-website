@@ -1,6 +1,6 @@
 import { Heading, Table } from "@navikt/ds-react";
 import React from "react";
-import { LevelTwoHeading } from "../..";
+import { LevelTwoHeading } from "@/components";
 import { withErrorBoundary } from "@/error-boundary";
 import { SanityBlockContent } from "@/sanity-block";
 import cl from "classnames";

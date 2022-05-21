@@ -2,7 +2,7 @@
 import { BodyLong } from "@navikt/ds-react";
 import cl from "classnames";
 import React, { useState } from "react";
-import { Lightbox } from "../../..";
+import { Lightbox } from "@/components";
 import { Bilde as BildeT, urlFor } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
 import style from "./index.module.css";

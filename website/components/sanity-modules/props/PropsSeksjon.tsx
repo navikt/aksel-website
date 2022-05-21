@@ -1,5 +1,5 @@
 import React from "react";
-import { LevelTwoHeading } from "../../..";
+import { LevelTwoHeading } from "@/components";
 import { PropsSeksjon as PropsSeksjonT } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
 import PropTableV2, { PropT } from "./PropTabell";

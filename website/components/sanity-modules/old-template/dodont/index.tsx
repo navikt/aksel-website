@@ -3,7 +3,7 @@ import { SuccessFilled, WarningFilled } from "@navikt/ds-icons";
 import { BodyShort } from "@navikt/ds-react";
 import cl from "classnames";
 import React, { useState } from "react";
-import { Lightbox } from "../../../..";
+import { Lightbox } from "@/components";
 import { DoDont as DoDontT, DoDontBlock as DoDontBlockT, urlFor } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
 

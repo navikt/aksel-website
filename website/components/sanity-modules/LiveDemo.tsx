@@ -1,5 +1,5 @@
 import React from "react";
-import { CodeExample, LevelTwoHeading, Sandbox } from "../..";
+import { CodeExample, LevelTwoHeading, Sandbox } from "@/components";
 import { LiveDemoSeksjon } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
 import { SanityBlockContent } from "@/sanity-block";

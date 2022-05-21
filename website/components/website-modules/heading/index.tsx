@@ -3,7 +3,7 @@ import { BodyShort, Heading, Popover } from "@navikt/ds-react";
 import cl from "classnames";
 import copy from "copy-to-clipboard";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { AmplitudeEvents, logAmplitudeEvent, slugger } from "../..";
+import { AmplitudeEvents, logAmplitudeEvent, slugger } from "@/components";
 
 const LevelTwoHeading = ({
   children,

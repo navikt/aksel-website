@@ -2,7 +2,7 @@ import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import cl from "classnames";
 import NextLink from "next/link";
 import React from "react";
-import { logNav } from "../../..";
+import { logNav } from "@/components";
 import { RelatertInnhold as RelatertInnholdT } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { LevelTwoHeading, SectionContext } from "../..";
+import { LevelTwoHeading, SectionContext } from "@/components";
 import { GeneriskSeksjon as GeneriskSeksjonT } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
 import { SanityBlockContent } from "@/sanity-block";
