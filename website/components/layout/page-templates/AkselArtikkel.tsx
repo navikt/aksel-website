@@ -28,6 +28,7 @@ const AkselArtikkelTemplate = ({
       <Head>
         <title>{`${data?.heading} - ${title}`}</title>
         <meta property="og:title" content={`${data?.heading} - ${title}`} />
+        <meta property="og:description" content={data?.oppsummering} />
         <meta property="og:type" content="article" />
       </Head>
 

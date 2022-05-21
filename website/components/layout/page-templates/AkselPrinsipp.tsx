@@ -25,6 +25,7 @@ const AkselPrinsippTemplate = ({
       <Head>
         <title>{`${data?.heading} - Prinsipp - ${title}`}</title>
         <meta property="og:title" content={`${data?.heading} - ${title}`} />
+        <meta property="og:description" content={data?.oppsummering} />
         <meta property="og:type" content="article" />
       </Head>
 
