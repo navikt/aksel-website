@@ -1821,29 +1821,6 @@ Dette vil stå under bildet
       caption?: string;
     };
 
-    type picture_text = {
-      _type: "picture_text";
-      asset: Sanity.Asset;
-      crop?: Sanity.ImageCrop;
-      hotspot?: Sanity.ImageHotspot;
-
-      /**
-       * Alt-tekst - `String`
-Beskriv bildet for skjermlesere
-       */
-      title?: string;
-
-      /**
-       * Bilde plassering - `String`
-       */
-      placement?: "right" | "left";
-
-      /**
-       * Innhold - `RegistryReference`
-       */
-      body?: riktekst_enkel;
-    };
-
     type prop_table = {
       _type: "prop_table";
 
@@ -1873,62 +1850,6 @@ Slik man ville brukt den, eks Accordion.Item
       >;
     };
 
-    type related_pages = {
-      _type: "related_pages";
-
-      /**
-       * Sider - `Array`
-       */
-      links?: Array<
-        Sanity.Keyed<{
-          _type: "link";
-
-          /**
-           * Tittel - `String`
-           */
-          title?: string;
-
-          /**
-           * Beskrivelse - `String`
-           */
-          description?: string;
-
-          /**
-           * Intern side i Sanity - `Boolean`
-           */
-          internal?: boolean;
-
-          /**
-           * Lenke til Intern sanity-side - `Reference`
-           */
-          internal_link?: Sanity.Reference<
-            | ds_component_page
-            | komponent_artikkel
-            | ds_artikkel
-            | aksel_artikkel
-            | aksel_blogg
-            | aksel_prinsipp
-          >;
-
-          /**
-           * Lenke til ekstern side - `Url`
-           */
-          external_link?: string;
-
-          /**
-       * Tagging - `String`
-Velg hvordan kortet skal tagges
-       */
-          tags?: "default" | "main_categories";
-
-          /**
-           * Kategori - `Reference`
-           */
-          category_ref?: Sanity.Reference<main_categories>;
-        }>
-      >;
-    };
-
     type tips = {
       _type: "tips";
       eksperiment?: boolean;
@@ -1942,7 +1863,6 @@ Velg hvordan kortet skal tagges
     type blockContent = Array<
       | Sanity.Keyed<Sanity.Block>
       | Sanity.Keyed<picture>
-      | Sanity.Keyed<picture_text>
       | Sanity.Keyed<tips>
       | Sanity.Keyed<alert>
       | Sanity.Keyed<related_pages>

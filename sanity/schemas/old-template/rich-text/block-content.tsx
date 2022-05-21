@@ -186,14 +186,11 @@ export default {
       type: "picture",
     },
     {
-      type: "picture_text",
-    },
-    {
       type: "tips",
       icon: () => <Information />,
     },
     {
-      type: "alert",
+      type: "alert_v2",
       icon: () => <Warning />,
     },
     {

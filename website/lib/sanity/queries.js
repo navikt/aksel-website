@@ -6,14 +6,6 @@ markDefs[]{
   },
 }`;
 
-const relatedCards = `_type == "related_pages" =>{
-  links[]{
-    ...,
-    "internal_link": internal_link->slug.current,
-    category_ref->{...}
-  }
-}`;
-
 const alert = `_type == "alert" =>{
   ...,
   body[]{
@@ -35,14 +27,6 @@ const uniqueModules = `_type == "code_example_ref" =>{
 },
 _type == "code_sandbox_ref" =>{
   ...@.ref->
-}`;
-
-const pictureWText = `_type == "picture_text" =>{
-  ...,
-  body[]{
-    ...,
-    ${markDef}
-  }
 }`;
 
 const doDont = `_type == "do_dont" =>{
@@ -247,11 +231,9 @@ const propsTableOld = `_type == "prop_table" =>{
 }`;
 
 const deRefs = `
-${relatedCards},
 ${alert},
 ${tips},
 ${uniqueModules},
-${pictureWText},
 ${doDont},
 ${markDef},
 ${introSeksjon},

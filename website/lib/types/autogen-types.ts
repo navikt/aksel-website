@@ -2160,34 +2160,6 @@ export type Picture = {
   caption?: string;
 };
 
-export type PictureText = {
-  _type: "picture_text";
-  asset: SanityReference<SanityImageAsset>;
-  crop?: SanityImageCrop;
-  hotspot?: SanityImageHotspot;
-
-  /**
-   * Alt-tekst — `string`
-   *
-   * Beskriv bildet for skjermlesere
-   */
-  title?: string;
-
-  /**
-   * Bilde plassering — `string`
-   *
-   *
-   */
-  placement?: "right" | "left";
-
-  /**
-   * Innhold — `riktekst_enkel`
-   *
-   *
-   */
-  body?: RiktekstEnkel;
-};
-
 export type PropTable = {
   _type: "prop_table";
   /**
@@ -2278,74 +2250,6 @@ export type PropTableProp = {
   required?: boolean;
 };
 
-export type RelatedPages = {
-  _type: "related_pages";
-  /**
-   * Sider — `array`
-   *
-   *
-   */
-  links?: Array<
-    SanityKeyed<{
-      _type: "link";
-      /**
-       * Tittel — `string`
-       *
-       *
-       */
-      title?: string;
-
-      /**
-       * Beskrivelse — `string`
-       *
-       *
-       */
-      description?: string;
-
-      /**
-       * Intern side i Sanity — `boolean`
-       *
-       *
-       */
-      internal?: boolean;
-
-      /**
-       * Lenke til Intern sanity-side — `reference`
-       *
-       *
-       */
-      internal_link?: SanityReference<
-        | DsComponentPage
-        | KomponentArtikkel
-        | DsArtikkel
-        | AkselArtikkel
-        | AkselBlogg
-      >;
-
-      /**
-       * Lenke til ekstern side — `url`
-       *
-       *
-       */
-      external_link?: string;
-
-      /**
-       * Tagging — `string`
-       *
-       * Velg hvordan kortet skal tagges
-       */
-      tags?: "default" | "main_categories";
-
-      /**
-       * Kategori — `reference`
-       *
-       *
-       */
-      category_ref?: SanityReference<MainCategories>;
-    }>
-  >;
-};
-
 export type Tips = {
   _type: "tips";
   /**
@@ -2359,10 +2263,8 @@ export type Tips = {
 export type BlockContent = Array<
   | SanityKeyed<SanityBlock>
   | SanityKeyed<Picture>
-  | SanityKeyed<PictureText>
   | SanityKeyed<Tips>
   | SanityKeyed<Alert>
-  | SanityKeyed<RelatedPages>
   | SanityKeyed<CodeSnippet>
   | SanityKeyed<DoDont>
   | SanityKeyed<CodeSandboxRef>

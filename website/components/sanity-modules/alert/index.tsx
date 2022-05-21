@@ -10,6 +10,12 @@ const Alert = ({ node }: { node: AlertT }): JSX.Element => {
     node.heading_level === "h2" &&
     slugger.slug(node.heading.toString());
 
+  Alert;
+
+  if (node._type === "alert") {
+    return <div className="should-not-be-found">a</div>;
+  }
+
   return (
     <div className="section--small relative-child max-w-2xl">
       <DsAlert variant={node.variant} size={node.size}>

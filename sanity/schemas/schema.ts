@@ -35,7 +35,6 @@ export default createSchema({
     SanityModules.DoDont,
     SanityModules.doDont,
     SanityModules.Image,
-    SanityModules.ImageWithText,
     SanityModules.PropTable,
     RichText.BlockContent,
     RichText.IconDecorator,

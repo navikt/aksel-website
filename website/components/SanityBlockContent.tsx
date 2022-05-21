@@ -8,7 +8,6 @@ import {
   CodeExample,
   DoDont,
   Image,
-  ImageWithText,
   LevelTwoHeading,
   Sandbox,
   Snippet,
@@ -63,6 +62,7 @@ const serializers = {
     spesial_seksjon: ({ node }) => <SpesialSeksjon node={node} />,
     video: ({ node }) => <Video node={node} />,
     tokens: ({ node }) => <TokensSeksjon node={node} />,
+    tips: ({ node }) => <Tips node={node} />,
 
     /* General page modules */
     ds_code_sandbox: ({ node }) => <Sandbox node={node} />,
@@ -79,9 +79,6 @@ const serializers = {
       ) : null,
     do_dont: ({ node }) => <DoDont node={node} />,
     picture: ({ node }) => <Image node={node} />,
-    picture_text: ({ node }) => <ImageWithText node={node} />,
-    alert: ({ node }) => <Alert node={node} />,
-    tips: ({ node }) => <Tips node={node} />,
 
     block: ({ node, children }) => {
       const context: BlockContextT = useContext(BlockContext);
