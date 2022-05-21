@@ -942,6 +942,7 @@ Brukes i kort og innganger
       oppsummering?: string;
 
       /**
+       * Beskrivelse - `RegistryReference`
        */
       beskrivelse?: riktekst;
 
@@ -953,7 +954,7 @@ Vil ikke vise artikler som ikke er lagt til i seksjoner hvis valgt!
 
       /**
        * Seksjonering - `Array`
-Del inn artiklene i flere seksjoner
+Del inn artiklene i flere seksjoner (vises ikke i preview før publisering desverre)
        */
       seksjoner?: Array<
         Sanity.Keyed<{
@@ -1083,6 +1084,7 @@ Brukes i kort og innganger
 
       /**
        * Tittel (h2) - `String`
+       */
       title?: string;
 
       /**
@@ -1659,6 +1661,21 @@ Hvis videoen inneholder lyd, anbelfaler vi å skrive en transkripsjon som kan le
       tokenlist?: Array<Sanity.KeyedReference<ds_tokens>>;
     };
 
+    type tips = {
+      _type: "tips";
+
+      /**
+       * Feedback - `Boolean`
+Endrer modul-variant
+       */
+      eksperiment?: boolean;
+
+      /**
+       * Innhold - `RegistryReference`
+       */
+      body?: riktekst_enkel;
+    };
+
     type navigation_link = {
       _type: "navigation_link";
 
@@ -1850,22 +1867,12 @@ Slik man ville brukt den, eks Accordion.Item
       >;
     };
 
-    type tips = {
-      _type: "tips";
-      eksperiment?: boolean;
-
-      /**
-       * Innhold - `RegistryReference`
-       */
-      body?: riktekst_enkel;
-    };
-
     type blockContent = Array<
       | Sanity.Keyed<Sanity.Block>
       | Sanity.Keyed<picture>
       | Sanity.Keyed<tips>
-      | Sanity.Keyed<alert>
-      | Sanity.Keyed<related_pages>
+      | Sanity.Keyed<alert_v2>
+      | Sanity.Keyed<relatert_innhold>
       | Sanity.Keyed<code_snippet>
       | Sanity.Keyed<do_dont>
       | Sanity.Keyed<code_sandbox_ref>
