@@ -4,7 +4,7 @@ import { KBD } from "@sanity/ui";
 import React from "react";
 import styled from "styled-components";
 import { allDocumentTypes } from "../../../config";
-import IconDecorator from "../../rich-text/icon-decorator";
+import IconDecorator from "../../old-template/rich-text/icon-decorator";
 
 export const TitleRenderer = (props, size, level) => (
   <Heading size={size} level={level}>

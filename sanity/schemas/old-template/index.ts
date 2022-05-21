@@ -7,4 +7,3 @@ export { default as ImageWithText } from "./image-with-text";
 export { default as Image } from "./image";
 export { default as PropTable } from "./proptable";
 export { default as RelatedPages } from "./related-pages";
-export { default as Tips } from "./tips";

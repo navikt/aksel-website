@@ -10,10 +10,10 @@ import frontpage from "./documents/frontpage";
 
 import * as Designsystem from "./documents/designsystem";
 import * as Aksel from "./documents/aksel";
-import * as SanityModules from "./sanity-modules";
-import * as RichText from "./rich-text";
+import * as SanityModules from "./old-template";
+import * as RichText from "./old-template/rich-text";
 import introduction from "./documents/introduction";
-import v2Blocks from "./v2";
+import v2Blocks from "./modules";
 
 export default createSchema({
   name: "default",
@@ -27,6 +27,7 @@ export default createSchema({
     dropdown,
     introduction,
 
+    /* Gammel template, fjernets etterhvert */
     SanityModules.Alert,
     SanityModules.CodeExampleRef,
     SanityModules.CodeSandboxRef,
@@ -37,7 +38,6 @@ export default createSchema({
     SanityModules.ImageWithText,
     SanityModules.PropTable,
     SanityModules.RelatedPages,
-    SanityModules.Tips,
     RichText.BlockContent,
     RichText.IconDecorator,
 

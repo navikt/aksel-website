@@ -21,6 +21,7 @@ import Accordion from "./accordion";
 import SpesialSeksjon from "./spesial-seksjon";
 import Video from "./video";
 import Tokens from "./tokens";
+import Tips from "./tips";
 
 const v2Blocks = [
   GeneriskBlokk,
@@ -47,6 +48,7 @@ const v2Blocks = [
   SpesialSeksjon,
   Video,
   Tokens,
+  Tips,
 ];
 
 export default v2Blocks;

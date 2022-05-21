@@ -1,22 +1,19 @@
-import React from "react";
 import "@navikt/ds-css?raw";
-import styled from "styled-components";
-import { Detail, Heading, BodyLong } from "@navikt/ds-react/cjs";
 import {
-  Warning,
-  SuccessStroke,
-  Laptop,
-  List,
   ExternalLink,
-  Link,
-  Folder,
-  Notes,
   Information,
-  Expand,
+  Laptop,
+  Link,
+  List,
+  Notes,
+  SuccessStroke,
+  Warning,
 } from "@navikt/ds-icons";
-
+import { BodyLong, Heading } from "@navikt/ds-react/cjs";
 import { KBD } from "@sanity/ui";
-import { allDocumentTypes } from "../../config";
+import React from "react";
+import styled from "styled-components";
+import { allDocumentTypes } from "../../../config";
 import IconDecorator from "../rich-text/icon-decorator";
 
 export const TitleRenderer = (props, size, level) => (
