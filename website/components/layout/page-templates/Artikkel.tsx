@@ -1,7 +1,7 @@
-import { Heading, useClientLayoutEffect } from "@navikt/ds-react";
+import { BodyShort, Heading, useClientLayoutEffect } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
-import { Feedback, LastUpdateTag, slugger, TableOfContents } from "../..";
+import { dateStr, Feedback, slugger, TableOfContents } from "../..";
 import { DsArtikkel } from "../../../lib";
 import { SanityBlockContent } from "../../SanityBlockContent";
 
@@ -40,7 +40,14 @@ const ArtikkelTemplate = ({
           >
             {data.heading}
           </Heading>
-          <LastUpdateTag date={data._updatedAt} />
+
+          <BodyShort
+            size="small"
+            as="span"
+            className="flex items-center text-text-muted"
+          >
+            {`Oppdatert ${dateStr(data._updatedAt)}`}
+          </BodyShort>
         </div>
       </div>
       <div className="relative flex max-w-full md:max-w-7xl">

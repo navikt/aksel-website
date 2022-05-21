@@ -40,5 +40,4 @@ export { default as PreviewBanner } from "./website-modules/PreviewBanner";
 export { default as ScrollTop } from "./website-modules/scroll-top";
 export { default as Search } from "./website-modules/search";
 export { default as TableOfContents } from "./website-modules/table-of-contents";
-export * from "./website-modules/tags";
 export * from "./website-modules/utils";

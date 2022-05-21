@@ -6,8 +6,8 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import {
   capitalize,
+  dateStr,
   Feedback,
-  LastUpdateTag,
   logNav,
   slugger,
   TableOfContents,
@@ -109,7 +109,14 @@ const ComponentPageTemplate = ({
                 {npmPackage.status}
               </Tag>
             )}
-            <LastUpdateTag date={data._updatedAt} />
+
+            <BodyShort
+              size="small"
+              as="span"
+              className="flex items-center text-text-muted"
+            >
+              {`Oppdatert ${dateStr(data._updatedAt)}`}
+            </BodyShort>
           </BodyShort>
           <BodyShort
             as="span"

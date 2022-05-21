@@ -1,11 +1,11 @@
-import { Heading, Tabs } from "@navikt/ds-react";
+import { BodyShort, Heading, Tabs } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import {
   capitalize,
+  dateStr,
   Feedback,
-  LastUpdateTag,
   logNav,
   slugger,
   TableOfContents,
@@ -57,7 +57,14 @@ const ArtikkelTabbedTemplate = ({
           >
             {data.heading}
           </Heading>
-          <LastUpdateTag date={data._updatedAt} />
+
+          <BodyShort
+            size="small"
+            as="span"
+            className="flex items-center text-text-muted"
+          >
+            {`Oppdatert ${dateStr(data._updatedAt)}`}
+          </BodyShort>
         </div>
       </div>
       {tabs.length > 1 && (
