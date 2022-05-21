@@ -27,7 +27,6 @@ export { default as Tabell } from "./sanity-modules/v2/Tabell";
 export { default as TokensSeksjon } from "./sanity-modules/v2/Tokens";
 export { default as UuSeksjon } from "./sanity-modules/v2/UuSeksjon";
 export * from "./website-modules/aksel-cards";
-export { default as Avatar } from "./website-modules/avatar";
 export {
   ArtikkelBreadcrumbs,
   TemaBreadcrumbs,
