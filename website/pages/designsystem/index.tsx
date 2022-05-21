@@ -1,5 +1,5 @@
 import {
-  Card,
+  DsCard,
   DsFrontpageFooterIllustration,
   DsFrontpageIllustration,
   PreviewBanner,
@@ -63,7 +63,7 @@ const Page = (props: {
               {props?.page?.cards &&
                 props?.page?.cards.map((card) => {
                   return (
-                    <Card
+                    <DsCard
                       key={card._key}
                       node={card as unknown as DsFrontPageCardT}
                       tag={true}
