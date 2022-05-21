@@ -7,7 +7,6 @@ export * from "./sanity-modules/color-category";
 export { default as ComponentOverview } from "./sanity-modules/component-overview";
 export { default as DoDont } from "./sanity-modules/dodont";
 export * from "./sanity-modules/image";
-export { default as RelatedPagesCards } from "./sanity-modules/related-pages-cards";
 export { default as Sandbox } from "./sanity-modules/sandbox";
 export { default as Tips } from "./sanity-modules/v2/tips";
 export { default as AccordionV2 } from "./sanity-modules/v2/AccordionV2";

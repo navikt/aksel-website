@@ -12,7 +12,6 @@ import {
   LevelTwoHeading,
   Sandbox,
   Snippet,
-  RelatedPagesCards,
   Tips,
   IntroKomponent,
   RelatertInnhold,
@@ -66,7 +65,6 @@ const serializers = {
     tokens: ({ node }) => <TokensSeksjon node={node} />,
 
     /* General page modules */
-    related_pages: ({ node }) => <RelatedPagesCards node={node} />,
     ds_code_sandbox: ({ node }) => <Sandbox node={node} />,
     code_snippet: ({ node }) => <Snippet node={node} />,
     ds_code_example: ({ node }) => <CodeExample node={node} />,

@@ -197,7 +197,7 @@ export default {
       icon: () => <Warning />,
     },
     {
-      type: "related_pages",
+      type: "relatert_innhold",
       icon: () => <ExternalLink />,
     },
     { type: "code_snippet", icon: () => <span>{`< />`}</span> },
