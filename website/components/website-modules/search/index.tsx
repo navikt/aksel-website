@@ -114,15 +114,13 @@ const SearchNew = ({
       >
         <InstantSearch
           searchClient={searchClient}
-          indexName="aksel_docsearch"
+          indexName="aksel_search"
           searchFunction={(h) => h.state.query && h.search()}
         >
           <div className="mx-auto w-full max-w-lg pt-32 text-white sm:w-[90%]">
-            <Configure
-              typoTolerance={false}
-              distinct={true}
-              hitsPerPage={200}
-            />
+            <Configure typoTolerance={true} distinct={true} />
+            {/* <RefinementList attribute="tab" /> */}
+
             <SearchBox />
             {/* <div className="">pladkpakdj</div> */}
             {/* <div className="bg-gray-500">

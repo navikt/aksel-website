@@ -38,7 +38,7 @@ export const generateObjects = async () => {
 
   data
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    .map(({ _id, ...rest }) => ({ ...rest }))
+    .map(({ _id, ...rest }) => ({ ...rest, rank: 1 }))
     .forEach((doc) => {
       switch (doc._type) {
         case "aksel_artikkel":
@@ -53,28 +53,44 @@ export const generateObjects = async () => {
           break;
         case "ds_artikkel":
           if (doc.tabs) {
-            doc.tabs.forEach((x) => objects.push({ ...doc, tab: x }));
+            doc.tabs.forEach((x, i) =>
+              objects.push({
+                ...doc,
+                tab: x,
+                url:
+                  i > 0
+                    ? `${doc.url}/${x.toLowerCase().replace(/\s+/g, "-")}`
+                    : doc.url,
+              })
+            );
             break;
           }
           objects.push(doc);
           break;
         case "ds_component_page":
-          ["", "utvikling"].forEach((x) =>
-            objects.push({
-              ...doc,
-              tab: x,
-              url: `${doc.url}${x ? `/${x}` : ""}`,
-            })
-          );
+          objects.push({
+            ...doc,
+            tab: "bruk",
+          });
+          objects.push({
+            ...doc,
+            tab: "kode",
+            url: `${doc.url}/utvikling`,
+            rank: 2,
+          });
           break;
         case "komponent_artikkel":
-          ["", "kode"].forEach((x) =>
-            objects.push({
-              ...doc,
-              tab: x,
-              url: `${doc.url}${x ? `/${x}` : ""}`,
-            })
-          );
+          objects.push({
+            ...doc,
+            tab: "bruk",
+            rank: 1,
+          });
+          objects.push({
+            ...doc,
+            tab: "bruk",
+            url: `${doc.url}/kode`,
+            rank: 2,
+          });
           break;
         default:
           break;
