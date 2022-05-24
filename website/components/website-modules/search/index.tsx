@@ -1,5 +1,5 @@
 import { Search as SearchIcon } from "@navikt/ds-icons";
-import { Search } from "@navikt/ds-react";
+import { BodyShort, Heading, Label, Search } from "@navikt/ds-react";
 import cl from "classnames";
 import React, {
   useEffect /* , { useEffect, useRef, useState } */,
@@ -29,7 +29,8 @@ const SearchBox = () => {
   const debouncedValue = useDebounce(value, 200);
 
   useEffect(() => {
-    debouncedValue && refine(debouncedValue);
+    /* debouncedValue && */ refine(debouncedValue);
+    /* !debouncedValue && clear(); */
   }, [debouncedValue]);
 
   useEffect(() => {
@@ -56,15 +57,86 @@ const SearchBox = () => {
   );
 };
 
+const Hit = ({ hit }: { hit: any }) => {
+  console.log(hit);
+
+  const Tema = () => (
+    <div>
+      <Label>Tema</Label>
+      {hit?.tema?.map?.((x) => (
+        <BodyShort key={x}>{x}</BodyShort>
+      ))}
+    </div>
+  );
+
+  const type = () => {
+    const types = {
+      aksel_artikkel: "Aksel artikkel",
+      aksel_prinsipp: "Aksel prinsipp",
+      aksel_blogg: "Aksel blogg",
+      ds_artikkel: "Designsystem artikkel",
+      ds_component_page: "Komponent",
+      komponent_artikkel: "Komponent",
+    };
+    return types[hit._type];
+  };
+
+  return (
+    <div className="grid gap-4 py-4 ">
+      <a
+        href={`/${hit.url}`}
+        className="hover:underline focus:underline focus:outline-none"
+      >
+        <Heading level="2" size="medium">
+          {hit.heading}
+        </Heading>
+      </a>
+      <div className="flex gap-2">
+        <BodyShort>{type()}</BodyShort>
+        {hit.tema && <Tema />}
+      </div>
+    </div>
+  );
+};
+
 const Hits = () => {
   const { hits, results, ...rest } = useHits();
 
-  console.log({ hits, results, rest: rest });
+  /* console.log({ hits, results, rest: rest }); */
 
-  if (!results.query) {
-    return <div>empty</div>;
+  if (/* !results?.query || results?.query === "" */ false) {
+    return (
+      <div className="mx-auto w-full max-w-lg text-white sm:w-[90%]">
+        <ul className="mt-10 divide-y divide-gray-300 text-3xl text-text-inverted md:mt-24">
+          <li>
+            <a className="inline-block py-3" href="/topic">
+              Tema
+            </a>
+          </li>
+          <li>
+            <a className="inline-block py-3" href="#">
+              Prinsipper
+            </a>
+          </li>
+          <li>
+            <a className="inline-block py-3" href="#">
+              Blogg
+            </a>
+          </li>
+        </ul>
+      </div>
+    );
   }
-  return <div>Hit</div>;
+
+  return (
+    <div className="mx-auto w-full text-white sm:w-[90%]">
+      <ul className="divide-y divide-gray-300/30 overflow-auto py-10 text-3xl text-text-inverted md:py-24">
+        {hits.map((x, i) => (
+          <Hit key={i} hit={x} />
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 const SearchNew = ({
@@ -107,25 +179,22 @@ const SearchNew = ({
       </button>
       <Modal
         isOpen={open}
-        className="relative min-h-full w-full overflow-auto bg-deepblue-900/95 px-4 backdrop-blur focus:outline-none"
-        overlayClassName="z-[9999] inset-0 fixed top-14"
+        className="relative min-h-full w-full bg-deepblue-900/95 px-4 backdrop-blur focus:outline-none"
+        overlayClassName="z-[9999] inset-0 fixed top-14 overflow-auto"
         onRequestClose={() => setOpen(false)}
         contentLabel="Søk"
       >
         <InstantSearch
           searchClient={searchClient}
           indexName="aksel_search"
-          searchFunction={(h) => h.state.query && h.search()}
+          /* searchFunction={(h) => {
+            h.state.query && h.search();
+            console.log(h);
+          }} */
         >
           <div className="mx-auto w-full max-w-lg pt-32 text-white sm:w-[90%]">
             <Configure typoTolerance={true} distinct={true} />
-            {/* <RefinementList attribute="tab" /> */}
-
             <SearchBox />
-            {/* <div className="">pladkpakdj</div> */}
-            {/* <div className="bg-gray-500">
-              <RefinementList for />
-            </div> */}
             <Hits />
           </div>
         </InstantSearch>
