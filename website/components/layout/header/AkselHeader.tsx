@@ -15,9 +15,9 @@ const AkselHeader = ({
       className={cl(
         "group sticky top-0 z-20 w-full shadow-header backdrop-blur transition-colors duration-200 ease-out",
         {
-          "bg-deepblue-900/90 text-white hover:bg-deepblue-900":
+          "header-aksel-forside bg-deepblue-900/90 text-white hover:bg-deepblue-900":
             variant === "forside",
-          "bg-gray-50/80 text-deepblue-800 hover:bg-gray-100/80":
+          "header-aksel-artikkel bg-gray-50/80 text-deepblue-800 hover:bg-gray-100/80":
             variant === "artikkel",
           "bg-white text-deepblue-800 hover:bg-gray-200": variant === "tema",
         }
@@ -55,6 +55,15 @@ const AkselHeader = ({
           />
         </span>
       </div>
+      <style jsx global>{`
+        .search-open .header-aksel-forside {
+          background-color: var(--navds-global-color-deepblue-900);
+        }
+
+        .search-open .header-aksel-artikkel {
+          background-color: var(--navds-global-color-gray-50);
+        }
+      `}</style>
     </header>
   );
 };

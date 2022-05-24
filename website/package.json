@@ -20,6 +20,7 @@
     "update:colors": "npx ts-node --project tsconfig.tsnode.json ./lib/update-documents/update-color-examples",
     "update:props": "npx ts-node --project tsconfig.tsnode.json ./lib/update-documents/update-props",
     "update:tokens": "npx ts-node --project tsconfig.tsnode.json ./lib/update-documents/update-tokens",
+    "update:search": "npx ts-node --project tsconfig.tsnode.json ./lib/search",
     "generate:testurls": "npx ts-node --project tsconfig.tsnode.json ./lib/testing/generateTestUrls",
     "analyze": "cross-env ANALYZE=true next build"
   },
@@ -68,7 +69,8 @@
     "validator": "^13.7.0",
     "jose": "4.8.0",
     "jwt-decode": "3.1.2",
-    "elevator.js": "1.0.1"
+    "elevator.js": "1.0.1",
+    "react-instantsearch-hooks-web": "^6.26.0"
   },
   "devDependencies": {
     "@types/luxon": "2.3.2",

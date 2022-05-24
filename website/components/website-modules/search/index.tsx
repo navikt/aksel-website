@@ -1,56 +1,104 @@
-import { DocSearchModal, useDocSearchKeyboardEvents } from "@docsearch/react";
-import { DocSearchHit } from "@docsearch/react/dist/esm/types";
 import { Search as SearchIcon } from "@navikt/ds-icons";
-import { BodyShort /* , Button, Search as DsSearch */ } from "@navikt/ds-react";
-/* import algoliasearch from "algoliasearch/lite"; */
+import { Search } from "@navikt/ds-react";
 import cl from "classnames";
-import React /* , { useEffect, useRef, useState } */ from "react";
-import { createPortal } from "react-dom";
-/* import Modal from "react-modal";
-import style from "./index.module.css"; */
+import React, {
+  useEffect /* , { useEffect, useRef, useState } */,
+  useState,
+} from "react";
+import algoliasearch from "algoliasearch/lite";
+import {
+  InstantSearch,
+  useHits,
+  useSearchBox,
+  Configure,
+  HierarchicalMenu,
+  RefinementList,
+} from "react-instantsearch-hooks-web";
 
-/* const searchClient = algoliasearch(
+import Modal from "react-modal";
+import { useDebounce } from "@/utils";
+
+const searchClient = algoliasearch(
   "J64I2SIG7K",
   "92d2ac76eba4eba628a34baa11743fc1"
 );
 
-const index = "aksel_docsearch"; */
+const SearchBox = () => {
+  const { query, refine, clear } = useSearchBox();
+  const [value, setValue] = useState(query);
+  const debouncedValue = useDebounce(value, 200);
 
-/* const SearchNew = ({ inverted }: { inverted?: boolean }) => {
-  const [open, setOpen] = useState(true);
-  const [query, setQuery] = useState("");
-  const [result, setResult] = useState<any>({});
-  const searchIndex = useRef(null);
+  useEffect(() => {
+    debouncedValue && refine(debouncedValue);
+  }, [debouncedValue]);
+
+  useEffect(() => {
+    setValue(query);
+  }, [query]);
+
+  return (
+    <div className="searchfield">
+      <Search
+        label="Søk i alle aksel-sider"
+        variant="simple"
+        data-theme="dark"
+        value={value}
+        onChange={(e) => setValue(e)}
+        onClear={() => clear()}
+      />
+      <style jsx global>{`
+        .searchfield {
+          --navds-search-color-text: white;
+          --navds-shadow-focus: var(--navds-shadow-focus-inverted);
+        }
+      `}</style>
+    </div>
+  );
+};
+
+const Hits = () => {
+  const { hits, results, ...rest } = useHits();
+
+  console.log({ hits, results, rest: rest });
+
+  if (!results.query) {
+    return <div>empty</div>;
+  }
+  return <div>Hit</div>;
+};
+
+const SearchNew = ({
+  variant = "ds",
+}: {
+  variant?: "ds" | "aksel-inverted" | "aksel";
+}) => {
+  const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
     Modal.setAppElement("#__next");
-    searchIndex.current = searchClient.initIndex(index);
   }, []);
 
   useEffect(() => {
-    if (!query || query === "") {
-      setResult({});
-      return;
-    }
+    open
+      ? document.body?.parentElement?.classList.add(
+          ...["overflow-hidden", "search-open"]
+        )
+      : document.body?.parentElement?.removeAttribute("class");
+  }, [open]);
 
-    searchIndex.current &&
-      searchIndex.current
-        .search(query, { typoTolerance: false, hitsPerPage: 200 })
-        .then((res) => setResult(res));
-  }, [query]);
-
-  console.log(result);
   return (
     <>
       <button
-        onClick={() => setOpen(true)}
+        onClick={() => setOpen((x) => !x)}
         className={cl(
-          "ml-auto flex w-header shrink-0 items-center justify-center focus:outline-none",
+          "z-[1050]  ml-auto flex w-header shrink-0 items-center justify-center focus:outline-none",
           {
-            " text-text hover:bg-gray-800/10 focus:shadow-focus-inset":
-              inverted,
+            " text-text-inverted hover:bg-gray-100/10 focus:shadow-focus-inverted-inset":
+              variant === "aksel-inverted",
+            "hover:bg-gray-800/10 focus:shadow-focus-inset":
+              variant === "aksel",
             "text-text-inverted hover:bg-gray-800 focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
-              !inverted,
+              variant === "ds",
           }
         )}
       >
@@ -58,67 +106,39 @@ const index = "aksel_docsearch"; */
         <SearchIcon className="ml-[3px] h-6 w-6" aria-hidden />
       </button>
       <Modal
-        className="flex h-full w-full justify-center overflow-x-auto bg-gray-50 focus:outline-none"
         isOpen={open}
+        className="relative min-h-full w-full overflow-auto bg-deepblue-900/95 px-4 backdrop-blur focus:outline-none"
+        overlayClassName="z-[9999] inset-0 fixed top-14"
         onRequestClose={() => setOpen(false)}
+        contentLabel="Søk"
       >
-        <div className="relative flex w-full max-w-6xl justify-center py-36 px-4 sm:px-6 md:px-12">
-          <Button
-            onClick={() => setOpen(false)}
-            variant="tertiary"
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-12 md:right-12"
-          >
-            Lukk
-          </Button>
-          <div className="w-full max-w-5xl">
-            <div className={cl(style.wrapper)} role="search">
-              <DsSearch
-                label="Søk i alle sider på nettsiden"
-                value={query}
-                onChange={(e) => setQuery(e)}
-              />
-            </div>
-            {result?.hits?.map((x, y) => (
-              <li key={y}>{x.url}</li>
-            ))}
+        <InstantSearch
+          searchClient={searchClient}
+          indexName="aksel_docsearch"
+          searchFunction={(h) => h.state.query && h.search()}
+        >
+          <div className="mx-auto w-full max-w-lg pt-32 text-white sm:w-[90%]">
+            <Configure
+              typoTolerance={false}
+              distinct={true}
+              hitsPerPage={200}
+            />
+            <SearchBox />
+            {/* <div className="">pladkpakdj</div> */}
+            {/* <div className="bg-gray-500">
+              <RefinementList for />
+            </div> */}
+            <Hits />
           </div>
-        </div>
+        </InstantSearch>
       </Modal>
     </>
   );
-}; */
+};
 
-/* const HitComp = ({
-  hit,
-  children,
-}: {
-  hit: DocSearchHit;
-  children: React.ReactNode;
-}) => {
-  hit.hierarchy.lvl0 && console.log(hit);
-  return (
-    <div className="ais-result">
-      {hit.hierarchy.lvl0 && (
-        <div className="ais-lvl0">
-          <a href="{{{url}}}">
-            <h4>{hit?.hierarchy?.lvl0}</h4>
-          </a>
-        </div>
-      )}
+export default SearchNew;
 
-      <div class="ais-lvl1 breadcrumbs">
-      {{#hierarchy.lvl1}} {{{_highlightResult.hierarchy.lvl1.value}}} {{/hierarchy.lvl1}} {{#hierarchy.lvl2}} > {{{_highlightResult.hierarchy.lvl2.value}}} {{/hierarchy.lvl2}} {{#hierarchy.lvl3}} > {{{_highlightResult.hierarchy.lvl3.value}}} {{/hierarchy.lvl3}}
-      {{#hierarchy.lvl4}} > {{{_highlightResult.hierarchy.lvl4.value}}} {{/hierarchy.lvl4}}
-    </div>
-
-    <div class="ais-content">
-      {{{#content}}} {{{_highlightResult.content.value}}} {{{/content}}}
-    </div>
-    </div>
-  );
-}; */
-
-function Search({
+/* function Search({
   variant = "ds",
   full,
 }: {
@@ -245,12 +265,12 @@ function Search({
             initialScrollY={window.scrollY}
             placeholder="Søk i dokumentasjon"
             searchParameters={{ typoTolerance: false, distinct: true }}
-            /* hitComponent={HitComp} */
+            hitComponent={HitComp}
           />,
           document.body
         )}
     </>
   );
-}
+} */
 
-export default Search;
+/* export default Search; */

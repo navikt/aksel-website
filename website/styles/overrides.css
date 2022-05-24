@@ -25,3 +25,7 @@
 .inverted-textfield > input:focus {
   @apply shadow-focus-inverted;
 }
+
+html.overflow-hidden > body.ReactModal__Body--open {
+  overflow: unset;
+}
