@@ -38,28 +38,19 @@ const SearchBox = () => {
   }, [query]);
 
   return (
-    <div className="searchfield">
+    <div className="mx-auto max-w-lg" data-theme="dark">
       <Search
         label="Søk i alle aksel-sider"
         variant="simple"
-        data-theme="dark"
         value={value}
         onChange={(e) => setValue(e)}
         onClear={() => clear()}
       />
-      <style jsx global>{`
-        .searchfield {
-          --navds-search-color-text: white;
-          --navds-shadow-focus: var(--navds-shadow-focus-inverted);
-        }
-      `}</style>
     </div>
   );
 };
 
 const Hit = ({ hit }: { hit: any }) => {
-  console.log(hit);
-
   const Tema = () => (
     <div>
       <Label>Tema</Label>
@@ -82,18 +73,18 @@ const Hit = ({ hit }: { hit: any }) => {
   };
 
   return (
-    <div className="grid gap-4 py-4 ">
+    <div className="py-4">
       <a
         href={`/${hit.url}`}
-        className="hover:underline focus:underline focus:outline-none"
+        className="group hover:underline  focus:no-underline focus:outline-none"
       >
-        <Heading level="2" size="medium">
+        <Heading level="2" size="small">
           {hit.heading}
         </Heading>
       </a>
       <div className="flex gap-2">
-        <BodyShort>{type()}</BodyShort>
-        {hit.tema && <Tema />}
+        {/* <BodyShort>{type()}</BodyShort> */}
+        {/* {hit.tema && <Tema />} */}
       </div>
     </div>
   );
@@ -101,6 +92,8 @@ const Hit = ({ hit }: { hit: any }) => {
 
 const Hits = () => {
   const { hits, results, ...rest } = useHits();
+
+  const [showedResults, setShowedResults] = useState<number>(20);
 
   /* console.log({ hits, results, rest: rest }); */
 
@@ -129,8 +122,11 @@ const Hits = () => {
   }
 
   return (
-    <div className="mx-auto w-full text-white sm:w-[90%]">
-      <ul className="divide-y divide-gray-300/30 overflow-auto py-10 text-3xl text-text-inverted md:py-24">
+    <div className="mx-auto w-full max-w-xl divide-y divide-gray-300/60 py-10 text-white sm:w-[90%] md:py-24">
+      <Heading level="2" size="large">
+        Søketreff: {hits.length}
+      </Heading>
+      <ul className="mt-3 divide-y divide-gray-300/30 overflow-auto  text-3xl text-text-inverted ">
         {hits.map((x, i) => (
           <Hit key={i} hit={x} />
         ))}
@@ -163,7 +159,7 @@ const SearchNew = ({
       <button
         onClick={() => setOpen((x) => !x)}
         className={cl(
-          "z-[1050]  ml-auto flex w-header shrink-0 items-center justify-center focus:outline-none",
+          "z-[1050] ml-auto flex w-header shrink-0 items-center justify-center focus:outline-none",
           {
             " text-text-inverted hover:bg-gray-100/10 focus:shadow-focus-inverted-inset":
               variant === "aksel-inverted",
@@ -179,7 +175,13 @@ const SearchNew = ({
       </button>
       <Modal
         isOpen={open}
-        className="relative min-h-full w-full bg-deepblue-900/95 px-4 backdrop-blur focus:outline-none"
+        className={cl(
+          "relative min-h-full w-full px-4 backdrop-blur focus:outline-none",
+          {
+            "bg-gray-900": variant === "ds",
+            "bg-deepblue-900": variant !== "ds",
+          }
+        )}
         overlayClassName="z-[9999] inset-0 fixed top-14 overflow-auto"
         onRequestClose={() => setOpen(false)}
         contentLabel="Søk"
@@ -192,8 +194,8 @@ const SearchNew = ({
             console.log(h);
           }} */
         >
-          <div className="mx-auto w-full max-w-lg pt-32 text-white sm:w-[90%]">
-            <Configure typoTolerance={true} distinct={true} />
+          <div className="mx-auto w-full max-w-2xl pt-32 text-white sm:w-[90%]">
+            <Configure typoTolerance={true} distinct={true} hitsPerPage={200} />
             <SearchBox />
             <Hits />
           </div>
