@@ -77,3 +77,11 @@ out
 */cypress/test-urls.json
 */cypress/videos
 sanity/scripts/renameField.js
+
+.yarn/*
+.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

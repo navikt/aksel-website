@@ -97,7 +97,9 @@ const Hits = () => {
 
   /* console.log({ hits, results, rest: rest }); */
 
-  if (/* !results?.query || results?.query === "" */ false) {
+  if (
+    /* !results?.query || results?.query === "" */ results.query === undefined
+  ) {
     return (
       <div className="mx-auto w-full max-w-lg text-white sm:w-[90%]">
         <ul className="mt-10 divide-y divide-gray-300 text-3xl text-text-inverted md:mt-24">

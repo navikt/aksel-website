@@ -47,8 +47,8 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.0.0",
-    "babel-plugin-mock-imports": "1.2.0",
-    "@sanity-codegen/schema-codegen": "1.0.0-alpha.13"
+    "@sanity-codegen/schema-codegen": "1.0.0-alpha.13",
+    "babel-plugin-mock-imports": "1.2.0"
   },
   "repository": {
     "type": "git",
