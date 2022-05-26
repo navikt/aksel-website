@@ -1,6 +1,6 @@
 import { DsCodeExample } from "..";
 import { ExampleKeys } from "../../stories/examples";
-import { lowerCase } from "lodash";
+import lowerCase from "lodash/lowerCase";
 import dotenv from "dotenv";
 import { noCdnClient } from "../sanity/sanity.server";
 dotenv.config();

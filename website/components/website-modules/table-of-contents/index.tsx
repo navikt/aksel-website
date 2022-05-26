@@ -1,6 +1,6 @@
 import { BodyShort, Heading, Link } from "@navikt/ds-react";
 import cl from "classnames";
-import { throttle } from "lodash";
+import throttle from "lodash/throttle";
 import * as React from "react";
 import { useEffect, useState } from "react";
 

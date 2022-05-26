@@ -1,6 +1,6 @@
 import { ExampleKeys } from "../../stories/examples";
 import { SandboxKeys } from "../../stories/sandbox";
-import { startCase } from "lodash";
+import startCase from "lodash/startCase";
 import dotenv from "dotenv";
 import { noCdnClient } from "../sanity/sanity.server";
 dotenv.config();
