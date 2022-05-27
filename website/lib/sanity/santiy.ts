@@ -1,5 +1,4 @@
 import { getClient, sanityClient } from "./sanity.server";
-import { useNextSanityImage } from "next-sanity-image";
 import { akselDocumentsByType, akselTemaNames, dsDocuments } from "./queries";
 import { DsArtikkel, DsComponentPage, KomponentArtikkel } from "..";
 import imageUrlBuilder from "@sanity/image-url";
@@ -12,29 +11,6 @@ export function urlFor(source: any) {
 
 export const getTemaSlug = (s: string) =>
   s ? s.toLowerCase().trim().replace(/\s+/g, "-") : null;
-
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const useSanityImage = (node) =>
-  useNextSanityImage(sanityClient, node, {
-    imageBuilder: (imageUrlBuilder, options) => {
-      return imageUrlBuilder
-        .width(Math.min(options.originalImageDimensions.width, 1600))
-        .quality(100)
-        .fit("clip")
-        .auto("format");
-    },
-  });
-
-export const useSanityBannerImage = (node) =>
-  useNextSanityImage(sanityClient, node, {
-    imageBuilder: (imageUrlBuilder, options) => {
-      return imageUrlBuilder
-        .width(Math.min(options.originalImageDimensions.width, 1024))
-        .quality(75)
-        .fit("fill")
-        .auto("format");
-    },
-  });
 
 export const getAllPages = async () => {
   const pages = await getDsPaths().then((paths) =>
