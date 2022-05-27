@@ -55,10 +55,6 @@ pre[class*="language-"] {
   color: var(--navds-global-color-gray-200);
 }
 
-.token.punctuation {
-  color: var(--navds-global-color-gray-50);
-}
-
 .namespace {
   opacity: 0.7;
 }
@@ -69,6 +65,10 @@ pre[class*="language-"] {
 .token.symbol,
 .token.deleted {
   color: #ff79c6;
+}
+
+.token.punctuation {
+  color: var(--navds-global-color-gray-50);
 }
 
 .token.boolean,

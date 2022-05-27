@@ -1,11 +1,8 @@
-import cl from "classnames";
-import Prism from "prismjs";
-import "prismjs/components/prism-bash.min";
-import "prismjs/components/prism-jsx.min";
-import "prismjs/components/prism-typescript.min";
-import React, { useEffect, useState } from "react";
-import { CodeSnippet as CodeSnippetT, Kode } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
+import { CodeSnippet as CodeSnippetT, Kode } from "@/lib";
+import cl from "classnames";
+import Highlight, { defaultProps } from "prism-react-renderer";
+import React from "react";
 import CopyButton from "./CopyButton";
 
 const CodeSnippet = ({
@@ -17,8 +14,6 @@ const CodeSnippet = ({
   className?: string;
   style?: any;
 }): JSX.Element => {
-  const [highlightedCode, setHighlightedCode] = useState(null);
-
   if (!code || !code.code) {
     return null;
   }
@@ -26,12 +21,6 @@ const CodeSnippet = ({
   let language = code.language ?? "javascript";
   language =
     language === "terminal" || language === "default" ? "bash" : language;
-
-  useEffect(() => {
-    setHighlightedCode(
-      Prism.highlight(code.code, Prism.languages[language], language)
-    );
-  }, [code.code, code.language]);
 
   return (
     <>
@@ -43,14 +32,28 @@ const CodeSnippet = ({
         {...props}
       >
         <CopyButton content={code.code} />
-        <pre className="language- m-0 flex min-h-[5rem] items-center overflow-x-auto p-4">
-          <code
-            className={cl("language- text-medium text-text-inverted", {
-              "before:content-['$ ']": language === "bash",
-            })}
-            dangerouslySetInnerHTML={{ __html: highlightedCode ?? code.code }}
-          />
-        </pre>
+        <Highlight
+          code={code.code}
+          language={language}
+          {...defaultProps}
+          theme={undefined}
+        >
+          {({ tokens, getLineProps, getTokenProps }) => (
+            <pre className="relative m-0 min-h-[5rem] overflow-x-auto overflow-y-auto rounded-lg bg-gray-900 p-4 pr-20 font-mono text-text-inverted">
+              {tokens.map((line, i) => (
+                <div
+                  key={i}
+                  {...getLineProps({ line, key: i })}
+                  className="whitespace-pre-wrap break-words text-medium"
+                >
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({ token, key })} />
+                  ))}
+                </div>
+              ))}
+            </pre>
+          )}
+        </Highlight>
       </div>
     </>
   );

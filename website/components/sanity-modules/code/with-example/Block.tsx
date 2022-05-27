@@ -1,25 +1,15 @@
-import Prism from "prismjs";
-import "prismjs/components/prism-bash.min";
-import "prismjs/components/prism-jsx.min";
-import "prismjs/components/prism-typescript.min";
-import React, { useContext, useEffect, useState } from "react";
+import cl from "classnames";
+import Highlight, { defaultProps } from "prism-react-renderer";
+import React, { useContext } from "react";
 import CopyButton from "../CopyButton";
 import { CodeContext } from "./Example";
-import cl from "classnames";
 
 const CodeBlock = ({ index }: { index: number }): JSX.Element => {
   const { tabs, showTabs, activeTab, showPreview } = useContext(CodeContext);
-  const [highlightedCode, setHighlightedCode] = useState(null);
 
-  let language = tabs[index].language ?? "jsx";
+  let language = (tabs[index].language as any) ?? "jsx";
   language =
     language === "terminal" || language === "default" ? "bash" : language;
-
-  useEffect(() => {
-    setHighlightedCode(
-      Prism.highlight(tabs[index].content, Prism.languages[language], language)
-    );
-  }, [index]);
 
   if (activeTab === -1) {
     return null;
@@ -37,19 +27,28 @@ const CodeBlock = ({ index }: { index: number }): JSX.Element => {
         {!showPreview && !showTabs && (
           <CopyButton content={tabs[index].content.toString()} />
         )}
-        <pre
-          className={cl(
-            "language- m-0 flex min-h-[5rem] items-center overflow-x-auto p-4",
-            { "max-w-full": showTabs }
-          )}
+        <Highlight
+          code={tabs[index].content as string}
+          language={language}
+          {...defaultProps}
+          theme={undefined}
         >
-          <code
-            className="language- text-medium text-text-inverted"
-            dangerouslySetInnerHTML={{
-              __html: highlightedCode ?? tabs[index].content,
-            }}
-          />
-        </pre>
+          {({ tokens, getLineProps, getTokenProps }) => (
+            <pre className="relative m-0 min-h-[5rem] overflow-x-auto overflow-y-auto rounded-lg bg-gray-900 p-4 pr-20 font-mono text-text-inverted">
+              {tokens.map((line, i) => (
+                <div
+                  key={i}
+                  {...getLineProps({ line, key: i })}
+                  className="whitespace-pre-wrap break-words text-medium"
+                >
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({ token, key })} />
+                  ))}
+                </div>
+              ))}
+            </pre>
+          )}
+        </Highlight>
       </div>
     </>
   );
