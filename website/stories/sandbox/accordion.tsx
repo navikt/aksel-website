@@ -31,7 +31,6 @@ const Comp = () => (
 
 const AccordionSandbox: SandboxComponent = () => {
   return stringifyJsx(Comp());
-  return `<div>123</div>`;
 };
 
 export default AccordionSandbox;
