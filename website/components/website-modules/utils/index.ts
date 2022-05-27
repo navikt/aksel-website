@@ -3,6 +3,7 @@ export * from "./util";
 export * from "./amplitude";
 export * from "./hooks";
 export * from "./contexts";
+export * from "./stringify-jsx";
 
 import { DateTime } from "luxon";
 

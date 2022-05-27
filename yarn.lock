@@ -2006,6 +2006,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@base2/pretty-print-object@npm:1.0.1":
+  version: 1.0.1
+  resolution: "@base2/pretty-print-object@npm:1.0.1"
+  checksum: 1e8a5af578037a9d47d72f815983f9e4efb038e5f03e7635fc893194c5daa723215d71af33267893a9b618656c8eaea7be931b1c063c9b066a40994be0d23545
+  languageName: node
+  linkType: hard
+
 "@colors/colors@npm:1.5.0":
   version: 1.5.0
   resolution: "@colors/colors@npm:1.5.0"
@@ -12265,19 +12272,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-plain-object@npm:5.0.0, is-plain-object@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "is-plain-object@npm:5.0.0"
+  checksum: e32d27061eef62c0847d303125440a38660517e586f2f3db7c9d179ae5b6674ab0f469d519b2e25c147a1a3bc87156d0d5f4d8821e0ce4a9ee7fe1fcf11ce45c
+  languageName: node
+  linkType: hard
+
 "is-plain-object@npm:^2.0.1, is-plain-object@npm:^2.0.3, is-plain-object@npm:^2.0.4":
   version: 2.0.4
   resolution: "is-plain-object@npm:2.0.4"
   dependencies:
     isobject: ^3.0.1
   checksum: 2a401140cfd86cabe25214956ae2cfee6fbd8186809555cd0e84574f88de7b17abacb2e477a6a658fa54c6083ecbda1e6ae404c7720244cd198903848fca70ca
-  languageName: node
-  linkType: hard
-
-"is-plain-object@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "is-plain-object@npm:5.0.0"
-  checksum: e32d27061eef62c0847d303125440a38660517e586f2f3db7c9d179ae5b6674ab0f469d519b2e25c147a1a3bc87156d0d5f4d8821e0ce4a9ee7fe1fcf11ce45c
   languageName: node
   linkType: hard
 
@@ -16766,6 +16773,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-element-to-jsx-string@npm:15.0.0":
+  version: 15.0.0
+  resolution: "react-element-to-jsx-string@npm:15.0.0"
+  dependencies:
+    "@base2/pretty-print-object": 1.0.1
+    is-plain-object: 5.0.0
+    react-is: 18.1.0
+  peerDependencies:
+    react: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0
+    react-dom: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0
+  checksum: c3907cc4c1d3e9ecc8ca7727058ebcba6ec89848d9e07bfd2c77ee8f28f1ad99bf55e38359dec8a1125de83d41ac09a2874f53c41415edc86ffa9840fa1b7856
+  languageName: node
+  linkType: hard
+
 "react-error-boundary@npm:3.1.4":
   version: 3.1.4
   resolution: "react-error-boundary@npm:3.1.4"
@@ -16920,6 +16941,13 @@ __metadata:
     algoliasearch: ">= 3.1 < 5"
     react: ">= 16.8.0 < 19"
   checksum: acfd03cde091de585bea216813653d5f20be25acd0fe4089750caf51500a05cf2476c0aacae9c60cc1e31763a9379f742d764946ff1c06da71d37c9e17558cbc
+  languageName: node
+  linkType: hard
+
+"react-is@npm:18.1.0":
+  version: 18.1.0
+  resolution: "react-is@npm:18.1.0"
+  checksum: d206a0fe6790851bff168727bfb896de02c5591695afb0c441163e8630136a3e13ee1a7ddd59fdccddcc93968b4721ae112c10f790b194b03b35a3dc13a355ef
   languageName: node
   linkType: hard
 
@@ -20780,6 +20808,7 @@ __metadata:
     prismjs: ^1.27.0
     react: ^17.0.2
     react-dom: ^17.0.2
+    react-element-to-jsx-string: 15.0.0
     react-hotjar: ^4.0.0
     react-instantsearch-hooks-web: ^6.26.0
     react-live: ^2.3.0
