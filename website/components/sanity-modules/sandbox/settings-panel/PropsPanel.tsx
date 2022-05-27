@@ -3,7 +3,7 @@ import { Button } from "@navikt/ds-react";
 import cl from "classnames";
 import React, { useContext, useEffect, useRef } from "react";
 import { useKey } from "react-use";
-import { SandboxContext } from "../Sandbox";
+import { SandboxContext } from "../index";
 import PropFilter from "./PropFilter";
 
 const SettingsPanel = () => {

@@ -1,10 +1,10 @@
-import cl from "classnames";
 import React, { useContext } from "react";
-
-import { getBgColors } from "../../../stories/sandbox/types";
-import { BgColors } from "@/lib";
-import { SandboxContext } from "./Sandbox";
 import SettingsPanel from "./settings-panel/PropsPanel";
+
+import cl from "classnames";
+import { BgColors } from "@/lib";
+import { getBgColors } from "../../../stories/sandbox/types";
+import { SandboxContext } from "./index";
 
 const buttonStyles = (bg?: BgColors) => {
   const light = "bg-gray-800/10 hover:bg-gray-800/20 focus:shadow-focus";
@@ -16,9 +16,8 @@ const buttonStyles = (bg?: BgColors) => {
   } else return dark;
 };
 
-const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
-  const { sandboxState, setSandboxState, setVisibleCode, visibleCode, bg } =
-    useContext(SandboxContext);
+export const Preview = ({ children }: { children: React.ReactElement }) => {
+  const { sandboxState, setSandboxState, bg } = useContext(SandboxContext);
 
   const hideProps =
     !sandboxState.args ||
@@ -47,15 +46,6 @@ const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
           <button
             className={cl(
               buttonStyles(bg),
-              "rounded py-1 px-3 text-medium focus:outline-none"
-            )}
-            onClick={() => setVisibleCode(!visibleCode)}
-          >
-            {visibleCode ? "Skjul kode" : "Vis kode"}
-          </button>
-          <button
-            className={cl(
-              buttonStyles(bg),
               "rounded py-1 px-3 text-medium focus:outline-none",
               { hidden: sandboxState.openSettings || hideProps }
             )}
@@ -74,5 +64,3 @@ const PreviewWrapper = ({ children }: { children: React.ReactNode }) => {
     </div>
   );
 };
-
-export default PreviewWrapper;

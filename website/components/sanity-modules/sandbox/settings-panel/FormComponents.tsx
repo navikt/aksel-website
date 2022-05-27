@@ -1,6 +1,6 @@
 import { Checkbox, Select, TextField } from "@navikt/ds-react";
 import React, { useContext } from "react";
-import { SandboxContext } from "../Sandbox";
+import { SandboxContext } from "../index";
 import { EnumT } from "./generateState";
 
 export const SelectComp = ({

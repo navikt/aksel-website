@@ -10,23 +10,6 @@
   @apply pl-11;
 }
 
-.sandbox-editor > div {
-  @apply max-w-full overflow-x-auto !font-mono text-text-inverted;
-}
-
-.sandbox-editor textarea:focus-visible {
-  outline-color: 1px solid
-    var(--navds-semantic-color-component-background-inverted);
-}
-
-.sandbox-preview > div:first-child {
-  @apply inline-flex w-full flex-wrap items-center justify-center gap-4;
-}
-
-.sandbox-preview > pre {
-  @apply max-w-full whitespace-pre-wrap font-mono;
-}
-
 .skiplink {
   @apply absolute left-0 z-modal -translate-y-full bg-focus p-4 text-text-inverted no-underline focus-within:translate-y-0 focus-within:shadow-[inset_0_0_0_2px_white] focus-within:outline-none;
 }
