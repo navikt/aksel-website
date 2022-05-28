@@ -1,31 +1,50 @@
-import { SandboxComponent } from "./types";
+import { BgColors } from "@/lib";
+import { Search } from "@navikt/ds-react";
+import { SandboxComponentv2 } from "./types";
 
-const SearchSandbox: SandboxComponent = (props) => {
-  const size = props?.size ? ` size="${props.size}"` : "";
-  const variant = props?.variant ? ` variant="${props.variant}"` : "";
-  const hideLabel = props?.hideLabel ? `` : " hideLabel={false}";
-  const clearButton = props?.clearButton ? `` : " clearButton={false}";
+Search.displayName = "Search";
+Search.Button.displayName = "Search.Button";
+
+const SearchSandbox: SandboxComponentv2 = (props: any) => {
+  const newProps = {
+    size: props?.size,
+    variant: props?.variant,
+    hideLabel: props?.hideLabel,
+    clearButton: props?.clearButton,
+  };
+
+  let comp = (
+    <div
+      className="w-full max-w-lg"
+      {...(props?.darkmode ? { ["data-theme"]: "dark" } : {})}
+    >
+      <Search label="Søk alle NAV sine sider" {...newProps} />
+    </div>
+  );
 
   if (props?.Komposisjon === "Med egen knapp") {
-    return `<Search
-    label="Søk alle NAV sine sider"
-    ${size}${variant}${hideLabel}${clearButton}
-  ><Search.Button onClick={(e) => console.log(e)}/></Search>`;
+    comp = (
+      <div
+        className="w-full max-w-lg"
+        {...(props?.darkmode ? { ["data-theme"]: "dark" } : {})}
+      >
+        <Search label="Søk alle NAV sine sider" {...newProps}>
+          <Search.Button onClick={(e) => console.log(e)} />
+        </Search>
+      </div>
+    );
   }
-  return `
-  <Search
-    label="Søk alle NAV sine sider"
-    ${size}${variant}${hideLabel}${clearButton}
-  />
-  `;
+
+  return props?.darkmode ? { comp, bg: BgColors.INVERTEDGRADIENT } : comp;
 };
 
 SearchSandbox.args = {
   props: {
     size: ["medium", "small"],
-    variant: ["tertiary", "primary"],
+    variant: ["secondary", "primary", "simple"],
     hideLabel: true,
     clearButton: true,
+    darkmode: false,
     Komposisjon: ["", "Med egen knapp"],
   },
 };

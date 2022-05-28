@@ -57,7 +57,7 @@ const Sandbox = ({ node }: { node: SandboxT }) => {
 
   const sandboxComp: SandboxComponentv2 | null = useMemo(
     () => getSandbox(node?.title) as SandboxComponentv2,
-    [node.title]
+    [node?.title]
   );
 
   useEffect(() => {
