@@ -21,6 +21,7 @@ export const stringifyJsx = (renderedCode: React.ReactElement) => {
       useBooleanShorthandSyntax: false,
       useFragmentShortSyntax: true,
       functionValue: (fn) => {
+        console.log(typeof fn);
         return fn?.displayName ? `Replacewith:{${fn?.displayName}}` : fn;
       },
     });

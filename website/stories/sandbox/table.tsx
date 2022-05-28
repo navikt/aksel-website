@@ -1,177 +1,20 @@
+import { Checkbox, Pagination, Table } from "@navikt/ds-react";
+import { format } from "date-fns";
+import React from "react";
 import { BgColors } from "../../lib/types/types";
-import { SandboxComponent } from "./types";
+import { SandboxComponentv2 } from "./types";
 
-const TableSandbox: SandboxComponent = ({
-  size,
-  zebraStripes,
-  selectable,
-  sortable,
-  pagination,
-  expandableRows,
-}) => {
-  const propZebraStripes = zebraStripes ? ` zebraStripes` : "";
-  const propSize = size ? ` size="${size}"` : "";
-
-  return `
-  const TableDemo = () => {
-    ${
-      selectable
-        ? `const [selectedRows, setSelectedRows] = React.useState([]);
-
-    const toggleSelectedRow = (value) =>
-        setSelectedRows((list) =>
-          list.includes(value)
-            ? list.filter((id) => id !== value)
-            : [...list, value]
-        );`
-        : ""
-    }
-    ${sortable ? `const [sort, setSort] = React.useState();` : ""}
-    ${
-      pagination
-        ? `const [page, setPage] = React.useState(1);
-            const rowsPerPage = 4;`
-        : ""
-    }
-
-  return (
-    <div className="w-full flex flex-col gap-4">
-    <Table${propZebraStripes}${propSize} ${
-    sortable
-      ? `sort={sort}
-        onSortChange={(sortKey) =>
-          setSort(sort && sortKey === sort.orderBy && sort.direction === "descending"
-            ? undefined
-            : {
-              orderBy: sortKey,
-              direction:
-                sort &&sortKey === sort.orderBy && sort.direction === "ascending"
-                  ? "descending"
-                  : "ascending",
-            })
-        }`
-      : ""
-  }>
-      <Table.Header>
-        <Table.Row>
-        ${
-          selectable
-            ? `<Table.DataCell>
-                <Checkbox
-                  ${propSize}
-                  checked={selectedRows.length === data.length}
-                  indeterminate={selectedRows.length && selectedRows.length !== data.length}
-                  onChange={(e) =>
-                    selectedRows.length
-                      ? setSelectedRows([])
-                      : setSelectedRows(data.map(({fnr}) => fnr))
-                  }
-                  hideLabel
-                >
-                  {" "}
-                </Checkbox>
-              </Table.DataCell>`
-            : ""
-        }
-        ${expandableRows && !selectable ? `<Table.HeaderCell />` : ""}
-          ${
-            sortable
-              ? `<Table.ColumnHeader sortKey="name" sortable>
-                  Navn
-                </Table.ColumnHeader>`
-              : '<Table.HeaderCell scope="col">Navn</Table.HeaderCell>'
-          }
-          <Table.HeaderCell scope="col">Fødseslnr.</Table.HeaderCell>
-          ${
-            sortable
-              ? `<Table.ColumnHeader sortKey="start" sortable>
-                  Start
-                </Table.ColumnHeader>`
-              : '<Table.HeaderCell scope="col">Start</Table.HeaderCell>'
-          }
-          ${expandableRows && selectable ? `<Table.HeaderCell />` : ""}
-        </Table.Row>
-      </Table.Header>
-      <Table.Body>
-      {data
-        ${
-          sortable
-            ? `.slice()
-            .sort((a, b) => {
-              if (sort) {
-                const comparator = (a, b, orderBy) => {
-                  if (b[orderBy] < a[orderBy] || b[orderBy] === undefined) {
-                    return -1;
-                  }
-                  if (b[orderBy] > a[orderBy]) {
-                    return 1;
-                  }
-                  return 0;
-                };
-
-                return sort.direction === "ascending"
-                  ? comparator(b, a, sort.orderBy)
-                  : comparator(a, b, sort.orderBy);
-              }
-              return 1;
-            })`
-            : ""
-        }
-        ${
-          pagination
-            ? `.slice((page - 1) * rowsPerPage, page * rowsPerPage)`
-            : ""
-        }
-        .map(
-          ({ name, fnr, start }) =>
-            <Table.${
-              expandableRows
-                ? `ExpandableRow content="Innhold i ekspanderbar rad" ${
-                    selectable ? `togglePlacement="right"` : ""
-                  }`
-                : "Row"
-            } key={fnr} ${
-    selectable ? "selected={selectedRows.includes(fnr)}" : ""
-  }>
-              ${
-                selectable
-                  ? `<Table.DataCell>
-                      <Checkbox
-                        ${propSize}
-                        hideLabel
-                        checked={selectedRows.includes(fnr)}
-                        onChange={() => toggleSelectedRow(fnr)}
-                        aria-labelledby="id{fnr}"
-                      >
-                        {" "}
-                      </Checkbox>
-                    </Table.DataCell>
-                    <Table.HeaderCell scope="row">
-                      <span id="id{fnr}">{name}</span>
-                    </Table.HeaderCell>`
-                  : `<Table.HeaderCell scope="row">{name}</Table.HeaderCell>`
-              }
-              <Table.DataCell>{fnr.substring(0, 6)} {fnr.substring(6)}</Table.DataCell>
-              <Table.DataCell>{format(new Date(start), "dd.MM.yyyy")}</Table.DataCell>
-            </Table.${expandableRows ? "ExpandableRow" : "Row"}>
-        )}
-      </Table.Body>
-    </Table>
-    ${
-      pagination
-        ? `<Pagination
-            page={page}
-            onPageChange={setPage}
-            count={Math.ceil(data.length / rowsPerPage)}
-          />`
-        : ""
-    }
-    </div>
-  );
-}
-
-render(<TableDemo />);
-
+Checkbox.displayName = "Checkbox";
+Pagination.displayName = "Pagination";
+Table.displayName = "Table";
+Table.Header.displayName = "Table.Header";
+Table.Row.displayName = "Table.Row";
+Table.DataCell.displayName = "Table.DataCell";
+Table.HeaderCell.displayName = "Table.HeaderCell";
+Table.ColumnHeader.displayName = "Table.ColumnHeader";
+Table.Body.displayName = "Table.Body";
+Table.ExpandableRow.displayName = "Table.ExpandableRow";
+Table.Row.displayName = "Table.Row";
 
 const data = [
   {
@@ -225,7 +68,172 @@ const data = [
     start: "2022-01-09T11:15:50.833Z",
   },
 ];
-`;
+
+const TableSandbox: SandboxComponentv2 = (props: any) => {
+  const newProps = { zebraStripes: props?.zebraStripes, size: props?.size };
+
+  /* sortable */
+  const [sort, setSort] = React.useState<any>();
+
+  /* Pagination */
+  const [page, setPage] = React.useState(1);
+  const rowsPerPage = 4;
+
+  const [selectedRows, setSelectedRows] = React.useState([]);
+  const toggleSelectedRow = (value) =>
+    setSelectedRows((list) =>
+      list.includes(value)
+        ? list.filter((id) => id !== value)
+        : [...list, value]
+    );
+
+  const handleSort = (sortKey) => {
+    setSort(
+      sort && sortKey === sort.orderBy && sort.direction === "descending"
+        ? undefined
+        : {
+            orderBy: sortKey,
+            direction:
+              sort && sortKey === sort.orderBy && sort.direction === "ascending"
+                ? "descending"
+                : "ascending",
+          }
+    );
+  };
+
+  let sortData = data;
+  if (props?.sortable) {
+    sortData = sortData.slice().sort((a, b) => {
+      if (sort) {
+        const comparator = (a, b, orderBy) => {
+          if (b[orderBy] < a[orderBy] || b[orderBy] === undefined) {
+            return -1;
+          }
+          if (b[orderBy] > a[orderBy]) {
+            return 1;
+          }
+          return 0;
+        };
+
+        return sort.direction === "ascending"
+          ? comparator(b, a, sort.orderBy)
+          : comparator(a, b, sort.orderBy);
+      }
+      return 1;
+    });
+  }
+  if (props?.pagination) {
+    sortData = sortData.slice((page - 1) * rowsPerPage, page * rowsPerPage);
+  }
+
+  return (
+    <div className="flex w-full flex-col gap-4">
+      <Table
+        {...newProps}
+        {...(props?.sortable
+          ? { sort: sort, onSortChange: (sortKey) => handleSort(sortKey) }
+          : {})}
+      >
+        <Table.Header>
+          <Table.Row>
+            {props?.selectable && (
+              <Table.DataCell>
+                <Checkbox
+                  size={props?.size}
+                  checked={selectedRows.length === data.length}
+                  indeterminate={
+                    selectedRows.length && selectedRows.length !== data.length
+                  }
+                  onChange={() =>
+                    selectedRows.length
+                      ? setSelectedRows([])
+                      : setSelectedRows(data.map(({ fnr }) => fnr))
+                  }
+                  hideLabel
+                >
+                  {""}
+                </Checkbox>
+              </Table.DataCell>
+            )}
+            {props?.expandableRows && !props?.selectable && (
+              <Table.HeaderCell />
+            )}
+            {props?.sortable ? (
+              <Table.ColumnHeader sortKey="name" sortable>
+                Navn
+              </Table.ColumnHeader>
+            ) : (
+              <Table.HeaderCell scope="col">Navn</Table.HeaderCell>
+            )}
+            <Table.HeaderCell scope="col">Fødseslnr.</Table.HeaderCell>
+            {props?.sortable ? (
+              <Table.ColumnHeader sortKey="start" sortable>
+                Start
+              </Table.ColumnHeader>
+            ) : (
+              <Table.HeaderCell scope="col">Start</Table.HeaderCell>
+            )}
+            {props?.expandableRows && props?.selectable && <Table.HeaderCell />}
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {sortData.map(({ name, fnr, start }, i) => {
+            const Comp = props?.expandableRows
+              ? Table.ExpandableRow
+              : Table.Row;
+            const rowProps = {
+              ...(props?.expandableRows
+                ? {
+                    content: "Innhold i ekspanderbar rad",
+                    ...(props?.selectable ? { togglePlacement: "right" } : {}),
+                  }
+                : {}),
+              ...(props?.selectable
+                ? { selected: selectedRows.includes(fnr) }
+                : {}),
+            };
+            return (
+              <Comp {...rowProps} key={i + fnr}>
+                {props?.selectable ? (
+                  <>
+                    <Table.DataCell>
+                      <Checkbox
+                        size={props?.size}
+                        hideLabel
+                        checked={selectedRows.includes(fnr)}
+                        onChange={() => toggleSelectedRow(fnr)}
+                        aria-labelledby="id{fnr}"
+                      >
+                        {" "}
+                      </Checkbox>
+                    </Table.DataCell>
+                    <Table.HeaderCell scope="row">
+                      <span id="id{fnr}">{name}</span>
+                    </Table.HeaderCell>
+                  </>
+                ) : (
+                  <Table.HeaderCell scope="row">{name}</Table.HeaderCell>
+                )}
+                <Table.DataCell>
+                  {fnr.substring(0, 6)} {fnr.substring(6)}
+                </Table.DataCell>
+                <Table.DataCell>
+                  {format(new Date(start), "dd.MM.yyyy")}
+                </Table.DataCell>
+              </Comp>
+            );
+          })}
+        </Table.Body>
+      </Table>
+      {props?.pagination && (
+        <Pagination
+          page={page}
+          onPageChange={setPage}
+          count={Math.ceil(data.length / rowsPerPage)}
+        />
+      )}
+    </div>
+  );
 };
 
 TableSandbox.args = {
