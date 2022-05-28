@@ -1,11 +1,10 @@
-import { SandboxComponent } from "./types";
+import { Alert, Heading } from "@navikt/ds-react";
+import { SandboxComponentv2 } from "./types";
 
-const AlertSandbox: SandboxComponent = (props) => {
-  const propVariant = props?.variant ? ` variant="${props.variant}"` : "";
-  const size = props?.size ? ` size="${props.size}"` : "";
-  const fullwidth = props?.fullWidth ? ` fullWidth` : "";
-  const inline = props?.inline ? ` inline` : "";
+Alert.displayName = "Alert";
+(Heading as any).displayName = "Heading";
 
+const AlertSandbox: SandboxComponentv2 = (props: any) => {
   let text = "Alert";
 
   switch (props?.variant) {
@@ -27,21 +26,21 @@ const AlertSandbox: SandboxComponent = (props) => {
       break;
   }
 
-  const comp = `<Alert${propVariant}${size}${fullwidth}${inline}>${text}</Alert>`;
-  const compHeading = `
-  <Alert${propVariant}${size}${fullwidth}${inline}>
-    <Heading spacing size="small" level="3">Melding</Heading>
-    ${text}
-  </Alert>`;
-
-  switch (props?.Komposisjon) {
-    case "":
-      return comp;
-    case "Med heading":
-      return compHeading;
-    default:
-      return comp;
-  }
+  return (
+    <Alert
+      variant={props?.variant}
+      size={props?.size}
+      fullWidth={props?.fullWidth}
+      inline={props?.inline}
+    >
+      {props?.Komposisjon === "Med heading" && (
+        <Heading spacing size="small" level="3">
+          Melding
+        </Heading>
+      )}
+      {text}
+    </Alert>
+  );
 };
 
 AlertSandbox.args = {
