@@ -1,7 +1,6 @@
 import AccordionSandbox from "./accordion";
 import AlertSandbox from "./alert";
 import ButtonSandbox from "./button";
-import PlainSandbox from "./plain";
 import HeaderSandbox from "./header";
 import TableSandbox from "./table";
 import TableExpandAllSandbox from "./table-expand-all";
@@ -19,7 +18,6 @@ import SearchSandbox from "./search";
 import PaginationSandbox from "./pagination";
 import TabsSandbox from "./tabs";
 import TooltipSandbox from "./tooltip";
-import ErrorSummarySandbox from "./error-summary";
 import DropdownSandbox from "./dropdown";
 import DetailsSandbox from "./details";
 import HelptextSandbox from "./helptext";
@@ -31,7 +29,6 @@ const allSandboxes = {
   AlertSandbox,
   ButtonSandbox,
   HeaderSandbox,
-  PlainSandbox,
   TagSandbox,
   TableSandbox,
   TableExpandAllSandbox,
@@ -48,7 +45,6 @@ const allSandboxes = {
   PaginationSandbox,
   TabsSandbox,
   TooltipSandbox,
-  ErrorSummarySandbox,
   DropdownSandbox,
   DetailsSandbox,
   HelptextSandbox,
