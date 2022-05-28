@@ -1,21 +1,22 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { SandboxComponent } from "./types";
+import { Star } from "@navikt/ds-icons";
+import { Button } from "@navikt/ds-react";
+import { SandboxComponentv2 } from "./types";
 
-const jsxArguments = (props, opts) =>
-  Object.entries(opts)
-    .filter(([key]) => props[key])
-    .map(([_, value]) => value)
-    .join(" ");
-
-const ButtonSandbox: SandboxComponent = (props) =>
-  `<Button ${jsxArguments(props, {
-    variant: `variant="${props.variant}"`,
-    size: `size="${props.size}"`,
-    disabled: "disabled",
-    loading: "loading",
-  })}>${props.Komposisjon.includes("Ikon") ? "<Star />" : ""}${
-    props.Komposisjon.includes("Tekst") ? "Button" : ""
-  }</Button>`;
+(Button as any).displayName = "Button";
+Star.displayName = "Star";
+const ButtonSandbox: SandboxComponentv2 = (props: any) => {
+  return (
+    <Button
+      variant={props?.variant}
+      size={props?.size}
+      disabled={props?.disabled}
+      loading={props?.loading}
+    >
+      {props?.Komposisjon.includes("Ikon") && <Star />}
+      {props?.Komposisjon.includes("Tekst") && "Button"}
+    </Button>
+  );
+};
 
 ButtonSandbox.args = {
   props: {

@@ -1,21 +1,43 @@
-import { SandboxComponent } from "./types";
+import { Checkbox, CheckboxGroup } from "@navikt/ds-react";
+import { SandboxComponentv2 } from "./types";
 
-const CheckboxSandbox: SandboxComponent = (props) => {
-  const propDisabled = props?.disabled ? ` disabled` : "";
-  const propSize = props?.size ? ` size="${props.size}"` : "";
-  const propDesc = props?.description ? ` description="Beskrivelse"` : "";
-  const propErrorGruppe =
-    props?.error && props.error === "Gruppe" ? ` error="Feilmelding"` : "";
-  const propErrorEnkel =
-    props?.error && props.error === "Enkel" ? ` error` : "";
-  const propTekstHideLegend = props?.hideLegend ? ` hideLegend` : "";
-  const propTekstHideLabel = props?.hideLabel ? ` hideLabel` : "";
+CheckboxGroup.displayName = "CheckboxGroup";
+Checkbox.displayName = "Checkbox";
 
-  return `<CheckboxGroup${propTekstHideLegend}${propErrorGruppe}${propSize}${propDisabled}${propDesc} legend="Hvor vil du sitte?">
-<Checkbox${propTekstHideLabel} value="Bakerst">Bakerst</Checkbox>
-<Checkbox${propTekstHideLabel}${propDesc}${propErrorEnkel} value="Midterst">Midterst</Checkbox>
-<Checkbox${propTekstHideLabel} value="Fremst">Fremst</Checkbox>
-</CheckboxGroup>`;
+const CheckboxSandbox: SandboxComponentv2 = (props: any) => {
+  const propErrorGruppe = props?.error && props.error === "Gruppe";
+  const propErrorEnkel = props?.error && props.error === "Enkel";
+
+  return (
+    <CheckboxGroup
+      description={props?.description && "Beskrivelse"}
+      disabled={props?.disabled}
+      {...(propErrorGruppe ? { error: "Feilmelding" } : {})}
+      legend="Hvor vil du sitte?"
+      size={props?.size}
+      hideLegend={props?.hideLegend}
+    >
+      <Checkbox
+        {...(props?.hideLabel ? { hideLabel: true } : {})}
+        value="Bakerst"
+      >
+        Bakerst
+      </Checkbox>
+      <Checkbox
+        {...(propErrorEnkel ? { error: true } : {})}
+        {...(props?.hideLabel ? { hideLabel: true } : {})}
+        value="Midterst"
+      >
+        Midterst
+      </Checkbox>
+      <Checkbox
+        {...(props?.hideLabel ? { hideLabel: true } : {})}
+        value="Fremst"
+      >
+        Fremst
+      </Checkbox>
+    </CheckboxGroup>
+  );
 };
 
 CheckboxSandbox.args = {

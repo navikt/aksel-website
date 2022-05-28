@@ -13,6 +13,7 @@ export const stringifyJsx = (renderedCode: React.ReactElement) => {
     let string = reactElementToJSXString(c, {
       showFunctions: true,
       useFragmentShortSyntax: true,
+      showDefaultProps: true,
     });
 
     const matches = string.match(/\S+=\\"([^"]*)\\"/g);
