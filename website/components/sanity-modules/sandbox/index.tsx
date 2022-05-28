@@ -1,7 +1,14 @@
 import { withErrorBoundary } from "@/error-boundary";
 import { BgColors, DsCodeSandbox as SandboxT } from "@/lib";
 import { stringifyJsx } from "@/utils";
-import React, { createContext, useEffect, useMemo, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import getSandbox from "../../../stories/sandbox";
 import { SandboxComponentv2 } from "../../../stories/sandbox/types";
 import { CodeBlock } from "./CodeBlock";
@@ -40,6 +47,8 @@ const Sandbox = ({ node }: { node: SandboxT }) => {
     openSettings: false,
   });
 
+  const mounted = useRef<boolean>(false);
+
   const reset = () =>
     setSandboxState({
       ...sandboxState,
@@ -55,7 +64,14 @@ const Sandbox = ({ node }: { node: SandboxT }) => {
     const args = generateState(sandboxComp.args);
     const newState = getInitialState(args);
     setSandboxState({ ...sandboxState, args, propsState: newState });
+    mounted.current = true;
+
+    return () => {
+      mounted.current = false;
+    };
   }, []);
+
+  const isMounted = useCallback(() => mounted.current, []);
 
   const Component = sandboxComp(sandboxState?.propsState?.props);
 
@@ -72,7 +88,7 @@ const Sandbox = ({ node }: { node: SandboxT }) => {
     >
       <div className="algolia-ignore-index relative mb-8">
         <Preview>{isReact ? Component : Component.comp}</Preview>
-        <CodeBlock code={stringifyJsx(Component as any)} />
+        <CodeBlock code={isMounted() ? stringifyJsx(Component as any) : ""} />
       </div>
     </SandboxContext.Provider>
   );

@@ -34,14 +34,16 @@ export const Preview = ({ children }: { children: React.ReactElement }) => {
     >
       <div
         className={cl(
-          "sandbox-preview relative w-full flex-wrap items-center justify-center gap-4 overflow-x-auto p-4 pt-8 md:p-8 md:pt-12",
+          "relative inline-flex w-full flex-wrap items-center justify-center gap-4 overflow-x-auto p-4 pt-8 md:p-8 md:pt-12",
           {
             "hidden md:inline-flex": sandboxState.openSettings,
             "inline-flex": !sandboxState.openSettings,
           }
         )}
       >
-        {children}
+        <div className="inline-flex w-full flex-wrap items-center justify-center gap-4">
+          {children}
+        </div>
         <div className="absolute top-3 right-4 flex gap-4">
           <button
             className={cl(

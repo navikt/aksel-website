@@ -10,16 +10,17 @@ export const stringifyJsx = (renderedCode: React.ReactElement) => {
     Type = renderedCode.type;
     depth += 1;
     if (depth > 20) {
-      console.log(`Max iteration-depth reached: ${renderedCode}`);
+      console.log(`Max iteration-depth reached`);
       break;
     }
   }
 
-  return React.Children.map(renderedCode, (c) => {
+  let result = React.Children.map(renderedCode, (c) => {
     let string = reactElementToJSXString(c, {
       showFunctions: true,
       useFragmentShortSyntax: true,
-      showDefaultProps: true,
+      functionValue: (fn) =>
+        fn?.displayName ? `Replacewith:{${fn?.displayName}}` : fn,
     });
 
     const matches = string.match(/\S+=\\"([^"]*)\\"/g);
@@ -32,4 +33,19 @@ export const stringifyJsx = (renderedCode: React.ReactElement) => {
 
     return string;
   }).join("\n");
+
+  const reg = RegExp(/as={{(([^}][^}]?|[^}]}?)*)}}/);
+  const regReplace = RegExp(/Replacewith:\{([^}]+)\}/);
+
+  depth = 0;
+  while (result.match(reg)) {
+    result = result.replace(reg, `as={${result.match(regReplace)?.[1]}}`);
+    depth += 1;
+    if (depth > 20) {
+      console.log(`Max iteration-depth reached for as-prop replace`);
+      break;
+    }
+  }
+
+  return result;
 };
