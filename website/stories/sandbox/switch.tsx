@@ -1,14 +1,22 @@
-import { SandboxComponent } from "./types";
+import { Switch } from "@navikt/ds-react";
+import { SandboxComponentv2 } from "./types";
 
-const SwitchSandbox: SandboxComponent = (props) => {
-  const propDisabled = props?.disabled ? ` disabled` : "";
-  const propSize = props?.size ? ` size="${props.size}"` : "";
-  const propDesc = props?.description ? ` description="Beskrivelse"` : "";
-  const propTekstHideLabel = props?.hideLabel ? ` hideLabel` : "";
-  const propLoading = props?.loading ? ` loading` : "";
-  const propPosition = props?.position ? ` position="${props.position}"` : "";
+Switch.displayName = "Switch";
+const SwitchSandbox: SandboxComponentv2 = (props: any) => {
+  const newProps = {
+    size: props?.size,
+    position: props?.position,
+    ...(props?.disabled ? { disabled: true } : {}),
+    ...(props?.loading ? { loading: true } : {}),
+    ...(props?.description
+      ? {
+          description: "Beskrivelse",
+        }
+      : {}),
+    ...(props?.hideLabel ? { hideLabel: true } : {}),
+  };
 
-  return `<Switch ${propTekstHideLabel}${propSize}${propLoading}${propPosition}${propSize}${propDisabled}${propDesc} >Slå på notifikasjoner</Switch>`;
+  return <Switch {...newProps}>Slå på notifikasjoner</Switch>;
 };
 
 SwitchSandbox.args = {
