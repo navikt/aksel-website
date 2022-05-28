@@ -18,9 +18,11 @@ export const stringifyJsx = (renderedCode: React.ReactElement) => {
   let result = React.Children.map(renderedCode, (c) => {
     let string = reactElementToJSXString(c, {
       showFunctions: true,
+      useBooleanShorthandSyntax: false,
       useFragmentShortSyntax: true,
-      functionValue: (fn) =>
-        fn?.displayName ? `Replacewith:{${fn?.displayName}}` : fn,
+      functionValue: (fn) => {
+        return fn?.displayName ? `Replacewith:{${fn?.displayName}}` : fn;
+      },
     });
 
     const matches = string.match(/\S+=\\"([^"]*)\\"/g);

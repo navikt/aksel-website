@@ -77,6 +77,8 @@ const Sandbox = ({ node }: { node: SandboxT }) => {
 
   const isReact = React.isValidElement(Component);
 
+  if (!isMounted) return null;
+
   return (
     <SandboxContext.Provider
       value={{

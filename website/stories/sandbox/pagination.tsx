@@ -1,24 +1,26 @@
-import { SandboxComponent } from "./types";
+import { Pagination } from "@navikt/ds-react";
+import { useState } from "react";
+import { SandboxComponentv2 } from "./types";
 
-const PaginationSandbox: SandboxComponent = (props) => {
-  const count = props?.count ? ` count={${props.count}}` : "count={9}";
-  const siblingCount = props?.siblingCount
-    ? ` siblingCount={${props.siblingCount}}`
-    : "siblingCount={1}";
-  const boundaryCount = props?.boundaryCount
-    ? ` boundaryCount={${props.boundaryCount}}`
-    : "boundaryCount={1}";
-  const size = props?.size ? ` size="${props.size}"` : "";
-  const forrigeNeste = props?.["Forrige/Neste"] ? ` prevNextTexts` : "";
+Pagination.displayName = "Pagination";
+const PaginationSandbox: SandboxComponentv2 = (props: any) => {
+  const [page, setPage] = useState(1);
 
-  return `
-  const PaginationDemo = () => {
-    const [page, setPage] = React.useState(1);
+  const newProps = {
+    ...(props?.["Forrige/Neste"] ? { prevNextTexts: true } : {}),
+  };
 
-    return <Pagination page={page} onPageChange={setPage}${count}${size}${forrigeNeste}${siblingCount}${boundaryCount} />
-  }
-
-  render(<PaginationDemo />)`;
+  return (
+    <Pagination
+      {...newProps}
+      page={page}
+      onPageChange={(x) => setPage(x)}
+      count={Number(props?.count)}
+      size={props?.size}
+      boundaryCount={Number(props?.boundaryCount) ?? 1}
+      siblingCount={Number(props?.siblingCount) ?? 1}
+    />
+  );
 };
 
 PaginationSandbox.args = {
