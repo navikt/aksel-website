@@ -88,7 +88,13 @@ const Sandbox = ({ node }: { node: SandboxT }) => {
     >
       <div className="algolia-ignore-index relative mb-8">
         <Preview>{isReact ? Component : Component.comp}</Preview>
-        <CodeBlock code={isMounted() ? stringifyJsx(Component as any) : ""} />
+        <CodeBlock
+          code={
+            isMounted()
+              ? stringifyJsx(isReact ? (Component as any) : Component.comp)
+              : ""
+          }
+        />
       </div>
     </SandboxContext.Provider>
   );

@@ -1,9 +1,10 @@
 import { Expand, System } from "@navikt/ds-icons";
-import { BodyShort, BodyLong, Detail } from "@navikt/ds-react";
+import { BodyShort, BodyLong, Detail, Search } from "@navikt/ds-react";
 import { Divider, Dropdown, Header } from "@navikt/ds-react-internal";
 import { SandboxComponentv2 } from "./types";
 
 Header.displayName = "Header";
+Search.displayName = "Search";
 Expand.displayName = "Expand";
 System.displayName = "System";
 Divider.displayName = "Divider";
@@ -96,6 +97,22 @@ const HeaderSandbox: SandboxComponentv2 = (props: any) => {
   return (
     <Header className="w-full">
       <Header.Title {...newProps} />
+      {props?.search && (
+        <form
+          className="self-center px-5"
+          onSubmit={(e) => {
+            e.preventDefault();
+            console.log("Search!");
+          }}
+        >
+          <Search
+            label="header søk"
+            size="small"
+            variant="simple"
+            placeholder="Søk"
+          />
+        </form>
+      )}
       {props?.["system-meny"] && (
         <Dropdown>
           <Header.Button as={Dropdown.Toggle} style={{ marginLeft: "auto" }}>

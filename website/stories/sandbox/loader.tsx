@@ -1,13 +1,17 @@
-import { SandboxComponent } from "./types";
+import { Loader } from "@navikt/ds-react";
 import { BgColors } from "../../lib/types/types";
+import { SandboxComponentv2 } from "./types";
 
-const LoaderSandbox: SandboxComponent = (props) => {
-  const propVariant = props?.variant ? ` variant="${props.variant}"` : "";
-  const size = props?.size ? ` size="${props.size}"` : "";
-  const transparent = props?.transparent ? ` transparent` : "";
-  const title = props?.title ? ` title="${props.title}"` : "";
-
-  const comp = `<Loader${propVariant}${size}${transparent}${title} />`;
+Loader.displayName = "Loader";
+const LoaderSandbox: SandboxComponentv2 = (props: any) => {
+  const comp = (
+    <Loader
+      variant={props?.variant}
+      size={props?.size}
+      title={props?.title ?? ""}
+      transparent={props?.transparent}
+    />
+  );
   if (props?.variant === "inverted") {
     return { comp, bg: BgColors.INVERTEDGRADIENT };
   }

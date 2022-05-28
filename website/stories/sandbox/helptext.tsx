@@ -1,11 +1,13 @@
-import { SandboxComponent } from "./types";
+import { HelpText } from "@navikt/ds-react";
+import { SandboxComponentv2 } from "./types";
 
-const HelptextSandbox: SandboxComponent = (props) => {
-  const placement = props.placement ? ` placement="${props.placement}"` : "";
-
-  return `<HelpText title="Hvor kommer dette fra?"${placement}>
-  Informasjonen er hentet fra X sin statistikk fra 2021
-</HelpText>`;
+HelpText.displayName = "HelpText";
+const HelptextSandbox: SandboxComponentv2 = (props: any) => {
+  return (
+    <HelpText title="Hvor kommer dette fra?" placement={props?.placement}>
+      Informasjonen er hentet fra X sin statistikk fra 2021
+    </HelpText>
+  );
 };
 
 HelptextSandbox.args = {
