@@ -4,7 +4,7 @@ import { SandboxComponentT } from "./types";
 
 Tooltip.displayName = "Tooltip";
 (Button as any).displayName = "Button";
-Print.displayName = "Button";
+Print.displayName = "Print";
 
 const TooltipSandbox: SandboxComponentT = (props: any) => {
   const newProps = {

@@ -144,11 +144,11 @@ const TableSandbox: SandboxComponentT = (props: any) => {
                   indeterminate={
                     selectedRows.length && selectedRows.length !== data.length
                   }
-                  onChange={() =>
+                  onChange={() => {
                     selectedRows.length
                       ? setSelectedRows([])
-                      : setSelectedRows(data.map(({ fnr }) => fnr))
-                  }
+                      : setSelectedRows(data.map(({ fnr }) => fnr));
+                  }}
                   hideLabel
                 >
                   {""}
@@ -201,7 +201,9 @@ const TableSandbox: SandboxComponentT = (props: any) => {
                         size={props?.size}
                         hideLabel
                         checked={selectedRows.includes(fnr)}
-                        onChange={() => toggleSelectedRow(fnr)}
+                        onChange={() => {
+                          toggleSelectedRow(fnr);
+                        }}
                         aria-labelledby="id{fnr}"
                       >
                         {" "}
