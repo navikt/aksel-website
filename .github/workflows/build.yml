@@ -28,7 +28,7 @@ jobs:
           echo "SANITY_PRIVATE_NO_DRAFTS=${{ secrets.SANITY_PRIVATE_NO_DRAFTS }}" >> website/.env
 
       - name: Install deps
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable --immutable-cache
       - name: Run tests
         run: NEXT_PUBLIC_TEST=true yarn workspace website e2e:ci
       - name: Build application
