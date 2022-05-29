@@ -1,8 +1,8 @@
 import { HelpText } from "@navikt/ds-react";
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 
 HelpText.displayName = "HelpText";
-const HelptextSandbox: SandboxComponentv2 = (props: any) => {
+const HelptextSandbox: SandboxComponentT = (props: any) => {
   return (
     <HelpText title="Hvor kommer dette fra?" placement={props?.placement}>
       Informasjonen er hentet fra X sin statistikk fra 2021

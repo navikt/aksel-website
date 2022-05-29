@@ -1,10 +1,10 @@
 import { Textarea } from "@navikt/ds-react";
 import React from "react";
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 
 Textarea.displayName = "Textarea";
 
-const TextareaSandbox: SandboxComponentv2 = (props: any) => {
+const TextareaSandbox: SandboxComponentT = (props: any) => {
   const [value, setValue] = React.useState("");
 
   const newProps = {

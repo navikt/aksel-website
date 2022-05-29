@@ -1,12 +1,12 @@
 import { Accordion } from "@navikt/ds-react";
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 
 Accordion.displayName = "Accordion";
 Accordion.Item.displayName = "Accordion.Item";
 Accordion.Header.displayName = "Accordion.Header";
 Accordion.Content.displayName = "Accordion.Content";
 
-const AccordionSandbox: SandboxComponentv2 = () => {
+const AccordionSandbox: SandboxComponentT = () => {
   return (
     <Accordion className="w-full">
       <Accordion.Item>

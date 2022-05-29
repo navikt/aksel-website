@@ -1,8 +1,8 @@
 import { ReadMore } from "@navikt/ds-react";
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 
 ReadMore.displayName = "ReadMore";
-const ReadMoreSandbox: SandboxComponentv2 = () => {
+const ReadMoreSandbox: SandboxComponentT = () => {
   return (
     <div>
       <ReadMore header="ReadMore header text" renderContentWhenClosed>

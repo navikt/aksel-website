@@ -1,10 +1,10 @@
 import { Alert, Heading } from "@navikt/ds-react";
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 
 Alert.displayName = "Alert";
 (Heading as any).displayName = "Heading";
 
-const AlertSandbox: SandboxComponentv2 = (props: any) => {
+const AlertSandbox: SandboxComponentT = (props: any) => {
   let text = "Alert";
 
   switch (props?.variant) {

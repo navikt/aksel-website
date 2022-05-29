@@ -1,10 +1,10 @@
 import { RadioGroup, Radio } from "@navikt/ds-react";
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 
 RadioGroup.displayName = "RadioGroup";
 Radio.displayName = "RadioGroup";
 
-const RadioSandbox: SandboxComponentv2 = (props: any) => {
+const RadioSandbox: SandboxComponentT = (props: any) => {
   const newProps = {
     ...(props?.disabled ? { disabled: true } : {}),
     ...(props?.error

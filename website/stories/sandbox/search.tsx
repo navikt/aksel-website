@@ -1,11 +1,11 @@
 import { BgColors } from "@/lib";
 import { Search } from "@navikt/ds-react";
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 
 Search.displayName = "Search";
 Search.Button.displayName = "Search.Button";
 
-const SearchSandbox: SandboxComponentv2 = (props: any) => {
+const SearchSandbox: SandboxComponentT = (props: any) => {
   const newProps = {
     size: props?.size,
     variant: props?.variant,

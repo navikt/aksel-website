@@ -1,4 +1,4 @@
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 import { BgColors } from "../../lib/types/types";
 import { Tabs } from "@navikt/ds-react";
 import cl from "classnames";
@@ -14,7 +14,7 @@ Tabs.Panel.displayName = "Tabs.Panel";
 Tabs.List.displayName = "Tabs.List";
 (Tabs.Tab as any).displayName = "Tabs.Tab";
 
-const TabsSandbox: SandboxComponentv2 = (props: any) => {
+const TabsSandbox: SandboxComponentT = (props: any) => {
   const iconPosition = {
     ...(props?.iconPosition ? { iconPosition: props?.iconPosition } : {}),
   };

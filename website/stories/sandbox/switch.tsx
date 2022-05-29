@@ -1,8 +1,8 @@
 import { Switch } from "@navikt/ds-react";
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 
 Switch.displayName = "Switch";
-const SwitchSandbox: SandboxComponentv2 = (props: any) => {
+const SwitchSandbox: SandboxComponentT = (props: any) => {
   const newProps = {
     size: props?.size,
     position: props?.position,

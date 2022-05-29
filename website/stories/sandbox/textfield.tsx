@@ -1,9 +1,9 @@
 import { TextField } from "@navikt/ds-react";
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 
 TextField.displayName = "TextField";
 
-const TextFieldSandbox: SandboxComponentv2 = (props: any) => {
+const TextFieldSandbox: SandboxComponentT = (props: any) => {
   const newProps = {
     ...(props?.size ? { size: props?.size } : {}),
     ...(props?.error ? { error: "Tilbakemeldingen er for kort." } : {}),

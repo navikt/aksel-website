@@ -1,7 +1,7 @@
 import { Expand, System } from "@navikt/ds-icons";
 import { BodyShort, BodyLong, Detail, Search } from "@navikt/ds-react";
 import { Divider, Dropdown, Header } from "@navikt/ds-react-internal";
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 
 Header.displayName = "Header";
 Search.displayName = "Search";
@@ -26,7 +26,7 @@ Dropdown.Menu.GroupedList.Heading.displayName =
 (Dropdown.Menu.GroupedList.Item as any).displayName =
   "Dropdown.Menu.GroupedList.Item";
 
-const HeaderSandbox: SandboxComponentv2 = (props: any) => {
+const HeaderSandbox: SandboxComponentT = (props: any) => {
   const ml = {
     ...(!props?.["system-meny"] ? { style: { marginLeft: "auto" } } : {}),
   };

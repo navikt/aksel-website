@@ -1,9 +1,9 @@
 import { Pagination } from "@navikt/ds-react";
 import { useState } from "react";
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 
 Pagination.displayName = "Pagination";
-const PaginationSandbox: SandboxComponentv2 = (props: any) => {
+const PaginationSandbox: SandboxComponentT = (props: any) => {
   const [page, setPage] = useState(1);
 
   const newProps = {

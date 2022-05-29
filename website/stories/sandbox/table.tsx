@@ -2,7 +2,7 @@ import { Checkbox, Pagination, Table } from "@navikt/ds-react";
 import { format } from "date-fns";
 import React from "react";
 import { BgColors } from "../../lib/types/types";
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 
 Checkbox.displayName = "Checkbox";
 Pagination.displayName = "Pagination";
@@ -69,7 +69,7 @@ const data = [
   },
 ];
 
-const TableSandbox: SandboxComponentv2 = (props: any) => {
+const TableSandbox: SandboxComponentT = (props: any) => {
   const newProps = { zebraStripes: props?.zebraStripes, size: props?.size };
 
   /* sortable */

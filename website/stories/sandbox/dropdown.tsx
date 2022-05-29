@@ -1,7 +1,7 @@
 import { Button } from "@navikt/ds-react";
 import { Divider, Dropdown } from "@navikt/ds-react-internal";
 import React from "react";
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 
 Divider.displayName = "Divider";
 (Button as any).displayName = "Button";
@@ -16,7 +16,7 @@ Dropdown.Menu.GroupedList.Heading.displayName =
 Dropdown.Menu.List.displayName = "Dropdown.Menu.List";
 (Dropdown.Menu.List.Item as any).displayName = "Dropdown.Menu.List.Item";
 
-const DropdownSandbox: SandboxComponentv2 = () => {
+const DropdownSandbox: SandboxComponentT = () => {
   return (
     <Dropdown>
       <Button as={Dropdown.Toggle}>Toggle</Button>

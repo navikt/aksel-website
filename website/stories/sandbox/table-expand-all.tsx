@@ -3,7 +3,7 @@ import { Table } from "@navikt/ds-react";
 import { format } from "date-fns";
 import { useState } from "react";
 import { BgColors } from "../../lib/types/types";
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 
 const data = [
   {
@@ -33,7 +33,7 @@ Table.Body.displayName = "Table.Body";
 Table.ExpandableRow.displayName = "Table.ExpandableRow";
 Table.DataCell.displayName = "Table.DataCell";
 
-const TableExpandAllSandbox: SandboxComponentv2 = () => {
+const TableExpandAllSandbox: SandboxComponentT = () => {
   const [expandedRows, setExpandedRows] = useState([]);
   const toggleExpandedRow = (value) =>
     setExpandedRows((list) =>

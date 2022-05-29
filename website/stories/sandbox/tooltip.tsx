@@ -1,12 +1,12 @@
 import { Print } from "@navikt/ds-icons";
 import { Tooltip, Button } from "@navikt/ds-react";
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 
 Tooltip.displayName = "Tooltip";
 (Button as any).displayName = "Button";
 Print.displayName = "Button";
 
-const TooltipSandbox: SandboxComponentv2 = (props: any) => {
+const TooltipSandbox: SandboxComponentT = (props: any) => {
   const newProps = {
     ...(props?.arrow ? {} : { arrow: false }),
     ...(props?.open ? { open: true } : {}),

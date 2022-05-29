@@ -22,7 +22,7 @@ import DropdownSandbox from "./dropdown";
 import DetailsSandbox from "./details";
 import HelptextSandbox from "./helptext";
 import { kebabCase } from "lodash";
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 
 const allSandboxes = {
   AccordionSandbox,
@@ -56,7 +56,7 @@ export const Sandboxes = Object.keys(allSandboxes).reduce((prev, y) => {
 
 export const SandboxKeys = Object.keys(Sandboxes);
 
-const getSandbox = (name?: string): SandboxComponentv2 | null => {
+const getSandbox = (name?: string): SandboxComponentT | null => {
   if (!name || !(name in Sandboxes)) {
     return null;
   }

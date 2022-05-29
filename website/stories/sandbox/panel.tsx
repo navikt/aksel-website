@@ -1,11 +1,11 @@
 import { Panel, Heading, BodyLong } from "@navikt/ds-react";
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 
 (Panel as any).displayName = "Panel";
 (Heading as any).displayName = "Heading";
 (BodyLong as any).displayName = "BodyLong";
 
-const PanelSandbox: SandboxComponentv2 = (props: any) => {
+const PanelSandbox: SandboxComponentT = (props: any) => {
   return (
     <Panel border={props?.border}>
       <Heading spacing level="2" size="large">

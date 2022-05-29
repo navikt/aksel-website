@@ -10,7 +10,7 @@ import React, {
   useState,
 } from "react";
 import getSandbox from "../../../stories/sandbox";
-import { SandboxComponentv2 } from "../../../stories/sandbox/types";
+import { SandboxComponentT } from "../../../stories/sandbox/types";
 import { CodeBlock } from "./CodeBlock";
 import { Preview } from "./Preview";
 import {
@@ -55,8 +55,8 @@ const Sandbox = ({ node }: { node: SandboxT }) => {
       propsState: getInitialState(sandboxState.args),
     });
 
-  const sandboxComp: SandboxComponentv2 | null = useMemo(
-    () => getSandbox(node?.title) as SandboxComponentv2,
+  const sandboxComp: SandboxComponentT | null = useMemo(
+    () => getSandbox(node?.title) as SandboxComponentT,
     [node?.title]
   );
 

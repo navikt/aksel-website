@@ -1,10 +1,10 @@
 import { Star } from "@navikt/ds-icons";
 import { Button } from "@navikt/ds-react";
-import { SandboxComponentv2 } from "./types";
+import { SandboxComponentT } from "./types";
 
 (Button as any).displayName = "Button";
 Star.displayName = "Star";
-const ButtonSandbox: SandboxComponentv2 = (props: any) => {
+const ButtonSandbox: SandboxComponentT = (props: any) => {
   return (
     <Button
       variant={props?.variant}
