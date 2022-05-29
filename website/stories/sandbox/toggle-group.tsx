@@ -1,35 +1,38 @@
-import { SandboxComponent } from "./types";
+import { Email, EmailOpened, Send } from "@navikt/ds-icons";
+import { ToggleGroup } from "@navikt/ds-react";
+import React from "react";
+import { SandboxComponentv2 } from "./types";
 
-const ToggleGroupSandbox: SandboxComponent = (props) => {
-  const label = props?.label ? ` label="Inbox"` : "";
-  const size = props?.size ? ` size="${props.size}"` : "";
+ToggleGroup.displayName = "ToggleGroup";
+ToggleGroup.Item.displayName = "ToggleGroup.Item";
+Email.displayName = "Email";
+EmailOpened.displayName = "EmailOpened";
+Send.displayName = "Send";
 
-  const comp = `const ToggleDemo = () => {
-    const [value, setValue] = React.useState("ulest");
+const ToggleGroupSandbox: SandboxComponentv2 = (props: any) => {
+  const [value, setValue] = React.useState("ulest");
 
-    return (
-      <ToggleGroup onChange={setValue} value={value}${size}${label}>
-        <ToggleGroup.Item value="ulest">${
-          props?.Komposisjon.includes("Ikon") ? "<Email />" : ""
-        }${
-    props?.Komposisjon.includes("Tekst") ? "Ulest" : ""
-  }</ToggleGroup.Item>
-        <ToggleGroup.Item value="lest">${
-          props.Komposisjon.includes("Ikon") ? "<EmailOpened />" : ""
-        }${
-    props?.Komposisjon.includes("Tekst") ? "Leste" : ""
-  }</ToggleGroup.Item>
-        <ToggleGroup.Item value="sendt">${
-          props.Komposisjon.includes("Ikon") ? "<Send />" : ""
-        }${
-    props.Komposisjon.includes("Tekst") ? "Sendte" : ""
-  }</ToggleGroup.Item></ToggleGroup>
-    );
-  };
-
-  render(<ToggleDemo />)`;
-
-  return comp;
+  return (
+    <ToggleGroup
+      onChange={(x) => setValue(x)}
+      value={value}
+      size={props?.size}
+      {...(props?.label ? { label: "Inbox" } : {})}
+    >
+      <ToggleGroup.Item value="ulest">
+        {props?.Komposisjon.includes("Ikon") && <Email />}
+        {props?.Komposisjon.includes("Tekst") && "Ulest"}
+      </ToggleGroup.Item>
+      <ToggleGroup.Item value="lest">
+        {props?.Komposisjon.includes("Ikon") && <EmailOpened />}
+        {props?.Komposisjon.includes("Tekst") && "Leste"}
+      </ToggleGroup.Item>
+      <ToggleGroup.Item value="sendt">
+        {props?.Komposisjon.includes("Ikon") && <Send />}
+        {props?.Komposisjon.includes("Tekst") && "Sendte"}
+      </ToggleGroup.Item>
+    </ToggleGroup>
+  );
 };
 
 ToggleGroupSandbox.args = {

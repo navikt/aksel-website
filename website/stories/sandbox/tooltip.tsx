@@ -1,18 +1,30 @@
-import { SandboxComponent } from "./types";
+import { Print } from "@navikt/ds-icons";
+import { Tooltip, Button } from "@navikt/ds-react";
+import { SandboxComponentv2 } from "./types";
 
-const TooltipSandbox: SandboxComponent = (props) => {
-  const placement = props?.placement ? ` placement="${props.placement}"` : "";
-  const arrow = props?.arrow ? `` : " arrow={false}";
-  const offset = props?.offset ? ` offset={${props.offset}}` : "";
-  const content = props?.content
-    ? ` content={"${props.content}"}`
-    : ` content="print"`;
-  const komp = props?.Komposisjon.includes("Med") ? ` keys={["cmd","p"]}` : "";
-  const open = props?.open ? " open" : "";
+Tooltip.displayName = "Tooltip";
+(Button as any).displayName = "Button";
+Print.displayName = "Button";
 
-  return `<Tooltip${placement}${arrow}${offset}${content}${komp}${open}>
-  <Button><Print aria-hidden/></Button>
-  </Tooltip>`;
+const TooltipSandbox: SandboxComponentv2 = (props: any) => {
+  const newProps = {
+    ...(props?.arrow ? {} : { arrow: false }),
+    ...(props?.open ? { open: true } : {}),
+    ...(props?.offset ? { offset: Number(props.offset) } : {}),
+    ...(props?.Komposisjon.includes("Med") ? { keys: ["cmd", "p"] } : {}),
+  };
+
+  return (
+    <Tooltip
+      {...newProps}
+      content={props?.content ?? "Print"}
+      placement={props?.placement}
+    >
+      <Button>
+        <Print aria-hidden />
+      </Button>
+    </Tooltip>
+  );
 };
 
 TooltipSandbox.args = {
