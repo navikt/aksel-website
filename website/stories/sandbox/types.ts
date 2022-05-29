@@ -25,11 +25,6 @@ export interface SandboxComponentArgs {
   background?: BgColors;
 }
 
-export interface SandboxComponent {
-  (props?: any, variant?: string): string | { comp: string; bg: BgColors };
-  args?: SandboxComponentArgs;
-}
-
 export interface SandboxComponentv2 {
   (props?: any):
     | React.ReactElement
