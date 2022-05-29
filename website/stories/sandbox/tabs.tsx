@@ -1,86 +1,103 @@
-import { SandboxComponent } from "./types";
+import { SandboxComponentv2 } from "./types";
 import { BgColors } from "../../lib/types/types";
+import { Tabs } from "@navikt/ds-react";
+import cl from "classnames";
+import { Dialog, Email, Historic, Notes, Send } from "@navikt/ds-icons";
 
-const Panel = `<Tabs.Panel
-value="logg"
-className="w-full h-24 p-8 bg-gray-50"
->
-TabPanel for Logg-tab
-</Tabs.Panel>
-<Tabs.Panel
-value="inbox"
-className="w-full h-24 p-8 bg-gray-50"
->
-TabPanel for Inbox-tab
-</Tabs.Panel>
-<Tabs.Panel
-value="sendt"
-className="w-full  h-24 p-8 bg-gray-50"
->
-TabPanel for Sendt-tab
-</Tabs.Panel>`;
+Dialog.displayName = "Dialog";
+Email.displayName = "Email";
+Historic.displayName = "Historic";
+Notes.displayName = "Notes";
+Send.displayName = "Send";
+Tabs.displayName = "Tabs";
+Tabs.Panel.displayName = "Tabs.Panel";
+Tabs.List.displayName = "Tabs.List";
+(Tabs.Tab as any).displayName = "Tabs.Tab";
 
-const TabsSandbox: SandboxComponent = (props) => {
-  const size = props?.size ? ` size="${props.size}"` : "";
-  const selectionFollowsFocus = props?.selectionFollowsFocus
-    ? ` selectionFollowsFocus`
-    : "";
+const TabsSandbox: SandboxComponentv2 = (props: any) => {
+  const iconPosition = {
+    ...(props?.iconPosition ? { iconPosition: props?.iconPosition } : {}),
+  };
 
-  const iconPosition = props?.iconPosition
-    ? ` iconPosition="${props?.iconPosition}"`
-    : "";
+  const hasIcon = props?.Komposisjon?.includes("Ikon") ?? true;
+  const hasLabel = props?.Komposisjon?.includes("Label") ?? true;
 
-  const loop = props?.loop ? ` loop` : "";
+  const newProps = {
+    ...(props?.selectionFollowsFocus ? { selectionFollowsFocus: true } : {}),
+  };
 
-  const hasIcon = props?.Komposisjon?.includes("Ikon");
-  const hasLabel = props?.Komposisjon?.includes("Label");
-
-  return `<Tabs defaultValue="logg"${size}${selectionFollowsFocus} onChange={console.log} className="w-full ${
-    props.overflow ? (!hasLabel ? "max-w-[200px]" : "max-w-sm") : ""
-  }">
-  <Tabs.List${loop} className="${props.overflow ? "" : "pl-8"}">
-    <Tabs.Tab value="logg"${iconPosition} ${hasLabel ? `label="Logg"` : ""}
-    ${hasIcon ? `icon={<Historic title="historielogg" />}` : ""}
-     />
-    <Tabs.Tab
-      value="inbox"${iconPosition}
-      ${hasLabel ? `label="Inbox"` : ""}
-      ${hasIcon ? `icon={<Email title="inbox" />}` : ""}
-    />
-    <Tabs.Tab value="sendt"${iconPosition} ${
-    hasIcon ? `icon={<Send title="sendt" />}` : ""
-  } ${hasLabel ? `label="Sendt"` : ""} />
-  ${
-    props.overflow
-      ? `<Tabs.Tab value="dialog"${iconPosition} ${
-          hasIcon ? `icon={<Dialog title="dialog" />}` : ""
-        } ${
-          hasLabel ? `label="Dialog"` : ""
-        } /><Tabs.Tab value="notater"${iconPosition} ${
-          hasIcon ? `icon={<Notes title="notater" />}` : ""
-        } ${hasLabel ? `label="Notater"` : ""} />`
-      : ""
-  }
-    </Tabs.List>
-    ${Panel}
-    ${
-      props.overflow
-        ? `<Tabs.Panel
-    value="dialog"
-    className="w-full h-24 p-8 bg-gray-50"
+  return (
+    <Tabs
+      {...newProps}
+      defaultValue="logg"
+      size={props?.size}
+      onChange={(x) => console.log(x)}
+      className={cl("w-full", {
+        "max-w-[200px]": props?.overflow && !hasLabel,
+        "max-w-sm": props?.overflow && hasLabel,
+      })}
     >
-    TabPanel for Dialoger-tab
-    </Tabs.Panel>
-    <Tabs.Panel
-    value="notater"
-    className="w-full h-24 p-8 bg-gray-50"
-    >
-    TabPanel for Notater-tab
-    </Tabs.Panel>`
-        : ""
-    }
-</Tabs>
-  `;
+      <Tabs.List
+        loop={props?.loop}
+        className={cl({ "pl-8": !props?.overflow })}
+      >
+        <Tabs.Tab
+          value="logg"
+          {...iconPosition}
+          {...(hasLabel ? { label: "Logg" } : {})}
+          {...(hasIcon ? { icon: <Historic title="historielogg" /> } : {})}
+        />
+        <Tabs.Tab
+          value="inbox"
+          {...iconPosition}
+          {...(hasLabel ? { label: "Inbox" } : {})}
+          {...(hasIcon ? { icon: <Email title="inbox" /> } : {})}
+        />
+        <Tabs.Tab
+          value="sendt"
+          {...iconPosition}
+          {...(hasLabel ? { label: "Sendt" } : {})}
+          {...(hasIcon ? { icon: <Send title="sendt" /> } : {})}
+        />
+        {props?.overflow && (
+          <>
+            {" "}
+            <Tabs.Tab
+              value="dialog"
+              {...iconPosition}
+              {...(hasLabel ? { label: "Dialog" } : {})}
+              {...(hasIcon ? { icon: <Dialog title="dialog" /> } : {})}
+            />
+            <Tabs.Tab
+              value="notater"
+              {...iconPosition}
+              {...(hasLabel ? { label: "Notater" } : {})}
+              {...(hasIcon ? { icon: <Notes title="notater" /> } : {})}
+            />
+          </>
+        )}
+      </Tabs.List>
+      <Tabs.Panel value="logg" className="h-24 w-full bg-gray-50 p-8">
+        TabPanel for Logg-tab
+      </Tabs.Panel>
+      <Tabs.Panel value="inbox" className="h-24 w-full bg-gray-50 p-8">
+        TabPanel for Inbox-tab
+      </Tabs.Panel>
+      <Tabs.Panel value="sendt" className="h-24  w-full bg-gray-50 p-8">
+        TabPanel for Sendt-tab
+      </Tabs.Panel>
+      {props?.overflow && (
+        <>
+          <Tabs.Panel value="dialog" className="h-24 w-full bg-gray-50 p-8">
+            TabPanel for Dialoger-tab
+          </Tabs.Panel>
+          <Tabs.Panel value="notater" className="h-24 w-full bg-gray-50 p-8">
+            TabPanel for Notater-tab
+          </Tabs.Panel>
+        </>
+      )}
+    </Tabs>
+  );
 };
 
 TabsSandbox.args = {

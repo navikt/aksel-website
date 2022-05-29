@@ -1,33 +1,36 @@
-import { SandboxComponent } from "./types";
+import { Textarea } from "@navikt/ds-react";
+import React from "react";
+import { SandboxComponentv2 } from "./types";
 
-const TextareaSandbox: SandboxComponent = (props) => {
-  const size = props?.size ? ` size="${props.size}"` : "";
-  const description = props?.description
-    ? ` description="Vi lagrer bare selve meldingen, ikke hvem som sendte den."`
-    : "";
-  const error = props?.error ? ` error="Tilbakemeldingen er for kort."` : "";
-  const hideLabel = props?.hideLabel ? ` hideLabel` : "";
-  const disabled = props?.disabled ? ` disabled` : "";
-  const teller = props?.teller ? ` maxLength={40}` : "";
-  const maxRows = props?.maxRows ? ` maxRows={4}` : "";
-  const minRows = props?.minRows ? ` minRows={3}` : "";
+Textarea.displayName = "Textarea";
 
-  return `
-  const TextareaDemo = () => {
+const TextareaSandbox: SandboxComponentv2 = (props: any) => {
+  const [value, setValue] = React.useState("");
 
-    const [value, setValue] = React.useState("");
+  const newProps = {
+    ...(props?.size ? { size: props?.size } : {}),
+    ...(props?.teller ? { maxLength: 40 } : {}),
+    ...(props?.error ? { error: "Tilbakemeldingen er for kort." } : {}),
+    ...(props?.description
+      ? {
+          description:
+            "Vi lagrer bare selve meldingen, ikke hvem som sendte den.",
+        }
+      : {}),
+    ...(props?.hideLabel ? { hideLabel: true } : {}),
+    ...(props?.disabled ? { disabled: true } : {}),
+    ...(props?.maxRows ? { maxRows: 4 } : {}),
+    ...(props?.minRows ? { minRows: 3 } : {}),
+  };
 
-    return <Textarea
-            label="Har du noen tilbakemeldinger?"
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            ${teller}${minRows}${maxRows}${size}${description}${hideLabel}${error}${disabled}
-          />
-  }
-
-  render(<TextareaDemo/>)
-
-  `;
+  return (
+    <Textarea
+      label="Har du noen tilbakemeldinger?"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      {...newProps}
+    />
+  );
 };
 
 TextareaSandbox.args = {

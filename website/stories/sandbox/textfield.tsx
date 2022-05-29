@@ -1,20 +1,23 @@
-import { SandboxComponent } from "./types";
+import { TextField } from "@navikt/ds-react";
+import { SandboxComponentv2 } from "./types";
 
-const TextFieldSandbox: SandboxComponent = (props) => {
-  const size = props?.size ? ` size="${props.size}"` : "";
-  const description = props?.description
-    ? ` description="Vi lagrer bare selve meldingen, ikke hvem som sendte den."`
-    : "";
-  const error = props?.error ? ` error="Tilbakemeldingen er for kort."` : "";
-  const hideLabel = props?.hideLabel ? ` hideLabel` : "";
-  const disabled = props?.disabled ? ` disabled` : "";
+TextField.displayName = "TextField";
 
-  return `
-  <TextField
-    label="Har du noen tilbakemeldinger?"
-    ${size}${description}${hideLabel}${error}${disabled}
-  />
-  `;
+const TextFieldSandbox: SandboxComponentv2 = (props: any) => {
+  const newProps = {
+    ...(props?.size ? { size: props?.size } : {}),
+    ...(props?.error ? { error: "Tilbakemeldingen er for kort." } : {}),
+    ...(props?.description
+      ? {
+          description:
+            "Vi lagrer bare selve meldingen, ikke hvem som sendte den.",
+        }
+      : {}),
+    ...(props?.hideLabel ? { hideLabel: true } : {}),
+    ...(props?.disabled ? { disabled: true } : {}),
+  };
+
+  return <TextField label="Har du noen tilbakemeldinger?" {...newProps} />;
 };
 
 TextFieldSandbox.args = {

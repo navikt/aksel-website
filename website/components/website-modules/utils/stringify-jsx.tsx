@@ -20,8 +20,8 @@ export const stringifyJsx = (renderedCode: React.ReactElement) => {
       showFunctions: true,
       useBooleanShorthandSyntax: false,
       useFragmentShortSyntax: true,
+      filterProps: ["key"],
       functionValue: (fn) => {
-        console.log(typeof fn);
         return fn?.displayName ? `Replacewith:{${fn?.displayName}}` : fn;
       },
     });
