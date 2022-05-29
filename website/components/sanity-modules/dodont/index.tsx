@@ -61,6 +61,7 @@ const Element = ({
 }): JSX.Element => {
   const [open, setOpen] = useState(false);
 
+  if (!block.picture) return null;
   return (
     <figure
       className={cl(

@@ -49,7 +49,10 @@ const MobileNavigation = () => {
                 }
               )}
             >
-              <NextLink href={`/${heading.link_ref.slug.current}`} passHref>
+              <NextLink
+                href={`/${heading?.link_ref?.slug?.current ?? "#"}`}
+                passHref
+              >
                 <a
                   className={cl(
                     "flex min-h-[48px] w-full items-center justify-between bg-none py-3 pr-4 pl-8 text-text no-underline focus:outline-none",

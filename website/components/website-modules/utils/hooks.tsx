@@ -95,7 +95,7 @@ export const useDsNavigation = () => {
               ) ?? heading?.link_ref?.slug?.current === pageProps?.page?.slug
           );
         } else {
-          return heading?.link_ref.slug?.current === pageProps?.page?.slug;
+          return heading?.link_ref?.slug?.current === pageProps?.page?.slug;
         }
       }),
     [pageProps]
