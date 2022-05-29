@@ -1,5 +1,5 @@
-import { BgColors } from "@/lib";
 import { Search } from "@navikt/ds-react";
+import { BgColors } from "../../lib/types/types";
 import { SandboxComponentT } from "./types";
 
 Search.displayName = "Search";
