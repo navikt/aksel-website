@@ -6,6 +6,7 @@ import {
   introField,
   sanitySlug,
   titleField,
+  UnderArbeidField,
 } from "@/lib";
 
 const prefix = "blogg/";
@@ -22,5 +23,6 @@ export default {
     sanitySlug(prefix, 2),
     introField,
     innholdField,
+    UnderArbeidField,
   ],
 };
