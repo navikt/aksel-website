@@ -3,7 +3,7 @@ import { SanityBlockContent } from "@/sanity-block";
 import { BodyShort, Heading, Ingress } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
-import { dateStr, Feedback } from "../..";
+import { dateStr, Feedback, UnderArbeid } from "../..";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
 
@@ -59,11 +59,15 @@ const AkselPrinsippTemplate = ({
         </div>
         <div className="mt-12">
           <div className="mt-8 px-4">
-            <SanityBlockContent
-              className="mx-auto max-w-prose xs:w-[90%]"
-              blocks={data?.innhold ?? []}
-              variant="aksel"
-            />
+            {data?.under_arbeid ? (
+              <UnderArbeid />
+            ) : (
+              <SanityBlockContent
+                className="mx-auto max-w-prose xs:w-[90%]"
+                blocks={data?.innhold ?? []}
+                variant="aksel"
+              />
+            )}
           </div>
         </div>
         <div className="mt-16 px-4">

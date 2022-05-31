@@ -872,6 +872,12 @@ Brukes i kort og innganger
         | Sanity.Keyed<tips>
         | Sanity.Keyed<relatert_innhold>
       >;
+
+      /**
+       * Under arbeid - `Boolean`
+Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
+       */
+      under_arbeid?: boolean;
     }
 
     /**
@@ -922,6 +928,12 @@ Brukes i kort og innganger
         | Sanity.Keyed<tips>
         | Sanity.Keyed<relatert_innhold>
       >;
+
+      /**
+       * Under arbeid - `Boolean`
+Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
+       */
+      under_arbeid?: boolean;
     }
 
     /**
@@ -1042,6 +1054,12 @@ Brukes i kort og innganger
         | Sanity.Keyed<tips>
         | Sanity.Keyed<relatert_innhold>
       >;
+
+      /**
+       * Under arbeid - `Boolean`
+Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
+       */
+      under_arbeid?: boolean;
     }
 
     type generisk_seksjon = {
@@ -2056,6 +2074,8 @@ Bruk fargesøket på nettsiden for å finne riktig ikon
         | "FolderFilled"
         | "ForkSpoonKnife"
         | "ForkSpoonKnifeFilled"
+        | "Forward"
+        | "ForwardFilled"
         | "Freezer"
         | "FreezerFilled"
         | "FullscreenEnter"
@@ -2173,6 +2193,8 @@ Bruk fargesøket på nettsiden for å finne riktig ikon
         | "PensionFlower"
         | "PensionFlowerFilled"
         | "People"
+        | "PeopleDialogFilled"
+        | "PeopleDialogOutline"
         | "PeopleFilled"
         | "Picture"
         | "PictureFilled"
@@ -2256,6 +2278,7 @@ Bruk fargesøket på nettsiden for å finne riktig ikon
         | "StairsFilled"
         | "Star"
         | "StarFilled"
+        | "Stethoscope"
         | "StopWatch"
         | "StopWatchFilled"
         | "Stroller"
