@@ -32,7 +32,7 @@ jobs:
 
       - name: Install deps
         if: steps.node-cache.outputs.cache-hit != 'true'
-        run: yarn install --immutable --immutable-cache
+        run: yarn install --immutable
       - name: Build application
         run: yarn build:next
       - name: Login to GitHub Container Registry
