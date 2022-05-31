@@ -84,6 +84,15 @@ const AkselArtikkelTemplate = ({
               blocks={data?.innhold ?? []}
               variant="aksel"
             />
+            {/*             {data?.under_arbeid ? (
+              <div className="mx-auto max-w-prose xs:w-[90%]">WIP</div>
+            ) : (
+              <SanityBlockContent
+                className="mx-auto max-w-prose xs:w-[90%]"
+                blocks={data?.innhold ?? []}
+                variant="aksel"
+              />
+            )} */}
           </div>
         </div>
         <div className="mt-16 px-4">

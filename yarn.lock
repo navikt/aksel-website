@@ -16504,10 +16504,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hotjar@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "react-hotjar@npm:4.0.0"
-  checksum: 4b5dd728a741105d4d75753c20823491e6e28c08d69c614db3eb98abd4524b6308c3972ad0fe51472daed86de1a2b3547df748f911f9fd41f79b7735e9e58daf
+"react-hotjar@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "react-hotjar@npm:5.0.0"
+  checksum: a9fa2b609dd6c65a4f1c449921c6097f6969fd2b13e52a3193bf6a54bda878947d60b7071a9d554500f837b0abcfe477305c6daf6814f1c3daeb7e233b4e4772
   languageName: node
   linkType: hard
 
@@ -20336,7 +20336,7 @@ __metadata:
     react: ^17.0.2
     react-dom: ^17.0.2
     react-element-to-jsx-string: 15.0.0
-    react-hotjar: ^4.0.0
+    react-hotjar: ^5.0.0
     react-instantsearch-hooks-web: ^6.26.0
     react-modal: 3.14.4
     react-use: ^17.3.1

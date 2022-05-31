@@ -8,16 +8,18 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 /* const { withSentryConfig } = require("@sentry/nextjs"); */
 
+const hotjar = `http://*.hotjar.com https://*.hotjar.com http://*.hotjar.io https://*.hotjar.io`;
 const ContentSecurityPolicy = `
   default-src 'self' 'unsafe-inline';
-  font-src 'self' data:;
-  img-src 'self' cdn.sanity.io data:;
-  script-src 'self' 'unsafe-eval';
+  font-src 'self' ${hotjar} data:;
+  img-src 'self' ${hotjar} cdn.sanity.io data:;
+  script-src 'self' 'unsafe-eval' ${hotjar};
   style-src 'self' 'unsafe-inline';
   report-uri https://sentry.gc.nav.no/api/113/envelope/?sentry_key=d35bd60e413c489ca0f2fd389b4e6e5e&sentry_version=7;
-  connect-src 'self' https://amplitude.nav.no https://sentry.gc.nav.no https://*.algolia.net https://*.algolianet.com;
+  connect-src 'self' ${hotjar} https://amplitude.nav.no https://sentry.gc.nav.no https://*.algolia.net https://*.algolianet.com;
   frame-ancestors localhost:3333 https://verktoykasse.sanity.studio/;
   media-src 'self' cdn.sanity.io;
+  frame-src ${hotjar};
 `;
 
 const securityHeaders = [

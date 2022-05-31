@@ -7,6 +7,7 @@ import {
   isSlugUnique,
   prinsipper,
   titleField,
+  UnderArbeidField,
 } from "@/lib";
 import sanityClient from "part:@sanity/base/client";
 
@@ -126,5 +127,6 @@ export default {
     },
     introField,
     innholdField,
+    UnderArbeidField,
   ],
 };

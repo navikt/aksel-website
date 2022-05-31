@@ -6,6 +6,7 @@ import {
 } from "@/components";
 import Head from "next/head";
 import React, { useEffect } from "react";
+import { hotjar } from "react-hotjar";
 import "../styles/index.css";
 
 function App({
@@ -34,6 +35,11 @@ function App({
     return () => {
       router.events.off("routeChangeComplete", t);
     };
+  }, []);
+
+  useEffect(() => {
+    process.env.NODE_ENV === "production" && hotjar.initialize(148751, 6);
+    hotjar.initialize(148751, 6);
   }, []);
 
   return (

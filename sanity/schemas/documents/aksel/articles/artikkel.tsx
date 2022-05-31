@@ -6,6 +6,7 @@ import {
   introField,
   sanitySlug,
   titleField,
+  UnderArbeidField,
 } from "@/lib";
 
 const prefix = "artikkel/";
@@ -30,5 +31,6 @@ export default {
     },
     introField,
     innholdField,
+    UnderArbeidField,
   ],
 };

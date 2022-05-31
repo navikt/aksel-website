@@ -24,6 +24,16 @@ export const titleField = {
       .error("Siden bør ha en kort og konsis heading (<h1>)"),
 };
 
+export const UnderArbeidField = {
+  title: "Under arbeid",
+  description:
+    "Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404",
+  name: "under_arbeid",
+  type: "boolean",
+  group: "settings",
+  initialValue: false,
+};
+
 export const introField = {
   title: "Kort Intro/Oppsummering",
   description: "Brukes i kort og innganger",
