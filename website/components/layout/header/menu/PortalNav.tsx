@@ -15,7 +15,7 @@ const PortalNav = ({ title }: { title: string }) => {
               e.currentTarget.getAttribute("href")
             )
           }
-          className="navdsi-header__button hidden min-w-header  items-center justify-center border-none focus:shadow-[inset_0_0_0_1px_var(--navds-semantic-color-component-background-inverted),inset_0_0_0_3px_var(--navds-global-color-blue-200)] focus:outline-none xs:flex"
+          className="navdsi-header__button flex min-w-header items-center justify-center border-none focus:shadow-[inset_0_0_0_1px_var(--navds-semantic-color-component-background-inverted),inset_0_0_0_3px_var(--navds-global-color-blue-200)] focus:outline-none"
         >
           <span className="sr-only">Tilbake til forsiden</span>
           <AkselLogo

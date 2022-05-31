@@ -42,6 +42,12 @@ export default {
               to: [{ type: "ds_package" }],
               validation: (Rule) =>
                 Rule.required().error("Siden må koble til en pakke"),
+              options: {
+                modal: {
+                  type: "dialog",
+                  width: "medium", // 'small' | 'medium' | 'large' | 'full'
+                },
+              },
             },
             {
               title: "Semver versjon",

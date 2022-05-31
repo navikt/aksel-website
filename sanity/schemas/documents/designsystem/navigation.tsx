@@ -92,6 +92,12 @@ export const ds_header_heading = {
                 { type: "komponent_artikkel" },
                 { type: "ds_artikkel" },
               ],
+              options: {
+                modal: {
+                  type: "dialog",
+                  width: "medium", // 'small' | 'medium' | 'large' | 'full'
+                },
+              },
               validation: (Rule) =>
                 Rule.required().error("Sidemeny-lenken må lenke til en side"),
             },

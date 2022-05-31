@@ -41,6 +41,12 @@ export default {
               type: "string",
             },
           ],
+          options: {
+            modal: {
+              type: "dialog",
+              width: "medium", // 'small' | 'medium' | 'large' | 'full'
+            },
+          },
         },
       ],
       validation: (Rule) => Rule.required(),

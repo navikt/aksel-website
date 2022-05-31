@@ -137,6 +137,12 @@ export const link = {
       },
     },
   ],
+  options: {
+    modal: {
+      type: "dialog",
+      width: "medium", // 'small' | 'medium' | 'large' | 'full'
+    },
+  },
   preview: {
     select: {
       title: "title",

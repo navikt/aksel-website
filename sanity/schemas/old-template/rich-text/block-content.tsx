@@ -111,6 +111,12 @@ export const block = {
         blockEditor: {
           icon: () => <Link />,
         },
+        options: {
+          modal: {
+            type: "dialog",
+            width: "medium", // 'small' | 'medium' | 'large' | 'full'
+          },
+        },
         fields: [
           {
             title: "Reference",
