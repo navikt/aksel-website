@@ -38,8 +38,7 @@ function App({
   }, []);
 
   useEffect(() => {
-    process.env.NODE_ENV === "production" && hotjar.initialize(148751, 6);
-    /* hotjar.initialize(148751, 6); */
+    hotjar.initialize(148751, 6);
   }, []);
 
   return (
