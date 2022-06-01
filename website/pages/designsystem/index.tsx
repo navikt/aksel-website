@@ -93,6 +93,7 @@ export const getStaticProps = async ({
       page: doc,
       slug: "/designsystem",
       navigation: nav,
+      activeHeading: null,
       preview,
     },
     revalidate: 60,

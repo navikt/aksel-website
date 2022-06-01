@@ -32,3 +32,17 @@ export function useScrollToHashOnPageLoad(): void {
     }
   }, []);
 }
+
+export const getActiveHeading = (nav: any, slug = "") =>
+  nav?.headings.find((heading) => {
+    if (heading?.menu) {
+      return (
+        heading.menu
+          .filter((x) => x?._type !== "subheading")
+          .find((item) => item?.link?.slug?.current === slug) ??
+        heading?.link_ref?.slug?.current === slug
+      );
+    } else {
+      return heading?.link_ref?.slug?.current === slug;
+    }
+  });

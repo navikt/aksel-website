@@ -9,6 +9,7 @@ import {
 } from "@/lib";
 import React from "react";
 import { getClient } from "@/sanity-client";
+import { getActiveHeading } from "@/utils";
 
 const Page = (props: {
   slug?: string;
@@ -73,6 +74,7 @@ interface StaticProps {
     page: KomponentArtikkel;
     slug: string;
     navigation: DsNavigation;
+    activeHeading: any;
     preview: boolean;
   };
   notFound: boolean;
@@ -96,6 +98,7 @@ export const getStaticProps = async ({
       page: doc,
       slug: slug.join("/"),
       navigation: nav,
+      activeHeading: getActiveHeading(nav, doc.slug),
       preview,
     },
     notFound: !(doc && validateDsPath(doc, slug)),

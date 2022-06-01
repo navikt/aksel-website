@@ -1,4 +1,4 @@
-import { LayoutPicker, PreviewBanner } from "@/components";
+import { getActiveHeading, LayoutPicker, PreviewBanner } from "@/components";
 import { DsHeader, DsSidebar, Footer } from "@/layout";
 import {
   DsComponentPage,
@@ -69,6 +69,7 @@ interface StaticProps {
     page: DsComponentPage;
     slug: string;
     navigation: DsNavigation;
+    activeHeading: any;
     preview: boolean;
   };
   notFound: boolean;
@@ -92,6 +93,7 @@ export const getStaticProps = async ({
       page: doc,
       slug: slug.join("/"),
       navigation: nav,
+      activeHeading: getActiveHeading(nav, doc.slug),
       preview,
     },
     notFound: !(doc && validateDsPath(doc, slug)),
