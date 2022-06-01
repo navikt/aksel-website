@@ -28,7 +28,10 @@ const AkselArtikkelTemplate = ({
       <Head>
         <title>{`${data?.heading} - ${title}`}</title>
         <meta property="og:title" content={`${data?.heading} - ${title}`} />
-        <meta property="og:description" content={data?.oppsummering} />
+        <meta
+          property="og:description"
+          content={data?.ingress ?? data?.oppsummering}
+        />
         <meta property="og:type" content="article" />
       </Head>
 
@@ -64,8 +67,10 @@ const AkselArtikkelTemplate = ({
             >
               {data.heading}
             </Heading>
-            {data.oppsummering && (
-              <Ingress className="mt-4">{data.oppsummering}</Ingress>
+            {(data?.ingress || data?.oppsummering) && (
+              <Ingress className="mt-4">
+                {data?.ingress ?? data?.oppsummering}
+              </Ingress>
             )}
             <div className="mt-6">
               <BodyShort size="small" as="address" className="not-italic">

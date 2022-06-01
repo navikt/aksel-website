@@ -857,6 +857,12 @@ Brukes i kort og innganger
       oppsummering?: string;
 
       /**
+       * Ingress - `String`
+Side, innganger og seo description-tag
+       */
+      ingress?: string;
+
+      /**
        * Innhold - `Array`
        */
       innhold?: Array<
@@ -911,6 +917,12 @@ Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av sid
 Brukes i kort og innganger
        */
       oppsummering?: string;
+
+      /**
+       * Ingress - `String`
+Side, innganger og seo description-tag
+       */
+      ingress?: string;
 
       /**
        * Innhold - `Array`
@@ -1037,6 +1049,12 @@ Velg prinsippet siden omhandler
 Brukes i kort og innganger
        */
       oppsummering?: string;
+
+      /**
+       * Ingress - `String`
+Side, innganger og seo description-tag
+       */
+      ingress?: string;
 
       /**
        * Innhold - `Array`

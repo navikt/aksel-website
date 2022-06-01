@@ -40,10 +40,17 @@ export const introField = {
   name: "oppsummering",
   type: "string",
   group: "innhold",
+};
+
+export const ingressField = {
+  title: "Ingress",
+  name: "ingress",
+  description: "Side, innganger og seo description-tag",
+  type: "text",
+  group: "innhold",
+  rows: 3,
   validation: (Rule) =>
-    Rule.required()
-      .max(70)
-      .error("Artikkelen burde ha en kort oppsummering/intro på max 70 tegn"),
+    Rule.required().max(155).error("Ingress kan ikke være på over 155 tegn"),
 };
 
 export const innholdField = {
