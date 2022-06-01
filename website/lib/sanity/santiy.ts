@@ -137,7 +137,7 @@ export const validateDsPath = (
         isLvl2 &&
         doc.innhold_tabs &&
         doc.innhold_tabs.find(
-          (x) => x.title?.toLowerCase().replace(/\s+/g, "-") === slug[1]
+          (x) => x.title?.toLowerCase().replace(/\s+/g, "-") === slug[2]
         )
       );
     case "ds_component_page":

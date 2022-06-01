@@ -73,7 +73,7 @@ export const getStaticProps = async ({
   preview?: boolean;
 }) => {
   const { page, nav } = await getClient(preview).fetch(dsSlugQuery, {
-    slug: `designsystem/${slug.join("/")}`,
+    slug: `designsystem/${slug.slice(0, 2).join("/")}`,
   });
   const doc = page?.[0] ?? null;
 
