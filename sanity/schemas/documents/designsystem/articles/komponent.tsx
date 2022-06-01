@@ -4,6 +4,7 @@ import {
   groups,
   sanitySlug,
   titleField,
+  UnderArbeidField,
 } from "@/lib";
 import {
   Download,
@@ -29,6 +30,7 @@ export default {
   fields: [
     editorField,
     titleField,
+    UnderArbeidField,
     sanitySlug(prefix, 3),
     {
       name: "content_bruk",

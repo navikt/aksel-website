@@ -437,6 +437,23 @@ Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av sid
       heading?: string;
 
       /**
+       * Under arbeid - `Object`
+Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
+       */
+      under_arbeid?: {
+        /**
+         * Er under arbeid? - `Boolean`
+         */
+        status?: boolean;
+
+        /**
+       * Forklaring - `Text`
+Default: Siden blir for tiden oppdatert!
+       */
+        forklaring?: string;
+      };
+
+      /**
        * url - `Slug`
        */
       slug?: {
@@ -682,6 +699,23 @@ Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av sid
       heading?: string;
 
       /**
+       * Under arbeid - `Object`
+Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
+       */
+      under_arbeid?: {
+        /**
+         * Er under arbeid? - `Boolean`
+         */
+        status?: boolean;
+
+        /**
+       * Forklaring - `Text`
+Default: Siden blir for tiden oppdatert!
+       */
+        forklaring?: string;
+      };
+
+      /**
        * url - `Slug`
        */
       slug?: {
@@ -742,6 +776,23 @@ Legg til alle som har bidratt med denne siden!
 Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.
        */
       heading?: string;
+
+      /**
+       * Under arbeid - `Object`
+Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
+       */
+      under_arbeid?: {
+        /**
+         * Er under arbeid? - `Boolean`
+         */
+        status?: boolean;
+
+        /**
+       * Forklaring - `Text`
+Default: Siden blir for tiden oppdatert!
+       */
+        forklaring?: string;
+      };
 
       /**
        * url - `Slug`

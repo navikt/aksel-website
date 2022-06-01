@@ -11,16 +11,17 @@ import {
   logNav,
   slugger,
   TableOfContents,
+  UnderArbeid,
   useDsNavigation,
 } from "../..";
-import { KomponentArtikkel as DsKomponentArtikkel } from "@/lib";
+import { SanityT } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 
 const KomponentArtikkelTemplate = ({
   data,
   title,
 }: {
-  data: DsKomponentArtikkel;
+  data: SanityT.Schema.komponent_artikkel;
   title: string;
 }): JSX.Element => {
   const { query, push } = useRouter();
@@ -182,12 +183,19 @@ const KomponentArtikkelTemplate = ({
             >
               <TableOfContents changedState={data[val]} />
               <div className="content-box">
-                {data[val] && (
-                  <SanityBlockContent className="mt-12" blocks={data[val]} />
+                {data?.under_arbeid?.status ? (
+                  <UnderArbeid text={data?.under_arbeid?.forklaring} />
+                ) : (
+                  <>
+                    {data[val] && (
+                      <SanityBlockContent
+                        className="mt-12"
+                        blocks={data[val]}
+                      />
+                    )}
+                  </>
                 )}
-                {!data?.metadata_feedback?.hide_feedback && (
-                  <Feedback docId={data?._id} docType={data?._type} />
-                )}
+                <Feedback docId={data?._id} docType={data?._type} />
               </div>
             </Tabs.Panel>
           ))}

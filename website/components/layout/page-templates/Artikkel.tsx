@@ -1,15 +1,21 @@
 import { BodyShort, Heading, useClientLayoutEffect } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
-import { dateStr, Feedback, slugger, TableOfContents } from "../..";
-import { DsArtikkel } from "@/lib";
+import {
+  dateStr,
+  Feedback,
+  slugger,
+  TableOfContents,
+  UnderArbeid,
+} from "../..";
+import { SanityT } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 
 const ArtikkelTemplate = ({
   data,
   title,
 }: {
-  data: DsArtikkel;
+  data: SanityT.Schema.ds_artikkel;
   title: string;
 }): JSX.Element => {
   useClientLayoutEffect(() => {
@@ -53,10 +59,12 @@ const ArtikkelTemplate = ({
       <div className="relative flex max-w-full md:max-w-7xl">
         <TableOfContents changedState={data.innhold} />
         <div className="content-box">
-          <SanityBlockContent className="mt-12" blocks={data.innhold} />
-          {!data?.metadata_feedback?.hide_feedback && (
-            <Feedback docId={data?._id} docType={data?._type} />
+          {data?.under_arbeid?.status ? (
+            <UnderArbeid text={data?.under_arbeid?.forklaring} />
+          ) : (
+            <SanityBlockContent className="mt-12" blocks={data.innhold} />
           )}
+          <Feedback docId={data?._id} docType={data?._type} />
         </div>
       </div>
     </>

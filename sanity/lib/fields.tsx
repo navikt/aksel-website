@@ -44,7 +44,7 @@ export const UnderArbeidField = {
       name: "forklaring",
       type: "text",
       rows: 2,
-      hidden: ({ parent }) => !parent.status,
+      hidden: ({ parent }) => !parent || !parent.status,
     },
   ],
 };

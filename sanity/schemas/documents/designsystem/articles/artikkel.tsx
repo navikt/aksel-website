@@ -6,6 +6,7 @@ import {
   sanitySlug,
   titleField,
   toPlainText,
+  UnderArbeidField,
 } from "@/lib";
 import { FileContent, LightBulb, NewTab, Star } from "@navikt/ds-icons";
 import React from "react";
@@ -46,6 +47,7 @@ export default {
   fields: [
     editorField,
     titleField,
+    UnderArbeidField,
     sanitySlug(prefix, 3),
     {
       type: "boolean",

@@ -1,3 +1,5 @@
+import { SanityT } from "@/lib";
+import { SanityBlockContent } from "@/sanity-block";
 import { BodyShort, Heading, Tabs } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -9,15 +11,14 @@ import {
   logNav,
   slugger,
   TableOfContents,
+  UnderArbeid,
 } from "../..";
-import { DsArtikkel } from "@/lib";
-import { SanityBlockContent } from "@/sanity-block";
 
 const ArtikkelTabbedTemplate = ({
   data,
   title,
 }: {
-  data: DsArtikkel;
+  data: SanityT.Schema.ds_artikkel;
   title: string;
 }): JSX.Element => {
   const { query, push } = useRouter();
@@ -96,10 +97,12 @@ const ArtikkelTabbedTemplate = ({
             >
               <TableOfContents changedState={x.innhold} />
               <div className="content-box">
-                <SanityBlockContent className="mt-12" blocks={x.innhold} />
-                {!data?.metadata_feedback?.hide_feedback && (
-                  <Feedback docId={data?._id} docType={data?._type} />
+                {data?.under_arbeid?.status ? (
+                  <UnderArbeid text={data?.under_arbeid?.forklaring} />
+                ) : (
+                  <SanityBlockContent className="mt-12" blocks={x.innhold} />
                 )}
+                <Feedback docId={data?._id} docType={data?._type} />
               </div>
             </Tabs.Panel>
           ))}
