@@ -1,5 +1,4 @@
-import { useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { PagePropsContext } from ".";
+import { useCallback, useEffect, useState } from "react";
 
 export const useOverflowTabsX = (elementRef, parentRef, lastItemRef) => {
   const [overflowLeft, setOverflowLeft] = useState(false);
@@ -78,30 +77,6 @@ export const useOverflowX = (elementRef, parentRef) => {
   }, [checkOverflow]);
 
   return [overflowLeft, overflowRight];
-};
-
-export const useDsNavigation = () => {
-  const { pageProps } = useContext(PagePropsContext);
-
-  const activeHeading = useMemo(
-    () =>
-      pageProps?.navigation?.headings.find((heading) => {
-        if (heading?.menu) {
-          return (
-            heading.menu
-              .filter((x) => x?._type !== "subheading")
-              .find(
-                (item) => item?.link?.slug?.current === pageProps?.page?.slug
-              ) ?? heading?.link_ref?.slug?.current === pageProps?.page?.slug
-          );
-        } else {
-          return heading?.link_ref?.slug?.current === pageProps?.page?.slug;
-        }
-      }),
-    [pageProps]
-  );
-
-  return [pageProps?.navigation, activeHeading];
 };
 
 export const useDebounce = (value: any, delay = 300) => {

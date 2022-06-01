@@ -1,3 +1,5 @@
+import { DsComponentPage } from "@/lib";
+import { SanityBlockContent } from "@/sanity-block";
 import { ExternalLink } from "@navikt/ds-icons";
 import { BodyShort, Heading, Tabs, Tag } from "@navikt/ds-react";
 import cl from "classnames";
@@ -11,10 +13,7 @@ import {
   logNav,
   slugger,
   TableOfContents,
-  useDsNavigation,
 } from "../..";
-import { DsComponentPage } from "@/lib";
-import { SanityBlockContent } from "@/sanity-block";
 
 const ComponentPageTemplate = ({
   data,
@@ -24,8 +23,6 @@ const ComponentPageTemplate = ({
   title: string;
 }): JSX.Element => {
   const { query, push } = useRouter();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, activeHeading] = useDsNavigation();
 
   const tabs = {
     bruk: "usage",
@@ -66,11 +63,6 @@ const ComponentPageTemplate = ({
       </Head>
 
       <div className="content-box">
-        {activeHeading?.title && (
-          <span className="navds-sr-only algolia-index-hidden-heading">
-            {activeHeading?.title}
-          </span>
-        )}
         <div className="py-8">
           <div className="flex flex-wrap gap-2"></div>
           <Heading

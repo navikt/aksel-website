@@ -27,7 +27,7 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
           onClick={() => setOpen(!open)}
           className={cl(
             style.bilde,
-            "bg-gray-50 p-0 focus:shadow-focus focus:outline-none"
+            "flex justify-center bg-gray-50 p-0 focus:shadow-focus focus:outline-none"
           )}
         >
           <img

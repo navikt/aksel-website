@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
+import { withErrorBoundary } from "@/error-boundary";
+import { DsFrontPageCardT, urlFor } from "@/lib";
 import { BodyShort, Detail } from "@navikt/ds-react";
 import cl from "classnames";
 import NextLink from "next/link";
-import React, { useEffect, useState } from "react";
-import { logNav, useDsNavigation } from "../..";
-import { DsFrontPageCardT, urlFor } from "@/lib";
-import { withErrorBoundary } from "@/error-boundary";
+import React, { useContext, useEffect, useState } from "react";
+import { logNav, PagePropsContext } from "../..";
 
 interface CardProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   node: DsFrontPageCardT;
@@ -21,7 +21,7 @@ const Card = ({
   className,
   ...rest
 }: CardProps) => {
-  const [nav] = useDsNavigation();
+  const { pageProps } = useContext(PagePropsContext);
   const [category, setCategory] = useState(categoryRef ?? null);
 
   useEffect(() => {
@@ -29,8 +29,8 @@ const Card = ({
   }, [categoryRef]);
 
   useEffect(() => {
-    if (!nav || !node || !!categoryRef) return;
-    const index = nav?.headings.findIndex((heading) => {
+    if (!pageProps?.navigation || !node || !!categoryRef) return;
+    const index = pageProps?.navigation?.headings.findIndex((heading) => {
       if (heading?.menu) {
         return (
           heading.menu
@@ -45,8 +45,8 @@ const Card = ({
     if (index === -1) {
       return;
     }
-    setCategory(nav.headings[index].category_ref);
-  }, [nav, node, categoryRef]);
+    setCategory(pageProps?.navigation.headings[index].category_ref);
+  }, [pageProps?.navigation, node, categoryRef]);
 
   const tagName = category?.title ?? "";
 

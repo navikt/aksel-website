@@ -1,53 +1,55 @@
+import { DsNavigationHeadingT } from "@/lib";
 import { Header } from "@navikt/ds-react-internal";
 import cl from "classnames";
 import NextLink from "next/link";
-import * as React from "react";
-import { logNav, Search, useDsNavigation } from "../..";
-import { DsNavigationHeadingT } from "@/lib";
+import React, { useContext } from "react";
+import { logNav, PagePropsContext, Search } from "../..";
 import MobileNavigation from "./menu/MobileNav";
 import PortalNavigation from "./menu/PortalNav";
 /* import ProfileDropdown from "./ProfileDropdown"; */
 
 const DesignsystemHeader = (): JSX.Element => {
-  const [nav, activeHeading] = useDsNavigation();
+  const { pageProps } = useContext(PagePropsContext);
 
   const nonMobile = (
     <>
       <PortalNavigation title={"Designsystemet"} />
       <div className="z-[1050] mr-auto flex">
-        {nav?.headings.map((heading: DsNavigationHeadingT) => (
-          <NextLink
-            href={`/${
-              (heading.link_ref as { slug?: { current: string } })?.slug
-                ?.current
-            }`}
-            passHref
-            key={heading.title + heading.link_ref}
-          >
-            <a
-              onClick={(e) => {
-                logNav(
-                  "header",
-                  window.location.pathname,
-                  e.currentTarget.getAttribute("href")
-                );
-                !(activeHeading?.title === heading.title) &&
-                  localStorage.removeItem("dssidebar");
-              }}
-              className={cl(
-                "algolia-index-heading 2lg:px-4 flex min-w-header cursor-pointer items-center justify-center whitespace-nowrap py-0 px-2 focus:outline-none",
-                {
-                  "text-text-inverted focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
-                    !(activeHeading?.title === heading.title),
-                  "algolia-index-heading--active bg-white text-text  hover:bg-canvas-background-light focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_2px_var(--navds-global-color-white)_,inset_0_0_0_4px_var(--navds-global-color-gray-900)]":
-                    activeHeading?.title === heading.title,
-                }
-              )}
+        {pageProps?.navigation?.headings.map(
+          (heading: DsNavigationHeadingT) => (
+            <NextLink
+              href={`/${
+                (heading.link_ref as { slug?: { current: string } })?.slug
+                  ?.current
+              }`}
+              passHref
+              key={heading.title + heading.link_ref}
             >
-              {heading.title}
-            </a>
-          </NextLink>
-        ))}
+              <a
+                onClick={(e) => {
+                  logNav(
+                    "header",
+                    window.location.pathname,
+                    e.currentTarget.getAttribute("href")
+                  );
+                  !(pageProps?.activeHeading?.title === heading.title) &&
+                    localStorage.removeItem("dssidebar");
+                }}
+                className={cl(
+                  "algolia-index-heading 2lg:px-4 flex min-w-header cursor-pointer items-center justify-center whitespace-nowrap py-0 px-2 focus:outline-none",
+                  {
+                    "text-text-inverted focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
+                      !(pageProps?.activeHeading?.title === heading.title),
+                    "algolia-index-heading--active bg-white text-text  hover:bg-canvas-background-light focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_2px_var(--navds-global-color-white)_,inset_0_0_0_4px_var(--navds-global-color-gray-900)]":
+                      pageProps?.activeHeading?.title === heading.title,
+                  }
+                )}
+              >
+                {heading.title}
+              </a>
+            </NextLink>
+          )
+        )}
       </div>
       <div className="ml-auto flex">
         {/* <ProfileDropdown designsystem /> */}

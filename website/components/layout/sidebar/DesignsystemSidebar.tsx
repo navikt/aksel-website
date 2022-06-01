@@ -1,15 +1,16 @@
-import { useDsNavigation } from "../..";
+import { useContext } from "react";
+import { PagePropsContext } from "../..";
 import Menu from "../menu/DsMenu";
 
 const DesignsystemSidebar = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, activeHeading] = useDsNavigation();
+  const { pageProps } = useContext(PagePropsContext);
 
-  if (!activeHeading) return null;
+  if (!pageProps?.activeHeading) return null;
 
   return (
     <div className="algolia-ignore-index z-[1002] hidden w-sidebar shrink-0 self-start  bg-white py-4 pr-2 md:block">
-      <Menu heading={activeHeading} />
+      <Menu heading={pageProps?.activeHeading} />
     </div>
   );
 };
