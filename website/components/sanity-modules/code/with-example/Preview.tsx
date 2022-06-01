@@ -38,7 +38,7 @@ const CodePreview = (): JSX.Element => {
   useEffect(() => {
     const url = node.preview.split("/examples/")?.[1];
     if (url) {
-      setFullscreenLink(`/designsystem/examples/${url}`);
+      setFullscreenLink(`/stories/${url}`);
       setUrl(url.replaceAll("/", "-"));
     }
   }, [node.preview]);

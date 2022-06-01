@@ -3,8 +3,7 @@ Allow: /*
 
 Sitemap: https://aksel.nav.no/api/sitemap
 
-Disallow: /designsystem/sandboxes/*
-Disallow: /designsystem/examples/*
+Disallow: /designsystem/stories/*
 
 # Next.JS Crawl Budget Performance Updates
 # Block files ending in .json, _buildManifest.js, _middlewareManifest.js, _ssgManifest.js, and any other JS files

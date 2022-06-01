@@ -14,7 +14,7 @@ export default {
     },
     {
       title: "Lenke til eksempel",
-      description: "Alle eksempler kan finnes under /examples på nettsiden",
+      description: "Alle eksempler kan finnes under /stories på nettsiden",
       name: "preview",
       type: "url",
     },

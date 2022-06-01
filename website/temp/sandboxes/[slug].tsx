@@ -9,24 +9,17 @@ const CodePreview = (key: string) => {
     return null;
   }
 
-  const node: any = {
-    _type: "ds_code_sandbox",
-    title: key,
-    _id: "",
-    _createdAt: "",
-    _rev: "",
-    _updatedAt: "",
-  };
   return (
-    <>
-      <Head>
-        <title>{`${key} - sandbox`}</title>
-      </Head>
-      <Heading level="1" size="medium" className="navds-sr-only">
-        {key}
-      </Heading>
-      <Sandbox node={node} />
-    </>
+    <Sandbox
+      node={{
+        _type: "ds_code_sandbox",
+        title: key,
+        _id: "",
+        _createdAt: "",
+        _rev: "",
+        _updatedAt: "",
+      }}
+    />
   );
 };
 

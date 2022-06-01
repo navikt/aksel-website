@@ -127,9 +127,10 @@ export const validateDsPath = (
     tilgjengelighet: "accessibility",
   };
 
-  const isLvl2 = slug.length === 2;
+  /* Check for nested pages, ex button/kode */
+  const isLvl2 = slug.length === 3;
 
-  if (slug.length === 1) return true;
+  if (slug.length === 2) return true;
   switch (doc._type) {
     case "ds_artikkel":
       return (
@@ -140,9 +141,9 @@ export const validateDsPath = (
         )
       );
     case "ds_component_page":
-      return isLvl2 && tabs[slug?.[1]] in doc && !!doc[tabs[slug[1]]];
+      return isLvl2 && tabs[slug?.[2]] in doc && !!doc[tabs[slug[2]]];
     case "komponent_artikkel":
-      return slug?.[1] === "kode";
+      return slug?.[2] === "kode";
     default:
       return false;
   }

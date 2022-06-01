@@ -36,9 +36,9 @@ const ComponentPageTemplate = ({
   });
 
   /* Defaults back to a tab with content if first does not */
-  const activeTab = Object.keys(tabs).indexOf(query.slug?.[1] ?? "bruk");
+  const activeTab = Object.keys(tabs).indexOf(query.slug?.[2] ?? "bruk");
 
-  const basePath = `/designsystem/side/${query.slug[0]}`;
+  const basePath = `/designsystem/side/${query.slug[1]}`;
 
   const tabKey = Object.keys(tabs)?.[activeTab];
 

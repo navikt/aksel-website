@@ -30,12 +30,13 @@ const ArtikkelTabbedTemplate = ({
   if (!data.innhold_tabs || !data.heading) {
     return null;
   }
-  const basePath = `/designsystem/side/${query.slug[0]}`;
+
+  const basePath = `/designsystem/side/${query.slug[1]}`;
 
   const tabs: string[] = data.innhold_tabs.map(
     (tab) => tab.title?.toLowerCase().replace(/\s+/g, "-") || "undefined"
   );
-  const activeTab = query.slug[1] ? tabs.indexOf(query.slug[1]) : 0;
+  const activeTab = query.slug[2] ? tabs.indexOf(query.slug[2]) : 0;
   const tabTitle = data?.innhold_tabs?.[activeTab]?.title;
 
   return (

@@ -255,7 +255,7 @@ export interface DsCodeExample extends SanityDocument {
   /**
    * Lenke til eksempel — `url`
    *
-   * Alle eksempler kan finnes under /examples på nettsiden
+   * Alle eksempler kan finnes under /stories på nettsiden
    */
   preview?: string;
 

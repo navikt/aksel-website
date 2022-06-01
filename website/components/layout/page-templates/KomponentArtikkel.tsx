@@ -34,8 +34,8 @@ const KomponentArtikkelTemplate = ({
     slugger.reset();
   });
 
-  const basePath = `/designsystem/komponenter/${query.slug[0]}`;
-  const activeTab = Object.keys(tabs).indexOf(query.slug?.[1] ?? "bruk");
+  const basePath = `/designsystem/komponenter/${query.slug[1]}`;
+  const activeTab = Object.keys(tabs).indexOf(query.slug?.[2] ?? "bruk");
   const tabKey = Object.keys(tabs)?.[activeTab];
 
   const npmPackage = data.linked_package as unknown as {

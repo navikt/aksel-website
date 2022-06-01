@@ -40,8 +40,7 @@
   },
   "selectors_exclude": [".algolia-ignore-index"],
   "stop_urls": [
-    "https://aksel.nav.no/designsystem/examples",
-    "https://aksel.nav.no/designsystem/sandboxes",
+    "https://aksel.nav.no/stories",
     "https://aksel.nav.no/preview",
     "https://aksel.nav.no/god-praksis",
     "https://old-design-nav.vercel.app"
