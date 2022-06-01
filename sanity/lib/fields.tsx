@@ -26,12 +26,27 @@ export const titleField = {
 
 export const UnderArbeidField = {
   title: "Under arbeid",
+  name: "under_arbeid",
   description:
     "Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404",
-  name: "under_arbeid",
-  type: "boolean",
+  type: "object",
   group: "settings",
-  initialValue: false,
+  fields: [
+    {
+      title: "Er under arbeid?",
+      name: "status",
+      type: "boolean",
+      initialValue: false,
+    },
+    {
+      title: "Forklaring",
+      description: "Default: Siden blir for tiden oppdatert!",
+      name: "forklaring",
+      type: "text",
+      rows: 2,
+      hidden: ({ parent }) => !parent.status,
+    },
+  ],
 };
 
 export const introField = {
