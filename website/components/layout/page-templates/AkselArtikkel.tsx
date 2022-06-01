@@ -84,8 +84,8 @@ const AkselArtikkelTemplate = ({
         </div>
         <div className="mt-12">
           <div className="mt-8 px-4">
-            {data?.under_arbeid ? (
-              <UnderArbeid />
+            {data?.under_arbeid?.status ? (
+              <UnderArbeid text={data?.under_arbeid?.forklaring} />
             ) : (
               <SanityBlockContent
                 className="mx-auto max-w-prose xs:w-[90%]"

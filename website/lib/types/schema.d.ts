@@ -857,7 +857,7 @@ Brukes i kort og innganger
       oppsummering?: string;
 
       /**
-       * Ingress - `String`
+       * Ingress - `Text`
 Side, innganger og seo description-tag
        */
       ingress?: string;
@@ -880,10 +880,21 @@ Side, innganger og seo description-tag
       >;
 
       /**
-       * Under arbeid - `Boolean`
+       * Under arbeid - `Object`
 Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
        */
-      under_arbeid?: boolean;
+      under_arbeid?: {
+        /**
+         * Er under arbeid? - `Boolean`
+         */
+        status?: boolean;
+
+        /**
+       * Forklaring - `Text`
+Default: Siden blir for tiden oppdatert!
+       */
+        forklaring?: string;
+      };
     }
 
     /**
@@ -919,7 +930,7 @@ Brukes i kort og innganger
       oppsummering?: string;
 
       /**
-       * Ingress - `String`
+       * Ingress - `Text`
 Side, innganger og seo description-tag
        */
       ingress?: string;
@@ -942,10 +953,21 @@ Side, innganger og seo description-tag
       >;
 
       /**
-       * Under arbeid - `Boolean`
+       * Under arbeid - `Object`
 Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
        */
-      under_arbeid?: boolean;
+      under_arbeid?: {
+        /**
+         * Er under arbeid? - `Boolean`
+         */
+        status?: boolean;
+
+        /**
+       * Forklaring - `Text`
+Default: Siden blir for tiden oppdatert!
+       */
+        forklaring?: string;
+      };
     }
 
     /**
@@ -1051,7 +1073,7 @@ Brukes i kort og innganger
       oppsummering?: string;
 
       /**
-       * Ingress - `String`
+       * Ingress - `Text`
 Side, innganger og seo description-tag
        */
       ingress?: string;
@@ -1074,10 +1096,21 @@ Side, innganger og seo description-tag
       >;
 
       /**
-       * Under arbeid - `Boolean`
+       * Under arbeid - `Object`
 Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
        */
-      under_arbeid?: boolean;
+      under_arbeid?: {
+        /**
+         * Er under arbeid? - `Boolean`
+         */
+        status?: boolean;
+
+        /**
+       * Forklaring - `Text`
+Default: Siden blir for tiden oppdatert!
+       */
+        forklaring?: string;
+      };
     }
 
     type generisk_seksjon = {
