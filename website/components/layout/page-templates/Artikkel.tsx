@@ -60,7 +60,10 @@ const ArtikkelTemplate = ({
         <TableOfContents changedState={data.innhold} />
         <div className="content-box">
           {data?.under_arbeid?.status ? (
-            <UnderArbeid text={data?.under_arbeid?.forklaring} />
+            <UnderArbeid
+              className="mt-12"
+              text={data?.under_arbeid?.forklaring}
+            />
           ) : (
             <SanityBlockContent className="mt-12" blocks={data.innhold} />
           )}
