@@ -10,7 +10,6 @@ const SandboxCodePreview = (key: string) => {
     return null;
   }
 
-  console.log(key);
   return (
     <Sandbox
       node={{

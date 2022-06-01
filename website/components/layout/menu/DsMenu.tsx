@@ -3,7 +3,6 @@ import { BodyShort, Detail } from "@navikt/ds-react";
 import cl from "classnames";
 import NextLink from "next/link";
 import React, { useContext, useMemo, useState } from "react";
-import { useIsomorphicLayoutEffect } from "react-use";
 import { logNav, PagePropsContext } from "../..";
 import { DsNavigationHeadingMenuT, DsNavigationHeadingT } from "@/lib";
 import style from "./index.module.css";
@@ -75,32 +74,6 @@ const Dropdown = ({
 }) => {
   const [heading, ...rest] = items;
   const [open, setOpen] = useState(true);
-  const { pageProps } = useContext<any>(PagePropsContext);
-
-  useIsomorphicLayoutEffect(() => {
-    const storage = localStorage.getItem("dssidebar");
-
-    if (
-      items.find((x) => x?.link?.slug?.current === pageProps?.page?.slug) ||
-      (storage && JSON.parse(storage)?.[heading.title])
-    ) {
-      setOpen(true);
-    }
-  }, []);
-
-  const handleOpen = () => {
-    const openState = localStorage.getItem("dssidebar");
-    let list;
-    if (openState) {
-      list = open
-        ? { ...JSON.parse(openState) }
-        : { ...JSON.parse(openState), [heading.title]: !open };
-    } else {
-      list = open ? {} : { [heading.title]: !open };
-    }
-    setOpen(!open);
-    localStorage.setItem("dssidebar", JSON.stringify(list));
-  };
 
   return (
     <li
@@ -109,7 +82,7 @@ const Dropdown = ({
       className={cl(style.dropdown, "w-full")}
     >
       <button
-        onClick={handleOpen}
+        onClick={() => setOpen((x) => !x)}
         className="group z-10 flex min-h-8 w-full cursor-pointer items-center justify-between pr-2 text-text-muted hover:text-deepblue-800 focus:outline-none"
         aria-expanded={open}
       >

@@ -26,15 +26,13 @@ const DesignsystemHeader = (): JSX.Element => {
               key={heading.title + heading.link_ref}
             >
               <a
-                onClick={(e) => {
+                onClick={(e) =>
                   logNav(
                     "header",
                     window.location.pathname,
                     e.currentTarget.getAttribute("href")
-                  );
-                  !(pageProps?.activeHeading?.title === heading.title) &&
-                    localStorage.removeItem("dssidebar");
-                }}
+                  )
+                }
                 className={cl(
                   "algolia-index-heading 2lg:px-4 flex min-w-header cursor-pointer items-center justify-center whitespace-nowrap py-0 px-2 focus:outline-none",
                   {

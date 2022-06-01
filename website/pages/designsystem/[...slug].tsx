@@ -82,7 +82,7 @@ export const getStaticProps = async ({
       page: doc,
       slug: slug.join("/"),
       navigation: nav,
-      activeHeading: getActiveHeading(nav, doc?.slug),
+      activeHeading: getActiveHeading(nav, doc?.slug) ?? null,
       preview,
     },
     notFound: !(doc && validateDsPath(doc, slug)),
