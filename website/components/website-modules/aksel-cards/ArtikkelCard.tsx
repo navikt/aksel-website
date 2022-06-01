@@ -2,15 +2,15 @@ import { getTemaSlug } from "@/lib";
 import { BodyShort, Heading } from "@navikt/ds-react";
 import NextLink from "next/link";
 import { logNav } from "../..";
-import { AkselArtikkel, AkselBlogg } from "@/lib";
+import { SanityT } from "@/lib";
 
 export const ArtikkelCard = ({
   slug,
   source,
   heading,
-  oppsummering,
+  ingress,
 }: Partial<
-  (AkselArtikkel | AkselBlogg) & {
+  (SanityT.Schema.aksel_artikkel | SanityT.Schema.aksel_blogg) & {
     slug: string;
     tema: string[];
     source: string;
@@ -46,7 +46,7 @@ export const ArtikkelCard = ({
         <Heading level="2" size="small" className="block md:hidden">
           {heading}
         </Heading>
-        {oppsummering && <BodyShort className="mt-1">{oppsummering}</BodyShort>}
+        {ingress && <BodyShort className="mt-1">{ingress}</BodyShort>}
       </a>
     </NextLink>
   );

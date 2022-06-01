@@ -902,12 +902,6 @@ Legg til de viktigeste temaene
       tema?: Array<Sanity.KeyedReference<aksel_tema>>;
 
       /**
-       * Kort Intro/Oppsummering - `String`
-Brukes i kort og innganger
-       */
-      oppsummering?: string;
-
-      /**
        * Ingress - `Text`
 Side, innganger og seo description-tag
        */
@@ -973,12 +967,6 @@ Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av sid
         _type: "slug";
         current: string;
       };
-
-      /**
-       * Kort Intro/Oppsummering - `String`
-Brukes i kort og innganger
-       */
-      oppsummering?: string;
 
       /**
        * Ingress - `Text`
@@ -1116,12 +1104,6 @@ Velg prinsippet siden omhandler
          */
         hovedside?: boolean;
       };
-
-      /**
-       * Kort Intro/Oppsummering - `String`
-Brukes i kort og innganger
-       */
-      oppsummering?: string;
 
       /**
        * Ingress - `Text`

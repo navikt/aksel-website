@@ -1,4 +1,4 @@
-import { AkselBlogg } from "@/lib";
+import { SanityT } from "@/lib";
 import { BodyLong, Detail, Heading, Link } from "@navikt/ds-react";
 import NextLink from "next/link";
 import { dateStr, logNav } from "../..";
@@ -7,7 +7,7 @@ export const BloggCard = ({
   blog,
 }: {
   blog: Partial<
-    AkselBlogg & {
+    SanityT.Schema.aksel_blogg & {
       slug: string;
       contributors?: {
         title?: string;
@@ -46,7 +46,7 @@ export const BloggCard = ({
         </NextLink>
       </Heading>
       <BodyLong className="col-start-1 mt-1 text-gray-800">
-        {blog.oppsummering}
+        {blog?.ingress}
       </BodyLong>
       <div className="col-start-2 row-span-3 row-start-3 xs:row-start-1">
         {/* <img

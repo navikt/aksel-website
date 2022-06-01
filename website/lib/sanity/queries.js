@@ -465,7 +465,7 @@ export const akselTemaDocs = `*[_type == "aksel_tema" && count(*[references(^._i
         _createdAt,
         "slug": slug.current,
         "tema": tema[]->tag,
-        oppsummering,
+        ingress,
       }
     }
   },
@@ -476,7 +476,7 @@ export const akselTemaDocs = `*[_type == "aksel_tema" && count(*[references(^._i
       _createdAt,
       "slug": slug.current,
       "tema": tema[]->tag,
-      oppsummering,
+      ingress,
     },
     "seksjoner": []
   },

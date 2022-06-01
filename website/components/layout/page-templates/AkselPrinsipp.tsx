@@ -25,10 +25,7 @@ const AkselPrinsippTemplate = ({
       <Head>
         <title>{`${data?.heading} - Prinsipp - ${title}`}</title>
         <meta property="og:title" content={`${data?.heading} - ${title}`} />
-        <meta
-          property="og:description"
-          content={data?.ingress ?? data?.oppsummering}
-        />
+        <meta property="og:description" content={data?.ingress} />
         <meta property="og:type" content="article" />
       </Head>
 
@@ -47,10 +44,8 @@ const AkselPrinsippTemplate = ({
             >
               {data.heading}
             </Heading>
-            {(data?.ingress || data?.oppsummering) && (
-              <Ingress className="mt-4">
-                {data?.ingress ?? data?.oppsummering}
-              </Ingress>
+            {data?.ingress && (
+              <Ingress className="mt-4">{data?.ingress}</Ingress>
             )}
             <div className="mt-6">
               <BodyShort size="small" as="address" className="not-italic">

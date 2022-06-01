@@ -4,7 +4,6 @@ import {
   groups,
   ingressField,
   innholdField,
-  introField,
   sanitySlug,
   titleField,
   UnderArbeidField,
@@ -30,7 +29,7 @@ export default {
       of: [{ type: "reference", to: [{ type: "aksel_tema" }] }],
       group: "innhold",
     },
-    introField,
+
     ingressField,
     innholdField,
     UnderArbeidField,

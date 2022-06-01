@@ -49,14 +49,6 @@ export const UnderArbeidField = {
   ],
 };
 
-export const introField = {
-  title: "Kort Intro/Oppsummering",
-  description: "Brukes i kort og innganger",
-  name: "oppsummering",
-  type: "string",
-  group: "innhold",
-};
-
 export const ingressField = {
   title: "Ingress",
   name: "ingress",
