@@ -44,6 +44,7 @@ export enum AmplitudeEvents {
   "sidevisning" = "sidevisning",
   "navigasjon" = "navigasjon",
   "notfound" = "notfound",
+  "error" = "error",
   "ankerklikk" = "ankerklikk",
   "ikonklikk" = "ikonklikk",
   "ikonsok" = "ikonsok",
