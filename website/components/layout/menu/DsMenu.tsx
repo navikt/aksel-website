@@ -130,11 +130,12 @@ const Menu = ({
       }
     });
 
-    return list;
+    return list.filter((x) => x.length > 0);
   };
 
   const lists = useMemo(() => {
     const menulist = groups();
+
     return (
       <ul className="py-4 pl-6">
         {menulist
