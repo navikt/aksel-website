@@ -37,18 +37,20 @@ const TableComponent = ({ node }: { node: TabellT }): JSX.Element => {
                   })}
                 >
                   <SanityBlockContent blocks={cell?.data?.body} noLastMargin />
-                  {!cell?.data?.body && cell?.data?.status === "suksess" ? (
-                    <SuccessStroke
-                      className="mx-auto text-xl"
-                      aria-label="ok"
-                      aria-hidden
-                    />
-                  ) : cell?.data?.status === "feil" ? (
-                    <Close
-                      className="mx-auto text-xl"
-                      aria-label="feil"
-                      aria-hidden
-                    />
+                  {!cell?.data?.body ? (
+                    cell?.data?.status === "suksess" ? (
+                      <SuccessStroke
+                        className="mx-auto text-xl"
+                        aria-label="ok"
+                        aria-hidden
+                      />
+                    ) : cell?.data?.status === "feil" ? (
+                      <Close
+                        className="mx-auto text-xl"
+                        aria-label="feil"
+                        aria-hidden
+                      />
+                    ) : null
                   ) : null}
                 </Table.DataCell>
               ))}
