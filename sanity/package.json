@@ -7,7 +7,7 @@
   "scripts": {
     "start": "sanity start",
     "build": "sanity build",
-    "deploy": "sanity deploy",
+    "deploy": "yarn typegen && sanity deploy",
     "backup": "node scripts/backup.js",
     "typegen": "sanity exec typegen.ts"
   },

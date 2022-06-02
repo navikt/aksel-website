@@ -31,7 +31,6 @@ import {
   PropTable,
 } from ".";
 import { ExternalLink } from "@navikt/ds-icons";
-import DsIconAnnotation from "./sanity-modules/IconAnnotation";
 
 export const InlineCode = (props: React.HTMLAttributes<HTMLElement>) => (
   <code className="inline-code" {...props} />
@@ -220,7 +219,6 @@ const serializers = {
         </NextLink>
       );
     },
-    ...DsIconAnnotation,
   },
 };
 

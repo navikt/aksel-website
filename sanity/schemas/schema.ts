@@ -37,7 +37,6 @@ export default createSchema({
     SanityModules.Image,
     SanityModules.PropTable,
     RichText.BlockContent,
-    RichText.IconDecorator,
 
     Designsystem.Color,
     Designsystem.ds_header_heading,
