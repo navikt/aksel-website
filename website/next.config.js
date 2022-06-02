@@ -115,6 +115,9 @@ const config = () =>
         dangerouslyAllowSVG: true,
       },
       swcMinify: true,
+      httpAgentOptions: {
+        keepAlive: false,
+      },
     })
   );
 
