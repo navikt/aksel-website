@@ -6,6 +6,7 @@ import cl from "classnames";
 const Footer = ({ variant = "ds" }: { variant: "ds" | "aksel" }) => {
   return (
     <footer
+      data-hj-suppress
       className={cl(
         "algolia-ignore-index flex w-full justify-center text-text-inverted",
         {

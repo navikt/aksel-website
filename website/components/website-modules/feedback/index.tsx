@@ -151,7 +151,7 @@ const Feedback = ({
       );
 
   return (
-    <div className={classes} id="feedback-block">
+    <div className={classes} id="feedback-block" data-hj-suppress>
       <div className="flex w-full flex-col items-center gap-4">
         <Heading size="small" level="2">
           Var denne artikkelen til hjelp?
