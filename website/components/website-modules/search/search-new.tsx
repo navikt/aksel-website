@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useDebounce } from "@/utils";
 import { Search as SearchIcon } from "@navikt/ds-icons";
 import { BodyShort, Heading, Label, Search } from "@navikt/ds-react";
