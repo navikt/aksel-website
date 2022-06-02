@@ -73,9 +73,12 @@ const IconSearch = () => {
 
   useEffect(() => {
     Modal.setAppElement("#__next");
-    router.query.icon && handlePageEntry(router.query.icon as string);
     setVisibleIcons(meta.filter((x) => "Outline" === getTag(x.name)));
   }, []);
+
+  useEffect(() => {
+    router.query.icon && handlePageEntry(router.query.icon as string);
+  }, [router.query]);
 
   const handleClose = () => {
     setOpen(false);

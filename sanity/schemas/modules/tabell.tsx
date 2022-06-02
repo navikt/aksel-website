@@ -36,7 +36,24 @@ export const TabellSchema = tableSchema({
   name: "powerTable",
   cellSchema: {
     type: "object",
-    fields: [{ type: "riktekst_tabell", name: "body" }],
+    fields: [
+      { type: "riktekst_tabell", name: "body" },
+      {
+        title: "Suksess/feil",
+        name: "status",
+        type: "string",
+        options: {
+          list: [
+            { value: "ingen", title: "Ingen" },
+            { value: "suksess", title: "Suksess" },
+            { value: "feil", title: "Feil" },
+          ],
+          layout: "radio",
+        },
+        initialValue: "ingen",
+      },
+      /* { type: "image", name: "ikon", title: "Ikon" }, */
+    ],
     preview: {
       select: {
         body: "body",

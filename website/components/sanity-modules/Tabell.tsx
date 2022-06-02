@@ -3,6 +3,8 @@ import React from "react";
 import { Tabell as TabellT } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
 import { SanityBlockContent } from "@/sanity-block";
+import cl from "classnames";
+import { Close, SuccessStroke } from "@navikt/ds-icons";
 
 const TableComponent = ({ node }: { node: TabellT }): JSX.Element => {
   if (!node || !node.powerTable || node.powerTable?.rows?.length < 2) {
@@ -15,7 +17,7 @@ const TableComponent = ({ node }: { node: TabellT }): JSX.Element => {
         <Table.Header>
           <Table.Row>
             {node.powerTable?.rows[0].cells?.map((cell) => (
-              <Table.HeaderCell key={cell?._key} className="text-text-muted">
+              <Table.HeaderCell key={cell?._key} className="text-gray-800">
                 <SanityBlockContent blocks={cell?.data?.body} noLastMargin />
               </Table.HeaderCell>
             ))}
@@ -24,15 +26,40 @@ const TableComponent = ({ node }: { node: TabellT }): JSX.Element => {
         <Table.Body>
           {node.powerTable?.rows?.slice?.(1)?.map((row) => (
             <Table.Row key={row?._key}>
-              {row?.cells?.map((cell) => (
-                <Table.DataCell
-                  key={cell?._key}
-                  rowSpan={cell?.rowSpan}
-                  colSpan={cell?.colSpan}
-                >
-                  <SanityBlockContent blocks={cell?.data?.body} noLastMargin />
-                </Table.DataCell>
-              ))}
+              {row?.cells?.map(
+                (cell) => (
+                  console.log(cell),
+                  (
+                    <Table.DataCell
+                      key={cell?._key}
+                      rowSpan={cell?.rowSpan}
+                      colSpan={cell?.colSpan}
+                      className={cl({
+                        "bg-green-50": cell?.data?.status === "suksess",
+                        "bg-red-50": cell?.data?.status === "feil",
+                      })}
+                    >
+                      <SanityBlockContent
+                        blocks={cell?.data?.body}
+                        noLastMargin
+                      />
+                      {!cell?.data?.body && cell?.data?.status === "suksess" ? (
+                        <SuccessStroke
+                          className="mx-auto text-xl"
+                          aria-label="ok"
+                          aria-hidden
+                        />
+                      ) : cell?.data?.status === "feil" ? (
+                        <Close
+                          className="mx-auto text-xl"
+                          aria-label="feil"
+                          aria-hidden
+                        />
+                      ) : null}
+                    </Table.DataCell>
+                  )
+                )
+              )}
             </Table.Row>
           ))}
         </Table.Body>
