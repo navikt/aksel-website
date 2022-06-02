@@ -26,40 +26,32 @@ const TableComponent = ({ node }: { node: TabellT }): JSX.Element => {
         <Table.Body>
           {node.powerTable?.rows?.slice?.(1)?.map((row) => (
             <Table.Row key={row?._key}>
-              {row?.cells?.map(
-                (cell) => (
-                  console.log(cell),
-                  (
-                    <Table.DataCell
-                      key={cell?._key}
-                      rowSpan={cell?.rowSpan}
-                      colSpan={cell?.colSpan}
-                      className={cl({
-                        "bg-green-50": cell?.data?.status === "suksess",
-                        "bg-red-50": cell?.data?.status === "feil",
-                      })}
-                    >
-                      <SanityBlockContent
-                        blocks={cell?.data?.body}
-                        noLastMargin
-                      />
-                      {!cell?.data?.body && cell?.data?.status === "suksess" ? (
-                        <SuccessStroke
-                          className="mx-auto text-xl"
-                          aria-label="ok"
-                          aria-hidden
-                        />
-                      ) : cell?.data?.status === "feil" ? (
-                        <Close
-                          className="mx-auto text-xl"
-                          aria-label="feil"
-                          aria-hidden
-                        />
-                      ) : null}
-                    </Table.DataCell>
-                  )
-                )
-              )}
+              {row?.cells?.map((cell) => (
+                <Table.DataCell
+                  key={cell?._key}
+                  rowSpan={cell?.rowSpan}
+                  colSpan={cell?.colSpan}
+                  className={cl({
+                    "bg-green-50": cell?.data?.status === "suksess",
+                    "bg-red-50": cell?.data?.status === "feil",
+                  })}
+                >
+                  <SanityBlockContent blocks={cell?.data?.body} noLastMargin />
+                  {!cell?.data?.body && cell?.data?.status === "suksess" ? (
+                    <SuccessStroke
+                      className="mx-auto text-xl"
+                      aria-label="ok"
+                      aria-hidden
+                    />
+                  ) : cell?.data?.status === "feil" ? (
+                    <Close
+                      className="mx-auto text-xl"
+                      aria-label="feil"
+                      aria-hidden
+                    />
+                  ) : null}
+                </Table.DataCell>
+              ))}
             </Table.Row>
           ))}
         </Table.Body>
