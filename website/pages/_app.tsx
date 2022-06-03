@@ -37,7 +37,7 @@ function App({
   }, []);
 
   useEffect(() => {
-    hotjar.initialize(148751, 6);
+    hotjar.initialize(3002247, 6);
   }, []);
 
   return (
