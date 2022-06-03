@@ -74,9 +74,9 @@ export default {
         Rule.custom((v) => {
           const missing = [];
           const bricks = [
-            { title: "Intro", type: "intro_komponent" },
-            { title: "Anatomi", type: "anatomi" },
-            { title: "Tilgjengelighet", type: "uu_seksjon" },
+            /* { title: "Intro", type: "intro_komponent" }, */
+            /* { title: "Anatomi", type: "anatomi" }, */
+            /* { title: "Tilgjengelighet", type: "uu_seksjon" }, */
             { title: "Live demo", type: "live_demo" },
           ];
 
