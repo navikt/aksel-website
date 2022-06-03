@@ -38,7 +38,7 @@ async function main() {
 
   await fs.promises.writeFile(
     "../website/lib/types/schema.d.ts",
-    `${typescriptSource}\nexport default SanityT;`.replace(
+    `${typescriptSource}\nexport default SanityT;\n`.replace(
       "declare namespace Sanity",
       "declare namespace SanityT"
     )
