@@ -19,7 +19,7 @@ import PaginationSandbox from "./pagination";
 import TabsSandbox from "./tabs";
 import TooltipSandbox from "./tooltip";
 import DropdownSandbox from "./dropdown";
-import DetailsSandbox from "./details";
+import ReadMoreSandbox from "./read-more";
 import HelptextSandbox from "./helptext";
 import { kebabCase } from "lodash";
 import { SandboxComponentT } from "./types";
@@ -46,7 +46,7 @@ const allSandboxes = {
   TabsSandbox,
   TooltipSandbox,
   DropdownSandbox,
-  DetailsSandbox,
+  ReadMoreSandbox,
   HelptextSandbox,
 };
 
