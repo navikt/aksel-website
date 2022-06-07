@@ -20,7 +20,6 @@ export const previewClient = createClient({
   ...config,
   // eslint-disable-next-line no-undef
   token: process.env.SANITY_PREVIEW_TOKEN,
-  withCredentials: true,
 });
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
