@@ -2439,10 +2439,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-css@npm:^0.18.0":
-  version: 0.18.0
-  resolution: "@navikt/ds-css@npm:0.18.0"
-  checksum: e2c607ad8e0405ef50d329331acec35c2df700f9462b30181ed7fe46d252c46fb3df2ec37d9b8e33b7f767c13cb304d0652790878ed91615ec4c070afcd41c20
+"@navikt/ds-css@npm:^0.18.1":
+  version: 0.18.1
+  resolution: "@navikt/ds-css@npm:0.18.1"
+  checksum: 6076f72a294ebebd42755c536551f3f152c067544710d13a697c5d18e7ae33310651eb053dee22ac8defb24cdc3073ae874804b44ba11aa63e1a350e9fbee0e9
   languageName: node
   linkType: hard
 
@@ -20306,7 +20306,7 @@ __metadata:
   dependencies:
     "@docsearch/css": 3.0.0
     "@docsearch/react": 3.0.0
-    "@navikt/ds-css": ^0.18.0
+    "@navikt/ds-css": ^0.18.1
     "@navikt/ds-css-internal": ^0.7.3
     "@navikt/ds-icons": ^0.8.13
     "@navikt/ds-react": ^0.19.0
