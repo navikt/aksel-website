@@ -5,7 +5,7 @@ ReadMore.displayName = "ReadMore";
 
 const ReadMoreSandbox: SandboxComponentT = (props: any) => {
   return (
-    <div>
+    <div className="h-32">
       <ReadMore
         size={props?.size}
         header="Dette regnes som helsemessige begrensninger"
