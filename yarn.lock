@@ -2425,10 +2425,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-css-internal@npm:^0.7.3":
-  version: 0.7.3
-  resolution: "@navikt/ds-css-internal@npm:0.7.3"
-  checksum: b513e1a6abebc675370f15874f429b0fe338a6866a35c1c140fcd417531b24b3cb44c4b8f31e57868ecc8678b64ad4f4f8dbbd0e601ea0949299930061d1c5ee
+"@navikt/ds-css-internal@npm:^0.7.5":
+  version: 0.7.5
+  resolution: "@navikt/ds-css-internal@npm:0.7.5"
+  checksum: a7901a1ea155169290ef0e29b5d9721443ff3a6d48054e27e144f2698326032ded7b0e23016938177192640b6fa4704d9384ca593b9931ff141a2ce5eb221788
   languageName: node
   linkType: hard
 
@@ -2439,10 +2439,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-css@npm:^0.18.1":
-  version: 0.18.1
-  resolution: "@navikt/ds-css@npm:0.18.1"
-  checksum: 6076f72a294ebebd42755c536551f3f152c067544710d13a697c5d18e7ae33310651eb053dee22ac8defb24cdc3073ae874804b44ba11aa63e1a350e9fbee0e9
+"@navikt/ds-css@npm:^0.18.6":
+  version: 0.18.6
+  resolution: "@navikt/ds-css@npm:0.18.6"
+  checksum: a5483c18873e119e99d16d8b2fb35fb42f72ab36f0fdc1bbe9d6200e66d6155beae04ffd1e53faab8c97d03f9049f9f601c0b0ad179ac30248a0a510098a79bf
   languageName: node
   linkType: hard
 
@@ -2458,24 +2458,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-icons@npm:^0.8.14":
-  version: 0.8.14
-  resolution: "@navikt/ds-icons@npm:0.8.14"
+"@navikt/ds-icons@npm:^0.8.16":
+  version: 0.8.16
+  resolution: "@navikt/ds-icons@npm:0.8.16"
   dependencies:
     uuid: ^8.3.2
   peerDependencies:
     "@types/react": ^17.0.30 || ^18.0.0
     react: ^17.0.0 || ^18.0.0
-  checksum: 012be11c65bf4e5578a58b8ea65b219f65f345fdf003bd47ec6024ab231408e3c8c3194b694f0acb3bb036b314b1de6de807881b9fa653d279b2173ceb1612ed
+  checksum: 6e8b5569027131e39ecf62874b252b588a64f77a03cdec72a298eb8bcd6d1f9a6d724535c0d6c36aad4d1df4b9dfd750fbbc066b9d54a182893b612dd709a446
   languageName: node
   linkType: hard
 
-"@navikt/ds-react-internal@npm:^0.14.2":
-  version: 0.14.2
-  resolution: "@navikt/ds-react-internal@npm:0.14.2"
+"@navikt/ds-react-internal@npm:^0.14.6":
+  version: 0.14.6
+  resolution: "@navikt/ds-react-internal@npm:0.14.6"
   dependencies:
-    "@navikt/ds-icons": ^0.8.14
-    "@navikt/ds-react": ^0.19.2
+    "@navikt/ds-icons": ^0.8.16
+    "@navikt/ds-react": ^0.19.6
     "@popperjs/core": ^2.10.1
     classnames: ^2.3.1
     copy-to-clipboard: ^3.3.1
@@ -2483,7 +2483,7 @@ __metadata:
   peerDependencies:
     "@types/react": ^17.0.30 || ^18.0.0
     react: ^17.0.0 || ^18.0.0
-  checksum: 26a954b2bc23aa174870cf513a86c84263905dcddc6104c4b78554b4ae731f8ddbfe4d04a8009198a7b5af48ffeb6d56168bcd2061a31e57bc64383ff6106b1b
+  checksum: c56bf07f788129f332c60ef342aebe06654ab3e9728233cca126a5ad9c038d2541873651b848fde7e8d83078d6857d4cc3342f353ce873b221824007849b3014
   languageName: node
   linkType: hard
 
@@ -2510,13 +2510,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-react@npm:^0.19.2":
-  version: 0.19.2
-  resolution: "@navikt/ds-react@npm:0.19.2"
+"@navikt/ds-react@npm:^0.19.6":
+  version: 0.19.6
+  resolution: "@navikt/ds-react@npm:0.19.6"
   dependencies:
     "@floating-ui/react-dom": 0.6.0
     "@material-ui/core": ^4.12.3
-    "@navikt/ds-icons": ^0.8.14
+    "@navikt/ds-icons": ^0.8.16
     "@popperjs/core": ^2.10.1
     "@radix-ui/react-tabs": 0.1.5
     "@radix-ui/react-toggle-group": 0.1.5
@@ -2529,21 +2529,21 @@ __metadata:
   peerDependencies:
     "@types/react": ^17.0.30 || ^18.0.0
     react: ^17.0.0 || ^18.0.0
-  checksum: f4ed6f3b7c555001c84bbae316f7e514da28e6ca108b19e1a2009b98c36e03eeb14db17d8831c24395fbadc8b3d929fd70fbe317e9fec00a89aa31fd8a38868f
+  checksum: 9e96e7b66210b3aadc71c25510feda277e170bc6cd165d58443452707f1e01af4127790c0c426b7f573ac985d40600eb46d0ab716908ab2a8a4233a0f64b72a1
   languageName: node
   linkType: hard
 
-"@navikt/ds-tailwind@npm:^0.2.2":
-  version: 0.2.2
-  resolution: "@navikt/ds-tailwind@npm:0.2.2"
-  checksum: 369bd334e63a887e633bfaba6f42e47d21137d1f3c271c6b4d7307bd29f12d2e6a766035a22f5521c2777ebda19b792a776ec50d5c0cdb55a983e416058787e6
+"@navikt/ds-tailwind@npm:^0.2.6":
+  version: 0.2.6
+  resolution: "@navikt/ds-tailwind@npm:0.2.6"
+  checksum: 75b006ccc72c203f003cf3a2cfda139bed69bb5cb885d417eb09078f494e9dc4e053e178a3c526e0692b47969051a818cecd300e9d8f519e822e4d3c5a42c1f1
   languageName: node
   linkType: hard
 
-"@navikt/ds-tokens@npm:^0.9.1":
-  version: 0.9.1
-  resolution: "@navikt/ds-tokens@npm:0.9.1"
-  checksum: 3e77c19635a1ce33c198536908e964e07b5801cdf570c3c3b989d9c6d9919412a12cad96dc2c76feb33cce2d4a014cd5222021d59d44b0d49f84304db5ca1a1d
+"@navikt/ds-tokens@npm:^0.9.5":
+  version: 0.9.5
+  resolution: "@navikt/ds-tokens@npm:0.9.5"
+  checksum: 40dbea7936e4c2ba113b2d556abd8175db7567dd10b707406350b4997d1b2efa8ad4b9639d39da685e3063ecfb1e8d8fc511ad5e813464487dcfa12b272d0406
   languageName: node
   linkType: hard
 
@@ -5466,7 +5466,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"algoliasearch-helper@npm:^3.7.4, algoliasearch-helper@npm:^3.8.2":
+"algoliasearch-helper@npm:^3.8.2":
   version: 3.8.2
   resolution: "algoliasearch-helper@npm:3.8.2"
   dependencies:
@@ -11494,9 +11494,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"instantsearch.js@npm:^4.40.1":
-  version: 4.40.6
-  resolution: "instantsearch.js@npm:4.40.6"
+"instantsearch.js@npm:^4.41.0":
+  version: 4.41.0
+  resolution: "instantsearch.js@npm:4.41.0"
   dependencies:
     "@algolia/events": ^4.0.1
     "@types/google.maps": ^3.45.3
@@ -11510,7 +11510,7 @@ __metadata:
     search-insights: ^2.1.0
   peerDependencies:
     algoliasearch: ">= 3.1 < 5"
-  checksum: 4a865865a6be7ae9f96e22d0d35936497b8941500f1a30fa01903d8521458fbe9e9136b09291d1fbf2e10d0235b1665924f352ed559f5891e8e0b91e64750143
+  checksum: 3dbb666ee943eafde1c73f62a0fcedf67184b2cfc5abf65a861e13de02be4381b0ab66205f9904e1cd02fd636d537310d484bb47fd3ee2075e44e2576ae97c01
   languageName: node
   linkType: hard
 
@@ -16586,31 +16586,32 @@ __metadata:
   linkType: hard
 
 "react-instantsearch-hooks-web@npm:^6.26.0":
-  version: 6.26.0
-  resolution: "react-instantsearch-hooks-web@npm:6.26.0"
+  version: 6.27.0
+  resolution: "react-instantsearch-hooks-web@npm:6.27.0"
   dependencies:
     "@babel/runtime": ^7.1.2
-    instantsearch.js: ^4.40.1
-    react-instantsearch-hooks: 6.26.0
+    instantsearch.js: ^4.41.0
+    react-instantsearch-hooks: 6.27.0
   peerDependencies:
     algoliasearch: ">= 3.1 < 5"
     react: ">= 16.8.0 < 19"
     react-dom: ">= 16.8.0 < 19"
-  checksum: 7af0c8f15533c95969b1b3425ca1751d6933435287aae570bba62478b4618b33f9ba27883afacbdfe9275044667a4bdc4a201f1a7c334995487816dfa1afae55
+  checksum: d549d25cb5e2add57aab76b252c6ced691897ee22dc9c44a3f3694b7da1df7dfa35972fb59269913d520b2dc737b420ca1562000f2cf7d85fb71d137d5e4a0ff
   languageName: node
   linkType: hard
 
-"react-instantsearch-hooks@npm:6.26.0":
-  version: 6.26.0
-  resolution: "react-instantsearch-hooks@npm:6.26.0"
+"react-instantsearch-hooks@npm:6.27.0":
+  version: 6.27.0
+  resolution: "react-instantsearch-hooks@npm:6.27.0"
   dependencies:
     "@babel/runtime": ^7.1.2
-    algoliasearch-helper: ^3.7.4
-    instantsearch.js: ^4.40.1
+    algoliasearch-helper: ^3.8.2
+    instantsearch.js: ^4.41.0
+    use-sync-external-store: ^1.0.0
   peerDependencies:
     algoliasearch: ">= 3.1 < 5"
     react: ">= 16.8.0 < 19"
-  checksum: acfd03cde091de585bea216813653d5f20be25acd0fe4089750caf51500a05cf2476c0aacae9c60cc1e31763a9379f742d764946ff1c06da71d37c9e17558cbc
+  checksum: 426d363c172bcd7bcec3b8eed9825bc6d296c93aca884ad17af01971b02e5da071d5196658d53e390dd5239cbe0fd3cc223fcb7065f525fdde41ba58ed0ed883
   languageName: node
   linkType: hard
 
@@ -19985,6 +19986,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"use-sync-external-store@npm:^1.0.0":
+  version: 1.1.0
+  resolution: "use-sync-external-store@npm:1.1.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 8993a0b642f91d7fcdbb02b7b3ac984bd3af4769686f38291fe7fcfe73dfb73d6c64d20dfb7e5e7fbf5a6da8f5392d6f8e5b00c243a04975595946e82c02b883
+  languageName: node
+  linkType: hard
+
 "use@npm:^3.1.0":
   version: 3.1.1
   resolution: "use@npm:3.1.1"
@@ -20306,17 +20316,17 @@ __metadata:
   dependencies:
     "@docsearch/css": 3.0.0
     "@docsearch/react": 3.0.0
-    "@navikt/ds-css": ^0.18.1
-    "@navikt/ds-css-internal": ^0.7.3
-    "@navikt/ds-icons": ^0.8.14
-    "@navikt/ds-react": ^0.19.2
-    "@navikt/ds-react-internal": ^0.14.2
-    "@navikt/ds-tailwind": ^0.2.2
-    "@navikt/ds-tokens": ^0.9.1
+    "@navikt/ds-css": ^0.18.6
+    "@navikt/ds-css-internal": ^0.7.5
+    "@navikt/ds-icons": ^0.8.16
+    "@navikt/ds-react": ^0.19.6
+    "@navikt/ds-react-internal": ^0.14.6
+    "@navikt/ds-tailwind": ^0.2.6
+    "@navikt/ds-tokens": ^0.9.5
     "@next/bundle-analyzer": ^12.1.0
     "@sanity-codegen/types": 1.0.0-alpha.13
     "@sanity/block-content-to-react": ^3.0.0
-    "@sanity/client": ^3.2.0
+    "@sanity/client": ^3.3.0
     "@sanity/image-url": 1.0.1
     "@sentry/nextjs": ^6.17.6
     "@svgr/webpack": ^5.5.0

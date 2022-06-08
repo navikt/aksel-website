@@ -1,5 +1,4 @@
 import React from "react";
-import Changelog from "./changelog";
 import { SanityKeyed } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
 import ComponentOverview from "./component-overview";
@@ -25,12 +24,6 @@ const SpesialSeksjon = ({ node }: { node: SpesialT }): JSX.Element => {
         return <ColorCategory node={node.farge} />;
       case "komponentoversikt":
         return <ComponentOverview node={node.oversikt} />;
-      case "endringslogg":
-        return (
-          <Changelog
-            node={{ _key: node._key, title: "Endringslogg", logs: node.logs }}
-          />
-        );
       case "ikonsok":
         return <IconSearch />;
       default:

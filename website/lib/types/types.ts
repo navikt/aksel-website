@@ -1,5 +1,4 @@
 import type { SanityKeyed } from "sanity-codegen";
-import { DsChangelog } from "..";
 
 export enum BgColors {
   "WHITE" = "--navds-semantic-color-canvas-background-light",
@@ -79,17 +78,3 @@ export interface ExampleComponent extends React.FC {
   html?: string | null;
   bg?: BgColors;
 }
-
-export interface ChangelogT extends Omit<DsChangelog, "packages"> {
-  packages: {
-    version: string;
-    pack: { title: string; scope: string };
-    _key: string;
-  }[];
-}
-
-export type ChangelogListT = {
-  title: string;
-  _key: string;
-  logs: ChangelogT[];
-};

@@ -81,7 +81,7 @@ export const getStaticProps = async ({
     props: {
       page: doc,
       slug: slug.join("/"),
-      navigation: nav,
+      navigation: nav ?? null,
       activeHeading: getActiveHeading(nav, doc?.slug) ?? null,
       preview,
     },

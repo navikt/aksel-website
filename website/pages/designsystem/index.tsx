@@ -92,7 +92,7 @@ export const getStaticProps = async ({
     props: {
       page: doc,
       slug: "/designsystem",
-      navigation: nav,
+      navigation: nav ?? null,
       activeHeading: null,
       preview,
     },

@@ -125,66 +125,6 @@ Linker eller dropdowns med linker. Maks dybde på 2 dropdowns er støttet. Sider
     }
 
     /**
-     * Changelog
-     */
-    interface ds_changelog extends Sanity.Document {
-      _type: "ds_changelog";
-
-      /**
-       * Tittel - `String`
-       */
-      title?: string;
-
-      /**
-       * Dato - `Date`
-Endringer sortes basert på datoen gitt her
-       */
-      change_date?: string;
-
-      /**
-       * Pull request (optional) - `Url`
-Eks: https://github.com/navikt/nav-frontend-moduler/pull/1382
-       */
-      pull_request?: string;
-
-      /**
-       * Pakker og versioner - `Array`
-       */
-      packages?: Array<
-        Sanity.Keyed<{
-          _type: "package_versions";
-
-          /**
-           * Pakke - `Reference`
-           */
-          pack?: Sanity.Reference<ds_package>;
-
-          /**
-           * Semver versjon - `String`
-           */
-          version?: string;
-        }>
-      >;
-
-      /**
-       * Type endring - `String`
-       */
-      change?: "new" | "bug" | "breaking" | "uu" | "fix";
-
-      /**
-       * Tags - `Array`
-Eks: Button, Alert, All etc
-       */
-      tags?: Array<Sanity.Keyed<string>>;
-
-      /**
-       * Tekst - `RegistryReference`
-Beskrivelse av endringen
-       */
-      body?: riktekst;
-    }
-
-    /**
      * Kode med eksempel
      */
     interface ds_code_example extends Sanity.Document {
@@ -2093,7 +2033,6 @@ Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via
       | editor
       | navigation
       | introduction
-      | ds_changelog
       | ds_code_example
       | ds_code_sandbox
       | ds_color_categories

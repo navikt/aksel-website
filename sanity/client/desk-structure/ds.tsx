@@ -95,10 +95,6 @@ export const dsPanel = async (roles) => {
               .icon(() => <Findout />)
               .id(`ds_component_overview_id`),
             S.listItem()
-              .title("Changelogs")
-              .icon(() => <Historic />)
-              .child(createSuperPane("ds_changelog")),
-            S.listItem()
               .title("Kodepakker")
               .icon(() => <Ruler />)
               .child(S.documentTypeList("ds_package")),

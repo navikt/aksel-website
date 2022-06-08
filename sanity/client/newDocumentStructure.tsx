@@ -24,11 +24,6 @@ const docTypes = [
     title: "Designsystem Komponentside",
     desc: "Atikkel som legges under designsystemet",
   },
-  {
-    name: "ds_changelog",
-    title: "Designsystem Changelog",
-    desc: "Ny changelog for designsystemet",
-  },
 ];
 
 export default [

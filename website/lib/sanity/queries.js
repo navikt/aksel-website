@@ -173,19 +173,6 @@ const genericBlock = `
 
 const spesialSeksjon = `_type == "spesial_seksjon" =>{
   ...,
-  modul == "endringslogg" =>{
-    "logs": *[_type == 'ds_changelog' && !(_id in path("drafts.**"))]{
-      ...,
-      packages[]{
-        ...,
-        "pack": @.pack->{...}
-      },
-      body[]{
-        ...,
-        ${markDef}
-      },
-    }
-  },
   modul == "komponentoversikt" =>{
     "oversikt": *[_id == 'ds_component_overview_id' && !(_id in path("drafts.**"))][0]{
       ...,

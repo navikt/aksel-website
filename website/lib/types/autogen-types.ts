@@ -163,81 +163,6 @@ export interface Introduction extends SanityDocument {
 }
 
 /**
- * Changelog
- *
- *
- */
-export interface DsChangelog extends SanityDocument {
-  _type: "ds_changelog";
-
-  /**
-   * Tittel — `string`
-   *
-   *
-   */
-  title?: string;
-
-  /**
-   * Dato — `date`
-   *
-   * Endringer sortes basert på datoen gitt her
-   */
-  change_date?: string;
-
-  /**
-   * Pull request (optional) — `url`
-   *
-   * Eks: https://github.com/navikt/nav-frontend-moduler/pull/1382
-   */
-  pull_request?: string;
-
-  /**
-   * Pakker og versioner — `array`
-   *
-   *
-   */
-  packages?: Array<
-    SanityKeyed<{
-      _type: "package_versions";
-      /**
-       * Pakke — `reference`
-       *
-       *
-       */
-      pack?: SanityReference<DsPackage>;
-
-      /**
-       * Semver versjon — `string`
-       *
-       *
-       */
-      version?: string;
-    }>
-  >;
-
-  /**
-   * Type endring — `string`
-   *
-   *
-   */
-  change?: "new" | "bug" | "breaking" | "uu" | "fix";
-
-  /**
-   * Tags — `array`
-   *
-   * Eks: Button, Alert, All etc
-   */
-  tags?: Array<SanityKeyed<string>>;
-
-  /**
-   * Tekst — `riktekst`
-   *
-   * Beskrivelse av endringen
-   */
-  body?: Riktekst;
-}
-
-/**
  * Kode med eksempel
  *
  *
@@ -2406,7 +2331,6 @@ export type Documents =
   | Editor
   | Navigation
   | Introduction
-  | DsChangelog
   | DsCodeExample
   | DsCodeSandbox
   | DsColorCategories
