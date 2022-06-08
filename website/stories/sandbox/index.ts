@@ -22,6 +22,7 @@ import DropdownSandbox from "./dropdown";
 import ReadMoreSandbox from "./read-more";
 import HelptextSandbox from "./helptext";
 import ConfirmationSandbox from "./confirmation-panel";
+import ModalSandbox from "./modal";
 import { kebabCase } from "lodash";
 import { SandboxComponentT } from "./types";
 
@@ -50,6 +51,7 @@ const allSandboxes = {
   ReadMoreSandbox,
   HelptextSandbox,
   ConfirmationSandbox,
+  ModalSandbox,
 };
 
 export const Sandboxes = Object.keys(allSandboxes).reduce((prev, y) => {
