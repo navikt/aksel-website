@@ -25,6 +25,7 @@ import ConfirmationSandbox from "./confirmation-panel";
 import ModalSandbox from "./modal";
 import LinkSandbox from "./link";
 import GuidePanelSandbox from "./guidepanel";
+import ErrorSummarySandbox from "./error-summary";
 import { kebabCase } from "lodash";
 import { SandboxComponentT } from "./types";
 
@@ -56,6 +57,7 @@ const allSandboxes = {
   ModalSandbox,
   LinkSandbox,
   GuidePanelSandbox,
+  ErrorSummarySandbox,
 };
 
 export const Sandboxes = Object.keys(allSandboxes).reduce((prev, y) => {
