@@ -114,10 +114,10 @@ const config = () =>
         domains: ["cdn.sanity.io"],
         dangerouslyAllowSVG: true,
       },
-      /* swcMinify: true,
+      swcMinify: true,
       httpAgentOptions: {
         keepAlive: false,
-      }, */
+      },
     })
   );
 
