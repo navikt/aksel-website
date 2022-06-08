@@ -1,6 +1,5 @@
 import { kebabCase } from "lodash";
 
-import * as Accordion from "./accordion";
 import * as ErrorSummary from "./error-summary";
 import * as ConfirmationPanel from "./confirmation-panel";
 import * as Select from "./select";
@@ -19,7 +18,6 @@ import * as Typography from "./typography";
 import * as StepIndicator from "./step-indicator";
 
 const allExamples = {
-  ...Accordion,
   ...ErrorSummary,
   ...ConfirmationPanel,
   ...Select,
