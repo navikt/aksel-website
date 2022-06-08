@@ -2458,24 +2458,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-icons@npm:^0.8.13":
-  version: 0.8.13
-  resolution: "@navikt/ds-icons@npm:0.8.13"
+"@navikt/ds-icons@npm:^0.8.14":
+  version: 0.8.14
+  resolution: "@navikt/ds-icons@npm:0.8.14"
   dependencies:
     uuid: ^8.3.2
   peerDependencies:
     "@types/react": ^17.0.30 || ^18.0.0
     react: ^17.0.0 || ^18.0.0
-  checksum: 5809e7e23a50a5c697b396a81573f869c47d9176157672946de6e066be13d61d754bf46fe92416b75da435d2a9e80d99780e8a6131b88f24347a8d2cabbc3d8e
+  checksum: 012be11c65bf4e5578a58b8ea65b219f65f345fdf003bd47ec6024ab231408e3c8c3194b694f0acb3bb036b314b1de6de807881b9fa653d279b2173ceb1612ed
   languageName: node
   linkType: hard
 
-"@navikt/ds-react-internal@npm:^0.14.0":
-  version: 0.14.0
-  resolution: "@navikt/ds-react-internal@npm:0.14.0"
+"@navikt/ds-react-internal@npm:^0.14.2":
+  version: 0.14.2
+  resolution: "@navikt/ds-react-internal@npm:0.14.2"
   dependencies:
-    "@navikt/ds-icons": ^0.8.13
-    "@navikt/ds-react": ^0.19.0
+    "@navikt/ds-icons": ^0.8.14
+    "@navikt/ds-react": ^0.19.2
     "@popperjs/core": ^2.10.1
     classnames: ^2.3.1
     copy-to-clipboard: ^3.3.1
@@ -2483,7 +2483,7 @@ __metadata:
   peerDependencies:
     "@types/react": ^17.0.30 || ^18.0.0
     react: ^17.0.0 || ^18.0.0
-  checksum: 5fb3c2efe9bf9ee71a494cb8f1c455f5cdb1b24f30e5d0814a7651511763d7cd4362427f7c4b53e39e6f3d10753285b3186f898a904748ee1ab83fb522203771
+  checksum: 26a954b2bc23aa174870cf513a86c84263905dcddc6104c4b78554b4ae731f8ddbfe4d04a8009198a7b5af48ffeb6d56168bcd2061a31e57bc64383ff6106b1b
   languageName: node
   linkType: hard
 
@@ -2510,13 +2510,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-react@npm:^0.19.0":
-  version: 0.19.0
-  resolution: "@navikt/ds-react@npm:0.19.0"
+"@navikt/ds-react@npm:^0.19.2":
+  version: 0.19.2
+  resolution: "@navikt/ds-react@npm:0.19.2"
   dependencies:
     "@floating-ui/react-dom": 0.6.0
     "@material-ui/core": ^4.12.3
-    "@navikt/ds-icons": ^0.8.13
+    "@navikt/ds-icons": ^0.8.14
     "@popperjs/core": ^2.10.1
     "@radix-ui/react-tabs": 0.1.5
     "@radix-ui/react-toggle-group": 0.1.5
@@ -2529,7 +2529,7 @@ __metadata:
   peerDependencies:
     "@types/react": ^17.0.30 || ^18.0.0
     react: ^17.0.0 || ^18.0.0
-  checksum: b5fa7843e5b7d26b5976483e815ffd069e6f4cf14f332b601288d9c2468bb7338589d910d914e74896677c1194f53df6124d12eaea514c8879cac73ec6b45d63
+  checksum: f4ed6f3b7c555001c84bbae316f7e514da28e6ca108b19e1a2009b98c36e03eeb14db17d8831c24395fbadc8b3d929fd70fbe317e9fec00a89aa31fd8a38868f
   languageName: node
   linkType: hard
 
@@ -20308,9 +20308,9 @@ __metadata:
     "@docsearch/react": 3.0.0
     "@navikt/ds-css": ^0.18.1
     "@navikt/ds-css-internal": ^0.7.3
-    "@navikt/ds-icons": ^0.8.13
-    "@navikt/ds-react": ^0.19.0
-    "@navikt/ds-react-internal": ^0.14.0
+    "@navikt/ds-icons": ^0.8.14
+    "@navikt/ds-react": ^0.19.2
+    "@navikt/ds-react-internal": ^0.14.2
     "@navikt/ds-tailwind": ^0.2.2
     "@navikt/ds-tokens": ^0.9.1
     "@next/bundle-analyzer": ^12.1.0
