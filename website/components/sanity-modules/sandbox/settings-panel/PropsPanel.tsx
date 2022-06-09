@@ -14,7 +14,12 @@ const SettingsPanel = () => {
 
   return (
     <>
-      <div className={cl("w-full bg-gray-100 pb-3", { "lg:hidden": !open })}>
+      <div
+        className={cl("w-full bg-gray-100 pb-3", {
+          hidden: hideProps,
+          "lg:hidden": !open,
+        })}
+      >
         <div className="flex justify-end px-4">
           <button
             onClick={() => setOpen((x) => !x)}
