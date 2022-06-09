@@ -20,8 +20,10 @@ const DropdownSandbox: SandboxComponentT = () => {
   return (
     <div className="h-60">
       <Dropdown>
-        <Button as={Dropdown.Toggle}>Toggle</Button>
-        <Dropdown.Menu className="relative z-10">
+        <Dropdown.Toggle className="navds-button navds-button--secondary">
+          Toggle
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
           <Dropdown.Menu.GroupedList>
             <Dropdown.Menu.GroupedList.Heading>
               Systemer og oppslagsverk

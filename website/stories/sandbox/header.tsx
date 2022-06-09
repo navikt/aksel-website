@@ -40,12 +40,12 @@ const HeaderSandbox: SandboxComponentT = (props: any) => {
     case "Initialer":
       user = (
         <Dropdown>
-          <Header.Button as={Dropdown.Toggle} {...ml}>
+          <Dropdown.Toggle {...ml} className="navdsi-header__button">
             <BodyShort size="small" title="Kong Harald">
               ON
             </BodyShort>
             <Expand />
-          </Header.Button>
+          </Dropdown.Toggle>
           <Dropdown.Menu>
             <div>
               <BodyLong size="small" as="div">
@@ -70,12 +70,14 @@ const HeaderSandbox: SandboxComponentT = (props: any) => {
     case "Meny":
       user = (
         <Dropdown>
-          <Header.UserButton
-            {...ml}
-            as={Dropdown.Toggle}
-            name="Ola Normann"
-            description="Enhet: Skien"
-          />
+          <Dropdown.Toggle {...ml} className="appearance-none">
+            <Header.UserButton
+              as="div"
+              className="h-full"
+              name="Ola Normann"
+              description="Enhet: Skien"
+            />
+          </Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Menu.List>
               <Dropdown.Menu.List.Item>Logg ut</Dropdown.Menu.List.Item>
@@ -115,12 +117,14 @@ const HeaderSandbox: SandboxComponentT = (props: any) => {
       )}
       {props?.["system-meny"] && (
         <Dropdown>
-          <Header.Button as={Dropdown.Toggle} style={{ marginLeft: "auto" }}>
-            <System
-              style={{ fontSize: "1.5rem" }}
-              title="Systemer og oppslagsverk"
-            />
-          </Header.Button>
+          <Dropdown.Toggle className="ml-auto">
+            <Header.Button className="h-full">
+              <System
+                style={{ fontSize: "1.5rem" }}
+                title="Systemer og oppslagsverk"
+              />
+            </Header.Button>
+          </Dropdown.Toggle>
 
           <Dropdown.Menu>
             <Dropdown.Menu.GroupedList>
