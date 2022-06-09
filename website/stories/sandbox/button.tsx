@@ -14,6 +14,9 @@ const ButtonSandbox: SandboxComponentT = (props: any) => {
     <Button variant={props?.variant} size={props?.size} {...newProps}>
       {props?.Komposisjon.startsWith("Ikon") &&
         !props?.Komposisjon?.endsWith("Ikon") && <Star />}
+      {props?.Komposisjon === "Ikon" && (
+        <span className="navds-sr-only">Knappebeskrivelse</span>
+      )}
       {props?.Komposisjon.includes("Tekst") && "Button"}
       {props?.Komposisjon.endsWith("Ikon") && <Star />}
     </Button>
