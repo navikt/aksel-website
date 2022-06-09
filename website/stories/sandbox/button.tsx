@@ -10,15 +10,19 @@ const ButtonSandbox: SandboxComponentT = (props: any) => {
     ...(props?.loading ? { loading: true } : {}),
     ...(props?.size === "small" ? { loading: true } : {}),
   };
+  const iconProps = {
+    ...(props?.Komposisjon === "Ikon"
+      ? { title: "Beskrivelse for skjermlesere" }
+      : { ["aria-hidden"]: true }),
+  };
+
   return (
     <Button variant={props?.variant} size={props?.size} {...newProps}>
       {props?.Komposisjon.startsWith("Ikon") &&
-        !props?.Komposisjon?.endsWith("Ikon") && <Star />}
-      {props?.Komposisjon === "Ikon" && (
-        <span className="navds-sr-only">Knappebeskrivelse</span>
-      )}
+        !props?.Komposisjon?.endsWith("Ikon") && <Star aria-hidden />}
+
       {props?.Komposisjon.includes("Tekst") && "Button"}
-      {props?.Komposisjon.endsWith("Ikon") && <Star />}
+      {props?.Komposisjon.endsWith("Ikon") && <Star {...iconProps} />}
     </Button>
   );
 };
