@@ -1,4 +1,3 @@
-import { Button } from "@navikt/ds-react";
 import cl from "classnames";
 import React, { useContext, useState } from "react";
 import { SandboxContext } from "../index";
