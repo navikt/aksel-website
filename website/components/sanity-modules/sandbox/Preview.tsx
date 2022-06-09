@@ -48,7 +48,7 @@ export const Preview = ({ children }: { children: React.ReactElement }) => {
           <button
             className={cl(
               buttonStyles(bg),
-              "rounded py-1 px-3 text-medium focus:outline-none",
+              "rounded py-1 px-3 text-medium focus:outline-none lg:hidden",
               { hidden: sandboxState.openSettings || hideProps }
             )}
             onClick={() =>
