@@ -16,7 +16,7 @@ const PropFilter = () => {
   return (
     <>
       {Object.keys(args.props).length > 0 && (
-        <Fieldset legend="Props" size="small" className="mb-4">
+        <Fieldset legend="Props" size="small" className="lg:mb-4">
           {Object.keys(sandboxState.propsState.props).map((key) => {
             switch (args.props[key].format) {
               case "array":
