@@ -37,14 +37,12 @@ export const SandboxContext = createContext<SandboxContextProps>({
 interface SandboxStateT {
   args: ParsedArgsT;
   propsState: StateT;
-  openSettings: boolean;
 }
 
 const Sandbox = ({ node }: { node: SandboxT }) => {
   const [sandboxState, setSandboxState] = useState<SandboxStateT>({
     args: null,
     propsState: null,
-    openSettings: false,
   });
 
   const mounted = useRef<boolean>(false);

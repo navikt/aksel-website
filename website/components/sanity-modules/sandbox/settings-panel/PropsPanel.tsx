@@ -1,27 +1,11 @@
-import { Close } from "@navikt/ds-icons";
 import { Button } from "@navikt/ds-react";
 import cl from "classnames";
-import React, { useContext, useEffect, useRef } from "react";
-import { useKey } from "react-use";
+import React, { useContext } from "react";
 import { SandboxContext } from "../index";
 import PropFilter from "./PropFilter";
 
 const SettingsPanel = () => {
-  const { sandboxState, setSandboxState, reset } = useContext(SandboxContext);
-  const panelRef = useRef<HTMLDivElement>(null);
-
-  useKey(
-    "Escape",
-    () =>
-      sandboxState.openSettings &&
-      setSandboxState({ ...sandboxState, openSettings: false }),
-    {},
-    [sandboxState.openSettings]
-  );
-
-  useEffect(() => {
-    sandboxState.openSettings && panelRef?.current?.focus();
-  }, [sandboxState?.openSettings]);
+  const { sandboxState, reset } = useContext(SandboxContext);
 
   const hideProps =
     !sandboxState.args ||
@@ -30,30 +14,15 @@ const SettingsPanel = () => {
 
   return (
     <div
-      ref={panelRef}
-      tabIndex={-1}
       className={cl(
-        "flex w-full flex-col items-center gap-4 overflow-y-auto rounded-r border-l border-gray-200 bg-gray-50 px-6 py-4 focus:outline-none md:items-start",
-        "md:relative md:max-w-[250px]",
-        "absolute inset-0 animate-fadeIn",
+        "flex w-full flex-col items-center gap-4 overflow-y-auto rounded-r bg-gray-100 px-6 py-4",
+        "animate-fadeIn lg:max-w-[250px]",
         {
-          "hidden lg:flex": !sandboxState.openSettings || hideProps,
+          hidden: hideProps,
         }
       )}
     >
-      <div className="flex h-full w-full max-w-xs flex-col">
-        <button
-          className="absolute top-0 right-0 p-4 text-xlarge hover:bg-interaction-primary-hover-subtle focus:shadow-focus-inset focus:outline-none lg:hidden"
-          onClick={() =>
-            setSandboxState({
-              ...sandboxState,
-              openSettings: !sandboxState.openSettings,
-            })
-          }
-        >
-          <span className="sr-only">Lukk props-panel</span>
-          <Close aria-hidden />
-        </button>
+      <div className="flex h-full w-full max-w-[250px] flex-col">
         <PropFilter />
         <Button
           variant="tertiary"

@@ -1,4 +1,4 @@
-import { getClient, sanityClient } from "./sanity.server";
+import { getClient, noCdnClient, sanityClient } from "./sanity.server";
 import { akselDocumentsByType, akselTemaNames, dsDocuments } from "./queries";
 import { DsArtikkel, DsComponentPage, KomponentArtikkel } from "..";
 import imageUrlBuilder from "@sanity/image-url";
@@ -12,13 +12,13 @@ export function urlFor(source: any) {
 export const getTemaSlug = (s: string) =>
   s ? s.toLowerCase().trim().replace(/\s+/g, "-") : null;
 
-export const getAllPages = async () => {
-  const pages = await getDsPaths().then((paths) =>
+export const getAllPages = async (token?: string) => {
+  const pages = await getDsPaths(token).then((paths) =>
     paths.map((slugs) => slugs.join("/"))
   );
 
-  const artikler = await getAkselDocuments("all");
-  const temaer = await getAkselTema();
+  const artikler = await getAkselDocuments("all", token);
+  const temaer = await getAkselTema(token);
 
   return [
     "",
@@ -32,19 +32,17 @@ export const getAllPages = async () => {
 };
 
 export const getAkselDocuments = async (
-  source: "aksel_artikkel" | "aksel_blogg" | "aksel_prinsipp" | "all"
+  source: "aksel_artikkel" | "aksel_blogg" | "aksel_prinsipp" | "all",
+  token?: string
 ): Promise<string[]> => {
   if (!source) return [];
-
-  const documents: any[] | null = await getClient(false).fetch(
-    akselDocumentsByType,
-    {
-      types:
-        source === "all"
-          ? `["aksel_artikkel", "aksel_blogg", "aksel_prinsipp"]`
-          : `["${source}"]`,
-    }
-  );
+  const client = token ? noCdnClient(token) : getClient(false);
+  const documents: any[] | null = await client.fetch(akselDocumentsByType, {
+    types:
+      source === "all"
+        ? `["aksel_artikkel", "aksel_blogg", "aksel_prinsipp"]`
+        : `["${source}"]`,
+  });
   const paths = [];
 
   const nonDrafts = documents.filter((x) => !x._id.startsWith("drafts."));
@@ -56,8 +54,9 @@ export const getAkselDocuments = async (
   return paths;
 };
 
-export const getDsPaths = async (): Promise<string[][]> => {
-  const documents: any[] | null = await getClient(false).fetch(dsDocuments);
+export const getDsPaths = async (token?: string): Promise<string[][]> => {
+  const client = token ? noCdnClient(token) : getClient(false);
+  const documents: any[] | null = await client.fetch(dsDocuments);
   const paths = [];
   const componentPageTabs = ["design", "utvikling", "tilgjengelighet"];
 
@@ -149,7 +148,8 @@ export const validateDsPath = (
   }
 };
 
-export const getAkselTema = async (): Promise<string[]> => {
-  const tags: string[] = await getClient(false).fetch(akselTemaNames);
+export const getAkselTema = async (token?: string): Promise<string[]> => {
+  const client = token ? noCdnClient(token) : getClient(false);
+  const tags: string[] = await client.fetch(akselTemaNames);
   return tags.map(getTemaSlug);
 };
