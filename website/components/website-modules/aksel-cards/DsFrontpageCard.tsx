@@ -93,7 +93,7 @@ const Card = ({
       {tag && (
         <Detail
           size="small"
-          className="absolute bottom-6 uppercase text-text-muted"
+          className="absolute bottom-6 font-semibold uppercase text-text-muted"
         >
           {tagName}
         </Detail>

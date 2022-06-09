@@ -167,6 +167,6 @@ export const TypographyDetail: ExampleComponent = () => {
 };
 
 TypographyDetail.react = `
-<Detail spacing>Ullamco ut laboris irure</Detail>
+<Detail  spacing>Ullamco ut laboris irure</Detail>
 <Detail size="small">Ullamco ut laboris irure</Detail>
 `;

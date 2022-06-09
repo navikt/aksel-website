@@ -28,7 +28,7 @@ const Tips = ({ node }: { node: SanityT.Schema.tips }): JSX.Element => {
         )}
       >
         <Detail
-          className="flex items-center gap-1 uppercase text-text-muted"
+          className="flex items-center gap-1 font-semibold uppercase text-text-muted"
           spacing
         >
           <svg
@@ -85,7 +85,10 @@ const Tips = ({ node }: { node: SanityT.Schema.tips }): JSX.Element => {
         }
       )}
     >
-      <Detail className="flex items-center gap-1 text-text-muted" spacing>
+      <Detail
+        className="flex items-center gap-1 font-semibold text-text-muted"
+        spacing
+      >
         <LightBulb className="text-large" aria-label="tips" aria-hidden /> TIPS
       </Detail>
       <SanityBlockContent blocks={node.body} noLastMargin />

@@ -55,7 +55,7 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
           </BodyShort>
 
           {(x.tags !== "none" || x.ekstern_domene) && (
-            <Detail className="absolute bottom-6 mt-6 flex items-center gap-2 self-end break-words uppercase text-text-muted">
+            <Detail className="absolute bottom-6 mt-6 flex items-center gap-2 self-end break-words font-semibold uppercase text-text-muted">
               {x.ekstern_domene ? <>{getTag(x)}</> : x.tag}
             </Detail>
           )}

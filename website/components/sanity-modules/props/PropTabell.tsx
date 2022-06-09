@@ -23,7 +23,9 @@ const Table = ({ prop }: { prop: any }) => (
   <table className="mb-0 border-separate border-t border-t-divider pt-5 last-of-type:mb-12 last-of-type:border-b last-of-type:border-b-divider">
     <caption className="m-0 mb-2 flex flex-col text-left">
       {prop.required && (
-        <Detail className="text-feedback-danger-text">Required</Detail>
+        <Detail className="font-semibold text-feedback-danger-text">
+          Required
+        </Detail>
       )}
       <Tag
         variant="info"
@@ -121,7 +123,7 @@ const PropTable = ({ komponent }: { komponent: PropT }): JSX.Element => {
         {komponent?.propref?.proplist?.map((prop) => (
           <Table key={prop.name} prop={prop} />
         ))}
-        <Detail className="-mt-6 text-text-muted">
+        <Detail className="-mt-6 font-semibold text-text-muted">
           * Props er autogenerert fra kode, så avvik kan forekomme. Ta kontakt
           hvis noe ikke stemmer!
         </Detail>
