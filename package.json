@@ -19,12 +19,7 @@
     "sanity": "yarn workspace sanity start",
     "sanity:deploy": "yarn workspace sanity deploy",
     "sanity:backup": "yarn workspace sanity backup",
-    "sanity:sandboxes": "yarn workspace website update:sandboxes",
-    "sanity:codeexamples": "yarn workspace website update:examples",
-    "sanity:unused": "yarn workspace website check:examples",
-    "sanity:colors": "yarn workspace website update:colors",
-    "sanity:props": "yarn workspace website update:props",
-    "sanity:tokens": "yarn workspace website update:tokens",
+    "sanity:update": "yarn workspace website update:sanity",
     "lint": "yarn workspace website lint"
   },
   "workspaces": [

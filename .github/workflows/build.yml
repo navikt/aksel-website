@@ -33,16 +33,8 @@ jobs:
         run: NEXT_PUBLIC_TEST=true yarn workspace website e2e:ci
       - name: Build application
         run: yarn build:next
-      - name: Update code examples
-        run: yarn sanity:codeexamples
-      - name: Update colors
-        run: yarn sanity:colors
-      - name: Update sandboxes
-        run: yarn sanity:sandboxes
-      - name: Update props
-        run: yarn sanity:props
-      - name: Update token
-        run: yarn sanity:tokens
+      - name: Update sanity sync
+        run: yarn sanity:update
       - name: Login to GitHub Container Registry
         uses: docker/login-action@ab80d026d4753220c4243394c07c7d80f9638d06 # Use commit-sha1 instead of tag for security concerns
         with:
