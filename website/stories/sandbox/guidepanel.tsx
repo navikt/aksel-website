@@ -1,8 +1,6 @@
 import { GuidePanel } from "@navikt/ds-react";
 import { SandboxComponentT } from "./types";
 
-GuidePanel.displayName = "GuidePanel";
-
 const GuidePanelSandbox: SandboxComponentT = (props: any) => {
   return (
     <GuidePanel poster={props?.poster} className="max-w-2xl">

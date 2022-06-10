@@ -3,29 +3,6 @@ import { BodyShort, BodyLong, Detail, Search } from "@navikt/ds-react";
 import { Divider, Dropdown, Header } from "@navikt/ds-react-internal";
 import { SandboxComponentT } from "./types";
 
-Header.displayName = "Header";
-Search.displayName = "Search";
-Expand.displayName = "Expand";
-System.displayName = "System";
-Divider.displayName = "Divider";
-(BodyShort as any).displayName = "BodyShort";
-(BodyLong as any).displayName = "BodyLong";
-(Detail as any).displayName = "Detail";
-Header.User.displayName = "Header.User";
-(Header.UserButton as any).displayName = "Header.UserButton";
-(Header.Button as any).displayName = "Header.Button";
-(Header.Title as any).displayName = "Header.Title";
-
-Dropdown.displayName = "Dropdown";
-Dropdown.Menu.displayName = "Dropdown.Menu";
-Dropdown.Menu.List.displayName = "Dropdown.Menu.List";
-(Dropdown.Menu.List.Item as any).displayName = "Dropdown.Menu.List.Item";
-Dropdown.Menu.GroupedList.displayName = "Dropdown";
-Dropdown.Menu.GroupedList.Heading.displayName =
-  "Dropdown.Menu.GroupedList.Heading";
-(Dropdown.Menu.GroupedList.Item as any).displayName =
-  "Dropdown.Menu.GroupedList.Item";
-
 const HeaderSandbox: SandboxComponentT = (props: any) => {
   const ml = {
     ...(!props?.["system-meny"] ? { style: { marginLeft: "auto" } } : {}),
@@ -40,12 +17,13 @@ const HeaderSandbox: SandboxComponentT = (props: any) => {
     case "Initialer":
       user = (
         <Dropdown>
-          <Dropdown.Toggle {...ml} className="navdsi-header__button">
+          <Header.Button as={Dropdown.Toggle} {...ml}>
             <BodyShort size="small" title="Kong Harald">
               ON
             </BodyShort>
             <Expand />
-          </Dropdown.Toggle>
+          </Header.Button>
+
           <Dropdown.Menu>
             <div>
               <BodyLong size="small" as="div">
@@ -70,14 +48,12 @@ const HeaderSandbox: SandboxComponentT = (props: any) => {
     case "Meny":
       user = (
         <Dropdown>
-          <Dropdown.Toggle {...ml} className="appearance-none">
-            <Header.UserButton
-              as="div"
-              className="h-full"
-              name="Ola Normann"
-              description="Enhet: Skien"
-            />
-          </Dropdown.Toggle>
+          <Header.UserButton
+            {...ml}
+            as={Dropdown.Toggle}
+            name="Ola Normann"
+            description="Enhet: Skien"
+          />
           <Dropdown.Menu>
             <Dropdown.Menu.List>
               <Dropdown.Menu.List.Item>Logg ut</Dropdown.Menu.List.Item>
@@ -117,14 +93,12 @@ const HeaderSandbox: SandboxComponentT = (props: any) => {
       )}
       {props?.["system-meny"] && (
         <Dropdown>
-          <Dropdown.Toggle className="ml-auto">
-            <Header.Button className="h-full">
-              <System
-                style={{ fontSize: "1.5rem" }}
-                title="Systemer og oppslagsverk"
-              />
-            </Header.Button>
-          </Dropdown.Toggle>
+          <Header.Button as={Dropdown.Toggle} className="ml-auto">
+            <System
+              style={{ fontSize: "1.5rem" }}
+              title="Systemer og oppslagsverk"
+            />
+          </Header.Button>
 
           <Dropdown.Menu>
             <Dropdown.Menu.GroupedList>
@@ -152,4 +126,109 @@ HeaderSandbox.args = {
   },
 };
 
+const getUser = (username?: string, menu?: boolean) => {
+  const ml = menu ? ` className="ml-auto"` : "";
+  let user = `\n  <Header.User name="Ola Normann"${ml}/>`;
+
+  switch (username) {
+    case "Med description":
+      user = `\n  <Header.User name="Ola Normann" description="D123456"${ml} />`;
+      break;
+    case "Initialer":
+      user = `\n  <Dropdown>
+    <Header.Button as={Dropdown.Toggle}${ml}>
+      <BodyShort size="small" title="Kong Harald">
+        ON
+      </BodyShort>
+      <Expand />
+    </Header.Button>
+    <Dropdown.Menu>
+      <div>
+        <BodyLong size="small" as="div">
+          Ola Normann
+        </BodyLong>
+        <Detail size="small" as="div">
+          <div>Ident D123456</div>
+          <div>Enhet: Skien</div>
+        </Detail>
+      </div>
+      <Divider />
+      <Dropdown.Menu.List>
+        <Dropdown.Menu.List.Item as="a" href="#">
+          Innstillinger
+        </Dropdown.Menu.List.Item>
+        <Dropdown.Menu.List.Item>Logg ut</Dropdown.Menu.List.Item>
+      </Dropdown.Menu.List>
+    </Dropdown.Menu>
+  </Dropdown>`;
+      break;
+    case "Meny":
+      user = `\n  <Dropdown>
+    <Header.UserButton
+      as={Dropdown.Toggle}
+      name="Ola Normann"
+      description="Enhet: Skien"${ml ? `\n       ${ml}` : ""}
+    />
+    <Dropdown.Menu>
+      <Dropdown.Menu.List>
+        <Dropdown.Menu.List.Item>Logg ut</Dropdown.Menu.List.Item>
+      </Dropdown.Menu.List>
+    </Dropdown.Menu>
+  </Dropdown>`;
+      break;
+    default:
+      break;
+  }
+  return user;
+};
+
+HeaderSandbox.getCode = (props: any) => {
+  const search = props?.search
+    ? `\n  <form
+    className="self-center px-5"
+    onSubmit={(e) => {
+      e.preventDefault();
+      console.log("Search!");
+    }}
+  >
+    <Search
+      label="header søk"
+      size="small"
+      variant="simple"
+      placeholder="Søk"
+    />
+  </form>`
+    : "";
+
+  const menu = props?.["system-meny"]
+    ? `\n  <Dropdown>
+    <Header.Button as={Dropdown.Toggle} className="ml-auto">
+      <System
+        style={{ fontSize: "1.5rem" }}
+        title="Systemer og oppslagsverk"
+      />
+    </Header.Button>
+
+    <Dropdown.Menu>
+      <Dropdown.Menu.GroupedList>
+        <Dropdown.Menu.GroupedList.Heading>
+          Systemer og oppslagsverk
+        </Dropdown.Menu.GroupedList.Heading>
+        <Dropdown.Menu.GroupedList.Item>
+          A.Inntekt
+        </Dropdown.Menu.GroupedList.Item>
+      </Dropdown.Menu.GroupedList>
+    </Dropdown.Menu>
+  </Dropdown>`
+    : "";
+
+  return `<Header>
+  <Header.Title${
+    props?.title === "H-tag" ? `\n    as="h1"` : `\n    href="#thecakeisalie"`
+  }
+  >
+    ${props?.title === "H-tag" ? "Sykepenger" : "Hjem"}
+  </Header.Title>${search}${menu}${getUser(props?.user, props?.["system-meny"])}
+</Header>`;
+};
 export default HeaderSandbox;

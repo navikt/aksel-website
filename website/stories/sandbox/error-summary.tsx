@@ -1,8 +1,6 @@
 import { ErrorSummary } from "@navikt/ds-react";
 import { SandboxComponentT } from "./types";
 
-ErrorSummary.displayName = "ErrorSummary";
-(ErrorSummary.Item as any).displayName = "ErrorSummary.Item";
 const ErrorSummarySandbox: SandboxComponentT = (props: any) => {
   const newProps = {
     ...(props?.headingTag ? { headingTag: props.headingTag } : {}),
