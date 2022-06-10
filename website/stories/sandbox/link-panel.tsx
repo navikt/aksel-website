@@ -29,4 +29,18 @@ LinkPanelSandbox.args = {
   },
 };
 
+LinkPanelSandbox.getCode = (props: any) => {
+  return `<LinkPanel
+  href="#"${props?.border ? "\n  border" : ""}
+>
+  <LinkPanel.Title>Arbeidssøker eller permittert</LinkPanel.Title>${
+    props?.description
+      ? `\n  <LinkPanel.Description>
+    Om jobb, registrering, CV, dagpenger og feriepenger av dagpenger
+  </LinkPanel.Description>`
+      : ""
+  }
+</LinkPanel>`;
+};
+
 export default LinkPanelSandbox;
