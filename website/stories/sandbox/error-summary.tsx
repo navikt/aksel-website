@@ -30,4 +30,20 @@ ErrorSummarySandbox.args = {
   },
 };
 
+ErrorSummarySandbox.getCode = (props: any) => {
+  return `<ErrorSummary
+  size="${props?.size}"
+  heading="Du må fikse disse feilene før du kan sende inn søknad."${
+    props?.headingTag ? `\n  headingTag="${props?.headingTag}"` : ""
+  }
+>
+  <ErrorSummary.Item href="#1">
+    Felt må fylles ut med alder
+  </ErrorSummary.Item>
+  <ErrorSummary.Item href="#2">
+    Tekstfeltet må ha en godkjent e-mail
+  </ErrorSummary.Item>
+</ErrorSummary>`;
+};
+
 export default ErrorSummarySandbox;
