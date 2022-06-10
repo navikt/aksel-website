@@ -19,4 +19,13 @@ TagSandbox.args = {
   },
 };
 
+TagSandbox.getCode = (props: any) => {
+  return `<Tag
+  variant="${props?.variant}"
+  size="${props?.size}"
+>
+ ${props?.variant}
+</Tag>`;
+};
+
 export default TagSandbox;
