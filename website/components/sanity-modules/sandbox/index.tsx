@@ -19,6 +19,7 @@ import {
   ParsedArgsT,
   StateT,
 } from "./settings-panel/generateState";
+import jsxToString from "jsx-to-string";
 
 type SandboxContextProps = {
   sandboxState: SandboxStateT;
@@ -64,6 +65,9 @@ const Sandbox = ({ node }: { node: SandboxT }) => {
 
   const Component = () => sandboxComp(sandboxState?.propsState?.props);
 
+  const getCode = () =>
+    stringifyJsx(sandboxComp(sandboxState?.propsState?.props ?? {}));
+
   return (
     <SandboxContext.Provider
       value={{
@@ -78,11 +82,7 @@ const Sandbox = ({ node }: { node: SandboxT }) => {
         <Preview>
           <Component />
         </Preview>
-        <CodeBlock
-          code={stringifyJsx(
-            sandboxComp(sandboxState?.propsState?.props ?? {})
-          )}
-        />
+        <CodeBlock code={getCode()} />
       </div>
     </SandboxContext.Provider>
   );

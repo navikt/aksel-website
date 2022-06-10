@@ -26,6 +26,7 @@ const ModalSandbox: SandboxComponentT = (props: any) => {
         }}
         shouldCloseOnOverlayClick={props?.shouldCloseOnOverlayClick}
         aria-label="Modal demo"
+        closeButton={props?.closeButton}
       >
         <Modal.Content>
           <Heading spacing level="1" size="large">
@@ -51,6 +52,7 @@ const ModalSandbox: SandboxComponentT = (props: any) => {
 ModalSandbox.args = {
   props: {
     shouldCloseOnOverlayClick: true,
+    closeButton: true,
   },
 };
 
