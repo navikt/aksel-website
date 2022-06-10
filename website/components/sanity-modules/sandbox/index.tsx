@@ -45,8 +45,6 @@ const Sandbox = ({ node }: { node: SandboxT }) => {
     propsState: null,
   });
 
-  const mounted = useRef<boolean>(false);
-
   const reset = () =>
     setSandboxState({
       ...sandboxState,
@@ -62,38 +60,24 @@ const Sandbox = ({ node }: { node: SandboxT }) => {
     const args = generateState(sandboxComp.args);
     const newState = getInitialState(args);
     setSandboxState({ ...sandboxState, args, propsState: newState });
-    mounted.current = true;
-
-    return () => {
-      mounted.current = false;
-    };
   }, []);
 
-  const isMounted = useCallback(() => mounted.current, []);
-
-  const Component = sandboxComp(sandboxState?.propsState?.props);
-
-  const isReact = React.isValidElement(Component);
-
-  if (!isMounted) return null;
+  const Component = () => sandboxComp(sandboxState?.propsState?.props);
 
   return (
     <SandboxContext.Provider
       value={{
         sandboxState,
         setSandboxState,
-        bg: isReact ? sandboxComp?.args?.background : Component?.bg,
+        bg: BgColors.DEFAULT,
+        /* bg: isReact ? sandboxComp?.args?.background : Component?.bg, */
         reset,
       }}
     >
       <div className="algolia-ignore-index relative mb-8">
-        <Preview>{isReact ? Component : Component.comp}</Preview>
+        <Preview>{<Component />}</Preview>
         <CodeBlock
-          code={
-            isMounted()
-              ? stringifyJsx(isReact ? (Component as any) : Component.comp)
-              : ""
-          }
+          code={stringifyJsx(sandboxComp(sandboxState?.propsState?.props))}
         />
       </div>
     </SandboxContext.Provider>

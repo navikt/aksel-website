@@ -25,9 +25,12 @@ export interface SandboxComponentArgs {
   background?: BgColors;
 }
 
-export interface SandboxComponentT {
-  (props?: any):
-    | React.ReactElement
-    | { comp: React.ReactElement; bg: BgColors };
+export interface ExampleComponent extends React.FC {
+  react: string;
+  html?: string | null;
+  bg?: BgColors;
+}
+
+export interface SandboxComponentT extends React.VFC {
   args?: SandboxComponentArgs;
 }

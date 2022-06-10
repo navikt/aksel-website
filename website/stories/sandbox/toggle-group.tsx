@@ -20,16 +20,16 @@ const ToggleGroupSandbox: SandboxComponentT = (props: any) => {
       {...(props?.label ? { label: "Inbox" } : {})}
     >
       <ToggleGroup.Item value="ulest">
-        {props?.Komposisjon.includes("Ikon") && <Email />}
-        {props?.Komposisjon.includes("Tekst") && "Ulest"}
+        {props?.Komposisjon?.includes("Ikon") && <Email />}
+        {props?.Komposisjon?.includes("Tekst") && "Ulest"}
       </ToggleGroup.Item>
       <ToggleGroup.Item value="lest">
-        {props?.Komposisjon.includes("Ikon") && <EmailOpened />}
-        {props?.Komposisjon.includes("Tekst") && "Leste"}
+        {props?.Komposisjon?.includes("Ikon") && <EmailOpened />}
+        {props?.Komposisjon?.includes("Tekst") && "Leste"}
       </ToggleGroup.Item>
       <ToggleGroup.Item value="sendt">
-        {props?.Komposisjon.includes("Ikon") && <Send />}
-        {props?.Komposisjon.includes("Tekst") && "Sendte"}
+        {props?.Komposisjon?.includes("Ikon") && <Send />}
+        {props?.Komposisjon?.includes("Tekst") && "Sendte"}
       </ToggleGroup.Item>
     </ToggleGroup>
   );

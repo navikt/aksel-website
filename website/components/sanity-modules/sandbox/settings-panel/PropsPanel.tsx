@@ -43,7 +43,7 @@ const SettingsPanel = () => {
           <PropFilter />
           <button
             onClick={reset}
-            className="absolute top-0 right-4 mx-auto mt-auto w-fit justify-self-end rounded bg-gray-300 py-1 px-3 text-medium hover:bg-gray-300/80 focus:shadow-focus focus:outline-none lg:relative"
+            className="absolute top-1 right-4 mx-auto mt-auto w-fit justify-self-end rounded bg-gray-300 py-1 px-3 text-medium hover:bg-gray-300/80 focus:shadow-focus focus:outline-none lg:relative"
           >
             Reset
           </button>
