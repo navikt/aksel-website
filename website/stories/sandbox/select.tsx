@@ -1,7 +1,6 @@
 import { Select } from "@navikt/ds-react";
 import { SandboxComponentT } from "./types";
 
-Select.displayName = "Select";
 const SelectSandbox: SandboxComponentT = (props: any) => {
   const newProps = {
     ...(props?.disabled ? { disabled: true } : {}),

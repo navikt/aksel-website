@@ -1,9 +1,6 @@
 import { RadioGroup, Radio } from "@navikt/ds-react";
 import { SandboxComponentT } from "./types";
 
-RadioGroup.displayName = "RadioGroup";
-Radio.displayName = "RadioGroup";
-
 const RadioSandbox: SandboxComponentT = (props: any) => {
   const newProps = {
     ...(props?.disabled ? { disabled: true } : {}),

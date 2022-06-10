@@ -3,12 +3,6 @@ import { ToggleGroup } from "@navikt/ds-react";
 import React from "react";
 import { SandboxComponentT } from "./types";
 
-ToggleGroup.displayName = "ToggleGroup";
-ToggleGroup.Item.displayName = "ToggleGroup.Item";
-Email.displayName = "Email";
-EmailOpened.displayName = "EmailOpened";
-Send.displayName = "Send";
-
 const ToggleGroupSandbox: SandboxComponentT = (props: any) => {
   const [value, setValue] = React.useState("ulest");
 

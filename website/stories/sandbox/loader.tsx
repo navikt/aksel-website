@@ -2,7 +2,6 @@ import { Loader } from "@navikt/ds-react";
 import { BgColors } from "../../lib/types/types";
 import { SandboxComponentT } from "./types";
 
-Loader.displayName = "Loader";
 const LoaderSandbox: SandboxComponentT = (props: any) => {
   const comp = (
     <Loader

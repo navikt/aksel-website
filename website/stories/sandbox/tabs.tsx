@@ -4,16 +4,6 @@ import { Tabs } from "@navikt/ds-react";
 import cl from "classnames";
 import { Dialog, Email, Historic, Notes, Send } from "@navikt/ds-icons";
 
-Dialog.displayName = "Dialog";
-Email.displayName = "Email";
-Historic.displayName = "Historic";
-Notes.displayName = "Notes";
-Send.displayName = "Send";
-Tabs.displayName = "Tabs";
-Tabs.Panel.displayName = "Tabs.Panel";
-Tabs.List.displayName = "Tabs.List";
-(Tabs.Tab as any).displayName = "Tabs.Tab";
-
 const TabsSandbox: SandboxComponentT = (props: any) => {
   const iconPosition = {
     ...(props?.iconPosition ? { iconPosition: props?.iconPosition } : {}),

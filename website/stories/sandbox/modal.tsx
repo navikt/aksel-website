@@ -2,11 +2,6 @@ import { BodyLong, Button, Heading, Modal } from "@navikt/ds-react";
 import { useState } from "react";
 import { SandboxComponentT } from "./types";
 
-Modal.displayName = "Modal";
-Modal.Content.displayName = "Modal.Content";
-(Heading as any).displayName = "Heading";
-(BodyLong as any).displayName = "BodyLong";
-
 const ModalSandbox: SandboxComponentT = (props: any) => {
   const [open, setOpen] = useState(false);
 

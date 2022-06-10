@@ -3,9 +3,6 @@ import { useRef, useState } from "react";
 import { BgColors } from "../../lib/types/types";
 import { SandboxComponentT } from "./types";
 
-Search.displayName = "Search";
-Search.Button.displayName = "Search.Button";
-
 const SearchSandbox: SandboxComponentT = (props: any) => {
   const newProps = {
     size: props?.size,

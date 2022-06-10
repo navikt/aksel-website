@@ -4,18 +4,6 @@ import React from "react";
 import { BgColors } from "../../lib/types/types";
 import { SandboxComponentT } from "./types";
 
-Checkbox.displayName = "Checkbox";
-Pagination.displayName = "Pagination";
-Table.displayName = "Table";
-Table.Header.displayName = "Table.Header";
-Table.Row.displayName = "Table.Row";
-Table.DataCell.displayName = "Table.DataCell";
-Table.HeaderCell.displayName = "Table.HeaderCell";
-Table.ColumnHeader.displayName = "Table.ColumnHeader";
-Table.Body.displayName = "Table.Body";
-Table.ExpandableRow.displayName = "Table.ExpandableRow";
-Table.Row.displayName = "Table.Row";
-
 const data = [
   {
     name: "Jakobsen, Markus",

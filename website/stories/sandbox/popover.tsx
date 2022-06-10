@@ -2,8 +2,6 @@ import { Button, Popover } from "@navikt/ds-react";
 import { useEffect, useRef, useState } from "react";
 import { SandboxComponentT } from "./types";
 
-Popover.displayName = "Popover";
-Popover.Content.displayName = "Popover.Content";
 const PopoverSandbox: SandboxComponentT = (props: any) => {
   const buttonRef = useRef(null);
   const [open, setOpen] = useState(false);

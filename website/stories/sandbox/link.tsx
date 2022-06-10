@@ -2,9 +2,6 @@ import { Print } from "@navikt/ds-icons";
 import { BodyLong, Link } from "@navikt/ds-react";
 import { SandboxComponentT } from "./types";
 
-(Link as any).displayName = "Link";
-Print.displayName = "Print";
-
 const LinkSandbox: SandboxComponentT = (props: any) => {
   const linktext = props?.ikon ? (
     <>

@@ -1,7 +1,6 @@
 import { Tag } from "@navikt/ds-react";
 import { SandboxComponentT } from "./types";
 
-Tag.displayName = "Tag";
 const TagSandbox: SandboxComponentT = (props: any) => {
   const title = props?.variant;
 

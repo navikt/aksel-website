@@ -1,8 +1,6 @@
 import { ReadMore } from "@navikt/ds-react";
 import { SandboxComponentT } from "./types";
 
-ReadMore.displayName = "ReadMore";
-
 const ReadMoreSandbox: SandboxComponentT = (props: any) => {
   return (
     <div className="h-24">

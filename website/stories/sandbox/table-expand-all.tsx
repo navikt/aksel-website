@@ -23,16 +23,6 @@ const data = [
   },
 ];
 
-Expand.displayName = "Expand";
-ExpandFilled.displayName = "ExpandFilled";
-Table.displayName = "Table";
-Table.HeaderCell.displayName = "Table.HeaderCell";
-Table.Row.displayName = "Table.Row";
-Table.Header.displayName = "Table.Header";
-Table.Body.displayName = "Table.Body";
-Table.ExpandableRow.displayName = "Table.ExpandableRow";
-Table.DataCell.displayName = "Table.DataCell";
-
 const TableExpandAllSandbox: SandboxComponentT = () => {
   const [expandedRows, setExpandedRows] = useState([]);
   const toggleExpandedRow = (value) =>

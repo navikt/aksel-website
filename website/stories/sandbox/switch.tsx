@@ -1,7 +1,6 @@
 import { Switch } from "@navikt/ds-react";
 import { SandboxComponentT } from "./types";
 
-Switch.displayName = "Switch";
 const SwitchSandbox: SandboxComponentT = (props: any) => {
   const newProps = {
     size: props?.size,

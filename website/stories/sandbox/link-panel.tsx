@@ -1,10 +1,6 @@
 import { LinkPanel } from "@navikt/ds-react";
 import { SandboxComponentT } from "./types";
 
-(LinkPanel as any).displayName = "LinkPanel";
-(LinkPanel.Title as any).displayName = "LinkPanel.Title";
-(LinkPanel.Description as any).displayName = "LinkPanel.Description";
-
 const LinkPanelSandbox: SandboxComponentT = (props: any) => {
   const newProps = {
     ...(props?.headingTag ? { headingTag: props.headingTag } : {}),

@@ -1,7 +1,6 @@
 import { HelpText } from "@navikt/ds-react";
 import { SandboxComponentT } from "./types";
 
-HelpText.displayName = "HelpText";
 const HelptextSandbox: SandboxComponentT = (props: any) => {
   return (
     <HelpText title="Hvor kommer dette fra?" placement={props?.placement}>
