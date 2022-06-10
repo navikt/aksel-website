@@ -238,4 +238,163 @@ TableSandbox.args = {
   background: BgColors.WHITE,
 };
 
+TableSandbox.getCode = (props: any) => {
+  let body = ``;
+
+  /* body = `{sortData.map(({ name, fnr, start }, i) => {
+
+  })}` */
+
+  /*
+  const rowProps = {
+  ...(props?.expandableRows
+    ? {
+        content: "Innhold i ekspanderbar rad",
+        ...(props?.selectable ? { togglePlacement: "right" } : {}),
+      }
+    : {}),
+  ...(props?.selectable
+    ? { selected: selectedRows.includes(fnr) }
+    : {}),
+};
+  */
+  if (props?.expandableRows) {
+    body = `{sortData.map(({ name, fnr, start }, i) => {
+      return <Table.ExpandableRow key={i + fnr} content="Innhold i ekspanderbar rad"${
+        props?.selectable
+          ? ` togglePlacement="right" selected={selectedRows.includes(fnr)}`
+          : ""
+      }>
+      ${
+        props?.selectable
+          ? `         <Table.DataCell>
+                  <Checkbox
+                    size={props?.size}
+                    hideLabel
+                    checked={selectedRows.includes(fnr)}
+                    onChange={() => {
+                      toggleSelectedRow(fnr);
+                    }}
+                    aria-labelledby="id{fnr}"
+                  >
+                    {" "}
+                  </Checkbox>
+                </Table.DataCell>
+                <Table.HeaderCell scope="row">
+                  <span id="id{fnr}">{name}</span>
+                </Table.HeaderCell>`
+          : `         <Table.HeaderCell scope="row">{name}</Table.HeaderCell>`
+      }
+                <Table.DataCell>
+                  {fnr.substring(0, 6)} {fnr.substring(6)}
+                </Table.DataCell>
+                <Table.DataCell>
+                  {format(new Date(start), "dd.MM.yyyy")}
+                </Table.DataCell>
+              </Table.ExpandbleRow>
+  })}`;
+  } else {
+    body = `{sortData.map(({ name, fnr, start }, i) => {
+      return <Table.Row key={i + fnr}${
+        props?.selectable ? ` selected={selectedRows.includes(fnr)}` : ""
+      }>
+      ${
+        props?.selectable
+          ? `         <Table.DataCell>
+                  <Checkbox
+                    size={props?.size}
+                    hideLabel
+                    checked={selectedRows.includes(fnr)}
+                    onChange={() => {
+                      toggleSelectedRow(fnr);
+                    }}
+                    aria-labelledby="id{fnr}"
+                  >
+                    {" "}
+                  </Checkbox>
+                </Table.DataCell>
+                <Table.HeaderCell scope="row">
+                  <span id="id{fnr}">{name}</span>
+                </Table.HeaderCell>`
+          : `         <Table.HeaderCell scope="row">{name}</Table.HeaderCell>`
+      }
+                <Table.DataCell>
+                  {fnr.substring(0, 6)} {fnr.substring(6)}
+                </Table.DataCell>
+                <Table.DataCell>
+                  {format(new Date(start), "dd.MM.yyyy")}
+                </Table.DataCell>
+              </Table.ExpandbleRow>
+  })}`;
+  }
+
+  return `<Table
+  size="${props?.size}"${props?.zebraStripes ? "\n  zebraStripes" : ""}${
+    props?.sortable
+      ? `\n  sort={sort}\n  onSortChange={(sortKey) => handleSort(sortKey)}`
+      : ""
+  }
+>
+  <Table.Header>
+    <Table.Row>
+    ${
+      props?.selectable
+        ? `  <Table.DataCell>
+        <Checkbox
+          size="${props?.size}"
+          checked={selectedRows.length === data.length}
+          indeterminate={
+            selectedRows.length && selectedRows.length !== data.length
+          }
+          onChange={() => {
+            selectedRows.length
+              ? setSelectedRows([])
+              : setSelectedRows(data.map(({ fnr }) => fnr));
+          }}
+          hideLabel
+        >
+          {""}
+      </Checkbox>
+    </Table.DataCell>`
+        : ""
+    }
+    ${
+      props?.expandableRows && !props?.selectable
+        ? `  <Table.HeaderCell />`
+        : ""
+    }
+    ${
+      props?.sortable
+        ? `  <Table.ColumnHeader sortKey="name" sortable>
+        Navn
+      </Table.ColumnHeader>`
+        : `  <Table.HeaderCell scope="col">Navn</Table.HeaderCell>`
+    }
+      <Table.HeaderCell scope="col">Fødseslnr.</Table.HeaderCell>
+    ${
+      props?.sortable
+        ? `  <Table.ColumnHeader sortKey="start" sortable>
+        Start
+      </Table.ColumnHeader>`
+        : `  <Table.HeaderCell scope="col">Start</Table.HeaderCell>`
+    }
+    ${
+      props?.expandableRows && props?.selectable ? `  <Table.HeaderCell />` : ""
+    }
+    </Table.Row>
+  </Table.Header>
+  <Table.Body>
+    ${body}
+  </Table.Body>
+</Table>${
+    props?.pagination
+      ? `\n<Pagination
+  page={page}
+  onPageChange={setPage}
+  count={Math.ceil(data.length / rowsPerPage)}
+/>`
+      : ""
+  }`;
+};
+
 export default TableSandbox;
