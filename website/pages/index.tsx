@@ -129,7 +129,7 @@ const Portaler = () => {
                 size="xsmall"
                 className="group-hover:underline"
               >
-                Security Champions Playbook
+                Security Playbook
               </Heading>
               <Detail size="small" className="text-deepblue-100/95">
                 Åpen for alle
