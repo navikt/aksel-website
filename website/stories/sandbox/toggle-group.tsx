@@ -29,7 +29,7 @@ const ToggleGroupSandbox: SandboxComponentT = (props: any) => {
       </ToggleGroup.Item>
       <ToggleGroup.Item value="sendt">
         {props?.Komposisjon?.includes("Ikon") && <Send />}
-        {props?.Komposisjon?.includes("Tekst") && "Sendte"}
+        {props?.Komposisjon?.includes("Tekst") && "Sendt"}
       </ToggleGroup.Item>
     </ToggleGroup>
   );
@@ -41,6 +41,45 @@ ToggleGroupSandbox.args = {
     label: false,
     Komposisjon: ["Tekst", "Ikon + Tekst", "Ikon"],
   },
+};
+
+ToggleGroupSandbox.getCode = (props: any) => {
+  return `<ToggleGroup
+  onChange={(x) => setValue(x)}
+  value={value}
+  size="${props?.size}"${props?.label ? `\n  label="Inbox"` : ""}
+>
+  <ToggleGroup.Item value="ulest">${
+    props?.Komposisjon?.includes("Ikon")
+      ? `\n    <Email ${
+          props?.Komposisjon?.includes("Tekst")
+            ? "aria-hidden"
+            : `title="Uleste mail"`
+        } />`
+      : ""
+  }${props?.Komposisjon?.includes("Tekst") ? `\n    Ulest` : ""}
+  </ToggleGroup.Item>
+  <ToggleGroup.Item value="lest">${
+    props?.Komposisjon?.includes("Ikon")
+      ? `\n    <EmailOpened ${
+          props?.Komposisjon?.includes("Tekst")
+            ? "aria-hidden"
+            : `title="Leste mail"`
+        } />`
+      : ""
+  }${props?.Komposisjon?.includes("Tekst") ? `\n    Leste` : ""}
+  </ToggleGroup.Item>
+  <ToggleGroup.Item value="sendt">${
+    props?.Komposisjon?.includes("Ikon")
+      ? `\n    <Send ${
+          props?.Komposisjon?.includes("Tekst")
+            ? "aria-hidden"
+            : `title="Sendte mail"`
+        } />`
+      : ""
+  }${props?.Komposisjon?.includes("Tekst") ? `\n    Sendt` : ""}
+  </ToggleGroup.Item>
+</ToggleGroup>`;
 };
 
 export default ToggleGroupSandbox;
