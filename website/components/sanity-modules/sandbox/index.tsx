@@ -3,7 +3,6 @@ import { BgColors, DsCodeSandbox as SandboxT } from "@/lib";
 import React, { createContext, useEffect, useMemo, useState } from "react";
 import getSandbox from "../../../stories/sandbox";
 import { SandboxComponentT } from "../../../stories/sandbox/types";
-import { CodeBlock } from "./CodeBlock";
 import { Preview } from "./Preview";
 import {
   generateState,
@@ -11,6 +10,11 @@ import {
   ParsedArgsT,
   StateT,
 } from "./settings-panel/generateState";
+import dynamic from "next/dynamic";
+
+const CodeBlock = dynamic(() => import("./CodeBlock"), {
+  ssr: false,
+});
 
 type SandboxContextProps = {
   sandboxState: SandboxStateT;

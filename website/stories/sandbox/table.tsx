@@ -241,23 +241,6 @@ TableSandbox.args = {
 TableSandbox.getCode = (props: any) => {
   let body = ``;
 
-  /* body = `{sortData.map(({ name, fnr, start }, i) => {
-
-  })}` */
-
-  /*
-  const rowProps = {
-  ...(props?.expandableRows
-    ? {
-        content: "Innhold i ekspanderbar rad",
-        ...(props?.selectable ? { togglePlacement: "right" } : {}),
-      }
-    : {}),
-  ...(props?.selectable
-    ? { selected: selectedRows.includes(fnr) }
-    : {}),
-};
-  */
   if (props?.expandableRows) {
     body = `{sortData.map(({ name, fnr, start }, i) => {
       return <Table.ExpandableRow key={i + fnr} content="Innhold i ekspanderbar rad"${
@@ -291,7 +274,7 @@ TableSandbox.getCode = (props: any) => {
                 <Table.DataCell>
                   {format(new Date(start), "dd.MM.yyyy")}
                 </Table.DataCell>
-              </Table.ExpandbleRow>
+              </Table.ExpandableRow>
   })}`;
   } else {
     body = `{sortData.map(({ name, fnr, start }, i) => {
@@ -324,11 +307,11 @@ TableSandbox.getCode = (props: any) => {
                 <Table.DataCell>
                   {format(new Date(start), "dd.MM.yyyy")}
                 </Table.DataCell>
-              </Table.ExpandbleRow>
+              </Table.Row>
   })}`;
   }
 
-  return `<Table
+  return `<><Table
   size="${props?.size}"${props?.zebraStripes ? "\n  zebraStripes" : ""}${
     props?.sortable
       ? `\n  sort={sort}\n  onSortChange={(sortKey) => handleSort(sortKey)}`
@@ -392,7 +375,7 @@ TableSandbox.getCode = (props: any) => {
   page={page}
   onPageChange={setPage}
   count={Math.ceil(data.length / rowsPerPage)}
-/>`
+/></>`
       : ""
   }`;
 };
