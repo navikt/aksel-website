@@ -12,6 +12,8 @@ const SettingsPanel = () => {
     !sandboxState.args.props ||
     Object.keys(sandboxState.args.props).length === 0;
 
+  console.log(hideProps);
+
   return (
     <>
       <div
@@ -35,7 +37,7 @@ const SettingsPanel = () => {
           "animate-fadeIn lg:max-w-[250px]",
           {
             hidden: hideProps,
-            "hidden lg:flex": !open,
+            "hidden lg:flex": !open && !hideProps,
           }
         )}
       >
