@@ -53,6 +53,7 @@ CheckboxSandbox.getCode = (props: any) => {
 
   return `<CheckboxGroup
   legend="Hvor vil du sitte?"
+  onChange={(val: any[]) => handleChange(val)}
   size="${props?.size}"${
     props?.description ? `\n  description="Beskrivelse"` : ""
   }${props?.disabled ? `\n  disabled` : ""}${

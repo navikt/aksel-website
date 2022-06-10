@@ -40,4 +40,26 @@ RadioSandbox.args = {
   },
 };
 
+RadioSandbox.getCode = (props: any) => {
+  const newProps = `${props?.disabled ? `\n  disabled` : ""}${
+    props?.error
+      ? `\n  error="Vi fant ingen resultater på din aldersgruppe."`
+      : ""
+  }${
+    props?.description
+      ? `\n  description="Informasjonen blir brukt for å gi deg bedre søketreff."`
+      : ""
+  }${props?.hideLegend ? `\n  hideLegend` : ""}`;
+
+  return `<RadioGroup
+  legend="Velg din aldersgruppe."
+  size="${props?.size}"${newProps}
+  onChange={(val: any) => handleChange(val)}
+>
+  <Radio value="10">10-20 år</Radio>
+  <Radio value="20">21-45 år</Radio>
+  <Radio value="40">46-80 år</Radio>
+</RadioGroup>`;
+};
+
 export default RadioSandbox;
