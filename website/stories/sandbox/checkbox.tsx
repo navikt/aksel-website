@@ -1,9 +1,6 @@
 import { Checkbox, CheckboxGroup } from "@navikt/ds-react";
 import { SandboxComponentT } from "./types";
 
-CheckboxGroup.displayName = "CheckboxGroup";
-Checkbox.displayName = "Checkbox";
-
 const CheckboxSandbox: SandboxComponentT = (props: any) => {
   const propErrorGruppe = props?.error && props.error === "Gruppe";
   const propErrorEnkel = props?.error && props.error === "Enkel";

@@ -2,8 +2,6 @@ import { Star } from "@navikt/ds-icons";
 import { Button } from "@navikt/ds-react";
 import { SandboxComponentT } from "./types";
 
-(Button as any).displayName = "Button";
-Star.displayName = "Star";
 const ButtonSandbox: SandboxComponentT = (props: any) => {
   const newProps = {
     ...(props?.disabled ? { disabled: true } : {}),

@@ -2,8 +2,6 @@ import { ConfirmationPanel } from "@navikt/ds-react";
 import { useState } from "react";
 import { SandboxComponentT } from "./types";
 
-ConfirmationPanel.displayName = "ConfirmationPanel";
-
 const ConfirmationPanelSandbox: SandboxComponentT = (props: any) => {
   const [checked, setChecked] = useState(false);
   const newProps = {

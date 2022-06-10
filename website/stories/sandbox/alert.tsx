@@ -1,9 +1,6 @@
 import { Alert, BodyLong, Heading } from "@navikt/ds-react";
 import { SandboxComponentT } from "./types";
 
-Alert.displayName = "Alert";
-(Heading as any).displayName = "Heading";
-
 const getText = (variant) => {
   let text = "Alert";
 
