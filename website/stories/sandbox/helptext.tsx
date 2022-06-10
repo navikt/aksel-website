@@ -32,4 +32,13 @@ HelptextSandbox.args = {
   },
 };
 
+HelptextSandbox.getCode = (props: any) => {
+  return `<HelpText
+  title="Hvor kommer dette fra?"
+  placement="${props?.placement}"
+>
+  Informasjonen er hentet fra X sin statistikk fra 2021
+</HelpText>`;
+};
+
 export default HelptextSandbox;
