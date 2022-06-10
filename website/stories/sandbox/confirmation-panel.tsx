@@ -32,5 +32,18 @@ ConfirmationPanelSandbox.args = {
     error: false,
   },
 };
+ConfirmationPanelSandbox.getCode = (props: any) => {
+  return `<ConfirmationPanel
+  checked={checkedState}
+  label="Ja, jeg samtykker."
+  onChange={() => setCheckedState(x => !x)}
+  size="${props?.size}"${
+    props?.error ? `\n  error="Du må samtykke før du kan fortsette."` : ""
+  }
+>
+  For å komme videre må du gi oss lov til å hente inn og bruke opplysninger
+  om deg.
+</ConfirmationPanel>`;
+};
 
 export default ConfirmationPanelSandbox;
