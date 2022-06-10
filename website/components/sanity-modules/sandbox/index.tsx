@@ -1,14 +1,6 @@
 import { withErrorBoundary } from "@/error-boundary";
 import { BgColors, DsCodeSandbox as SandboxT } from "@/lib";
-import { stringifyJsx } from "@/utils";
-import React, {
-  createContext,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { createContext, useEffect, useMemo, useState } from "react";
 import getSandbox from "../../../stories/sandbox";
 import { SandboxComponentT } from "../../../stories/sandbox/types";
 import { CodeBlock } from "./CodeBlock";
@@ -19,7 +11,6 @@ import {
   ParsedArgsT,
   StateT,
 } from "./settings-panel/generateState";
-import jsxToString from "jsx-to-string";
 
 type SandboxContextProps = {
   sandboxState: SandboxStateT;
@@ -65,16 +56,15 @@ const Sandbox = ({ node }: { node: SandboxT }) => {
 
   const Component = () => sandboxComp(sandboxState?.propsState?.props);
 
-  const getCode = () =>
-    stringifyJsx(sandboxComp(sandboxState?.propsState?.props ?? {}));
-
+  const code = sandboxComp?.getCode?.(sandboxState?.propsState?.props);
   return (
     <SandboxContext.Provider
       value={{
         sandboxState,
         setSandboxState,
-        bg: BgColors.DEFAULT,
-        /* bg: isReact ? sandboxComp?.args?.background : Component?.bg, */
+        bg:
+          sandboxComp?.getBg?.(sandboxState?.propsState?.props) ??
+          BgColors.DEFAULT,
         reset,
       }}
     >
@@ -82,7 +72,7 @@ const Sandbox = ({ node }: { node: SandboxT }) => {
         <Preview>
           <Component />
         </Preview>
-        <CodeBlock code={getCode()} />
+        {code && <CodeBlock code={code} />}
       </div>
     </SandboxContext.Provider>
   );

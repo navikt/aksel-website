@@ -33,4 +33,6 @@ export interface ExampleComponent extends React.FC {
 
 export interface SandboxComponentT extends React.VFC {
   args?: SandboxComponentArgs;
+  getBg?: (props: any) => BgColors;
+  getCode?: (props: any) => string;
 }

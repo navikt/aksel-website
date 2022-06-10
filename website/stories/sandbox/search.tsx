@@ -36,8 +36,10 @@ const SearchSandbox: SandboxComponentT = (props: any) => {
   }
 
   return comp;
-  /* return props?.darkmode ? { comp, bg: BgColors.INVERTEDGRADIENT } : comp; */
 };
+
+SearchSandbox.getBg = (props: any) =>
+  props?.darkmode ? BgColors.INVERTEDGRADIENT : undefined;
 
 SearchSandbox.args = {
   props: {

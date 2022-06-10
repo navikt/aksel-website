@@ -12,9 +12,7 @@ const LoaderSandbox: SandboxComponentT = (props: any) => {
       transparent={props?.transparent}
     />
   );
-  /* if (props?.variant === "inverted") {
-    return { comp, bg: BgColors.INVERTEDGRADIENT };
-  } */
+
   return comp;
 };
 
@@ -26,5 +24,8 @@ LoaderSandbox.args = {
     transparent: false,
   },
 };
+
+LoaderSandbox.getBg = (props: any) =>
+  props?.variant === "inverted" ? BgColors.INVERTEDGRADIENT : undefined;
 
 export default LoaderSandbox;
