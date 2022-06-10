@@ -30,4 +30,21 @@ SwitchSandbox.args = {
   },
 };
 
+SwitchSandbox.getCode = (props: any) => {
+  const newProps = `${props?.hideLabel ? "\n  hideLabel" : ""}${
+    props?.description
+      ? `\n  description="Velg det landet du tilbringer mest tid."`
+      : ""
+  }${props?.disabled ? "\n  disabled" : ""}${
+    props?.loading ? "\n  loading" : ""
+  }`;
+
+  return `<Switch
+  size="${props?.size}"
+  position="${props?.position}"${newProps}
+>
+  Slå på notifikasjoner
+</Switch>`;
+};
+
 export default SwitchSandbox;
