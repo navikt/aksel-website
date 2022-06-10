@@ -51,4 +51,33 @@ CheckboxSandbox.args = {
   },
 };
 
+CheckboxSandbox.getCode = (props: any) => {
+  const hideLabel = props?.hideLabel ? `\n    hideLabel` : "";
+
+  return `<CheckboxGroup
+  legend="Hvor vil du sitte?"
+  size="${props?.size}"${
+    props?.description ? `\n  description="Beskrivelse"` : ""
+  }${props?.disabled ? `\n  disabled` : ""}${
+    props?.error === "Gruppe" ? `\n  error="Feilmelding"` : ""
+  }${props?.hideLegend ? `\n  hideLegend` : ""}
+>
+  <Checkbox
+    value="Bakerst"${hideLabel}
+  >
+    Bakerst
+  </Checkbox>
+  <Checkbox
+    value="Midterst"${hideLabel}${props?.error === "Enkel" ? `\n    error` : ""}
+  >
+    Midterst
+  </Checkbox>
+  <Checkbox
+    value="Fremst"${hideLabel}
+  >
+    Fremst
+  </Checkbox>
+</CheckboxGroup>`;
+};
+
 export default CheckboxSandbox;
