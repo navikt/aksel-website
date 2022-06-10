@@ -24,7 +24,7 @@ const PanelSandbox: SandboxComponentT = (props: any) => {
 
 PanelSandbox.args = {
   props: {
-    border: false,
+    border: true,
   },
 };
 
