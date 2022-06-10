@@ -6,15 +6,14 @@ import { SandboxComponentT } from "./types";
 Print.displayName = "Print";
 
 const LinkSandbox: SandboxComponentT = (props: any) => {
-  const linktext =
-    props?.Komposisjon === "Ikon" ? (
-      <>
-        {"lenke til ny side"}
-        <Print aria-label="Skriv ut dokument" />
-      </>
-    ) : (
-      "lenke til ny side"
-    );
+  const linktext = props?.ikon ? (
+    <>
+      {"lenke til ny side"}
+      <Print aria-label="Skriv ut dokument" />
+    </>
+  ) : (
+    "lenke til ny side"
+  );
 
   return (
     <BodyLong>
@@ -26,8 +25,20 @@ const LinkSandbox: SandboxComponentT = (props: any) => {
 
 LinkSandbox.args = {
   props: {
-    Komposisjon: ["ingen", "Ikon"],
+    ikon: false,
   },
+};
+
+LinkSandbox.getCode = (props: any) => {
+  const linktext = props?.ikon
+    ? `lenke til ny side
+    <Print aria-label="Skriv ut dokument" />`
+    : "lenke til ny side";
+
+  return `<BodyLong>
+  Officia incididunt <Link href="#">${linktext}</Link> occaecat commodo id ad
+  aliquip.
+</BodyLong>`;
 };
 
 export default LinkSandbox;
