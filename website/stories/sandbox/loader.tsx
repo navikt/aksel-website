@@ -12,9 +12,9 @@ const LoaderSandbox: SandboxComponentT = (props: any) => {
       transparent={props?.transparent}
     />
   );
-  if (props?.variant === "inverted") {
+  /* if (props?.variant === "inverted") {
     return { comp, bg: BgColors.INVERTEDGRADIENT };
-  }
+  } */
   return comp;
 };
 

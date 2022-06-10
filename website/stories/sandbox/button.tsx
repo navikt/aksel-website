@@ -18,11 +18,11 @@ const ButtonSandbox: SandboxComponentT = (props: any) => {
 
   return (
     <Button variant={props?.variant} size={props?.size} {...newProps}>
-      {props?.Komposisjon.startsWith("Ikon") &&
+      {props?.Komposisjon?.startsWith("Ikon") &&
         !props?.Komposisjon?.endsWith("Ikon") && <Star aria-hidden />}
 
-      {props?.Komposisjon.includes("Tekst") && "Button"}
-      {props?.Komposisjon.endsWith("Ikon") && <Star {...iconProps} />}
+      {props?.Komposisjon?.includes("Tekst") && "Button"}
+      {props?.Komposisjon?.endsWith("Ikon") && <Star {...iconProps} />}
     </Button>
   );
 };

@@ -75,9 +75,13 @@ const Sandbox = ({ node }: { node: SandboxT }) => {
       }}
     >
       <div className="algolia-ignore-index relative mb-8">
-        <Preview>{<Component />}</Preview>
+        <Preview>
+          <Component />
+        </Preview>
         <CodeBlock
-          code={stringifyJsx(sandboxComp(sandboxState?.propsState?.props))}
+          code={stringifyJsx(
+            sandboxComp(sandboxState?.propsState?.props ?? {})
+          )}
         />
       </div>
     </SandboxContext.Provider>

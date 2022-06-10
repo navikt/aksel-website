@@ -11,7 +11,7 @@ const TooltipSandbox: SandboxComponentT = (props: any) => {
     ...(props?.arrow ? {} : { arrow: false }),
     ...(props?.open ? { open: true } : {}),
     ...(props?.offset ? { offset: Number(props.offset) } : {}),
-    ...(props?.Komposisjon.includes("Med") ? { keys: ["cmd", "p"] } : {}),
+    ...(props?.Komposisjon?.includes("Med") ? { keys: ["cmd", "p"] } : {}),
   };
 
   return (
