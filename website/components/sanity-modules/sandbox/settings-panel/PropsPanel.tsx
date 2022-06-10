@@ -12,8 +12,6 @@ const SettingsPanel = () => {
     !sandboxState.args.props ||
     Object.keys(sandboxState.args.props).length === 0;
 
-  console.log(hideProps);
-
   return (
     <>
       <div

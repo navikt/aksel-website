@@ -1,5 +1,5 @@
 import { Button, Popover } from "@navikt/ds-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SandboxComponentT } from "./types";
 
 Popover.displayName = "Popover";
@@ -7,7 +7,13 @@ Popover.Content.displayName = "Popover.Content";
 const PopoverSandbox: SandboxComponentT = (props: any) => {
   const buttonRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const newProps = { ...(props?.offset ? { offset: props.offset } : {}) };
+
+  useEffect(() => {
+    setIsOpen(props?.open === "true" || open);
+  }, [props]);
+
   return (
     <>
       <Button
@@ -19,7 +25,7 @@ const PopoverSandbox: SandboxComponentT = (props: any) => {
         Åpne popover
       </Button>
       <Popover
-        open={props?.open === "true" || open}
+        open={isOpen}
         onClose={() => setOpen(false)}
         anchorEl={buttonRef.current}
         placement={props?.placement || "auto"}
@@ -55,6 +61,26 @@ PopoverSandbox.args = {
     offset: "",
     open: ["", "true"],
   },
+};
+
+PopoverSandbox.getCode = (props: any) => {
+  return `<>
+  <Button
+    ref={buttonRef}
+    onClick={() => setOpenState(true)}
+  >
+    Åpne popover
+  </Button>
+  <Popover
+    open={openState}
+    onClose={() => setOpenState(false)}
+    anchorEl={buttonRef.current}${!props?.arrow ? "\n    arrow={false}" : ""}${
+    props?.placement ? `\n    placement="${props?.placement}"` : ""
+  }${props?.offset ? `\n    offset={${props?.offset}}` : ""}
+  >
+    <Popover.Content>Innhold her!</Popover.Content>
+  </Popover>
+</>`;
 };
 
 export default PopoverSandbox;
