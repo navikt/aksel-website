@@ -40,4 +40,26 @@ SelectSandbox.args = {
   },
 };
 
+SelectSandbox.getCode = (props: any) => {
+  const newProps = `${props?.hideLabel ? "\n  hideLabel" : ""}${
+    props?.description
+      ? `\n  description="Velg det landet du tilbringer mest tid."`
+      : ""
+  }${
+    props?.error
+      ? `\n  error="Adressen matcher ikke landet du har satt som bosted."`
+      : ""
+  }${props?.disabled ? "\n  disabled" : ""}`;
+
+  return `<Select
+  label="Velg hvilket land du bosted i."
+  size="${props?.size}"${newProps}
+>
+  <option value="">Velg land</option>
+  <option value="norge">Norge</option>
+  <option value="sverige">Sverige</option>
+  <option value="danmark">Danmark</option>
+</Select>`;
+};
+
 export default SelectSandbox;
