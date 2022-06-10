@@ -1,8 +1,6 @@
 import { TextField } from "@navikt/ds-react";
 import { SandboxComponentT } from "./types";
 
-TextField.displayName = "TextField";
-
 const TextFieldSandbox: SandboxComponentT = (props: any) => {
   const newProps = {
     ...(props?.size ? { size: props?.size } : {}),
@@ -28,6 +26,21 @@ TextFieldSandbox.args = {
     error: false,
     disabled: false,
   },
+};
+
+TextFieldSandbox.getCode = (props: any) => {
+  const newProps = `${props?.hideLabel ? "\n  hideLabel" : ""}${
+    props?.description
+      ? `\n  description="Vi lagrer bare selve meldingen, ikke hvem som sendte den."`
+      : ""
+  }${props?.error ? `\n  error="Tilbakemeldingen er for kort."` : ""}${
+    props?.disabled ? "\n  disabled" : ""
+  }`;
+
+  return `<TextField
+  label="Har du noen tilbakemeldinger?"
+  size="${props?.size}"${newProps}
+/>`;
 };
 
 export default TextFieldSandbox;

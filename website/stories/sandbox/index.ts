@@ -10,7 +10,7 @@ import PanelSandbox from "./panel";
 import RadioSandbox from "./radio";
 import SelectSandbox from "./select";
 import TextareaSandbox from "./textarea";
-import TextFieldSandox from "./textfield";
+import TextFieldSandbox from "./textfield";
 import CheckboxSandbox from "./checkbox";
 import SwitchSandbox from "./switch";
 import ToggleGroupSandbox from "./toggle-group";
@@ -45,7 +45,7 @@ const allSandboxes = {
   RadioSandbox,
   SelectSandbox,
   TextareaSandbox,
-  TextFieldSandox,
+  TextFieldSandbox,
   SwitchSandbox,
   ToggleGroupSandbox,
   SearchSandbox,
