@@ -15,7 +15,7 @@ const PaginationSandbox: SandboxComponentT = (props: any) => {
       {...newProps}
       page={page}
       onPageChange={(x) => setPage(x)}
-      count={Number(props?.count)}
+      count={Number(props?.count) ?? 1}
       size={props?.size}
       boundaryCount={Number(props?.boundaryCount) ?? 1}
       siblingCount={Number(props?.siblingCount) ?? 1}
@@ -31,6 +31,19 @@ PaginationSandbox.args = {
     boundaryCount: "1",
     "Forrige/Neste": false,
   },
+};
+
+PaginationSandbox.getCode = (props: any) => {
+  return `<Pagination
+  size="${props?.size}"
+  page={pageState}
+  onPageChange={(x) => setPageState(x)}
+  count={${`${props?.count ? props?.count : "1"}`}}
+  boundaryCount={${`${props?.boundaryCount ? props?.boundaryCount : "1"}`}}
+  siblingCount={${`${props?.siblingCount ? props?.siblingCount : "1"}`}}${
+    props?.["Forrige/Neste"] ? "\n  prevNextTexts" : ""
+  }
+/>`;
 };
 
 export default PaginationSandbox;
