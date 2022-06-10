@@ -38,4 +38,28 @@ TooltipSandbox.args = {
   },
 };
 
+/*
+const newProps = {
+    ...(props?.arrow ? {} : { arrow: false }),
+    ...(props?.open ? { open: true } : {}),
+    ...(props?.offset ? { offset: Number(props.offset) } : {}),
+    ...(props?.Komposisjon?.includes("Med") ? { keys: ["cmd", "p"] } : {}),
+  };
+*/
+
+TooltipSandbox.getCode = (props: any) => {
+  return `<Tooltip
+  content="${props?.content ? props?.content : "Print"}"
+  placement="${props?.placement}"${!props?.arrow ? "\n  arrow={false}" : ""}${
+    props?.open ? "\n  open" : ""
+  }${props?.offset ? `\n  offset={${props?.offset}}` : ""}${
+    props?.Komposisjon?.includes("Med") ? `\n  keys={["cmd", "p"]}` : ""
+  }
+>
+  <Button>
+    <Print aria-hidden />
+  </Button>
+</Tooltip>`;
+};
+
 export default TooltipSandbox;
