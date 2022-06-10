@@ -8,8 +8,8 @@ const ButtonSandbox: SandboxComponentT = (props: any) => {
   const newProps = {
     ...(props?.disabled ? { disabled: true } : {}),
     ...(props?.loading ? { loading: true } : {}),
-    ...(props?.size === "small" ? { loading: true } : {}),
   };
+
   const iconProps = {
     ...(props?.Komposisjon === "Ikon"
       ? { title: "Beskrivelse for skjermlesere" }
@@ -35,6 +35,33 @@ ButtonSandbox.args = {
     loading: false,
     Komposisjon: ["Tekst", "Ikon", "Tekst + Ikon", "Ikon + Tekst"],
   },
+};
+
+ButtonSandbox.getCode = (props: any) => {
+  let content = "Button";
+
+  switch (props?.Komposisjon) {
+    case "Ikon":
+      content = `<Star title="Beskrivelse for skjermlesere" />`;
+      break;
+    case "Tekst + Ikon":
+      content = `Button <Star aria-hidden />`;
+      break;
+    case "Ikon + Tekst":
+      content = `<Star aria-hidden /> Button`;
+      break;
+    default:
+      break;
+  }
+
+  return `<Button
+  variant="${props?.variant}"
+  size="${props?.size}"${props?.disabled ? "\n  disabled" : ""}${
+    props?.loading ? "\n  loading" : ""
+  }
+>
+  ${content}
+</Button>`;
 };
 
 export default ButtonSandbox;
