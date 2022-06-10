@@ -28,4 +28,12 @@ LoaderSandbox.args = {
 LoaderSandbox.getBg = (props: any) =>
   props?.variant === "inverted" ? BgColors.INVERTEDGRADIENT : undefined;
 
+LoaderSandbox.getCode = (props: any) => {
+  return `<Loader
+  variant="${props?.variant}"
+  size="${props?.size}"
+  title="${props?.title ?? ""}"${props?.transparent ? "\n  transparent" : ""}
+/>`;
+};
+
 export default LoaderSandbox;
