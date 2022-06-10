@@ -52,7 +52,7 @@ const Sandbox = ({ node }: { node: SandboxT }) => {
     const args = generateState(sandboxComp.args);
     const newState = getInitialState(args);
     setSandboxState({ ...sandboxState, args, propsState: newState });
-  }, []);
+  }, [node?.title]);
 
   const Component = () => sandboxComp(sandboxState?.propsState?.props);
 

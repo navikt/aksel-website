@@ -3,8 +3,6 @@ import React from "react";
 import { SandboxComponentT } from "./types";
 
 const TextareaSandbox: SandboxComponentT = (props: any) => {
-  const [value, setValue] = React.useState("");
-
   const newProps = {
     ...(props?.size ? { size: props?.size } : {}),
     ...(props?.maxLength ? { maxLength: 40 } : {}),
@@ -17,15 +15,14 @@ const TextareaSandbox: SandboxComponentT = (props: any) => {
       : {}),
     ...(props?.hideLabel ? { hideLabel: true } : {}),
     ...(props?.disabled ? { disabled: true } : {}),
-    ...(props?.maxRows ? { maxRows: 4 } : {}),
+    ...(props?.maxRows ? { maxRows: 3 } : {}),
     ...(props?.minRows ? { minRows: 2 } : {}),
   };
 
   return (
     <Textarea
       label="Har du noen tilbakemeldinger?"
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
+      defaultValue="Voluptate Lorem anim est sint Lorem anim sit irure nisi ullamco ea."
       {...newProps}
     />
   );
@@ -52,8 +49,8 @@ TextareaSandbox.getCode = (props: any) => {
   }${props?.error ? `\n  error="Tilbakemeldingen er for kort."` : ""}${
     props?.disabled ? "\n  disabled" : ""
   }${props?.maxLength ? "\n  maxLength={40}" : ""}${
-    props?.minRows ? "\n  minRows={4}" : ""
-  }${props?.maxRows ? "\n  maxRows={2}" : ""}`;
+    props?.minRows ? "\n  minRows={2}" : ""
+  }${props?.maxRows ? "\n  maxRows={3}" : ""}`;
 
   return `<Textarea
   label="Har du noen tilbakemeldinger?"
