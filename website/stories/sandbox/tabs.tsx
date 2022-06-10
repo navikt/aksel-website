@@ -112,4 +112,70 @@ TabsSandbox.args = {
   background: BgColors.WHITE,
 };
 
+TabsSandbox.getCode = (props: any) => {
+  const hasIcon = props?.Komposisjon?.includes("Ikon") ?? true;
+  const hasLabel = props?.Komposisjon?.includes("Label") ?? true;
+
+  return `<Tabs
+  defaultValue="logg"
+  size="${props?.size}"${
+    props?.selectionFollowsFocus ? "\n  selectionFollowsFocus" : ""
+  }
+>
+  <Tabs.List${props?.loop ? "loop={true}" : ""}>
+    <Tabs.Tab
+      value="logg"
+      iconPosition="${props?.iconPosition}"${
+    hasLabel ? `\n      label="Logg"` : ""
+  }${hasIcon ? `\n      icon={<Historic title="historielogg" />}` : ""}
+    />
+    <Tabs.Tab
+      value="inbox"
+      iconPosition="${props?.iconPosition}"${
+    hasLabel ? `\n      label="Inbox"` : ""
+  }${hasIcon ? `\n      icon={<Email title="inbox" />}` : ""}
+    />
+    <Tabs.Tab
+      value="sendt"
+      iconPosition="${props?.iconPosition}"${
+    hasLabel ? `\n      label="Sendt"` : ""
+  }${hasIcon ? `\n      icon={<Send title="sendt" />}` : ""}
+    />${
+      props?.overflow
+        ? `\n    <Tabs.Tab
+      value="dialog"
+      iconPosition="${props?.iconPosition}"${
+            hasLabel ? `\n      label="Dialog"` : ""
+          }${hasIcon ? `\n      icon={<Dialog title="dialog" />}` : ""}
+    />
+    <Tabs.Tab
+      value="notater"
+      iconPosition="${props?.iconPosition}"${
+            hasLabel ? `\n      label="Notater"` : ""
+          }${hasIcon ? `\n      icon={<Notes title="notater" />}` : ""}
+    />`
+        : ""
+    }
+  </Tabs.List>
+  <Tabs.Panel value="logg" className="h-24 w-full bg-gray-50 p-8">
+    TabPanel for Logg-tab
+  </Tabs.Panel>
+  <Tabs.Panel value="inbox" className="h-24 w-full bg-gray-50 p-8">
+    TabPanel for Inbox-tab
+  </Tabs.Panel>
+  <Tabs.Panel value="sendt" className="h-24  w-full bg-gray-50 p-8">
+    TabPanel for Sendt-tab
+  </Tabs.Panel>${
+    props?.overflow
+      ? `\n  <Tabs.Panel value="dialog" className="h-24 w-full bg-gray-50 p-8">
+    TabPanel for Dialoger-tab
+  </Tabs.Panel>
+  <Tabs.Panel value="notater" className="h-24 w-full bg-gray-50 p-8">
+    TabPanel for Notater-tab
+  </Tabs.Panel>`
+      : ""
+  }
+</Tabs>`;
+};
+
 export default TabsSandbox;
