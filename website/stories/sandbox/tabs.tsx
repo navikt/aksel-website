@@ -122,7 +122,7 @@ TabsSandbox.getCode = (props: any) => {
     props?.selectionFollowsFocus ? "\n  selectionFollowsFocus" : ""
   }
 >
-  <Tabs.List${props?.loop ? "loop={true}" : ""}>
+  <Tabs.List${props?.loop ? " loop={true}" : ""}>
     <Tabs.Tab
       value="logg"
       iconPosition="${props?.iconPosition}"${
