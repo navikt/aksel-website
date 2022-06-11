@@ -21,15 +21,3 @@ export const isNew = (date: string) => {
 export function capitalize(s: string) {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
-
-export const getGradient = (s: string) => {
-  let hash = 0;
-  for (let i = 0; i < s.length; i++) {
-    hash = s.charCodeAt(i) + ((hash << 5) - hash);
-  }
-
-  const h = hash % 360;
-  const h2 = h + (5 % 360);
-
-  return `linear-gradient(-45deg, hsl(${h2}, 70%, 70%) 0%, hsl(${h}, 80%, 80%) 100%)`;
-};
