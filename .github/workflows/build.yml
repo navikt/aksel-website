@@ -31,6 +31,8 @@ jobs:
         run: yarn install --immutable
       - name: Run tests
         run: NEXT_PUBLIC_TEST=true yarn workspace website e2e:ci
+      - name: Jest tests
+        run: yarn test
       - name: Build application
         run: yarn build:next
       - name: Update sanity sync
