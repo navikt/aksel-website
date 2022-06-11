@@ -1,73 +1,4 @@
-import { LayoutPicker } from "@/components";
-import { DsHeader, DsSidebar, Footer } from "@/layout";
-import { isDevelopment } from "@/lib";
-import { useState } from "react";
-
-const Page = () => {
-  const [version, setVersion] = useState<"aksel" | "ds">("aksel");
-
-  if (version === "aksel") {
-    return (
-      <>
-        <button
-          className="fixed bottom-4 right-4"
-          onClick={() => setVersion((x) => (x === "ds" ? "aksel" : "ds"))}
-        >
-          {version} demo
-        </button>
-        <LayoutPicker
-          title="Aksel"
-          data={{ ...mockArtikkel, _type: "aksel_artikkel" } as any}
-        />
-      </>
-    );
-  }
-  return (
-    <>
-      <button
-        className="fixed bottom-4 right-4 z-[9999]"
-        onClick={() => setVersion((x) => (x === "ds" ? "aksel" : "ds"))}
-      >
-        {version} demo
-      </button>
-      <DsHeader />
-      <div className="flex w-full flex-col items-center bg-canvas-background-light">
-        <div className="flex w-full max-w-screen-2xl">
-          <DsSidebar />
-          <div className="relative w-full">
-            <main
-              tabIndex={-1}
-              id="hovedinnhold"
-              className="relative min-h-screen-header w-full focus:outline-none md:max-w-screen-sidebar"
-            >
-              <LayoutPicker title="Designsystemet" data={mockArtikkel as any} />
-              <div className="mt-auto" aria-hidden />
-            </main>
-          </div>
-        </div>
-        <Footer variant="ds" />
-      </div>
-    </>
-  );
-};
-
-export default Page;
-
-export const getStaticProps = async () => {
-  if (!isDevelopment()) {
-    return { notFound: true };
-  }
-
-  return {
-    props: {
-      page: mockArtikkel,
-      navigation: mockNav,
-      slug: "/designsystem/komponenter/toggle-group",
-    },
-  };
-};
-
-const mockArtikkel = {
+export const mockArtikkel = {
   _createdAt: "2022-05-13T13:54:13Z",
   _id: "drafts.fe99d9ce-9605-4c61-b705-76205d91484a",
   _rev: "p611vx-xfw-51n-25p-djs2hyal8",
@@ -183,7 +114,7 @@ const mockArtikkel = {
           ],
         },
         {
-          _key: "4bf26f2fdc09",
+          _key: "4bf26f2fdc08",
           _type: "tips",
           eksperiment: true,
           body: [
@@ -808,7 +739,7 @@ const mockArtikkel = {
   slug: "designsystem/komponenter/toggle-group",
 };
 
-const mockNav = {
+export const mockNav = {
   headings: [
     {
       _key: "b8739a954c22",

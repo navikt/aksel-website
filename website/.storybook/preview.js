@@ -1,6 +1,7 @@
 import { setConfig } from "next/config";
 import "../styles/index.css";
 import React from "react";
+
 setConfig({
   serverRuntimeConfig: {
     azureAppClientId: "5b300b41-f042-4851-8454-37f3274c6252",
@@ -22,9 +23,11 @@ export const parameters = {
 };
 
 export const decorators = [
-  (Story) => (
-    <div id="#__next">
-      <Story />
-    </div>
-  ),
+  (Story, data) => {
+    return (
+      <div id="__next">
+        <Story />
+      </div>
+    );
+  },
 ];

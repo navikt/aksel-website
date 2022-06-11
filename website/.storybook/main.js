@@ -4,10 +4,11 @@ module.exports = {};
 module.exports = {
   stories: ["../stories/**/*.story.tsx", "../components/**/*.story.tsx"],
   addons: [
+    "storybook-addon-next",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
-    {
+    /* {
       name: "@storybook/addon-postcss",
       options: {
         cssLoaderOptions: {
@@ -20,7 +21,7 @@ module.exports = {
           implementation: require("postcss"),
         },
       },
-    },
+    } */
   ],
   framework: "@storybook/react",
   core: {
@@ -35,8 +36,8 @@ module.exports = {
     checkOptions: {},
     reactDocgen: false,
   },
-  webpackFinal: async (config) => {
+  /* webpackFinal: async (config) => {
     config.resolve.plugins = [new TsconfigPathsPlugin()];
     return config;
-  },
+  }, */
 };
