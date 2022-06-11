@@ -11,7 +11,7 @@ export default {
 
 export const Default = (props: any) => {
   return (
-    <PagePropsContext.Provider value={{ ...props?.props }}>
+    <PagePropsContext.Provider value={{ pageProps: props }}>
       <LayoutPicker
         title="Aksel"
         data={{ ...mockArtikkel, _type: "aksel_artikkel" } as any}
@@ -21,8 +21,6 @@ export const Default = (props: any) => {
 };
 
 Default.args = {
-  props: {
-    page: mockArtikkel,
-    slug: "/artikkel/demoside",
-  },
+  page: mockArtikkel,
+  slug: "/artikkel/demoside",
 };

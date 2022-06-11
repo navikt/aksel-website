@@ -1,5 +1,6 @@
-import { LayoutPicker, PagePropsContext } from "@/components";
+import { getActiveHeading, LayoutPicker } from "@/components";
 import { DsHeader, DsSidebar, Footer } from "@/layout";
+import { PagePropsContext } from "@/utils";
 import { mockArtikkel, mockNav } from "./Mockdata";
 
 export default {
@@ -10,9 +11,9 @@ export default {
   },
 };
 
-export const Default = (props: any) => {
+export const Default = (props) => {
   return (
-    <PagePropsContext.Provider value={{ ...props?.props }}>
+    <PagePropsContext.Provider value={{ pageProps: props }}>
       <DsHeader />
       <div className="flex w-full flex-col items-center bg-canvas-background-light">
         <div className="flex w-full max-w-screen-2xl">
@@ -25,7 +26,13 @@ export const Default = (props: any) => {
             >
               <LayoutPicker
                 title="Designsystemet"
-                data={{ ...mockArtikkel, _type: "ds_artikkel" } as any}
+                data={
+                  {
+                    ...mockArtikkel,
+                    _type: "ds_artikkel",
+                    slug: "designsystem/side/oversikt-guider",
+                  } as any
+                }
               />
               <div className="mt-auto" aria-hidden />
             </main>
@@ -38,9 +45,8 @@ export const Default = (props: any) => {
 };
 
 Default.args = {
-  props: {
-    page: mockArtikkel,
-    navigation: mockNav,
-    slug: "/designsystem/side/demoside",
-  },
+  page: mockArtikkel,
+  navigation: mockNav,
+  activeHeading: getActiveHeading(mockNav, "designsystem/side/oversikt-guider"),
+  slug: "designsystem/side/oversikt-guider",
 };
