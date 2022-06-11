@@ -18,7 +18,7 @@ const IconView = ({
   handleSelect: (icon: string) => void;
 }) => {
   return (
-    <div className="animate-fadeIn">
+    <div className="animate-fadeIn pt-8">
       {categories.map((cat) => {
         return (
           <div key={cat.category}>
@@ -32,7 +32,7 @@ const IconView = ({
                   <button
                     key={i.created_at}
                     onClick={() => handleSelect(i.name)}
-                    className="vk-icon_button group relative h-32 w-48 shrink rounded shadow-card hover:shadow-[0_0_0_2px_theme(colors.link)] focus:shadow-focus focus:outline-none"
+                    className="vk-icon_button group relative h-32 w-48 shrink rounded shadow-medium hover:shadow-[0_0_0_2px_theme(colors.link)] focus:shadow-focus focus:outline-none"
                   >
                     {isNew(i.created_at) && (
                       <Detail

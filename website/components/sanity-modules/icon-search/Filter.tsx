@@ -39,7 +39,7 @@ const Filter = ({
   }, [toggle, value]);
 
   return (
-    <div className="mb-8 flex w-full max-w-sm flex-col gap-4">
+    <div className="mb-4 flex w-full max-w-sm flex-col gap-4">
       <div className="relative">
         <Search
           aria-hidden

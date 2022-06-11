@@ -13,6 +13,7 @@ const IconView = dynamic(() => import("./IconView"), {
 });
 
 const ModalContent = dynamic(() => import("./ModalContent"), {
+  loading: () => <div className="min-h-[90vw] w-[600px] max-w-[90%]" />,
   ssr: false,
 });
 
