@@ -7,6 +7,14 @@ dotenv.config();
 const generateUrls = async () => {
   const pages = await getAllPages(process.env.SANITY_WRITE_KEY);
 
+  const formated = pages.map((x) => `/${x}`);
+
+  if (formated.length < 100) {
+    throw new Error(
+      "generateUrls found less than 100 pages. Did fetching remote pages fail?"
+    );
+  }
+
   fs.writeFile(
     "./cypress/test-urls.json",
     JSON.stringify(pages.map((x) => `/${x}`)),
