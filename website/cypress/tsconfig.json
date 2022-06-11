@@ -4,5 +4,9 @@
     "noEmit": true,
     "types": ["cypress"]
   },
-  "include": ["../node_modules/cypress", "./**/*.ts"]
+  "include": [
+    "../node_modules/cypress",
+    "../../node_modules/cypress",
+    "../**/*.ts"
+  ]
 }

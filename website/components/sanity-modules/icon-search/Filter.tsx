@@ -9,8 +9,10 @@ export interface FilterT {
 
 const Filter = ({
   onFilterChange,
+  value: filterValue,
 }: {
   onFilterChange: (v: FilterT) => void;
+  value: null | string;
 }) => {
   const [value, setValue] = useState("");
   const [toggle, setToggle] = useState("outline");
@@ -21,6 +23,10 @@ const Filter = ({
       toggle,
     });
   }, [value]);
+
+  useEffect(() => {
+    filterValue && setValue(filterValue);
+  }, [filterValue]);
 
   useEffect(() => {
     onFilterChange({
@@ -39,14 +45,19 @@ const Filter = ({
 
   return (
     <div className="mb-4 flex w-full max-w-sm flex-col gap-4">
-      <div className="relative">
+      <form
+        role="search"
+        className="relative"
+        onSubmit={(e) => e.preventDefault()}
+      >
         <Search
           variant="simple"
           label="Søk i alle NAV-ikoner"
           value={value}
           onChange={(e) => setValue(e)}
+          autoComplete="off"
         />
-      </div>
+      </form>
       <ToggleGroup onChange={setToggle} size="small" defaultValue="outline">
         <ToggleGroup.Item value="outline">Outline</ToggleGroup.Item>
         <ToggleGroup.Item value="filled">Filled</ToggleGroup.Item>

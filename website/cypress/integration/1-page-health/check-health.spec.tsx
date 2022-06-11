@@ -4,7 +4,7 @@ import urls from "../../test-urls.json";
 
 describe("Testing health for all pages", () => {
   urls.forEach((url) => {
-    it(`No errorboundary and does not return 404: ${url}`, () => {
+    it(`No errorboundary, not 404 and no deprecated components: ${url}`, () => {
       cy.visit(url);
       cy.wait(200);
       cy.get(".vk-errorboundary").should("not.exist");

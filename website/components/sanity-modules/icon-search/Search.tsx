@@ -1,5 +1,5 @@
 import meta from "@navikt/ds-icons/meta.json";
-import { BodyLong, Heading, Link, Modal } from "@navikt/ds-react";
+import { BodyLong, Detail, Heading, Link, Modal } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
 import { AmplitudeEvents, isNew, logAmplitudeEvent } from "@/components";
@@ -37,6 +37,7 @@ const IconSearch = () => {
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
   const router = useRouter();
   const [visibleIcons, setVisibleIcons] = useState<IconMetaT[]>([]);
+  const [value, setValue] = useState(null);
 
   const setQuery = useCallback((icon: string) => {
     const query = router.query;
@@ -132,12 +133,26 @@ const IconSearch = () => {
   };
 
   const categories: CategoryT[] = categorizeIcons(visibleIcons);
+  const options = categorizeIcons(meta).map((x) => x.category);
 
   return (
-    <div className="relative flex w-full max-w-full flex-col md:w-[816px] md:max-w-[62vw]">
-      <div className="flex w-full flex-wrap-reverse justify-between gap-x-8 gap-y-4">
-        <Filter onFilterChange={handleFilterChange} />
-        <DownloadButtons />
+    <div className="relative flex w-full max-w-full flex-col md:w-[1000px] md:max-w-[62vw]">
+      <DownloadButtons />
+      <div className="flex w-full flex-wrap justify-between gap-x-8 gap-y-4">
+        <Filter onFilterChange={handleFilterChange} value={value} />
+        <div className="flex flex-wrap items-start justify-start gap-x-3 gap-y-2 xl:max-w-md">
+          {options.map((x) => (
+            <button
+              onClick={() => setValue(x)}
+              className="shrink-0 rounded-xl border border-gray-200 bg-gray-100 px-2 py-1 hover:bg-gray-200 focus:shadow-focus focus:outline-none"
+              key={x}
+            >
+              <Detail className="font-semibold text-gray-800" as="span">
+                {x}
+              </Detail>
+            </button>
+          ))}
+        </div>
       </div>
       <IconView categories={categories} handleSelect={handleSelect} />
       <Heading size="small" as="div" spacing>

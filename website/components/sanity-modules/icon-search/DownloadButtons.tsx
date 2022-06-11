@@ -34,11 +34,11 @@ const DownloadButtons = () => {
   };
 
   return (
-    <div className="animate-fadeIn">
+    <div className="mb-6 animate-fadeIn">
       <Heading level="3" size="xsmall">
         Last ned ikoner
       </Heading>
-      <div className="mt-2 -ml-3">
+      <div className="mt-2 -ml-3 flex gap-3">
         <Button
           variant="tertiary"
           onClick={() => {
