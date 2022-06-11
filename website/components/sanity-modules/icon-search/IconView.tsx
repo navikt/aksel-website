@@ -18,7 +18,7 @@ const IconView = ({
   handleSelect: (icon: string) => void;
 }) => {
   return (
-    <>
+    <div className="animate-fadeIn">
       {categories.map((cat) => {
         return (
           <div key={cat.category}>
@@ -63,7 +63,7 @@ const IconView = ({
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
 

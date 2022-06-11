@@ -3,7 +3,6 @@ import { BodyLong, Heading, Link, Modal } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
 import { AmplitudeEvents, logAmplitudeEvent } from "@/components";
-import DownloadButtons from "./DownloadButtons";
 import Filter, { FilterT } from "./Filter";
 import { categorizeIcons, CategoryT, IconMetaT } from "./iconCategories";
 import dynamic from "next/dynamic";
@@ -14,6 +13,10 @@ const IconView = dynamic(() => import("./IconView"), {
 });
 
 const ModalContent = dynamic(() => import("./ModalContent"), {
+  ssr: false,
+});
+
+const DownloadButtons = dynamic(() => import("./DownloadButtons"), {
   ssr: false,
 });
 
