@@ -2,7 +2,7 @@ import meta from "@navikt/ds-icons/meta.json";
 import { BodyLong, Heading, Link, Modal } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
-import { AmplitudeEvents, logAmplitudeEvent } from "@/components";
+import { AmplitudeEvents, isNew, logAmplitudeEvent } from "@/components";
 import Filter, { FilterT } from "./Filter";
 import { categorizeIcons, CategoryT, IconMetaT } from "./iconCategories";
 import dynamic from "next/dynamic";
@@ -109,6 +109,11 @@ const IconSearch = () => {
     }
 
     let metaIcons = [...meta];
+
+    if (filter.toggle === "ny") {
+      setVisibleIcons(metaIcons.filter((x) => isNew(x.created_at)));
+      return;
+    }
 
     metaIcons = metaIcons.filter(
       (x) => filter.toggle === getTag(x.name).toLowerCase()

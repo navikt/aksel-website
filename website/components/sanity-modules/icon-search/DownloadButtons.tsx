@@ -36,7 +36,7 @@ const DownloadButtons = () => {
   return (
     <div className="animate-fadeIn">
       <Heading level="3" size="xsmall">
-        Last ned alle ikoner
+        Last ned ikoner
       </Heading>
       <div className="mt-2 -ml-3">
         <Button
