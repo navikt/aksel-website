@@ -1,7 +1,6 @@
-import css from "css";
-import { readFileSync } from "fs";
 import dotenv from "dotenv";
 import { noCdnClient } from "../sanity/sanity.server";
+import { getCssRoot, readCss } from "./handle-css";
 
 dotenv.config();
 
@@ -144,14 +143,7 @@ function parseDeclaration(
 const semantic = "semantic-color";
 const global = "global-color";
 
-const cssData = readFileSync(
-  "../node_modules/@navikt/ds-tokens/dist/tokens.css"
-);
-
-const parsed = css.parse(cssData.toString());
-const root = parsed.stylesheet.rules.find((r) =>
-  r.selectors?.includes(":root")
-);
+const root = getCssRoot(readCss());
 
 const colors = root.declarations
   .filter((d) => d.property.includes(global) || d.property.includes(semantic))

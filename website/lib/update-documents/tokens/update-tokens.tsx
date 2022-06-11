@@ -1,7 +1,6 @@
-import css from "css";
-import { readFileSync } from "fs";
 import dotenv from "dotenv";
-import { noCdnClient } from "../sanity/sanity.server";
+import { noCdnClient } from "../../sanity/sanity.server";
+import { getCssRoot, readCss } from "../handle-css";
 
 dotenv.config();
 
@@ -10,43 +9,36 @@ type TokenEntryT = {
   token: string;
 };
 
-const cssData = readFileSync(
-  "../node_modules/@navikt/ds-tokens/dist/tokens.css"
-);
+export const updateTokens = async () => {
+  const root = getCssRoot(readCss());
 
-const parsed = css.parse(cssData.toString());
-const root = parsed.stylesheet.rules.find((r) =>
-  r.selectors?.includes(":root")
-);
+  const getGlobalToken = (value: string): string => {
+    const varToken = value.match(/var\((.*)\)/)[1];
+    if (!varToken) return value;
 
-const getGlobalToken = (value: string): string => {
-  const varToken = value.match(/var\((.*)\)/)[1];
-  if (!varToken) return value;
+    let rawToken = "";
 
-  let rawToken = "";
+    const parentToken = root.declarations.find(
+      (x) => x.property === varToken
+    ).value;
+    if (parentToken.includes("var(")) {
+      rawToken = getGlobalToken(parentToken);
+    } else {
+      rawToken = parentToken;
+    }
 
-  const parentToken = root.declarations.find(
-    (x) => x.property === varToken
-  ).value;
-  if (parentToken.includes("var(")) {
-    rawToken = getGlobalToken(parentToken);
-  } else {
-    rawToken = parentToken;
-  }
+    return value.replace(/var\((.*)\)/, rawToken);
+  };
 
-  return value.replace(/var\((.*)\)/, rawToken);
-};
+  const tokens: TokenEntryT[] = root.declarations.map((d) => ({
+    title: d.property.replace("--navds-", ""),
+    token: d.value,
+    ...(d.value.includes("var(") && { raw: getGlobalToken(d.value) }),
+    ...(d.value.startsWith("var(") && {
+      parent: d.value.replace("var(", "").replace(")", "").replace(";", ""),
+    }),
+  }));
 
-const tokens: TokenEntryT[] = root.declarations.map((d) => ({
-  title: d.property.replace("--navds-", ""),
-  token: d.value,
-  ...(d.value.includes("var(") && { raw: getGlobalToken(d.value) }),
-  ...(d.value.startsWith("var(") && {
-    parent: d.value.replace("var(", "").replace(")", "").replace(";", ""),
-  }),
-}));
-
-const updateTokens = async () => {
   const token = process.env.SANITY_WRITE_KEY;
   // this is our transactional client, it won't push anything until we say .commit() later
   const transactionClient = noCdnClient(token).transaction();
@@ -84,5 +76,3 @@ const updateTokens = async () => {
     .then(() => console.log(`Updated tokens`))
     .catch((e) => console.error(e.message));
 };
-
-updateTokens();

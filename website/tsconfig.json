@@ -15,7 +15,7 @@
     "jsx": "preserve",
     "noImplicitAny": false,
     "incremental": true,
-    "types": ["cypress", "node"],
+    "types": ["node", "jest"],
     "baseUrl": ".",
     "paths": {
       "@/components": ["components/index.ts"],
@@ -34,5 +34,5 @@
     }
   },
   "include": ["next-env.d.ts", "lib/types/schema.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "cypress"]
 }
