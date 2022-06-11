@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Button, Heading, BodyLong } from "@navikt/ds-react";
 import { ExampleComponent } from "../../lib";
 
-Modal.setAppElement("#__next");
-
 export const ModalExample: ExampleComponent = () => {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    Modal.setAppElement("#__next");
+  }, []);
 
   return (
     <>
