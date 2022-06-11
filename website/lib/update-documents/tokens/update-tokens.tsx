@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import { noCdnClient } from "../../sanity/sanity.server";
-import { getCssRoot, getGlobalToken, readCss } from "../handle-css";
+import { getCssRoot, getGlobalTokenValue, readCss } from "../handle-css";
 
 dotenv.config();
 
@@ -9,19 +9,21 @@ type TokenEntryT = {
   token: string;
 };
 
-export const updateTokens = async () => {
-  const root = getCssRoot(readCss());
-
-  const tokens: TokenEntryT[] = root.declarations.map((d) => ({
+export const generateTokens = (root): TokenEntryT[] =>
+  root.declarations.map((d) => ({
     title: d.property.replace("--navds-", ""),
     token: d.value,
-    ...(d.value.includes("var(") && { raw: getGlobalToken(d.value, root) }),
+    ...(d.value.includes("var(") && {
+      raw: getGlobalTokenValue(d.value, root),
+    }),
     ...(d.value.startsWith("var(") && {
       parent: d.value.replace("var(", "").replace(")", "").replace(";", ""),
     }),
   }));
 
+export const updateTokens = async () => {
   const token = process.env.SANITY_WRITE_KEY;
+
   // this is our transactional client, it won't push anything until we say .commit() later
   const transactionClient = noCdnClient(token).transaction();
 
@@ -30,6 +32,8 @@ export const updateTokens = async () => {
   const remoteTokens = await noCdnClient(token).fetch(
     `*[_type == "ds_tokens"]`
   );
+
+  const tokens = generateTokens(getCssRoot(readCss()));
 
   for (const token of remoteTokens) {
     if (

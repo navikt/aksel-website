@@ -1,4 +1,5 @@
-import { getCssRoot, readCss } from "../handle-css";
+import { getCssRoot, getGlobalTokenValue, readCss } from "../handle-css";
+import { rootData } from "./mockdata";
 
 describe("Handling css", () => {
   test("Reads CSS from node_modules", () => {
@@ -17,6 +18,29 @@ describe("Handling css", () => {
 
     /* Rough estimate for number of tokens */
     expect(data.declarations.length).toBeGreaterThan(170);
+  });
+
+  describe("Validate GlobalToken fetcher", () => {
+    test("Gets correct global-token for lvl1", () => {
+      expect(
+        getGlobalTokenValue("var(--navds-semantic-color-text)", rootData)
+      ).toEqual("rgba(38, 38, 38, 1)");
+    });
+
+    test("Gets correct global-token for lvl2", () => {
+      expect(
+        getGlobalTokenValue("var(--navds-semantic-color-text-muted)", rootData)
+      ).toEqual("rgba(112, 112, 112, 1)");
+    });
+
+    test("Gets correct global-token non-conventional token (shadows, border etc)", () => {
+      expect(
+        getGlobalTokenValue(
+          "0 0 0 3px var(--navds-semantic-color-text-muted)",
+          rootData
+        )
+      ).toEqual("0 0 0 3px rgba(112, 112, 112, 1)");
+    });
   });
 });
 

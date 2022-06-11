@@ -12,7 +12,7 @@ export const getCssRoot = (css) => {
   return css.stylesheet.rules.find((r) => r.selectors?.includes(":root"));
 };
 
-export const getGlobalToken = (value: string, root: any): string => {
+export const getGlobalTokenValue = (value: string, root: any): string => {
   const varToken = value.match(/var\((.*)\)/)[1];
   if (!varToken) return value;
 
@@ -22,7 +22,7 @@ export const getGlobalToken = (value: string, root: any): string => {
     (x) => x.property === varToken
   ).value;
   if (parentToken.includes("var(")) {
-    rawToken = getGlobalToken(parentToken, root);
+    rawToken = getGlobalTokenValue(parentToken, root);
   } else {
     rawToken = parentToken;
   }
