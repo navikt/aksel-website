@@ -1,4 +1,4 @@
-import { kebabCase } from "lodash";
+import kebabCase from "lodash/kebabCase";
 
 import * as ErrorSummary from "./error-summary";
 import * as ConfirmationPanel from "./confirmation-panel";

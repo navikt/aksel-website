@@ -29,7 +29,7 @@ import GuidePanelSandbox from "./guidepanel";
 import ErrorSummarySandbox from "./error-summary";
 import LinkPanelSandbox from "./link-panel";
 import PopoverSandbox from "./popover";
-import { kebabCase } from "lodash";
+import kebabCase from "lodash/kebabCase";
 import { SandboxComponentT } from "./types";
 
 const allSandboxes = {
