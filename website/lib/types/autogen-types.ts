@@ -579,6 +579,48 @@ export interface DsFrontpage extends SanityDocument {
 }
 
 /**
+ * Hovedkategorier
+ *
+ *
+ */
+export interface MainCategories extends SanityDocument {
+  _type: "main_categories";
+
+  /**
+   * Tittel — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Nivå — `string`
+   *
+   *
+   */
+  level?: "top" | "designsystem";
+
+  /**
+   * Pictogram — `image`
+   *
+   *
+   */
+  picture?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+
+    /**
+     * Alt-tekst — `string`
+     *
+     * Beskriv bildet for skjermlesere
+     */
+    title?: string;
+  };
+}
+
+/**
  * Navigation
  *
  *
@@ -2296,6 +2338,7 @@ export type Documents =
   | DsComponentPage
   | DsComponentTemplate
   | DsFrontpage
+  | MainCategories
   | DsNavigation
   | DsComponentOverview
   | DsPackage
