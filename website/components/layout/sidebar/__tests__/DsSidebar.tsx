@@ -6,17 +6,16 @@ import { getActiveHeading, PagePropsContext } from "@/utils";
 import { render, screen } from "@testing-library/react";
 import DesignsystemSidebar from "../DesignsystemSidebar";
 
-const renderComponent = () => {
+const renderComponent = (withActiveHeading = true) => {
   return render(
     <PagePropsContext.Provider
       value={{
         pageProps: {
           page: mockArtikkel,
           navigation: mockNav,
-          activeHeading: getActiveHeading(
-            mockNav,
-            "designsystem/side/oversikt-guider"
-          ),
+          activeHeading: withActiveHeading
+            ? getActiveHeading(mockNav, "designsystem/side/oversikt-guider")
+            : undefined,
         },
       }}
     >
@@ -25,17 +24,15 @@ const renderComponent = () => {
   );
 };
 
-const renderComponent2 = () => {
-  return render(<div data-testid="mytestid">abc</div>);
-};
-
 describe("Home", () => {
-  it("renders a heading", () => {
-    const { container } = renderComponent();
+  it("Renders sidebar when activeHeading", () => {
+    renderComponent();
     const sidebar = screen.getByTestId("ds-sidebar");
-    /* const { container } = renderComponent2();
-    const sidebar = screen.getByTestId("mytestid"); */
-
     expect(sidebar).toBeInTheDocument();
+  });
+
+  it("No sidebar when no activeHeading", () => {
+    renderComponent(false);
+    expect(() => screen.getByTestId("ds-sidebar")).toThrow();
   });
 });
