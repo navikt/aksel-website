@@ -49,7 +49,6 @@ export default createSchema({
     Designsystem.ComponentPage,
     Designsystem.ComponentTemplate,
     Designsystem.Frontpage,
-    Designsystem.MainCategories,
     Designsystem.Navigation,
     Designsystem.Overview,
     Designsystem.Package,

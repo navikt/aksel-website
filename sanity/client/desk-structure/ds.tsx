@@ -98,10 +98,6 @@ export const dsPanel = async (roles) => {
               .title("Kodepakker")
               .icon(() => <Ruler />)
               .child(S.documentTypeList("ds_package")),
-            S.listItem()
-              .title("Kategorier")
-              .icon(() => <Folder />)
-              .child(S.documentTypeList("main_categories")),
             S.divider(),
             S.listItem()
               .title("Autogenerert data")
