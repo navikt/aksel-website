@@ -490,38 +490,6 @@ Beskriv bildet for skjermlesere
     }
 
     /**
-     * Hovedkategorier
-     */
-    interface main_categories extends Sanity.Document {
-      _type: "main_categories";
-
-      /**
-       * Tittel - `String`
-       */
-      title?: string;
-
-      /**
-       * Nivå - `String`
-       */
-      level?: "top" | "designsystem";
-
-      /**
-       * Pictogram - `Image`
-       */
-      picture?: {
-        asset: Sanity.Asset;
-        crop?: Sanity.ImageCrop;
-        hotspot?: Sanity.ImageHotspot;
-
-        /**
-       * Alt-tekst - `String`
-Beskriv bildet for skjermlesere
-       */
-        title?: string;
-      };
-    }
-
-    /**
      * Navigation
      */
     interface ds_navigation extends Sanity.Document {
@@ -2050,7 +2018,6 @@ Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via
       | ds_component_page
       | ds_component_template
       | ds_frontpage
-      | main_categories
       | ds_navigation
       | ds_component_overview
       | ds_package
