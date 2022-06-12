@@ -38,7 +38,7 @@ export const updateTokens = async () => {
   for (const token of remoteTokens) {
     if (
       !tokens.find(
-        (x) => token._id === `${x.title.replaceAll("-", "_")}_autogen_token`
+        (x) => token._id === `${x?.title?.replaceAll("-", "_")}_autogen_token`
       )
     )
       transactionClient.delete(token._id);
