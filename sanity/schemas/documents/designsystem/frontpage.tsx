@@ -40,6 +40,29 @@ export default {
               name: "content",
               type: "string",
             },
+            {
+              title: "Pictogram",
+              name: "picture",
+              type: "image",
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                {
+                  name: "title",
+                  title: "Alt-tekst",
+                  type: "string",
+                  validation: (Rule) =>
+                    Rule.required().error("Bilde må ha en alt-tekst"),
+                  description: "Beskriv bildet for skjermlesere",
+                  options: {
+                    isHighlighted: true,
+                  },
+                },
+              ],
+              validation: (Rule) =>
+                Rule.required().error("Må legge til et pictogram"),
+            },
           ],
           options: {
             modal: {

@@ -43,6 +43,12 @@ export type DsFrontPageCardT = SanityKeyed<{
   };
   title?: string;
   content?: string;
+  picture?: {
+    asset: Sanity.Asset;
+    crop?: Sanity.ImageCrop;
+    hotspot?: Sanity.ImageHotspot;
+    title?: string;
+  };
 }>;
 
 export type DsNavigationHeadingT = {

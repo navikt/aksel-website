@@ -43,14 +43,6 @@ export const ds_header_heading = {
         Rule.required().error("Header lenken må ha en tittel"),
     },
     {
-      title: "Hovedkategori",
-      name: "category_ref",
-      type: "reference",
-      to: [{ type: "main_categories" }],
-      validation: (Rule) =>
-        Rule.required().error("Header lenken må ha en hovedkategori"),
-    },
-    {
       title: "Side selve headingen linker til",
       description:
         "Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via headern",

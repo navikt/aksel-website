@@ -137,7 +137,6 @@ Linker eller dropdowns med linker. Maks dybde på 2 dropdowns er støttet. Sider
 
       /**
        * Lenke til eksempel - `Url`
-Alle eksempler kan finnes under /stories på nettsiden
        */
       preview?: string;
 
@@ -471,6 +470,21 @@ Kobler komponenten til en pakke
            * Innhold - `String`
            */
           content?: string;
+
+          /**
+           * Pictogram - `Image`
+           */
+          picture?: {
+            asset: Sanity.Asset;
+            crop?: Sanity.ImageCrop;
+            hotspot?: Sanity.ImageHotspot;
+
+            /**
+       * Alt-tekst - `String`
+Beskriv bildet for skjermlesere
+       */
+            title?: string;
+          };
         }>
       >;
     }
@@ -1969,11 +1983,6 @@ Brukes for å endre rekkefølgen på listen. Farger med indeks 0 vil være førs
        * Heading tittel - `String`
        */
       title?: string;
-
-      /**
-       * Hovedkategori - `Reference`
-       */
-      category_ref?: Sanity.Reference<main_categories>;
 
       /**
        * Side selve headingen linker til - `Reference`

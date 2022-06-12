@@ -744,23 +744,6 @@ export const mockNav = {
     {
       _key: "b8739a954c22",
       _type: "heading",
-      category_ref: {
-        _createdAt: "2021-12-21T11:12:37Z",
-        _id: "45d85cdb-1cf9-4e15-a3f6-1830b36e2e4a",
-        _rev: "75tJosESYslMRr1bRPCnRB",
-        _type: "main_categories",
-        _updatedAt: "2021-12-21T11:12:45Z",
-        level: "designsystem",
-        picture: {
-          _type: "image",
-          asset: {
-            _ref: "image-dfd560a978c852d005391d41514d1e54d2891894-97x97-svg",
-            _type: "reference",
-          },
-          title: "Guider-piktogram",
-        },
-        title: "Guider",
-      },
       link_ref: {
         _id: "03e7014d-8a09-4f33-a295-ab42455577f7",
         slug: { _type: "slug", current: "designsystem/side/oversikt-guider" },
@@ -885,23 +868,6 @@ export const mockNav = {
     {
       _key: "be787fd4e748",
       _type: "heading",
-      category_ref: {
-        _createdAt: "2021-12-21T11:12:16Z",
-        _id: "0e4c9ccf-4e27-42e6-b8ec-3044f7d96a03",
-        _rev: "75tJosESYslMRr1bRPCZZj",
-        _type: "main_categories",
-        _updatedAt: "2021-12-21T11:12:16Z",
-        level: "designsystem",
-        picture: {
-          _type: "image",
-          asset: {
-            _ref: "image-8d6821f942659f75c7296e97b6921116cf51bdef-98x98-svg",
-            _type: "reference",
-          },
-          title: "Flater-piktogram",
-        },
-        title: "Flater",
-      },
       link_ref: {
         _id: "bcdff634-3869-4119-a736-c0fd9ef37b6a",
         slug: { _type: "slug", current: "designsystem/side/flater-i-nav" },
@@ -1037,23 +1003,6 @@ export const mockNav = {
     {
       _key: "53e435820d85",
       _type: "heading",
-      category_ref: {
-        _createdAt: "2021-12-21T09:24:35Z",
-        _id: "3b520506-f91a-4c28-bcb1-24c6e94e3312",
-        _rev: "A6xK5mJhq9BWoe96rTwXOY",
-        _type: "main_categories",
-        _updatedAt: "2021-12-21T11:11:25Z",
-        level: "designsystem",
-        picture: {
-          _type: "image",
-          asset: {
-            _ref: "image-1d7a64653231e438b1237698e6edf1b4ec3691f5-100x98-svg",
-            _type: "reference",
-          },
-          title: "Styling-piktogram",
-        },
-        title: "Styling",
-      },
       link_ref: {
         _id: "83be891d-ffaa-4d96-a19a-4776b9c3a748",
         slug: { _type: "slug", current: "designsystem/side/stiler-nav" },
@@ -1085,23 +1034,6 @@ export const mockNav = {
     {
       _key: "e98927a61506",
       _type: "heading",
-      category_ref: {
-        _createdAt: "2021-12-21T11:13:54Z",
-        _id: "00c75894-d18f-475b-a5f9-8b4ca693c602",
-        _rev: "75tJosESYslMRr1bRPDGkS",
-        _type: "main_categories",
-        _updatedAt: "2021-12-21T11:13:54Z",
-        level: "designsystem",
-        picture: {
-          _type: "image",
-          asset: {
-            _ref: "image-7bf9ab1e56118d3099cc14c94886c028050f8348-97x96-svg",
-            _type: "reference",
-          },
-          title: "Komponenter-piktogram",
-        },
-        title: "Komponenter",
-      },
       link_ref: {
         _id: "e81fa80c-15ba-4120-a099-476881fb55f0",
         slug: {

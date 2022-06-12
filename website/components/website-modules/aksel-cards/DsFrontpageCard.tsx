@@ -1,59 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 import { withErrorBoundary } from "@/error-boundary";
 import { DsFrontPageCardT, urlFor } from "@/lib";
-import { BodyShort, Detail } from "@navikt/ds-react";
+import { BodyShort } from "@navikt/ds-react";
 import cl from "classnames";
 import NextLink from "next/link";
-import React, { useContext, useEffect, useState } from "react";
-import { logNav, PagePropsContext } from "../..";
+import React from "react";
+import { logNav } from "../..";
 
 interface CardProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   node: DsFrontPageCardT;
   tag?: boolean;
-  categoryRef?: any;
 }
 
-const Card = ({
-  node,
-  tag,
-  categoryRef,
-  href,
-  className,
-  ...rest
-}: CardProps) => {
-  const { pageProps } = useContext(PagePropsContext);
-  const [category, setCategory] = useState(categoryRef ?? null);
-
-  useEffect(() => {
-    setCategory(categoryRef);
-  }, [categoryRef]);
-
-  useEffect(() => {
-    if (!pageProps?.navigation || !node || !!categoryRef) return;
-    const index = pageProps?.navigation?.headings.findIndex((heading) => {
-      if (heading?.menu) {
-        return (
-          heading.menu
-            .filter((x) => x._type !== "subheading")
-            .find((item) => item.link._id.includes(node.link_ref._id)) ??
-          heading.link_ref._id.includes(node.link_ref._id)
-        );
-      } else {
-        return heading.link_ref._id.includes(node.link_ref._id);
-      }
-    });
-    if (index === -1) {
-      return;
-    }
-    setCategory(pageProps?.navigation.headings[index].category_ref);
-  }, [pageProps?.navigation, node, categoryRef]);
-
-  const tagName = category?.title ?? "";
-
-  if (!category) {
-    return null;
-  }
-
+const Card = ({ node, tag, href, className, ...rest }: CardProps) => {
   return (
     <div
       className={cl(
@@ -64,9 +23,9 @@ const Card = ({
       <div className="mb-6 flex shrink-0 justify-center lg:w-full">
         <img
           aria-hidden
-          alt={category?.picture?.title}
+          alt={node?.picture?.title}
           loading="eager"
-          src={urlFor(category?.picture).auto("format").url()}
+          src={urlFor(node?.picture).auto("format").url()}
         />
       </div>
       <NextLink href={href ?? `/${node?.link_ref?.slug}`} passHref>
@@ -84,20 +43,9 @@ const Card = ({
           {node.title}
         </a>
       </NextLink>
-      <BodyShort
-        className={cl("mb-2 lg:mb-6", { "mb-8 lg:mb-12": !!tag })}
-        data-tag={!!tag}
-      >
+      <BodyShort className={cl("mb-2 lg:mb-6")} data-tag={!!tag}>
         {node.content}
       </BodyShort>
-      {tag && (
-        <Detail
-          size="small"
-          className="absolute bottom-6 font-semibold uppercase text-text-muted"
-        >
-          {tagName}
-        </Detail>
-      )}
     </div>
   );
 };

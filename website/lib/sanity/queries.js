@@ -299,7 +299,6 @@ const dsNavQuery = `"nav": *[_type == 'ds_navigation'][0] {
   "headings": headings[]{
     ...,
     link_ref->{_id, slug},
-    category_ref->{...},
     menu[]{
       ...,
       link->{_id, slug, tags},
@@ -425,7 +424,6 @@ export const dsNavigationQuery = `
   "headings": headings[]{
     ...,
     link_ref->{_id, slug},
-    category_ref->{...},
     menu[]{
       ...,
       link->{_id, slug, tags},
