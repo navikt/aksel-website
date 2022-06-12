@@ -11,7 +11,8 @@
       "@/utils": ["components/website-modules/utils/index.ts"],
       "@/layout": ["components/layout/index.ts"],
       "@/error-boundary": ["components/website-modules/ErrorBoundary.tsx"],
-      "@/sanity-client": ["lib/sanity/sanity.server"]
+      "@/sanity-client": ["lib/sanity/sanity.server"],
+      "@/mockdata": ["lib/testing/mockdata.ts"]
     }
   }
 }

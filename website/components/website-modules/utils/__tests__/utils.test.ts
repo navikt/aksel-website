@@ -1,5 +1,5 @@
+import { mockNav } from "@/mockdata";
 import { capitalize, dateStr, isNew } from "../index";
-import { mockNav } from "../../../layout/page-templates/__tests__/mockdata";
 import { getActiveHeading } from "../util";
 
 describe("Utils test", () => {

@@ -1,7 +1,7 @@
 import { getActiveHeading, LayoutPicker } from "@/components";
 import { DsHeader, DsSidebar, Footer } from "@/layout";
+import { mockArtikkel, mockNav } from "@/mockdata";
 import { PagePropsContext } from "@/utils";
-import { mockArtikkel, mockNav } from "./__tests__/mockdata";
 
 export default {
   title: "Layouts/DsArtikkel",

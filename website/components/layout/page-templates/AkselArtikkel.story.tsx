@@ -1,5 +1,5 @@
 import { LayoutPicker, PagePropsContext } from "@/components";
-import { mockArtikkel } from "./__tests__/mockdata";
+import { mockArtikkel } from "@/mockdata";
 
 export default {
   title: "Layouts/AkselArtikkel",
