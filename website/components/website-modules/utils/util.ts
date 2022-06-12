@@ -45,4 +45,4 @@ export const getActiveHeading = (nav: any, slug = "") =>
     } else {
       return heading?.link_ref?.slug?.current === slug;
     }
-  });
+  }) ?? null;
