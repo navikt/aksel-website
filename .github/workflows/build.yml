@@ -33,10 +33,10 @@ jobs:
         run: yarn test
       - name: Run tests
         run: NEXT_PUBLIC_TEST=true yarn workspace website e2e:ci
-      - name: Build application
-        run: yarn build:next
       - name: Update sanity sync
         run: yarn sanity:update
+      - name: Build application
+        run: yarn build:next
       - name: Login to GitHub Container Registry
         uses: docker/login-action@ab80d026d4753220c4243394c07c7d80f9638d06 # Use commit-sha1 instead of tag for security concerns
         with:

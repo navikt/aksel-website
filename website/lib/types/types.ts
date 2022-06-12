@@ -16,18 +16,6 @@ export type SectionContextT = {
   withinSection: boolean;
 };
 
-/* Query changes internal_link type  */
-export interface RelatedLinkT {
-  _type: "link";
-  title?: string;
-  description?: string;
-  internal?: boolean;
-  internal_link?: string;
-  external_link?: string;
-  category_ref?: any;
-  tags?: "default" | "main_categories";
-}
-
 export type DsNavigationHeadingMenuT = {
   title: string;
   _type: "subheading" | "item";
