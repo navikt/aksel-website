@@ -20,6 +20,19 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  backgrounds: {
+    default: "ds",
+    values: [
+      {
+        name: "ds",
+        value: "#ffffff",
+      },
+      {
+        name: "aksel",
+        value: "#f7f7f7",
+      },
+    ],
+  },
 };
 
 export const decorators = [

@@ -4,7 +4,7 @@
 import { mockArtikkel, mockNav } from "@/mockdata";
 import { getActiveHeading, PagePropsContext } from "@/utils";
 import { render, screen } from "@testing-library/react";
-import DesignsystemSidebar from "../DesignsystemSidebar";
+import DesignsystemSidebar from "./DesignsystemSidebar";
 
 const renderComponent = (withActiveHeading = true) => {
   return render(
