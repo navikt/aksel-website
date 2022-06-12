@@ -9,7 +9,10 @@ const DesignsystemSidebar = () => {
   if (!pageProps?.activeHeading) return null;
 
   return (
-    <div className="algolia-ignore-index z-[1002] hidden w-sidebar shrink-0 self-start  bg-white py-4 pr-2 md:block">
+    <div
+      data-testid="ds-sidebar"
+      className="algolia-ignore-index z-[1002] hidden w-sidebar shrink-0 self-start  bg-white py-4 pr-2 md:block"
+    >
       <Menu heading={pageProps?.activeHeading} />
     </div>
   );

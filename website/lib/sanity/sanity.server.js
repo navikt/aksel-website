@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // lib/sanity.server.js
 import { createClient } from "next-sanity";
 
@@ -11,8 +12,8 @@ const config = {
 // Set up the client for fetching data in the getProps page functions
 export const sanityClient = createClient({
   ...config,
-  // eslint-disable-next-line no-undef
   token: process.env.SANITY_PRIVATE_NO_DRAFTS,
+  ignoreBrowserTokenWarning: process.env.NODE_ENV === "test",
 });
 
 // Set up a preview client with serverless authentication for drafts
@@ -20,6 +21,7 @@ export const previewClient = createClient({
   ...config,
   // eslint-disable-next-line no-undef
   token: process.env.SANITY_PREVIEW_TOKEN,
+  ignoreBrowserTokenWarning: process.env.NODE_ENV === "test",
 });
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
