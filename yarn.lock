@@ -3074,10 +3074,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-css@npm:^0.18.7":
-  version: 0.18.7
-  resolution: "@navikt/ds-css@npm:0.18.7"
-  checksum: 134aa19068db59cf40085da12bb2aa2c5ec322a0babe9265e4fdab5eca68377617b40b43f53aa934cd790e8e7ca40435d8a068896c3926cbef1d883c5fc38116
+"@navikt/ds-css@npm:^0.18.9":
+  version: 0.18.9
+  resolution: "@navikt/ds-css@npm:0.18.9"
+  checksum: d6ffc8c38bf94056b4a992e93f5668f457dbbbc46c5ee77db84531fab6410e25f9955ae6230846a476c9db65d6b52d12d2b3bfdbaa8e88ec1ca3c8df8d536d76
   languageName: node
   linkType: hard
 
@@ -3105,12 +3105,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-react-internal@npm:^0.14.8":
-  version: 0.14.8
-  resolution: "@navikt/ds-react-internal@npm:0.14.8"
+"@navikt/ds-react-internal@npm:^0.14.9":
+  version: 0.14.9
+  resolution: "@navikt/ds-react-internal@npm:0.14.9"
   dependencies:
     "@navikt/ds-icons": ^0.8.17
-    "@navikt/ds-react": ^0.19.8
+    "@navikt/ds-react": ^0.19.9
     "@popperjs/core": ^2.10.1
     classnames: ^2.3.1
     copy-to-clipboard: ^3.3.1
@@ -3118,7 +3118,7 @@ __metadata:
   peerDependencies:
     "@types/react": ^17.0.30 || ^18.0.0
     react: ^17.0.0 || ^18.0.0
-  checksum: bce511503f657c6ceabab9058aaa95a6607025767da3a2709695e1298ba019b8a1d065b70919c339c0046f21ed5eaebf211ef1931bb8f02cf378c9985b4da2c8
+  checksum: d5c470d8bdfef9c88aff00da0c2e7f1416f287cd305f87f059c8840efcd17fe36c0e1ea2ddf482970d9ca9643aaa4f2eacf2e515381a3ccc43272a911c8de22e
   languageName: node
   linkType: hard
 
@@ -3145,9 +3145,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-react@npm:^0.19.8":
-  version: 0.19.8
-  resolution: "@navikt/ds-react@npm:0.19.8"
+"@navikt/ds-react@npm:^0.19.9":
+  version: 0.19.9
+  resolution: "@navikt/ds-react@npm:0.19.9"
   dependencies:
     "@floating-ui/react-dom": 0.6.0
     "@material-ui/core": ^4.12.3
@@ -3164,7 +3164,7 @@ __metadata:
   peerDependencies:
     "@types/react": ^17.0.30 || ^18.0.0
     react: ^17.0.0 || ^18.0.0
-  checksum: 3714836c8afbbccd8a9aca00a7c416d681b1718672b2f9c7824fb074e352b1da812508977d94e4199a8b2662e612de0669375289a0bcbd3d95e8edac251d4176
+  checksum: ee40114667a68ecf4de08c688aa967c7d910e1546a55dd1294b890c8bab57ad1db8cadfe98203ba4c7d86ddbbf97364695374f9a23ed12e6e5cf2ded5ba6288a
   languageName: node
   linkType: hard
 
@@ -28015,11 +28015,11 @@ __metadata:
     "@docsearch/css": 3.0.0
     "@docsearch/react": 3.0.0
     "@mdx-js/react": ^1.6.22
-    "@navikt/ds-css": ^0.18.7
+    "@navikt/ds-css": ^0.18.9
     "@navikt/ds-css-internal": ^0.7.7
     "@navikt/ds-icons": ^0.8.17
-    "@navikt/ds-react": ^0.19.8
-    "@navikt/ds-react-internal": ^0.14.8
+    "@navikt/ds-react": ^0.19.9
+    "@navikt/ds-react-internal": ^0.14.9
     "@navikt/ds-tailwind": ^0.2.6
     "@navikt/ds-tokens": ^0.9.5
     "@next/bundle-analyzer": ^12.1.0
