@@ -311,7 +311,8 @@ TableSandbox.getCode = (props: any) => {
   })}`;
   }
 
-  return `<><Table
+  return `<>
+  <Table
   size="${props?.size}"${props?.zebraStripes ? "\n  zebraStripes" : ""}${
     props?.sortable
       ? `\n  sort={sort}\n  onSortChange={(sortKey) => handleSort(sortKey)}`
@@ -375,9 +376,9 @@ TableSandbox.getCode = (props: any) => {
   page={page}
   onPageChange={setPage}
   count={Math.ceil(data.length / rowsPerPage)}
-/></>`
+/>`
       : ""
-  }`;
+  }</>`;
 };
 
 export default TableSandbox;
