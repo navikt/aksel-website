@@ -20,7 +20,7 @@ export type PropT = {
 };
 
 const Table = ({ prop }: { prop: any }) => (
-  <table className="mb-0 border-separate border-t border-t-divider pt-5 last-of-type:mb-12 last-of-type:border-b last-of-type:border-b-divider">
+  <table className="mb-0 border-separate border-t border-t-divider pt-5 first-of-type:border-t-0 first-of-type:pt-2 last-of-type:mb-8 last-of-type:border-b last-of-type:border-b-divider">
     <caption className="m-0 mb-2 flex flex-col text-left">
       {prop.required && (
         <Detail className="font-semibold text-feedback-danger-text">
@@ -105,9 +105,15 @@ const PropTable = ({ komponent }: { komponent: PropT }): JSX.Element => {
         <summary>Props</summary>
       )}
 
-      <div className="relative mb-8 mt-4 overflow-x-auto">
-        <BodyLong as="ul" className="mb-8">
-          {komponent.overridable && (
+      <div className="relative mb-4 mt-4 overflow-x-auto pb-8">
+        {komponent?.propref?.proplist?.length === 0 && (
+          <BodyShort className="mb-8">
+            Fant ingen props for denne komponenten. Kan hende den er en wrapper,
+            eller bare tar imot children.
+          </BodyShort>
+        )}
+        {komponent.overridable && (
+          <BodyLong as="ul" className="mb-6">
             <li>
               Komponenten er implementert med{" "}
               <NextLink
@@ -117,8 +123,8 @@ const PropTable = ({ komponent }: { komponent: PropT }): JSX.Element => {
                 <Link>OverridableComponent</Link>
               </NextLink>
             </li>
-          )}
-        </BodyLong>
+          </BodyLong>
+        )}
 
         {komponent?.propref?.proplist?.map((prop) => (
           <Table key={prop.name} prop={prop} />
