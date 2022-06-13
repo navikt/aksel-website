@@ -17,6 +17,7 @@ const TextareaSandbox: SandboxComponentT = (props: any) => {
     ...(props?.disabled ? { disabled: true } : {}),
     ...(props?.maxRows ? { maxRows: 3 } : {}),
     ...(props?.minRows ? { minRows: 2 } : {}),
+    ...(props?.resize ? { resize: true } : {}),
   };
 
   return (
@@ -38,6 +39,7 @@ TextareaSandbox.args = {
     maxLength: false,
     minRows: false,
     maxRows: false,
+    resize: false,
   },
 };
 
@@ -50,7 +52,9 @@ TextareaSandbox.getCode = (props: any) => {
     props?.disabled ? "\n  disabled" : ""
   }${props?.maxLength ? "\n  maxLength={40}" : ""}${
     props?.minRows ? "\n  minRows={2}" : ""
-  }${props?.maxRows ? "\n  maxRows={3}" : ""}`;
+  }${props?.maxRows ? "\n  maxRows={3}" : ""}${
+    props?.resize ? "\n  resize" : ""
+  }`;
 
   return `<Textarea
   label="Har du noen tilbakemeldinger?"
