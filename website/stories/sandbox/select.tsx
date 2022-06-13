@@ -18,7 +18,7 @@ const SelectSandbox: SandboxComponentT = (props: any) => {
   return (
     <Select
       {...newProps}
-      label="Velg hvilket land du har bosted i."
+      label="Hvilket land har du bosted i."
       size={props?.size}
     >
       <option value="">Velg land</option>
@@ -51,7 +51,7 @@ SelectSandbox.getCode = (props: any) => {
   }${props?.disabled ? "\n  disabled" : ""}`;
 
   return `<Select
-  label="Velg hvilket land du har bosted i."
+  label="Hvilket land har du bosted i."
   size="${props?.size}"${newProps}
 >
   <option value="">Velg land</option>
