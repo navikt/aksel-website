@@ -10,7 +10,7 @@ const PopoverSandbox: SandboxComponentT = (props: any) => {
 
   useEffect(() => {
     setIsOpen(props?.open === "true" || open);
-  }, [props]);
+  }, [props, open]);
 
   return (
     <>
@@ -40,6 +40,7 @@ PopoverSandbox.args = {
   props: {
     placement: [
       "",
+      "top",
       "bottom",
       "right",
       "left",
