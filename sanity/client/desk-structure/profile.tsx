@@ -16,7 +16,7 @@ export const profilePanel = async (id) => {
 
   if (editor) {
     return S.documentListItem()
-      .title(`Min profil`)
+      .title(`Profil`)
       .schemaType(`editor`)
       .icon(() => <Picture />)
       .id(editor._id);

@@ -53,19 +53,9 @@ const items = [
     .title("Redaktører")
     .icon(() => <People />)
     .child(createSuperPane("editor")),
-  S.listItem()
-    .title("Team")
-    .icon(() => <CoApplicant />)
-    .child(S.documentTypeList("team")),
 
   S.divider(),
 ];
-
-const welcome = S.documentListItem()
-  .title(`Velkommen`)
-  .schemaType(`introduction`)
-  .icon(() => <Information />)
-  .id(`introductionid`);
 
 export default () => {
   return userStore.getCurrentUser().then(async ({ roles, id }) => {
@@ -75,7 +65,7 @@ export default () => {
     const profile = await profilePanel(id);
     const ds = await dsPanel(roles);
     const aksel = await akselInnhold();
-    const intro = [welcome];
+    const intro = [];
 
     profile && intro.push(profile);
 

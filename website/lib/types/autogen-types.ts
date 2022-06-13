@@ -62,22 +62,6 @@ export interface VkFrontpage extends SanityDocument {
 }
 
 /**
- * Team
- *
- *
- */
-export interface Team extends SanityDocument {
-  _type: "team";
-
-  /**
-   * Navn — `string`
-   *
-   *
-   */
-  title?: string;
-}
-
-/**
  * Redaktører
  *
  *
@@ -91,13 +75,6 @@ export interface Editor extends SanityDocument {
    *
    */
   title?: string;
-
-  /**
-   * Team — `array`
-   *
-   *
-   */
-  teams?: Array<SanityKeyedReference<Team>>;
 
   /**
    * Sanity bruker-id — `slug`
@@ -2278,7 +2255,6 @@ export type CodeExampleExample = {
 
 export type Documents =
   | VkFrontpage
-  | Team
   | Editor
   | Navigation
   | Introduction

@@ -3,7 +3,6 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 
 /* Schemas */
 /* Documents */
-import team from "./documents/team";
 import editors from "./documents/editors";
 import navigation, { dropdown, link } from "./documents/navigation";
 import frontpage from "./documents/frontpage";
@@ -12,7 +11,6 @@ import * as Designsystem from "./documents/designsystem";
 import * as Aksel from "./documents/aksel";
 import * as SanityModules from "./old-template";
 import * as RichText from "./old-template/rich-text";
-import introduction from "./documents/introduction";
 import v2Blocks from "./modules";
 
 export default createSchema({
@@ -20,12 +18,10 @@ export default createSchema({
   types: schemaTypes.concat([
     ...v2Blocks,
     frontpage,
-    team,
     editors,
     navigation,
     link,
     dropdown,
-    introduction,
 
     /* Gammel template, fjernets etterhvert */
     SanityModules.Alert,

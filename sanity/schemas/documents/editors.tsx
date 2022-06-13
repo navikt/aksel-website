@@ -16,12 +16,6 @@ export default {
       validation: (Rule) => Rule.required().error("Må legge til navn"),
     },
     {
-      title: "Team",
-      name: "teams",
-      type: "array",
-      of: [{ type: "reference", to: [{ type: "team" }] }],
-    },
-    {
       title: "Sanity bruker-id",
       name: "user_id",
       type: "slug",

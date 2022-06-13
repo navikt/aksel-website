@@ -46,18 +46,6 @@ Rekkefølge bestemmer rekkefølgen på forsiden!
     }
 
     /**
-     * Team
-     */
-    interface team extends Sanity.Document {
-      _type: "team";
-
-      /**
-       * Navn - `String`
-       */
-      title?: string;
-    }
-
-    /**
      * Redaktører
      */
     interface editor extends Sanity.Document {
@@ -67,11 +55,6 @@ Rekkefølge bestemmer rekkefølgen på forsiden!
        * Navn - `String`
        */
       title?: string;
-
-      /**
-       * Team - `Array`
-       */
-      teams?: Array<Sanity.KeyedReference<team>>;
 
       /**
        * Sanity bruker-id - `Slug`
@@ -105,23 +88,6 @@ Linker eller dropdowns med linker. Maks dybde på 2 dropdowns er støttet. Sider
       sidemenu?: Array<
         Sanity.Keyed<navigation_dropdown> | Sanity.Keyed<navigation_link>
       >;
-    }
-
-    /**
-     * Velkommen!
-     */
-    interface introduction extends Sanity.Document {
-      _type: "introduction";
-
-      /**
-       * Navn - `String`
-       */
-      title?: string;
-
-      /**
-       * Intro - `String`
-       */
-      view?: string;
     }
 
     /**
@@ -2006,10 +1972,8 @@ Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via
 
     type Document =
       | vk_frontpage
-      | team
       | editor
       | navigation
-      | introduction
       | ds_code_example
       | ds_code_sandbox
       | ds_color_categories
