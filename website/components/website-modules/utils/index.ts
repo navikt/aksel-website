@@ -8,7 +8,7 @@ import nbLocale from "date-fns/locale/nb";
 import { format } from "date-fns";
 
 export const dateStr = (date: string) =>
-  format(new Date(date), "d.MMM.YYY", { locale: nbLocale });
+  format(new Date(date), "d. MMM YYY", { locale: nbLocale });
 
 export const isNew = (date: string) => {
   const date1 = new Date(date);
