@@ -3,12 +3,12 @@ import { Divider, Dropdown } from "@navikt/ds-react-internal";
 import React from "react";
 import { SandboxComponentT } from "./types";
 
-const DropdownSandbox: SandboxComponentT = () => {
+const DropdownSandbox: SandboxComponentT = (props: any) => {
   return (
-    <div className="h-60">
+    <div>
       <Dropdown>
         <Button as={Dropdown.Toggle}>Toggle</Button>
-        <Dropdown.Menu>
+        <Dropdown.Menu placement={props?.placement || undefined}>
           <Dropdown.Menu.GroupedList>
             <Dropdown.Menu.GroupedList.Heading>
               Systemer og oppslagsverk
@@ -31,10 +31,30 @@ const DropdownSandbox: SandboxComponentT = () => {
   );
 };
 
-DropdownSandbox.getCode = () => {
+DropdownSandbox.args = {
+  props: {
+    placement: [
+      "",
+      "top",
+      "bottom",
+      "right",
+      "left",
+      "top-start",
+      "top-end",
+      "bottom-start",
+      "bottom-end",
+      "right-start",
+      "right-end",
+      "left-start",
+      "left-end",
+    ],
+  },
+};
+
+DropdownSandbox.getCode = (props: any) => {
   return `<Dropdown>
   <Button as={Dropdown.Toggle}>Toggle</Button>
-  <Dropdown.Menu>
+  <Dropdown.Menu${props?.placement ? ` placement="${props?.placement}"` : ""}>
     <Dropdown.Menu.GroupedList>
       <Dropdown.Menu.GroupedList.Heading>
         Systemer og oppslagsverk
