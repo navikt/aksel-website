@@ -18,7 +18,15 @@ const LoaderSandbox: SandboxComponentT = (props: any) => {
 LoaderSandbox.args = {
   props: {
     variant: ["neutral", "interaction", "inverted"],
-    size: ["2xlarge", "xlarge", "large", "medium", "small", "xsmall", ""],
+    size: [
+      "3xlarge",
+      "2xlarge",
+      "xlarge",
+      "large",
+      "medium",
+      "small",
+      "xsmall",
+    ],
     title: "venter...",
     transparent: false,
   },
