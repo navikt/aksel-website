@@ -31,7 +31,8 @@
   },
   "ts-node": {
     "compilerOptions": {
-      "module": "commonjs"
+      "module": "commonjs",
+      "lib": ["dom", "dom.iterable", "esnext", "ES2021.String"]
     }
   },
   "include": ["next-env.d.ts", "lib/types/schema.d.ts", "**/*.ts", "**/*.tsx"],
