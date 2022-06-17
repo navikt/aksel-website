@@ -5,7 +5,7 @@
 
 ## Innhold
 
-Repoet inneholder all kode for cms og nettside til [Aksel.nav.no](https://aksel.nav.no/)
+Repoet inneholder all kode for cms og nettside til [aksel.nav.no](https://aksel.nav.no/)
 
 ### /Website
 
@@ -20,7 +20,7 @@ Begge løsningene gjenbruker for det meste de samme modulene under website/compo
 
 ### /sanity
 
-[sanity.io](https://www.sanity.io/) studioet sin kode er forvaltet her. Det publiserte studioet finner man på [Aksel.nav.no/studio](Aksel.nav.no/studio).
+[sanity.io](https://www.sanity.io/) studioet sin kode er forvaltet her. Det publiserte studioet finner man på [aksel.nav.no/studio](https://aksel.nav.no/studio).
 
 `production`-datasettet er privat da løsningen etterhvert skal tilby innloggede sider, så man må ha riktige tilganger for å kunne lese/jobbe med dataen der. `schemas` for datasettet finnes under `sanity/schemas`, mens de fleste tilpassninger av selve studioet finnes under `sanity/client`
 
