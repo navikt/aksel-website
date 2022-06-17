@@ -1,18 +1,17 @@
-import { getTemaSlug, SanityT } from "@/lib";
+import { SanityT } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
-import { BodyShort, Heading, Ingress, Link } from "@navikt/ds-react";
+import { BodyShort, Heading, Ingress } from "@navikt/ds-react";
 import Head from "next/head";
-import NextLink from "next/link";
 import React from "react";
 import { dateStr, Feedback, UnderArbeid } from "../..";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
 
-const AkselArtikkelTemplate = ({
+const AkselBloggTemplate = ({
   data,
   title,
 }: {
-  data: SanityT.Schema.aksel_artikkel;
+  data: SanityT.Schema.aksel_blogg;
   title: string;
 }): JSX.Element => {
   if (!data.innhold || !data.heading) {
@@ -20,8 +19,6 @@ const AkselArtikkelTemplate = ({
   }
 
   const authors = (data?.contributors as any)?.map((x) => x?.title);
-
-  const hasTema = "tema" in data && data.tema && data?.tema.length > 0;
 
   return (
     <>
@@ -40,23 +37,6 @@ const AkselArtikkelTemplate = ({
       >
         <div className="px-4">
           <div className="mx-auto max-w-prose xs:w-[90%]">
-            <div>
-              {hasTema &&
-                data.tema.map(({ title }: any, y) => (
-                  <>
-                    {y !== 0 && `, `}
-                    <NextLink
-                      key={title}
-                      href={`/tema/${getTemaSlug(title)}`}
-                      passHref
-                    >
-                      <Link className="algolia-index-lvl5 text-base font-semibold uppercase text-text">
-                        {title}
-                      </Link>
-                    </NextLink>
-                  </>
-                ))}
-            </div>
             <Heading
               level="1"
               size="xlarge"
@@ -101,4 +81,4 @@ const AkselArtikkelTemplate = ({
   );
 };
 
-export default AkselArtikkelTemplate;
+export default AkselBloggTemplate;

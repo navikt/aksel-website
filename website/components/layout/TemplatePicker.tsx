@@ -9,6 +9,7 @@ import {
   SanityT,
 } from "@/lib";
 import AkselArtikkelTemplate from "./page-templates/AkselArtikkel";
+import AkselBloggTemplate from "./page-templates/AkselBlogg";
 import ArtikkelTemplate from "./page-templates/Artikkel";
 import ArtikkelTabbedTemplate from "./page-templates/ArtikkelTabbed";
 import ComponentPageTemplate from "./page-templates/ComponentPageTemplate";
@@ -69,7 +70,7 @@ const templates: templateT = {
       <ArtikkelTemplate {...props} />
     ),
   aksel_artikkel: (props) => <AkselArtikkelTemplate {...props} />,
-  aksel_blogg: (props) => <AkselArtikkelTemplate {...props} />,
+  aksel_blogg: (props) => <AkselBloggTemplate {...props} />,
   aksel_prinsipp: (props) => <AkselPrinsippTemplate {...props} />,
 };
 

@@ -1,4 +1,4 @@
-import { BodyShort, Detail, Heading } from "@navikt/ds-react";
+import { BodyShort, Heading } from "@navikt/ds-react";
 import cl from "classnames";
 import NextLink from "next/link";
 import React from "react";
