@@ -313,7 +313,10 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
                         </NextLink>
                       ))}
                     </div>
-                    <Link className="mt-6 inline-block text-gray-800" href="#">
+                    <Link
+                      className="mt-6 inline-block text-gray-800"
+                      href={`/${tekster.prinsipp_1.hovedside.slug.current}`}
+                    >
                       Utforsk alle prinsippene
                     </Link>
                   </div>
