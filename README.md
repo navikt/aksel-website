@@ -28,7 +28,7 @@ Begge løsningene gjenbruker for det meste de samme modulene under website/compo
 
 ### Bidrag
 
-Branch `main` blir pusher rett til prod å da aksel.nav.no. For å utvikle nye features brukes branch `NEXT` som
+Branch `main` blir pusher rett til prod og da aksel.nav.no. For å utvikle nye features brukes branch `NEXT` som
 ved push publiseres til devmiljø aksel.dev.nav.no (krever naisdevice).
 
 ### Nettside (localhost:3000)
