@@ -1431,21 +1431,7 @@ export const mockBlogg = {
               _key: "04985729631f0",
               _type: "span",
               marks: [],
-              text: "Hver måned er det 1 million mennesker som starter besøket sitt på forsiden av nav.no.",
-            },
-          ],
-          markDefs: [],
-          style: "normal",
-        },
-        {
-          _key: "3a8b6d17c421",
-          _type: "block",
-          children: [
-            {
-              _key: "f6f10631a67d",
-              _type: "span",
-              marks: [],
-              text: "Forsiden får 70% av sidetreffene hver dag. For mange er det den første siden de ser på nav.no.",
+              text: "Hver måned er det 1 million mennesker som starter besøket sitt på forsiden av nav.no. Forsiden får 70% av sidetreffene hver dag. For mange er det den første siden de ser på nav.no.",
             },
           ],
           markDefs: [],

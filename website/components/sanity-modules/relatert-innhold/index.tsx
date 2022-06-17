@@ -29,7 +29,7 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
       {node.lenker.map((x) => (
         <div
           key={x._key}
-          className="algolia-ignore-index group relative cursor-pointer rounded border-2 border-transparent bg-white px-4 py-3 shadow-small only-of-type:col-span-2 focus-within:border-focus focus-within:outline-none hover:border-link"
+          className="relatert-kort algolia-ignore-index group relative cursor-pointer rounded border-2 border-transparent bg-white px-4 py-3 shadow-small ring-1 ring-gray-900/5 only-of-type:col-span-2 focus-within:border-focus focus-within:outline-none hover:border-link"
         >
           <NextLink href={getHref(x)} passHref>
             <Heading
@@ -54,6 +54,15 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
           >
             {x.ekstern_domene ? <>{getTag(x)}</> : `aksel.nav.no`}
           </BodyShort>
+          {/*   <style>{`
+          .relatert-kort{
+            background-color: var(--navds-global-color-gray-50);
+            border: 1px solid var(--navds-global-color-blue-300);
+            box-shadow: none;
+          }
+          .aksel-artikkel .relatert-kort{
+            background-color: white;
+          }`}</style> */}
         </div>
       ))}
     </div>

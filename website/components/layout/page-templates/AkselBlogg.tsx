@@ -36,20 +36,23 @@ const AkselBloggTemplate = ({
         className="aksel-artikkel bg-orange-50 pt-[8vw] pb-16 focus:outline-none xs:pb-32"
       >
         <div className="px-4">
-          <div className="mx-auto max-w-prose xs:w-[90%]">
+          <div className="mx-auto max-w-prose text-center xs:w-[90%]">
             <Heading
               level="1"
               size="xlarge"
-              className="algolia-index-lvl1 mt-1"
+              className="algolia-index-lvl1 mt-1 text-5xl"
             >
               {data.heading}
             </Heading>
             {data?.ingress && (
               <Ingress className="mt-4">{data?.ingress}</Ingress>
             )}
-            <div className="mt-6">
+            <div className="mt-8 inline-flex flex-wrap gap-2 text-base">
               <BodyShort size="small" as="address" className="not-italic">
                 {authors?.[0] ?? ""}
+              </BodyShort>
+              <BodyShort size="small" className="text-text-muted" as="span">
+                {authors?.[0] && "—"}
               </BodyShort>
               <BodyShort size="small" as="span" className="text-text-muted">
                 {dateStr(data._createdAt)}
@@ -57,7 +60,7 @@ const AkselBloggTemplate = ({
             </div>
           </div>
         </div>
-        <div className="mt-12">
+        <div className="mt-16">
           <div className="mt-8 px-4">
             {data?.under_arbeid?.status ? (
               <UnderArbeid text={data?.under_arbeid?.forklaring} />
