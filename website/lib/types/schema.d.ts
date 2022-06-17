@@ -272,6 +272,12 @@ Prøver å hente React og HTML kode automatisk fra storybook
       _type: "ds_component_page";
 
       /**
+       * Publiseringsdato - `Datetime`
+Synlig bare for admins. Setter publiseringsdato for dokument
+       */
+      publishedAt?: string;
+
+      /**
        * Redaktører - `Array`
 Legg til alle som har bidratt med denne siden!
        */
@@ -328,6 +334,12 @@ Kobler komponenten til en pakke
      */
     interface ds_component_template extends Sanity.Document {
       _type: "ds_component_template";
+
+      /**
+       * Publiseringsdato - `Datetime`
+Synlig bare for admins. Setter publiseringsdato for dokument
+       */
+      publishedAt?: string;
 
       /**
        * Redaktører - `Array`
@@ -575,6 +587,12 @@ Kobler komponenten til en pakke og da om den er core/intern/navno. Alle tilgjeng
       _type: "komponent_artikkel";
 
       /**
+       * Publiseringsdato - `Datetime`
+Synlig bare for admins. Setter publiseringsdato for dokument
+       */
+      publishedAt?: string;
+
+      /**
        * Redaktører - `Array`
 Legg til alle som har bidratt med denne siden!
        */
@@ -652,6 +670,12 @@ Kobler komponenten til en pakke
      */
     interface ds_artikkel extends Sanity.Document {
       _type: "ds_artikkel";
+
+      /**
+       * Publiseringsdato - `Datetime`
+Synlig bare for admins. Setter publiseringsdato for dokument
+       */
+      publishedAt?: string;
 
       /**
        * Redaktører - `Array`
@@ -764,6 +788,12 @@ Gjemmer <<Var denne artikkelen til hjelp?>> modulen.
       _type: "aksel_artikkel";
 
       /**
+       * Publiseringsdato - `Datetime`
+Synlig bare for admins. Setter publiseringsdato for dokument
+       */
+      publishedAt?: string;
+
+      /**
        * Redaktører - `Array`
 Legg til alle som har bidratt med denne siden!
        */
@@ -835,6 +865,12 @@ Default: Siden blir for tiden oppdatert!
      */
     interface aksel_blogg extends Sanity.Document {
       _type: "aksel_blogg";
+
+      /**
+       * Publiseringsdato - `Datetime`
+Synlig bare for admins. Setter publiseringsdato for dokument
+       */
+      publishedAt?: string;
 
       /**
        * Redaktører - `Array`
@@ -956,6 +992,12 @@ Del inn artiklene i flere seksjoner (vises ikke i preview før publisering desve
      */
     interface aksel_prinsipp extends Sanity.Document {
       _type: "aksel_prinsipp";
+
+      /**
+       * Publiseringsdato - `Datetime`
+Synlig bare for admins. Setter publiseringsdato for dokument
+       */
+      publishedAt?: string;
 
       /**
        * Redaktører - `Array`
