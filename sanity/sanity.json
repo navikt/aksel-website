@@ -61,6 +61,10 @@
     {
       "implements": "part:@sanity/form-builder/input/file/asset-sources",
       "path": "./client/assetSources.ts"
+    },
+    {
+      "implements": "part:@sanity/base/document-actions/resolver",
+      "path": "./client/resolveDocumentActions.tsx"
     }
   ]
 }

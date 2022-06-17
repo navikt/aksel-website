@@ -2,6 +2,7 @@ import {
   defaultDocPreview,
   editorField,
   groups,
+  publishedAtField,
   sanitySlug,
   titleField,
 } from "@/lib";
@@ -16,6 +17,7 @@ export default {
   groups,
   ...defaultDocPreview,
   fields: [
+    publishedAtField,
     editorField,
     titleField,
     sanitySlug(prefix, 3),

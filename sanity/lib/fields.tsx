@@ -11,6 +11,16 @@ export const editorField = {
   group: "settings",
 };
 
+export const publishedAtField = {
+  title: "Publiseringsdato",
+  name: "publishedAt",
+  type: "datetime",
+  group: "settings",
+  description: "Synlig bare for admins. Setter publiseringsdato for dokument",
+  hidden: ({ currentUser }) =>
+    !currentUser.roles.find((x) => x.name === "administrator"),
+};
+
 export const titleField = {
   title: "Sidetittel",
   name: "heading",

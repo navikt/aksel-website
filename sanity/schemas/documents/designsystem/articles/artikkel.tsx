@@ -3,6 +3,7 @@ import {
   editorField,
   groups,
   hidePageFeedback,
+  publishedAtField,
   sanitySlug,
   titleField,
   toPlainText,
@@ -45,6 +46,7 @@ export default {
   groups,
   ...defaultDocPreview,
   fields: [
+    publishedAtField,
     editorField,
     titleField,
     UnderArbeidField,

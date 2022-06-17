@@ -2,6 +2,7 @@ import {
   defaultDocPreview,
   editorField,
   groups,
+  publishedAtField,
   sanitySlug,
   titleField,
   UnderArbeidField,
@@ -28,6 +29,7 @@ export default {
   groups,
   ...defaultDocPreview,
   fields: [
+    publishedAtField,
     editorField,
     titleField,
     UnderArbeidField,

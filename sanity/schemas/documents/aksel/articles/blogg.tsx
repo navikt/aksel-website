@@ -4,6 +4,7 @@ import {
   groups,
   ingressField,
   innholdField,
+  publishedAtField,
   sanitySlug,
   titleField,
   UnderArbeidField,
@@ -18,6 +19,7 @@ export default {
   groups,
   ...defaultDocPreview,
   fields: [
+    publishedAtField,
     editorField,
     titleField,
     sanitySlug(prefix, 2),

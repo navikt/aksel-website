@@ -6,6 +6,7 @@ import {
   innholdField,
   isSlugUnique,
   prinsipper,
+  publishedAtField,
   titleField,
   UnderArbeidField,
 } from "@/lib";
@@ -22,6 +23,7 @@ export default {
   groups,
   ...defaultDocPreview,
   fields: [
+    publishedAtField,
     editorField,
     titleField,
     {
