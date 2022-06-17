@@ -3074,10 +3074,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-css@npm:^0.18.14":
-  version: 0.18.14
-  resolution: "@navikt/ds-css@npm:0.18.14"
-  checksum: e7706e5d5b42a6109444be9a011192d8c7341df80983ed80677298f06748cf1940deb63733cabac1675a8733ac378d7c5529e6a4688930ba1f5b077e3ad0a224
+"@navikt/ds-css@npm:^0.18.15":
+  version: 0.18.15
+  resolution: "@navikt/ds-css@npm:0.18.15"
+  checksum: eaaa087fbd3bf5252454d3c6f5c97cc59cdd818835ae221abcad688d53386449ecc9531f10a9d610c8ee843b474e515512d53468a096c033ccc54facd470c22f
   languageName: node
   linkType: hard
 
@@ -3105,12 +3105,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-react-internal@npm:^0.14.14":
-  version: 0.14.14
-  resolution: "@navikt/ds-react-internal@npm:0.14.14"
+"@navikt/ds-react-internal@npm:^0.14.15":
+  version: 0.14.15
+  resolution: "@navikt/ds-react-internal@npm:0.14.15"
   dependencies:
     "@navikt/ds-icons": ^0.8.17
-    "@navikt/ds-react": ^0.19.13
+    "@navikt/ds-react": ^0.19.14
     "@popperjs/core": ^2.10.1
     classnames: ^2.3.1
     copy-to-clipboard: ^3.3.1
@@ -3118,7 +3118,7 @@ __metadata:
   peerDependencies:
     "@types/react": ^17.0.30 || ^18.0.0
     react: ^17.0.0 || ^18.0.0
-  checksum: 376adb71a2c59fc9cc7d4d0bf373729e70385685c9744f87be65a8ca320d20e47fec5eb5b27b20453262d95fee23cf8f392d24fd52f25ee1c10d40e344a394ca
+  checksum: b91f76d1cbf2d80cafefa156ed9a29d4ed23a16a058a33bff6edde7c86de60ba14bb759067a82e343b93ece12c3925142a4d458468b9b7ecc7483dea23750d0b
   languageName: node
   linkType: hard
 
@@ -3145,9 +3145,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-react@npm:^0.19.13":
-  version: 0.19.13
-  resolution: "@navikt/ds-react@npm:0.19.13"
+"@navikt/ds-react@npm:^0.19.14":
+  version: 0.19.14
+  resolution: "@navikt/ds-react@npm:0.19.14"
   dependencies:
     "@floating-ui/react-dom": 0.6.0
     "@material-ui/core": ^4.12.3
@@ -3164,21 +3164,21 @@ __metadata:
   peerDependencies:
     "@types/react": ^17.0.30 || ^18.0.0
     react: ^17.0.0 || ^18.0.0
-  checksum: e7274036e40d11d0c4193b340fcefa85113ade34b891f6d1b9ba003fa14db676ae8fde3dda9ee667539670f82eec0b1e8c9cf14829458c0d326010224eea0c14
+  checksum: cadaf301f050822903d64f446f4f7846828eacc57766acf7c7ea5b93a9ecfad99c12dc76260a43de840cb62a1bb01fea622d71f8cc8c3e6890361e6e09b3b6b5
   languageName: node
   linkType: hard
 
-"@navikt/ds-tailwind@npm:^0.2.6":
-  version: 0.2.6
-  resolution: "@navikt/ds-tailwind@npm:0.2.6"
-  checksum: 75b006ccc72c203f003cf3a2cfda139bed69bb5cb885d417eb09078f494e9dc4e053e178a3c526e0692b47969051a818cecd300e9d8f519e822e4d3c5a42c1f1
+"@navikt/ds-tailwind@npm:^0.2.7":
+  version: 0.2.7
+  resolution: "@navikt/ds-tailwind@npm:0.2.7"
+  checksum: 461365a8bb39b066a58387caf398b5e9248cb28f0aca2fb79713d8aaf636a77ae7fde3279719ced1f999ad2ad5987607da4c1e55f4a9300eab1528157cbf3e12
   languageName: node
   linkType: hard
 
-"@navikt/ds-tokens@npm:^0.9.5":
-  version: 0.9.5
-  resolution: "@navikt/ds-tokens@npm:0.9.5"
-  checksum: 40dbea7936e4c2ba113b2d556abd8175db7567dd10b707406350b4997d1b2efa8ad4b9639d39da685e3063ecfb1e8d8fc511ad5e813464487dcfa12b272d0406
+"@navikt/ds-tokens@npm:^0.9.6":
+  version: 0.9.6
+  resolution: "@navikt/ds-tokens@npm:0.9.6"
+  checksum: d646fd60603de63d9f8e3714951fe585d485fa0d9252e995799a3d490d6bc6ae6aae2b3517fa515eb9f22db25e2411fa4ff4a06c05c049197e00bfd177cfba0b
   languageName: node
   linkType: hard
 
@@ -28015,13 +28015,13 @@ __metadata:
     "@docsearch/css": 3.0.0
     "@docsearch/react": 3.0.0
     "@mdx-js/react": ^1.6.22
-    "@navikt/ds-css": ^0.18.14
+    "@navikt/ds-css": ^0.18.15
     "@navikt/ds-css-internal": ^0.7.7
     "@navikt/ds-icons": ^0.8.17
-    "@navikt/ds-react": ^0.19.13
-    "@navikt/ds-react-internal": ^0.14.14
-    "@navikt/ds-tailwind": ^0.2.6
-    "@navikt/ds-tokens": ^0.9.5
+    "@navikt/ds-react": ^0.19.14
+    "@navikt/ds-react-internal": ^0.14.15
+    "@navikt/ds-tailwind": ^0.2.7
+    "@navikt/ds-tokens": ^0.9.6
     "@next/bundle-analyzer": ^12.1.0
     "@sanity-codegen/types": 1.0.0-alpha.13
     "@sanity/block-content-to-react": ^3.0.0
