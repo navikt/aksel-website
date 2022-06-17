@@ -75,7 +75,7 @@ const AkselArtikkelTemplate = ({
                 {authors?.[0] && "—"}
               </BodyShort>
               <BodyShort size="small" as="span" className="text-text-muted">
-                {dateStr(data._createdAt)}
+                {dateStr(data?.publishedAt ?? data._createdAt)}
               </BodyShort>
             </div>
           </div>
