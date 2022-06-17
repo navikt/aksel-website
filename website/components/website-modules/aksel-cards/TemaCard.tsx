@@ -13,7 +13,7 @@ export const TemaCard = ({
   return (
     <NextLink href={`/tema/${getTemaSlug(title)}`} passHref>
       <a
-        className="group relative rounded-r-md bg-orange-100 shadow transition-colors ease-in-out hover:bg-white focus:shadow-focus focus:outline-none sm:shadow-md"
+        className="group relative rounded-r-md rounded-l bg-white shadow transition-colors ease-in-out focus:shadow-focus focus:outline-none sm:shadow-md"
         onClick={(e) =>
           logNav(
             "temakort",
@@ -24,7 +24,7 @@ export const TemaCard = ({
       >
         <div
           aria-hidden="true"
-          className="absolute inset-y-0 left-0 w-3 bg-orange-300 group-hover:bg-deepblue-600/20"
+          className="absolute inset-y-0 left-0 w-3 rounded-l bg-orange-200 group-hover:bg-orange-300"
         />
         <div
           className={cl("grid h-full justify-items-start gap-2 px-6 ", {
@@ -44,7 +44,7 @@ export const TemaCard = ({
           {refCount && (
             <BodyShort
               size="small"
-              className="mt-auto border-t-4 border-orange-300 pt-2 uppercase opacity-80 group-hover:border-deepblue-600/20"
+              className="mt-auto border-t-4 border-orange-200 pt-2 uppercase opacity-80 group-hover:border-orange-300"
             >
               {refCount} artikler
             </BodyShort>

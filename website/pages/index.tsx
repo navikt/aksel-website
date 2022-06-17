@@ -33,7 +33,7 @@ const Portaler = () => {
             onClick={(e) => logPortalCard(e)}
             className="group flex items-center gap-2 focus:shadow-focus-inverted focus:outline-none"
           >
-            <div className="grid aspect-square w-12 shrink-0 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
+            <div className="grid aspect-square w-12 shrink-0 place-items-center rounded-full bg-blue-400 group-hover:bg-white group-hover:text-deepblue-900">
               <svg
                 className="h-7 w-7"
                 width="48"
@@ -68,9 +68,9 @@ const Portaler = () => {
         <NextLink href="https://identitet.nav.no/">
           <a
             onClick={(e) => logPortalCard(e)}
-            className="group flex items-center gap-2 focus:shadow-focus-inverted focus:outline-none"
+            className=" group flex items-center gap-2 focus:shadow-focus-inverted focus:outline-none"
           >
-            <div className="grid aspect-square w-12 shrink-0 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
+            <div className="grid aspect-square w-12 shrink-0 place-items-center rounded-full bg-blue-400 group-hover:bg-white group-hover:text-deepblue-900">
               <svg
                 className="h-7 w-7"
                 width="48"
@@ -107,7 +107,7 @@ const Portaler = () => {
             onClick={(e) => logPortalCard(e)}
             className="group flex items-center gap-2 focus:shadow-focus-inverted focus:outline-none"
           >
-            <div className="grid aspect-square w-12 shrink-0 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
+            <div className=" grid aspect-square w-12 shrink-0 place-items-center rounded-full  bg-blue-400  group-hover:bg-white group-hover:text-deepblue-900">
               <svg
                 className="h-7 w-7"
                 width="48"
@@ -142,9 +142,9 @@ const Portaler = () => {
         <NextLink href="https://etterlevelse.intern.nav.no/">
           <a
             onClick={(e) => logPortalCard(e)}
-            className="group flex items-center gap-2 focus:shadow-focus-inverted focus:outline-none"
+            className="group flex items-center gap-2  focus:shadow-focus-inverted focus:outline-none"
           >
-            <div className="grid aspect-square w-12 shrink-0 place-items-center rounded-full bg-deepblue-500/80 group-hover:bg-white group-hover:text-deepblue-900">
+            <div className="border-400/20 grid aspect-square w-12 shrink-0 place-items-center rounded-full  bg-blue-400  group-hover:bg-white group-hover:text-deepblue-900">
               <svg
                 className="h-7 w-7"
                 width="48"
