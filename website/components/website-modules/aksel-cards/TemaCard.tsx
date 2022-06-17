@@ -35,9 +35,7 @@ export const TemaCard = ({
           <Heading
             level="3"
             size="medium"
-            className={cl("mb-4 text-2xl xl:text-3xl", {
-              "xl:mb-4": !compact,
-            })}
+            className="mb-4 text-2xl xl:text-3xl"
           >
             {title}
           </Heading>
