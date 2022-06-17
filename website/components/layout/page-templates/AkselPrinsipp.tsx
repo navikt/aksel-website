@@ -47,9 +47,12 @@ const AkselPrinsippTemplate = ({
             {data?.ingress && (
               <Ingress className="mt-4">{data?.ingress}</Ingress>
             )}
-            <div className="mt-6">
+            <div className="mt-6 inline-flex flex-wrap gap-2 text-base">
               <BodyShort size="small" as="address" className="not-italic">
                 {authors?.[0] ?? ""}
+              </BodyShort>
+              <BodyShort size="small" className="text-text-muted/40" as="span">
+                {authors?.[0] && "—"}
               </BodyShort>
               <BodyShort size="small" as="span" className="text-text-muted">
                 {dateStr(data._createdAt)}

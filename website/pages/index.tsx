@@ -365,7 +365,7 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
                       size="xsmall"
                       className="uppercase tracking-widest"
                     >
-                      Bloggen
+                      Blogg
                     </Heading>
                     <div className="mt-1 divide-y divide-gray-200">
                       {/* Blogg-kort */}

@@ -51,7 +51,7 @@ const AkselBloggTemplate = ({
               <BodyShort size="small" as="address" className="not-italic">
                 {authors?.[0] ?? ""}
               </BodyShort>
-              <BodyShort size="small" className="text-text-muted" as="span">
+              <BodyShort size="small" className="text-text-muted/40" as="span">
                 {authors?.[0] && "—"}
               </BodyShort>
               <BodyShort size="small" as="span" className="text-text-muted">
