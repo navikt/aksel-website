@@ -238,7 +238,7 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
                   className="fill-deepblue-700"
                 ></polygon>
               </svg>
-              <div className="relative z-10 mx-auto -mt-14 max-w-aksel xs:w-[90%]">
+              <div className="relative z-10 mx-auto -mt-16 max-w-aksel xs:w-[90%]">
                 <Heading
                   level="2"
                   size="small"

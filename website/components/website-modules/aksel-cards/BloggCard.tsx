@@ -20,7 +20,7 @@ export const BloggCard = ({
       <Detail
         as="time"
         size="small"
-        className="col-span-2 font-semibold uppercase tracking-wide text-text-muted xs:col-span-1"
+        className="col-span-2 uppercase tracking-wide text-text-muted xs:col-span-1"
         dateTime={dateStr(blog._createdAt)}
       >
         {dateStr(blog._createdAt)}
