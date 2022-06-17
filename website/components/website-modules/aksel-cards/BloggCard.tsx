@@ -21,9 +21,9 @@ export const BloggCard = ({
         as="time"
         size="small"
         className="col-span-2 uppercase tracking-wide text-text-muted xs:col-span-1"
-        dateTime={dateStr(blog._createdAt)}
+        dateTime={dateStr(blog?.publishedAt ?? blog._createdAt)}
       >
-        {dateStr(blog._createdAt)}
+        {dateStr(blog?.publishedAt ?? blog._createdAt)}
       </Detail>
       <Heading
         level="3"
