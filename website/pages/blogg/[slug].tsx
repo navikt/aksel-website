@@ -45,6 +45,8 @@ export const getServerSideProps: GetServerSideProps = async (
       })
     : [];
 
+  console.log(JSON.stringify({ ...doc, ...editors }));
+
   return {
     props: {
       page: { ...doc, ...editors },
