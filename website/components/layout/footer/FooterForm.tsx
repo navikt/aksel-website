@@ -71,7 +71,7 @@ const FooterForm = () => {
   }, [asPath]);
 
   return (
-    <div className="flex max-w-xl flex-col gap-8">
+    <>
       <div>
         <Label spacing>Hvordan komme i kontakt?</Label>
         <BodyShort as="ul">
@@ -93,52 +93,56 @@ const FooterForm = () => {
           </li>
         </BodyShort>
       </div>
-      {sent ? (
-        <div>
-          <Label spacing>Melding er sendt til designsystemet</Label>
-          <BodyLong>Takk skal du ha! Vi svarer deg så fort som mulig.</BodyLong>
-        </div>
-      ) : (
-        <form onSubmit={(e) => handleSubmit(e)} className="max-w-sm">
-          <Fieldset
-            className="mb-4 flex flex-col gap-4"
-            legend="Send en melding til designsystemet."
-            hideLegend
-          >
-            <Textarea
-              className="inverted-textarea"
-              error={contentError.content}
-              autoComplete="off"
-              label="Skriv til oss"
-              value={contactForm.content}
-              onChange={(e) => {
-                setContactForm({ ...contactForm, content: e.target.value });
-                e.target.value &&
-                  !isEmpty(e.target.value, { ignore_whitespace: true }) &&
-                  setContentError({ ...contentError, content: "" });
-              }}
-              minRows={2}
-            />
-            <TextField
-              className="inverted-textfield"
-              label="Vi svarer til e-post (valgfritt)"
-              error={contentError.mail}
-              value={contactForm.mail}
-              autoComplete="work email"
-              onChange={(e) => {
-                setContactForm({ ...contactForm, mail: e.target.value });
-                e.target.value &&
-                  isEmail(e.target.value) &&
-                  setContentError({ ...contentError, mail: "" });
-              }}
-            />
-          </Fieldset>
-          <button className="inline-flex min-h-12 items-center rounded-sm border-2 border-white bg-transparent px-3 py-2 text-center hover:bg-white hover:text-text focus:shadow-focus-inverted focus:outline-none active:border-gray-100 active:bg-gray-100 active:text-text">
-            <BodyShort as="span">Send melding</BodyShort>
-          </button>
-        </form>
-      )}
-    </div>
+      <div className="flex w-full max-w-md gap-8">
+        {sent ? (
+          <div>
+            <Label spacing>Melding er sendt til designsystemet</Label>
+            <BodyLong>
+              Takk skal du ha! Vi svarer deg så fort som mulig.
+            </BodyLong>
+          </div>
+        ) : (
+          <form onSubmit={(e) => handleSubmit(e)} className="w-full">
+            <Fieldset
+              className="mb-4 flex flex-col gap-4"
+              legend="Send en melding til designsystemet."
+              hideLegend
+            >
+              <Textarea
+                className="inverted-textarea"
+                error={contentError.content}
+                autoComplete="off"
+                label="Skriv til oss"
+                value={contactForm.content}
+                onChange={(e) => {
+                  setContactForm({ ...contactForm, content: e.target.value });
+                  e.target.value &&
+                    !isEmpty(e.target.value, { ignore_whitespace: true }) &&
+                    setContentError({ ...contentError, content: "" });
+                }}
+                minRows={2}
+              />
+              <TextField
+                className="inverted-textfield"
+                label="Vi svarer til e-post (valgfritt)"
+                error={contentError.mail}
+                value={contactForm.mail}
+                autoComplete="work email"
+                onChange={(e) => {
+                  setContactForm({ ...contactForm, mail: e.target.value });
+                  e.target.value &&
+                    isEmail(e.target.value) &&
+                    setContentError({ ...contentError, mail: "" });
+                }}
+              />
+            </Fieldset>
+            <button className="inline-flex min-h-12 items-center rounded-sm border-2 border-white bg-transparent px-3 py-2 text-center hover:bg-white hover:text-text focus:shadow-focus-inverted focus:outline-none active:border-gray-100 active:bg-gray-100 active:text-text">
+              <BodyShort as="span">Send melding</BodyShort>
+            </button>
+          </form>
+        )}
+      </div>
+    </>
   );
 };
 

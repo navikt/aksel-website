@@ -39,7 +39,7 @@ const ScrollTop = () => {
       onClick={(e) => {
         handleElevator(e);
       }}
-      className="absolute top-4 right-0 mr-4 mb-2 ml-auto flex min-h-[48px] items-center  gap-2 p-2 text-text-inverted hover:underline focus:shadow-focus-inverted focus:outline-none"
+      className="flex min-h-[48px] items-center gap-2 p-2 text-text-inverted hover:underline focus:shadow-focus-inverted focus:outline-none"
     >
       {isElevator ? (
         <Elevator aria-label="Til toppen med heismusikk" />

@@ -29,11 +29,11 @@ const AkselBloggTemplate = ({
         <meta property="og:type" content="article" />
       </Head>
 
-      <AkselHeader variant="artikkel" />
+      <AkselHeader variant="blogg" />
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className="aksel-artikkel bg-gray-50 pt-[8vw] pb-16 focus:outline-none xs:pb-32"
+        className="aksel-artikkel bg-orange-50 pt-[8vw] pb-16 focus:outline-none xs:pb-32"
       >
         <div className="px-4">
           <div className="mx-auto max-w-prose xs:w-[90%]">

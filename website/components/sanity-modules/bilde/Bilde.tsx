@@ -41,7 +41,7 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
           <BodyLong
             size="small"
             as="figcaption"
-            className="mt-2 self-center  px-4 md:px-8"
+            className="mt-2 self-center px-4"
           >
             {node.caption}
           </BodyLong>

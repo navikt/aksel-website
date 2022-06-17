@@ -51,6 +51,16 @@ export const TemaHeader = (props) => {
 
 TemaHeader.args = args;
 
+export const BloggHeader = (props) => {
+  return (
+    <PagePropsContext.Provider value={{ pageProps: props }}>
+      <AkselHeader variant="blogg" />
+    </PagePropsContext.Provider>
+  );
+};
+
+BloggHeader.args = args;
+
 export const DesignsystemHeaderWNav = (props) => {
   return (
     <PagePropsContext.Provider value={{ pageProps: props }}>
