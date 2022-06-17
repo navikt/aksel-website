@@ -5,7 +5,7 @@
 
 ## Innhold
 
-Repoet inneholder all kode for cms og nettside til [Aksel.nav.no](Aksel.nav.no)
+Repoet inneholder all kode for cms og nettside til [Aksel.nav.no](https://aksel.nav.no/)
 
 ### /Website
 
