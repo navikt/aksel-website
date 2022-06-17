@@ -16,7 +16,7 @@ const Card = ({ node, tag, href, className, ...rest }: CardProps) => {
   return (
     <div
       className={cl(
-        "group relative flex aspect-[21/22] w-[18rem] flex-col rounded bg-white p-6 pt-8 text-text shadow-card focus-within:shadow-focus focus-within:outline-none hover:ring-2 hover:ring-blue-500 active:text-link lg:aspect-[18/22] lg:p-8 lg:pt-12",
+        "group relative flex aspect-[21/22] w-[18rem] flex-col rounded bg-white p-6 pt-8 text-text shadow-medium focus-within:shadow-focus focus-within:outline-none hover:ring-2 hover:ring-blue-500 active:text-link lg:aspect-[18/22] lg:p-8 lg:pt-12",
         className
       )}
     >

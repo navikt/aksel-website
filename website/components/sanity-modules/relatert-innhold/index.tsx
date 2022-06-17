@@ -27,7 +27,7 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
       {node.lenker.map((x) => (
         <div
           key={x._key}
-          className="algolia-ignore-index group relative cursor-pointer rounded border-2 border-transparent bg-white p-6 shadow-card focus-within:border-focus focus-within:outline-none hover:border-link"
+          className="algolia-ignore-index group relative cursor-pointer rounded border-2 border-transparent bg-white p-6 shadow-medium focus-within:border-focus focus-within:outline-none hover:border-link"
         >
           <NextLink href={getHref(x)} passHref>
             <Heading
