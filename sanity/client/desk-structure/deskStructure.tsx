@@ -23,26 +23,31 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
       return S.document().views([
         S.view.form(),
         S.view.component(ComponentPageWebPreview).title("Preview"),
+        S.view.component(KomponentPreview).title("Preview-dev"),
       ]);
     case "ds_artikkel":
       return S.document().views([
         S.view.form(),
         S.view.component(PageWebPreview).title("Preview"),
+        S.view.component(KomponentPreview).title("Preview-dev"),
       ]);
     case "aksel_artikkel":
       return S.document().views([
         S.view.form(),
         S.view.component(PageWebPreview).title("Preview"),
+        S.view.component(KomponentPreview).title("Preview-dev"),
       ]);
     case "aksel_blogg":
       return S.document().views([
         S.view.form(),
         S.view.component(PageWebPreview).title("Preview"),
+        S.view.component(KomponentPreview).title("Preview-dev"),
       ]);
     case "aksel_prinsipp":
       return S.document().views([
         S.view.form(),
         S.view.component(PageWebPreview).title("Preview"),
+        S.view.component(KomponentPreview).title("Preview-dev"),
       ]);
   }
 };
