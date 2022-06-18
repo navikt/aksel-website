@@ -6,6 +6,7 @@ import {
   getAkselTema,
   getTemaSlug,
   SanityT,
+  usePreviewSubscription,
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { getClient } from "@/sanity-client";
@@ -27,12 +28,19 @@ export interface AkselTemaPage extends SanityT.Schema.aksel_tema {
 }
 
 interface PageProps {
-  page: AkselTemaPage;
+  page: AkselTemaPage[];
   slug: string;
   preview: boolean;
 }
 
-const Page = ({ preview, page }: PageProps): JSX.Element => {
+const Page = (props: PageProps): JSX.Element => {
+  const { data } = usePreviewSubscription(akselTemaDocs, {
+    initialData: props.page,
+    enabled: props?.preview,
+  });
+
+  const page = data.find((tema) => getTemaSlug(tema?.title) === props.slug);
+
   return (
     <>
       <Head>
@@ -133,13 +141,15 @@ export const getStaticProps = async ({
   params: { slug: string };
   preview?: boolean;
 }) => {
-  const temas = await getClient(preview).fetch(akselTemaDocs);
-
-  const doc = temas.find((tema) => getTemaSlug(tema?.title) === slug);
+  const temas = await getClient(false).fetch(akselTemaDocs);
+  const filtered = temas.filter(
+    (x) => x.artikler.length !== 0 || x.seksjoner.length !== 0
+  );
+  const doc = filtered.find((tema) => getTemaSlug(tema?.title) === slug);
 
   return {
     props: {
-      page: doc,
+      page: filtered,
       slug,
       preview,
     },

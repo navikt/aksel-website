@@ -449,7 +449,7 @@ export const dsNavigationQuery = `
 
 export const akselTemaNames = `*[_type == "aksel_tema" && count(*[references(^._id)]) > 0].title`;
 
-export const akselTemaDocs = `*[_type == "aksel_tema" && count(*[references(^._id)]) > 0]{
+export const akselTemaDocs = `*[_type == "aksel_tema"]{
   ...,
   bruk_seksjoner == true => {
     "artikler": [],
