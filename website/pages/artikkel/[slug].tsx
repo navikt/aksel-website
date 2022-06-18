@@ -1,5 +1,4 @@
-import React from "react";
-import { LayoutPicker, PreviewBanner } from "@/components";
+import { LayoutPicker } from "@/components";
 import {
   AkselArtikkel,
   akselDocumentBySlug,
@@ -7,19 +6,14 @@ import {
   getAkselDocuments,
 } from "@/lib";
 import { getClient } from "@/sanity-client";
+import React from "react";
 
 const Page = (props: {
   slug?: string;
   page: AkselArtikkel;
   preview: boolean;
 }): JSX.Element => {
-  return (
-    <>
-      {props.preview && <PreviewBanner />}
-
-      <LayoutPicker title="Aksel" data={props.page} />
-    </>
-  );
+  return <LayoutPicker title="Aksel" data={props.page} />;
 };
 
 export const getStaticPaths = async (): Promise<{

@@ -1,20 +1,15 @@
-import { LayoutPicker, PreviewBanner } from "@/components";
+import { LayoutPicker } from "@/components";
 import { AkselBlogg, akselBloggBySlug, akselEditorById } from "@/lib";
+import { getClient } from "@/sanity-client";
 import { GetServerSideProps } from "next/types";
 import React from "react";
-import { getClient } from "@/sanity-client";
 
 const Page = (props: {
   slug?: string;
   page: AkselBlogg;
   preview: boolean;
 }): JSX.Element => {
-  return (
-    <>
-      {props.preview && <PreviewBanner />}
-      <LayoutPicker title="Aksel" data={props.page} />
-    </>
-  );
+  return <LayoutPicker title="Aksel" data={props.page} />;
 };
 
 interface StaticProps {

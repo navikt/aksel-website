@@ -2,7 +2,6 @@ import {
   DsCard,
   DsFrontpageFooterIllustration,
   DsFrontpageIllustration,
-  PreviewBanner,
 } from "@/components";
 import { DsHeader, Footer } from "@/layout";
 import {
@@ -12,10 +11,10 @@ import {
   DsNavigation,
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
+import { getClient } from "@/sanity-client";
 import { BodyLong, Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
-import { getClient } from "@/sanity-client";
 
 const Page = (props: {
   page: DsFrontpage;
@@ -33,7 +32,6 @@ const Page = (props: {
         />
       </Head>
       <DsHeader />
-      {props.preview && <PreviewBanner />}
 
       <main
         tabIndex={-1}

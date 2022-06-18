@@ -1,15 +1,14 @@
-import { BloggCard, PreviewBanner } from "@/components";
+import { BloggCard } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
 import { AkselBlogg, akselBloggPosts } from "@/lib";
+import { getClient } from "@/sanity-client";
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
-import { getClient } from "@/sanity-client";
 
 const Page = ({ preview, page }: PageProps): JSX.Element => {
   return (
     <>
-      {preview && <PreviewBanner />}
       <Head>
         <title>{`Blogg - Aksel`}</title>
         <meta property="og:title" content={`Blogg - Aksel`} />

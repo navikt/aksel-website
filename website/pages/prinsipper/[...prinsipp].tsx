@@ -1,12 +1,12 @@
-import { LayoutPicker, PreviewBanner } from "@/components";
+import { LayoutPicker } from "@/components";
 import {
   akselEditorById,
   akselPrinsippBySlug,
   getAkselDocuments,
   SanityT,
 } from "@/lib";
-import React from "react";
 import { getClient } from "@/sanity-client";
+import React from "react";
 
 interface PageProps {
   page: SanityT.Schema.aksel_prinsipp;
@@ -15,12 +15,7 @@ interface PageProps {
 }
 
 const Page = ({ preview, page }: PageProps): JSX.Element => {
-  return (
-    <>
-      {preview && <PreviewBanner />}
-      <LayoutPicker title="Aksel" data={page} />
-    </>
-  );
+  return <LayoutPicker title="Aksel" data={page} />;
 };
 
 export const getStaticPaths = async (): Promise<{

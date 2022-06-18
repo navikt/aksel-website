@@ -1,4 +1,4 @@
-import { PreviewBanner, LayoutPicker, getActiveHeading } from "@/components";
+import { getActiveHeading, LayoutPicker } from "@/components";
 import { DsHeader, DsSidebar, Footer } from "@/layout";
 import {
   DsComponentPage,
@@ -15,12 +15,7 @@ const Page = (props: {
   navigation: DsNavigation;
   preview: boolean;
 }): JSX.Element => {
-  return (
-    <>
-      {props.preview && <PreviewBanner />}
-      <LayoutPicker title="Designsystemet" data={props.page} />
-    </>
-  );
+  return <LayoutPicker title="Designsystemet" data={props.page} />;
 };
 
 export default Page;

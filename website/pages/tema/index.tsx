@@ -1,11 +1,11 @@
-import { PreviewBanner, TemaCard } from "@/components";
+import { TemaCard } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
 import { akselTema } from "@/lib";
+import { getClient } from "@/sanity-client";
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
 import { AkselTemaT } from "..";
-import { getClient } from "@/sanity-client";
 
 interface PageProps {
   page: AkselTemaT[];
@@ -16,7 +16,6 @@ interface PageProps {
 const Page = ({ preview, page }: PageProps): JSX.Element => {
   return (
     <>
-      {preview && <PreviewBanner />}
       <Head>
         <title>Temaer - Aksel</title>
         <meta property="og:title" content="Temaer - Aksel" />

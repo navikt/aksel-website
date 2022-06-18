@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { BloggCard, logNav, PreviewBanner, TemaCard } from "@/components";
+import { BloggCard, logNav, TemaCard } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
 import {
   AkselBlogg,
@@ -10,13 +10,13 @@ import {
   Riktekst,
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
+import { getClient } from "@/sanity-client";
 import { Next } from "@navikt/ds-icons";
 import { BodyLong, Detail, Heading, Link } from "@navikt/ds-react";
+import cl from "classnames";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
-import { getClient } from "@/sanity-client";
-import cl from "classnames";
 
 const portalkort = [
   {
@@ -202,7 +202,7 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
           content="En samling ressurser fra ulike fagdisipliner som hjelper oss å skape bedre, universelt tilgjengelige og sammenhengende produkter i NAV."
         />
       </Head>
-      {preview && <PreviewBanner />}
+
       <div className="bg-deepblue-900">
         <AkselHeader variant="forside" />
 

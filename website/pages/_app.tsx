@@ -2,6 +2,7 @@ import {
   initAmplitude,
   logPageView,
   PagePropsContext,
+  PreviewBanner,
   useScrollToHashOnPageLoad,
 } from "@/components";
 import Head from "next/head";
@@ -53,6 +54,7 @@ function App({
           type="image/svg+xml"
         />
       </Head>
+      {pageProps?.preview && <PreviewBanner />}
       <PagePropsContext.Provider value={{ pageProps }}>
         {/* <AuthProvider></AuthProvider> */}
         {getLayout(<Component {...pageProps} />)}

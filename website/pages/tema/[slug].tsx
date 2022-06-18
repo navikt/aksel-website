@@ -1,4 +1,4 @@
-import { ArtikkelCard, PreviewBanner } from "@/components";
+import { ArtikkelCard } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
 import {
   AkselArtikkel,
@@ -8,11 +8,11 @@ import {
   SanityT,
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
+import { getClient } from "@/sanity-client";
 import { Heading, Link } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
-import { getClient } from "@/sanity-client";
 
 type ArtiklerT = Partial<
   AkselArtikkel & {
@@ -39,7 +39,6 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
         <title>{`${page.title} - Aksel`}</title>
         <meta property="og:title" content={`${page.title} - Aksel`} />
       </Head>
-      {preview && <PreviewBanner />}
       <div className="bg-gray-50">
         <AkselHeader variant="tema" />
         <main
