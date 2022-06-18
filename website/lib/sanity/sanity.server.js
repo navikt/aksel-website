@@ -1,13 +1,7 @@
 /* eslint-disable no-undef */
 // lib/sanity.server.js
 import { createClient } from "next-sanity";
-
-const config = {
-  projectId: "hnbe3yhs",
-  dataset: "production",
-  useCdn: false,
-  apiVersion: "2021-05-31",
-};
+import { config } from "./config";
 
 // Set up the client for fetching data in the getProps page functions
 export const sanityClient = createClient({

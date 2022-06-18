@@ -295,7 +295,7 @@ export const akselEditorById = `*[_id == $id][0]
 
 export const dsDocuments = `*[_type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"]]{ ..., 'slug': slug.current }`;
 
-const dsNavQuery = `"nav": *[_type == 'ds_navigation'][0] {
+const dsNavQuery = `"navigation": *[_type == 'ds_navigation'][0] {
   "headings": headings[]{
     ...,
     link_ref->{_id, slug},
@@ -307,7 +307,7 @@ const dsNavQuery = `"nav": *[_type == 'ds_navigation'][0] {
 }`;
 
 export const dsFrontpageQuery = `{
-  "page": *[_id == "frontpage_designsystem"]
+  "page": *[_id == "frontpage_designsystem"][0]
   {
    ...,
     body[]{
@@ -325,7 +325,7 @@ export const dsFrontpageQuery = `{
 }`;
 
 export const dsSlugQuery = `{
-  "page": *[_type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"] && slug.current == $slug] | order(_updatedAt desc)
+  "page": *[_type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"] && slug.current == $slug] | order(_updatedAt desc)[0]
     {
       ...,
       "slug": slug.current,

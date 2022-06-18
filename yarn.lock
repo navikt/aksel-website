@@ -19661,7 +19661,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sanity@npm:^0.5.1":
+"next-sanity@npm:^0.5.2":
   version: 0.5.2
   resolution: "next-sanity@npm:0.5.2"
   dependencies:
@@ -28073,7 +28073,7 @@ __metadata:
     jwt-decode: 3.1.2
     lodash: ^4.17.21
     next: ^12.1.0
-    next-sanity: ^0.5.1
+    next-sanity: ^0.5.2
     next-transpile-modules: ^9.0.0
     postcss: ^8.4.14
     postcss-import: ^14.1.0

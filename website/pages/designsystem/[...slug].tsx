@@ -1,21 +1,36 @@
 import { getActiveHeading, LayoutPicker, PagePropsContext } from "@/components";
 import { DsHeader, DsSidebar, Footer } from "@/layout";
-import { DsNavigation, dsSlugQuery, getDsPaths, validateDsPath } from "@/lib";
+import {
+  DsNavigation,
+  dsSlugQuery,
+  getDsPaths,
+  usePreviewSubscription,
+  validateDsPath,
+} from "@/lib";
 import { getClient } from "@/sanity-client";
 
 const Page = (props: {
-  slug?: string;
+  slug?: string[];
   page: any;
   navigation: DsNavigation;
   preview: boolean;
 }): JSX.Element => {
+  const {
+    data: { page, navigation },
+  } = usePreviewSubscription(dsSlugQuery, {
+    params: { slug: `designsystem/${props.slug.slice(0, 2).join("/")}` },
+    initialData: props,
+    enabled: props?.preview,
+  });
+
   return (
     <PagePropsContext.Provider
       value={{
         pageProps: {
           ...props,
-          activeHeading:
-            getActiveHeading(props?.navigation, props?.page?.slug) ?? null,
+          page: page,
+          navigation,
+          activeHeading: getActiveHeading(navigation, page?.slug) ?? null,
         },
       }}
     >
@@ -29,7 +44,7 @@ const Page = (props: {
               id="hovedinnhold"
               className="relative min-h-screen-header w-full focus:outline-none md:max-w-screen-sidebar"
             >
-              <LayoutPicker title="Designsystemet" data={props.page} />
+              <LayoutPicker title="Designsystemet" data={page} />
               <div className="mt-auto" aria-hidden />
             </main>
           </div>
@@ -65,19 +80,18 @@ export const getStaticProps = async ({
   params: { slug: string[] };
   preview?: boolean;
 }) => {
-  const { page, nav } = await getClient(preview).fetch(dsSlugQuery, {
+  const { page, navigation } = await getClient(false).fetch(dsSlugQuery, {
     slug: `designsystem/${slug.slice(0, 2).join("/")}`,
   });
-  const doc = page?.[0] ?? null;
 
   return {
     props: {
-      page: doc,
-      slug: slug.join("/"),
-      navigation: nav ?? null,
+      page: page,
+      slug,
+      navigation: navigation,
       preview,
     },
-    notFound: !(doc && validateDsPath(doc, slug)),
+    notFound: !(page && validateDsPath(page, slug)) && !preview,
     revalidate: 60,
   };
 };

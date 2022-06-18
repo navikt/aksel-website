@@ -16,7 +16,7 @@ const ContentSecurityPolicy = `
   script-src 'self' 'unsafe-eval' ${hotjar};
   style-src 'self' 'unsafe-inline';
   report-uri https://sentry.gc.nav.no/api/113/envelope/?sentry_key=d35bd60e413c489ca0f2fd389b4e6e5e&sentry_version=7;
-  connect-src 'self' ${hotjar} https://amplitude.nav.no https://sentry.gc.nav.no https://*.algolia.net https://*.algolianet.com;
+  connect-src 'self' ${hotjar} cdn.sanity.io *.api.sanity.io https://amplitude.nav.no https://sentry.gc.nav.no https://*.algolia.net https://*.algolianet.com;
   frame-ancestors localhost:3333 https://verktoykasse.sanity.studio/;
   media-src 'self' cdn.sanity.io;
   frame-src ${hotjar};

@@ -10,6 +10,7 @@ import {
   DsFrontPageCardT,
   dsFrontpageQuery,
   DsNavigation,
+  usePreviewSubscription,
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { getClient } from "@/sanity-client";
@@ -22,6 +23,13 @@ const Page = (props: {
   navigation: DsNavigation;
   preview: boolean;
 }): JSX.Element => {
+  const {
+    data: { page, navigation },
+  } = usePreviewSubscription(dsFrontpageQuery, {
+    initialData: props,
+    enabled: props?.preview,
+  });
+
   return (
     <>
       <Head>
@@ -36,6 +44,8 @@ const Page = (props: {
         value={{
           pageProps: {
             ...props,
+            page,
+            navigation,
             activeHeading: null,
           },
         }}
@@ -62,13 +72,11 @@ const Page = (props: {
 
             <div className="flex w-full max-w-screen-2xl flex-col flex-wrap bg-component-background-alternate">
               <div className="reduced-spacing mx-auto w-[90%] py-12 xs:w-full xs:px-12 xs:py-6">
-                {props?.page?.body && (
-                  <SanityBlockContent blocks={props?.page?.body} />
-                )}
+                {page?.body && <SanityBlockContent blocks={page?.body} />}
               </div>
               <div className="flex flex-wrap justify-center gap-6 px-4 pt-0 pb-12 xs:justify-start xs:px-12 xs:pb-16">
-                {props?.page?.cards &&
-                  props?.page?.cards.map((card) => {
+                {page?.cards &&
+                  page?.cards.map((card) => {
                     return (
                       <DsCard
                         key={card._key}
@@ -93,14 +101,13 @@ export const getStaticProps = async ({
 }: {
   preview?: boolean;
 }) => {
-  const { page, nav } = await getClient(preview).fetch(dsFrontpageQuery);
-  const doc = page?.[0] ?? null;
+  const { page, navigation } = await getClient(false).fetch(dsFrontpageQuery);
 
   return {
     props: {
-      page: doc,
+      page: page,
       slug: "/designsystem",
-      navigation: nav ?? null,
+      navigation: navigation,
       preview,
     },
     revalidate: 60,
