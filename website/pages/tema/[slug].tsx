@@ -107,7 +107,7 @@ const Page = (props: PageProps): JSX.Element => {
                           (x: ArtiklerT) => (
                             <ArtikkelCard
                               {...x}
-                              source={x.heading}
+                              source={page.title}
                               key={x._id}
                             />
                           )
