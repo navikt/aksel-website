@@ -13,7 +13,7 @@ function PreviewBanner(): JSX.Element {
   if (data === null) {
     return (
       <>
-        <div className="fixed inset-0 z-[9999] bg-gray-900/70" />
+        <div className="fixed inset-0 z-[9999] bg-gray-900/70 backdrop-blur-sm" />
         <div className="fixed top-0 z-[9999] grid w-full justify-center bg-gray-900 px-4 py-4 text-center font-semibold text-text-inverted no-underline">
           <BodyShort spacing>
             Preview ikke tilgjengelig, finner ikke innlogget Sanity bruker.
