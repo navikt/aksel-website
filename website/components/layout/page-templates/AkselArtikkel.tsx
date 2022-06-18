@@ -43,7 +43,7 @@ const AkselArtikkelTemplate = ({
             <div>
               {hasTema &&
                 data.tema.map(({ title }: any, y) => (
-                  <>
+                  <span key={title}>
                     {y !== 0 && `, `}
                     <NextLink
                       key={title}
@@ -54,7 +54,7 @@ const AkselArtikkelTemplate = ({
                         {title}
                       </Link>
                     </NextLink>
-                  </>
+                  </span>
                 ))}
             </div>
             <Heading
