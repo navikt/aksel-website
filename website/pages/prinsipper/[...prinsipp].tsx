@@ -1,21 +1,27 @@
 import { LayoutPicker } from "@/components";
 import {
-  akselEditorById,
   akselPrinsippBySlug,
   getAkselDocuments,
   SanityT,
+  usePreviewSubscription,
 } from "@/lib";
 import { getClient } from "@/sanity-client";
 import React from "react";
 
 interface PageProps {
   page: SanityT.Schema.aksel_prinsipp;
-  slug: string;
+  prinsipp: string[];
   preview: boolean;
 }
 
-const Page = ({ preview, page }: PageProps): JSX.Element => {
-  return <LayoutPicker title="Aksel" data={page} />;
+const Page = (props: PageProps): JSX.Element => {
+  const { data } = usePreviewSubscription(akselPrinsippBySlug, {
+    params: { slug: `prinsipper/${props.prinsipp.join("/")}` },
+    initialData: props.page,
+    enabled: props?.preview,
+  });
+
+  return <LayoutPicker title="Aksel" data={data} />;
 };
 
 export const getStaticPaths = async (): Promise<{
@@ -47,20 +53,13 @@ export const getStaticProps = async ({
     slug: `prinsipper/${prinsipp.join("/")}`,
   });
 
-  const doc = page?.[0] ?? null;
-
-  const editors = doc
-    ? await getClient(true).fetch(akselEditorById, {
-        id: doc._id,
-      })
-    : [];
-
   return {
     props: {
-      page: { ...doc, ...editors },
+      page,
+      prinsipp,
       preview,
     },
-    notFound: !doc,
+    notFound: !page,
     revalidate: 60,
   };
 };

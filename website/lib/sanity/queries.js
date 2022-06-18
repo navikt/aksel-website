@@ -280,7 +280,7 @@ export const demoSlug = `*[_id == $id]
   },
 }`;
 
-export const akselPrinsippBySlug = `*[slug.current == $slug] | order(_updatedAt desc)
+export const akselPrinsippBySlug = `*[slug.current == $slug] | order(_updatedAt desc)[0]
 {
   ...,
   "slug": slug.current,
@@ -288,6 +288,9 @@ export const akselPrinsippBySlug = `*[slug.current == $slug] | order(_updatedAt 
     ...,
     ${deRefs}
   },
+  contributors[]->{
+    title
+  }
 }`;
 
 export const akselDocumentBySlug = `*[slug.current == $slug] | order(_updatedAt desc)
