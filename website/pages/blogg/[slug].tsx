@@ -3,6 +3,7 @@ import { AkselBlogg, akselBloggBySlug, usePreviewSubscription } from "@/lib";
 import { getClient } from "@/sanity-client";
 import { GetServerSideProps } from "next/types";
 import React from "react";
+import NotFotfund from "../404";
 
 const Page = (props: {
   slug?: string;
@@ -14,6 +15,11 @@ const Page = (props: {
     initialData: props.page,
     enabled: props?.preview,
   });
+
+  if (!data) {
+    return <NotFotfund />;
+  }
+
   return <LayoutPicker title="Aksel" data={data} />;
 };
 

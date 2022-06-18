@@ -14,6 +14,7 @@ import { Heading, Link } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
+import NotFotfund from "../404";
 
 type ArtiklerT = Partial<
   AkselArtikkel & {
@@ -40,6 +41,10 @@ const Page = (props: PageProps): JSX.Element => {
   });
 
   const page = data.find((tema) => getTemaSlug(tema?.title) === props.slug);
+
+  if (!page) {
+    return <NotFotfund />;
+  }
 
   return (
     <>

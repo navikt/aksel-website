@@ -7,6 +7,7 @@ import {
 } from "@/lib";
 import { getClient } from "@/sanity-client";
 import React from "react";
+import NotFotfund from "../404";
 
 interface PageProps {
   page: SanityT.Schema.aksel_prinsipp;
@@ -20,6 +21,10 @@ const Page = (props: PageProps): JSX.Element => {
     initialData: props.page,
     enabled: props?.preview,
   });
+
+  if (!data) {
+    return <NotFotfund />;
+  }
 
   return <LayoutPicker title="Aksel" data={data} />;
 };

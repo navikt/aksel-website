@@ -8,6 +8,7 @@ import {
   validateDsPath,
 } from "@/lib";
 import { getClient } from "@/sanity-client";
+import NotFotfund from "../404";
 
 const Page = (props: {
   slug?: string[];
@@ -22,6 +23,10 @@ const Page = (props: {
     initialData: props,
     enabled: props?.preview,
   });
+
+  if (!page) {
+    return <NotFotfund />;
+  }
 
   return (
     <PagePropsContext.Provider

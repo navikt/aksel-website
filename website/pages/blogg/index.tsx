@@ -1,12 +1,22 @@
 import { BloggCard } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
-import { AkselBlogg, akselBloggPosts } from "@/lib";
+import { AkselBlogg, akselBloggPosts, usePreviewSubscription } from "@/lib";
 import { getClient } from "@/sanity-client";
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
+import NotFotfund from "../404";
 
-const Page = ({ preview, page }: PageProps): JSX.Element => {
+const Page = (props: PageProps): JSX.Element => {
+  const { data: page } = usePreviewSubscription(akselBloggPosts, {
+    initialData: props.page,
+    enabled: props?.preview,
+  });
+
+  if (!page) {
+    return <NotFotfund />;
+  }
+
   return (
     <>
       <Head>
@@ -68,14 +78,14 @@ export const getStaticProps = async ({
 }: {
   preview?: boolean;
 }): Promise<StaticProps | { notFound: true }> => {
-  const temas = await getClient(preview).fetch(akselBloggPosts);
+  const bloggs = await getClient(false).fetch(akselBloggPosts);
 
   return {
     props: {
-      page: temas,
+      page: bloggs,
       preview,
     },
-    notFound: !temas,
+    notFound: !bloggs && !preview,
     revalidate: 60,
   };
 };
