@@ -1,22 +1,24 @@
-import { getActiveHeading, LayoutPicker } from "@/components";
+import { getActiveHeading, LayoutPicker, PagePropsContext } from "@/components";
 import { DsHeader, DsSidebar, Footer } from "@/layout";
-import {
-  DsComponentPage,
-  DsNavigation,
-  dsSlugQuery,
-  getDsPaths,
-  validateDsPath,
-} from "@/lib";
+import { DsNavigation, dsSlugQuery, getDsPaths, validateDsPath } from "@/lib";
 import { getClient } from "@/sanity-client";
 
 const Page = (props: {
   slug?: string;
-  page: DsComponentPage;
+  page: any;
   navigation: DsNavigation;
   preview: boolean;
 }): JSX.Element => {
   return (
-    <>
+    <PagePropsContext.Provider
+      value={{
+        pageProps: {
+          ...props,
+          activeHeading:
+            getActiveHeading(props?.navigation, props?.page?.slug) ?? null,
+        },
+      }}
+    >
       <DsHeader />
       <div className="flex w-full flex-col items-center bg-canvas-background-light">
         <div className="flex w-full max-w-screen-2xl">
@@ -34,7 +36,7 @@ const Page = (props: {
         </div>
         <Footer variant="ds" />
       </div>
-    </>
+    </PagePropsContext.Provider>
   );
 };
 
@@ -73,7 +75,6 @@ export const getStaticProps = async ({
       page: doc,
       slug: slug.join("/"),
       navigation: nav ?? null,
-      activeHeading: getActiveHeading(nav, doc?.slug) ?? null,
       preview,
     },
     notFound: !(doc && validateDsPath(doc, slug)),
