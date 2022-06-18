@@ -2,12 +2,17 @@ import { getClient, noCdnClient, sanityClient } from "./sanity.server";
 import { akselDocumentsByType, akselTemaNames, dsDocuments } from "./queries";
 import { DsArtikkel, DsComponentPage, KomponentArtikkel } from "..";
 import imageUrlBuilder from "@sanity/image-url";
-import { createPreviewSubscriptionHook } from "next-sanity";
+import {
+  createCurrentUserHook,
+  createPreviewSubscriptionHook,
+} from "next-sanity";
 import { config } from "./config";
 
 const imageBuilder = imageUrlBuilder(sanityClient);
 
 export const usePreviewSubscription = createPreviewSubscriptionHook(config);
+
+export const useCurrentUser = createCurrentUserHook(config);
 
 export function urlFor(source: any) {
   return imageBuilder.image(source);
