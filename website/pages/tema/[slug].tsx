@@ -153,7 +153,7 @@ export const getStaticProps = async ({
       slug,
       preview,
     },
-    notFound: !doc,
+    notFound: !doc && !preview,
     revalidate: 60,
   };
 };

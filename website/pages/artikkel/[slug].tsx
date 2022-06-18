@@ -2,8 +2,8 @@ import { LayoutPicker } from "@/components";
 import {
   AkselArtikkel,
   akselDocumentBySlug,
-  akselEditorById,
   getAkselDocuments,
+  usePreviewSubscription,
 } from "@/lib";
 import { getClient } from "@/sanity-client";
 import React from "react";
@@ -13,7 +13,13 @@ const Page = (props: {
   page: AkselArtikkel;
   preview: boolean;
 }): JSX.Element => {
-  return <LayoutPicker title="Aksel" data={props.page} />;
+  const { data } = usePreviewSubscription(akselDocumentBySlug, {
+    params: { slug: `artikkel/${props.slug}` },
+    initialData: props.page,
+    enabled: props?.preview,
+  });
+
+  return <LayoutPicker title="Aksel" data={data} />;
 };
 
 export const getStaticPaths = async (): Promise<{
@@ -49,25 +55,17 @@ export const getStaticProps = async ({
   params: { slug: string };
   preview?: boolean;
 }): Promise<StaticProps | { notFound: true }> => {
-  const page = await getClient(preview).fetch(akselDocumentBySlug, {
+  const page = await getClient(false).fetch(akselDocumentBySlug, {
     slug: `artikkel/${slug}`,
   });
 
-  const doc = page?.[0] ?? null;
-
-  const editors = doc
-    ? await getClient(true).fetch(akselEditorById, {
-        id: doc._id,
-      })
-    : [];
-
   return {
     props: {
-      page: { ...doc, ...editors },
+      page,
       slug,
       preview,
     },
-    notFound: !doc,
+    notFound: !page && !preview,
     revalidate: 60,
   };
 };

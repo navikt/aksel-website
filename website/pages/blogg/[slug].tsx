@@ -1,5 +1,5 @@
 import { LayoutPicker } from "@/components";
-import { AkselBlogg, akselBloggBySlug, akselEditorById } from "@/lib";
+import { AkselBlogg, akselBloggBySlug, usePreviewSubscription } from "@/lib";
 import { getClient } from "@/sanity-client";
 import { GetServerSideProps } from "next/types";
 import React from "react";
@@ -9,7 +9,12 @@ const Page = (props: {
   page: AkselBlogg;
   preview: boolean;
 }): JSX.Element => {
-  return <LayoutPicker title="Aksel" data={props.page} />;
+  const { data } = usePreviewSubscription(akselBloggBySlug, {
+    params: { slug: `blogg/${props.slug}`, valid: "true" },
+    initialData: props.page,
+    enabled: props?.preview,
+  });
+  return <LayoutPicker title="Aksel" data={data} />;
 };
 
 interface StaticProps {
@@ -27,27 +32,19 @@ export const getServerSideProps: GetServerSideProps = async (
 ): Promise<StaticProps | { notFound: true }> => {
   /* const isValidUser = await isValidated(context); */
 
-  const page = await getClient(context.preview).fetch(akselBloggBySlug, {
+  const page = await getClient(false).fetch(akselBloggBySlug, {
     slug: `blogg/${context.params.slug}`,
     valid: "true" /* `${isValidUser}` */,
   });
 
-  const doc = page?.[0] ?? null;
-
-  const editors = doc
-    ? await getClient(true).fetch(akselEditorById, {
-        id: doc._id,
-      })
-    : [];
-
   return {
     props: {
-      page: { ...doc, ...editors },
+      page,
       slug: context.params.slug as string,
-      preview: context.preview ?? null,
+      preview: context.preview ?? false,
       /* validUser: isValidUser, */
     },
-    notFound: !doc,
+    notFound: !page && !context.preview,
   };
 };
 

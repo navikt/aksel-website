@@ -293,7 +293,7 @@ export const akselPrinsippBySlug = `*[slug.current == $slug] | order(_updatedAt 
   }
 }`;
 
-export const akselDocumentBySlug = `*[slug.current == $slug] | order(_updatedAt desc)
+export const akselDocumentBySlug = `*[slug.current == $slug] | order(_updatedAt desc)[0]
 {
   ...,
   "slug": slug.current,
@@ -301,7 +301,10 @@ export const akselDocumentBySlug = `*[slug.current == $slug] | order(_updatedAt 
     ...,
     ${deRefs}
   },
-  tema[]->{title}
+  tema[]->{title},
+  contributors[]->{
+    title
+  }
 }`;
 
 export const akselEditorById = `*[_id == $id][0]
@@ -487,7 +490,7 @@ export const akselTemaDocs = `*[_type == "aksel_tema"]{
   },
 }`;
 
-export const akselBloggBySlug = `*[slug.current == $slug] | order(_updatedAt desc)
+export const akselBloggBySlug = `*[slug.current == $slug] | order(_updatedAt desc)[0]
 {
   ...,
   "slug": slug.current,
@@ -497,5 +500,8 @@ export const akselBloggBySlug = `*[slug.current == $slug] | order(_updatedAt des
       ${deRefs}
     },
     $valid != "true" => []
-  )
+  ),
+  contributors[]->{
+    title
+  }
 }`;

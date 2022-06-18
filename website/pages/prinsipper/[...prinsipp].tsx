@@ -49,7 +49,7 @@ export const getStaticProps = async ({
 }) => {
   if (prinsipp.length > 2) return { notFound: true };
 
-  const page = await getClient(preview).fetch(akselPrinsippBySlug, {
+  const page = await getClient(false).fetch(akselPrinsippBySlug, {
     slug: `prinsipper/${prinsipp.join("/")}`,
   });
 
@@ -59,7 +59,7 @@ export const getStaticProps = async ({
       prinsipp,
       preview,
     },
-    notFound: !page,
+    notFound: !page && !preview,
     revalidate: 60,
   };
 };
