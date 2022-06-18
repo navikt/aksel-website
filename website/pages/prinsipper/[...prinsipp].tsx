@@ -54,7 +54,7 @@ export const getStaticProps = async ({
 }) => {
   if (prinsipp.length > 2) return { notFound: true };
 
-  const page = await getClient(false).fetch(akselPrinsippBySlug, {
+  const page = await getClient().fetch(akselPrinsippBySlug, {
     slug: `prinsipper/${prinsipp.join("/")}`,
   });
 

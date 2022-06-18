@@ -101,7 +101,7 @@ export const getStaticProps = async ({
 }: {
   preview?: boolean;
 }) => {
-  const { page, navigation } = await getClient(false).fetch(dsFrontpageQuery);
+  const { page, navigation } = await getClient().fetch(dsFrontpageQuery);
 
   return {
     props: {

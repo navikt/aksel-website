@@ -146,7 +146,7 @@ export const getStaticProps = async ({
   params: { slug: string };
   preview?: boolean;
 }) => {
-  const temas = await getClient(false).fetch(akselTemaDocs);
+  const temas = await getClient().fetch(akselTemaDocs);
   const filtered = temas.filter(
     (x) => x.artikler.length !== 0 || x.seksjoner.length !== 0
   );

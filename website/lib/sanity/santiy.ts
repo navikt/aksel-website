@@ -40,7 +40,7 @@ export const getAkselDocuments = async (
   token?: string
 ): Promise<string[]> => {
   if (!source) return [];
-  const client = token ? noCdnClient(token) : getClient(false);
+  const client = token ? noCdnClient(token) : getClient();
   const documents: any[] | null = await client.fetch(akselDocumentsByType, {
     types:
       source === "all"
@@ -59,7 +59,7 @@ export const getAkselDocuments = async (
 };
 
 export const getDsPaths = async (token?: string): Promise<string[][]> => {
-  const client = token ? noCdnClient(token) : getClient(false);
+  const client = token ? noCdnClient(token) : getClient();
   const documents: any[] | null = await client.fetch(dsDocuments);
   const paths = [];
   const componentPageTabs = ["design", "utvikling", "tilgjengelighet"];
@@ -153,7 +153,7 @@ export const validateDsPath = (
 };
 
 export const getAkselTema = async (token?: string): Promise<string[]> => {
-  const client = token ? noCdnClient(token) : getClient(false);
+  const client = token ? noCdnClient(token) : getClient();
   const tags: string[] = await client.fetch(akselTemaNames);
   return tags.map(getTemaSlug);
 };

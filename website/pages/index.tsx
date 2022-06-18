@@ -431,7 +431,7 @@ export const getStaticProps = async ({
 }: {
   preview?: boolean;
 }) => {
-  const client = getClient(false);
+  const client = getClient();
 
   const {
     tekster = null,

@@ -70,7 +70,7 @@ export const getStaticProps = async ({
 }: {
   preview?: boolean;
 }) => {
-  const page = await getClient(false).fetch(akselTema);
+  const page = await getClient().fetch(akselTema);
 
   return {
     props: {

@@ -78,7 +78,7 @@ export const getStaticProps = async ({
 }: {
   preview?: boolean;
 }): Promise<StaticProps | { notFound: true }> => {
-  const bloggs = await getClient(false).fetch(akselBloggPosts);
+  const bloggs = await getClient().fetch(akselBloggPosts);
 
   return {
     props: {

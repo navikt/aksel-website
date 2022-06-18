@@ -38,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (
 ): Promise<StaticProps | { notFound: true }> => {
   /* const isValidUser = await isValidated(context); */
 
-  const page = await getClient(false).fetch(akselBloggBySlug, {
+  const page = await getClient().fetch(akselBloggBySlug, {
     slug: `blogg/${context.params.slug}`,
     valid: "true" /* `${isValidUser}` */,
   });

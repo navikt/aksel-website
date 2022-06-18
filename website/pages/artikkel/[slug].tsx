@@ -60,7 +60,7 @@ export const getStaticProps = async ({
   params: { slug: string };
   preview?: boolean;
 }): Promise<StaticProps | { notFound: true }> => {
-  const page = await getClient(false).fetch(akselDocumentBySlug, {
+  const page = await getClient().fetch(akselDocumentBySlug, {
     slug: `artikkel/${slug}`,
   });
 
