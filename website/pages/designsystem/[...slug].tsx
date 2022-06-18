@@ -15,12 +15,6 @@ const Page = (props: {
   navigation: DsNavigation;
   preview: boolean;
 }): JSX.Element => {
-  return <LayoutPicker title="Designsystemet" data={props.page} />;
-};
-
-export default Page;
-
-Page.getLayout = (page) => {
   return (
     <>
       <DsHeader />
@@ -33,7 +27,7 @@ Page.getLayout = (page) => {
               id="hovedinnhold"
               className="relative min-h-screen-header w-full focus:outline-none md:max-w-screen-sidebar"
             >
-              {page}
+              <LayoutPicker title="Designsystemet" data={props.page} />
               <div className="mt-auto" aria-hidden />
             </main>
           </div>
@@ -43,6 +37,8 @@ Page.getLayout = (page) => {
     </>
   );
 };
+
+export default Page;
 
 export const getStaticPaths = async (): Promise<{
   fallback: string;

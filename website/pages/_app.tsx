@@ -21,8 +21,6 @@ function App({
 }): JSX.Element {
   useScrollToHashOnPageLoad();
 
-  const getLayout = Component.getLayout ?? ((page) => page);
-
   useEffect(() => {
     if (window.location.host === "design.nav.no") {
       window.location.replace(`http://aksel.nav.no${window.location.pathname}`);
@@ -57,7 +55,7 @@ function App({
       {pageProps?.preview && <PreviewBanner />}
       <PagePropsContext.Provider value={{ pageProps }}>
         {/* <AuthProvider></AuthProvider> */}
-        {getLayout(<Component {...pageProps} />)}
+        <Component {...pageProps} />
       </PagePropsContext.Provider>
     </>
   );
