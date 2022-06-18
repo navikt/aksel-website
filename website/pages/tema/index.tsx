@@ -1,6 +1,6 @@
 import { TemaCard } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
-import { akselTema } from "@/lib";
+import { akselTema, usePreviewSubscription } from "@/lib";
 import { getClient } from "@/sanity-client";
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
@@ -13,7 +13,13 @@ interface PageProps {
   preview: boolean;
 }
 
-const Page = ({ preview, page }: PageProps): JSX.Element => {
+const Page = (props: PageProps): JSX.Element => {
+  const { data } = usePreviewSubscription(akselTema, {
+    initialData: props.page,
+    enabled: props?.preview,
+  });
+
+  const filteredTemas = data.filter((x) => x.refCount > 0);
   return (
     <>
       <Head>
@@ -46,7 +52,7 @@ const Page = ({ preview, page }: PageProps): JSX.Element => {
           <div className="relative px-4 pt-8 pb-24">
             <div className="mx-auto max-w-aksel xs:w-[90%]">
               <div className="mt-4 grid gap-3 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
-                {page.map((tema) => (
+                {filteredTemas.map((tema) => (
                   <TemaCard compact {...tema} key={tema._id} />
                 ))}
               </div>
@@ -64,17 +70,15 @@ export const getStaticProps = async ({
 }: {
   preview?: boolean;
 }) => {
-  const page = await getClient(preview).fetch(akselTema);
-
-  const doc = page ?? null;
+  const page = await getClient(false).fetch(akselTema);
 
   return {
     props: {
-      page: doc,
+      page: page,
       slug: "/tema",
       preview,
     },
-    notFound: !doc,
+    notFound: !page,
     revalidate: 60,
   };
 };

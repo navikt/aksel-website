@@ -3,11 +3,10 @@ import { BloggCard, logNav, TemaCard } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
 import {
   AkselBlogg,
-  akselBloggPosts,
   akselForsideQuery,
   AkselTema,
-  akselTema,
   Riktekst,
+  usePreviewSubscription,
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { getClient } from "@/sanity-client";
@@ -184,14 +183,22 @@ const Portaler = () => {
   );
 };
 
-const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
-  const hasPrinsipp1 =
-    tekster?.prinsipp_1 &&
-    tekster?.prinsipp_1?.hovedside &&
-    tekster?.prinsipp_1?.vis &&
-    tekster?.prinsipp_1?.undersider.length ===
-      tekster?.prinsipp_1.undersider.filter((x) => !!x).length;
+const Page = (props: PageProps): JSX.Element => {
+  const {
+    data: { prinsipp_1, tekster, temaer, bloggs },
+  } = usePreviewSubscription(akselForsideQuery, {
+    initialData: props,
+    enabled: props?.preview,
+  });
 
+  const hasPrinsipp1 =
+    prinsipp_1 &&
+    prinsipp_1?.hovedside &&
+    prinsipp_1?.vis &&
+    prinsipp_1?.undersider.length ===
+      prinsipp_1.undersider.filter((x) => !!x).length;
+
+  const filteredTemas = temaer.filter((x) => x.refCount > 0);
   return (
     <>
       <Head>
@@ -224,7 +231,7 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
           </div>
 
           {/* Temaseksjon */}
-          {temaer && temaer.length > 0 && (
+          {filteredTemas && filteredTemas.length > 0 && (
             <section className="relative bg-deepblue-50 px-4 pt-16 pb-24">
               {/* Separator */}
               <svg
@@ -248,11 +255,11 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
                 </Heading>
                 <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3">
                   {/* Temakort */}
-                  {temaer.slice(0, 7).map((tema) => (
+                  {filteredTemas.slice(0, 7).map((tema) => (
                     <TemaCard {...tema} key={tema._id} />
                   ))}
                 </div>
-                {temaer.length > 6 && (
+                {filteredTemas.length > 6 && (
                   <NextLink href="/tema">
                     <a className="mt-6 inline-block text-text underline hover:text-deepblue-700 hover:no-underline">
                       Utforsk alle temaer
@@ -283,14 +290,14 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
                       </h2>
                       <SanityBlockContent
                         className="mt-3"
-                        blocks={tekster.prinsipp_1?.beskrivelse}
+                        blocks={prinsipp_1?.beskrivelse}
                       />
                     </div>
 
                     <div className="mt-8 flex flex-wrap gap-2 lg:max-w-4xl lg:gap-3">
-                      {tekster.prinsipp_1.undersider.map((x) => (
+                      {prinsipp_1.undersider.map((x) => (
                         <NextLink
-                          href={x.slug.current}
+                          href={`/${x.slug.current}`}
                           passHref
                           key={x.slug.current}
                         >
@@ -307,7 +314,7 @@ const Page = ({ preview, tekster, temaer, bloggs }: PageProps): JSX.Element => {
                     </div>
                     <Link
                       className="mt-6 inline-block text-gray-800"
-                      href={`/${tekster.prinsipp_1.hovedside.slug.current}`}
+                      href={`/${prinsipp_1.hovedside.slug.current}`}
                     >
                       Utforsk alle prinsippene
                     </Link>
@@ -408,12 +415,12 @@ interface PageProps {
   tekster: {
     title?: string;
     beskrivelse?: Riktekst;
-    prinsipp_1: {
-      beskrivelse?: Riktekst;
-      vis: boolean;
-      hovedside: { heading: string; slug: { current: string } };
-      undersider: { heading: string; slug: { current: string } }[];
-    };
+  };
+  prinsipp_1: {
+    beskrivelse?: Riktekst;
+    vis: boolean;
+    hovedside: { heading: string; slug: { current: string } };
+    undersider: { heading: string; slug: { current: string } }[];
   };
   slug: string;
   preview: boolean;
@@ -424,15 +431,19 @@ export const getStaticProps = async ({
 }: {
   preview?: boolean;
 }) => {
-  const client = getClient(preview);
+  const client = getClient(false);
 
-  const temaer = await client.fetch(akselTema);
-  const bloggs = await client.fetch(akselBloggPosts);
-  const tekster = await client.fetch(akselForsideQuery);
+  const {
+    tekster = null,
+    prinsipp_1 = null,
+    bloggs = null,
+    temaer = null,
+  } = await client.fetch(akselForsideQuery);
 
   return {
     props: {
       temaer,
+      prinsipp_1,
       bloggs,
       tekster,
       slug: "/",

@@ -238,19 +238,34 @@ ${defaultBlock}
 
 export const allDocuments = `*[]{...,'slug': slug.current }`;
 
-export const akselForsideQuery = `*[_type == "vk_frontpage"][0]
-{
- ...,
- beskrivelse[]{
+export const akselTema = `*[_type == "aksel_tema"]{
   ...,
-  ${deRefs}
-},
+  "refCount": count(*[_type == "aksel_artikkel" && !(_id in path("drafts.**")) && references(^._id)])
+}`;
+
+export const akselBloggPosts = `*[_type == "aksel_blogg"] | order(_createdAt desc){
+  ...,
+  "slug": slug.current,
+  contributors[]->{
+    title
+  }
+}`;
+
+export const akselForsideQuery = `*[_type == "vk_frontpage"][0]{
+  "tekster": {
+    ...,
+    beskrivelse[]{
+      ...,
+      ${deRefs}
+    }
+  },
   prinsipp_1 {
     ...,
     hovedside->{slug, heading},
     undersider[]->{slug, heading}
   },
-
+  "bloggs": ${akselBloggPosts},
+  "temaer": ${akselTema}
 }`;
 
 export const akselDocumentsByType = `*[_type in $types]{ _type, _id, 'slug': slug.current }`;
@@ -467,19 +482,6 @@ export const akselTemaDocs = `*[_type == "aksel_tema" && count(*[references(^._i
     },
     "seksjoner": []
   },
-}`;
-
-export const akselTema = `*[_type == "aksel_tema" && count(*[references(^._id)]) > 0]{
-  ...,
-  "refCount": count(*[references(^._id) && !(_id in path("drafts.**"))])
-}`;
-
-export const akselBloggPosts = `*[_type == "aksel_blogg"] | order(_createdAt desc){
-  ...,
-  "slug": slug.current,
-  contributors[]->{
-    title
-  }
 }`;
 
 export const akselBloggBySlug = `*[slug.current == $slug] | order(_updatedAt desc)
