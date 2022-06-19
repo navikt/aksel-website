@@ -1,9 +1,10 @@
-import { SEOFields } from "@/lib";
+import { groups, SEOFields } from "@/lib";
 
 export default {
   title: "Forside",
   name: "vk_frontpage",
   type: "document",
+  groups,
   fields: [
     {
       title: "Tittel",
