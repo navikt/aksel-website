@@ -157,6 +157,7 @@ export const getStaticProps = async ({
       page: filtered,
       slug,
       preview,
+      id: doc?._id ?? null,
     },
     notFound: !doc && !preview,
     revalidate: 60,
