@@ -28,6 +28,7 @@ export { default as Feedback } from "./website-modules/feedback";
 export { default as LevelTwoHeading } from "./website-modules/heading";
 export { default as Lightbox } from "./website-modules/lightbox";
 export { default as PreviewBanner } from "./website-modules/PreviewBanner";
+export { default as EditButton } from "./website-modules/EditButton";
 export { default as ScrollTop } from "./website-modules/scroll-top";
 export { default as Search } from "./website-modules/search";
 export { default as TableOfContents } from "./website-modules/table-of-contents";

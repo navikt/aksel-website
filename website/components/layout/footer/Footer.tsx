@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLogoWhite, ScrollTop } from "../..";
+import { EditButton, NavLogoWhite, ScrollTop } from "../..";
 import FooterForm from "./FooterForm";
 import cl from "classnames";
 
@@ -8,7 +8,7 @@ const Footer = ({ variant = "ds" }: { variant: "ds" | "aksel" }) => {
     <footer
       data-hj-suppress
       className={cl(
-        "algolia-ignore-index flex w-full justify-center px-4 py-8 text-text-inverted",
+        "algolia-ignore-index relative flex w-full justify-center px-4 py-8 text-text-inverted",
         {
           "bg-deepblue-900": variant === "aksel",
           "bg-gray-900": variant === "ds",
@@ -26,6 +26,7 @@ const Footer = ({ variant = "ds" }: { variant: "ds" | "aksel" }) => {
           <FooterForm />
         </div>
       </div>
+      <EditButton variant={variant} />
     </footer>
   );
 };

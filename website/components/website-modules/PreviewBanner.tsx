@@ -20,7 +20,13 @@ function PreviewBanner(): JSX.Element {
           </BodyShort>
 
           <div data-theme="dark" className="mb-3 flex justify-center gap-2">
-            <Button variant="primary" as="a" href="/studio">
+            <Button
+              variant="primary"
+              as="a"
+              href="/studio"
+              rel="noreferrer"
+              target="_blank"
+            >
               Logg inn
             </Button>
             <Button

@@ -7,4 +7,6 @@ export const SectionContext = createContext<SectionContextT>({
   withinSection: false,
 });
 
+export const IdContext = createContext<{ id?: string }>(null);
+
 export * from "./authprovider";

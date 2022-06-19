@@ -1,7 +1,7 @@
 import {
+  IdContext,
   initAmplitude,
   logPageView,
-  PagePropsContext,
   PreviewBanner,
   useScrollToHashOnPageLoad,
 } from "@/components";
@@ -53,10 +53,11 @@ function App({
         />
       </Head>
       {pageProps?.preview && <PreviewBanner />}
-      <PagePropsContext.Provider value={{ pageProps }}>
-        {/* <AuthProvider></AuthProvider> */}
+
+      {/* <AuthProvider></AuthProvider> */}
+      <IdContext.Provider value={{ id: pageProps?.id ?? pageProps?.page?._id }}>
         <Component {...pageProps} />
-      </PagePropsContext.Provider>
+      </IdContext.Provider>
     </>
   );
 }
