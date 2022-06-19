@@ -1279,11 +1279,6 @@ Dette vil stå under bildet
           title?: string;
 
           /**
-           * Beskrivelse - `String`
-           */
-          description?: string;
-
-          /**
            * Intern side i Sanity - `Boolean`
            */
           intern?: boolean;
@@ -1306,19 +1301,10 @@ Dette vil stå under bildet
           ekstern_link?: string;
 
           /**
-           * Linker til et eksternt domene - `Boolean`
-           */
+       * Linker til et eksternt domene - `Boolean`
+Sett denne hvis lenken går til en side utenfor aksel.nav.no
+       */
           ekstern_domene?: boolean;
-
-          /**
-           * Tagging - `String`
-           */
-          tags?: "none" | "custom";
-
-          /**
-           * Tag - `String`
-           */
-          tag?: string;
         }>
       >;
     };
