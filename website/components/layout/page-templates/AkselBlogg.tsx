@@ -34,6 +34,14 @@ const AkselBloggTemplate = ({
           content={data?.seo?.meta ?? data?.ingress}
           key="ogdesc"
         />
+        {authors?.[0] && <meta name="twitter:label1" content="Skrevet av" />}
+        {authors?.[0] && <meta name="twitter:data1" content={authors?.[0]} />}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:label2" content="Publisert" />
+        <meta
+          name="twitter:data2"
+          content={dateStr(data?.publishedAt ?? data._createdAt)}
+        />
         <meta property="og:type" content="article" />
         <meta
           property="og:image"
