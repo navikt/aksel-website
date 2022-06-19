@@ -43,6 +43,27 @@ Rekkefølge bestemmer rekkefølgen på forsiden!
        */
         undersider?: Array<Sanity.KeyedReference<aksel_prinsipp>>;
       };
+
+      /**
+       * SEO - `Object`
+       */
+      seo?: {
+        /**
+       * Meta/:og description - `Text`
+Anbefalt maks 150-160 bokstaver. Erstatter ingress som <meta /> description
+       */
+        meta?: string;
+
+        /**
+       * og:Image - `Image`
+Anbefalt størrelse er 1200:630px
+       */
+        image?: {
+          asset: Sanity.Asset;
+          crop?: Sanity.ImageCrop;
+          hotspot?: Sanity.ImageHotspot;
+        };
+      };
     }
 
     /**
@@ -858,6 +879,27 @@ Default: Siden blir for tiden oppdatert!
        */
         forklaring?: string;
       };
+
+      /**
+       * SEO - `Object`
+       */
+      seo?: {
+        /**
+       * Meta/:og description - `Text`
+Anbefalt maks 150-160 bokstaver. Erstatter ingress som <meta /> description
+       */
+        meta?: string;
+
+        /**
+       * og:Image - `Image`
+Anbefalt størrelse er 1200:630px
+       */
+        image?: {
+          asset: Sanity.Asset;
+          crop?: Sanity.ImageCrop;
+          hotspot?: Sanity.ImageHotspot;
+        };
+      };
     }
 
     /**
@@ -930,6 +972,27 @@ Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffe
 Default: Siden blir for tiden oppdatert!
        */
         forklaring?: string;
+      };
+
+      /**
+       * SEO - `Object`
+       */
+      seo?: {
+        /**
+       * Meta/:og description - `Text`
+Anbefalt maks 150-160 bokstaver. Erstatter ingress som <meta /> description
+       */
+        meta?: string;
+
+        /**
+       * og:Image - `Image`
+Anbefalt størrelse er 1200:630px
+       */
+        image?: {
+          asset: Sanity.Asset;
+          crop?: Sanity.ImageCrop;
+          hotspot?: Sanity.ImageHotspot;
+        };
       };
     }
 
@@ -1073,6 +1136,27 @@ Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffe
 Default: Siden blir for tiden oppdatert!
        */
         forklaring?: string;
+      };
+
+      /**
+       * SEO - `Object`
+       */
+      seo?: {
+        /**
+       * Meta/:og description - `Text`
+Anbefalt maks 150-160 bokstaver. Erstatter ingress som <meta /> description
+       */
+        meta?: string;
+
+        /**
+       * og:Image - `Image`
+Anbefalt størrelse er 1200:630px
+       */
+        image?: {
+          asset: Sanity.Asset;
+          crop?: Sanity.ImageCrop;
+          hotspot?: Sanity.ImageHotspot;
+        };
       };
     }
 

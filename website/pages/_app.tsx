@@ -43,7 +43,11 @@ function App({
     <>
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta property="og:url" content={router.asPath.split("?")[0]} />
+        <meta
+          property="og:url"
+          content={`https://aksel.nav.no/${router.asPath.split("?")[0]}`}
+          key="ogurl"
+        />
         <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
         <link
           rel="shortcut icon"
@@ -51,6 +55,7 @@ function App({
           sizes="any"
           type="image/svg+xml"
         />
+        <meta property="og:site_name" content="Aksel" key="ogsitename" />
       </Head>
       {pageProps?.preview && <PreviewBanner />}
 

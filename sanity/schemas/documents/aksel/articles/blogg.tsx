@@ -6,6 +6,7 @@ import {
   innholdField,
   publishedAtField,
   sanitySlug,
+  SEOFields,
   titleField,
   UnderArbeidField,
 } from "@/lib";
@@ -26,5 +27,6 @@ export default {
     ingressField,
     innholdField,
     UnderArbeidField,
+    SEOFields,
   ],
 };

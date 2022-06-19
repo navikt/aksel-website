@@ -1,3 +1,5 @@
+import { SEOFields } from "@/lib";
+
 export default {
   title: "Forside",
   name: "vk_frontpage",
@@ -50,5 +52,6 @@ export default {
         },
       ],
     },
+    SEOFields,
   ],
 };

@@ -6,6 +6,8 @@ import {
   akselForsideQuery,
   AkselTema,
   Riktekst,
+  SanityT,
+  urlFor,
   usePreviewSubscription,
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
@@ -203,10 +205,27 @@ const Page = (props: PageProps): JSX.Element => {
     <>
       <Head>
         <title>Aksel - NAV</title>
-        <meta property="og:title" content="Aksel - NAV" />
+        <meta property="og:title" content="Aksel - NAV" key="ogtitle" />
         <meta
-          name="description"
-          content="En samling ressurser fra ulike fagdisipliner som hjelper oss å skape bedre, universelt tilgjengelige og sammenhengende produkter i NAV."
+          property="og:description"
+          content={
+            tekster?.seo?.meta ??
+            "En samling ressurser fra ulike fagdisipliner som hjelper oss å skape bedre, universelt tilgjengelige og sammenhengende produkter i NAV."
+          }
+          key="ogdesc"
+        />
+        <meta
+          property="og:image"
+          content={
+            tekster?.seo?.image
+              ? urlFor(tekster?.seo?.image)
+                  .width(1200)
+                  .height(630)
+                  .fit("crop")
+                  .url()
+              : ""
+          }
+          key="ogimage"
         />
       </Head>
 
@@ -412,10 +431,7 @@ interface PageProps {
   bloggs: Partial<
     AkselBlogg & { slug: string; contributors?: { title?: string }[] }
   >[];
-  tekster: {
-    title?: string;
-    beskrivelse?: Riktekst;
-  };
+  tekster: SanityT.Schema.vk_frontpage;
   prinsipp_1: {
     beskrivelse?: Riktekst;
     vis: boolean;

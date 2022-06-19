@@ -7,6 +7,7 @@ import {
   isSlugUnique,
   prinsipper,
   publishedAtField,
+  SEOFields,
   titleField,
   UnderArbeidField,
 } from "@/lib";
@@ -130,5 +131,6 @@ export default {
     ingressField,
     innholdField,
     UnderArbeidField,
+    SEOFields,
   ],
 };

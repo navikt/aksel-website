@@ -1,4 +1,4 @@
-import { SanityT } from "@/lib";
+import { SanityT, urlFor } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { BodyShort, Heading, Ingress } from "@navikt/ds-react";
 import Head from "next/head";
@@ -24,9 +24,30 @@ const AkselBloggTemplate = ({
     <>
       <Head>
         <title>{`${data?.heading} - ${title}`}</title>
-        <meta property="og:title" content={`${data?.heading} - ${title}`} />
-        <meta property="og:description" content={data?.ingress} />
+        <meta
+          property="og:title"
+          content={`${data?.heading} - ${title}`}
+          key="ogtitle"
+        />
+        <meta
+          property="og:description"
+          content={data?.seo?.meta ?? data?.ingress}
+          key="ogdesc"
+        />
         <meta property="og:type" content="article" />
+        <meta
+          property="og:image"
+          content={
+            data?.seo?.image
+              ? urlFor(data?.seo?.image)
+                  .width(1200)
+                  .height(630)
+                  .fit("crop")
+                  .url()
+              : ""
+          }
+          key="ogimage"
+        />
       </Head>
 
       <AkselHeader variant="blogg" />

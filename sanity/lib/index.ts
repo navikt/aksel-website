@@ -1,5 +1,6 @@
 export * from "./fields";
 export * from "./preview";
+export * from "./seo";
 import { Settings } from "@navikt/ds-icons";
 import sanityClient from "part:@sanity/base/client";
 
@@ -103,5 +104,9 @@ export const groups = [
   {
     name: "beta",
     title: "Beta",
+  },
+  {
+    name: "seo",
+    title: "SEO",
   },
 ];
