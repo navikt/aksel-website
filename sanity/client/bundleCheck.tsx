@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import config from "config:sanity";
 
 const BUNDLE_CHECK_INTERVAL = 60 * 1000;
+const BUNDLE_CHECK_INTERVAL_DECLINED = 60 * 10000;
 const CHANGES_AVAILABLE_MESSAGE =
   "Studioet er har nye endringer! For å ta i bruk disse vil siden nå oppdateres for den nyeste versjonen.";
 
@@ -32,17 +33,20 @@ const BundleChecker = () => {
 
 export default BundleChecker;
 
-const createInterval = () =>
-  setInterval(async () => {
-    const newHash = await getCurrentHash();
+const createInterval = (declined?: boolean) =>
+  setInterval(
+    async () => {
+      const newHash = await getCurrentHash();
 
-    if (hash && newHash !== hash) {
-      clearInterval(interval);
+      if (hash && newHash !== hash) {
+        clearInterval(interval);
 
-      if (window.confirm(CHANGES_AVAILABLE_MESSAGE)) {
-        window.location.reload();
-      } else {
-        interval = createInterval();
+        if (window.confirm(CHANGES_AVAILABLE_MESSAGE)) {
+          window.location.reload();
+        } else {
+          interval = createInterval(true);
+        }
       }
-    }
-  }, BUNDLE_CHECK_INTERVAL);
+    },
+    declined ? BUNDLE_CHECK_INTERVAL_DECLINED : BUNDLE_CHECK_INTERVAL
+  );
