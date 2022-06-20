@@ -1,6 +1,7 @@
 import {
   BodyLong,
   BodyShort,
+  Button,
   Fieldset,
   Label,
   Link,
@@ -93,7 +94,7 @@ const FooterForm = () => {
           </li>
         </BodyShort>
       </div>
-      <div className="flex w-full max-w-md gap-8">
+      <div className="flex w-full max-w-md gap-8" data-theme="dark">
         {sent ? (
           <div>
             <Label spacing>Melding er sendt til designsystemet</Label>
@@ -136,9 +137,7 @@ const FooterForm = () => {
                 }}
               />
             </Fieldset>
-            <button className="inline-flex min-h-12 items-center rounded-sm border-2 border-white bg-transparent px-3 py-2 text-center hover:bg-white hover:text-text focus:shadow-focus-inverted focus:outline-none active:border-gray-100 active:bg-gray-100 active:text-text">
-              <BodyShort as="span">Send melding</BodyShort>
-            </button>
+            <Button>Send melding</Button>
           </form>
         )}
       </div>
