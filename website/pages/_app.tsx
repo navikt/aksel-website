@@ -1,4 +1,5 @@
 import {
+  AuthProvider,
   IdContext,
   initAmplitude,
   logPageView,
@@ -59,10 +60,13 @@ function App({
       </Head>
       {pageProps?.preview && <PreviewBanner />}
 
-      {/* <AuthProvider></AuthProvider> */}
-      <IdContext.Provider value={{ id: pageProps?.id ?? pageProps?.page?._id }}>
-        <Component {...pageProps} />
-      </IdContext.Provider>
+      <AuthProvider>
+        <IdContext.Provider
+          value={{ id: pageProps?.id ?? pageProps?.page?._id }}
+        >
+          <Component {...pageProps} />
+        </IdContext.Provider>
+      </AuthProvider>
     </>
   );
 }

@@ -5,6 +5,7 @@ import {
   AkselBlogg,
   akselForsideQuery,
   AkselTema,
+  isValidated,
   Riktekst,
   SanityT,
   urlFor,
@@ -17,6 +18,7 @@ import { BodyLong, Detail, Heading, Link } from "@navikt/ds-react";
 import cl from "classnames";
 import Head from "next/head";
 import NextLink from "next/link";
+import { GetServerSideProps } from "next/types";
 import React from "react";
 
 const portalkort = [
@@ -442,11 +444,11 @@ interface PageProps {
   preview: boolean;
 }
 
-export const getStaticProps = async ({
-  preview = false,
-}: {
-  preview?: boolean;
-}) => {
+export const getServerSideProps: GetServerSideProps = async (
+  context
+): Promise<{ props: PageProps }> => {
+  const isValidUser = await isValidated(context);
+
   const client = getClient();
 
   const {
@@ -454,7 +456,9 @@ export const getStaticProps = async ({
     prinsipp_1 = null,
     bloggs = null,
     temaer = null,
-  } = await client.fetch(akselForsideQuery);
+  } = await client.fetch(akselForsideQuery, {
+    valid: isValidUser,
+  });
 
   return {
     props: {
@@ -463,9 +467,8 @@ export const getStaticProps = async ({
       bloggs,
       tekster,
       slug: "/",
-      preview,
+      preview: context.preview ?? false,
     },
-    revalidate: 60,
   };
 };
 

@@ -259,11 +259,14 @@ export const akselForsideQuery = `*[_type == "vk_frontpage"][0]{
       ${deRefs}
     }
   },
-  prinsipp_1 {
-    ...,
-    hovedside->{slug, heading},
-    undersider[]->{slug, heading}
-  },
+  "prinsipp_1": select(
+    $valid == "true" => prinsipp_1 {
+      ...,
+      hovedside->{slug, heading},
+      undersider[]->{slug, heading}
+    },
+    $valid != "true" => []
+  ),
   "bloggs": ${akselBloggPosts},
   "temaer": ${akselTema}
 }`;
