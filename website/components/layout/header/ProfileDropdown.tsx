@@ -1,13 +1,13 @@
-/* import { Close, People } from "@navikt/ds-icons";
-import { BodyShort, Heading } from "@navikt/ds-react";
+import { Close, People } from "@navikt/ds-icons";
+import { BodyShort, Button, Heading } from "@navikt/ds-react";
 import { useContext, useState } from "react";
 import {
   AuthenticationContext,
   AuthenticationStatus,
 } from "../../website-modules/utils";
 import Toggle from "./menu/Toggle";
- */
-/* const ProfileDropdown = ({
+
+const ProfileDropdown = ({
   designsystem = false,
 }: {
   designsystem?: boolean;
@@ -32,7 +32,13 @@ import Toggle from "./menu/Toggle";
   );
 
   if (context.status !== AuthenticationStatus.IS_AUTHENTICATED) {
-    return null;
+    return (
+      <div className="my-auto mx-4" data-theme="dark">
+        <Button variant="primary" onClick={() => context.login()}>
+          Logg inn
+        </Button>
+      </div>
+    );
   }
 
   return (
@@ -62,8 +68,8 @@ import Toggle from "./menu/Toggle";
       }
     />
   );
-}; */
+};
 
-const ProfileDropdown = () => null;
+/* const ProfileDropdown = () => null; */
 
 export default ProfileDropdown;
