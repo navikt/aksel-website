@@ -1,9 +1,15 @@
 import { SanityT, urlFor } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
-import { BodyShort, Heading, Ingress } from "@navikt/ds-react";
+import { BodyShort, Button, Heading, Ingress } from "@navikt/ds-react";
 import Head from "next/head";
-import React from "react";
-import { dateStr, Feedback, UnderArbeid } from "../..";
+import React, { useContext } from "react";
+import {
+  AuthenticationContext,
+  AuthenticationStatus,
+  dateStr,
+  Feedback,
+  UnderArbeid,
+} from "../..";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
 
@@ -14,11 +20,15 @@ const AkselPrinsippTemplate = ({
   data: SanityT.Schema.aksel_prinsipp;
   title: string;
 }): JSX.Element => {
+  const { status, login } = useContext(AuthenticationContext);
+
   if (!data.innhold || !data.heading) {
     return null;
   }
 
   const authors = (data?.contributors as any)?.map((x) => x?.title);
+
+  const isLoggedIn = status === AuthenticationStatus.IS_AUTHENTICATED;
 
   return (
     <>
@@ -83,6 +93,19 @@ const AkselPrinsippTemplate = ({
         </div>
         <div className="mt-12">
           <div className="mt-8 px-4">
+            {!isLoggedIn && (
+              <div className="mx-auto grid max-w-prose grid-flow-row justify-items-center gap-4 rounded bg-gray-200 py-8 xs:w-[90%]">
+                <div className="">
+                  <Heading as="p" size="small">
+                    Logg inn for å lese artikkelen.
+                  </Heading>
+                  <BodyShort as="p" size="small" className="mt-1">
+                    Bare tilgjengelig for NAV-ansatte.
+                  </BodyShort>
+                </div>
+                <Button onClick={() => login()}>Logg inn</Button>
+              </div>
+            )}
             {data?.under_arbeid?.status ? (
               <UnderArbeid text={data?.under_arbeid?.forklaring} />
             ) : (
@@ -94,11 +117,13 @@ const AkselPrinsippTemplate = ({
             )}
           </div>
         </div>
-        <div className="mt-16 px-4">
-          <div className="mx-auto max-w-prose border-t border-gray-300 pt-8 xs:w-[90%]">
-            <Feedback akselFeedback docId={data?._id} docType={data?._type} />
+        {isLoggedIn && (
+          <div className="mt-16 px-4">
+            <div className="mx-auto max-w-prose border-t border-gray-300 pt-8 xs:w-[90%]">
+              <Feedback akselFeedback docId={data?._id} docType={data?._type} />
+            </div>
           </div>
-        </div>
+        )}
       </main>
       <Footer variant="aksel" />
     </>

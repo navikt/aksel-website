@@ -259,14 +259,11 @@ export const akselForsideQuery = `*[_type == "vk_frontpage"][0]{
       ${deRefs}
     }
   },
-  "prinsipp_1": select(
-    $valid == "true" => prinsipp_1 {
-      ...,
-      hovedside->{slug, heading},
-      undersider[]->{slug, heading}
-    },
-    $valid != "true" => []
-  ),
+  prinsipp_1 {
+    ...,
+    hovedside->{slug, heading},
+    undersider[]->{slug, heading}
+  },
   "bloggs": ${akselBloggPosts},
   "temaer": ${akselTema}
 }`;
@@ -287,10 +284,13 @@ export const akselPrinsippBySlug = `*[slug.current == $slug] | order(_updatedAt 
 {
   ...,
   "slug": slug.current,
-  innhold[]{
-    ...,
-    ${deRefs}
-  },
+  "innhold": select(
+    $valid == "true" => innhold[]{
+      ...,
+      ${deRefs}
+    },
+    $valid != "true" => []
+  ),
   contributors[]->{
     title
   }

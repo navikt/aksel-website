@@ -1,5 +1,5 @@
 import { Close, People } from "@navikt/ds-icons";
-import { BodyShort, Button, Heading } from "@navikt/ds-react";
+import { BodyShort, Heading } from "@navikt/ds-react";
 import { useContext, useState } from "react";
 import {
   AuthenticationContext,
@@ -32,13 +32,7 @@ const ProfileDropdown = ({
   );
 
   if (context.status !== AuthenticationStatus.IS_AUTHENTICATED) {
-    return (
-      <div className="my-auto mx-4" data-theme="dark">
-        <Button variant="primary" onClick={() => context.login()}>
-          Logg inn
-        </Button>
-      </div>
-    );
+    return null;
   }
 
   return (
@@ -50,14 +44,6 @@ const ProfileDropdown = ({
       buttonContent={button}
       menu={
         <div className="pt-4">
-          <dl>
-            <Heading as="dt" size="xsmall" className="mx-4 mb-2">
-              Bruker
-            </Heading>
-            <BodyShort className="mx-4">{context?.user?.name}</BodyShort>
-            <BodyShort className="mx-4">{context?.user?.mail}</BodyShort>
-          </dl>
-          <hr className="mt-2 border-divider" />
           <button
             className="flex h-full w-full rounded-b px-4 py-4 text-link hover:bg-interaction-primary-hover-subtle focus:shadow-[inset_0_0_0_3px_var(--navds-global-color-blue-800)] focus:outline-none"
             onClick={() => context.logout()}

@@ -1,11 +1,12 @@
 import { LayoutPicker } from "@/components";
 import {
   akselPrinsippBySlug,
-  getAkselDocuments,
+  isValidated,
   SanityT,
   usePreviewSubscription,
 } from "@/lib";
 import { getClient } from "@/sanity-client";
+import { GetServerSideProps } from "next/types";
 import React from "react";
 import NotFotfund from "../404";
 
@@ -29,43 +30,25 @@ const Page = (props: PageProps): JSX.Element => {
   return <LayoutPicker title="Aksel" data={data} />;
 };
 
-export const getStaticPaths = async (): Promise<{
-  fallback: string;
-  paths: { params: { prinsipp: string[] } }[];
-}> => {
-  return {
-    paths: await getAkselDocuments("aksel_prinsipp").then((paths) =>
-      paths.map((slug) => ({
-        params: {
-          prinsipp: slug.replace("prinsipper/", "").split("/"),
-        },
-      }))
-    ),
-    fallback: "blocking",
-  };
-};
+export const getServerSideProps: GetServerSideProps = async (
+  context
+): Promise<any | { notFound: true }> => {
+  const isValidUser = await isValidated(context);
 
-export const getStaticProps = async ({
-  params: { prinsipp },
-  preview = false,
-}: {
-  params: { prinsipp: string[] };
-  preview?: boolean;
-}) => {
-  if (prinsipp.length > 2) return { notFound: true };
+  if (context.params.prinsipp.length > 2) return { notFound: true };
 
   const page = await getClient().fetch(akselPrinsippBySlug, {
-    slug: `prinsipper/${prinsipp.join("/")}`,
+    slug: `prinsipper/${(context.params.prinsipp as string[]).join("/")}`,
+    valid: `${isValidUser}`,
   });
 
   return {
     props: {
       page,
-      prinsipp,
-      preview,
+      prinsipp: context.params.prinsipp,
+      preview: context.preview ?? false,
     },
-    notFound: !page && !preview,
-    revalidate: 60,
+    notFound: !page && !context.preview,
   };
 };
 
