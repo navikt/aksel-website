@@ -2,6 +2,7 @@
   --navds-textarea-color-shadow-error: var(--navds-global-color-red-300);
   --navds-textarea-color-border-error: var(--navds-global-color-red-400);
   --navds-error-message-color-text: var(--navds-global-color-red-300);
+  --navds-textarea-color-border: var(--navds-semantic-color-border-inverted);
 }
 
 .inverted-textfield {
@@ -11,18 +12,15 @@
   --navds-error-message-color-text: var(--navds-global-color-red-300);
 }
 
-.inverted-textarea textarea,
-.inverted-textfield > input {
-  @apply bg-transparent text-text-inverted;
+.inverted-textarea textarea {
+  @apply bg-transparent;
 }
 
-.inverted-textarea textarea:hover,
-.inverted-textfield > input:hover {
+.inverted-textarea textarea:hover {
   @apply border-blue-200;
 }
 
-.inverted-textarea textarea:focus,
-.inverted-textfield > input:focus {
+.inverted-textarea textarea:focus {
   @apply shadow-focus-inverted;
 }
 

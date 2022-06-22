@@ -1,5 +1,4 @@
 import { Close, People } from "@navikt/ds-icons";
-import { BodyShort, Heading } from "@navikt/ds-react";
 import { useContext, useState } from "react";
 import {
   AuthenticationContext,
