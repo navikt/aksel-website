@@ -37,7 +37,7 @@ const Page = (props: {
         <meta property="og:title" content="Designsystemet NAV" />
         <meta
           name="description"
-          content="Desgnsystemet til NAV gjør det enkelt å lage produkter."
+          content="Designsystemet til NAV gjør det enklere å lage produkter."
         />
       </Head>
       <PagePropsContext.Provider
