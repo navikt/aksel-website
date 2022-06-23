@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 
 type AuthContextProps = {
   status:
@@ -48,7 +48,7 @@ export const AuthProvider = (props: any) => {
       .catch(() => router.reload());
   };
 
-  const fetchIsAuthenticated = () => {
+  const fetchIsAuthenticated = useCallback(() => {
     fetch(`/api/auth`)
       .then(async (response) => {
         const json = await response.json();
@@ -72,11 +72,13 @@ export const AuthProvider = (props: any) => {
           status: AuthenticationStatus.FAILURE,
         });
       });
-  };
+  }, []);
 
   useEffect(() => {
     fetchIsAuthenticated();
-  }, [router]);
+  }, [router, fetchIsAuthenticated]);
+
+  console.log(state);
 
   /* useEffect(() => {
     console.log({ state: pageProps });
