@@ -76,7 +76,7 @@ export const AuthProvider = (props: any) => {
 
   useEffect(() => {
     fetchIsAuthenticated();
-  }, []);
+  }, [router]);
 
   /* useEffect(() => {
     console.log({ state: pageProps });
