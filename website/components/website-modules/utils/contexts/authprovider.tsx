@@ -52,6 +52,7 @@ export const AuthProvider = (props: any) => {
     fetch(`/api/auth`)
       .then(async (response) => {
         const json = await response.json();
+        console.log(json);
         if (json?.status === 200) {
           setState({
             status: AuthenticationStatus.IS_AUTHENTICATED,
