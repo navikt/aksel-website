@@ -42,7 +42,7 @@ const ProfileDropdown = ({
       setOpen={setOpenProfile}
       buttonContent={button}
       menu={
-        <div className="pt-4">
+        <div className="">
           <button
             className="flex h-full w-full rounded-b px-4 py-4 text-link hover:bg-interaction-primary-hover-subtle focus:shadow-[inset_0_0_0_3px_var(--navds-global-color-blue-800)] focus:outline-none"
             onClick={() => context.logout()}
