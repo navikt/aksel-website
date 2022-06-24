@@ -141,10 +141,10 @@ const FooterForm = () => {
             <Button>Send melding</Button>
           </form>
         )}
-        <div className="">
+        <div>
           © 2022 NAV |{" "}
           <NextLink href="/side/personvernserklaering" passHref>
-            <a className="focus: p-1 outline-none hover:underline focus:bg-focus-inverted focus:text-text focus:no-underline">
+            <a className=" outline-none hover:underline focus:bg-focus-inverted focus:text-text focus:no-underline focus:ring focus:ring-focus-inverted">
               Personvernerklæring og informasjonskapsler
             </a>
           </NextLink>
