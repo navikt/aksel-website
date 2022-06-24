@@ -7,6 +7,20 @@ export default {
   icon: VideoRoom,
   fields: [
     {
+      name: "bruk_embed",
+      title: "Bruk Microsoft-streams embed",
+      type: "boolean",
+    },
+    {
+      name: "embed",
+      title: "Iframe",
+      description:
+        "Trykk share og legg inn iframe her fra Microsoft-streams. Husk å velge størrelse og slå av autplay og show info!",
+      type: "text",
+      rows: 3,
+      hidden: ({ parent }) => !parent?.bruk_embed,
+    },
+    {
       name: "webm",
       title: "Video i WebM format",
       description: "Vi anbefaler å bruke Webm formatet om mulig!",
@@ -14,6 +28,7 @@ export default {
       options: {
         accept: "video/webm",
       },
+      hidden: ({ parent }) => parent?.bruk_embed,
     },
     {
       name: "fallback",
@@ -22,6 +37,7 @@ export default {
       options: {
         accept: "video/mp4",
       },
+      hidden: ({ parent }) => parent?.bruk_embed,
     },
     {
       name: "alt",

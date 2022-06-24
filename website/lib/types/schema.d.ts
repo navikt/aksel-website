@@ -1717,6 +1717,17 @@ Slik man ville brukt den, eks Accordion.Item
       _type: "video";
 
       /**
+       * Bruk Microsoft-streams embed - `Boolean`
+       */
+      bruk_embed?: boolean;
+
+      /**
+       * Iframe - `Text`
+Trykk share og legg inn iframe her fra Microsoft-streams. Husk å velge størrelse og slå av autplay og show info!
+       */
+      embed?: string;
+
+      /**
        * Video i WebM format - `File`
 Vi anbefaler å bruke Webm formatet om mulig!
        */

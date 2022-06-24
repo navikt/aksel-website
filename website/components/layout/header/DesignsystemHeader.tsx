@@ -7,7 +7,6 @@ import { logNav, PagePropsContext, Search } from "../..";
 import MobileNavigation from "./menu/MobileNav";
 import PortalNavigation from "./menu/PortalNav";
 import ProfileDropdown from "./ProfileDropdown";
-/* import ProfileDropdown from "./ProfileDropdown"; */
 
 const DesignsystemHeader = (): JSX.Element => {
   const { pageProps } = useContext(PagePropsContext);
