@@ -1,60 +1,29 @@
-import { Close, People } from "@navikt/ds-icons";
-import { useContext, useState } from "react";
+import { Logout } from "@navikt/ds-icons";
+import { Button } from "@navikt/ds-react";
+import { useContext } from "react";
 import {
   AuthenticationContext,
   AuthenticationStatus,
 } from "../../website-modules/utils";
-import Toggle from "./menu/Toggle";
 
-const ProfileDropdown = ({
-  designsystem = false,
-}: {
-  designsystem?: boolean;
-}) => {
-  const [openProfile, setOpenProfile] = useState(false);
+const ProfileDropdown = ({ dark = false }: { dark?: boolean }) => {
   const context = useContext(AuthenticationContext);
-
-  const button = (
-    <>
-      {openProfile ? (
-        <Close
-          className="pointer-events-none text-2xl"
-          aria-label="Lukk profil-meny"
-        />
-      ) : (
-        <People
-          className="pointer-events-none text-2xl"
-          aria-label="Åpne profil-meny"
-        />
-      )}
-    </>
-  );
 
   if (context.status !== AuthenticationStatus.IS_AUTHENTICATED) {
     return null;
   }
 
   return (
-    <Toggle
-      isHamburger
-      inverted={!designsystem}
-      open={openProfile}
-      setOpen={setOpenProfile}
-      buttonContent={button}
-      menu={
-        <div className="">
-          <button
-            className="flex h-full w-full rounded-b px-4 py-4 text-link hover:bg-interaction-primary-hover-subtle focus:shadow-[inset_0_0_0_3px_var(--navds-global-color-blue-800)] focus:outline-none"
-            onClick={() => context.logout()}
-          >
-            Logg ut
-          </button>
-        </div>
-      }
-    />
+    <Button
+      data-theme={dark ? "dark" : "light"}
+      onClick={() => context.logout()}
+      className="my-auto bg-transparent md:mx-4"
+      variant="secondary"
+    >
+      <span className="hidden xs:block">Logg ut</span>
+      <Logout title="Logg ut" className="block xs:hidden" />
+    </Button>
   );
 };
-
-/* const ProfileDropdown = () => null; */
 
 export default ProfileDropdown;

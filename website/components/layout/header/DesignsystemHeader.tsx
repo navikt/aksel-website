@@ -50,7 +50,7 @@ const DesignsystemHeader = (): JSX.Element => {
         )}
       </div>
       <div className="ml-auto flex">
-        <ProfileDropdown designsystem />
+        <ProfileDropdown dark />
         <Search />
       </div>
     </>
@@ -60,7 +60,7 @@ const DesignsystemHeader = (): JSX.Element => {
     <>
       <PortalNavigation title={"Designsystemet"} />
       <div className="ml-auto flex">
-        {/* <ProfileDropdown designsystem /> */}
+        <ProfileDropdown dark />
         <Search />
         <MobileNavigation />
       </div>

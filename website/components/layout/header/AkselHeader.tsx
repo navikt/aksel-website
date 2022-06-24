@@ -53,7 +53,7 @@ const AkselHeader = ({
           </a>
         </NextLink>
         <span className="flex">
-          <ProfileDropdown />
+          <ProfileDropdown dark={variant === "forside"} />
           <Search
             variant={variant === "forside" ? "aksel-inverted" : "aksel"}
           />
