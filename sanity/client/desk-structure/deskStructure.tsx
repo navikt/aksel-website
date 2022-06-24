@@ -49,6 +49,12 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
         S.view.component(PageWebPreview).title("Preview"),
         S.view.component(KomponentPreview).title("Preview-dev"),
       ]);
+    case "aksel_standalone":
+      return S.document().views([
+        S.view.form(),
+        S.view.component(PageWebPreview).title("Preview"),
+        S.view.component(KomponentPreview).title("Preview-dev"),
+      ]);
   }
 };
 

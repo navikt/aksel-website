@@ -16,5 +16,8 @@ export const adminPanel = async (roles) =>
             .schemaType(`vk_frontpage`)
             .icon(() => <Picture />)
             .id(`frontpage_vk_praksis`),
+          S.listItem()
+            .title("Standalone-sider")
+            .child(S.documentTypeList("aksel_standalone")),
         ])
     );

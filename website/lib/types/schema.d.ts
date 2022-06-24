@@ -1160,6 +1160,50 @@ Anbefalt størrelse er 1200:630px
       };
     }
 
+    /**
+     * Standalone-sider
+     */
+    interface aksel_standalone extends Sanity.Document {
+      _type: "aksel_standalone";
+
+      /**
+       * Publiseringsdato - `Datetime`
+Synlig bare for admins. Setter publiseringsdato for dokument
+       */
+      publishedAt?: string;
+
+      /**
+       * Sidetittel - `String`
+Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.
+       */
+      heading?: string;
+
+      /**
+       * url - `Slug`
+       */
+      slug?: {
+        _type: "slug";
+        current: string;
+      };
+
+      /**
+       * Innhold - `Array`
+       */
+      innhold?: Array<
+        | Sanity.Keyed<generisk_seksjon_artikkel>
+        | Sanity.Keyed<{
+            _type: "riktekst_blokk";
+
+            /**
+             * Riktekst - `RegistryReference`
+             */
+            body?: riktekst;
+          }>
+        | Sanity.Keyed<tips>
+        | Sanity.Keyed<relatert_innhold>
+      >;
+    }
+
     type generisk_seksjon = {
       _type: "generisk_seksjon";
 
@@ -2113,7 +2157,8 @@ Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via
       | aksel_artikkel
       | aksel_blogg
       | aksel_tema
-      | aksel_prinsipp;
+      | aksel_prinsipp
+      | aksel_standalone;
   }
 }
 

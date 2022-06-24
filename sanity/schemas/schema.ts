@@ -55,5 +55,6 @@ export default createSchema({
     Aksel.Blogg,
     Aksel.Tema,
     Aksel.Prinsipp,
+    Aksel.Standalone,
   ]),
 });
