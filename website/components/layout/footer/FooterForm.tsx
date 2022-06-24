@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import isEmail from "validator/lib/isEmail";
 import isEmpty from "validator/lib/isEmpty";
+import NextLink from "next/link";
 
 const FooterForm = () => {
   const [contactForm, setContactForm] = useState({ content: "", mail: "" });
@@ -94,7 +95,7 @@ const FooterForm = () => {
           </li>
         </BodyShort>
       </div>
-      <div className="flex w-full max-w-md gap-8" data-theme="dark">
+      <div className="flex w-full max-w-md flex-col gap-8" data-theme="dark">
         {sent ? (
           <div>
             <Label spacing>Melding er sendt til designsystemet</Label>
@@ -140,6 +141,14 @@ const FooterForm = () => {
             <Button>Send melding</Button>
           </form>
         )}
+        <div className="">
+          © 2022 NAV |{" "}
+          <NextLink href="/side/personvernserklaering" passHref>
+            <a className="focus: p-1 outline-none hover:underline focus:bg-focus-inverted focus:text-text focus:no-underline">
+              Personvernerklæring og informasjonskapsler
+            </a>
+          </NextLink>
+        </div>
       </div>
     </>
   );
