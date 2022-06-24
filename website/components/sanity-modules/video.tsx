@@ -24,7 +24,8 @@ const Video = ({
 }): JSX.Element => {
   const [open, setOpen] = useState(false);
   const { status, login } = useContext(AuthenticationContext);
-  const isLoggedIn = status === AuthenticationStatus.IS_AUTHENTICATED;
+  /* const isLoggedIn = status === AuthenticationStatus.IS_AUTHENTICATED; */
+  const isLoggedIn = true;
 
   if (!node || (!node.webm && !node.fallback) || !node.alt) {
     return null;
@@ -36,7 +37,7 @@ const Video = ({
     height="720"
     loading="lazy"
     src="https://web.microsoftstream.com/embed/video/c97ee635-541e-48ee-b33e-6f8f9b86c1dc?autoplay=false&showinfo=false"
-    allowFullScreen
+    allowfullScreen
   ></iframe>`;
   };
 
@@ -45,7 +46,7 @@ const Video = ({
     <figure className={cl("m-0 mb-8 flex flex-col gap-2")} id={node._key}>
       {isLoggedIn ? (
         <div
-          className="iframe-parent"
+          className="iframe-parent border border-divider"
           dangerouslySetInnerHTML={{ __html: getVideo() }}
         />
       ) : (
