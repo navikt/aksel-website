@@ -50,7 +50,7 @@ const Video = ({
               dangerouslySetInnerHTML={{ __html: getVideo() }}
             />
           ) : (
-            <div className="grid aspect-video w-full place-content-center justify-items-start gap-4 rounded bg-gray-200">
+            <div className="grid aspect-video w-full place-content-center justify-items-center gap-4 rounded bg-gray-200">
               <div className="">
                 <Heading as="p" size="small">
                   Logg inn for å se videoen
