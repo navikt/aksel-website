@@ -10,11 +10,13 @@ const Feedback = ({
   docType,
   center,
   akselFeedback = false,
+  text,
 }: {
   docId?: string;
   docType?: string;
   center?: boolean;
   akselFeedback?: boolean;
+  text?: string;
 }): JSX.Element => {
   const { asPath, basePath } = useRouter();
   const [textValue, setTextValue] = useState("");
@@ -154,7 +156,7 @@ const Feedback = ({
     <div className={classes} id="feedback-block" data-hj-suppress>
       <div className="flex w-full flex-col items-center gap-4">
         <Heading size="small" level="2">
-          Var denne artikkelen til hjelp?
+          Var denne {`${text ?? "artikkelen"}`} til hjelp?
         </Heading>
         <div className="flex w-full justify-center gap-2 sm:gap-6">
           <button
@@ -211,7 +213,7 @@ const Feedback = ({
           onClick={() => setActiveState(HelpfulArticleEnum.MISC)}
         >
           <Label size="small">
-            Jeg vil foreslå forbedringer til artikkelen.
+            Jeg vil foreslå forbedringer til {`${text ?? "artikkelen"}`}.
           </Label>
         </button>
         {activeState !== null && (

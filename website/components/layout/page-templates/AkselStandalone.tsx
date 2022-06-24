@@ -1,3 +1,4 @@
+import { Feedback } from "@/components";
 import { SanityT } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { Heading } from "@navikt/ds-react";
@@ -51,6 +52,16 @@ const AkselStandaloneTemplate = ({
               className="mx-auto max-w-prose xs:w-[90%]"
               blocks={data?.innhold ?? []}
               variant="aksel"
+            />
+          </div>
+        </div>
+        <div className="mt-16 px-4">
+          <div className="mx-auto max-w-prose border-t border-gray-300 pt-8 xs:w-[90%]">
+            <Feedback
+              akselFeedback
+              text="siden"
+              docId={data?._id}
+              docType={data?._type}
             />
           </div>
         </div>
