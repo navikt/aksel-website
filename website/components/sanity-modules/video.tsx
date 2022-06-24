@@ -1,7 +1,14 @@
-import { BodyLong, ReadMore } from "@navikt/ds-react";
+import {
+  BodyLong,
+  BodyShort,
+  Button,
+  Heading,
+  ReadMore,
+} from "@navikt/ds-react";
 import cl from "classnames";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { withErrorBoundary } from "@/error-boundary";
+import { AuthenticationContext, AuthenticationStatus } from "..";
 
 const Video = ({
   node,
@@ -15,14 +22,44 @@ const Video = ({
   };
 }): JSX.Element => {
   const [open, setOpen] = useState(false);
+  const { status, login } = useContext(AuthenticationContext);
+  const isLoggedIn = status === AuthenticationStatus.IS_AUTHENTICATED;
+
   if (!node || (!node.webm && !node.fallback) || !node.alt) {
     return null;
   }
 
+  const getVideo = () => {
+    return `<iframe
+    width="1280"
+    height="720"
+    loading="lazy"
+    src="https://web.microsoftstream.com/embed/video/c97ee635-541e-48ee-b33e-6f8f9b86c1dc?autoplay=false&showinfo=false"
+    allowFullScreen
+    className="aspect-video h-auto max-w-full border-none"
+  ></iframe>`;
+  };
+
   /* https://www.w3.org/WAI/PF/HTML/wiki/Media_Alt_Technologies#1:_Use_.40aria-label_for_the_text_description_of_player */
   return (
     <figure className={cl("m-0 mb-8 flex flex-col gap-2")}>
-      <video
+      {isLoggedIn ? (
+        <div dangerouslySetInnerHTML={{ __html: getVideo() }}></div>
+      ) : (
+        <div className="grid aspect-video w-full place-content-center justify-items-start gap-4 rounded bg-gray-200">
+          <div className="">
+            <Heading as="p" size="small">
+              Logg inn for å se videoen
+            </Heading>
+            <BodyShort as="p" size="small" className="mt-1">
+              Bare tilgjengelig for NAV-ansatte.
+            </BodyShort>
+          </div>
+          <Button onClick={() => login()}>Logg inn</Button>
+        </div>
+      )}
+
+      {/* <video
         className="focus:shadow-focus-gap focus:outline-none"
         title={node.alt}
         playsInline
@@ -38,7 +75,7 @@ const Video = ({
           src={node.fallback.url}
           type={`video/${node.fallback.extension}`}
         />
-      </video>
+      </video> */}
       {node?.caption && (
         <BodyLong as="figcaption" className="self-center">
           {node.caption}

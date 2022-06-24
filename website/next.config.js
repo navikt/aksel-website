@@ -19,7 +19,7 @@ const ContentSecurityPolicy = `
   connect-src 'self' ${hotjar} cdn.sanity.io *.api.sanity.io https://amplitude.nav.no https://sentry.gc.nav.no https://*.algolia.net https://*.algolianet.com;
   frame-ancestors localhost:3333 https://verktoykasse.sanity.studio/;
   media-src 'self' cdn.sanity.io;
-  frame-src ${hotjar};
+  frame-src ${hotjar} https://web.microsoftstream.com;
 `;
 
 const securityHeaders = [
