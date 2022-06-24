@@ -9,10 +9,8 @@ export interface FilterT {
 
 const Filter = ({
   onFilterChange,
-  value: filterValue,
 }: {
   onFilterChange: (v: FilterT) => void;
-  value: null | string;
 }) => {
   const [value, setValue] = useState("");
   const [toggle, setToggle] = useState("outline");
@@ -23,10 +21,6 @@ const Filter = ({
       toggle,
     });
   }, [value]);
-
-  useEffect(() => {
-    filterValue && setValue(filterValue);
-  }, [filterValue]);
 
   useEffect(() => {
     onFilterChange({

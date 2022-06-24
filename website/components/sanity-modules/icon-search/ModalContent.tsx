@@ -11,7 +11,7 @@ import {
   Snippet,
 } from "@/components";
 import { CodeSnippet } from "@/lib";
-import { downloadPng, downloadSvg } from "./downloads";
+import { downloadSvg } from "./downloads";
 
 const ModalContent = ({ icon }: { icon: string }) => {
   const [doc, setDoc] = useState<{
@@ -98,17 +98,7 @@ import ${icon} from "@navikt/ds-icons/svg/${icon}";`,
                 logDownload(icon, "svg");
               }}
             >
-              <Icons.Download aria-label="last ned" /> SVG
-            </Button>
-            <Button
-              variant="tertiary"
-              onClick={() => {
-                downloadPng(icon);
-                logDownload(icon, "png");
-              }}
-            >
-              <Icons.Download aria-label="last ned" />
-              PNG
+              <Icons.Download title="last ned" /> SVG
             </Button>
           </div>
         </div>
