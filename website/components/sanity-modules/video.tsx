@@ -14,6 +14,7 @@ const Video = ({
   node,
 }: {
   node: {
+    _key?: string;
     alt: string;
     webm: { extension: string; url: string } | null;
     fallback: { extension: string; url: string } | null;
@@ -36,15 +37,17 @@ const Video = ({
     loading="lazy"
     src="https://web.microsoftstream.com/embed/video/c97ee635-541e-48ee-b33e-6f8f9b86c1dc?autoplay=false&showinfo=false"
     allowFullScreen
-    className="aspect-video h-auto max-w-full border-none"
   ></iframe>`;
   };
 
   /* https://www.w3.org/WAI/PF/HTML/wiki/Media_Alt_Technologies#1:_Use_.40aria-label_for_the_text_description_of_player */
   return (
-    <figure className={cl("m-0 mb-8 flex flex-col gap-2")}>
+    <figure className={cl("m-0 mb-8 flex flex-col gap-2")} id={node._key}>
       {isLoggedIn ? (
-        <div dangerouslySetInnerHTML={{ __html: getVideo() }}></div>
+        <div
+          className="iframe-parent"
+          dangerouslySetInnerHTML={{ __html: getVideo() }}
+        />
       ) : (
         <div className="grid aspect-video w-full place-content-center justify-items-start gap-4 rounded bg-gray-200">
           <div className="">
@@ -55,10 +58,32 @@ const Video = ({
               Bare tilgjengelig for NAV-ansatte.
             </BodyShort>
           </div>
-          <Button onClick={() => login()}>Logg inn</Button>
+          <Button
+            onClick={() => {
+              window.history.replaceState(
+                window.history.state,
+                "",
+                `#${node._key}`
+              );
+              login();
+            }}
+          >
+            Logg inn
+          </Button>
         </div>
       )}
-
+      <style jsx global>
+        {`
+          .iframe-parent iframe {
+            aspect-ratio: 16/9;
+            border: none;
+            height: auto;
+            width: auto;
+            max-width: 100%;
+            width: 100%;
+          }
+        `}
+      </style>
       {/* <video
         className="focus:shadow-focus-gap focus:outline-none"
         title={node.alt}
