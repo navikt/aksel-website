@@ -15,6 +15,7 @@ export const initAmplitude = () => {
 };
 
 export const logPageView = (s: string, firstLoad?: boolean) => {
+  console.log("here");
   logAmplitudeEvent(AmplitudeEvents.sidevisning, {
     side: s,
     firstLoad: !!firstLoad,
@@ -45,7 +46,6 @@ export enum AmplitudeEvents {
   "navigasjon" = "navigasjon",
   "notfound" = "notfound",
   "error" = "error",
-  "ankerklikk" = "ankerklikk",
   "ikonklikk" = "ikonklikk",
   "ikonsok" = "ikonsok",
   "fargeklikk" = "fargeklikk",
