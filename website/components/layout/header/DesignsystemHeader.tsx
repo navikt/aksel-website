@@ -6,6 +6,7 @@ import React, { useContext } from "react";
 import { logNav, PagePropsContext, Search } from "../..";
 import MobileNavigation from "./menu/MobileNav";
 import PortalNavigation from "./menu/PortalNav";
+import ProfileDropdown from "./ProfileDropdown";
 /* import ProfileDropdown from "./ProfileDropdown"; */
 
 const DesignsystemHeader = (): JSX.Element => {
@@ -50,7 +51,7 @@ const DesignsystemHeader = (): JSX.Element => {
         )}
       </div>
       <div className="ml-auto flex">
-        {/* <ProfileDropdown designsystem /> */}
+        <ProfileDropdown designsystem />
         <Search />
       </div>
     </>
