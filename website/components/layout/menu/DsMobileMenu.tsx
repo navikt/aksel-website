@@ -1,8 +1,7 @@
 import { BodyShort, Detail } from "@navikt/ds-react";
 import cl from "classnames";
 import NextLink from "next/link";
-import React, { useContext, useState } from "react";
-import { useIsomorphicLayoutEffect } from "react-use";
+import React, { useContext, useState, useEffect } from "react";
 import { logNav, PagePropsContext } from "../..";
 import { DsNavigationHeadingMenuT, DsNavigationHeadingT } from "@/lib";
 
@@ -23,7 +22,7 @@ const Menu = ({
     []
   );
 
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
     if (!heading || !heading?.menu) return;
     setSidebarMenu([...heading.menu]);
   }, [heading]);

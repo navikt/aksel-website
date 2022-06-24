@@ -1,7 +1,6 @@
 import { Close } from "@navikt/ds-icons";
 import { BodyShort, Modal } from "@navikt/ds-react";
-import { useEffect } from "react";
-import { useKey } from "react-use";
+import { useCallback, useEffect } from "react";
 
 const LightBox = ({
   children,
@@ -16,7 +15,17 @@ const LightBox = ({
     Modal.setAppElement("#__next");
   }, []);
 
-  useKey(" ", () => onClose(), {}, [onClose]);
+  const handleSpacebar = useCallback((event) => {
+    event.key === " " && onClose();
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleSpacebar);
+
+    return () => {
+      window.removeEventListener("keydown", handleSpacebar);
+    };
+  }, [handleSpacebar]);
 
   return (
     <Modal
