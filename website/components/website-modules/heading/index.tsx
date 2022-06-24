@@ -32,10 +32,6 @@ const LevelTwoHeading = ({
     });
   };
 
-  if (children.toString() === "") {
-    return null;
-  }
-
   const cleanedChildren = useMemo(
     () => children.filter((x) => typeof x === "string").filter((x) => !!x),
     [children]
@@ -52,6 +48,10 @@ const LevelTwoHeading = ({
       format: "text/plain",
     });
   };
+
+  if (children.toString() === "" || children.toString() === "Ikonsøk") {
+    return null;
+  }
 
   if (cleanedChildren.length == 0) {
     return null;

@@ -32,7 +32,7 @@ const IconView = ({
                   <button
                     key={i.created_at}
                     onClick={() => handleSelect(i.name)}
-                    className="vk-icon_button group relative h-32 w-48 shrink rounded shadow-medium hover:shadow-[0_0_0_2px_theme(colors.link)] focus:shadow-focus focus:outline-none"
+                    className="vk-icon_button group relative h-32 w-48 shrink rounded shadow-medium ring-1 ring-gray-900/20 hover:shadow-[0_0_0_2px_theme(colors.link)] focus:shadow-focus focus:outline-none"
                   >
                     {isNew(i.created_at) && (
                       <Detail
@@ -50,7 +50,10 @@ const IconView = ({
                         />
                       </div>
                       <div className="text-center">
-                        <Detail size="small" className="vk-icon_button-detail">
+                        <Detail
+                          size="small"
+                          className="vk-icon_button-detail text-text-muted"
+                        >
                           {" "}
                           {getName(i.name)}
                         </Detail>

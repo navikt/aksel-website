@@ -17,10 +17,6 @@ const ModalContent = dynamic(() => import("./ModalContent"), {
   ssr: false,
 });
 
-const DownloadButtons = dynamic(() => import("./DownloadButtons"), {
-  ssr: false,
-});
-
 export const getTag = (name: string) => {
   switch (true) {
     case name.endsWith("Filled"):
@@ -137,10 +133,9 @@ const IconSearch = () => {
 
   return (
     <div className="relative flex w-full max-w-full flex-col md:w-[1000px] md:max-w-[62vw]">
-      <DownloadButtons />
       <div className="flex w-full flex-wrap justify-between gap-x-8 gap-y-4">
         <Filter onFilterChange={handleFilterChange} value={value} />
-        <div className="flex flex-wrap items-start justify-start gap-x-3 gap-y-2 xl:max-w-md">
+        {/* <div className="flex flex-wrap items-start justify-start gap-x-3 gap-y-2 xl:max-w-md">
           {options.map((x) => (
             <button
               onClick={() => setValue(x)}
@@ -152,7 +147,7 @@ const IconSearch = () => {
               </Detail>
             </button>
           ))}
-        </div>
+        </div> */}
       </div>
       <IconView categories={categories} handleSelect={handleSelect} />
       <Heading size="small" as="div" spacing>
