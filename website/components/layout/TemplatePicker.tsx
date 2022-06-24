@@ -15,6 +15,7 @@ import ArtikkelTabbedTemplate from "./page-templates/ArtikkelTabbed";
 import ComponentPageTemplate from "./page-templates/ComponentPageTemplate";
 import KomponentArtikkelTemplate from "./page-templates/KomponentArtikkel";
 import AkselPrinsippTemplate from "./page-templates/AkselPrinsipp";
+import AkselStandaloneTemplate from "./page-templates/AkselStandalone";
 
 type komponent_artikkel = {
   komponent_artikkel: (props: {
@@ -45,6 +46,13 @@ type aksel_blogg = {
   aksel_blogg: (props: { data: AkselBlogg; title: string }) => JSX.Element;
 };
 
+type aksel_standalone = {
+  aksel_standalone: (props: {
+    data: SanityT.Schema.aksel_standalone;
+    title: string;
+  }) => JSX.Element;
+};
+
 type aksel_prinsipp = {
   aksel_prinsipp: (props: {
     data: SanityT.Schema.aksel_prinsipp;
@@ -58,6 +66,7 @@ type templateT =
   | ds_artikkel
   | aksel_artikkel
   | aksel_blogg
+  | aksel_standalone
   | aksel_prinsipp;
 
 const templates: templateT = {
@@ -72,6 +81,7 @@ const templates: templateT = {
   aksel_artikkel: (props) => <AkselArtikkelTemplate {...props} />,
   aksel_blogg: (props) => <AkselBloggTemplate {...props} />,
   aksel_prinsipp: (props) => <AkselPrinsippTemplate {...props} />,
+  aksel_standalone: (props) => <AkselStandaloneTemplate {...props} />,
 };
 
 const TemplatePicker = ({
@@ -83,6 +93,7 @@ const TemplatePicker = ({
     | KomponentArtikkel
     | AkselArtikkel
     | AkselBlogg
+    | SanityT.Schema.aksel_standalone
     | SanityT.Schema.aksel_prinsipp;
   title: string;
 }): JSX.Element => {

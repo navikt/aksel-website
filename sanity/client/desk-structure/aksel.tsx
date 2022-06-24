@@ -4,9 +4,7 @@ import S from "@sanity/desk-tool/structure-builder";
 import documentStore from "part:@sanity/base/datastore/document";
 import React from "react";
 import { map } from "rxjs/operators";
-import { createSuperPane } from "sanity-super-pane";
 
-const query = `*[_type == "aksel_tema" && count(*[references(^._id)]) > 0]`;
 const temaQuery = `*[_type == "aksel_tema" && count(*[references(^._id)]) > 0]`;
 
 const AkselLogo = () => (

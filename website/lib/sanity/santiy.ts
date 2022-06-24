@@ -41,7 +41,12 @@ export const getAllPages = async (token?: string) => {
 };
 
 export const getAkselDocuments = async (
-  source: "aksel_artikkel" | "aksel_blogg" | "aksel_prinsipp" | "all",
+  source:
+    | "aksel_artikkel"
+    | "aksel_blogg"
+    | "aksel_prinsipp"
+    | "aksel_standalone"
+    | "all",
   token?: string
 ): Promise<string[]> => {
   if (!source) return [];
@@ -49,7 +54,7 @@ export const getAkselDocuments = async (
   const documents: any[] | null = await client.fetch(akselDocumentsByType, {
     types:
       source === "all"
-        ? `["aksel_artikkel", "aksel_blogg", "aksel_prinsipp"]`
+        ? `["aksel_artikkel", "aksel_blogg", "aksel_prinsipp", "aksel_standalone"]`
         : `["${source}"]`,
   });
   const paths = [];
