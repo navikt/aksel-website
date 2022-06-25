@@ -23,7 +23,7 @@ const ScrollTop = () => {
     };
 
     const handleKeyUp = (e) => {
-      !((e.ctrlKey || e.metaKey) && e.shiftKey) && setIsElevator(false);
+      (e.ctrlKey || e.metaKey) && setIsElevator(false);
     };
 
     window.addEventListener("keydown", handleKeyDown);
