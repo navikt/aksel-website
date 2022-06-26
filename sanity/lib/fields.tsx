@@ -16,15 +16,17 @@ export const privateField = {
   name: "tilgang",
   type: "object",
   description: "Styrer tilgang for side-innhold",
-  /* hidden: true, */
+  hidden: true,
   fields: [
     {
       title: "Privat",
       name: "privat",
       type: "boolean",
-      initialValue: false,
     },
   ],
+  initialValue: {
+    privat: true,
+  },
 };
 
 export const publishedAtField = {
