@@ -5,12 +5,12 @@
   },
   "api": {
     "projectId": "hnbe3yhs",
-    "dataset": "production"
+    "dataset": "development"
   },
   "env": {
     "development": {
       "api": {
-        "dataset": "production"
+        "dataset": "development"
       },
       "plugins": ["@sanity/vision"]
     }

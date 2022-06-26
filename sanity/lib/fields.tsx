@@ -11,6 +11,22 @@ export const editorField = {
   group: "settings",
 };
 
+export const privateField = {
+  title: "Sidetilganger",
+  name: "tilgang",
+  type: "object",
+  description: "Styrer tilgang for side-innhold",
+  /* hidden: true, */
+  fields: [
+    {
+      title: "Privat",
+      name: "privat",
+      type: "boolean",
+      initialValue: false,
+    },
+  ],
+};
+
 export const publishedAtField = {
   title: "Publiseringsdato",
   name: "publishedAt",
