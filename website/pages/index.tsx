@@ -201,6 +201,7 @@ const Page = (props: PageProps): JSX.Element => {
       prinsipp_1.undersider.filter((x) => !!x).length;
 
   const filteredTemas = temaer.filter((x) => x.refCount > 0);
+
   return (
     <>
       <Head>
