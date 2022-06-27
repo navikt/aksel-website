@@ -1,7 +1,7 @@
 import { LayoutPicker } from "@/components";
 import {
   akselPrinsippBySlug,
-  isValidated,
+  /* isValidated, */
   SanityT,
   usePreviewSubscription,
 } from "@/lib";
@@ -33,13 +33,13 @@ const Page = (props: PageProps): JSX.Element => {
 export const getServerSideProps: GetServerSideProps = async (
   context
 ): Promise<any | { notFound: true }> => {
-  const isValidUser = await isValidated(context);
+  /* const isValidUser = await isValidated(context); */
 
   if (context.params.prinsipp.length > 2) return { notFound: true };
 
   const page = await getClient().fetch(akselPrinsippBySlug, {
     slug: `prinsipper/${(context.params.prinsipp as string[]).join("/")}`,
-    valid: `${isValidUser}`,
+    valid: true,
   });
 
   return {

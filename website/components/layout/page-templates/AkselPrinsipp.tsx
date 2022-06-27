@@ -2,10 +2,10 @@ import { SanityT, urlFor } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { BodyShort, Button, Heading, Ingress } from "@navikt/ds-react";
 import Head from "next/head";
-import React, { useContext } from "react";
+import React from "react";
 import {
-  AuthenticationContext,
-  AuthenticationStatus,
+  /* AuthenticationContext,
+  AuthenticationStatus, */
   dateStr,
   Feedback,
   UnderArbeid,
@@ -20,7 +20,7 @@ const AkselPrinsippTemplate = ({
   data: SanityT.Schema.aksel_prinsipp;
   title: string;
 }): JSX.Element => {
-  const { status, login } = useContext(AuthenticationContext);
+  /* const { status, login } = useContext(AuthenticationContext); */
 
   if (!data.innhold || !data.heading) {
     return null;
@@ -28,7 +28,8 @@ const AkselPrinsippTemplate = ({
 
   const authors = (data?.contributors as any)?.map((x) => x?.title);
 
-  const isLoggedIn = status === AuthenticationStatus.IS_AUTHENTICATED;
+  /* const isLoggedIn = status === AuthenticationStatus.IS_AUTHENTICATED; */
+  const isLoggedIn = true;
 
   return (
     <>

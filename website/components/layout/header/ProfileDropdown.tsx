@@ -1,4 +1,4 @@
-import { Logout } from "@navikt/ds-icons";
+/* import { Logout } from "@navikt/ds-icons";
 import { Button } from "@navikt/ds-react";
 import { useContext } from "react";
 import {
@@ -24,6 +24,8 @@ const ProfileDropdown = ({ dark = false }: { dark?: boolean }) => {
       <Logout title="Logg ut" className="block xs:hidden" />
     </Button>
   );
-};
+}; */
+
+const ProfileDropdown = () => null;
 
 export default ProfileDropdown;
