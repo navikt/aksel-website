@@ -6,7 +6,6 @@ import {
   innholdField,
   isSlugUnique,
   prinsipper,
-  privateField,
   publishedAtField,
   SEOFields,
   titleField,
@@ -25,7 +24,6 @@ export default {
   groups,
   ...defaultDocPreview,
   fields: [
-    privateField,
     publishedAtField,
     editorField,
     titleField,

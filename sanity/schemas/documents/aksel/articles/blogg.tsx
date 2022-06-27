@@ -4,7 +4,6 @@ import {
   groups,
   ingressField,
   innholdField,
-  privateField,
   publishedAtField,
   sanitySlug,
   SEOFields,
@@ -21,7 +20,6 @@ export default {
   groups,
   ...defaultDocPreview,
   fields: [
-    privateField,
     publishedAtField,
     editorField,
     titleField,

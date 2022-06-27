@@ -2,7 +2,7 @@ import defaultResolve, {
   PublishAction,
 } from "part:@sanity/base/document-actions";
 import SetAndPublishAction from "./actions/publishedAt";
-import SetPrivateAction from "./actions/set-private";
+/* import SetPrivateAction from "./actions/set-private"; */
 import { allDocumentTypes } from "../config";
 
 export default function resolveDocumentActions(props) {
@@ -11,5 +11,5 @@ export default function resolveDocumentActions(props) {
       ? SetAndPublishAction
       : Action;
   });
-  return [publish, SetPrivateAction, ...rest];
+  return [publish /* SetPrivateAction */, ...rest];
 }
