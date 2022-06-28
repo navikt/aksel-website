@@ -26,6 +26,7 @@ const ProfileDropdown = ({ dark = false }: { dark?: boolean }) => {
   );
 }; */
 
-const ProfileDropdown = () => null;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const ProfileDropdown = ({ dark = false }: { dark?: boolean }) => null;
 
 export default ProfileDropdown;
