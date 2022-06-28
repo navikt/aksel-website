@@ -1,6 +1,6 @@
 import { SanityT, urlFor } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
-import { BodyShort, Button, Heading, Ingress } from "@navikt/ds-react";
+import { BodyShort, Heading, Ingress } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
 import {
@@ -94,7 +94,7 @@ const AkselPrinsippTemplate = ({
         </div>
         <div className="mt-12">
           <div className="mt-8 px-4">
-            {!isLoggedIn && (
+            {/* {!isLoggedIn && (
               <div className="mx-auto grid max-w-prose grid-flow-row justify-items-center gap-4 rounded bg-gray-200 py-8 xs:w-[90%]">
                 <div className="">
                   <Heading as="p" size="small">
@@ -106,7 +106,7 @@ const AkselPrinsippTemplate = ({
                 </div>
                 <Button onClick={() => login()}>Logg inn</Button>
               </div>
-            )}
+            )} */}
             {data?.under_arbeid?.status ? (
               <UnderArbeid text={data?.under_arbeid?.forklaring} />
             ) : (

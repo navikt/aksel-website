@@ -39,7 +39,7 @@ export const getServerSideProps: GetServerSideProps = async (
 
   const page = await getClient().fetch(akselPrinsippBySlug, {
     slug: `prinsipper/${(context.params.prinsipp as string[]).join("/")}`,
-    valid: true,
+    valid: "true",
   });
 
   return {

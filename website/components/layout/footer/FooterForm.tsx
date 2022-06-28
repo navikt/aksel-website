@@ -142,8 +142,8 @@ const FooterForm = () => {
           </form>
         )}
         <div>
-          2022 NAV |{" "}
-          <NextLink href="/side/personvernserklaering" passHref>
+          &copy; 2022 NAV |{" "}
+          <NextLink href="/side/personvernerklaering" passHref>
             <a className=" outline-none hover:underline focus:bg-focus-inverted focus:text-text focus:no-underline focus:ring focus:ring-focus-inverted">
               Personvernerklæring og informasjonskapsler
             </a>

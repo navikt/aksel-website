@@ -8,8 +8,8 @@
 .inverted-textfield {
   --navds-text-field-color-shadow-error: var(--navds-global-color-red-300);
   --navds-text-field-color-border-error: var(--navds-global-color-red-400);
-  --navds-text-field-color-shadow-error: var(--navds-global-color-red-300);
   --navds-error-message-color-text: var(--navds-global-color-red-300);
+  --navds-text-field-color-background: transparent;
 }
 
 .inverted-textarea textarea {
