@@ -15,7 +15,6 @@ export const initAmplitude = () => {
 };
 
 export const logPageView = (s: string, firstLoad?: boolean) => {
-  console.log("here");
   logAmplitudeEvent(AmplitudeEvents.sidevisning, {
     side: s,
     firstLoad: !!firstLoad,
