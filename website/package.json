@@ -32,7 +32,7 @@
   "dependencies": {
     "@docsearch/css": "3.0.0",
     "@docsearch/react": "3.0.0",
-    "@navikt/ds-css": "^0.18.23",
+    "@navikt/ds-css": "^0.18.24",
     "@navikt/ds-css-internal": "^0.7.7",
     "@navikt/ds-icons": "^0.8.17",
     "@navikt/ds-react": "^0.19.17",
