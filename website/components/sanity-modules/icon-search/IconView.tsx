@@ -37,7 +37,7 @@ const IconView = ({
                     {isNew(i.created_at) && (
                       <Detail
                         size="small"
-                        className="absolute top-0 right-0 rounded-tr rounded-bl-md bg-feedback-info-background py-1 px-2 "
+                        className="absolute top-0 right-0 rounded-tr rounded-bl-md bg-lightblue-200 py-1 px-2 "
                       >
                         Ny!
                       </Detail>

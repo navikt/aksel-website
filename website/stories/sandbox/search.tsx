@@ -9,6 +9,7 @@ const SearchSandbox: SandboxComponentT = (props: any) => {
     variant: props?.variant,
     hideLabel: props?.hideLabel,
     clearButton: props?.clearButton,
+    ...(props?.error ? { error: "Søket må starte med xyz" } : {}),
   };
 
   const [content, setContent] = useState("");
@@ -76,6 +77,7 @@ SearchSandbox.args = {
     variant: ["secondary", "primary", "simple"],
     hideLabel: true,
     clearButton: true,
+    error: false,
     darkmode: false,
     Komposisjon: ["", "Med egen knapp", "Med Søketreff"],
   },
@@ -86,7 +88,7 @@ SearchSandbox.getCode = (props: any) => {
     props?.variant
   }"${!props?.hideLabel ? "\n    hideLabel={false}" : ""}${
     !props?.clearButton ? "\n    clearButton={false}" : ""
-  }`;
+  }${props?.error ? `\n    error="Søket må starte med xyz"` : ""}`;
 
   if (props?.Komposisjon === "Med Søketreff") {
     return `// Eksempel på løsning for Search med søketreff

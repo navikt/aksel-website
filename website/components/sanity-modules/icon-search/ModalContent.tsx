@@ -70,7 +70,7 @@ import ${icon} from "@navikt/ds-icons/svg/${icon}";`,
             {icon}
             {isNew(doc?.created_at) && (
               <Detail
-                className="h-full rounded bg-feedback-info-background py-1 px-2 font-semibold"
+                className="h-full rounded bg-lightblue-200 py-1 px-2 font-semibold"
                 as="span"
               >
                 Ny!

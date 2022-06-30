@@ -321,7 +321,7 @@ const Page = (props: PageProps): JSX.Element => {
                           passHref
                           key={x.slug.current}
                         >
-                          <a className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow transition ease-out hover:bg-deepblue-200/60 hover:shadow-md sm:w-auto">
+                          <a className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow hover:bg-deepblue-200/60 hover:shadow-md focus:shadow-focus focus:outline-none sm:w-auto">
                             <span className="font-semibold">{x.heading}</span>{" "}
                             <Next
                               className="-mr-1 sm:hidden"
