@@ -123,7 +123,7 @@ const ComponentPageTemplate = ({
                 className="flex items-center gap-1 underline hover:text-text hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
               >
                 Yarn
-                <ExternalLink aria-label="Gå til yarn pakke" />
+                <ExternalLink title="Gå til yarn pakke" />
               </a>
             )}
             {npmPackage?.github_link && (
@@ -134,7 +134,7 @@ const ComponentPageTemplate = ({
                 className="flex items-center gap-1 underline hover:text-text hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
               >
                 Kode
-                <ExternalLink aria-label="Gå til github-kode" />
+                <ExternalLink title="Gå til github-kode" />
               </a>
             )}
             {data.figma_link && (
@@ -145,7 +145,7 @@ const ComponentPageTemplate = ({
                 className="flex items-center gap-1 underline hover:text-text hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
               >
                 Figma
-                <ExternalLink aria-label="Åpne i Figma" />
+                <ExternalLink title="Åpne i Figma" />
               </a>
             )}
           </BodyShort>

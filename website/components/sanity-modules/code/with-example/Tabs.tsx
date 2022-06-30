@@ -74,7 +74,7 @@ const CodeTabs = (): JSX.Element => {
               } eksempel i ny tab`}</span>
               <NewTab
                 aria-hidden
-                aria-label="åpne i ny fane"
+                title="åpne i ny fane"
                 focusable="false"
                 className="text-[1.5rem]"
               />

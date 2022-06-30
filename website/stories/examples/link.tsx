@@ -30,7 +30,7 @@ export const LinkMedIkon: ExampleComponent = () => (
     <p>
       Dette er en{" "}
       <Link href="#">
-        tekstlenke <ExternalLink />
+        tekstlenke <ExternalLink title="åpne i ny fane" />
       </Link>{" "}
       i en setning.
     </p>
@@ -40,7 +40,7 @@ export const LinkMedIkon: ExampleComponent = () => (
 LinkMedIkon.react = `<p>
 Dette er en{" "}
 <Link href="#">
-  tekstlenke <ExternalLink />
+  tekstlenke <ExternalLink title="åpne i ny fane"/>
 </Link>{" "}
 i en setning.
 </p>`;
