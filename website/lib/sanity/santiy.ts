@@ -1,6 +1,6 @@
 import { getClient, noCdnClient, sanityClient } from "./sanity.server";
 import { akselDocumentsByType, akselTemaNames, dsDocuments } from "./queries";
-import { DsArtikkel, DsComponentPage, KomponentArtikkel } from "..";
+import { DsArtikkel, KomponentArtikkel } from "..";
 import imageUrlBuilder from "@sanity/image-url";
 import {
   createCurrentUserHook,
@@ -72,13 +72,6 @@ export const getDsPaths = async (token?: string): Promise<string[][]> => {
   const client = token ? noCdnClient(token) : getClient();
   const documents: any[] | null = await client.fetch(dsDocuments);
   const paths = [];
-  const componentPageTabs = ["design", "utvikling", "tilgjengelighet"];
-
-  const tabs = {
-    design: "design",
-    utvikling: "development",
-    tilgjengelighet: "accessibility",
-  };
 
   const nonDrafts = documents.filter((x) => !x._id.startsWith("drafts."));
 
@@ -123,16 +116,10 @@ export const getDsPaths = async (token?: string): Promise<string[][]> => {
 };
 
 export const validateDsPath = (
-  doc: DsComponentPage | DsArtikkel | KomponentArtikkel,
+  doc: DsArtikkel | KomponentArtikkel,
   slug: string[]
 ) => {
   if (!doc) return false;
-
-  const tabs = {
-    design: "design",
-    utvikling: "development",
-    tilgjengelighet: "accessibility",
-  };
 
   /* Check for nested pages, ex button/kode */
   const isLvl2 = slug.length === 3;
