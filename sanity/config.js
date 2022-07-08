@@ -2,7 +2,7 @@ const teams = [
   {
     name: "designsystem",
     prefix: "ds",
-    documents: ["ds_component_page", "komponent_artikkel", "ds_artikkel"],
+    documents: ["komponent_artikkel", "ds_artikkel"],
     navigation: `navigation_designsystem`,
   },
   {

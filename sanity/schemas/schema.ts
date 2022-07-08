@@ -42,7 +42,6 @@ export default createSchema({
     Designsystem.ColorCategories,
     Designsystem.Tokens,
     Designsystem.Props,
-    Designsystem.ComponentPage,
     Designsystem.ComponentTemplate,
     Designsystem.Frontpage,
     Designsystem.Navigation,

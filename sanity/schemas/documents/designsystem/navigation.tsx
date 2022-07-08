@@ -48,11 +48,7 @@ export const ds_header_heading = {
         "Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via headern",
       name: "link_ref",
       type: "reference",
-      to: [
-        { type: "ds_component_page" },
-        { type: "komponent_artikkel" },
-        { type: "ds_artikkel" },
-      ],
+      to: [{ type: "komponent_artikkel" }, { type: "ds_artikkel" }],
       validation: (Rule) =>
         Rule.required().error("Header lenken må linke til en startside"),
     },
@@ -79,11 +75,7 @@ export const ds_header_heading = {
               title: "Link til side",
               name: "link",
               type: "reference",
-              to: [
-                { type: "ds_component_page" },
-                { type: "komponent_artikkel" },
-                { type: "ds_artikkel" },
-              ],
+              to: [{ type: "komponent_artikkel" }, { type: "ds_artikkel" }],
               options: {
                 modal: {
                   type: "dialog",

@@ -18,9 +18,7 @@ const client = sanityClient({
 });
 
 export default [
-  ...T.defaults().filter(
-    (x) => !["komponent_artikkel", "ds_component_page"].includes(x.spec.id)
-  ),
+  ...T.defaults().filter((x) => !["komponent_artikkel"].includes(x.spec.id)),
 
   T.template({
     id: "komponent_artikkel_template",

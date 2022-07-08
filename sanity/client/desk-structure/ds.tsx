@@ -29,13 +29,9 @@ export const dsPanel = async (roles) => {
           .title("Designsystem")
           .items([
             S.listItem()
-              .title("Komponentsider (nye)")
+              .title("Komponentsider")
               .icon(() => <Facilitet />)
               .child(createSuperPane("komponent_artikkel")),
-            S.listItem()
-              .title("Komponentsider (gamle)")
-              .icon(() => <Facilitet />)
-              .child(createSuperPane("ds_component_page")),
             S.listItem()
               .title("Artikler")
               .icon(() => <FileContent />)
@@ -80,7 +76,7 @@ export const dsPanel = async (roles) => {
                 return S.documentList()
                   .title("Sider ikke i navigasjon")
                   .filter(
-                    `!(_id in [${allIds}]) && !(_id in path('drafts.**')) && _type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"]`
+                    `!(_id in [${allIds}]) && !(_id in path('drafts.**')) && _type in ["komponent_artikkel", "ds_artikkel"]`
                   );
               }),
             S.documentListItem()
