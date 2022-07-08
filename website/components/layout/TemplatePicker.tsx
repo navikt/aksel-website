@@ -11,7 +11,6 @@ import AkselArtikkelTemplate from "./page-templates/AkselArtikkel";
 import AkselBloggTemplate from "./page-templates/AkselBlogg";
 import ArtikkelTemplate from "./page-templates/Artikkel";
 import ArtikkelTabbedTemplate from "./page-templates/ArtikkelTabbed";
-
 import KomponentArtikkelTemplate from "./page-templates/KomponentArtikkel";
 import AkselPrinsippTemplate from "./page-templates/AkselPrinsipp";
 import AkselStandaloneTemplate from "./page-templates/AkselStandalone";
