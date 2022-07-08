@@ -7,7 +7,7 @@ const ErrorMessageSandbox: SandboxComponentT = (props: any) => {
   };
 
   return (
-    <ErrorMessage {...newProps} spacing={props?.spacing} size={props?.size}>
+    <ErrorMessage {...newProps} size={props?.size}>
       {props?.tekst}
     </ErrorMessage>
   );
@@ -16,7 +16,6 @@ const ErrorMessageSandbox: SandboxComponentT = (props: any) => {
 ErrorMessageSandbox.args = {
   props: {
     size: ["medium", "small"],
-    spacing: false,
     tekst: "Du må fylle ut tekstfeltet før innsending.",
     as: "",
   },
@@ -24,7 +23,6 @@ ErrorMessageSandbox.args = {
 
 ErrorMessageSandbox.getCode = (props: any) => {
   return `<ErrorMessage
-  ${props?.spacing ? "spacing" : ""}
   ${props?.size !== "medium" ? `size="${props?.size}"` : ""}
   ${props?.as !== "" ? `as="${props?.as}"` : ""}
 >
