@@ -5,7 +5,7 @@ import RiktekstEnkel from "./riktekst/riktekst-enkel";
 import RiktekstTabell from "./riktekst/riktekst-tabell";
 import RiktekstBilde from "./riktekst/riktekst-bilde";
 import RiktekstBildeEnkel from "./riktekst/riktekst-bilde-enkel";
-import DoDontV2 from "./do-dont";
+import DoDontV2, { doDont } from "./do-dont";
 import Bilde from "./bilde";
 import Alert from "./alert";
 import RelatertInnhold from "./relatert-innhold";
@@ -28,6 +28,7 @@ const v2Blocks = [
   GeneriskBlokkArtikkel,
   Riktekst,
   DoDontV2,
+  doDont,
   Bilde,
   RiktekstEnkel,
   RiktekstBilde,

@@ -287,70 +287,6 @@ Prøver å hente React og HTML kode automatisk fra storybook
     }
 
     /**
-     * Komponentartikkel
-     */
-    interface ds_component_page extends Sanity.Document {
-      _type: "ds_component_page";
-
-      /**
-       * Publiseringsdato - `Datetime`
-Synlig bare for admins. Setter publiseringsdato for dokument
-       */
-      publishedAt?: string;
-
-      /**
-       * Redaktører - `Array`
-Legg til alle som har bidratt med denne siden!
-       */
-      contributors?: Array<Sanity.KeyedReference<editor>>;
-
-      /**
-       * Sidetittel - `String`
-Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.
-       */
-      heading?: string;
-
-      /**
-       * url - `Slug`
-       */
-      slug?: {
-        _type: "slug";
-        current: string;
-      };
-
-      /**
-       * Bruk-tab - `RegistryReference`
-       */
-      usage?: blockContent;
-
-      /**
-       * Design-tab - `RegistryReference`
-       */
-      design?: blockContent;
-
-      /**
-       * Utvikling-tab - `RegistryReference`
-       */
-      development?: blockContent;
-
-      /**
-       * Tilgjengelighet-tab - `RegistryReference`
-       */
-      accessibility?: blockContent;
-
-      /**
-       * Koblet kodepakke - `Reference`
-Kobler komponenten til en pakke
-       */
-      linked_package?: Sanity.Reference<ds_package>;
-
-      /**
-       * Figma lenke (optional) - `Url`
-       */
-      figma_link?: string;
-    }
-
-    /**
      * Komponentartikkel-template
      */
     interface ds_component_template extends Sanity.Document {
@@ -456,9 +392,7 @@ Kobler komponenten til en pakke
           /**
            * Lenke - `Reference`
            */
-          link_ref?: Sanity.Reference<
-            ds_component_page | komponent_artikkel | ds_artikkel
-          >;
+          link_ref?: Sanity.Reference<komponent_artikkel | ds_artikkel>;
 
           /**
            * Tittel - `String`
@@ -567,9 +501,7 @@ Kobler komponenten til en pakke og da om den er core/intern/navno. Alle tilgjeng
           /**
            * Legger til link til dokumentasjonen - `Reference`
            */
-          doc_link?: Sanity.Reference<
-            ds_component_page | komponent_artikkel | ds_artikkel
-          >;
+          doc_link?: Sanity.Reference<komponent_artikkel | ds_artikkel>;
         }>
       >;
     }
@@ -1293,6 +1225,41 @@ Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av sid
       blokker?: Array<Sanity.Keyed<do_dont_block>>;
     };
 
+    type do_dont_block = {
+      _type: "do_dont_block";
+
+      /**
+       * Fullwidth - `Boolean`
+Tar opp ~ 40% eller 100% av tilgjengelig bredde
+       */
+      fullwidth?: boolean;
+
+      /**
+       * Bilde - `Image`
+       */
+      picture?: {
+        asset: Sanity.Asset;
+        crop?: Sanity.ImageCrop;
+        hotspot?: Sanity.ImageHotspot;
+      };
+
+      /**
+       * alt tekst for bilde - `String`
+       */
+      alt?: string;
+
+      /**
+       * Fritekst - `Text`
+Korte konsise beskrivelser. Bruk fullbredde bilde i dodont med egen tekst for lengre forklaringer
+       */
+      description?: string;
+
+      /**
+       * Variant - `String`
+       */
+      variant?: "do" | "dont" | "warning";
+    };
+
     type bilde = {
       _type: "bilde";
       asset: Sanity.Asset;
@@ -1415,7 +1382,6 @@ Dette vil stå under bildet
            * Lenke til Intern sanity-side - `Reference`
            */
           intern_lenke?: Sanity.Reference<
-            | ds_component_page
             | komponent_artikkel
             | ds_artikkel
             | aksel_artikkel
@@ -1844,9 +1810,7 @@ Endrer modul-variant
       /**
        * Link - `Reference`
        */
-      link_ref?: Sanity.Reference<
-        ds_component_page | komponent_artikkel | ds_artikkel
-      >;
+      link_ref?: Sanity.Reference<komponent_artikkel | ds_artikkel>;
     };
 
     type navigation_dropdown = {
@@ -1864,178 +1828,6 @@ Endrer modul-variant
         Sanity.Keyed<navigation_link> | Sanity.Keyed<navigation_dropdown>
       >;
     };
-
-    type alert = {
-      _type: "alert";
-
-      /**
-       * Variant - `String`
-       */
-      variant?: "success" | "info" | "warning" | "error";
-
-      /**
-       * Størrelse - `String`
-       */
-      size?: "medium" | "small";
-
-      /**
-       * Heading (optional) - `String`
-       */
-      heading?: string;
-
-      /**
-       * Heading nivå - `String`
-       */
-      heading_level?: "h2" | "h3" | "h4";
-
-      /**
-       * Innhold - `RegistryReference`
-       */
-      body?: riktekst_enkel;
-    };
-
-    type code_example_ref = {
-      _type: "code_example_ref";
-
-      /**
-       * Kode eksempel - `Reference`
-       */
-      ref?: Sanity.Reference<ds_code_example>;
-    };
-
-    type code_sandbox_ref = {
-      _type: "code_sandbox_ref";
-
-      /**
-       * Sandbox - `Reference`
-       */
-      ref?: Sanity.Reference<ds_code_sandbox>;
-    };
-
-    type code_snippet = {
-      _type: "code_snippet";
-
-      /**
-       * Tittel (for preview internt i sanity) - `String`
-       */
-      title?: string;
-
-      /**
-       * Kode - `RegistryReference`
-       */
-      code?: any;
-    };
-
-    type do_dont = {
-      _type: "do_dont";
-
-      /**
-       * Tittel (vises bare internt i sanity) - `String`
-       */
-      title?: string;
-
-      /**
-       * Do / donts - `Array`
-Liste med do/donts
-       */
-      blocks?: Array<Sanity.Keyed<do_dont_block>>;
-    };
-
-    type do_dont_block = {
-      _type: "do_dont_block";
-
-      /**
-       * Fullwidth - `Boolean`
-Tar opp ~ 40% eller 100% av tilgjengelig bredde
-       */
-      fullwidth?: boolean;
-
-      /**
-       * Bilde - `Image`
-       */
-      picture?: {
-        asset: Sanity.Asset;
-        crop?: Sanity.ImageCrop;
-        hotspot?: Sanity.ImageHotspot;
-      };
-
-      /**
-       * alt tekst for bilde - `String`
-       */
-      alt?: string;
-
-      /**
-       * Fritekst - `Text`
-Korte konsise beskrivelser. Bruk fullbredde bilde i dodont med egen tekst for lengre forklaringer
-       */
-      description?: string;
-
-      /**
-       * Variant - `String`
-       */
-      variant?: "do" | "dont" | "warning";
-    };
-
-    type picture = {
-      _type: "picture";
-      asset: Sanity.Asset;
-      crop?: Sanity.ImageCrop;
-      hotspot?: Sanity.ImageHotspot;
-
-      /**
-       * Alt-tekst - `String`
-Beskriv bildet for skjermlesere
-       */
-      title?: string;
-
-      /**
-       * Bilde-tekst - `String`
-Dette vil stå under bildet
-       */
-      caption?: string;
-    };
-
-    type prop_table = {
-      _type: "prop_table";
-
-      /**
-       * Props - `Array`
-       */
-      komponenter?: Array<
-        Sanity.Keyed<{
-          _type: "komponent";
-
-          /**
-       * Komponent navn - `String`
-Slik man ville brukt den, eks Accordion.Item
-       */
-          title?: string;
-
-          /**
-           * Bruker komponenten OverridableComponent API-et - `Boolean`
-           */
-          overridable?: boolean;
-
-          /**
-           * Komponent referanse - `Reference`
-           */
-          propref?: Sanity.Reference<ds_props>;
-        }>
-      >;
-    };
-
-    type blockContent = Array<
-      | Sanity.Keyed<Sanity.Block>
-      | Sanity.Keyed<picture>
-      | Sanity.Keyed<tips>
-      | Sanity.Keyed<alert_v2>
-      | Sanity.Keyed<relatert_innhold>
-      | Sanity.Keyed<code_snippet>
-      | Sanity.Keyed<do_dont>
-      | Sanity.Keyed<code_sandbox_ref>
-      | Sanity.Keyed<code_example_ref>
-      | Sanity.Keyed<prop_table>
-    >;
 
     type ds_color = {
       _type: "ds_color";
@@ -2089,9 +1881,7 @@ Brukes for å endre rekkefølgen på listen. Farger med indeks 0 vil være førs
        * Side selve headingen linker til - `Reference`
 Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via headern
        */
-      link_ref?: Sanity.Reference<
-        ds_component_page | komponent_artikkel | ds_artikkel
-      >;
+      link_ref?: Sanity.Reference<komponent_artikkel | ds_artikkel>;
 
       /**
        * Meny for denne headingen - `Array`
@@ -2108,9 +1898,7 @@ Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via
             /**
              * Link til side - `Reference`
              */
-            link?: Sanity.Reference<
-              ds_component_page | komponent_artikkel | ds_artikkel
-            >;
+            link?: Sanity.Reference<komponent_artikkel | ds_artikkel>;
           }>
         | Sanity.Keyed<{
             _type: "subheading";
@@ -2146,7 +1934,6 @@ Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via
       | ds_color_categories
       | ds_tokens
       | ds_props
-      | ds_component_page
       | ds_component_template
       | ds_frontpage
       | ds_navigation
