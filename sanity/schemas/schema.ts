@@ -9,8 +9,6 @@ import frontpage from "./documents/frontpage";
 
 import * as Designsystem from "./documents/designsystem";
 import * as Aksel from "./documents/aksel";
-import * as SanityModules from "./old-template";
-import * as RichText from "./old-template/rich-text";
 import v2Blocks from "./modules";
 
 export default createSchema({
@@ -22,14 +20,6 @@ export default createSchema({
     navigation,
     link,
     dropdown,
-
-    /* Gammel template, fjernets etterhvert */
-    SanityModules.Alert,
-    SanityModules.CodeSnippet,
-    SanityModules.DoDont,
-    SanityModules.doDont,
-    SanityModules.Image,
-    RichText.BlockContent,
 
     Designsystem.Color,
     Designsystem.ds_header_heading,

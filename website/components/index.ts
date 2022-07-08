@@ -2,8 +2,6 @@ export * from "./assets";
 export { default as LayoutPicker } from "./layout/TemplatePicker";
 export { default as Alert } from "./sanity-modules/Alert";
 export * from "./sanity-modules/code";
-export { default as DoDont } from "./sanity-modules/old-template/dodont";
-export * from "./sanity-modules/old-template/image";
 export { default as Sandbox } from "./sanity-modules/sandbox";
 export { default as AccordionV2 } from "./sanity-modules/AccordionV2";
 export { default as Anatomi } from "./sanity-modules/AnatomiSeksjon";

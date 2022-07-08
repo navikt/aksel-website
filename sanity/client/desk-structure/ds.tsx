@@ -3,7 +3,6 @@ import {
   FileContent,
   Findout,
   Folder,
-  Historic,
   Picture,
   Place,
   Ruler,
@@ -11,7 +10,6 @@ import {
 } from "@navikt/ds-icons";
 import S from "@sanity/desk-tool/structure-builder";
 import client from "part:@sanity/base/client";
-
 import React from "react";
 import { createSuperPane } from "sanity-super-pane";
 

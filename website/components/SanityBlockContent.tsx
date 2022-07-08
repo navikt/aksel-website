@@ -10,10 +10,8 @@ import {
   Anatomi,
   Bilde,
   CodeExample,
-  DoDont,
   DoDontv2,
   GeneriskSeskjon,
-  Image,
   InstallasjonSeksjon,
   IntroKomponent,
   Kode,
@@ -22,7 +20,6 @@ import {
   PropsSeksjon,
   RelatertInnhold,
   Sandbox,
-  Snippet,
   SpesialSeksjon,
   Tabell,
   Tips,
@@ -64,10 +61,7 @@ const serializers = {
 
     /* General page modules */
     ds_code_sandbox: ({ node }) => <Sandbox node={node} />,
-    code_snippet: ({ node }) => <Snippet node={node} />,
     ds_code_example: ({ node }) => <CodeExample node={node} />,
-    do_dont: ({ node }) => <DoDont node={node} />,
-    picture: ({ node }) => <Image node={node} />,
 
     block: ({ node, children }) => {
       const context: BlockContextT = useContext(BlockContext);

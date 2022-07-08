@@ -22,17 +22,6 @@ const tips = `_type == "tips" =>{
   }
 }`;
 
-const doDont = `_type == "do_dont" =>{
-  ...,
-  blocks[]{
-    ...,
-    body[]{
-      ...,
-      ${markDef}
-    },
-  }
-}`;
-
 const introSeksjon = `_type == "intro_komponent" =>{
   ...,
   body[]{
@@ -205,7 +194,6 @@ const propsSeksjon = `_type == "props_seksjon" =>{
 const deRefs = `
 ${alert},
 ${tips},
-${doDont},
 ${markDef},
 ${introSeksjon},
 ${relatertInnhold},
