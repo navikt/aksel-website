@@ -20,13 +20,13 @@ const PopoverSandbox: SandboxComponentT = (props: any) => {
         }}
         onClick={() => setOpen(true)}
       >
-        Åpne popover
+        Åpne
       </Button>
       <Popover
         open={isOpen}
         onClose={() => setOpen(false)}
         anchorEl={buttonRef.current}
-        placement={props?.placement || "auto"}
+        placement={props?.placement}
         arrow={props?.arrow}
         {...newProps}
       >
@@ -52,9 +52,6 @@ PopoverSandbox.args = {
       "right-end",
       "left-start",
       "left-end",
-      "auto",
-      "auto-start",
-      "auto-end",
     ],
     arrow: true,
     offset: "",
