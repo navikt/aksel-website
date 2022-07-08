@@ -22,13 +22,6 @@ const tips = `_type == "tips" =>{
   }
 }`;
 
-const uniqueModules = `_type == "code_example_ref" =>{
-  "ref": @.ref->
-},
-_type == "code_sandbox_ref" =>{
-  ...@.ref->
-}`;
-
 const doDont = `_type == "do_dont" =>{
   ...,
   blocks[]{
@@ -209,18 +202,9 @@ const propsSeksjon = `_type == "props_seksjon" =>{
   },
 }`;
 
-const propsTableOld = `_type == "prop_table" =>{
-  ...,
-  komponenter[]{
-    ...,
-    "propref": propref->{...}
-  },
-}`;
-
 const deRefs = `
 ${alert},
 ${tips},
-${uniqueModules},
 ${doDont},
 ${markDef},
 ${introSeksjon},
@@ -228,7 +212,6 @@ ${relatertInnhold},
 ${anatomiSeksjon},
 ${liveSeksjon},
 ${uuSeksjon},
-${propsTableOld},
 ${propsSeksjon},
 ${generiskSeksjon},
 ${installSeksjon},

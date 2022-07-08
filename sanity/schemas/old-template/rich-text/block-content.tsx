@@ -206,9 +206,6 @@ export default {
       type: "do_dont",
       icon: () => <SuccessStroke />,
     },
-    { type: "code_sandbox_ref", icon: () => <Laptop /> },
-    { type: "code_example_ref", icon: () => <Laptop /> },
     /* { type: "uu_interaction", icon: () => <Braille /> }, */
-    { type: "prop_table", icon: () => <List /> },
   ],
 };

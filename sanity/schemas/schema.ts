@@ -25,13 +25,10 @@ export default createSchema({
 
     /* Gammel template, fjernets etterhvert */
     SanityModules.Alert,
-    SanityModules.CodeExampleRef,
-    SanityModules.CodeSandboxRef,
     SanityModules.CodeSnippet,
     SanityModules.DoDont,
     SanityModules.doDont,
     SanityModules.Image,
-    SanityModules.PropTable,
     RichText.BlockContent,
 
     Designsystem.Color,

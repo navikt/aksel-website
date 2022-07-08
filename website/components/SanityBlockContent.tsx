@@ -1,36 +1,35 @@
+import { ExternalLink } from "@navikt/ds-icons";
 import { BodyLong, Detail, Heading, Ingress, Link } from "@navikt/ds-react";
 import BlockContent from "@sanity/block-content-to-react";
+import cl from "classnames";
 import NextLink from "next/link";
 import React, { createContext, useContext } from "react";
-import cl from "classnames";
 import {
+  AccordionV2,
   Alert,
+  Anatomi,
+  Bilde,
   CodeExample,
   DoDont,
+  DoDontv2,
+  GeneriskSeskjon,
   Image,
+  InstallasjonSeksjon,
+  IntroKomponent,
+  Kode,
   LevelTwoHeading,
+  LiveDemo,
+  PropsSeksjon,
+  RelatertInnhold,
   Sandbox,
   Snippet,
-  Tips,
-  IntroKomponent,
-  RelatertInnhold,
-  Anatomi,
-  LiveDemo,
-  UuSeksjon,
-  GeneriskSeskjon,
-  DoDontv2,
-  Bilde,
-  Kode,
-  Tabell,
-  AccordionV2,
-  InstallasjonSeksjon,
-  PropsSeksjon,
   SpesialSeksjon,
-  Video,
+  Tabell,
+  Tips,
   TokensSeksjon,
-  PropTable,
+  UuSeksjon,
+  Video,
 } from ".";
-import { ExternalLink } from "@navikt/ds-icons";
 
 export const InlineCode = (props: React.HTMLAttributes<HTMLElement>) => (
   <code className="inline-code" {...props} />
@@ -67,15 +66,6 @@ const serializers = {
     ds_code_sandbox: ({ node }) => <Sandbox node={node} />,
     code_snippet: ({ node }) => <Snippet node={node} />,
     ds_code_example: ({ node }) => <CodeExample node={node} />,
-    code_example_ref: ({ node }) => <CodeExample node={node.ref} />,
-    prop_table: ({ node }) =>
-      node?.komponenter?.length > 0 ? (
-        <>
-          {node.komponenter.map((prop) => (
-            <PropTable komponent={prop as unknown as any} key={prop?._key} />
-          ))}
-        </>
-      ) : null,
     do_dont: ({ node }) => <DoDont node={node} />,
     picture: ({ node }) => <Image node={node} />,
 
