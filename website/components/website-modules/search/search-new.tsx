@@ -61,7 +61,6 @@ const Hit = ({ hit }: { hit: any }) => {
       aksel_prinsipp: "Aksel prinsipp",
       aksel_blogg: "Aksel blogg",
       ds_artikkel: "Designsystem artikkel",
-      ds_component_page: "Komponent",
       komponent_artikkel: "Komponent",
     };
     return types[hit._type];

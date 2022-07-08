@@ -326,100 +326,6 @@ export interface DsProps extends SanityDocument {
 }
 
 /**
- * Komponentartikkel
- *
- *
- */
-export interface DsComponentPage extends SanityDocument {
-  _type: "ds_component_page";
-
-  /**
-   * Redaktør/kontakt — `reference`
-   *
-   *
-   */
-  contact?: SanityReference<Editor>;
-
-  /**
-   * Bidragsytere — `array`
-   *
-   * Legg til de som har bidratt med denne siden!
-   */
-  contributors?: Array<SanityKeyedReference<Editor>>;
-
-  /**
-   * Sidetittel — `string`
-   *
-   * Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.
-   */
-  heading?: string;
-
-  /**
-   * url — `slug`
-   *
-   * Strukturen bestemmes ikke av URL-en
-   */
-  slug?: { _type: "slug"; current: string };
-
-  /**
-   * Bruk-tab — `blockContent`
-   *
-   *
-   */
-  usage?: BlockContent;
-
-  /**
-   * Design-tab — `blockContent`
-   *
-   *
-   */
-  design?: BlockContent;
-
-  /**
-   * Utvikling-tab — `blockContent`
-   *
-   *
-   */
-  development?: BlockContent;
-
-  /**
-   * Tilgjengelighet-tab — `blockContent`
-   *
-   *
-   */
-  accessibility?: BlockContent;
-
-  /**
-   * Koblet kodepakke — `reference`
-   *
-   * Kobler komponenten til en pakke
-   */
-  linked_package?: SanityReference<DsPackage>;
-
-  /**
-   * Figma lenke (optional) — `url`
-   *
-   *
-   */
-  figma_link?: string;
-
-  /**
-   * Tilbakemeldinger — `object`
-   *
-   *
-   */
-  metadata_feedback?: {
-    _type: "metadata_feedback";
-    /**
-     * Skjul artikkel feedback modul — `boolean`
-     *
-     * Gjemmer <<Var denne artikkelen til hjelp?>> modulen.
-     */
-    hide_feedback?: boolean;
-  };
-}
-
-/**
  * Komponentartikkel-template
  *
  *
@@ -534,9 +440,7 @@ export interface DsFrontpage extends SanityDocument {
        *
        *
        */
-      link_ref?: SanityReference<
-        DsComponentPage | KomponentArtikkel | DsArtikkel
-      >;
+      link_ref?: SanityReference<KomponentArtikkel | DsArtikkel>;
 
       /**
        * Tittel — `string`
@@ -662,9 +566,7 @@ export interface DsComponentOverview extends SanityDocument {
        *
        *
        */
-      doc_link?: SanityReference<
-        DsComponentPage | KomponentArtikkel | DsArtikkel
-      >;
+      doc_link?: SanityReference<KomponentArtikkel | DsArtikkel>;
     }>
   >;
 }
@@ -1365,11 +1267,7 @@ export type RelatertInnhold = {
        *
        */
       intern_lenke?: SanityReference<
-        | DsComponentPage
-        | KomponentArtikkel
-        | DsArtikkel
-        | AkselArtikkel
-        | AkselBlogg
+        KomponentArtikkel | DsArtikkel | AkselArtikkel | AkselBlogg
       >;
 
       /**
@@ -1842,7 +1740,7 @@ export type NavigationLink = {
    *
    *
    */
-  link_ref?: SanityReference<DsComponentPage | KomponentArtikkel | DsArtikkel>;
+  link_ref?: SanityReference<KomponentArtikkel | DsArtikkel>;
 };
 
 export type NavigationDropdown = {
@@ -2198,7 +2096,7 @@ export type DsNavigationHeading = {
    *
    * Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via headern
    */
-  link_ref?: SanityReference<DsComponentPage | KomponentArtikkel | DsArtikkel>;
+  link_ref?: SanityReference<KomponentArtikkel | DsArtikkel>;
 
   /**
    * Meny for denne headingen — `array`
@@ -2220,9 +2118,7 @@ export type DsNavigationHeading = {
          *
          *
          */
-        link?: SanityReference<
-          DsComponentPage | KomponentArtikkel | DsArtikkel
-        >;
+        link?: SanityReference<KomponentArtikkel | DsArtikkel>;
       }>
     | SanityKeyed<{
         _type: "subheading";
@@ -2262,7 +2158,6 @@ export type Documents =
   | DsCodeSandbox
   | DsColorCategories
   | DsProps
-  | DsComponentPage
   | DsComponentTemplate
   | DsFrontpage
   | DsNavigation

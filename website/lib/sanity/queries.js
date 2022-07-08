@@ -317,7 +317,7 @@ export const akselEditorById = `*[_id == $id][0]
   }
 }`;
 
-export const dsDocuments = `*[_type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"]]{ ..., 'slug': slug.current }`;
+export const dsDocuments = `*[_type in ["komponent_artikkel", "ds_artikkel"]]{ ..., 'slug': slug.current }`;
 
 const dsNavQuery = `"navigation": *[_type == 'ds_navigation'][0] {
   "headings": headings[]{
@@ -349,7 +349,7 @@ export const dsFrontpageQuery = `{
 }`;
 
 export const dsSlugQuery = `{
-  "page": *[_type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"] && slug.current == $slug] | order(_updatedAt desc)[0]
+  "page": *[_type in ["komponent_artikkel", "ds_artikkel"] && slug.current == $slug] | order(_updatedAt desc)[0]
     {
       ...,
       "slug": slug.current,
@@ -397,7 +397,7 @@ export const dsSlugQuery = `{
   ${dsNavQuery}
 }`;
 
-export const dsDocumentBySlug = `*[_type in ["ds_component_page", "komponent_artikkel", "ds_artikkel"] && slug.current == $slug] | order(_updatedAt desc)
+export const dsDocumentBySlug = `*[_type in ["komponent_artikkel", "ds_artikkel"] && slug.current == $slug] | order(_updatedAt desc)
 {
   ...,
   "slug": slug.current,

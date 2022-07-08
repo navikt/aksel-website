@@ -5,7 +5,6 @@ const docTypes = [
   "aksel_blogg",
   "aksel_prinsipp",
   "ds_artikkel",
-  "ds_component_page",
   "komponent_artikkel",
 ];
 
@@ -66,18 +65,6 @@ export const generateObjects = async () => {
             break;
           }
           objects.push(doc);
-          break;
-        case "ds_component_page":
-          objects.push({
-            ...doc,
-            tab: "bruk",
-          });
-          objects.push({
-            ...doc,
-            tab: "kode",
-            url: `${doc.url}/utvikling`,
-            rank: 2,
-          });
           break;
         case "komponent_artikkel":
           objects.push({

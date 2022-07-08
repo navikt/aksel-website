@@ -95,12 +95,6 @@ export const getDsPaths = async (token?: string): Promise<string[][]> => {
         paths.push([...slug, "kode"]);
         defaultPush();
         break;
-      case "ds_component_page":
-        componentPageTabs.forEach((tab) => {
-          page[tabs[tab]] && paths.push([...slug, tab]);
-        });
-        defaultPush();
-        break;
       case "ds_artikkel": {
         if (!page?.artikkel_type) {
           defaultPush();
@@ -153,8 +147,6 @@ export const validateDsPath = (
           (x) => x.title?.toLowerCase().replace(/\s+/g, "-") === slug[2]
         )
       );
-    case "ds_component_page":
-      return isLvl2 && tabs[slug?.[2]] in doc && !!doc[tabs[slug[2]]];
     case "komponent_artikkel":
       return slug?.[2] === "kode";
     default:
