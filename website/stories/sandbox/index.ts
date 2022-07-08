@@ -29,6 +29,13 @@ import GuidePanelSandbox from "./guidepanel";
 import ErrorSummarySandbox from "./error-summary";
 import LinkPanelSandbox from "./link-panel";
 import PopoverSandbox from "./popover";
+import HeadingSandbox from "./typography/Heading";
+import BodyLongSandbox from "./typography/BodyLong";
+import BodyShortSandbox from "./typography/BodyShort";
+import LabelSandbox from "./typography/Label";
+import DetailSandbox from "./typography/Detail";
+import IngressSandbox from "./typography/Ingress";
+import ErrorMessageSandbox from "./typography/ErrorMessage";
 import kebabCase from "lodash/kebabCase";
 import { SandboxComponentT } from "./types";
 
@@ -63,6 +70,13 @@ const allSandboxes = {
   ErrorSummarySandbox,
   LinkPanelSandbox,
   PopoverSandbox,
+  HeadingSandbox,
+  BodyLongSandbox,
+  BodyShortSandbox,
+  IngressSandbox,
+  DetailSandbox,
+  LabelSandbox,
+  ErrorMessageSandbox,
   /* Placeholder, skal fjernes */
   TextFieldSandox,
 };
