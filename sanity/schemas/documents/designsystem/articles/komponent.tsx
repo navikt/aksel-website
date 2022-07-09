@@ -23,7 +23,7 @@ import React from "react";
 const prefix = "designsystem/komponenter/";
 
 export default {
-  title: "Komponentartikkel (ny)",
+  title: "Komponentartikkel",
   name: "komponent_artikkel",
   type: "document",
   groups,
