@@ -36,6 +36,7 @@ import LabelSandbox from "./typography/Label";
 import DetailSandbox from "./typography/Detail";
 import IngressSandbox from "./typography/Ingress";
 import ErrorMessageSandbox from "./typography/ErrorMessage";
+import StepperSandbox from "./stepper";
 import kebabCase from "lodash/kebabCase";
 import { SandboxComponentT } from "./types";
 
@@ -77,6 +78,7 @@ const allSandboxes = {
   DetailSandbox,
   LabelSandbox,
   ErrorMessageSandbox,
+  StepperSandbox,
   /* Placeholder, skal fjernes */
   TextFieldSandox,
 };
