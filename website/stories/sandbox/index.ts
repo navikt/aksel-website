@@ -3,7 +3,6 @@ import AlertSandbox from "./alert";
 import ButtonSandbox from "./button";
 import HeaderSandbox from "./header";
 import TableSandbox from "./table";
-import TableExpandAllSandbox from "./table-expand-all";
 import LoaderSandbox from "./loader";
 import TagSandbox from "./tag";
 import PanelSandbox from "./panel";
@@ -11,7 +10,6 @@ import RadioSandbox from "./radio";
 import SelectSandbox from "./select";
 import TextareaSandbox from "./textarea";
 import TextFieldSandbox from "./textfield";
-import TextFieldSandox from "./textfield";
 import CheckboxSandbox from "./checkbox";
 import SwitchSandbox from "./switch";
 import ToggleGroupSandbox from "./toggle-group";
@@ -47,7 +45,6 @@ const allSandboxes = {
   HeaderSandbox,
   TagSandbox,
   TableSandbox,
-  TableExpandAllSandbox,
   CheckboxSandbox,
   LoaderSandbox,
   PanelSandbox,
@@ -79,8 +76,6 @@ const allSandboxes = {
   LabelSandbox,
   ErrorMessageSandbox,
   StepperSandbox,
-  /* Placeholder, skal fjernes */
-  TextFieldSandox,
 };
 
 export const Sandboxes = Object.keys(allSandboxes).reduce((prev, y) => {
