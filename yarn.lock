@@ -3067,21 +3067,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-css@npm:^0.16":
-  version: 0.16.21
-  resolution: "@navikt/ds-css@npm:0.16.21"
-  checksum: ecd5a50609fc8dd9860824ce59048833b2529fd053aa5b35ab88412d7439df772007df6b44bc56b5fda96019576ffdaf1188237a396d8d7d66b4918dfd83f2bc
-  languageName: node
-  linkType: hard
-
-"@navikt/ds-css@npm:^0.18.27":
+"@navikt/ds-css@npm:^0.18, @navikt/ds-css@npm:^0.18.27":
   version: 0.18.27
   resolution: "@navikt/ds-css@npm:0.18.27"
   checksum: 36e8aabff0732d0afa771cb3e7594db16d15109863955ce68b3ed2194a95f580ac6b7f286c78b13ccd2dfd94a28be2798a274cf816a4ba3514462f05ad3cbd8f
   languageName: node
   linkType: hard
 
-"@navikt/ds-icons@npm:^0.8, @navikt/ds-icons@npm:^0.8.11":
+"@navikt/ds-icons@npm:^0.8":
   version: 0.8.12
   resolution: "@navikt/ds-icons@npm:0.8.12"
   dependencies:
@@ -3122,30 +3115,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-react@npm:^0.17":
-  version: 0.17.27
-  resolution: "@navikt/ds-react@npm:0.17.27"
-  dependencies:
-    "@floating-ui/react-dom": 0.6.0
-    "@material-ui/core": ^4.12.3
-    "@navikt/ds-icons": ^0.8.11
-    "@popperjs/core": ^2.10.1
-    "@radix-ui/react-tabs": 0.1.5
-    "@radix-ui/react-toggle-group": 0.1.5
-    classnames: ^2.2.6
-    react-collapse: ^5.1.0
-    react-merge-refs: ^1.1.0
-    react-modal: 3.14.3
-    react-popper: ^2.2.5
-    uuid: ^8.3.2
-  peerDependencies:
-    "@types/react": ^17.0.30 || ^18.0.0
-    react: ^17.0.0 || ^18.0.0
-  checksum: 5d4044ac11c8135b1ae2f78b2d6f06453e9af1b42c609b03adb9b490bb7f8d56b5d8a89dcce38eb19356ad964ffa51847a96a0440fae8ef3ee83103b16a6cda9
-  languageName: node
-  linkType: hard
-
-"@navikt/ds-react@npm:^0.19.22":
+"@navikt/ds-react@npm:^0.19, @navikt/ds-react@npm:^0.19.22":
   version: 0.19.22
   resolution: "@navikt/ds-react@npm:0.19.22"
   dependencies:
@@ -24393,9 +24363,9 @@ __metadata:
     "@babel/preset-env": ^7.0.0
     "@babel/preset-react": ^7.0.0
     "@babel/preset-typescript": ^7.0.0
-    "@navikt/ds-css": ^0.16
+    "@navikt/ds-css": ^0.18
     "@navikt/ds-icons": ^0.8
-    "@navikt/ds-react": ^0.17
+    "@navikt/ds-react": ^0.19
     "@sanity-codegen/schema-codegen": 1.0.0-alpha.13
     "@sanity/base": ^2.30.1
     "@sanity/cli": ^2.30.0
