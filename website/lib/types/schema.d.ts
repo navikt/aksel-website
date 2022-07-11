@@ -534,7 +534,7 @@ Kobler komponenten til en pakke og da om den er core/intern/navno. Alle tilgjeng
     }
 
     /**
-     * Komponentartikkel (ny)
+     * Komponentartikkel
      */
     interface komponent_artikkel extends Sanity.Document {
       _type: "komponent_artikkel";
