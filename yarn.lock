@@ -4051,12 +4051,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/cli@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "@sanity/cli@npm:2.30.0"
+"@sanity/cli@npm:^2.30.2":
+  version: 2.30.2
+  resolution: "@sanity/cli@npm:2.30.2"
   bin:
     sanity: bin/sanity
-  checksum: dae16c3219dce6e0aca3e6a8cb49819ce7f16a314c8179650c42e7db8894bbb2444244d134410fa8ad44fcac6ab5580a4e130c5a1cccf2ce59022aab57313cab
+  checksum: 4b79b8a59bb57da5a102a499f587c27e434dbba19310cf8dc5dfb3eac033e3808ba311b6034c7f6d1697eb36753786e0960b7a88eb895d55f5831e66b0a637ff
   languageName: node
   linkType: hard
 
@@ -4109,9 +4109,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/core@npm:^2.30.1":
-  version: 2.30.1
-  resolution: "@sanity/core@npm:2.30.1"
+"@sanity/core@npm:^2.30.2":
+  version: 2.30.2
+  resolution: "@sanity/core@npm:2.30.2"
   dependencies:
     "@babel/plugin-proposal-class-properties": ^7.10.4
     "@babel/preset-env": ^7.11.5
@@ -4119,7 +4119,7 @@ __metadata:
     "@babel/preset-typescript": ^7.10.4
     "@babel/register": ^7.7.4
     "@sanity/eventsource": ^3.0.1
-    "@sanity/export": 2.29.3
+    "@sanity/export": 2.30.2
     "@sanity/generate-help-url": ^3.0.0
     "@sanity/import": 2.29.3
     "@sanity/plugin-loader": 2.29.5
@@ -4132,6 +4132,8 @@ __metadata:
     chalk: ^2.4.2
     chokidar: ^3.0.0
     configstore: ^5.0.1
+    console-table-printer: ^2.11.0
+    date-fns: ^2.16.1
     debug: ^3.2.7
     deep-sort-object: ^1.0.1
     es6-promisify: ^6.0.0
@@ -4158,7 +4160,7 @@ __metadata:
     tar-fs: ^1.16.0
     terser: ^5.7.2
     yargs: ^16.2.0
-  checksum: 10126789e5900cf7b75631ad85b466fef7cd03d66c0bc6bbc3b71f63e917927250064b3709acb40297464d27ea06340b0cd65b15d1d6bc742e9157594350fef1
+  checksum: a880aeb80adfb0c952da03e25d3afae24f6ab871249297974b21a6efee4f579341febd2cfcc564242697ae42bbe76c77746b5b0229e1aaf04fd2c21e234aa711
   languageName: node
   linkType: hard
 
@@ -4325,9 +4327,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/export@npm:2.29.3, @sanity/export@npm:^2.29.3":
-  version: 2.29.3
-  resolution: "@sanity/export@npm:2.29.3"
+"@sanity/export@npm:2.30.2, @sanity/export@npm:^2.30.2":
+  version: 2.30.2
+  resolution: "@sanity/export@npm:2.30.2"
   dependencies:
     archiver: ^5.0.0
     debug: ^3.2.7
@@ -4337,7 +4339,7 @@ __metadata:
     mississippi: ^4.0.0
     p-queue: ^2.3.0
     split2: ^3.2.2
-  checksum: c2be5ff6831fed32b0fec7ecfb137d49db13e3a35f4b08c525fcaabb7278c162ff7ef1ff49ca3b9ab368f1f7862fb1145d9e5e67c0884588d27521b372a80cd8
+  checksum: c9fc1069b195403bcb8f8f4d173b91c1da8231b77049ccc2a4d8dbe0244c5f92fe202ab91b867e63ac17f11b95b55f1d567b8c5d688853f3f7ef5323bd119a61
   languageName: node
   linkType: hard
 
@@ -11069,6 +11071,15 @@ __metadata:
   version: 1.1.0
   resolution: "console-control-strings@npm:1.1.0"
   checksum: 8755d76787f94e6cf79ce4666f0c5519906d7f5b02d4b884cf41e11dcd759ed69c57da0670afd9236d229a46e0f9cf519db0cd829c6dca820bb5a5c3def584ed
+  languageName: node
+  linkType: hard
+
+"console-table-printer@npm:^2.11.0":
+  version: 2.11.0
+  resolution: "console-table-printer@npm:2.11.0"
+  dependencies:
+    simple-wcswidth: ^1.0.1
+  checksum: 125797e3b936eb08182cc704eb8d6aaa6ab82c6fb1f739afad3dd06847b8a89227fe80f84ed105accfa6f4487ff12821f931727624bfda67d8a8ebdc1314f168
   languageName: node
   linkType: hard
 
@@ -24368,15 +24379,15 @@ __metadata:
     "@navikt/ds-react": ^0.19
     "@sanity-codegen/schema-codegen": 1.0.0-alpha.13
     "@sanity/base": ^2.30.1
-    "@sanity/cli": ^2.30.0
+    "@sanity/cli": ^2.30.2
     "@sanity/code-input": ^2.30.1
     "@sanity/components": ^2.14.0
-    "@sanity/core": ^2.30.1
+    "@sanity/core": ^2.30.2
     "@sanity/dashboard": ^2.30.1
     "@sanity/default-layout": ^2.30.1
     "@sanity/default-login": ^2.30.1
     "@sanity/desk-tool": ^2.30.1
-    "@sanity/export": ^2.29.3
+    "@sanity/export": ^2.30.2
     "@sanity/production-preview": ^2.29.3
     "@sanity/react-hooks": ^2.30.1
     "@sanity/vision": ^2.30.1
@@ -24811,6 +24822,13 @@ __metadata:
   dependencies:
     is-arrayish: ^0.3.1
   checksum: a7f3f2ab5c76c4472d5c578df892e857323e452d9f392e1b5cf74b74db66e6294a1e1b8b390b519fa1b96b5b613f2a37db6cffef52c3f1f8f3c5ea64eb2d54c0
+  languageName: node
+  linkType: hard
+
+"simple-wcswidth@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "simple-wcswidth@npm:1.0.1"
+  checksum: dc5bf4cb131d9c386825d1355add2b1ecc408b37dc2c2334edd7a1a4c9f527e6b594dedcdbf6d949bce2740c3a332e39af1183072a2d068e40d9e9146067a37f
   languageName: node
   linkType: hard
 
