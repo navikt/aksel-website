@@ -27,7 +27,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "migrate": "npx ts-node --project tsconfig.tsnode.json ./lib/migrations/riktekst"
   },
   "dependencies": {
     "@docsearch/css": "3.0.0",
