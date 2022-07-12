@@ -2,6 +2,7 @@ import { SandboxKeys } from "../../stories/sandbox";
 import dotenv from "dotenv";
 import { noCdnClient } from "../sanity/sanity.server";
 import { writeFileSync } from "fs";
+
 dotenv.config();
 const token = process.env.SANITY_WRITE_KEY;
 
@@ -521,9 +522,15 @@ const createStyle = (text: string, style: string) => ({
   ],
 });
 
+/**
+ * // TODO
+ * Oppdatere dodont_v2 block (fjerne title og forklaring)
+ * Migrering for DS-artikler
+ * Ny riktekstblokk som har alle modulene
+ * Rename content_bruk/kode -> kode_tab, bruk_tab
+ */
 const transform = (src: any) => {
   const newData = [];
-  console.log(src);
 
   src.forEach((data) => {
     switch (data._type) {
@@ -551,6 +558,9 @@ const transform = (src: any) => {
       case "bilde":
         newData.push(data);
         break;
+      case "spesial_seksjon":
+        newData.push(data);
+        break;
       case "do_dont_v2":
         newData.push(createStyle(data.title, "h3"));
         newData.push(...data.forklaring);
@@ -570,6 +580,9 @@ const transform = (src: any) => {
           ...data,
           list: data.list.map((x) => ({ ...x, innhold: transform(x.innhold) })),
         });
+        break;
+      case "intro_komponent":
+        newData.push([...data.body]);
         break;
 
       default:
@@ -596,10 +609,45 @@ const main = async () => {
 
   const newData = [];
 
-  [testdata].forEach((data) => {
+  const srcData: any[] = [testdata];
+  srcData.forEach((data) => {
     switch (data._type) {
       case "aksel_artikkel":
         newData.push({ ...data, content: transform(data.innhold) });
+        break;
+      case "aksel_prinsipp":
+        newData.push({ ...data, content: transform(data.innhold) });
+        break;
+      case "aksel_blogg":
+        newData.push({ ...data, content: transform(data.innhold) });
+        break;
+      case "aksel_standalone":
+        newData.push({ ...data, content: transform(data.innhold) });
+        break;
+      case "ds_artikkel":
+        newData.push({
+          ...data,
+          ...(data?.innhold ? { content: transform(data.innhold) } : {}),
+          ...(data?.innhold_tabs
+            ? {
+                content_tabs: data.innhold_tabs.map((x) => ({
+                  ...x,
+                  innhold: transform(x.innhold),
+                })),
+              }
+            : {}),
+        });
+        break;
+      case "komponent_artikkel":
+        newData.push({
+          ...data,
+          ...(data?.content_bruk
+            ? { bruk_tab: transform(data?.content_bruk) }
+            : {}),
+          ...(data?.content_kode
+            ? { kode_tab: transform(data?.content_kode) }
+            : {}),
+        });
         break;
       default:
         break;
