@@ -19430,6 +19430,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nanoid@npm:3.0.0":
+  version: 3.0.0
+  resolution: "nanoid@npm:3.0.0"
+  checksum: 603abf8b34555b6ec206e14827ad1ec3ac5bec1ac4456823d2c45b1bb0d3d65a8d56254f8362eaa0b3d252d4c8f62f9a031a9fb61a167f27606ee24142132f4e
+  languageName: node
+  linkType: hard
+
 "nanoid@npm:3.1.30":
   version: 3.1.30
   resolution: "nanoid@npm:3.1.30"
@@ -27794,6 +27801,7 @@ __metadata:
     js-file-download: ^0.4.12
     jwt-decode: 3.1.2
     lodash: ^4.17.21
+    nanoid: 3.0.0
     next: ^12.1.0
     next-sanity: ^0.5.2
     next-transpile-modules: ^9.0.0

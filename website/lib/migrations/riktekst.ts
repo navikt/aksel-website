@@ -1,6 +1,8 @@
 import dotenv from "dotenv";
 import { noCdnClient } from "../sanity/sanity.server";
 import { writeFileSync } from "fs";
+import { nanoid } from "nanoid";
+/* import { customAlphabet } from "nanoid/non-secure"; */
 
 dotenv.config();
 const token = process.env.SANITY_WRITE_KEY;
@@ -509,7 +511,13 @@ const testdata = {
   _updatedAt: "2022-07-12T09:07:10.157Z",
 };
 
+const randKey = () => {
+  /* const nanoid = customAlphabet("1234567890abcdef", 12); */
+  return nanoid();
+};
+
 const createStyle = (text: string, style: string) => ({
+  _key: randKey(),
   _type: "block",
   style: style,
   markDefs: [],
@@ -532,7 +540,7 @@ const createStyle = (text: string, style: string) => ({
 const transform = (src: any, type?: string) => {
   const newData = [];
 
-  src.forEach((data) => {
+  JSON.parse(JSON.stringify(src)).forEach((data) => {
     switch (data._type) {
       case "relatert_innhold":
         type === "komponent"
@@ -542,6 +550,7 @@ const transform = (src: any, type?: string) => {
                 ? {
                     lenker: data.lenker.map((x) => ({
                       ...x,
+                      _key: randKey(),
                       title:
                         data?.title === "Setup!"
                           ? "Kom i gang som utvikler!"
@@ -550,7 +559,10 @@ const transform = (src: any, type?: string) => {
                   }
                 : {}),
             })
-          : newData.push(data);
+          : newData.push({
+              ...data,
+              lenker: data.lenker.map((x) => ({ ...x, _key: randKey() })),
+            });
         break;
       case "tabell":
         newData.push(data);
@@ -584,7 +596,14 @@ const transform = (src: any, type?: string) => {
         newData.push(data);
         break;
       case "riktekst_blokk":
-        data?.body && newData.push(...data.body);
+        data?.body &&
+          newData.push(
+            ...data.body.map((x) => ({
+              ...x,
+              _key: randKey(),
+              children: x.children.map((x) => ({ ...x, _key: randKey() })),
+            }))
+          );
         break;
       case "generisk_seksjon":
         data?.title && newData.push(createStyle(data.title, "h2"));
@@ -595,10 +614,11 @@ const transform = (src: any, type?: string) => {
           ...data,
           ...(data.list
             ? {
-                list: data.list.map((x) => ({
-                  ...x,
-                  content: transform(x.innhold),
-                })),
+                list: data.list.map((x) => {
+                  const content = transform(x.innhold);
+                  delete x?.innhold;
+                  return { ...x, content, _key: randKey() };
+                }),
               }
             : {}),
         });
@@ -632,7 +652,24 @@ const transform = (src: any, type?: string) => {
         delete data?.title;
         delete data?.nested;
         delete data?.extra;
-        newData.push({ ...data });
+        newData.push({
+          ...data,
+          forklaring: data.forklaring.map((x) => ({
+            ...x,
+            ...(x?.beskrivelse
+              ? {
+                  beskrivelse: x.beskrivelse.map((y) => ({
+                    ...y,
+                    _key: randKey(),
+                    children: y.children.map((z) => ({
+                      ...z,
+                      _key: randKey(),
+                    })),
+                  })),
+                }
+              : {}),
+          })),
+        });
         break;
       case "uu_seksjon":
         newData.push(createStyle("Tilgjengelighet", "h2"));
@@ -682,34 +719,38 @@ const main = async () => {
   srcData.forEach((data) => {
     switch (data._type) {
       case "aksel_artikkel":
-        newData.push({ ...data, content: transform(data.innhold) });
+        newData.push({ _id: data._id, content: transform(data.innhold) });
         break;
       case "aksel_prinsipp":
-        newData.push({ ...data, content: transform(data.innhold) });
+        newData.push({ _id: data._id, content: transform(data.innhold) });
         break;
       case "aksel_blogg":
-        newData.push({ ...data, content: transform(data.innhold) });
+        newData.push({ _id: data._id, content: transform(data.innhold) });
         break;
       case "aksel_standalone":
-        newData.push({ ...data, content: transform(data.innhold) });
+        newData.push({ _id: data._id, content: transform(data.innhold) });
         break;
       case "ds_artikkel":
         newData.push({
-          ...data,
+          _id: data._id,
           ...(data?.innhold ? { content: transform(data.innhold) } : {}),
           ...(data?.innhold_tabs
             ? {
-                content_tabs: data.innhold_tabs.map((x) => ({
-                  ...x,
-                  content: transform(x.innhold),
-                })),
+                content_tabs: data.innhold_tabs.map((x) => {
+                  const content = transform(x.innhold);
+                  delete x.innhold;
+                  return {
+                    ...x,
+                    content,
+                  };
+                }),
               }
             : {}),
         });
         break;
       case "komponent_artikkel":
         newData.push({
-          ...data,
+          _id: data._id,
           ...(data?.content_bruk
             ? {
                 bruk_tab: transform(data?.content_bruk),
@@ -717,9 +758,11 @@ const main = async () => {
                 ...(data?.content_bruk.find(
                   (x) => x._type === "intro_komponent"
                 )
-                  ? data?.content_bruk.find(
-                      (x) => x._type === "intro_komponent"
-                    )
+                  ? {
+                      intro: data?.content_bruk.find(
+                        (x) => x._type === "intro_komponent"
+                      ),
+                    }
                   : {}),
               }
             : {}),
@@ -732,16 +775,23 @@ const main = async () => {
         break;
     }
   });
+  const savedData = JSON.parse(JSON.stringify(newData));
 
   for (const data of newData) {
-    transactionClient.patch(data._id, (p) => p.set(data));
+    const id = data._id;
+    delete data._id;
+    transactionClient.patch(id, (p) =>
+      p
+        .set(data)
+        .unset(["content_kode", "content_bruk", "innhold", "innhold_tabs"])
+    );
   }
   await transactionClient
     .commit({ autoGenerateArrayKeys: true, dryRun: true })
     .then(() => console.log(`Updated!`))
     .catch((e) => console.error(e.message));
 
-  writeFileSync("tmp.json", JSON.stringify(newData, null, 2));
+  writeFileSync("tmp.json", JSON.stringify(savedData, null, 2));
 };
 
 main();

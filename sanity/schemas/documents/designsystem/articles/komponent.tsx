@@ -36,7 +36,7 @@ export default {
     UnderArbeidField,
     sanitySlug(prefix, 3),
     {
-      name: "intro_komponent",
+      name: "intro",
       type: "intro_komponent",
       group: "innhold",
     },
