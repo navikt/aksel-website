@@ -1,6 +1,6 @@
 import { Expand } from "@navikt/ds-icons";
+import { innholdFieldNewNested } from "@/lib";
 import React from "react";
-import { contentBlocks } from "./generisk-blokk";
 
 export default {
   name: "accordion_v2",
@@ -25,14 +25,7 @@ export default {
               validation: (Rule) =>
                 Rule.required().error("Accordion må ha en tittel"),
             },
-            {
-              title: "Innhold",
-              name: "innhold",
-              type: "array",
-              validation: (Rule) =>
-                Rule.required().error("Accordion må ha noe innhold"),
-              of: contentBlocks("accordion_v2"),
-            },
+            innholdFieldNewNested("content", "riktekst_aksel"),
           ],
           preview: {
             select: {

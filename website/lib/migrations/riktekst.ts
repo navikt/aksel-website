@@ -589,7 +589,7 @@ const transform = (src: any, type?: string) => {
       case "accordion_v2":
         newData.push({
           ...data,
-          list: data.list.map((x) => ({ ...x, innhold: transform(x.innhold) })),
+          list: data.list.map((x) => ({ ...x, content: transform(x.innhold) })),
         });
         break;
       case "intro_komponent":

@@ -40,8 +40,18 @@ export default {
       type: "intro_komponent",
       group: "innhold",
     },
-    { ...innholdFieldNew, name: "bruk_tab", title: "Bruk" },
-    { ...innholdFieldNew, name: "kode_tab", title: "Kode" },
+    {
+      ...innholdFieldNew,
+      type: "riktekst_komponent",
+      name: "bruk_tab",
+      title: "Bruk",
+    },
+    {
+      ...innholdFieldNew,
+      type: "riktekst_komponent",
+      name: "kode_tab",
+      title: "Kode",
+    },
     {
       name: "content_bruk",
       type: "array",

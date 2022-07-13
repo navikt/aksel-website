@@ -60,7 +60,11 @@ export default {
       group: "innhold",
       initialValue: false,
     },
-    { ...innholdFieldNew, hidden: ({ document }) => !!document?.artikkel_type },
+    {
+      ...innholdFieldNew,
+      type: "riktekst_ds_artikkel",
+      hidden: ({ document }) => !!document?.artikkel_type,
+    },
     {
       name: "content_tabs",
       title: "Innhold i Tabs",

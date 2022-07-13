@@ -91,13 +91,14 @@ export const ingressField = {
 export const innholdFieldNew = {
   title: "Innhold",
   name: "content",
-  type: "riktekst_artikkel",
+  type: "riktekst_aksel",
   group: "innhold",
 };
 
-export const innholdFieldNewNested = (name?: string) => {
+export const innholdFieldNewNested = (name?: string, type?: string) => {
   const fields = {
     ...innholdFieldNew,
+    type: type ?? "riktekst_ds_artikkel",
     name: name ?? "content",
   };
   delete fields.group;

@@ -1,6 +1,10 @@
 import GeneriskBlokk from "./generisk-blokk";
 import GeneriskBlokkArtikkel from "./generisk-blokk-artikkel";
-import Riktekst_artikkel from "./riktekst/riktekst-artikkel";
+import {
+  RiktekstAksel,
+  RiktekstDsArtikkel,
+  RiktekstKomponent,
+} from "./riktekst/riktekst-artikkel";
 import Riktekst from "./riktekst/riktekst";
 import RiktekstEnkel from "./riktekst/riktekst-enkel";
 import RiktekstTabell from "./riktekst/riktekst-tabell";
@@ -52,7 +56,9 @@ const v2Blocks = [
   Video,
   Tokens,
   Tips,
-  Riktekst_artikkel,
+  RiktekstAksel,
+  RiktekstDsArtikkel,
+  RiktekstKomponent,
   Tastatur,
 ];
 

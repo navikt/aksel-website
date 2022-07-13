@@ -60,7 +60,7 @@ export default {
     prepare: ({ code, ref }) => ({
       title: code ? `${code?.code?.slice(0, 50)}...` : ref ? ref : "Kode",
       subtitle: code ? "Kode" : ref ? "Predefinert kodesnippet" : "",
-      mediua: () => <div>{`<>`}</div>,
+      mediua: () => <div>{`</`}</div>,
     }),
   },
 };

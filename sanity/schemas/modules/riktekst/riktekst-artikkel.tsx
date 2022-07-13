@@ -155,60 +155,74 @@ export const headingStyles = [
   },
 ];
 
-export default {
-  title: "Riktekst",
-  name: "riktekst_artikkel",
-  type: "array",
-  of: [
+const Riktekst = (type: "aksel" | "ds" | "komponent") => {
+  const fields: string[] = [];
+  const standard = [
+    "relatert_innhold",
+    "bilde",
+    "kode",
+    "tips",
+    "do_dont_v2",
+    "accordion_v2",
+    "alert_v2",
+    "tabell",
+    "video",
+  ];
+
+  const comp = [
+    "props_seksjon",
+    "anatomi",
+    "live_demo",
+    "tastatur_modul",
+    "tokens",
+  ];
+
+  const ds_artikkel = ["tokens", "spesial_seksjon"];
+
+  fields.push(...standard);
+
+  switch (type) {
+    case "komponent":
+      fields.push(...comp);
+      break;
+    case "ds":
+      fields.push(...ds_artikkel);
+      break;
+    default:
+      break;
+  }
+
+  const uniq = fields.filter((item, pos, self) => self.indexOf(item) === pos);
+
+  return [
     {
       ...block,
       styles: [...headingStyles],
     },
-    {
-      type: "bilde",
-    },
-    {
-      type: "relatert_innhold",
-    },
-    {
-      type: "tabell",
-    },
-    {
-      type: "kode",
-    },
-    {
-      type: "tips",
-    },
-    {
-      type: "alert_v2",
-    },
-    {
-      type: "video",
-    },
-    {
-      type: "tokens",
-    },
-    {
-      type: "spesial_seksjon",
-    },
-    {
-      type: "do_dont_v2",
-    },
-    {
-      type: "accordion_v2",
-    },
-    {
-      type: "props_seksjon",
-    },
-    {
-      type: "live_demo",
-    },
-    {
-      type: "anatomi",
-    },
-    {
-      type: "tastatur_modul",
-    },
-  ],
+    ...uniq.map((x) => ({ type: x })),
+  ];
+};
+
+export const RiktekstAksel = {
+  title: "Riktekst Aksel",
+  name: "riktekst_aksel",
+  type: "array",
+  of: Riktekst("aksel"),
+  icon: () => <FileContent />,
+};
+
+export const RiktekstDsArtikkel = {
+  title: "Riktekst Aksel",
+  name: "riktekst_ds_artikkel",
+  type: "array",
+  of: Riktekst("ds"),
+  icon: () => <FileContent />,
+};
+
+export const RiktekstKomponent = {
+  title: "Riktekst Aksel",
+  name: "riktekst_komponent",
+  type: "array",
+  of: Riktekst("komponent"),
   icon: () => <FileContent />,
 };
