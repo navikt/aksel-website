@@ -3,15 +3,15 @@ import React from "react";
 
 export default {
   title: "Intro",
-  name: "intro_komponent_seksjon",
+  name: "intro_komponent",
   type: "object",
   fields: [
     {
-      title: "Intro/Ingress",
+      title: "Intro-tekst",
       name: "body",
       type: "riktekst_enkel",
       validation: (Rule) =>
-        Rule.required().error("Komponentintro må ha en ingress/intro"),
+        Rule.required().error("Komponentintro må ha en intro"),
     },
     {
       type: "array",

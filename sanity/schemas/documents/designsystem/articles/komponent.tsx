@@ -35,6 +35,11 @@ export default {
     titleField,
     UnderArbeidField,
     sanitySlug(prefix, 3),
+    {
+      name: "intro_komponent",
+      type: "intro_komponent",
+      group: "innhold",
+    },
     { ...innholdFieldNew, name: "bruk_tab", title: "Bruk" },
     { ...innholdFieldNew, name: "kode_tab", title: "Kode" },
     {
@@ -50,7 +55,7 @@ export default {
         },
         {
           name: "intro_komponent",
-          type: "intro_komponent_seksjon",
+          type: "intro_komponent",
           icon: () => <Home />,
         },
         {
