@@ -1,7 +1,10 @@
+import React from "react";
+
 export default {
   title: "Kode",
   name: "kode",
   type: "object",
+  icon: () => <div>{`<>`}</div>,
   fields: [
     {
       title: "Bruk predefinert kodesnutt?",
@@ -57,6 +60,7 @@ export default {
     prepare: ({ code, ref }) => ({
       title: code ? `${code?.code?.slice(0, 50)}...` : ref ? ref : "Kode",
       subtitle: code ? "Kode" : ref ? "Predefinert kodesnippet" : "",
+      mediua: () => <div>{`<>`}</div>,
     }),
   },
 };

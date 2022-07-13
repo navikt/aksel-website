@@ -1,7 +1,10 @@
+import { Success } from "@navikt/ds-icons";
+import React from "react";
 export default {
   title: "Do / Dont",
   name: "do_dont_v2",
   type: "object",
+  icon: Success,
   fields: [
     {
       title: "Tittel (h3)",
@@ -30,6 +33,7 @@ export default {
       return {
         title: selection?.title,
         subtitle: "Do/Dont",
+        media: () => <Success />,
       };
     },
   },

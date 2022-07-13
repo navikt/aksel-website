@@ -1,10 +1,11 @@
-import { Download, Scale } from "@navikt/ds-icons";
+import { List } from "@navikt/ds-icons";
 import React from "react";
 
 export default {
   title: "Props",
   name: "props_seksjon",
   type: "object",
+  icon: List,
   fields: [
     {
       title: "Tittel (h2)",
@@ -50,7 +51,7 @@ export default {
     prepare() {
       return {
         title: "Props",
-        media: () => <Scale />,
+        media: () => <List />,
       };
     },
   },

@@ -6,6 +6,7 @@ export default {
   name: "alert_v2",
   title: "Alert",
   type: "object",
+  icon: Warning,
   fields: [
     {
       title: "Variant",

@@ -16,17 +16,21 @@ export default {
     {
       type: "array",
       name: "brukes_til",
-      title: "Egnet til",
+      title: "Egnet til å:",
       of: [{ type: "string" }],
       validation: (Rule) => Rule.required().min(1),
     },
     {
       type: "array",
       name: "brukes_ikke_til",
-      title: "Når bør man vurdere noe annet (optional)",
+      title: "Vurder noe annet: (optional)",
       of: [{ type: "string" }],
     },
   ],
+  options: {
+    collapsible: true,
+    collapsed: true,
+  },
   preview: {
     select: {
       title: "title",

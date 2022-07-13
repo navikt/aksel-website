@@ -1,4 +1,4 @@
-import { Ruler, SignLanguageTwoHands } from "@navikt/ds-icons";
+import { Ruler } from "@navikt/ds-icons";
 import React from "react";
 
 const Seksjon = (nested = false) => {
@@ -46,6 +46,7 @@ const Seksjon = (nested = false) => {
     title: "Anatomi",
     name: "anatomi",
     type: "object",
+    icon: Ruler,
     fields,
     preview: {
       prepare() {

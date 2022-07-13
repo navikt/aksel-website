@@ -1,10 +1,11 @@
-import { Helmet } from "@navikt/ds-icons";
+import { Selection } from "@navikt/ds-icons";
 import React from "react";
 
 export default {
   title: "Live demo",
   name: "live_demo",
   type: "object",
+  icon: Selection,
   fields: [
     {
       title: "Demo/Sandobox",
@@ -33,7 +34,7 @@ export default {
         title:
           s.code || s.sandbox ? (s?.erstatt ? s.code : s.sandbox) : "Unknown",
         subtitle: "Live Demo",
-        media: () => <Helmet />,
+        media: () => <Selection />,
       };
     },
   },

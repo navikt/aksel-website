@@ -23,6 +23,7 @@ import SpesialSeksjon from "./spesial-seksjon";
 import Video from "./video";
 import Tokens from "./tokens";
 import Tips from "./tips";
+import Tastatur from "./tastatur";
 
 const v2Blocks = [
   GeneriskBlokk,
@@ -52,6 +53,7 @@ const v2Blocks = [
   Tokens,
   Tips,
   Riktekst_artikkel,
+  Tastatur,
 ];
 
 export default v2Blocks;

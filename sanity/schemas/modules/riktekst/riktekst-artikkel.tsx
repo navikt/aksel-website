@@ -206,9 +206,9 @@ export default {
     {
       type: "anatomi",
     },
-    /* {
+    {
       type: "tastatur_modul",
-    }, */
+    },
   ],
   icon: () => <FileContent />,
 };

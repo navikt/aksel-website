@@ -1,9 +1,12 @@
 import { allDocumentTypes } from "../../config";
+import { Link } from "@navikt/ds-icons";
+import React from "react";
 
 export default {
   name: "relatert_innhold",
   title: "Relatert Innhold",
   type: "object",
+  icon: Link,
   fields: [
     {
       title: "Lenker til innhold",
@@ -68,7 +71,7 @@ export default {
       links: "links",
     },
     prepare(s) {
-      return { title: "Relatert innhold kort" };
+      return { title: "Relatert innhold kort", media: () => <Link /> };
     },
   },
 };
