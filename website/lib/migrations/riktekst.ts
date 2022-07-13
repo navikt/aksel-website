@@ -538,13 +538,17 @@ const transform = (src: any, type?: string) => {
         type === "komponent"
           ? newData.push({
               ...data,
-              lenker: data.lenker.map((x) => ({
-                ...x,
-                title:
-                  data?.title === "Setup!"
-                    ? "Kom i gang som utvikler!"
-                    : data.title,
-              })),
+              ...(data.lenker
+                ? {
+                    lenker: data.lenker.map((x) => ({
+                      ...x,
+                      title:
+                        data?.title === "Setup!"
+                          ? "Kom i gang som utvikler!"
+                          : data.title,
+                    })),
+                  }
+                : {}),
             })
           : newData.push(data);
         break;
@@ -573,23 +577,30 @@ const transform = (src: any, type?: string) => {
         newData.push(data);
         break;
       case "do_dont_v2":
-        newData.push(createStyle(data.title, "h3"));
-        newData.push(...data.forklaring);
-        delete data.title;
-        delete data.forklaring;
+        data?.title && newData.push(createStyle(data?.title, "h3"));
+        data?.forklaring && newData.push(...data.forklaring);
+        delete data?.title;
+        delete data?.forklaring;
         newData.push(data);
         break;
       case "riktekst_blokk":
-        newData.push(...data.body);
+        data?.body && newData.push(...data.body);
         break;
       case "generisk_seksjon":
-        newData.push(createStyle(data.title, "h2"));
-        newData.push(...transform(data.brikker));
+        data?.title && newData.push(createStyle(data.title, "h2"));
+        data?.brikker && newData.push(...transform(data.brikker));
         break;
       case "accordion_v2":
         newData.push({
           ...data,
-          list: data.list.map((x) => ({ ...x, content: transform(x.innhold) })),
+          ...(data.list
+            ? {
+                list: data.list.map((x) => ({
+                  ...x,
+                  content: transform(x.innhold),
+                })),
+              }
+            : {}),
         });
         break;
       case "intro_komponent":
@@ -658,7 +669,7 @@ const transform = (src: any, type?: string) => {
 const main = async () => {
   /* const transactionClient = noCdnClient(token).transaction();
 
-  const docs = await noCdnClient(token).fetch(`*[_type == "ds_code_sandbox"]`); */
+   */
   /* transactionClient.createIfNotExists({
     _id: `${key}_autogen_sandbox`,
     _type: "ds_code_sandbox",
@@ -669,10 +680,16 @@ const main = async () => {
     .commit({ autoGenerateArrayKeys: true})
     .then(() => console.log(`Updated code-sandboxes`))
     .catch((e) => console.error(e.message)); */
-
+  const docs = await noCdnClient(token).fetch(
+    `*[_type in ["aksel_artikkel","aksel_prinsipp","aksel_blogg","aksel_standalone","komponent_artikkel","ds_artikkel"]]`
+  );
+  /* const docsAksel = await noCdnClient(token).fetch(
+    `*[_type in ["aksel_artikkel","aksel_prinsipp","aksel_blogg","aksel_standalone"]]`
+  ); */
+  /* console.log(docs.filter((x) => !x._id.includes("draft")).length); */
   const newData = [];
 
-  const srcData: any[] = [testdata];
+  const srcData: any[] = [...docs];
   srcData.forEach((data) => {
     switch (data._type) {
       case "aksel_artikkel":
