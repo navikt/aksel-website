@@ -2,6 +2,7 @@ import {
   defaultDocPreview,
   editorField,
   groups,
+  innholdFieldNew,
   publishedAtField,
   sanitySlug,
   titleField,
@@ -34,6 +35,8 @@ export default {
     titleField,
     UnderArbeidField,
     sanitySlug(prefix, 3),
+    { ...innholdFieldNew, name: "bruk_tab", title: "Bruk" },
+    { ...innholdFieldNew, name: "kode_tab", title: "Kode" },
     {
       name: "content_bruk",
       type: "array",

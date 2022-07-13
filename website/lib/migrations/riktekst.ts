@@ -695,7 +695,7 @@ const main = async () => {
             ? {
                 content_tabs: data.innhold_tabs.map((x) => ({
                   ...x,
-                  innhold: transform(x.innhold),
+                  content: transform(x.innhold),
                 })),
               }
             : {}),

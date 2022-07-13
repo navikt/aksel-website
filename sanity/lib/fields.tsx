@@ -95,6 +95,15 @@ export const innholdFieldNew = {
   group: "innhold",
 };
 
+export const innholdFieldNewNested = (name?: string) => {
+  const fields = {
+    ...innholdFieldNew,
+    name: name ?? "content",
+  };
+  delete fields.group;
+  return fields;
+};
+
 export const innholdField = {
   name: "innhold",
   type: "array",
