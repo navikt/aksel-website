@@ -529,13 +529,24 @@ const createStyle = (text: string, style: string) => ({
  * Ny riktekstblokk som har alle modulene
  * Rename content_bruk/kode -> kode_tab, bruk_tab
  */
-const transform = (src: any) => {
+const transform = (src: any, type?: string) => {
   const newData = [];
 
   src.forEach((data) => {
     switch (data._type) {
       case "relatert_innhold":
-        newData.push(data);
+        type === "komponent"
+          ? newData.push({
+              ...data,
+              lenker: data.lenker.map((x) => ({
+                ...x,
+                title:
+                  data?.title === "Setup!"
+                    ? "Kom i gang som utvikler!"
+                    : data.title,
+              })),
+            })
+          : newData.push(data);
         break;
       case "tabell":
         newData.push(data);
@@ -582,7 +593,59 @@ const transform = (src: any) => {
         });
         break;
       case "intro_komponent":
-        newData.push([...data.body]);
+        break;
+      case "props_seksjon":
+        newData.push(data);
+        break;
+      case "installasjon_seksjon":
+        newData.push(createStyle("Installasjon", "h2"));
+        newData.push({
+          _type: "kode",
+          variant: true,
+          ref: {
+            _type: "reference",
+            _ref: data?.code_ref?._ref,
+          },
+        });
+        break;
+      case "live_demo":
+        delete data?.body;
+        delete data?.forklaring;
+        delete data?.code_ref;
+        newData.push(createStyle("Demo", "h2"));
+        newData.push(data);
+        break;
+      case "anatomi":
+        newData.push(createStyle("Anatomi", "h2"));
+        delete data?.intro;
+        delete data?.title;
+        delete data?.nested;
+        delete data?.extra;
+        newData.push({ ...data });
+        break;
+      case "uu_seksjon":
+        newData.push(createStyle("Tilgjengelighet", "h2"));
+        data?.innhold && newData.push(data.innhold);
+
+        data?.interaksjon_mus &&
+          newData.push(createStyle("Interaksjon Mus", "h3"));
+        data?.interaksjon_mus && newData.push(data.interaksjon_mus);
+
+        data?.interaksjon_touch &&
+          newData.push(createStyle("Interaksjon Touch", "h3"));
+        data?.interaksjon_touch && newData.push(data.interaksjon_touch);
+
+        data?.interaksjon_tastatur &&
+          newData.push(createStyle("Interaksjon Tastatur", "h3"));
+        data?.interaksjon_tastatur && newData.push(data.interaksjon_tastatur);
+
+        data.tastatur &&
+          newData.push({ _type: "tastatur_modul", tastatur: data.tastatur });
+
+        data?.interaksjon_skjermleser &&
+          newData.push(createStyle("Interaksjon Skjermleser", "h3"));
+        data?.interaksjon_skjermleser &&
+          newData.push(data.interaksjon_skjermleser);
         break;
 
       default:
@@ -642,10 +705,20 @@ const main = async () => {
         newData.push({
           ...data,
           ...(data?.content_bruk
-            ? { bruk_tab: transform(data?.content_bruk) }
+            ? {
+                bruk_tab: transform(data?.content_bruk),
+                /* Move intro-seksjon ut fra riktekst */
+                ...(data?.content_bruk.find(
+                  (x) => x._type === "intro_komponent"
+                )
+                  ? data?.content_bruk.find(
+                      (x) => x._type === "intro_komponent"
+                    )
+                  : {}),
+              }
             : {}),
           ...(data?.content_kode
-            ? { kode_tab: transform(data?.content_kode) }
+            ? { kode_tab: transform(data?.content_kode, "komponent") }
             : {}),
         });
         break;

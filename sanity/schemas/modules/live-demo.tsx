@@ -7,17 +7,6 @@ export default {
   type: "object",
   fields: [
     {
-      title: "Avsnitt (optional)",
-      name: "body",
-      type: "riktekst_enkel",
-    },
-    {
-      type: "boolean",
-      name: "erstatt",
-      title: "Erstatt Sandbox med vanlig kode-eksempel",
-      initialValue: false,
-    },
-    {
       title: "Demo/Sandobox",
       name: "sandbox_ref",
       type: "reference",
@@ -27,20 +16,6 @@ export default {
         Rule.custom((v, { parent }) => {
           if (!parent.erstatt) {
             return v ? true : "Må velge en sandbox";
-          }
-          return true;
-        }).error(),
-    },
-    {
-      title: "Kode-eksempel",
-      name: "code_ref",
-      type: "reference",
-      to: [{ type: "ds_code_example" }],
-      hidden: ({ parent }) => !parent?.erstatt,
-      validation: (Rule) =>
-        Rule.custom((v, { parent }) => {
-          if (parent.erstatt) {
-            return v ? true : "Må velge et eksempel";
           }
           return true;
         }).error(),
