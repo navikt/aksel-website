@@ -4,6 +4,7 @@ import {
   groups,
   ingressField,
   innholdField,
+  innholdFieldNew,
   publishedAtField,
   sanitySlug,
   SEOFields,
@@ -35,6 +36,7 @@ export default {
 
     ingressField,
     innholdField,
+    innholdFieldNew,
     UnderArbeidField,
     SEOFields,
   ],

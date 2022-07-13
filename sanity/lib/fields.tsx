@@ -88,6 +88,13 @@ export const ingressField = {
     Rule.required().max(155).error("Ingress kan ikke være på over 155 tegn"),
 };
 
+export const innholdFieldNew = {
+  title: "Innhold",
+  name: "content",
+  type: "riktekst_artikkel",
+  group: "innhold",
+};
+
 export const innholdField = {
   name: "innhold",
   type: "array",

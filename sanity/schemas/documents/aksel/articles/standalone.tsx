@@ -2,6 +2,7 @@ import {
   defaultDocPreview,
   groups,
   innholdField,
+  innholdFieldNew,
   publishedAtField,
   sanitySlug,
   titleField,
@@ -15,5 +16,11 @@ export default {
   type: "document",
   groups,
   ...defaultDocPreview,
-  fields: [publishedAtField, titleField, sanitySlug(prefix, 2), innholdField],
+  fields: [
+    publishedAtField,
+    titleField,
+    sanitySlug(prefix, 2),
+    innholdField,
+    innholdFieldNew,
+  ],
 };
