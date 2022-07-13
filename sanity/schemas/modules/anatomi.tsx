@@ -4,27 +4,6 @@ import React from "react";
 const Seksjon = (nested = false) => {
   const fields: any[] = [
     {
-      title: "Nested",
-      name: "nested",
-      type: "boolean",
-      initialValue: nested,
-      readOnly: true,
-      hidden: true,
-    },
-    {
-      title: "Tittel (h2)",
-      name: "title",
-      type: "string",
-      initialValue: "Anatomi",
-      readOnly: true,
-      hidden: nested,
-    },
-    {
-      title: "Intro (optional)",
-      name: "intro",
-      type: "riktekst",
-    },
-    {
       title: "Anatomi-bilde",
       name: "bilde",
       type: "bilde",
@@ -63,19 +42,9 @@ const Seksjon = (nested = false) => {
     },
   ];
 
-  !nested &&
-    fields.push({
-      type: "array",
-      name: "extra",
-      title: "Ekstra anatomi-paneler (optional)",
-      description:
-        "Kan legge til flere anatomi-paneler under samme Anatomi-heading",
-      of: [Seksjon(true)],
-    });
-
   return {
     title: "Anatomi",
-    name: "anatomi_seksjon",
+    name: "anatomi",
     type: "object",
     fields,
     preview: {

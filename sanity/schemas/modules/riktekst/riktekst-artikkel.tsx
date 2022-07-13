@@ -164,6 +164,51 @@ export default {
       ...block,
       styles: [...headingStyles],
     },
+    {
+      type: "bilde",
+    },
+    {
+      type: "relatert_innhold",
+    },
+    {
+      type: "tabell",
+    },
+    {
+      type: "kode",
+    },
+    {
+      type: "tips",
+    },
+    {
+      type: "alert_v2",
+    },
+    {
+      type: "video",
+    },
+    {
+      type: "tokens",
+    },
+    {
+      type: "spesial_seksjon",
+    },
+    {
+      type: "do_dont_v2",
+    },
+    {
+      type: "accordion_v2",
+    },
+    {
+      type: "props_seksjon",
+    },
+    {
+      type: "live_demo",
+    },
+    {
+      type: "anatomi",
+    },
+    /* {
+      type: "tastatur_modul",
+    }, */
   ],
   icon: () => <FileContent />,
 };

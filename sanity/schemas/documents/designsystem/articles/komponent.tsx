@@ -55,7 +55,7 @@ export default {
         },
         {
           name: "live_demo",
-          type: "live_demo_seksjon",
+          type: "live_demo",
           icon: () => <Helmet />,
         },
         {
@@ -65,7 +65,7 @@ export default {
         },
         {
           name: "anatomi",
-          type: "anatomi_seksjon",
+          type: "anatomi",
           icon: () => <Ruler />,
         },
         { type: "tips", title: "Tips/Feedback", icon: () => <LightBulb /> },
