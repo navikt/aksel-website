@@ -673,19 +673,20 @@ const transform = (src: any, type?: string) => {
         break;
       case "uu_seksjon":
         newData.push(createStyle("Tilgjengelighet", "h2"));
-        data?.innhold && newData.push(data.innhold);
+        data?.innhold && newData.push(...data.innhold);
 
         data?.interaksjon_mus &&
           newData.push(createStyle("Interaksjon Mus", "h3"));
-        data?.interaksjon_mus && newData.push(data.interaksjon_mus);
+        data?.interaksjon_mus && newData.push(...data.interaksjon_mus);
 
         data?.interaksjon_touch &&
           newData.push(createStyle("Interaksjon Touch", "h3"));
-        data?.interaksjon_touch && newData.push(data.interaksjon_touch);
+        data?.interaksjon_touch && newData.push(...data.interaksjon_touch);
 
         data?.interaksjon_tastatur &&
           newData.push(createStyle("Interaksjon Tastatur", "h3"));
-        data?.interaksjon_tastatur && newData.push(data.interaksjon_tastatur);
+        data?.interaksjon_tastatur &&
+          newData.push(...data.interaksjon_tastatur);
 
         data.tastatur &&
           newData.push({ _type: "tastatur_modul", tastatur: data.tastatur });
@@ -693,7 +694,7 @@ const transform = (src: any, type?: string) => {
         data?.interaksjon_skjermleser &&
           newData.push(createStyle("Interaksjon Skjermleser", "h3"));
         data?.interaksjon_skjermleser &&
-          newData.push(data.interaksjon_skjermleser);
+          newData.push(...data.interaksjon_skjermleser);
         break;
 
       default:

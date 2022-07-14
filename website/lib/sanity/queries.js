@@ -37,45 +37,9 @@ const relatertInnhold = `_type == "relatert_innhold" =>{
   }
 }`;
 
-const anatomiSeksjon = `_type == "anatomi" =>{
-  ...,
-  intro[]{
-    ...,
-    ${markDef}
-  }
-}`;
-
 const liveSeksjon = `_type == "live_demo" =>{
   ...,
   "sandbox_ref": sandbox_ref->{...},
-}`;
-
-const uuSeksjon = `_type == "uu_seksjon" =>{
-  ...,
-  interaksjon_skjermleser[]{
-    ...,
-    ${markDef}
-  },
-  interaksjon_mus[]{
-    ...,
-    ${markDef}
-  },
-  interaksjon_touch[]{
-    ...,
-    ${markDef}
-  },
-  interaksjon_tastatur[]{
-    ...,
-    ${markDef}
-  },
-}`;
-
-const doDontV2 = `_type == "do_dont_v2" =>{
-  ...,
-  forklaring[]{
-    ...,
-    ${markDef}
-  }
 }`;
 
 const installSeksjon = `_type == "installasjon_seksjon" =>{
@@ -125,7 +89,11 @@ const defaultBlock = `
     tokenlist[]->
  },
  _type == "kode_ref" => @->,
- _type == "accordion_v2"=>{
+ ${tips},
+ ${relatertInnhold}
+`;
+
+const accordionBlock = `_type == "accordion_v2"=>{
   ...,
   list[]{
     ...,
@@ -134,11 +102,7 @@ const defaultBlock = `
       ${defaultBlock}
     }
   }
-}
- ${tips},
- ${relatertInnhold},
- ${doDontV2}
-`;
+},`;
 
 const spesialSeksjon = `_type == "spesial_seksjon" =>{
   ...,
@@ -175,9 +139,7 @@ ${tips},
 ${markDef},
 ${introSeksjon},
 ${relatertInnhold},
-${anatomiSeksjon},
 ${liveSeksjon},
-${uuSeksjon},
 ${propsSeksjon},
 ${installSeksjon},
 ${spesialSeksjon},
@@ -295,6 +257,12 @@ export const dsSlugQuery = `{
         "title": @->title,
         "github_link": @->github_link,
         "status": @->status
+      },
+      intro{
+        body[]{
+          ...,
+        ${deRefs}
+        }
       },
       kode_tab[]{
         ...,
