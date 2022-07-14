@@ -98,16 +98,6 @@ const serializers = {
               size="medium"
             />
           );
-        case "heading4":
-          return (
-            <Heading
-              className="algolia-index-lvl4 max-w-text"
-              spacing
-              level="4"
-              size="small"
-              {...textProps}
-            />
-          );
         case "h4":
           return (
             <Heading
