@@ -125,7 +125,7 @@ export const headingStyles = [
     value: "h2",
     blockEditor: {
       render: (props) => (
-        <Heading as="span" size="xsmall">
+        <Heading as="span" size="medium">
           {props.children}
         </Heading>
       ),
@@ -136,7 +136,7 @@ export const headingStyles = [
     value: "h3",
     blockEditor: {
       render: (props) => (
-        <Heading as="span" size="xsmall">
+        <Heading as="span" size="small">
           {props.children}
         </Heading>
       ),

@@ -552,9 +552,9 @@ const transform = (src: any, type?: string) => {
                       ...x,
                       _key: randKey(),
                       title:
-                        data?.title === "Setup!"
+                        x?.title === "Setup!"
                           ? "Kom i gang som utvikler!"
-                          : data.title,
+                          : x.title,
                     })),
                   }
                 : {}),
@@ -709,9 +709,9 @@ const main = async () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const testpage = "drafts.b05ecba2-2612-4d15-a986-15e7c7ba95cf";
   const docs = await noCdnClient(token).fetch(
-    `*[_type in ["aksel_artikkel","aksel_prinsipp","aksel_blogg","aksel_standalone"]]`
+    `*[_type in ["komponent_artikkel","ds_artikkel","aksel_artikkel","aksel_prinsipp","aksel_blogg","aksel_standalone"]]`
   );
-  /* ,"komponent_artikkel","ds_artikkel" */
+
   /* const docs = await noCdnClient(token).fetch(`*[_id == "${testpage}"]`); */
 
   const newData = [];
