@@ -336,14 +336,29 @@ Default: Siden blir for tiden oppdatert!
       };
 
       /**
+       * Intro - `RegistryReference`
+       */
+      intro?: intro_komponent;
+
+      /**
+       * Bruk - `RegistryReference`
+       */
+      bruk_tab?: riktekst_komponent;
+
+      /**
+       * Kode - `RegistryReference`
+       */
+      kode_tab?: riktekst_komponent;
+
+      /**
        * Bruk - `Array`
        */
       content_bruk?: Array<
         | Sanity.Keyed<generisk_seksjon>
-        | Sanity.Keyed<intro_komponent_seksjon>
-        | Sanity.Keyed<live_demo_seksjon>
+        | Sanity.Keyed<intro_komponent>
+        | Sanity.Keyed<live_demo>
         | Sanity.Keyed<uu_seksjon>
-        | Sanity.Keyed<anatomi_seksjon>
+        | Sanity.Keyed<anatomi>
         | Sanity.Keyed<tips>
         | Sanity.Keyed<relatert_innhold>
       >;
@@ -369,6 +384,11 @@ Kobler komponenten til en pakke
        * Figma lenke (optional) - `Url`
        */
       figma_link?: string;
+
+      /**
+       * Migrert riktekst - `Boolean`
+       */
+      isMigrated?: boolean;
     }
 
     /**
@@ -583,14 +603,29 @@ Default: Siden blir for tiden oppdatert!
       };
 
       /**
+       * Intro - `RegistryReference`
+       */
+      intro?: intro_komponent;
+
+      /**
+       * Bruk - `RegistryReference`
+       */
+      bruk_tab?: riktekst_komponent;
+
+      /**
+       * Kode - `RegistryReference`
+       */
+      kode_tab?: riktekst_komponent;
+
+      /**
        * Bruk - `Array`
        */
       content_bruk?: Array<
         | Sanity.Keyed<generisk_seksjon>
-        | Sanity.Keyed<intro_komponent_seksjon>
-        | Sanity.Keyed<live_demo_seksjon>
+        | Sanity.Keyed<intro_komponent>
+        | Sanity.Keyed<live_demo>
         | Sanity.Keyed<uu_seksjon>
-        | Sanity.Keyed<anatomi_seksjon>
+        | Sanity.Keyed<anatomi>
         | Sanity.Keyed<tips>
         | Sanity.Keyed<relatert_innhold>
       >;
@@ -616,6 +651,11 @@ Kobler komponenten til en pakke
        * Figma lenke (optional) - `Url`
        */
       figma_link?: string;
+
+      /**
+       * Migrert riktekst - `Boolean`
+       */
+      isMigrated?: boolean;
     }
 
     /**
@@ -623,6 +663,11 @@ Kobler komponenten til en pakke
      */
     interface ds_artikkel extends Sanity.Document {
       _type: "ds_artikkel";
+
+      /**
+       * Migrert riktekst - `Boolean`
+       */
+      isMigrated?: boolean;
 
       /**
        * Publiseringsdato - `Datetime`
@@ -671,6 +716,31 @@ Default: Siden blir for tiden oppdatert!
        * Bruk Tabs - `Boolean`
        */
       artikkel_type?: boolean;
+
+      /**
+       * Innhold - `RegistryReference`
+       */
+      content?: riktekst_ds_artikkel;
+
+      /**
+       * Innhold i Tabs - `Array`
+       */
+      content_tabs?: Array<
+        Sanity.Keyed<{
+          _type: "tab";
+
+          /**
+       * Tittel - `String`
+Innhold vil da legges under url/tab-tittel
+       */
+          title?: string;
+
+          /**
+           * Innhold - `RegistryReference`
+           */
+          content?: riktekst_ds_artikkel;
+        }>
+      >;
 
       /**
        * Innhold - `Array`
@@ -796,6 +866,11 @@ Side, innganger og seo description-tag
       >;
 
       /**
+       * Innhold - `RegistryReference`
+       */
+      content?: riktekst_aksel;
+
+      /**
        * Under arbeid - `Object`
 Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
        */
@@ -832,6 +907,11 @@ Anbefalt størrelse er 1200:630px
           hotspot?: Sanity.ImageHotspot;
         };
       };
+
+      /**
+       * Migrert riktekst - `Boolean`
+       */
+      isMigrated?: boolean;
     }
 
     /**
@@ -890,6 +970,11 @@ Side, innganger og seo description-tag
       >;
 
       /**
+       * Innhold - `RegistryReference`
+       */
+      content?: riktekst_aksel;
+
+      /**
        * Under arbeid - `Object`
 Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
        */
@@ -926,6 +1011,11 @@ Anbefalt størrelse er 1200:630px
           hotspot?: Sanity.ImageHotspot;
         };
       };
+
+      /**
+       * Migrert riktekst - `Boolean`
+       */
+      isMigrated?: boolean;
     }
 
     /**
@@ -1054,6 +1144,11 @@ Side, innganger og seo description-tag
       >;
 
       /**
+       * Innhold - `RegistryReference`
+       */
+      content?: riktekst_aksel;
+
+      /**
        * Under arbeid - `Object`
 Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
        */
@@ -1090,6 +1185,11 @@ Anbefalt størrelse er 1200:630px
           hotspot?: Sanity.ImageHotspot;
         };
       };
+
+      /**
+       * Migrert riktekst - `Boolean`
+       */
+      isMigrated?: boolean;
     }
 
     /**
@@ -1134,6 +1234,16 @@ Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av sid
         | Sanity.Keyed<tips>
         | Sanity.Keyed<relatert_innhold>
       >;
+
+      /**
+       * Innhold - `RegistryReference`
+       */
+      content?: riktekst_aksel;
+
+      /**
+       * Migrert riktekst - `Boolean`
+       */
+      isMigrated?: boolean;
     }
 
     type generisk_seksjon = {
@@ -1208,16 +1318,6 @@ Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av sid
 
     type do_dont_v2 = {
       _type: "do_dont_v2";
-
-      /**
-       * Tittel (h3) - `String`
-       */
-      title?: string;
-
-      /**
-       * Forklaring (optional) - `RegistryReference`
-       */
-      forklaring?: riktekst;
 
       /**
        * Do / donts - `Array`
@@ -1403,47 +1503,32 @@ Sett denne hvis lenken går til en side utenfor aksel.nav.no
       >;
     };
 
-    type intro_komponent_seksjon = {
-      _type: "intro_komponent_seksjon";
+    type intro_komponent = {
+      _type: "intro_komponent";
 
       /**
-       * Intro/Ingress - `RegistryReference`
+       * Intro-tekst - `RegistryReference`
        */
       body?: riktekst_enkel;
 
       /**
-       * Egnet til - `Array`
+       * Egnet til å: - `Array`
        */
       brukes_til?: Array<Sanity.Keyed<string>>;
 
       /**
-       * Når bør man vurdere noe annet (optional) - `Array`
+       * Vurder noe annet: (optional) - `Array`
        */
       brukes_ikke_til?: Array<Sanity.Keyed<string>>;
     };
 
-    type live_demo_seksjon = {
-      _type: "live_demo_seksjon";
-
-      /**
-       * Avsnitt (optional) - `RegistryReference`
-       */
-      body?: riktekst_enkel;
-
-      /**
-       * Erstatt Sandbox med vanlig kode-eksempel - `Boolean`
-       */
-      erstatt?: boolean;
+    type live_demo = {
+      _type: "live_demo";
 
       /**
        * Demo/Sandobox - `Reference`
        */
       sandbox_ref?: Sanity.Reference<ds_code_sandbox>;
-
-      /**
-       * Kode-eksempel - `Reference`
-       */
-      code_ref?: Sanity.Reference<ds_code_example>;
     };
 
     type tabell = {
@@ -1515,23 +1600,8 @@ Ekstra info som ikke kan forklares med key + action under
       interaksjon_skjermleser?: riktekst_bilde_enkel;
     };
 
-    type anatomi_seksjon = {
-      _type: "anatomi_seksjon";
-
-      /**
-       * Nested - `Boolean`
-       */
-      nested?: boolean;
-
-      /**
-       * Tittel (h2) - `String`
-       */
-      title?: string;
-
-      /**
-       * Intro (optional) - `RegistryReference`
-       */
-      intro?: riktekst;
+    type anatomi = {
+      _type: "anatomi";
 
       /**
        * Anatomi-bilde - `RegistryReference`
@@ -1555,56 +1625,6 @@ Forklar annoteringen av anatomi-bildet
            * Beskrivelse (optional) - `RegistryReference`
            */
           beskrivelse?: riktekst_enkel;
-        }>
-      >;
-
-      /**
-       * Ekstra anatomi-paneler (optional) - `Array`
-Kan legge til flere anatomi-paneler under samme Anatomi-heading
-       */
-      extra?: Array<
-        Sanity.Keyed<{
-          _type: "anatomi_seksjon";
-
-          /**
-           * Nested - `Boolean`
-           */
-          nested?: boolean;
-
-          /**
-           * Tittel (h2) - `String`
-           */
-          title?: string;
-
-          /**
-           * Intro (optional) - `RegistryReference`
-           */
-          intro?: riktekst;
-
-          /**
-           * Anatomi-bilde - `RegistryReference`
-           */
-          bilde?: bilde;
-
-          /**
-       * Forklaring - `Array`
-Forklar annoteringen av anatomi-bildet
-       */
-          forklaring?: Array<
-            Sanity.Keyed<{
-              _type: "liste_element";
-
-              /**
-               * Element - `String`
-               */
-              element?: string;
-
-              /**
-               * Beskrivelse (optional) - `RegistryReference`
-               */
-              beskrivelse?: riktekst_enkel;
-            }>
-          >;
         }>
       >;
     };
@@ -1678,27 +1698,9 @@ Slik man ville brukt den, eks Accordion.Item
           title?: string;
 
           /**
-           * Innhold - `Array`
+           * Innhold - `RegistryReference`
            */
-          innhold?: Array<
-            | Sanity.Keyed<{
-                _type: "riktekst_blokk";
-
-                /**
-                 * Riktekst - `RegistryReference`
-                 */
-                body?: riktekst;
-              }>
-            | Sanity.Keyed<tips>
-            | Sanity.Keyed<relatert_innhold>
-            | Sanity.Keyed<do_dont_v2>
-            | Sanity.Keyed<bilde>
-            | Sanity.Keyed<video>
-            | Sanity.Keyed<alert_v2>
-            | Sanity.Keyed<kode>
-            | Sanity.Keyed<tabell>
-            | Sanity.Keyed<tokens>
-          >;
+          content?: riktekst_aksel;
         }>
       >;
     };
@@ -1797,6 +1799,75 @@ Endrer modul-variant
        * Innhold - `RegistryReference`
        */
       body?: riktekst_enkel;
+    };
+
+    type riktekst_aksel = Array<
+      | Sanity.Keyed<Sanity.Block>
+      | Sanity.Keyed<relatert_innhold>
+      | Sanity.Keyed<bilde>
+      | Sanity.Keyed<kode>
+      | Sanity.Keyed<tips>
+      | Sanity.Keyed<do_dont_v2>
+      | Sanity.Keyed<accordion_v2>
+      | Sanity.Keyed<alert_v2>
+      | Sanity.Keyed<tabell>
+      | Sanity.Keyed<video>
+    >;
+
+    type riktekst_ds_artikkel = Array<
+      | Sanity.Keyed<Sanity.Block>
+      | Sanity.Keyed<relatert_innhold>
+      | Sanity.Keyed<bilde>
+      | Sanity.Keyed<kode>
+      | Sanity.Keyed<tips>
+      | Sanity.Keyed<do_dont_v2>
+      | Sanity.Keyed<accordion_v2>
+      | Sanity.Keyed<alert_v2>
+      | Sanity.Keyed<tabell>
+      | Sanity.Keyed<video>
+      | Sanity.Keyed<tokens>
+      | Sanity.Keyed<spesial_seksjon>
+    >;
+
+    type riktekst_komponent = Array<
+      | Sanity.Keyed<Sanity.Block>
+      | Sanity.Keyed<relatert_innhold>
+      | Sanity.Keyed<bilde>
+      | Sanity.Keyed<kode>
+      | Sanity.Keyed<tips>
+      | Sanity.Keyed<do_dont_v2>
+      | Sanity.Keyed<accordion_v2>
+      | Sanity.Keyed<alert_v2>
+      | Sanity.Keyed<tabell>
+      | Sanity.Keyed<video>
+      | Sanity.Keyed<props_seksjon>
+      | Sanity.Keyed<anatomi>
+      | Sanity.Keyed<live_demo>
+      | Sanity.Keyed<tastatur_modul>
+      | Sanity.Keyed<tokens>
+    >;
+
+    type tastatur_modul = {
+      _type: "tastatur_modul";
+
+      /**
+       * Tastatur key + action - `Array`
+       */
+      tastatur?: Array<
+        Sanity.Keyed<{
+          _type: "keys";
+
+          /**
+           * Key - `String`
+           */
+          key?: string;
+
+          /**
+           * Action - `String`
+           */
+          action?: string;
+        }>
+      >;
     };
 
     type navigation_link = {

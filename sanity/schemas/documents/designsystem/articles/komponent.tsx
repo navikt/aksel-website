@@ -9,18 +9,6 @@ import {
   titleField,
   UnderArbeidField,
 } from "@/lib";
-import {
-  Download,
-  FileContent,
-  Helmet,
-  Home,
-  LightBulb,
-  NewTab,
-  Ruler,
-  Scale,
-  SignLanguageTwoHands,
-} from "@navikt/ds-icons";
-import React from "react";
 
 const prefix = "designsystem/komponenter/";
 
@@ -52,74 +40,6 @@ export default {
       type: "riktekst_komponent",
       name: "kode_tab",
       title: "Kode",
-    },
-    {
-      name: "content_bruk",
-      type: "array",
-      title: "Bruk",
-      group: "innhold",
-      of: [
-        {
-          name: "generisk_seksjon",
-          type: "generisk_seksjon",
-          icon: () => <FileContent />,
-        },
-        {
-          name: "intro_komponent",
-          type: "intro_komponent",
-          icon: () => <Home />,
-        },
-        {
-          name: "live_demo",
-          type: "live_demo",
-          icon: () => <Helmet />,
-        },
-        {
-          name: "uu_seksjon",
-          type: "uu_seksjon",
-          icon: () => <SignLanguageTwoHands />,
-        },
-        {
-          name: "anatomi",
-          type: "anatomi",
-          icon: () => <Ruler />,
-        },
-        { type: "tips", title: "Tips/Feedback", icon: () => <LightBulb /> },
-        {
-          type: "relatert_innhold",
-          title: "Relatert innhold",
-          icon: () => <NewTab />,
-        },
-      ],
-    },
-    {
-      name: "content_kode",
-      type: "array",
-      title: "Kode",
-      group: "innhold",
-      of: [
-        {
-          name: "generisk_seksjon",
-          type: "generisk_seksjon",
-          icon: () => <FileContent />,
-        },
-        {
-          type: "installasjon_seksjon",
-          title: "Installasjon",
-          icon: () => <Download />,
-        },
-        {
-          type: "props_seksjon",
-          title: "Props",
-          icon: () => <Scale />,
-        },
-        { type: "tips", title: "Tips/Feedback", icon: () => <LightBulb /> },
-        {
-          type: "relatert_innhold",
-          title: "Relatert innhold",
-          icon: () => <NewTab />,
-        },
-      ],
     },
     {
       title: "Koblet kodepakke",
