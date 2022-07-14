@@ -26,8 +26,8 @@ const KomponentArtikkelTemplate = ({
   const { query, push } = useRouter();
 
   const tabs = {
-    bruk: "content_bruk",
-    kode: "content_kode",
+    bruk: "bruk_tab",
+    kode: "kode_tab",
   };
 
   useEffect(() => {

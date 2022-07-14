@@ -14,7 +14,7 @@ const AkselBloggTemplate = ({
   data: SanityT.Schema.aksel_blogg;
   title: string;
 }): JSX.Element => {
-  if (!data.innhold || !data.heading) {
+  if (!data.content || !data.heading) {
     return null;
   }
 
@@ -96,7 +96,7 @@ const AkselBloggTemplate = ({
             ) : (
               <SanityBlockContent
                 className="mx-auto max-w-prose xs:w-[90%]"
-                blocks={data?.innhold ?? []}
+                blocks={data?.content ?? []}
                 variant="aksel"
               />
             )}

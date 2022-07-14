@@ -351,30 +351,6 @@ Default: Siden blir for tiden oppdatert!
       kode_tab?: riktekst_komponent;
 
       /**
-       * Bruk - `Array`
-       */
-      content_bruk?: Array<
-        | Sanity.Keyed<generisk_seksjon>
-        | Sanity.Keyed<intro_komponent>
-        | Sanity.Keyed<live_demo>
-        | Sanity.Keyed<uu_seksjon>
-        | Sanity.Keyed<anatomi>
-        | Sanity.Keyed<tips>
-        | Sanity.Keyed<relatert_innhold>
-      >;
-
-      /**
-       * Kode - `Array`
-       */
-      content_kode?: Array<
-        | Sanity.Keyed<generisk_seksjon>
-        | Sanity.Keyed<installasjon_seksjon>
-        | Sanity.Keyed<props_seksjon>
-        | Sanity.Keyed<tips>
-        | Sanity.Keyed<relatert_innhold>
-      >;
-
-      /**
        * Koblet kodepakke - `Reference`
 Kobler komponenten til en pakke
        */
@@ -618,30 +594,6 @@ Default: Siden blir for tiden oppdatert!
       kode_tab?: riktekst_komponent;
 
       /**
-       * Bruk - `Array`
-       */
-      content_bruk?: Array<
-        | Sanity.Keyed<generisk_seksjon>
-        | Sanity.Keyed<intro_komponent>
-        | Sanity.Keyed<live_demo>
-        | Sanity.Keyed<uu_seksjon>
-        | Sanity.Keyed<anatomi>
-        | Sanity.Keyed<tips>
-        | Sanity.Keyed<relatert_innhold>
-      >;
-
-      /**
-       * Kode - `Array`
-       */
-      content_kode?: Array<
-        | Sanity.Keyed<generisk_seksjon>
-        | Sanity.Keyed<installasjon_seksjon>
-        | Sanity.Keyed<props_seksjon>
-        | Sanity.Keyed<tips>
-        | Sanity.Keyed<relatert_innhold>
-      >;
-
-      /**
        * Koblet kodepakke - `Reference`
 Kobler komponenten til en pakke
        */
@@ -743,56 +695,6 @@ Innhold vil da legges under url/tab-tittel
       >;
 
       /**
-       * Innhold - `Array`
-       */
-      innhold?: Array<
-        | Sanity.Keyed<generisk_seksjon>
-        | Sanity.Keyed<{
-            _type: "riktekst_blokk";
-
-            /**
-             * Riktekst - `RegistryReference`
-             */
-            body?: riktekst;
-          }>
-        | Sanity.Keyed<tips>
-        | Sanity.Keyed<relatert_innhold>
-        | Sanity.Keyed<spesial_seksjon>
-      >;
-
-      /**
-       * Innhold i Tabs - `Array`
-       */
-      innhold_tabs?: Array<
-        Sanity.Keyed<{
-          _type: "tab";
-
-          /**
-       * Tittel - `String`
-Innhold vil da legges under url/tab-tittel
-       */
-          title?: string;
-
-          /**
-           * Innhold - `Array`
-           */
-          innhold?: Array<
-            | Sanity.Keyed<generisk_seksjon>
-            | Sanity.Keyed<{
-                _type: "riktekst_blokk";
-
-                /**
-                 * Riktekst - `RegistryReference`
-                 */
-                body?: riktekst;
-              }>
-            | Sanity.Keyed<tips>
-            | Sanity.Keyed<relatert_innhold>
-          >;
-        }>
-      >;
-
-      /**
        * Tilbakemeldinger - `Object`
        */
       metadata_feedback?: {
@@ -847,23 +749,6 @@ Legg til de viktigeste temaene
 Side, innganger og seo description-tag
        */
       ingress?: string;
-
-      /**
-       * Innhold - `Array`
-       */
-      innhold?: Array<
-        | Sanity.Keyed<generisk_seksjon_artikkel>
-        | Sanity.Keyed<{
-            _type: "riktekst_blokk";
-
-            /**
-             * Riktekst - `RegistryReference`
-             */
-            body?: riktekst;
-          }>
-        | Sanity.Keyed<tips>
-        | Sanity.Keyed<relatert_innhold>
-      >;
 
       /**
        * Innhold - `RegistryReference`
@@ -951,23 +836,6 @@ Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av sid
 Side, innganger og seo description-tag
        */
       ingress?: string;
-
-      /**
-       * Innhold - `Array`
-       */
-      innhold?: Array<
-        | Sanity.Keyed<generisk_seksjon_artikkel>
-        | Sanity.Keyed<{
-            _type: "riktekst_blokk";
-
-            /**
-             * Riktekst - `RegistryReference`
-             */
-            body?: riktekst;
-          }>
-        | Sanity.Keyed<tips>
-        | Sanity.Keyed<relatert_innhold>
-      >;
 
       /**
        * Innhold - `RegistryReference`
@@ -1127,23 +995,6 @@ Side, innganger og seo description-tag
       ingress?: string;
 
       /**
-       * Innhold - `Array`
-       */
-      innhold?: Array<
-        | Sanity.Keyed<generisk_seksjon_artikkel>
-        | Sanity.Keyed<{
-            _type: "riktekst_blokk";
-
-            /**
-             * Riktekst - `RegistryReference`
-             */
-            body?: riktekst;
-          }>
-        | Sanity.Keyed<tips>
-        | Sanity.Keyed<relatert_innhold>
-      >;
-
-      /**
        * Innhold - `RegistryReference`
        */
       content?: riktekst_aksel;
@@ -1217,23 +1068,6 @@ Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av sid
         _type: "slug";
         current: string;
       };
-
-      /**
-       * Innhold - `Array`
-       */
-      innhold?: Array<
-        | Sanity.Keyed<generisk_seksjon_artikkel>
-        | Sanity.Keyed<{
-            _type: "riktekst_blokk";
-
-            /**
-             * Riktekst - `RegistryReference`
-             */
-            body?: riktekst;
-          }>
-        | Sanity.Keyed<tips>
-        | Sanity.Keyed<relatert_innhold>
-      >;
 
       /**
        * Innhold - `RegistryReference`
