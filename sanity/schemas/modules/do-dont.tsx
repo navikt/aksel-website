@@ -7,17 +7,6 @@ export default {
   icon: Success,
   fields: [
     {
-      title: "Tittel (h3)",
-      name: "title",
-      type: "string",
-      validation: (Rule) => Rule.required().error("Do/dont må ha en tittel"),
-    },
-    {
-      title: "Forklaring (optional)",
-      name: "forklaring",
-      type: "riktekst",
-    },
-    {
       type: "array",
       name: "blokker",
       title: "Do / donts",
@@ -26,13 +15,9 @@ export default {
     },
   ],
   preview: {
-    select: {
-      title: "title",
-    },
-    prepare(selection) {
+    prepare() {
       return {
-        title: selection?.title,
-        subtitle: "Do/Dont",
+        title: "Do / Dont",
         media: () => <Success />,
       };
     },

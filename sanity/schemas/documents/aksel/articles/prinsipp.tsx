@@ -6,6 +6,7 @@ import {
   innholdField,
   innholdFieldNew,
   isSlugUnique,
+  migratedField,
   prinsipper,
   publishedAtField,
   SEOFields,
@@ -134,5 +135,6 @@ export default {
     innholdFieldNew,
     UnderArbeidField,
     SEOFields,
+    migratedField,
   ],
 };

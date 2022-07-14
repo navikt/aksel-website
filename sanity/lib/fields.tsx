@@ -39,6 +39,14 @@ export const publishedAtField = {
     !currentUser.roles.find((x) => x.name === "administrator"),
 };
 
+export const migratedField = {
+  title: "Migrert riktekst",
+  name: "isMigrated",
+  type: "boolean",
+  hidden: false,
+  initialValue: true,
+};
+
 export const titleField = {
   title: "Sidetittel",
   name: "heading",
@@ -110,8 +118,7 @@ export const innholdField = {
   type: "array",
   title: "Innhold",
   group: "innhold",
-  validation: (Rule) =>
-    Rule.required().min(1).error("Tabben må ha noe innhold"),
+  readOnly: true,
   of: [
     {
       name: "generisk_seksjon",

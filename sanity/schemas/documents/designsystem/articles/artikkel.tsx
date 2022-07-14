@@ -5,6 +5,7 @@ import {
   hidePageFeedback,
   innholdFieldNew,
   innholdFieldNewNested,
+  migratedField,
   publishedAtField,
   sanitySlug,
   titleField,
@@ -48,6 +49,7 @@ export default {
   groups,
   ...defaultDocPreview,
   fields: [
+    migratedField,
     publishedAtField,
     editorField,
     titleField,

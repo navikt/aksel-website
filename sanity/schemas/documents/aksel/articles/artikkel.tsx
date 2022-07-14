@@ -5,6 +5,7 @@ import {
   ingressField,
   innholdField,
   innholdFieldNew,
+  migratedField,
   publishedAtField,
   sanitySlug,
   SEOFields,
@@ -39,5 +40,6 @@ export default {
     innholdFieldNew,
     UnderArbeidField,
     SEOFields,
+    migratedField,
   ],
 };

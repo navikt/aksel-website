@@ -706,16 +706,20 @@ const transform = (src: any, type?: string) => {
 const main = async () => {
   const transactionClient = noCdnClient(token).transaction();
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const testpage = "drafts.b05ecba2-2612-4d15-a986-15e7c7ba95cf";
   const docs = await noCdnClient(token).fetch(
-    `*[_type in ["aksel_artikkel","aksel_prinsipp","aksel_blogg","aksel_standalone","komponent_artikkel","ds_artikkel"]]`
-  );
-  /* const docsAksel = await noCdnClient(token).fetch(
     `*[_type in ["aksel_artikkel","aksel_prinsipp","aksel_blogg","aksel_standalone"]]`
-  ); */
-  /* console.log(docs.filter((x) => !x._id.includes("draft")).length); */
+  );
+  /* ,"komponent_artikkel","ds_artikkel" */
+  /* const docs = await noCdnClient(token).fetch(`*[_id == "${testpage}"]`); */
+
   const newData = [];
 
-  const srcData: any[] = [...docs];
+  const srcData: any[] = [...docs].filter((x) => !x?.isMigrated);
+
+  console.log(srcData.length);
+
   srcData.forEach((data) => {
     switch (data._type) {
       case "aksel_artikkel":
@@ -782,7 +786,7 @@ const main = async () => {
     delete data._id;
     transactionClient.patch(id, (p) =>
       p
-        .set(data)
+        .set({ ...data, isMigrated: true })
         .unset(["content_kode", "content_bruk", "innhold", "innhold_tabs"])
     );
   }

@@ -3,6 +3,7 @@ import {
   groups,
   innholdField,
   innholdFieldNew,
+  migratedField,
   publishedAtField,
   sanitySlug,
   titleField,
@@ -22,5 +23,6 @@ export default {
     sanitySlug(prefix, 2),
     innholdField,
     innholdFieldNew,
+    migratedField,
   ],
 };
