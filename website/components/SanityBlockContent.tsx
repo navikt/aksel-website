@@ -22,7 +22,7 @@ import {
   Tabell,
   Tips,
   TokensSeksjon,
-  UuSeksjon,
+  TastaturModul,
   Video,
 } from ".";
 
@@ -41,7 +41,7 @@ const serializers = {
     relatert_innhold: ({ node }) => <RelatertInnhold node={node} />,
     anatomi: ({ node }) => <Anatomi node={node} />,
     live_demo: ({ node }) => <LiveDemo node={node} />,
-    uu_seksjon: ({ node }) => <UuSeksjon node={node} />,
+    tastatur_modul: ({ node }) => <TastaturModul node={node} />,
     riktekst_blokk: ({ node }) => <SanityBlockContent blocks={node.body} />,
     do_dont_v2: ({ node }) => <DoDontv2 node={node} />,
     bilde: ({ node }) => <Bilde node={node} />,

@@ -17,7 +17,7 @@ export { default as SpesialSeksjon } from "./sanity-modules/SpesialSeksjon";
 export { default as Tabell } from "./sanity-modules/Tabell";
 export { default as Tips } from "./sanity-modules/tips";
 export { default as TokensSeksjon } from "./sanity-modules/Tokens";
-export { default as UuSeksjon } from "./sanity-modules/UuSeksjon";
+export { default as TastaturModul } from "./sanity-modules/tastatur";
 export { default as Video } from "./sanity-modules/video";
 export * from "./website-modules/aksel-cards";
 export { default as Feedback } from "./website-modules/feedback";
