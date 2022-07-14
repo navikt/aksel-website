@@ -11,7 +11,6 @@ import {
   Bilde,
   CodeExample,
   DoDontv2,
-  IntroKomponent,
   Kode,
   LevelTwoHeading,
   LiveDemo,
@@ -37,7 +36,6 @@ export const KBD = (props: React.HTMLAttributes<HTMLElement>) => (
 const serializers = {
   types: {
     /* V2 content structure */
-    intro_komponent: ({ node }) => <IntroKomponent node={node} />,
     relatert_innhold: ({ node }) => <RelatertInnhold node={node} />,
     anatomi: ({ node }) => <Anatomi node={node} />,
     live_demo: ({ node }) => <LiveDemo node={node} />,

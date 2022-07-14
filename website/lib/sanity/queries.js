@@ -47,12 +47,7 @@ const anatomiSeksjon = `_type == "anatomi" =>{
 
 const liveSeksjon = `_type == "live_demo" =>{
   ...,
-  body[]{
-    ...,
-    ${markDef}
-  },
   "sandbox_ref": sandbox_ref->{...},
-  "code_ref": code_ref->{...},
 }`;
 
 const uuSeksjon = `_type == "uu_seksjon" =>{
@@ -130,27 +125,19 @@ const defaultBlock = `
     tokenlist[]->
  },
  _type == "kode_ref" => @->,
+ _type == "accordion_v2"=>{
+  ...,
+  list[]{
+    ...,
+    content[]{
+      ...,
+      ${defaultBlock}
+    }
+  }
+}
  ${tips},
  ${relatertInnhold},
  ${doDontV2}
-`;
-
-const accordionBlock = `
-  _type == "accordion_v2"=>{
-    ...,
-    list[]{
-      ...,
-      innhold[]{
-        ...,
-        ${defaultBlock}
-      }
-    }
-  }
-`;
-
-const genericBlock = `
-  ${defaultBlock},
-  ${accordionBlock}
 `;
 
 const spesialSeksjon = `_type == "spesial_seksjon" =>{
@@ -174,15 +161,6 @@ const spesialSeksjon = `_type == "spesial_seksjon" =>{
   }
 }`;
 
-const generiskSeksjon = `_type == "generisk_seksjon" =>{
-  ...,
-  brikker[]{
-    ...,
-    ${genericBlock},
-    ${spesialSeksjon}
-  },
-}`;
-
 const propsSeksjon = `_type == "props_seksjon" =>{
   ...,
   komponenter[]{
@@ -201,7 +179,6 @@ ${anatomiSeksjon},
 ${liveSeksjon},
 ${uuSeksjon},
 ${propsSeksjon},
-${generiskSeksjon},
 ${installSeksjon},
 ${spesialSeksjon},
 ${defaultBlock}
@@ -241,22 +218,12 @@ export const akselForsideQuery = `*[_type == "vk_frontpage"][0]{
 
 export const akselDocumentsByType = `*[_type in $types]{ _type, _id, 'slug': slug.current }`;
 
-export const demoSlug = `*[_id == $id]
-{
-  ...,
-  "slug": slug.current,
-  innhold[]{
-    ...,
-    ${deRefs}
-  },
-}`;
-
 export const akselPrinsippBySlug = `*[slug.current == $slug] | order(_updatedAt desc)[0]
 {
   ...,
   "slug": slug.current,
-  "innhold": select(
-    $valid == "true" => innhold[]{
+  "content": select(
+    $valid == "true" => content[]{
       ...,
       ${deRefs}
     },
@@ -271,7 +238,7 @@ export const akselDocumentBySlug = `*[slug.current == $slug] | order(_updatedAt 
 {
   ...,
   "slug": slug.current,
-  innhold[]{
+  content[]{
     ...,
     ${deRefs}
   },
@@ -329,89 +296,27 @@ export const dsSlugQuery = `{
         "github_link": @->github_link,
         "status": @->status
       },
-      content_bruk[]{
+      kode_tab[]{
         ...,
         ${deRefs}
       },
-      content_kode[]{
+      bruk_tab[]{
         ...,
         ${deRefs}
       },
-      usage[]{
+      content[]{
         ...,
         ${deRefs}
       },
-      design[]{
-          ...,
-          ${deRefs}
-      },
-      development[]{
-          ...,
-          ${deRefs}
-      },
-      accessibility[]{
+      content_tabs[]{
         ...,
-        ${deRefs}
-      },
-      innhold[]{
-        ...,
-        ${deRefs}
-      },
-      innhold_tabs[]{
-        ...,
-        innhold[]{
+        content[]{
           ...,
           ${deRefs}
         }
       },
   },
   ${dsNavQuery}
-}`;
-
-export const dsDocumentBySlug = `*[_type in ["komponent_artikkel", "ds_artikkel"] && slug.current == $slug] | order(_updatedAt desc)
-{
-  ...,
-  "slug": slug.current,
-  linked_package {
-    "title": @->title,
-    "github_link": @->github_link,
-    "status": @->status
-  },
-  content_bruk[]{
-    ...,
-    ${deRefs}
-  },
-  content_kode[]{
-    ...,
-    ${deRefs}
-  },
-	usage[]{
-    ...,
-    ${deRefs}
-  },
-  design[]{
-      ...,
-      ${deRefs}
-  },
-  development[]{
-      ...,
-      ${deRefs}
-  },
-  accessibility[]{
-    ...,
-    ${deRefs}
-  },
-  innhold[]{
-    ...,
-    ${deRefs}
-  },
-  innhold_tabs[]{
-    ...,
-    innhold[]{
-      ...,
-      ${deRefs}
-    }
-  },
 }`;
 
 export const dsNavigationQuery = `
@@ -468,8 +373,8 @@ export const akselBloggBySlug = `*[slug.current == $slug] | order(_updatedAt des
 {
   ...,
   "slug": slug.current,
-  "innhold": select(
-    $valid == "true" => innhold[]{
+  "content": select(
+    $valid == "true" => content[]{
       ...,
       ${deRefs}
     },
