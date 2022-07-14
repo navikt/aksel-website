@@ -7,7 +7,6 @@ export { default as AccordionV2 } from "./sanity-modules/AccordionV2";
 export { default as Anatomi } from "./sanity-modules/AnatomiSeksjon";
 export { default as Bilde } from "./sanity-modules/bilde/Bilde";
 export { default as DoDontv2 } from "./sanity-modules/dodont";
-export { default as InstallasjonSeksjon } from "./sanity-modules/InstallasjonSeksjon";
 export { default as IntroKomponent } from "./sanity-modules/IntroSeksjon";
 export { default as Kode } from "./sanity-modules/Kode";
 export { default as LiveDemo } from "./sanity-modules/LiveDemo";
