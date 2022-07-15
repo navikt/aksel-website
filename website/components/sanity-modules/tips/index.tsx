@@ -1,16 +1,13 @@
+import { withErrorBoundary } from "@/error-boundary";
 import { SanityT } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
-import { SectionContext } from "@/utils";
 import { Edit, LightBulb } from "@navikt/ds-icons";
 import { Detail, Link } from "@navikt/ds-react";
 import cl from "classnames";
-import React, { useContext } from "react";
-import { withErrorBoundary } from "@/error-boundary";
+import React from "react";
 import style from "./tips.module.css";
 
 const Tips = ({ node }: { node: SanityT.Schema.tips }): JSX.Element => {
-  const context = useContext(SectionContext);
-
   if (!node || !node.body) {
     return null;
   }
@@ -20,11 +17,7 @@ const Tips = ({ node }: { node: SanityT.Schema.tips }): JSX.Element => {
       <div
         className={cl(
           style.tips,
-          "linear max-w-2xl rounded-r border-l-[6px] border-l-green-200 bg-white px-4 py-4 xs:px-8",
-          {
-            "my-8": context.withinSection,
-            "my-16": !context.withinSection,
-          }
+          "linear my-8 max-w-2xl rounded-r border-l-[6px] border-l-green-200 bg-white px-4 py-4 xs:px-8"
         )}
       >
         <Detail
@@ -78,11 +71,7 @@ const Tips = ({ node }: { node: SanityT.Schema.tips }): JSX.Element => {
     <div
       className={cl(
         style.tips,
-        "linear max-w-2xl rounded-r border-l-[6px] border-l-gray-500 px-4 py-4 xs:px-8",
-        {
-          "my-8": context.withinSection,
-          "my-16": !context.withinSection,
-        }
+        "linear my-8 max-w-2xl rounded-r border-l-[6px] border-l-gray-500 px-4 py-4 xs:px-8"
       )}
     >
       <Detail

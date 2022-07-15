@@ -35,7 +35,7 @@ const UuSeksjon = ({
   );
 
   return (
-    <Table className="mb-16">
+    <Table className="mb-8">
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell className="font-normal text-text-muted">

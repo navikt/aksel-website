@@ -12,10 +12,6 @@ export type PagePropsContextT = {
   pageProps: any;
 };
 
-export type SectionContextT = {
-  withinSection: boolean;
-};
-
 export type DsNavigationHeadingMenuT = {
   title: string;
   _type: "subheading" | "item";
