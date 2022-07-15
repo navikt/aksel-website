@@ -9,14 +9,13 @@ import Kode from "./kode";
 import liveDemo from "./live-demo";
 import Props from "./props";
 import RelatertInnhold from "./relatert-innhold";
-import Riktekst from "./riktekst/riktekst";
 import {
   RiktekstAksel,
   RiktekstDsArtikkel,
   RiktekstEnkel,
   RiktekstKomponent,
   RiktekstTabell,
-} from "./riktekst/riktekst-artikkel";
+} from "./riktekst";
 import SpesialSeksjon from "./spesial-seksjon";
 import Tabell, { TabellSchema } from "./tabell";
 import Tastatur from "./tastatur";
@@ -26,7 +25,6 @@ import Video from "./video";
 
 const v2Blocks = [
   /* Blocks */
-  Riktekst,
   RiktekstEnkel,
   RiktekstAksel,
   RiktekstDsArtikkel,

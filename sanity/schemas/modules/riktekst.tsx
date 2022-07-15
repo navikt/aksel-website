@@ -4,7 +4,7 @@ import "@navikt/ds-css?raw";
 import { KBD } from "@sanity/ui";
 import React from "react";
 import styled from "styled-components";
-import { allDocumentTypes } from "../../../config";
+import { allDocumentTypes } from "../../config";
 
 export const TitleRenderer = (props, size, level) => (
   <Heading size={size} level={level}>
@@ -53,10 +53,10 @@ export const block = {
         },
       },
       {
-        title: "Keyboard",
+        title: "KBD",
         value: "kbd",
         blockEditor: {
-          icon: () => <KBD style={{ verticalAlign: "top" }}>kbd</KBD>,
+          icon: () => <div>KBD</div>,
           render: (props) => (
             <KBD padding={[1, 1, 2]} style={{ verticalAlign: "super" }}>
               {props.children}
@@ -121,18 +121,29 @@ export const block = {
 export const headingStyles = [
   ...block.styles,
   {
-    title: "Tittel H3",
-    value: "h3",
+    title: "H2",
+    value: "h2",
     blockEditor: {
       render: (props) => (
-        <Heading as="span" size="xsmall">
+        <Heading as="span" size="medium">
           {props.children}
         </Heading>
       ),
     },
   },
   {
-    title: "Tittel H4",
+    title: "H3",
+    value: "h3",
+    blockEditor: {
+      render: (props) => (
+        <Heading as="span" size="small">
+          {props.children}
+        </Heading>
+      ),
+    },
+  },
+  {
+    title: "H4",
     value: "h4",
     blockEditor: {
       render: (props) => (
@@ -144,15 +155,98 @@ export const headingStyles = [
   },
 ];
 
-export default {
-  title: "Riktekst",
-  name: "riktekst",
-  type: "array",
-  of: [
+const Riktekst = (type: "aksel" | "ds" | "komponent") => {
+  const fields: string[] = [];
+  const standard = [
+    "relatert_innhold",
+    "bilde",
+    "kode",
+    "tips",
+    "do_dont",
+    "accordion",
+    "alert",
+    "tabell",
+    "video",
+  ];
+
+  const comp = [
+    "props_seksjon",
+    "anatomi",
+    "live_demo",
+    "tastatur_modul",
+    "tokens",
+  ];
+
+  const ds_artikkel = ["tokens", "spesial_seksjon"];
+
+  fields.push(...standard);
+
+  switch (type) {
+    case "komponent":
+      fields.push(...comp);
+      break;
+    case "ds":
+      fields.push(...ds_artikkel);
+      break;
+    default:
+      break;
+  }
+
+  const uniq = fields.filter((item, pos, self) => self.indexOf(item) === pos);
+
+  return [
     {
       ...block,
       styles: [...headingStyles],
     },
-  ],
+    ...uniq.map((x) => ({ type: x })),
+  ];
+};
+
+export const RiktekstAksel = {
+  title: "Riktekst Aksel",
+  name: "riktekst_aksel",
+  type: "array",
+  of: Riktekst("aksel"),
   icon: () => <FileContent />,
+};
+
+export const RiktekstDsArtikkel = {
+  title: "Riktekst Aksel",
+  name: "riktekst_ds_artikkel",
+  type: "array",
+  of: Riktekst("ds"),
+  icon: () => <FileContent />,
+};
+
+export const RiktekstKomponent = {
+  title: "Riktekst Aksel",
+  name: "riktekst_komponent",
+  type: "array",
+  of: Riktekst("komponent"),
+  icon: () => <FileContent />,
+};
+
+export const RiktekstTabell = {
+  title: "Riktekst",
+  name: "riktekst_tabell",
+  type: "array",
+  of: [
+    {
+      ...block,
+      marks: {
+        ...block.marks,
+        annotations: block.marks.annotations.filter(
+          (x) => x.name !== "internalLink"
+        ),
+      },
+    },
+  ],
+};
+
+export const RiktekstEnkel = {
+  title: "Riktekst",
+  name: "riktekst_enkel",
+  type: "array",
+  of: [block],
 };
