@@ -9,38 +9,10 @@ import {
   publishedAtField,
   sanitySlug,
   titleField,
-  toPlainText,
   UnderArbeidField,
 } from "@/lib";
-import { FileContent, LightBulb, NewTab, Star } from "@navikt/ds-icons";
-import React from "react";
 
 const prefix = "designsystem/side/";
-
-const riktekst = {
-  type: "object",
-  title: "Riktekst",
-  name: "riktekst_blokk",
-  fields: [
-    {
-      title: "Riktekst",
-      name: "body",
-      type: "riktekst",
-    },
-  ],
-  preview: {
-    select: {
-      text: "body",
-    },
-    prepare(selection) {
-      return {
-        title: toPlainText(selection?.text?.slice?.(0, 1)) ?? "-",
-        subtitle: "Riktekst",
-      };
-    },
-  },
-  icon: () => <FileContent />,
-};
 
 export default {
   title: "Artikkel",

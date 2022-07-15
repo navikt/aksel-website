@@ -102,7 +102,7 @@ const accordionBlock = `_type == "accordion"=>{
       ${defaultBlock}
     }
   }
-},`;
+}`;
 
 const spesialSeksjon = `_type == "spesial_seksjon" =>{
   ...,

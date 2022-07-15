@@ -226,3 +226,27 @@ export const RiktekstKomponent = {
   of: Riktekst("komponent"),
   icon: () => <FileContent />,
 };
+
+export const RiktekstTabell = {
+  title: "Riktekst",
+  name: "riktekst_tabell",
+  type: "array",
+  of: [
+    {
+      ...block,
+      marks: {
+        ...block.marks,
+        annotations: block.marks.annotations.filter(
+          (x) => x.name !== "internalLink"
+        ),
+      },
+    },
+  ],
+};
+
+export const RiktekstEnkel = {
+  title: "Riktekst",
+  name: "riktekst_enkel",
+  type: "array",
+  of: [block],
+};

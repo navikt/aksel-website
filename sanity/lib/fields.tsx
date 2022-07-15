@@ -113,51 +113,6 @@ export const innholdFieldNewNested = (name?: string, type?: string) => {
   return fields;
 };
 
-export const innholdField = {
-  name: "innhold",
-  type: "array",
-  title: "Innhold",
-  group: "innhold",
-  readOnly: true,
-  of: [
-    {
-      name: "generisk_seksjon",
-      type: "generisk_seksjon_artikkel",
-      icon: () => <FileContent />,
-    },
-    {
-      type: "object",
-      title: "Riktekst",
-      name: "riktekst_blokk",
-      fields: [
-        {
-          title: "Riktekst",
-          name: "body",
-          type: "riktekst",
-        },
-      ],
-      preview: {
-        select: {
-          text: "body",
-        },
-        prepare(selection) {
-          return {
-            title: toPlainText(selection?.text?.slice?.(0, 1)) ?? "-",
-            subtitle: "Riktekst",
-          };
-        },
-      },
-      icon: () => <FileContent />,
-    },
-    { type: "tips", title: "Tips/Feedback", icon: () => <LightBulb /> },
-    {
-      type: "relatert_innhold",
-      title: "Relatert innhold",
-      icon: () => <NewTab />,
-    },
-  ],
-};
-
 export const hidePageFeedback = {
   title: "Tilbakemeldinger",
   name: "metadata_feedback",

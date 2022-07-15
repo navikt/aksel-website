@@ -71,7 +71,7 @@ export default {
     {
       name: "floating_text",
       title: "Flytende tekst",
-      type: "riktekst",
+      type: "riktekst_enkel",
       hidden: true,
       readOnly: true,
       options: {

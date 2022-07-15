@@ -530,13 +530,6 @@ const createStyle = (text: string, style: string) => ({
   ],
 });
 
-/**
- * // TODO
- * Oppdatere dodont_v2 block (fjerne title og forklaring)
- * Migrering for DS-artikler
- * Ny riktekstblokk som har alle modulene
- * Rename content_bruk/kode -> kode_tab, bruk_tab
- */
 const transform = (src: any, type?: string) => {
   const newData = [];
 
