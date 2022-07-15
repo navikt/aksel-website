@@ -17,7 +17,7 @@ const TooltipSandbox: SandboxComponentT = (props: any) => {
       placement={props?.placement}
     >
       <Button>
-        <Print aria-hidden />
+        <Print title="demo knapp" />
       </Button>
     </Tooltip>
   );
