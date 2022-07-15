@@ -3,6 +3,7 @@ import { SanityBlockContent } from "@/sanity-block";
 import { ExternalLink } from "@navikt/ds-icons";
 import { BodyShort, Heading, Tabs, Tag } from "@navikt/ds-react";
 import cl from "classnames";
+import IntroSeksjon from "components/sanity-modules/IntroSeksjon";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
@@ -26,8 +27,8 @@ const KomponentArtikkelTemplate = ({
   const { query, push } = useRouter();
 
   const tabs = {
-    bruk: "content_bruk",
-    kode: "content_kode",
+    bruk: "bruk_tab",
+    kode: "kode_tab",
   };
 
   useEffect(() => {
@@ -181,14 +182,12 @@ const KomponentArtikkelTemplate = ({
                     text={data?.under_arbeid?.forklaring}
                   />
                 ) : (
-                  <>
-                    {data[val] && (
-                      <SanityBlockContent
-                        className="mt-12"
-                        blocks={data[val]}
-                      />
+                  <div className="mt-12">
+                    {val === "bruk_tab" && data.intro && (
+                      <IntroSeksjon node={data.intro} />
                     )}
-                  </>
+                    {data[val] && <SanityBlockContent blocks={data[val]} />}
+                  </div>
                 )}
                 <Feedback docId={data?._id} docType={data?._type} />
               </div>

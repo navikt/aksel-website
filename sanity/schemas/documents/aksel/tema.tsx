@@ -27,7 +27,7 @@ export default {
     {
       title: "Beskrivelse",
       name: "beskrivelse",
-      type: "riktekst",
+      type: "riktekst_enkel",
       group: "innhold",
     },
     {
@@ -63,7 +63,7 @@ export default {
             {
               title: "Beskrivelse",
               name: "beskrivelse",
-              type: "riktekst",
+              type: "riktekst_enkel",
             },
             {
               name: "sider",

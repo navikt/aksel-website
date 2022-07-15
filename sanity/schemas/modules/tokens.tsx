@@ -1,7 +1,10 @@
+import { Facilitet } from "@navikt/ds-icons";
+
 export default {
   title: "Tokens",
   name: "tokens",
   type: "object",
+  icon: Facilitet,
   fields: [
     {
       title: "Tittel/beskrivelse",
@@ -15,14 +18,4 @@ export default {
       of: [{ type: "reference", to: [{ type: "ds_tokens" }] }],
     },
   ],
-  /* preview: {
-    select: {
-      code: "code",
-      ref: "ref.title",
-    },
-    prepare: ({ code, ref }) => ({
-      title: code ? `${code?.code?.slice(0, 50)}...` : ref ? ref : "Kode",
-      subtitle: code ? "Kode" : ref ? "Predefinert kodesnippet" : "",
-    }),
-  }, */
 };

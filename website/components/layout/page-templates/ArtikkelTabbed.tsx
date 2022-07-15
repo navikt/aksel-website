@@ -27,17 +27,17 @@ const ArtikkelTabbedTemplate = ({
     slugger.reset();
   });
 
-  if (!data.innhold_tabs || !data.heading) {
+  if (!data.content_tabs || !data.heading) {
     return null;
   }
 
   const basePath = `/designsystem/side/${query.slug[1]}`;
 
-  const tabs: string[] = data.innhold_tabs.map(
+  const tabs: string[] = data.content_tabs.map(
     (tab) => tab.title?.toLowerCase().replace(/\s+/g, "-") || "undefined"
   );
   const activeTab = query.slug[2] ? tabs.indexOf(query.slug[2]) : 0;
-  const tabTitle = data?.innhold_tabs?.[activeTab]?.title;
+  const tabTitle = data?.content_tabs?.[activeTab]?.title;
 
   return (
     <>
@@ -72,7 +72,7 @@ const ArtikkelTabbedTemplate = ({
       {tabs.length > 1 && (
         <Tabs
           className="top-0 z-[1001]"
-          value={data.innhold_tabs[activeTab]?.title
+          value={data.content_tabs[activeTab]?.title
             .toLowerCase()
             .replace(/\s+/g, "-")}
           onChange={(x) => {
@@ -81,7 +81,7 @@ const ArtikkelTabbedTemplate = ({
           }}
         >
           <Tabs.List className="mx-0 px-2 md:mx-12 md:px-0">
-            {data.innhold_tabs.map((x) => (
+            {data.content_tabs.map((x) => (
               <Tabs.Tab
                 as="button"
                 key={x.title}
@@ -90,13 +90,13 @@ const ArtikkelTabbedTemplate = ({
               />
             ))}
           </Tabs.List>
-          {data.innhold_tabs.map((x) => (
+          {data.content_tabs.map((x) => (
             <Tabs.Panel
               className="tabpanel relative max-w-full md:max-w-7xl"
               key={x.title}
               value={x.title?.toLowerCase().replace(/\s+/g, "-")}
             >
-              <TableOfContents changedState={x.innhold} />
+              <TableOfContents changedState={x.content} />
               <div className="content-box">
                 {data?.under_arbeid?.status ? (
                   <UnderArbeid
@@ -104,7 +104,7 @@ const ArtikkelTabbedTemplate = ({
                     text={data?.under_arbeid?.forklaring}
                   />
                 ) : (
-                  <SanityBlockContent className="mt-12" blocks={x.innhold} />
+                  <SanityBlockContent className="mt-12" blocks={x.content} />
                 )}
                 <Feedback docId={data?._id} docType={data?._type} />
               </div>

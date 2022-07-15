@@ -3,41 +3,16 @@ import {
   editorField,
   groups,
   hidePageFeedback,
+  innholdFieldNew,
+  innholdFieldNewNested,
+  migratedField,
   publishedAtField,
   sanitySlug,
   titleField,
-  toPlainText,
   UnderArbeidField,
 } from "@/lib";
-import { FileContent, LightBulb, NewTab, Star } from "@navikt/ds-icons";
-import React from "react";
 
 const prefix = "designsystem/side/";
-
-const riktekst = {
-  type: "object",
-  title: "Riktekst",
-  name: "riktekst_blokk",
-  fields: [
-    {
-      title: "Riktekst",
-      name: "body",
-      type: "riktekst",
-    },
-  ],
-  preview: {
-    select: {
-      text: "body",
-    },
-    prepare(selection) {
-      return {
-        title: toPlainText(selection?.text?.slice?.(0, 1)) ?? "-",
-        subtitle: "Riktekst",
-      };
-    },
-  },
-  icon: () => <FileContent />,
-};
 
 export default {
   title: "Artikkel",
@@ -46,6 +21,7 @@ export default {
   groups,
   ...defaultDocPreview,
   fields: [
+    migratedField,
     publishedAtField,
     editorField,
     titleField,
@@ -59,33 +35,12 @@ export default {
       initialValue: false,
     },
     {
-      name: "innhold",
-      type: "array",
-      title: "Innhold",
-      group: "innhold",
+      ...innholdFieldNew,
+      type: "riktekst_ds_artikkel",
       hidden: ({ document }) => !!document?.artikkel_type,
-      of: [
-        {
-          name: "generisk_seksjon",
-          type: "generisk_seksjon",
-          icon: () => <FileContent />,
-        },
-        riktekst,
-        { type: "tips", title: "Tips/Feedback", icon: () => <LightBulb /> },
-        {
-          type: "relatert_innhold",
-          title: "Relatert innhold",
-          icon: () => <NewTab />,
-        },
-        {
-          type: "spesial_seksjon",
-          title: "Spesial seksjon",
-          icon: () => <Star />,
-        },
-      ],
     },
     {
-      name: "innhold_tabs",
+      name: "content_tabs",
       title: "Innhold i Tabs",
       type: "array",
       group: "innhold",
@@ -104,31 +59,7 @@ export default {
               validation: (Rule) =>
                 Rule.required().error("Tabben må ha en enkel tittel"),
             },
-            {
-              name: "innhold",
-              type: "array",
-              title: "Innhold",
-              validation: (Rule) =>
-                Rule.required().error("Tabben må ha noe innhold"),
-              of: [
-                {
-                  name: "generisk_seksjon",
-                  type: "generisk_seksjon",
-                  icon: () => <FileContent />,
-                },
-                riktekst,
-                {
-                  type: "tips",
-                  title: "Tips/Feedback",
-                  icon: () => <LightBulb />,
-                },
-                {
-                  type: "relatert_innhold",
-                  title: "Relatert innhold",
-                  icon: () => <NewTab />,
-                },
-              ],
-            },
+            innholdFieldNewNested(),
           ],
         },
       ],

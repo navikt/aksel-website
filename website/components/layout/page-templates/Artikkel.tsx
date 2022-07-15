@@ -22,7 +22,7 @@ const ArtikkelTemplate = ({
     slugger.reset();
   });
 
-  if (!data.innhold || !data.heading) {
+  if (!data.content || !data.heading) {
     return null;
   }
 
@@ -57,7 +57,7 @@ const ArtikkelTemplate = ({
         </div>
       </div>
       <div className="relative flex max-w-full md:max-w-7xl">
-        <TableOfContents changedState={data.innhold} />
+        <TableOfContents changedState={data.content} />
         <div className="content-box">
           {data?.under_arbeid?.status ? (
             <UnderArbeid
@@ -65,7 +65,7 @@ const ArtikkelTemplate = ({
               text={data?.under_arbeid?.forklaring}
             />
           ) : (
-            <SanityBlockContent className="mt-12" blocks={data.innhold} />
+            <SanityBlockContent className="mt-12" blocks={data.content} />
           )}
           <Feedback docId={data?._id} docType={data?._type} />
         </div>

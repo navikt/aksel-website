@@ -3,7 +3,8 @@ import {
   editorField,
   groups,
   ingressField,
-  innholdField,
+  innholdFieldNew,
+  migratedField,
   publishedAtField,
   sanitySlug,
   SEOFields,
@@ -34,8 +35,9 @@ export default {
     },
 
     ingressField,
-    innholdField,
+    innholdFieldNew,
     UnderArbeidField,
     SEOFields,
+    migratedField,
   ],
 };

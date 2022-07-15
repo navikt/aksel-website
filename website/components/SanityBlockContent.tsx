@@ -5,15 +5,12 @@ import cl from "classnames";
 import NextLink from "next/link";
 import React, { createContext, useContext } from "react";
 import {
-  AccordionV2,
+  Accordion,
   Alert,
   Anatomi,
   Bilde,
   CodeExample,
-  DoDontv2,
-  GeneriskSeskjon,
-  InstallasjonSeksjon,
-  IntroKomponent,
+  DoDont,
   Kode,
   LevelTwoHeading,
   LiveDemo,
@@ -24,7 +21,7 @@ import {
   Tabell,
   Tips,
   TokensSeksjon,
-  UuSeksjon,
+  TastaturModul,
   Video,
 } from ".";
 
@@ -39,20 +36,17 @@ export const KBD = (props: React.HTMLAttributes<HTMLElement>) => (
 const serializers = {
   types: {
     /* V2 content structure */
-    intro_komponent: ({ node }) => <IntroKomponent node={node} />,
     relatert_innhold: ({ node }) => <RelatertInnhold node={node} />,
     anatomi: ({ node }) => <Anatomi node={node} />,
     live_demo: ({ node }) => <LiveDemo node={node} />,
-    uu_seksjon: ({ node }) => <UuSeksjon node={node} />,
-    generisk_seksjon: ({ node }) => <GeneriskSeskjon node={node} />,
+    tastatur_modul: ({ node }) => <TastaturModul node={node} />,
     riktekst_blokk: ({ node }) => <SanityBlockContent blocks={node.body} />,
-    do_dont_v2: ({ node }) => <DoDontv2 node={node} />,
+    do_dont: ({ node }) => <DoDont node={node} />,
     bilde: ({ node }) => <Bilde node={node} />,
-    alert_v2: ({ node }) => <Alert node={node} />,
+    alert: ({ node }) => <Alert node={node} />,
     kode: ({ node }) => <Kode node={node} />,
     tabell: ({ node }) => <Tabell node={node} />,
-    accordion_v2: ({ node }) => <AccordionV2 node={node} />,
-    installasjon_seksjon: ({ node }) => <InstallasjonSeksjon node={node} />,
+    accordion: ({ node }) => <Accordion node={node} />,
     props_seksjon: ({ node }) => <PropsSeksjon node={node} />,
     spesial_seksjon: ({ node }) => <SpesialSeksjon node={node} />,
     video: ({ node }) => <Video node={node} />,
@@ -98,26 +92,16 @@ const serializers = {
           return (
             <Heading
               {...textProps}
-              className="algolia-index-lvl3 max-w-text"
+              className="algolia-index-lvl3 mt-8 max-w-text"
               spacing
               level="3"
               size="medium"
             />
           );
-        case "heading4":
-          return (
-            <Heading
-              className="algolia-index-lvl4 max-w-text"
-              spacing
-              level="4"
-              size="small"
-              {...textProps}
-            />
-          );
         case "h4":
           return (
             <Heading
-              className="algolia-index-lvl4 max-w-text"
+              className="algolia-index-lvl4 mt-6 max-w-text"
               spacing
               level="4"
               size="small"

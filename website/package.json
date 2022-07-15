@@ -27,7 +27,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "migrate": "npx ts-node --project tsconfig.tsnode.json ./lib/migrations/riktekst"
   },
   "dependencies": {
     "@docsearch/css": "3.0.0",
@@ -103,6 +104,7 @@
     "eslint-plugin-react": "^7.29",
     "jest": "^28.1.1",
     "jest-environment-jsdom": "^28.1.1",
+    "nanoid": "3.0.0",
     "next-transpile-modules": "^9.0.0",
     "postcss": "^8.4.14",
     "postcss-import": "^14.1.0",

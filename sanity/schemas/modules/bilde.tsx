@@ -21,59 +21,11 @@ export default {
       },
     },
     {
-      name: "hide_floating",
-      type: "boolean",
-      hidden: true,
-      readOnly: true,
-      options: {
-        isHighlighted: true,
-      },
-    },
-    {
-      name: "floating",
-      title: "Bilde med flytende tekst rundt",
-      description:
-        "Dette feltet fungerer ikke lengre, bruk et vanlig bilde uten flytende tekst",
-      type: "boolean",
-      initialValue: false,
-      hidden: true,
-      readOnly: true,
-      options: {
-        isHighlighted: true,
-      },
-    },
-    {
       name: "caption",
       title: "Bilde-tekst (optional)",
       description: "Dette vil stå under bildet",
       type: "string",
       hidden: ({ parent }) => parent?.floating,
-      options: {
-        isHighlighted: true,
-      },
-    },
-    {
-      title: "Plassering av bilde",
-      name: "floating_align",
-      type: "string",
-      hidden: ({ parent }) => !parent?.floating,
-
-      initialValue: "hoyre",
-      options: {
-        isHighlighted: true,
-        layout: "radio",
-        list: [
-          { value: "venstre", title: "Venstre" },
-          { value: "hoyre", title: "Hoyre" },
-        ],
-      },
-    },
-    {
-      name: "floating_text",
-      title: "Flytende tekst",
-      type: "riktekst",
-      hidden: true,
-      readOnly: true,
       options: {
         isHighlighted: true,
       },
@@ -101,7 +53,7 @@ export default {
     prepare(selection) {
       return {
         title: selection?.alt,
-        subtitle: `Bilde${selection?.floating ? " - Flytende med tekst" : ""}`,
+        subtitle: `Bilde`,
         media: () => <Picture />,
       };
     },

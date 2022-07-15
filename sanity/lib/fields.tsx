@@ -39,6 +39,14 @@ export const publishedAtField = {
     !currentUser.roles.find((x) => x.name === "administrator"),
 };
 
+export const migratedField = {
+  title: "Migrert riktekst",
+  name: "isMigrated",
+  type: "boolean",
+  hidden: false,
+  initialValue: true,
+};
+
 export const titleField = {
   title: "Sidetittel",
   name: "heading",
@@ -88,50 +96,21 @@ export const ingressField = {
     Rule.required().max(155).error("Ingress kan ikke være på over 155 tegn"),
 };
 
-export const innholdField = {
-  name: "innhold",
-  type: "array",
+export const innholdFieldNew = {
   title: "Innhold",
+  name: "content",
+  type: "riktekst_aksel",
   group: "innhold",
-  validation: (Rule) =>
-    Rule.required().min(1).error("Tabben må ha noe innhold"),
-  of: [
-    {
-      name: "generisk_seksjon",
-      type: "generisk_seksjon_artikkel",
-      icon: () => <FileContent />,
-    },
-    {
-      type: "object",
-      title: "Riktekst",
-      name: "riktekst_blokk",
-      fields: [
-        {
-          title: "Riktekst",
-          name: "body",
-          type: "riktekst",
-        },
-      ],
-      preview: {
-        select: {
-          text: "body",
-        },
-        prepare(selection) {
-          return {
-            title: toPlainText(selection?.text?.slice?.(0, 1)) ?? "-",
-            subtitle: "Riktekst",
-          };
-        },
-      },
-      icon: () => <FileContent />,
-    },
-    { type: "tips", title: "Tips/Feedback", icon: () => <LightBulb /> },
-    {
-      type: "relatert_innhold",
-      title: "Relatert innhold",
-      icon: () => <NewTab />,
-    },
-  ],
+};
+
+export const innholdFieldNewNested = (name?: string, type?: string) => {
+  const fields = {
+    ...innholdFieldNew,
+    type: type ?? "riktekst_ds_artikkel",
+    name: name ?? "content",
+  };
+  delete fields.group;
+  return fields;
 };
 
 export const hidePageFeedback = {

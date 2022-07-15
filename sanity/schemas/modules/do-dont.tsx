@@ -1,19 +1,12 @@
+import { Success } from "@navikt/ds-icons";
+import React from "react";
+
 export default {
   title: "Do / Dont",
-  name: "do_dont_v2",
+  name: "do_dont",
   type: "object",
+  icon: Success,
   fields: [
-    {
-      title: "Tittel (h3)",
-      name: "title",
-      type: "string",
-      validation: (Rule) => Rule.required().error("Do/dont må ha en tittel"),
-    },
-    {
-      title: "Forklaring (optional)",
-      name: "forklaring",
-      type: "riktekst",
-    },
     {
       type: "array",
       name: "blokker",
@@ -23,19 +16,16 @@ export default {
     },
   ],
   preview: {
-    select: {
-      title: "title",
-    },
-    prepare(selection) {
+    prepare() {
       return {
-        title: selection?.title,
-        subtitle: "Do/Dont",
+        title: "Do / Dont",
+        media: () => <Success />,
       };
     },
   },
 };
 
-export const doDont = {
+export const doDontBlock = {
   title: "DoDont",
   name: "do_dont_block",
   type: "object",

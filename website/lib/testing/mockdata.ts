@@ -309,7 +309,7 @@ export const mockArtikkel = {
         },
         {
           _key: "aaab7e5f9045",
-          _type: "alert_v2",
+          _type: "alert",
           body: [
             {
               _key: "9da684f0b3c5",

@@ -1,10 +1,14 @@
 import { Accordion as DsAccordion } from "@navikt/ds-react";
 import React from "react";
-import { AccordionV2 } from "@/lib";
+import { SanityT } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
 import { SanityBlockContent } from "@/sanity-block";
 
-const Accordion = ({ node }: { node: AccordionV2 }): JSX.Element => {
+const Accordion = ({
+  node,
+}: {
+  node: SanityT.Schema.accordion;
+}): JSX.Element => {
   if (!node || node.list.length === 0) {
     return null;
   }
@@ -16,7 +20,7 @@ const Accordion = ({ node }: { node: AccordionV2 }): JSX.Element => {
           <DsAccordion.Item key={el._key}>
             <DsAccordion.Header>{el.title}</DsAccordion.Header>
             <DsAccordion.Content>
-              <SanityBlockContent blocks={el.innhold} />
+              <SanityBlockContent blocks={el.content} />
             </DsAccordion.Content>
           </DsAccordion.Item>
         ))}

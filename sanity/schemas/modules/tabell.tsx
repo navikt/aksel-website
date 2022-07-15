@@ -1,10 +1,13 @@
 import { toPlainText } from "@/lib";
+import { Data } from "@navikt/ds-icons";
 import tableSchema from "part:power-table/schema";
+import React from "react";
 
 const Tabell = {
   type: "object",
   name: "tabell",
   title: "Tabell",
+  icon: Data,
   fields: [
     {
       title: "Tittel (optional)",
@@ -26,6 +29,7 @@ const Tabell = {
       return {
         title: s?.title ? s?.title : "Tabell",
         subtitle: s?.title ? "Tabell" : "",
+        media: () => <Data />,
       };
     },
   },

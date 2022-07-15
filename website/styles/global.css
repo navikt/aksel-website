@@ -7,6 +7,10 @@ pre {
   @apply !font-mono;
 }
 
+.navds-heading + .navds-heading {
+  margin-top: 0;
+}
+
 .navds-alert code {
   color: var(--navds-global-color-red-500);
   background-color: transparent;

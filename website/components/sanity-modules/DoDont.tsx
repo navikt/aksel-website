@@ -1,12 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
+import { Lightbox } from "@/components";
+import { withErrorBoundary } from "@/error-boundary";
+import { SanityT, urlFor } from "@/lib";
 import { SuccessFilled, WarningFilled } from "@navikt/ds-icons";
-import { BodyShort, Heading } from "@navikt/ds-react";
+import { BodyShort } from "@navikt/ds-react";
 import cl from "classnames";
 import React, { useState } from "react";
-import { Lightbox } from "@/components";
-import { DoDontBlock, DoDontV2, SanityKeyed, urlFor } from "@/lib";
-import { withErrorBoundary } from "@/error-boundary";
-import { SanityBlockContent } from "@/sanity-block";
 
 const GetIcon = (s: string) => {
   switch (s) {
@@ -57,7 +56,7 @@ const GetIcon = (s: string) => {
 const Element = ({
   block,
 }: {
-  block: SanityKeyed<DoDontBlock>;
+  block: Sanity.Keyed<SanityT.Schema.do_dont_block>;
 }): JSX.Element => {
   const [open, setOpen] = useState(false);
 
@@ -120,20 +119,11 @@ const Element = ({
   );
 };
 
-const DoDont = ({ node }: { node: DoDontV2 }) => {
-  if (!node || !node.title) return null;
+const DoDont = ({ node }: { node: SanityT.Schema.do_dont }) => {
+  if (!node) return null;
 
   return (
-    <div className="relative-parent aksel-artikkel__child mb-16 last:mb-0">
-      <Heading
-        level="3"
-        className="algolia-index-lvl3 max-w-text"
-        size="medium"
-        spacing
-      >
-        {node.title}
-      </Heading>
-      <SanityBlockContent blocks={node.forklaring} className="mb-7" />
+    <div className="relative-parent aksel-artikkel__child mb-8 last:mb-0">
       {node?.blokker?.length > 0 && (
         <div className="last flex flex-wrap justify-between gap-8">
           {node.blokker.map((x) => (

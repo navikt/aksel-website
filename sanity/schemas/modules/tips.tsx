@@ -6,6 +6,7 @@ export default {
   name: "tips",
   title: "Tips/Feedback",
   type: "object",
+  icon: LightBulb,
   fields: [
     {
       title: "Feedback",

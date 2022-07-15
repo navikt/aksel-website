@@ -1,10 +1,11 @@
-import { Helmet, Star } from "@navikt/ds-icons";
+import { Star } from "@navikt/ds-icons";
 import React from "react";
 
 export default {
-  title: "Spesialseksjon",
+  title: "Sidemodul",
   type: "object",
   name: "spesial_seksjon",
+  icon: Star,
   validation: (Rule) => Rule.required(),
   fields: [
     {

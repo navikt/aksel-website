@@ -22,7 +22,7 @@ const AkselPrinsippTemplate = ({
 }): JSX.Element => {
   /* const { status, login } = useContext(AuthenticationContext); */
 
-  if (!data.innhold || !data.heading) {
+  if (!data.content || !data.heading) {
     return null;
   }
 
@@ -112,7 +112,7 @@ const AkselPrinsippTemplate = ({
             ) : (
               <SanityBlockContent
                 className="mx-auto max-w-prose xs:w-[90%]"
-                blocks={data?.innhold ?? []}
+                blocks={data?.content ?? []}
                 variant="aksel"
               />
             )}

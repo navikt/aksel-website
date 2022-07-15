@@ -1,11 +1,15 @@
+import { LevelTwoHeading } from "@/components";
+import { withErrorBoundary } from "@/error-boundary";
+import { SanityT } from "@/lib";
+import { SanityBlockContent } from "@/sanity-block";
 import { Label } from "@navikt/ds-react";
 import React from "react";
-import { LevelTwoHeading } from "@/components";
-import { IntroKomponentSeksjon } from "@/lib";
-import { withErrorBoundary } from "@/error-boundary";
-import { SanityBlockContent } from "@/sanity-block";
 
-const Intro = ({ node }: { node: IntroKomponentSeksjon }): JSX.Element => {
+const Intro = ({
+  node,
+}: {
+  node: SanityT.Schema.intro_komponent;
+}): JSX.Element => {
   if (!node || !node.body || !node.brukes_til) {
     return null;
   }
