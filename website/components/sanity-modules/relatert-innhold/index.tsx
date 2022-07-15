@@ -20,11 +20,7 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
 
   return (
     <div
-      className={cl(
-        "relatedCard",
-        "relative-child mb-8 gap-4",
-        "grid w-full xs:grid-cols-2"
-      )}
+      className={cl("relatedCard", "mb-8 gap-4", "grid w-full xs:grid-cols-2")}
     >
       {node.lenker.map((x) => (
         <div

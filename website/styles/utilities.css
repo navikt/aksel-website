@@ -12,10 +12,6 @@
   @apply -mt-4;
 }
 
-.relative-parent + .relative-child {
-  @apply -mt-8;
-}
-
 .svg-color-reset.navds-link svg {
   color: inherit;
 }

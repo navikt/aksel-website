@@ -82,7 +82,7 @@ const DoDont = ({ node }: { node: SanityT.Schema.do_dont }) => {
   if (!node) return null;
 
   return (
-    <div className="relative-parent aksel-artikkel__child mb-8 last:mb-0">
+    <div className="aksel-artikkel__child mb-8 last:mb-0">
       {node?.blokker?.length > 0 && (
         <div className="last flex flex-wrap justify-between gap-8">
           {node.blokker.map((x) => (
