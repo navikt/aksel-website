@@ -3,7 +3,7 @@ import { innholdFieldNewNested } from "@/lib";
 import React from "react";
 
 export default {
-  name: "accordion_v2",
+  name: "accordion",
   title: "Accordion",
   type: "object",
   fields: [

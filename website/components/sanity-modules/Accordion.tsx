@@ -7,7 +7,7 @@ import { SanityBlockContent } from "@/sanity-block";
 const Accordion = ({
   node,
 }: {
-  node: SanityT.Schema.accordion_v2;
+  node: SanityT.Schema.accordion;
 }): JSX.Element => {
   if (!node || node.list.length === 0) {
     return null;

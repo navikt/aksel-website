@@ -119,7 +119,7 @@ const Element = ({
   );
 };
 
-const DoDont = ({ node }: { node: SanityT.Schema.do_dont_v2 }) => {
+const DoDont = ({ node }: { node: SanityT.Schema.do_dont }) => {
   if (!node) return null;
 
   return (

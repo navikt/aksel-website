@@ -1102,14 +1102,14 @@ Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av sid
           }>
         | Sanity.Keyed<tips>
         | Sanity.Keyed<relatert_innhold>
-        | Sanity.Keyed<do_dont_v2>
+        | Sanity.Keyed<do_dont>
         | Sanity.Keyed<bilde>
         | Sanity.Keyed<video>
-        | Sanity.Keyed<alert_v2>
+        | Sanity.Keyed<alert>
         | Sanity.Keyed<kode>
         | Sanity.KeyedReference<ds_code_example>
         | Sanity.Keyed<tabell>
-        | Sanity.Keyed<accordion_v2>
+        | Sanity.Keyed<accordion>
         | Sanity.Keyed<tokens>
         | Sanity.Keyed<spesial_seksjon>
       >;
@@ -1137,21 +1137,21 @@ Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av sid
           }>
         | Sanity.Keyed<tips>
         | Sanity.Keyed<relatert_innhold>
-        | Sanity.Keyed<do_dont_v2>
+        | Sanity.Keyed<do_dont>
         | Sanity.Keyed<bilde>
         | Sanity.Keyed<video>
-        | Sanity.Keyed<alert_v2>
+        | Sanity.Keyed<alert>
         | Sanity.Keyed<kode>
         | Sanity.Keyed<tabell>
-        | Sanity.Keyed<accordion_v2>
+        | Sanity.Keyed<accordion>
         | Sanity.Keyed<tokens>
       >;
     };
 
     type riktekst = Array<Sanity.Keyed<Sanity.Block>>;
 
-    type do_dont_v2 = {
-      _type: "do_dont_v2";
+    type do_dont = {
+      _type: "do_dont";
 
       /**
        * Do / donts - `Array`
@@ -1249,8 +1249,8 @@ Dette vil stå under bildet
       Sanity.Keyed<Sanity.Block> | Sanity.Keyed<bilde>
     >;
 
-    type alert_v2 = {
-      _type: "alert_v2";
+    type alert = {
+      _type: "alert";
 
       /**
        * Variant - `String`
@@ -1511,8 +1511,8 @@ Slik man ville brukt den, eks Accordion.Item
       >;
     };
 
-    type accordion_v2 = {
-      _type: "accordion_v2";
+    type accordion = {
+      _type: "accordion";
 
       /**
        * Tittel (optional) - `String`
@@ -1641,9 +1641,9 @@ Endrer modul-variant
       | Sanity.Keyed<bilde>
       | Sanity.Keyed<kode>
       | Sanity.Keyed<tips>
-      | Sanity.Keyed<do_dont_v2>
-      | Sanity.Keyed<accordion_v2>
-      | Sanity.Keyed<alert_v2>
+      | Sanity.Keyed<do_dont>
+      | Sanity.Keyed<accordion>
+      | Sanity.Keyed<alert>
       | Sanity.Keyed<tabell>
       | Sanity.Keyed<video>
     >;
@@ -1654,9 +1654,9 @@ Endrer modul-variant
       | Sanity.Keyed<bilde>
       | Sanity.Keyed<kode>
       | Sanity.Keyed<tips>
-      | Sanity.Keyed<do_dont_v2>
-      | Sanity.Keyed<accordion_v2>
-      | Sanity.Keyed<alert_v2>
+      | Sanity.Keyed<do_dont>
+      | Sanity.Keyed<accordion>
+      | Sanity.Keyed<alert>
       | Sanity.Keyed<tabell>
       | Sanity.Keyed<video>
       | Sanity.Keyed<tokens>
@@ -1669,9 +1669,9 @@ Endrer modul-variant
       | Sanity.Keyed<bilde>
       | Sanity.Keyed<kode>
       | Sanity.Keyed<tips>
-      | Sanity.Keyed<do_dont_v2>
-      | Sanity.Keyed<accordion_v2>
-      | Sanity.Keyed<alert_v2>
+      | Sanity.Keyed<do_dont>
+      | Sanity.Keyed<accordion>
+      | Sanity.Keyed<alert>
       | Sanity.Keyed<tabell>
       | Sanity.Keyed<video>
       | Sanity.Keyed<props_seksjon>

@@ -48,14 +48,14 @@ export const contentBlocks = (s?: string) => {
       title: "Relatert innhold",
       icon: () => <NewTab />,
     },
-    { type: "do_dont_v2", title: "Do/Dont", icon: () => <DirectionSign /> },
+    { type: "do_dont", title: "Do/Dont", icon: () => <DirectionSign /> },
     { type: "bilde", title: "Bilde", icon: () => <Picture /> },
     {
       type: "video",
       title: "Video",
       icon: () => <VideoRoom />,
     },
-    { type: "alert_v2", title: "Alert", icon: () => <Warning /> },
+    { type: "alert", title: "Alert", icon: () => <Warning /> },
     { type: "kode", title: "Kode", icon: () => <Wrench /> },
     {
       title: "Komponent-widget",
@@ -65,7 +65,7 @@ export const contentBlocks = (s?: string) => {
       icon: () => <Facilitet />,
     },
     { type: "tabell", title: "Tabell", icon: () => <Data /> },
-    { type: "accordion_v2", title: "Accordion", icon: () => <Expand /> },
+    { type: "accordion", title: "Accordion", icon: () => <Expand /> },
     { type: "tokens", title: "Tokens", icon: () => <Bookmark /> },
     {
       type: "spesial_seksjon",
@@ -75,7 +75,7 @@ export const contentBlocks = (s?: string) => {
   ];
 
   switch (s) {
-    case "accordion_v2":
+    case "accordion":
       return blocks.filter(
         (x) =>
           !["Accordion", "Komponent-widget", "Spesial seksjon"].includes(

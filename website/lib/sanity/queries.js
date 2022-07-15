@@ -73,7 +73,7 @@ const defaultBlock = `
       "extension": fallback.asset->extension
     }
  },
- _type == "alert_v2" =>{
+ _type == "alert" =>{
     ...,
     body[]{
       ...,
@@ -93,7 +93,7 @@ const defaultBlock = `
  ${relatertInnhold}
 `;
 
-const accordionBlock = `_type == "accordion_v2"=>{
+const accordionBlock = `_type == "accordion"=>{
   ...,
   list[]{
     ...,
@@ -143,7 +143,8 @@ ${liveSeksjon},
 ${propsSeksjon},
 ${installSeksjon},
 ${spesialSeksjon},
-${defaultBlock}
+${accordionBlock},
+${defaultBlock},
 `;
 
 export const allDocuments = `*[]{...,'slug': slug.current }`;

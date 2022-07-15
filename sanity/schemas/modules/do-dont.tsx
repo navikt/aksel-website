@@ -2,7 +2,7 @@ import { Success } from "@navikt/ds-icons";
 import React from "react";
 export default {
   title: "Do / Dont",
-  name: "do_dont_v2",
+  name: "do_dont",
   type: "object",
   icon: Success,
   fields: [

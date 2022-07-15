@@ -3,7 +3,7 @@ import { Warning } from "@navikt/ds-icons";
 import React from "react";
 
 export default {
-  name: "alert_v2",
+  name: "alert",
   title: "Alert",
   type: "object",
   icon: Warning,

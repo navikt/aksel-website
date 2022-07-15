@@ -582,7 +582,7 @@ const transform = (src: any, type?: string) => {
         newData.push(data);
         break;
       case "alert_v2":
-        newData.push(data);
+        newData.push({ ...data, _type: "alert" });
         break;
       case "video":
         newData.push(data);
@@ -601,7 +601,7 @@ const transform = (src: any, type?: string) => {
         data?.forklaring && newData.push(...data.forklaring);
         delete data?.title;
         delete data?.forklaring;
-        newData.push(data);
+        newData.push({ ...data, _type: "do_dont" });
         break;
       case "riktekst_blokk":
         data?.body &&
@@ -620,6 +620,7 @@ const transform = (src: any, type?: string) => {
       case "accordion_v2":
         newData.push({
           ...data,
+          _type: "accordion",
           ...(data.list
             ? {
                 list: data.list.map((x) => {

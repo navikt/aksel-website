@@ -162,9 +162,9 @@ const Riktekst = (type: "aksel" | "ds" | "komponent") => {
     "bilde",
     "kode",
     "tips",
-    "do_dont_v2",
-    "accordion_v2",
-    "alert_v2",
+    "do_dont",
+    "accordion",
+    "alert",
     "tabell",
     "video",
   ];
