@@ -1,5 +1,6 @@
 import { Success } from "@navikt/ds-icons";
 import React from "react";
+
 export default {
   title: "Do / Dont",
   name: "do_dont",
@@ -24,7 +25,7 @@ export default {
   },
 };
 
-export const doDont = {
+export const doDontBlock = {
   title: "DoDont",
   name: "do_dont_block",
   type: "object",

@@ -2,9 +2,7 @@ import Accordion from "./accordion";
 import Alert from "./alert";
 import Anatomi from "./anatomi";
 import Bilde from "./bilde";
-import DoDontV2, { doDont } from "./do-dont";
-import GeneriskBlokk from "./generisk-blokk";
-import GeneriskBlokkArtikkel from "./generisk-blokk-artikkel";
+import DoDont, { doDontBlock } from "./do-dont";
 import Installasjon from "./installasjon";
 import introKomponent from "./intro-komponent";
 import Kode from "./kode";
@@ -15,9 +13,9 @@ import Riktekst from "./riktekst/riktekst";
 import {
   RiktekstAksel,
   RiktekstDsArtikkel,
+  RiktekstEnkel,
   RiktekstKomponent,
   RiktekstTabell,
-  RiktekstEnkel,
 } from "./riktekst/riktekst-artikkel";
 import SpesialSeksjon from "./spesial-seksjon";
 import Tabell, { TabellSchema } from "./tabell";
@@ -33,11 +31,11 @@ const v2Blocks = [
   RiktekstAksel,
   RiktekstDsArtikkel,
   RiktekstKomponent,
+  RiktekstTabell,
 
-  GeneriskBlokk,
-  GeneriskBlokkArtikkel,
-  DoDontV2,
-  doDont,
+  /* Moduler */
+  DoDont,
+  doDontBlock,
   Bilde,
   Alert,
   Kode,
@@ -50,7 +48,6 @@ const v2Blocks = [
   Installasjon,
   Props,
   Accordion,
-  RiktekstTabell,
   SpesialSeksjon,
   Video,
   Tokens,
