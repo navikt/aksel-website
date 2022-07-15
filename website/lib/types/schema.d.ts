@@ -16,7 +16,7 @@ declare namespace SanityT {
       /**
        * Beskrivelse - `RegistryReference`
        */
-      beskrivelse?: riktekst;
+      beskrivelse?: riktekst_enkel;
 
       /**
        * Brukeropplevelse - `Object`
@@ -30,7 +30,7 @@ declare namespace SanityT {
         /**
          * Beskrivelse - `RegistryReference`
          */
-        beskrivelse?: riktekst;
+        beskrivelse?: riktekst_enkel;
 
         /**
          * Hovedside - `Reference`
@@ -906,7 +906,7 @@ Brukes i kort og innganger
       /**
        * Beskrivelse - `RegistryReference`
        */
-      beskrivelse?: riktekst;
+      beskrivelse?: riktekst_enkel;
 
       /**
        * Bruk seksjonsinndeling - `Boolean`
@@ -930,7 +930,7 @@ Del inn artiklene i flere seksjoner (vises ikke i preview før publisering desve
           /**
            * Beskrivelse - `RegistryReference`
            */
-          beskrivelse?: riktekst;
+          beskrivelse?: riktekst_enkel;
 
           /**
            * Sider - `Array`
@@ -1080,75 +1080,55 @@ Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av sid
       isMigrated?: boolean;
     }
 
-    type generisk_seksjon = {
-      _type: "generisk_seksjon";
+    type riktekst_enkel = Array<Sanity.Keyed<Sanity.Block>>;
 
-      /**
-       * Tittel (h2) - `String`
-       */
-      title?: string;
+    type riktekst_aksel = Array<
+      | Sanity.Keyed<Sanity.Block>
+      | Sanity.Keyed<relatert_innhold>
+      | Sanity.Keyed<bilde>
+      | Sanity.Keyed<kode>
+      | Sanity.Keyed<tips>
+      | Sanity.Keyed<do_dont>
+      | Sanity.Keyed<accordion>
+      | Sanity.Keyed<alert>
+      | Sanity.Keyed<tabell>
+      | Sanity.Keyed<video>
+    >;
 
-      /**
-       * Innhold - `Array`
-       */
-      brikker?: Array<
-        | Sanity.Keyed<{
-            _type: "riktekst_blokk";
+    type riktekst_ds_artikkel = Array<
+      | Sanity.Keyed<Sanity.Block>
+      | Sanity.Keyed<relatert_innhold>
+      | Sanity.Keyed<bilde>
+      | Sanity.Keyed<kode>
+      | Sanity.Keyed<tips>
+      | Sanity.Keyed<do_dont>
+      | Sanity.Keyed<accordion>
+      | Sanity.Keyed<alert>
+      | Sanity.Keyed<tabell>
+      | Sanity.Keyed<video>
+      | Sanity.Keyed<tokens>
+      | Sanity.Keyed<spesial_seksjon>
+    >;
 
-            /**
-             * Riktekst - `RegistryReference`
-             */
-            body?: riktekst;
-          }>
-        | Sanity.Keyed<tips>
-        | Sanity.Keyed<relatert_innhold>
-        | Sanity.Keyed<do_dont>
-        | Sanity.Keyed<bilde>
-        | Sanity.Keyed<video>
-        | Sanity.Keyed<alert>
-        | Sanity.Keyed<kode>
-        | Sanity.KeyedReference<ds_code_example>
-        | Sanity.Keyed<tabell>
-        | Sanity.Keyed<accordion>
-        | Sanity.Keyed<tokens>
-        | Sanity.Keyed<spesial_seksjon>
-      >;
-    };
+    type riktekst_komponent = Array<
+      | Sanity.Keyed<Sanity.Block>
+      | Sanity.Keyed<relatert_innhold>
+      | Sanity.Keyed<bilde>
+      | Sanity.Keyed<kode>
+      | Sanity.Keyed<tips>
+      | Sanity.Keyed<do_dont>
+      | Sanity.Keyed<accordion>
+      | Sanity.Keyed<alert>
+      | Sanity.Keyed<tabell>
+      | Sanity.Keyed<video>
+      | Sanity.Keyed<props_seksjon>
+      | Sanity.Keyed<anatomi>
+      | Sanity.Keyed<live_demo>
+      | Sanity.Keyed<tastatur_modul>
+      | Sanity.Keyed<tokens>
+    >;
 
-    type generisk_seksjon_artikkel = {
-      _type: "generisk_seksjon_artikkel";
-
-      /**
-       * Tittel (h2) - `String`
-       */
-      title?: string;
-
-      /**
-       * Innhold - `Array`
-       */
-      brikker?: Array<
-        | Sanity.Keyed<{
-            _type: "riktekst_blokk";
-
-            /**
-             * Riktekst - `RegistryReference`
-             */
-            body?: riktekst;
-          }>
-        | Sanity.Keyed<tips>
-        | Sanity.Keyed<relatert_innhold>
-        | Sanity.Keyed<do_dont>
-        | Sanity.Keyed<bilde>
-        | Sanity.Keyed<video>
-        | Sanity.Keyed<alert>
-        | Sanity.Keyed<kode>
-        | Sanity.Keyed<tabell>
-        | Sanity.Keyed<accordion>
-        | Sanity.Keyed<tokens>
-      >;
-    };
-
-    type riktekst = Array<Sanity.Keyed<Sanity.Block>>;
+    type riktekst_tabell = Array<Sanity.Keyed<Sanity.Block>>;
 
     type do_dont = {
       _type: "do_dont";
@@ -1207,47 +1187,16 @@ Beskriv bildet for skjermlesere
       alt?: string;
 
       /**
-       * Hide Floating - `Boolean`
-       */
-      hide_floating?: boolean;
-
-      /**
-       * Bilde med flytende tekst rundt - `Boolean`
-Dette feltet fungerer ikke lengre, bruk et vanlig bilde uten flytende tekst
-       */
-      floating?: boolean;
-
-      /**
        * Bilde-tekst (optional) - `String`
 Dette vil stå under bildet
        */
       caption?: string;
 
       /**
-       * Plassering av bilde - `String`
-       */
-      floating_align?: "venstre" | "hoyre";
-
-      /**
-       * Flytende tekst - `RegistryReference`
-       */
-      floating_text?: riktekst;
-
-      /**
        * Bildet tar bare ~halve bredden - `Boolean`
        */
       small?: boolean;
     };
-
-    type riktekst_enkel = Array<Sanity.Keyed<Sanity.Block>>;
-
-    type riktekst_bilde = Array<
-      Sanity.Keyed<Sanity.Block> | Sanity.Keyed<bilde>
-    >;
-
-    type riktekst_bilde_enkel = Array<
-      Sanity.Keyed<Sanity.Block> | Sanity.Keyed<bilde>
-    >;
 
     type alert = {
       _type: "alert";
@@ -1380,60 +1329,6 @@ Gi tabellen et navn for å lettere finne den
       powerTable?: any;
     };
 
-    type uu_seksjon = {
-      _type: "uu_seksjon";
-
-      /**
-       * Tittel (h2) - `String`
-       */
-      title?: string;
-
-      /**
-       * Generisk innhold - `RegistryReference`
-       */
-      innhold?: riktekst_bilde;
-
-      /**
-       * Interaksjon med mus (optional) - `RegistryReference`
-       */
-      interaksjon_mus?: riktekst_bilde_enkel;
-
-      /**
-       * Interaksjon med touch (optional) - `RegistryReference`
-       */
-      interaksjon_touch?: riktekst_bilde_enkel;
-
-      /**
-       * Interaksjon med tastatur (optional) - `RegistryReference`
-Ekstra info som ikke kan forklares med key + action under
-       */
-      interaksjon_tastatur?: riktekst_bilde_enkel;
-
-      /**
-       * Tastatur key + action - `Array`
-       */
-      tastatur?: Array<
-        Sanity.Keyed<{
-          _type: "keys";
-
-          /**
-           * Key - `String`
-           */
-          key?: string;
-
-          /**
-           * Action - `String`
-           */
-          action?: string;
-        }>
-      >;
-
-      /**
-       * Interaksjon med skjermleser (optional) - `RegistryReference`
-       */
-      interaksjon_skjermleser?: riktekst_bilde_enkel;
-    };
-
     type anatomi = {
       _type: "anatomi";
 
@@ -1539,8 +1434,6 @@ Slik man ville brukt den, eks Accordion.Item
       >;
     };
 
-    type riktekst_tabell = Array<Sanity.Keyed<Sanity.Block>>;
-
     type spesial_seksjon = {
       _type: "spesial_seksjon";
 
@@ -1634,52 +1527,6 @@ Endrer modul-variant
        */
       body?: riktekst_enkel;
     };
-
-    type riktekst_aksel = Array<
-      | Sanity.Keyed<Sanity.Block>
-      | Sanity.Keyed<relatert_innhold>
-      | Sanity.Keyed<bilde>
-      | Sanity.Keyed<kode>
-      | Sanity.Keyed<tips>
-      | Sanity.Keyed<do_dont>
-      | Sanity.Keyed<accordion>
-      | Sanity.Keyed<alert>
-      | Sanity.Keyed<tabell>
-      | Sanity.Keyed<video>
-    >;
-
-    type riktekst_ds_artikkel = Array<
-      | Sanity.Keyed<Sanity.Block>
-      | Sanity.Keyed<relatert_innhold>
-      | Sanity.Keyed<bilde>
-      | Sanity.Keyed<kode>
-      | Sanity.Keyed<tips>
-      | Sanity.Keyed<do_dont>
-      | Sanity.Keyed<accordion>
-      | Sanity.Keyed<alert>
-      | Sanity.Keyed<tabell>
-      | Sanity.Keyed<video>
-      | Sanity.Keyed<tokens>
-      | Sanity.Keyed<spesial_seksjon>
-    >;
-
-    type riktekst_komponent = Array<
-      | Sanity.Keyed<Sanity.Block>
-      | Sanity.Keyed<relatert_innhold>
-      | Sanity.Keyed<bilde>
-      | Sanity.Keyed<kode>
-      | Sanity.Keyed<tips>
-      | Sanity.Keyed<do_dont>
-      | Sanity.Keyed<accordion>
-      | Sanity.Keyed<alert>
-      | Sanity.Keyed<tabell>
-      | Sanity.Keyed<video>
-      | Sanity.Keyed<props_seksjon>
-      | Sanity.Keyed<anatomi>
-      | Sanity.Keyed<live_demo>
-      | Sanity.Keyed<tastatur_modul>
-      | Sanity.Keyed<tokens>
-    >;
 
     type tastatur_modul = {
       _type: "tastatur_modul";
