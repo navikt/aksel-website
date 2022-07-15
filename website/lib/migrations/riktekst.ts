@@ -194,6 +194,8 @@ const transform = (src: any, type?: string) => {
         break;
 
       default:
+        console.log("Found tyoe without transform!");
+        console.log(data);
         break;
     }
   });
