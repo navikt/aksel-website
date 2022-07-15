@@ -22,7 +22,6 @@ export { default as Video } from "./sanity-modules/video";
 export * from "./website-modules/aksel-cards";
 export { default as Feedback } from "./website-modules/feedback";
 export { default as LevelTwoHeading } from "./website-modules/heading";
-export { default as Lightbox } from "./website-modules/lightbox";
 export { default as PreviewBanner } from "./website-modules/PreviewBanner";
 export { default as EditButton } from "./website-modules/EditButton";
 export { default as ScrollTop } from "./website-modules/scroll-top";

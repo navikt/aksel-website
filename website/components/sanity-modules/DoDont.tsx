@@ -1,11 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import { Lightbox } from "@/components";
 import { withErrorBoundary } from "@/error-boundary";
 import { SanityT, urlFor } from "@/lib";
-import { SuccessFilled, WarningFilled } from "@navikt/ds-icons";
+import { ErrorFilled, SuccessFilled, WarningFilled } from "@navikt/ds-icons";
 import { BodyShort } from "@navikt/ds-react";
 import cl from "classnames";
-import React, { useState } from "react";
+import React from "react";
 
 const GetIcon = (s: string) => {
   switch (s) {
@@ -18,35 +17,17 @@ const GetIcon = (s: string) => {
       );
     case "dont":
       return (
-        <WarningFilled
+        <ErrorFilled
           aria-hidden
           className="mt-[1px] flex-shrink-0 text-large text-red-500"
         />
       );
     case "warning":
       return (
-        <svg
-          width="1em"
-          height="1em"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+        <WarningFilled
           aria-hidden
-          className="mt-[1px] flex-shrink-0 text-large"
-        >
-          <path
-            d="M7.13441 2.82784C7.51957 2.16255 8.4801 2.16255 8.86526 2.82784L14.4641 12.4986C14.8501 13.1653 14.3691 13.9997 13.5987 13.9997H2.40095C1.63062 13.9997 1.14956 13.1653 1.53552 12.4986L7.13441 2.82784Z"
-            fill="#FF9100"
-            stroke="#FF9100"
-            strokeWidth="2"
-          />
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M8 11.3333C8.55228 11.3333 9 11.781 9 12.3333C9 12.8856 8.55228 13.3333 8 13.3333C7.44772 13.3333 7 12.8856 7 12.3333C7 11.781 7.44772 11.3333 8 11.3333ZM8.66667 4V10H7.33333V4H8.66667Z"
-            fill="#262626"
-          />
-        </svg>
+          className="mt-[1px] flex-shrink-0 text-large text-orange-500"
+        />
       );
     default:
       return null;
@@ -58,8 +39,6 @@ const Element = ({
 }: {
   block: Sanity.Keyed<SanityT.Schema.do_dont_block>;
 }): JSX.Element => {
-  const [open, setOpen] = useState(false);
-
   if (!block.picture) return null;
   return (
     <figure
@@ -71,22 +50,13 @@ const Element = ({
         }
       )}
     >
-      <button
-        className={cl(
-          "rounded-t bg-gray-50 shadow-[0_0_0_1px_var(--navds-semantic-color-divider)] focus:z-[1] focus:shadow-focus focus:outline-none"
-        )}
-        aria-label="Klikk for å åpne bildet i fullskjerm"
-        tabIndex={0}
-        onClick={() => setOpen(!open)}
-      >
-        <img
-          className="rounded-t"
-          alt={block.alt}
-          loading="lazy"
-          decoding="async"
-          src={urlFor(block.picture).auto("format").url()}
-        />
-      </button>
+      <img
+        className="rounded-t bg-gray-50 shadow-[0_0_0_1px_var(--navds-semantic-color-divider)]"
+        alt={block.alt}
+        loading="lazy"
+        decoding="async"
+        src={urlFor(block.picture).auto("format").url()}
+      />
       <div
         className={cl("-ml-[1px] w-[calc(100%_+_2px)] rounded-b border-t-8", {
           "border-t-green-400": block.variant === "do",
@@ -104,17 +74,6 @@ const Element = ({
           )}
         </div>
       </figcaption>
-      <Lightbox open={open} onClose={() => setOpen(false)}>
-        {open && (
-          <img
-            alt={block.alt}
-            loading="lazy"
-            decoding="async"
-            src={urlFor(block.picture).auto("format").url()}
-            className="object-contain"
-          />
-        )}
-      </Lightbox>
     </figure>
   );
 };
