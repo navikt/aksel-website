@@ -798,7 +798,7 @@ const main = async () => {
     );
   }
   await transactionClient
-    .commit({ autoGenerateArrayKeys: true, dryRun: false })
+    .commit({ autoGenerateArrayKeys: true, dryRun: true })
     .then(() => console.log(`Updated!`))
     .catch((e) => console.error(e.message));
 
