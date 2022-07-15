@@ -92,7 +92,7 @@ const serializers = {
           return (
             <Heading
               {...textProps}
-              className="algolia-index-lvl3 max-w-text"
+              className="algolia-index-lvl3 mt-8 max-w-text"
               spacing
               level="3"
               size="medium"
@@ -101,7 +101,7 @@ const serializers = {
         case "h4":
           return (
             <Heading
-              className="algolia-index-lvl4 max-w-text"
+              className="algolia-index-lvl4 mt-6 max-w-text"
               spacing
               level="4"
               size="small"

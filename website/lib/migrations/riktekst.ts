@@ -540,7 +540,15 @@ const createStyle = (text: string, style: string) => ({
 const transform = (src: any, type?: string) => {
   const newData = [];
 
-  JSON.parse(JSON.stringify(src)).forEach((data) => {
+  let copy: any[] = [];
+  try {
+    copy = JSON.parse(JSON.stringify(src));
+  } catch (error) {
+    console.log(src);
+    throw new Error("Ops");
+  }
+
+  copy.forEach((data) => {
     switch (data._type) {
       case "relatert_innhold":
         type === "komponent"
@@ -552,7 +560,7 @@ const transform = (src: any, type?: string) => {
                       ...x,
                       _key: randKey(),
                       title:
-                        x?.title === "Setup!"
+                        x?.title === "Setup"
                           ? "Kom i gang som utvikler!"
                           : x.title,
                     })),
@@ -615,7 +623,7 @@ const transform = (src: any, type?: string) => {
           ...(data.list
             ? {
                 list: data.list.map((x) => {
-                  const content = transform(x.innhold);
+                  const content = x?.innhold ? transform(x.innhold) : null;
                   delete x?.innhold;
                   return { ...x, content, _key: randKey() };
                 }),
@@ -724,16 +732,20 @@ const main = async () => {
   srcData.forEach((data) => {
     switch (data._type) {
       case "aksel_artikkel":
-        newData.push({ _id: data._id, content: transform(data.innhold) });
+        data.innhold &&
+          newData.push({ _id: data._id, content: transform(data.innhold) });
         break;
       case "aksel_prinsipp":
-        newData.push({ _id: data._id, content: transform(data.innhold) });
+        data.innhold &&
+          newData.push({ _id: data._id, content: transform(data.innhold) });
         break;
       case "aksel_blogg":
-        newData.push({ _id: data._id, content: transform(data.innhold) });
+        data.innhold &&
+          newData.push({ _id: data._id, content: transform(data.innhold) });
         break;
       case "aksel_standalone":
-        newData.push({ _id: data._id, content: transform(data.innhold) });
+        data.innhold &&
+          newData.push({ _id: data._id, content: transform(data.innhold) });
         break;
       case "ds_artikkel":
         newData.push({
@@ -792,7 +804,7 @@ const main = async () => {
     );
   }
   await transactionClient
-    .commit({ autoGenerateArrayKeys: true, dryRun: true })
+    .commit({ autoGenerateArrayKeys: true, dryRun: false })
     .then(() => console.log(`Updated!`))
     .catch((e) => console.error(e.message));
 
