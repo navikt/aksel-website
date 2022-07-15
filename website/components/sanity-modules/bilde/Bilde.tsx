@@ -18,15 +18,14 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
           "sm:max-w-[384px]": node?.small,
         })}
       >
-        <img
-          alt={node.alt}
-          decoding="async"
-          src={urlFor(node).auto("format").url()}
-          className={cl(
-            style.bilde,
-            "flex justify-center bg-gray-50 p-0 focus:shadow-focus focus:outline-none"
-          )}
-        />
+        <div className={cl(style.bilde, "flex justify-center bg-gray-50 p-0")}>
+          <img
+            alt={node.alt}
+            decoding="async"
+            src={urlFor(node).auto("format").url()}
+            className={cl(style.bilde)}
+          />
+        </div>
         {node.caption && (
           <BodyLong
             size="small"
