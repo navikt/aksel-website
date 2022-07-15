@@ -229,7 +229,6 @@ export const SanityBlockContent = ({
         blocks={blocks ?? []}
         serializers={serializers}
         options={{ size: "small" }}
-        className="aksel-artikkel__child"
         renderContainerOnSingleChild
         {...rest}
       />
