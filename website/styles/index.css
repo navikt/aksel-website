@@ -6,9 +6,7 @@
 @import "tailwindcss/components";
 @import "./prismjs.css";
 @import "./layout.css";
-@import "./pages.css";
 @import "./components.css";
-@import "./stories.css";
 @import "./overrides.css";
 @import "./search/doc-search.css";
 

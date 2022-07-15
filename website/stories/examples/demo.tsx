@@ -4,7 +4,7 @@ import { ExampleComponent } from "../../lib";
 
 export const Demo: ExampleComponent = () => {
   return (
-    <div className="stories-sandbox-column">
+    <div>
       <Heading className="text-text-muted" size="medium" level="3">
         Medium
       </Heading>
