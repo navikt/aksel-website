@@ -58,11 +58,14 @@ const Element = ({
         src={urlFor(block.picture).auto("format").url()}
       />
       <div
-        className={cl("-ml-[1px] w-[calc(100%_+_2px)] rounded-b border-t-8", {
-          "border-t-green-400": block.variant === "do",
-          "border-t-red-400": block.variant === "dont",
-          "border-t-orange-500": block.variant === "warning",
-        })}
+        className={cl(
+          "z-10 -ml-[1px] w-[calc(100%_+_2px)] rounded-b border-t-8",
+          {
+            "border-t-green-400": block.variant === "do",
+            "border-t-red-400": block.variant === "dont",
+            "border-t-orange-500": block.variant === "warning",
+          }
+        )}
       />
       <figcaption data-variant={block.variant}>
         <div className="mt-3">
