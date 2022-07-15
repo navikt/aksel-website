@@ -24,7 +24,7 @@ export const isValidated = async (context: GetServerSidePropsContext) => {
   const bearerToken = getBearerToken(request);
 
   if (!bearerToken) {
-    console.log("No bearer token");
+    /* console.log("No bearer token"); */
     return false;
   }
 
