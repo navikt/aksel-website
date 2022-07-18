@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { BodyLong } from "@navikt/ds-react";
+import { BodyLong, Detail, Link } from "@navikt/ds-react";
 import cl from "classnames";
 import React from "react";
 import { Bilde as BildeT, urlFor } from "@/lib";
@@ -27,13 +27,11 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
           />
         </div>
         {node.caption && (
-          <BodyLong
-            size="small"
-            as="figcaption"
-            className="mt-2 self-center px-4"
-          >
-            {node.caption}
-          </BodyLong>
+          <figcaption className="mt-2 grid gap-1 px-4">
+            <BodyLong as="span" size="small" className="self-center">
+              {node.caption}
+            </BodyLong>
+          </figcaption>
         )}
       </figure>
     </>
