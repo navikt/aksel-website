@@ -91,7 +91,7 @@ const Page = (props: PageProps): JSX.Element => {
                 <div className="mx-auto grid max-w-aksel gap-16 xs:w-[90%]">
                   {page.seksjoner.map((seksjon) => (
                     <div key={seksjon._key}>
-                      <Heading level="2" size="medium">
+                      <Heading level="2" size="medium" spacing>
                         {seksjon.title}
                       </Heading>
                       {seksjon.beskrivelse && (
