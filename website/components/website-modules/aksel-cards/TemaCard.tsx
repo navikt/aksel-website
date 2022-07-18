@@ -44,7 +44,7 @@ export const TemaCard = ({
               size="small"
               className="mt-auto border-t-4 border-orange-200 pt-2 uppercase opacity-80 group-hover:border-orange-300"
             >
-              {refCount} artikler
+              {`${refCount} ${refCount === 1 ? "Artikkel" : "Artikler"}`}
             </BodyShort>
           )}
         </div>
