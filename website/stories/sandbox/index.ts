@@ -23,6 +23,8 @@ import HelptextSandbox from "./helptext";
 import ConfirmationSandbox from "./confirmation-panel";
 import ModalSandbox from "./modal";
 import LinkSandbox from "./link";
+import ChatSandbox from "./chat";
+import CopyToClipboardSandbox from "./copytoclipboard";
 import GuidePanelSandbox from "./guidepanel";
 import ErrorSummarySandbox from "./error-summary";
 import LinkPanelSandbox from "./link-panel";
@@ -45,6 +47,8 @@ const allSandboxes = {
   HeaderSandbox,
   TagSandbox,
   TableSandbox,
+  ChatSandbox,
+  CopyToClipboardSandbox,
   CheckboxSandbox,
   LoaderSandbox,
   PanelSandbox,

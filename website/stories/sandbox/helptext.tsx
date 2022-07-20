@@ -24,9 +24,6 @@ HelptextSandbox.args = {
       "right-end",
       "left-start",
       "left-end",
-      "auto",
-      "auto-start",
-      "auto-end",
     ],
   },
 };

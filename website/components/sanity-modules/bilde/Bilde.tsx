@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { BodyLong, Detail, Link } from "@navikt/ds-react";
+import { BodyLong /* , Detail, Link  */ } from "@navikt/ds-react";
 import cl from "classnames";
 import React from "react";
 import { Bilde as BildeT, urlFor } from "@/lib";
