@@ -103,7 +103,6 @@ const Video = ({
         <ReadMore
           header={`${open ? "Lukk" : "Åpne"} video transkripsjon`}
           className="ml-[2px]"
-          renderContentWhenClosed
           open={open}
           onClick={() => setOpen((x) => !x)}
         >

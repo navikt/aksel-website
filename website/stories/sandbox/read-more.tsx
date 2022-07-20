@@ -7,7 +7,6 @@ const ReadMoreSandbox: SandboxComponentT = (props: any) => {
       <ReadMore
         size={props?.size}
         header="Dette regnes som helsemessige begrensninger"
-        renderContentWhenClosed
       >
         Med helsemessige begrensninger mener vi funksjonshemming, sykdom,
         allergier som hindrer deg i arbeidet eller andre årsaker som må tas
