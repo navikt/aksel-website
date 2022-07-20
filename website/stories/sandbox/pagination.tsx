@@ -24,7 +24,7 @@ const PaginationSandbox: SandboxComponentT = (props: any) => {
 
 PaginationSandbox.args = {
   props: {
-    size: ["medium", "small"],
+    size: ["medium", "small", "xsmall"],
     count: "9",
     siblingCount: "1",
     boundaryCount: "1",
