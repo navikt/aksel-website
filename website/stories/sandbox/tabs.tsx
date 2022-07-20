@@ -26,11 +26,9 @@ const TabsSandbox: SandboxComponentT = (props: any) => {
         "max-w-[200px]": props?.overflow && !hasLabel,
         "max-w-sm": props?.overflow && hasLabel,
       })}
+      loop={props?.loop}
     >
-      <Tabs.List
-        loop={props?.loop}
-        className={cl({ "pl-8": !props?.overflow })}
-      >
+      <Tabs.List className={cl({ "pl-8": !props?.overflow })}>
         <Tabs.Tab
           value="logg"
           {...iconPosition}

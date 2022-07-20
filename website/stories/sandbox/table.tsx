@@ -217,9 +217,11 @@ const TableSandbox: SandboxComponentT = (props: any) => {
       </Table>
       {props?.pagination && (
         <Pagination
+          size="small"
           page={page}
           onPageChange={setPage}
           count={Math.ceil(data.length / rowsPerPage)}
+          data-version="v1"
         />
       )}
     </div>
