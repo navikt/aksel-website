@@ -2974,39 +2974,39 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-css-internal@npm:^1.0.0-rc.3":
-  version: 1.0.0-rc.3
-  resolution: "@navikt/ds-css-internal@npm:1.0.0-rc.3"
-  checksum: ba54c0c9545540a3bac6a8ab16369b6864388d9b0b7863aa8d4f2b2b4207da5fa3a57d5168df5ea92a9ba68602cd5b6a440a18e2e3e95d67d7d85060061a0415
+"@navikt/ds-css-internal@npm:^1.0.0-rc.4":
+  version: 1.0.0-rc.4
+  resolution: "@navikt/ds-css-internal@npm:1.0.0-rc.4"
+  checksum: 03f01b3220589a25add3f7b1c54eeb7b20dc27e4c8b0ea5f7466430f9e4b495a8b742f9bfbd99cd60870b960f5494582762d99f17286a8a0f0b3f7965638c6be
   languageName: node
   linkType: hard
 
-"@navikt/ds-css@npm:^1.0.0-rc.3":
-  version: 1.0.0-rc.3
-  resolution: "@navikt/ds-css@npm:1.0.0-rc.3"
-  checksum: 2e498e2fb2ae7af0daf14fa2ebc98937e861f55f4a8007ef4b1bd225c4caa16e35930e02c7cfced23bcabe61b773704db8b4fab70d949a215d115d70fe820ed4
+"@navikt/ds-css@npm:^1.0.0-rc.4":
+  version: 1.0.0-rc.4
+  resolution: "@navikt/ds-css@npm:1.0.0-rc.4"
+  checksum: 95eda09c603111ea5889dfe4c3d3268078ac4a40db412fc4d83f47fbcf54ad2e091bce148fb6c5fa7fb4016d2b2b38710d365d59f1828cda9247a21cd5eeef51
   languageName: node
   linkType: hard
 
-"@navikt/ds-icons@npm:^1.0.0-rc.3":
-  version: 1.0.0-rc.3
-  resolution: "@navikt/ds-icons@npm:1.0.0-rc.3"
+"@navikt/ds-icons@npm:^1.0.0-rc.4":
+  version: 1.0.0-rc.4
+  resolution: "@navikt/ds-icons@npm:1.0.0-rc.4"
   peerDependencies:
     "@types/react": ^17.0.30 || ^18.0.0
     react: ^17.0.0 || ^18.0.0
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 1f22b53c8ac2181aa2a088f1ca2ce936850685dbd6b7ad026deb2f188494b5f11076e9922d052a7a4aaf2fae7db3271fd1e2f2317525175ae764fb07c89331e5
+  checksum: 8a2cb9c0543611945cc7007016590d02b98ed985a45779512300a46fa5171a468af80bb43af8b432c28209786a9b0ea6038bc9a295f4fece540cba299ccd1658
   languageName: node
   linkType: hard
 
-"@navikt/ds-react-internal@npm:^1.0.0-rc.3":
-  version: 1.0.0-rc.3
-  resolution: "@navikt/ds-react-internal@npm:1.0.0-rc.3"
+"@navikt/ds-react-internal@npm:^1.0.0-rc.4":
+  version: 1.0.0-rc.4
+  resolution: "@navikt/ds-react-internal@npm:1.0.0-rc.4"
   dependencies:
-    "@navikt/ds-icons": ^1.0.0-rc.3
-    "@navikt/ds-react": ^1.0.0-rc.3
+    "@navikt/ds-icons": ^1.0.0-rc.4
+    "@navikt/ds-react": ^1.0.0-rc.4
     clsx: ^1.1.1
     copy-to-clipboard: ^3.3.1
   peerDependencies:
@@ -3015,16 +3015,16 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 2da3c74e1f84fb7b63a66da93be383ed08d62217c55c8dc99b3e3af8a5ad9826437eb1b807b6a4e805816a279b4b9336805cee46c1e770af46fcbdfc7c0f7fe5
+  checksum: 22f7540ea0c93ee934bf8cd8aa3a1acc7b1246e4d5426f1937d29e39c4f7833d3772e7e5ee08bff04c701e00702526bfeac3079e6491b7f097014548d06ff53a
   languageName: node
   linkType: hard
 
-"@navikt/ds-react@npm:^1.0.0-rc.3":
-  version: 1.0.0-rc.3
-  resolution: "@navikt/ds-react@npm:1.0.0-rc.3"
+"@navikt/ds-react@npm:^1.0.0-rc.4":
+  version: 1.0.0-rc.4
+  resolution: "@navikt/ds-react@npm:1.0.0-rc.4"
   dependencies:
     "@floating-ui/react-dom-interactions": 0.6.6
-    "@navikt/ds-icons": ^1.0.0-rc.3
+    "@navikt/ds-icons": ^1.0.0-rc.4
     "@radix-ui/react-tabs": 0.1.5
     "@radix-ui/react-toggle-group": 0.1.5
     clsx: ^1.1.1
@@ -3035,21 +3035,21 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 64944f288ac7c117fef7ec02e9ec93599d4644a4630a7a16dc7ab9c6ea2c940855fcd573644641d2a745313e0d8a9d6184d4c83a4aae9161f79de28201011f04
+  checksum: 78a65e565d50488d692607382786d6f6238c5fc54d90c06c93f179f59047cd347ca8916532520442b86d3a7da7e9583f16f475862bd101750f92433bf40e4e06
   languageName: node
   linkType: hard
 
-"@navikt/ds-tailwind@npm:^1.0.0-rc.3":
-  version: 1.0.0-rc.3
-  resolution: "@navikt/ds-tailwind@npm:1.0.0-rc.3"
-  checksum: 7f1c60a797018ddc179e36db6c6d2531d730ec53fc5f7dae07612623f92c06c1d55ac3c378ba0deb5b85cb23c939ff24febc412217b698422db04d600c2798e0
+"@navikt/ds-tailwind@npm:^1.0.0-rc.4":
+  version: 1.0.0-rc.4
+  resolution: "@navikt/ds-tailwind@npm:1.0.0-rc.4"
+  checksum: f72cbf26b18c828724b91f02635b437ad625e18973bda57a40b823cce320d3f42e44893a53693f3999ccd530c211cdfd61e82283ab4ecd5827acc84a72daa751
   languageName: node
   linkType: hard
 
-"@navikt/ds-tokens@npm:^1.0.0-rc.3":
-  version: 1.0.0-rc.3
-  resolution: "@navikt/ds-tokens@npm:1.0.0-rc.3"
-  checksum: 9b637cdc8496e2a76414e099055d2b57c3d128941316d775fd23a72c88ef77fe321cceeb8a0667a4a387cf08082ed6f7850acda2367e61a142a6eaf856e1b837
+"@navikt/ds-tokens@npm:^1.0.0-rc.4":
+  version: 1.0.0-rc.4
+  resolution: "@navikt/ds-tokens@npm:1.0.0-rc.4"
+  checksum: f4d27a6f0da342d43c4b4bad2b6eed44f6abdfb8b69f3216d71863e2575c0bace3c5b3c8194bb0eef3662f2581500076abc97f3554250925713ae0e83d19391a
   languageName: node
   linkType: hard
 
@@ -24139,9 +24139,11 @@ __metadata:
     "@babel/preset-env": ^7.0.0
     "@babel/preset-react": ^7.0.0
     "@babel/preset-typescript": ^7.0.0
-    "@navikt/ds-css": ^1.0.0-rc.3
-    "@navikt/ds-icons": ^1.0.0-rc.3
-    "@navikt/ds-react": ^1.0.0-rc.3
+    "@navikt/ds-css": ^1.0.0-rc.4
+    "@navikt/ds-css-internal": ^1.0.0-rc.4
+    "@navikt/ds-icons": ^1.0.0-rc.4
+    "@navikt/ds-react": ^1.0.0-rc.4
+    "@navikt/ds-react-internal": ^1.0.0-rc.4
     "@sanity-codegen/schema-codegen": 1.0.0-alpha.13
     "@sanity/base": ^2.30.1
     "@sanity/cli": ^2.30.2
@@ -27517,13 +27519,13 @@ __metadata:
     "@docsearch/css": 3.0.0
     "@docsearch/react": 3.0.0
     "@mdx-js/react": ^1.6.22
-    "@navikt/ds-css": ^1.0.0-rc.3
-    "@navikt/ds-css-internal": ^1.0.0-rc.3
-    "@navikt/ds-icons": ^1.0.0-rc.3
-    "@navikt/ds-react": ^1.0.0-rc.3
-    "@navikt/ds-react-internal": ^1.0.0-rc.3
-    "@navikt/ds-tailwind": ^1.0.0-rc.3
-    "@navikt/ds-tokens": ^1.0.0-rc.3
+    "@navikt/ds-css": ^1.0.0-rc.4
+    "@navikt/ds-css-internal": ^1.0.0-rc.4
+    "@navikt/ds-icons": ^1.0.0-rc.4
+    "@navikt/ds-react": ^1.0.0-rc.4
+    "@navikt/ds-react-internal": ^1.0.0-rc.4
+    "@navikt/ds-tailwind": ^1.0.0-rc.4
+    "@navikt/ds-tokens": ^1.0.0-rc.4
     "@next/bundle-analyzer": ^12.1.0
     "@sanity-codegen/types": 1.0.0-alpha.13
     "@sanity/block-content-to-react": ^3.0.0
