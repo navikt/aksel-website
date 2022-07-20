@@ -1,5 +1,5 @@
 import { Button } from "@navikt/ds-react";
-import { Divider, Dropdown } from "@navikt/ds-react-internal";
+import { Dropdown } from "@navikt/ds-react-internal";
 import React from "react";
 import { SandboxComponentT } from "./types";
 
@@ -20,7 +20,7 @@ const DropdownSandbox: SandboxComponentT = (props: any) => {
               Infotrygd
             </Dropdown.Menu.GroupedList.Item>
           </Dropdown.Menu.GroupedList>
-          <Divider />
+          <Dropdown.Menu.Divider />
           <Dropdown.Menu.List>
             <Dropdown.Menu.List.Item>Gosys</Dropdown.Menu.List.Item>
             <Dropdown.Menu.List.Item>Infotrygd</Dropdown.Menu.List.Item>
@@ -66,7 +66,7 @@ DropdownSandbox.getCode = (props: any) => {
         Infotrygd
       </Dropdown.Menu.GroupedList.Item>
     </Dropdown.Menu.GroupedList>
-    <Divider />
+    <Dropdown.Menu.Divider />
     <Dropdown.Menu.List>
       <Dropdown.Menu.List.Item>Gosys</Dropdown.Menu.List.Item>
       <Dropdown.Menu.List.Item>Infotrygd</Dropdown.Menu.List.Item>

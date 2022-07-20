@@ -1,6 +1,6 @@
 import { Expand, System } from "@navikt/ds-icons";
 import { BodyShort, BodyLong, Detail, Search } from "@navikt/ds-react";
-import { Divider, Dropdown, Header } from "@navikt/ds-react-internal";
+import { Dropdown, Header } from "@navikt/ds-react-internal";
 import { SandboxComponentT } from "./types";
 
 const HeaderSandbox: SandboxComponentT = (props: any) => {
@@ -34,7 +34,7 @@ const HeaderSandbox: SandboxComponentT = (props: any) => {
                 <div>Enhet: Skien</div>
               </Detail>
             </div>
-            <Divider />
+            <Dropdown.Menu.Divider />
             <Dropdown.Menu.List>
               <Dropdown.Menu.List.Item as="a" href="#">
                 Innstillinger
@@ -152,7 +152,7 @@ const getUser = (username?: string, menu?: boolean) => {
           <div>Enhet: Skien</div>
         </Detail>
       </div>
-      <Divider />
+      <Dropdown.Menu.Divider />
       <Dropdown.Menu.List>
         <Dropdown.Menu.List.Item as="a" href="#">
           Innstillinger
