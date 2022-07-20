@@ -38,22 +38,6 @@ ButtonSandbox.args = {
 };
 
 ButtonSandbox.getCode = (props: any) => {
-  let content = "Button";
-
-  switch (props?.Komposisjon) {
-    case "Ikon":
-      content = `<Star title="Beskrivelse for skjermlesere" />`;
-      break;
-    case "Tekst + Ikon":
-      content = `Button <Star aria-hidden />`;
-      break;
-    case "Ikon + Tekst":
-      content = `<Star aria-hidden /> Button`;
-      break;
-    default:
-      break;
-  }
-
   return `<Button
   variant="${props?.variant}"
   size="${props?.size}"${props?.disabled ? "\n  disabled" : ""}${
@@ -67,9 +51,9 @@ ButtonSandbox.getCode = (props: any) => {
         } />}`
       : ""
   }${props?.Komposisjon === "Tekst + Ikon" ? `iconPosition="right"` : ""}
->
+  ${props?.Komposisjon === "Ikon" ? "/>" : ">"}
    ${props?.Komposisjon === "Ikon" ? "" : "Button"}
-</Button>`;
+${props?.Komposisjon === "Ikon" ? "" : "</Button>"}`;
 };
 
 export default ButtonSandbox;
