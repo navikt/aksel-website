@@ -30,6 +30,7 @@ const createStyle = (text: string, style: string) => ({
   ],
 });
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const transform = (src: any, type?: string) => {
   const newData = [];
 
@@ -58,12 +59,14 @@ const transform = (src: any, type?: string) => {
 };
 
 const main = async () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const transactionClient = noCdnClient(token).transaction();
 
   const docs = await noCdnClient(token).fetch(
     `*[_type in ["komponent_artikkel","ds_artikkel","aksel_artikkel","aksel_prinsipp","aksel_blogg","aksel_standalone"]]`
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const newData = [];
 
   docs.forEach((data) => {
