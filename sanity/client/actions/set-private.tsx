@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useDocumentOperation } from "@sanity/react-hooks";
 import { EyeScreened } from "@navikt/ds-icons";
-import { Button, Heading } from "@navikt/ds-react";
-import { BodyLong } from "@navikt/ds-react";
+import { BodyLong, Button } from "@navikt/ds-react";
+import React from "react";
 const sanityClient = require("@sanity/client");
 const SanityConfig = require("../../sanity.json");
 

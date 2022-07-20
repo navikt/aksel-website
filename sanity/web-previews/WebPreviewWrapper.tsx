@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import React from "react";
-import { HelpText, Button, Detail, Link } from "@navikt/ds-react";
-import { CopyToClipboard } from "@navikt/ds-react-internal";
 import { ExternalLink, Refresh } from "@navikt/ds-icons";
+import { Button, Detail, HelpText, Link } from "@navikt/ds-react";
+import { CopyToClipboard } from "@navikt/ds-react-internal";
+import React from "react";
+import styled from "styled-components";
 
 const StyledDiv = styled.div`
   iframe {
@@ -52,29 +52,28 @@ export const WebPreviewWrapper = (props: { url: string; dev?: boolean }) => {
             <Link href="https://doc.nais.io/device/">Krever NAISDevice</Link>
           )}
           <HelpText title="Hva er preview?">
-            Preview prøver å vise innhold på den publiserte nettsiden. Dette er
-            en litt skjør prosess som lett brekker, så kan forvente litt bugs og
-            rare feil. Sjekk om du har noen feil i sanity først hvis preview
-            brekker. Hvis disse feilene dukker opp for publisert versjon, ta
-            kontakt med utvikler.
+            Preview viser innholdet slik det vises på nettsiden. Sjekk om du har
+            noen feil i sanity først hvis preview brekker. Hvis disse feilene
+            fortsatt ikke løses versjon, ta kontakt med utvikler.
           </HelpText>
           <CopyToClipboard
             size="small"
             popoverText={"Kopierte lenke"}
             copyText={props.url}
           />
-          <Button size="small" onClick={() => reloadIframe()}>
-            <Refresh />
-          </Button>
+          <Button
+            size="small"
+            onClick={() => reloadIframe()}
+            icon={<Refresh title="refresh preview" />}
+          />
           <Button
             as="a"
             target="_blank"
             href={props.url}
             size="small"
             aria-label="opens preview in web"
-          >
-            <ExternalLink />
-          </Button>
+            icon={<ExternalLink />}
+          />
         </div>
       </ScTop>
       <StyledDiv>
