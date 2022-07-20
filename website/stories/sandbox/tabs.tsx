@@ -27,23 +27,21 @@ const TabsSandbox: SandboxComponentT = (props: any) => {
         "max-w-sm": props?.overflow && hasLabel,
       })}
       loop={props?.loop}
+      {...iconPosition}
     >
       <Tabs.List className={cl({ "pl-8": !props?.overflow })}>
         <Tabs.Tab
           value="logg"
-          {...iconPosition}
           {...(hasLabel ? { label: "Logg" } : {})}
           {...(hasIcon ? { icon: <Historic title="historielogg" /> } : {})}
         />
         <Tabs.Tab
           value="inbox"
-          {...iconPosition}
           {...(hasLabel ? { label: "Inbox" } : {})}
           {...(hasIcon ? { icon: <Email title="inbox" /> } : {})}
         />
         <Tabs.Tab
           value="sendt"
-          {...iconPosition}
           {...(hasLabel ? { label: "Sendt" } : {})}
           {...(hasIcon ? { icon: <Send title="sendt" /> } : {})}
         />
@@ -52,13 +50,11 @@ const TabsSandbox: SandboxComponentT = (props: any) => {
             {" "}
             <Tabs.Tab
               value="dialog"
-              {...iconPosition}
               {...(hasLabel ? { label: "Dialog" } : {})}
               {...(hasIcon ? { icon: <Dialog title="dialog" /> } : {})}
             />
             <Tabs.Tab
               value="notater"
-              {...iconPosition}
               {...(hasLabel ? { label: "Notater" } : {})}
               {...(hasIcon ? { icon: <Notes title="notater" /> } : {})}
             />
@@ -109,38 +105,39 @@ TabsSandbox.getCode = (props: any) => {
   size="${props?.size}"${
     props?.selectionFollowsFocus ? "\n  selectionFollowsFocus" : ""
   }
+  iconPosition="${props?.iconPosition}"
 >
   <Tabs.List${props?.loop ? " loop={true}" : ""}>
     <Tabs.Tab
       value="logg"
-      iconPosition="${props?.iconPosition}"${
-    hasLabel ? `\n      label="Logg"` : ""
-  }${hasIcon ? `\n      icon={<Historic title="historielogg" />}` : ""}
+      ${hasLabel ? `\n      label="Logg"` : ""}${
+    hasIcon ? `\n      icon={<Historic title="historielogg" />}` : ""
+  }
     />
     <Tabs.Tab
       value="inbox"
-      iconPosition="${props?.iconPosition}"${
-    hasLabel ? `\n      label="Inbox"` : ""
-  }${hasIcon ? `\n      icon={<Email title="inbox" />}` : ""}
+      ${hasLabel ? `\n      label="Inbox"` : ""}${
+    hasIcon ? `\n      icon={<Email title="inbox" />}` : ""
+  }
     />
     <Tabs.Tab
       value="sendt"
-      iconPosition="${props?.iconPosition}"${
-    hasLabel ? `\n      label="Sendt"` : ""
-  }${hasIcon ? `\n      icon={<Send title="sendt" />}` : ""}
+    ${hasLabel ? `\n      label="Sendt"` : ""}${
+    hasIcon ? `\n      icon={<Send title="sendt" />}` : ""
+  }
     />${
       props?.overflow
         ? `\n    <Tabs.Tab
       value="dialog"
-      iconPosition="${props?.iconPosition}"${
-            hasLabel ? `\n      label="Dialog"` : ""
-          }${hasIcon ? `\n      icon={<Dialog title="dialog" />}` : ""}
+      ${hasLabel ? `\n      label="Dialog"` : ""}${
+            hasIcon ? `\n      icon={<Dialog title="dialog" />}` : ""
+          }
     />
     <Tabs.Tab
       value="notater"
-      iconPosition="${props?.iconPosition}"${
-            hasLabel ? `\n      label="Notater"` : ""
-          }${hasIcon ? `\n      icon={<Notes title="notater" />}` : ""}
+      ${hasLabel ? `\n      label="Notater"` : ""}${
+            hasIcon ? `\n      icon={<Notes title="notater" />}` : ""
+          }
     />`
         : ""
     }
