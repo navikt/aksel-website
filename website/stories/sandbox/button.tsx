@@ -3,24 +3,26 @@ import { Button } from "@navikt/ds-react";
 import { SandboxComponentT } from "./types";
 
 const ButtonSandbox: SandboxComponentT = (props: any) => {
-  const newProps = {
-    ...(props?.disabled ? { disabled: true } : {}),
-    ...(props?.loading ? { loading: true } : {}),
-  };
-
-  const iconProps = {
+  const iconProp = {
     ...(props?.Komposisjon === "Ikon"
       ? { title: "Beskrivelse for skjermlesere" }
       : { ["aria-hidden"]: true }),
   };
 
+  const newProps = {
+    ...(props?.disabled ? { disabled: true } : {}),
+    ...(props?.loading ? { loading: true } : {}),
+    ...(props?.Komposisjon?.includes("Ikon")
+      ? { icon: <Star {...iconProp} /> }
+      : {}),
+    ...(props?.Komposisjon?.endsWith("Ikon")
+      ? { iconPosition: "right" as "left" | "right" }
+      : { iconPosition: "left" as "left" | "right" }),
+  };
+
   return (
     <Button variant={props?.variant} size={props?.size} {...newProps}>
-      {props?.Komposisjon?.startsWith("Ikon") &&
-        !props?.Komposisjon?.endsWith("Ikon") && <Star aria-hidden />}
-
       {props?.Komposisjon?.includes("Tekst") && "Button"}
-      {props?.Komposisjon?.endsWith("Ikon") && <Star {...iconProps} />}
     </Button>
   );
 };
@@ -56,9 +58,17 @@ ButtonSandbox.getCode = (props: any) => {
   variant="${props?.variant}"
   size="${props?.size}"${props?.disabled ? "\n  disabled" : ""}${
     props?.loading ? "\n  loading" : ""
-  }
+  }${
+    props?.Komposisjon.includes("Ikon")
+      ? `\n  icon={<Star ${
+          props?.Komposisjon === "Ikon"
+            ? `title="Beskrivelse for skjermlesere"`
+            : "aria-hidden"
+        } />}`
+      : ""
+  }${props?.Komposisjon === "Tekst + Ikon" ? `iconPosition="right"` : ""}
 >
-  ${content}
+   ${props?.Komposisjon === "Ikon" ? "" : "Button"}
 </Button>`;
 };
 

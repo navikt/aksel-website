@@ -106,7 +106,7 @@ const MobileNavigation = () => {
               }}
             >
               {heading?.title}
-              <Next aria-hidden aria-label={`åpne ${heading?.title} menyen`} />
+              <Next aria-hidden title={`åpne ${heading?.title} menyen`} />
             </button>
           </li>
         ))}

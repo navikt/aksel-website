@@ -19,9 +19,9 @@ const ProfileDropdown = ({ dark = false }: { dark?: boolean }) => {
       onClick={() => context.logout()}
       className="my-auto bg-transparent md:mx-4"
       variant="secondary"
+      icon={<Logout title="Logg ut" className="block xs:hidden" />}
     >
       <span className="hidden xs:block">Logg ut</span>
-      <Logout title="Logg ut" className="block xs:hidden" />
     </Button>
   );
 }; */

@@ -16,9 +16,7 @@ const TooltipSandbox: SandboxComponentT = (props: any) => {
       content={props?.content ?? "Print"}
       placement={props?.placement}
     >
-      <Button>
-        <Print title="demo knapp" />
-      </Button>
+      <Button icon={<Print title="demo knapp" />} />
     </Tooltip>
   );
 };
@@ -43,9 +41,7 @@ TooltipSandbox.getCode = (props: any) => {
     props?.Komposisjon?.includes("Med") ? `\n  keys={["cmd", "p"]}` : ""
   }
 >
-  <Button>
-    <Print aria-hidden />
-  </Button>
+  <Button icon={<Print title="demo knapp" />} />
 </Tooltip>`;
 };
 

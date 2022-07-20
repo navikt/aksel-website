@@ -97,8 +97,9 @@ import ${icon} from "@navikt/ds-icons/svg/${icon}";`,
                 downloadSvg(icon);
                 logDownload(icon, "svg");
               }}
+              icon={<Icons.Download title="last ned" />}
             >
-              <Icons.Download title="last ned" /> SVG
+              SVG
             </Button>
           </div>
         </div>
