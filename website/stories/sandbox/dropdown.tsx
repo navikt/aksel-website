@@ -8,7 +8,10 @@ const DropdownSandbox: SandboxComponentT = (props: any) => {
     <div>
       <Dropdown>
         <Button as={Dropdown.Toggle}>Toggle</Button>
-        <Dropdown.Menu placement={props?.placement || undefined}>
+        <Dropdown.Menu
+          strategy="fixed"
+          placement={props?.placement || undefined}
+        >
           <Dropdown.Menu.GroupedList>
             <Dropdown.Menu.GroupedList.Heading>
               Systemer og oppslagsverk
