@@ -1,5 +1,3 @@
-import { Print } from "@navikt/ds-icons";
-import { BodyLong, Link } from "@navikt/ds-react";
 import { CopyToClipboard } from "@navikt/ds-react-internal";
 import { SandboxComponentT } from "./types";
 
