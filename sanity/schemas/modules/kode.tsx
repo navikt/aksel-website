@@ -46,6 +46,7 @@ export default {
           { value: "jsx", title: "JSX" },
           { value: "html", title: "HTML" },
           { value: "css", title: "CSS" },
+          { value: "less", title: "Less" },
           { value: "terminal", title: "Terminal/Bash" },
           { value: "terminal", title: "Standard" },
         ],

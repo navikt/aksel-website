@@ -45,7 +45,7 @@ const LevelTwoHeading = ({
           }
         )}
       >
-        {cleanedChildren}
+        {children}
       </Heading>
     </>
   );
