@@ -21,7 +21,7 @@ import React from "react";
 
 const portalkort = [
   {
-    title: "Designsystem",
+    title: "Designsystemet",
     description: "Åpen for alle",
     href: "/designsystem",
     icon: (

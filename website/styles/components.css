@@ -7,7 +7,7 @@
   border-radius: 0.25rem;
   background-color: rgb(226 232 240);
   padding: 0.125em 0.25em;
-  font-size: calc(16em / 18);
+  font-size: calc(16em / 18); /* scale font-size with parent */
   line-height: 1.5;
 }
 
