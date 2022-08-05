@@ -1,6 +1,6 @@
-import { SpeechBubble, SpeechBubbleProps } from "@navikt/ds-react";
 import { PeopleFilled, ServiceFilled } from "@navikt/ds-icons";
 import { SandboxComponentT } from "./types";
+import { SpeechBubble, SpeechBubbleProps } from "@navikt/ds-react";
 
 const gray100 = "var(--navds-global-color-gray-100)";
 const blue100 = "var(--navds-global-color-blue-100)";
@@ -15,7 +15,7 @@ const ChatSandbox: SandboxComponentT = (props: SpeechBubbleProps) => {
     position: evaPosition,
   };
 
-  const newProps = {
+  const olaProps = {
     ...props,
     backgroundColor: props?.backgroundColor === "default" ? "" : blue100,
     illustrationBgColor:
@@ -30,12 +30,12 @@ const ChatSandbox: SandboxComponentT = (props: SpeechBubbleProps) => {
           <ServiceFilled style={{ transform: "translateY(0.5rem)" }} />
         }
       >
-        <SpeechBubble.Bubble>Hei! Mitt navn er Eva!</SpeechBubble.Bubble>
+        <SpeechBubble.Bubble>Hei! Mitt navn er Eva.</SpeechBubble.Bubble>
         <SpeechBubble.Bubble>Hva kan jeg hjelpe deg med?</SpeechBubble.Bubble>
       </SpeechBubble>
       <SpeechBubble
         className="mt-6"
-        {...newProps}
+        {...olaProps}
         illustration={
           <PeopleFilled style={{ transform: "translateY(0.5rem)" }} />
         }
@@ -60,12 +60,12 @@ ChatSandbox.args = {
 
 ChatSandbox.getCode = (props: any) => {
   const newIllustrationBgColor =
-    props?.illustrationBgColor !== "default"
-      ? `illustrationBgColor="${blue100}"`
-      : "";
+    props?.illustrationBgColor === "default"
+      ? ""
+      : `illustrationBgColor="${blue100}"`;
 
   const newBackgroundColor =
-    props?.backgroundColor !== "default" ? `backgroundColor="${blue100}"` : "";
+    props?.backgroundColor === "default" ? "" : `backgroundColor="${blue100}"`;
 
   return `<SpeechBubble
     topText="${props?.topText}"
