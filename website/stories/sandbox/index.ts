@@ -35,6 +35,7 @@ import DetailSandbox from "./typography/Detail";
 import IngressSandbox from "./typography/Ingress";
 import ErrorMessageSandbox from "./typography/ErrorMessage";
 import StepperSandbox from "./stepper";
+import ChatSandbox from "./chat";
 import kebabCase from "lodash/kebabCase";
 import { SandboxComponentT } from "./types";
 
@@ -45,6 +46,7 @@ const allSandboxes = {
   HeaderSandbox,
   TagSandbox,
   TableSandbox,
+  ChatSandbox,
   CheckboxSandbox,
   LoaderSandbox,
   PanelSandbox,
