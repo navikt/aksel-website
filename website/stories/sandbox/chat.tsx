@@ -67,16 +67,16 @@ ChatSandbox.getCode = (props: any) => {
   const newBackgroundColor =
     props?.backgroundColor === "default" ? "" : `backgroundColor="${blue100}"`;
 
-  return `<SpeechBubble
+  return `<Chat
     topText="${props?.topText}"
     illustration={<PeopleFilled />}
     position="${props?.position}"${newBackgroundColor}${newIllustrationBgColor}
 >
-    <SpeechBubble.Bubble>Hei Eva.</SpeechBubble.Bubble>
-    <SpeechBubble.Bubble>
+    <Chat.Bubble>Hei Eva.</Chat.Bubble>
+    <Chat.Bubble>
     Hvor sjekker jeg statusen på foreldrepengersøknaden min?
-    </SpeechBubble.Bubble>
-</SpeechBubble>`;
+    </Chat.Bubble>
+</Chat>`;
 };
 
 export default ChatSandbox;
