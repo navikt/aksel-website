@@ -4,7 +4,7 @@ import { BodyShort, Heading, Ingress, Link } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
-import { dateStr, Feedback, UnderArbeid } from "../..";
+import { dateStr, Feedback, TableOfContents, UnderArbeid } from "../..";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
 
@@ -102,6 +102,7 @@ const AkselArtikkelTemplate = ({
           </div>
         </div>
         <div className="mt-12">
+          <TableOfContents changedState={data?.content ?? []} hideToc />
           <div className="mt-8 px-4">
             {data?.under_arbeid?.status ? (
               <>

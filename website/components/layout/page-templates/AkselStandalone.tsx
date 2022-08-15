@@ -1,4 +1,4 @@
-import { Feedback } from "@/components";
+import { Feedback, TableOfContents } from "@/components";
 import { SanityT } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { Heading } from "@navikt/ds-react";
@@ -47,6 +47,7 @@ const AkselStandaloneTemplate = ({
           </div>
         </div>
         <div className="mt-12">
+          <TableOfContents changedState={data?.content ?? []} hideToc />
           <div className="mt-8 px-4">
             <SanityBlockContent
               className="mx-auto max-w-prose xs:w-[90%]"

@@ -4,7 +4,13 @@ import throttle from "lodash/throttle";
 import * as React from "react";
 import { useEffect, useState } from "react";
 
-function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
+function TableOfContents({
+  changedState,
+  hideToc = true,
+}: {
+  changedState: any;
+  hideToc?: boolean;
+}): JSX.Element {
   const [toc, setToc] = useState<{ heading: string; id: string }[]>([]);
 
   const [activeId, setActiveId] = useState(null);
@@ -66,7 +72,7 @@ function TableOfContents({ changedState }: { changedState: any }): JSX.Element {
     element && element?.scrollIntoView();
   };
 
-  if (toc.length < 3) {
+  if (toc.length < 3 || hideToc) {
     return null;
   }
 

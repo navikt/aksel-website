@@ -8,6 +8,7 @@ import {
   AuthenticationStatus, */
   dateStr,
   Feedback,
+  TableOfContents,
   UnderArbeid,
 } from "../..";
 import Footer from "../footer/Footer";
@@ -93,6 +94,7 @@ const AkselPrinsippTemplate = ({
           </div>
         </div>
         <div className="mt-12">
+          <TableOfContents changedState={data?.content ?? []} hideToc />
           <div className="mt-8 px-4">
             {/* {!isLoggedIn && (
               <div className="mx-auto grid max-w-prose grid-flow-row justify-items-center gap-4 rounded bg-gray-200 py-8 xs:w-[90%]">

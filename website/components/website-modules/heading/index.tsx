@@ -11,17 +11,23 @@ const LevelTwoHeading = ({
   hidden?: boolean;
 }): JSX.Element => {
   const [slug, setSlug] = useState<null | string>(null);
+  const [cleaned, setCleaned] = useState<null | string>(null);
 
-  const cleanedChildren = useMemo(
-    () => children.filter((x) => typeof x === "string").filter((x) => !!x),
-    [children]
-  );
+  const cleanedChildren = children
+    .filter((x) => typeof x === "string")
+    .filter((x) => !!x);
 
   useEffect(() => {
-    setSlug(slugger.slug(cleanedChildren.toString()));
-  }, [cleanedChildren]);
+    const str = children
+      .filter((x) => typeof x === "string")
+      .filter((x) => !!x);
+    if (cleaned !== str.toString()) {
+      setSlug(slugger.slug(str.toString()));
+      setCleaned(str.toString());
+    }
+  }, [children, cleaned]);
 
-  if (children.toString() === "" || children.toString() === "Ikonsøk") {
+  if (children.toString() === "") {
     return null;
   }
 
