@@ -328,7 +328,7 @@ Default: Siden blir for tiden oppdatert!
 
         /**
        * Vis fortsatt innhold? - `Boolean`
-Vil vise under-arbeid satus med innhold under
+Vil vise under-arbeid status med innhold under
        */
         vis_innhold?: boolean;
       };
@@ -577,7 +577,7 @@ Default: Siden blir for tiden oppdatert!
 
         /**
        * Vis fortsatt innhold? - `Boolean`
-Vil vise under-arbeid satus med innhold under
+Vil vise under-arbeid status med innhold under
        */
         vis_innhold?: boolean;
       };
@@ -669,7 +669,7 @@ Default: Siden blir for tiden oppdatert!
 
         /**
        * Vis fortsatt innhold? - `Boolean`
-Vil vise under-arbeid satus med innhold under
+Vil vise under-arbeid status med innhold under
        */
         vis_innhold?: boolean;
       };
@@ -791,7 +791,7 @@ Default: Siden blir for tiden oppdatert!
 
         /**
        * Vis fortsatt innhold? - `Boolean`
-Vil vise under-arbeid satus med innhold under
+Vil vise under-arbeid status med innhold under
        */
         vis_innhold?: boolean;
       };
@@ -884,7 +884,7 @@ Default: Siden blir for tiden oppdatert!
 
         /**
        * Vis fortsatt innhold? - `Boolean`
-Vil vise under-arbeid satus med innhold under
+Vil vise under-arbeid status med innhold under
        */
         vis_innhold?: boolean;
       };
@@ -1047,7 +1047,7 @@ Default: Siden blir for tiden oppdatert!
 
         /**
        * Vis fortsatt innhold? - `Boolean`
-Vil vise under-arbeid satus med innhold under
+Vil vise under-arbeid status med innhold under
        */
         vis_innhold?: boolean;
       };
