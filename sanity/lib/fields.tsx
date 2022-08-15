@@ -82,6 +82,13 @@ export const UnderArbeidField = {
       rows: 2,
       hidden: ({ parent }) => !parent || !parent.status,
     },
+    {
+      title: "Vis fortsatt innhold?",
+      description: "Vil vise under-arbeid status med innhold under",
+      name: "vis_innhold",
+      type: "boolean",
+      initialValue: false,
+    },
   ],
 };
 

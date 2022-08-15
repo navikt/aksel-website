@@ -177,10 +177,20 @@ const KomponentArtikkelTemplate = ({
               <TableOfContents changedState={data[val]} />
               <div className="content-box">
                 {data?.under_arbeid?.status ? (
-                  <UnderArbeid
-                    className="mt-12"
-                    text={data?.under_arbeid?.forklaring}
-                  />
+                  <>
+                    <UnderArbeid
+                      className="mt-12"
+                      text={data?.under_arbeid?.forklaring}
+                    />
+                    {data?.under_arbeid?.vis_innhold && (
+                      <div>
+                        {val === "bruk_tab" && data.intro && (
+                          <IntroSeksjon node={data.intro} />
+                        )}
+                        {data[val] && <SanityBlockContent blocks={data[val]} />}
+                      </div>
+                    )}
+                  </>
                 ) : (
                   <div className="mt-12">
                     {val === "bruk_tab" && data.intro && (

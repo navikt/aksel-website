@@ -99,10 +99,15 @@ const ArtikkelTabbedTemplate = ({
               <TableOfContents changedState={x.content} />
               <div className="content-box">
                 {data?.under_arbeid?.status ? (
-                  <UnderArbeid
-                    className="mt-12"
-                    text={data?.under_arbeid?.forklaring}
-                  />
+                  <>
+                    <UnderArbeid
+                      className="mt-12"
+                      text={data?.under_arbeid?.forklaring}
+                    />
+                    {data?.under_arbeid?.vis_innhold && (
+                      <SanityBlockContent blocks={x.content} />
+                    )}
+                  </>
                 ) : (
                   <SanityBlockContent className="mt-12" blocks={x.content} />
                 )}
