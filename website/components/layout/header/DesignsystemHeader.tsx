@@ -69,7 +69,7 @@ const DesignsystemHeader = (): JSX.Element => {
 
   return (
     <>
-      <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
+      <a className="skiplink" href="#hovedinnhold">
         Hopp til innhold
       </a>
       <Header className="z-[1050] justify-center">
