@@ -10,6 +10,9 @@ import { format } from "date-fns";
 export const dateStr = (date: string) =>
   format(new Date(date), "d. MMM YYY", { locale: nbLocale });
 
+export const dateTimeStr = (date: string) =>
+  format(new Date(date), "d-MM-YYY", { locale: nbLocale });
+
 export const isNew = (date: string) => {
   const date1 = new Date(date);
   const now = new Date();
