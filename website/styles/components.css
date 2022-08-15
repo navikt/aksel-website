@@ -6,9 +6,9 @@
   white-space: nowrap;
   border-radius: 0.25rem;
   background-color: rgb(226 232 240);
-  padding: 0.125rem 0.25rem;
-  font-size: 1rem;
-  line-height: 1.5rem;
+  padding: 0.125em 0.25em;
+  font-size: calc(16em / 18); /* scale font-size with parent */
+  line-height: 1.5;
 }
 
 .inline-kbd {

@@ -14,7 +14,6 @@ export const defaultDocPreview = {
     },
     prepare(selection) {
       const { id, heading, type, tema, prinsipp } = selection;
-      console.log(prinsipp);
       return {
         title: heading,
         subtitle: !!prinsipp

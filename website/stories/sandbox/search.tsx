@@ -17,29 +17,29 @@ const SearchSandbox: SandboxComponentT = (props: any) => {
   const searchRef = useRef(null);
 
   let comp = (
-    <div
+    <form
       className="w-full max-w-lg"
       {...(props?.darkmode ? { ["data-theme"]: "dark" } : {})}
     >
       <Search label="Søk alle NAV sine sider" {...newProps} />
-    </div>
+    </form>
   );
 
   if (props?.Komposisjon === "Med egen knapp") {
     comp = (
-      <div
+      <form
         className="w-full max-w-lg"
         {...(props?.darkmode ? { ["data-theme"]: "dark" } : {})}
       >
         <Search label="Søk alle NAV sine sider" {...newProps}>
           <Search.Button onClick={(e) => console.log(e)} />
         </Search>
-      </div>
+      </form>
     );
   }
   if (props?.Komposisjon === "Med Søketreff") {
     comp = (
-      <div
+      <form
         className="relative w-full max-w-lg"
         {...(props?.darkmode ? { ["data-theme"]: "dark" } : {})}
       >
@@ -61,7 +61,7 @@ const SearchSandbox: SandboxComponentT = (props: any) => {
         >
           <Popover.Content>{`Søketreff for ${content}`}</Popover.Content>
         </Popover>
-      </div>
+      </form>
     );
   }
 
@@ -92,7 +92,7 @@ SearchSandbox.getCode = (props: any) => {
 
   if (props?.Komposisjon === "Med Søketreff") {
     return `// Eksempel på løsning for Search med søketreff
-<div
+<form
   className="relative"${props?.darkmode ? `\n  data-theme="dark"` : ""}
 >
   <Search
@@ -112,25 +112,25 @@ SearchSandbox.getCode = (props: any) => {
   >
     <Popover.Content>Søketreff</Popover.Content>
   </Popover>
-  </div>`;
+  </form>`;
   }
 
   if (props?.Komposisjon === "Med egen knapp") {
-    return `<div${props?.darkmode ? ` data-theme="dark"` : ""}>
+    return `<form${props?.darkmode ? ` data-theme="dark"` : ""}>
   <Search
     label="Søk alle NAV sine sider"${newProps}
   >
     <Search.Button onClick={(e) => console.log(e)} />
   </Search>
-</div>`;
+</form>`;
   }
 
   if (props?.Komposisjon === "") {
-    return `<div${props?.darkmode ? ` data-theme="dark"` : ""}>
+    return `<form${props?.darkmode ? ` data-theme="dark"` : ""}>
   <Search
     label="Søk alle NAV sine sider"${newProps}
   />
-</div>`;
+</form>`;
   }
 };
 
