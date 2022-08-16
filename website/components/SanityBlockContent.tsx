@@ -152,9 +152,12 @@ const serializers = {
   },
   listItem: (props: any) => {
     return (
-      <li className="ml-5 mb-1 max-w-[calc(theme(spacing.text)_-_1em)]">
+      <BodyLong
+        as="li"
+        className="ml-5 mb-3 max-w-[calc(theme(spacing.text)_-_1em)]"
+      >
         {props.children}
-      </li>
+      </BodyLong>
     );
   },
   marks: {
