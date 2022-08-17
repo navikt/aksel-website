@@ -1,12 +1,12 @@
-import { getClient, noCdnClient, sanityClient } from "./sanity.server";
-import { akselDocumentsByType, akselTemaNames, dsDocuments } from "./queries";
-import { DsArtikkel, KomponentArtikkel } from "..";
 import imageUrlBuilder from "@sanity/image-url";
 import {
   createCurrentUserHook,
   createPreviewSubscriptionHook,
 } from "next-sanity";
+import { SanityT } from "..";
 import { config } from "./config";
+import { akselDocumentsByType, akselTemaNames, dsDocuments } from "./queries";
+import { getClient, noCdnClient, sanityClient } from "./sanity.server";
 
 const imageBuilder = imageUrlBuilder(sanityClient);
 
@@ -93,10 +93,10 @@ export const getDsPaths = async (token?: string): Promise<string[][]> => {
           defaultPush();
           break;
         }
-        if (!page.innhold_tabs) break;
-        const tabbedArticleTabs = page.innhold_tabs
+        if (!page.content_tabs) break;
+        const tabbedArticleTabs = page.content_tabs
           .map((tab) => {
-            return tab.innhold && tab.title
+            return tab.content && tab.title
               ? tab.title?.toLowerCase().replace(/\s+/g, "-")
               : null;
           })
@@ -116,7 +116,7 @@ export const getDsPaths = async (token?: string): Promise<string[][]> => {
 };
 
 export const validateDsPath = (
-  doc: DsArtikkel | KomponentArtikkel,
+  doc: SanityT.Schema.ds_artikkel | SanityT.Schema.komponent_artikkel,
   slug: string[]
 ) => {
   if (!doc) return false;
@@ -129,8 +129,8 @@ export const validateDsPath = (
     case "ds_artikkel":
       return (
         isLvl2 &&
-        doc.innhold_tabs &&
-        doc.innhold_tabs.find(
+        doc.content_tabs &&
+        doc.content_tabs.find(
           (x) => x.title?.toLowerCase().replace(/\s+/g, "-") === slug[2]
         )
       );

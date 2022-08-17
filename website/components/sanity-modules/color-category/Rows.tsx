@@ -58,16 +58,14 @@ export const GlobalTableRow = ({
   onClick: (c: any) => void;
   first?: boolean;
   last?: boolean;
-}) => {
-  return (
-    <button
-      {...rest}
-      className="z-[1] max-w-text whitespace-nowrap text-left align-top first:rounded-t last:rounded-b focus:shadow-focus focus:outline-none"
-    >
-      <ColorBox prop={prop} first={first} last={last} />
-    </button>
-  );
-};
+}) => (
+  <button
+    {...rest}
+    className="z-[1] max-w-text whitespace-nowrap text-left align-top first:rounded-t last:rounded-b focus:z-[2] focus:shadow-focus focus:outline-none"
+  >
+    <ColorBox prop={prop} first={first} last={last} />
+  </button>
+);
 
 export const SemanticTableRow = ({
   prop,
