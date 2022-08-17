@@ -1232,6 +1232,32 @@ Dette vil stå under bildet
        * Bildet tar bare ~halve bredden - `Boolean`
        */
       small?: boolean;
+
+      /**
+       * Kilde - `Object`
+       */
+      kilde?: {
+        /**
+         * Legg til kilde - `Boolean`
+         */
+        har_kilde?: boolean;
+
+        /**
+         * Kilde-prefix - `String`
+         */
+        prefix?: "FOTO" | "Kilde";
+
+        /**
+         * Tekst - `String`
+         */
+        tekst?: string;
+
+        /**
+       * Lenke-kilde - `Url`
+Kilde-teksten blir satt som lenke
+       */
+        link?: string;
+      };
     };
 
     type alert = {
