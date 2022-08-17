@@ -57,7 +57,7 @@ const ArtikkelTemplate = ({
         </div>
       </div>
       <div className="relative flex max-w-full md:max-w-7xl">
-        <TableOfContents changedState={data.content} />
+        <TableOfContents changedState={data.content} hideToc={false} />
         <div className="content-box">
           {data?.under_arbeid?.status ? (
             <>

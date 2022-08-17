@@ -174,7 +174,7 @@ const KomponentArtikkelTemplate = ({
               key={key + val}
               value={key}
             >
-              <TableOfContents changedState={data[val]} />
+              <TableOfContents changedState={data[val]} hideToc={false} />
               <div className="content-box">
                 {data?.under_arbeid?.status ? (
                   <>
