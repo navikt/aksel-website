@@ -46,7 +46,7 @@ function App({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           property="og:url"
-          content={`https://aksel.nav.no/${router.asPath.split("?")[0]}`}
+          content={`https://aksel.nav.no${router.asPath.split("?")[0]}`}
           key="ogurl"
         />
         <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
