@@ -1,37 +1,31 @@
-import { Chat, GuideDefaultIllustration } from "@navikt/ds-react";
+import { PeopleFilled, Service } from "@navikt/ds-icons";
+import { Chat } from "@navikt/ds-react";
 import { SandboxComponentT } from "./types";
 
 const ChatSandbox: SandboxComponentT = (props: any) => {
   return (
     <div className="grid gap-10">
       <Chat
-        avatar={props?.avatar ? <GuideDefaultIllustration /> : "ON"}
-        name="Ola Normann"
+        avatar={props?.avatar ? <Service aria-hidden /> : "EVA"}
+        name="Eva"
         timestamp={props?.timestamp && "01.01.21 14:00"}
         avatarBgColor={props?.["overstyr-farger"] && "rgba(255, 236, 204, 1)"}
         backgroundColor={props?.["overstyr-farger"] && "rgba(255, 249, 240, 1)"}
       >
-        <Chat.Bubble>
-          Aute minim nisi sunt mollit duis sunt nulla minim non proident.
-        </Chat.Bubble>
-        <Chat.Bubble>Tempor fugiat amet eu sint in in ullamco.</Chat.Bubble>
-        <Chat.Bubble>
-          Adipisicing laborum est eu laborum est sit in commodo enim sint
-          laboris labore nisi ut.
-        </Chat.Bubble>
+        <Chat.Bubble>Hei! Mitt navn er Eva.</Chat.Bubble>
+        <Chat.Bubble>Hva kan jeg hjelpe deg med?</Chat.Bubble>
       </Chat>
       <Chat
-        avatar="N"
-        name="Nav Naversen"
+        avatar={props?.avatar ? <PeopleFilled aria-hidden /> : "NO"}
+        name="Ola Normann"
         timestamp={props?.timestamp && "01.01.21 14:10"}
         position="right"
         avatarBgColor={props?.["overstyr-farger"] && "rgba(204, 225, 255, 1)"}
         backgroundColor={props?.["overstyr-farger"] && "rgba(230, 240, 255, 1)"}
       >
-        <Chat.Bubble>Do eu dolor pariatur consectetur qui.</Chat.Bubble>
+        <Chat.Bubble>Hei Eva.</Chat.Bubble>
         <Chat.Bubble>
-          Nisi velit officia excepteur reprehenderit amet qui qui velit cillum
-          sint nostrud.
+          Hvor sjekker jeg statusen på foreldrepengersøknaden min?
         </Chat.Bubble>
       </Chat>
     </div>
@@ -49,10 +43,8 @@ ChatSandbox.args = {
 ChatSandbox.getCode = (props: any) => {
   return `<div className="grid gap-10">
   <Chat
-  avatar={${props?.avatar ? "<Illustrasjon />" : `"ON"`}}
-    name="Ola Normann"${
-      props?.timestamp ? `\ntimestamp="01.01.21 14:00"` : ""
-    }${
+  avatar={${props?.avatar ? "<Service />" : `"EVA"`}}
+    name="EVA"${props?.timestamp ? `\ntimestamp="01.01.21 14:00"` : ""}${
     props?.["overstyr-farger"] ? `\navatarBgColor="rgba(255, 236, 204, 1)"` : ""
   }${
     props?.["overstyr-farger"]
@@ -60,18 +52,12 @@ ChatSandbox.getCode = (props: any) => {
       : ""
   }
   >
-    <Chat.Bubble>
-      Aute minim nisi sunt mollit duis sunt nulla minim non proident.
-    </Chat.Bubble>
-    <Chat.Bubble>Tempor fugiat amet eu sint in in ullamco.</Chat.Bubble>
-    <Chat.Bubble>
-      Adipisicing laborum est eu laborum est sit in commodo enim sint
-      laboris labore nisi ut.
-    </Chat.Bubble>
+   <Chat.Bubble>Hei! Mitt navn er Eva.</Chat.Bubble>
+   <Chat.Bubble>Hva kan jeg hjelpe deg med?</Chat.Bubble>
   </Chat>
   <Chat
-    avatar="N"
-    name="Nav Naversen"${props?.timestamp ? `\ntimestamp="01.01.21 14:00"` : ""}
+  avatar={${props?.avatar ? "<PeopleFilled />" : `"NO"`}}
+    name="Ola Normann"${props?.timestamp ? `\ntimestamp="01.01.21 14:00"` : ""}
     position="right"${
       props?.["overstyr-farger"]
         ? `\navatarBgColor="rgba(204, 225, 255, 1)"`
@@ -82,11 +68,10 @@ ChatSandbox.getCode = (props: any) => {
       : ""
   }
   >
-    <Chat.Bubble>Do eu dolor pariatur consectetur qui.</Chat.Bubble>
-    <Chat.Bubble>
-      Nisi velit officia excepteur reprehenderit amet qui qui velit cillum
-      sint nostrud.
-    </Chat.Bubble>
+  <Chat.Bubble>Hei Eva.</Chat.Bubble>
+  <Chat.Bubble>
+    Hvor sjekker jeg statusen på foreldrepengersøknaden min?
+  </Chat.Bubble>
   </Chat>
 </div>`;
 };
