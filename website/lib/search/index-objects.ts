@@ -14,7 +14,7 @@ _type == "aksel_artikkel" => {"tema": tema[]->title}`;
 
 const dsSpesifics = `
 artikkel_type == true => {
-  "tabs": innhold_tabs[].title
+  "tabs": content_tabs[].title
 }
 `;
 

@@ -1,12 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import { BodyLong } from "@navikt/ds-react";
+import { BodyLong, Link } from "@navikt/ds-react";
 import cl from "classnames";
 import React from "react";
-import { Bilde as BildeT, urlFor } from "@/lib";
+import { urlFor, SanityT } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
 import style from "./index.module.css";
+import NextLink from "next/link";
 
-const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
+const Bilde = ({ node }: { node: SanityT.Schema.bilde }): JSX.Element => {
   if (!node || !node.asset) {
     return null;
   }
@@ -31,6 +32,20 @@ const Bilde = ({ node }: { node: BildeT }): JSX.Element => {
             <BodyLong as="span" size="small" className="self-center">
               {node.caption}
             </BodyLong>
+            {node?.kilde?.har_kilde && (
+              <BodyLong as="span" size="small" className="self-center">
+                {node?.kilde?.link ? (
+                  <>
+                    {`${node?.kilde?.prefix}: `}
+                    <NextLink href={node.kilde.link} passHref>
+                      <Link className="break-normal">{node?.kilde?.tekst}</Link>
+                    </NextLink>
+                  </>
+                ) : (
+                  <>{`${node?.kilde?.prefix}: ${node?.kilde?.tekst}`}</>
+                )}
+              </BodyLong>
+            )}
           </figcaption>
         )}
       </figure>

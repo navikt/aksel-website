@@ -40,6 +40,50 @@ export default {
         isHighlighted: true,
       },
     },
+    {
+      title: "Kilde",
+      type: "object",
+      name: "kilde",
+      options: {
+        isHighlighted: true,
+        collapsible: true,
+      },
+      fields: [
+        {
+          title: "Legg til kilde",
+          name: "har_kilde",
+          type: "boolean",
+          initialValue: false,
+        },
+        {
+          title: "Kilde-prefix",
+          name: "prefix",
+          type: "string",
+          options: {
+            list: [
+              { title: "FOTO:", value: "FOTO" },
+              { title: "Kilde:", value: "Kilde" },
+            ],
+            layout: "radio",
+            direction: "horizontal",
+          },
+          hidden: ({ parent }) => !parent?.har_kilde,
+        },
+        {
+          title: "Tekst",
+          name: "tekst",
+          type: "string",
+          hidden: ({ parent }) => !parent?.har_kilde,
+        },
+        {
+          title: "Lenke-kilde",
+          description: "Kilde-teksten blir satt som lenke",
+          name: "link",
+          type: "url",
+          hidden: ({ parent }) => !parent?.har_kilde,
+        },
+      ],
+    },
   ],
   validation: (Rule) =>
     Rule.custom((v) => {

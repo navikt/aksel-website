@@ -1,7 +1,7 @@
 import { SanityT } from "@/lib";
 import { BodyLong, Detail, Heading, Link } from "@navikt/ds-react";
 import NextLink from "next/link";
-import { dateStr, logNav } from "../..";
+import { dateStr, dateTimeStr, logNav } from "../..";
 
 export const BloggCard = ({
   blog,
@@ -21,7 +21,7 @@ export const BloggCard = ({
         as="time"
         size="small"
         className="col-span-2 uppercase tracking-wide text-text-muted xs:col-span-1"
-        dateTime={dateStr(blog?.publishedAt ?? blog._createdAt)}
+        dateTime={dateTimeStr(blog?.publishedAt ?? blog._createdAt)}
       >
         {dateStr(blog?.publishedAt ?? blog._createdAt)}
       </Detail>

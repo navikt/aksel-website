@@ -19,9 +19,9 @@ import {
   Sandbox,
   SpesialSeksjon,
   Tabell,
+  TastaturModul,
   Tips,
   TokensSeksjon,
-  TastaturModul,
   Video,
 } from ".";
 
@@ -152,17 +152,33 @@ const serializers = {
   },
   listItem: (props: any) => {
     return (
-      <li className="ml-5 mb-1 max-w-[calc(theme(spacing.text)_-_1em)]">
+      <BodyLong
+        as="li"
+        className="ml-5 mb-3 max-w-[calc(theme(spacing.text)_-_1em)]"
+      >
         {props.children}
-      </li>
+      </BodyLong>
     );
   },
   marks: {
     draft_only: () => null,
     kbd: (props) => <KBD>{props.children}</KBD>,
     code: (props) => <InlineCode>{props.children}</InlineCode>,
-    link: ({ mark: { blank, href }, children }: { mark: any; children: any }) =>
-      blank ? (
+    link: ({
+      mark: { blank, href },
+      children,
+    }: {
+      mark: any;
+      children: any;
+    }) => {
+      if (href && href.startsWith("mailto:")) {
+        return (
+          <NextLink href={href} passHref>
+            <Link className="break-normal">{children}</Link>
+          </NextLink>
+        );
+      }
+      return blank ? (
         <Link
           href={href}
           target="_blank"
@@ -175,7 +191,8 @@ const serializers = {
         <NextLink href={href} passHref>
           <Link className="break-normal">{children}</Link>
         </NextLink>
-      ),
+      );
+    },
     internalLink: ({ mark, children }: { mark: any; children: any }) => {
       const { slug = {} } = mark;
       if (!slug || !slug.current) return children;

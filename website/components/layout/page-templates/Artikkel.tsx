@@ -57,13 +57,18 @@ const ArtikkelTemplate = ({
         </div>
       </div>
       <div className="relative flex max-w-full md:max-w-7xl">
-        <TableOfContents changedState={data.content} />
+        <TableOfContents changedState={data.content} hideToc={false} />
         <div className="content-box">
           {data?.under_arbeid?.status ? (
-            <UnderArbeid
-              className="mt-12"
-              text={data?.under_arbeid?.forklaring}
-            />
+            <>
+              <UnderArbeid
+                className="mt-12"
+                text={data?.under_arbeid?.forklaring}
+              />
+              {data?.under_arbeid?.vis_innhold && (
+                <SanityBlockContent blocks={data.content} />
+              )}
+            </>
           ) : (
             <SanityBlockContent className="mt-12" blocks={data.content} />
           )}

@@ -95,7 +95,7 @@ export const block = {
         ],
       },
       {
-        title: "External link",
+        title: "Lenke",
         name: "link",
         type: "object",
         blockEditor: {
@@ -106,12 +106,18 @@ export const block = {
             title: "URL",
             name: "href",
             type: "url",
+            validation: (Rule) =>
+              Rule.uri({
+                scheme: ["https", "mailto", "tel"],
+              }),
           },
           {
             title: "Åpne siden i ny tab",
+            description:
+              "Vi anbefaler å ikke åpne lenker i ny fane slik at brukeren selv kan styre det om ønsket.",
             name: "blank",
             type: "boolean",
-            initialValue: true,
+            initialValue: false,
           },
         ],
       },

@@ -325,6 +325,12 @@ Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffe
 Default: Siden blir for tiden oppdatert!
        */
         forklaring?: string;
+
+        /**
+       * Vis fortsatt innhold? - `Boolean`
+Vil vise under-arbeid status med innhold under
+       */
+        vis_innhold?: boolean;
       };
 
       /**
@@ -568,6 +574,12 @@ Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffe
 Default: Siden blir for tiden oppdatert!
        */
         forklaring?: string;
+
+        /**
+       * Vis fortsatt innhold? - `Boolean`
+Vil vise under-arbeid status med innhold under
+       */
+        vis_innhold?: boolean;
       };
 
       /**
@@ -654,6 +666,12 @@ Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffe
 Default: Siden blir for tiden oppdatert!
        */
         forklaring?: string;
+
+        /**
+       * Vis fortsatt innhold? - `Boolean`
+Vil vise under-arbeid status med innhold under
+       */
+        vis_innhold?: boolean;
       };
 
       /**
@@ -770,6 +788,12 @@ Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffe
 Default: Siden blir for tiden oppdatert!
        */
         forklaring?: string;
+
+        /**
+       * Vis fortsatt innhold? - `Boolean`
+Vil vise under-arbeid status med innhold under
+       */
+        vis_innhold?: boolean;
       };
 
       /**
@@ -857,6 +881,12 @@ Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffe
 Default: Siden blir for tiden oppdatert!
        */
         forklaring?: string;
+
+        /**
+       * Vis fortsatt innhold? - `Boolean`
+Vil vise under-arbeid status med innhold under
+       */
+        vis_innhold?: boolean;
       };
 
       /**
@@ -1014,6 +1044,12 @@ Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffe
 Default: Siden blir for tiden oppdatert!
        */
         forklaring?: string;
+
+        /**
+       * Vis fortsatt innhold? - `Boolean`
+Vil vise under-arbeid status med innhold under
+       */
+        vis_innhold?: boolean;
       };
 
       /**
@@ -1196,6 +1232,32 @@ Dette vil stå under bildet
        * Bildet tar bare ~halve bredden - `Boolean`
        */
       small?: boolean;
+
+      /**
+       * Kilde - `Object`
+       */
+      kilde?: {
+        /**
+         * Legg til kilde - `Boolean`
+         */
+        har_kilde?: boolean;
+
+        /**
+         * Kilde-prefix - `String`
+         */
+        prefix?: "FOTO" | "Kilde";
+
+        /**
+         * Tekst - `String`
+         */
+        tekst?: string;
+
+        /**
+       * Lenke-kilde - `Url`
+Kilde-teksten blir satt som lenke
+       */
+        link?: string;
+      };
     };
 
     type alert = {
