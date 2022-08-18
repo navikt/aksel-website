@@ -39,7 +39,6 @@ const PopoverSandbox: SandboxComponentT = (props: any) => {
 PopoverSandbox.args = {
   props: {
     placement: [
-      "",
       "top",
       "bottom",
       "right",
