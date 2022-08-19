@@ -313,7 +313,26 @@ TableSandbox.getCode = (props: any) => {
   })}`;
   }
 
-  return `<>
+  return `
+  ${
+    props?.sortable
+      ? `const MyTable = () => {
+        const [sort, setSort] = React.useState();\n\nconst handleSort = (sortKey) => {
+    setSort(
+      sort && sortKey === sort.orderBy && sort.direction === "descending"
+        ? undefined
+        : {
+            orderBy: sortKey,
+            direction:
+              sort && sortKey === sort.orderBy && sort.direction === "ascending"
+                ? "descending"
+                : "ascending",
+          }
+    );
+  };\n\n`
+      : ""
+  }
+  ${props?.sortable ? "return (<>" : "<>"}
   <Table
   size="${props?.size}"${props?.zebraStripes ? "\n  zebraStripes" : ""}${
     props?.sortable
@@ -380,7 +399,7 @@ TableSandbox.getCode = (props: any) => {
   count={Math.ceil(data.length / rowsPerPage)}
 />`
       : ""
-  }</>`;
+  }${props?.sortable ? "</>);}" : "</>"}`;
 };
 
 export default TableSandbox;
