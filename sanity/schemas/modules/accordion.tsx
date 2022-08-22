@@ -1,6 +1,7 @@
 import { Expand } from "@navikt/ds-icons";
 import { innholdFieldNewNested } from "@/lib";
 import React from "react";
+import { BodyLong, Label } from "@navikt/ds-react";
 
 export default {
   name: "accordion",
@@ -9,7 +10,8 @@ export default {
   fields: [
     { title: "Tittel (optional)", type: "string", name: "title" },
     {
-      title: "Accordions",
+      title: "Liste",
+      description: "Legg til en eller flere elementer",
       name: "list",
       type: "array",
       of: [
@@ -47,12 +49,27 @@ export default {
   preview: {
     select: {
       title: "title",
+      list: "list",
     },
     prepare(s) {
       return {
         title: s?.title ? s.title : "Accordion",
-        subtitle: s?.title ? "Accordion" : "",
+        list: s?.list,
       };
+    },
+    component: ({ value }) => {
+      return value?.list ? (
+        <BodyLong as="div">
+          <Label as="p">{`Accordion (${value.list.length})`}</Label>
+          <ul>
+            {value.list.map((x, y) => (
+              <li key={x._key}>{x.title}</li>
+            ))}
+          </ul>
+        </BodyLong>
+      ) : (
+        <Label as="p">Accordion</Label>
+      );
     },
   },
 };
