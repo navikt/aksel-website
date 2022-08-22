@@ -58,7 +58,7 @@ const IntroPage = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
           </Heading>
           {user?.roles.map((x, i) => (
             <div key={i}>
-              <Label size="small" spacing>
+              <Label size="small" spacing as="p">
                 {x?.title}
               </Label>
               <BodyShort size="small">{x?.description}</BodyShort>

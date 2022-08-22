@@ -133,7 +133,7 @@ const ComponentOverview = ({
 
   return (
     <div>
-      <Label spacing className="mt-12">
+      <Label spacing className="mt-12" as="p">
         Tegnforklaring
       </Label>
       <ul className="mb-8 flex flex-col gap-3">

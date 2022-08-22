@@ -171,7 +171,7 @@ const Feedback = ({
             )}
             onClick={() => setActiveState(HelpfulArticleEnum.JA)}
           >
-            <Label>Ja</Label>
+            <Label as="span">Ja</Label>
           </button>
           <button
             className={cl(
@@ -185,7 +185,7 @@ const Feedback = ({
             )}
             onClick={() => setActiveState(HelpfulArticleEnum.DELVIS)}
           >
-            <Label>Delvis</Label>
+            <Label as="span">Delvis</Label>
           </button>
           <button
             className={cl(
@@ -199,7 +199,7 @@ const Feedback = ({
             )}
             onClick={() => setActiveState(HelpfulArticleEnum.NEI)}
           >
-            <Label>Nei</Label>
+            <Label as="span">Nei</Label>
           </button>
         </div>
         <button
@@ -212,7 +212,7 @@ const Feedback = ({
           })}
           onClick={() => setActiveState(HelpfulArticleEnum.MISC)}
         >
-          <Label size="small">
+          <Label as="span" size="small">
             Jeg vil foreslå forbedringer til {`${text ?? "artikkelen"}`}.
           </Label>
         </button>

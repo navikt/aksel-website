@@ -75,7 +75,9 @@ const FooterForm = () => {
   return (
     <>
       <div>
-        <Label spacing>Hvordan komme i kontakt?</Label>
+        <Label spacing as="p">
+          Hvordan komme i kontakt?
+        </Label>
         <BodyShort as="ul">
           <li>
             <Link
@@ -98,7 +100,9 @@ const FooterForm = () => {
       <div className="flex w-full max-w-md flex-col gap-8" data-theme="dark">
         {sent ? (
           <div>
-            <Label spacing>Melding er sendt til designsystemet</Label>
+            <Label spacing as="p">
+              Melding er sendt til designsystemet
+            </Label>
             <BodyLong>
               Takk skal du ha! Vi svarer deg så fort som mulig.
             </BodyLong>

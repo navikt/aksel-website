@@ -13,7 +13,7 @@ const RadiusBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
         className="relative h-20 w-20 min-w-20 rounded border border-border-muted"
       ></div>
       <div className="w-32">
-        <Label size="small" spacing className="mt-1 break-words">
+        <Label size="small" spacing className="mt-1 break-words" as="p">
           {capitalize(token.title.replace("font-size-", ""))}
         </Label>
         <BodyShort size="small">{token.token}</BodyShort>
@@ -30,7 +30,7 @@ const ShadowBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
         className="relative h-24 w-24 min-w-24 rounded"
       ></div>
       <div>
-        <Label size="small" spacing className="mt-1 break-words">
+        <Label size="small" spacing className="mt-1 break-words" as="p">
           {capitalize(token.title.replace("font-size-", ""))}
         </Label>
         <BodyShort size="small">{token.raw ?? token.token}</BodyShort>
@@ -51,7 +51,7 @@ const FontSizeBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
         The quick brown fox jumps over the lazy dog
       </div>
       <div>
-        <Label size="small" className="mt-1 break-words">
+        <Label size="small" className="mt-1 break-words" as="p">
           {capitalize(token.title.replace("font-size-", ""))}
         </Label>
         <Detail size="small">{`${
@@ -102,7 +102,7 @@ const SemanticColorBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
           "px-2": Color(token.raw).luminosity() <= 0.9 && isText,
         })}
       >
-        <Label size="small" className="mt-2 break-words">
+        <Label size="small" className="mt-2 break-words" as="p">
           {capitalize(token.title.replace("semantic-color-", ""))}
         </Label>
         <Detail size="small" className="mt-1">
