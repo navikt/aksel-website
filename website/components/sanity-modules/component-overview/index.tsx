@@ -122,11 +122,6 @@ const ComponentOverview = ({
             {comp.in_code ? <CodeCell comp={comp} /> : <ErrorIcon />}
           </span>
         </Table.DataCell>
-        <Table.DataCell>
-          <span className="flex items-center gap-2">
-            {comp.in_doc ? <SuccessIcon /> : <ErrorIcon />}
-          </span>
-        </Table.DataCell>
       </Table.Row>
     );
   };
@@ -165,9 +160,6 @@ const ComponentOverview = ({
               </Table.HeaderCell>
               <Table.HeaderCell className="text-text-muted">
                 Kode
-              </Table.HeaderCell>
-              <Table.HeaderCell className="text-text-muted">
-                Dok
               </Table.HeaderCell>
             </Table.Row>
           </Table.Header>
