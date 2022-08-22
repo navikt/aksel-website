@@ -63,7 +63,9 @@ const CodeCell = ({ comp, pack }: { comp: any; pack: string }) => {
           </Tooltip>
         </>
       )}
-      <BodyShort size="small">{pack.replace("@navikt/", "")}</BodyShort>
+      <Tooltip content={comp.linked_package?.title} placement="bottom">
+        <BodyShort size="small">{pack.replace("@navikt/", "")}</BodyShort>
+      </Tooltip>
     </>
   );
 };
@@ -87,30 +89,6 @@ const ComponentOverview = ({
             </NextLink>
           ) : (
             <BodyShort>{comp.title}</BodyShort>
-          )}
-
-          {comp.linked_package?.scope && (
-            <>
-              <BodyShort
-                className="text-left text-text-muted first-letter:capitalize"
-                size="small"
-              >
-                <Tooltip
-                  content={comp.linked_package?.title}
-                  placement="bottom"
-                >
-                  <span
-                    className="focus:outline-2 focus:outline-focus"
-                    tabIndex={0}
-                  >
-                    {comp.linked_package?.scope}
-                    <span className="navds-sr-only">
-                      Pakkenavn: {comp.linked_package?.title}
-                    </span>
-                  </span>
-                </Tooltip>
-              </BodyShort>
-            </>
           )}
         </Table.HeaderCell>
         <Table.DataCell>
@@ -143,19 +121,19 @@ const ComponentOverview = ({
       </Label>
       <ul className="mb-8 flex flex-col gap-3">
         <li className="flex items-center gap-2 px-2">
-          <FigmaIcon /> v#.# - Figma-versjon av designsystemet
+          <FigmaIcon /> Figma-versjon
         </li>
         <li className="flex items-center gap-2 px-2">
           <FigmaIconNoSync /> - Kode ikke i synk med Figma
         </li>
         <li className="flex items-center gap-2 px-2">
-          <BetaTag /> - Finnes som testversjon i Figma
+          <BetaTag /> - Finnes som beta-versjon i Figma
         </li>
         <li className="flex items-center gap-2 px-2">
           <ErrorIcon /> - Ikke tilgjengelig
         </li>
         <li className="flex items-center gap-2 px-2">
-          <SuccessIcon /> - Lansert 🎉
+          <SuccessIcon /> - Publisert 🎉
         </li>
       </ul>
       <div className="overflow-x-auto">
