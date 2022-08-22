@@ -39,13 +39,13 @@ const DesignCell = ({ comp }: { comp: any }) => {
         size="small"
       >
         <FigmaIcon />
-        {comp.figma_version === "new" ? "v3.0" : "v2.5"}
+        {comp.figma_version === "new" ? "Core" : "v2.5"}
       </BodyShort>
     </>
   );
 };
 
-const CodeCell = ({ comp }: { comp: any }) => {
+const CodeCell = ({ comp, pack }: { comp: any; pack: string }) => {
   return (
     <>
       <SuccessIcon />
@@ -63,6 +63,7 @@ const CodeCell = ({ comp }: { comp: any }) => {
           </Tooltip>
         </>
       )}
+      <BodyShort size="small">{pack.replace("@navikt/", "")}</BodyShort>
     </>
   );
 };
@@ -119,7 +120,16 @@ const ComponentOverview = ({
         </Table.DataCell>
         <Table.DataCell>
           <span className="flex items-center gap-2">
-            {comp.in_code ? <CodeCell comp={comp} /> : <ErrorIcon />}
+            {comp.in_code ? (
+              <CodeCell
+                comp={comp}
+                pack={
+                  comp.linked_package?.scope ? comp.linked_package?.title : ""
+                }
+              />
+            ) : (
+              <ErrorIcon />
+            )}
           </span>
         </Table.DataCell>
       </Table.Row>
@@ -139,7 +149,7 @@ const ComponentOverview = ({
           <FigmaIconNoSync /> - Kode ikke i synk med Figma
         </li>
         <li className="flex items-center gap-2 px-2">
-          <BetaTag /> - Finnes som testversjon i Figma v3.0
+          <BetaTag /> - Finnes som testversjon i Figma
         </li>
         <li className="flex items-center gap-2 px-2">
           <ErrorIcon /> - Ikke tilgjengelig
