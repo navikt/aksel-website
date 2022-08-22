@@ -16,7 +16,10 @@ const Anatomi = ({ node }: { node: SanityT.Schema.anatomi }): JSX.Element => {
       {node?.forklaring && (
         <ul>
           {node.forklaring.map((x) => (
-            <li key={x._key} className="mb-2">
+            <li
+              key={x._key}
+              className="mb-3 list-item max-w-[calc(theme(spacing.text)_-_1em)]"
+            >
               <Label as="span">{x.element}</Label>
               <SanityBlockContent
                 className="ml-[18px]"

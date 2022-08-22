@@ -18,28 +18,38 @@ const Intro = ({
     <div className="mb-16">
       <LevelTwoHeading hidden>{["Intro"]}</LevelTwoHeading>
       <SanityBlockContent blocks={node.body} />
-      <div className="flex flex-col gap-7">
-        <div>
-          <Label className="mb-2">Egnet til å:</Label>
-          <ul className="list-disc">
+      <div>
+        <>
+          <Label as="p" className="mb-3">
+            Egnet til å:
+          </Label>
+          <ul className="mb-7 list-disc">
             {node.brukes_til.map((x) => (
-              <li key={x} className="ml-5 list-item">
+              <li
+                key={x}
+                className="ml-5 mb-3 list-item max-w-[calc(theme(spacing.text)_-_1em)]"
+              >
                 {x}
               </li>
             ))}
           </ul>
-        </div>
+        </>
         {node?.brukes_ikke_til && (
-          <div>
-            <Label className="mb-2">Vurder noe annet:</Label>
+          <>
+            <Label as="p" className="mb-3">
+              Vurder noe annet:
+            </Label>
             <ul className="list-disc">
               {node.brukes_ikke_til.map((x) => (
-                <li key={x} className="ml-5 list-item">
+                <li
+                  key={x}
+                  className="ml-5 mb-3 list-item max-w-[calc(theme(spacing.text)_-_1em)]"
+                >
                   {x}
                 </li>
               ))}
             </ul>
-          </div>
+          </>
         )}
       </div>
     </div>
