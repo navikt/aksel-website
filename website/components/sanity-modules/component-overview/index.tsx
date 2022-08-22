@@ -121,7 +121,7 @@ const ComponentOverview = ({
       </Label>
       <ul className="mb-8 flex flex-col gap-3">
         <li className="flex items-center gap-2 px-2">
-          <FigmaIcon /> Figma-versjon
+          <FigmaIcon /> - Figma-versjon
         </li>
         <li className="flex items-center gap-2 px-2">
           <FigmaIconNoSync /> - Kode ikke i synk med Figma
