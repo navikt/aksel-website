@@ -37,7 +37,8 @@ export const sanitySlug = (prefix: string, depth: number, source?: string) => ({
         .replace(/\s+/g, "-")
         .replace("æ", "a")
         .replace("ø", "o")
-        .replace("å", "a"),
+        .replace("å", "a")
+        .replace(".", "-"),
   },
 });
 
