@@ -1477,7 +1477,8 @@ Slik man ville brukt den, eks Accordion.Item
       title?: string;
 
       /**
-       * Accordions - `Array`
+       * Liste - `Array`
+Legg til en eller flere elementer
        */
       list?: Array<
         Sanity.Keyed<{
