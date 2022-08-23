@@ -314,25 +314,74 @@ TableSandbox.getCode = (props: any) => {
   }
 
   return `
-  ${
-    props?.sortable
-      ? `const MyTable = () => {
-        const [sort, setSort] = React.useState();\n\nconst handleSort = (sortKey) => {
-    setSort(
-      sort && sortKey === sort.orderBy && sort.direction === "descending"
-        ? undefined
-        : {
-            orderBy: sortKey,
-            direction:
-              sort && sortKey === sort.orderBy && sort.direction === "ascending"
-                ? "descending"
-                : "ascending",
+  const MyTable = () => {
+
+    ${
+      props?.pagination
+        ? `\nconst [page, setPage] = React.useState(1);
+    const rowsPerPage = 4;`
+        : ""
+    }
+    ${
+      props?.selectable
+        ? `\nconst [selectedRows, setSelectedRows] = React.useState([]);`
+        : ""
+    }
+    ${props?.sortable ? `\nconst [sort, setSort] = React.useState();` : ""}
+    ${
+      props?.selectable
+        ? `\nconst toggleSelectedRow = (value) =>
+      setSelectedRows((list) =>
+        list.includes(value)
+          ? list.filter((id) => id !== value)
+          : [...list, value]
+      );\n`
+        : ""
+    }
+    ${
+      props?.sortable
+        ? `
+        \nconst handleSort = (sortKey) => {
+      setSort(
+        sort && sortKey === sort.orderBy && sort.direction === "descending"
+          ? undefined
+          : {
+              orderBy: sortKey,
+              direction:
+                sort && sortKey === sort.orderBy && sort.direction === "ascending"
+                  ? "descending"
+                  : "ascending",
+            }
+      );
+      };\n let sortData = data;
+        sortData = sortData.slice().sort((a, b) => {
+          if (sort) {
+            const comparator = (a, b, orderBy) => {
+              if (b[orderBy] < a[orderBy] || b[orderBy] === undefined) {
+                return -1;
+              }
+              if (b[orderBy] > a[orderBy]) {
+                return 1;
+              }
+              return 0;
+            };
+
+            return sort.direction === "ascending"
+              ? comparator(b, a, sort.orderBy)
+              : comparator(a, b, sort.orderBy);
           }
-    );
-  };\n\n`
-      : ""
-  }
-  ${props?.sortable ? "return (<>" : "<>"}
+          return 1;
+        });
+      \n\n`
+        : ""
+    }
+      ${
+        props?.pagination
+          ? `${props?.sortable ? "" : "\nlet sortData = data;"}
+      sortData = sortData.slice((page - 1) * rowsPerPage, page * rowsPerPage);`
+          : ""
+      }
+return (<>
   <Table
   size="${props?.size}"${props?.zebraStripes ? "\n  zebraStripes" : ""}${
     props?.sortable
@@ -399,7 +448,7 @@ TableSandbox.getCode = (props: any) => {
   count={Math.ceil(data.length / rowsPerPage)}
 />`
       : ""
-  }${props?.sortable ? "</>);}" : "</>"}`;
+  }</>);}`;
 };
 
 export default TableSandbox;
