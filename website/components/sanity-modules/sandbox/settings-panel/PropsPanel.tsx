@@ -15,9 +15,8 @@ const SettingsPanel = () => {
   return (
     <>
       <div
-        className={cl("w-full bg-gray-100 pb-3", {
+        className={cl("w-full bg-gray-100 pb-3 xl:hidden", {
           hidden: hideProps,
-          "lg:hidden": !open,
         })}
       >
         <div className="flex justify-end px-4">
@@ -31,11 +30,11 @@ const SettingsPanel = () => {
       </div>
       <div
         className={cl(
-          "relative flex w-full flex-col items-center gap-4 overflow-y-auto rounded-r bg-gray-100 px-6 pb-4 lg:py-4",
-          "animate-fadeIn lg:max-w-[250px]",
+          "relative flex w-full flex-col items-center gap-4 overflow-y-auto rounded-r bg-gray-100 px-6 pb-4 xl:py-4",
+          "animate-fadeIn xl:max-w-[250px]",
           {
             hidden: hideProps,
-            "hidden lg:flex": !open && !hideProps,
+            "hidden xl:flex": !open && !hideProps,
           }
         )}
       >
@@ -43,7 +42,7 @@ const SettingsPanel = () => {
           <PropFilter />
           <button
             onClick={reset}
-            className="absolute top-1 right-4 mx-auto mt-auto w-fit justify-self-end rounded bg-gray-300 py-1 px-3 text-medium hover:bg-gray-300/80 focus:shadow-focus focus:outline-none lg:relative"
+            className="absolute top-1 right-4 mx-auto mt-auto w-fit justify-self-end rounded bg-gray-300 py-1 px-3 text-medium hover:bg-gray-300/80 focus:shadow-focus focus:outline-none xl:relative"
           >
             Reset
           </button>

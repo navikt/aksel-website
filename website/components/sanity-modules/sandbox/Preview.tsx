@@ -15,12 +15,14 @@ export const Preview = ({ children }: { children: React.ReactElement }) => {
   return (
     <div
       role="presentation"
-      className={cl("relative flex h-full w-full flex-col rounded lg:flex-row")}
+      className={cl(
+        "relative flex h-full w-full flex-col rounded xl:flex-row "
+      )}
     >
       <div
         className={cl(
           "flex min-h-[300px] w-full justify-center bg-gray-100 p-3",
-          { "lg:pr-0": !hideProps }
+          { "xl:pr-0": !hideProps }
         )}
       >
         <div

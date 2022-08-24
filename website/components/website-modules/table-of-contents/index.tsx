@@ -20,8 +20,14 @@ function TableOfContents({
       const main = document.getElementsByTagName("main")?.[0];
       const tags = main?.getElementsByTagName("h2");
       if (!tags) return;
+      const filtered = Array.from(tags)?.filter(
+        (x) =>
+          !Array.from(
+            main.getElementsByClassName("algolia-ignore-index")
+          )?.some((y) => y.contains(x))
+      );
       const toc = [];
-      for (const item of tags) {
+      for (const item of filtered) {
         item.id &&
           toc.push({ heading: item.textContent, id: decodeURI(item.id) });
       }
