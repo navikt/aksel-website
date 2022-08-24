@@ -1,7 +1,3 @@
-import { FileContent, LightBulb, NewTab } from "@navikt/ds-icons";
-import React from "react";
-import { toPlainText } from ".";
-
 export const editorField = {
   title: "Redaktører",
   description: "Legg til alle som har bidratt med denne siden!",
