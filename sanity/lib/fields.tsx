@@ -9,6 +9,7 @@ export const editorField = {
   type: "array",
   of: [{ type: "reference", to: [{ type: "editor" }] }],
   group: "settings",
+  validation: (Rule) => Rule.required(),
 };
 
 export const privateField = {
