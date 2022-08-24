@@ -18,7 +18,7 @@ const CopyToClipboardSandbox: SandboxComponentT = (props: any) => {
 CopyToClipboardSandbox.args = {
   props: {
     size: ["medium", "small"],
-    text: "",
+    text: "Kopier",
     popoverText: "Kopierte Pi!",
     iconPosition: ["left", "right"],
     popoverPlacement: [
