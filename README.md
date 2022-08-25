@@ -43,10 +43,9 @@ Eks:
 
 `/preview/designsystem/side/button´
 
-NOTE: Sanity-datasettet er privat, noe som betyr du må ha disse tokene for å få data lokalt
+NOTE: Sanity-datasettet er privat, noe som betyr du må ha følgende token for å få data lokalt:
 
 ```
-SANITY_PREVIEW_TOKEN
 SANITY_PRIVATE_NO_DRAFTS
 ```
 
@@ -63,7 +62,7 @@ yarn sanity
 
 ### .env
 
-Blir brukt flere keys i .env under `./website`, men ingen av dem trengs for å teste lokalt
+Blir brukt flere keys i .env under `./website`, men kun `SANITY_PRIVATE_NO_DRAFTS` trengs for å teste lokalt
 
 - SANITY_WRITE_KEY: Secret for å sende dokumenter til sanity, brukt til å oppdatere sanboxes/examples/farger
 - ALGOLIA_ADMIN: Secret for å oppdatere records i søkemotoren. Gjøres automatisk i prod ved hjelp av Sanity-webhook hver gang et dokument endres. Trengs bare hvis man oppdaterer søkeindexen lokalt
