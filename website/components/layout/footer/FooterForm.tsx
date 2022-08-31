@@ -18,7 +18,7 @@ const FooterForm = () => {
   const [contactForm, setContactForm] = useState({ content: "", mail: "" });
 
   const [contentError, setContentError] = useState({ content: "", mail: "" });
-  const [sent, setSent] = useState(false);
+  const [sent, setSent] = useState({ status: false, hadMail: false });
   const [hasWritten, setHasWritten] = useState(false);
 
   const { asPath, basePath } = useRouter();
@@ -55,8 +55,8 @@ const FooterForm = () => {
       }),
     });
 
+    setSent({ status: true, hadMail: !!contactForm?.mail });
     setContactForm({ content: "", mail: "" });
-    setSent(true);
   };
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const FooterForm = () => {
 
   useEffect(() => {
     setHasWritten(false);
-    setSent(false);
+    setSent({ status: false, hadMail: false });
     setContactForm({ content: "", mail: "" });
     setContentError({ content: "", mail: "" });
   }, [asPath]);
@@ -98,13 +98,15 @@ const FooterForm = () => {
         </BodyShort>
       </div>
       <div className="flex w-full max-w-md flex-col gap-8" data-theme="dark">
-        {sent ? (
+        {sent.status ? (
           <div>
             <Label spacing as="p">
               Melding er sendt til designsystemet
             </Label>
             <BodyLong>
-              Takk skal du ha! Vi svarer deg så fort som mulig.
+              {`Takk skal du ha!${
+                sent.hadMail ? " Vi svarer deg så fort som mulig." : ""
+              }`}
             </BodyLong>
           </div>
         ) : (
