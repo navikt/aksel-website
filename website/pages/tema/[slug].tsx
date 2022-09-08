@@ -59,21 +59,37 @@ const Page = (props: PageProps): JSX.Element => {
           id="hovedinnhold"
           className="min-h-[80vh] bg-gray-100 focus:outline-none"
         >
-          <div className="relative bg-white px-4 pt-12 pb-8 md:pb-10">
+          <div className="relative bg-white px-4 pt-12">
             <div className="mx-auto max-w-aksel xs:w-[90%]">
               <NextLink href="/tema" passHref>
                 <Link className="font-semibold uppercase tracking-widest text-text md:text-base">
                   Tema
                 </Link>
               </NextLink>
-              <Heading level="1" size="xlarge" className="algolia-index-lvl1">
+              <Heading
+                level="1"
+                size="xlarge"
+                className="algolia-index-lvl1 text-5xl text-deepblue-700"
+              >
                 {page.title}
               </Heading>
-              <div className="mt-3 max-w-prose">
+              <div className="mt-4 max-w-prose">
                 <SanityBlockContent blocks={page.beskrivelse} noLastMargin />
               </div>
             </div>
           </div>
+
+          {/* TODO: Må løses bedre */}
+          <section className="relative px-4 pt-16 pb-24">
+            <svg
+              className="absolute inset-x-0 top-0 w-full"
+              viewBox="0 0 100 12"
+              focusable="false"
+              aria-hidden="true"
+            >
+              <polygon points="0,0 100,0 0,12" className="fill-white"></polygon>
+            </svg>
+          </section>
 
           {!page?.bruk_seksjoner || page?.seksjoner?.length === 0 ? (
             <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-12">
@@ -91,11 +107,11 @@ const Page = (props: PageProps): JSX.Element => {
                 <div className="mx-auto grid max-w-aksel gap-16 xs:w-[90%]">
                   {page.seksjoner.map((seksjon) => (
                     <div key={seksjon._key}>
-                      <Heading level="2" size="medium" spacing>
+                      <Heading level="2" size="large" spacing>
                         {seksjon.title}
                       </Heading>
                       {seksjon.beskrivelse && (
-                        <div className="mt-3 mb-6 max-w-prose">
+                        <div className="mt-2 mb-5 max-w-prose">
                           <SanityBlockContent
                             blocks={seksjon.beskrivelse}
                             noLastMargin
