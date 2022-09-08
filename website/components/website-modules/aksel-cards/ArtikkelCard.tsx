@@ -1,19 +1,23 @@
 import { getTemaSlug } from "@/lib";
-import { BodyShort, Heading } from "@navikt/ds-react";
+import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import NextLink from "next/link";
-import { logNav } from "../..";
+import { dateStr, logNav } from "../..";
 import { SanityT } from "@/lib";
+import cl from "classnames";
 
 export const ArtikkelCard = ({
   slug,
   source,
   heading,
   ingress,
+  contributor,
+  _updatedAt,
 }: Partial<
   (SanityT.Schema.aksel_artikkel | SanityT.Schema.aksel_blogg) & {
     slug: string;
     tema: string[];
     source: string;
+    contributor: string | null;
   }
 >) => {
   return (
@@ -34,19 +38,27 @@ export const ArtikkelCard = ({
             e.currentTarget.getAttribute("href")
           )
         }
-        className="group rounded bg-white px-4 py-4 shadow hover:ring-2 hover:ring-blue-500 focus:shadow-focus focus:outline-none md:py-5 md:px-6"
+        className="group relative rounded bg-white p-5 pb-16 shadow hover:ring-2 hover:ring-blue-500 focus:shadow-focus focus:outline-none "
       >
         <Heading
           level="2"
-          size="medium"
-          className="hidden group-hover:underline md:block"
+          size="small"
+          className="text-deepblue-700 group-hover:underline"
         >
           {heading}
         </Heading>
-        <Heading level="2" size="small" className="block md:hidden">
-          {heading}
-        </Heading>
-        {ingress && <BodyShort className="mt-1">{ingress}</BodyShort>}
+        {ingress && <BodyShort className="mt-2 ">{ingress}</BodyShort>}
+        <span className="absolute bottom-5 flex gap-2">
+          {contributor && <Detail as="span">{contributor}</Detail>}
+          {contributor && (
+            <Detail as="span" className="text-text-muted">
+              —
+            </Detail>
+          )}
+          <Detail as="span" className="text-text-muted">
+            {dateStr(_updatedAt)}
+          </Detail>
+        </span>
       </a>
     </NextLink>
   );

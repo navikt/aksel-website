@@ -318,10 +318,12 @@ export const akselTemaDocs = `*[_type == "aksel_tema"]{
         _id,
         heading,
         _createdAt,
+        _updatedAt,
         publishedAt,
         "slug": slug.current,
         "tema": tema[]->tag,
         ingress,
+        "contributor": contributors[0]->title
       }
     }
   },
@@ -330,10 +332,12 @@ export const akselTemaDocs = `*[_type == "aksel_tema"]{
       _id,
       heading,
       _createdAt,
+      _updatedAt,
       publishedAt,
       "slug": slug.current,
       "tema": tema[]->tag,
       ingress,
+      "contributor": contributors[0]->title
     },
     "seksjoner": []
   },
