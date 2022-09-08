@@ -1,9 +1,7 @@
-import { getTemaSlug } from "@/lib";
+import { getTemaSlug, SanityT } from "@/lib";
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import NextLink from "next/link";
 import { dateStr, logNav } from "../..";
-import { SanityT } from "@/lib";
-import cl from "classnames";
 
 export const ArtikkelCard = ({
   slug,
@@ -38,7 +36,7 @@ export const ArtikkelCard = ({
             e.currentTarget.getAttribute("href")
           )
         }
-        className="group relative rounded bg-white p-5 pb-16 shadow hover:ring-2 hover:ring-blue-500 focus:shadow-focus focus:outline-none "
+        className="group relative rounded bg-white p-5 pb-16 shadow-small hover:shadow-medium focus:shadow-focus focus:outline-none "
       >
         <Heading
           level="2"
