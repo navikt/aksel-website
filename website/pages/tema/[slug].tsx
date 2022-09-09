@@ -10,9 +10,8 @@ import {
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { getClient } from "@/sanity-client";
-import { Heading, Link } from "@navikt/ds-react";
+import { Heading, Label } from "@navikt/ds-react";
 import Head from "next/head";
-import NextLink from "next/link";
 import React from "react";
 import NotFotfund from "../404";
 
@@ -57,7 +56,7 @@ const Page = (props: PageProps): JSX.Element => {
         <main
           tabIndex={-1}
           id="hovedinnhold"
-          className="min-h-[80vh] bg-gray-100 focus:outline-none"
+          className="min-h-[80vh] bg-gray-50 focus:outline-none"
         >
           <div className="relative bg-white px-4 pt-12">
             <div className="mx-auto max-w-aksel xs:w-[90%]">
@@ -69,7 +68,14 @@ const Page = (props: PageProps): JSX.Element => {
               <Heading
                 level="1"
                 size="xlarge"
-                className="algolia-index-lvl1 text-5xl text-deepblue-700"
+                className="algolia-index-lvl1 hidden text-5xl text-deepblue-700 md:block"
+              >
+                {page.title}
+              </Heading>
+              <Heading
+                level="1"
+                size="large"
+                className="algolia-index-lvl1 block text-deepblue-700 md:hidden"
               >
                 {page.title}
               </Heading>
@@ -81,12 +87,30 @@ const Page = (props: PageProps): JSX.Element => {
               />
             </div>
           </div>
-          <div className="bg-white">
-            <div className="triangle relative bg-gray-100 px-4 pt-16 pb-8" />
+          <div className="relative bg-white pt-8 xl:pt-0">
+            <div className="triangle relative bg-gray-50 px-4 pt-16 pb-8" />
           </div>
+          <div className="relative mx-auto max-w-aksel px-4 xs:w-[90%]">
+            <div className="max-w z-10 mr-auto ml-auto -mt-24 rounded-lg bg-deepblue-700  xs:w-96 md:mr-0">
+              <Label
+                as="div"
+                size="small"
+                className="flex rounded-t-lg bg-deepblue-700 px-4 pt-4 pb-3 capitalize text-text-inverted md:px-6 md:pt-6 md:pb-4"
+              >
+                Ansvarlig for tema
+              </Label>
+              <div className="grid gap-2 rounded-b-lg bg-deepblue-100 px-4 py-3 md:px-6 md:py-4">
+                <div>
+                  <Label as="div">Placeholder</Label>
+                  <div className="mt-[2px]">Placeholder</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Ansvarlig-card */}
 
           {!page?.bruk_seksjoner || page?.seksjoner?.length === 0 ? (
-            <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-12">
+            <div className="relative bg-gray-50 px-4 pt-8 pb-24 md:pt-12">
               <div className="mx-auto max-w-aksel xs:w-[90%]">
                 <div className="grid gap-3 sm:grid-cols-2 md:gap-6">
                   {page.artikler.map((x) => (
@@ -97,11 +121,24 @@ const Page = (props: PageProps): JSX.Element => {
             </div>
           ) : (
             <>
-              <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-12">
+              <div className="relative bg-gray-50 px-4 pt-8 pb-24 md:pt-12">
                 <div className="mx-auto grid max-w-aksel gap-16 xs:w-[90%]">
                   {page.seksjoner.map((seksjon) => (
                     <div key={seksjon._key}>
-                      <Heading level="2" size="large" spacing>
+                      <Heading
+                        level="2"
+                        size="large"
+                        spacing
+                        className="hidden md:block"
+                      >
+                        {seksjon.title}
+                      </Heading>
+                      <Heading
+                        level="2"
+                        size="medium"
+                        spacing
+                        className="block md:hidden"
+                      >
                         {seksjon.title}
                       </Heading>
                       {seksjon.beskrivelse && (
