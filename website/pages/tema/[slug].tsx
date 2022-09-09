@@ -87,11 +87,21 @@ const Page = (props: PageProps): JSX.Element => {
               />
             </div>
           </div>
-          <div className="relative bg-white pt-8 xl:pt-0">
+          {/* <div className="relative bg-white pt-8 xl:pt-0">
             <div className="triangle relative bg-gray-50 px-4 pt-16 pb-8" />
+          </div> */}
+          <div className="relative bg-gray-50 px-4 pt-8 pb-8">
+            <svg
+              className="absolute inset-x-0 top-0 w-full"
+              viewBox="0 0 100 8"
+              focusable="false"
+              aria-hidden="true"
+            >
+              <polygon points="0,0 100,0 0,8" className="fill-white"></polygon>
+            </svg>
           </div>
           <div className="relative mx-auto max-w-aksel px-4 xs:w-[90%]">
-            <div className="max-w z-10 mr-auto ml-auto -mt-24 rounded-lg bg-deepblue-700  xs:w-96 md:mr-0">
+            <div className="max-w z-10 mr-auto ml-auto -mt-16 rounded-lg bg-deepblue-700  xs:w-96 md:mr-0">
               <Label
                 as="div"
                 size="small"
