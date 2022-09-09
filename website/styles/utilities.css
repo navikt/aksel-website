@@ -15,3 +15,7 @@
 .svg-color-reset.navds-link svg {
   color: inherit;
 }
+
+.triangle {
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+}

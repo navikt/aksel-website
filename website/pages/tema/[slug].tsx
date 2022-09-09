@@ -61,11 +61,11 @@ const Page = (props: PageProps): JSX.Element => {
         >
           <div className="relative bg-white px-4 pt-12">
             <div className="mx-auto max-w-aksel xs:w-[90%]">
-              <NextLink href="/tema" passHref>
+              {/* <NextLink href="/tema" passHref>
                 <Link className="font-semibold uppercase tracking-widest text-text md:text-base">
                   Tema
                 </Link>
-              </NextLink>
+              </NextLink> */}
               <Heading
                 level="1"
                 size="xlarge"
@@ -73,23 +73,17 @@ const Page = (props: PageProps): JSX.Element => {
               >
                 {page.title}
               </Heading>
-              <div className="mt-4 max-w-prose">
-                <SanityBlockContent blocks={page.beskrivelse} noLastMargin />
-              </div>
+
+              <SanityBlockContent
+                blocks={page.beskrivelse}
+                noLastMargin
+                className="mt-4 max-w-prose"
+              />
             </div>
           </div>
-
-          {/* TODO: Må løses bedre */}
-          <section className="relative px-4 pt-16 pb-24">
-            <svg
-              className="absolute inset-x-0 top-0 w-full"
-              viewBox="0 0 100 12"
-              focusable="false"
-              aria-hidden="true"
-            >
-              <polygon points="0,0 100,0 0,12" className="fill-white"></polygon>
-            </svg>
-          </section>
+          <div className="bg-white">
+            <div className="triangle relative bg-gray-100 px-4 pt-16 pb-8" />
+          </div>
 
           {!page?.bruk_seksjoner || page?.seksjoner?.length === 0 ? (
             <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-12">
