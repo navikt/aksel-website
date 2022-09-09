@@ -10,7 +10,7 @@ import {
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { getClient } from "@/sanity-client";
-import { Accordion, Heading, Label } from "@navikt/ds-react";
+import { Heading, Label } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
 import NotFotfund from "../404";
