@@ -95,7 +95,7 @@ const Page = (props: PageProps): JSX.Element => {
               <Label
                 as="div"
                 size="small"
-                className="flex rounded-t-lg bg-deepblue-700 px-4 pt-4 pb-3 capitalize text-text-inverted md:px-6 md:pt-6 md:pb-4"
+                className="flex rounded-t-lg bg-deepblue-700 px-4 pt-4 pb-3 uppercase text-text-inverted md:px-6 md:pt-6 md:pb-4"
               >
                 Ansvarlig for tema
               </Label>
