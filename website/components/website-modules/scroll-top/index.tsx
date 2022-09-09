@@ -26,7 +26,7 @@ const ScrollTop = () => {
         viewBox="0 0 25 13"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="transition-transform group-hover:-translate-y-2"
+        className="transition-transform group-hover:-translate-y-1"
       >
         <path
           d="M1 11.3135L10.1924 2.12109C11.364 0.949516 13.2635 0.949516 14.435 2.12109L23.6274 11.3135"
