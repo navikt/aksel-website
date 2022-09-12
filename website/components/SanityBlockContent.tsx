@@ -211,12 +211,14 @@ export type BlockContextT = {
   size: "medium" | "small";
   noLastMargin: boolean;
   variant: "ds" | "aksel";
+  isIngress?: boolean;
 };
 
 export const BlockContext = createContext<BlockContextT>({
   size: "medium",
   noLastMargin: false,
   variant: "ds",
+  isIngress: false,
 });
 
 export const SanityBlockContent = ({
@@ -224,6 +226,7 @@ export const SanityBlockContent = ({
   size = "medium",
   noLastMargin = false,
   variant,
+  isIngress = false,
   ...rest
 }: {
   blocks: any;
@@ -231,6 +234,7 @@ export const SanityBlockContent = ({
   className?: string;
   noLastMargin?: boolean;
   variant?: "ds" | "aksel";
+  isIngress?: boolean;
 }) => {
   const context = useContext(BlockContext);
 
@@ -240,6 +244,7 @@ export const SanityBlockContent = ({
         size,
         noLastMargin,
         variant: variant ?? context?.variant ?? "ds",
+        isIngress,
       }}
     >
       <BlockContent
