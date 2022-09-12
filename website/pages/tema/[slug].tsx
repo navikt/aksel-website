@@ -84,9 +84,11 @@ const Page = (props: PageProps): JSX.Element => {
                 <SanityBlockContent
                   blocks={page.beskrivelse}
                   noLastMargin
-                  className="max-w-prose"
+                  className="override-text-700 max-w-prose xl:mb-8"
+                  isIngress
                 />
-                <div className="max-w z-10 rounded-lg bg-deepblue-700 xs:w-96  lg:mt-[10px]">
+                <div className="max-w relative z-10 h-fit rounded-lg bg-deepblue-700 xs:w-96 lg:mt-[10px]">
+                  <div className="absolute top-12 -z-10 -ml-4 block h-28 w-screen bg-gray-100 xs:hidden" />
                   <Label
                     as="div"
                     size="small"
@@ -104,12 +106,19 @@ const Page = (props: PageProps): JSX.Element => {
               </div>
             </div>
             <svg
-              className="-mt-36 hidden w-full rotate-180 bg-transparent md:-mt-48 md:block xl:-mt-28"
-              viewBox="0 0 100 12"
+              className="-mt-48 hidden h-44 w-full rotate-180 bg-transparent xs:block xl:-mt-36 xl:h-auto"
+              viewBox="0 0 100 16"
               focusable="false"
               aria-hidden="true"
             >
-              <polygon points="0,0 100,0 0,12" className="fill-gray-100" />
+              <polygon
+                points="0,0 100,0 0,16"
+                className="fill-gray-100 "
+              ></polygon>
+              <polygon
+                points="-14,-16 700,0 0,0"
+                className="fill-gray-100 "
+              ></polygon>
             </svg>
           </div>
 
@@ -137,7 +146,7 @@ const Page = (props: PageProps): JSX.Element => {
           {/* Ansvarlig-card */}
 
           {!page?.bruk_seksjoner || page?.seksjoner?.length === 0 ? (
-            <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-20 xl:pt-8 ">
+            <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-16 xl:pt-8 ">
               <div className="mx-auto max-w-aksel xs:w-[90%]">
                 <div className="grid gap-3 sm:grid-cols-2 md:gap-6">
                   {page.artikler.map((x) => (
@@ -148,7 +157,7 @@ const Page = (props: PageProps): JSX.Element => {
             </div>
           ) : (
             <>
-              <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-20 xl:pt-8 ">
+              <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-16 xl:pt-8 ">
                 <div className="mx-auto grid max-w-aksel gap-16 xs:w-[90%]">
                   {page.seksjoner.map((seksjon) => (
                     <div key={seksjon._key}>

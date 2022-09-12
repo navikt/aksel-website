@@ -66,7 +66,15 @@ const serializers = {
 
       switch (style) {
         case "normal":
-          return (
+          return context?.isIngress ? (
+            <Ingress
+              spacing
+              {...textProps}
+              className={cl("algolia-index-body", {
+                "last:mb-0": context.noLastMargin,
+              })}
+            />
+          ) : (
             <BodyLong
               size={context.size}
               spacing

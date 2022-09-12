@@ -16,6 +16,6 @@
   color: inherit;
 }
 
-.triangle {
-  clip-path: polygon(100% 25%, 0% 100%, 100% 100%);
+.override-text-700 p {
+  max-width: 700px;
 }
