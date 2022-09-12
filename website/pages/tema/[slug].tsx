@@ -58,8 +58,8 @@ const Page = (props: PageProps): JSX.Element => {
           id="hovedinnhold"
           className="min-h-[80vh] bg-gray-100 focus:outline-none"
         >
-          <div className="relative bg-white px-4 pt-12">
-            <div className="mx-auto max-w-aksel xs:w-[90%]">
+          <div className="relative bg-white  pt-12">
+            <div className="mx-auto max-w-aksel px-4 pb-6  xs:w-[90%]">
               {/* <NextLink href="/tema" passHref>
                 <Link className="font-semibold uppercase tracking-widest text-text md:text-base">
                   Tema
@@ -79,13 +79,14 @@ const Page = (props: PageProps): JSX.Element => {
               >
                 {page.title}
               </Heading>
-              <div className="mt-4 flex flex-col justify-between gap-2 xl:flex-row">
+
+              <div className="mt-4 flex flex-col justify-between gap-4 xl:flex-row">
                 <SanityBlockContent
                   blocks={page.beskrivelse}
                   noLastMargin
                   className="max-w-prose"
                 />
-                <div className="max-w z-10 mt-[10px] rounded-lg bg-deepblue-700  xs:w-96">
+                <div className="max-w z-10 rounded-lg bg-deepblue-700 xs:w-96  lg:mt-[10px]">
                   <Label
                     as="div"
                     size="small"
@@ -102,20 +103,20 @@ const Page = (props: PageProps): JSX.Element => {
                 </div>
               </div>
             </div>
-          </div>
-          {/* <div className="relative bg-white pt-8 xl:pt-0">
-            <div className="triangle relative bg-gray-50 px-4 pt-16 pb-8" />
-          </div> */}
-          <div className="relative bg-gray-100 px-4 pt-32 pb-8">
             <svg
-              className="absolute inset-x-0 top-0 w-full"
-              viewBox="0 0 100 8"
+              className="-mt-36 hidden w-full rotate-180 bg-transparent md:-mt-48 md:block xl:-mt-28"
+              viewBox="0 0 100 12"
               focusable="false"
               aria-hidden="true"
             >
-              <polygon points="0,0 100,0 0,8" className="fill-white"></polygon>
+              <polygon points="0,0 100,0 0,12" className="fill-gray-100" />
             </svg>
           </div>
+
+          {/* <div className="relative bg-white pt-8 xl:pt-0">
+            <div className="triangle relative bg-gray-50 px-4 pt-16 pb-8" />
+          </div> */}
+
           {/* <div className="relative mx-auto max-w-aksel px-4 xs:w-[90%]">
             <div className="max-w z-10 mr-auto  -mt-16 rounded-lg bg-deepblue-700  xs:w-96 xl:mr-0 xl:ml-auto">
               <Label
@@ -136,7 +137,7 @@ const Page = (props: PageProps): JSX.Element => {
           {/* Ansvarlig-card */}
 
           {!page?.bruk_seksjoner || page?.seksjoner?.length === 0 ? (
-            <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-12">
+            <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-20 xl:pt-8 ">
               <div className="mx-auto max-w-aksel xs:w-[90%]">
                 <div className="grid gap-3 sm:grid-cols-2 md:gap-6">
                   {page.artikler.map((x) => (
@@ -147,7 +148,7 @@ const Page = (props: PageProps): JSX.Element => {
             </div>
           ) : (
             <>
-              <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-12">
+              <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-20 xl:pt-8 ">
                 <div className="mx-auto grid max-w-aksel gap-16 xs:w-[90%]">
                   {page.seksjoner.map((seksjon) => (
                     <div key={seksjon._key}>
@@ -175,7 +176,7 @@ const Page = (props: PageProps): JSX.Element => {
                           />
                         </div>
                       )}
-                      <div className="grid gap-3 sm:grid-cols-3 md:gap-6">
+                      <div className="grid gap-3 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
                         {(seksjon.sider as unknown as ArtiklerT[]).map(
                           (x: ArtiklerT) => (
                             <ArtikkelCard
