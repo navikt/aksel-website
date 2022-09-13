@@ -235,7 +235,7 @@ const Page = (props: PageProps): JSX.Element => {
 
         <main tabIndex={-1} id="hovedinnhold" className="focus:outline-none">
           <div className="relative bg-deepblue-900 bg-gradient-to-b from-deepblue-900 via-deepblue-900/50 to-deepblue-700 px-4 pt-16 pb-24 text-white">
-            <div className="mx-auto max-w-aksel xs:w-[90%]">
+            <div className="dynamic-wrapper">
               <div className="gap-6 lg:grid lg:grid-cols-3">
                 <div className="max-w-prose pr-6 lg:col-span-2">
                   <Heading level="1" size="xlarge">
@@ -265,7 +265,7 @@ const Page = (props: PageProps): JSX.Element => {
                   className="fill-deepblue-700"
                 ></polygon>
               </svg>
-              <div className="relative z-10 mx-auto -mt-16 max-w-aksel xs:w-[90%]">
+              <div className="dynamic-wrapper relative z-10 -mt-16">
                 <Heading
                   level="2"
                   size="small"
@@ -293,7 +293,7 @@ const Page = (props: PageProps): JSX.Element => {
           {/* Prinsipper */}
           {hasPrinsipp1 && (
             <section className="bg-deepblue-50 px-4 pt-0 pb-32 lg:pt-12">
-              <div className="relative z-10 mx-auto max-w-aksel xs:w-[90%]">
+              <div className="dynamic-wrapper relative z-10">
                 <div className="lg:grid lg:grid-flow-row-dense lg:gap-x-8">
                   <div className="lg:order-1 lg:col-start-2 lg:row-start-1 lg:-mb-8 lg:-mt-12">
                     <img
@@ -358,7 +358,7 @@ const Page = (props: PageProps): JSX.Element => {
               ></polygon>
             </svg>
 
-            <div className="relative z-10 mx-auto max-w-aksel xs:w-[90%]">
+            <div className="dynamic-wrapper relative z-10">
               <div className="gap-6 2xl:grid 2xl:grid-cols-3 2xl:items-start">
                 {/* Redaksjons-kort */}
                 <div className="mx-auto grid max-w-lg  rounded-lg shadow 2xl:sticky 2xl:top-24">

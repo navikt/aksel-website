@@ -31,7 +31,7 @@ const Page = (props: PageProps): JSX.Element => {
           className="min-h-[80vh] bg-gray-100 focus:outline-none"
         >
           <div className="relative bg-white px-4 pt-8 pb-8 md:pt-12">
-            <div className="mx-auto w-fit max-w-2xl xs:w-[90%]">
+            <div className="dynamic-wrapper-2xl w-fit">
               <Heading
                 level="1"
                 size="xlarge"
@@ -43,7 +43,7 @@ const Page = (props: PageProps): JSX.Element => {
             </div>
           </div>
           <div className="relative px-4 pt-8 pb-24">
-            <div className="mx-auto w-fit max-w-2xl xs:w-[90%]">
+            <div className="dynamic-wrapper-2xl w-fit">
               <div className="mt-4 grid gap-2 divide-y divide-gray-300">
                 {page.map((blog) => (
                   <BloggCard key={blog._id} blog={blog} />

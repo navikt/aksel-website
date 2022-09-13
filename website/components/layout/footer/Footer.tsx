@@ -16,7 +16,7 @@ const Footer = ({ variant = "ds" }: { variant: "ds" | "aksel" }) => {
       )}
     >
       <ScrollTop />
-      <div className="relative mx-auto w-full max-w-aksel py-8 xs:w-[90%]">
+      <div className="dynamic-wrapper relative w-full py-8">
         <div className="flex items-start justify-between">
           <div className="mb-16 inline-flex h-[49px] items-center text-2xl">
             <NavLogoWhite aria-hidden />

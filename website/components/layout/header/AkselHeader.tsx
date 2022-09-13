@@ -25,8 +25,8 @@ const AkselHeader = ({
         }
       )}
     >
-      <div className="mx-auto flex max-w-aksel justify-between xs:w-[90%]">
-        <a className="skiplink" href="#hovedinnhold" tab-index={-1}>
+      <div className="dynamic-wrapper flex justify-between">
+        <a className="skiplink" href="#hovedinnhold" tabIndex={-1}>
           Hopp til innhold
         </a>
 

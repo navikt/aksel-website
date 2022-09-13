@@ -60,7 +60,7 @@ const AkselArtikkelTemplate = ({
         className="aksel-artikkel bg-gray-50 pt-[8vw] pb-16 focus:outline-none xs:pb-32"
       >
         <div className="px-4">
-          <div className="mx-auto max-w-prose xs:w-[90%]">
+          <div className="dynamic-wrapper-prose">
             <div>
               {hasTema &&
                 data.tema.map(({ title }: any, y) => (
@@ -118,7 +118,7 @@ const AkselArtikkelTemplate = ({
                 <UnderArbeid text={data?.under_arbeid?.forklaring} />
                 {data?.under_arbeid?.vis_innhold && (
                   <SanityBlockContent
-                    className="mx-auto max-w-prose xs:w-[90%]"
+                    className="dynamic-wrapper-prose"
                     blocks={data?.content ?? []}
                     variant="aksel"
                   />
@@ -126,7 +126,7 @@ const AkselArtikkelTemplate = ({
               </>
             ) : (
               <SanityBlockContent
-                className="mx-auto max-w-prose xs:w-[90%]"
+                className="dynamic-wrapper-prose"
                 blocks={data?.content ?? []}
                 variant="aksel"
               />
@@ -134,7 +134,7 @@ const AkselArtikkelTemplate = ({
           </div>
         </div>
         <div className="mt-16 px-4">
-          <div className="mx-auto max-w-prose border-t border-gray-300 pt-8 xs:w-[90%]">
+          <div className="dynamic-wrapper-prose border-t border-gray-300 pt-8">
             <Feedback akselFeedback docId={data?._id} docType={data?._type} />
           </div>
         </div>

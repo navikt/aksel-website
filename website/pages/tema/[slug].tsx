@@ -64,7 +64,7 @@ const Page = (props: PageProps): JSX.Element => {
           className="min-h-[80vh] bg-gray-100 focus:outline-none"
         >
           <div className="relative bg-white pt-12">
-            <div className="mx-auto max-w-aksel px-4 pb-6 xs:w-[90%]">
+            <div className="dynamic-wrapper px-4 pb-6">
               <BreadCrumbs href="/tema" text="Temaer" />
               <Heading
                 level="1"
@@ -164,7 +164,7 @@ const Page = (props: PageProps): JSX.Element => {
 
           {!page?.bruk_seksjoner || page?.seksjoner?.length === 0 ? (
             <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-16 xl:pt-8 ">
-              <div className="mx-auto max-w-aksel xs:w-[90%]">
+              <div className="dynamic-wrapper">
                 <div className="grid gap-3 sm:grid-cols-2 md:gap-6">
                   {page.artikler.map((x) => (
                     <ArtikkelCard {...x} source={page.title} key={x._id} />
@@ -175,7 +175,7 @@ const Page = (props: PageProps): JSX.Element => {
           ) : (
             <>
               <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-16 xl:pt-8 ">
-                <div className="mx-auto grid max-w-aksel gap-16 xs:w-[90%]">
+                <div className="dynamic-wrapper grid gap-16">
                   {page.seksjoner.map((seksjon) => (
                     <div key={seksjon._key}>
                       <Heading
