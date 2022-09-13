@@ -1,4 +1,4 @@
-import { abbrName, ArtikkelCard } from "@/components";
+import { abbrName, ArtikkelCard, BreadCrumbs } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
 import {
   AkselArtikkel,
@@ -69,6 +69,7 @@ const Page = (props: PageProps): JSX.Element => {
                   Tema
                 </Link>
               </NextLink> */}
+              <BreadCrumbs href="/tema" text="Temaer" />
               <Heading
                 level="1"
                 size="xlarge"
