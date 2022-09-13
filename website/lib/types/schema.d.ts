@@ -86,6 +86,12 @@ Anbefalt størrelse er 1200:630px
       };
 
       /**
+       * Roller - `Array`
+eks: Utvikler, Webanalytiker, uu-spesialist
+       */
+      roller?: Array<Sanity.Keyed<string>>;
+
+      /**
        * Profil - `String`
        */
       profile_page?: string;
@@ -937,6 +943,12 @@ Brukes i kort og innganger
        * Beskrivelse - `RegistryReference`
        */
       beskrivelse?: riktekst_enkel;
+
+      /**
+       * Ansvarlig for tema - `Reference`
+Legg til redaktør som har forvaltningsansvaret for temaet
+       */
+      ansvarlig?: Sanity.Reference<editor>;
 
       /**
        * Bruk seksjonsinndeling - `Boolean`

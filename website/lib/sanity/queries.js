@@ -306,6 +306,7 @@ export const akselTemaNames = `*[_type == "aksel_tema" && count(*[references(^._
 
 export const akselTemaDocs = `*[_type == "aksel_tema"]{
   ...,
+  "ansvarlig": ansvarlig->{title, roller},
   bruk_seksjoner == true => {
     "artikler": [],
     seksjoner[]{
@@ -323,7 +324,7 @@ export const akselTemaDocs = `*[_type == "aksel_tema"]{
         "slug": slug.current,
         "tema": tema[]->tag,
         ingress,
-        "contributor": contributors[0]->title
+        "contributor": contributors[0]->title,
       }
     }
   },
@@ -337,7 +338,7 @@ export const akselTemaDocs = `*[_type == "aksel_tema"]{
       "slug": slug.current,
       "tema": tema[]->tag,
       ingress,
-      "contributor": contributors[0]->title
+      "contributor": contributors[0]->title,
     },
     "seksjoner": []
   },

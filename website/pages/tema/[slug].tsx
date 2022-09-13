@@ -1,4 +1,4 @@
-import { ArtikkelCard } from "@/components";
+import { abbrName, ArtikkelCard } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
 import {
   AkselArtikkel,
@@ -14,6 +14,7 @@ import { Heading, Label } from "@navikt/ds-react";
 import Head from "next/head";
 import React from "react";
 import NotFotfund from "../404";
+import cl from "classnames";
 
 type ArtiklerT = Partial<
   AkselArtikkel & {
@@ -25,6 +26,7 @@ type ArtiklerT = Partial<
 
 export interface AkselTemaPage extends SanityT.Schema.aksel_tema {
   artikler: ArtiklerT[];
+  ansvarlig?: { title?: string; roller: string[] };
 }
 
 interface PageProps {
@@ -44,6 +46,8 @@ const Page = (props: PageProps): JSX.Element => {
   if (!page) {
     return <NotFotfund />;
   }
+
+  const hasAnsvarlig = !!page?.ansvarlig?.title;
 
   return (
     <>
@@ -87,7 +91,13 @@ const Page = (props: PageProps): JSX.Element => {
                   className="override-text-700 max-w-prose xl:mb-8"
                   isIngress
                 />
-                <div className="max-w relative z-10 h-fit rounded-lg bg-deepblue-700 xs:w-96 lg:mt-[10px]">
+                <div
+                  className={cl(
+                    "max-w relative z-10 h-fit rounded-lg bg-deepblue-700 xs:w-96 lg:mt-[10px]",
+                    { invisible: !hasAnsvarlig }
+                  )}
+                  aria-hidden={!hasAnsvarlig}
+                >
                   <div className="absolute top-12 -z-10 -ml-4 block h-28 w-screen bg-gray-100 xs:hidden" />
                   <Label
                     as="div"
@@ -98,8 +108,15 @@ const Page = (props: PageProps): JSX.Element => {
                   </Label>
                   <div className="grid gap-2 rounded-b-lg bg-deepblue-100 px-4 py-3 md:px-6 md:py-4">
                     <div>
-                      <Label as="div">Placeholder</Label>
-                      <div className="mt-[2px]">Placeholder</div>
+                      <Label as="div">
+                        {page?.ansvarlig?.title &&
+                          abbrName(page?.ansvarlig?.title)}
+                      </Label>
+                      {page?.ansvarlig?.roller?.length > 0 && (
+                        <div className="mt-[2px]">
+                          {page?.ansvarlig?.roller.join(", ")}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
