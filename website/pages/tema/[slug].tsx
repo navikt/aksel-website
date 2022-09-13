@@ -24,7 +24,8 @@ type ArtiklerT = Partial<
   }
 >;
 
-export interface AkselTemaPage extends SanityT.Schema.aksel_tema {
+export interface AkselTemaPage
+  extends Omit<SanityT.Schema.aksel_tema, "ansvarlig"> {
   artikler: ArtiklerT[];
   ansvarlig?: { title?: string; roller: string[] };
 }
@@ -62,13 +63,8 @@ const Page = (props: PageProps): JSX.Element => {
           id="hovedinnhold"
           className="min-h-[80vh] bg-gray-100 focus:outline-none"
         >
-          <div className="relative bg-white  pt-12">
-            <div className="mx-auto max-w-aksel px-4 pb-6  xs:w-[90%]">
-              {/* <NextLink href="/tema" passHref>
-                <Link className="font-semibold uppercase tracking-widest text-text md:text-base">
-                  Tema
-                </Link>
-              </NextLink> */}
+          <div className="relative bg-white pt-12">
+            <div className="mx-auto max-w-aksel px-4 pb-6 xs:w-[90%]">
               <BreadCrumbs href="/tema" text="Temaer" />
               <Heading
                 level="1"
