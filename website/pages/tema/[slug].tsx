@@ -109,13 +109,16 @@ const Page = (props: PageProps): JSX.Element => {
                   <div className="grid gap-2 rounded-b-lg bg-deepblue-100 px-4 py-3 md:px-6 md:py-4">
                     <div>
                       <Label as="div">
-                        {page?.ansvarlig?.title &&
-                          abbrName(page?.ansvarlig?.title)}
+                        {page?.ansvarlig?.title
+                          ? abbrName(page?.ansvarlig?.title)
+                          : "placeholder"}
                       </Label>
-                      {page?.ansvarlig?.roller?.length > 0 && (
+                      {page?.ansvarlig?.roller?.length > 0 ? (
                         <div className="mt-[2px]">
                           {page?.ansvarlig?.roller.join(", ")}
                         </div>
+                      ) : (
+                        "placeholder"
                       )}
                     </div>
                   </div>
@@ -123,7 +126,7 @@ const Page = (props: PageProps): JSX.Element => {
               </div>
             </div>
             <svg
-              className="-mt-48 hidden h-44 w-full rotate-180 bg-transparent xs:block xl:-mt-36 xl:h-auto"
+              className="-mt-48 hidden h-44 w-full rotate-180 bg-transparent xs:block lg:h-auto xl:-mt-36"
               viewBox="0 0 100 16"
               focusable="false"
               aria-hidden="true"
@@ -133,8 +136,8 @@ const Page = (props: PageProps): JSX.Element => {
                 className="fill-gray-100 "
               ></polygon>
               <polygon
-                points="-14,-16 700,0 0,0"
-                className="fill-gray-100 "
+                points="-14,-16 1000,1 0,0"
+                className="fill-gray-100"
               ></polygon>
             </svg>
           </div>
