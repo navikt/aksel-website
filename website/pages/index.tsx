@@ -273,7 +273,7 @@ const Page = (props: PageProps): JSX.Element => {
                 >
                   Temaer
                 </Heading>
-                <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3">
+                <div className="card-grid-3-1 mt-4">
                   {/* Temakort */}
                   {filteredTemas.slice(0, 7).map((tema) => (
                     <TemaCard {...tema} key={tema._id} />

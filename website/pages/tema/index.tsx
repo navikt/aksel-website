@@ -51,7 +51,7 @@ const Page = (props: PageProps): JSX.Element => {
           </div>
           <div className="relative px-4 pt-8 pb-24">
             <div className="dynamic-wrapper">
-              <div className="mt-4 grid gap-3 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
+              <div className="card-grid-3-1 mt-4">
                 {filteredTemas.map((tema) => (
                   <TemaCard compact {...tema} key={tema._id} />
                 ))}

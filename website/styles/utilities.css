@@ -31,3 +31,7 @@
 .dynamic-wrapper-2xl {
   @apply mx-auto max-w-2xl xs:w-[90%];
 }
+
+.card-grid-3-1 {
+  @apply grid gap-3 sm:grid-cols-2 md:gap-6 lg:grid-cols-3;
+}

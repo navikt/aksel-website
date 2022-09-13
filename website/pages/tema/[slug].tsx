@@ -139,33 +139,10 @@ const Page = (props: PageProps): JSX.Element => {
             </svg>
           </div>
 
-          {/* <div className="relative bg-white pt-8 xl:pt-0">
-            <div className="triangle relative bg-gray-50 px-4 pt-16 pb-8" />
-          </div> */}
-
-          {/* <div className="relative mx-auto max-w-aksel px-4 xs:w-[90%]">
-            <div className="max-w z-10 mr-auto  -mt-16 rounded-lg bg-deepblue-700  xs:w-96 xl:mr-0 xl:ml-auto">
-              <Label
-                as="div"
-                size="small"
-                className="flex rounded-t-lg bg-deepblue-700 px-4 pt-4 pb-3 uppercase text-text-inverted md:px-6 md:pt-6 md:pb-4"
-              >
-                Ansvarlig for tema
-              </Label>
-              <div className="grid gap-2 rounded-b-lg bg-deepblue-100 px-4 py-3 md:px-6 md:py-4">
-                <div>
-                  <Label as="div">Placeholder</Label>
-                  <div className="mt-[2px]">Placeholder</div>
-                </div>
-              </div>
-            </div>
-          </div> */}
-          {/* Ansvarlig-card */}
-
           {!page?.bruk_seksjoner || page?.seksjoner?.length === 0 ? (
             <div className="relative bg-gray-100 px-4 pt-8 pb-24 md:pt-16 xl:pt-8 ">
               <div className="dynamic-wrapper">
-                <div className="grid gap-3 sm:grid-cols-2 md:gap-6">
+                <div className="card-grid-3-1">
                   {page.artikler.map((x) => (
                     <ArtikkelCard {...x} source={page.title} key={x._id} />
                   ))}
@@ -202,7 +179,7 @@ const Page = (props: PageProps): JSX.Element => {
                           />
                         </div>
                       )}
-                      <div className="grid gap-3 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
+                      <div className="card-grid-3-1">
                         {(seksjon.sider as unknown as ArtiklerT[]).map(
                           (x: ArtiklerT) => (
                             <ArtikkelCard
