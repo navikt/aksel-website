@@ -31,6 +31,15 @@ export default {
       group: "innhold",
     },
     {
+      title: "Ansvarlig for tema",
+      description: "Legg til redaktør som har forvaltningsansvaret for temaet",
+      name: "ansvarlig",
+      type: "reference",
+      to: [{ type: "editor" }],
+      validation: (Rule) => Rule.required(),
+      group: "innhold",
+    },
+    {
       title: "Bruk seksjonsinndeling",
       description:
         "Vil ikke vise artikler som ikke er lagt til i seksjoner hvis valgt!",
