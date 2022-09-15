@@ -63,7 +63,7 @@ const Page = (props: PageProps): JSX.Element => {
           id="hovedinnhold"
           className="min-h-[80vh] bg-gray-100 focus:outline-none"
         >
-          <div className="relative overflow-x-hidden bg-white pt-12">
+          <div className="relative overflow-x-clip bg-white pt-12">
             <div className="dynamic-wrapper px-4 pb-6">
               <BreadCrumbs href="/tema" text="Temaer" />
               <Heading
