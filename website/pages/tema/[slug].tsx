@@ -63,7 +63,7 @@ const Page = (props: PageProps): JSX.Element => {
           id="hovedinnhold"
           className="min-h-[80vh] bg-gray-100 focus:outline-none"
         >
-          <div className="relative bg-white pt-12">
+          <div className="relative overflow-x-hidden bg-white pt-12">
             <div className="dynamic-wrapper px-4 pb-6">
               <BreadCrumbs href="/tema" text="Temaer" />
               <Heading
@@ -81,7 +81,7 @@ const Page = (props: PageProps): JSX.Element => {
                 {page.title}
               </Heading>
 
-              <div className="mt-4 flex flex-col justify-between gap-4 xl:flex-row">
+              <div className="mt-4 flex flex-col justify-between gap-8 xl:flex-row">
                 <SanityBlockContent
                   blocks={page.beskrivelse}
                   noLastMargin
@@ -90,12 +90,11 @@ const Page = (props: PageProps): JSX.Element => {
                 />
                 <div
                   className={cl(
-                    "max-w relative z-10 h-fit rounded-lg bg-deepblue-700 xs:w-96 lg:mt-[10px]",
+                    "max-w relative z-10 h-fit rounded-lg xs:w-96 xl:mt-[10px]",
                     { invisible: !hasAnsvarlig }
                   )}
                   aria-hidden={!hasAnsvarlig}
                 >
-                  <div className="absolute top-12 -z-10 -ml-4 block h-28 w-screen bg-gray-100 xs:hidden" />
                   <Label
                     as="div"
                     size="small"
