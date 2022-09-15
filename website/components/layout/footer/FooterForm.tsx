@@ -74,29 +74,6 @@ const FooterForm = () => {
 
   return (
     <>
-      <div>
-        <Label spacing as="p">
-          Hvordan komme i kontakt?
-        </Label>
-        <BodyShort as="ul">
-          <li>
-            <Link
-              className="text-text-inverted focus:bg-blue-200 focus:text-text focus:shadow-focus focus:shadow-blue-200"
-              href="https://nav-it.slack.com/archives/C0370ADS0HX"
-            >
-              Aksel på Slack
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-text-inverted focus:bg-blue-200 focus:text-text focus:shadow-focus focus:shadow-blue-200"
-              href="https://nav-it.slack.com/archives/C7NE7A8UF"
-            >
-              Designsystemet på Slack
-            </Link>
-          </li>
-        </BodyShort>
-      </div>
       <div className="flex w-full max-w-md flex-col gap-8" data-theme="dark">
         {sent.status ? (
           <div>
@@ -147,14 +124,6 @@ const FooterForm = () => {
             <Button>Send melding</Button>
           </form>
         )}
-        <div>
-          &copy; 2022 NAV |{" "}
-          <NextLink href="/side/personvernerklaering" passHref>
-            <a className=" outline-none hover:underline focus:bg-focus-inverted focus:text-text focus:no-underline focus:ring focus:ring-focus-inverted">
-              Personvernerklæring og informasjonskapsler
-            </a>
-          </NextLink>
-        </div>
       </div>
     </>
   );

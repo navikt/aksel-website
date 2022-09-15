@@ -8,6 +8,7 @@ const BreadCrumbs = ({ href, text }: { href: string; text: string }) => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="h-[19px] w-[10px] group-hover:w-[16px]"
+          aria-hidden
         >
           <path
             d="M8 17.5L2.12132 11.6213C0.949744 10.4497 0.949746 8.55025 2.12132 7.37868L8 1.5"

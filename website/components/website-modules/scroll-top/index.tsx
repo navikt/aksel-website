@@ -1,3 +1,4 @@
+import { Heading } from "@navikt/ds-react";
 import ElevatorJs from "elevator.js";
 
 const ScrollTop = () => {
@@ -18,23 +19,25 @@ const ScrollTop = () => {
       onClick={(e) => {
         handleElevator(e);
       }}
-      className="group absolute top-4 left-0 right-0 z-10 mx-auto flex min-h-[48px] w-fit flex-col items-center gap-2 p-2 text-text-inverted hover:underline focus:shadow-focus-inverted focus:outline-none"
+      className="group -mt-[10px] flex h-[48px] w-fit items-center justify-center gap-2 p-2 text-xlarge font-semibold text-text-inverted hover:underline focus:shadow-focus-inverted focus:outline-none"
     >
       <svg
         width="25"
-        height="13"
-        viewBox="0 0 25 13"
+        height="12"
+        viewBox="0 0 25 12"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="transition-transform group-hover:-translate-y-1"
+        aria-hidden
       >
         <path
-          d="M1 11.3135L10.1924 2.12109C11.364 0.949516 13.2635 0.949516 14.435 2.12109L23.6274 11.3135"
+          d="M1 11.3145L10.1924 2.12207C11.364 0.950492 13.2635 0.950492 14.435 2.12207L23.6274 11.3145"
           stroke="white"
           strokeWidth="2"
         />
       </svg>
-      Til toppen
+      <Heading as="span" size="small">
+        Til toppen
+      </Heading>
     </button>
   );
 };

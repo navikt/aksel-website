@@ -1,5 +1,5 @@
 const Slope = () => (
-  <div className="relative mx-auto h-fit max-w-[1440px]">
+  <div className="relative mx-auto h-fit max-w-[1440px]" aria-hidden>
     <svg
       className="-mt-60  w-[1440px] rotate-180 bg-transparent xl:-mt-36"
       viewBox="0 0 100 16"
