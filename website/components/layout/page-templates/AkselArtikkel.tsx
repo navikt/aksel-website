@@ -4,7 +4,7 @@ import { BodyShort, Heading, Ingress, Link } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
-import { dateStr, Feedback, TableOfContents, UnderArbeid } from "../..";
+import { dateStr, Feedback, Slope, TableOfContents, UnderArbeid } from "../..";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
 
@@ -57,7 +57,7 @@ const AkselArtikkelTemplate = ({
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className="aksel-artikkel bg-gray-50 pt-[8vw] pb-16 focus:outline-none xs:pb-32"
+        className="aksel-artikkel bg-gray-50 pt-[8vw] focus:outline-none "
       >
         <div className="mx-auto w-full max-w-aksel px-4">
           <div className="dynamic-wrapper-left">
@@ -137,9 +137,12 @@ const AkselArtikkelTemplate = ({
             )}
           </div>
         </div>
-        <div className="mt-16 px-4">
-          <div className="dynamic-wrapper-prose border-t border-gray-300 pt-8">
-            <Feedback akselFeedback docId={data?._id} docType={data?._type} />
+        <div className="mt-16 overflow-x-clip px-4">
+          <Slope />
+          <div className="bg-gray-100 pb-16 xs:pb-32">
+            <div className="dynamic-wrapper-prose border-t border-gray-300 pt-8">
+              <Feedback akselFeedback docId={data?._id} docType={data?._type} />
+            </div>
           </div>
         </div>
       </main>
