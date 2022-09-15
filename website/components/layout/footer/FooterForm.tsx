@@ -16,7 +16,6 @@ const FooterForm = () => {
   const [contactForm, setContactForm] = useState({
     content: "",
     mail: "",
-    hasStarted: false,
   });
 
   const [contentError, setContentError] = useState({ content: "", mail: "" });
@@ -58,7 +57,7 @@ const FooterForm = () => {
     });
 
     setSent({ status: true, hadMail: !!contactForm?.mail });
-    setContactForm({ content: "", mail: "", hasStarted: false });
+    setContactForm({ content: "", mail: "" });
   };
 
   useEffect(() => {
@@ -70,7 +69,7 @@ const FooterForm = () => {
   useEffect(() => {
     setHasWritten(false);
     setSent({ status: false, hadMail: false });
-    setContactForm({ content: "", mail: "", hasStarted: false });
+    setContactForm({ content: "", mail: "" });
     setContentError({ content: "", mail: "" });
   }, [asPath]);
 
@@ -104,7 +103,6 @@ const FooterForm = () => {
                   setContactForm({
                     ...contactForm,
                     content: e.target.value,
-                    hasStarted: true,
                   });
                   e.target.value &&
                     !isEmpty(e.target.value, { ignore_whitespace: true }) &&
@@ -113,9 +111,7 @@ const FooterForm = () => {
                 minRows={3}
               />
               <TextField
-                className={cl("inverted-textfield", {
-                  hidden: !contactForm.hasStarted,
-                })}
+                className={cl("inverted-textfield")}
                 label="Vi svarer til e-post (valgfritt)"
                 error={contentError.mail}
                 value={contactForm.mail}
@@ -128,13 +124,7 @@ const FooterForm = () => {
                 }}
               />
             </div>
-            <Button
-              className={cl({
-                hidden: !contactForm.hasStarted,
-              })}
-            >
-              Send melding
-            </Button>
+            <Button>Send melding</Button>
           </form>
         )}
       </div>

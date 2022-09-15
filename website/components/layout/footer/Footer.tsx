@@ -19,7 +19,7 @@ const Footer = ({ variant = "ds" }: { variant: "ds" | "aksel" }) => {
       )}
     >
       <div className="dynamic-wrapper relative grid w-full gap-16 py-12">
-        <div className="footer-grid-3-1">
+        <div className="footer-grid-3-1 ">
           <ScrollTop />
           <div>
             <Heading as="p" size="small">
