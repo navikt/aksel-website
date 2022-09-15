@@ -59,8 +59,8 @@ const AkselArtikkelTemplate = ({
         id="hovedinnhold"
         className="aksel-artikkel bg-gray-50 pt-[8vw] pb-16 focus:outline-none xs:pb-32"
       >
-        <div className="px-4">
-          <div className="dynamic-wrapper-prose">
+        <div className="mx-auto w-full max-w-aksel px-4">
+          <div className="dynamic-wrapper-left">
             <div>
               {hasTema &&
                 data.tema.map(({ title }: any, y) => (
@@ -110,9 +110,13 @@ const AkselArtikkelTemplate = ({
             </div>
           </div>
         </div>
-        <div className="mt-12">
-          <TableOfContents changedState={data?.content ?? []} hideToc />
-          <div className="mt-8 px-4">
+        <div className="mx-auto mt-16 flex max-w-aksel">
+          <TableOfContents
+            changedState={data?.content ?? []}
+            hideToc={false}
+            aksel
+          />
+          <div className="w-full px-4">
             {data?.under_arbeid?.status ? (
               <>
                 <UnderArbeid text={data?.under_arbeid?.forklaring} />
@@ -126,7 +130,7 @@ const AkselArtikkelTemplate = ({
               </>
             ) : (
               <SanityBlockContent
-                className="dynamic-wrapper-prose"
+                className="dynamic-wrapper-left"
                 blocks={data?.content ?? []}
                 variant="aksel"
               />

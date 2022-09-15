@@ -28,6 +28,10 @@
   @apply mx-auto max-w-prose xs:w-[90%];
 }
 
+.dynamic-wrapper-left {
+  @apply max-w-prose xs:w-[90%];
+}
+
 .dynamic-wrapper-2xl {
   @apply mx-auto max-w-2xl xs:w-[90%];
 }

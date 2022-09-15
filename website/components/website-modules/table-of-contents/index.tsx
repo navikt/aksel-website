@@ -7,9 +7,11 @@ import { useEffect, useState } from "react";
 function TableOfContents({
   changedState,
   hideToc = true,
+  aksel = false,
 }: {
   changedState: any;
   hideToc?: boolean;
+  aksel?: boolean;
 }): JSX.Element {
   const [toc, setToc] = useState<{ heading: string; id: string }[]>([]);
 
@@ -87,7 +89,14 @@ function TableOfContents({
 
   return (
     <div className="algolia-ignore-index sticky right-0 top-20 z-[1] order-1 my-16 hidden h-full w-72 flex-col items-start pl-4 xl:flex">
-      <Heading size="small" as="p" id="toc-heading" className="mb-4">
+      <Heading
+        size="small"
+        as="p"
+        id="toc-heading"
+        className={cl("mb-4", {
+          "text-deepblue-700": aksel,
+        })}
+      >
         Innhold på siden
       </Heading>
       <div className="flex flex-col">
@@ -97,8 +106,10 @@ function TableOfContents({
               <BodyShort
                 as="li"
                 className={cl("border-l py-2 pl-4", {
+                  "border-l-deepblue-700 font-semibold shadow-[inset_1px_0_0_0_theme(colors.deepblue-700),-1px_0_0_0_theme(colors.deepblue-700)]":
+                    link.id === activeId && aksel,
                   "border-l-gray-900 font-semibold shadow-[inset_1px_0_0_0_theme(colors.gray-900),-1px_0_0_0_theme(colors.gray-900)]":
-                    link.id === activeId,
+                    link.id === activeId && !aksel,
                   "border-l-divider": link.id !== activeId,
                 })}
                 key={link.id + link.heading}
@@ -107,7 +118,12 @@ function TableOfContents({
                   href={`#${link.id}`}
                   onClick={() => handleFocus(`${link.id}`)}
                   className={cl(
-                    "overflow-hidden overflow-ellipsis text-text no-underline hover:underline"
+                    "overflow-hidden overflow-ellipsis  no-underline hover:underline",
+                    {
+                      "text-deepblue-700": aksel && link.id === activeId,
+                      "text-text-muted": aksel && link.id !== activeId,
+                      "text-text": !aksel,
+                    }
                   )}
                 >
                   {link.heading}
