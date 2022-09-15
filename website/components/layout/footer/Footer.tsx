@@ -1,9 +1,8 @@
-import React from "react";
-import { EditButton, NavLogoWhite, ScrollTop } from "../..";
-import FooterForm from "./FooterForm";
+import { BodyShort, Heading, Link } from "@navikt/ds-react";
 import cl from "classnames";
-import { Label, BodyShort, Link, Heading } from "@navikt/ds-react";
 import NextLink from "next/link";
+import { EditButton, ScrollTop } from "../..";
+import FooterForm from "./FooterForm";
 
 const Footer = ({ variant = "ds" }: { variant: "ds" | "aksel" }) => {
   return (
@@ -19,7 +18,7 @@ const Footer = ({ variant = "ds" }: { variant: "ds" | "aksel" }) => {
       )}
     >
       <div className="dynamic-wrapper relative grid w-full gap-16 py-12">
-        <div className="footer-grid-3-1 ">
+        <div className="grid gap-12 xl:grid-cols-3 xl:gap-6">
           <ScrollTop />
           <div>
             <Heading as="p" size="small">
@@ -47,8 +46,8 @@ const Footer = ({ variant = "ds" }: { variant: "ds" | "aksel" }) => {
           </div>
           <FooterForm />
         </div>
-        <div className="footer-grid-3-1">
-          <div className="grid gap-2">
+        <div className="grid xl:grid-cols-3 xl:gap-6">
+          <div className="mb-4 grid gap-2 xl:mb-0">
             <svg
               width="64"
               height="20"
@@ -72,11 +71,19 @@ const Footer = ({ variant = "ds" }: { variant: "ds" | "aksel" }) => {
             </svg>
             Arbeids- og velferdsetaten
           </div>
-          <BodyShort className="self-end">
+          <BodyShort className="mb-1 self-end xl:mb-0">
             Ansvarlig redaktør: Eidar Grande Vollane
           </BodyShort>
-          <div className="self-end">
-            <div>&copy; 2022 NAV</div>
+          <div className="hidden self-end xl:block">
+            <p>&copy; 2022 NAV</p>
+            <NextLink href="/side/personvernerklaering" passHref>
+              <a className="outline-none hover:underline focus:bg-focus-inverted focus:text-text focus:no-underline focus:ring focus:ring-focus-inverted">
+                Personvernerklæring og informasjonskapsler
+              </a>
+            </NextLink>
+          </div>
+          <div className="block self-end xl:hidden">
+            &copy; 2022 NAV |{" "}
             <NextLink href="/side/personvernerklaering" passHref>
               <a className="outline-none hover:underline focus:bg-focus-inverted focus:text-text focus:no-underline focus:ring focus:ring-focus-inverted">
                 Personvernerklæring og informasjonskapsler
