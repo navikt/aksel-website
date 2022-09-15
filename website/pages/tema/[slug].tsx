@@ -1,4 +1,4 @@
-import { abbrName, ArtikkelCard, BreadCrumbs } from "@/components";
+import { abbrName, ArtikkelCard, BreadCrumbs, Slope } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
 import {
   AkselArtikkel,
@@ -122,21 +122,7 @@ const Page = (props: PageProps): JSX.Element => {
                 </div>
               </div>
             </div>
-            <svg
-              className="-mt-48 hidden h-44 w-full rotate-180 bg-transparent xs:block lg:h-auto xl:-mt-36"
-              viewBox="0 0 100 16"
-              focusable="false"
-              aria-hidden="true"
-            >
-              <polygon
-                points="0,0 100,0 0,16"
-                className="fill-gray-100 "
-              ></polygon>
-              <polygon
-                points="-14,-16 1000,1 0,0"
-                className="fill-gray-100"
-              ></polygon>
-            </svg>
+            <Slope />
           </div>
 
           {!page?.bruk_seksjoner || page?.seksjoner?.length === 0 ? (

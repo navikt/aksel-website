@@ -66,10 +66,13 @@ function TableOfContents({
     };
   }, [toc]);
 
+  // TODO: Løse dette på en bedre måte
   useEffect(() => {
-    activeId
-      ? window.history.replaceState(window.history.state, "", `#${activeId}`)
-      : window.history.replaceState(window.history.state, "", " ");
+    setTimeout(() => {
+      activeId
+        ? window.history.replaceState(window.history.state, "", `#${activeId}`)
+        : window.history.replaceState(window.history.state, "", " ");
+    }, 100);
   }, [activeId]);
 
   const handleFocus = (id: string) => {
