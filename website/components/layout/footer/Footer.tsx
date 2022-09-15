@@ -18,12 +18,12 @@ const Footer = ({ variant = "ds" }: { variant: "ds" | "aksel" }) => {
         }
       )}
     >
-      <div className="dynamic-wrapper relative w-full py-12">
+      <div className="dynamic-wrapper relative grid w-full gap-16 py-12">
         <div className="footer-grid-3-1">
           <ScrollTop />
           <div>
             <Heading as="p" size="small">
-              Til toppen
+              Kontakt oss
             </Heading>
             <BodyShort as="ul" className="mt-5 grid gap-2">
               <li>
@@ -76,7 +76,7 @@ const Footer = ({ variant = "ds" }: { variant: "ds" | "aksel" }) => {
             Ansvarlig redaktør: Eidar Grande Vollane
           </BodyShort>
           <div className="self-end">
-            &copy; 2022 NAV |{" "}
+            <div>&copy; 2022 NAV</div>
             <NextLink href="/side/personvernerklaering" passHref>
               <a className="outline-none hover:underline focus:bg-focus-inverted focus:text-text focus:no-underline focus:ring focus:ring-focus-inverted">
                 Personvernerklæring og informasjonskapsler
@@ -84,14 +84,6 @@ const Footer = ({ variant = "ds" }: { variant: "ds" | "aksel" }) => {
             </NextLink>
           </div>
         </div>
-        {/* <div className="flex items-start justify-between">
-          <div className="mb-16 inline-flex h-[49px] items-center text-2xl">
-            <NavLogoWhite aria-hidden />
-          </div>
-        </div>
-        <div className="flex flex-wrap justify-between gap-12">
-        <FooterForm />
-        </div> */}
       </div>
       <EditButton variant={variant} />
     </footer>

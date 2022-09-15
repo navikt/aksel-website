@@ -37,5 +37,5 @@
 }
 
 .footer-grid-3-1 {
-  @apply grid gap-3 md:gap-6 lg:grid-cols-3;
+  @apply grid gap-3 md:gap-6 xl:grid-cols-3;
 }
