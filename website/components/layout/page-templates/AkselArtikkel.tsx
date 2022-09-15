@@ -135,15 +135,14 @@ const AkselArtikkelTemplate = ({
                 variant="aksel"
               />
             )}
+            <div className="dynamic-wrapper-left pt-8">
+              <Feedback akselFeedback docId={data?._id} docType={data?._type} />
+            </div>
           </div>
         </div>
         <div className="mt-16 overflow-x-clip px-4">
           <Slope />
-          <div className="bg-gray-100 pb-16 xs:pb-32">
-            <div className="dynamic-wrapper-prose border-t border-gray-300 pt-8">
-              <Feedback akselFeedback docId={data?._id} docType={data?._type} />
-            </div>
-          </div>
+          <div className="bg-gray-100 pb-16 xs:pb-32"></div>
         </div>
       </main>
       <Footer variant="aksel" />

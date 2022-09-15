@@ -154,13 +154,23 @@ const Feedback = ({
 
   return (
     <div className={classes} id="feedback-block" data-hj-suppress>
-      <div className="flex w-full flex-col items-center gap-4">
-        <Heading size="small" level="2">
+      <div
+        className={cl("flex w-full flex-col  gap-4", {
+          "": akselFeedback,
+          "items-center": !akselFeedback,
+        })}
+      >
+        <Heading
+          size="small"
+          level="2"
+          className={cl({ "text-deepblue-700": akselFeedback })}
+        >
           Var denne {`${text ?? "artikkelen"}`} til hjelp?
         </Heading>
         <div
-          className={cl("flex w-full justify-center gap-4", {
-            "override-secondary-button": akselFeedback,
+          className={cl("flex w-full gap-4", {
+            "override-secondary-button justify-start": akselFeedback,
+            "justify-center": !akselFeedback,
           })}
         >
           <Button
