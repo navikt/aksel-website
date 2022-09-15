@@ -158,64 +158,42 @@ const Feedback = ({
         <Heading size="small" level="2">
           Var denne {`${text ?? "artikkelen"}`} til hjelp?
         </Heading>
-        <div className="flex w-full justify-center gap-2 sm:gap-6">
-          <button
-            className={cl(
-              "max-w-[8rem] flex-1 rounded-sm border-2 py-2 focus:border focus:outline-none",
-              {
-                "border-gray-900 bg-gray-900 text-text-inverted  focus:border-white focus:shadow-focus":
-                  activeState === HelpfulArticleEnum.JA,
-                "border-border bg-white hover:bg-gray-50 focus:shadow-focus":
-                  activeState !== HelpfulArticleEnum.JA,
-              }
-            )}
+        <div
+          className={cl("flex w-full justify-center gap-4", {
+            "override-secondary-button": akselFeedback,
+          })}
+        >
+          <Button
+            variant="secondary"
+            className={cl({
+              "override-secondary-button-active bg-deepblue-800 text-text-inverted ring-2 ring-inset ring-deepblue-800 focus:shadow-focus focus:ring-1 focus:ring-white":
+                activeState === HelpfulArticleEnum.JA,
+            })}
             onClick={() => setActiveState(HelpfulArticleEnum.JA)}
           >
             <Label as="span">Ja</Label>
-          </button>
-          <button
-            className={cl(
-              "max-w-[8rem] flex-1 rounded-sm border-2 py-2 focus:border focus:outline-none",
-              {
-                "border-gray-900 bg-gray-900 text-text-inverted  focus:border-white focus:shadow-focus":
-                  activeState === HelpfulArticleEnum.DELVIS,
-                "border-border bg-white hover:bg-gray-50 focus:shadow-focus":
-                  activeState !== HelpfulArticleEnum.DELVIS,
-              }
-            )}
-            onClick={() => setActiveState(HelpfulArticleEnum.DELVIS)}
-          >
-            <Label as="span">Delvis</Label>
-          </button>
-          <button
-            className={cl(
-              "max-w-[8rem] flex-1 rounded-sm border-2 py-2 focus:border focus:outline-none",
-              {
-                "border-gray-900 bg-gray-900 text-text-inverted focus:border-white focus:shadow-focus":
-                  activeState === HelpfulArticleEnum.NEI,
-                "border-border bg-white hover:bg-gray-50 focus:shadow-focus":
-                  activeState !== HelpfulArticleEnum.NEI,
-              }
-            )}
+          </Button>
+          <Button
+            variant="secondary"
+            className={cl({
+              "override-secondary-button-active bg-deepblue-800 text-text-inverted ring-2 ring-inset ring-deepblue-800 focus:shadow-focus focus:ring-1 focus:ring-white":
+                activeState === HelpfulArticleEnum.NEI,
+            })}
             onClick={() => setActiveState(HelpfulArticleEnum.NEI)}
           >
             <Label as="span">Nei</Label>
-          </button>
+          </Button>
+          <Button
+            variant="secondary"
+            className={cl({
+              "override-secondary-button-active bg-deepblue-800 text-text-inverted ring-2 ring-inset ring-deepblue-800 focus:shadow-focus focus:ring-1 focus:ring-white":
+                activeState === HelpfulArticleEnum.MISC,
+            })}
+            onClick={() => setActiveState(HelpfulArticleEnum.MISC)}
+          >
+            <Label as="span">Foreslå forbedring</Label>
+          </Button>
         </div>
-        <button
-          id="feedback-forbedringer-button"
-          className={cl("rounded-sm px-2 py-2 focus:outline-none", {
-            "border-gray-900 bg-gray-900 text-text-inverted focus:border-white focus:shadow-focus":
-              activeState === HelpfulArticleEnum.MISC,
-            "hover:bg-gray-900/5 focus:shadow-focus":
-              activeState !== HelpfulArticleEnum.MISC,
-          })}
-          onClick={() => setActiveState(HelpfulArticleEnum.MISC)}
-        >
-          <Label as="span" size="small">
-            Jeg vil foreslå forbedringer til {`${text ?? "artikkelen"}`}.
-          </Label>
-        </button>
         {activeState !== null && (
           <form className="mt-4 flex w-full max-w-sm flex-col gap-4">
             <Textarea
