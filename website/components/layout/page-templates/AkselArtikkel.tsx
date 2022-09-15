@@ -59,7 +59,7 @@ const AkselArtikkelTemplate = ({
         id="hovedinnhold"
         className="aksel-artikkel bg-gray-50 pt-[8vw] focus:outline-none "
       >
-        <div className="mx-auto w-full max-w-aksel px-4">
+        <div className="mx-auto w-full max-w-aksel px-4 xs:w-[90%] ">
           <div className="dynamic-wrapper-left">
             <div>
               {hasTema &&
@@ -116,7 +116,7 @@ const AkselArtikkelTemplate = ({
             hideToc={false}
             aksel
           />
-          <div className="w-full px-4">
+          <div className="mx-auto w-full px-4 xs:w-[90%]">
             {data?.under_arbeid?.status ? (
               <>
                 <UnderArbeid text={data?.under_arbeid?.forklaring} />
