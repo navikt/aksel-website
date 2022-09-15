@@ -1,21 +1,23 @@
 import {
   BodyLong,
-  BodyShort,
   Button,
-  Fieldset,
+  Heading,
   Label,
-  Link,
   Textarea,
   TextField,
 } from "@navikt/ds-react";
+import cl from "classnames";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import isEmail from "validator/lib/isEmail";
 import isEmpty from "validator/lib/isEmpty";
-import NextLink from "next/link";
 
 const FooterForm = () => {
-  const [contactForm, setContactForm] = useState({ content: "", mail: "" });
+  const [contactForm, setContactForm] = useState({
+    content: "",
+    mail: "",
+    hasStarted: false,
+  });
 
   const [contentError, setContentError] = useState({ content: "", mail: "" });
   const [sent, setSent] = useState({ status: false, hadMail: false });
@@ -56,7 +58,7 @@ const FooterForm = () => {
     });
 
     setSent({ status: true, hadMail: !!contactForm?.mail });
-    setContactForm({ content: "", mail: "" });
+    setContactForm({ content: "", mail: "", hasStarted: false });
   };
 
   useEffect(() => {
@@ -68,7 +70,7 @@ const FooterForm = () => {
   useEffect(() => {
     setHasWritten(false);
     setSent({ status: false, hadMail: false });
-    setContactForm({ content: "", mail: "" });
+    setContactForm({ content: "", mail: "", hasStarted: false });
     setContentError({ content: "", mail: "" });
   }, [asPath]);
 
@@ -88,19 +90,22 @@ const FooterForm = () => {
           </div>
         ) : (
           <form onSubmit={(e) => handleSubmit(e)} className="w-full">
-            <Fieldset
-              className="mb-4 flex flex-col gap-4"
-              legend="Send en melding til designsystemet."
-              hideLegend
-            >
+            <div className="mb-4 flex flex-col gap-4">
+              <Heading as="legend" size="small">
+                Gi en tilbakemelding
+              </Heading>
               <Textarea
                 className="inverted-textarea"
                 error={contentError.content}
                 autoComplete="off"
-                label="Skriv til oss"
+                label="Melding"
                 value={contactForm.content}
                 onChange={(e) => {
-                  setContactForm({ ...contactForm, content: e.target.value });
+                  setContactForm({
+                    ...contactForm,
+                    content: e.target.value,
+                    hasStarted: true,
+                  });
                   e.target.value &&
                     !isEmpty(e.target.value, { ignore_whitespace: true }) &&
                     setContentError({ ...contentError, content: "" });
@@ -108,7 +113,9 @@ const FooterForm = () => {
                 minRows={3}
               />
               <TextField
-                className="inverted-textfield"
+                className={cl("inverted-textfield", {
+                  hidden: !contactForm.hasStarted,
+                })}
                 label="Vi svarer til e-post (valgfritt)"
                 error={contentError.mail}
                 value={contactForm.mail}
@@ -120,8 +127,14 @@ const FooterForm = () => {
                     setContentError({ ...contentError, mail: "" });
                 }}
               />
-            </Fieldset>
-            <Button>Send melding</Button>
+            </div>
+            <Button
+              className={cl({
+                hidden: !contactForm.hasStarted,
+              })}
+            >
+              Send melding
+            </Button>
           </form>
         )}
       </div>
