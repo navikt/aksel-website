@@ -1,10 +1,9 @@
 import { getTemaSlug, SanityT, urlFor } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { Next } from "@navikt/ds-icons";
-import { BodyShort, Heading, Ingress, Link } from "@navikt/ds-react";
+import { BodyShort, Heading, Ingress } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
-import React from "react";
 import {
   abbrName,
   BreadCrumbs,
@@ -65,11 +64,11 @@ const AkselArtikkelTemplate = ({
       <AkselHeader variant="artikkel" />
       <NoSidebarLayout>
         <div className="mx-auto max-w-prose lg:ml-0">
-          <BreadCrumbs href="#" text="brukerinnsikt" />
+          <BreadCrumbs auto />
           <Heading
             level="1"
             size="xlarge"
-            className="algolia-index-lvl1 hidden text-5xl text-deepblue-700 md:block"
+            className="algolia-index-lvl1 mt-4 hidden text-5xl text-deepblue-700 md:block"
           >
             {data.heading}
           </Heading>

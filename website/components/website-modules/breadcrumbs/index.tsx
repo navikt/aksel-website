@@ -1,8 +1,23 @@
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 
-const BreadCrumbs = ({ href, text }: { href: string; text: string }) => {
+const BreadCrumbs = ({
+  href,
+  text,
+  auto = false,
+}: {
+  href?: string;
+  text?: string;
+  auto?: boolean;
+}) => {
+  const router = useRouter();
+
+  if (!router.query?.tema && auto) {
+    return null;
+  }
+
   return (
-    <NextLink href={href} passHref>
+    <NextLink href={href ?? `/tema/${router.query.tema}`} passHref>
       <a className="group mb-1 flex w-fit items-center justify-start gap-2 capitalize text-deepblue-500 transition-transform hover:text-deepblue-800 focus:underline focus:outline-none">
         <svg
           fill="none"
@@ -23,7 +38,10 @@ const BreadCrumbs = ({ href, text }: { href: string; text: string }) => {
           />
         </svg>
 
-        {text}
+        {text ??
+          (router.query.tema as string).replace(/(^\w|\s\w)/g, (m) =>
+            m.toUpperCase()
+          )}
       </a>
     </NextLink>
   );
