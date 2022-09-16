@@ -61,7 +61,7 @@ const AkselArtikkelTemplate = ({
       >
         <div className="mx-auto max-w-aksel xs:w-[90%]">
           <article className="pt-[4vh] pb-16 md:pb-32">
-            <div className="mx-auto max-w-prose md:ml-0">
+            <div className="mx-auto mb-16 max-w-prose lg:ml-0">
               <div>
                 {hasTema &&
                   data.tema.map(({ title }: any, y) => (
@@ -110,13 +110,13 @@ const AkselArtikkelTemplate = ({
                 </BodyShort>
               </div>
             </div>
-            <div className="relative mx-auto mt-3 max-w-prose md:ml-0 md:grid md:max-w-none md:grid-flow-row-dense md:grid-cols-3 md:items-start md:gap-x-12 md:border-t md:border-gray-400/25">
+            <div className=" relative mx-auto max-w-prose lg:ml-0 lg:grid lg:max-w-none lg:grid-flow-row-dense lg:grid-cols-3 lg:items-start lg:gap-x-12 ">
               <TableOfContents
                 changedState={data?.content ?? []}
                 hideToc={false}
                 aksel
               />
-              <div className="markdown mt-8 max-w-prose md:col-span-2 md:col-start-1">
+              <div className="max-w-prose lg:col-span-2 lg:col-start-1">
                 {data?.under_arbeid?.status ? (
                   <>
                     <UnderArbeid text={data?.under_arbeid?.forklaring} />
@@ -141,6 +141,9 @@ const AkselArtikkelTemplate = ({
                   />
                 </div> */}
               </div>
+            </div>
+            <div className="mt-12 md:mt-16 lg:col-span-2 lg:col-start-1">
+              <Feedback akselFeedback docId={data?._id} docType={data?._type} />
             </div>
           </article>
         </div>
