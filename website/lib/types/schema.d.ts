@@ -780,6 +780,20 @@ Side, innganger og seo description-tag
       content?: riktekst_aksel;
 
       /**
+       * Relevante artikler - `Array`
+Legg til relaterte artikler som du tenker er relevant å lese (maks 3)
+       */
+      relevante_artikler?: Array<
+        Sanity.KeyedReference<
+          | komponent_artikkel
+          | ds_artikkel
+          | aksel_artikkel
+          | aksel_blogg
+          | aksel_prinsipp
+        >
+      >;
+
+      /**
        * Under arbeid - `Object`
 Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
        */
