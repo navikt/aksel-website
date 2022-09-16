@@ -151,7 +151,7 @@ const AkselArtikkelTemplate = ({
             )}
           </div>
         </div>
-        <div className="mt-12 md:mt-16 lg:col-span-2 lg:col-start-1">
+        <div className="mx-auto mt-12 max-w-prose md:mt-16 lg:col-span-2  lg:col-start-1">
           <Feedback akselFeedback docId={data?._id} docType={data?._type} />
         </div>
       </NoSidebarLayout>

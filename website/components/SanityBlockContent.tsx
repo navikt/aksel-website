@@ -150,9 +150,12 @@ const serializers = {
     }
     return (
       <ul
-        className={cl("aksel-list list-margin mb-7 max-w-text list-disc", {
-          "last:mb-0": context.noLastMargin,
-        })}
+        className={cl(
+          "aksel-list list-margin relative mb-7 max-w-text list-disc",
+          {
+            "last:mb-0": context.noLastMargin,
+          }
+        )}
       >
         {props.children}
       </ul>
