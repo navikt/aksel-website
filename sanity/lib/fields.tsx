@@ -1,3 +1,5 @@
+import { allDocumentTypes } from "../config";
+
 export const editorField = {
   title: "Redaktører",
   description: "Legg til alle som har bidratt med denne siden!",
@@ -105,6 +107,24 @@ export const innholdFieldNew = {
   name: "content",
   type: "riktekst_aksel",
   group: "innhold",
+};
+
+export const relevanteArtiklerField = {
+  title: "Relevante artikler",
+  description:
+    "Legg til relaterte artikler som du tenker er relevant å lese (maks 3)",
+  name: "relevante_artikler",
+  type: "array",
+  group: "innhold",
+  validation: (Rule) =>
+    Rule.max(3).error("Kan ikke ha mer enn 3 relevante artikler lagt til"),
+  of: [
+    {
+      type: "reference",
+      weak: true,
+      to: [...allDocumentTypes.map((x) => ({ type: x }))],
+    },
+  ],
 };
 
 export const innholdFieldNewNested = (name?: string, type?: string) => {

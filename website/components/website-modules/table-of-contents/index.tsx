@@ -83,7 +83,7 @@ function TableOfContents({
     element && element?.scrollIntoView();
   };
 
-  if (toc.length < 3 || hideToc) {
+  if (toc.length <= 3 || hideToc) {
     return null;
   }
 
