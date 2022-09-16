@@ -83,12 +83,18 @@ function TableOfContents({
     element && element?.scrollIntoView();
   };
 
-  if (toc.length <= 3 || hideToc) {
-    return null;
-  }
+  const renderToc = !(toc.length <= 3 || hideToc);
 
   return (
-    <div className="algolia-ignore-index sticky right-0 top-20 z-[1] order-1 my-16 hidden h-full w-72 flex-col items-start pl-4 xl:flex">
+    <aside
+      className={cl(
+        "algolia-ignore-index sticky right-0 top-20 z-[1] order-1 my-16 hidden w-72 flex-col items-start pl-4 xl:flex",
+        {
+          invisible: !renderToc,
+          "col-start-3 max-w-prose md:sticky md:top-20 md:mt-8": aksel,
+        }
+      )}
+    >
       <Heading
         size="small"
         as="p"
@@ -133,7 +139,7 @@ function TableOfContents({
           </ul>
         </nav>
       </div>
-    </div>
+    </aside>
   );
 }
 

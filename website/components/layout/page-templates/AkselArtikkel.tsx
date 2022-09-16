@@ -57,66 +57,101 @@ const AkselArtikkelTemplate = ({
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className="aksel-artikkel bg-gray-50 pt-[8vw] focus:outline-none "
+        className="aksel-artikkel bg-gray-50 pt-[8vw] focus:outline-none"
       >
-        <div className="mx-auto w-full max-w-aksel px-4 xs:w-[90%] ">
-          <div className="dynamic-wrapper-left">
-            <div>
-              {hasTema &&
-                data.tema.map(({ title }: any, y) => (
-                  <span key={title}>
-                    {y !== 0 && `, `}
-                    <NextLink
-                      key={title}
-                      href={`/tema/${getTemaSlug(title)}`}
-                      passHref
-                    >
-                      <Link className="algolia-index-lvl5 text-base font-semibold uppercase text-text no-underline">
-                        {title}
-                      </Link>
-                    </NextLink>
-                  </span>
-                ))}
-            </div>
-            <Heading
-              level="1"
-              size="xlarge"
-              className="algolia-index-lvl1 mt-1"
-            >
-              {data.heading}
-            </Heading>
-            {data?.ingress && (
-              <Ingress className="mt-4">{data?.ingress}</Ingress>
-            )}
-            <div className="mt-6 inline-flex flex-wrap gap-2 text-base">
-              {authors?.[0] && (
-                <>
-                  <BodyShort size="small" as="address" className="not-italic">
-                    {authors?.[0]}
-                  </BodyShort>
-                  <BodyShort
-                    size="small"
-                    className="text-text-muted/40"
-                    as="span"
-                  >
-                    —
-                  </BodyShort>
-                </>
+        <div className="mx-auto max-w-aksel xs:w-[90%]">
+          <article className="pt-[4vh] pb-16 md:pb-32">
+            <div className="mx-auto max-w-prose md:ml-0">
+              <div>
+                {hasTema &&
+                  data.tema.map(({ title }: any, y) => (
+                    <span key={title}>
+                      {y !== 0 && `, `}
+                      <NextLink
+                        key={title}
+                        href={`/tema/${getTemaSlug(title)}`}
+                        passHref
+                      >
+                        <Link className="algolia-index-lvl5 text-base font-semibold uppercase text-text no-underline">
+                          {title}
+                        </Link>
+                      </NextLink>
+                    </span>
+                  ))}
+              </div>
+              <Heading
+                level="1"
+                size="xlarge"
+                className="algolia-index-lvl1 mt-1"
+              >
+                {data.heading}
+              </Heading>
+              {data?.ingress && (
+                <Ingress className="mt-4">{data?.ingress}</Ingress>
               )}
+              <div className="mt-6 inline-flex flex-wrap gap-2 text-base">
+                {authors?.[0] && (
+                  <>
+                    <BodyShort size="small" as="address" className="not-italic">
+                      {authors?.[0]}
+                    </BodyShort>
+                    <BodyShort
+                      size="small"
+                      className="text-text-muted/40"
+                      as="span"
+                    >
+                      —
+                    </BodyShort>
+                  </>
+                )}
 
-              <BodyShort size="small" as="span" className="text-text-muted">
-                {dateStr(data?._updatedAt)}
-              </BodyShort>
+                <BodyShort size="small" as="span" className="text-text-muted">
+                  {dateStr(data?._updatedAt)}
+                </BodyShort>
+              </div>
             </div>
-          </div>
+            <div className="relative mx-auto mt-3 max-w-prose md:ml-0 md:grid md:max-w-none md:grid-flow-row-dense md:grid-cols-3 md:items-start md:gap-x-12 md:border-t md:border-gray-400/25">
+              <TableOfContents
+                changedState={data?.content ?? []}
+                hideToc={false}
+                aksel
+              />
+              <div className="markdown mt-8 max-w-prose md:col-span-2 md:col-start-1">
+                {data?.under_arbeid?.status ? (
+                  <>
+                    <UnderArbeid text={data?.under_arbeid?.forklaring} />
+                    {data?.under_arbeid?.vis_innhold && (
+                      <SanityBlockContent
+                        blocks={data?.content ?? []}
+                        variant="aksel"
+                      />
+                    )}
+                  </>
+                ) : (
+                  <SanityBlockContent
+                    blocks={data?.content ?? []}
+                    variant="aksel"
+                  />
+                )}
+                {/* <div className="dynamic-wrapper-left pt-8">
+                  <Feedback
+                    akselFeedback
+                    docId={data?._id}
+                    docType={data?._type}
+                  />
+                </div> */}
+              </div>
+            </div>
+          </article>
         </div>
-        <div className="mx-auto mt-16 flex max-w-aksel">
+
+        {/* <article className="mx-auto relative mt-3 md:border-t md:grid md:grid-cols-3 md:gap-x-12 md:items-start md:grid-flow-row-dense md:border-gray-400/25 max-w-aksel md:ml-0 ">
           <TableOfContents
             changedState={data?.content ?? []}
             hideToc={false}
             aksel
           />
-          <div className="mx-auto w-full px-4 xs:w-[90%]">
+          <div className="mx-auto px-4 xs:w-[90%]">
             {data?.under_arbeid?.status ? (
               <>
                 <UnderArbeid text={data?.under_arbeid?.forklaring} />
@@ -139,7 +174,8 @@ const AkselArtikkelTemplate = ({
               <Feedback akselFeedback docId={data?._id} docType={data?._type} />
             </div>
           </div>
-        </div>
+        </article> */}
+
         <div className="mt-16 overflow-x-clip px-4">
           <Slope />
           <div className="bg-gray-100 pb-16 xs:pb-32"></div>
