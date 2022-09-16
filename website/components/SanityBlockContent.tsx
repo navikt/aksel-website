@@ -24,6 +24,7 @@ import {
   TokensSeksjon,
   Video,
 } from ".";
+import LevelThreeHeading from "./website-modules/heading/level-three";
 
 export const InlineCode = (props: React.HTMLAttributes<HTMLElement>) => (
   <code className="inline-code" {...props} />
@@ -97,15 +98,7 @@ const serializers = {
         case "h2":
           return <LevelTwoHeading {...textProps} />;
         case "h3":
-          return (
-            <Heading
-              {...textProps}
-              className="algolia-index-lvl3 mt-8 max-w-text"
-              spacing
-              level="3"
-              size="medium"
-            />
-          );
+          return <LevelThreeHeading {...textProps} />;
         case "h4":
           return (
             <Heading
