@@ -1,4 +1,5 @@
-import { BodyShort, Detail, Heading, Link } from "@navikt/ds-react";
+import { removeEmojies } from "@/utils";
+import { BodyShort, Heading, Link } from "@navikt/ds-react";
 import cl from "classnames";
 import throttle from "lodash/throttle";
 import * as React from "react";
@@ -171,23 +172,26 @@ function TableOfContents({
                     </Link>
                   </BodyShort>
                   {link.lvl3.length > 0 && (
-                    <ul className="">
+                    <ul
+                      className={cl("animate-fadeIn", {
+                        hidden: link.id !== activeId,
+                      })}
+                    >
                       {link.lvl3.map((x) => (
                         <BodyShort
                           size="small"
                           as="li"
                           key={x.id}
-                          className="w-64 pl-4"
+                          className="border-l border-l-divider pl-8 last-of-type:pb-1"
                         >
                           <Link
                             href={`#${x.id}`}
                             onClick={() => handleFocus(`${x.id}`)}
                             className={cl(
-                              "block overflow-hidden text-ellipsis whitespace-pre py-1 text-text-muted no-underline hover:underline",
-                              { hidden: link.id !== activeId }
+                              "block overflow-hidden text-ellipsis whitespace-pre py-1 text-text-muted no-underline hover:underline"
                             )}
                           >
-                            {x.heading}
+                            {removeEmojies(x.heading.split("(")[0])}
                           </Link>
                         </BodyShort>
                       ))}

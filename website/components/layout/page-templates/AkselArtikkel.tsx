@@ -92,7 +92,7 @@ const AkselArtikkelTemplate = ({
             >
               {dateStr(data?._updatedAt)}
             </BodyShort>
-            {authors.length > 0 && (
+            {authors?.length > 0 && (
               <BodyShort size="small" as="div" className="flex flex-wrap gap-1">
                 {authors.map(abbrName).map((x, y) => (
                   <address className="not-italic" key={x}>

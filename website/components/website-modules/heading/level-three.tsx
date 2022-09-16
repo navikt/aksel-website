@@ -1,4 +1,4 @@
-import { slugger } from "@/components";
+import { removeEmojies, slugger } from "@/components";
 import { Heading } from "@navikt/ds-react";
 import React, { useEffect, useState } from "react";
 
@@ -19,8 +19,9 @@ const LevelThreeHeading = ({
       .filter((x) => typeof x === "string")
       .filter((x) => !!x);
     if (cleaned !== str.toString()) {
-      setSlug(slugger.slug(str.toString()));
-      setCleaned(str.toString());
+      const newId = removeEmojies(str.toString().split(" (")[0]);
+      setSlug(slugger.slug(newId));
+      setCleaned(newId);
     }
   }, [children, cleaned]);
 
