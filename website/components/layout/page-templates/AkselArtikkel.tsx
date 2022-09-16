@@ -63,7 +63,7 @@ const AkselArtikkelTemplate = ({
       </Head>
       <AkselHeader variant="artikkel" />
       <NoSidebarLayout>
-        <div className="mx-auto max-w-prose lg:ml-0">
+        <div className="mx-auto mb-16 max-w-prose lg:ml-0">
           <BreadCrumbs auto />
           <Heading
             level="1"

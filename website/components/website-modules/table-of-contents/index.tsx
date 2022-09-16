@@ -83,16 +83,17 @@ function TableOfContents({
     element && element?.scrollIntoView();
   };
 
-  const renderToc = !(toc.length <= 3 || hideToc);
+  const renderToc = !(toc.length <= 2) && !hideToc;
 
   return (
     <aside
       className={cl(
-        "algolia-ignore-index sticky right-0 top-20 z-[1] order-1 my-16 hidden w-72 flex-col items-start pl-4",
+        "algolia-ignore-index sticky right-0 top-20 z-[1] order-1 my-0 mb-16 hidden w-72 flex-col items-start pl-4",
         {
-          invisible: !renderToc,
-          "col-start-3 max-w-prose md:sticky md:top-20 lg:flex": aksel,
-          "xl:flex": !aksel,
+          hidden: !renderToc,
+          "col-start-3 max-w-prose md:sticky md:top-20 lg:flex":
+            aksel && renderToc,
+          "mt-12  h-full xl:flex": !aksel && renderToc,
         }
       )}
     >
