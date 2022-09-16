@@ -14,7 +14,7 @@ export const ArtikkelCard = ({
   (SanityT.Schema.aksel_artikkel | SanityT.Schema.aksel_blogg) & {
     slug: string;
     tema: string[];
-    source: string;
+    source?: string;
     contributor: string | null;
   }
 >) => {
@@ -23,7 +23,7 @@ export const ArtikkelCard = ({
       href={{
         pathname: `/${slug}`,
         query: {
-          tema: getTemaSlug(source),
+          ...(source ? { tema: getTemaSlug(source) } : {}),
         },
       }}
       passHref

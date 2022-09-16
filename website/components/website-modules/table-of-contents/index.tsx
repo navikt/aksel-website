@@ -115,8 +115,6 @@ function TableOfContents({
 
   const renderToc = !(toc.length <= 2) && !hideToc;
 
-  console.log(toc);
-
   return (
     <aside
       className={cl(
@@ -144,7 +142,7 @@ function TableOfContents({
           <ul>
             {toc.map((link) => {
               return (
-                <>
+                <React.Fragment key={link.id}>
                   <BodyShort
                     as="li"
                     className={cl("border-l py-2 pl-4", {
@@ -154,7 +152,6 @@ function TableOfContents({
                         link.id === activeId && !aksel,
                       "border-l-divider": link.id !== activeId,
                     })}
-                    key={link.id + link.heading}
                   >
                     <Link
                       href={`#${link.id}`}
@@ -197,7 +194,7 @@ function TableOfContents({
                       ))}
                     </ul>
                   )}
-                </>
+                </React.Fragment>
               );
             })}
           </ul>

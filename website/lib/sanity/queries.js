@@ -208,6 +208,17 @@ export const akselDocumentBySlug = `*[slug.current == $slug] | order(_updatedAt 
   tema[]->{title},
   contributors[]->{
     title
+  },
+  relevante_artikler[]->{
+    _id,
+    heading,
+    _createdAt,
+    _updatedAt,
+    publishedAt,
+    "slug": slug.current,
+    "tema": tema[]->tag,
+    ingress,
+    "contributor": contributors[0]->title,
   }
 }`;
 
@@ -357,5 +368,5 @@ export const akselBloggBySlug = `*[slug.current == $slug] | order(_updatedAt des
   ),
   contributors[]->{
     title
-  }
+  },
 }`;

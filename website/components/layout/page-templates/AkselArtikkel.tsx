@@ -6,6 +6,7 @@ import Head from "next/head";
 import NextLink from "next/link";
 import {
   abbrName,
+  ArtikkelCard,
   BreadCrumbs,
   dateStr,
   Feedback,
@@ -31,6 +32,8 @@ const AkselArtikkelTemplate = ({
   const authors = (data?.contributors as any)?.map((x) => x?.title);
 
   const hasTema = "tema" in data && data.tema && data?.tema.length > 0;
+
+  console.log(data);
 
   return (
     <>
@@ -149,16 +152,34 @@ const AkselArtikkelTemplate = ({
                 variant="aksel"
               />
             )}
+            <div className="mt-12 md:mt-16">
+              <Feedback akselFeedback docId={data?._id} docType={data?._type} />
+            </div>
           </div>
         </div>
-        <div className="mx-auto mt-12 max-w-prose md:mt-16 lg:col-span-2 lg:col-start-1">
-          <Feedback akselFeedback docId={data?._id} docType={data?._type} />
-        </div>
       </NoSidebarLayout>
-      <aside className="mt-16 overflow-x-clip bg-gray-50 px-4">
-        <Slope />
-        <div className="bg-gray-100 pb-16 xs:pb-32"></div>
-      </aside>
+
+      {data?.relevante_artikler && (
+        <aside className="mt-16 overflow-x-clip bg-gray-50 ">
+          <Slope />
+          <div className="bg-gray-100 pt-12 pb-16">
+            <div className="dynamic-wrapper">
+              <Heading
+                level="2"
+                size="medium"
+                className="px-4 text-deepblue-700"
+              >
+                Relevante artikler
+              </Heading>
+              <div className="card-grid-3-1 mt-6 px-4">
+                {data.relevante_artikler.map((x: any) => (
+                  <ArtikkelCard {...x} source={x.title} key={x._id} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </aside>
+      )}
       <Footer variant="aksel" />
     </>
   );
