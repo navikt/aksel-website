@@ -179,7 +179,11 @@ const Feedback = ({
               "override-secondary-button-active bg-deepblue-800 text-text-inverted ring-2 ring-inset ring-deepblue-800 focus:shadow-focus focus:ring-1 focus:ring-white":
                 activeState === HelpfulArticleEnum.JA,
             })}
-            onClick={() => setActiveState(HelpfulArticleEnum.JA)}
+            onClick={() =>
+              setActiveState((x) =>
+                x === HelpfulArticleEnum.JA ? null : HelpfulArticleEnum.JA
+              )
+            }
           >
             <Label as="span">Ja</Label>
           </Button>
@@ -189,7 +193,11 @@ const Feedback = ({
               "override-secondary-button-active bg-deepblue-800 text-text-inverted ring-2 ring-inset ring-deepblue-800 focus:shadow-focus focus:ring-1 focus:ring-white":
                 activeState === HelpfulArticleEnum.NEI,
             })}
-            onClick={() => setActiveState(HelpfulArticleEnum.NEI)}
+            onClick={() =>
+              setActiveState((x) =>
+                x === HelpfulArticleEnum.NEI ? null : HelpfulArticleEnum.NEI
+              )
+            }
           >
             <Label as="span">Nei</Label>
           </Button>
@@ -199,13 +207,17 @@ const Feedback = ({
               "override-secondary-button-active bg-deepblue-800 text-text-inverted ring-2 ring-inset ring-deepblue-800 focus:shadow-focus focus:ring-1 focus:ring-white":
                 activeState === HelpfulArticleEnum.MISC,
             })}
-            onClick={() => setActiveState(HelpfulArticleEnum.MISC)}
+            onClick={() =>
+              setActiveState((x) =>
+                x === HelpfulArticleEnum.MISC ? null : HelpfulArticleEnum.MISC
+              )
+            }
           >
             <Label as="span">Foreslå forbedring</Label>
           </Button>
         </div>
         {activeState !== null && (
-          <form className="mt-4 flex w-full max-w-sm flex-col gap-4">
+          <form className="mt-4 flex w-full max-w-sm animate-fadeIn flex-col gap-4">
             <Textarea
               ref={textAreaRef}
               error={errorMsg}
