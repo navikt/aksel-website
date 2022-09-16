@@ -3,11 +3,11 @@ import NextLink from "next/link";
 const BreadCrumbs = ({ href, text }: { href: string; text: string }) => {
   return (
     <NextLink href={href} passHref>
-      <a className="group mb-1 flex w-fit items-center justify-start gap-2 text-deepblue-500 transition-transform hover:text-deepblue-800 focus:underline focus:outline-none">
+      <a className="group mb-1 flex w-fit items-center justify-start gap-2 capitalize text-deepblue-500 transition-transform hover:text-deepblue-800 focus:underline focus:outline-none">
         <svg
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="h-[19px] w-[10px] group-hover:w-[16px]"
+          className="h-[20px] w-[10px] group-hover:w-[16px]"
           aria-hidden
         >
           <path

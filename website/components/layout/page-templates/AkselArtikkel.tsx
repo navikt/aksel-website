@@ -1,10 +1,19 @@
 import { getTemaSlug, SanityT, urlFor } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
+import { Next } from "@navikt/ds-icons";
 import { BodyShort, Heading, Ingress, Link } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
-import { dateStr, Feedback, Slope, TableOfContents, UnderArbeid } from "../..";
+import {
+  abbrName,
+  BreadCrumbs,
+  dateStr,
+  Feedback,
+  Slope,
+  TableOfContents,
+  UnderArbeid,
+} from "../..";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
 import { NoSidebarLayout } from "./wrappers/NoSidebar";
@@ -53,51 +62,70 @@ const AkselArtikkelTemplate = ({
           key="ogimage"
         />
       </Head>
-
       <AkselHeader variant="artikkel" />
       <NoSidebarLayout>
         <div className="mx-auto max-w-prose lg:ml-0">
-          <div>
-            {hasTema &&
-              data.tema.map(({ title }: any, y) => (
+          <BreadCrumbs href="#" text="brukerinnsikt" />
+          <Heading
+            level="1"
+            size="xlarge"
+            className="algolia-index-lvl1 hidden text-5xl text-deepblue-700 md:block"
+          >
+            {data.heading}
+          </Heading>
+          <Heading
+            level="1"
+            size="large"
+            className="algolia-index-lvl1 block text-deepblue-700 md:hidden"
+          >
+            {data.heading}
+          </Heading>
+          {data?.ingress && (
+            <Ingress className="override-text-700 mt-5 text-2xl">
+              {data?.ingress}
+            </Ingress>
+          )}
+          <div className="mt-6 flex gap-3 text-base">
+            <BodyShort
+              size="small"
+              as="span"
+              className="whitespace-nowrap text-text-muted"
+            >
+              {dateStr(data?._updatedAt)}
+            </BodyShort>
+            {authors.length > 0 && (
+              <BodyShort size="small" as="div" className="flex flex-wrap gap-1">
+                {authors.map(abbrName).map((x, y) => (
+                  <address className="not-italic" key={x}>
+                    {x}
+                    {y !== authors.length - 1 && ", "}
+                  </address>
+                ))}
+              </BodyShort>
+            )}
+          </div>
+          {hasTema && (
+            <div className="mt-8 flex flex-wrap gap-2">
+              {data.tema.map(({ title }: any) => (
                 <span key={title}>
-                  {y !== 0 && `, `}
                   <NextLink
                     key={title}
                     href={`/tema/${getTemaSlug(title)}`}
                     passHref
                   >
-                    <Link className="algolia-index-lvl5 text-base font-semibold uppercase text-text no-underline">
+                    <BodyShort
+                      size="small"
+                      as="a"
+                      className="algolia-index-lvl5 flex min-h-8 items-center justify-center gap-[2px] rounded-full bg-gray-200 pl-4 pr-1 capitalize text-deepblue-800 no-underline hover:bg-gray-100 hover:underline focus:shadow-focus focus:outline-none"
+                    >
                       {title}
-                    </Link>
+                      <Next aria-hidden />
+                    </BodyShort>
                   </NextLink>
                 </span>
               ))}
-          </div>
-          <Heading level="1" size="xlarge" className="algolia-index-lvl1 mt-1">
-            {data.heading}
-          </Heading>
-          {data?.ingress && <Ingress className="mt-4">{data?.ingress}</Ingress>}
-          <div className="mt-6 inline-flex flex-wrap gap-2 text-base">
-            {authors?.[0] && (
-              <>
-                <BodyShort size="small" as="address" className="not-italic">
-                  {authors?.[0]}
-                </BodyShort>
-                <BodyShort
-                  size="small"
-                  className="text-text-muted/40"
-                  as="span"
-                >
-                  —
-                </BodyShort>
-              </>
-            )}
-
-            <BodyShort size="small" as="span" className="text-text-muted">
-              {dateStr(data?._updatedAt)}
-            </BodyShort>
-          </div>
+            </div>
+          )}
         </div>
         <div className="relative mx-auto mt-4 max-w-prose lg:ml-0 lg:grid lg:max-w-none lg:grid-flow-row-dense lg:grid-cols-3 lg:items-start lg:gap-x-12">
           <TableOfContents
