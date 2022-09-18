@@ -11,6 +11,7 @@ import {
   Bilde,
   CodeExample,
   DoDont,
+  InnholdsKort,
   Kode,
   LevelTwoHeading,
   LiveDemo,
@@ -37,6 +38,7 @@ const serializers = {
   types: {
     /* V2 content structure */
     relatert_innhold: ({ node }) => <RelatertInnhold node={node} />,
+    innholdskort: ({ node }) => <InnholdsKort node={node} />,
     anatomi: ({ node }) => <Anatomi node={node} />,
     live_demo: ({ node }) => <LiveDemo node={node} />,
     tastatur_modul: ({ node }) => <TastaturModul node={node} />,
