@@ -93,7 +93,7 @@ const HeaderSandbox: SandboxComponentT = (props: any) => {
       )}
       {props?.["system-meny"] && (
         <Dropdown>
-          <Header.Button as={Dropdown.Toggle} className="ml-auto">
+          <Header.Button as={Dropdown.Toggle} style={{ marginLeft: "auto" }}>
             <System
               style={{ fontSize: "1.5rem" }}
               title="Systemer og oppslagsverk"
@@ -127,7 +127,7 @@ HeaderSandbox.args = {
 };
 
 const getUser = (username?: string, menu?: boolean) => {
-  const ml = menu ? ` className="ml-auto"` : "";
+  const ml = menu ? ` style={{marginLeft: "auto"}}` : "";
   let user = `\n  <Header.User name="Ola Normann"${ml}/>`;
 
   switch (username) {
@@ -202,7 +202,7 @@ HeaderSandbox.getCode = (props: any) => {
 
   const menu = props?.["system-meny"]
     ? `\n  <Dropdown>
-    <Header.Button as={Dropdown.Toggle} className="ml-auto">
+    <Header.Button as={Dropdown.Toggle} style={{marginLeft: "auto"}}>
       <System
         style={{ fontSize: "1.5rem" }}
         title="Systemer og oppslagsverk"
