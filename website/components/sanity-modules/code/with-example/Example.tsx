@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
 import { withErrorBoundary } from "@/error-boundary";
-import CodeBlock from "./Block";
 import CodeTabs from "./Tabs";
 import { BgColors, DsCodeExample as DsCodeExampleT } from "@/lib";
 import cl from "classnames";
@@ -10,6 +9,10 @@ const CodePreview = dynamic(() => import("./Preview"), {
   loading: () => (
     <div className="flex min-h-48 w-full border border-t-0 border-gray-200 bg-gray-50" />
   ),
+  ssr: false,
+});
+
+const CodeBlock = dynamic(() => import("./Block"), {
   ssr: false,
 });
 
