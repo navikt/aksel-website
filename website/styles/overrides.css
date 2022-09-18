@@ -51,3 +51,19 @@ html.overflow-hidden > body.ReactModal__Body--open {
     --navds-semantic-color-text-inverted
   );
 }
+
+.override-primary-button {
+  --navds-semantic-color-interaction-primary: var(
+    --navds-global-color-deepblue-500
+  );
+
+  --navds-button-color-primary-background: var(
+    --navds-semantic-color-interaction-primary
+  );
+  --navds-button-color-primary-background-hover: var(
+    --navds-global-color-deepblue-600
+  );
+  --navds-button-color-primary-background-active: var(
+    --navds-global-color-deepblue-800
+  );
+}

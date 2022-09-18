@@ -217,7 +217,14 @@ const Feedback = ({
           </Button>
         </div>
         {activeState !== null && (
-          <form className="mt-4 flex w-full max-w-sm animate-fadeIn flex-col gap-4">
+          <form
+            className={cl(
+              "mt-4 flex w-full max-w-sm animate-fadeIn flex-col gap-4",
+              {
+                "override-primary-button": akselFeedback,
+              }
+            )}
+          >
             <Textarea
               ref={textAreaRef}
               error={errorMsg}
