@@ -24,7 +24,6 @@ import {
   TokensSeksjon,
   Video,
 } from ".";
-import LevelThreeHeading from "./website-modules/heading/level-three";
 
 export const InlineCode = (props: React.HTMLAttributes<HTMLElement>) => (
   <code className="inline-code" {...props} />
@@ -64,7 +63,6 @@ const serializers = {
       if (children && children.length === 1 && children[0] === "") return null;
 
       const textProps = { children };
-
       switch (style) {
         case "normal":
           return context?.isIngress ? (
@@ -96,9 +94,19 @@ const serializers = {
             />
           );
         case "h2":
-          return <LevelTwoHeading {...textProps} />;
+          return <LevelTwoHeading {...textProps} id={`h${node._key}`} />;
         case "h3":
-          return <LevelThreeHeading {...textProps} />;
+          return (
+            <Heading
+              className="algolia-index-lvl3 mt-8 max-w-text scroll-mt-20 focus:outline-none"
+              spacing
+              level="3"
+              size="medium"
+              tabIndex={-1}
+              id={`h${node._key}`}
+              {...textProps}
+            />
+          );
         case "h4":
           return (
             <Heading

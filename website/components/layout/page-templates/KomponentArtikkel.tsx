@@ -6,13 +6,11 @@ import cl from "classnames";
 import IntroSeksjon from "components/sanity-modules/IntroSeksjon";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
 import {
   capitalize,
   dateStr,
   Feedback,
   logNav,
-  slugger,
   TableOfContents,
   UnderArbeid,
 } from "../..";
@@ -30,10 +28,6 @@ const KomponentArtikkelTemplate = ({
     bruk: "bruk_tab",
     kode: "kode_tab",
   };
-
-  useEffect(() => {
-    slugger.reset();
-  });
 
   const basePath = `/designsystem/komponenter/${query.slug[1]}`;
   const activeTab = Object.keys(tabs).indexOf(query.slug?.[2] ?? "bruk");

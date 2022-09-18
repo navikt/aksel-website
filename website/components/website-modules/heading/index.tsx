@@ -1,46 +1,22 @@
-import { slugger } from "@/components";
 import { Heading } from "@navikt/ds-react";
 import cl from "classnames";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const LevelTwoHeading = ({
   children,
   hidden,
+  id,
 }: {
   children: [React.ReactNode | string];
   hidden?: boolean;
+  id: string;
 }): JSX.Element => {
-  const [slug, setSlug] = useState<null | string>(null);
-  const [cleaned, setCleaned] = useState<null | string>(null);
-
-  const cleanedChildren = children
-    .filter((x) => typeof x === "string")
-    .filter((x) => !!x);
-
-  useEffect(() => {
-    const str = children
-      .filter((x) => typeof x === "string")
-      .filter((x) => !!x);
-    if (cleaned !== str.toString()) {
-      setSlug(slugger.slug(str.toString()));
-      setCleaned(str.toString());
-    }
-  }, [children, cleaned]);
-
-  if (children.toString() === "") {
-    return null;
-  }
-
-  if (cleanedChildren.length == 0) {
-    return null;
-  }
-
   return (
     <>
-      {hidden && <div id={slug} className="scroll-m-18" />}
+      {hidden && <div id={id} className="scroll-m-18" />}
       <Heading
         tabIndex={-1}
-        id={slug}
+        id={id}
         level="2"
         size="large"
         className={cl(

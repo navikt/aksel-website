@@ -1,15 +1,8 @@
-import { BodyShort, Heading, useClientLayoutEffect } from "@navikt/ds-react";
-import Head from "next/head";
-import React from "react";
-import {
-  dateStr,
-  Feedback,
-  slugger,
-  TableOfContents,
-  UnderArbeid,
-} from "../..";
 import { SanityT } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
+import { BodyShort, Heading } from "@navikt/ds-react";
+import Head from "next/head";
+import { dateStr, Feedback, TableOfContents, UnderArbeid } from "../..";
 
 const ArtikkelTemplate = ({
   data,
@@ -18,10 +11,6 @@ const ArtikkelTemplate = ({
   data: SanityT.Schema.ds_artikkel;
   title: string;
 }): JSX.Element => {
-  useClientLayoutEffect(() => {
-    slugger.reset();
-  });
-
   if (!data.content || !data.heading) {
     return null;
   }

@@ -52,7 +52,6 @@
     "copy-to-clipboard": "^3.3.1",
     "date-fns": "^2.28.0",
     "elevator.js": "1.0.1",
-    "github-slugger": "^1.4.0",
     "jose": "4.8.0",
     "js-file-download": "^0.4.12",
     "jwt-decode": "3.1.2",
