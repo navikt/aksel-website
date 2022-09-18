@@ -157,7 +157,7 @@ function TableOfContents({
                       href={`#${link.id}`}
                       onClick={() => handleFocus(`${link.id}`)}
                       className={cl(
-                        "block overflow-hidden text-ellipsis whitespace-pre  no-underline hover:underline",
+                        "block w-72 overflow-hidden text-ellipsis whitespace-pre no-underline hover:underline",
                         {
                           "text-deepblue-700": aksel && link.id === activeId,
                           "text-text-muted": aksel && link.id !== activeId,
@@ -185,7 +185,7 @@ function TableOfContents({
                             href={`#${x.id}`}
                             onClick={() => handleFocus(`${x.id}`)}
                             className={cl(
-                              "block overflow-hidden text-ellipsis whitespace-pre py-1 text-text-muted no-underline hover:underline"
+                              "block w-64 overflow-hidden text-ellipsis whitespace-pre py-1 text-text-muted no-underline hover:underline"
                             )}
                           >
                             {removeEmojies(x.heading.split("(")[0])}
