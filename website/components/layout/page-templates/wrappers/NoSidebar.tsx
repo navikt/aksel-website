@@ -7,7 +7,7 @@ export const NoSidebarLayout = ({
   aside = null,
 }: {
   children: React.ReactNode;
-  aside: React.ReactNode;
+  aside?: React.ReactNode;
   variant?: "forside" | "tema" | "artikkel" | "blogg";
 }) => {
   return (
