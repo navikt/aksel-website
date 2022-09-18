@@ -11,9 +11,9 @@ import cl from "classnames";
 
 function EditButton({ variant }: { variant: "ds" | "aksel" }): JSX.Element {
   const { data } = useCurrentUser();
-  const { id } = useContext(IdContext);
+  const idCtx = useContext(IdContext);
 
-  return data && id ? (
+  return data && idCtx?.id ? (
     <>
       <div className="overflow-hidden">
         <Tooltip
@@ -22,7 +22,7 @@ function EditButton({ variant }: { variant: "ds" | "aksel" }): JSX.Element {
           delay={500}
         >
           <a
-            href={`https://verktoykasse.sanity.studio/intent/edit/id=${id}`}
+            href={`https://verktoykasse.sanity.studio/intent/edit/id=${idCtx?.id}`}
             target="_blank"
             rel="noreferrer"
             className={cl(

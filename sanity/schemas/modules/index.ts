@@ -9,12 +9,14 @@ import Kode from "./kode";
 import liveDemo from "./live-demo";
 import Props from "./props";
 import RelatertInnhold from "./relatert-innhold";
+import Innholdskort from "./innholdskort";
 import {
   RiktekstAksel,
   RiktekstDsArtikkel,
   RiktekstEnkel,
   RiktekstKomponent,
   RiktekstTabell,
+  RiktekstPrinsipp,
 } from "./riktekst";
 import SpesialSeksjon from "./spesial-seksjon";
 import Tabell, { TabellSchema } from "./tabell";
@@ -30,6 +32,7 @@ const v2Blocks = [
   RiktekstDsArtikkel,
   RiktekstKomponent,
   RiktekstTabell,
+  RiktekstPrinsipp,
 
   /* Moduler */
   DoDont,
@@ -38,6 +41,7 @@ const v2Blocks = [
   Alert,
   Kode,
   RelatertInnhold,
+  Innholdskort,
   introKomponent,
   liveDemo,
   Tabell,

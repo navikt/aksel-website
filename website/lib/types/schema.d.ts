@@ -1053,7 +1053,7 @@ Side, innganger og seo description-tag
       /**
        * Innhold - `RegistryReference`
        */
-      content?: riktekst_aksel;
+      content?: riktekst_prinsipp;
 
       /**
        * Under arbeid - `Object`
@@ -1191,6 +1191,20 @@ Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av sid
     >;
 
     type riktekst_tabell = Array<Sanity.Keyed<Sanity.Block>>;
+
+    type riktekst_prinsipp = Array<
+      | Sanity.Keyed<Sanity.Block>
+      | Sanity.Keyed<relatert_innhold>
+      | Sanity.Keyed<bilde>
+      | Sanity.Keyed<kode>
+      | Sanity.Keyed<tips>
+      | Sanity.Keyed<do_dont>
+      | Sanity.Keyed<accordion>
+      | Sanity.Keyed<alert>
+      | Sanity.Keyed<tabell>
+      | Sanity.Keyed<video>
+      | Sanity.Keyed<innholdskort>
+    >;
 
     type do_dont = {
       _type: "do_dont";
@@ -1372,6 +1386,26 @@ Sett denne hvis lenken går til en side utenfor aksel.nav.no
           ekstern_domene?: boolean;
         }>
       >;
+    };
+
+    type innholdskort = {
+      _type: "innholdskort";
+
+      /**
+       * Tittel - `String`
+       */
+      title?: string;
+
+      /**
+       * Lenke til prinsipp - `Reference`
+       */
+      lenke?: Sanity.Reference<aksel_prinsipp>;
+
+      /**
+       * Innhold - `RegistryReference`
+Ikke bruk lenker inne i selve kortet
+       */
+      body?: riktekst_enkel;
     };
 
     type intro_komponent = {

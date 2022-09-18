@@ -109,6 +109,13 @@ export const innholdFieldNew = {
   group: "innhold",
 };
 
+export const innholdFieldPrinsipp = {
+  title: "Innhold",
+  name: "content",
+  type: "riktekst_prinsipp",
+  group: "innhold",
+};
+
 export const relevanteArtiklerField = {
   title: "Relevante artikler",
   description:

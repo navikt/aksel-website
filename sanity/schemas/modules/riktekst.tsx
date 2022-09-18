@@ -162,7 +162,7 @@ export const headingStyles = [
   },
 ];
 
-const Riktekst = (type: "aksel" | "ds" | "komponent") => {
+const Riktekst = (type: "aksel" | "ds" | "komponent" | "prinsipp") => {
   const fields: string[] = [];
   const standard = [
     "relatert_innhold",
@@ -195,6 +195,9 @@ const Riktekst = (type: "aksel" | "ds" | "komponent") => {
     case "ds":
       fields.push(...ds_artikkel);
       break;
+    case "prinsipp":
+      fields.push("innholdskort");
+      break;
     default:
       break;
   }
@@ -215,6 +218,14 @@ export const RiktekstAksel = {
   name: "riktekst_aksel",
   type: "array",
   of: Riktekst("aksel"),
+  icon: () => <FileContent />,
+};
+
+export const RiktekstPrinsipp = {
+  title: "Riktekst Aksel",
+  name: "riktekst_prinsipp",
+  type: "array",
+  of: Riktekst("prinsipp"),
   icon: () => <FileContent />,
 };
 
