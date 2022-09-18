@@ -14,30 +14,30 @@ export const InnholdsKort = ({
   }
 
   return (
-    <div className="group relative mb-7 rounded-lg bg-white p-4 shadow-small focus-within:ring focus-within:ring-focus hover:shadow-medium xs:p-8">
-      <NextLink href={node?.lenke} passHref>
-        <a
-          onClick={(e) =>
-            logNav(
-              "prinsipp-kort",
-              window.location.pathname,
-              e.currentTarget.getAttribute("href")
-            )
-          }
-          className="before:absolute before:inset-0 focus:outline-none"
-        >
-          <Heading
-            spacing
-            size="small"
-            level="3"
-            id={node._key}
-            className="text-deepblue-500 group-hover:underline"
+    <article className="group relative mb-7 rounded-lg bg-white p-4 shadow-small focus-within:ring focus-within:ring-focus hover:shadow-medium xs:p-8">
+      <Heading
+        spacing
+        size="small"
+        level="3"
+        id={node._key}
+        className="text-deepblue-500 focus:outline-none group-hover:underline"
+      >
+        <NextLink href={node?.lenke} passHref>
+          <a
+            onClick={(e) =>
+              logNav(
+                "prinsipp-kort",
+                window.location.pathname,
+                e.currentTarget.getAttribute("href")
+              )
+            }
+            className="z-10 before:absolute before:inset-0"
           >
             {node.title}
-          </Heading>
-        </a>
-      </NextLink>
+          </a>
+        </NextLink>
+      </Heading>
       <SanityBlockContent blocks={node.body} noLastMargin />
-    </div>
+    </article>
   );
 };
