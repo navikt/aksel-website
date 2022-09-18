@@ -1,7 +1,7 @@
 import { getTemaSlug, SanityT, urlFor } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { Next } from "@navikt/ds-icons";
-import { BodyShort, Heading, Ingress } from "@navikt/ds-react";
+import { BodyShort, Heading, Ingress, Label } from "@navikt/ds-react";
 import Head from "next/head";
 import NextLink from "next/link";
 import {
@@ -14,8 +14,6 @@ import {
   TableOfContents,
   UnderArbeid,
 } from "../..";
-import Footer from "../footer/Footer";
-import AkselHeader from "../header/AkselHeader";
 import { NoSidebarLayout } from "./wrappers/NoSidebar";
 
 const AkselArtikkelTemplate = ({
@@ -33,7 +31,23 @@ const AkselArtikkelTemplate = ({
 
   const hasTema = "tema" in data && data.tema && data?.tema.length > 0;
 
-  console.log(data);
+  const aside = data?.relevante_artikler && (
+    <aside className="mt-16 overflow-x-clip bg-gray-50 ">
+      <Slope />
+      <div className="bg-gray-100 pt-12 pb-16">
+        <div className="dynamic-wrapper">
+          <Heading level="2" size="medium" className="px-4 text-deepblue-700">
+            Relevante artikler
+          </Heading>
+          <div className="card-grid-3-1 mt-6 px-4">
+            {data.relevante_artikler.map((x: any) => (
+              <ArtikkelCard {...x} source={x.title} key={x._id} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </aside>
+  );
 
   return (
     <>
@@ -64,8 +78,7 @@ const AkselArtikkelTemplate = ({
           key="ogimage"
         />
       </Head>
-      <AkselHeader variant="artikkel" />
-      <NoSidebarLayout>
+      <NoSidebarLayout aside={aside}>
         <div className="mx-auto mb-16 max-w-prose lg:ml-0">
           <BreadCrumbs auto />
           <Heading
@@ -93,7 +106,7 @@ const AkselArtikkelTemplate = ({
               as="span"
               className="whitespace-nowrap text-text-muted"
             >
-              {dateStr(data?._updatedAt)}
+              {dateStr(data?.publishedAt ?? data?._updatedAt)}
             </BodyShort>
             {authors?.length > 0 && (
               <BodyShort size="small" as="div" className="flex flex-wrap gap-1">
@@ -152,35 +165,33 @@ const AkselArtikkelTemplate = ({
                 variant="aksel"
               />
             )}
+            <div className="mt-12">
+              <Label className="mb-2 text-deepblue-700" as="p">
+                Bidragsytere
+              </Label>
+              {authors?.length > 0 && (
+                <BodyShort as="div" className="mb-1 flex flex-wrap gap-1">
+                  {authors.map(abbrName).map((x, y) => (
+                    <address className="not-italic" key={x}>
+                      {x}
+                      {y !== authors.length - 1 && ", "}
+                    </address>
+                  ))}
+                </BodyShort>
+              )}
+              <BodyShort
+                as="span"
+                className="whitespace-nowrap text-text-muted"
+              >
+                Sist oppdatert: {dateStr(data?._updatedAt)}
+              </BodyShort>
+            </div>
             <div className="mt-12 md:mt-16">
               <Feedback akselFeedback docId={data?._id} docType={data?._type} />
             </div>
           </div>
         </div>
       </NoSidebarLayout>
-
-      {data?.relevante_artikler && (
-        <aside className="mt-16 overflow-x-clip bg-gray-50 ">
-          <Slope />
-          <div className="bg-gray-100 pt-12 pb-16">
-            <div className="dynamic-wrapper">
-              <Heading
-                level="2"
-                size="medium"
-                className="px-4 text-deepblue-700"
-              >
-                Relevante artikler
-              </Heading>
-              <div className="card-grid-3-1 mt-6 px-4">
-                {data.relevante_artikler.map((x: any) => (
-                  <ArtikkelCard {...x} source={x.title} key={x._id} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </aside>
-      )}
-      <Footer variant="aksel" />
     </>
   );
 };

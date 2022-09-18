@@ -1,7 +1,7 @@
 import { getTemaSlug, SanityT } from "@/lib";
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import NextLink from "next/link";
-import { dateStr, logNav } from "../..";
+import { abbrName, dateStr, logNav } from "../..";
 
 export const ArtikkelCard = ({
   slug,
@@ -47,7 +47,7 @@ export const ArtikkelCard = ({
         </Heading>
         {ingress && <BodyShort className="mt-2 ">{ingress}</BodyShort>}
         <span className="absolute bottom-5 flex gap-2">
-          {contributor && <Detail as="span">{contributor}</Detail>}
+          {contributor && <Detail as="span">{abbrName(contributor)}</Detail>}
           {contributor && (
             <Detail as="span" className="text-text-muted">
               —
