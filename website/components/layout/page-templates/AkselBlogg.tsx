@@ -122,7 +122,12 @@ const AkselBloggTemplate = ({
         </div>
         <div className="mt-16 px-4">
           <div className="dynamic-wrapper-prose border-t border-gray-300 pt-8">
-            <Feedback akselFeedback docId={data?._id} docType={data?._type} />
+            <Feedback
+              akselFeedback
+              center
+              docId={data?._id}
+              docType={data?._type}
+            />
           </div>
         </div>
       </main>

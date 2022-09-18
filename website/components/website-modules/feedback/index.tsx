@@ -157,7 +157,7 @@ const Feedback = ({
       <div
         className={cl("flex w-full flex-col  gap-4", {
           "": akselFeedback,
-          "items-center": !akselFeedback,
+          "items-center": !akselFeedback || center,
         })}
       >
         <Heading
@@ -170,7 +170,7 @@ const Feedback = ({
         <div
           className={cl("flex w-full gap-4", {
             "override-secondary-button justify-start": akselFeedback,
-            "justify-center": !akselFeedback,
+            "justify-center": !akselFeedback || center,
           })}
         >
           <Button
