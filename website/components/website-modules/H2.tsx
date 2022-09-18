@@ -2,7 +2,7 @@ import { Heading } from "@navikt/ds-react";
 import cl from "classnames";
 import React from "react";
 
-const LevelTwoHeading = ({
+export const LevelTwoHeading = ({
   children,
   hidden,
   id,
@@ -32,5 +32,3 @@ const LevelTwoHeading = ({
     </>
   );
 };
-
-export default LevelTwoHeading;

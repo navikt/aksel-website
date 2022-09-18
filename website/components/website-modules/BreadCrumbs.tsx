@@ -1,7 +1,7 @@
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 
-const BreadCrumbs = ({
+export const BreadCrumbs = ({
   href,
   text,
   auto = false,
@@ -46,5 +46,3 @@ const BreadCrumbs = ({
     </NextLink>
   );
 };
-
-export default BreadCrumbs;

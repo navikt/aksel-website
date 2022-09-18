@@ -1,7 +1,7 @@
 import { Heading } from "@navikt/ds-react";
 import ElevatorJs from "elevator.js";
 
-const ScrollTop = () => {
+export const ScrollTop = () => {
   const handleElevator = (e) => {
     if ((e.ctrlKey || e.metaKey) && e.shiftKey) {
       const el = new ElevatorJs({

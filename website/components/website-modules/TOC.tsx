@@ -5,7 +5,7 @@ import throttle from "lodash/throttle";
 import * as React from "react";
 import { useEffect, useState } from "react";
 
-function TableOfContents({
+export function TableOfContents({
   changedState,
   hideToc = true,
   aksel = false,
