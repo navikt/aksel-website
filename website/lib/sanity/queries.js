@@ -37,6 +37,11 @@ const relatertInnhold = `_type == "relatert_innhold" =>{
   }
 }`;
 
+const innholdsKort = `_type == "innholdskort" =>{
+  ...,
+  "lenke": lenke->slug.current,
+}`;
+
 const liveSeksjon = `_type == "live_demo" =>{
   ...,
   "sandbox_ref": sandbox_ref->{...},
@@ -139,6 +144,7 @@ ${tips},
 ${markDef},
 ${introSeksjon},
 ${relatertInnhold},
+${innholdsKort},
 ${liveSeksjon},
 ${propsSeksjon},
 ${installSeksjon},

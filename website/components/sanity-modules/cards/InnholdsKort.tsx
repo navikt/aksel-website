@@ -7,7 +7,7 @@ import NextLink from "next/link";
 export const InnholdsKort = ({
   node,
 }: {
-  node: SanityT.Schema.innholdskort & { _key: string };
+  node: SanityT.Schema.innholdskort & { _key: string; lenke: string };
 }) => {
   if (!node.title || !node.body || !node.lenke) {
     return null;
@@ -15,7 +15,7 @@ export const InnholdsKort = ({
 
   return (
     <div className="group relative mb-7 rounded-lg bg-white p-4 shadow-small focus-within:ring focus-within:ring-focus hover:shadow-medium xs:p-8">
-      <NextLink href={"/#"} passHref>
+      <NextLink href={node?.lenke} passHref>
         <a
           onClick={(e) =>
             logNav(

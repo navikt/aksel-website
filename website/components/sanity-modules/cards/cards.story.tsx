@@ -24,10 +24,7 @@ const mockData = {
       style: "normal",
     },
   ],
-  lenke: {
-    _ref: "25390265-c115-4f3a-b92f-efb410480f6b",
-    _type: "reference",
-  },
+  lenke: "brukerinnsikt/prinsipp1",
   title: "3. NAV er min støttespiller",
 };
 
