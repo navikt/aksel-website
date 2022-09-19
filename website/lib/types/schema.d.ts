@@ -232,6 +232,23 @@ Prøver å hente React og HTML kode automatisk fra storybook
     }
 
     /**
+     * Dir/filnavn for kode eksempler
+     */
+    interface kode_eksempler_fil extends Sanity.Document {
+      _type: "kode_eksempler_fil";
+
+      /**
+       * Tittel - `String`
+       */
+      title?: string;
+
+      /**
+       * Toggle om eksemplet er et dir eller filnavn - `Boolean`
+       */
+      dir?: boolean;
+    }
+
+    /**
      * Autogenerert Propdata
      */
     interface ds_props extends Sanity.Document {
@@ -1674,6 +1691,31 @@ Endrer modul-variant
       >;
     };
 
+    type kode_eksempler = {
+      _type: "kode_eksempler";
+
+      /**
+       * tittel - `String`
+       */
+      title?: string;
+
+      /**
+       * Standalone-eksempel - `Boolean`
+Vis bare et spesfikt eksempel
+       */
+      standalone?: boolean;
+
+      /**
+       * Installasjon-snippet - `Reference`
+       */
+      dir?: Sanity.Reference<kode_eksempler_fil>;
+
+      /**
+       * Installasjon-snippet - `Reference`
+       */
+      filnavn?: Sanity.Reference<kode_eksempler_fil>;
+    };
+
     type navigation_link = {
       _type: "navigation_link";
 
@@ -1808,6 +1850,7 @@ Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via
       | ds_code_sandbox
       | ds_color_categories
       | ds_tokens
+      | kode_eksempler_fil
       | ds_props
       | ds_component_template
       | ds_frontpage

@@ -6,7 +6,7 @@ import fs from "fs";
  * @param dirName Directory name
  * @returns File-content for files in dir + filename
  */
-export const ReadExampleFiles = (
+export const readExampleFiles = (
   dirName: string
 ): { code: string; name: string; dir: string }[] => {
   const examplePath = path.resolve(process.cwd(), `pages/examples/${dirName}`);
@@ -38,7 +38,7 @@ export const ReadExampleFiles = (
  * @param fileName example filename including dir: button/primary.tsx
  * @returns File-content for file + filename
  */
-export const ReadExampleFile = (
+export const readExampleFile = (
   fileName: string
 ): { code: string; name: string; dir: string } => {
   const examplePath = path.resolve(process.cwd(), `pages/examples/${fileName}`);
