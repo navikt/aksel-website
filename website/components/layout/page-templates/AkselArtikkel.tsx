@@ -83,15 +83,8 @@ const AkselArtikkelTemplate = ({
           <BreadCrumbs auto />
           <Heading
             level="1"
-            size="xlarge"
-            className="algolia-index-lvl1 mt-4 hidden text-5xl text-deepblue-700 md:block"
-          >
-            {data.heading}
-          </Heading>
-          <Heading
-            level="1"
             size="large"
-            className="algolia-index-lvl1 block text-deepblue-700 md:hidden"
+            className="algolia-index-lvl1 mt-4 text-deepblue-700 md:text-5xl"
           >
             {data.heading}
           </Heading>

@@ -53,6 +53,8 @@ const Footer = ({ variant = "ds" }: { variant: "ds" | "aksel" }) => {
               height="20"
               viewBox="0 0 64 20"
               fill="none"
+              aria-hidden
+              focusable="false"
               xmlns="http://www.w3.org/2000/svg"
             >
               <g clipPath="url(#clip0_2259_53938)">
