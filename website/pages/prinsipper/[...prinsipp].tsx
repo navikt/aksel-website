@@ -18,7 +18,7 @@ interface PageProps {
 
 const Page = (props: PageProps): JSX.Element => {
   const { data } = usePreviewSubscription(akselPrinsippBySlug, {
-    params: { slug: `prinsipper/${props.prinsipp.join("/")}` },
+    params: { slug: `prinsipper/${props.prinsipp.join("/")}`, valid: "true" },
     initialData: props.page,
     enabled: props?.preview,
   });
