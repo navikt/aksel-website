@@ -1,4 +1,4 @@
-import { Checkbox, Pagination, Table } from "@navikt/ds-react";
+import { Checkbox, Pagination, Table, TextField } from "@navikt/ds-react";
 import { format } from "date-fns";
 import React from "react";
 import { BgColors } from "../../lib/types/types";
@@ -205,7 +205,20 @@ const TableSandbox: SandboxComponentT = (props: any) => {
                   <Table.HeaderCell scope="row">{name}</Table.HeaderCell>
                 )}
                 <Table.DataCell>
-                  {fnr.substring(0, 6)} {fnr.substring(6)}
+                  {props?.withInput ? (
+                    <TextField
+                      label="Fødseslnr."
+                      hideLabel
+                      defaultValue={`${fnr.substring(0, 6)} ${fnr.substring(
+                        6
+                      )}`}
+                      style={{ marginTop: -4, marginBottom: -4, width: "14ch" }}
+                      error={fnr.startsWith("11") ? "Error message" : false}
+                      size="small"
+                    />
+                  ) : (
+                    `${fnr.substring(0, 6)} ${fnr.substring(6)}`
+                  )}
                 </Table.DataCell>
                 <Table.DataCell>
                   {format(new Date(start), "dd.MM.yyyy")}
@@ -236,6 +249,7 @@ TableSandbox.args = {
     sortable: false,
     pagination: false,
     expandableRows: false,
+    withInput: false,
   },
   background: BgColors.WHITE,
 };
@@ -271,7 +285,11 @@ TableSandbox.getCode = (props: any) => {
           : `         <Table.HeaderCell scope="row">{name}</Table.HeaderCell>`
       }
                 <Table.DataCell>
-                  {fnr.substring(0, 6)} {fnr.substring(6)}
+									${
+                    props?.withInput
+                      ? '<TextField label="Fødseslnr." hideLabel defaultValue={`${fnr.substring(0, 6)} ${fnr.substring( 6)}`} style={{ marginTop: -4, marginBottom: -4, width: "14ch" }} error={fnr.startsWith("11") ? "Error message" : false} size="small" />'
+                      : '{format(new Date(start), "dd.MM.yyyy")}'
+                  }
                 </Table.DataCell>
                 <Table.DataCell>
                   {format(new Date(start), "dd.MM.yyyy")}
@@ -304,7 +322,11 @@ TableSandbox.getCode = (props: any) => {
           : `         <Table.HeaderCell scope="row">{name}</Table.HeaderCell>`
       }
                 <Table.DataCell>
-                  {fnr.substring(0, 6)} {fnr.substring(6)}
+									${
+                    props?.withInput
+                      ? '<TextField label="Fødseslnr." hideLabel defaultValue={`${fnr.substring(0, 6)} ${fnr.substring( 6)}`} style={{ marginTop: -4, marginBottom: -4, width: "14ch" }} error={fnr.startsWith("11") ? "Error message" : false} size="small" />'
+                      : '{format(new Date(start), "dd.MM.yyyy")}'
+                  }
                 </Table.DataCell>
                 <Table.DataCell>
                   {format(new Date(start), "dd.MM.yyyy")}
