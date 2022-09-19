@@ -31,7 +31,7 @@ export const InnholdsKort = ({
                 e.currentTarget.getAttribute("href")
               )
             }
-            className="z-10 before:absolute before:inset-0"
+            className="z-10 before:absolute before:inset-0 focus:outline-none"
           >
             {node.title}
           </a>
