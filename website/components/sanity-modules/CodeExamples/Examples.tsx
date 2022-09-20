@@ -95,7 +95,7 @@ const ComponentExamples = ({
                   height={iframeHeight}
                   onLoad={handleExampleLoad}
                   id={exampleIframeId}
-                  className="block w-full min-w-96 max-w-full overflow-auto"
+                  className="block w-full min-w-96 max-w-full resize-x overflow-auto shadow-[20px_0_20px_-20px_rgba(0,0,0,0.22)]"
                 />
               </div>
 
