@@ -11,7 +11,7 @@ export const Slope = () => (
     >
       <polygon points="0,0 100,0 0,16" className="fill-gray-100"></polygon>
     </svg>
-    <div className="absolute -bottom-[99.9%] h-full w-full bg-gray-100" />
+    <div className="absolute -bottom-[99.9%] -z-[1] h-full w-full bg-gray-100" />
   </div>
 );
 
@@ -28,7 +28,7 @@ export const FooterSlope = () => (
     >
       <polygon points="0,0 100,0 0,16" className="fill-gray-100"></polygon>
     </svg>
-    <div className="absolute -bottom-[99.9%] h-full w-full bg-gray-100" />
+    <div className="absolute -bottom-[99.9%] -z-[1] h-full w-full bg-gray-100" />
   </div>
 );
 
@@ -45,6 +45,6 @@ export const PrinsippSlope = () => (
     >
       <polygon points="0,0 100,0 0,8" className="fill-gray-50"></polygon>
     </svg>
-    <div className="absolute -bottom-[99.9%] h-full w-full bg-gray-50" />
+    <div className="absolute -bottom-[99.9%] -z-[1] h-full w-full bg-gray-50" />
   </div>
 );
