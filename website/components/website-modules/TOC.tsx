@@ -113,7 +113,7 @@ export function TableOfContents({
     element && element?.scrollIntoView();
   };
 
-  const renderToc = !(toc.length <= 2) && !hideToc;
+  const renderToc = !(toc.length < 2) && !hideToc;
 
   return (
     <aside
@@ -164,36 +164,39 @@ export function TableOfContents({
                           "text-text": !aksel,
                         }
                       )}
+                      aria-expanded={
+                        link?.lvl3?.length > 0 && link?.id === activeId
+                      }
                     >
                       {link.heading}
                     </Link>
-                  </BodyShort>
-                  {link.lvl3.length > 0 && (
-                    <ul
-                      className={cl("animate-fadeIn", {
-                        hidden: link.id !== activeId,
-                      })}
-                    >
-                      {link.lvl3.map((x) => (
-                        <BodyShort
-                          size="small"
-                          as="li"
-                          key={x.id}
-                          className="border-l border-l-divider pl-8 last-of-type:pb-1"
-                        >
-                          <Link
-                            href={`#${x.id}`}
-                            onClick={() => handleFocus(`${x.id}`)}
-                            className={cl(
-                              "block w-56 overflow-hidden text-ellipsis whitespace-pre py-1 text-text-muted no-underline hover:underline"
-                            )}
+                    {link?.lvl3?.length > 0 && (
+                      <ul
+                        className={cl("animate-fadeIn pt-1", {
+                          hidden: link.id !== activeId,
+                        })}
+                      >
+                        {link.lvl3.map((x) => (
+                          <BodyShort
+                            size="small"
+                            as="li"
+                            key={x.id}
+                            className="pl-4"
                           >
-                            {removeEmojies(x.heading.split("(")[0])}
-                          </Link>
-                        </BodyShort>
-                      ))}
-                    </ul>
-                  )}
+                            <Link
+                              href={`#${x.id}`}
+                              onClick={() => handleFocus(`${x.id}`)}
+                              className={cl(
+                                "block w-56 overflow-hidden text-ellipsis whitespace-pre py-1 text-text-muted no-underline hover:underline"
+                              )}
+                            >
+                              {removeEmojies(x.heading.split("(")[0])}
+                            </Link>
+                          </BodyShort>
+                        ))}
+                      </ul>
+                    )}
+                  </BodyShort>
                 </React.Fragment>
               );
             })}
