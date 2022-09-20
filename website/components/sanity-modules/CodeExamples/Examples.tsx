@@ -89,13 +89,13 @@ const ComponentExamples = ({
 
           return (
             <Tabs.Content key={fil._key} value={fil.navn}>
-              <div className="mb-4 overflow-hidden bg-white ring-4 ring-gray-100">
+              <div className="mb-4 overflow-hidden bg-gray-50 ring-4 ring-gray-100">
                 <iframe
                   src={exampleUrl}
                   height={iframeHeight}
                   onLoad={handleExampleLoad}
                   id={exampleIframeId}
-                  className="block w-full min-w-96 max-w-full resize-x overflow-auto shadow-[20px_0_20px_-20px_rgba(0,0,0,0.22)]"
+                  className="block w-full min-w-96 max-w-full resize-x overflow-auto bg-white shadow-[20px_0_20px_-20px_rgba(0,0,0,0.22)]"
                 />
               </div>
 
