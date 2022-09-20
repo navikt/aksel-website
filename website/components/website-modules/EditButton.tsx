@@ -29,7 +29,7 @@ function EditButton({ variant }: { variant: "ds" | "aksel" }): JSX.Element {
               "editbutton absolute top-0 right-0 flex  -translate-y-[99%] items-center gap-2 overflow-hidden rounded-tl px-2 py-1  text-white transition-transform hover:translate-x-0",
               {
                 "bg-gray-900 hover:bg-gray-700": variant === "ds",
-                "bg-deepblue-900 hover:bg-deepblue-700": variant === "aksel",
+                "bg-deepblue-800 hover:bg-deepblue-700": variant === "aksel",
               }
             )}
             aria-hidden

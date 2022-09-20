@@ -41,7 +41,6 @@ const Footer = ({ variant = "ds" }: { variant: "ds" | "aksel" }) => {
                   Designsystemet på Slack
                 </Link>
               </li>
-              <li>🏃 ...eller stikk innom</li>
             </BodyShort>
           </div>
           <FooterForm />
