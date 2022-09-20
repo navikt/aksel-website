@@ -34,7 +34,7 @@ const AkselArtikkelTemplate = ({
   const aside = data?.relevante_artikler && (
     <aside className="mt-16 overflow-x-clip bg-gray-50 ">
       <FooterSlope />
-      <div className="bg-gray-100 pt-12 pb-16">
+      <div className="relative bg-gray-100 pt-12 pb-16">
         <div className="dynamic-wrapper">
           <Heading level="2" size="medium" className="px-4 text-deepblue-700">
             Relevante artikler
