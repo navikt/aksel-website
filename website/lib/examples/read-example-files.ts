@@ -9,7 +9,7 @@ import fs from "fs";
 export const readExampleFiles = (
   dirName: string
 ): { innhold: string; navn: string }[] => {
-  const examplePath = path.resolve(process.cwd(), `pages/examples/${dirName}`);
+  const examplePath = path.resolve(process.cwd(), `pages/eksempler/${dirName}`);
   if (fs.existsSync(examplePath)) {
     const files = fs.readdirSync(examplePath);
 
@@ -17,7 +17,7 @@ export const readExampleFiles = (
       let code = "";
       const filepath = path.resolve(
         process.cwd(),
-        `pages/examples/${dirName}/${file}`
+        `pages/eksempler/${dirName}/${file}`
       );
       code = fs.readFileSync(filepath, "utf-8");
       return {
@@ -40,7 +40,10 @@ export const readExampleFiles = (
 export const readExampleFile = (
   fileName: string
 ): { innhold: string; navn: string } => {
-  const examplePath = path.resolve(process.cwd(), `pages/examples/${fileName}`);
+  const examplePath = path.resolve(
+    process.cwd(),
+    `pages/eksempler/${fileName}`
+  );
   if (fs.existsSync(examplePath)) {
     let code = "";
     code = fs.readFileSync(examplePath, "utf-8");
