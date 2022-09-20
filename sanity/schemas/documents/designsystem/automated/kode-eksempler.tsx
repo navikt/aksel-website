@@ -20,6 +20,22 @@ export default {
       initialValue: false,
       readOnly: true,
     },
+    {
+      title: "Filer",
+      name: "filer",
+      type: "array",
+      of: [
+        {
+          title: "Data i filer",
+          name: "fil",
+          type: "object",
+          fields: [
+            { title: "Filnavn", name: "navn", type: "string" },
+            { title: "Innhold", name: "innhold", type: "string" },
+          ],
+        },
+      ],
+    },
   ],
   preview: {
     select: {
