@@ -232,7 +232,6 @@ const Page = (props: PageProps): JSX.Element => {
 
       <div className="bg-deepblue-900">
         <AkselHeader variant="forside" />
-
         <main tabIndex={-1} id="hovedinnhold" className="focus:outline-none">
           <div className="relative bg-deepblue-900 bg-gradient-to-b from-deepblue-900 via-deepblue-900/50 to-deepblue-700 px-4 pt-16 pb-24 text-white">
             <div className="dynamic-wrapper">

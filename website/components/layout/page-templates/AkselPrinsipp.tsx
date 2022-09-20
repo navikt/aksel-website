@@ -61,7 +61,7 @@ const AkselPrinsippTemplate = ({
           key="ogimage"
         />
       </Head>
-      <AkselHeader variant="artikkel" />
+      <AkselHeader variant="inngang" />
       <main
         tabIndex={-1}
         id="hovedinnhold"

@@ -8,7 +8,7 @@ import ProfileDropdown from "./ProfileDropdown";
 const AkselHeader = ({
   variant,
 }: {
-  variant?: "forside" | "tema" | "artikkel" | "blogg";
+  variant?: "forside" | "artikkel" | "blogg" | "inngang";
 }): JSX.Element => {
   return (
     <header
@@ -17,11 +17,12 @@ const AkselHeader = ({
         {
           "header-aksel-forside bg-deepblue-900/90 text-white hover:bg-deepblue-900":
             variant === "forside",
-          "header-aksel-artikkel bg-gray-50/80 text-deepblue-800 hover:bg-gray-100/80":
+          "header-aksel-artikkel bg-gray-50/80 text-deepblue-800":
             variant === "artikkel",
+          "header-aksel-artikkel bg-white/80 text-deepblue-800":
+            variant === "inngang",
           "header-aksel-artikkel bg-orange-50/80 text-deepblue-800 hover:bg-white/80":
             variant === "blogg",
-          "bg-white text-deepblue-800 hover:bg-gray-200": variant === "tema",
         }
       )}
     >
@@ -36,9 +37,7 @@ const AkselHeader = ({
               "hover:bg-gray-100/10 focus:shadow-focus-inverted-inset":
                 variant === "forside",
               "hover:bg-gray-900/10 focus:shadow-focus-inset":
-                variant === "artikkel" ||
-                variant === "tema" ||
-                variant === "blogg",
+                variant === "artikkel" || variant === "blogg",
             })}
             onClick={(e) =>
               logNav(

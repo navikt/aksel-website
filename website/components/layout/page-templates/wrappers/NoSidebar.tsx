@@ -3,12 +3,12 @@ import React from "react";
 
 export const NoSidebarLayout = ({
   children,
-  variant,
+  variant = "artikkel",
   aside = null,
 }: {
   children: React.ReactNode;
   aside?: React.ReactNode;
-  variant?: "forside" | "tema" | "artikkel" | "blogg";
+  variant?: "forside" | "artikkel" | "blogg";
 }) => {
   return (
     <>
