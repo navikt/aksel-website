@@ -124,7 +124,9 @@ const FooterForm = () => {
                 }}
               />
             </div>
-            <Button>Send melding</Button>
+            <Button className="override-primary-button-dark">
+              Send melding
+            </Button>
           </form>
         )}
       </div>
