@@ -80,7 +80,7 @@ export function TableOfContents({
     const handleScroll = () => {
       let active = null;
       let activeSub = null;
-      console.log(toc);
+
       for (const x of toc) {
         const el = document.getElementById(x.id);
         if (validPick(el)) {
