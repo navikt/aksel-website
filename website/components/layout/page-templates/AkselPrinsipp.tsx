@@ -61,11 +61,11 @@ const AkselPrinsippTemplate = ({
           key="ogimage"
         />
       </Head>
-      <AkselHeader variant="artikkel" />
+      <AkselHeader variant="inngang" />
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className={cl("aksel-artikkel pt-[8vw] focus:outline-none", {
+        className={cl("aksel-artikkel pt-4 focus:outline-none", {
           "bg-white": mainPage,
         })}
       >
@@ -75,7 +75,7 @@ const AkselPrinsippTemplate = ({
               "pb-24": mainPage,
             })}
           >
-            <div className="pt-[4vh]">
+            <div className="pt-12">
               <div className="mx-auto mb-16 max-w-prose lg:ml-0 ">
                 {!mainPage && (
                   <BreadCrumbs
@@ -155,7 +155,7 @@ const AkselPrinsippTemplate = ({
                       {authors?.length > 0 && (
                         <BodyShort
                           as="div"
-                          className="mb-1 flex flex-wrap gap-1"
+                          className="mb-1 flex flex-wrap gap-1 text-text-muted"
                         >
                           {authors.map(abbrName).map((x, y) => (
                             <address className="not-italic" key={x}>

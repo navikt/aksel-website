@@ -31,7 +31,7 @@ const Page = (props: PageProps): JSX.Element => {
         />
       </Head>
       <div className="bg-gray-50">
-        <AkselHeader variant="tema" />
+        <AkselHeader variant="inngang" />
         <main
           tabIndex={-1}
           id="hovedinnhold"

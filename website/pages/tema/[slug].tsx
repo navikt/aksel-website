@@ -56,8 +56,8 @@ const Page = (props: PageProps): JSX.Element => {
         <title>{`${page.title} - Aksel`}</title>
         <meta property="og:title" content={`${page.title} - Aksel`} />
       </Head>
-      <div className="bg-gray-100">
-        <AkselHeader variant="tema" />
+      <div className="bg-white">
+        <AkselHeader variant="inngang" />
         <main
           tabIndex={-1}
           id="hovedinnhold"

@@ -3,12 +3,12 @@ import React from "react";
 
 export const NoSidebarLayout = ({
   children,
-  variant,
+  variant = "artikkel",
   aside = null,
 }: {
   children: React.ReactNode;
   aside?: React.ReactNode;
-  variant?: "forside" | "tema" | "artikkel" | "blogg";
+  variant?: "forside" | "artikkel" | "blogg";
 }) => {
   return (
     <>
@@ -16,10 +16,10 @@ export const NoSidebarLayout = ({
       <main
         tabIndex={-1}
         id="hovedinnhold"
-        className="aksel-artikkel bg-gray-50 pt-[8vw] focus:outline-none"
+        className="aksel-artikkel bg-gray-50 pt-4 focus:outline-none"
       >
         <div className="mx-auto max-w-aksel px-4 xs:w-[90%]">
-          <article className="pt-[4vh] pb-16 md:pb-32">{children}</article>
+          <article className="pt-12 pb-16 md:pb-32">{children}</article>
         </div>
         {aside}
       </main>
