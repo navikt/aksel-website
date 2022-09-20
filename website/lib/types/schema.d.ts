@@ -246,6 +246,25 @@ Prøver å hente React og HTML kode automatisk fra storybook
        * Toggle om eksemplet er et dir eller filnavn - `Boolean`
        */
       dir?: boolean;
+
+      /**
+       * Filer - `Array`
+       */
+      filer?: Array<
+        Sanity.Keyed<{
+          _type: "fil";
+
+          /**
+           * Filnavn - `String`
+           */
+          navn?: string;
+
+          /**
+           * Innhold - `String`
+           */
+          innhold?: string;
+        }>
+      >;
     }
 
     /**

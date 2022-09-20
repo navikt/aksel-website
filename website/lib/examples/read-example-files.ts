@@ -8,7 +8,7 @@ import fs from "fs";
  */
 export const readExampleFiles = (
   dirName: string
-): { code: string; name: string; dir: string }[] => {
+): { innhold: string; navn: string }[] => {
   const examplePath = path.resolve(process.cwd(), `pages/examples/${dirName}`);
   if (fs.existsSync(examplePath)) {
     const files = fs.readdirSync(examplePath);
@@ -21,12 +21,11 @@ export const readExampleFiles = (
       );
       code = fs.readFileSync(filepath, "utf-8");
       return {
-        code: code
+        innhold: code
           .split("\n")
           .filter((line) => !line.includes("withDsExample"))
           .join("\n"),
-        name: file.replace(".tsx", ""),
-        dir: dirName,
+        navn: file.replace(".tsx", ""),
       };
     });
     return res;
@@ -40,18 +39,17 @@ export const readExampleFiles = (
  */
 export const readExampleFile = (
   fileName: string
-): { code: string; name: string; dir: string } => {
+): { innhold: string; navn: string } => {
   const examplePath = path.resolve(process.cwd(), `pages/examples/${fileName}`);
   if (fs.existsSync(examplePath)) {
     let code = "";
     code = fs.readFileSync(examplePath, "utf-8");
     return {
-      code: code
+      innhold: code
         .split("\n")
         .filter((line) => !line.includes("withDsExample"))
         .join("\n"),
-      name: fileName.replace(".tsx", ""),
-      dir: fileName.split("/")[0],
+      navn: fileName.replace(".tsx", ""),
     };
   }
 };

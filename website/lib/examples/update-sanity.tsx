@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import { readExampleFile, readExampleFiles } from ".";
 import { SanityT } from "..";
 import { noCdnClient } from "../sanity/sanity.server";
 import { getExampleFiles } from "./get-example-files";
@@ -20,16 +21,19 @@ const main = async () => {
   }
 
   for (const ex of examples) {
-    transactionClient.createIfNotExists({
-      _id: ex.path.replace("/", "-"),
+    const data = {
+      _id: `kode_eksempelid_${ex.path.replace("/", "-").replace(".", "-")}`,
       _type: "kode_eksempler_fil",
       title: ex.path,
       dir: ex.dir,
-    });
+      filer: ex.dir ? readExampleFiles(ex.path) : [readExampleFile(ex.path)],
+    };
+
+    transactionClient.createIfNotExists(data);
   }
 
   await transactionClient
-    .commit()
+    .commit({ autoGenerateArrayKeys: true })
     .then(() => console.log(`Oppdaterte kode-eksempler`))
     .catch((e) => console.error(e.message));
 };
