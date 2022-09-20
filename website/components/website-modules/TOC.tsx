@@ -19,6 +19,7 @@ export function TableOfContents({
   >([]);
 
   const [activeId, setActiveId] = useState(null);
+  const [activeSubId, setActiveSubId] = useState(null);
 
   useEffect(() => {
     const time = setTimeout(() => {
@@ -78,17 +79,27 @@ export function TableOfContents({
 
     const handleScroll = () => {
       let active = null;
+      let activeSub = null;
+      console.log(toc);
       for (const x of toc) {
         const el = document.getElementById(x.id);
         if (validPick(el)) {
           active = x.id;
         }
+        if (x?.lvl3) {
+          for (const y of x.lvl3) {
+            const el = document.getElementById(y.id);
+            if (validPick(el)) {
+              activeSub = y.id;
+            }
+          }
+        }
       }
-      if (toc && !active) {
-        setActiveId(null);
-      }
+      toc && !active && setActiveId(null);
+      toc && !activeSub && setActiveSubId(null);
 
       active && setActiveId(active);
+      activeSub && setActiveSubId(activeSub);
     };
     const func = throttle(handleScroll, 50);
 
@@ -105,7 +116,7 @@ export function TableOfContents({
         ? window.history.replaceState(window.history.state, "", `#${activeId}`)
         : window.history.replaceState(window.history.state, "", " ");
     }, 100);
-  }, [activeId]);
+  }, [activeId, activeSubId]);
 
   const handleFocus = (id: string) => {
     const element = document.getElementById(id);
@@ -187,7 +198,14 @@ export function TableOfContents({
                               href={`#${x.id}`}
                               onClick={() => handleFocus(`${x.id}`)}
                               className={cl(
-                                "block w-56 overflow-hidden text-ellipsis whitespace-pre py-1 text-text-muted no-underline hover:underline"
+                                "block w-56 overflow-hidden text-ellipsis whitespace-pre py-1 no-underline hover:underline",
+                                {
+                                  "font-semibold text-deepblue-700":
+                                    x.id === activeSubId && aksel,
+                                  "font-semibold text-gray-900":
+                                    x.id === activeSubId && !aksel,
+                                  "text-text-muted": x.id !== activeSubId,
+                                }
                               )}
                             >
                               {removeEmojies(x.heading.split("(")[0])}
