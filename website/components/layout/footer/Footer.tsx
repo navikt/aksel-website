@@ -12,7 +12,7 @@ const Footer = ({ variant = "ds" }: { variant: "ds" | "aksel" }) => {
       className={cl(
         "algolia-ignore-index relative flex w-full justify-center px-4  text-text-inverted",
         {
-          "bg-deepblue-900": variant === "aksel",
+          "bg-deepblue-800": variant === "aksel",
           "bg-gray-900": variant === "ds",
         }
       )}
@@ -41,7 +41,6 @@ const Footer = ({ variant = "ds" }: { variant: "ds" | "aksel" }) => {
                   Designsystemet på Slack
                 </Link>
               </li>
-              <li>🏃 ...eller stikk innom</li>
             </BodyShort>
           </div>
           <FooterForm />

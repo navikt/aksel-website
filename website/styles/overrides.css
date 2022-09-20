@@ -35,6 +35,9 @@ html.overflow-hidden > body.ReactModal__Body--open {
   --navds-button-color-secondary-text: var(
     --navds-semantic-color-interaction-primary
   );
+  --navds-button-color-secondary-text-hover: var(
+    --navds-semantic-color-interaction-primary
+  );
   --navds-button-color-secondary-border: var(
     --navds-semantic-color-interaction-primary
   );
@@ -65,5 +68,21 @@ html.overflow-hidden > body.ReactModal__Body--open {
   );
   --navds-button-color-primary-background-active: var(
     --navds-global-color-deepblue-800
+  );
+}
+
+.override-primary-button-dark {
+  --navds-semantic-color-interaction-primary: var(
+    --navds-global-color-deepblue-100
+  );
+
+  --navds-button-color-primary-background: var(
+    --navds-semantic-color-interaction-primary
+  );
+  --navds-button-color-primary-background-hover: var(
+    --navds-global-color-deepblue-200
+  );
+  --navds-button-color-primary-background-active: var(
+    --navds-global-color-deepblue-300
   );
 }
