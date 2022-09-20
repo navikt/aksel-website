@@ -163,7 +163,10 @@ const AkselArtikkelTemplate = ({
                 Bidragsytere
               </Label>
               {authors?.length > 0 && (
-                <BodyShort as="div" className="mb-1 flex flex-wrap gap-1">
+                <BodyShort
+                  as="div"
+                  className="mb-1 flex flex-wrap gap-1 text-text-muted"
+                >
                   {authors.map(abbrName).map((x, y) => (
                     <address className="not-italic" key={x}>
                       {x}
