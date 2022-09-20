@@ -2,6 +2,7 @@ import { getTemaSlug, SanityT, urlFor } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { Next } from "@navikt/ds-icons";
 import { BodyShort, Heading, Ingress, Label } from "@navikt/ds-react";
+import { FooterSlope } from "components/website-modules/Slope";
 import Head from "next/head";
 import NextLink from "next/link";
 import {
@@ -10,7 +11,6 @@ import {
   BreadCrumbs,
   dateStr,
   Feedback,
-  Slope,
   TableOfContents,
   UnderArbeid,
 } from "../..";
@@ -33,7 +33,7 @@ const AkselArtikkelTemplate = ({
 
   const aside = data?.relevante_artikler && (
     <aside className="mt-16 overflow-x-clip bg-gray-50 ">
-      <Slope />
+      <FooterSlope />
       <div className="bg-gray-100 pt-12 pb-16">
         <div className="dynamic-wrapper">
           <Heading level="2" size="medium" className="px-4 text-deepblue-700">
