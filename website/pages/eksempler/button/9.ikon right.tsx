@@ -1,8 +1,13 @@
+import { EditFilled } from "@navikt/ds-icons";
 import { Button } from "@navikt/ds-react";
 import { withDsExample } from "components/website-modules/examples/withDsExample";
 
 const Example = () => {
-  return <Button size="small">Small</Button>;
+  return (
+    <Button icon={<EditFilled aria-hidden />} iconPosition="right">
+      Rediger
+    </Button>
+  );
 };
 
 export default withDsExample(Example);
