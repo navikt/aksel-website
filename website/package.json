@@ -107,6 +107,7 @@
     "eslint-plugin-react": "^7.29",
     "jest": "^28.1.1",
     "jest-environment-jsdom": "^28.1.1",
+    "json5": "2.2.1",
     "nanoid": "3.0.0",
     "next-transpile-modules": "^9.0.0",
     "postcss": "^8.4.14",

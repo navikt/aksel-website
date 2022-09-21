@@ -1,5 +1,27 @@
 import path from "path";
 import fs from "fs";
+import JSON5 from "json5";
+
+const filterCode = (code: string) =>
+  code
+    .split("\n")
+    .filter((line) => !line.includes("withDsExample"))
+    .join("\n");
+
+const getIndex = (str: string) => {
+  const args = str.match(/export const args = {([^}]+)}/)?.[1];
+  if (args) {
+    const obj = JSON5.parse(`{${args}}`);
+    return obj?.index ?? 1;
+  }
+  return 1;
+};
+
+const sortResult = (res: { innhold: string; navn: string }[]) => {
+  return res.sort((a, b) => {
+    return getIndex(a.innhold) - getIndex(b.innhold);
+  });
+};
 
 /**
  *
@@ -21,14 +43,11 @@ export const readExampleFiles = (
       );
       code = fs.readFileSync(filepath, "utf-8");
       return {
-        innhold: code
-          .split("\n")
-          .filter((line) => !line.includes("withDsExample"))
-          .join("\n"),
+        innhold: code,
         navn: file.replace(".tsx", ""),
       };
     });
-    return res;
+    return sortResult(res);
   }
 };
 
@@ -48,10 +67,7 @@ export const readExampleFile = (
     let code = "";
     code = fs.readFileSync(examplePath, "utf-8");
     return {
-      innhold: code
-        .split("\n")
-        .filter((line) => !line.includes("withDsExample"))
-        .join("\n"),
+      innhold: filterCode(code),
       navn: fileName.replace(".tsx", ""),
     };
   }
