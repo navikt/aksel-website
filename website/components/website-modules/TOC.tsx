@@ -168,7 +168,7 @@ export function TableOfContents({
                       href={`#${link.id}`}
                       onClick={() => handleFocus(`${link.id}`)}
                       className={cl(
-                        "block w-64 max-w-full overflow-hidden text-ellipsis whitespace-pre no-underline hover:underline",
+                        "block w-64 max-w-full overflow-hidden no-underline hover:underline",
                         {
                           "text-deepblue-700": aksel && link.id === activeId,
                           "text-text-muted": aksel && link.id !== activeId,
