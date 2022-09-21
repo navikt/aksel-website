@@ -42,7 +42,7 @@ html.overflow-hidden > body.ReactModal__Body--open {
     --navds-semantic-color-interaction-primary
   );
   --navds-button-color-secondary-background-hover: var(
-    --navds-semantic-color-interaction-primary-hover-subtle
+    --navds-global-color-deepblue-50
   );
 }
 
