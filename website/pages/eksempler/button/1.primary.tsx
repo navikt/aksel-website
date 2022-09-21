@@ -1,8 +1,8 @@
 import { Button } from "@navikt/ds-react";
 import { withDsExample } from "components/website-modules/examples/withDsExample";
 
-const Primary = () => {
+const Example = () => {
   return <Button>Primary</Button>;
 };
 
-export default withDsExample(Primary);
+export default withDsExample(Example);

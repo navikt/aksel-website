@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import * as Tabs from "@radix-ui/react-tabs";
 import { Snippet } from "@/components";
 import cl from "classnames";
-import { SuccessStroke } from "@navikt/ds-icons";
+import { EditFilled, ExternalLink, SuccessStroke } from "@navikt/ds-icons";
+import { CodeSandbox } from "./CodeSandbox";
+import { Button, Link } from "@navikt/ds-react";
 
 const exampleIframeId = "example-iframe";
 const iframePadding = 192;
@@ -61,7 +63,7 @@ const ComponentExamples = ({
         defaultValue={node.dir.filer[0].navn}
         onValueChange={(v) => setActiveExample(v)}
       >
-        <Tabs.List className="mb-4 flex flex-wrap gap-2">
+        <Tabs.List className="mb-5 flex flex-wrap gap-2">
           {node.dir.filer.map((fil) => {
             return (
               <Tabs.Trigger
@@ -77,7 +79,7 @@ const ComponentExamples = ({
                 )}
               >
                 {activeExample === fil.navn && <SuccessStroke aria-hidden />}
-                {fixName(fil.navn) + " test"}
+                {fixName(fil.navn)}
               </Tabs.Trigger>
             );
           })}
@@ -90,7 +92,7 @@ const ComponentExamples = ({
 
           return (
             <Tabs.Content key={fil._key} value={fil.navn} tabIndex={-1}>
-              <div className="mb-4 overflow-hidden bg-gray-50 ring-4 ring-gray-100">
+              <div className="overflow-hidden border-4 border-gray-100 bg-gray-50">
                 <iframe
                   src={exampleUrl}
                   height={iframeHeight}
@@ -98,6 +100,10 @@ const ComponentExamples = ({
                   id={exampleIframeId}
                   className="block w-full min-w-96 max-w-full resize-x overflow-auto bg-white shadow-[20px_0_20px_-20px_rgba(0,0,0,0.22)]"
                 />
+              </div>
+              <div className="my-1 flex justify-end px-2">
+                <CodeSandbox code={fil.innhold.trim()} />
+                <Link href={exampleUrl}>Åpne i nytt vindu</Link>
               </div>
 
               <Snippet

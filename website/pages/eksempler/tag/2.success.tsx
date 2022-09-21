@@ -1,8 +1,8 @@
 import { Tag } from "@navikt/ds-react";
 import { withDsExample } from "components/website-modules/examples/withDsExample";
 
-const Success = () => {
+const Example = () => {
   return <Tag variant="success">Success</Tag>;
 };
 
-export default withDsExample(Success);
+export default withDsExample(Example);
