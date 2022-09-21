@@ -263,6 +263,11 @@ Prøver å hente React og HTML kode automatisk fra storybook
            * Innhold - `String`
            */
           innhold?: string;
+
+          /**
+           * Beskrivelse - `Text`
+           */
+          description?: string;
         }>
       >;
     }
@@ -1224,6 +1229,7 @@ Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av sid
       | Sanity.Keyed<live_demo>
       | Sanity.Keyed<tastatur_modul>
       | Sanity.Keyed<tokens>
+      | Sanity.Keyed<kode_eksempler>
     >;
 
     type riktekst_tabell = Array<Sanity.Keyed<Sanity.Block>>;

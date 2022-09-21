@@ -1,7 +1,7 @@
 import { capitalize, Snippet } from "@/components";
 import { SanityT } from "@/lib";
 import { SuccessStroke } from "@navikt/ds-icons";
-import { Link } from "@navikt/ds-react";
+import { BodyLong, Link } from "@navikt/ds-react";
 import * as Tabs from "@radix-ui/react-tabs";
 import cl from "classnames";
 import { useEffect, useState } from "react";
@@ -18,7 +18,7 @@ const ComponentExamples = ({
     filnavn?: SanityT.Schema.kode_eksempler_fil;
   };
 }): JSX.Element => {
-  const [iframeHeight, setIframeHeight] = useState(400);
+  const [iframeHeight, setIframeHeight] = useState(300);
   const [activeExample, setActiveExample] = useState(null);
 
   const handleExampleLoad = () => {
@@ -136,6 +136,9 @@ const ComponentExamples = ({
         {node.dir.filer.map((fil) => {
           return (
             <Tabs.Content key={fil._key} value={fil.navn} tabIndex={-1}>
+              {fil?.description && (
+                <BodyLong className="mb-2">{fil.description}</BodyLong>
+              )}
               {element(
                 `/eksempler/${node.dir.title}/${fil.navn.replace(".tsx", "")}`,
                 fil.innhold,

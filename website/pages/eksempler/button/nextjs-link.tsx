@@ -14,4 +14,5 @@ export default withDsExample(Example);
 
 export const args = {
   index: 10,
+  desc: "OverridableComponent lar deg endre hvilken html-tag komponenten rendres med.",
 };
