@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import * as Tabs from "@radix-ui/react-tabs";
 import { Snippet } from "@/components";
 import cl from "classnames";
+import { SuccessStroke } from "@navikt/ds-icons";
 
 const exampleIframeId = "example-iframe";
 const iframePadding = 192;
@@ -66,12 +67,17 @@ const ComponentExamples = ({
               <Tabs.Trigger
                 key={fil._key}
                 value={fil.navn}
-                className={cl("", {
-                  active: activeExample === fil.navn,
-                  nonactive: activeExample !== fil.navn,
-                })}
+                className={cl(
+                  "flex h-8 items-center justify-center rounded-full text-base capitalize focus:shadow-focus-gap focus:outline-none",
+                  {
+                    "gap-1 bg-gray-600 pr-3 pl-[10px] text-white":
+                      activeExample === fil.navn,
+                    "bg-gray-100 px-3 ": activeExample !== fil.navn,
+                  }
+                )}
               >
-                {fixName(fil.navn)}
+                {activeExample === fil.navn && <SuccessStroke aria-hidden />}
+                {fixName(fil.navn) + " test"}
               </Tabs.Trigger>
             );
           })}
@@ -81,14 +87,9 @@ const ComponentExamples = ({
             ".tsx",
             ""
           )}`;
-          const codeSnippet = {
-            _type: "code_snippet" as const,
-            title: `${fil.navn}-snippet`,
-            code: { code: fil.innhold.trim(), language: "jsx" },
-          };
 
           return (
-            <Tabs.Content key={fil._key} value={fil.navn}>
+            <Tabs.Content key={fil._key} value={fil.navn} tabIndex={-1}>
               <div className="mb-4 overflow-hidden bg-gray-50 ring-4 ring-gray-100">
                 <iframe
                   src={exampleUrl}
@@ -99,7 +100,13 @@ const ComponentExamples = ({
                 />
               </div>
 
-              <Snippet node={codeSnippet} />
+              <Snippet
+                node={{
+                  _type: "code_snippet" as const,
+                  title: `${fil.navn}-snippet`,
+                  code: { code: fil.innhold.trim(), language: "jsx" },
+                }}
+              />
             </Tabs.Content>
           );
         })}
