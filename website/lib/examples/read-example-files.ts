@@ -2,7 +2,7 @@ import path from "path";
 import fs from "fs";
 import JSON5 from "json5";
 
-const getDesc = (str: string) => {
+export const getDesc = (str: string) => {
   const args = str.match(/export const args = {([^}]+)}/)?.[1];
   if (args) {
     const obj = JSON5.parse(`{${args}}`);
@@ -11,14 +11,15 @@ const getDesc = (str: string) => {
   return null;
 };
 
-const filterCode = (code: string) =>
+export const filterCode = (code: string) =>
   code
     .substring(0, code.indexOf("export const args ="))
     .split("\n")
     .filter((line) => !line.includes("withDsExample"))
-    .join("\n");
+    .join("\n")
+    .trim();
 
-const getIndex = (str: string) => {
+export const getIndex = (str: string) => {
   const args = str.match(/export const args = {([^}]+)}/)?.[1];
   if (args) {
     const obj = JSON5.parse(`{${args}}`);
