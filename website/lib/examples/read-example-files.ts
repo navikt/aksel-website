@@ -2,8 +2,18 @@ import path from "path";
 import fs from "fs";
 import JSON5 from "json5";
 
+const getDesc = (str: string) => {
+  const args = str.match(/export const args = {([^}]+)}/)?.[1];
+  if (args) {
+    const obj = JSON5.parse(`{${args}}`);
+    return obj?.desc ?? null;
+  }
+  return null;
+};
+
 const filterCode = (code: string) =>
   code
+    .substring(0, code.indexOf("export const args ="))
     .split("\n")
     .filter((line) => !line.includes("withDsExample"))
     .join("\n");
@@ -17,7 +27,9 @@ const getIndex = (str: string) => {
   return 1;
 };
 
-const sortResult = (res: { innhold: string; navn: string }[]) => {
+type FileT = { innhold: string; navn: string; description: string | null }[];
+
+const sortResult = (res: FileT) => {
   return res.sort((a, b) => {
     return getIndex(a.innhold) - getIndex(b.innhold);
   });
@@ -28,9 +40,7 @@ const sortResult = (res: { innhold: string; navn: string }[]) => {
  * @param dirName Directory name
  * @returns File-content for files in dir + filename
  */
-export const readExampleFiles = (
-  dirName: string
-): { innhold: string; navn: string }[] => {
+export const readExampleFiles = (dirName: string): FileT => {
   const examplePath = path.resolve(process.cwd(), `pages/eksempler/${dirName}`);
   if (fs.existsSync(examplePath)) {
     const files = fs.readdirSync(examplePath);
@@ -45,9 +55,13 @@ export const readExampleFiles = (
       return {
         innhold: code,
         navn: file.replace(".tsx", ""),
+        description: getDesc(code),
       };
     });
-    return sortResult(res);
+    return sortResult(res).map((x) => ({
+      ...x,
+      innhold: filterCode(x.innhold),
+    }));
   }
 };
 

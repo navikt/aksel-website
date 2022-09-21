@@ -24,6 +24,7 @@ export default {
       title: "Filer",
       name: "filer",
       type: "array",
+      readOnly: true,
       of: [
         {
           title: "Data i filer",
@@ -32,6 +33,7 @@ export default {
           fields: [
             { title: "Filnavn", name: "navn", type: "string" },
             { title: "Innhold", name: "innhold", type: "string" },
+            { title: "Beskrivelse", name: "description", type: "text" },
           ],
         },
       ],
