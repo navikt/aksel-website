@@ -1,11 +1,11 @@
-import { SanityT } from "@/lib";
-import { useEffect, useState } from "react";
-import * as Tabs from "@radix-ui/react-tabs";
 import { Snippet } from "@/components";
+import { SanityT } from "@/lib";
+import { SuccessStroke } from "@navikt/ds-icons";
+import { Link } from "@navikt/ds-react";
+import * as Tabs from "@radix-ui/react-tabs";
 import cl from "classnames";
-import { EditFilled, ExternalLink, SuccessStroke } from "@navikt/ds-icons";
+import { useEffect, useState } from "react";
 import { CodeSandbox } from "./CodeSandbox";
-import { Button, Link } from "@navikt/ds-react";
 
 const exampleIframeId = "example-iframe";
 const iframePadding = 192;
@@ -72,9 +72,10 @@ const ComponentExamples = ({
                 className={cl(
                   "flex h-8 items-center justify-center rounded-full text-base capitalize focus:shadow-focus-gap focus:outline-none",
                   {
-                    "gap-1 bg-gray-600 pr-3 pl-[10px] text-white":
+                    "gap-1 bg-gray-600 pr-3 pl-[10px] text-white hover:bg-gray-700":
                       activeExample === fil.navn,
-                    "bg-gray-100 px-3 ": activeExample !== fil.navn,
+                    "bg-gray-100 px-3 hover:bg-gray-200 ":
+                      activeExample !== fil.navn,
                   }
                 )}
               >
@@ -92,7 +93,7 @@ const ComponentExamples = ({
 
           return (
             <Tabs.Content key={fil._key} value={fil.navn} tabIndex={-1}>
-              <div className="overflow-hidden border-4 border-gray-100 bg-gray-50">
+              <div className="overflow-hidden border-2 border-b-0 border-gray-100 bg-gray-50">
                 <iframe
                   src={exampleUrl}
                   height={iframeHeight}
@@ -101,9 +102,15 @@ const ComponentExamples = ({
                   className="block w-full min-w-96 max-w-full resize-x overflow-auto bg-white shadow-[20px_0_20px_-20px_rgba(0,0,0,0.22)]"
                 />
               </div>
-              <div className="my-1 flex justify-end px-2">
+              <div className="mb-1 flex justify-center gap-2 border-2 border-gray-100 px-2 py-1 text-base xs:justify-end ">
                 <CodeSandbox code={fil.innhold.trim()} />
-                <Link href={exampleUrl}>Åpne i nytt vindu</Link>
+                <Link
+                  href={exampleUrl}
+                  className="text-gray-900"
+                  target="_blank"
+                >
+                  Åpne i nytt vindu
+                </Link>
               </div>
 
               <Snippet

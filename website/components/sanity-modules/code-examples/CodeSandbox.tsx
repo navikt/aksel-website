@@ -1,6 +1,5 @@
+import { Edit } from "@navikt/ds-icons";
 import { getParameters } from "codesandbox/lib/api/define";
-import { EditFilled } from "@navikt/ds-icons";
-import { Button } from "@navikt/ds-react";
 
 const indexTsx = `import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -15,22 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 )
 `;
 
-const getAppCode = (code: string) => {
-  const lineWithFunctionName = code
-    .split("\n")
-    .filter((name) => name.match(/function .*Example/g))?.[0];
-  const functionName = lineWithFunctionName
-    ? lineWithFunctionName.replace("function ", "").replace("() {", "")
-    : "Example";
-  const exportLine = `export default ${functionName};`;
-  let appCode = "";
-
-  appCode += code;
-  appCode += "\n";
-  appCode += exportLine;
-
-  return appCode;
-};
+const getCode = (code: string) => `${code}\n\nexport default Example;`;
 
 export const CodeSandbox = ({ code }: { code: string }) => {
   const parameters = getParameters({
@@ -40,14 +24,17 @@ export const CodeSandbox = ({ code }: { code: string }) => {
           dependencies: {
             react: "latest",
             "react-dom": "latest",
-            "@shopify/polaris": "latest",
-            "@shopify/polaris-icons": "latest",
+            "@navikt/ds-react": "latest",
+            "@navikt/ds-css": "latest",
+            "@navikt/ds-react-internal": "latest",
+            "@navikt/ds-css-internal": "latest",
+            "@navikt/ds-icons": "latest",
           },
         } as any,
         isBinary: false,
       },
       "App.js": {
-        content: getAppCode(code),
+        content: getCode(code),
         isBinary: false,
       },
       "index.js": {
@@ -62,8 +49,20 @@ export const CodeSandbox = ({ code }: { code: string }) => {
   });
 
   return (
-    <Button icon={<EditFilled aria-hidden />} size="small" variant="tertiary">
-      CodeSandbox
-    </Button>
+    <form
+      action="https://codesandbox.io/api/v1/sandboxes/define"
+      method="POST"
+      target="_blank"
+    >
+      <input type="hidden" name="parameters" value={parameters} />
+      <input type="hidden" name="query" value="module=App.js" />
+      <button
+        type="submit"
+        className="flex items-center justify-center gap-2 rounded-sm px-3 py-2 hover:bg-gray-100 focus:shadow-focus-inset focus:outline-none active:bg-gray-200"
+      >
+        <Edit aria-hidden />
+        CodeSandbox
+      </button>
+    </form>
   );
 };

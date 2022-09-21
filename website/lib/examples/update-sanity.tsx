@@ -29,7 +29,7 @@ const main = async () => {
       filer: ex.dir ? readExampleFiles(ex.path) : [readExampleFile(ex.path)],
     };
 
-    transactionClient.createIfNotExists(data);
+    transactionClient.createOrReplace(data);
   }
 
   await transactionClient
