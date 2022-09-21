@@ -5,6 +5,13 @@ import { noCdnClient } from "../sanity/sanity.server";
 import { getExampleFiles } from "./get-example-files";
 dotenv.config();
 
+const createId = (s: string) =>
+  `kode_eksempelid_${s
+    .match(/\w/g)
+    .join("")
+    .match(/\D/g)
+    .join("")}`.toLowerCase();
+
 const main = async () => {
   const token = process.env.SANITY_WRITE_KEY;
   const transactionClient = noCdnClient(token).transaction();
@@ -15,28 +22,14 @@ const main = async () => {
   ).fetch(`*[_type == "kode_eksempler_fil"]`);
 
   for (const doc of docs) {
-    if (
-      !examples.some(
-        (x) =>
-          doc._id ===
-          `kode_eksempelid_${x.path
-            .replace("/", "-")
-            .replace(".", "-")
-            .match(/\D/g)
-            .join("")}`
-      )
-    ) {
+    if (!examples.some((x) => doc._id === createId(x.path))) {
       transactionClient.delete(doc._id);
     }
   }
 
   for (const ex of examples) {
     const data = {
-      _id: `kode_eksempelid_${ex.path
-        .replace("/", "-")
-        .replace(".", "-")
-        .match(/\D/g)
-        .join("")}`,
+      _id: createId(ex.path),
       _type: "kode_eksempler_fil",
       title: ex.path,
       dir: ex.dir,

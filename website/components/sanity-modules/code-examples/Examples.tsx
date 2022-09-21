@@ -1,4 +1,4 @@
-import { Snippet } from "@/components";
+import { capitalize, Snippet } from "@/components";
 import { SanityT } from "@/lib";
 import { SuccessStroke } from "@navikt/ds-icons";
 import { Link } from "@navikt/ds-react";
@@ -51,7 +51,15 @@ const ComponentExamples = ({
     node?.dir?.filer?.[0]?.navn && setActiveExample(node.dir.filer[0].navn);
   }, [node]);
 
-  const fixName = (str: string) => str.split(".")?.[1] ?? str;
+  const fixName = (str: string) =>
+    capitalize(
+      str
+        .replace(/[^\w]|_/g, " ")
+        .replace(/\s+/g, " ")
+        .match(/\D/g)
+        .join("")
+        .trim()
+    ) ?? str;
 
   const element = (exampleUrl: string, code: string, name: string) => (
     <>
@@ -103,14 +111,14 @@ const ComponentExamples = ({
         defaultValue={node.dir.filer[0].navn}
         onValueChange={(v) => setActiveExample(v)}
       >
-        <Tabs.List className="mb-5 flex flex-wrap gap-2">
+        <Tabs.List className="mb-5 flex max-w-xl flex-wrap gap-2">
           {node.dir.filer.map((fil) => {
             return (
               <Tabs.Trigger
                 key={fil._key}
                 value={fil.navn}
                 className={cl(
-                  "flex h-8 items-center justify-center rounded-full text-base capitalize focus:shadow-focus-gap focus:outline-none",
+                  "flex h-8 items-center justify-center rounded-full text-base focus:shadow-focus-gap focus:outline-none",
                   {
                     "gap-1 bg-gray-600 pr-3 pl-[10px] text-white hover:bg-gray-700":
                       activeExample === fil.navn,
