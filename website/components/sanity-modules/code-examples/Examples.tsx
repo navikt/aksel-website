@@ -17,7 +17,7 @@ const ComponentExamples = ({
     dir?: SanityT.Schema.kode_eksempler_fil;
     filnavn?: SanityT.Schema.kode_eksempler_fil;
   };
-}) => {
+}): JSX.Element => {
   const [iframeHeight, setIframeHeight] = useState(400);
   const [activeExample, setActiveExample] = useState(null);
 
@@ -26,7 +26,7 @@ const ComponentExamples = ({
 
     const waitForExampleContentToRender = setInterval(() => {
       const exampleIframe = document.getElementById(
-        exampleIframeId
+        node?.title ?? exampleIframeId
       ) as HTMLIFrameElement;
       const exampleIframeDOM = exampleIframe?.contentDocument;
       const exampleWrapper = exampleIframeDOM?.getElementById("ds-example");
@@ -53,8 +53,48 @@ const ComponentExamples = ({
 
   const fixName = (str: string) => str.split(".")?.[1] ?? str;
 
-  if (node.standalone || node.dir.filer.length === 0 || !node.dir) {
-    return true;
+  const element = (exampleUrl: string, code: string, name: string) => (
+    <>
+      <div className="overflow-hidden border-2 border-b-0 border-gray-100 bg-gray-50">
+        <iframe
+          src={exampleUrl}
+          height={iframeHeight}
+          onLoad={handleExampleLoad}
+          id={node?.title ?? exampleIframeId}
+          className="block w-full min-w-96 max-w-full resize-x overflow-auto bg-white shadow-[20px_0_20px_-20px_rgba(0,0,0,0.22)]"
+        />
+      </div>
+      <div className="mb-1 flex justify-center gap-2 border-2 border-gray-100 px-2 py-1 text-base xs:justify-end ">
+        <CodeSandbox code={code.trim()} />
+        <Link href={exampleUrl} className="text-gray-900" target="_blank">
+          Åpne i nytt vindu
+        </Link>
+      </div>
+
+      <Snippet
+        node={{
+          _type: "code_snippet" as const,
+          title: `${name}-snippet`,
+          code: { code: code.trim(), language: "jsx" },
+        }}
+      />
+    </>
+  );
+
+  if (
+    node.dir.filer.length === 0 ||
+    (!node.standalone && !node.dir) ||
+    (node.standalone && !node.filnavn)
+  ) {
+    return null;
+  }
+
+  if (node.standalone) {
+    return element(
+      `/eksempler/${node.filnavn.title.replace(".tsx", "")}`,
+      node.filnavn?.filer?.[0]?.innhold ?? "",
+      node.title
+    );
   }
 
   return (
@@ -86,40 +126,13 @@ const ComponentExamples = ({
           })}
         </Tabs.List>
         {node.dir.filer.map((fil) => {
-          const exampleUrl = `/eksempler/${node.dir.title}/${fil.navn.replace(
-            ".tsx",
-            ""
-          )}`;
-
           return (
             <Tabs.Content key={fil._key} value={fil.navn} tabIndex={-1}>
-              <div className="overflow-hidden border-2 border-b-0 border-gray-100 bg-gray-50">
-                <iframe
-                  src={exampleUrl}
-                  height={iframeHeight}
-                  onLoad={handleExampleLoad}
-                  id={exampleIframeId}
-                  className="block w-full min-w-96 max-w-full resize-x overflow-auto bg-white shadow-[20px_0_20px_-20px_rgba(0,0,0,0.22)]"
-                />
-              </div>
-              <div className="mb-1 flex justify-center gap-2 border-2 border-gray-100 px-2 py-1 text-base xs:justify-end ">
-                <CodeSandbox code={fil.innhold.trim()} />
-                <Link
-                  href={exampleUrl}
-                  className="text-gray-900"
-                  target="_blank"
-                >
-                  Åpne i nytt vindu
-                </Link>
-              </div>
-
-              <Snippet
-                node={{
-                  _type: "code_snippet" as const,
-                  title: `${fil.navn}-snippet`,
-                  code: { code: fil.innhold.trim(), language: "jsx" },
-                }}
-              />
+              {element(
+                `/eksempler/${node.dir.title}/${fil.navn.replace(".tsx", "")}`,
+                fil.innhold,
+                node.title
+              )}
             </Tabs.Content>
           );
         })}
