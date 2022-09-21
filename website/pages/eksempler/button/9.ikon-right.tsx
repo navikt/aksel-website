@@ -1,10 +1,10 @@
-import { EditFilled } from "@navikt/ds-icons";
+import { Edit } from "@navikt/ds-icons";
 import { Button } from "@navikt/ds-react";
 import { withDsExample } from "components/website-modules/examples/withDsExample";
 
 const Example = () => {
   return (
-    <Button icon={<EditFilled aria-hidden />} iconPosition="right">
+    <Button icon={<Edit aria-hidden />} iconPosition="right">
       Rediger
     </Button>
   );
