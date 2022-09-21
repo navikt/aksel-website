@@ -15,14 +15,28 @@ const main = async () => {
   ).fetch(`*[_type == "kode_eksempler_fil"]`);
 
   for (const doc of docs) {
-    if (!examples.some((x) => doc.title === x.path)) {
+    if (
+      !examples.some(
+        (x) =>
+          doc._id ===
+          `kode_eksempelid_${x.path
+            .replace("/", "-")
+            .replace(".", "-")
+            .match(/\D/g)
+            .join("")}`
+      )
+    ) {
       transactionClient.delete(doc._id);
     }
   }
 
   for (const ex of examples) {
     const data = {
-      _id: `kode_eksempelid_${ex.path.replace("/", "-").replace(".", "-")}`,
+      _id: `kode_eksempelid_${ex.path
+        .replace("/", "-")
+        .replace(".", "-")
+        .match(/\D/g)
+        .join("")}`,
       _type: "kode_eksempler_fil",
       title: ex.path,
       dir: ex.dir,
