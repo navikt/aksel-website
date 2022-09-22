@@ -95,12 +95,24 @@ export function TableOfContents({
           }
         }
       }
-      toc && !active && setActiveId(null);
+
       toc && !activeSub && setActiveSubId(null);
 
       active && setActiveId(active);
       activeSub && setActiveSubId(activeSub);
+
+      active
+        ? window.history.replaceState(window.history.state, "", `#${active}`)
+        : window.history.replaceState(window.history.state, "", " ");
+
+      if (activeSub) {
+        const dist = document.getElementById(`${activeSub}-parent`).offsetTop;
+        const parent = document.getElementById(`toc-scroll`);
+        if (!parent || !dist) return;
+        parent.scrollTop = dist - 128;
+      }
     };
+
     const func = throttle(handleScroll, 50);
 
     window.addEventListener("scroll", func);
@@ -109,21 +121,9 @@ export function TableOfContents({
     };
   }, [toc]);
 
-  // TODO: Løse dette på en bedre måte
   useEffect(() => {
-    setTimeout(() => {
-      activeId
-        ? window.history.replaceState(window.history.state, "", `#${activeId}`)
-        : window.history.replaceState(window.history.state, "", " ");
-    }, 100);
-
-    if (activeSubId) {
-      const dist = document.getElementById(`${activeSubId}-parent`).offsetTop;
-      const parent = document.getElementById(`toc-scroll`);
-      if (!parent || !dist) return;
-      parent.scrollTop = dist - 128;
-    }
-  }, [activeId, activeSubId]);
+    window.location.hash && setActiveId(window.location.hash.replace("#", ""));
+  }, []);
 
   const handleFocus = (id: string) => {
     const element = document.getElementById(id);
