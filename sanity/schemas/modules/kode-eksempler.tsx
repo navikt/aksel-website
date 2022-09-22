@@ -1,6 +1,6 @@
-/* import { Download } from "@navikt/ds-icons";
+import { Ruler } from "@navikt/ds-icons";
 import React from "react";
- */
+
 export default {
   title: "Kode-eksempler",
   name: "kode_eksempler",
@@ -42,12 +42,19 @@ export default {
       hidden: ({ parent }) => !parent.standalone,
     },
   ],
-  /* preview: {
-    prepare() {
+  icon: () => <Ruler />,
+  preview: {
+    select: {
+      standalone: "standalone",
+      filnavn: "filnavn.title",
+      dir: "dir.title",
+    },
+    prepare({ standalone, filnavn, dir }) {
       return {
-        title: "Installasjon",
-        media: () => <Download />,
+        title: "Komponent-demo",
+        subtitle: standalone ? filnavn?.replace(".tsx", "") ?? "" : dir ?? "",
+        media: () => <Ruler />,
       };
     },
-  }, */
+  },
 };

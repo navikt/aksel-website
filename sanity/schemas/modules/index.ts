@@ -10,7 +10,7 @@ import liveDemo from "./live-demo";
 import Props from "./props";
 import RelatertInnhold from "./relatert-innhold";
 import Innholdskort from "./innholdskort";
-import KodeEksempler from "./kodeeksempler";
+import KodeEksempler from "./kode-eksempler";
 import {
   RiktekstAksel,
   RiktekstDsArtikkel,
