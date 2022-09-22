@@ -18,7 +18,7 @@ export const BreadCrumbs = ({
 
   return (
     <NextLink href={href ?? `/tema/${router.query.tema}`} passHref>
-      <a className="group mb-1 flex w-fit items-center justify-start  text-deepblue-500 hover:text-deepblue-800 focus:underline focus:outline-none">
+      <a className="group mb-1 flex w-fit items-center justify-start text-deepblue-500 hover:text-deepblue-800 focus:underline focus:outline-none">
         <svg
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

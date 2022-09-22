@@ -24,7 +24,7 @@ export const ScrollTop = () => {
       <svg
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-[19px] w-[19px] translate-y-1 rotate-90 group-hover:translate-y-0"
+        className="h-[19px] w-[19px] translate-y-1 rotate-90 transition-all group-hover:translate-y-0"
         aria-hidden
       >
         <path
