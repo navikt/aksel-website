@@ -3907,7 +3907,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@popperjs/core@npm:^2.10.2, @popperjs/core@npm:^2.11.5, @popperjs/core@npm:^2.5.4, @popperjs/core@npm:^2.9.2":
+"@popperjs/core@npm:^2.11.5, @popperjs/core@npm:^2.5.4, @popperjs/core@npm:^2.9.2":
   version: 2.11.5
   resolution: "@popperjs/core@npm:2.11.5"
   checksum: fd7f9dca3fb716d7426332b6ee283f88d2724c0ab342fb678865a640bad403dfb9eeebd8204a406986162f7e2b33394f104320008b74d0e9066d7322f70ea35d
@@ -4654,7 +4654,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/color@npm:^2.1.11, @sanity/color@npm:^2.1.4, @sanity/color@npm:^2.1.6, @sanity/color@npm:^2.1.8":
+"@sanity/color@npm:^2.1.11, @sanity/color@npm:^2.1.4, @sanity/color@npm:^2.1.8":
   version: 2.1.11
   resolution: "@sanity/color@npm:2.1.11"
   checksum: 573d0727341e029ecd56dca64ce5d28dbd3685e68e6ac5224f997b34926d1ca055c6ce31ae443faa8a26e09ce16cbea9af25716208973e4996297123fe9c1a78
@@ -5055,7 +5055,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/icons@npm:^1.1.4, @sanity/icons@npm:^1.2.2, @sanity/icons@npm:^1.2.6, @sanity/icons@npm:^1.3.1":
+"@sanity/icons@npm:^1.1.4, @sanity/icons@npm:^1.2.6, @sanity/icons@npm:^1.3.1":
   version: 1.3.1
   resolution: "@sanity/icons@npm:1.3.1"
   peerDependencies:
@@ -5064,7 +5064,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/icons@npm:^1.3.6":
+"@sanity/icons@npm:^1.3.4, @sanity/icons@npm:^1.3.6":
   version: 1.3.6
   resolution: "@sanity/icons@npm:1.3.6"
   peerDependencies:
@@ -5153,6 +5153,21 @@ __metadata:
     split2: ^3.2.2
     tar-fs: ^2.1.1
   checksum: 3827f2bc99e21b998058d583bf84c992db283353cfcf55ab6c7e1bbbb2c769cc30f5bf427edd62a268dedb9f55d34d350d7165b5a96d09716defe5b7b8eabf32
+  languageName: node
+  linkType: hard
+
+"@sanity/incompatible-plugin@npm:^1.0.0":
+  version: 1.0.1
+  resolution: "@sanity/incompatible-plugin@npm:1.0.1"
+  dependencies:
+    "@sanity/icons": ^1.3.4
+    "@sanity/ui": ^0.38.0
+    react-copy-to-clipboard: ^5.1.0
+  peerDependencies:
+    react: ^16.9.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0
+    styled-components: ^5.0.0
+  checksum: 1d55a4f259e0084005315e444128922decda0c9682eee073b389c645589d4f1dc771764a2721c32812f36b05ed9fc57adb00b3c04d42812b64eeec3de28f1907
   languageName: node
   linkType: hard
 
@@ -5521,29 +5536,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/ui@npm:^0.36.12":
-  version: 0.36.17
-  resolution: "@sanity/ui@npm:0.36.17"
-  dependencies:
-    "@juggle/resize-observer": ^3.3.1
-    "@popperjs/core": ^2.10.2
-    "@reach/auto-id": ^0.16.0
-    "@sanity/color": ^2.1.6
-    "@sanity/icons": ^1.2.2
-    framer-motion: 5.3.3
-    lodash: ^4.17.21
-    popper-max-size-modifier: ^0.2.0
-    react-is: ^17.0.2
-    react-popper: ^2.2.5
-    react-refractor: ^2.1.5
-  peerDependencies:
-    react: ^16.9 || ^17
-    react-dom: ^16.9 || ^17
-    styled-components: ^5.2
-  checksum: 2cee709928f5716a4578286f4c99fd8f2c9878f7b6ea74f11e249e8790fd84eed2812009e2491dc80458b67e157bd85825fa8617ecb778efa4cc4166c2f2e92a
-  languageName: node
-  linkType: hard
-
 "@sanity/ui@npm:^0.37.9":
   version: 0.37.12
   resolution: "@sanity/ui@npm:0.37.12"
@@ -5566,7 +5558,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/ui@npm:^0.38.2":
+"@sanity/ui@npm:^0.38.0, @sanity/ui@npm:^0.38.2":
   version: 0.38.2
   resolution: "@sanity/ui@npm:0.38.2"
   dependencies:
@@ -15951,26 +15943,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:5.3.3":
-  version: 5.3.3
-  resolution: "framer-motion@npm:5.3.3"
-  dependencies:
-    "@emotion/is-prop-valid": ^0.8.2
-    framesync: 6.0.1
-    hey-listen: ^1.0.8
-    popmotion: 11.0.0
-    style-value-types: 5.0.0
-    tslib: ^2.1.0
-  peerDependencies:
-    react: ">=16.8 || ^17.0.0"
-    react-dom: ">=16.8 || ^17.0.0"
-  dependenciesMeta:
-    "@emotion/is-prop-valid":
-      optional: true
-  checksum: 95a112cf427bc2c087fc918b626c39a6bfc77842cf5beec133e96af08e67f6ad984f0a210a7e436d409a334f00cb27e570119106c71458d465b7c163cb0992a4
-  languageName: node
-  linkType: hard
-
 "framer-motion@npm:6.3.0":
   version: 6.3.0
   resolution: "framer-motion@npm:6.3.0"
@@ -16076,15 +16048,6 @@ __metadata:
   dependencies:
     tslib: ^2.1.0
   checksum: a23ebe8f7e20a32c0b99c2f8175b6f07af3ec6316aad52a2316316a6d011d717af8d2175dcc2827031c59fabb30232ed3e19a720a373caba7f070e1eae436325
-  languageName: node
-  linkType: hard
-
-"framesync@npm:^6.0.1":
-  version: 6.1.0
-  resolution: "framesync@npm:6.1.0"
-  dependencies:
-    tslib: ^2.3.1
-  checksum: f3a933987a9235fd476b377b912c276aef474e07a93f682e6b6cec58a8301ae9ad860fbc712416a6812d39326ed18761aa58b4e9617024d2a08d86257b246f3c
   languageName: node
   linkType: hard
 
@@ -20681,7 +20644,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.11, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.4, lodash@npm:^4.3.0, lodash@npm:^4.7.0":
+"lodash@npm:>=4.17.4, lodash@npm:^4.17.11, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.4, lodash@npm:^4.3.0, lodash@npm:^4.7.0":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -23159,18 +23122,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"popmotion@npm:11.0.0":
-  version: 11.0.0
-  resolution: "popmotion@npm:11.0.0"
-  dependencies:
-    framesync: ^6.0.1
-    hey-listen: ^1.0.8
-    style-value-types: 5.0.0
-    tslib: ^2.1.0
-  checksum: 0e214895269bb3c9d2c5cbed2229d399cdea118f40cfd95f96b176439edf09d16becdef3dc3b820a6f53ab02a14e6047f04c89ee6991ddbd8b8194d7cfa59f0b
-  languageName: node
-  linkType: hard
-
 "popmotion@npm:11.0.3":
   version: 11.0.3
   resolution: "popmotion@npm:11.0.3"
@@ -24528,17 +24479,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:~15.7.2":
-  version: 15.7.2
-  resolution: "prop-types@npm:15.7.2"
-  dependencies:
-    loose-envify: ^1.4.0
-    object-assign: ^4.1.1
-    react-is: ^16.8.1
-  checksum: 5eef82fdda64252c7e75aa5c8cc28a24bbdece0f540adb60ce67c205cf978a5bd56b83e4f269f91c6e4dcfd80b36f2a2dec24d362e278913db2086ca9c6f9430
-  languageName: node
-  linkType: hard
-
 "property-expr@npm:^2.0.4":
   version: 2.0.5
   resolution: "property-expr@npm:2.0.5"
@@ -24936,7 +24876,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-copy-to-clipboard@npm:^5.0.4":
+"react-copy-to-clipboard@npm:^5.0.4, react-copy-to-clipboard@npm:^5.1.0":
   version: 5.1.0
   resolution: "react-copy-to-clipboard@npm:5.1.0"
   dependencies:
@@ -25188,7 +25128,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-is@npm:^16.13.1, react-is@npm:^16.7.0, react-is@npm:^16.8.1":
+"react-is@npm:^16.13.1, react-is@npm:^16.7.0":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: f7a19ac3496de32ca9ae12aa030f00f14a3d45374f1ceca0af707c831b2a6098ef0d6bdae51bd437b0a306d7f01d4677fcc8de7c0d331eb47ad0f46130e53c5f
@@ -25276,16 +25216,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-photo-gallery@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "react-photo-gallery@npm:8.0.0"
-  dependencies:
-    prop-types: ~15.7.2
-    resize-observer-polyfill: ^1.5.0
+"react-photo-album@npm:^1.13.2":
+  version: 1.16.1
+  resolution: "react-photo-album@npm:1.16.1"
   peerDependencies:
-    react: ^16.8.0
-    react-dom: ^16.8.0
-  checksum: 81098b9f936ebaf16ef6994ec34978a76b0521c495ab9547a11f4c6ee67a3552d28686a9d6a245dace63266faff21146fac2e75ae6face016f012e88a3f54ba2
+    react: ">=16.14.0"
+  checksum: ceefc8231245b438eb67c79352012cbb204e1d22867dc957740587394d8eee59b7179d191ccff3f74440e0d676f4d624ed371b5cb47e4c6f12ad7667f9d696bf
   languageName: node
   linkType: hard
 
@@ -25334,7 +25270,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-refractor@npm:^2.1.4, react-refractor@npm:^2.1.5, react-refractor@npm:^2.1.6, react-refractor@npm:^2.1.7":
+"react-refractor@npm:^2.1.4, react-refractor@npm:^2.1.6, react-refractor@npm:^2.1.7":
   version: 2.1.7
   resolution: "react-refractor@npm:2.1.7"
   dependencies:
@@ -26146,13 +26082,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resize-observer-polyfill@npm:^1.5.0":
-  version: 1.5.1
-  resolution: "resize-observer-polyfill@npm:1.5.1"
-  checksum: 57e7f79489867b00ba43c9c051524a5c8f162a61d5547e99333549afc23e15c44fd43f2f318ea0261ea98c0eb3158cca261e6f48d66e1ed1cd1f340a43977094
-  languageName: node
-  linkType: hard
-
 "resolve-cwd@npm:^3.0.0":
   version: 3.0.0
   resolution: "resolve-cwd@npm:3.0.0"
@@ -26462,21 +26391,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rxjs@npm:>=6.5.2, rxjs@npm:^7.1.0, rxjs@npm:^7.3.0, rxjs@npm:^7.5.1":
+  version: 7.5.6
+  resolution: "rxjs@npm:7.5.6"
+  dependencies:
+    tslib: ^2.1.0
+  checksum: fc05f01364a74dac57490fb3e07ea63b422af04017fae1db641a009073f902ef69f285c5daac31359620dc8d9aee7d81e42b370ca2a8573d1feae0b04329383b
+  languageName: node
+  linkType: hard
+
 "rxjs@npm:^6.0.0, rxjs@npm:^6.4.0, rxjs@npm:^6.5.3, rxjs@npm:^6.6.0":
   version: 6.6.7
   resolution: "rxjs@npm:6.6.7"
   dependencies:
     tslib: ^1.9.0
   checksum: bc334edef1bb8bbf56590b0b25734ba0deaf8825b703256a93714308ea36dff8a11d25533671adf8e104e5e8f256aa6fdfe39b2e248cdbd7a5f90c260acbbd1b
-  languageName: node
-  linkType: hard
-
-"rxjs@npm:^7.1.0, rxjs@npm:^7.3.0, rxjs@npm:^7.5.1":
-  version: 7.5.6
-  resolution: "rxjs@npm:7.5.6"
-  dependencies:
-    tslib: ^2.1.0
-  checksum: fc05f01364a74dac57490fb3e07ea63b422af04017fae1db641a009073f902ef69f285c5daac31359620dc8d9aee7d81e42b370ca2a8573d1feae0b04329383b
   languageName: node
   linkType: hard
 
@@ -26592,22 +26521,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sanity-plugin-asset-source-unsplash@npm:^0.1.5":
-  version: 0.1.5
-  resolution: "sanity-plugin-asset-source-unsplash@npm:0.1.5"
+"sanity-plugin-asset-source-unsplash@npm:^3.0.0-v3-studio.5":
+  version: 3.0.0-v3-studio.5
+  resolution: "sanity-plugin-asset-source-unsplash@npm:3.0.0-v3-studio.5"
   dependencies:
-    "@sanity/ui": ^0.36.12
+    "@sanity/incompatible-plugin": ^1.0.0
+    "@sanity/ui": ^0.38.0
+    lodash: ">=4.17.4"
     react-infinite-scroll-component: ^6.1.0
-    react-photo-gallery: ^8.0.0
-  peerDependencies:
-    "@sanity/base": ">=2.13.0"
-    "@sanity/components": ^2.13.0
-    lodash: ">= 4.17.4"
-    react: ^16.9
-    react-dom: ">= 16.2"
+    react-photo-album: ^1.13.2
     rxjs: ">=6.5.2"
     styled-components: ^5.2.0
-  checksum: 8156e87a7d971e5508f8dbb99d3792ce0a567619162786bd4b36d9a0b531542f137c42f03e8581f49167e2f3c5be6bc3ba95ccb9e3fdddbfb8c7d257b05224d1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    sanity: "*"
+  checksum: 57e1bd6b284e8be2be0822a65482e62324038e5fa4bc9919389a8e5605936d2eb063fb502eb7b9b551e7bf74a9bf36cc5b74c48ba90a8c836dea4d7446281962
   languageName: node
   linkType: hard
 
@@ -26841,7 +26770,7 @@ __metadata:
     react-dom: ^17.0
     sanity: dev-preview
     sanity-codegen: 1.0.0-alpha.26
-    sanity-plugin-asset-source-unsplash: ^0.1.5
+    sanity-plugin-asset-source-unsplash: ^3.0.0-v3-studio.5
     sanity-plugin-dashboard-widget-document-list: ^0.0.13
     sanity-plugin-media: ^2.0.0-v3-studio.0
     sanity-plugin-power-table: ^0.0.14
@@ -28127,7 +28056,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-components@npm:^5.3.1":
+"styled-components@npm:^5.2.0, styled-components@npm:^5.3.1":
   version: 5.3.5
   resolution: "styled-components@npm:5.3.5"
   dependencies:

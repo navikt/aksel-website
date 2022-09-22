@@ -40,7 +40,7 @@
     "react-dom": "^17.0",
     "sanity": "dev-preview",
     "sanity-codegen": "1.0.0-alpha.26",
-    "sanity-plugin-asset-source-unsplash": "^0.1.5",
+    "sanity-plugin-asset-source-unsplash": "^3.0.0-v3-studio.5",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.13",
     "sanity-plugin-media": "^2.0.0-v3-studio.0",
     "sanity-plugin-power-table": "^0.0.14",
