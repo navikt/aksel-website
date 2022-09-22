@@ -17,6 +17,9 @@ module.exports = {
       "2xl": "1440px",
     },
     extend: {
+      fontFamily: {
+        sans: ["Source Sans Pro", "Arial", "sans-serif"],
+      },
       transitionProperty: {
         width: "width",
         gap: "gap",

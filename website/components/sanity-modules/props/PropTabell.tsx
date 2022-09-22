@@ -1,140 +1,84 @@
-import {
-  BodyLong,
-  BodyShort,
-  Detail,
-  Heading,
-  Label,
-  Link,
-  Tag,
-} from "@navikt/ds-react";
-import NextLink from "next/link";
-import React from "react";
-import { DsProps } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
+import { DsProps } from "@/lib";
+import { BodyShort, Detail, Heading } from "@navikt/ds-react";
+import { Highlighter } from "./Highlighter";
 
 export type PropT = {
   _type: "komponent";
+  _key: string;
   title?: string;
   overridable?: boolean;
   propref?: DsProps;
 };
 
-const Table = ({ prop }: { prop: any }) => (
-  <table className="mb-0 border-separate border-t border-t-divider pt-5 first-of-type:border-t-0 first-of-type:pt-2 last-of-type:mb-8 last-of-type:border-b last-of-type:border-b-divider">
-    <caption className="m-0 mb-2 flex flex-col text-left">
-      {prop.required && (
-        <Detail className="font-semibold text-feedback-danger-text">
-          Required
-        </Detail>
-      )}
-      <Tag
-        variant="info"
-        size="small"
-        className="border-none bg-deepblue-50 font-mono text-deepblue-600"
-      >
-        {prop.name}
-      </Tag>
-    </caption>
-    <tbody className="border-none">
-      <tr>
-        <Label
-          as="th"
-          size="small"
-          className="min-w-[100px] pr-4 pb-3 pl-[0.125rem] text-left text-text-muted"
-        >
-          Type
-        </Label>
-        <BodyShort as="td" className="w-full pb-2 pl-1">
-          <pre style={{ margin: 0 }}>
-            <code className="text-medium text-lightblue-800">
-              {prop.type ?? "-"}
-            </code>
-          </pre>
-        </BodyShort>
-      </tr>
+const List = ({ prop, parent }: { prop: any; parent: string }) => {
+  if (prop.description && prop.description.includes("@private")) {
+    return null;
+  }
+
+  return (
+    <Detail
+      as="span"
+      className="block overflow-x-auto border border-t-0 border-gray-300 p-2 font-mono first-of-type:border-t last-of-type:rounded-b"
+    >
+      <dt>
+        <span className="font-semibold">{`${prop.name}${
+          prop?.required ? "" : "?"
+        } `}</span>
+        <span>{prop.type ? <>{Highlighter({ type: prop.type })}</> : ""}</span>
+      </dt>
       {prop.description && (
-        <tr>
-          <Label
-            as="th"
-            size="small"
-            className="pr-4 pb-3 pl-[0.125rem] text-left text-text-muted"
-          >
-            Description
-          </Label>
-          <BodyShort as="td" className="w-full pb-2 pl-1">
-            {prop.description ?? "-"}
-          </BodyShort>
-        </tr>
+        <dl className="font-sans text-base">{prop.description}</dl>
       )}
-      {prop.defaultValue && (
-        <tr>
-          <Label
-            as="th"
-            size="small"
-            className="min-w-[100px] pr-4 pb-3 pl-[0.125rem] text-left text-text-muted"
-          >
-            Default
-          </Label>
-          <BodyShort as="td" className="w-full pb-2 pl-1">
-            {prop.defaultValue ? (
-              <code className="text-medium text-lightblue-800">
-                {prop.defaultValue}
-              </code>
-            ) : (
-              <span>-</span>
-            )}
-          </BodyShort>
-        </tr>
+      {prop.name === "ref" && prop.type.includes("Ref<") && (
+        <dl className="font-sans text-base">
+          {`${parent} extends ${prop.type.slice(
+            prop.type.indexOf("<") + 1,
+            prop.type.lastIndexOf(">")
+          )}`}
+        </dl>
       )}
-    </tbody>
-  </table>
-);
+    </Detail>
+  );
+};
 
 const PropTable = ({ komponent }: { komponent: PropT }): JSX.Element => {
   return (
-    <details className="algolia-ignore-index">
-      {komponent.title ? (
-        <Heading
-          size="small"
-          as="summary"
-          className="mb-2 cursor-pointer p-2 hover:bg-interaction-primary-hover-subtle focus:shadow-focus focus:outline-none"
-        >
-          {komponent.title}
-        </Heading>
-      ) : (
-        <summary>Props</summary>
-      )}
+    <div>
+      <Heading
+        size="small"
+        level="3"
+        className="scroll-m-8 rounded-t border border-b-0 border-gray-300 bg-gray-100 p-2"
+        id={`${komponent._key}`}
+      >
+        {komponent?.title ? komponent.title : "Props"}
+      </Heading>
 
-      <div className="relative mb-4 mt-4 overflow-x-auto pb-8">
+      <div className="algolia-ignore-index relative mb-8">
         {komponent?.propref?.proplist?.length === 0 && (
-          <BodyShort className="mb-8">
-            Fant ingen props for denne komponenten. Kan hende den er en wrapper,
-            eller bare tar imot children.
-          </BodyShort>
-        )}
-        {komponent.overridable && (
-          <BodyLong as="ul" className="mb-6">
-            <li>
-              Komponenten er implementert med{" "}
-              <NextLink
-                href="/designsystem/side/overridable-component"
-                passHref
-              >
-                <Link>OverridableComponent</Link>
-              </NextLink>
-            </li>
-          </BodyLong>
+          <div className="mb-8 rounded-b border border-gray-300 p-2">
+            <BodyShort>Fant ingen props for denne komponenten.</BodyShort>
+          </div>
         )}
 
-        {komponent?.propref?.proplist?.map((prop) => (
-          <Table key={prop.name} prop={prop} />
-        ))}
-        <Detail className="-mt-6 font-semibold text-text-muted">
-          * Props er autogenerert fra kode, så avvik kan forekomme. Ta kontakt
-          hvis noe ikke stemmer!
-        </Detail>
+        <dl>
+          {!komponent?.overridable && (
+            <List
+              prop={{
+                description: "Implemented with OverridableComponent-api",
+                required: false,
+                name: "as",
+                type: "React.ReactElement | string",
+              }}
+              parent={komponent?.title ?? ""}
+            />
+          )}
+          {komponent?.propref?.proplist?.map((prop) => (
+            <List key={prop.name} prop={prop} parent={komponent?.title ?? ""} />
+          ))}
+        </dl>
       </div>
-    </details>
+    </div>
   );
 };
 
