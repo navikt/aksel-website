@@ -1,7 +1,7 @@
 import { withErrorBoundary } from "@/error-boundary";
 import { DsProps } from "@/lib";
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
-import { Highlighter } from "./Highlighter";
+import { Highlighter } from "./Highlight";
 
 export type PropT = {
   _type: "komponent";
@@ -12,7 +12,7 @@ export type PropT = {
 };
 
 const List = ({ prop, parent }: { prop: any; parent: string }) => {
-  if (prop.description && prop.description.includes("@private")) {
+  if (prop?.description && prop.description.includes("@private")) {
     return null;
   }
 
@@ -46,9 +46,9 @@ const PropTable = ({ komponent }: { komponent: PropT }): JSX.Element => {
   return (
     <div>
       <Heading
-        size="small"
+        size="xsmall"
         level="3"
-        className="scroll-m-8 rounded-t border border-b-0 border-gray-300 bg-gray-100 p-2"
+        className="scroll-m-8 rounded-t border border-b-0 border-gray-300 bg-gray-50 p-2"
         id={`${komponent._key}`}
       >
         {komponent?.title ? komponent.title : "Props"}

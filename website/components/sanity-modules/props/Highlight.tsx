@@ -5,10 +5,7 @@ export const Highlighter = ({
   type: string;
   prev?: string;
 }): JSX.Element => {
-  const isString =
-    type === "string" ||
-    type.match(/^['][^']+'$/) !== null ||
-    type.match(/^["][^"]+"$/) !== null;
+  const isString = type === "string" || type.match(/^["][^"]+"$/) !== null;
 
   const isType =
     type.match(/^[A-Z][A-Za-z]+$/) || type === "any" || type === "void";
