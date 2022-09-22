@@ -96,18 +96,9 @@ export function TableOfContents({
         }
       }
 
-      toc && !activeSub && setActiveSubId(null);
+      toc && !activeSub ? setActiveSubId(null) : setActiveSubId(activeSub);
 
       active && setActiveId(active);
-      activeSub && setActiveSubId(activeSub);
-
-      active || activeSub
-        ? window.history.replaceState(
-            window.history.state,
-            "",
-            `#${activeSub || active}`
-          )
-        : window.history.replaceState(window.history.state, "", " ");
 
       if (activeSub) {
         const dist = document.getElementById(`${activeSub}-parent`).offsetTop;
