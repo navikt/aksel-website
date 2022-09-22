@@ -101,8 +101,12 @@ export function TableOfContents({
       active && setActiveId(active);
       activeSub && setActiveSubId(activeSub);
 
-      active
-        ? window.history.replaceState(window.history.state, "", `#${active}`)
+      active || activeSub
+        ? window.history.replaceState(
+            window.history.state,
+            "",
+            `#${activeSub || active}`
+          )
         : window.history.replaceState(window.history.state, "", " ");
 
       if (activeSub) {
