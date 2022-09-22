@@ -118,11 +118,11 @@ const ComponentExamples = ({
                 key={fil._key}
                 value={fil.navn}
                 className={cl(
-                  "flex h-8 items-center justify-center rounded-full text-base focus:shadow-focus-gap focus:outline-none",
+                  "flex h-8 items-center justify-center  rounded-full text-base ring-inset ring-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-800",
                   {
-                    "gap-1 bg-gray-600 pr-3 pl-[10px] text-white hover:bg-gray-700":
+                    "gap-1 bg-gray-200 pr-3 pl-[10px] ring-2 hover:bg-gray-100":
                       activeExample === fil.navn,
-                    "bg-gray-100 px-3 hover:bg-gray-200 ":
+                    "bg-white px-3 ring-1 hover:bg-gray-100":
                       activeExample !== fil.navn,
                   }
                 )}
