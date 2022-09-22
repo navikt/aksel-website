@@ -63,7 +63,7 @@ const ComponentExamples = ({
 
   const element = (exampleUrl: string, code: string, name: string) => (
     <>
-      <div className="overflow-hidden border-2 border-b-0 border-gray-100 bg-gray-50">
+      <div className="overflow-hidden rounded-t border border-b-0 border-gray-300 bg-gray-50">
         <iframe
           src={exampleUrl}
           height={iframeHeight}
@@ -72,7 +72,7 @@ const ComponentExamples = ({
           className="block w-full min-w-96 max-w-full resize-x overflow-auto bg-white shadow-[20px_0_20px_-20px_rgba(0,0,0,0.22)]"
         />
       </div>
-      <div className="mb-1 flex justify-center gap-2 border-2 border-gray-100 px-2 py-1 text-base xs:justify-end ">
+      <div className="mb-1 flex justify-center gap-2 rounded-b border border-gray-300 px-2 py-1 text-base xs:justify-end ">
         <CodeSandbox code={code.trim()} />
         <Link href={exampleUrl} className="text-gray-900" target="_blank">
           Åpne i nytt vindu
