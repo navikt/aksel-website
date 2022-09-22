@@ -116,6 +116,13 @@ export function TableOfContents({
         ? window.history.replaceState(window.history.state, "", `#${activeId}`)
         : window.history.replaceState(window.history.state, "", " ");
     }, 100);
+
+    if (activeSubId) {
+      const dist = document.getElementById(`${activeSubId}-parent`).offsetTop;
+      const parent = document.getElementById(`toc-scroll`);
+      if (!parent || !dist) return;
+      parent.scrollTop = dist - 128;
+    }
   }, [activeId, activeSubId]);
 
   const handleFocus = (id: string) => {
@@ -148,7 +155,10 @@ export function TableOfContents({
       >
         Innhold på siden
       </Heading>
-      <div className="flex max-h-[80vh] flex-col overflow-y-scroll">
+      <div
+        id="toc-scroll"
+        className="flex max-h-[80vh] flex-col overflow-y-scroll"
+      >
         <nav aria-labelledby="toc-heading">
           <ul>
             {toc.map((link) => {
@@ -187,12 +197,14 @@ export function TableOfContents({
                           hidden: link.id !== activeId,
                         })}
                       >
-                        {link.lvl3.map((x) => (
+                        {link.lvl3.map((x, y) => (
                           <BodyShort
                             size="small"
                             as="li"
                             key={x.id}
                             className="pl-4"
+                            id={`${x.id}-parent`}
+                            data-index={y}
                           >
                             <Link
                               href={`#${x.id}`}
