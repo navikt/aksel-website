@@ -16,11 +16,11 @@ const FooterForm = () => {
   const [contactForm, setContactForm] = useState({
     content: "",
     mail: "",
+    hasWritten: false,
   });
 
   const [contentError, setContentError] = useState({ content: "", mail: "" });
   const [sent, setSent] = useState({ status: false, hadMail: false });
-  const [hasWritten, setHasWritten] = useState(false);
 
   const { asPath, basePath } = useRouter();
 
@@ -57,19 +57,12 @@ const FooterForm = () => {
     });
 
     setSent({ status: true, hadMail: !!contactForm?.mail });
-    setContactForm({ content: "", mail: "" });
+    setContactForm({ content: "", mail: "", hasWritten: false });
   };
 
   useEffect(() => {
-    !hasWritten &&
-      (contactForm.mail || contactForm.content) &&
-      setHasWritten(true);
-  }, [contactForm]);
-
-  useEffect(() => {
-    setHasWritten(false);
     setSent({ status: false, hadMail: false });
-    setContactForm({ content: "", mail: "" });
+    setContactForm({ content: "", mail: "", hasWritten: false });
     setContentError({ content: "", mail: "" });
   }, [asPath]);
 
@@ -103,6 +96,7 @@ const FooterForm = () => {
                   setContactForm({
                     ...contactForm,
                     content: e.target.value,
+                    hasWritten: true,
                   });
                   e.target.value &&
                     !isEmpty(e.target.value, { ignore_whitespace: true }) &&
@@ -110,23 +104,31 @@ const FooterForm = () => {
                 }}
                 minRows={3}
               />
-              <TextField
-                className={cl("inverted-textfield")}
-                label="Vi svarer til e-post (valgfritt)"
-                error={contentError.mail}
-                value={contactForm.mail}
-                autoComplete="work email"
-                onChange={(e) => {
-                  setContactForm({ ...contactForm, mail: e.target.value });
-                  e.target.value &&
-                    isEmail(e.target.value) &&
-                    setContentError({ ...contentError, mail: "" });
-                }}
-              />
+              {contactForm.hasWritten && (
+                <TextField
+                  className={cl("inverted-textfield")}
+                  label="Vi svarer til e-post (valgfritt)"
+                  error={contentError.mail}
+                  value={contactForm.mail}
+                  autoComplete="work email"
+                  onChange={(e) => {
+                    setContactForm({
+                      ...contactForm,
+                      mail: e.target.value,
+                      hasWritten: true,
+                    });
+                    e.target.value &&
+                      isEmail(e.target.value) &&
+                      setContentError({ ...contentError, mail: "" });
+                  }}
+                />
+              )}
             </div>
-            <Button className="override-primary-button-dark">
-              Send melding
-            </Button>
+            {contactForm.hasWritten && (
+              <Button className="override-primary-button-dark">
+                Send melding
+              </Button>
+            )}
           </form>
         )}
       </div>
