@@ -1,4 +1,11 @@
-import { filterCode, getDesc, getIndex } from "../read-example-files";
+import { getExampleFiles } from "../get-example-files";
+import {
+  filterCode,
+  getDesc,
+  getIndex,
+  readExampleFile,
+  readExampleFiles,
+} from "../read-example-files";
 
 const d = `import { Button } from "@navikt/ds-react";
 import { withDsExample } from "components/website-modules/examples/withDsExample";
@@ -49,6 +56,16 @@ describe("Reading code-examples", () => {
 
   test("filterCode", () => {
     expect(filterCode(testStr1)).toEqual(codeRes);
+  });
+
+  test("readExampleFiles", () => {
+    const files = getExampleFiles();
+    expect(readExampleFiles(files[0].path.split("/")[0])).toBeTruthy();
+  });
+
+  test("readExampleFile", () => {
+    const files = getExampleFiles();
+    expect(readExampleFile(files[0].path)).toBeTruthy();
   });
 });
 

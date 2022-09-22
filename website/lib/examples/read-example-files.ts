@@ -64,6 +64,7 @@ export const readExampleFiles = (dirName: string): FileT => {
       innhold: filterCode(x.innhold),
     }));
   }
+  return null;
 };
 
 /**
@@ -86,4 +87,5 @@ export const readExampleFile = (
       navn: fileName.replace(".tsx", ""),
     };
   }
+  return null;
 };

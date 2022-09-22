@@ -9,7 +9,10 @@ export const getExampleFiles = (): { path: string; dir: boolean }[] => {
   const res = [];
 
   if (fs.existsSync(examplePath)) {
-    const dirs = fs.readdirSync(examplePath);
+    const dirs = fs
+      .readdirSync(examplePath, { withFileTypes: true })
+      .filter((dirent) => dirent.isDirectory())
+      .map((dirent) => dirent.name);
 
     dirs.map((dir) => {
       const dirPath = path.resolve(process.cwd(), `pages/eksempler/${dir}`);
