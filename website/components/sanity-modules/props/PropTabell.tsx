@@ -65,7 +65,7 @@ const PropTable = ({ komponent }: { komponent: PropT }): JSX.Element => {
           {!komponent?.overridable && (
             <List
               prop={{
-                description: "Implemented with OverridableComponent-api",
+                description: "OverridableComponent-api",
                 required: false,
                 name: "as",
                 type: "React.ReactElement | string",
