@@ -22,7 +22,7 @@ export const InnholdsKort = ({
         id={node._key}
         className="algolia-index-lvl3 scroll-mt-28 text-deepblue-500 focus:outline-none group-hover:underline"
       >
-        <NextLink href={node?.lenke} passHref>
+        <NextLink href={`/${node?.lenke}`} passHref>
           <a
             onClick={(e) =>
               logNav(

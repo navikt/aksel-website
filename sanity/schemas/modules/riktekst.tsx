@@ -182,6 +182,7 @@ const Riktekst = (type: "aksel" | "ds" | "komponent" | "prinsipp") => {
     "live_demo",
     "tastatur_modul",
     "tokens",
+    "kode_eksempler",
   ];
 
   const ds_artikkel = ["tokens", "spesial_seksjon"];

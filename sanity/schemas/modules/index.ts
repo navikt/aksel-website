@@ -10,6 +10,7 @@ import liveDemo from "./live-demo";
 import Props from "./props";
 import RelatertInnhold from "./relatert-innhold";
 import Innholdskort from "./innholdskort";
+import KodeEksempler from "./kodeeksempler";
 import {
   RiktekstAksel,
   RiktekstDsArtikkel,
@@ -55,6 +56,7 @@ const v2Blocks = [
   Tokens,
   Tips,
   Tastatur,
+  KodeEksempler,
 ];
 
 export default v2Blocks;

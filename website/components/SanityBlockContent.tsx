@@ -10,6 +10,7 @@ import {
   Anatomi,
   Bilde,
   CodeExample,
+  CodeExamples,
   DoDont,
   InnholdsKort,
   Kode,
@@ -54,6 +55,7 @@ const serializers = {
     video: ({ node }) => <Video node={node} />,
     tokens: ({ node }) => <TokensSeksjon node={node} />,
     tips: ({ node }) => <Tips node={node} />,
+    kode_eksempler: ({ node }) => <CodeExamples node={node} />,
 
     /* General page modules */
     ds_code_sandbox: ({ node }) => <Sandbox node={node} />,

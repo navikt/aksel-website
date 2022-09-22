@@ -5,6 +5,7 @@ export { default as CodeExamples, example } from "./automated/code-example";
 export { default as CodeSandboxes } from "./automated/sandbox";
 export { default as Props } from "./automated/props";
 export { default as Tokens } from "./automated/tokens";
+export { default as KodeEksempler } from "./automated/kode-eksempler";
 export {
   Color,
   default as ColorCategories,
