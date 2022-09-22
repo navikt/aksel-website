@@ -22,7 +22,7 @@ const main = async () => {
     client: client,
 
     // Name of dataset to export
-    dataset: "wireframes",
+    dataset: "production",
 
     // Path to write tar.gz-archive file to, or `-` for stdout
     outputPath: `backup-${time}.tar.gz`,
