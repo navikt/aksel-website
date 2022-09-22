@@ -2,6 +2,8 @@ import { createConfig } from "sanity";
 import { deskTool } from "sanity/desk";
 import { media } from "sanity-plugin-media";
 import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
+import { dashboardTool } from "@sanity/dashboard";
+import { documentListWidget } from "sanity-plugin-dashboard-widget-document-list";
 import * as Aksel from "./schemas/documents/aksel";
 import * as Designsystem from "./schemas/documents/designsystem";
 import v2Blocks from "./schemas/modules";
@@ -15,7 +17,14 @@ export default createConfig({
   projectId: "hnbe3yhs",
   dataset: "production",
 
-  plugins: [deskTool(), media(), unsplashImageAsset()],
+  plugins: [
+    deskTool(),
+    media(),
+    unsplashImageAsset(),
+    dashboardTool({
+      widgets: [documentListWidget({})],
+    }),
+  ],
 
   schema: {
     types: [],
