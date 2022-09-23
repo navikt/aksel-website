@@ -17,9 +17,9 @@ const ContentSecurityPolicy = `
   style-src 'self' 'unsafe-inline';
   report-uri https://sentry.gc.nav.no/api/113/envelope/?sentry_key=d35bd60e413c489ca0f2fd389b4e6e5e&sentry_version=7;
   connect-src 'self' ${hotjar} cdn.sanity.io *.api.sanity.io https://amplitude.nav.no https://sentry.gc.nav.no https://*.algolia.net https://*.algolianet.com;
-  frame-ancestors localhost:3333 localhost:3000 https://verktoykasse.sanity.studio/;
+  frame-ancestors localhost:3333 'self' localhost:3000 https://verktoykasse.sanity.studio/;
   media-src 'self' cdn.sanity.io;
-  frame-src ${hotjar} https://web.microsoftstream.com localhost:3000;
+  frame-src ${hotjar} 'self' https://web.microsoftstream.com localhost:3000;
 `;
 
 const securityHeaders = [

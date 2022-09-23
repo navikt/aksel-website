@@ -68,7 +68,7 @@ const PropTable = ({ komponent }: { komponent: PropT }): JSX.Element => {
                 description: "OverridableComponent-api",
                 required: false,
                 name: "as",
-                type: "React.ReactElement | string",
+                type: "React.ElementType",
               }}
               parent={komponent?.title ?? ""}
             />
