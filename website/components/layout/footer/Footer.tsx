@@ -73,7 +73,7 @@ const Footer = ({ variant = "ds" }: { variant: "ds" | "aksel" }) => {
             Arbeids- og velferdsetaten
           </div>
           <BodyShort className="mb-1 self-end xl:mb-0">
-            Redaktør: Kjersti Mosli
+            Redaktør: Eidar Grande Vollan
           </BodyShort>
           <div className="hidden self-end xl:block">
             <p>&copy; 2022 NAV</p>

@@ -1086,6 +1086,11 @@ Velg prinsippet siden omhandler
       };
 
       /**
+       * Hero bilde - `RegistryReference`
+       */
+      hero_bilde?: herobilde;
+
+      /**
        * Ingress - `Text`
 Side, innganger og seo description-tag
        */
@@ -1340,6 +1345,19 @@ Kilde-teksten blir satt som lenke
        */
         link?: string;
       };
+    };
+
+    type herobilde = {
+      _type: "herobilde";
+      asset: Sanity.Asset;
+      crop?: Sanity.ImageCrop;
+      hotspot?: Sanity.ImageHotspot;
+
+      /**
+       * Alt-tekst - `String`
+Beskriv bildet for skjermlesere
+       */
+      alt?: string;
     };
 
     type alert = {
