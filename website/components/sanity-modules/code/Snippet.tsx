@@ -44,7 +44,7 @@ const CodeSnippet = ({
                 <div
                   key={i}
                   {...getLineProps({ line, key: i })}
-                  className="whitespace-pre-wrap break-words text-medium"
+                  className="whitespace-pre break-words text-medium"
                 >
                   {line.map((token, key) => (
                     <span key={key} {...getTokenProps({ token, key })} />
