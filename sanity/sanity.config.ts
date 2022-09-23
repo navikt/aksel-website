@@ -10,7 +10,7 @@ import v2Blocks from "./schemas/modules";
 import editors from "./schemas/documents/editors";
 import navigation, { dropdown, link } from "./schemas/documents/navigation";
 import frontpage from "./schemas/documents/frontpage";
-import test from "./schemas/documents/test";
+import test from "./schemas/documents/testdoc";
 
 export default createConfig({
   name: "default",
