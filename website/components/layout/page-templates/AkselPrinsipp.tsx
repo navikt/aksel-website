@@ -5,6 +5,7 @@ import Head from "next/head";
 import { AkselHeader, Footer } from "..";
 import {
   abbrName,
+  Bilde,
   BreadCrumbs,
   /* AuthenticationContext,
   AuthenticationStatus, */
@@ -122,7 +123,7 @@ const AkselPrinsippTemplate = ({
             </div>
           </div>
           {mainPage && <PrinsippSlope />}
-          <div className="bg-gray-50 pt-4">
+          <div className="bg-gray-100 pt-4">
             <div className="mx-auto max-w-aksel px-4 xs:w-[90%] ">
               <div className="pb-16 md:pb-32">
                 <div className="relative mx-auto mt-4 max-w-prose lg:ml-0 lg:grid lg:max-w-none lg:grid-flow-row-dense lg:grid-cols-3 lg:items-start lg:gap-x-12">
@@ -132,6 +133,10 @@ const AkselPrinsippTemplate = ({
                     aksel
                   />
                   <div className="max-w-prose lg:col-span-2 lg:col-start-1">
+                    <Bilde
+                      node={data.hero_bilde as any}
+                      className="-mt-64 mb-10"
+                    />
                     {data?.under_arbeid?.status ? (
                       <>
                         <UnderArbeid text={data?.under_arbeid?.forklaring} />

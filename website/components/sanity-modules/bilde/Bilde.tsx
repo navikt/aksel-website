@@ -7,7 +7,13 @@ import { withErrorBoundary } from "@/error-boundary";
 import style from "./index.module.css";
 import NextLink from "next/link";
 
-const Bilde = ({ node }: { node: SanityT.Schema.bilde }): JSX.Element => {
+const Bilde = ({
+  node,
+  className,
+}: {
+  node: SanityT.Schema.bilde;
+  className?: string;
+}): JSX.Element => {
   if (!node || !node.asset) {
     return null;
   }
@@ -15,7 +21,7 @@ const Bilde = ({ node }: { node: SanityT.Schema.bilde }): JSX.Element => {
   return (
     <>
       <figure
-        className={cl("m-0 mb-8 flex flex-col", style.figure, {
+        className={cl("m-0 mb-8 flex flex-col", style.figure, className, {
           "sm:max-w-[384px]": node?.small,
         })}
       >
