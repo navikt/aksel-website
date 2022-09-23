@@ -99,7 +99,7 @@ export const ingressField = {
   group: "innhold",
   rows: 3,
   validation: (Rule) =>
-    Rule.required().max(155).error("Ingress kan ikke være på over 155 tegn"),
+    Rule.required().max(210).error("Ingress kan ikke være på over 210 tegn"),
 };
 
 export const innholdFieldNew = {
