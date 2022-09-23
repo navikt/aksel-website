@@ -2,6 +2,7 @@ import Accordion from "./accordion";
 import Alert from "./alert";
 import Anatomi from "./anatomi";
 import Bilde from "./bilde";
+import HeroBilde from "./hero-bilde";
 import DoDont, { doDontBlock } from "./do-dont";
 import Installasjon from "./installasjon";
 import introKomponent from "./intro-komponent";
@@ -39,6 +40,7 @@ const v2Blocks = [
   DoDont,
   doDontBlock,
   Bilde,
+  HeroBilde,
   Alert,
   Kode,
   RelatertInnhold,

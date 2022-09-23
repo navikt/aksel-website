@@ -129,6 +129,13 @@ export default {
         },
       ],
     },
+    {
+      title: "Hero bilde",
+      name: "hero_bilde",
+      type: "herobilde",
+      group: "innhold",
+      hidden: ({ parent }) => !parent.prinsipp.hovedside,
+    },
     ingressField,
     innholdFieldPrinsipp,
     UnderArbeidField,
