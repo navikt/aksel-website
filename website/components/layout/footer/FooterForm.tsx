@@ -102,7 +102,7 @@ const FooterForm = () => {
                     !isEmpty(e.target.value, { ignore_whitespace: true }) &&
                     setContentError({ ...contentError, content: "" });
                 }}
-                minRows={3}
+                minRows={2}
               />
               {contactForm.hasWritten && (
                 <TextField
