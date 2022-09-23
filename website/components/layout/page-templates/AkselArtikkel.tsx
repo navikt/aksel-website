@@ -99,7 +99,7 @@ const AkselArtikkelTemplate = ({
               as="span"
               className="whitespace-nowrap text-text-muted"
             >
-              {dateStr(data?.publishedAt ?? data?._updatedAt)}
+              {dateStr(data?._updatedAt)}
             </BodyShort>
             {authors?.length > 0 && (
               <BodyShort size="small" as="div" className="flex flex-wrap gap-1">
@@ -179,7 +179,7 @@ const AkselArtikkelTemplate = ({
                 as="span"
                 className="whitespace-nowrap text-text-muted"
               >
-                Sist oppdatert: {dateStr(data?._updatedAt)}
+                Publisert: {dateStr(data?.publishedAt ?? data?._updatedAt)}
               </BodyShort>
             </div>
             <div className="mt-12 md:mt-16">
