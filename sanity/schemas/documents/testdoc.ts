@@ -18,6 +18,10 @@ export default defineType({
       components: {
         input: SlugInput,
       },
+      options: {
+        //@ts-ignore
+        prefix: "",
+      },
     }),
   ],
 });
