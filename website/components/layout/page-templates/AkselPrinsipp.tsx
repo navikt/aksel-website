@@ -123,7 +123,11 @@ const AkselPrinsippTemplate = ({
             </div>
           </div>
           {mainPage && <PrinsippSlope />}
-          <div className="bg-gray-100 pt-4">
+          <div
+            className={cl("pt-4", {
+              "bg-gray-100": mainPage,
+            })}
+          >
             <div className="mx-auto max-w-aksel px-4 xs:w-[90%] ">
               <div className="pb-16 md:pb-32">
                 <div className="relative mx-auto mt-4 max-w-prose lg:ml-0 lg:grid lg:max-w-none lg:grid-flow-row-dense lg:grid-cols-3 lg:items-start lg:gap-x-12">
