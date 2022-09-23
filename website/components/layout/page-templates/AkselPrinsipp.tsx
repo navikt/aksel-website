@@ -137,10 +137,12 @@ const AkselPrinsippTemplate = ({
                     aksel
                   />
                   <div className="max-w-prose lg:col-span-2 lg:col-start-1">
-                    <Bilde
-                      node={data.hero_bilde as any}
-                      className="-mt-64 mb-10"
-                    />
+                    {data?.hero_bilde && (
+                      <Bilde
+                        node={data.hero_bilde as any}
+                        className="-mt-36 mb-10 xs:-mt-64"
+                      />
+                    )}
                     {data?.under_arbeid?.status ? (
                       <>
                         <UnderArbeid text={data?.under_arbeid?.forklaring} />

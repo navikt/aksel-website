@@ -38,7 +38,7 @@ export const PrinsippSlope = () => (
     aria-hidden
   >
     <svg
-      className="mt-4  w-[1440px] rotate-180 bg-transparent xl:mt-4 2xl:-mt-[calc((100vw_-_1440px)_*_0.07)] 2xl:w-auto"
+      className="-mt-32 w-[1440px] rotate-180 bg-transparent xs:mt-4 xl:mt-4 2xl:-mt-[calc((100vw_-_1440px)_*_0.07)] 2xl:w-auto"
       viewBox="0 0 100 8"
       focusable="false"
       aria-hidden="true"
