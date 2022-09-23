@@ -28,6 +28,22 @@ export default {
     UnderArbeidField,
     sanitySlug(prefix, 3),
     {
+      title: "Layout",
+      description:
+        "'Full' bruker hele bredden, men fjerner table of content (bruk bare for eks ikonside eller komponentvisning)",
+      name: "layout",
+      type: "string",
+      group: "settings",
+      options: {
+        list: [
+          { title: "Full", value: "full" },
+          { title: "Default", value: "default" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "default",
+    },
+    {
       type: "boolean",
       name: "artikkel_type",
       title: "Bruk Tabs",
