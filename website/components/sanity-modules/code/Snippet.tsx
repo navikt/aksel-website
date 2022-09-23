@@ -27,7 +27,7 @@ const CodeSnippet = ({
       <div
         className={cl(
           className,
-          "relative mb-8 block overflow-x-auto rounded-md bg-gray-900"
+          "relative mb-8 block overflow-x-auto rounded bg-gray-900"
         )}
         {...props}
       >
@@ -39,7 +39,7 @@ const CodeSnippet = ({
           theme={undefined}
         >
           {({ tokens, getLineProps, getTokenProps }) => (
-            <pre className="relative m-0 overflow-x-auto overflow-y-auto rounded-lg bg-gray-900 p-4 pr-20 font-mono text-text-inverted">
+            <pre className="relative m-0 overflow-x-auto overflow-y-auto rounded-lg bg-gray-900 p-4 pr-16 font-mono text-text-inverted">
               {tokens.map((line, i) => (
                 <div
                   key={i}

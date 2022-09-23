@@ -1,14 +1,12 @@
 import { withErrorBoundary } from "@/error-boundary";
 import { SanityT } from "@/lib";
-import { Table } from "@navikt/ds-react";
 import cl from "classnames";
 import React from "react";
 
 const KBD = (props: React.HTMLAttributes<HTMLElement>) => (
   <kbd
     className={cl(
-      "my-0 mx-1 inline-block min-w-[2rem] rounded border-2 border-gray-900 bg-white py-1 px-2 text-center text-medium text-text shadow-[1px_1px_0_0_var(--navds-global-color-gray-800)]",
-      "hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none"
+      "my-0 mx-1 inline-block min-w-[2rem] rounded-md border border-gray-300 bg-gray-100 py-[1px] px-2 text-center font-mono text-sm text-gray-900"
     )}
     {...props}
   />
@@ -24,7 +22,7 @@ const UuSeksjon = ({
   }
 
   const getKey = (s: string) => (
-    <span className="flex w-full flex-wrap gap-x-1 gap-y-3">
+    <span className="flex w-full flex-wrap gap-x-1 gap-y-2">
       {s
         .trim()
         .split(" ")
@@ -35,26 +33,27 @@ const UuSeksjon = ({
   );
 
   return (
-    <Table className="mb-8">
-      <Table.Header>
-        <Table.Row>
-          <Table.HeaderCell className="font-normal text-text-muted">
-            Kommando
-          </Table.HeaderCell>
-          <Table.HeaderCell className="font-normal text-text-muted">
-            Beskrivelse
-          </Table.HeaderCell>
-        </Table.Row>
-      </Table.Header>
-      <Table.Body>
+    <table className="w-full border-separate border-spacing-0 rounded border border-gray-300">
+      <thead>
+        <tr className="rounded-t">
+          <td className="rounded-tl bg-gray-50 p-2 ">Kommando</td>
+          <td className="rounded-tr bg-gray-50 p-2 ">Interaksjon</td>
+        </tr>
+      </thead>
+      <tbody className="">
         {node.tastatur.map((x) => (
-          <Table.Row key={x._key}>
-            <Table.DataCell>{getKey(x.key)}</Table.DataCell>
-            <Table.DataCell>{x.action}</Table.DataCell>
-          </Table.Row>
+          <tr
+            key={x._key}
+            className="peer border-b border-t border-gray-300 text-base last-of-type:rounded-b"
+          >
+            <td className="border-t border-r border-gray-300 p-2">
+              {getKey(x.key)}
+            </td>
+            <td className="border-t border-gray-300 p-2">{x.action}</td>
+          </tr>
         ))}
-      </Table.Body>
-    </Table>
+      </tbody>
+    </table>
   );
 };
 

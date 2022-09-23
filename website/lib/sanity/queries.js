@@ -37,6 +37,11 @@ const relatertInnhold = `_type == "relatert_innhold" =>{
   }
 }`;
 
+const innholdsKort = `_type == "innholdskort" =>{
+  ...,
+  "lenke": lenke->slug.current,
+}`;
+
 const liveSeksjon = `_type == "live_demo" =>{
   ...,
   "sandbox_ref": sandbox_ref->{...},
@@ -87,6 +92,11 @@ const defaultBlock = `
  _type == "tokens" =>{
     ...,
     tokenlist[]->
+ },
+ _type == "kode_eksempler" =>{
+    ...,
+    dir->,
+    filnavn->,
  },
  _type == "kode_ref" => @->,
  ${tips},
@@ -139,6 +149,7 @@ ${tips},
 ${markDef},
 ${introSeksjon},
 ${relatertInnhold},
+${innholdsKort},
 ${liveSeksjon},
 ${propsSeksjon},
 ${installSeksjon},
@@ -208,6 +219,17 @@ export const akselDocumentBySlug = `*[slug.current == $slug] | order(_updatedAt 
   tema[]->{title},
   contributors[]->{
     title
+  },
+  relevante_artikler[]->{
+    _id,
+    heading,
+    _createdAt,
+    _updatedAt,
+    publishedAt,
+    "slug": slug.current,
+    "tema": tema[]->tag,
+    ingress,
+    "contributor": contributors[0]->title,
   }
 }`;
 
@@ -306,6 +328,7 @@ export const akselTemaNames = `*[_type == "aksel_tema" && count(*[references(^._
 
 export const akselTemaDocs = `*[_type == "aksel_tema"]{
   ...,
+  "ansvarlig": ansvarlig->{title, roller},
   bruk_seksjoner == true => {
     "artikler": [],
     seksjoner[]{
@@ -318,10 +341,12 @@ export const akselTemaDocs = `*[_type == "aksel_tema"]{
         _id,
         heading,
         _createdAt,
+        _updatedAt,
         publishedAt,
         "slug": slug.current,
         "tema": tema[]->tag,
         ingress,
+        "contributor": contributors[0]->title,
       }
     }
   },
@@ -330,10 +355,12 @@ export const akselTemaDocs = `*[_type == "aksel_tema"]{
       _id,
       heading,
       _createdAt,
+      _updatedAt,
       publishedAt,
       "slug": slug.current,
       "tema": tema[]->tag,
       ingress,
+      "contributor": contributors[0]->title,
     },
     "seksjoner": []
   },
@@ -352,5 +379,5 @@ export const akselBloggBySlug = `*[slug.current == $slug] | order(_updatedAt des
   ),
   contributors[]->{
     title
-  }
+  },
 }`;

@@ -8,7 +8,7 @@ import {
 } from "@/components";
 import Head from "next/head";
 import React, { useEffect } from "react";
-import { hotjar } from "react-hotjar";
+/* import { hotjar } from "react-hotjar"; */
 import "../styles/index.css";
 
 function App({
@@ -24,7 +24,7 @@ function App({
 
   useEffect(() => {
     if (window.location.host === "design.nav.no") {
-      window.location.replace(`http://aksel.nav.no${window.location.pathname}`);
+      window.location.replace(`http://aksel.nav.no`);
       return;
     }
     const t = (e) => logPageView(e);
@@ -36,9 +36,9 @@ function App({
     };
   }, []);
 
-  useEffect(() => {
+  /* useEffect(() => {
     hotjar.initialize(148751, 6);
-  }, []);
+  }, []); */
 
   return (
     <>

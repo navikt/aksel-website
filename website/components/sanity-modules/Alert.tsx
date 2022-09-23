@@ -1,29 +1,22 @@
 import { Alert as DsAlert, Heading } from "@navikt/ds-react";
 import React from "react";
-import { slugger } from "..";
-import { Alert as AlertT } from "@/lib";
+import { SanityT } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 
-const Alert = ({ node }: { node: AlertT }): JSX.Element => {
-  const slug =
-    node.heading &&
-    node.heading_level === "h2" &&
-    slugger.slug(node.heading.toString());
-
+const Alert = ({
+  node,
+}: {
+  node: SanityT.Schema.alert & { _key: string };
+}): JSX.Element => {
   return (
     <div className="mb-7 max-w-2xl">
-      <DsAlert variant={node.variant} size={node.size}>
+      <DsAlert variant={node.variant}>
         {node.heading && (
-          <Heading
-            spacing
-            size={node.size === "medium" ? "small" : "xsmall"}
-            as={node.heading_level}
-            id={slug || undefined}
-          >
+          <Heading spacing size="small" as={node.heading_level} id={node._key}>
             {node.heading}
           </Heading>
         )}
-        <SanityBlockContent blocks={node.body} size={node.size} noLastMargin />
+        <SanityBlockContent blocks={node.body} noLastMargin />
       </DsAlert>
     </div>
   );

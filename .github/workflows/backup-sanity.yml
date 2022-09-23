@@ -2,8 +2,8 @@ name: Backup dataset to gcp
 on:
   workflow_dispatch:
   schedule:
-    # 01.00 & 12.00 every day
-    - cron: "00 01,12 * * *"
+    # 01.00
+    - cron: "00 01 * * *"
 jobs:
   execute:
     runs-on: ubuntu-latest

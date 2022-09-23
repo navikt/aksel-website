@@ -16,7 +16,9 @@ const Intro = ({
 
   return (
     <div className="mb-16">
-      <LevelTwoHeading hidden>{["Intro"]}</LevelTwoHeading>
+      <LevelTwoHeading hidden id="intro">
+        {["Intro"]}
+      </LevelTwoHeading>
       <SanityBlockContent blocks={node.body} />
       <div>
         <>

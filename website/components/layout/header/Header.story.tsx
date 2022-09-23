@@ -41,16 +41,6 @@ export const ArtikkelForside = (props) => {
 
 ArtikkelForside.args = args;
 
-export const TemaHeader = (props) => {
-  return (
-    <PagePropsContext.Provider value={{ pageProps: props }}>
-      <AkselHeader variant="tema" />
-    </PagePropsContext.Provider>
-  );
-};
-
-TemaHeader.args = args;
-
 export const BloggHeader = (props) => {
   return (
     <PagePropsContext.Provider value={{ pageProps: props }}>

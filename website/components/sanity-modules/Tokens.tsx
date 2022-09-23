@@ -4,6 +4,8 @@ import { withErrorBoundary } from "@/error-boundary";
 import Color from "color";
 import cl from "classnames";
 import { capitalize } from "@/utils";
+import copy from "copy-to-clipboard";
+import { Copy } from "@navikt/ds-icons";
 
 const RadiusBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
   return (
@@ -75,7 +77,14 @@ const SemanticColorBlock = ({ token }: { token: SanityT.Schema.ds_tokens }) => {
         <div
           style={{ background: token.raw }}
           className="relative h-32 w-32 min-w-32 rounded border border-gray-900/20"
-        ></div>
+        >
+          <button
+            onClick={() => copy(`var(--navds-${token.title});`)}
+            className="absolute bottom-[-1px] right-[-1px] grid h-8 w-8 place-items-center rounded-tl-md rounded-br-[4px] border border-gray-900/20 bg-white ring-inset hover:bg-gray-100 focus:border-blue-800 focus:outline-none focus:ring-1 focus:ring-blue-800 active:bg-gray-200"
+          >
+            <Copy title="kopier token" />
+          </button>
+        </div>
       )}
       {isText && (
         <div

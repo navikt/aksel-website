@@ -1,25 +1,26 @@
 import {
   BodyLong,
-  BodyShort,
   Button,
-  Fieldset,
+  Heading,
   Label,
-  Link,
   Textarea,
   TextField,
 } from "@navikt/ds-react";
+import cl from "classnames";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import isEmail from "validator/lib/isEmail";
 import isEmpty from "validator/lib/isEmpty";
-import NextLink from "next/link";
 
 const FooterForm = () => {
-  const [contactForm, setContactForm] = useState({ content: "", mail: "" });
+  const [contactForm, setContactForm] = useState({
+    content: "",
+    mail: "",
+    hasWritten: false,
+  });
 
   const [contentError, setContentError] = useState({ content: "", mail: "" });
   const [sent, setSent] = useState({ status: false, hadMail: false });
-  const [hasWritten, setHasWritten] = useState(false);
 
   const { asPath, basePath } = useRouter();
 
@@ -56,47 +57,17 @@ const FooterForm = () => {
     });
 
     setSent({ status: true, hadMail: !!contactForm?.mail });
-    setContactForm({ content: "", mail: "" });
+    setContactForm({ content: "", mail: "", hasWritten: false });
   };
 
   useEffect(() => {
-    !hasWritten &&
-      (contactForm.mail || contactForm.content) &&
-      setHasWritten(true);
-  }, [contactForm]);
-
-  useEffect(() => {
-    setHasWritten(false);
     setSent({ status: false, hadMail: false });
-    setContactForm({ content: "", mail: "" });
+    setContactForm({ content: "", mail: "", hasWritten: false });
     setContentError({ content: "", mail: "" });
   }, [asPath]);
 
   return (
     <>
-      <div>
-        <Label spacing as="p">
-          Hvordan komme i kontakt?
-        </Label>
-        <BodyShort as="ul">
-          <li>
-            <Link
-              className="text-text-inverted focus:bg-blue-200 focus:text-text focus:shadow-focus focus:shadow-blue-200"
-              href="https://nav-it.slack.com/archives/C0370ADS0HX"
-            >
-              Aksel på Slack
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-text-inverted focus:bg-blue-200 focus:text-text focus:shadow-focus focus:shadow-blue-200"
-              href="https://nav-it.slack.com/archives/C7NE7A8UF"
-            >
-              Designsystemet på Slack
-            </Link>
-          </li>
-        </BodyShort>
-      </div>
       <div className="flex w-full max-w-md flex-col gap-8" data-theme="dark">
         {sent.status ? (
           <div>
@@ -111,50 +82,55 @@ const FooterForm = () => {
           </div>
         ) : (
           <form onSubmit={(e) => handleSubmit(e)} className="w-full">
-            <Fieldset
-              className="mb-4 flex flex-col gap-4"
-              legend="Send en melding til designsystemet."
-              hideLegend
-            >
+            <div className="mb-4 flex flex-col gap-4">
+              <Heading as="legend" size="small">
+                Gi en tilbakemelding
+              </Heading>
               <Textarea
                 className="inverted-textarea"
                 error={contentError.content}
                 autoComplete="off"
-                label="Skriv til oss"
+                label="Melding"
                 value={contactForm.content}
                 onChange={(e) => {
-                  setContactForm({ ...contactForm, content: e.target.value });
+                  setContactForm({
+                    ...contactForm,
+                    content: e.target.value,
+                    hasWritten: true,
+                  });
                   e.target.value &&
                     !isEmpty(e.target.value, { ignore_whitespace: true }) &&
                     setContentError({ ...contentError, content: "" });
                 }}
-                minRows={3}
+                minRows={2}
               />
-              <TextField
-                className="inverted-textfield"
-                label="Vi svarer til e-post (valgfritt)"
-                error={contentError.mail}
-                value={contactForm.mail}
-                autoComplete="work email"
-                onChange={(e) => {
-                  setContactForm({ ...contactForm, mail: e.target.value });
-                  e.target.value &&
-                    isEmail(e.target.value) &&
-                    setContentError({ ...contentError, mail: "" });
-                }}
-              />
-            </Fieldset>
-            <Button>Send melding</Button>
+              {contactForm.hasWritten && (
+                <TextField
+                  className={cl("inverted-textfield")}
+                  label="Vi svarer til e-post (valgfritt)"
+                  error={contentError.mail}
+                  value={contactForm.mail}
+                  autoComplete="work email"
+                  onChange={(e) => {
+                    setContactForm({
+                      ...contactForm,
+                      mail: e.target.value,
+                      hasWritten: true,
+                    });
+                    e.target.value &&
+                      isEmail(e.target.value) &&
+                      setContentError({ ...contentError, mail: "" });
+                  }}
+                />
+              )}
+            </div>
+            {contactForm.hasWritten && (
+              <Button className="override-primary-button-dark">
+                Send melding
+              </Button>
+            )}
           </form>
         )}
-        <div>
-          &copy; 2022 NAV |{" "}
-          <NextLink href="/side/personvernerklaering" passHref>
-            <a className=" outline-none hover:underline focus:bg-focus-inverted focus:text-text focus:no-underline focus:ring focus:ring-focus-inverted">
-              Personvernerklæring og informasjonskapsler
-            </a>
-          </NextLink>
-        </div>
       </div>
     </>
   );

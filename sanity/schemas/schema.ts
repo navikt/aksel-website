@@ -28,6 +28,7 @@ export default createSchema({
     Designsystem.CodeSandboxes,
     Designsystem.ColorCategories,
     Designsystem.Tokens,
+    Designsystem.KodeEksempler,
     Designsystem.Props,
     Designsystem.ComponentTemplate,
     Designsystem.Frontpage,

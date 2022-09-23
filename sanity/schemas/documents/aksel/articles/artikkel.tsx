@@ -6,6 +6,7 @@ import {
   innholdFieldNew,
   migratedField,
   publishedAtField,
+  relevanteArtiklerField,
   sanitySlug,
   SEOFields,
   titleField,
@@ -36,6 +37,7 @@ export default {
 
     ingressField,
     innholdFieldNew,
+    relevanteArtiklerField,
     UnderArbeidField,
     SEOFields,
     migratedField,

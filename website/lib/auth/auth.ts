@@ -49,7 +49,7 @@ export const isValidatedApi = async (req: NextApiRequest) => {
   const bearerToken = getBearerToken(req);
 
   if (!bearerToken) {
-    console.log("No bearer token");
+    /* console.log("No bearer token"); */
     return null;
   }
 

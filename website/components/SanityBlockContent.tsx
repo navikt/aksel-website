@@ -10,7 +10,9 @@ import {
   Anatomi,
   Bilde,
   CodeExample,
+  CodeExamples,
   DoDont,
+  InnholdsKort,
   Kode,
   LevelTwoHeading,
   LiveDemo,
@@ -37,6 +39,7 @@ const serializers = {
   types: {
     /* V2 content structure */
     relatert_innhold: ({ node }) => <RelatertInnhold node={node} />,
+    innholdskort: ({ node }) => <InnholdsKort node={node} />,
     anatomi: ({ node }) => <Anatomi node={node} />,
     live_demo: ({ node }) => <LiveDemo node={node} />,
     tastatur_modul: ({ node }) => <TastaturModul node={node} />,
@@ -52,6 +55,7 @@ const serializers = {
     video: ({ node }) => <Video node={node} />,
     tokens: ({ node }) => <TokensSeksjon node={node} />,
     tips: ({ node }) => <Tips node={node} />,
+    kode_eksempler: ({ node }) => <CodeExamples node={node} />,
 
     /* General page modules */
     ds_code_sandbox: ({ node }) => <Sandbox node={node} />,
@@ -63,10 +67,17 @@ const serializers = {
       if (children && children.length === 1 && children[0] === "") return null;
 
       const textProps = { children };
-
       switch (style) {
         case "normal":
-          return (
+          return context?.isIngress ? (
+            <Ingress
+              spacing
+              {...textProps}
+              className={cl("algolia-index-body", {
+                "last:mb-0": context.noLastMargin,
+              })}
+            />
+          ) : (
             <BodyLong
               size={context.size}
               spacing
@@ -87,15 +98,17 @@ const serializers = {
             />
           );
         case "h2":
-          return <LevelTwoHeading {...textProps} />;
+          return <LevelTwoHeading {...textProps} id={`h${node._key}`} />;
         case "h3":
           return (
             <Heading
-              {...textProps}
-              className="algolia-index-lvl3 mt-8 max-w-text"
+              className="algolia-index-lvl3 mt-8 max-w-text scroll-mt-20 focus:outline-none"
               spacing
               level="3"
               size="medium"
+              tabIndex={-1}
+              id={`h${node._key}`}
+              {...textProps}
             />
           );
         case "h4":
@@ -142,9 +155,12 @@ const serializers = {
     }
     return (
       <ul
-        className={cl("aksel-list list-margin mb-7 max-w-text list-disc", {
-          "last:mb-0": context.noLastMargin,
-        })}
+        className={cl(
+          "aksel-list list-margin relative mb-7 max-w-text list-disc",
+          {
+            "last:mb-0": context.noLastMargin,
+          }
+        )}
       >
         {props.children}
       </ul>
@@ -211,12 +227,14 @@ export type BlockContextT = {
   size: "medium" | "small";
   noLastMargin: boolean;
   variant: "ds" | "aksel";
+  isIngress?: boolean;
 };
 
 export const BlockContext = createContext<BlockContextT>({
   size: "medium",
   noLastMargin: false,
   variant: "ds",
+  isIngress: false,
 });
 
 export const SanityBlockContent = ({
@@ -224,6 +242,7 @@ export const SanityBlockContent = ({
   size = "medium",
   noLastMargin = false,
   variant,
+  isIngress = false,
   ...rest
 }: {
   blocks: any;
@@ -231,6 +250,7 @@ export const SanityBlockContent = ({
   className?: string;
   noLastMargin?: boolean;
   variant?: "ds" | "aksel";
+  isIngress?: boolean;
 }) => {
   const context = useContext(BlockContext);
 
@@ -240,6 +260,7 @@ export const SanityBlockContent = ({
         size,
         noLastMargin,
         variant: variant ?? context?.variant ?? "ds",
+        isIngress,
       }}
     >
       <BlockContent

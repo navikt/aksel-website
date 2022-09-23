@@ -3,13 +3,11 @@ import { SanityBlockContent } from "@/sanity-block";
 import { BodyShort, Heading, Tabs } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
 import {
   capitalize,
   dateStr,
   Feedback,
   logNav,
-  slugger,
   TableOfContents,
   UnderArbeid,
 } from "../..";
@@ -22,10 +20,6 @@ const ArtikkelTabbedTemplate = ({
   title: string;
 }): JSX.Element => {
   const { query, push } = useRouter();
-
-  useEffect(() => {
-    slugger.reset();
-  });
 
   if (!data.content_tabs || !data.heading) {
     return null;

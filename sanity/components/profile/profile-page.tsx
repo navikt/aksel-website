@@ -6,6 +6,7 @@ import {
   HelpText,
   Label,
   Link,
+  ReadMore,
 } from "@navikt/ds-react";
 import { SanityDocument } from "@sanity/client";
 import { Stack } from "@sanity/ui";
@@ -72,16 +73,13 @@ const IntroPage = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
         as="span"
         style={{ display: "flex", gap: "0.5rem" }}
       >
-        Har du ikke de rollene du trenger?
-        <HelpText>
-          Hør med{" "}
-          <Link href="https://nav-it.slack.com/archives/D010WEMSKMF">Ken</Link>{" "}
-          på slack, eller bare send en melding til oss på{" "}
-          <Link href="https://nav-it.slack.com/archives/C7NE7A8UF">
-            #designsystem
+        <ReadMore header="Har du ikke de rollene du trenger?">
+          Send en melding til oss på{" "}
+          <Link href="https://nav-it.slack.com/archives/C0370ADS0HX">
+            #Aksel
           </Link>{" "}
           slack så fikser vi det.
-        </HelpText>
+        </ReadMore>
       </BodyShort>
       <div style={{ borderTop: "1px solid #bbb" }} />
 

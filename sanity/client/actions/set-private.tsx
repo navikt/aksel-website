@@ -60,10 +60,10 @@ export default function SetPrivateAction(props) {
               medføre konsekvenser siden innholdet i artikkelen blir
               tilgjengelig for alle. Innhold som NAV potensielt ikke ønsker å
               dele offentlig kan medføre eks omdømmetap og uønsket oppmerksomhet
-              utenfra. Dobbelsjekk med ansvarlig redaktør og andre som har
-              skrevet artikkelen før du velger å åpne innholdet for alle. Er du
-              usikker er det bare å sende en melding på #aksel eller
-              #aksel-redaktører på slack.
+              utenfra. Dobbelsjekk med temaansvarlig og andre som har skrevet
+              artikkelen før du velger å åpne innholdet for alle. Er du usikker
+              er det bare å sende en melding på #aksel eller #aksel-redaktører
+              på slack.
             </BodyLong>
           ) : (
             <>

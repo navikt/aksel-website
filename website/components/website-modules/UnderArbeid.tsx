@@ -10,7 +10,7 @@ export const UnderArbeid = ({
 }) => (
   <Alert
     variant="info"
-    className={cl("mx-auto mb-12 max-w-prose xs:w-[90%]", className)}
+    className={cl("dynamic-wrapper-prose mb-12", className)}
   >
     <Heading level="2" size="small" spacing>
       Under arbeid

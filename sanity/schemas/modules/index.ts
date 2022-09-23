@@ -2,6 +2,7 @@ import Accordion from "./accordion";
 import Alert from "./alert";
 import Anatomi from "./anatomi";
 import Bilde from "./bilde";
+import HeroBilde from "./hero-bilde";
 import DoDont, { doDontBlock } from "./do-dont";
 import Installasjon from "./installasjon";
 import introKomponent from "./intro-komponent";
@@ -9,12 +10,15 @@ import Kode from "./kode";
 import liveDemo from "./live-demo";
 import Props from "./props";
 import RelatertInnhold from "./relatert-innhold";
+import Innholdskort from "./innholdskort";
+import KodeEksempler from "./kode-eksempler";
 import {
   RiktekstAksel,
   RiktekstDsArtikkel,
   RiktekstEnkel,
   RiktekstKomponent,
   RiktekstTabell,
+  RiktekstPrinsipp,
 } from "./riktekst";
 import SpesialSeksjon from "./spesial-seksjon";
 import Tabell, { TabellSchema } from "./tabell";
@@ -30,14 +34,17 @@ const v2Blocks = [
   RiktekstDsArtikkel,
   RiktekstKomponent,
   RiktekstTabell,
+  RiktekstPrinsipp,
 
   /* Moduler */
   DoDont,
   doDontBlock,
   Bilde,
+  HeroBilde,
   Alert,
   Kode,
   RelatertInnhold,
+  Innholdskort,
   introKomponent,
   liveDemo,
   Tabell,
@@ -51,6 +58,7 @@ const v2Blocks = [
   Tokens,
   Tips,
   Tastatur,
+  KodeEksempler,
 ];
 
 export default v2Blocks;

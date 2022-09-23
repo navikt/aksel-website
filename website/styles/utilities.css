@@ -15,3 +15,37 @@
 .svg-color-reset.navds-link svg {
   color: inherit;
 }
+
+.override-text-700 p {
+  max-width: 700px;
+}
+
+.dynamic-wrapper {
+  @apply mx-auto max-w-aksel xs:w-[90%];
+}
+
+.dynamic-wrapper-prose {
+  @apply mx-auto max-w-prose xs:w-[90%];
+}
+
+.dynamic-wrapper-left {
+  @apply max-w-prose xs:w-[90%];
+}
+
+.dynamic-wrapper-2xl {
+  @apply mx-auto max-w-2xl xs:w-[90%];
+}
+
+.card-grid-3-1 {
+  @apply grid gap-3 sm:grid-cols-2 md:gap-6 lg:grid-cols-3;
+}
+
+.aksel-artikkel .aksel-list li::before {
+  content: url("/images/list-dot.svg");
+  position: absolute;
+  left: 0;
+}
+
+.aksel-artikkel .aksel-list li::marker {
+  content: none;
+}

@@ -14,7 +14,7 @@ const PropsSeksjon = ({ node }: { node: PropsSeksjonT }): JSX.Element => {
 
   return (
     <div className="mb-16">
-      <LevelTwoHeading>{[node.title]}</LevelTwoHeading>
+      <LevelTwoHeading id="props">{[node.title]}</LevelTwoHeading>
       {node?.komponenter?.length > 0 && (
         <>
           {node.komponenter.map((prop) => (

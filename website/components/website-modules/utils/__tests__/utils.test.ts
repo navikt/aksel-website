@@ -1,5 +1,5 @@
 import { mockNav } from "@/mockdata";
-import { capitalize, dateStr, isNew } from "../index";
+import { abbrName, capitalize, dateStr, isNew } from "../index";
 import { getActiveHeading } from "../util";
 
 describe("Utils test", () => {
@@ -39,6 +39,12 @@ describe("Utils test", () => {
     const active2 = getActiveHeading(mockNav, "designsystem/side/invalidpage");
     expect(active._key).toEqual("b8739a954c22");
     expect(active2).toBeNull();
+  });
+
+  test("abbrName", () => {
+    expect(abbrName("Ola Normann")).toEqual("Ola Normann");
+    expect(abbrName("Ola Test Normann")).toEqual("Ola T. Normann");
+    expect(abbrName("Ola Test Test2 Normann")).toEqual("Ola T. T. Normann");
   });
 });
 

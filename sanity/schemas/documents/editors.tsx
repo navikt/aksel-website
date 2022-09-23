@@ -30,6 +30,16 @@ export default {
       },
     },
     {
+      title: "Roller",
+      description: "eks: Utvikler, Webanalytiker, uu-spesialist",
+      name: "roller",
+      type: "array",
+      of: [{ type: "string" }],
+      options: {
+        layout: "tags",
+      },
+    },
+    {
       name: "profile_page",
       type: "string",
       title: "Profil",
