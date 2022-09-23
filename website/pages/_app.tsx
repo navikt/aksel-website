@@ -24,7 +24,7 @@ function App({
 
   useEffect(() => {
     if (window.location.host === "design.nav.no") {
-      window.location.replace(`http://aksel.nav.no${window.location.pathname}`);
+      window.location.replace(`http://aksel.nav.no`);
       return;
     }
     const t = (e) => logPageView(e);
