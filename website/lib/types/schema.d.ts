@@ -389,6 +389,21 @@ Vil vise under-arbeid status med innhold under
       };
 
       /**
+       * Status - `Object`
+       */
+      status?: {
+        /**
+         * Status - `String`
+         */
+        tag?: "beta" | "new" | "ready";
+
+        /**
+         * Preview - `RegistryReference`
+         */
+        bilde?: herobilde;
+      };
+
+      /**
        * Intro - `RegistryReference`
        */
       intro?: intro_komponent;
@@ -635,6 +650,21 @@ Vil vise under-arbeid status med innhold under
       slug?: {
         _type: "slug";
         current: string;
+      };
+
+      /**
+       * Status - `Object`
+       */
+      status?: {
+        /**
+         * Status - `String`
+         */
+        tag?: "beta" | "new" | "ready";
+
+        /**
+         * Preview - `RegistryReference`
+         */
+        bilde?: herobilde;
       };
 
       /**

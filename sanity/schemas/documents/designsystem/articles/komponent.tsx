@@ -25,6 +25,38 @@ export default {
     UnderArbeidField,
     sanitySlug(prefix, 3),
     {
+      name: "status",
+      group: "innhold",
+      type: "object",
+      fields: [
+        {
+          title: "Status",
+          name: "tag",
+          type: "string",
+          initialValue: "new",
+          options: {
+            list: [
+              { title: "Beta", value: "beta" },
+              { title: "New", value: "new" },
+              { title: "Ready", value: "ready" },
+            ],
+            layout: "radio",
+          },
+          validation: (Rule) => Rule.required(),
+        },
+        {
+          type: "herobilde",
+          name: "bilde",
+          title: "Preview",
+          validation: (Rule) => Rule.required(),
+        },
+      ],
+      options: {
+        collapsible: true,
+        collapsed: false,
+      },
+    },
+    {
       name: "intro",
       type: "intro_komponent",
       group: "innhold",
