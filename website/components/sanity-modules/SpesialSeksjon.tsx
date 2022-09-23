@@ -14,7 +14,7 @@ type SpesialT = SanityKeyed<{
   _type: "spesial_seksjon";
   modul?: "farge_kategori" | "ikonsok" | "endringslogg" | "komponentoversikt";
   logs?: any[];
-  oversikt?: any;
+  komponenter?: any;
   farge?: any;
 }>;
 
@@ -28,7 +28,7 @@ const SpesialSeksjon = ({ node }: { node: SpesialT }): JSX.Element => {
       case "farge_kategori":
         return <ColorCategory node={node.farge} />;
       case "komponentoversikt":
-        return <ComponentOverview node={node.oversikt} />;
+        return <ComponentOverview node={node.komponenter} />;
       case "ikonsok":
         return <IconSearch />;
       default:

@@ -760,6 +760,12 @@ Vil vise under-arbeid status med innhold under
       };
 
       /**
+       * Layout - `String`
+'Full' bruker hele bredden, men fjerner table of content (bruk bare for eks ikonside eller komponentvisning)
+       */
+      layout?: "full" | "default";
+
+      /**
        * Bruk Tabs - `Boolean`
        */
       artikkel_type?: boolean;

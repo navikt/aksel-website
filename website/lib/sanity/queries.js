@@ -117,13 +117,12 @@ const accordionBlock = `_type == "accordion"=>{
 const spesialSeksjon = `_type == "spesial_seksjon" =>{
   ...,
   modul == "komponentoversikt" =>{
-    "oversikt": *[_id == 'ds_component_overview_id' && !(_id in path("drafts.**"))][0]{
-      ...,
-      components[]{
-        ...,
-        linked_package->{...},
-        "doc_link": doc_link->slug.current
-      }
+    "komponenter": *[_type == 'komponent_artikkel' && !(_id in path("drafts.**"))]{
+      _id,
+      heading,
+      "ingress": intro.body,
+      status,
+      slug,
     }
   },
   modul == "farge_kategori" =>{

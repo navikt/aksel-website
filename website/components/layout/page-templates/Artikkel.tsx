@@ -3,6 +3,7 @@ import { SanityBlockContent } from "@/sanity-block";
 import { BodyShort, Heading } from "@navikt/ds-react";
 import Head from "next/head";
 import { dateStr, Feedback, TableOfContents, UnderArbeid } from "../..";
+import cl from "classnames";
 
 const ArtikkelTemplate = ({
   data,
@@ -14,6 +15,11 @@ const ArtikkelTemplate = ({
   if (!data.content || !data.heading) {
     return null;
   }
+
+  const layout = cl({
+    "content-box--full": data.layout === "full",
+    "content-box": data.layout !== "full",
+  });
 
   return (
     <>
@@ -47,7 +53,7 @@ const ArtikkelTemplate = ({
       </div>
       <div className="relative flex max-w-full md:max-w-7xl">
         <TableOfContents changedState={data.content} hideToc={false} />
-        <div className="content-box">
+        <div className={layout}>
           {data?.under_arbeid?.status ? (
             <>
               <UnderArbeid
