@@ -1,4 +1,4 @@
-import { groups, SEOFields } from "@/lib";
+import { groups, SEOFields } from "../../lib";
 
 export default {
   title: "Forside",
