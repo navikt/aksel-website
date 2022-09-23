@@ -69,7 +69,7 @@ const ComponentExamples = ({
           height={iframeHeight}
           onLoad={handleExampleLoad}
           id={node?.title ?? exampleIframeId}
-          className="block w-full min-w-96 max-w-full resize-x overflow-auto bg-white shadow-[20px_0_20px_-20px_rgba(0,0,0,0.22)]"
+          className="block w-full min-w-80 max-w-full resize-x overflow-auto bg-white shadow-[20px_0_20px_-20px_rgba(0,0,0,0.22)]"
         />
       </div>
       <div className="mb-1 flex justify-center gap-2 rounded-b border border-gray-300 px-2 py-1 text-base xs:justify-end ">
