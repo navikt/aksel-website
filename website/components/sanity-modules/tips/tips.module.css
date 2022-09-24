@@ -1,7 +1,7 @@
 .tips {
-  @apply bg-gradient-to-l from-gray-100 to-gray-50;
+  @apply bg-gray-50;
 }
 
 :global(.aksel-artikkel) .tips {
-  @apply from-white to-white;
+  @apply bg-white;
 }

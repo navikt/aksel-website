@@ -20,6 +20,10 @@
   max-width: 700px;
 }
 
+p.override-text-no-max {
+  max-width: none;
+}
+
 .dynamic-wrapper {
   @apply mx-auto max-w-aksel xs:w-[90%];
 }
