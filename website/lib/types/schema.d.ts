@@ -389,7 +389,7 @@ Vil vise under-arbeid status med innhold under
       };
 
       /**
-       * Status - `Object`
+       * metadata - `Object`
        */
       status?: {
         /**
@@ -398,9 +398,13 @@ Vil vise under-arbeid status med innhold under
         tag?: "beta" | "new" | "ready";
 
         /**
-         * Preview - `RegistryReference`
+         * Thumbnail/og-bilde - `Image`
          */
-        bilde?: herobilde;
+        bilde?: {
+          asset: Sanity.Asset;
+          crop?: Sanity.ImageCrop;
+          hotspot?: Sanity.ImageHotspot;
+        };
       };
 
       /**
@@ -653,7 +657,7 @@ Vil vise under-arbeid status med innhold under
       };
 
       /**
-       * Status - `Object`
+       * metadata - `Object`
        */
       status?: {
         /**
@@ -662,9 +666,13 @@ Vil vise under-arbeid status med innhold under
         tag?: "beta" | "new" | "ready";
 
         /**
-         * Preview - `RegistryReference`
+         * Thumbnail/og-bilde - `Image`
          */
-        bilde?: herobilde;
+        bilde?: {
+          asset: Sanity.Asset;
+          crop?: Sanity.ImageCrop;
+          hotspot?: Sanity.ImageHotspot;
+        };
       };
 
       /**

@@ -25,6 +25,7 @@ export default {
     UnderArbeidField,
     sanitySlug(prefix, 3),
     {
+      title: "metadata",
       name: "status",
       group: "innhold",
       type: "object",
@@ -45,10 +46,10 @@ export default {
           validation: (Rule) => Rule.required(),
         },
         {
-          type: "herobilde",
           name: "bilde",
-          title: "Preview",
+          title: "Thumbnail/og-bilde",
           validation: (Rule) => Rule.required(),
+          type: "image",
         },
       ],
       options: {

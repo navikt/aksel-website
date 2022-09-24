@@ -20,12 +20,16 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
 
   return (
     <div
-      className={cl("relatedCard", "mb-8 gap-4", "grid w-full xs:grid-cols-2")}
+      className={cl(
+        "relatedCard",
+        "mb-8 max-w-prose gap-4",
+        "grid w-full xs:grid-cols-2"
+      )}
     >
       {node.lenker.map((x) => (
         <div
           key={x._key}
-          className="relatert-kort algolia-ignore-index group relative cursor-pointer rounded border-2 border-transparent bg-white px-4 py-3 shadow-small ring-1 ring-gray-900/5 only-of-type:col-span-2 focus-within:border-focus focus-within:outline-none hover:border-link"
+          className="relatert-kort algolia-ignore-index group relative cursor-pointer rounded border-2 border-transparent bg-white px-4 py-3 shadow-small ring-1 ring-gray-900/5 only-of-type:col-span-2 focus-within:border-focus focus-within:outline-none hover:shadow-medium"
         >
           <NextLink href={getHref(x)} passHref>
             <Heading
