@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { SanityT, urlFor } from "@/lib";
-import { SanityBlockContent } from "@/sanity-block";
 import { Heading } from "@navikt/ds-react";
 import Nextlink from "next/link";
 import cl from "classnames";
