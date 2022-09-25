@@ -20,6 +20,12 @@ const getStatus = (status?: SanityT.Schema.komponent_artikkel["status"]) => {
       );
     case "ready":
       return null;
+    case "deprecated":
+      return (
+        <span className="ml-2 rounded bg-gray-200 px-1 text-sm text-gray-900">
+          Deprecated
+        </span>
+      );
 
     default:
       return null;

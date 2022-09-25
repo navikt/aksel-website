@@ -395,7 +395,7 @@ Vil vise under-arbeid status med innhold under
         /**
          * Status - `String`
          */
-        tag?: "beta" | "new" | "ready";
+        tag?: "beta" | "new" | "ready" | "deprecated";
 
         /**
          * Thumbnail/og-bilde - `Image`
@@ -663,7 +663,7 @@ Vil vise under-arbeid status med innhold under
         /**
          * Status - `String`
          */
-        tag?: "beta" | "new" | "ready";
+        tag?: "beta" | "new" | "ready" | "deprecated";
 
         /**
          * Thumbnail/og-bilde - `Image`

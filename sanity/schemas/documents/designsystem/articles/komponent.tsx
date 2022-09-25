@@ -40,6 +40,7 @@ export default {
               { title: "Beta", value: "beta" },
               { title: "New", value: "new" },
               { title: "Ready", value: "ready" },
+              { title: "Deprecated", value: "deprecated" },
             ],
             layout: "radio",
           },
