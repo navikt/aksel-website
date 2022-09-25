@@ -68,7 +68,7 @@ const ComponentOverview = ({
                     alt={x?.heading + " thumbnail"}
                     decoding="async"
                     src={urlFor(x.status?.bilde).auto("format").url()}
-                    className="object-contain"
+                    className="object-contain transition-transform group-hover:scale-110"
                   />
                 ) : (
                   <svg
