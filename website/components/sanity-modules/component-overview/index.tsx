@@ -19,18 +19,10 @@ const getStatus = (status?: SanityT.Schema.komponent_artikkel["status"]) => {
         </span>
       );
     case "ready":
-      return (
-        <span className="ml-2 rounded bg-deepblue-400 px-1 text-sm text-white">
-          Ready
-        </span>
-      );
+      return null;
 
     default:
-      return (
-        <span className="ml-2 rounded bg-deepblue-400 px-1 text-sm text-white">
-          Ready
-        </span>
-      );
+      return null;
   }
 };
 
@@ -45,32 +37,62 @@ const ComponentOverview = ({
     status?: SanityT.Schema.komponent_artikkel["status"];
   }[];
 }): JSX.Element => {
-  /* if (!node || !node.components) {
+  if (!node || node.length === 0) {
     return null;
-  } */
+  }
 
-  const sorted = node.sort((a, b) => a?.heading?.localeCompare(b.heading));
-
-  /* console.log(sorted); */
+  const sorted = node
+    .filter((x) => {
+      if (x._id.includes("draft.") || !x?.heading || !x.slug) {
+        return false;
+      }
+      return true;
+    })
+    .sort((a, b) => a?.heading?.localeCompare(b?.heading));
 
   return (
-    <div>
+    <div className="mb-8">
       <ul className="component-card-grid">
         {sorted.map((x) => (
           <li key={x._id}>
             <div className="group relative rounded border border-gray-300/60 shadow-small focus-within:shadow-focus hover:shadow-medium">
-              <div className="flex justify-center">
-                {x.status?.bilde && (
+              <div className="flex max-h-80 items-center justify-center  bg-gray-50">
+                {x.status?.bilde ? (
                   <img
                     alt={x?.heading + " thumbnail"}
                     decoding="async"
                     src={urlFor(x.status?.bilde).auto("format").url()}
+                    className="object-contain"
                   />
+                ) : (
+                  <svg
+                    aria-hidden
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="-11.5 -10.23174 23 20.46348"
+                    className="aspect-[1.25/1] h-auto max-h-64 min-h-40 p-4"
+                  >
+                    <title>React Logo</title>
+                    <circle
+                      cx="0"
+                      cy="0"
+                      r="2.05"
+                      fill="var(--navds-global-color-gray-300)"
+                    />
+                    <g
+                      stroke="var(--navds-global-color-gray-300)"
+                      strokeWidth="1"
+                      fill="none"
+                    >
+                      <ellipse rx="11" ry="4.2" />
+                      <ellipse rx="11" ry="4.2" transform="rotate(60)" />
+                      <ellipse rx="11" ry="4.2" transform="rotate(120)" />
+                    </g>
+                  </svg>
                 )}
               </div>
               <div
                 className={cl("grid p-3", {
-                  "pt-0": !!x?.status?.bilde,
+                  "pt-3": !!x?.status?.bilde,
                 })}
               >
                 <span className="flex items-center justify-between">

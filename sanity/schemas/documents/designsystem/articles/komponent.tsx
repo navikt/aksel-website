@@ -48,7 +48,6 @@ export default {
         {
           name: "bilde",
           title: "Thumbnail/og-bilde",
-          validation: (Rule) => Rule.required(),
           type: "image",
         },
       ],
