@@ -74,7 +74,7 @@ export function TableOfContents({
     const validPick = (el: HTMLElement) => {
       if (!el) return false;
       const rect = el.getBoundingClientRect();
-      return rect.top < 100;
+      return rect.top < 116;
     };
 
     const handleScroll = () => {
