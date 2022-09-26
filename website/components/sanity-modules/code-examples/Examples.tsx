@@ -69,6 +69,7 @@ const ComponentExamples = ({
           height={iframeHeight}
           onLoad={handleExampleLoad}
           id={node?.title ?? exampleIframeId}
+          aria-label="Komponent eksempler"
           className="block w-full min-w-80 max-w-full resize-x overflow-auto bg-white shadow-[20px_0_20px_-20px_rgba(0,0,0,0.22)]"
         />
       </div>
