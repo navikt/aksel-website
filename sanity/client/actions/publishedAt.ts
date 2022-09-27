@@ -1,10 +1,14 @@
 // https://www.sanity.io/schemas/make-a-field-read-only-after-publishing-once-d87bf5f6
 import { useState, useEffect } from "react";
-import { useDocumentOperation } from "@sanity/react-hooks";
+import { useDocumentOperation, useValidationStatus } from "@sanity/react-hooks";
 import PublishIcon from "part:@sanity/base/publish-icon";
 
 export default function SetAndPublishAction(props) {
   const { patch, publish }: any = useDocumentOperation(props.id, props.type);
+  const { isValidating, markers }: any = useValidationStatus(
+    props.id,
+    props.type
+  );
   const [isPublishing, setIsPublishing] = useState(false);
 
   useEffect(() => {
@@ -15,8 +19,13 @@ export default function SetAndPublishAction(props) {
     }
   }, [props.draft]);
 
+  console.log(markers);
+
   return {
-    disabled: publish.disabled,
+    disabled:
+      publish.disabled ||
+      isValidating ||
+      markers.some((x) => x?.level === "error"),
     label: isPublishing ? "Publishing…" : "Publish",
     color: "success",
     icon: PublishIcon,
