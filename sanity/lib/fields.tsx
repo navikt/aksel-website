@@ -42,7 +42,7 @@ export const migratedField = {
   title: "Migrert riktekst",
   name: "isMigrated",
   type: "boolean",
-  hidden: false,
+  hidden: true,
   initialValue: true,
 };
 

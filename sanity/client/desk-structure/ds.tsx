@@ -83,11 +83,6 @@ export const dsPanel = async (roles) => {
               .icon(() => <Picture />)
               .id(`frontpage_designsystem`),
             S.divider(),
-            S.documentListItem()
-              .title(`Komponentoversikt`)
-              .schemaType(`ds_component_overview`)
-              .icon(() => <Findout />)
-              .id(`ds_component_overview_id`),
             S.listItem()
               .title("Kodepakker")
               .icon(() => <Ruler />)

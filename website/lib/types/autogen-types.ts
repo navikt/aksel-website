@@ -483,95 +483,6 @@ export interface DsNavigation extends SanityDocument {
 }
 
 /**
- * Komponentoversikt
- *
- *
- */
-export interface DsComponentOverview extends SanityDocument {
-  _type: "ds_component_overview";
-
-  /**
-   * Komponent — `array`
-   *
-   *
-   */
-  components?: Array<
-    SanityKeyed<{
-      _type: "component";
-      /**
-       * Komponentnavn — `string`
-       *
-       *
-       */
-      title?: string;
-
-      /**
-       * Pakkenavn — `reference`
-       *
-       * Kobler komponenten til en pakke og da om den er core/intern/navno. Alle tilgjengelige valg ligge under <Kodepakker>
-       */
-      linked_package?: SanityReference<DsPackage>;
-
-      /**
-       * Er komponenten ny? — `boolean`
-       *
-       *
-       */
-      new?: boolean;
-
-      /**
-       * Er komponenten i Figma/designet? — `boolean`
-       *
-       *
-       */
-      in_design?: boolean;
-
-      /**
-       * Figma bibliotek — `string`
-       *
-       *
-       */
-      figma_version?: "new" | "old" | "beta";
-
-      /**
-       * Er komponenten Kodet? — `boolean`
-       *
-       *
-       */
-      in_code?: boolean;
-
-      /**
-       * Er komponenten fortsatt i Beta? — `boolean`
-       *
-       *
-       */
-      in_code_beta?: boolean;
-
-      /**
-       * Er komponentkoden i synk med Figma? — `boolean`
-       *
-       *
-       */
-      figma_sync?: boolean;
-
-      /**
-       * Er komponenten i dokumentert? — `boolean`
-       *
-       *
-       */
-      in_doc?: boolean;
-
-      /**
-       * Legger til link til dokumentasjonen — `reference`
-       *
-       *
-       */
-      doc_link?: SanityReference<KomponentArtikkel | DsArtikkel>;
-    }>
-  >;
-}
-
-/**
  * Kodepakke
  *
  *
@@ -2161,7 +2072,6 @@ export type Documents =
   | DsComponentTemplate
   | DsFrontpage
   | DsNavigation
-  | DsComponentOverview
   | DsPackage
   | KomponentArtikkel
   | DsArtikkel

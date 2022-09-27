@@ -33,7 +33,6 @@ export default createSchema({
     Designsystem.ComponentTemplate,
     Designsystem.Frontpage,
     Designsystem.Navigation,
-    Designsystem.Overview,
     Designsystem.Package,
     Designsystem.KomponentArtikkel,
     Designsystem.Artikkel,

@@ -508,73 +508,6 @@ Beskriv bildet for skjermlesere
     }
 
     /**
-     * Komponentoversikt
-     */
-    interface ds_component_overview extends Sanity.Document {
-      _type: "ds_component_overview";
-
-      /**
-       * Komponent - `Array`
-       */
-      components?: Array<
-        Sanity.Keyed<{
-          _type: "component";
-
-          /**
-           * Komponentnavn - `String`
-           */
-          title?: string;
-
-          /**
-       * Pakkenavn - `Reference`
-Kobler komponenten til en pakke og da om den er core/intern/navno. Alle tilgjengelige valg ligge under <Kodepakker>
-       */
-          linked_package?: Sanity.Reference<ds_package>;
-
-          /**
-           * Er komponenten ny? - `Boolean`
-           */
-          new?: boolean;
-
-          /**
-           * Er komponenten i Figma/designet? - `Boolean`
-           */
-          in_design?: boolean;
-
-          /**
-           * Figma bibliotek - `String`
-           */
-          figma_version?: "new" | "old" | "beta";
-
-          /**
-           * Er komponenten Kodet? - `Boolean`
-           */
-          in_code?: boolean;
-
-          /**
-           * Er komponenten fortsatt i Beta? - `Boolean`
-           */
-          in_code_beta?: boolean;
-
-          /**
-           * Er komponentkoden i synk med Figma? - `Boolean`
-           */
-          figma_sync?: boolean;
-
-          /**
-           * Er komponenten i dokumentert? - `Boolean`
-           */
-          in_doc?: boolean;
-
-          /**
-           * Legger til link til dokumentasjonen - `Reference`
-           */
-          doc_link?: Sanity.Reference<komponent_artikkel | ds_artikkel>;
-        }>
-      >;
-    }
-
-    /**
      * Kodepakke
      */
     interface ds_package extends Sanity.Document {
@@ -1942,7 +1875,6 @@ Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via
       | ds_component_template
       | ds_frontpage
       | ds_navigation
-      | ds_component_overview
       | ds_package
       | komponent_artikkel
       | ds_artikkel
