@@ -12,9 +12,7 @@ const Example = () => {
       value={state}
     >
       <Checkbox value="Bakerst">Bakerst</Checkbox>
-      <Checkbox value="Midterst" indeterminate>
-        Midterst
-      </Checkbox>
+      <Checkbox value="Midterst">Midterst</Checkbox>
       <Checkbox value="Fremst">Fremst</Checkbox>
     </CheckboxGroup>
   );

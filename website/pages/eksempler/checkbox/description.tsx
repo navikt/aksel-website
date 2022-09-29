@@ -7,7 +7,7 @@ const Example = () => {
   return (
     <CheckboxGroup
       legend="Hvor vil du sitte?"
-      description="description"
+      description="Fremste rad er nærmest nødutgangene"
       onChange={(val: any[]) => handleChange(val)}
     >
       <Checkbox value="Bakerst">Bakerst</Checkbox>
