@@ -4,8 +4,10 @@ import { withDsExample } from "components/website-modules/examples/withDsExample
 const Example = () => {
   return (
     <div>
-      <Label spacing>The red fox jumps over the lazy brown dog.</Label>
-      <Label>The red fox jumps over the lazy brown dog.</Label>
+      <Label spacing as="p">
+        The red fox jumps over the lazy brown dog.
+      </Label>
+      <Label as="p">The red fox jumps over the lazy brown dog.</Label>
     </div>
   );
 };
