@@ -1,6 +1,6 @@
 import { BloggCard } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
-import { AkselBlogg, akselBloggPosts, usePreviewSubscription } from "@/lib";
+import { SanityT, akselBloggPosts, usePreviewSubscription } from "@/lib";
 import { getClient } from "@/sanity-client";
 import { Heading } from "@navikt/ds-react";
 import Head from "next/head";
@@ -59,7 +59,10 @@ const Page = (props: PageProps): JSX.Element => {
 };
 
 export type AkselBloggPage = Partial<
-  AkselBlogg & { slug: string; contributors?: { title?: string }[] }
+  SanityT.Schema.aksel_blogg & {
+    slug: string;
+    contributors?: { title?: string }[];
+  }
 >;
 
 interface PageProps {

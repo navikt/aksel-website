@@ -1,15 +1,19 @@
 import { AmplitudeEvents, logAmplitudeEvent } from "@/components";
 import { withErrorBoundary } from "@/error-boundary";
-import { DsColorCategories } from "@/lib";
+import { SanityT } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { Modal, Table } from "@navikt/ds-react";
 import { useRouter } from "next/router";
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ColorModal from "./modal/ColorModal";
 import { GlobalTableRow, SemanticTableRow } from "./Rows";
 import { compare } from "./sort";
 
-const ColorCategory = ({ node }: { node: DsColorCategories }): JSX.Element => {
+const ColorCategory = ({
+  node,
+}: {
+  node: SanityT.Schema.ds_color_categories;
+}): JSX.Element => {
   const [open, setOpen] = useState(false);
   const [selectedColor, setSelectedColor] = useState<any>(null);
   const router = useRouter();

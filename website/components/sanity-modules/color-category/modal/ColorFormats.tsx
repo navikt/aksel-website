@@ -1,9 +1,12 @@
+import { SanityT } from "@/lib";
 import { BodyShort } from "@navikt/ds-react";
 import Color from "color";
-import { DsColor } from "@/lib";
 import CopyButton from "../../code/CopyButton";
 
-const format = (val: "hex" | "rgb" | "cmyk" | "hsla", color: DsColor) => {
+const format = (
+  val: "hex" | "rgb" | "cmyk" | "hsla",
+  color: SanityT.Schema.ds_color
+) => {
   switch (val) {
     case "hex":
       return Color(color.color_value).hex().toString();
@@ -16,7 +19,7 @@ const format = (val: "hex" | "rgb" | "cmyk" | "hsla", color: DsColor) => {
   }
 };
 
-const ColorFormats = ({ color }: { color: DsColor }) => {
+const ColorFormats = ({ color }: { color: SanityT.Schema.ds_color }) => {
   return (
     <div className="flex flex-wrap gap-4">
       <div className="relative h-24 w-52 bg-canvas-background">

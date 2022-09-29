@@ -1,14 +1,14 @@
 import dotenv from "dotenv";
 import { noCdnClient } from "../sanity/sanity.server";
-import { DsProps } from "../types/autogen-types";
 import CoreDocs from "@navikt/ds-react/_docs.json";
 import InternalDocs from "@navikt/ds-react-internal/_docs.json";
+import { SanityT } from "..";
 
 dotenv.config();
 
 const ids = [];
 
-const propList = (src: any, name: string): DsProps[] =>
+const propList = (src: any, name: string): SanityT.Schema.ds_props[] =>
   src.map((prop) => {
     if (ids.includes(`${prop.displayName.toLowerCase()}_${name}_ds_props`)) {
       console.error(

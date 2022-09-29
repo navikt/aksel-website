@@ -1,10 +1,8 @@
 import React from "react";
-import { LevelTwoHeading } from "@/components";
-import { PropsSeksjon as PropsSeksjonT } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
 import PropTableV2, { PropT } from "./PropTabell";
 
-const PropsSeksjon = ({ node }: { node: PropsSeksjonT }): JSX.Element => {
+const PropsSeksjon = ({ node }: { node: any }): JSX.Element => {
   if (
     !node ||
     (node?.elementer?.length === 0 && node?.komponenter?.length === 0)
@@ -14,7 +12,6 @@ const PropsSeksjon = ({ node }: { node: PropsSeksjonT }): JSX.Element => {
 
   return (
     <div className="mb-16">
-      <LevelTwoHeading id="props">{[node.title]}</LevelTwoHeading>
       {node?.komponenter?.length > 0 && (
         <>
           {node.komponenter.map((prop) => (

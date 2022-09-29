@@ -1,13 +1,5 @@
 import type { SanityKeyed } from "sanity-codegen";
 
-export enum BgColors {
-  "WHITE" = "--navds-semantic-color-canvas-background-light",
-  "DEFAULT" = "--navds-global-color-white",
-  "GRADIENT" = "linear-gradient(-45deg, var(--navds-global-color-gray-100) 0%, white 100%)",
-  "INVERTED" = "--navds-global-color-gray-900",
-  "INVERTEDGRADIENT" = "linear-gradient(-45deg, var(--navds-global-color-gray-900) 0%, var(--navds-global-color-gray-800) 100%)",
-}
-
 export type PagePropsContextT = {
   pageProps: any;
 };
@@ -62,9 +54,3 @@ export type DsFeddbackMsgT = {
   user?: string;
   url: string;
 };
-
-export interface ExampleComponent extends React.FC {
-  react: string;
-  html?: string | null;
-  bg?: BgColors;
-}

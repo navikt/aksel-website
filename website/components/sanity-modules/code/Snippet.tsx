@@ -1,5 +1,5 @@
 import { withErrorBoundary } from "@/error-boundary";
-import { CodeSnippet as CodeSnippetT, Kode } from "@/lib";
+import { SanityT } from "@/lib";
 import cl from "classnames";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import React from "react";
@@ -10,7 +10,7 @@ const CodeSnippet = ({
   className,
   ...props
 }: {
-  node: CodeSnippetT | Kode;
+  node: SanityT.Schema.kode;
   className?: string;
   style?: any;
 }): JSX.Element => {

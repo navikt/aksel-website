@@ -1,12 +1,16 @@
 import { Table } from "@navikt/ds-react";
 import React from "react";
-import { Tabell as TabellT } from "@/lib";
+import { SanityT } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
 import { SanityBlockContent } from "@/sanity-block";
 import cl from "classnames";
 import { Close, SuccessStroke } from "@navikt/ds-icons";
 
-const TableComponent = ({ node }: { node: TabellT }): JSX.Element => {
+const TableComponent = ({
+  node,
+}: {
+  node: SanityT.Schema.tabell;
+}): JSX.Element => {
   if (!node || !node.powerTable || node.powerTable?.rows?.length < 2) {
     return null;
   }

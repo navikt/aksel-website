@@ -1,14 +1,14 @@
+import { SanityT } from "@/lib";
 import { BodyShort, Detail, Table } from "@navikt/ds-react";
-import { DsColor } from "@/lib";
-import Color from "color";
 import cl from "classnames";
+import Color from "color";
 
 const ColorBox = ({
   prop,
   first,
   last,
 }: {
-  prop: DsColor;
+  prop: SanityT.Schema.ds_color;
   first?: boolean;
   last?: boolean;
 }): JSX.Element => {
@@ -54,7 +54,7 @@ export const GlobalTableRow = ({
   last,
   ...rest
 }: {
-  prop: DsColor;
+  prop: SanityT.Schema.ds_color;
   onClick: (c: any) => void;
   first?: boolean;
   last?: boolean;
@@ -71,7 +71,7 @@ export const SemanticTableRow = ({
   prop,
   ...rest
 }: {
-  prop: DsColor;
+  prop: SanityT.Schema.ds_color;
   onClick: (c: any) => void;
 }) => {
   return (

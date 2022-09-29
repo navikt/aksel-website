@@ -10,7 +10,7 @@ import {
   logAmplitudeEvent,
   Snippet,
 } from "@/components";
-import { CodeSnippet } from "@/lib";
+import { SanityT } from "@/lib";
 import { downloadSvg } from "./downloads";
 
 const ModalContent = ({ icon }: { icon: string }) => {
@@ -33,9 +33,8 @@ const ModalContent = ({ icon }: { icon: string }) => {
     });
   };
 
-  const importSnippet: CodeSnippet = {
-    _type: "code_snippet",
-    title: `Install-snippet for ${icon} icon`,
+  const importSnippet: SanityT.Schema.kode = {
+    _type: "kode",
     code: {
       language: "jsx",
       code: `// React
@@ -48,9 +47,8 @@ import ${icon} from "@navikt/ds-icons/svg/${icon}";`,
 
   const Icon = Icons[icon];
 
-  const svgSnippet: CodeSnippet = {
-    _type: "code_snippet",
-    title: `Svg-snippet for ${icon} icon`,
+  const svgSnippet: SanityT.Schema.kode = {
+    _type: "kode",
     code: {
       language: "jsx",
       code: `${renderToString(<Icon />)}`,

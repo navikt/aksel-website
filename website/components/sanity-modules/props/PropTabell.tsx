@@ -1,5 +1,5 @@
 import { withErrorBoundary } from "@/error-boundary";
-import { DsProps } from "@/lib";
+import { SanityT } from "@/lib";
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import { Highlighter } from "./Highlight";
 
@@ -8,7 +8,7 @@ export type PropT = {
   _key: string;
   title?: string;
   overridable?: boolean;
-  propref?: DsProps;
+  propref?: SanityT.Schema.ds_props;
 };
 
 const List = ({ prop, parent }: { prop: any; parent: string }) => {

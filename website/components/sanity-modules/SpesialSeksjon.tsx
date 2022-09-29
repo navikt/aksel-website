@@ -1,5 +1,4 @@
 import React from "react";
-import { SanityKeyed } from "@/lib";
 import { withErrorBoundary } from "@/error-boundary";
 import ComponentOverview from "./component-overview";
 import { ColorCategory } from "./color-category";
@@ -10,13 +9,14 @@ const IconSearch = dynamic(() => import("./icon-search"), {
   ssr: false,
 });
 
-type SpesialT = SanityKeyed<{
+type SpesialT = {
+  _key: string;
   _type: "spesial_seksjon";
   modul?: "farge_kategori" | "ikonsok" | "endringslogg" | "komponentoversikt";
   logs?: any[];
   komponenter?: any;
   farge?: any;
-}>;
+};
 
 const SpesialSeksjon = ({ node }: { node: SpesialT }): JSX.Element => {
   if (!node || !node.modul) {

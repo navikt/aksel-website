@@ -1,6 +1,6 @@
 import { LayoutPicker } from "@/components";
 import {
-  AkselArtikkel,
+  SanityT,
   akselDocumentBySlug,
   getAkselDocuments,
   usePreviewSubscription,
@@ -11,7 +11,7 @@ import NotFotfund from "../404";
 
 const Page = (props: {
   slug?: string;
-  page: AkselArtikkel;
+  page: SanityT.Schema.aksel_artikkel;
   preview: boolean;
 }): JSX.Element => {
   const { data } = usePreviewSubscription(akselDocumentBySlug, {
@@ -45,7 +45,7 @@ export const getStaticPaths = async (): Promise<{
 
 interface StaticProps {
   props: {
-    page: AkselArtikkel;
+    page: SanityT.Schema.aksel_artikkel;
     slug: string;
     preview: boolean;
   };

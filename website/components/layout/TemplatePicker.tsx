@@ -1,12 +1,6 @@
 import Error from "next/error";
 import React from "react";
-import {
-  AkselArtikkel,
-  AkselBlogg,
-  DsArtikkel,
-  KomponentArtikkel,
-  SanityT,
-} from "@/lib";
+import { SanityT } from "@/lib";
 import AkselArtikkelTemplate from "./page-templates/AkselArtikkel";
 import AkselBloggTemplate from "./page-templates/AkselBlogg";
 import ArtikkelTemplate from "./page-templates/Artikkel";
@@ -17,24 +11,30 @@ import AkselStandaloneTemplate from "./page-templates/AkselStandalone";
 
 type komponent_artikkel = {
   komponent_artikkel: (props: {
-    data: KomponentArtikkel;
+    data: SanityT.Schema.komponent_artikkel;
     title: string;
   }) => JSX.Element;
 };
 
 type ds_artikkel = {
-  ds_artikkel: (props: { data: DsArtikkel; title: string }) => JSX.Element;
+  ds_artikkel: (props: {
+    data: SanityT.Schema.ds_artikkel;
+    title: string;
+  }) => JSX.Element;
 };
 
 type aksel_artikkel = {
   aksel_artikkel: (props: {
-    data: AkselArtikkel;
+    data: SanityT.Schema.aksel_artikkel;
     title: string;
   }) => JSX.Element;
 };
 
 type aksel_blogg = {
-  aksel_blogg: (props: { data: AkselBlogg; title: string }) => JSX.Element;
+  aksel_blogg: (props: {
+    data: SanityT.Schema.aksel_blogg;
+    title: string;
+  }) => JSX.Element;
 };
 
 type aksel_standalone = {
@@ -78,9 +78,9 @@ const TemplatePicker = ({
   title,
 }: {
   data:
-    | KomponentArtikkel
-    | AkselArtikkel
-    | AkselBlogg
+    | SanityT.Schema.komponent_artikkel
+    | SanityT.Schema.aksel_artikkel
+    | SanityT.Schema.aksel_blogg
     | SanityT.Schema.aksel_standalone
     | SanityT.Schema.aksel_prinsipp;
   title: string;

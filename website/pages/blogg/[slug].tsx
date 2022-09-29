@@ -1,5 +1,5 @@
 import { LayoutPicker } from "@/components";
-import { AkselBlogg, akselBloggBySlug, usePreviewSubscription } from "@/lib";
+import { SanityT, akselBloggBySlug, usePreviewSubscription } from "@/lib";
 import { getClient } from "@/sanity-client";
 import { GetServerSideProps } from "next/types";
 import React from "react";
@@ -7,7 +7,7 @@ import NotFotfund from "../404";
 
 const Page = (props: {
   slug?: string;
-  page: AkselBlogg;
+  page: SanityT.Schema.aksel_blogg;
   preview: boolean;
 }): JSX.Element => {
   const { data } = usePreviewSubscription(akselBloggBySlug, {
@@ -25,7 +25,7 @@ const Page = (props: {
 
 interface StaticProps {
   props: {
-    page: AkselBlogg;
+    page: SanityT.Schema.aksel_blogg;
     slug: string;
     preview: boolean;
     validUser?: boolean;

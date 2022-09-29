@@ -6,21 +6,19 @@ import {
 } from "@/components";
 import { DsHeader, Footer } from "@/layout";
 import {
-  DsFrontpage,
   DsFrontPageCardT,
   dsFrontpageQuery,
-  DsNavigation,
+  SanityT,
   usePreviewSubscription,
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { getClient } from "@/sanity-client";
 import { BodyLong, Heading } from "@navikt/ds-react";
 import Head from "next/head";
-import React from "react";
 
 const Page = (props: {
-  page: DsFrontpage;
-  navigation: DsNavigation;
+  page: SanityT.Schema.ds_frontpage;
+  navigation: SanityT.Schema.ds_navigation;
   preview: boolean;
 }): JSX.Element => {
   const {

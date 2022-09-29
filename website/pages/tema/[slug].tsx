@@ -1,11 +1,10 @@
 import { abbrName, ArtikkelCard, BreadCrumbs, Slope } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
 import {
-  AkselArtikkel,
+  SanityT,
   akselTemaDocs,
   getAkselTema,
   getTemaSlug,
-  SanityT,
   usePreviewSubscription,
 } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
@@ -17,7 +16,7 @@ import NotFotfund from "../404";
 import cl from "classnames";
 
 type ArtiklerT = Partial<
-  AkselArtikkel & {
+  SanityT.Schema.aksel_artikkel & {
     slug: string;
     tema: string[];
     contributors?: { title?: string }[];

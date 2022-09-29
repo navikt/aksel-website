@@ -2,11 +2,8 @@
 import { BloggCard, logNav, TemaCard } from "@/components";
 import { AkselHeader, Footer } from "@/layout";
 import {
-  AkselBlogg,
-  akselForsideQuery,
-  AkselTema,
-  Riktekst,
   SanityT,
+  akselForsideQuery,
   urlFor,
   usePreviewSubscription,
 } from "@/lib";
@@ -422,18 +419,21 @@ const Page = (props: PageProps): JSX.Element => {
   );
 };
 
-export interface AkselTemaT extends AkselTema {
+export interface AkselTemaT extends SanityT.Schema.aksel_tema {
   refCount: number;
 }
 
 interface PageProps {
   temaer: AkselTemaT[];
   bloggs: Partial<
-    AkselBlogg & { slug: string; contributors?: { title?: string }[] }
+    SanityT.Schema.aksel_blogg & {
+      slug: string;
+      contributors?: { title?: string }[];
+    }
   >[];
   tekster: SanityT.Schema.vk_frontpage;
   prinsipp_1: {
-    beskrivelse?: Riktekst;
+    beskrivelse?: SanityT.Schema.riktekst_enkel;
     vis: boolean;
     hovedside: { heading: string; slug: { current: string } };
     undersider: { heading: string; slug: { current: string } }[];

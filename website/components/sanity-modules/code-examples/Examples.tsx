@@ -61,7 +61,7 @@ const ComponentExamples = ({
         .trim()
     ) ?? str;
 
-  const element = (exampleUrl: string, code: string, name: string) => (
+  const element = (exampleUrl: string, code: string) => (
     <>
       <div className="overflow-hidden rounded-t border border-b-0 border-gray-300 bg-gray-50">
         <iframe
@@ -82,8 +82,7 @@ const ComponentExamples = ({
 
       <Snippet
         node={{
-          _type: "code_snippet" as const,
-          title: `${name}-snippet`,
+          _type: "kode" as const,
           code: { code: code.trim(), language: "jsx" },
         }}
       />
@@ -101,8 +100,7 @@ const ComponentExamples = ({
   if (node.standalone) {
     return element(
       `/eksempler/${node.filnavn.title.replace(".tsx", "")}`,
-      node.filnavn?.filer?.[0]?.innhold ?? "",
-      node.title
+      node.filnavn?.filer?.[0]?.innhold ?? ""
     );
   }
 
@@ -142,8 +140,7 @@ const ComponentExamples = ({
               )}
               {element(
                 `/eksempler/${node.dir.title}/${fil.navn.replace(".tsx", "")}`,
-                fil.innhold,
-                node.title
+                fil.innhold
               )}
             </Tabs.Content>
           );

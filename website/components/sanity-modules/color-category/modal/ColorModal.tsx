@@ -1,17 +1,16 @@
+import { SanityT } from "@/lib";
 import { BodyShort, Heading } from "@navikt/ds-react";
 import cl from "classnames";
 import Color from "color";
 import { Snippet } from "../../code";
-import { CodeSnippet, DsColor } from "@/lib";
 import ColorFormats from "./ColorFormats";
 
 function capitalize(s: string) {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
-const tokenSnippet = (color: DsColor): CodeSnippet => ({
-  _type: "code_snippet",
-  title: `Token-snippet for ${color.title} icon`,
+const tokenSnippet = (color: SanityT.Schema.ds_color): SanityT.Schema.kode => ({
+  _type: "kode",
   code: {
     language: "css",
     code: `/* CSS */
@@ -22,7 +21,7 @@ ${color.full_title.replace("--", "@")};`,
   },
 });
 
-const ColorModal = ({ color }: { color: DsColor }) => {
+const ColorModal = ({ color }: { color: SanityT.Schema.ds_color }) => {
   return (
     <div className="flex min-w-[300px] max-w-2xl flex-shrink flex-col gap-4">
       <div>

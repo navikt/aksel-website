@@ -1,9 +1,12 @@
-import { DsColor } from "@/lib";
+import { SanityT } from "@/lib";
 
 const TwoBeforeOne = 1;
 const OneBeforeTwo = -1;
 
-export function compare(one: DsColor, two: DsColor): number {
+export function compare(
+  one: SanityT.Schema.ds_color,
+  two: SanityT.Schema.ds_color
+): number {
   if (one.color_index === undefined && two.color_index === undefined) {
     return one.title?.localeCompare(two.title, "no", { numeric: true });
   }

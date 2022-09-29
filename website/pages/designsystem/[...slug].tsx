@@ -1,7 +1,7 @@
 import { getActiveHeading, LayoutPicker, PagePropsContext } from "@/components";
 import { DsHeader, DsSidebar, Footer } from "@/layout";
 import {
-  DsNavigation,
+  SanityT,
   dsSlugQuery,
   getDsPaths,
   usePreviewSubscription,
@@ -13,7 +13,7 @@ import NotFotfund from "../404";
 const Page = (props: {
   slug?: string[];
   page: any;
-  navigation: DsNavigation;
+  navigation: SanityT.Schema.ds_navigation;
   preview: boolean;
 }): JSX.Element => {
   const {
