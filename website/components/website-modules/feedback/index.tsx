@@ -144,20 +144,16 @@ const Feedback = ({
 
   const classes = akselFeedback
     ? "algolia-ignore-index scroll-my-[30vh]"
-    : cl(
-        "scroll-my-[30vh] algolia-ignore-index flex w-full max-w-[800px] items-center justify-center gap-4 bg-component-background-alternate p-4 pb-12 sm:px-8 sm:py-4",
-        {
-          "mt-44 mr-auto mb-16 ml-0 md:mr-0 md:ml-0": !center,
-          "mx-auto mt-44 mb-16": center,
-        }
-      );
+    : cl("scroll-my-[30vh] algolia-ignore-index mt-44 mb-28", {
+        "mx-auto": center,
+      });
 
   return (
     <div className={classes} id="feedback-block" data-hj-suppress>
       <div
-        className={cl("flex w-full flex-col  gap-4", {
+        className={cl("flex w-full flex-col gap-4", {
           "": akselFeedback,
-          "items-center": !akselFeedback || center,
+          "items-center": center,
         })}
       >
         <Heading
@@ -170,7 +166,7 @@ const Feedback = ({
         <div
           className={cl("flex w-full gap-4", {
             "override-secondary-button justify-start": akselFeedback,
-            "justify-center": !akselFeedback || center,
+            "justify-center": center,
           })}
         >
           <Button
