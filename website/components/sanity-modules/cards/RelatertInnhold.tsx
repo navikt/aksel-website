@@ -22,7 +22,7 @@ const RelatertInnhold = ({ node }: { node: RelatertInnholdT }): JSX.Element => {
     <div
       className={cl(
         "relatedCard",
-        "mb-8 max-w-prose gap-4",
+        "mb-8 max-w-4xl gap-4",
         "grid w-full xs:grid-cols-2"
       )}
     >
