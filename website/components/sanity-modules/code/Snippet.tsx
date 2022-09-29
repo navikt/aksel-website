@@ -27,7 +27,7 @@ const CodeSnippet = ({
       <div
         className={cl(
           className,
-          "relative mb-8 block overflow-x-auto rounded bg-gray-900"
+          "relative mb-8 block max-h-96 overflow-x-auto rounded bg-gray-900"
         )}
         {...props}
       >
