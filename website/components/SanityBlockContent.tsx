@@ -9,7 +9,6 @@ import {
   Alert,
   Anatomi,
   Bilde,
-  CodeExample,
   CodeExamples,
   DoDont,
   InnholdsKort,
@@ -53,9 +52,6 @@ const serializers = {
     tokens: ({ node }) => <TokensSeksjon node={node} />,
     tips: ({ node }) => <Tips node={node} />,
     kode_eksempler: ({ node }) => <CodeExamples node={node} />,
-
-    /* General page modules */
-    ds_code_example: ({ node }) => <CodeExample node={node} />,
 
     block: ({ node, children }) => {
       const context: BlockContextT = useContext(BlockContext);

@@ -95,13 +95,9 @@ export const dsPanel = async (roles) => {
                   .title("Autogenerert data")
                   .items([
                     S.listItem()
-                      .title("Eksempel-filnavn")
+                      .title("Eksempler")
                       .icon(() => <span>{`EX`}</span>)
                       .child(S.documentTypeList("kode_eksempler_fil")),
-                    S.listItem()
-                      .title("Eksempler")
-                      .icon(() => <span>{`SA`}</span>)
-                      .child(S.documentTypeList("ds_code_example")),
                     S.listItem()
                       .title("Fargekategorier")
                       .icon(() => <Folder />)

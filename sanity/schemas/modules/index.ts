@@ -4,7 +4,6 @@ import Anatomi from "./anatomi";
 import Bilde from "./bilde";
 import HeroBilde from "./hero-bilde";
 import DoDont, { doDontBlock } from "./do-dont";
-import Installasjon from "./installasjon";
 import introKomponent from "./intro-komponent";
 import Kode from "./kode";
 import Props from "./props";
@@ -48,7 +47,6 @@ const v2Blocks = [
   Tabell,
   ...TabellSchema,
   Anatomi,
-  Installasjon,
   Props,
   Accordion,
   SpesialSeksjon,

@@ -6,5 +6,3 @@ export const Snippet = dynamic(() => import("./Snippet"), {
   ),
   ssr: false,
 });
-
-export { default as CodeExample } from "./with-example/Example";

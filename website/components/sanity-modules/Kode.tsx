@@ -1,18 +1,13 @@
-import React from "react";
-import { CodeExample, Snippet } from "@/components";
-import { DsCodeExample, Kode as KodeT } from "@/lib";
+import { Snippet } from "@/components";
 import { withErrorBoundary } from "@/error-boundary";
+import { SanityT } from "@/lib";
 
-const Kode = ({ node }: { node: KodeT }): JSX.Element => {
-  if (!node || (!node.variant && !node.code) || (node.variant && !node.ref)) {
+const Kode = ({ node }: { node: SanityT.Schema.kode }): JSX.Element => {
+  if (!node || !node.code) {
     return null;
   }
 
-  if (node.variant) {
-    return <CodeExample node={node.ref as unknown as DsCodeExample} />;
-  } else {
-    return <Snippet node={node} className="last:mb-0" />;
-  }
+  return <Snippet node={node} className="last:mb-0" />;
 };
 
 export default withErrorBoundary(Kode, "Kode");

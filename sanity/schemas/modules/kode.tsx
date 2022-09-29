@@ -7,39 +7,11 @@ export default {
   icon: () => <div>{`<>`}</div>,
   fields: [
     {
-      title: "Bruk predefinert kodesnutt?",
-      type: "boolean",
-      name: "variant",
-      initialValue: false,
-      validation: (Rule) =>
-        Rule.required().error("Kodes må ha en definert variant"),
-    },
-    {
-      title: "Predefinert kodesnutt",
-      name: "ref",
-      type: "reference",
-      to: [{ type: "ds_code_example" }],
-      hidden: ({ parent }) => !parent?.variant,
-      validation: (Rule) =>
-        Rule.custom((v, { parent }) => {
-          if (parent.variant) {
-            return v ? true : "Må velge en kodesnippet";
-          }
-          return true;
-        }).error(),
-    },
-    {
       name: "code",
       title: "Kode",
       type: "code",
       hidden: ({ parent }) => parent?.variant,
-      validation: (Rule) =>
-        Rule.custom((v, { parent }) => {
-          if (!parent.variant) {
-            return v ? true : "Må skrive noe kode";
-          }
-          return true;
-        }).error(),
+      validation: (Rule) => Rule.required(),
       options: {
         languageAlternatives: [
           { value: "js", title: "Javascript" },
@@ -60,8 +32,8 @@ export default {
     },
     prepare: ({ code, ref }) => ({
       title: code ? `${code?.code?.slice(0, 50)}...` : ref ? ref : "Kode",
-      subtitle: code ? "Kode" : ref ? "Predefinert kodesnippet" : "",
-      mediua: () => <div>{`</`}</div>,
+      subtitle: "kode",
+      media: () => <div>{`</>`}</div>,
     }),
   },
 };

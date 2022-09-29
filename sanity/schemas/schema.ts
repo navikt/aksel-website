@@ -23,8 +23,6 @@ export default createSchema({
 
     Designsystem.Color,
     Designsystem.ds_header_heading,
-    Designsystem.CodeExamples,
-    Designsystem.example,
     Designsystem.ColorCategories,
     Designsystem.Tokens,
     Designsystem.KodeEksempler,
