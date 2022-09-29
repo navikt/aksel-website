@@ -21,5 +21,5 @@ const Example = () => {
 export default withDsExample(Example);
 
 export const args = {
-  index: 0,
+  index: 1,
 };
