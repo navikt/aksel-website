@@ -5,9 +5,9 @@ import { withDsExample } from "components/website-modules/examples/withDsExample
 const Example = () => {
   return (
     <CopyToClipboard
-      icon={<Link title="kopier pi" />}
-      copyText="3.14"
-      popoverText="Kopierte PI"
+      icon={<Link title="kopier lenke" />}
+      copyText="#lenke"
+      popoverText="Kopierte lenke"
     />
   );
 };
