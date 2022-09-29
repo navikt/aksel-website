@@ -179,7 +179,6 @@ const Riktekst = (type: "aksel" | "ds" | "komponent" | "prinsipp") => {
   const comp = [
     "props_seksjon",
     "anatomi",
-    "live_demo",
     "tastatur_modul",
     "tokens",
     "kode_eksempler",

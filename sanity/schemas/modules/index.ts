@@ -7,7 +7,6 @@ import DoDont, { doDontBlock } from "./do-dont";
 import Installasjon from "./installasjon";
 import introKomponent from "./intro-komponent";
 import Kode from "./kode";
-import liveDemo from "./live-demo";
 import Props from "./props";
 import RelatertInnhold from "./relatert-innhold";
 import Innholdskort from "./innholdskort";
@@ -46,7 +45,6 @@ const v2Blocks = [
   RelatertInnhold,
   Innholdskort,
   introKomponent,
-  liveDemo,
   Tabell,
   ...TabellSchema,
   Anatomi,

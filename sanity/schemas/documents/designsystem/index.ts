@@ -2,7 +2,7 @@ export { default as KomponentArtikkel } from "./articles/komponent";
 export { default as Artikkel } from "./articles/artikkel";
 export { default as ComponentTemplate } from "./component-template";
 export { default as CodeExamples, example } from "./automated/code-example";
-export { default as CodeSandboxes } from "./automated/sandbox";
+
 export { default as Props } from "./automated/props";
 export { default as Tokens } from "./automated/tokens";
 export { default as KodeEksempler } from "./automated/kode-eksempler";

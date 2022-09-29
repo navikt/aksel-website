@@ -25,7 +25,6 @@ export default createSchema({
     Designsystem.ds_header_heading,
     Designsystem.CodeExamples,
     Designsystem.example,
-    Designsystem.CodeSandboxes,
     Designsystem.ColorCategories,
     Designsystem.Tokens,
     Designsystem.KodeEksempler,

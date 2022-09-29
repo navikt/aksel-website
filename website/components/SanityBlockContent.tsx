@@ -15,10 +15,8 @@ import {
   InnholdsKort,
   Kode,
   LevelTwoHeading,
-  LiveDemo,
   PropsSeksjon,
   RelatertInnhold,
-  Sandbox,
   SpesialSeksjon,
   Tabell,
   TastaturModul,
@@ -41,7 +39,6 @@ const serializers = {
     relatert_innhold: ({ node }) => <RelatertInnhold node={node} />,
     innholdskort: ({ node }) => <InnholdsKort node={node} />,
     anatomi: ({ node }) => <Anatomi node={node} />,
-    live_demo: ({ node }) => <LiveDemo node={node} />,
     tastatur_modul: ({ node }) => <TastaturModul node={node} />,
     riktekst_blokk: ({ node }) => <SanityBlockContent blocks={node.body} />,
     do_dont: ({ node }) => <DoDont node={node} />,
@@ -58,7 +55,6 @@ const serializers = {
     kode_eksempler: ({ node }) => <CodeExamples node={node} />,
 
     /* General page modules */
-    ds_code_sandbox: ({ node }) => <Sandbox node={node} />,
     ds_code_example: ({ node }) => <CodeExample node={node} />,
 
     block: ({ node, children }) => {
