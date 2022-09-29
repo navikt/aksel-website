@@ -30,7 +30,7 @@ const Example = () => {
   );
 };
 
-export default withDsExample(Example);
+export default withDsExample(Example, "full");
 
 export const args = {
   index: 4,

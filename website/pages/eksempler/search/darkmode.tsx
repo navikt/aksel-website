@@ -9,7 +9,7 @@ const Example = () => {
   );
 };
 
-export default withDsExample(Example, true);
+export default withDsExample(Example, "inverted");
 
 export const args = {
   index: 6,
