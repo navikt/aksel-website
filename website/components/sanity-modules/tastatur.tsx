@@ -33,7 +33,7 @@ const UuSeksjon = ({
   );
 
   return (
-    <table className="w-full border-separate border-spacing-0 rounded border border-gray-300">
+    <table className="mb-7 w-full border-separate border-spacing-0 rounded border border-gray-300">
       <thead>
         <tr className="rounded-t">
           <td className="rounded-tl bg-gray-50 p-2 ">Kommando</td>
