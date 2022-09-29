@@ -86,15 +86,16 @@ const Dropdown = ({
         className="group z-10 flex min-h-8 w-full cursor-pointer items-center justify-between pr-2 text-text-muted hover:text-deepblue-800 focus:outline-none"
         aria-expanded={open}
       >
-        <Detail className="mt-6 flex w-full items-center justify-between rounded-sm pl-2 font-semibold first:mt-0 group-hover:bg-[rgba(0,0,0,0.06)] group-focus:shadow-focus group-active:bg-[rgba(0,0,0,0.10)]">
+        <Detail
+          as="span"
+          className="mt-6 flex w-full items-center justify-between rounded-sm pl-2 font-semibold first:mt-0 group-hover:bg-[rgba(0,0,0,0.06)] group-focus:shadow-focus group-active:bg-[rgba(0,0,0,0.10)]"
+        >
           {heading.title}
           <span className="flex h-6 w-6 items-center justify-center rounded">
             <Expand
               className={cl("text-base", { "rotate-180": open })}
               aria-hidden
-              aria-label={
-                !open ? `åpne ${heading.title}` : `lukk ${heading.title}`
-              }
+              title={!open ? `åpne ${heading.title}` : `lukk ${heading.title}`}
             />
           </span>
         </Detail>
