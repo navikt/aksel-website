@@ -1,9 +1,9 @@
 import { SanityT } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { BodyShort, Heading } from "@navikt/ds-react";
-import Head from "next/head";
-import { dateStr, Feedback, TableOfContents, UnderArbeid } from "../..";
 import cl from "classnames";
+import Head from "next/head";
+import { dateStr, Feedback, TableOfContents } from "../..";
 
 const ArtikkelTemplate = ({
   data,
@@ -54,19 +54,7 @@ const ArtikkelTemplate = ({
       <div className="relative flex max-w-full md:max-w-7xl">
         <TableOfContents changedState={data.content} hideToc={false} />
         <div className={layout}>
-          {data?.under_arbeid?.status ? (
-            <>
-              <UnderArbeid
-                className="mt-12"
-                text={data?.under_arbeid?.forklaring}
-              />
-              {data?.under_arbeid?.vis_innhold && (
-                <SanityBlockContent blocks={data.content} />
-              )}
-            </>
-          ) : (
-            <SanityBlockContent className="mt-12" blocks={data.content} />
-          )}
+          <SanityBlockContent className="mt-12" blocks={data.content} />
           <Feedback docId={data?._id} docType={data?._type} />
         </div>
       </div>

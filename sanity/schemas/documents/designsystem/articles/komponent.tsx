@@ -7,7 +7,6 @@ import {
   publishedAtField,
   sanitySlug,
   titleField,
-  UnderArbeidField,
 } from "@/lib";
 
 const prefix = "designsystem/komponenter/";
@@ -22,7 +21,6 @@ export default {
     publishedAtField,
     editorField,
     titleField,
-    UnderArbeidField,
     sanitySlug(prefix, 3),
     {
       title: "Metadata",
@@ -67,12 +65,6 @@ export default {
       type: "riktekst_komponent",
       name: "bruk_tab",
       title: "Innhold",
-    },
-    {
-      ...innholdFieldNew,
-      type: "riktekst_komponent",
-      name: "kode_tab",
-      title: "Kode",
     },
     {
       title: "Kodepakker",

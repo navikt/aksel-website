@@ -12,7 +12,6 @@ import {
   dateStr,
   Feedback,
   TableOfContents,
-  UnderArbeid,
 } from "../..";
 import { NoSidebarLayout } from "./wrappers/NoSidebar";
 
@@ -142,22 +141,7 @@ const AkselArtikkelTemplate = ({
             aksel
           />
           <div className="max-w-prose lg:col-span-2 lg:col-start-1">
-            {data?.under_arbeid?.status ? (
-              <>
-                <UnderArbeid text={data?.under_arbeid?.forklaring} />
-                {data?.under_arbeid?.vis_innhold && (
-                  <SanityBlockContent
-                    blocks={data?.content ?? []}
-                    variant="aksel"
-                  />
-                )}
-              </>
-            ) : (
-              <SanityBlockContent
-                blocks={data?.content ?? []}
-                variant="aksel"
-              />
-            )}
+            <SanityBlockContent blocks={data?.content ?? []} variant="aksel" />
             <div className="mt-12">
               <Label className="mb-2 text-deepblue-700" as="p">
                 Bidragsytere

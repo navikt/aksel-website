@@ -9,7 +9,8 @@ const generateUrls = async () => {
 
   const formated = pages.map((x) => `/${x}`);
 
-  if (formated.length < 100) {
+  console.log(`Pages ${formated.length}`);
+  if (formated.length < 80) {
     throw new Error(
       "generateUrls found less than 100 pages. Did fetching remote pages fail?"
     );

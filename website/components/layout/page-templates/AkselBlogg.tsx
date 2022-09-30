@@ -2,8 +2,7 @@ import { SanityT, urlFor } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { BodyShort, Heading, Ingress } from "@navikt/ds-react";
 import Head from "next/head";
-import React from "react";
-import { dateStr, Feedback, TableOfContents, UnderArbeid } from "../..";
+import { dateStr, Feedback, TableOfContents } from "../..";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
 
@@ -100,24 +99,11 @@ const AkselBloggTemplate = ({
         <div className="mt-16">
           <TableOfContents changedState={data?.content ?? []} hideToc />
           <div className="mt-8 px-4">
-            {data?.under_arbeid?.status ? (
-              <>
-                <UnderArbeid text={data?.under_arbeid?.forklaring} />
-                {data?.under_arbeid?.vis_innhold && (
-                  <SanityBlockContent
-                    className="dynamic-wrapper-prose"
-                    blocks={data?.content ?? []}
-                    variant="aksel"
-                  />
-                )}
-              </>
-            ) : (
-              <SanityBlockContent
-                className="dynamic-wrapper-prose"
-                blocks={data?.content ?? []}
-                variant="aksel"
-              />
-            )}
+            <SanityBlockContent
+              className="dynamic-wrapper-prose"
+              blocks={data?.content ?? []}
+              variant="aksel"
+            />
           </div>
         </div>
         <div className="mt-16 px-4">

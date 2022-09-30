@@ -10,7 +10,6 @@ import {
   sanitySlug,
   SEOFields,
   titleField,
-  UnderArbeidField,
 } from "@/lib";
 
 const prefix = "artikkel/";
@@ -38,7 +37,7 @@ export default {
     ingressField,
     innholdFieldNew,
     relevanteArtiklerField,
-    UnderArbeidField,
+
     SEOFields,
     migratedField,
   ],

@@ -84,10 +84,6 @@ export const getDsPaths = async (token?: string): Promise<string[][]> => {
     const defaultPush = () => paths.push(slug);
 
     switch (page._type) {
-      case "komponent_artikkel":
-        paths.push([...slug, "kode"]);
-        defaultPush();
-        break;
       case "ds_artikkel": {
         if (!page?.artikkel_type) {
           defaultPush();

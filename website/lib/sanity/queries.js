@@ -287,10 +287,6 @@ export const dsSlugQuery = `{
         ${deRefs}
         }
       },
-      kode_tab[]{
-        ...,
-        ${deRefs}
-      },
       bruk_tab[]{
         ...,
         ${deRefs}

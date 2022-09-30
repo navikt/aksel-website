@@ -10,7 +10,6 @@ import {
   publishedAtField,
   SEOFields,
   titleField,
-  UnderArbeidField,
 } from "@/lib";
 import sanityClient from "part:@sanity/base/client";
 
@@ -138,7 +137,6 @@ export default {
     },
     ingressField,
     innholdFieldPrinsipp,
-    UnderArbeidField,
     SEOFields,
     migratedField,
   ],

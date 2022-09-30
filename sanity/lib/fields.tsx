@@ -59,38 +59,6 @@ export const titleField = {
       .error("Siden bør ha en kort og konsis heading (<h1>)"),
 };
 
-export const UnderArbeidField = {
-  title: "Under arbeid",
-  name: "under_arbeid",
-  description:
-    "Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404",
-  type: "object",
-  group: "settings",
-  fields: [
-    {
-      title: "Er under arbeid?",
-      name: "status",
-      type: "boolean",
-      initialValue: false,
-    },
-    {
-      title: "Forklaring",
-      description: "Default: Siden blir for tiden oppdatert!",
-      name: "forklaring",
-      type: "text",
-      rows: 2,
-      hidden: ({ parent }) => !parent || !parent.status,
-    },
-    {
-      title: "Vis fortsatt innhold?",
-      description: "Vil vise under-arbeid status med innhold under",
-      name: "vis_innhold",
-      type: "boolean",
-      initialValue: false,
-    },
-  ],
-};
-
 export const ingressField = {
   title: "Ingress",
   name: "ingress",

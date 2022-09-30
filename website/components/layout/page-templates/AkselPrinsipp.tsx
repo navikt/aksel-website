@@ -1,6 +1,7 @@
 import { SanityT, urlFor } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { BodyShort, Heading, Ingress, Label } from "@navikt/ds-react";
+import cl from "classnames";
 import Head from "next/head";
 import { AkselHeader, Footer } from "..";
 import {
@@ -13,9 +14,7 @@ import {
   Feedback,
   PrinsippSlope,
   TableOfContents,
-  UnderArbeid,
 } from "../..";
-import cl from "classnames";
 
 const AkselPrinsippTemplate = ({
   data,
@@ -143,22 +142,10 @@ const AkselPrinsippTemplate = ({
                         className="-mt-36 mb-10 xs:-mt-64"
                       />
                     )}
-                    {data?.under_arbeid?.status ? (
-                      <>
-                        <UnderArbeid text={data?.under_arbeid?.forklaring} />
-                        {data?.under_arbeid?.vis_innhold && (
-                          <SanityBlockContent
-                            blocks={data?.content ?? []}
-                            variant="aksel"
-                          />
-                        )}
-                      </>
-                    ) : (
-                      <SanityBlockContent
-                        blocks={data?.content ?? []}
-                        variant="aksel"
-                      />
-                    )}
+                    <SanityBlockContent
+                      blocks={data?.content ?? []}
+                      variant="aksel"
+                    />
                     <div className="mt-12">
                       <Label className="mb-2 text-deepblue-700" as="p">
                         Bidragsytere

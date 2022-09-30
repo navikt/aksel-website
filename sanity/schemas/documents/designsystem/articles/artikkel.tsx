@@ -9,7 +9,6 @@ import {
   publishedAtField,
   sanitySlug,
   titleField,
-  UnderArbeidField,
 } from "@/lib";
 
 const prefix = "designsystem/side/";
@@ -25,7 +24,6 @@ export default {
     publishedAtField,
     editorField,
     titleField,
-    UnderArbeidField,
     sanitySlug(prefix, 3),
     {
       title: "Layout",

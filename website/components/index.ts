@@ -26,5 +26,4 @@ export { default as Search } from "./website-modules/search";
 export { PrinsippSlope, Slope } from "./website-modules/Slope";
 export * from "./website-modules/TilToppen";
 export * from "./website-modules/TOC";
-export { UnderArbeid } from "./website-modules/UnderArbeid";
 export * from "./website-modules/utils";

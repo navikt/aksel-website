@@ -5,7 +5,7 @@ import { BodyShort, Heading, Tag } from "@navikt/ds-react";
 import cl from "classnames";
 import IntroSeksjon from "components/sanity-modules/IntroSeksjon";
 import Head from "next/head";
-import { dateStr, Feedback, TableOfContents, UnderArbeid } from "../..";
+import { dateStr, Feedback, TableOfContents } from "../..";
 
 const kodepakker = {
   "ds-react": {
@@ -142,34 +142,10 @@ const KomponentArtikkelTemplate = ({
       <div className="relative flex max-w-full md:max-w-7xl">
         <TableOfContents changedState={data["bruk_tab"]} hideToc={false} />
         <div className="content-box">
-          {data?.under_arbeid?.status ? (
-            <>
-              <UnderArbeid
-                className="mt-12"
-                text={data?.under_arbeid?.forklaring}
-              />
-              {data?.under_arbeid?.vis_innhold && (
-                <div>
-                  <IntroSeksjon node={data.intro} />
-                  {data["bruk_tab"] && (
-                    <SanityBlockContent blocks={data["bruk_tab"]} />
-                  )}
-                </div>
-              )}
-            </>
-          ) : (
-            <div className="mt-12">
-              <IntroSeksjon node={data.intro} />
-              {data["bruk_tab"] && (
-                <SanityBlockContent
-                  blocks={[
-                    ...data["bruk_tab"],
-                    ...(data["kode_tab"] ? data["kode_tab"] : []),
-                  ]}
-                />
-              )}
-            </div>
-          )}
+          <div className="mt-12">
+            <IntroSeksjon node={data.intro} />
+            <SanityBlockContent blocks={data["bruk_tab"]} />
+          </div>
           <Feedback docId={data?._id} docType={data?._type} />
         </div>
       </div>

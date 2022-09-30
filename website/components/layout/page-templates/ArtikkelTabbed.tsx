@@ -3,14 +3,7 @@ import { SanityBlockContent } from "@/sanity-block";
 import { BodyShort, Heading, Tabs } from "@navikt/ds-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import {
-  capitalize,
-  dateStr,
-  Feedback,
-  logNav,
-  TableOfContents,
-  UnderArbeid,
-} from "../..";
+import { capitalize, dateStr, Feedback, logNav, TableOfContents } from "../..";
 
 const ArtikkelTabbedTemplate = ({
   data,
@@ -92,19 +85,7 @@ const ArtikkelTabbedTemplate = ({
             >
               <TableOfContents changedState={x.content} hideToc={false} />
               <div className="content-box">
-                {data?.under_arbeid?.status ? (
-                  <>
-                    <UnderArbeid
-                      className="mt-12"
-                      text={data?.under_arbeid?.forklaring}
-                    />
-                    {data?.under_arbeid?.vis_innhold && (
-                      <SanityBlockContent blocks={x.content} />
-                    )}
-                  </>
-                ) : (
-                  <SanityBlockContent className="mt-12" blocks={x.content} />
-                )}
+                <SanityBlockContent className="mt-12" blocks={x.content} />
                 <Feedback docId={data?._id} docType={data?._type} />
               </div>
             </Tabs.Panel>
