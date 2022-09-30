@@ -303,29 +303,6 @@ Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av sid
       heading?: string;
 
       /**
-       * Under arbeid - `Object`
-Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
-       */
-      under_arbeid?: {
-        /**
-         * Er under arbeid? - `Boolean`
-         */
-        status?: boolean;
-
-        /**
-       * Forklaring - `Text`
-Default: Siden blir for tiden oppdatert!
-       */
-        forklaring?: string;
-
-        /**
-       * Vis fortsatt innhold? - `Boolean`
-Vil vise under-arbeid status med innhold under
-       */
-        vis_innhold?: boolean;
-      };
-
-      /**
        * url - `Slug`
        */
       slug?: {
@@ -361,11 +338,6 @@ Vil vise under-arbeid status med innhold under
        * Innhold - `RegistryReference`
        */
       bruk_tab?: riktekst_komponent;
-
-      /**
-       * Kode - `RegistryReference`
-       */
-      kode_tab?: riktekst_komponent;
 
       /**
        * Kodepakker - `Array`
@@ -471,29 +443,6 @@ Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av sid
       heading?: string;
 
       /**
-       * Under arbeid - `Object`
-Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
-       */
-      under_arbeid?: {
-        /**
-         * Er under arbeid? - `Boolean`
-         */
-        status?: boolean;
-
-        /**
-       * Forklaring - `Text`
-Default: Siden blir for tiden oppdatert!
-       */
-        forklaring?: string;
-
-        /**
-       * Vis fortsatt innhold? - `Boolean`
-Vil vise under-arbeid status med innhold under
-       */
-        vis_innhold?: boolean;
-      };
-
-      /**
        * url - `Slug`
        */
       slug?: {
@@ -529,11 +478,6 @@ Vil vise under-arbeid status med innhold under
        * Innhold - `RegistryReference`
        */
       bruk_tab?: riktekst_komponent;
-
-      /**
-       * Kode - `RegistryReference`
-       */
-      kode_tab?: riktekst_komponent;
 
       /**
        * Kodepakker - `Array`
@@ -574,29 +518,6 @@ Legg til alle som har bidratt med denne siden!
 Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av siden i URL.
        */
       heading?: string;
-
-      /**
-       * Under arbeid - `Object`
-Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
-       */
-      under_arbeid?: {
-        /**
-         * Er under arbeid? - `Boolean`
-         */
-        status?: boolean;
-
-        /**
-       * Forklaring - `Text`
-Default: Siden blir for tiden oppdatert!
-       */
-        forklaring?: string;
-
-        /**
-       * Vis fortsatt innhold? - `Boolean`
-Vil vise under-arbeid status med innhold under
-       */
-        vis_innhold?: boolean;
-      };
 
       /**
        * url - `Slug`
@@ -718,29 +639,6 @@ Legg til relaterte artikler som du tenker er relevant å lese (maks 3)
       >;
 
       /**
-       * Under arbeid - `Object`
-Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
-       */
-      under_arbeid?: {
-        /**
-         * Er under arbeid? - `Boolean`
-         */
-        status?: boolean;
-
-        /**
-       * Forklaring - `Text`
-Default: Siden blir for tiden oppdatert!
-       */
-        forklaring?: string;
-
-        /**
-       * Vis fortsatt innhold? - `Boolean`
-Vil vise under-arbeid status med innhold under
-       */
-        vis_innhold?: boolean;
-      };
-
-      /**
        * SEO - `Object`
        */
       seo?: {
@@ -809,29 +707,6 @@ Side, innganger og seo description-tag
        * Innhold - `RegistryReference`
        */
       content?: riktekst_aksel;
-
-      /**
-       * Under arbeid - `Object`
-Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
-       */
-      under_arbeid?: {
-        /**
-         * Er under arbeid? - `Boolean`
-         */
-        status?: boolean;
-
-        /**
-       * Forklaring - `Text`
-Default: Siden blir for tiden oppdatert!
-       */
-        forklaring?: string;
-
-        /**
-       * Vis fortsatt innhold? - `Boolean`
-Vil vise under-arbeid status med innhold under
-       */
-        vis_innhold?: boolean;
-      };
 
       /**
        * SEO - `Object`
@@ -983,29 +858,6 @@ Side, innganger og seo description-tag
        * Innhold - `RegistryReference`
        */
       content?: riktekst_prinsipp;
-
-      /**
-       * Under arbeid - `Object`
-Hvis checked og publisert vil siden vises som under arbeid uten at lenker treffer 404
-       */
-      under_arbeid?: {
-        /**
-         * Er under arbeid? - `Boolean`
-         */
-        status?: boolean;
-
-        /**
-       * Forklaring - `Text`
-Default: Siden blir for tiden oppdatert!
-       */
-        forklaring?: string;
-
-        /**
-       * Vis fortsatt innhold? - `Boolean`
-Vil vise under-arbeid status med innhold under
-       */
-        vis_innhold?: boolean;
-      };
 
       /**
        * SEO - `Object`

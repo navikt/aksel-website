@@ -6,31 +6,22 @@ const client = sanityClient.withConfig({
   dataset: "production",
 });
 
-/**  Script for å rename data-felt
+/**  Script for å gjøre diverse oppgaver på dataset. Endre linje 15 og 20 med ønsket config
  * https://www.sanity.io/schemas/rename-a-field-across-documents-5cd6f5f0
  * Husk å kjøre backup med sanity dataset export først!
  * run: sanity exec scripts/renameField.js --with-user-token
  */
 
-const fetchDocuments = () => client.fetch(`*[_type in [ "ds_component_page"]]`);
+const fetchDocuments = () => client.fetch(`*[under_arbeid != null]`);
 
 const buildPatches = (docs) =>
-  docs
-    .filter(
-      (doc) => doc.contact?._ref === "2286ae51-465b-4866-928a-d0790b26b090"
-    )
-    .map((doc) => ({
-      id: doc._id,
-      patch: {
-        set: {
-          contact: {
-            _ref: "editor.pv5AzOXXs",
-            _type: "reference",
-          },
-        },
-        ifRevisionID: doc._rev,
-      },
-    }));
+  docs.map((doc) => ({
+    id: doc._id,
+    patch: {
+      unset: ["under_arbeid"],
+      ifRevisionID: doc._rev,
+    },
+  }));
 
 const createTransaction = (patches) =>
   patches.reduce(
@@ -42,6 +33,8 @@ const commitTransaction = (tx) => tx.commit();
 
 const migrateNextBatch = async () => {
   const documents = await fetchDocuments();
+  console.log(documents.length);
+  return;
   const patches = buildPatches(documents);
   if (patches.length === 0) {
     console.log("No more documents to migrate!");
