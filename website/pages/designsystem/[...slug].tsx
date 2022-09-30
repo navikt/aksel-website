@@ -49,8 +49,7 @@ const Page = (props: {
               id="hovedinnhold"
               className="relative min-h-screen-header w-full focus:outline-none md:max-w-screen-sidebar"
             >
-              <LayoutPicker title="Designsystemet" data={page} />
-              <div className="mt-auto" aria-hidden />
+              <LayoutPicker title="Aksel" data={page} />
             </main>
           </div>
         </div>

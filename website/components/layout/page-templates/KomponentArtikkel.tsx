@@ -1,19 +1,12 @@
 import { SanityT } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
-import { ExternalLink } from "@navikt/ds-icons";
-import { BodyShort, Heading, Tabs, Tag } from "@navikt/ds-react";
+import { Copy } from "@navikt/ds-icons";
+import { BodyShort, Heading, Tag } from "@navikt/ds-react";
 import cl from "classnames";
 import IntroSeksjon from "components/sanity-modules/IntroSeksjon";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import {
-  capitalize,
-  dateStr,
-  Feedback,
-  logNav,
-  TableOfContents,
-  UnderArbeid,
-} from "../..";
+import { dateStr, Feedback, TableOfContents, UnderArbeid } from "../..";
+import copyString from "copy-to-clipboard";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const kodepakker = {
@@ -54,23 +47,14 @@ const KomponentArtikkelTemplate = ({
   data: SanityT.Schema.komponent_artikkel;
   title: string;
 }): JSX.Element => {
-  const { query, push } = useRouter();
-
-  const tabs = {
-    bruk: "bruk_tab",
-    kode: "kode_tab",
-  };
-
-  const basePath = `/designsystem/komponenter/${query.slug[1]}`;
-  const activeTab = Object.keys(tabs).indexOf(query.slug?.[2] ?? "bruk");
-  const tabKey = Object.keys(tabs)?.[activeTab];
+  const install =
+    data?.kodepakker &&
+    `npm i ${data?.kodepakker?.map((x) => kodepakker[x].title).join(" ")}`;
 
   return (
     <>
       <Head>
-        <title>
-          {data?.heading ? `${data?.heading} ${tabKey} - ${title}` : title}
-        </title>
+        <title>{data?.heading ? `${data?.heading} - ${title}` : title}</title>
         <meta
           property="og:title"
           content={`${data.heading} - Designsystemet`}
@@ -78,7 +62,7 @@ const KomponentArtikkelTemplate = ({
       </Head>
 
       <div className="content-box">
-        <div className="py-8">
+        <div className="pt-8">
           <div className="flex flex-wrap gap-2"></div>
           <Heading
             size="xlarge"
@@ -158,77 +142,49 @@ const KomponentArtikkelTemplate = ({
               </a>
             )} */}
           </BodyShort>
-          {data?.kodepakker && (
-            <div className="mt-2 w-fit rounded bg-gray-100 px-2 py-1 font-mono text-sm">{`npm i ${data?.kodepakker
-              ?.map((x) => kodepakker[x].title)
-              .join(" ")}`}</div>
+          {install && (
+            <button
+              onClick={() => copyString(install)}
+              className="flex h-8 w-fit items-center justify-center gap-2 rounded bg-gray-100 px-2 font-mono text-sm ring-1 ring-inset ring-gray-900/10 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-800"
+            >
+              {install}
+              <Copy
+                title="Kopier install-snippet"
+                className="text-text-muted"
+              />
+            </button>
           )}
         </div>
       </div>
-      <Tabs
-        className="top-0 z-[1001]"
-        value={tabKey}
-        onChange={(x) => {
-          const url = x === "bruk" ? basePath : `${basePath}/${x}`;
-          push(url, undefined, { shallow: true });
-          logNav("tabs", window.location.pathname, url);
-        }}
-      >
-        <Tabs.List className="mx-0 px-2 md:mx-12 md:px-0">
-          {Object.entries(tabs)
-            .filter(([, val]) => !!data[val])
-            .map(([key]) => (
-              <Tabs.Tab
-                as="button"
-                key={key}
-                value={key}
-                label={capitalize(key)}
+      <div className="relative flex max-w-full md:max-w-7xl">
+        <TableOfContents changedState={data["bruk_tab"]} hideToc={false} />
+        <div className="content-box">
+          {data?.under_arbeid?.status ? (
+            <>
+              <UnderArbeid
+                className="mt-12"
+                text={data?.under_arbeid?.forklaring}
               />
-            ))}
-        </Tabs.List>
-        {Object.entries(tabs)
-          .filter(([, val]) => !!data[val])
-          .map(([key, val]) => (
-            <Tabs.Panel
-              className="tabpanel relative max-w-full md:max-w-7xl"
-              key={key + val}
-              value={key}
-            >
-              <TableOfContents changedState={data[val]} hideToc={false} />
-              <div className="content-box">
-                {data?.under_arbeid?.status ? (
-                  <>
-                    <UnderArbeid
-                      className="mt-12"
-                      text={data?.under_arbeid?.forklaring}
-                    />
-                    {data?.under_arbeid?.vis_innhold && (
-                      <div>
-                        {val === "bruk_tab" && data.intro && (
-                          <IntroSeksjon node={data.intro} />
-                        )}
-                        {data[val] && <SanityBlockContent blocks={data[val]} />}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <div className="mt-12">
-                    {val === "bruk_tab" && data.intro && (
-                      <IntroSeksjon node={data.intro} />
-                    )}
-                    {data[val] && <SanityBlockContent blocks={data[val]} />}
-                  </div>
-                )}
-                <Feedback docId={data?._id} docType={data?._type} />
-              </div>
-            </Tabs.Panel>
-          ))}
-      </Tabs>
-      <style jsx global>{`
-        .tabpanel[data-state="active"] {
-          display: flex;
-        }
-      `}</style>
+              {data?.under_arbeid?.vis_innhold && (
+                <div>
+                  <IntroSeksjon node={data.intro} />
+                  {data["bruk_tab"] && (
+                    <SanityBlockContent blocks={data["bruk_tab"]} />
+                  )}
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="mt-12">
+              <IntroSeksjon node={data.intro} />
+              {data["bruk_tab"] && (
+                <SanityBlockContent blocks={data["bruk_tab"]} />
+              )}
+            </div>
+          )}
+          <Feedback docId={data?._id} docType={data?._type} />
+        </div>
+      </div>
     </>
   );
 };
