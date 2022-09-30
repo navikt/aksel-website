@@ -161,10 +161,12 @@ const KomponentArtikkelTemplate = ({
             <div className="mt-12">
               <IntroSeksjon node={data.intro} />
               {data["bruk_tab"] && (
-                <SanityBlockContent blocks={data["bruk_tab"]} />
-              )}
-              {data["kode_tab"] && (
-                <SanityBlockContent blocks={data["kode_tab"]} />
+                <SanityBlockContent
+                  blocks={[
+                    ...data["bruk_tab"],
+                    ...(data["kode_tab"] ? data["kode_tab"] : []),
+                  ]}
+                />
               )}
             </div>
           )}
