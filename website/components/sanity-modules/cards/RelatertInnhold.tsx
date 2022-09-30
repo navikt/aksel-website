@@ -33,7 +33,7 @@ const RelatertInnhold = ({
       {node.lenker.map((x) => (
         <div
           key={x._key}
-          className="relatert-kort algolia-ignore-index group relative cursor-pointer rounded border-2 border-transparent bg-white px-4 py-3 shadow-small ring-1 ring-gray-900/5 only-of-type:col-span-2 focus-within:border-focus focus-within:outline-none hover:shadow-medium"
+          className="relatert-kort algolia-ignore-index group relative cursor-pointer rounded border-2 border-transparent bg-white px-4 py-3 shadow-small ring-1 ring-gray-900/10 only-of-type:col-span-2 focus-within:border-focus focus-within:outline-none hover:shadow-medium"
         >
           <NextLink href={getHref(x)} passHref>
             <Heading
