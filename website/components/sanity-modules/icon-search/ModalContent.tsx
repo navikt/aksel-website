@@ -41,7 +41,7 @@ const ModalContent = ({ icon }: { icon: string }) => {
 import { ${icon} } from "@navikt/ds-icons";
 
 // SVG
-import ${icon} from "@navikt/ds-icons/svg/${icon}";`,
+import ${icon} from "@navikt/ds-icons/svg/${icon}.svg";`,
     },
   };
 
