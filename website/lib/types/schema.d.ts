@@ -447,33 +447,6 @@ Beskriv bildet for skjermlesere
     }
 
     /**
-     * Kodepakke
-     */
-    interface ds_package extends Sanity.Document {
-      _type: "ds_package";
-
-      /**
-       * Navn - `String`
-       */
-      title?: string;
-
-      /**
-       * Status - `String`
-       */
-      status?: "beta" | "live" | "alpha";
-
-      /**
-       * Scope - `String`
-       */
-      scope?: "core" | "internal" | "navno";
-
-      /**
-       * Github-kode - `Url`
-       */
-      github_link?: string;
-    }
-
-    /**
      * Komponentartikkel
      */
     interface komponent_artikkel extends Sanity.Document {
@@ -1140,7 +1113,6 @@ Bruk en kort og konsis tittel om mulig. Blir satt som `<H1 />` på toppen av sid
       | Sanity.Keyed<tabell>
       | Sanity.Keyed<video>
       | Sanity.Keyed<props_seksjon>
-      | Sanity.Keyed<anatomi>
       | Sanity.Keyed<tastatur_modul>
       | Sanity.Keyed<tokens>
       | Sanity.Keyed<kode_eksempler>
@@ -1399,35 +1371,6 @@ Gi tabellen et navn for å lettere finne den
        * Tabell - `RegistryReference`
        */
       powerTable?: any;
-    };
-
-    type anatomi = {
-      _type: "anatomi";
-
-      /**
-       * Anatomi-bilde - `RegistryReference`
-       */
-      bilde?: bilde;
-
-      /**
-       * Forklaring - `Array`
-Forklar annoteringen av anatomi-bildet
-       */
-      forklaring?: Array<
-        Sanity.Keyed<{
-          _type: "liste_element";
-
-          /**
-           * Element - `String`
-           */
-          element?: string;
-
-          /**
-           * Beskrivelse (optional) - `RegistryReference`
-           */
-          beskrivelse?: riktekst_enkel;
-        }>
-      >;
     };
 
     type props_seksjon = {
@@ -1758,7 +1701,6 @@ Husk å legge denne til i menyen også, hvis ikke blir den bare tilgjengelig via
       | ds_component_template
       | ds_frontpage
       | ds_navigation
-      | ds_package
       | komponent_artikkel
       | ds_artikkel
       | aksel_artikkel

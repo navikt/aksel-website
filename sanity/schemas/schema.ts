@@ -30,7 +30,6 @@ export default createSchema({
     Designsystem.ComponentTemplate,
     Designsystem.Frontpage,
     Designsystem.Navigation,
-    Designsystem.Package,
     Designsystem.KomponentArtikkel,
     Designsystem.Artikkel,
 

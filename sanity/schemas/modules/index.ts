@@ -1,6 +1,5 @@
 import Accordion from "./accordion";
 import Alert from "./alert";
-import Anatomi from "./anatomi";
 import Bilde from "./bilde";
 import HeroBilde from "./hero-bilde";
 import DoDont, { doDontBlock } from "./do-dont";
@@ -46,7 +45,6 @@ const v2Blocks = [
   introKomponent,
   Tabell,
   ...TabellSchema,
-  Anatomi,
   Props,
   Accordion,
   SpesialSeksjon,

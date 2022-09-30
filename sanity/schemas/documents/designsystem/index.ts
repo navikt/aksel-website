@@ -11,4 +11,3 @@ export {
 } from "./automated/color-categories";
 export { default as Frontpage } from "./frontpage";
 export { default as Navigation, ds_header_heading } from "./navigation";
-export { default as Package } from "./packages";

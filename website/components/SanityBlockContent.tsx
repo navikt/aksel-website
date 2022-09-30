@@ -7,7 +7,6 @@ import React, { createContext, useContext } from "react";
 import {
   Accordion,
   Alert,
-  Anatomi,
   Bilde,
   CodeExamples,
   DoDont,
@@ -37,7 +36,6 @@ const serializers = {
     /* V2 content structure */
     relatert_innhold: ({ node }) => <RelatertInnhold node={node} />,
     innholdskort: ({ node }) => <InnholdsKort node={node} />,
-    anatomi: ({ node }) => <Anatomi node={node} />,
     tastatur_modul: ({ node }) => <TastaturModul node={node} />,
     riktekst_blokk: ({ node }) => <SanityBlockContent blocks={node.body} />,
     do_dont: ({ node }) => <DoDont node={node} />,
