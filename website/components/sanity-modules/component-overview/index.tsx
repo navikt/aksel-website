@@ -61,8 +61,8 @@ const ComponentOverview = ({
       <ul className="component-card-grid">
         {sorted.map((x) => (
           <li key={x._id}>
-            <div className="group relative rounded border border-gray-300/60 shadow-small focus-within:shadow-focus hover:shadow-medium">
-              <div className="flex max-h-80 items-center justify-center  bg-gray-50">
+            <div className="group relative rounded shadow-small ring-1 ring-gray-900/10 focus-within:shadow-focus hover:shadow-medium">
+              <div className="flex max-h-80 items-center justify-center rounded-t bg-gray-50 ">
                 {x.status?.bilde ? (
                   <img
                     alt={x?.heading + " thumbnail"}

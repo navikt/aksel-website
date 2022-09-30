@@ -334,7 +334,7 @@ Vil vise under-arbeid status med innhold under
       };
 
       /**
-       * metadata - `Object`
+       * Metadata - `Object`
        */
       status?: {
         /**
@@ -358,7 +358,7 @@ Vil vise under-arbeid status med innhold under
       intro?: intro_komponent;
 
       /**
-       * Bruk - `RegistryReference`
+       * Innhold - `RegistryReference`
        */
       bruk_tab?: riktekst_komponent;
 
@@ -368,20 +368,14 @@ Vil vise under-arbeid status med innhold under
       kode_tab?: riktekst_komponent;
 
       /**
-       * Koblet kodepakke - `Reference`
-Kobler komponenten til en pakke
+       * Kodepakker - `Array`
        */
-      linked_package?: Sanity.Reference<ds_package>;
+      kodepakker?: Array<Sanity.Keyed<string>>;
 
       /**
        * Figma lenke (optional) - `Url`
        */
       figma_link?: string;
-
-      /**
-       * Migrert riktekst - `Boolean`
-       */
-      isMigrated?: boolean;
     }
 
     /**
@@ -535,7 +529,7 @@ Vil vise under-arbeid status med innhold under
       };
 
       /**
-       * metadata - `Object`
+       * Metadata - `Object`
        */
       status?: {
         /**
@@ -559,7 +553,7 @@ Vil vise under-arbeid status med innhold under
       intro?: intro_komponent;
 
       /**
-       * Bruk - `RegistryReference`
+       * Innhold - `RegistryReference`
        */
       bruk_tab?: riktekst_komponent;
 
@@ -569,20 +563,14 @@ Vil vise under-arbeid status med innhold under
       kode_tab?: riktekst_komponent;
 
       /**
-       * Koblet kodepakke - `Reference`
-Kobler komponenten til en pakke
+       * Kodepakker - `Array`
        */
-      linked_package?: Sanity.Reference<ds_package>;
+      kodepakker?: Array<Sanity.Keyed<string>>;
 
       /**
        * Figma lenke (optional) - `Url`
        */
       figma_link?: string;
-
-      /**
-       * Migrert riktekst - `Boolean`
-       */
-      isMigrated?: boolean;
     }
 
     /**

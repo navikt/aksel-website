@@ -15,6 +15,38 @@ import {
   UnderArbeid,
 } from "../..";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const kodepakker = {
+  "ds-react": {
+    title: "@navikt/ds-react",
+    git: "https://github.com/navikt/nav-frontend-moduler/tree/master/%40navikt/core",
+  },
+  "ds-css": {
+    title: "@navikt/ds-css",
+    git: "https://github.com/navikt/nav-frontend-moduler/tree/master/%40navikt/core",
+  },
+  "ds-react-internal": {
+    title: "@navikt/ds-react-internal",
+    git: "https://github.com/navikt/nav-frontend-moduler/tree/master/%40navikt/internal",
+  },
+  "ds-css-internal": {
+    title: "@navikt/ds-css-internal",
+    git: "https://github.com/navikt/nav-frontend-moduler/tree/master/%40navikt/internal",
+  },
+  "ds-icons": {
+    title: "@navikt/ds-reaciconst",
+    git: "https://github.com/navikt/nav-frontend-moduler/tree/master/%40navikt/core",
+  },
+  "ds-tokens": {
+    title: "@navikt/ds-tokens",
+    git: "https://github.com/navikt/nav-frontend-moduler/tree/master/%40navikt/core",
+  },
+  "ds-tailwind": {
+    title: "@navikt/ds-tailwind",
+    git: "https://github.com/navikt/nav-frontend-moduler/tree/master/%40navikt/core",
+  },
+};
+
 const KomponentArtikkelTemplate = ({
   data,
   title,
@@ -32,12 +64,6 @@ const KomponentArtikkelTemplate = ({
   const basePath = `/designsystem/komponenter/${query.slug[1]}`;
   const activeTab = Object.keys(tabs).indexOf(query.slug?.[2] ?? "bruk");
   const tabKey = Object.keys(tabs)?.[activeTab];
-
-  const npmPackage = data.linked_package as unknown as {
-    title: string;
-    github_link?: string;
-    status: string;
-  };
 
   return (
     <>
@@ -61,7 +87,19 @@ const KomponentArtikkelTemplate = ({
             className="algolia-index-lvl1 flex flex-wrap items-center gap-4"
           >
             {data.heading}
-            {npmPackage?.title && (
+            <div className="flex flex-wrap items-center gap-2">
+              {data?.kodepakker?.map((x) => (
+                <Tag
+                  variant="info"
+                  size="small"
+                  className="border-transparent bg-gray-100 font-mono"
+                  key={x}
+                >
+                  {kodepakker?.[x]?.title}
+                </Tag>
+              ))}
+            </div>
+            {/* {npmPackage?.title && (
               <Tag
                 variant="info"
                 size="small"
@@ -69,25 +107,27 @@ const KomponentArtikkelTemplate = ({
               >
                 {npmPackage.title}
               </Tag>
-            )}
+            )} */}
           </Heading>
           <BodyShort
             as="div"
             size="small"
             className="mb-4 flex flex-wrap items-center justify-start gap-x-4 gap-y-3"
           >
-            {npmPackage?.status && npmPackage.status !== "live" && (
+            {data?.status && data.status?.tag !== "ready" && (
               <Tag
                 variant="info"
                 size="small"
                 className={cl("border-none capitalize", {
-                  "bg-orange-400 capitalize text-text":
-                    npmPackage.status === "alpha",
+                  "bg-gray-200 capitalize text-text":
+                    data.status?.tag === "deprecated",
+                  "bg-green-300 capitalize text-text":
+                    data.status?.tag === "new",
                   "bg-purple-400 text-text-inverted":
-                    npmPackage.status === "beta",
+                    data.status?.tag === "beta",
                 })}
               >
-                {npmPackage.status}
+                {data.status?.tag}
               </Tag>
             )}
             <BodyShort
@@ -103,7 +143,7 @@ const KomponentArtikkelTemplate = ({
             size="small"
             className="flex gap-4 text-text-muted"
           >
-            {npmPackage?.title && (
+            {/* {npmPackage?.title && (
               <a
                 target="_blank"
                 rel="noreferrer noopener"
@@ -124,7 +164,7 @@ const KomponentArtikkelTemplate = ({
                 Kode
                 <ExternalLink title="Gå til github-kode" />
               </a>
-            )}
+            )} */}
             {data.figma_link && (
               <a
                 target="_blank"
