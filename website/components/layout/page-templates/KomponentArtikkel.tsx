@@ -163,6 +163,9 @@ const KomponentArtikkelTemplate = ({
               {data["bruk_tab"] && (
                 <SanityBlockContent blocks={data["bruk_tab"]} />
               )}
+              {data["kode_tab"] && (
+                <SanityBlockContent blocks={data["kode_tab"]} />
+              )}
             </div>
           )}
           <Feedback docId={data?._id} docType={data?._type} />
