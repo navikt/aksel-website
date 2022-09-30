@@ -14,7 +14,7 @@ export const InnholdsKort = ({
   }
 
   return (
-    <article className="group relative mb-7 rounded-lg bg-white p-4 shadow-small last-of-type:mb-18 focus-within:ring focus-within:ring-focus hover:shadow-medium xs:p-8">
+    <article className="group relative mb-7 rounded-lg bg-white p-4 shadow-small ring-1 ring-gray-900/10 last-of-type:mb-18 focus-within:ring focus-within:ring-focus hover:shadow-medium xs:p-8">
       <Heading
         spacing
         size="small"
