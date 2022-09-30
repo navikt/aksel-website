@@ -87,18 +87,6 @@ const KomponentArtikkelTemplate = ({
             className="algolia-index-lvl1 flex flex-wrap items-center gap-4"
           >
             {data.heading}
-            <div className="flex flex-wrap items-center gap-2">
-              {data?.kodepakker?.map((x) => (
-                <Tag
-                  variant="info"
-                  size="small"
-                  className="border-transparent bg-gray-100 font-mono"
-                  key={x}
-                >
-                  {kodepakker?.[x]?.title}
-                </Tag>
-              ))}
-            </div>
             {/* {npmPackage?.title && (
               <Tag
                 variant="info"
@@ -153,30 +141,28 @@ const KomponentArtikkelTemplate = ({
                 Yarn
                 <ExternalLink title="Gå til yarn pakke" />
               </a>
-            )}
-            {npmPackage?.github_link && (
+            )} */}
+            {/* {data?.kodepakker?.some((x) => !!kodepakker?.[x].git) && (
               <a
                 target="_blank"
                 rel="noreferrer noopener"
-                href={npmPackage.github_link}
+                href={
+                  Object.values(kodepakker)[
+                    data?.kodepakker?.findIndex((x) => !!kodepakker?.[x])
+                  ].git
+                }
                 className="flex items-center gap-1 underline hover:text-text hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
               >
                 Kode
                 <ExternalLink title="Gå til github-kode" />
               </a>
             )} */}
-            {data.figma_link && (
-              <a
-                target="_blank"
-                rel="noreferrer noopener"
-                href={data.figma_link}
-                className="flex items-center gap-1 underline hover:text-text hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
-              >
-                Figma
-                <ExternalLink title="Åpne i Figma" />
-              </a>
-            )}
           </BodyShort>
+          {data?.kodepakker && (
+            <div className="mt-2 w-fit rounded bg-gray-100 px-2 py-1 font-mono text-sm">{`npm i ${data?.kodepakker
+              ?.map((x) => kodepakker[x].title)
+              .join(" ")}`}</div>
+          )}
         </div>
       </div>
       <Tabs
