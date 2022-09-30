@@ -1,14 +1,12 @@
 import { SanityT } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
-import { Copy } from "@navikt/ds-icons";
+import { ExternalLink } from "@navikt/ds-icons";
 import { BodyShort, Heading, Tag } from "@navikt/ds-react";
 import cl from "classnames";
 import IntroSeksjon from "components/sanity-modules/IntroSeksjon";
 import Head from "next/head";
 import { dateStr, Feedback, TableOfContents, UnderArbeid } from "../..";
-import copyString from "copy-to-clipboard";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const kodepakker = {
   "ds-react": {
     title: "@navikt/ds-react",
@@ -47,9 +45,7 @@ const KomponentArtikkelTemplate = ({
   data: SanityT.Schema.komponent_artikkel;
   title: string;
 }): JSX.Element => {
-  const install =
-    data?.kodepakker &&
-    `npm i ${data?.kodepakker?.map((x) => kodepakker[x].title).join(" ")}`;
+  const pack = data?.kodepakker?.length > 0 && kodepakker[data?.kodepakker[0]];
 
   return (
     <>
@@ -71,15 +67,6 @@ const KomponentArtikkelTemplate = ({
             className="algolia-index-lvl1 flex flex-wrap items-center gap-4"
           >
             {data.heading}
-            {/* {npmPackage?.title && (
-              <Tag
-                variant="info"
-                size="small"
-                className="border-transparent bg-gray-100 font-mono"
-              >
-                {npmPackage.title}
-              </Tag>
-            )} */}
           </Heading>
           <BodyShort
             as="div"
@@ -115,45 +102,41 @@ const KomponentArtikkelTemplate = ({
             size="small"
             className="flex gap-4 text-text-muted"
           >
-            {/* {npmPackage?.title && (
+            {pack && (
+              <>
+                <a
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  href={`https://yarnpkg.com/package/${pack.title}`}
+                  className="flex items-center gap-1 underline hover:text-text hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
+                >
+                  Yarn
+                  <ExternalLink title="Gå til yarn pakke" />
+                </a>
+                <a
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  href={pack.git}
+                  className="flex items-center gap-1 underline hover:text-text hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
+                >
+                  Kode
+                  <ExternalLink title="Gå til github-kode" />
+                </a>
+              </>
+            )}
+
+            {data.figma_link && (
               <a
                 target="_blank"
                 rel="noreferrer noopener"
-                href={`https://yarnpkg.com/package/${npmPackage.title}`}
+                href={data.figma_link}
                 className="flex items-center gap-1 underline hover:text-text hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
               >
-                Yarn
-                <ExternalLink title="Gå til yarn pakke" />
+                Figma
+                <ExternalLink title="Åpne i Figma" />
               </a>
-            )} */}
-            {/* {data?.kodepakker?.some((x) => !!kodepakker?.[x].git) && (
-              <a
-                target="_blank"
-                rel="noreferrer noopener"
-                href={
-                  Object.values(kodepakker)[
-                    data?.kodepakker?.findIndex((x) => !!kodepakker?.[x])
-                  ].git
-                }
-                className="flex items-center gap-1 underline hover:text-text hover:no-underline focus:bg-blue-800 focus:text-text-inverted focus:no-underline focus:shadow-focus focus:outline-none"
-              >
-                Kode
-                <ExternalLink title="Gå til github-kode" />
-              </a>
-            )} */}
+            )}
           </BodyShort>
-          {install && (
-            <button
-              onClick={() => copyString(install)}
-              className="flex h-8 w-fit items-center justify-center gap-2 rounded bg-gray-100 px-2 font-mono text-sm ring-1 ring-inset ring-gray-900/10 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-800"
-            >
-              {install}
-              <Copy
-                title="Kopier install-snippet"
-                className="text-text-muted"
-              />
-            </button>
-          )}
         </div>
       </div>
       <div className="relative flex max-w-full md:max-w-7xl">

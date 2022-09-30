@@ -4,13 +4,14 @@ import React from "react";
 export const FigmaIcon = ({ ...props }): JSX.Element => (
   <svg
     {...props}
-    width="1.5rem"
-    height="1.5rem"
+    width="1em"
+    height="1em"
     viewBox="0 0 18 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     focusable="false"
     aria-label="Figma"
+    aria-hidden
   >
     <path
       d="M15.5 4.99999C15.5 6.93299 13.9531 8.49999 12.0449 8.49999H8.5V1.5H12.0449C13.9531 1.5 15.5 3.067 15.5 4.99999Z"
