@@ -25,7 +25,7 @@ export default {
     UnderArbeidField,
     sanitySlug(prefix, 3),
     {
-      title: "metadata",
+      title: "Metadata",
       name: "status",
       group: "innhold",
       type: "object",
@@ -54,7 +54,7 @@ export default {
       ],
       options: {
         collapsible: true,
-        collapsed: false,
+        collapsed: true,
       },
     },
     {
@@ -66,7 +66,7 @@ export default {
       ...innholdFieldNew,
       type: "riktekst_komponent",
       name: "bruk_tab",
-      title: "Bruk",
+      title: "Innhold",
     },
     {
       ...innholdFieldNew,
@@ -75,14 +75,21 @@ export default {
       title: "Kode",
     },
     {
-      title: "Koblet kodepakke",
-      description: "Kobler komponenten til en pakke",
-      name: "linked_package",
-      type: "reference",
-      group: "lenker",
-      to: [{ type: "ds_package" }],
-      validation: (Rule) =>
-        Rule.required().error("Siden må være koblet til en pakke"),
+      title: "Kodepakker",
+      name: "kodepakker",
+      type: "array",
+      of: [{ type: "string" }],
+      options: {
+        list: [
+          { title: "ds-react", value: "ds-react" },
+          { title: "ds-css", value: "ds-css" },
+          { title: "ds-react-internal", value: "ds-react-internal" },
+          { title: "ds-css-internal", value: "ds-css-internal" },
+          { title: "ds-icons", value: "ds-icons" },
+          { title: "ds-tokens", value: "ds-tokens" },
+          { title: "ds-tailwind", value: "ds-tailwind" },
+        ],
+      },
     },
     {
       title: "Figma lenke (optional)",
@@ -90,6 +97,5 @@ export default {
       type: "url",
       group: "lenker",
     },
-    migratedField,
   ],
 };
