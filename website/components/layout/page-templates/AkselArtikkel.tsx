@@ -30,13 +30,15 @@ const AkselArtikkelTemplate = ({
 
   const hasTema = "tema" in data && data.tema && data?.tema.length > 0;
 
-  const aside = data?.relevante_artikler && (
+  const aside = data?.relevante_artikler?.length > 0 && (
     <aside className="mt-16 overflow-x-clip bg-gray-50 ">
       <FooterSlope />
       <div className="relative bg-gray-100 pt-12 pb-16">
         <div className="dynamic-wrapper">
           <Heading level="2" size="medium" className="px-4 text-deepblue-700">
-            Relevante artikler
+            {data?.relevante_artikler?.length === 1
+              ? `Les også`
+              : `Relevante artikler`}
           </Heading>
           <div className="card-grid-3-1 mt-6 px-4">
             {data.relevante_artikler.map((x: any) => (
@@ -47,6 +49,8 @@ const AkselArtikkelTemplate = ({
       </div>
     </aside>
   );
+
+  console.log(data?.relevante_artikler);
 
   return (
     <>
