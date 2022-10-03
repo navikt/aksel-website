@@ -68,7 +68,7 @@ const AkselBloggTemplate = ({
             <Heading
               level="1"
               size="xlarge"
-              className="algolia-index-lvl1 mt-1 text-5xl"
+              className="algolia-index-lvl1 mt-1 break-words text-5xl"
             >
               {data.heading}
             </Heading>

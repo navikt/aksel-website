@@ -183,22 +183,17 @@ const serializers = {
       if (href && href.startsWith("mailto:")) {
         return (
           <NextLink href={href} passHref>
-            <Link className="break-normal">{children}</Link>
+            <Link className="inline">{children}</Link>
           </NextLink>
         );
       }
       return blank ? (
-        <Link
-          href={href}
-          target="_blank"
-          rel="noreferrer noopener"
-          className="break-normal"
-        >
+        <Link href={href} target="_blank" rel="noreferrer noopener">
           {children} <ExternalLink title="åpner lenken i ny fane" />
         </Link>
       ) : (
         <NextLink href={href} passHref>
-          <Link className="break-normal">{children}</Link>
+          <Link className="inline">{children}</Link>
         </NextLink>
       );
     },

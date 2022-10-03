@@ -21,7 +21,7 @@ const AkselHeader = ({
             variant === "artikkel",
           "header-aksel-artikkel bg-white/80 text-deepblue-800":
             variant === "inngang",
-          "header-aksel-artikkel bg-orange-50/80 text-deepblue-800 hover:bg-white/80":
+          "header-aksel-artikkel bg-orange-50/80 text-deepblue-800 ":
             variant === "blogg",
         }
       )}
