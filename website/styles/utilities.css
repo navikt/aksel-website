@@ -82,3 +82,8 @@ p.override-text-no-max {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
+
+.hyphen {
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
