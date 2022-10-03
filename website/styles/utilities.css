@@ -44,14 +44,31 @@ p.override-text-no-max {
   @apply grid gap-3 sm:grid-cols-2 md:gap-6 lg:grid-cols-3;
 }
 
-.aksel-artikkel .aksel-list li::before {
+.aksel-artikkel .aksel-list-ul li::before {
   content: url("/images/list-dot.svg");
   position: absolute;
   left: 0;
 }
 
-.aksel-artikkel .aksel-list li::marker {
+.aksel-artikkel .aksel-list-ul li::marker,
+.aksel-artikkel .aksel-list-ol li::marker {
   content: none;
+}
+
+.aksel-artikkel .aksel-list-ol {
+  counter-reset: li;
+}
+
+.aksel-artikkel .aksel-list-ol li::before {
+  counter-increment: li;
+}
+
+.aksel-artikkel .aksel-list-ol li::before {
+  content: counter(li) ". ";
+  color: var(--navds-global-color-deepblue-800);
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
 }
 
 .component-card-grid {
