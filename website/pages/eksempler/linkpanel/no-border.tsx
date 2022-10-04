@@ -3,7 +3,7 @@ import { withDsExample } from "components/website-modules/examples/withDsExample
 
 const Example = () => {
   return (
-    <LinkPanel href="#">
+    <LinkPanel href="#" border={false}>
       <LinkPanel.Title>Arbeidssøker eller permittert</LinkPanel.Title>
     </LinkPanel>
   );
