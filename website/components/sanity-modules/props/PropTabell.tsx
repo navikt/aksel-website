@@ -27,6 +27,7 @@ const List = ({ prop, parent }: { prop: any; parent: string }) => {
         } `}</span>
         <span>{prop.type ? <>{Highlighter({ type: prop.type })}</> : ""}</span>
       </dt>
+      {prop.defaultValue && <span>default: {prop.defaultValue}</span>}
       {prop.description && (
         <dl className="font-sans text-base">{prop.description}</dl>
       )}
