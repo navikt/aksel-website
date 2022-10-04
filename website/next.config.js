@@ -53,6 +53,10 @@ const securityHeaders = [
   },
 ];
 
+const manualRedirects = [
+  ["/designsystem/side/farge-tokens/:slug*", "/designsystem/side/color"],
+];
+
 const config = () =>
   withBundleAnalyzer(
     withTM({
@@ -89,6 +93,11 @@ const config = () =>
             destination: "/api/preview?slug=:slug*",
             permanent: true,
           },
+          ...manualRedirects.map((x) => ({
+            source: x[0],
+            destination: x[1],
+            permanent: false,
+          })),
           ...Object.values(oldRedirects).reduce((old, value) => {
             return [
               ...old,
