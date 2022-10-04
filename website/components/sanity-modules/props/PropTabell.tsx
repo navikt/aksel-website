@@ -1,6 +1,6 @@
 import { withErrorBoundary } from "@/error-boundary";
 import { SanityT } from "@/lib";
-import { BodyShort, Detail, Heading } from "@navikt/ds-react";
+import { BodyShort, Detail, Heading, Tooltip } from "@navikt/ds-react";
 import { Highlighter } from "./Highlight";
 
 export type PropT = {
@@ -22,9 +22,18 @@ const List = ({ prop, parent }: { prop: any; parent: string }) => {
       className="block overflow-x-auto border border-t-0 border-gray-300 p-2 font-mono first-of-type:border-t last-of-type:rounded-b"
     >
       <dt>
-        <span className="font-semibold">{`${prop.name}${
-          prop?.required ? "" : "?"
-        } `}</span>
+        {!prop.defaultValue ? (
+          <span className="font-semibold">{`${prop.name}${
+            prop?.required ? "" : "?"
+          } `}</span>
+        ) : (
+          <Tooltip content={`${prop.defaultValue}`} arrow={false} delay={0}>
+            <span className="mr-2 cursor-pointer border-b border-dashed border-gray-600 font-semibold">{`${
+              prop.name
+            }${prop?.required ? "" : "?"}`}</span>
+          </Tooltip>
+        )}
+
         <span>{prop.type ? <>{Highlighter({ type: prop.type })}</> : ""}</span>
       </dt>
       {prop.description && (
