@@ -106,12 +106,7 @@ const AkselArtikkelTemplate = ({
             </BodyShort>
             {authors?.length > 0 && (
               <BodyShort size="small" as="div" className="flex flex-wrap gap-1">
-                {authors.map(abbrName).map((x, y) => (
-                  <address className="not-italic" key={x}>
-                    {x}
-                    {y !== authors.length - 1 && ", "}
-                  </address>
-                ))}
+                <address className="not-italic">{authors[0]}</address>
               </BodyShort>
             )}
           </div>
@@ -153,7 +148,7 @@ const AkselArtikkelTemplate = ({
               {authors?.length > 0 && (
                 <BodyShort
                   as="div"
-                  className="mb-1 flex flex-wrap gap-1 text-text-muted"
+                  className="mb-1 flex flex-wrap gap-1 text-text/80"
                 >
                   {authors.map(abbrName).map((x, y) => (
                     <address className="not-italic" key={x}>
@@ -163,10 +158,7 @@ const AkselArtikkelTemplate = ({
                   ))}
                 </BodyShort>
               )}
-              <BodyShort
-                as="span"
-                className="whitespace-nowrap text-text-muted"
-              >
+              <BodyShort as="span" className="whitespace-nowrap text-text/80">
                 Publisert: {dateStr(data?.publishedAt ?? data?._updatedAt)}
               </BodyShort>
             </div>
