@@ -45,7 +45,7 @@ const NavItem = ({
             );
           }}
           className={cl(
-            "relative flex px-2 py-[6px] no-underline hover:text-deepblue-800 focus:outline-none",
+            "relative flex overflow-hidden px-2 py-[6px] no-underline hover:text-deepblue-800 focus:outline-none",
             {
               "font-semibold text-deepblue-800":
                 pageProps?.page?.slug === item?.link?.slug?.current,
@@ -59,6 +59,22 @@ const NavItem = ({
           )}
         >
           {item.title}
+          {item?.link?.status &&
+            ["deprecated", "beta"].includes(item.link.status?.tag) && (
+              <Detail
+                className={cl(
+                  "ml-2 rounded-full border-none px-2 font-regular capitalize",
+                  {
+                    "bg-gray-200 capitalize text-text ring-1 ring-inset ring-gray-900/10":
+                      item.link.status?.tag === "deprecated",
+                    "bg-purple-50 text-text ring-1 ring-inset ring-purple-900/10":
+                      item.link.status?.tag === "beta",
+                  }
+                )}
+              >
+                {item.link.status?.tag}
+              </Detail>
+            )}
         </BodyShort>
       </NextLink>
     </li>

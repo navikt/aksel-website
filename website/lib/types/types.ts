@@ -1,4 +1,5 @@
 import type { SanityKeyed } from "sanity-codegen";
+import SanityT from "./schema";
 
 export type PagePropsContextT = {
   pageProps: any;
@@ -8,7 +9,11 @@ export type DsNavigationHeadingMenuT = {
   title: string;
   _type: "subheading" | "item";
   _key: string;
-  link: { _id: string; slug: { current: string }; tags?: string[] };
+  link: {
+    _id: string;
+    slug: { current: string };
+    status?: SanityT.Schema.komponent_artikkel["status"];
+  };
 };
 
 export type DsFrontPageCardT = SanityKeyed<{

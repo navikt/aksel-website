@@ -247,7 +247,7 @@ const dsNavQuery = `"navigation": *[_type == 'ds_navigation'][0] {
     link_ref->{_id, slug},
     menu[]{
       ...,
-      link->{_id, slug, tags},
+      link->{_id, slug, status},
     }
   }
 }`;

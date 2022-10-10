@@ -27,7 +27,7 @@ module.exports = {
       spacing: {
         0: 0,
         header: "3.5rem",
-        sidebar: "240px",
+        sidebar: "18rem",
         text: "600px",
       },
       maxWidth: {

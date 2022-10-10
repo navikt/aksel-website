@@ -1,8 +1,7 @@
 import { SanityT } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
 import { ExternalLink } from "@navikt/ds-icons";
-import { BodyShort, Heading, Tag } from "@navikt/ds-react";
-import cl from "classnames";
+import { BodyLong, BodyShort, Heading } from "@navikt/ds-react";
 import IntroSeksjon from "components/sanity-modules/IntroSeksjon";
 import Head from "next/head";
 import { dateStr, Feedback, TableOfContents } from "../..";
@@ -73,22 +72,6 @@ const KomponentArtikkelTemplate = ({
             size="small"
             className="mb-4 flex flex-wrap items-center justify-start gap-x-4 gap-y-3"
           >
-            {data?.status && data.status?.tag !== "ready" && (
-              <Tag
-                variant="info"
-                size="small"
-                className={cl("border-none capitalize", {
-                  "bg-gray-200 capitalize text-text":
-                    data.status?.tag === "deprecated",
-                  "bg-green-300 capitalize text-text":
-                    data.status?.tag === "new",
-                  "bg-purple-400 text-text-inverted":
-                    data.status?.tag === "beta",
-                })}
-              >
-                {data.status?.tag}
-              </Tag>
-            )}
             <BodyShort
               size="small"
               as="span"
@@ -143,6 +126,18 @@ const KomponentArtikkelTemplate = ({
         <TableOfContents changedState={data["bruk_tab"]} hideToc={false} />
         <div className="content-box">
           <div className="mt-12">
+            {data?.status && data.status?.tag === "beta" && (
+              <div className="mb-7 rounded bg-purple-50 p-4">
+                <Heading level="2" size="small" spacing>
+                  Beta
+                </Heading>
+                <BodyLong className="override-text-no-max">
+                  Komponenten er under utvikling. Dette kan medføre
+                  breaking-changes i patch/minor versjon av kodepakker. Vær
+                  forsiktig ved bruk og unngå production om mulig.
+                </BodyLong>
+              </div>
+            )}
             <IntroSeksjon node={data.intro} />
             <SanityBlockContent blocks={data["bruk_tab"]} />
           </div>
