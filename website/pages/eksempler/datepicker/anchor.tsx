@@ -7,7 +7,7 @@ const Example = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
+    <div className="min-h-96">
       <UNSAFE_DatePicker
         onSelect={setDays}
         mode="multiple"
@@ -24,7 +24,7 @@ const Example = () => {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

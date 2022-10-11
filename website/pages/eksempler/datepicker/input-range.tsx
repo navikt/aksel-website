@@ -8,9 +8,9 @@ const Example = () => {
     });
 
   return (
-    <>
+    <div className="min-h-96">
       <UNSAFE_DatePicker {...datepickerProps}>
-        <div className="grid gap-4">
+        <div className="flex flex-wrap justify-center gap-4">
           <UNSAFE_DatePicker.Input {...fromInputProps} label="Fra" />
           <UNSAFE_DatePicker.Input {...toInputProps} label="Til" />
         </div>
@@ -21,7 +21,7 @@ const Example = () => {
           <div>{selectedRange?.to && selectedRange.to.toDateString()}</div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

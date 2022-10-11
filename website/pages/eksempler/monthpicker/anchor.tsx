@@ -7,7 +7,7 @@ const Example = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
+    <div className="min-h-96">
       <UNSAFE_MonthPicker
         onMonthSelect={setMonth}
         onClose={() => setOpen(false)}
@@ -16,7 +16,7 @@ const Example = () => {
         <Button onClick={() => setOpen((x) => !x)}>Velg månede</Button>
       </UNSAFE_MonthPicker>
       {month && <div className="pt-4">{month.getMonth()}</div>}
-    </>
+    </div>
   );
 };
 

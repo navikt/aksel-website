@@ -8,12 +8,12 @@ const Example = () => {
   });
 
   return (
-    <>
+    <div className="min-h-96">
       <UNSAFE_DatePicker {...datepickerProps}>
         <UNSAFE_DatePicker.Input {...inputProps} label="Velg dato" />
       </UNSAFE_DatePicker>
       <div className="pt-4">{selectedDay && selectedDay.toDateString()}</div>
-    </>
+    </div>
   );
 };
 

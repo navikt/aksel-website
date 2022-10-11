@@ -10,14 +10,14 @@ const Example = () => {
   );
 
   return (
-    <>
+    <div className="min-h-96">
       <UNSAFE_MonthPicker {...monthpickerProps}>
         <div className="grid gap-4">
           <UNSAFE_MonthPicker.Input {...inputProps} label="Velg månede" />
         </div>
       </UNSAFE_MonthPicker>
       {selectedMonth && <div className="pt-4">{selectedMonth.getMonth()}</div>}
-    </>
+    </div>
   );
 };
 

@@ -10,7 +10,7 @@ const Example = () => {
   );
 
   return (
-    <>
+    <div className="min-h-96">
       <UNSAFE_MonthPicker {...monthpickerProps}>
         <div className="grid gap-4">
           <UNSAFE_MonthPicker.Input
@@ -20,7 +20,7 @@ const Example = () => {
           />
         </div>
       </UNSAFE_MonthPicker>
-    </>
+    </div>
   );
 };
 
