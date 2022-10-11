@@ -9,7 +9,7 @@ const getStatus = (status?: SanityT.Schema.komponent_artikkel["status"]) => {
     case "beta":
       return (
         <span className="ml-2 rounded bg-purple-400 px-1 text-sm text-white">
-          Ready
+          Beta
         </span>
       );
     case "new":
@@ -62,7 +62,19 @@ const ComponentOverview = ({
         {sorted.map((x) => (
           <li key={x._id}>
             <div className="group relative rounded shadow-small ring-1 ring-gray-900/10 focus-within:shadow-focus hover:shadow-medium">
-              <div className="flex max-h-80 items-center justify-center rounded-t bg-gray-50 ">
+              <div
+                className={cl(
+                  "flex max-h-64 items-center justify-center overflow-hidden rounded-t bg-gray-50",
+                  {
+                    "p-12":
+                      x.status?.bilde &&
+                      !urlFor(x.status?.bilde)
+                        .auto("format")
+                        .url()
+                        .includes("320x256.svg?auto=format"),
+                  }
+                )}
+              >
                 {x.status?.bilde ? (
                   <img
                     alt={x?.heading + " thumbnail"}
