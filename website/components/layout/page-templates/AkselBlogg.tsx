@@ -1,8 +1,8 @@
 import { SanityT, urlFor } from "@/lib";
 import { SanityBlockContent } from "@/sanity-block";
-import { BodyShort, Heading, Ingress } from "@navikt/ds-react";
+import { BodyShort, Heading, Ingress, Label } from "@navikt/ds-react";
 import Head from "next/head";
-import { dateStr, Feedback, TableOfContents } from "../..";
+import { abbrName, dateStr, Feedback, TableOfContents } from "../..";
 import Footer from "../footer/Footer";
 import AkselHeader from "../header/AkselHeader";
 
@@ -107,13 +107,29 @@ const AkselBloggTemplate = ({
           </div>
         </div>
         <div className="mt-16 px-4">
-          <div className="dynamic-wrapper-prose border-t border-gray-300 pt-8">
-            <Feedback
-              akselFeedback
-              center
-              docId={data?._id}
-              docType={data?._type}
-            />
+          <div className="dynamic-wrapper-prose">
+            <Label className="mb-2 text-deepblue-700" as="p">
+              Bidragsytere
+            </Label>
+            {authors?.length > 0 && (
+              <BodyShort
+                as="div"
+                className="mb-1 flex flex-wrap gap-1 text-text/80"
+              >
+                {authors.map(abbrName).map((x, y) => (
+                  <address className="not-italic" key={x}>
+                    {x}
+                    {y !== authors.length - 1 && ", "}
+                  </address>
+                ))}
+              </BodyShort>
+            )}
+            <BodyShort as="span" className="whitespace-nowrap text-text/80">
+              Publisert: {dateStr(data?.publishedAt ?? data?._updatedAt)}
+            </BodyShort>
+          </div>
+          <div className="dynamic-wrapper-prose pt-16">
+            <Feedback akselFeedback docId={data?._id} docType={data?._type} />
           </div>
         </div>
       </main>
