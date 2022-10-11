@@ -3281,39 +3281,39 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-css-internal@npm:^1.3.12":
-  version: 1.3.12
-  resolution: "@navikt/ds-css-internal@npm:1.3.12"
-  checksum: 258873bd4bbd5b667474820e406c64555dde1e9437a7ab52b20d83d8ebb03a448758244e9be651b1349054cfc7f87821c90b7c3e73e1f41ea081185268bc0dde
+"@navikt/ds-css-internal@npm:^1.3.14":
+  version: 1.3.14
+  resolution: "@navikt/ds-css-internal@npm:1.3.14"
+  checksum: a4a6850007ec0852e67ea9b86bcbc78521b4b028007f2768fcc8fb3c3a812606a4dd0846c3b4e0041187296c9804380c12cdda1728a5c51b16087785bfdcf16d
   languageName: node
   linkType: hard
 
-"@navikt/ds-css@npm:^1.3.12":
-  version: 1.3.12
-  resolution: "@navikt/ds-css@npm:1.3.12"
-  checksum: 7f538f5beb1998c70a661b61107e23fec8f89ce68c09b7d0a1f20378444df842a4209648c266f49b088e3b9cfe72f650bbb39afb8ad13e06471d2ed0b2a72a71
+"@navikt/ds-css@npm:^1.3.14":
+  version: 1.3.14
+  resolution: "@navikt/ds-css@npm:1.3.14"
+  checksum: e57ae5f058c1c523c44b29f1034178268faf5045d4007426febbc09233b2bc9382258b65736a76f93a32cc3b101c8b637c46b8900a56c8c798637d3c28b4f44e
   languageName: node
   linkType: hard
 
-"@navikt/ds-icons@npm:^1.3.12":
-  version: 1.3.12
-  resolution: "@navikt/ds-icons@npm:1.3.12"
+"@navikt/ds-icons@npm:^1.3.14":
+  version: 1.3.14
+  resolution: "@navikt/ds-icons@npm:1.3.14"
   peerDependencies:
     "@types/react": ^17.0.30 || ^18.0.0
     react: ^17.0.0 || ^18.0.0
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: b7aa90a2c0b98b7b39ad20e6afeb67908a9fd8cd31fbac5871e92fc8c7169a07875e5577d54517c653130409b1980bfda39d4d26697792ee5a96029e990c0041
+  checksum: 9db5a25f5244241c69cf716f475b9f7199e3f9c07eea6dc3dc4c2a4829761e6b44ad280aa7f5ba0d2a757e98ce37c45c4826771819d626cbc8c0329c0a89ffeb
   languageName: node
   linkType: hard
 
-"@navikt/ds-react-internal@npm:^1.3.12":
-  version: 1.3.12
-  resolution: "@navikt/ds-react-internal@npm:1.3.12"
+"@navikt/ds-react-internal@npm:^1.3.14":
+  version: 1.3.14
+  resolution: "@navikt/ds-react-internal@npm:1.3.14"
   dependencies:
-    "@navikt/ds-icons": ^1.3.12
-    "@navikt/ds-react": ^1.3.12
+    "@navikt/ds-icons": ^1.3.14
+    "@navikt/ds-react": ^1.3.14
     clsx: ^1.1.1
     copy-to-clipboard: ^3.3.1
   peerDependencies:
@@ -3322,16 +3322,16 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 4d36cdaaafdfd224c5cb9fe3313bfc4c971978f083e3a1476810f0ebf8e16381da4c1a07687bdda2f3a2c637207519f1618148d4b0be55bdb32b9c4997ab9086
+  checksum: 84b3d3c47c9e10f084306c773f413e19249e91bfbeb655eaf067e3396fc0f14884f7725714baec73943bb3be46387f9eeda49920ffadbbb4c13ebaa0d625a9c6
   languageName: node
   linkType: hard
 
-"@navikt/ds-react@npm:^1.3.12":
-  version: 1.3.12
-  resolution: "@navikt/ds-react@npm:1.3.12"
+"@navikt/ds-react@npm:^1.3.14":
+  version: 1.3.14
+  resolution: "@navikt/ds-react@npm:1.3.14"
   dependencies:
     "@floating-ui/react-dom-interactions": 0.9.2
-    "@navikt/ds-icons": ^1.3.12
+    "@navikt/ds-icons": ^1.3.14
     "@radix-ui/react-tabs": 1.0.0
     "@radix-ui/react-toggle-group": 1.0.0
     clsx: ^1.2.1
@@ -3344,21 +3344,21 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 68bed1ce0d6dc889c1fdd32874cf9d8829772c8f1e0492f38c0de7c0a86fb863ccd97b1d32dd7cbfc0887f3b3a8b8ccc190dc5fc4e64e92423bc876a020cb4ee
+  checksum: 750223e42c0083bb27c320b6bd26cdee6eb85d2aa8a66f75526416a8a6a2fc578d1409e005211f59f76059c329aa154fd397e2b8dd89bbec9c843e1d388a1d2a
   languageName: node
   linkType: hard
 
-"@navikt/ds-tailwind@npm:^1.3.12":
-  version: 1.3.12
-  resolution: "@navikt/ds-tailwind@npm:1.3.12"
-  checksum: 014731862d8444e64e2928083b8443c295eb21e692b68552fa94b69343255fdb7ea46d0f2c76dfbf5555a124d858637d3af67fcc4c64f062e58caf1de06159e1
+"@navikt/ds-tailwind@npm:^1.3.14":
+  version: 1.3.14
+  resolution: "@navikt/ds-tailwind@npm:1.3.14"
+  checksum: 47e9a14f8eb6fdbfd245ae993047a976f68aa14af6777d00d1b16585ad8f81bbb6aa7ee2005af3d551d29c168da05950de559d6ba5c7b0c032df20d4d7ee8397
   languageName: node
   linkType: hard
 
-"@navikt/ds-tokens@npm:^1.3.12":
-  version: 1.3.12
-  resolution: "@navikt/ds-tokens@npm:1.3.12"
-  checksum: 651e77ac4f158f6524b732bece2712e74f798619752dde03e4e4d491ef807ec7762c2aa63b8d2c8049b702e4980de332b3cd24f7825fbdf686cb3feb7377af13
+"@navikt/ds-tokens@npm:^1.3.14":
+  version: 1.3.14
+  resolution: "@navikt/ds-tokens@npm:1.3.14"
+  checksum: 82d986b992264d1a9304b446822409de8f406efb51728b231d4e2f1044bfaf772e54b2bbfe457c2cb0378c7f3146ee855981ff44a21858a4cceee6d5ef6e7c48
   languageName: node
   linkType: hard
 
@@ -26686,11 +26686,11 @@ __metadata:
     "@babel/preset-env": ^7.0.0
     "@babel/preset-react": ^7.0.0
     "@babel/preset-typescript": ^7.0.0
-    "@navikt/ds-css": ^1.3.12
-    "@navikt/ds-css-internal": ^1.3.12
-    "@navikt/ds-icons": ^1.3.12
-    "@navikt/ds-react": ^1.3.12
-    "@navikt/ds-react-internal": ^1.3.12
+    "@navikt/ds-css": ^1.3.14
+    "@navikt/ds-css-internal": ^1.3.14
+    "@navikt/ds-icons": ^1.3.14
+    "@navikt/ds-react": ^1.3.14
+    "@navikt/ds-react-internal": ^1.3.14
     "@sanity-codegen/schema-codegen": 1.0.0-alpha.13
     "@sanity/base": ^2.34.0
     "@sanity/cli": ^2.34.0
@@ -30317,13 +30317,13 @@ __metadata:
     "@docsearch/react": 3.0.0
     "@mdx-js/react": ^1.6.22
     "@navikt/ds-codemod": ^1.0.0
-    "@navikt/ds-css": ^1.3.12
-    "@navikt/ds-css-internal": ^1.3.12
-    "@navikt/ds-icons": ^1.3.12
-    "@navikt/ds-react": ^1.3.12
-    "@navikt/ds-react-internal": ^1.3.12
-    "@navikt/ds-tailwind": ^1.3.12
-    "@navikt/ds-tokens": ^1.3.12
+    "@navikt/ds-css": ^1.3.14
+    "@navikt/ds-css-internal": ^1.3.14
+    "@navikt/ds-icons": ^1.3.14
+    "@navikt/ds-react": ^1.3.14
+    "@navikt/ds-react-internal": ^1.3.14
+    "@navikt/ds-tailwind": ^1.3.14
+    "@navikt/ds-tokens": ^1.3.14
     "@next/bundle-analyzer": ^12.1.0
     "@radix-ui/react-tabs": ^1.0.0
     "@sanity-codegen/types": 1.0.0-alpha.13
