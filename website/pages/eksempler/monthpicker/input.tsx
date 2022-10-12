@@ -25,4 +25,5 @@ export default withDsExample(Example);
 
 export const args = {
   index: 3,
+  desc: "Vi anbefaler å bruke UNSAFE_useMonthpicker-hook hvis man har et input-felt",
 };

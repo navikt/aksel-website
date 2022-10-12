@@ -29,4 +29,5 @@ export default withDsExample(Example);
 
 export const args = {
   index: 7,
+  desc: "Vi anbefaler å bruke UNSAFE_useRangeDatepicker-hook hvis man har input-felter",
 };
