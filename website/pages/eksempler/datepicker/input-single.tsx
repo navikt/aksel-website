@@ -4,7 +4,6 @@ import { withDsExample } from "components/website-modules/examples/withDsExample
 const Example = () => {
   const { datepickerProps, inputProps, selectedDay } = UNSAFE_useDatepicker({
     fromDate: new Date("Aug 23 2019"),
-    defaultSelected: new Date(),
   });
 
   return (
