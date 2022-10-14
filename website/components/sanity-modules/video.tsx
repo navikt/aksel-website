@@ -28,6 +28,10 @@ const Video = ({
   const { status, login } = useContext(AuthenticationContext);
   const isLoggedIn = status === AuthenticationStatus.IS_AUTHENTICATED;
 
+  node?.bruk_embed &&
+    console.log(
+      "pkasdkajkdasdkljalsdjlkasldjkasljdka\nlkjsdljkasdjlkasdljkasljkljdk"
+    );
   if (
     !node ||
     (!node.webm && !node.fallback && !node.bruk_embed && !node.embed) ||

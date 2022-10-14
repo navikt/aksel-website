@@ -101,13 +101,3 @@ export const AuthProvider = (props: any) => {
     />
   );
 };
-
-`
-*[_type == "tiltaksgjennomforing" && tiltakstype.innsatsgruppe.tittel == "Standardinnsats"]
-{
-  ...,
-  "data": *[_id == tiltakstype.current][0]{
-    ...,
-    innsatsgruppe->{...}}
- }
-`;

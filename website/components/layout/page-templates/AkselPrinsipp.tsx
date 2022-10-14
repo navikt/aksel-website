@@ -8,8 +8,6 @@ import {
   abbrName,
   Bilde,
   BreadCrumbs,
-  /* AuthenticationContext,
-  AuthenticationStatus, */
   dateStr,
   Feedback,
   PrinsippSlope,
@@ -23,8 +21,6 @@ const AkselPrinsippTemplate = ({
   data: SanityT.Schema.aksel_prinsipp;
   title: string;
 }): JSX.Element => {
-  /* const { status, login } = useContext(AuthenticationContext); */
-
   if (!data.content || !data.heading) {
     return null;
   }
