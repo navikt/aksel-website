@@ -35,7 +35,7 @@ jobs:
         uses: nais/deploy/actions/deploy@master
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          RESOURCE: nais/prod/nais.yaml
+          RESOURCE: nais-prod.yaml
           CLUSTER: prod-gcp
           IMAGE: ${{ env.DOCKER_TAG }}
           DRY_RUN: ${{ github.event.inputs.dry }}

@@ -6,11 +6,10 @@ metadata:
   labels:
     team: designsystem
 spec:
-  image: {{ image }}
+  image: { { image } }
   port: 3000
   ingresses:
     - "https://aksel.dev.nav.no"
-    - "https://verktoykasse.dev.nav.no"
   liveness:
     path: /api/isAlive
     initialDelay: 20
