@@ -89,4 +89,5 @@ export const Color = {
         "Brukes for å endre rekkefølgen på listen. Farger med indeks 0 vil være først, større tall sorteres under der igjen",
     },
   ],
+  __experimental_omnisearch_visibility: false,
 };

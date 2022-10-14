@@ -53,4 +53,5 @@ export default {
       };
     },
   },
+  __experimental_omnisearch_visibility: false,
 };

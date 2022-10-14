@@ -41,4 +41,5 @@ export default {
       readOnly: true,
     },
   ],
+  __experimental_omnisearch_visibility: false,
 };
