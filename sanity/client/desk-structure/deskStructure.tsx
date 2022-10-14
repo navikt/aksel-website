@@ -73,6 +73,7 @@ export default () => {
     const intro = [];
 
     profile && intro.push(profile);
+    profile && intro.push(S.divider());
 
     let struct = items;
 
@@ -86,6 +87,6 @@ export default () => {
 
     return S.list()
       .title("Aksel")
-      .items([...intro, S.divider(), ...struct, ...panels]);
+      .items([...intro, ...struct, ...panels]);
   });
 };

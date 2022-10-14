@@ -65,10 +65,6 @@
     {
       "implements": "part:@sanity/base/document-actions/resolver",
       "path": "./client/resolveDocumentActions.tsx"
-    },
-    {
-      "implements": "part:@sanity/base/document-badges/resolver",
-      "path": "./client/resolveBadges.ts"
     }
   ]
 }
