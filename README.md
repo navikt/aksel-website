@@ -89,3 +89,5 @@ Kjøres daglige backups av hele sanity-datasettet til GCP-bucket under `designsy
 Tar gjerne imot issues! Spørsmål og kontakt ang kode kan rettes til Ken A. Johansen på slack eller mail: `ken.aleksander.johansen@nav.no`.
 
 Aksel har også en egen slack-kanal #Aksel der vi tar imot henvendelser!
+
+t
