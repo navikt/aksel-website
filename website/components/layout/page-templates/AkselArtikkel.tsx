@@ -50,8 +50,6 @@ const AkselArtikkelTemplate = ({
     </aside>
   );
 
-  console.log(data?.relevante_artikler);
-
   return (
     <>
       <Head>

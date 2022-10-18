@@ -26,6 +26,16 @@ const Footer = ({ variant = "ds" }: { variant: "ds" | "aksel" }) => {
             </Heading>
             <BodyShort as="ul" className="mt-5 grid gap-2">
               <li>
+                <NextLink
+                  href="https://aksel.nav.no/artikkel/om-aksel"
+                  passHref
+                >
+                  <Link className="text-text-inverted focus:bg-blue-200 focus:text-text focus:shadow-focus focus:shadow-blue-200">
+                    Om Aksel
+                  </Link>
+                </NextLink>
+              </li>
+              <li>
                 <Link
                   className="text-text-inverted focus:bg-blue-200 focus:text-text focus:shadow-focus focus:shadow-blue-200"
                   href="https://nav-it.slack.com/archives/C0370ADS0HX"
