@@ -55,6 +55,32 @@ const securityHeaders = [
 
 const manualRedirects = [
   ["/designsystem/side/farge-tokens/:slug*", "/designsystem/side/color"],
+  [
+    "/designsystem/side/innholdsstrategi-person",
+    "/artikkel/innholdsstrategi-for-nav-no",
+  ],
+  [
+    "/designsystem/side/beredskapsplan-navno",
+    "/artikkel/beredskapsplan-for-nav-no",
+  ],
+  ["/designsystem/side/produktsider", "/artikkel/produktside-sidetype"],
+  [
+    "/designsystem/side/livssituasjonssider",
+    "/artikkel/situasjonsside-sidetype",
+  ],
+  ["/designsystem/side/omrade", "/artikkel/omradeside-sidetype"],
+  ["/designsystem/side/temaartikkel", "/artikkel/temaartikkel-sidetype"],
+  [
+    "/designsystem/side/slik-gjor-du",
+    "/artikkel/slik-gjor-du-det-innholdstype",
+  ],
+  ["/designsystem/side/kalkulator", "/artikkel/kalkulator-sidetype"],
+  ["/designsystem/side/veiviser", "/artikkel/veiviser-innholdstype"],
+  ["/designsystem/side/oversikt", "/artikkel/oversikt-innholdstype"],
+  [
+    "/designsystem/side/forside-til-personbrukere",
+    "/artikkel/forside-til-personbrukere-pa-nav-no",
+  ],
 ];
 
 const config = () =>
