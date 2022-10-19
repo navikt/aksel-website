@@ -1,13 +1,15 @@
 import { UNSAFE_MonthPicker, UNSAFE_useMonthpicker } from "@navikt/ds-react";
 import { withDsExample } from "components/website-modules/examples/withDsExample";
+import { useState } from "react";
 
 const Example = () => {
-  const { monthpickerProps, inputProps, selectedMonth } = UNSAFE_useMonthpicker(
-    {
-      fromDate: new Date("Aug 23 2019"),
-      toDate: new Date("Aug 23 2025"),
-    }
-  );
+  const [month, setMonth] = useState<Date | undefined>();
+
+  const { monthpickerProps, inputProps } = UNSAFE_useMonthpicker({
+    fromDate: new Date("Aug 23 2019"),
+    toDate: new Date("Aug 23 2025"),
+    onMonthChange: setMonth,
+  });
 
   return (
     <div className="min-h-96">
@@ -16,7 +18,7 @@ const Example = () => {
           <UNSAFE_MonthPicker.Input
             {...inputProps}
             label="Velg månede"
-            error={!selectedMonth && "Du må velge månede"}
+            error={!month && "Du må velge månede"}
           />
         </div>
       </UNSAFE_MonthPicker>

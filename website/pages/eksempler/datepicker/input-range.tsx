@@ -5,6 +5,7 @@ const Example = () => {
   const { datepickerProps, toInputProps, fromInputProps, selectedRange } =
     UNSAFE_useRangeDatepicker({
       fromDate: new Date("Aug 23 2019"),
+      onRangeChange: console.log,
     });
 
   return (

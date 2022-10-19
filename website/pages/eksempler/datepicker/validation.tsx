@@ -1,9 +1,12 @@
 import { UNSAFE_DatePicker, UNSAFE_useDatepicker } from "@navikt/ds-react";
 import { withDsExample } from "components/website-modules/examples/withDsExample";
+import { useState } from "react";
 
 const Example = () => {
-  const { datepickerProps, inputProps, selectedDay } = UNSAFE_useDatepicker({
+  const [day, setDay] = useState<Date | undefined>();
+  const { datepickerProps, inputProps } = UNSAFE_useDatepicker({
     fromDate: new Date("Aug 23 2019"),
+    onDateChange: setDay,
   });
 
   return (
@@ -12,7 +15,7 @@ const Example = () => {
         <UNSAFE_DatePicker.Input
           {...inputProps}
           label="Velg dato"
-          error={!selectedDay && "Må velge en dag"}
+          error={!day && "Må velge en dag"}
         />
       </UNSAFE_DatePicker>
     </div>
