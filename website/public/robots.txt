@@ -17,3 +17,5 @@ Disallow: /*_middlewareManifest.js$
 Disallow: /*_ssgManifest.js$
 
 Disallow: /*.js$
+
+Disallow: /eksempler/
