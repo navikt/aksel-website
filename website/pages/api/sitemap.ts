@@ -34,6 +34,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.end(sitemapOutput);
   } catch (e) {
     console.log(e);
-    res.send(JSON.stringify(e));
   }
 };
