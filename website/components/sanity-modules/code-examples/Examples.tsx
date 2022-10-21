@@ -1,4 +1,5 @@
 import { capitalize, Snippet } from "@/components";
+import { withErrorBoundary } from "@/error-boundary";
 import { SanityT } from "@/lib";
 import { SuccessStroke } from "@navikt/ds-icons";
 import { BodyLong, Link } from "@navikt/ds-react";
@@ -90,6 +91,7 @@ const ComponentExamples = ({
   );
 
   if (
+    !node.dir?.filer ||
     node.dir.filer.length === 0 ||
     (!node.standalone && !node.dir) ||
     (node.standalone && !node.filnavn)
@@ -150,4 +152,4 @@ const ComponentExamples = ({
   );
 };
 
-export default ComponentExamples;
+export default withErrorBoundary(ComponentExamples, "Eksempler kode");
