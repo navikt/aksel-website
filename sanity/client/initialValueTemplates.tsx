@@ -46,6 +46,7 @@ export default [
         user_id: {
           current: id,
         },
+        _type: "editor",
       };
     },
   }),
