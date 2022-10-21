@@ -108,9 +108,11 @@ const AkselBloggTemplate = ({
         </div>
         <div className="mt-16 px-4">
           <div className="dynamic-wrapper-prose">
-            <Label className="mb-2 text-deepblue-700" as="p">
-              Bidragsytere
-            </Label>
+            {authors?.length > 0 && (
+              <Label className="mb-2 text-deepblue-700" as="p">
+                Bidragsytere
+              </Label>
+            )}
             {authors?.length > 0 && (
               <BodyShort
                 as="div"

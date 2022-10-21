@@ -140,9 +140,11 @@ const AkselArtikkelTemplate = ({
           <div className="max-w-prose lg:col-span-2 lg:col-start-1">
             <SanityBlockContent blocks={data?.content ?? []} variant="aksel" />
             <div className="mt-12">
-              <Label className="mb-2 text-deepblue-700" as="p">
-                Bidragsytere
-              </Label>
+              {authors?.length > 0 && (
+                <Label className="mb-2 text-deepblue-700" as="p">
+                  Bidragsytere
+                </Label>
+              )}
               {authors?.length > 0 && (
                 <BodyShort
                   as="div"

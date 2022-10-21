@@ -138,9 +138,11 @@ const AkselPrinsippTemplate = ({
                       variant="aksel"
                     />
                     <div className="mt-12">
-                      <Label className="mb-2 text-deepblue-700" as="p">
-                        Bidragsytere
-                      </Label>
+                      {authors?.length > 0 && (
+                        <Label className="mb-2 text-deepblue-700" as="p">
+                          Bidragsytere
+                        </Label>
+                      )}
                       {authors?.length > 0 && (
                         <BodyShort
                           as="div"
