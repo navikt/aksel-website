@@ -13,8 +13,9 @@ describe("Handling css", () => {
   test("Validate css root", () => {
     const data = getCssRoot(readCss());
     expect(data.type).toEqual("rule");
-    expect(data.selectors.length).toEqual(1);
+    expect(data.selectors.length).toEqual(2);
     expect(data.selectors[0]).toEqual(":root");
+    expect(data.selectors[1]).toEqual(":host");
 
     /* Rough estimate for number of tokens */
     expect(data.declarations.length).toBeGreaterThan(170);
