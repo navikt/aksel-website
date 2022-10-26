@@ -81,10 +81,10 @@ const manualRedirects = [
     "/designsystem/side/forside-til-personbrukere",
     "/artikkel/forside-til-personbrukere-pa-nav-no",
   ],
-  /* [
+  [
     "/designsystem/side/prinsipper-for-interne-flater",
-    "/artikkel/brukeropplevelse-pa-interne-flater?tema=interne-flater",
-  ], */
+    "/artikkel/prinsipper-for-brukeropplevelse-pa-interne-flater",
+  ],
 ];
 
 const config = () =>
