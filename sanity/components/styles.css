@@ -41,8 +41,11 @@
 }
 
 .profileDetails details summary:focus {
-  box-shadow: var(--navds-shadow-focus, 0 0 0 3px rgba(0, 52, 125, 1));
   outline: none;
+}
+
+.profileDetails details summary:focus-visible {
+  box-shadow: var(--navds-shadow-focus, 0 0 0 3px rgba(0, 52, 125, 1));
 }
 
 .profileDetails details summary > * {
