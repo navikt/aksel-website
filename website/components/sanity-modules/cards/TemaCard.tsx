@@ -13,7 +13,7 @@ export const TemaCard = ({
   return (
     <NextLink href={`/tema/${getTemaSlug(title)}`} passHref>
       <a
-        className="group relative rounded-r-md rounded-l bg-white shadow transition-colors ease-in-out focus:shadow-focus focus:outline-none sm:shadow-md"
+        className="group relative rounded-r-md rounded-l bg-white shadow transition-colors ease-in-out focus:outline-none focus-visible:shadow-focus sm:shadow-md"
         onClick={(e) =>
           logNav(
             "temakort",

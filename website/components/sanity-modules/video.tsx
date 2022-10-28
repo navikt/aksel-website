@@ -77,7 +77,7 @@ const Video = ({
         </>
       ) : (
         <video
-          className="focus:shadow-focus-gap focus:outline-none"
+          className="focus:outline-none focus-visible:shadow-focus-gap"
           title={node.alt}
           playsInline
           controls

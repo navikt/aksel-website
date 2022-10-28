@@ -104,7 +104,7 @@ const Dropdown = ({
       >
         <Detail
           as="span"
-          className="mt-6 flex w-full items-center justify-between rounded-sm pl-2 font-semibold first:mt-0 group-hover:bg-[rgba(0,0,0,0.06)] group-focus:shadow-focus group-active:bg-[rgba(0,0,0,0.10)]"
+          className="mt-6 flex w-full items-center justify-between rounded-sm pl-2 font-semibold first:mt-0 group-hover:bg-[rgba(0,0,0,0.06)] group-focus-visible:shadow-focus group-active:bg-[rgba(0,0,0,0.10)]"
         >
           {heading.title}
           <span className="flex h-6 w-6 items-center justify-center rounded">

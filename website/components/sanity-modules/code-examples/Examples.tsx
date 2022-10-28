@@ -119,7 +119,7 @@ const ComponentExamples = ({
                 key={fil._key}
                 value={fil.navn}
                 className={cl(
-                  "flex h-8 items-center justify-center  rounded-full text-base ring-inset ring-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-800",
+                  "flex h-8 items-center justify-center  rounded-full text-base ring-inset ring-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-800",
                   {
                     "gap-1 bg-gray-200 pr-3 pl-[10px] ring-2 hover:bg-gray-100":
                       activeExample === fil.navn,

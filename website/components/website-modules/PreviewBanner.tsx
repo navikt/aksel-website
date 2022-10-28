@@ -47,7 +47,7 @@ function PreviewBanner(): JSX.Element {
   return (
     <a
       href={`/api/exit-preview?slug=${asPath}`}
-      className="fixed top-2 left-0 z-[9999] w-80 -translate-x-24 translate-y-6 -rotate-45 bg-gray-900 p-4 text-center font-semibold text-text-inverted no-underline hover:bg-gray-700 focus:shadow-focus-inverted focus:outline-none"
+      className="fixed top-2 left-0 z-[9999] w-80 -translate-x-24 translate-y-6 -rotate-45 bg-gray-900 p-4 text-center font-semibold text-text-inverted no-underline hover:bg-gray-700 focus:outline-none focus-visible:shadow-focus-inverted"
     >
       <div>EXIT PREVIEW</div>
     </a>

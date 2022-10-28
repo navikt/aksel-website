@@ -36,9 +36,9 @@ const DesignsystemHeader = (): JSX.Element => {
                 className={cl(
                   "algolia-index-heading 2lg:px-4 flex min-w-header cursor-pointer items-center justify-center whitespace-nowrap py-0 px-2 focus:outline-none",
                   {
-                    "text-text-inverted focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
+                    "text-text-inverted hover:bg-gray-800 focus-visible:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
                       !(pageProps?.activeHeading?.title === heading.title),
-                    "algolia-index-heading--active bg-white text-text  hover:bg-canvas-background-light focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_2px_var(--navds-global-color-white)_,inset_0_0_0_4px_var(--navds-global-color-gray-900)]":
+                    "algolia-index-heading--active bg-white text-text  hover:bg-gray-50 focus-visible:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_2px_var(--navds-global-color-white)_,inset_0_0_0_4px_var(--navds-global-color-gray-900)]":
                       pageProps?.activeHeading?.title === heading.title,
                   }
                 )}

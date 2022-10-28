@@ -120,7 +120,7 @@ const AkselArtikkelTemplate = ({
                     <BodyShort
                       size="small"
                       as="a"
-                      className="algolia-index-lvl5 flex min-h-8 items-center justify-center gap-[2px] rounded-full bg-gray-200 pl-4 pr-1 capitalize text-deepblue-800 no-underline hover:bg-gray-100 hover:underline focus:shadow-focus focus:outline-none"
+                      className="algolia-index-lvl5 flex min-h-8 items-center justify-center gap-[2px] rounded-full bg-gray-200 pl-4 pr-1 capitalize text-deepblue-800 no-underline hover:bg-gray-100 hover:underline focus:outline-none focus-visible:shadow-focus"
                     >
                       {title}
                       <Next aria-hidden />

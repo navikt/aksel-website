@@ -172,7 +172,7 @@ const Feedback = ({
           <Button
             variant="secondary"
             className={cl({
-              "override-secondary-button-active bg-deepblue-800 text-text-inverted ring-2 ring-inset ring-deepblue-800 focus:shadow-focus focus:ring-1 focus:ring-white":
+              "override-secondary-button-active bg-deepblue-800 text-text-inverted ring-2 ring-inset ring-deepblue-800 focus-visible:shadow-focus focus-visible:ring-1 focus-visible:ring-white":
                 activeState === HelpfulArticleEnum.JA,
             })}
             onClick={() =>
@@ -186,7 +186,7 @@ const Feedback = ({
           <Button
             variant="secondary"
             className={cl({
-              "override-secondary-button-active bg-deepblue-800 text-text-inverted ring-2 ring-inset ring-deepblue-800 focus:shadow-focus focus:ring-1 focus:ring-white":
+              "override-secondary-button-active bg-deepblue-800 text-text-inverted ring-2 ring-inset ring-deepblue-800 focus-visible:shadow-focus focus-visible:ring-1 focus-visible:ring-white":
                 activeState === HelpfulArticleEnum.NEI,
             })}
             onClick={() =>
@@ -200,7 +200,7 @@ const Feedback = ({
           <Button
             variant="secondary"
             className={cl({
-              "override-secondary-button-active bg-deepblue-800 text-text-inverted ring-2 ring-inset ring-deepblue-800 focus:shadow-focus focus:ring-1 focus:ring-white":
+              "override-secondary-button-active bg-deepblue-800 text-text-inverted ring-2 ring-inset ring-deepblue-800 focus-visible:shadow-focus focus-visible:ring-1 focus-visible:ring-white":
                 activeState === HelpfulArticleEnum.MISC,
             })}
             onClick={() =>

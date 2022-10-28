@@ -61,7 +61,7 @@ function Search({
           ref={searchButtonRef}
           onClick={onOpen}
           as="button"
-          className="group relative w-full max-w-[28rem] rounded border border-border bg-white py-4 pr-4 pl-16 text-left hover:border-link focus:shadow-focus focus:outline-none"
+          className="group relative w-full max-w-[28rem] rounded border border-border bg-white py-4 pr-4 pl-16 text-left hover:border-link focus:outline-none focus-visible:shadow-focus"
         >
           <SearchIcon
             aria-hidden
@@ -76,11 +76,11 @@ function Search({
           className={cl(
             "z-[1050] ml-auto flex w-header shrink-0 items-center justify-center focus:outline-none",
             {
-              " text-text-inverted hover:bg-gray-100/10 focus:shadow-focus-inverted-inset":
+              " text-text-inverted hover:bg-gray-100/10 focus-visible:shadow-focus-inverted-inset":
                 variant === "aksel-inverted",
-              "hover:bg-gray-800/10 focus:shadow-focus-inset":
+              "hover:bg-gray-800/10 focus-visible:shadow-focus-inset":
                 variant === "aksel",
-              "text-text-inverted hover:bg-gray-800 focus:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
+              "text-text-inverted hover:bg-gray-800 focus-visible:shadow-[inset_0_0_0_1px_var(--navds-global-color-gray-900),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
                 variant === "ds",
             }
           )}

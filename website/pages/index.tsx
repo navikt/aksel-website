@@ -133,7 +133,7 @@ const Portaler = () => {
               <NextLink href={x.href} passHref>
                 <a
                   onClick={(e) => logPortalCard(e)}
-                  className="group flex items-center gap-2 py-1 focus:shadow-focus-inverted focus:outline-none md:w-auto xl:gap-3"
+                  className="group flex items-center gap-2 py-1 focus:outline-none focus-visible:shadow-focus-inverted md:w-auto xl:gap-3"
                 >
                   <div className="grid aspect-square w-12 shrink-0 place-items-center rounded-full bg-blue-400 text-white group-hover:bg-white group-hover:text-deepblue-900">
                     {x.icon}
@@ -296,7 +296,7 @@ const Page = (props: PageProps): JSX.Element => {
                           passHref
                           key={x.slug.current}
                         >
-                          <a className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow hover:bg-deepblue-200/60 hover:shadow-md focus:shadow-focus focus:outline-none sm:w-auto">
+                          <a className="flex w-full items-center justify-between gap-4 rounded-md bg-white px-6 py-4 leading-tight shadow hover:bg-deepblue-200/60 hover:shadow-md focus:outline-none focus-visible:shadow-focus sm:w-auto">
                             <span className="font-semibold">{x.heading}</span>{" "}
                             <Next
                               className="-mr-1 sm:hidden"
@@ -348,7 +348,7 @@ const Page = (props: PageProps): JSX.Element => {
                     </BodyLong>
                   </div>
                   <a
-                    className="group flex items-center justify-between rounded-b-lg bg-deepblue-300/60 px-6 py-4 leading-snug hover:bg-deepblue-200 hover:underline focus:rounded-lg focus:shadow-focus focus:outline-none"
+                    className="group flex items-center justify-between rounded-b-lg bg-deepblue-300/60 px-6 py-4 leading-snug hover:bg-deepblue-200 hover:underline focus:outline-none focus-visible:rounded-lg focus-visible:shadow-focus"
                     href="https://nav-it.slack.com/archives/C0370ADS0HX"
                     target="_blank"
                     rel="noreferrer"

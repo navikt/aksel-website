@@ -37,7 +37,7 @@ const Card = ({ node, tag, href, className, ...rest }: CardProps) => {
               e.currentTarget.getAttribute("href")
             )
           }
-          className="navds-heading--medium navds-heading navds-typo--spacing no-underline after:absolute after:inset-0 after:rounded focus:outline-none focus:after:shadow-focus group-hover:underline"
+          className="navds-heading--medium navds-heading navds-typo--spacing no-underline after:absolute after:inset-0 after:rounded focus:outline-none focus-visible:after:shadow-focus group-hover:underline"
           {...rest}
         >
           {node.title}

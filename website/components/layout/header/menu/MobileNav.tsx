@@ -124,7 +124,7 @@ const MobileNavigation = () => {
             onClick={() => setLevel(0)}
             as="button"
             size="xsmall"
-            className="flex w-full items-center gap-2 rounded-t-[4px] border-none bg-none px-2 py-4 text-text hover:bg-canvas-background hover:underline focus:shadow-focus-inset focus:outline-none"
+            className="flex w-full items-center gap-2 rounded-t-[4px] border-none bg-none px-2 py-4 text-text hover:bg-canvas-background hover:underline focus:outline-none focus-visible:shadow-focus-inset"
           >
             <Back aria-hidden aria-label="tilbake til hovedmeny" />
             Tilbake

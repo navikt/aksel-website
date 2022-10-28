@@ -58,7 +58,7 @@ export const CodeSandbox = ({ code }: { code: string }) => {
       <input type="hidden" name="query" value="module=App.js" />
       <button
         type="submit"
-        className="flex items-center justify-center gap-2 rounded-sm px-3 py-2 hover:bg-gray-100 focus:shadow-focus-inset focus:outline-none active:bg-gray-200"
+        className="flex items-center justify-center gap-2 rounded-sm px-3 py-2 hover:bg-gray-100 focus:outline-none focus-visible:shadow-focus-inset active:bg-gray-200"
       >
         <Edit aria-hidden />
         CodeSandbox

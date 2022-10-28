@@ -34,9 +34,9 @@ const AkselHeader = ({
         <NextLink href="/" passHref>
           <a
             className={cl("flex gap-3 px-4 py-3 focus:outline-none", {
-              "hover:bg-gray-100/10 focus:shadow-focus-inverted-inset":
+              "hover:bg-gray-100/10 focus-visible:shadow-focus-inverted-inset":
                 variant === "forside",
-              "hover:bg-gray-900/10 focus:shadow-focus-inset":
+              "hover:bg-gray-900/10 focus-visible:shadow-focus-inset":
                 variant === "artikkel" || variant === "blogg",
             })}
             onClick={(e) =>

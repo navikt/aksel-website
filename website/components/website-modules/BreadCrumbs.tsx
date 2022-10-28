@@ -27,14 +27,13 @@ export const BreadCrumbs = ({
         >
           <path
             d="M8 17.5L2.12132 11.6213C0.949744 10.4497 0.949746 8.55025 2.12132 7.37868L8 1.5"
-            stroke="#004367"
+            className="stroke-deepblue-500 group-hover:stroke-deepblue-800"
             strokeWidth="1.5"
           />
           <path
             d="M16 9.72266L8 9.72266"
-            stroke="#004367"
             strokeWidth="1.5"
-            className="hidden group-hover:block"
+            className="hidden stroke-deepblue-500 group-hover:block group-hover:stroke-deepblue-800"
           />
         </svg>
 

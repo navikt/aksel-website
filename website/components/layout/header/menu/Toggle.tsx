@@ -32,9 +32,9 @@ const Toggle = ({
           onClick={() => setOpen(!open)}
           aria-expanded={open}
           className={cl({
-            "ml-auto flex min-w-header items-center justify-center border-r-0 hover:bg-gray-800/10 focus:shadow-focus-inset focus:outline-none":
+            "ml-auto flex min-w-header items-center justify-center border-r-0 hover:bg-gray-800/10 focus:outline-none focus-visible:shadow-focus-inset":
               inverted,
-            "navdsi-dropdown__toggle navdsi-header__button min-w-header justify-center gap-4 border-none focus:shadow-[inset_0_0_0_1px_var(--navds-semantic-color-component-background-inverted),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
+            "navdsi-dropdown__toggle navdsi-header__button min-w-header justify-center gap-4 border-none focus-visible:shadow-[inset_0_0_0_1px_var(--navds-semantic-color-component-background-inverted),inset_0_0_0_3px_var(--navds-global-color-blue-200)]":
               !inverted,
           })}
         >

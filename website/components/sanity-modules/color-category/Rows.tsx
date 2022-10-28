@@ -61,7 +61,7 @@ export const GlobalTableRow = ({
 }) => (
   <button
     {...rest}
-    className="z-[1] max-w-text whitespace-nowrap text-left align-top first:rounded-t last:rounded-b focus:z-[2] focus:shadow-focus focus:outline-none"
+    className="z-[1] max-w-text whitespace-nowrap text-left align-top first:rounded-t last:rounded-b focus:z-[2] focus:outline-none focus-visible:shadow-focus"
   >
     <ColorBox prop={prop} first={first} last={last} />
   </button>
@@ -78,7 +78,7 @@ export const SemanticTableRow = ({
     <Table.Row
       tabIndex={0}
       {...rest}
-      className="w-full text-medium hover:cursor-pointer focus:z-[1] focus:shadow-focus-inset focus:outline-none"
+      className="w-full text-medium hover:cursor-pointer focus:z-[1] focus:outline-none focus-visible:shadow-focus-inset"
     >
       <Table.DataCell>
         <ColorBox prop={prop} />
