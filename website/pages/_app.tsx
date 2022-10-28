@@ -6,6 +6,7 @@ import {
   PreviewBanner,
   useScrollToHashOnPageLoad,
 } from "@/components";
+import { Provider } from "@navikt/ds-react";
 import Head from "next/head";
 import React, { useEffect } from "react";
 /* import { hotjar } from "react-hotjar"; */
@@ -60,13 +61,15 @@ function App({
       </Head>
       {pageProps?.preview && <PreviewBanner />}
 
-      <AuthProvider>
-        <IdContext.Provider
-          value={{ id: pageProps?.id ?? pageProps?.page?._id }}
-        >
-          <Component {...pageProps} />
-        </IdContext.Provider>
-      </AuthProvider>
+      <Provider>
+        <AuthProvider>
+          <IdContext.Provider
+            value={{ id: pageProps?.id ?? pageProps?.page?._id }}
+          >
+            <Component {...pageProps} />
+          </IdContext.Provider>
+        </AuthProvider>
+      </Provider>
     </>
   );
 }
