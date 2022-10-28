@@ -1,7 +1,8 @@
 export default function exit(req, res) {
+  // Exit current user from preview mode
   res.clearPreviewData();
 
-  res.writeHead(307, { Location: encodeURI(req?.query?.slug) ?? `/` });
-
-  return res.end();
+  // Redirect user back to the index page
+  res.writeHead(307, { Location: "/" });
+  res.end();
 }

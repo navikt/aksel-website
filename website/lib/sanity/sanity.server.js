@@ -12,11 +12,11 @@ export const sanityClient = createClient({
 
 // Set up a preview client with serverless authentication for drafts
 /* Should not be needed anymore after migration of preview solution */
-/* export const previewClient = createClient({
+export const previewClient = createClient({
   ...config,
   token: process.env.SANITY_PREVIEW_TOKEN,
   ignoreBrowserTokenWarning: process.env.NODE_ENV === "test",
-}); */
+});
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const noCdnClient = (token) =>

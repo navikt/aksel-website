@@ -1,20 +1,35 @@
-export default function preview(req, res) {
-  // Enable Preview Mode by setting the cookies
+import { previewClient } from "@/sanity-client";
+
+function redirectToPreview(res, Location) {
+  // Enable preview mode by setting the cookies
   res.setPreviewData({});
 
-  console.log(req?.query?.slug);
+  // Redirect to a preview capable route
+  res.writeHead(307, { Location });
+  res.end();
+}
 
-  // Redirect to the path from the fetched post
-  // We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities
-  if (req?.query?.slug === ":slug*") {
-    res.writeHead(307, {
-      Location: encodeURI(`/`),
-    });
-  } else {
-    res.writeHead(307, {
-      Location: encodeURI(`/${req?.query?.slug}`),
-    });
+export default async function preview(req, res) {
+  const { slug } = req.query;
+
+  if (!slug) {
+    return redirectToPreview(res, "/");
   }
 
-  return res.end();
+  // Check if the article with the given `slug` exists
+  const article = await previewClient.fetch(
+    "*[slug.current == $slug][0].slug.current",
+    {
+      slug,
+    }
+  );
+
+  // If the slug doesn't exist prevent preview mode from being enabled
+  if (!article) {
+    return res.status(401).json({ message: "Invalid slug" });
+  }
+
+  // Redirect to the path from the fetched article
+  // We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities
+  return redirectToPreview(res, `/${article}`);
 }
